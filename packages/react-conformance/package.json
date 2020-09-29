@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-conformance",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Customizable conformance testing utility for Fluent UI React components.",
-  "private": true,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
@@ -20,7 +19,7 @@
   },
   "devDependencies": {
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -39,7 +38,7 @@
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "doctrine": "^2.0.0",
+    "doctrine": "^3.0.0",
     "lodash": "^4.17.15",
     "react-docgen-typescript": "^1.16.6",
     "react-is": "^16.6.3",

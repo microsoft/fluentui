@@ -22,10 +22,10 @@ export const providerVariables = (siteVariables): Partial<ProviderVariables> => 
   scrollbarHeight: pxToRem(16),
   scrollbarWidth: pxToRem(16),
 
-  scrollbarThumbBackgroundColor: siteVariables.colors.grey[250],
+  scrollbarThumbBackgroundColor: siteVariables.colors.onyx[700],
   scrollbarThumbBorderRadius: pxToRem(9),
   scrollbarThumbBorderSize: pxToRem(4),
 
-  scrollbarThumbHoverBackgroundColor: siteVariables.colors.grey[350],
+  scrollbarThumbHoverBackgroundColor: siteVariables.colors.onyx[700],
   scrollbarThumbHoverBorderSize: pxToRem(2),
 });

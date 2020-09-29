@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { DocumentCardPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/DocumentCard/DocumentCard.doc';
+import { DocumentCardPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/DocumentCard/DocumentCard.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DocumentCardPage/docs/DocumentCardRelated.md') as string;
 

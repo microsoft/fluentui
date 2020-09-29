@@ -10,20 +10,21 @@ variables:
 
 pool: 'Self Host Ubuntu'
 
-schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
-    branches:
-      include:
-        - master
+# DISABLED DURING BETA PREP
+# schedules:
+#   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+#   - cron: '0 12 * * 1-5'
+#     displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+#     branches:
+#       include:
+#         - master
 
 workspace:
   clean: all
 
 steps:
-  - template: azure-pipelines.tools.yml
+  - template: .devops/templates/tools.yml
 
   - script: |
       git config user.name "Fluent UI Build"
@@ -91,6 +92,7 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
@@ -136,7 +138,7 @@ steps:
       yarn workspace @uifabric/build just generate-package-manifest
     displayName: 'Generates a package manifest'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
@@ -144,3 +146,8 @@ steps:
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'
+      Gzip: false
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

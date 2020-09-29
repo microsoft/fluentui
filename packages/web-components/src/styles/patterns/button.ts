@@ -58,6 +58,7 @@ export const BaseButtonStyles: ElementStyles = css`
         border-radius: inherit;
         fill: inherit;
         cursor: inherit;
+        font-family: inherit;
     }
 
     :host(:hover) {

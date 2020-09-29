@@ -1,8 +1,26 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.18.0..@uifabric/merge-styles_v7.19.0)
+
+### Minor changes
+
+- Exporting additional typings, updated auto-unit generation to not prefix the default unit (px) on css custom properties. ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.18.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.17.0..@uifabric/merge-styles_v7.18.0)
+
+### Minor changes
+
+- Update IRawStyleBase tying to allow css variables (string) as acceptable values. ([PR #14773](https://github.com/microsoft/fluentui/pull/14773) by xgao@microsoft.com)
 
 ## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.17.0)
 

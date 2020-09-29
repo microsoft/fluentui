@@ -261,12 +261,3 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
     };
   }
 }
-
-/**
- * Simple constant function for returning null, used to render empty templates in JSX.
- *
- * @public
- */
-export function nullRender(): JSX.Element | null {
-  return null;
-}

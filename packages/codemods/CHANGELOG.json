@@ -2,6 +2,57 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@fluentui/codemods_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: Fix config mod to run if no changes present",
+            "author": "joschect@microsoft.com",
+            "commit": "49d71d6b636bb5d8a71711af3a22ac7229174681",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/codemods_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Support for configmod",
+            "author": "t-dama@microsoft.com",
+            "commit": "5fbd5de0cee7f48732206f4cd2289c69bfee181b",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "Codemods: Remove unneeded compat mods and refactor",
+            "author": "joschect@microsoft.com",
+            "commit": "0bda08660988eda0352603541dbe9c048c93dc70",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/codemods_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add list feature to codemods modruner",
+            "author": "t-dama@microsoft.com",
+            "commit": "ff8ef5b7d6b01e793c9fa99e20004330e5eb3f0a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@fluentui/codemods_v0.10.0",
       "version": "0.10.0",

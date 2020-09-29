@@ -2,20 +2,23 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../../Icon';
-import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-export { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
 import {
   IContextualMenuItemProps,
   IContextualMenuRenderItem,
   IContextualMenuItemStyleProps,
+  IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
+import { Target } from '@uifabric/react-hooks';
+
+export { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 /**
  * {@docCategory ContextualMenu}
@@ -266,6 +269,19 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * This will only result in different behavior when `shouldFocusOnMount = false`.
    */
   delayUpdateFocusOnHover?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to and whether or not the popup currently
+   * contains focus. If this prop is provided, focus will not be restored automatically,
+   * you'll need to call originalElement.focus()
+   */
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }
 
 /**
@@ -485,6 +501,17 @@ export interface IContextualMenuItem {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+
+  /**
+   * Method to customize sub-components rendering of this menu item.
+   *
+   * @param props - Props used to pass into render functions
+   * @param defaultRenders - Default render functions that renders default sub-components
+   */
+  onRenderContent?: (
+    props: IContextualMenuItemProps,
+    defaultRenders: IContextualMenuItemRenderFunctions,
+  ) => React.ReactNode;
 
   /**
    * A function to be executed on mouse down. This is executed before an `onClick` event and can

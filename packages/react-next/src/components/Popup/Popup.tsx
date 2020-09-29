@@ -15,7 +15,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
   const [needsVerticalScrollBarState, setNeedsVerticalScrollBar] = React.useState(false);
   React.useEffect(() => {
     async.requestAnimationFrame(() => {
-      // If overflowY is overriden, don't waste time calculating whether the scrollbar is necessary.
+      // If overflowY is overridden, don't waste time calculating whether the scrollbar is necessary.
       if (props.style && props.style.overflowY) {
         return;
       }
@@ -48,7 +48,23 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
   return needsVerticalScrollBarState;
 }
 
+function defaultFocusRestorer(options: {
+  originalElement?: HTMLElement | Window;
+  containsFocus: boolean;
+  documentContainsFocus: boolean;
+}) {
+  const { originalElement, containsFocus } = options;
+
+  if (originalElement && containsFocus && originalElement !== getWindow()) {
+    // Make sure that the focus method actually exists
+    // In some cases the object might exist but not be a real element.
+    // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+    originalElement.focus?.();
+  }
+}
+
 function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+  const { onRestoreFocus = defaultFocusRestorer } = props;
   const originalFocusedElement = React.useRef<HTMLElement>();
   const containsFocus = React.useRef(false);
 
@@ -56,9 +72,10 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
     originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
 
     return () => {
-      props.onRestoreFocus?.({
+      onRestoreFocus?.({
         originalElement: originalFocusedElement.current,
         containsFocus: containsFocus.current,
+        documentContainsFocus: getDocument()?.hasFocus() || false,
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
@@ -93,7 +110,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
        * If the relatedTarget is within the popup, that means the popup still has focus
        * and focused moved from one element to another within the popup.
        * If relatedTarget is undefined or null that usually means that a
-       * keyboard event occured and focus didn't change
+       * keyboard event occurred and focus didn't change
        */
       if (root.current && ev.relatedTarget && !root.current.contains(ev.relatedTarget as HTMLElement)) {
         containsFocus.current = false;
@@ -107,52 +124,54 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export const Popup = React.forwardRef((props: IPopupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  // Default props
-  // eslint-disable-next-line deprecation/deprecation
-  props = { shouldRestoreFocus: true, ...props };
+export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTMLDivElement, IPopupProps>(
+  (props, forwardedRef) => {
+    // Default props
+    // eslint-disable-next-line deprecation/deprecation
+    props = { shouldRestoreFocus: true, ...props };
 
-  const root = React.useRef<HTMLDivElement>();
-  const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
+    const root = React.useRef<HTMLDivElement>();
+    const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-  useRestoreFocus(props, root);
+    useRestoreFocus(props, root);
 
-  const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
-  const needsVerticalScrollBar = useScrollbarAsync(props, root);
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
+    const needsVerticalScrollBar = useScrollbarAsync(props, root);
 
-  const onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
-      // eslint-disable-next-line deprecation/deprecation
-      switch (ev.which) {
-        case KeyCodes.escape:
-          if (onDismiss) {
-            onDismiss(ev);
+    const onKeyDown = React.useCallback(
+      (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
+        // eslint-disable-next-line deprecation/deprecation
+        switch (ev.which) {
+          case KeyCodes.escape:
+            if (onDismiss) {
+              onDismiss(ev);
 
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
 
-          break;
-      }
-    },
-    [onDismiss],
-  );
+            break;
+        }
+      },
+      [onDismiss],
+    );
 
-  useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);
+    useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);
 
-  return (
-    <div
-      ref={mergedRootRef}
-      {...getNativeProps(props, divProperties)}
-      className={className}
-      role={role}
-      aria-label={ariaLabel}
-      aria-labelledby={ariaLabelledBy}
-      aria-describedby={ariaDescribedBy}
-      onKeyDown={onKeyDown}
-      style={{ overflowY: needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
-    >
-      {children}
-    </div>
-  );
-});
+    return (
+      <div
+        ref={mergedRootRef}
+        {...getNativeProps(props, divProperties)}
+        className={className}
+        role={role}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        onKeyDown={onKeyDown}
+        style={{ overflowY: needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
+      >
+        {children}
+      </div>
+    );
+  },
+);

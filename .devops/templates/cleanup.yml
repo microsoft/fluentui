@@ -1,0 +1,17 @@
+parameters:
+  - name: checkForChangedFiles
+    type: boolean
+    default: true
+
+steps:
+  - script: |
+      npm run check-for-changed-files
+    condition: ${{ parameters.checkForChangedFiles }}
+    displayName: check for changed files
+
+  # In theory the "workspace: clean: all" setting should handle this, but it doesn't always seem to work
+  - task: DeleteFiles@1
+    inputs:
+      SourceFolder: $(Build.SourcesDirectory)
+      Contents: '**/*'
+    condition: always()

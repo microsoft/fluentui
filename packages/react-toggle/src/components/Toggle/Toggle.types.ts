@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
@@ -16,11 +16,11 @@ export interface IToggle {
  * Toggle component props.
  * {@docCategory Toggle}
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */
-  as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
@@ -187,20 +187,3 @@ export interface IToggleStyles {
    */
   text: IStyle;
 }
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleSlots {}
-
-/**
- * {@docCategory Toggle}
- */
-export type IToggleSlotProps = {
-  [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleOptions {}

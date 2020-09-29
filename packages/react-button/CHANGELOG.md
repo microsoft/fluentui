@@ -1,8 +1,107 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.3)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.2..@fluentui/react-button_v0.14.3)
+
+### Patches
+
+- MenuButton: Removing office-ui-fabric-react dependency by having ContextualMenu as a JSX slot replacement instead of the default. ([PR #15257](https://github.com/microsoft/fluentui/pull/15257) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.2)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.0..@fluentui/react-button_v0.14.2)
+
+### Patches
+
+- Add migration guide to readme ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.13.1..@fluentui/react-button_v0.14.0)
+
+### Minor changes
+
+- Moving SizeValue const from react-button to theme package. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
+
+## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.13.1)
+
+Thu, 17 Sep 2020 15:52:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.13.0..@fluentui/react-button_v0.13.1)
+
+### Patches
+
+- Fix button styles to match v7 buttons. ([PR #14972](https://github.com/microsoft/fluentui/pull/14972) by xgao@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.13.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.12.6..@fluentui/react-button_v0.13.0)
+
+### Minor changes
+
+- Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`. ([PR #15070](https://github.com/microsoft/fluentui/pull/15070) by dzearing@hotmail.com)
+
+## [0.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.5)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.12.4..@fluentui/react-button_v0.12.5)
+
+### Patches
+
+- Updated styling to use makeStyles. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@hotmail.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.0)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.6..@fluentui/react-button_v0.12.0)
+
+### Minor changes
+
+- CompoundButton: Adding initial component to react-button package. ([PR #14855](https://github.com/microsoft/fluentui/pull/14855) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Fix rendering as anchor when href is passed. ([PR #14941](https://github.com/microsoft/fluentui/pull/14941) by xgao@microsoft.com)
+
+## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.6)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.5..@fluentui/react-button_v0.11.6)
+
+### Patches
+
+- Updated styling to use makeStyles. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [0.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.5)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.0..@fluentui/react-button_v0.11.5)
+
+### Patches
+
+- Adding legacy startup for internal testing on IE11. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.10.3..@fluentui/react-button_v0.11.0)
+
+### Minor changes
+
+- Button: Adding ghost prop for stealth styling. ([PR #14743](https://github.com/microsoft/fluentui/pull/14743) by humbertomakotomorimoto@gmail.com)
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.10.3)
 

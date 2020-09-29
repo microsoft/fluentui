@@ -64,6 +64,9 @@ export interface IFontFace extends IRawFontStyle {
 // @public (undocumented)
 export type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | '100' | 100 | '200' | 200 | '300' | 300 | '400' | 400 | '500' | 500 | '600' | 600 | '700' | 700 | '800' | 800 | '900' | 900;
 
+// @public
+export type IKeyframes = Record<string, IRawStyle>;
+
 // @public (undocumented)
 export const InjectionMode: {
     none: 0;
@@ -91,13 +94,13 @@ export interface IRawFontStyle {
     // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
-    fontSizeAdjust?: ICSSRule | 'none' | number;
-    fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded';
-    fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique';
+    fontSizeAdjust?: ICSSRule | 'none' | number | string;
+    fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded' | string;
+    fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique' | string;
     fontSynthesis?: ICSSRule | string;
     fontVariant?: ICSSRule | string;
     fontVariantAlternates?: ICSSRule | string;
-    fontWeight?: IFontWeight;
+    fontWeight?: IFontWeight | string;
 }
 
 // @public
@@ -112,18 +115,18 @@ export interface IRawStyle extends IRawStyleBase {
 
 // @public
 export interface IRawStyleBase extends IRawFontStyle {
-    alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
-    alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+    alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch' | string;
+    alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | string;
     alignmentAdjust?: ICSSRule | string;
     alignmentBaseline?: ICSSRule | string;
     // Warning: (ae-forgotten-export) The symbol "ICSSBaselinePositionRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSOverflowAndSelfPositionRule" needs to be exported by the entry point index.d.ts
-    alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
+    alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     animation?: ICSSRule | string;
     animationDelay?: ICSSRule | string;
     animationDirection?: ICSSRule | string;
     animationDuration?: ICSSRule | string;
-    animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
+    animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both' | string;
     animationIterationCount?: ICSSRule | string;
     animationName?: ICSSRule | string;
     animationPlayState?: ICSSRule | string;
@@ -132,9 +135,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     backdropFilter?: ICSSRule | string;
     backfaceVisibility?: ICSSRule | string;
     background?: ICSSRule | string;
-    backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local';
+    backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local' | string;
     backgroundBlendMode?: ICSSRule | string;
-    backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+    backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text' | string;
     backgroundColor?: ICSSRule | string;
     backgroundComposite?: ICSSRule | string;
     backgroundImage?: ICSSRule | string;
@@ -175,14 +178,14 @@ export interface IRawStyleBase extends IRawFontStyle {
     bottom?: ICSSRule | ICSSPixelUnitRule;
     boxDecorationBreak?: ICSSRule | string;
     boxShadow?: ICSSRule | string;
-    boxSizing?: ICSSRule | 'border-box' | 'content-box';
+    boxSizing?: ICSSRule | 'border-box' | 'content-box' | string;
     breakAfter?: ICSSRule | string;
     breakBefore?: ICSSRule | string;
     breakInside?: ICSSRule | string;
     clear?: ICSSRule | string;
     clipRule?: ICSSRule | string;
     color?: ICSSRule | string;
-    columnCount?: ICSSRule | number | 'auto';
+    columnCount?: ICSSRule | number | 'auto' | string;
     columnFill?: ICSSRule | string;
     columnGap?: ICSSRule | string;
     columnRule?: ICSSRule | string;
@@ -199,21 +202,21 @@ export interface IRawStyleBase extends IRawFontStyle {
     cursor?: ICSSRule | string;
     direction?: ICSSRule | string;
     // Warning: (ae-forgotten-export) The symbol "ICSSDisplayRule" needs to be exported by the entry point index.d.ts
-    display?: ICSSRule | ICSSDisplayRule;
+    display?: ICSSRule | ICSSDisplayRule | string;
     fill?: ICSSRule | string;
     fillOpacity?: ICSSRule | number;
     fillRule?: ICSSRule | string;
     filter?: ICSSRule | string;
     flex?: ICSSRule | string | number;
     flexBasis?: ICSSRule | string | number;
-    flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse' | string;
     flexFlow?: ICSSRule | string;
     flexGrow?: ICSSRule | number | string;
     flexShrink?: ICSSRule | number | string;
-    flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
+    flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse' | string;
     float?: ICSSRule | string;
     flowFrom?: ICSSRule | string;
-    forcedColorAdjust?: 'auto' | 'none';
+    forcedColorAdjust?: 'auto' | 'none' | string;
     gridArea?: ICSSRule | string;
     gridAutoColumns?: ICSSRule | string;
     gridAutoFlow?: ICSSRule | string;
@@ -237,8 +240,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitLines?: ICSSRule | string;
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
-    justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-    justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right';
+    justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
     lineHeight?: ICSSRule | 'normal' | ICSSPixelUnitRule | ICSSPercentageRule;
@@ -267,22 +270,22 @@ export interface IRawStyleBase extends IRawFontStyle {
     minHeight?: ICSSRule | ICSSPixelUnitRule;
     minWidth?: ICSSRule | ICSSPixelUnitRule;
     // Warning: (ae-forgotten-export) The symbol "IMixBlendModes" needs to be exported by the entry point index.d.ts
-    mixBlendMode?: ICSSRule | IMixBlendModes;
-    MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    mixBlendMode?: ICSSRule | IMixBlendModes | string;
+    MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
     MsHighContrastAdjust?: ICSSRule | string;
-    MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
-    objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+    MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar' | string;
+    objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none' | string;
     opacity?: ICSSRule | number | string;
-    order?: ICSSRule | number;
-    orphans?: ICSSRule | number;
+    order?: ICSSRule | number | string;
+    orphans?: ICSSRule | number | string;
     outline?: ICSSRule | 0 | string;
     outlineColor?: ICSSRule | string;
     outlineOffset?: ICSSRule | string;
     overflow?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
     overflowStyle?: ICSSRule | string;
-    overflowWrap?: ICSSRule | 'normal' | 'break-word';
-    overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
-    overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+    overflowWrap?: ICSSRule | 'normal' | 'break-word' | string;
+    overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
+    overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
     padding?: ICSSRule | ICSSPixelUnitRule;
     paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
     paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
@@ -304,7 +307,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;
     regionFragment?: ICSSRule | string;
-    resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+    resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline' | string;
     restAfter?: ICSSRule | string;
     restBefore?: ICSSRule | string;
     right?: ICSSRule | ICSSPixelUnitRule;
@@ -315,8 +318,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     speak?: ICSSRule | string;
     speakAs?: ICSSRule | string;
     stroke?: ICSSRule | string;
-    strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
-    strokeOpacity?: ICSSRule | number;
+    strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square' | string;
+    strokeOpacity?: ICSSRule | number | string;
     strokeWidth?: ICSSRule | ICSSPixelUnitRule;
     tableLayout?: ICSSRule | string;
     tabSize?: ICSSRule | string;
@@ -358,7 +361,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     unicodeBidi?: ICSSRule | string;
     userFocus?: ICSSRule | string;
     userInput?: ICSSRule | string;
-    userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain';
+    userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain' | string;
     verticalAlign?: ICSSRule | string;
     visibility?: ICSSRule | string;
     voiceBalance?: ICSSRule | string;
@@ -370,12 +373,12 @@ export interface IRawStyleBase extends IRawFontStyle {
     voiceStress?: ICSSRule | string;
     voiceVolume?: ICSSRule | string;
     WebkitBackdropFilter?: ICSSRule | string;
-    WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
-    WebkitOverflowScrolling?: 'auto' | 'touch';
+    WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
+    WebkitOverflowScrolling?: 'auto' | 'touch' | string;
     WebkitTapHighlightColor?: string;
-    WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
+    WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule | string;
     whiteSpace?: ICSSRule | string;
-    widows?: ICSSRule | number;
+    widows?: ICSSRule | number | string;
     width?: ICSSRule | ICSSPixelUnitRule;
     wordBreak?: ICSSRule | string;
     wordSpacing?: ICSSRule | string;
@@ -383,7 +386,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     wrapFlow?: ICSSRule | string;
     wrapMargin?: ICSSRule | string;
     writingMode?: ICSSRule | string;
-    zIndex?: ICSSRule | 'auto' | number;
+    zIndex?: ICSSRule | 'auto' | number | string;
     zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;
 }
 
@@ -428,9 +431,7 @@ export interface IStyleSheetConfig {
 }
 
 // @public
-export function keyframes(timeline: {
-    [key: string]: {};
-}): string;
+export function keyframes(timeline: IKeyframes): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //

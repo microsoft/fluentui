@@ -8,7 +8,6 @@ import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@uifabric/utilities';
-import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
 import { IDateGridStrings } from '@fluentui/date-time-utilities';
@@ -19,7 +18,6 @@ import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
-import { IWeeklyDayPickerStrings as IWeeklyDayPickerStrings_2 } from '@uifabric/date-time';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -42,10 +40,10 @@ export { DateRangeType }
 export { DayOfWeek }
 
 // @public (undocumented)
-export const defaultDayPickerStrings: ICalendarStrings_2;
+export const defaultDayPickerStrings: ICalendarStrings;
 
 // @public (undocumented)
-export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings_2;
+export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings;
 
 export { FirstWeekOfYear }
 
@@ -306,6 +304,8 @@ export interface IDatePickerStyles {
     root: IStyle;
     // (undocumented)
     textField: IStyle;
+    // (undocumented)
+    wrapper?: IStyle;
 }
 
 // @public (undocumented)

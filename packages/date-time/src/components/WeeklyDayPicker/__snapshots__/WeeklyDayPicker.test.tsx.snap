@@ -33,6 +33,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -1964,6 +1965,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseUp={[Function]}
           >
             <button
+              aria-current="date"
               aria-disabled={false}
               aria-label="January 1, 2019"
               aria-readonly={true}
@@ -3057,6 +3059,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -3166,6 +3169,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -4843,6 +4847,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseUp={[Function]}
           >
             <button
+              aria-current="date"
               aria-disabled={false}
               aria-label="January 1, 2019"
               aria-readonly={true}
@@ -6182,6 +6187,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;

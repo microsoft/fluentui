@@ -15,10 +15,9 @@ jobs:
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -30,7 +29,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
-        displayName: do syncpack and no-tslint checks
+        displayName: do syncpack and lint-files checks
 
       ## only do scoped builds with PRs
       - script: |
@@ -50,16 +49,17 @@ jobs:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
+      - template: .devops/templates/cleanup.yml
+
   - job: Deploy
     workspace:
       clean: all
     variables:
-      PR_DEPLOY: 1
+      - template: .devops/templates/variables.yml
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
@@ -90,49 +90,80 @@ jobs:
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)
 
-      - task: AzureUpload@1
+      - task: AzureUpload@2
         displayName: Upload PR deploy site
         inputs:
           SourcePath: 'apps/pr-deploy-site/dist'
           azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
           storage: fabricweb
           ContainerName: '$web'
-          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+          BlobPrefix: '$(deployBasePath)'
+
+      - task: GithubPRStatus@0
+        displayName: 'Update PR deploy site github status'
+        inputs:
+          githubOwner: microsoft
+          githubRepo: fluentui
+          githubContext: 'Pull request demo site'
+          githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
+          githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
+      - task: AzureUpload@2
+        displayName: Upload demo images (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          BlobPrefix: 'assets'
+          CacheControl: 'public, max-age=600000'
+          ContainerName: 'fabric-website' # this container has a CDN
+          SourcePath: 'packages/fluentui/docs/src/public'
+          storage: fabricweb
+
+      - template: .devops/templates/cleanup.yml
 
   - job: ScreenerFluent
     workspace:
       clean: all
+    variables:
+      - template: .devops/templates/variables.yml
+        parameters:
+          pathPrefix: SourceVersion
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
-        displayName: run FUI VR Test
+      - script: yarn workspace @fluentui/docs vr:build
+        displayName: build FUI N* VR Test
+
+      - task: AzureUpload@2
+        displayName: Upload N* doc site
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          BlobPrefix: '$(deployBasePath)/react-northstar'
+          CacheControl: 'public, max-age=600000'
+          ContainerName: '$web'
+          SourcePath: 'packages/fluentui/docs/dist'
+          storage: fabricweb
+
+      - script: yarn workspace @fluentui/docs vr:test
+        displayName: start FUI N* VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
+
+      - template: .devops/templates/cleanup.yml
 
   - job: Screener
     workspace:
       clean: all
     steps:
-      - template: azure-pipelines.tools.yml
+      - template: .devops/templates/tools.yml
 
-      - script: |
-          yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-        displayName: config git user and email
 
       - script: |
           yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
@@ -141,3 +172,5 @@ jobs:
           SCREENER_API_KEY: $(screener.key)
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - template: .devops/templates/cleanup.yml

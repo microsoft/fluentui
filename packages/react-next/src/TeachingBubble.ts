@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/TeachingBubble';
+import './version';
+export * from './components/TeachingBubble/index';

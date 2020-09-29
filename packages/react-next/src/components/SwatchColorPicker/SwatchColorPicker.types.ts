@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellStyleProps,
@@ -9,7 +10,7 @@ import {
 /**
  * {@docCategory SwatchColorPicker}
  */
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
   /**
    * Number of columns for the swatch color picker
    */
@@ -32,7 +33,9 @@ export interface ISwatchColorPickerProps {
   cellShape?: 'circle' | 'square';
 
   /**
-   * The ID of color cell that is currently selected
+   * ID of the current selected color swatch. Only provide this if the SwatchColorPicker is a
+   * controlled component where you are maintaining its current state; otherwise, use the
+   * `defaultSelectedId` property.
    */
   selectedId?: string;
 
@@ -46,22 +49,27 @@ export interface ISwatchColorPickerProps {
   colorCells: IColorCellProps[];
 
   /**
-   * Indicates whether the SwatchColorPicker is fully controlled.
-   * When true, the component will not set its internal state to track the selected color.
-   * Instead, the parent component will be responsible for handling state in the callbacks like
-   * `onColorChanged`.
-   *
-   * NOTE: This property is a temporary workaround to force the component to be fully controllable
-   * without breaking existing behavior
+   * @deprecated No longer used. Provide `selectedId` if controlled or `defaultSelectedId` if uncontrolled.
    */
   isControlled?: boolean;
+
+  /**
+   * ID of the default selected color swatch. Only provide this if the SwatchColorPicker is an
+   * uncontrolled component; otherwise, use the `selectedId` property.
+   */
+  defaultSelectedId?: string | undefined;
+
+  /**
+   * @deprecated Use `onChange`
+   */
+  onColorChanged?: (id?: string, color?: string) => void;
 
   /**
    * Callback for when the user changes the color.
    * If `id` and `color` are unspecified, there is no selected cell.
    * (e.g. the user executed the currently selected cell to unselect it)
    */
-  onColorChanged?: (id?: string, color?: string) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
 
   /**
    * Callback for when the user hovers over a color cell.
@@ -76,6 +84,11 @@ export interface ISwatchColorPickerProps {
   onCellFocused?: (id?: string, color?: string) => void;
 
   /**
+   * Custom render function for the color cell
+   */
+  onRenderColorCell?: IRenderFunction<IColorCellProps>;
+
+  /**
    * Whether the control is disabled.
    */
   disabled?: boolean;
@@ -86,19 +99,9 @@ export interface ISwatchColorPickerProps {
   ariaPosInSet?: number;
 
   /**
-   * @deprecated Use `ariaPosInSet`
-   */
-  positionInSet?: number;
-
-  /**
    * Size of the parent set (size of parent menu, for example)
    */
   ariaSetSize?: number;
-
-  /**
-   * @deprecated Use `ariaSetSize`
-   */
-  setSize?: number;
 
   /**
    * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).
@@ -187,7 +190,7 @@ export interface ISwatchColorPickerStyleProps {
 }
 
 /**
- * Styles for the Color Picker Component.
+ * Styles for the SwatchColorPicker.
  * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyles {

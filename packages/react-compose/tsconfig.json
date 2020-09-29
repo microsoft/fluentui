@@ -6,6 +6,7 @@
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
+    "downlevelIteration": true,
     "sourceMap": true,
     "importHelpers": true,
     "noUnusedLocals": true,

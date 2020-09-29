@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Classnames from 'classnames';
+import * as reactCompose from '@fluentui/react-compose/lib/next';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
@@ -54,6 +55,11 @@ export const imports: Record<string, CodeSandboxImport> = {
   '@fluentui/react-northstar': {
     version: projectPackageJson.version,
     module: FluentUI,
+    required: true,
+  },
+  '@fluentui/react-compose/lib/next': {
+    version: '^0.16.0',
+    module: reactCompose,
     required: true,
   },
   '@fluentui/react-bindings': {

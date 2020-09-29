@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.141.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.141.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.138.0..@fluentui/react_v7.141.0)
+
+### Patches
+
+- Delete unneeded compat exports ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
+
+## [7.138.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.138.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.137.3..@fluentui/react_v7.138.0)
+
+### Minor changes
+
+- Adding a compat folder and introducing compat component exports. ([PR #15079](https://github.com/microsoft/fluentui/pull/15079) by czearing@outlook.com)
+
+## [7.136.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.136.0)
+
+Wed, 09 Sep 2020 18:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.128.2..@fluentui/react_v7.136.0)
+
+### Minor changes
+
+- Exposing additional exports to reduce deep imports we're seeing in partner code. ([PR #14824](https://github.com/microsoft/fluentui/pull/14824) by dzearing@hotmail.com)
 
 ## [7.128.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.128.2)
 

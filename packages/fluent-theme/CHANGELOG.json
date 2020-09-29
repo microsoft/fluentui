@@ -2,6 +2,74 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.17",
+      "version": "7.3.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update README on deprecation.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.16",
+      "version": "7.3.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/fluent-theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update FluentMotion import path from theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "7f1767d9469a917dcea9dbe3142c8fef3a36b8ad",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.14",
+      "version": "7.3.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/fluent-theme_v7.3.13",
+      "version": "7.3.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update import paths from theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "ef5e6c6d69af679f732abb9f13cf7fad2902fdb8",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Aug 2020 12:36:50 GMT",
       "tag": "@uifabric/fluent-theme_v7.2.5",
       "version": "7.2.5",

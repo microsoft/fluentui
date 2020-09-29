@@ -52,6 +52,11 @@ export interface ILegendsStyles {
   overflowIndicationTextStyle: IStyle;
 
   /**
+   * Style for the overflow container
+   */
+  hoverCardRoot: IStyle;
+
+  /**
    * sub component styles
    */
   subComponentStyles: ILegendSubComponentStyles;
@@ -158,6 +163,19 @@ export interface ILegendsProps {
    * @default true
    */
   allowFocusOnLegends?: boolean;
+
+  /**
+   * prop that decide if we can select multiple legends or single legend at a time
+   * @default false
+   */
+  canSelectMultipleLegends?: boolean;
+
+  /**
+   * Defines the function that is executed upon hiding of hover card
+   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to ture
+   * and empty the selecetd state legends
+   */
+  onLegendHoverCardLeave?: VoidFunction;
 }
 
 /**

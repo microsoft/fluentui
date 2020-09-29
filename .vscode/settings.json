@@ -26,6 +26,7 @@
     "**/lib-amd": true,
     "**/temp": true,
     "**/dist": true,
+    "**/dist-storybook": true,
     "**/*.scss.ts": true,
     "**/coverage": true
   },
@@ -37,6 +38,7 @@
     "**/lib-amd": true,
     "**/lib-commonjs": true,
     "**/dist": true,
+    "**/dist-storybook": true,
     "**/*.scss.ts": true
   },
   "editor.rulers": [120],
@@ -66,5 +68,9 @@
   },
   "[handlebars]": {
     "editor.formatOnSave": false
-  }
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifierEnding": "index",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "index"
 }

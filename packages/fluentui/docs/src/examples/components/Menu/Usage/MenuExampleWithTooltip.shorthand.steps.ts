@@ -1,4 +1,5 @@
 import { menuClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@uifabric/build/screener';
 
 const selectors = {
   menu: `.${menuClassName}`,

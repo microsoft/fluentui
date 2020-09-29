@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -17,6 +17,7 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
+import { Target } from '@uifabric/react-hooks';
 
 /**
  * {@docCategory ContextualMenu}
@@ -275,7 +276,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * contains focus. If this prop is provided, focus will not be restored automatically,
    * you'll need to call originalElement.focus()
    */
-  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
+  onRestoreFocus?: (options: {
+    originalElement?: HTMLElement | Window;
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+  }) => void;
 }
 
 /**

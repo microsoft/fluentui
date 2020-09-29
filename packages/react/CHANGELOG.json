@@ -2,6 +2,89 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react_v7.141.0",
+      "version": "7.141.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Delete unneeded compat exports",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@fluentui/react_v7.138.0",
+      "version": "7.138.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding a compat folder and introducing compat component exports.",
+            "author": "czearing@outlook.com",
+            "commit": "49b736214cdb26e19242613ccaa59cbcd0d2ea59",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react_v7.137.3",
+      "version": "7.137.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react_v7.137.1",
+      "version": "7.137.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 18:41:54 GMT",
+      "tag": "@fluentui/react_v7.136.0",
+      "version": "7.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exposing additional exports to reduce deep imports we're seeing in partner code.",
+            "author": "dzearing@hotmail.com",
+            "commit": "cc72899b69926f902d68f3164a7845401f1dc700",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@fluentui/react_v7.128.2",
       "version": "7.128.2",

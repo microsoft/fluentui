@@ -4,7 +4,8 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
-import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
@@ -72,7 +73,12 @@ storiesOf('SplitButton Next', module)
     </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+  ))
+  .addStory('Customized divider styles', () => (
+    <ThemeProvider theme={{ tokens: { button: { dividerLength: '30px' } } }}>
+      <SplitButton>Hello, world</SplitButton>
+    </ThemeProvider>
   ));
 
 storiesOf('SplitButton Next - Teams Theme', module)
@@ -139,5 +145,5 @@ storiesOf('SplitButton Next - Teams Theme', module)
     </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));

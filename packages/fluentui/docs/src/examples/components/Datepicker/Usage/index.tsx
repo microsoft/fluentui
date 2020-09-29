@@ -23,12 +23,12 @@ const Usage = () => (
       title="Custom parsing"
       description={
         <>
-          <code>parseDate</code> prop can be used for custom parsing date string from the input field
+          <code>parseDate</code> prop can be used for custom parsing date string from the input field. The custom
+          parsing drops all x in the iputted string.
         </>
       }
       examplePath="components/Datepicker/Usage/DatepickerParseExample"
     />
-
     <ComponentExample
       title="First day of week"
       description={

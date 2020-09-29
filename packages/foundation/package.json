@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "7.8.3",
+  "version": "7.9.9",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -35,7 +35,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.1.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -45,10 +45,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.17.0",
-    "@uifabric/set-version": "^7.0.22",
-    "@uifabric/styling": "^7.15.3",
-    "@uifabric/utilities": "^7.30.0",
+    "@uifabric/merge-styles": "^7.19.1",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/styling": "^7.16.9",
+    "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

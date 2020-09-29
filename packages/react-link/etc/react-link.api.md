@@ -21,8 +21,6 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     // (undocumented)
     [index: string]: any;
     // (undocumented)
-    as?: React.ElementType;
-    // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
     disabled?: boolean;
@@ -59,21 +57,14 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
-export interface ILinkOptions {
-}
-
-// @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
+    as?: React.ElementType;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     // @deprecated
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILinkSlots {
 }
 
 // @public (undocumented)
@@ -98,15 +89,7 @@ export interface ILinkStyles {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
-
-// @public (undocumented)
-export type LinkSlotProps = {
-    [key in keyof ILinkSlots]: ILinkProps[key];
-};
-
-// @public
-export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
+export const LinkBase: React.FunctionComponent<ILinkProps>;
 
 
 // (No @packageDocumentation comment for this package)

@@ -293,81 +293,92 @@ const themeOverrides: ThemeInput = {
 };
 
 const ToolbarExampleMenuShorthand = () => {
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
+
   return (
-    <Provider theme={themeOverrides}>
-      <ToolbarViolet
-        aria-label="Toolbar can contain a menu"
-        items={[
-          {
-            key: 'bold',
-            content: 'bold',
-            icon: <BoldIcon />,
-            title: 'Bold',
-          },
-          {
-            key: 'underline',
-            content: 'underline',
-            icon: <UnderlineIcon />,
-            title: 'Underline',
-          },
-          {
-            key: 'divider',
-            kind: 'divider',
-          },
-          {
-            key: 'group',
-            kind: 'group',
-            items: [
-              { key: 'bookmark', icon: <BookmarkIcon /> },
-              { key: 'divider', kind: 'divider' },
-              { key: 'chat', icon: <ChatIcon /> },
-            ],
-          },
-          {
-            key: 'custom',
-            kind: 'custom',
-            content: <Text content="Olive" />,
-          },
-          {
-            icon: <MoreIcon />,
-            key: 'more',
-            active: true,
-            title: 'More',
-            menu: {
+    <>
+      <Provider theme={themeOverrides}>
+        <ToolbarViolet
+          aria-label="Toolbar can contain a menu"
+          items={[
+            {
+              key: 'bold',
+              content: 'bold',
+              icon: <BoldIcon />,
+              title: 'Bold',
+            },
+            {
+              key: 'underline',
+              content: 'underline',
+              icon: <UnderlineIcon />,
+              title: 'Underline',
+            },
+            {
+              key: 'divider',
+              kind: 'divider',
+            },
+            {
+              key: 'group',
+              kind: 'group',
               items: [
-                {
-                  key: 'play',
-                  content: 'Play',
-                  icon: <PlayIcon />,
-                  active: true,
-                },
-                {
-                  key: 'pause',
-                  content: 'Pause',
-                  icon: <PauseIcon />,
-                  menu: ['Pause 1.1'],
-                  menuOpen: true,
-                },
-                {
-                  key: 'divider',
-                  kind: 'divider',
-                },
-                'Without icon',
-                {
-                  key: 'group',
-                  kind: 'group',
-                  items: [
-                    { key: 'bullets', icon: <BulletsIcon /> },
-                    { key: 'to-do-list', icon: <ToDoListIcon /> },
-                  ],
-                },
+                { key: 'bookmark', icon: <BookmarkIcon /> },
+                { key: 'divider', kind: 'divider' },
+                { key: 'chat', icon: <ChatIcon /> },
               ],
             },
-            menuOpen: true,
-          },
-        ]}
-      />
-    </Provider>
+            {
+              key: 'custom',
+              kind: 'custom',
+              content: <Text content="Olive" />,
+            },
+            {
+              icon: <MoreIcon />,
+              key: 'more',
+              active: true,
+              title: 'More',
+              menu: {
+                popper: {
+                  align: 'end',
+                  position: 'after',
+                },
+                items: [
+                  {
+                    key: 'play',
+                    content: 'Play',
+                    icon: <PlayIcon />,
+                    active: true,
+                  },
+                  {
+                    key: 'pause',
+                    content: 'Pause',
+                    icon: <PauseIcon />,
+                    menu: ['Pause 1.1'],
+                    menuOpen,
+                  },
+                  {
+                    key: 'divider',
+                    kind: 'divider',
+                  },
+                  'Without icon',
+                  {
+                    key: 'group',
+                    kind: 'group',
+                    items: [
+                      { key: 'bullets', icon: <BulletsIcon /> },
+                      { key: 'to-do-list', icon: <ToDoListIcon /> },
+                    ],
+                  },
+                ],
+              },
+              menuOpen,
+            },
+          ]}
+        />
+      </Provider>
+      <button id="open-menu" onClick={() => setMenuOpen(true)}>
+        Open a menu
+      </button>
+    </>
   );
 };
 

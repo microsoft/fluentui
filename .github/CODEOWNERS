@@ -16,8 +16,12 @@
 # docs/  docs@example.com
 
 #### Core build stuff
-scripts/ @dzearing @ecraig12345
-package.json @ecraig12345 @dzearing
+scripts/ @dzearing @ecraig12345 @xugao
+scripts/babel/ @layershifter @miroslavstastny
+scripts/gulp/ @layershifter @miroslavstastny
+scripts/webpack/ @layershifter @miroslavstastny
+scripts/webpack/ @layershifter @miroslavstastny
+package.json @ecraig12345 @dzearing @xugao
 prettier.config.js @ecraig12345
 webpack.config.js @ecraig12345
 webpack.serve.config.js @ecraig12345
@@ -25,14 +29,16 @@ jest.config.js @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-*.yml @ecraig12345
+azure-pipelines* @ecraig12345
 .eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan
 
-#### Fluent UI
-packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @dzearing @pompomon @silviuavram @jurokapsiar
+#### Fluent UI N*
+packages/a11y-rules/ @kolaps33 @jurokapsiar
+packages/a11y-testing/ @kolaps33 @jurokapsiar
+packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
@@ -60,9 +66,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
-packages/lists/ @dzearing @aditima
 packages/merge-styles/ @dzearing
-packages/migration/ @ecraig12345
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
@@ -127,9 +131,9 @@ packages/office-ui-fabric-react/src/components/Modal/ @joschect
 packages/office-ui-fabric-react/src/components/Nav/ @ecraig12345
 packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
 packages/react-next/src/components/OverflowSet/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Overlay/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Overlay/ @xugao
 packages/office-ui-fabric-react/src/components/Pagination/ @caradong
-packages/office-ui-fabric-react/src/components/Panel/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Panel/ @xugao
 packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
@@ -139,7 +143,7 @@ packages/react-next/src/components/Pivot/ @behowell
 packages/react-tabs/ @behowell
 packages/office-ui-fabric-react/src/components/Popup/ @joschect
 packages/react-next/src/components/Popup/ @joschect
-packages/office-ui-fabric-react/src/components/ProgressIndicator/ @aneeshack4
+packages/office-ui-fabric-react/src/components/ProgressIndicator/ @xugao
 packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
 packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
 packages/react-next/src/components/ResizeGroup/ @micahgodbolt
@@ -153,7 +157,7 @@ packages/react-next/src/components/Slider/ @joschect
 packages/react-slider/ @joschect
 packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
 packages/react-next/src/components/SpinButton/ @khmakoto
-packages/office-ui-fabric-react/src/components/Spinner/ @aneeshack4
+packages/office-ui-fabric-react/src/components/Spinner/ @xugao
 packages/office-ui-fabric-react/src/components/Stack/  @khmakoto
 packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/TeachingBubble/ @micahgodbolt
@@ -167,3 +171,4 @@ packages/react-next/src/components/Toggle/ @xugao
 packages/react-toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto
+packages/react-spinbutton/ @dzearing @ecraig12345

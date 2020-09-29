@@ -139,9 +139,10 @@ $Calendar-dayPicker-margin: 10px;
   padding: 0;
   background-color: transparent;
   line-height: 100%;
-  font-size: inherit;
   color: inherit;
+  font-size: inherit;
   font-weight: inherit;
+  font-family: inherit;
 }
 
 .daySelection .day {
@@ -355,6 +356,7 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevDecade,
 .nextDecade {
+  font-family: inherit;
   width: $Calendar-day;
   height: $Calendar-day;
   display: block;
@@ -440,6 +442,7 @@ $Calendar-dayPicker-margin: 10px;
   @include float(left);
   @include margin(0, 10px, 10px, 0);
   @include ms-font-s-plus;
+  font-family: inherit;
   color: $ms-color-neutralPrimary;
   text-align: center;
   border: none;
@@ -478,6 +481,7 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-themePrimary;
   cursor: pointer;
   @include ms-font-s;
+  font-family: inherit;
   color: $ms-color-neutralPrimary;
   height: 30px;
   line-height: 30px;

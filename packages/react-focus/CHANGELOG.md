@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.2..@fluentui/react-focus_v7.16.6)
+
+### Patches
+
+- FocusZone: Moving custom onFocus call at the end of private onFocus logic. ([PR #15108](https://github.com/microsoft/fluentui/pull/15108) by humbertomakotomorimoto@gmail.com)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.0)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.1..@fluentui/react-focus_v7.16.0)
+
+### Minor changes
+
+- FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided. ([PR #14911](https://github.com/microsoft/fluentui/pull/14911) by humbertomakotomorimoto@gmail.com)
+
+## [7.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.1)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.0..@fluentui/react-focus_v7.15.1)
+
+### Patches
+
+- Fix typo in docs ([PR #14851](https://github.com/microsoft/fluentui/pull/14851) by elcraig@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.0)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.22..@fluentui/react-focus_v7.15.0)
+
+### Minor changes
+
+- Add temporary elementRef prop to FocusZone. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
 
 ## [7.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.22)
 

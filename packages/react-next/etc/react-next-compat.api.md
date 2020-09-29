@@ -6,11 +6,6 @@
 
 
 export * from "office-ui-fabric-react/lib/Button";
-export * from "office-ui-fabric-react/lib/Checkbox";
-export * from "office-ui-fabric-react/lib/Link";
-export * from "office-ui-fabric-react/lib/Pivot";
-export * from "office-ui-fabric-react/lib/Slider";
-export * from "office-ui-fabric-react/lib/Toggle";
 
 // (No @packageDocumentation comment for this package)
 

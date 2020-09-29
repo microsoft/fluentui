@@ -25,6 +25,7 @@ import {
   Point,
   getWindow,
   findScrollableParent,
+  createMergedRef,
 } from '@uifabric/utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -75,6 +76,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   };
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
+  private _mergedRef = createMergedRef<HTMLElement>();
+
   private _id: string;
 
   /** The most recently focused child element. */
@@ -264,7 +267,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         // be replaced so that className is passed to getRootClass and is included there so
         // the class names will always be in the same order.
         className={css(getRootClass(), className)}
-        ref={this._root}
+        // eslint-disable-next-line deprecation/deprecation
+        ref={this._mergedRef(this.props.elementRef, this._root)}
         data-focuszone-id={this._id}
         onKeyDown={this._onKeyDown}
         onFocus={this._onFocus}
@@ -333,9 +337,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focusElement(element: HTMLElement): boolean {
+  public focusElement(element: HTMLElement, forceAlignment?: boolean): boolean {
     // eslint-disable-next-line deprecation/deprecation
     const { onBeforeFocus, shouldReceiveFocus } = this.props;
 
@@ -344,8 +349,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
-      this._setActiveElement(element);
+      // when we set focus to a specific child, we should recalculate the alignment depending on its position.
+      this._setActiveElement(element, forceAlignment);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -399,12 +404,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | null | undefined;
-
-    if (onFocus) {
-      onFocus(ev);
-    } else if (onFocusNotification) {
-      onFocusNotification();
-    }
 
     if (isImmediateDescendant) {
       newActiveElement = ev.target as HTMLElement;
@@ -463,6 +462,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     if (stopFocusPropagation || doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
+    }
+
+    if (onFocus) {
+      onFocus(ev);
+    } else if (onFocusNotification) {
+      onFocusNotification();
     }
   };
 

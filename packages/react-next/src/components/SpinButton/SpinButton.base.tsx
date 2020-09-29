@@ -19,7 +19,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
-interface ISpinButtonState {
+interface ISpinButtonInternalState {
   inputId: string;
   labelId: string;
   lastValidValue: string;
@@ -114,7 +114,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const { current: internalState } = React.useRef<ISpinButtonState>({
+  const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     inputId: getId('input'),
     labelId: getId('Label'),
     lastValidValue: initialValue,
@@ -263,16 +263,23 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     [props.onBlur],
   );
 
-  // Update the value with the given stepFunction
-  // @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
-  // when spinning in response to a mouseDown
-  // @param stepFunction - function to use to step by
+  /**
+   * Update the value with the given stepFunction
+   * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
+   * when spinning in response to a mouseDown
+   * @param stepFunction - function to use to step by
+   * @param event - The event that triggered the updateValue
+   */
   const updateValue = (
     shouldSpin: boolean,
     stepDelay: number,
-    stepFunction: (value: string) => string | void,
+    stepFunction: (
+      value: string,
+      event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    ) => string | void,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ): void => {
-    const newValue: string | void = stepFunction(value || '');
+    const newValue: string | void = stepFunction(value || '', event);
     if (newValue !== undefined) {
       setValue(newValue);
     }
@@ -283,7 +290,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
     if (shouldSpin) {
       internalState.currentStepFunctionHandle = setTimeout(() => {
-        updateValue(shouldSpin, internalState.stepDelay, stepFunction);
+        updateValue(shouldSpin, internalState.stepDelay, stepFunction, event);
       }, stepDelay);
     }
   };
@@ -303,12 +310,12 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   //  Handle keydown on the text field. We need to update
   //  the value when up or down arrow are depressed
   const handleKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLInputElement>): void => {
+    (event: React.KeyboardEvent<HTMLInputElement>): void => {
       // eat the up and down arrow keys to keep focus in the spinButton
       // (especially when a spinButton is inside of a FocusZone)
-      if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.enter) {
-        ev.preventDefault();
-        ev.stopPropagation();
+      if (event.which === KeyCodes.up || event.which === KeyCodes.down || event.which === KeyCodes.enter) {
+        event.preventDefault();
+        event.stopPropagation();
       }
       if (props.disabled) {
         stop();
@@ -317,17 +324,17 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
       let spinDirection = KeyboardSpinDirection.notSpinning;
 
-      switch (ev.which) {
+      switch (event.which) {
         case KeyCodes.up:
           spinDirection = KeyboardSpinDirection.up;
-          updateValue(false /* shouldSpin */, internalState.initialStepDelay, onIncrement!);
+          updateValue(false /* shouldSpin */, internalState.initialStepDelay, onIncrement!, event);
           break;
         case KeyCodes.down:
           spinDirection = KeyboardSpinDirection.down;
-          updateValue(false /* shouldSpin */, internalState.initialStepDelay, onDecrement!);
+          updateValue(false /* shouldSpin */, internalState.initialStepDelay, onDecrement!, event);
           break;
         case KeyCodes.enter:
-          validate(ev);
+          validate(event);
           break;
         case KeyCodes.escape:
           if (value !== internalState.lastValidValue) {
@@ -358,12 +365,12 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     [props.disabled],
   );
 
-  const onIncrementMouseDown = React.useCallback((): void => {
-    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onIncrement!);
+  const onIncrementMouseDown = React.useCallback((event: React.MouseEvent<HTMLElement>): void => {
+    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onIncrement!, event);
   }, []);
 
-  const onDecrementMouseDown = React.useCallback((): void => {
-    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onDecrement!);
+  const onDecrementMouseDown = React.useCallback((event: React.MouseEvent<HTMLElement>): void => {
+    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onDecrement!, event);
   }, []);
 
   return (

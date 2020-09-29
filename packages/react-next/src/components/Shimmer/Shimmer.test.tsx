@@ -1,12 +1,24 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
+import { safeMount } from '@uifabric/test-utilities';
+import { resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
 
 describe('Shimmer', () => {
+  beforeEach(() => {
+    resetIds();
+    jest.clearAllTimers();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Shimmer correctly', () => {
     const component = renderer.create(
       <Shimmer
@@ -47,35 +59,30 @@ describe('Shimmer', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  isConformant({
+    Component: Shimmer,
+    displayName: 'Shimmer',
+  });
+
   it('removes Shimmer animation div when data is loaded', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let component: any;
-    const shimmer = mount(
-      <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'} componentRef={ref => (component = ref)}>
+    safeMount(
+      <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'}>
         <div>TEST DATA</div>
       </Shimmer>,
+      shimmer => {
+        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
+
+        // update props to trigger the setTimeout.
+        ReactTestUtils.act(() => {
+          shimmer.setProps({ isDataLoaded: true });
+        });
+
+        ReactTestUtils.act(() => {
+          jest.runAllTimers();
+        });
+
+        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(2);
+      },
     );
-
-    expect(component).toBeDefined();
-
-    // moved initialization of fake timers below the mount() as it caused and extra setTimeout call registered.
-    jest.useFakeTimers();
-
-    expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
-
-    // update props to trigger the setTimeout in componentWillReceiveProps
-    const newProps = { isDataLoaded: true };
-    shimmer.setProps(newProps);
-    shimmer.update();
-
-    // assert that setTimeout was called exactly once
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    // assert that the 2nd argument to the call to setTimeout is 200
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 200);
-
-    jest.runAllTimers();
-
-    expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(2);
-    shimmer.unmount();
   });
 });

@@ -3,6 +3,7 @@ import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '@uifabric/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
+import { isConformant } from '../../common/isConformant';
 
 describe('Pivot', () => {
   beforeEach(() => {
@@ -18,6 +19,11 @@ describe('Pivot', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Pivot,
+    displayName: 'Pivot',
   });
 
   it('can be focused', () => {

@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/constants/DefaultSpacing';
+export * from '@fluentui/theme/lib/spacing/DefaultSpacing';

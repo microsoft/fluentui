@@ -2,14 +2,13 @@ pr: none
 
 trigger: none
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
+
+workspace:
+  clean: all
 
 steps:
-  - task: NodeTool@0
-    displayName: 'Use Node 10.x'
-    inputs:
-      versionSpec: 10.x
+  - template: .devops/templates/tools.yml
 
   - script: |
       node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
@@ -46,3 +45,7 @@ steps:
     inputs:
       PathtoPublish: 'packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz'
       ArtifactName: oufr
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

@@ -1,8 +1,121 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 26 Aug 2020 12:35:38 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.2)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.1..@fluentui/react-theme-provider_v0.14.2)
+
+### Patches
+
+- Add instructions to replace Fabric, Customizer, loadTheme in README. ([PR #15194](https://github.com/microsoft/fluentui/pull/15194) by xgao@microsoft.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.1)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.0..@fluentui/react-theme-provider_v0.14.1)
+
+### Patches
+
+- Adjusting storybook config so that it works with new changes. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.13.3..@fluentui/react-theme-provider_v0.14.0)
+
+### Minor changes
+
+- Adding Card tokens to theme. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
+
+## [0.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.3)
+
+Fri, 18 Sep 2020 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.13.1..@fluentui/react-theme-provider_v0.13.3)
+
+### Patches
+
+- Code cleanup: remove defaultTokens and aggregate everything in getTokens. ([PR #15110](https://github.com/microsoft/fluentui/pull/15110) by xgao@microsoft.com)
+
+## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.1)
+
+Thu, 17 Sep 2020 15:52:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.13.0..@fluentui/react-theme-provider_v0.13.1)
+
+### Patches
+
+- Fix button styles to match v7 buttons. ([PR #14972](https://github.com/microsoft/fluentui/pull/14972) by xgao@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.13.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.12.1..@fluentui/react-theme-provider_v0.13.0)
+
+### Minor changes
+
+- Support applyTo prop and align styles with Fabric component. ([PR #14696](https://github.com/microsoft/fluentui/pull/14696) by xgao@microsoft.com)
+- Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`. ([PR #15070](https://github.com/microsoft/fluentui/pull/15070) by dzearing@hotmail.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.12.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.3..@fluentui/react-theme-provider_v0.12.0)
+
+### Minor changes
+
+- Support passing different renderer and default to use merge-styles ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@hotmail.com)
+
+## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.3)
+
+Thu, 10 Sep 2020 22:29:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.2..@fluentui/react-theme-provider_v0.11.3)
+
+### Patches
+
+- Clean up default styles applied on ThemeProvider root to match Fabric ([PR #14976](https://github.com/microsoft/fluentui/pull/14976) by xgao@microsoft.com)
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.2)
+
+Wed, 09 Sep 2020 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.1..@fluentui/react-theme-provider_v0.11.2)
+
+### Patches
+
+- Adding token definition for tokens related to CompoundButton. ([PR #14855](https://github.com/microsoft/fluentui/pull/14855) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.1)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.11.0..@fluentui/react-theme-provider_v0.11.1)
+
+### Patches
+
+- Minor tweaks in theme styling. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.11.0)
+
+Mon, 31 Aug 2020 18:11:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.10.0..@fluentui/react-theme-provider_v0.11.0)
+
+### Minor changes
+
+- Export ThemeContext. ([PR #14803](https://github.com/microsoft/fluentui/pull/14803) by xgao@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.10.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.9.1..@fluentui/react-theme-provider_v0.10.0)
+
+### Patches
+
+- Adding ghost defaults to Fluent theme. ([PR #14743](https://github.com/microsoft/fluentui/pull/14743) by humbertomakotomorimoto@gmail.com)
 
 ## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.9.1)
 
