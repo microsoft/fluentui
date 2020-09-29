@@ -48,9 +48,14 @@ export const defaultTests: TestObject = {
   /** Component file exports a valid React element and can render it */
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`renders`, () => {
-      const { requiredProps, Component, customMount = mount } = testInfo;
-      const mountedComponent = customMount(<Component {...requiredProps} />);
-      expect(mountedComponent.exists()).toBeTruthy();
+      try {
+        const { requiredProps, Component, customMount = mount } = testInfo;
+        const mountedComponent = customMount(<Component {...requiredProps} />);
+        expect(mountedComponent.exists()).toBeTruthy();
+      } catch (e) {
+        defaultErrorMessages['component-renders'](componentInfo, testInfo, e);
+        throw new Error('component-renders');
+      }
     });
   },
 

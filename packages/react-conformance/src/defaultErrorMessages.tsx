@@ -2,52 +2,80 @@ import { IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
-
+import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultErrorMessages = {
-  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
-    const { componentPath, Component, displayName } = testInfo;
-    const constructorName = Component.prototype?.constructor.name;
-    const componentDisplayName = Component.displayName || constructorName;
-    const fileName = path.basename(componentPath);
+  'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const {
+      Component,
 
-    // If the component doesn't receive a display name.
-    if (componentDisplayName === (null || 'Styledundefined')) {
-      console.log(
-        defaultErrorMessage(
-          `component-has-displayname`,
-          displayName,
-          'display name in:' + paragraph() + chalk.green.italic(componentPath),
-        ) +
-          resolveErrorMessages([
-            'Make sure that ' +
-              chalk.red.bold(fileName) +
-              ' contains ' +
-              chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
-              '.',
-          ]) +
-          receivedErrorMessage(error),
-      );
-    }
+      displayName,
+      componentPath,
+      requiredProps,
+    } = testInfo;
+    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
+    const typesFile = componentPath.replace('tsx', 'types.ts');
 
-    // If the component receives a display name but it isn't correct.
-    else {
-      console.log(
-        defaultErrorMessage(
-          `component-has-displayname`,
-          displayName,
-          'correct display name. It received: ' + chalk.red.bold(componentDisplayName.replace('Styled', '')),
-        ) +
-          resolveErrorMessages([
-            'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
-            'Make sure that your version.ts file is configured correctly.',
-          ]) +
+    try {
+      // Used to test if the component is broken.
+      const testComponent = <Component {...requiredProps} />;
+
+      // The component is receiving requiredProps.
+      if (requiredProps) {
+        console.log(
+          defaultErrorMessage(
+            `component-renders`,
+            displayName,
+            'valid output. It currently is receiving the requiredProps:' +
+              paragraph() +
+              chalk.green.italic(formatObject(testComponent.props)) +
+              paragraph() +
+              'Check to see if you are including all of the required props in your types file: ' +
+              paragraph() +
+              chalk.green.italic(typesFile),
+          ) +
+            resolveErrorMessages([
+              `Make sure that your are including all of the required props to render in isConformant ` +
+                chalk.red.bold('requiredProps') +
+                '.',
+              `Make sure that your component's ` +
+                chalk.red.bold(displayName + '.base.tsx') +
+                ' file contains a valid return statement.',
+              'Check to see if your component works as expected with' +
+                chalk.red.bold(' mount ') +
+                'and' +
+                chalk.red.bold(' safeMount') +
+                '.',
+            ]),
           receivedErrorMessage(error),
-      );
+        );
+      }
+      // The component is not receiving required props.
+      else {
+        console.log(
+          defaultErrorMessage(
+            `component-renders`,
+            displayName,
+            'valid output' + paragraph() + chalk.green.italic(rootPath),
+          ) +
+            resolveErrorMessages([
+              `Make sure that your component's ` +
+                chalk.red.bold(displayName + '.base.tsx') +
+                ' file contains a valid return statement.',
+              'Check if your component is internal and consider enabling' +
+                chalk.red.bold(' isInternal ') +
+                'in your isConformant test.',
+            ]),
+          receivedErrorMessage(error),
+        );
+      }
+      // The component is likely broken.
+    } catch (e) {
+      console.log(e);
     }
   },
 
@@ -97,6 +125,48 @@ export const defaultErrorMessages = {
         receivedErrorMessage(error),
     );
   },
+
+  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { componentPath, Component, displayName } = testInfo;
+    const constructorName = Component.prototype?.constructor.name;
+    const componentDisplayName = Component.displayName || constructorName;
+    const fileName = path.basename(componentPath);
+
+    // If the component doesn't receive a display name.
+    if (componentDisplayName === (null || 'Styledundefined')) {
+      console.log(
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'display name in:' + paragraph() + chalk.green.italic(componentPath),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' +
+              chalk.red.bold(fileName) +
+              ' contains ' +
+              chalk.red.bold(displayName + '.displayName = COMPONENT_NAME') +
+              '.',
+          ]) +
+          receivedErrorMessage(error),
+      );
+    }
+
+    // If the component receives a display name but it isn't correct.
+    else {
+      console.log(
+        defaultErrorMessage(
+          `component-has-displayname`,
+          displayName,
+          'correct display name. It received: ' + chalk.red.bold(componentDisplayName.replace('Styled', '')),
+        ) +
+          resolveErrorMessages([
+            'Make sure that ' + fileName + ' contains ' + chalk.red.bold('{ import ./version }') + '.',
+            'Make sure that your version.ts file is configured correctly.',
+          ]) +
+          receivedErrorMessage(error),
+      );
+    }
+  },
 };
 
 /** Generates the message for resolving the test error.
@@ -112,8 +182,9 @@ function resolveErrorMessages(resolveMessages: string[]) {
   return paragraph() + chalk.yellow.bold('To resolve this issue:') + resolveMessage.join('') + paragraph();
 }
 
-/** Generates the starting default error message.
- *  @param displayName The component's displayName.
+/** Generates the starting default error message: ( "It appears that __displayName__ doesn't have a __errorMessage__." )
+ *  @param testName The conformance test's name.
+ *  @param displayName The component's name.
  *  @param errorMessage Why the test is failing.
  */
 function defaultErrorMessage(testName: string, displayName: string, errorMessage: string) {
@@ -128,7 +199,7 @@ function defaultErrorMessage(testName: string, displayName: string, errorMessage
   );
 }
 
-/** Generates the caught error message.
+/** Generates caught error message in defaultTests.
  *  @param error The caught error message in defaultTests.
  */
 function receivedErrorMessage(error: string) {
@@ -153,16 +224,13 @@ function paragraph(numberOfParagraphs?: number) {
   }
 }
 
-/** Formats a provided object to make it appear readable in the console.
- *  @param obj The object to format.
- */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-// function formatObject(obj: any) {
-//   const results = [];
+function formatObject(obj: any) {
+  const results = [];
 
-//   for (const libName of Object.keys(obj)) {
-//     results.push(`${libName}: ${obj[libName].join(', ')}`);
-//   }
+  for (const libName of Object.keys(obj)) {
+    results.push(`${libName}: ${obj[libName] + ','}`);
+  }
 
-//   return results.join('\n');
-// }
+  return results.join('\n');
+}
