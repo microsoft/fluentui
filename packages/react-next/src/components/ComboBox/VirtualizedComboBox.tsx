@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.types';
 import { IList, List } from '../../List';
-import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
 import { initializeComponentRef } from '../../Utilities';
 
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {

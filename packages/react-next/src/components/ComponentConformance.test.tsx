@@ -147,11 +147,11 @@ const mockNodeComponents = ['ScrollablePane'];
 /** Map from component name to alternative package name from which it should import a version file */
 const componentPackageMap: { [componentName: string]: string } = {
   FocusZone: '@fluentui/react-focus',
-  ChoiceGroupOption: 'office-ui-fabric-react',
-  PersonaPresence: 'office-ui-fabric-react',
+  ChoiceGroupOption: '@fluentui/react',
+  PersonaPresence: '@fluentui/react',
 
-  Dropdown: 'office-ui-fabric-react',
-  OverflowSet: 'office-ui-fabric-react',
+  Dropdown: '@fluentui/react',
+  OverflowSet: '@fluentui/react',
 };
 
 /**

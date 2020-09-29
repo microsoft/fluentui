@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 
 export interface IBeakProps extends React.RefAttributes<HTMLDivElement> {
   /**
