@@ -571,3 +571,5 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
   })
   public neutralOutlineFocusDelta: number;
 }
+
+export { DesignSystem };
