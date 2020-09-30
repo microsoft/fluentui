@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
@@ -23,7 +22,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
 
     return {
       height: v.height,
-      minWidth: _.isNil(p.loading) ? v.minWidth : v.loadingMinWidth,
+      minWidth: p.loading ? v.loadingMinWidth : v.minWidth,
       maxWidth: v.maxWidth,
       color: v.color,
       backgroundColor: v.backgroundColor,
