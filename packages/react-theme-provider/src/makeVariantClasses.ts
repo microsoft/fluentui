@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useTheme } from './useTheme';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
 import { IStyle } from '@uifabric/merge-styles';
-// import { useStyleRenderer } from './styleRenderers/useStyleRenderer';
-// import { useWindow } from '@fluentui/react-window-provider';
-// import { assign } from '@uifabric/utilities';
 import { makeClasses } from './makeClasses';
 
 /**
@@ -25,10 +21,15 @@ const processVariants = (variants: Variants, theme: Theme, name: string, prefix:
     for (const variantName of Object.keys(variants)) {
       const modifierName = variantName === 'root' ? variantName : '_' + variantName;
 
-      result[modifierName] = tokensToStyleObject(variants[variantName], prefix) as IStyle;
+      const rule: any = (result[modifierName] = tokensToStyleObject(variants[variantName], prefix) as IStyle);
 
+      // The display name should be tied to the unique theme object, causing the
+      // renderer to treat scoped themes as sandboxed css scopes.
       if (name) {
-        (result[modifierName]! as any).displayName = variantName === 'root' ? name : `${name}--${variantName}`;
+        rule.displayName = `${name}${theme.id || ''}`;
+        if (variantName !== 'root') {
+          rule.displayName += `--${variantName}`;
+        }
       }
     }
   }

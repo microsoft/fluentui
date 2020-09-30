@@ -6,6 +6,7 @@
 
 import { ColorTokenSet } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ICustomizerContext } from '@uifabric/utilities';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IKeyframes } from '@uifabric/merge-styles';
 import { IRawFontStyle } from '@uifabric/merge-styles';
@@ -119,6 +120,7 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
 // @public
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
     theme: Theme;
+    customizerProps: ICustomizerContext;
 };
 
 // @public (undocumented)

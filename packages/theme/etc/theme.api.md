@@ -831,6 +831,8 @@ export interface Theme extends ITheme {
     // (undocumented)
     components?: ComponentStyles;
     // (undocumented)
+    id?: string;
+    // (undocumented)
     stylesheets?: string[];
     // (undocumented)
     tokens?: Tokens;

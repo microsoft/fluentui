@@ -97,6 +97,7 @@ export interface Theme extends ITheme {
   tokens?: Tokens;
   stylesheets?: string[];
   variants?: Variants;
+  id?: string;
 }
 
 /**
