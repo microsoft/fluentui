@@ -63,6 +63,7 @@ export interface ComponentStyles {
     // (undocumented)
     [componentName: string]: {
         styles?: IStyleFunctionOrObject<any, any>;
+        variants?: Variants;
     };
 }
 
@@ -836,8 +837,6 @@ export interface Theme extends ITheme {
     stylesheets?: string[];
     // (undocumented)
     tokens?: Tokens;
-    // (undocumented)
-    variants?: Variants;
 }
 
 // @public (undocumented)

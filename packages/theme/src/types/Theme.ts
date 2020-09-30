@@ -86,6 +86,7 @@ export interface ComponentStyles {
   [componentName: string]: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     styles?: IStyleFunctionOrObject<any, any>;
+    variants?: Variants;
   };
 }
 
@@ -96,7 +97,6 @@ export interface Theme extends ITheme {
   components?: ComponentStyles;
   tokens?: Tokens;
   stylesheets?: string[];
-  variants?: Variants;
   id?: string;
 }
 

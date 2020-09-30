@@ -73,10 +73,12 @@ describe('makeVariantClasses', () => {
 
   it('can respect themed variant overrides', () => {
     const theme = ({
-      variants: {
+      components: {
         Foo: {
-          primary: {
-            background: 'purple',
+          variants: {
+            primary: {
+              background: 'purple',
+            },
           },
         },
       },

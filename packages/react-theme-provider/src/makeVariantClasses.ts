@@ -74,7 +74,7 @@ export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptio
   // This function will only be called when styles have not been evaluated for this set for
   // the particular theme/window/direction combo.
   const styleFunction: (theme: Theme) => IStyle = (theme: Theme) => {
-    const themeVariants = name ? theme?.variants?.[name] : undefined;
+    const themeVariants = name ? theme?.components?.[name]?.variants : undefined;
 
     return [
       callOrReturn(styles, theme),
