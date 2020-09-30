@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { create } from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 
 import { people } from '@uifabric/example-data';
 import { mount } from 'enzyme';
@@ -69,7 +70,7 @@ describe('SelectedPeopleList', () => {
   });
 
   it('group expansion as one of the items in the list', () => {
-    const _getExpandedGroupItems = (item: IPersonaProps): IPersonaProps[] => {
+    const _getExpandedGroupItems = async (item: IPersonaProps): Promise<IPersonaProps[]> => {
       switch (item.text) {
         case 'Group One':
           return groupOne;
@@ -97,10 +98,12 @@ describe('SelectedPeopleList', () => {
 
     // Expanded group
     expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(1);
-    wrapper
-      .find('button.ms-PickerItem-removeButton')
-      .at(0)
-      .simulate('click');
+    act(() => {
+      wrapper
+        .find('button.ms-PickerItem-removeButton')
+        .at(0)
+        .simulate('click');
+    });
 
     // After expanding,there should be 4 items
     expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(4);
