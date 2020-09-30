@@ -16,9 +16,6 @@ export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = props => 
     attributes: {
       root: {
         role: 'listbox',
-        ...(props.selectable && {
-          'aria-multiselectable': true,
-        }),
       },
     },
     childBehaviors: {

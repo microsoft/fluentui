@@ -5,41 +5,39 @@ const items = [
   {
     id: 'tree-as-list-item-1',
     title: 'House Lannister',
+    selectableParent: true,
     items: [
       {
         id: 'tree-as-list-item-11',
         title: 'Tywin',
-        selectable: true,
       },
       {
         id: 'tree-as-list-item-12',
         title: 'Kevan',
-        selectable: true,
       },
     ],
   },
   {
     id: 'tree-as-list-item-2',
     title: 'House Targaryen',
+    selectableParent: true,
     items: [
       {
         id: 'tree-as-list-item-21',
         title: 'Aerys',
+        selectableParent: true,
         items: [
           {
             id: 'tree-as-list-item-211',
             title: 'Rhaegar',
-            selectable: true,
           },
           {
             id: 'tree-as-list-item-212',
             title: 'Viserys',
-            selectable: true,
           },
           {
             id: 'tree-as-list-item-213',
             title: 'Daenerys',
-            selectable: true,
           },
         ],
       },
