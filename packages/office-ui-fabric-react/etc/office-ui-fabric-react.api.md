@@ -5057,11 +5057,13 @@ export interface IGroupedListSectionState {
 // @public (undocumented)
 export interface IGroupedListState {
     // (undocumented)
+    compact?: IGroupedListProps['compact'];
+    // (undocumented)
     groups?: IGroup[];
     // (undocumented)
-    lastSelectionMode?: SelectionMode;
-    // (undocumented)
     listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListProps['selectionMode'];
     // (undocumented)
     version: {};
 }
