@@ -1,1 +1,1 @@
-export * from '@uifabric/fluent-theme/lib/fluent/FluentDepths';
+export * from '@fluentui/theme/lib/effects/FluentDepths';

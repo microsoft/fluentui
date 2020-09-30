@@ -20,6 +20,8 @@ export { buttonContentStyles as ButtonContent } from './components/Button/button
 
 export { breadcrumbItemStyles as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemStyles';
 export { breadcrumbDividerStyles as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerStyles';
+export { breadcrumbLinkStyles as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkStyles';
+export { breadcrumbStyles as Breadcrumb } from './components/Breadcrumb/breadcrumbStyles';
 
 export { chatStyles as Chat } from './components/Chat/chatStyles';
 export { chatItemStyles as ChatItem } from './components/Chat/chatItemStyles';

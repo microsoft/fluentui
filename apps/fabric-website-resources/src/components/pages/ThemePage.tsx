@@ -1,32 +1,46 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { DemoPage } from '../DemoPage';
-import { ThemePageProps } from 'office-ui-fabric-react/lib/components/Theme/Theme.doc';
-import {
-  IThemePageStyleProps,
-  IThemePageStyles,
-  IThemePageState,
-} from 'office-ui-fabric-react/lib/components/Theme/ThemePage.types';
+import { ThemePageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Theme/Theme.doc';
 import { defaultPalette, defaultSemanticColors } from 'office-ui-fabric-react/lib/components/Theme/defaultTheme';
-import { getStyles } from 'office-ui-fabric-react/lib/components/Theme/ThemePage.styles';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
+import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { DemoPage } from '../DemoPage';
+import { getStyles, IThemePageStyles } from './ThemePage.styles';
 
-const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
+const getClassNames = classNamesFunction<{}, IThemePageStyles>();
 
 export interface IThemePageProps {
   isHeaderVisible?: boolean;
 }
 
+export type IThemePagePalette = {
+  key: string;
+  name: string;
+  value: string;
+  description: string;
+};
+
+export interface IThemePageState {
+  palette: IThemePagePalette[];
+
+  semanticColors: IThemePagePalette[];
+
+  colorPickerProps?: {
+    targetElement: HTMLElement;
+    value: any;
+    index: number;
+  };
+
+  activeList?: string;
+}
+
 export class ThemePage extends React.Component<IThemePageProps, IThemePageState> {
   constructor(props: IThemePageProps) {
     super(props);
-
-    this._onPickerDismiss = this._onPickerDismiss.bind(this);
 
     this.state = {
       palette: defaultPalette,
@@ -161,9 +175,9 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
     loadTheme({ palette: partialTheme });
   }
 
-  private _onPickerDismiss(): void {
+  private _onPickerDismiss = (): void => {
     this.setState({
       colorPickerProps: undefined,
     });
-  }
+  };
 }

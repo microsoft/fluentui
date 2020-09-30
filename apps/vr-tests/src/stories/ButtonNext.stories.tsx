@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
-import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 

@@ -627,7 +627,7 @@ describe('FocusTrapZone', () => {
             forceFocusInsideTrap={false}
             focusPreviouslyFocusedInnerElement={focusPreviouslyFocusedInnerElement}
             data-is-focusable={true}
-            ref={focusTrapZoneRef}
+            componentRef={focusTrapZoneRef}
           >
             <button className={'f'}>f</button>
             <FocusZone>

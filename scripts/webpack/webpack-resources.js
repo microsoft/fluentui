@@ -224,12 +224,26 @@ module.exports = {
           // TODO: will investigate why this doesn't work on mac
           // new WebpackNotifierPlugin(),
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
           ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
         ],
       },
       customConfig,
     );
+
+    if (!config.entry) {
+      // Handle packages which have a legacy demo app in the examples package
+      const packageName = path.basename(process.cwd());
+      const demoEntryInExamples = path.resolve(
+        __dirname,
+        '../../packages/react-examples/src',
+        packageName,
+        'demo/index.tsx',
+      );
+      if (fs.existsSync(demoEntryInExamples)) {
+        config.entry = demoEntryInExamples;
+      }
+    }
 
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;

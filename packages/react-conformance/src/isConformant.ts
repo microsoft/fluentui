@@ -23,14 +23,19 @@ export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
     }
 
     for (const test of Object.keys(defaultTests)) {
-      if (!disabledTests.includes(test)) {
-        defaultTests[test](componentInfo, mergedOptions);
-      }
+      describe('isConformant', () => {
+        if (!disabledTests.includes(test)) {
+          defaultTests[test](componentInfo, mergedOptions);
+        }
+      });
     }
+
     if (extraTests) {
-      for (const test of Object.keys(extraTests)) {
-        extraTests[test](componentInfo, mergedOptions);
-      }
+      describe('isConformant - extraTests', () => {
+        for (const test of Object.keys(extraTests)) {
+          extraTests[test](componentInfo, mergedOptions);
+        }
+      });
     }
   } else if (components.length === 0) {
     throw new Error('No exported components in path: ' + componentPath);
