@@ -1,7 +1,7 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+// import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
-export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
+export const buttonBehavior: Accessibility<ButtonBehaviorProps> = (props) => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
