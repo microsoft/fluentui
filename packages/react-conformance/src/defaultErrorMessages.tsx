@@ -80,7 +80,6 @@ export const defaultErrorMessages = {
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, displayName } = testInfo;
     const fileName = path.basename(componentPath);
-    const componentFile = require(componentPath);
 
     // Message Description: There are no matching exported components that match the displayName.
     //
@@ -94,13 +93,7 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `exports-component`,
         displayName,
-        'export in: ' +
-          paragraph() +
-          chalk.green.italic(componentPath) +
-          paragraph() +
-          `Here are the available exported component's from your file:` +
-          paragraph() +
-          chalk.green(formatObject(componentFile)),
+        'export in: ' + paragraph() + chalk.green.italic(componentPath),
       ) +
         resolveErrorMessages([
           `Make sure that your component's ` +
@@ -131,13 +124,22 @@ export const defaultErrorMessages = {
     // 2. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
     // 3. Check to see if your component works as expected with mount and safeMount.
     if (requiredProps) {
+      const formatRequiredProps = () => {
+        const results = [];
+        for (const libName of Object.keys(requiredProps)) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          results.push(libName + `: ${(requiredProps as any)[libName] + ', '}`);
+        }
+        return results.join('\n');
+      };
+
       console.log(
         defaultErrorMessage(
           `component-renders`,
           displayName,
           'valid return. It currently is receiving the requiredProps:' +
             paragraph() +
-            chalk.green(formatObject(requiredProps)) +
+            chalk.green(formatRequiredProps()) +
             paragraph() +
             'Check to see if you are including all of the required props in your types file: ' +
             paragraph() +
@@ -145,7 +147,7 @@ export const defaultErrorMessages = {
         ) +
           resolveErrorMessages([
             `Make sure that your are including all of the required props to render in isConformant ` +
-              chalk.hex('#f7ae65').bold('requiredProps') +
+              chalk.hex('#e00000')('requiredProps') +
               '.',
             `Make sure that your component's ` +
               chalk.hex('#e00000')(displayName + '.base.tsx') +
@@ -189,7 +191,7 @@ export const defaultErrorMessages = {
             'Check to see if your component works as expected with' +
               chalk.hex('#e00000').bold(' mount ') +
               'and' +
-              chalk.hex('#c70000').bold(' safeMount') +
+              chalk.hex('#e00000').bold(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
@@ -222,9 +224,8 @@ export const defaultErrorMessages = {
               chalk.hex('#e00000')(fileName) +
               ' contains ' +
               chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(displayName) +
-              `'`,
-            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName) + `s displayName.`,
+              chalk.hex('#e00000')(`'` + displayName + `'`),
+            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName + `'s`) + ` displayName.`,
           ]) +
           receivedErrorMessage(error),
       );
@@ -240,15 +241,14 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received:' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
+          'correct display name. It received: ' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
         ) +
           resolveErrorMessages([
             'Make sure that ' +
               chalk.hex('#e00000')(fileName) +
               ' contains ' +
               chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(displayName) +
-              `'`,
+              chalk.hex('#e00000')(`'` + displayName + `'`),
           ]) +
           receivedErrorMessage(error),
       );
@@ -456,7 +456,7 @@ export const defaultErrorMessages = {
           chalk.green(formatObject(callbackNames)),
       ) +
         resolveErrorMessages([
-          'Rename ' + chalk.hex('#e00000')(displayName + 's') + ` callback props that don't end with "ed".`,
+          'Rename ' + chalk.hex('#e00000')(displayName + `'s`) + ` callback props to include "ed".`,
           `Include the prop in TestOptions` + chalk.hex('#e00000')(' ignoreProps') + '.',
         ]) +
         receivedErrorMessage(error),
@@ -670,11 +670,13 @@ function paragraph(numberOfParagraphs?: number) {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function formatObject(obj: any) {
-  const results = [];
-
-  for (const libName of Object.keys(obj)) {
-    results.push(parseInt(libName, 10) + 1 + `: ${obj[libName] + ', '}`);
+  if (obj) {
+    const results = [];
+    for (const libName of Object.keys(obj)) {
+      results.push(parseInt(libName, 10) + 1 + `: ${obj[libName]} `);
+    }
+    return results.join('\n');
+  } else {
+    return 'received undefined';
   }
-
-  return results.join('\n');
 }
