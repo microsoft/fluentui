@@ -5,5 +5,6 @@ describe('Sticky', () => {
   isConformant({
     Component: Sticky,
     displayName: 'Sticky',
+    disabledTests: ['component-handles-classname'],
   });
 });

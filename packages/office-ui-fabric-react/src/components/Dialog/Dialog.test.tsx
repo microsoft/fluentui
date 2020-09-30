@@ -57,7 +57,7 @@ describe('Dialog', () => {
     Component: Dialog,
     displayName: 'Dialog',
     // Dialog doesn't use a className and refers to modalProps.className instead.
-    disabledTests: ['component-contains-classname'],
+    disabledTests: ['component-handles-classname'],
   });
 
   it('Fires dismissed after closing', () => {

@@ -8,5 +8,6 @@ describe('FormButton', () => {
     constructorName: 'FormButton',
     forwardsRefTo: `Button`,
     passesUnhandledPropsTo: Button,
+    disabledTests: ['component-handles-classname'],
   });
 });

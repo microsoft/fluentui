@@ -31,6 +31,7 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
+    disabledTests: ['component-handles-classname'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {

@@ -180,6 +180,7 @@ describe('Panel', () => {
     Component: Panel,
     displayName: 'Panel',
     componentPath: path.join(__dirname, 'Panel.ts'),
+    disabledTests: ['component-handles-classname'],
   });
 
   describe('onClose', () => {

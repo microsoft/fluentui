@@ -40,6 +40,7 @@ describe('Announced', () => {
     Component: Announced,
     displayName: 'Announced',
     componentPath: path.join(__dirname, 'Announced.ts'),
+    disabledTests: ['component-handles-classname'],
   });
 
   it('renders with default settings', () => {

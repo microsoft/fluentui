@@ -33,7 +33,7 @@ describe('SelectedItemsList', () => {
       Component: BaseSelectedItemsList,
       displayName: 'BaseSelectedItemsList',
       // Doesn't contain a top level BaseSelectedItemsList.ts file and doesn't handle classNames.
-      disabledTests: [`has-top-level-file`, `component-contains-classname`],
+      disabledTests: [`has-top-level-file`, `component-handles-classname`],
     });
 
     it('can remove items', () => {

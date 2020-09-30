@@ -44,6 +44,7 @@ describe('Nav', () => {
   isConformant({
     Component: Nav,
     displayName: 'Nav',
+    disabledTests: ['component-handles-classname'],
   });
 
   it('render Nav with overrides correctly', () => {

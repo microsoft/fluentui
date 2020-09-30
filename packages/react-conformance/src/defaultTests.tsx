@@ -67,8 +67,8 @@ export const defaultTests: TestObject = {
   },
 
   /** Component file handles classname prop */
-  'component-contains-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`has a className prop`, () => {
+  'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`handles className prop`, () => {
       const {
         Component,
         wrapperComponent,
@@ -78,18 +78,41 @@ export const defaultTests: TestObject = {
         passesUnhandledPropsTo,
       } = testInfo;
 
+      let el = passesUnhandledPropsTo
+        ? customMount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
+        : customMount(<Component {...requiredProps} />);
+      let component = getComponent(el, helperComponents, wrapperComponent);
+
+      const defaultClassNames =
+        component
+          ?.getDOMNode()
+          ?.getAttribute('class')
+          ?.split(' ') || [];
+
+      const testClassName = 'testComponentClassName';
       const mergedProps: Partial<{}> = {
         ...requiredProps,
         className: 'testComponentClassName',
       };
 
-      const el = passesUnhandledPropsTo
+      el = passesUnhandledPropsTo
         ? customMount(<Component {...mergedProps} />).find(passesUnhandledPropsTo)
         : customMount(<Component {...mergedProps} />);
+      component = getComponent(el, helperComponents, wrapperComponent);
 
-      const component = getComponent(el, helperComponents, wrapperComponent);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const classNames: any = component
+        .getDOMNode()
+        .getAttribute('class')
+        ?.split(' ');
 
-      expect(component.find('[testComponentClassName]'));
+      expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
+
+      if (defaultClassNames.length) {
+        for (const defaultClassName of defaultClassNames) {
+          expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);
+        }
+      }
     });
   },
 

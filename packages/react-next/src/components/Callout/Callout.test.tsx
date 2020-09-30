@@ -50,6 +50,7 @@ describe('Callout', () => {
   isConformant({
     Component: Callout,
     displayName: 'Callout',
+    disabledTests: ['component-handles-classname'],
   });
 
   it('target id strings does not throw exception', () => {

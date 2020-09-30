@@ -10,6 +10,7 @@ describe('Modal', () => {
     Component: Modal,
     displayName: 'Modal',
     componentPath: path.join(__dirname, 'Modal.ts'),
+    disabledTests: ['component-handles-classname'],
   });
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.

@@ -90,7 +90,7 @@ describe('ComboBox', () => {
     requiredProps: { options: [DEFAULT_OPTIONS] },
     // Disabled due to being required to mount through create/safeCreate. A test called "renders" and
     // 'handles className' were added here as a replacement.
-    disabledTests: ['component-renders', 'component-contains-classname'],
+    disabledTests: ['component-renders', 'component-handles-classname'],
   });
 
   it('Can flip between enabled and disabled.', () => {

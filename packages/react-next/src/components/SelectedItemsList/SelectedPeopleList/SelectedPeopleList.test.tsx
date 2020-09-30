@@ -11,7 +11,7 @@ describe('SelectedPeopleList', () => {
       Component: SelectedPeopleList,
       displayName: 'SelectedPeopleList',
       // Doesn't have a top level SelectedPeopleList.ts file and doesn't apply className prop to the component.
-      disabledTests: [`has-top-level-file`, `component-contains-classname`],
+      disabledTests: [`has-top-level-file`, `component-handles-classname`],
     });
 
     it('renders keyed personas when there is no context menu', () => {
