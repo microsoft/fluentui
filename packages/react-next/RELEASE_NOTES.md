@@ -107,11 +107,16 @@ If you would like to continue using the previous button components for now, upda
 
 Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
 
+### Package rename and deletion
+
+- Discontinue `@fluentui/fluent-theme` package in favor of `@fluentui/theme` package; removed from `master`.
+
 ### Others
 
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
+- `FluentStyles` is removed from `experiments` package.
 
 ## Minor changes
 
