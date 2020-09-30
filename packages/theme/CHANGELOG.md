@@ -1,8 +1,41 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.1)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.0..@fluentui/theme_v1.2.1)
+
+### Patches
+
+- Disable pointer-events during slide animations ([PR #15219](https://github.com/microsoft/fluentui/pull/15219) by behowell@microsoft.com)
+- Add FluentTheme and Depths exports. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.1.0..@fluentui/theme_v1.2.0)
+
+### Minor changes
+
+- Move AnimationStyles code from styling package to theme package. ([PR #15162](https://github.com/microsoft/fluentui/pull/15162) by xgao@microsoft.com)
+- Move createTheme from styling to theme package. ([PR #15163](https://github.com/microsoft/fluentui/pull/15163) by xgao@microsoft.com)
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.1.0)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v0.4.0..@fluentui/theme_v1.1.0)
+
+### Minor changes
+
+- Moving SizeValue const from react-button to theme package. ([PR #14206](https://github.com/microsoft/fluentui/pull/14206) by makotom@microsoft.com)
+
+### Patches
+
+- Bump theme package version to be 1.0.0 since it's used by other major packages. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v0.4.0)
 

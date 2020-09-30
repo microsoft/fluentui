@@ -1,4 +1,4 @@
 import { loadTheme, ITheme } from 'office-ui-fabric-react';
-import { FluentTheme } from '@uifabric/fluent-theme';
+import { FluentTheme } from '@fluentui/theme';
 
 export const theme: ITheme = loadTheme(FluentTheme);

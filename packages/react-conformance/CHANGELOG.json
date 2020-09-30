@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-conformance_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a describe wrapper within isConformant to help specify location of error messages.",
+            "author": "czearing@outlook.com",
+            "commit": "246a7ca1b177c07556c4451d8922978d13289522",
+            "package": "@fluentui/react-conformance"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-conformance_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a forward ref to myComponent in defaultTests.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-conformance"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@fluentui/react-conformance_v0.1.3",
       "version": "0.1.3",

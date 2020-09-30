@@ -90,6 +90,9 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
+  /** Override the default role for GroupedList.  */
+  role?: string;
+
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
@@ -274,6 +277,9 @@ export interface IGroupDividerProps {
 
   /** The indent level of the group. */
   groupLevel?: number;
+
+  /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
+  ariaColSpan?: number;
 
   /**
    * Width corresponding to a single level.

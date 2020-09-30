@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.14)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.3..@fluentui/codemods_v0.11.14)
+
+### Patches
+
+- Codemods: Fix config mod to run if no changes present ([PR #15159](https://github.com/microsoft/fluentui/pull/15159) by joschect@microsoft.com)
 
 ## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.3)
 

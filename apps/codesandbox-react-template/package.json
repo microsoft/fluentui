@@ -20,7 +20,7 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.23",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react": "^7.139.1",
+    "@fluentui/react": "^7.142.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"

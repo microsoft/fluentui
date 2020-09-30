@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Fabric } from '../../Fabric';
 import { isConformant } from '../../common/isConformant';
 import { Stack } from './Stack';
 

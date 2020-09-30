@@ -2,6 +2,21 @@
   "name": "@fluentui/react-stylesheets",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-stylesheets_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-stylesheets_v0.2.2",
       "version": "0.2.2",

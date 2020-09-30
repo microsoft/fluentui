@@ -8,10 +8,11 @@ $default-borderRadius: $borderRadius-circle;
 $default-fontFamily: $fontFamily-base;
 $default-fontSize: $fontSize-body;
 $default-fontWeight: $fontWeight-semibold;
-$default-background: rgb(232, 232, 232);
+$default-background: $color-default-neutralBackgroundSextenary;
+$default-color: $color-default-neutralForegroundTertiary;
 
-$default-activeRingColor: #0078d4; // TODO: brand colors
-$default-activeGlowColor: rgba(0, 120, 212, 0.3); // TODO: brand colors
+$default-activeRingColor: $color-default-brand;
+$default-activeGlowColor: rgba($color-default-brand, 0.3);
 
 $default-inactiveOpacity: 0.8;
 $default-inactiveScaleFactor: 0.8;
@@ -54,6 +55,7 @@ $default-inactiveScaleFactor: 0.8;
   text-align: center;
   padding: 0px;
   border-radius: var(--avatar-borderRadius, $default-borderRadius);
+  color: var(--avatar-color, $default-color);
 }
 
 // Badge slot
@@ -132,12 +134,13 @@ $default-inactiveScaleFactor: 0.8;
   --avatar-fontSize: #{$fontSize-caption};
   --avatar-fontWeight: #{$fontWeight-semibold};
 }
-// default size:
-// ._size_32,
-// ._size_36,
-// ._size_40 {
-// defaults are in var() fallbacks
-// }
+._size_32,
+._size_36,
+._size_40 {
+  --avatar-iconSize: #{$iconSize-medium};
+  --avatar-fontSize: #{$fontSize-body};
+  --avatar-fontWeight: #{$fontWeight-semibold};
+}
 ._size_48,
 ._size_56 {
   --avatar-iconSize: #{$iconSize-large};
@@ -264,7 +267,12 @@ $default-inactiveScaleFactor: 0.8;
 }
 
 // Activity modifiers
-._active {
+._active,
+._inactive {
+  // Work-around pixel snapping jankiness at the end of the animation if the scale factor is 1.0
+  transform: scale(0.9999);
+  transition: transform $anim-ultraSlow $anim-fastEase, opacity $anim-faster $anim-nullEasing;
+
   &:before {
     content: '';
     position: absolute;
@@ -277,11 +285,23 @@ $default-inactiveScaleFactor: 0.8;
     border-color: var(--avatar-activeRingColor, $default-activeRingColor);
     border-width: var(--avatar-activeRingWidth, 0);
     box-shadow: var(--avatar-activeShadow);
+    transition: all $anim-ultraSlow $anim-fastEase, opacity $anim-slower $anim-nullEasing;
   }
 }
+
 ._inactive {
   opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
   transform: scale(var(--avatar-inactiveScaleFactor, $default-inactiveScaleFactor));
+  transition: transform $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-faster $anim-nullEasing;
+
+  &:before {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: all $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-slower $anim-nullEasing;
+  }
 }
 
 // Display modifiers

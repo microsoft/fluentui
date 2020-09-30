@@ -2,6 +2,36 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-focus_v7.16.8",
+      "version": "7.16.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-focus_v7.16.7",
+      "version": "7.16.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating isConformant version.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@fluentui/react-focus_v7.16.6",
       "version": "7.16.6",

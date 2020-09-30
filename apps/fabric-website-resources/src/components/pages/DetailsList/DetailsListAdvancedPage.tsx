@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DemoPage } from '../../DemoPage';
-import { DetailsListAdvancedPageProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.doc';
+import { DetailsListAdvancedPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/DetailsList/DetailsList.doc';
 
 export const DetailsListAdvancedPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage {...{ ...DetailsListAdvancedPageProps, ...props }} />

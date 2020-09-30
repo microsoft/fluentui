@@ -19,7 +19,7 @@ import {
   IVerticalStackedBarChartStyles,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
-} from '@uifabric/charting';
+} from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
 

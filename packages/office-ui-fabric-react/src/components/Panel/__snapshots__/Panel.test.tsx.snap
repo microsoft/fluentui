@@ -125,7 +125,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                 -webkit-overflow-scrolling: touch;
                 animation-duration: 0.367s;
                 animation-fill-mode: both;
-                animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+                animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
                 animation-timing-function: cubic-bezier(.1,.9,.2,1);
                 background-color: #ffffff;
                 bottom: 0px;
@@ -524,7 +524,7 @@ exports[`Panel renders Panel correctly 1`] = `
                 -webkit-overflow-scrolling: touch;
                 animation-duration: 0.367s;
                 animation-fill-mode: both;
-                animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+                animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
                 animation-timing-function: cubic-bezier(.1,.9,.2,1);
                 background-color: #ffffff;
                 bottom: 0px;
