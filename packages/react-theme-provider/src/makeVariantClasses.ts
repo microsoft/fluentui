@@ -12,16 +12,16 @@ import { makeClasses } from './makeClasses';
 const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
-const processVariants = (variants: Variants, theme: Theme, name: string, prefix: string) => {
+const processVariants = (variants: Variants | undefined, theme: Theme, name: string, prefix: string) => {
   const result: Record<string, IStyle> = {};
 
   if (variants) {
     variants = callOrReturn(variants, theme);
 
-    for (const variantName of Object.keys(variants)) {
+    for (const variantName of Object.keys(variants!)) {
       const modifierName = variantName === 'root' ? variantName : '_' + variantName;
 
-      const rule: any = (result[modifierName] = tokensToStyleObject(variants[variantName], prefix) as IStyle);
+      const rule: any = (result[modifierName] = tokensToStyleObject(variants![variantName], prefix) as IStyle);
 
       // The display name should be tied to the unique theme object, causing the
       // renderer to treat scoped themes as sandboxed css scopes.
