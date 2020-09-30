@@ -14,7 +14,6 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "outFiles": ["${workspaceFolder}/lib-commonjs/**/*"],
       "sourceMaps": true,
       "outputCapture": "std",
       "console": "integratedTerminal"
