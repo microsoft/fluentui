@@ -79,7 +79,7 @@ export function isConformant(
       .replace(/.ts$/, '.tsx'),
     Component,
     displayName: constructorName,
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'consistent-callback-names'],
     helperComponents: [Ref, RefFindNode, FocusZone],
   };
 
