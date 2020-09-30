@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Removing an unnecessary console.log from CalendarDayGrid.test.tsx",
+  "packageName": "@uifabric/date-time",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-30T23:32:10.054Z"
+}
