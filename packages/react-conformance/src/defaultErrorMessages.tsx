@@ -189,9 +189,9 @@ export const defaultErrorMessages = {
               chalk.hex('#e00000')(displayName + '.base.tsx') +
               ' file contains a valid return statement.',
             'Check to see if your component works as expected with' +
-              chalk.hex('#e00000').bold(' mount ') +
+              chalk.hex('#e00000')(' mount ') +
               'and' +
-              chalk.hex('#e00000').bold(' safeMount') +
+              chalk.hex('#e00000')(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
@@ -336,7 +336,7 @@ export const defaultErrorMessages = {
       ) +
         resolveErrorMessages([
           `Make sure that your component's folder and name match it's displayName: ` +
-            chalk.hex('#e00000').bold(displayName),
+            chalk.hex('#e00000')(displayName),
           'Check if your component is internal and consider enabling' +
             chalk.hex('#e00000')(' isInternal ') +
             'in your isConformant test.',
