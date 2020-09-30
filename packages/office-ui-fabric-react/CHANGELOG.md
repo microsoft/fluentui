@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Sep 2020 12:27:17 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Sep 2020 12:27:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.144.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.144.0)
+
+Wed, 30 Sep 2020 12:27:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.143.0..office-ui-fabric-react_v7.144.0)
+
+### Minor changes
+
+- update section header type to allow for it to be an item, to get itemProps ([PR #15123](https://github.com/microsoft/fluentui/pull/15123) by tabrumle@microsoft.com)
 
 ## [7.143.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.143.0)
 

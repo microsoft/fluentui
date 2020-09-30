@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "update section header type to allow for it to be an item, to get itemProps",
-  "packageName": "office-ui-fabric-react",
-  "email": "tabrumle@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-18T18:22:27.896Z"
-}

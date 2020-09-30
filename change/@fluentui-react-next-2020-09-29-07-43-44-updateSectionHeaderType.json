@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update section header type to allow for it to be an item, to get itemProps",
-  "packageName": "@fluentui/react-next",
-  "email": "tabrumle@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-29T14:43:44.512Z"
-}

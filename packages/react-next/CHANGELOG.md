@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Sep 2020 12:27:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.121](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.121)
+
+Wed, 30 Sep 2020 12:27:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.118..@fluentui/react-next_v8.0.0-alpha.121)
+
+### Changes
+
+- update section header type to allow for it to be an item, to get itemProps ([PR #15123](https://github.com/microsoft/fluentui/pull/15123) by tabrumle@microsoft.com)
 
 ## [8.0.0-alpha.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.118)
 
