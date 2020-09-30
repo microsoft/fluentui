@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Disabling 'consistent-callback-names' test from isConformant files.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-30T00:13:55.158Z"
+}

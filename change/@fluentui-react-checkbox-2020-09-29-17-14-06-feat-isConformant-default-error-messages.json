@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Disabling 'consistent-callback-names' test from isConformant files.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-30T00:12:23.421Z"
+}
