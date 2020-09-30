@@ -1,8 +1,17 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.21)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.117..@uifabric/variants_v7.2.21)
+
+### Patches
+
+- Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
 
 ## [7.1.117](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.117)
 

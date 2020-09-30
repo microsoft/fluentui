@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DemoPage } from '../DemoPage';
-import { SelectedPeopleListPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/SelectedPeopleList/SelectedPeopleList.doc';
+import { SelectedPeopleListPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/SelectedPeopleList/SelectedPeopleList.doc';
 
 export const SelectedPeopleListPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

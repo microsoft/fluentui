@@ -132,6 +132,8 @@ export { LeaveIcon } from './components/LeaveIcon';
 export { LightningIcon } from './components/LightningIcon';
 export { LikeIcon } from './components/LikeIcon';
 export { LinkIcon } from './components/LinkIcon';
+export { LiveIcon } from './components/LiveIcon';
+export { LiveOffIcon } from './components/LiveOffIcon';
 export { LockIcon } from './components/LockIcon';
 export { MarkAsUnreadIcon } from './components/MarkAsUnreadIcon';
 export { MeetingNewIcon } from './components/MeetingNewIcon';

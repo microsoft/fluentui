@@ -232,7 +232,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
         {...getA11yProps('root', {
           onClick: handleClick,
-          disabled,
           className: classes.root,
           onFocus: handleFocus,
           ref,

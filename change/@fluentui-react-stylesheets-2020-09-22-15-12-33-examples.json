@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove same-package path aliases",
-  "packageName": "@fluentui/react-stylesheets",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-22T22:12:23.495Z"
-}

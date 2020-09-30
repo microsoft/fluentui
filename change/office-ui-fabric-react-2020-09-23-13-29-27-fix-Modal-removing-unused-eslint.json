@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Removing an unused eslint-disable rule from Modal.base.tsx",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-23T20:29:27.627Z"
-}

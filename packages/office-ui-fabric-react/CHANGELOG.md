@@ -1,8 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.142.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.0)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.141.0..office-ui-fabric-react_v7.142.0)
+
+### Minor changes
+
+- SwatchColorPicker: Expose onRenderColorItem and override ([PR #15180](https://github.com/microsoft/fluentui/pull/15180) by email not defined)
+- Breadcrumb: add role prop for items ([PR #15199](https://github.com/microsoft/fluentui/pull/15199) by erabelle@microsoft.com)
+
+### Patches
+
+- Updating FocusTrapZone.test 'Focusing the FTZ' tests to use componentRef instead of ref. ([PR #14804](https://github.com/microsoft/fluentui/pull/14804) by czearing@outlook.com)
+- Fix incorrect hover behavior during menu animation ([PR #15219](https://github.com/microsoft/fluentui/pull/15219) by behowell@microsoft.com)
+
+## [7.141.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.141.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.140.0..office-ui-fabric-react_v7.141.0)
+
+### Minor changes
+
+- Update GroupList and Grouped DetailsList semantics to work with screen readers ([PR #14835](https://github.com/microsoft/fluentui/pull/14835) by sarah.higley@microsoft.com)
+- Support StrictMode in DetailsList hierarchy ([PR #14980](https://github.com/microsoft/fluentui/pull/14980) by tmichon@microsoft.com)
+- Add Callout prop allowDismissOnTargetClick boolean. ([PR #15077](https://github.com/microsoft/fluentui/pull/15077) by taenri@microsoft.com)
+- Adding an elementRef to BaseButton.tsx to allow access to the root DOM element. ([PR #15196](https://github.com/microsoft/fluentui/pull/15196) by czearing@outlook.com)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- DetailsList: reordering FocusZone and SelectionZone to resolve onItemInvoked not being called on pressing enter on an item. ([PR #15221](https://github.com/microsoft/fluentui/pull/15221) by dzearing@hotmail.com)
+- Fix GroupedList expand/collapse behavior ([PR #15228](https://github.com/microsoft/fluentui/pull/15228) by tmichon@microsoft.com)
 
 ## [7.140.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.140.0)
 

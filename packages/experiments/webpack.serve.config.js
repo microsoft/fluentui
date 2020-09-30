@@ -15,9 +15,9 @@ module.exports = resources.createServeConfig({
   resolve: {
     alias: {
       ...getResolveAlias(),
-      '@fluentui/examples$': path.join(__dirname, '../../packages/examples/src'),
-      '@fluentui/examples/lib': path.join(__dirname, '../../packages/examples/src'),
-      '@fluentui/examples/src': path.join(__dirname, '../../packages/examples/src'),
+      '@fluentui/react-examples$': path.join(__dirname, '../../packages/react-examples/src'),
+      '@fluentui/react-examples/lib': path.join(__dirname, '../../packages/react-examples/src'),
+      '@fluentui/react-examples/src': path.join(__dirname, '../../packages/react-examples/src'),
     },
   },
 });
