@@ -23,73 +23,10 @@ const listProps = {
 
 /** Props required by certain components in order for tests to pass */
 const requiredProps: { [key: string]: any } = {
-  PlainCard: {
-    onRenderPlainCard: () => null,
-  },
-  Announced: {
-    message: 'TestMessage',
-  },
-  ColorPicker: {
-    color: '#ffffff',
-  },
-  Calendar: {
-    strings: {
-      months: [],
-      shortMonths: [],
-      days: [],
-      shortDays: [],
-      goToToday: '',
-    },
-  },
-  ContextualMenu: {
-    items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }],
-  },
   DetailsList: listProps,
-  ExpandingCard: {
-    onRenderCompactCard: () => null,
-    onRenderExpandedCard: () => null,
-  },
   GroupedList: {
     ...listProps,
     groups: [],
-  },
-  HoverCard: {
-    target: { __events__: {} },
-  },
-  List: listProps,
-  Modal: {
-    isOpen: true,
-  },
-  Nav: {
-    groups: [],
-  },
-  Panel: {
-    isOpen: true,
-  },
-  ResizeGroup: {
-    onRenderData: () => null,
-  },
-  SelectedPeopleList: {
-    onRenderItem: () => <div key="TestItem" />,
-    selectedItems: ['TestItem'],
-  },
-  StackItem: {
-    children: ['TestItem'],
-  },
-  Suggestions: {
-    suggestions: [],
-  },
-  SuggestionsItem: {
-    suggestionModel: { item: '', selected: false },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    RenderSuggestion: () => null,
-  },
-  SwatchColorPicker: {
-    colorCells: [{ id: 'TestId', color: '#ffffff' }],
-    columnCount: 1,
-  },
-  Text: {
-    children: 'TestText',
   },
 };
 
@@ -99,49 +36,15 @@ const requiredProps: { [key: string]: any } = {
  */
 const classNameSelectors: { [key: string]: string } = {
   Breadcrumb: 'ms-Breadcrumb',
-  Callout: 'ms-Callout',
-  ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
-  ExpandingCard: 'ms-Callout',
-  Modal: 'ms-Modal',
-  Nav: 'ms-Nav',
-  Panel: 'ms-Panel',
-  PlainCard: 'ms-Callout',
-  Tooltip: 'ms-Tooltip',
-  MessageBar: 'ms-MessageBar',
 };
 
 // NOTE: Please consider modifying your component to work with this test instead
 //        of adding it to the exclusion list as this will make regression harder to detect.
-const excludedComponents: string[] = [
-  'Beak', // className is not injected
-  'Button', // deprecated, test Button variants instead
-  'CardCallout', // className injected one level above
-  'ChoiceGroupOption', // className is not injected
-  'Coachmark', // className is not injected
-  'ColorRectangle', // className is not injected
-  'ContextualMenuItemWrapper', // className is not injected
-  'Dialog', // className is deprecated
-  'Keytip', // helper component, not meant to take a className
-  'KeytipData', // helper component, not meant to take a className
-  'KeytipLayer', // helper component, not meant to take a className
-  'Layer', // className is not injected
-  'PersonaPresence', // className is not injected
-  'PositioningContainer', // className is not injected
-  'Rating', // className is not injected
-  'SelectedPeopleList', // does not accept className
-  'ShimmerCircle', // className is not injected
-  'ShimmerElementsGroup', // className is not injected
-  'ShimmerLine', // className is not injected
-  'ShimmerGap', // className is not injected
-  'SpinButton', // className is not injected
-  'Sticky', // accepts stickyClassName instead of className
-  'TeachingBubble', // does not accept className
-  'ThemeGenerator', // not intended to be tested
-];
+const excludedComponents: string[] = [];
 
 /** Some components require nodes to be mocked when creating the test component (e.g. components that use refs) */
-const mockNodeComponents = ['ScrollablePane'];
+const mockNodeComponents: string[] = [];
 
 /** Map from component name to alternative package name from which it should import a version file */
 const componentPackageMap: { [componentName: string]: string } = {
