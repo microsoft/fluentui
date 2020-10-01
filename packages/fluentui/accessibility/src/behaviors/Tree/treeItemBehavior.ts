@@ -35,6 +35,11 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
+          /**
+           * Reason for aria-checked instead of aria-selected:
+           * JAWS does not narrate selection state with aria-selected. They admit it's a bug.
+           * aria-checked here will benifit our JAWS user. Plus it has 'mixed' state which suits our indeterminate selection state.
+           */
           ...(props.selectable && {
             'aria-checked': props.indeterminate ? ('mixed' as const) : !!props.selected,
           }),
