@@ -75,8 +75,6 @@ describe('OverflowSet', () => {
     Component: OverflowSet,
     displayName: 'OverflowSet',
     componentPath: path.join(__dirname, 'OverflowSet.ts'),
-    // passesUnhandledPropsTo: OverflowButton,
-    // disabledTests: ['component-handles-classname'],
   });
 
   it('does not render overflow when there are no overflow items', () => {
