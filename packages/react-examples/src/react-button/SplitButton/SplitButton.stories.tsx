@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
 const menuProps = {

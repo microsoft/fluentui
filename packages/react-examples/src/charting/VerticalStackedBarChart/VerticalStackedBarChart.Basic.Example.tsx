@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IVerticalStackedBarState {
   width: number;

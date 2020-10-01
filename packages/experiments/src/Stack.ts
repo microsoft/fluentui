@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from office-ui-fabric-react package instead.
+ * @deprecated Import from `@fluentui/react` package instead.
  */
-export { Stack } from 'office-ui-fabric-react/lib/Stack';
+export { Stack } from '@fluentui/react/lib/Stack';

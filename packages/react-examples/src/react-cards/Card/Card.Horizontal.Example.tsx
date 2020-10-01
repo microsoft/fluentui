@@ -1,7 +1,7 @@
 // @codepen
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
-import { FontWeights, Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { FontWeights, Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from '@fluentui/react';
 
 const alertClicked = (): void => {
   alert('Clicked');

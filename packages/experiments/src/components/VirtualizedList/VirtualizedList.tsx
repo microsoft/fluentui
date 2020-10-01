@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
-import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { getParent, css, initializeComponentRef, EventGroup } from 'office-ui-fabric-react/lib/Utilities';
+import { IObjectWithKey } from '@fluentui/react/lib/Selection';
+import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/react/lib/Utilities';
 
 interface IRange {
   /** Start of range */

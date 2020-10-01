@@ -12,7 +12,7 @@ import {
   SelectionMode,
   createTheme,
   DocumentCardTitle,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { Actionable, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
 
 const defaultTheme = createTheme({});

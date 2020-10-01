@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from 'office-ui-fabric-react';
+import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
 import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 
 export interface ICalendarButtonExampleState {

@@ -18,7 +18,7 @@ import {
   IStackTokens,
   Text,
   ITextStyles,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 export type FilledSectionKey = '0' | '1' | '2' | '3';
 

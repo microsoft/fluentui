@@ -1,4 +1,4 @@
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
   IChartProps,
   IRefArrayData,

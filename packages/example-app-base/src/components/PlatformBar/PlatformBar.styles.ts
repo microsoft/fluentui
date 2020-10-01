@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getColorFromString, getShade, Shade } from 'office-ui-fabric-react';
+import { getGlobalClassNames, getColorFromString, getShade, Shade } from '@fluentui/react';
 import { IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { MotionDurations, MotionTimings } from '@fluentui/theme';
 

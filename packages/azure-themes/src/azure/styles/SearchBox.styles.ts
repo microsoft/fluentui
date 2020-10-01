@@ -1,4 +1,4 @@
-import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import { ISearchBoxStyleProps, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

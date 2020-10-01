@@ -197,6 +197,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       selected,
       selectable,
       selectableParent,
+      indeterminate,
     }),
     rtl: context.rtl,
   });

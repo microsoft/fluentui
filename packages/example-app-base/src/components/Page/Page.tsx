@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, css, Customizer, ICustomizations, ILinkProps } from 'office-ui-fabric-react';
+import { Async, css, Customizer, ICustomizations, ILinkProps } from '@fluentui/react';
 import { slugify } from '../../utilities/index2';
 import { PageHeader } from '../PageHeader/index';
 import { Markdown } from '../Markdown/index';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { TextField } from 'office-ui-fabric-react';
+import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)

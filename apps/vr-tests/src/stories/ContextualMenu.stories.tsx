@@ -8,7 +8,7 @@ import {
   ContextualMenuItemType,
   IContextualMenuItem,
   DefaultButton,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const items: IContextualMenuItem[] = [
   {

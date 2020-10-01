@@ -6,7 +6,7 @@ import {
   IRenderFunction,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
@@ -17,6 +17,7 @@ import {
   IPersonaCoinProps,
 } from './Persona.types';
 import { useWarnings, useMergedRefs } from '@uifabric/react-hooks';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 

@@ -3,7 +3,7 @@ import {
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+} from '@fluentui/react/lib/ContextualMenu';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';

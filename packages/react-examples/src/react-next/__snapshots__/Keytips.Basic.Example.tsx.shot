@@ -150,9 +150,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             &[data-is-overflowing='true'] {
               display: none;
             }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               background-color: Highlight;
             }
@@ -325,9 +322,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             &[data-is-overflowing='true'] {
               display: none;
             }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
-            }
         data-content="Pivot 2"
         data-is-focusable={true}
         data-ktp-execute-target="ktp-b"
@@ -489,9 +483,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             }
             &[data-is-overflowing='true'] {
               display: none;
-            }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
             }
         data-content="Pivot 3"
         data-is-focusable={true}
@@ -1049,7 +1040,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             >
               <button
                 aria-checked={false}
-                aria-labelledby="ToggleBase19-stateText"
+                aria-labelledby="Toggle19-stateText"
                 className=
                     ms-Toggle-background
                     {
@@ -1099,7 +1090,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     }
                 data-is-focusable={true}
                 data-ktp-target={true}
-                id="ToggleBase19"
+                id="Toggle19"
                 onClick={[Function]}
                 role="switch"
                 type="button"
@@ -1158,8 +1149,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       padding-top: 0;
                       user-select: none;
                     }
-                htmlFor="ToggleBase19"
-                id="ToggleBase19-stateText"
+                htmlFor="Toggle19"
+                id="Toggle19-stateText"
               >
                 No
               </label>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IDataPoint } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export interface IExampleState {
   dynamicData: IDataPoint[];

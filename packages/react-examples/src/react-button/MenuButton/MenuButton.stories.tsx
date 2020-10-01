@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
-import { ContextualMenu, IContextualMenuProps, Stack, Text } from 'office-ui-fabric-react';
+import { ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
 const menuProps = {

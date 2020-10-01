@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { CommandButton } from '@fluentui/react/lib/Button';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { ThemeProvider } from '@fluentui/react/lib/Foundation';
 import {
   styled,
   Customizer,
@@ -11,9 +11,9 @@ import {
   warn,
   ICustomizations,
   memoizeFunction,
-} from 'office-ui-fabric-react/lib/Utilities';
-import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/Utilities';
+import { ISchemeNames, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { IStackComponent, Stack } from '@fluentui/react/lib/Stack';
 import {
   AppCustomizationsContext,
   IAppCustomizations,

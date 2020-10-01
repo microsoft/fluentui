@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Slider } from '@fluentui/react-slider';
-import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { height: 200 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
-/* eslint-disable react/jsx-no-bind */
+const valueFormat = (value: number) => `${value}%`;
+
 export const SliderVerticalExample: React.FunctionComponent = () => {
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
@@ -37,7 +38,7 @@ export const SliderVerticalExample: React.FunctionComponent = () => {
       <Slider // prettier-ignore
         label="Formatted value"
         max={100}
-        valueFormat={(value: number) => `${value}%`}
+        valueFormat={valueFormat}
         showValue
         vertical
       />

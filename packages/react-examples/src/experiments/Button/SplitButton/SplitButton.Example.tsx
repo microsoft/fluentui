@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
-import { Stack } from 'office-ui-fabric-react';
+import { Stack } from '@fluentui/react';
 
 const menuProps: ISplitButtonProps['menu'] = {
   items: [

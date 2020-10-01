@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@uifabric/file-type-icons';
 
 initializeFileTypeIcons(undefined);

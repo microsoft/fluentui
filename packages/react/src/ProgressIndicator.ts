@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ProgressIndicator';
+export * from '@fluentui/react-internal/lib/ProgressIndicator';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@uifabric/charting';
 

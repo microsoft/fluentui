@@ -1,4 +1,4 @@
-import { IRawStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IRawStyle } from '@fluentui/react/lib/Styling';
 import {
   contentPaddingSmall,
   contentPaddingLg,

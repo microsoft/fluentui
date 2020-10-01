@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './Table.module.scss';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from '@fluentui/react/lib/Utilities';
 const styles: any = stylesImport;
 
 export interface ITableProps {

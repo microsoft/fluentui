@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
+import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
 import { TestImages } from '@uifabric/example-data';
 
 const examplePersona: IPersonaProps = {

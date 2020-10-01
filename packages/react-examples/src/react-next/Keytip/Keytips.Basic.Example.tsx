@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keytipMap } from '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup';
+import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { ComboBox } from '@fluentui/react-next/lib/ComboBox';
 import { Dropdown } from '@fluentui/react-next/lib/Dropdown';

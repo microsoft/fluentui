@@ -85,7 +85,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: packages/office-ui-fabric-react/dist
+      pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric'
@@ -102,7 +102,7 @@ steps:
     displayName: 'Update github release notes'
 
   - script: |
-      oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
+      oufrVersion=$(node -p -e "require('./packages/react/package.json').version") &&
       echo "OUFR Version: $oufrVersion" &&
       echo $oufrVersion > oufr-version.txt &&
       echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"

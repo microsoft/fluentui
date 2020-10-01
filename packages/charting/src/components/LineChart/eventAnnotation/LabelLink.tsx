@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Callout, FocusZone, FocusZoneDirection, List } from 'office-ui-fabric-react';
+import { Callout, FocusZone, FocusZoneDirection, List } from '@fluentui/react';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
 import { Textbox } from './Textbox';
 

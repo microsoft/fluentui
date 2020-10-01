@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IRawStyle, mergeStyles } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 import { CODE_FONT_FAMILY } from './consts';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...

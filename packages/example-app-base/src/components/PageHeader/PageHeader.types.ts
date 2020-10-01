@@ -1,4 +1,4 @@
-import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { ITheme, IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 
 export interface IPageHeaderProps {
   /** The title of the current page. */

@@ -1,4 +1,4 @@
-import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
+import { IObjectWithKey } from '@fluentui/react/lib/Selection';
 
 export interface IGenericListProps<TItem extends IObjectWithKey> {
   /** Optional custom class name */

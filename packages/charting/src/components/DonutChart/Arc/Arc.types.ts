@@ -1,4 +1,4 @@
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IChartDataPoint } from '../index';
 export interface IArcProps {
   /**

@@ -18,7 +18,7 @@ import {
   Stack,
   Toggle,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusZonePhotosExample } from './FocusZone.Photos.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { FocusZoneListExample } from './FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './FocusZone.Disabled.Example';
 import { FocusZoneTabbableExample } from './FocusZone.Tabbable.Example';

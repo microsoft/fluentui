@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/DetailsList';
+export * from '@fluentui/react/lib/DetailsList';

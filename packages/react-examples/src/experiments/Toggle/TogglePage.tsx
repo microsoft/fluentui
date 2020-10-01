@@ -42,16 +42,14 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         }
         overview={
           <Markdown>
-            {require<
-              string
-            >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Toggle/docs/ToggleOverview.md')}
+            {require<string>('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleOverview.md')}
           </Markdown>
         }
         bestPractices={
           <Markdown>
             {require<
               string
-            >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Toggle/docs/ToggleBestPractices.md')}
+            >('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleBestPractices.md')}
           </Markdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

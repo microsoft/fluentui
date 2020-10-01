@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, DefaultButton, mergeStyles } from 'office-ui-fabric-react';
+import { Link, DefaultButton, mergeStyles } from '@fluentui/react';
 import {
   trackEvent,
   EventNames,

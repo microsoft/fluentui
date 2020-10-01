@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Fabric, Icon, Label, Toggle } from 'office-ui-fabric-react';
+import { Fabric, Icon, Label, Toggle } from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
 import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
 
