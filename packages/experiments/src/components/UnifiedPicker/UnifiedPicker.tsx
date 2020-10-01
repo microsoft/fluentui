@@ -118,9 +118,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return !focusedItemIndices.includes(dropContext!.index);
   };
 
-  const _onDropAutoFill = (event?: DragEvent) => {
+  const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
     insertIndex = selectedItems.length;
-    _onDropInner(event);
+    event?.preventDefault();
+    _onDropInner(event?.dataTransfer);
   };
 
   const _onDropList = (item?: any, event?: DragEvent): void => {
@@ -138,14 +139,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       insertIndex = selectedItems.indexOf(item);
     }
 
-    _onDropInner(event);
+    event?.preventDefault();
+    _onDropInner(event?.dataTransfer !== null ? event?.dataTransfer : undefined);
   };
 
-  const _onDropInner = (event?: DragEvent): void => {
+  const _onDropInner = (dataTransfer?: DataTransfer): void => {
     let isDropHandled = false;
-    if (event?.dataTransfer) {
-      event.preventDefault();
-      const data = event.dataTransfer.items;
+    if (dataTransfer) {
+      const data = dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
           isDropHandled = true;
