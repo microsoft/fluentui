@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 30 Sep 2020 12:27:52 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.10",
+      "version": "7.6.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding new FileIconType to differentiate List from ListItem. Existing enum called listitem has been reassigned to bring back the right listitem icon.",
+            "author": "caperez@microsoft.com",
+            "commit": "daf72f647d614380a478526663c5c663df458daa",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@uifabric/file-type-icons_v7.6.8",
       "version": "7.6.8",

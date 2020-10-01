@@ -11,7 +11,7 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',
   componentName: 'ProgressIndicator',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ProgressIndicator',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ProgressIndicator',
   examples: [
     {
       title: 'Default ProgressIndicator',

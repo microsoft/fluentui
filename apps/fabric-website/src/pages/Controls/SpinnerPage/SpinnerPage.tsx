@@ -23,7 +23,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl:
-            'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md',
+            'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md') as string,
         },
       ];
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl:
-            'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md',
+            'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md') as string,
         },
       ];

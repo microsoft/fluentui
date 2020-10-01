@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme` and remove legacy theme examples.",
-  "packageName": "@uifabric/experiments",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T17:49:33.158Z"
-}

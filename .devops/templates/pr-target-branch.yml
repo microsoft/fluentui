@@ -2,4 +2,4 @@ steps:
   - script: |
       node -e "process.stdout.write('##vso[task.setvariable variable=target_branch]origin/$(System.PullRequest.TargetBranch)')"
     displayName: Set target_branch variable (PR)
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')

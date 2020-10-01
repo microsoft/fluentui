@@ -8,7 +8,7 @@ import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
 const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font

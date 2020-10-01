@@ -3,7 +3,7 @@ import { MessageBarPageProps as ExternalProps } from '@fluentui/react-examples/l
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MessageBarPage/docs/MessageBarRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/MessageBarPage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/MessageBarPage';
 
 export const MessageBarPageProps: TFabricPlatformPageProps = {
   web: {

@@ -9,7 +9,7 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
   componentName: 'FloatingPeoplePicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/FloatingPeoplePicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/FloatingPeoplePicker',
   examples: [
     {
       title: 'Floating People Picker',

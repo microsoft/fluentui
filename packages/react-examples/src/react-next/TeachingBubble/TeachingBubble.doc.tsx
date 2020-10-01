@@ -20,7 +20,7 @@ export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
   componentName: 'TeachingBubble',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-next/src/components/TeachingBubble',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/@fluentui/react-next/src/components/TeachingBubble',
   examples: [
     {
       title: 'TeachingBubble Basic',

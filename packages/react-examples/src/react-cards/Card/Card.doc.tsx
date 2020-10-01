@@ -13,7 +13,7 @@ const CardConfigureExampleCode = require('!raw-loader!@fluentui/react-examples/s
 export const CardPageProps: IDocPageProps = {
   title: 'Card',
   componentName: 'Card',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-cards/src/components/Card',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-cards/src/components/Card',
   examples: [
     {
       title: 'Vertical Card',

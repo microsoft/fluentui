@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.8.19",
+      "version": "7.8.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change doc links to point to 7.0 branch",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e968de0afa15de7bcc988cd04dd2ed4133068ff",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.8.18",
+      "version": "7.8.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.8.17",
       "version": "7.8.17",

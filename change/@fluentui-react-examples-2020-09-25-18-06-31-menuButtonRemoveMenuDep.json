@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Changing MenuButton examples to use ContextualMenu as JSX slot replacement instead of using menuProps for the menu slot.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-26T01:06:30.953Z"
-}

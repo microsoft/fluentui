@@ -10,7 +10,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 // If you'll have multiple custom sections, define the base url on the remote host
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
 
 // You can add additional page props by extending `IPageProps`.
 export interface ITemplatePageProps extends IPageProps<Platforms> {}

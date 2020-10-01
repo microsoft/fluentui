@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-25T22:13:25.087Z"
-}

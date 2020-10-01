@@ -1,8 +1,26 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 04 Sep 2020 12:28:23 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.19](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.19)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.18..@uifabric/example-app-base_v7.15.19)
+
+### Patches
+
+- Change doc links to point to 7.0 branch ([commit](https://github.com/microsoft/fluentui/commit/3e968de0afa15de7bcc988cd04dd2ed4133068ff) by elcraig@microsoft.com)
+
+## [7.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.18)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.4..@uifabric/example-app-base_v7.15.18)
+
+### Patches
+
+- Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
 
 ## [7.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.4)
 

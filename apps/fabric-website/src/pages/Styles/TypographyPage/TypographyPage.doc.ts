@@ -3,7 +3,7 @@ import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 const title = 'Typography';
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/TypographyRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/TypographyPage';
 
 export const TypographyPageProps: TFabricPlatformPageProps = {
   web: {

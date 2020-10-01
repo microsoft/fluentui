@@ -63,7 +63,6 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           styles={customStyles}
           colors={customColors}
           hideLegend={true}
-          hideTooltip={true}
         />
       </div>
     );

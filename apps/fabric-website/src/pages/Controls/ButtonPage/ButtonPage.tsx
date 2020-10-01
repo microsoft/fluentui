@@ -12,7 +12,7 @@ import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
 };
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/ButtonPage/';
 
 export class ButtonPage extends React.Component<
   IControlsPageProps,

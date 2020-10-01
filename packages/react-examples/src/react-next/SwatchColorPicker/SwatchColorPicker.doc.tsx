@@ -8,8 +8,7 @@ const SwatchColorPickerBasicExampleCode = require('!raw-loader!@fluentui/react-e
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',
   componentName: 'SwatchColorPicker',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/SwatchColorPicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/SwatchColorPicker',
   examples: [
     {
       title: 'SwatchColorPicker',

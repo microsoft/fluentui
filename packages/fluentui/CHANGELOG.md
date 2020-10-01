@@ -61,6 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add arrow navigation for `Breadcrumb` a11y behavior @yuanboxue-amber ([#15087](https://github.com/microsoft/fluentui/pull/15087))
 - Updated `ReactionsIcon` and `MicrophoneDisabledIcon`. Added `CastingIcon`, `ComputerAudioIcon` and `ComputerAudioOffIcon`. @TanelVari ([#14998](https://github.com/microsoft/fluentui/pull/14998))
 - Added `CheckmarkCircleIcon`. Updated `ShareLocationIcon` @TanelVari ([#15119](https://github.com/microsoft/fluentui/pull/15119))
+- Added `BreadcrumbLink` component @assuncaocharles ([#15136](https://github.com/microsoft/fluentui/pull/15136))
 - Added `hoverBackground` and `paddingRight` variables to `treeTitleVariables` @assuncaocharles ([#15200](https://github.com/microsoft/fluentui/pull/15200))
 - Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))

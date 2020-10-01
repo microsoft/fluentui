@@ -8,7 +8,7 @@ export const CoachmarkPageProps: IDocPageProps = {
   title: 'Coachmark',
   componentName: 'Coachmark',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Coachmark',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Coachmark',
   examples: [
     {
       title: 'Coachmark Basic',

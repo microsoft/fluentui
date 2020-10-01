@@ -20,7 +20,7 @@ export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
   componentName: 'DatePicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DatePicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/DatePicker',
   examples: [
     {
       title: 'Default DatePicker',

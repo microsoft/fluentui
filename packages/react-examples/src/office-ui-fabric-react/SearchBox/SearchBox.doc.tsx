@@ -17,7 +17,7 @@ export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SearchBox',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/SearchBox',
   examples: [
     {
       title: 'Default SearchBox',

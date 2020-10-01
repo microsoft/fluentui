@@ -201,7 +201,7 @@ const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.h
 
 const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-  : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
+  : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/7.0/perf-test/index.html';
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
@@ -348,7 +348,7 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
     <th>Scenario</th>
     <th>Render type</th>
     <th>
-      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">7.0 Ticks</a>
     </th>
     <th>
       <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
