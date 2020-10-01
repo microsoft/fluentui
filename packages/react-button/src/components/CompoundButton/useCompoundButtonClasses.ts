@@ -1,4 +1,4 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { CompoundButtonState } from './CompoundButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
 
@@ -54,61 +54,67 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
       },
     ],
   },
-  variants: {
-    root: {
-      height: 'auto',
-      maxWidth: '280px',
-      minWidth: '72px',
-      paddingBottom: '16px',
-      paddingLeft: '12px',
-      paddingRight: '12px',
-      paddingTop: '16px',
-      iconSize: '28px',
-      secondaryContentGap: '4px',
-      secondaryContentFontWeight: 'normal',
 
-      disabled: {
-        secondaryContentColor: 'var(--button-disabled-contentColor)',
-      },
-    },
+  variants: (theme: Theme) => {
+    const { palette } = theme;
 
-    iconOnly: {
-      minHeight: 'var(--button-size-regular)',
-      width: 'var(--button-minHeight)',
-      paddingBottom: 0,
-      paddingTop: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
+    return {
+      root: {
+        height: 'auto',
+        maxWidth: '280px',
+        minWidth: '72px',
+        paddingBottom: '16px',
+        paddingLeft: '12px',
+        paddingRight: '12px',
+        paddingTop: '16px',
+        iconSize: '28px',
+        secondaryContentColor: palette.neutralSecondary,
+        secondaryContentGap: '4px',
+        secondaryContentFontWeight: 'normal',
 
-    ghost: {
-      secondaryContentColor: 'var(--ghost-secondaryContentColor)',
-      focused: {
-        secondaryContentColor: 'var(--ghost-focused-secondaryContentColor)',
-      },
-      hovered: {
-        secondaryContentColor: 'var(--ghost-hovered-secondaryContentColor)',
-      },
-      pressed: {
-        secondaryContentColor: 'var(--ghost-pressed-secondaryContentColor)',
-      },
-    },
-
-    primary: {
-      secondaryContentColor: 'var(--color-brand-secondaryContentColor)',
-
-      focused: {
-        secondaryContentColor: 'var(--color-brand-focused-secondaryContentColor)',
+        disabled: {
+          secondaryContentColor: 'var(--button-disabled-contentColor)',
+        },
       },
 
-      hovered: {
-        secondaryContentColor: 'var(--color-brand-hovered-secondaryContentColor)',
+      iconOnly: {
+        minHeight: 'var(--button-size-regular)',
+        width: 'var(--button-minHeight)',
+        paddingBottom: 0,
+        paddingTop: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
       },
 
-      pressed: {
-        secondaryContentColor: 'var(--color-brand-pressed-secondaryContentColor)',
+      ghost: {
+        secondaryContentColor: 'var(--ghost-secondaryContentColor)',
+        focused: {
+          secondaryContentColor: 'var(--ghost-focused-secondaryContentColor)',
+        },
+        hovered: {
+          secondaryContentColor: 'var(--ghost-hovered-secondaryContentColor)',
+        },
+        pressed: {
+          secondaryContentColor: 'var(--ghost-pressed-secondaryContentColor)',
+        },
       },
-    },
+
+      primary: {
+        secondaryContentColor: 'var(--color-brand-secondaryContentColor)',
+
+        focused: {
+          secondaryContentColor: 'var(--color-brand-focused-secondaryContentColor)',
+        },
+
+        hovered: {
+          secondaryContentColor: 'var(--color-brand-hovered-secondaryContentColor)',
+        },
+
+        pressed: {
+          secondaryContentColor: 'var(--color-brand-pressed-secondaryContentColor)',
+        },
+      },
+    };
   },
 });
 
