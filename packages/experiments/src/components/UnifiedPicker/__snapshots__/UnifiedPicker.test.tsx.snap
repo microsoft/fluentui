@@ -69,6 +69,8 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
                   display: flex;
                   flex: 1 1 auto;
                 }
+            onDragOver={[Function]}
+            onDrop={[Function]}
             role="combobox"
           >
             <input
@@ -208,6 +210,8 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
                   display: flex;
                   flex: 1 1 auto;
                 }
+            onDragOver={[Function]}
+            onDrop={[Function]}
             role="combobox"
           >
             <input
