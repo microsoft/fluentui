@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Dialog';
+export * from '@fluentui/react-internal/lib/Dialog';
