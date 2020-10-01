@@ -172,7 +172,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _itemsAreEqual = (item1?: any, item2?: any): boolean => {
-    return item1?.key == item2?.key;
+    return item1?.key === item2?.key;
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {

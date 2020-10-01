@@ -76,13 +76,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   } = props;
 
   const defaultDragDropEnabled = React.useMemo(
-    () => (props.defaultDragDropEnabled != undefined ? props.defaultDragDropEnabled : true),
+    () => (props.defaultDragDropEnabled !== undefined ? props.defaultDragDropEnabled : true),
     [props.defaultDragDropEnabled],
   );
 
   const autofillDragDropEnabled = React.useMemo(
-    () => (props.autofillDragDropEnabled != undefined ? props.defaultDragDropEnabled : defaultDragDropEnabled),
-    [props.defaultDragDropEnabled, defaultDragDropEnabled],
+    () => (props.autofillDragDropEnabled !== undefined ? props.autofillDragDropEnabled : defaultDragDropEnabled),
+    [props.autofillDragDropEnabled, defaultDragDropEnabled],
   );
 
   React.useImperativeHandle(props.componentRef, () => ({
