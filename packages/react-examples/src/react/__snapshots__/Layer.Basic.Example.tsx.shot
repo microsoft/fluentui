@@ -109,6 +109,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}

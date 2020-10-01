@@ -120,6 +120,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
@@ -284,6 +285,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle2"
         onChange={[Function]}
         onClick={[Function]}
@@ -459,6 +461,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle3"
         onChange={[Function]}
         onClick={[Function]}

@@ -90,6 +90,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}
@@ -454,6 +455,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}

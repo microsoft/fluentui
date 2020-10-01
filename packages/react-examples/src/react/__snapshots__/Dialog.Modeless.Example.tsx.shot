@@ -111,6 +111,7 @@ Array [
                 border-color: Highlight;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           disabled={false}
           id="Toggle0"
           onChange={[Function]}

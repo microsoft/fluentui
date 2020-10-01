@@ -40,8 +40,8 @@ Array [
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ToggleBase0"
-      id="ToggleBase0-label"
+      htmlFor="Toggle0"
+      id="Toggle0-label"
     >
       Toggle to load content
     </label>
@@ -55,7 +55,7 @@ Array [
     >
       <button
         aria-checked={false}
-        aria-labelledby="ToggleBase0-label ToggleBase0-stateText"
+        aria-labelledby="Toggle0-label Toggle0-stateText"
         className=
             ms-Toggle-background
             {
@@ -105,7 +105,7 @@ Array [
             }
         data-is-focusable={true}
         data-ktp-target={true}
-        id="ToggleBase0"
+        id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}
         role="switch"
@@ -170,8 +170,8 @@ Array [
               padding-top: 0;
               user-select: none;
             }
-        htmlFor="ToggleBase0"
-        id="ToggleBase0-stateText"
+        htmlFor="Toggle0"
+        id="Toggle0-stateText"
       >
         Shimmer
       </label>

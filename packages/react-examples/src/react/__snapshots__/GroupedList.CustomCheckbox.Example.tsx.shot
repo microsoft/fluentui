@@ -268,8 +268,8 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
+                                data-ktp-target={true}
                                 id="Toggle3"
-                                onChange={[Function]}
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"
@@ -2254,8 +2254,8 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
+                                data-ktp-target={true}
                                 id="Toggle5"
-                                onChange={[Function]}
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"
@@ -4240,8 +4240,8 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
+                                data-ktp-target={true}
                                 id="Toggle7"
-                                onChange={[Function]}
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"

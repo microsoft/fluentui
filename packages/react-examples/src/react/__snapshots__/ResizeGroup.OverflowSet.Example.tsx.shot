@@ -3696,6 +3696,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: Highlight;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Toggle61"
           onChange={[Function]}
           onClick={[Function]}
@@ -3824,6 +3825,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: Highlight;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Toggle62"
           onChange={[Function]}
           onClick={[Function]}
@@ -3952,6 +3954,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: Highlight;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Toggle63"
           onChange={[Function]}
           onClick={[Function]}
