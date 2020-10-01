@@ -26,7 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { TreeContext } from './utils/index';
+import { TreeContext } from './utils';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -122,7 +122,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   } = props;
 
   const handleFocusParent = e => {
-    _.invoke(props, 'onFocusParent', e, props);
     onFocusParent(props.parent);
   };
 
@@ -137,8 +136,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         handleClick(e);
       },
       focusParent: e => {
-        e.preventDefault();
-        e.stopPropagation();
 
         handleFocusParent(e);
       },
