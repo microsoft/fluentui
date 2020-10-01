@@ -68,46 +68,37 @@ export const defaultTests: TestObject = {
 
   /** Component file handles classname prop */
   'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
+
+    let el = customMount(<Component {...requiredProps} />);
+    let component = getComponent(el, helperComponents, wrapperComponent);
+
+    const defaultClassNames =
+      component
+        ?.getDOMNode()
+        ?.getAttribute('class')
+        ?.split(' ') || [];
+
+    const testClassName = 'testComponentClassName';
+    const mergedProps: Partial<{}> = {
+      ...requiredProps,
+      className: 'testComponentClassName',
+    };
+
+    el = customMount(<Component {...mergedProps} />);
+    component = getComponent(el, helperComponents, wrapperComponent);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const classNames: any = component
+      .getDOMNode()
+      .getAttribute('class')
+      ?.split(' ');
+
     it(`handles className prop`, () => {
-      const {
-        Component,
-        wrapperComponent,
-        helperComponents = [],
-        requiredProps,
-        customMount = mount,
-        passesUnhandledPropsTo,
-      } = testInfo;
-
-      let el = passesUnhandledPropsTo
-        ? customMount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
-        : customMount(<Component {...requiredProps} />);
-      let component = getComponent(el, helperComponents, wrapperComponent);
-
-      const defaultClassNames =
-        component
-          ?.getDOMNode()
-          ?.getAttribute('class')
-          ?.split(' ') || [];
-
-      const testClassName = 'testComponentClassName';
-      const mergedProps: Partial<{}> = {
-        ...requiredProps,
-        className: 'testComponentClassName',
-      };
-
-      el = passesUnhandledPropsTo
-        ? customMount(<Component {...mergedProps} />).find(passesUnhandledPropsTo)
-        : customMount(<Component {...mergedProps} />);
-      component = getComponent(el, helperComponents, wrapperComponent);
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const classNames: any = component
-        .getDOMNode()
-        .getAttribute('class')
-        ?.split(' ');
-
       expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
+    });
 
+    it(`handles component's default classNames`, () => {
       if (defaultClassNames.length && defaultClassNames[0] !== '') {
         for (const defaultClassName of defaultClassNames) {
           expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);

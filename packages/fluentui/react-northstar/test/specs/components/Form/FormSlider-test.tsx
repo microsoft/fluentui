@@ -15,6 +15,5 @@ describe('FormSlider', () => {
       onKeyPress: 'input',
       onKeyUp: 'input',
     },
-    disabledTests: ['component-handles-classname'],
   });
 });

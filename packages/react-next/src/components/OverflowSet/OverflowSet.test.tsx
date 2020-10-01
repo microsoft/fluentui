@@ -9,7 +9,6 @@ import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
 import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 import { OverflowSet } from './OverflowSet';
-import { OverflowButton } from './OverflowButton';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
@@ -76,8 +75,8 @@ describe('OverflowSet', () => {
     Component: OverflowSet,
     displayName: 'OverflowSet',
     componentPath: path.join(__dirname, 'OverflowSet.ts'),
-    passesUnhandledPropsTo: OverflowButton,
-    disabledTests: ['component-handles-classname'],
+    // passesUnhandledPropsTo: OverflowButton,
+    // disabledTests: ['component-handles-classname'],
   });
 
   it('does not render overflow when there are no overflow items', () => {

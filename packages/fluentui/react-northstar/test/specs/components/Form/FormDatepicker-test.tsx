@@ -8,6 +8,5 @@ describe('FormDatepicker', () => {
     constructorName: 'FormDatepicker',
     forwardsRefTo: false,
     passesUnhandledPropsTo: Datepicker,
-    disabledTests: ['component-handles-classname'],
   });
 });

@@ -16,6 +16,5 @@ describe('FormInput', () => {
       onFocus: 'input',
       onBlur: 'input',
     },
-    disabledTests: ['component-handles-classname'],
   });
 });

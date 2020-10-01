@@ -9,6 +9,5 @@ describe('FormCheckbox', () => {
     // TODO: point to correct once Checkbox will be using compose
     forwardsRefTo: false,
     passesUnhandledPropsTo: Checkbox,
-    disabledTests: ['component-handles-classname'],
   });
 });

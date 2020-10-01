@@ -8,6 +8,5 @@ describe('FormDropdown', () => {
     constructorName: 'FormDropdown',
     forwardsRefTo: false,
     passesUnhandledPropsTo: Dropdown,
-    disabledTests: ['component-handles-classname'],
   });
 });
