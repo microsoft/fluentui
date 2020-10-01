@@ -10,7 +10,7 @@ function createConfig(config, onlyProduction) {
     IS_PRODUCTION,
     {
       entry: {
-        [BUNDLE_NAME]: './lib/index.bundle.js',
+        [BUNDLE_NAME]: './lib/index.js',
       },
 
       externals: {
