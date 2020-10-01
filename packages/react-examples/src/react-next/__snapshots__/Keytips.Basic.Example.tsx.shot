@@ -150,9 +150,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             &[data-is-overflowing='true'] {
               display: none;
             }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               background-color: Highlight;
             }
@@ -325,9 +322,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             &[data-is-overflowing='true'] {
               display: none;
             }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
-            }
         data-content="Pivot 2"
         data-is-focusable={true}
         data-ktp-execute-target="ktp-b"
@@ -489,9 +483,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             }
             &[data-is-overflowing='true'] {
               display: none;
-            }
-            &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-              visibility: visible;
             }
         data-content="Pivot 3"
         data-is-focusable={true}
