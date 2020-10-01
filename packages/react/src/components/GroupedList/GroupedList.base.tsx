@@ -10,7 +10,7 @@ import {
 import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
-import { SelectionMode } from '../../utilities/selection/index';
+import { SelectionMode } from '../../Selection';
 import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 import { IGroupHeaderProps } from './GroupHeader';
 import { IGroupShowAllProps } from './GroupShowAll.styles';

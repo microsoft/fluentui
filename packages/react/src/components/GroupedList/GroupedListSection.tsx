@@ -4,21 +4,19 @@ import { IGroupHeaderProps } from './GroupHeader.types';
 import { IGroupFooterProps } from './GroupFooter.types';
 import { IGroupShowAllProps } from './GroupShowAll.types';
 
-import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
+import { IDragDropContext, IDragDropEvents, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
 
 import { IProcessedStyleSet } from '../../Styling';
 import { initializeComponentRef, IRenderFunction, IDisposable, css, getId, EventGroup } from '../../Utilities';
 
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../Selection';
 
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
 
-import { List } from '../../List';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { IViewport } from '../../utilities/decorators/withViewport';
-import { IListProps } from '../List/index';
+import { List, IListProps } from '../../List';
+import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */

@@ -24,7 +24,7 @@ import {
 import { Callout } from '../../Callout';
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 import {
   DropdownMenuItemType,
   IDropdownOption,
@@ -35,19 +35,22 @@ import {
 } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
+import { ICalloutPositionedInfo, RectangleEdge } from '../../Positioning';
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import {
+  IWithResponsiveModeState,
+  ResponsiveMode,
+  withResponsiveMode,
+} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
   ISelectableDroppableTextProps,
-} from '../../utilities/selectableOption/index';
+} from '../../SelectableOption';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 

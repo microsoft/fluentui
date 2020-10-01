@@ -10,8 +10,8 @@ import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
-import { IDragDropEvents } from './../../utilities/dragdrop/index';
-import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
+import { IDragDropEvents } from '../../DragDrop';
+import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
 import { KeyCodes } from '@uifabric/utilities';
 

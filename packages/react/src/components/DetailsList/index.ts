@@ -1,4 +1,4 @@
-export * from '../../utilities/selection/index';
+export * from '../../Selection';
 export * from '../GroupedList/GroupedList.types';
 export * from './DetailsHeader';
 export * from './DetailsHeader.base';

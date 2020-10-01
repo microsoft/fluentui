@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { SelectionMode, Selection } from '../../Selection';
 import { DetailsRow } from './DetailsRow';
 import { getTheme } from '../../Styling';
 

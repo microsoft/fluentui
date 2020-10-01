@@ -4,7 +4,7 @@ import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } fro
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ITooltipHostProps } from '../../Tooltip';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonProps } from '../../Button';
 
 /**
  * {@docCategory Breadcrumb}

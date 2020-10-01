@@ -24,8 +24,8 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../Selection';
+import { IDragDropOptions, DragDropHelper } from '../../DragDrop';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import {
   SelectAllVisibility,

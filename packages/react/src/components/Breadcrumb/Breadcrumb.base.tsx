@@ -11,7 +11,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
-import { Icon } from '../Icon/Icon';
+import { Icon } from '../../Icon';
 import { isConformant } from '../../common/isConformant';
 
 describe('Breadcrumb', () => {
