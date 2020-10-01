@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { HoverCard, IExpandingCardProps, DirectionalHint } from '@fluentui/react/lib/HoverCard';
-import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
-import { Fabric } from '@fluentui/react/lib/Fabric';
+import {
+  HoverCard,
+  IExpandingCardProps,
+  DirectionalHint,
+  DetailsList,
+  buildColumns,
+  IColumn,
+  Fabric,
+  KeyCodes,
+  mergeStyleSets,
+} from '@fluentui/react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { KeyCodes } from '@fluentui/react/lib/Utilities';
-import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({

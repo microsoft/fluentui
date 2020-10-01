@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import {
-  TooltipHost,
-  TooltipDelay,
-  DirectionalHint,
-  ITooltipProps,
-  ITooltipHostStyles,
-} from '@fluentui/react/lib/Tooltip';
+import { TooltipHost, TooltipDelay, DirectionalHint, ITooltipProps, ITooltipHostStyles } from '@fluentui/react';
 import { useId } from '@uifabric/react-hooks';
 
 const tooltipProps: ITooltipProps = {

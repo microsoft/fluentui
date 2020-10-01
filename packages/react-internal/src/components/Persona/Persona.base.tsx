@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
