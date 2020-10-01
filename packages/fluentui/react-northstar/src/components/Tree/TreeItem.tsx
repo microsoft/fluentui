@@ -143,7 +143,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const hasSubtreeItem = hasSubtree(props);
 
-
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
