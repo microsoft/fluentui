@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotOverrideExample = () => {
   const [selectedKey, setSelectedKey] = React.useState(0);
-  const DefaultButtonOnClick = () => {
+  const onButtonClick = () => {
     setSelectedKey((selectedKey + 1) % 3);
   };
   return (
@@ -21,7 +21,7 @@ export const PivotOverrideExample = () => {
         </PivotItem>
       </Pivot>
       {/* eslint-disable-next-line react/jsx-no-bind */}
-      <DefaultButton onClick={DefaultButtonOnClick}>Select next item</DefaultButton>
+      <DefaultButton onClick={onButtonClick}>Select next item</DefaultButton>
     </div>
   );
 };
