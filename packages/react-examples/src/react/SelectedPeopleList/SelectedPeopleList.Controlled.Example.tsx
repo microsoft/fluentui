@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import {
   IExtendedPersonaProps,
   SelectedPeopleList,
   ISelectedPeopleItemProps,
   ExtendedSelectedItem,
-} from 'office-ui-fabric-react/lib/SelectedItemsList';
-import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/SelectedItemsList';
+import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };

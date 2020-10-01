@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { Panel } from '@fluentui/react/lib/Panel';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const buttonStyles = { root: { marginRight: 8 } };

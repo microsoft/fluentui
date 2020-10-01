@@ -8,7 +8,7 @@ import {
   IDropdownOption,
   TeachingBubbleContent,
   mergeStyleSets,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({

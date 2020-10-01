@@ -11,10 +11,10 @@ import {
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
-} from 'office-ui-fabric-react/lib/DocumentCard';
-import { ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+} from '@fluentui/react/lib/DocumentCard';
+import { ImageFit } from '@fluentui/react/lib/Image';
+import { Persona, PersonaSize } from '@fluentui/react/lib/Persona';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import {
   IBasePickerProps,
   BasePickerListBelow,
@@ -22,9 +22,9 @@ import {
   ISuggestionItemProps,
   IInputProps,
   IBasePickerSuggestionsProps,
-} from 'office-ui-fabric-react/lib/Pickers';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/Pickers';
+import { IButtonProps } from '@fluentui/react/lib/Button';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IFullDocumentCardProps {

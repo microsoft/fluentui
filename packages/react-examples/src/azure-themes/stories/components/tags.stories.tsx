@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { TagPicker, IBasePicker, ITag } from '@fluentui/react/lib/Pickers';
+import { Checkbox, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const rootClass = mergeStyles({
   maxWidth: 500,

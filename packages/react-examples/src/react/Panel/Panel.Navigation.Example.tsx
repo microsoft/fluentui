@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, IPanelProps } from 'office-ui-fabric-react/lib/Panel';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Panel, IPanelProps } from '@fluentui/react/lib/Panel';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const explanation =

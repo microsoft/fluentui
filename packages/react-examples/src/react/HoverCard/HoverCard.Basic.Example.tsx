@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { HoverCard, IExpandingCardProps } from '@fluentui/react/lib/HoverCard';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({
   compactCard: {

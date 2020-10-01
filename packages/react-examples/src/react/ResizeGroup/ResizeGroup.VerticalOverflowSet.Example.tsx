@@ -9,7 +9,7 @@ import {
   IButtonStyles,
   DirectionalHint,
   createArray,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];

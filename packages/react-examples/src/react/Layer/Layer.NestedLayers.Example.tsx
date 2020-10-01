@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Dialog, DialogFooter, DialogType, IDialogContentProps } from 'office-ui-fabric-react/lib/Dialog';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IModalProps } from 'office-ui-fabric-react/lib/Modal';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { Dialog, DialogFooter, DialogType, IDialogContentProps } from '@fluentui/react/lib/Dialog';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { IModalProps } from '@fluentui/react/lib/Modal';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const LayerNestedLayersExample: React.FunctionComponent = () => {

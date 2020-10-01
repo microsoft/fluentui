@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
+import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () => {

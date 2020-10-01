@@ -3,8 +3,8 @@ import {
   ContextualMenuItemType,
   IContextualMenuProps,
   IContextualMenuItemProps,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+} from '@fluentui/react/lib/ContextualMenu';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = () => {

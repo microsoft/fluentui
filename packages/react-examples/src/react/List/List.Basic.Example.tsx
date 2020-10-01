@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { getRTL } from '@fluentui/react/lib/Utilities';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Image, ImageFit } from '@fluentui/react/lib/Image';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { List } from '@fluentui/react/lib/List';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 

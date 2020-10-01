@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IIconProps } from 'office-ui-fabric-react';
+import { DefaultButton, IIconProps } from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IButtonExampleProps {

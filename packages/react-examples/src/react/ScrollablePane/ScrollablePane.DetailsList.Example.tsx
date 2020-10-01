@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -8,15 +8,15 @@ import {
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { IDetailsColumnRenderTooltipProps } from 'office-ui-fabric-react/lib/DetailsList';
+} from '@fluentui/react/lib/DetailsList';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
+import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { IDetailsColumnRenderTooltipProps } from '@fluentui/react/lib/DetailsList';
 
 export interface IScrollablePaneDetailsListExampleItem {
   key: number | string;

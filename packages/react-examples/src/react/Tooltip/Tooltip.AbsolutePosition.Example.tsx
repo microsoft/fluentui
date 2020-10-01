@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { useId, useConst } from '@uifabric/react-hooks';
 
 const rootStyles = { minHeight: 50 };

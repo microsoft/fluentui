@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { HoverCard, IHoverCard, IPlainCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { HoverCard, IHoverCard, IPlainCardProps, HoverCardType } from '@fluentui/react/lib/HoverCard';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({
   plainCard: {

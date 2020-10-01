@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from 'office-ui-fabric-react/lib/Stack';
-import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Checkbox, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Slider } from '@fluentui/react/lib/Slider';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from '@fluentui/react/lib/Stack';
+import { mergeStyles, DefaultPalette } from '@fluentui/react/lib/Styling';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { useBoolean } from '@uifabric/react-hooks';
 import { range } from '@uifabric/example-data';
 export interface IExampleOptions {

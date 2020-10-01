@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { IPersonaProps, Persona } from '@fluentui/react/lib/Persona';
+import { IBasePickerSuggestionsProps, NormalPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { people } from '@uifabric/example-data';
 
 const suggestionProps: IBasePickerSuggestionsProps = {

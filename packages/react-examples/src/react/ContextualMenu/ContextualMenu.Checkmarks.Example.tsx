@@ -4,8 +4,8 @@ import {
   DirectionalHint,
   IContextualMenuItem,
   IContextualMenuProps,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+} from '@fluentui/react/lib/ContextualMenu';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const keys: string[] = [
   'newItem',

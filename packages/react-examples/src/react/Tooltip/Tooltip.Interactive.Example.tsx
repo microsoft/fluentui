@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { useId } from '@uifabric/react-hooks';
 
 const styles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };

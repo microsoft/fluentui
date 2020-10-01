@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { Link } from '@fluentui/react/lib/Link';
+import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
 
 const noOp = () => undefined;
 

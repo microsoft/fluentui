@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Dropdown, IDropdown } from '@fluentui/react/lib/Dropdown';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 const dropdownStyles = { dropdown: { width: 300 } };
 

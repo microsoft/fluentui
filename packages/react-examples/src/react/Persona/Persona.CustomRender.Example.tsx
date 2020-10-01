@@ -6,9 +6,9 @@ import {
   Persona,
   PersonaSize,
   PersonaPresence,
-} from 'office-ui-fabric-react/lib/Persona';
-import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/Persona';
+import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 
 const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };

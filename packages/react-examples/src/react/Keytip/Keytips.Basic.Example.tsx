@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { keytipMap } from '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ComboBox } from '@fluentui/react/lib/ComboBox';
+import { Dropdown } from '@fluentui/react/lib/Dropdown';
+import { Link } from '@fluentui/react/lib/Link';
+import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };

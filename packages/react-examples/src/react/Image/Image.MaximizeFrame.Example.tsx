@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image, IImageProps, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Image, IImageProps, ImageFit } from '@fluentui/react/lib/Image';
+import { Label } from '@fluentui/react/lib/Label';
 
 export const ImageMaximizeFrameExample = () => {
   const imageProps: IImageProps = {

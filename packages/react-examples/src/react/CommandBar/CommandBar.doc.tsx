@@ -1,27 +1,26 @@
 import * as React from 'react';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { CommandBarBasicExample } from './CommandBar.Basic.Example';
 import { CommandBarButtonAsExample } from './CommandBar.ButtonAs.Example';
 import { IndividualCommandBarButtonAsExampleWrapper } from './CommandBar.CommandBarButtonAs.Example';
 import { CommandBarSplitDisabledExample } from './CommandBar.SplitDisabled.Example';
 import { CommandBarLazyExample } from './CommandBar.Lazy.Example';
 
-const CommandBarBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/CommandBar.Basic.Example.tsx') as string;
+const CommandBarBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/CommandBar/CommandBar.Basic.Example.tsx') as string;
 
-const CommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/CommandBar.ButtonAs.Example.tsx') as string;
+const CommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/CommandBar/CommandBar.ButtonAs.Example.tsx') as string;
 
-const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/CommandBar.CommandBarButtonAs.Example.tsx') as string;
+const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/CommandBar/CommandBar.CommandBarButtonAs.Example.tsx') as string;
 
-const CommandBarSplitDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/CommandBar.SplitDisabled.Example.tsx') as string;
+const CommandBarSplitDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/CommandBar/CommandBar.SplitDisabled.Example.tsx') as string;
 
-const CommandBarLazyExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/CommandBar.Lazy.Example.tsx') as string;
+const CommandBarLazyExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/CommandBar/CommandBar.Lazy.Example.tsx') as string;
 
 export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',
   componentName: 'CommandBar',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/CommandBar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/CommandBar',
   examples: [
     {
       title: 'CommandBar with overflowing menu items',
@@ -49,18 +48,12 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarLazyExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/docs/CommandBarOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/docs/CommandBarBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/docs/CommandBarDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/CommandBar/docs/CommandBarDonts.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarBestPractices.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

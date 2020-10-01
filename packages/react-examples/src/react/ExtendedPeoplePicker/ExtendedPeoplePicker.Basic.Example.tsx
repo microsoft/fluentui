@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { ExtendedPeoplePicker } from 'office-ui-fabric-react/lib/ExtendedPicker';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { SuggestionsStore, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
-import { SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
-import { FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { ExtendedPeoplePicker } from '@fluentui/react/lib/ExtendedPicker';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { SuggestionsStore, FloatingPeoplePicker } from '@fluentui/react/lib/FloatingPicker';
+import { SelectedPeopleList, IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
+import { FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
+import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 

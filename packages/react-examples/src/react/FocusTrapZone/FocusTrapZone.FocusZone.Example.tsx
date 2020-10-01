@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
+import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
+import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const stackTokens = { childrenGap: 10 };

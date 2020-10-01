@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 import { CardVerticalExample } from './Card.Vertical.Example';
 import { CardHorizontalExample } from './Card.Horizontal.Example';

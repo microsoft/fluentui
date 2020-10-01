@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, css, ISize, fitContentToBounds, Icon } from 'office-ui-fabric-react';
+import { Checkbox, css, ISize, fitContentToBounds, Icon } from '@fluentui/react';
 import {
   SignalField,
   Signal,

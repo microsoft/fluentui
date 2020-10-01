@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 
 export const ContextualMenuBasicExample: React.FunctionComponent = () => {
   const linkRef = React.useRef(null);

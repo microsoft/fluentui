@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { AnimationClassNames, mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { AnimationClassNames, mergeStyles, getTheme } from '@fluentui/react/lib/Styling';
+import { Layer } from '@fluentui/react/lib/Layer';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const LayerBasicExample: React.FunctionComponent = () => {

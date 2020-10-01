@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { DefaultButton, CompoundButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { keytipMap } from '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultButton, CompoundButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const stackTokens: IStackTokens = { childrenGap: 20 };

@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { OverflowSetCustomExample } from './OverflowSet.Custom.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { OverflowSetBasicExample } from './OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './OverflowSet.Vertical.Example';
 import { OverflowSetBasicReversedExample } from './OverflowSet.BasicReversed.Example';
 
-const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/OverflowSet/OverflowSet.Custom.Example.tsx') as string;
-const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/OverflowSet/OverflowSet.Basic.Example.tsx') as string;
-const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/OverflowSet/OverflowSet.Vertical.Example.tsx') as string;
-const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/OverflowSet/OverflowSet.BasicReversed.Example.tsx') as string;
+const OverflowSetCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Custom.Example.tsx') as string;
+const OverflowSetBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Vertical.Example.tsx') as string;
+const OverflowSetBasicReversedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.BasicReversed.Example.tsx') as string;
 
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
   componentName: 'OverflowSet',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/OverflowSet',
   examples: [
     {
       title: 'OverflowSet Basic Example',
@@ -38,9 +37,7 @@ export const OverflowSetPageProps: IDocPageProps = {
       view: <OverflowSetBasicReversedExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/OverflowSet/docs/OverflowSetOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/OverflowSet/docs/OverflowSetOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

@@ -1,5 +1,5 @@
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { Text } from '@fluentui/react/lib/Text';
+import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from '@fluentui/react/lib/DetailsList';
 import * as React from 'react';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersona, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { IPersona, IPersonaProps } from '@fluentui/react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import { SelectedPeopleList } from '@uifabric/experiments/lib/SelectedItemsList';
-import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { IDragDropEvents, Selection } from 'office-ui-fabric-react';
+import { IDragDropEvents, Selection } from '@fluentui/react';
 
 const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {
   const [index, setIndex] = React.useState(0);

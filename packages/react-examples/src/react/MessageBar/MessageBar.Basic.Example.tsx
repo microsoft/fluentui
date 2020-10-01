@@ -8,7 +8,7 @@ import {
   MessageBarType,
   ChoiceGroup,
   IStackProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 interface IExampleProps {
   resetChoice?: () => void;

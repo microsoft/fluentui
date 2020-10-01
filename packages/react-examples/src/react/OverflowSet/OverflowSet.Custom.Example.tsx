@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Checkbox } from 'office-ui-fabric-react';
+import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react';
 
 const noOp = () => undefined;
 

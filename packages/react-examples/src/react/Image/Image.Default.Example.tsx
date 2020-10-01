@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Image } from '@fluentui/react/lib/Image';
+import { Label } from '@fluentui/react/lib/Label';
 
 export const ImageDefaultExample = () => (
   <div>

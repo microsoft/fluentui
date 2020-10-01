@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { IImageProps } from '@fluentui/react/lib/Image';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
+import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const examplePrimaryButtonProps: IButtonProps = {

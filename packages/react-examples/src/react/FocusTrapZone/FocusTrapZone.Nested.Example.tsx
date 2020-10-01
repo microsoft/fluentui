@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
+import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const getStackStyles = memoizeFunction(

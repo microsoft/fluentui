@@ -1,16 +1,10 @@
 import * as React from 'react';
-import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  IColumn,
-  IDetailsList,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createArray } from 'office-ui-fabric-react/lib/Utilities';
+import { Announced } from '@fluentui/react/lib/Announced';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from '@fluentui/react/lib/DetailsList';
+import { IconButton, PrimaryButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
+import { TextField, ITextField } from '@fluentui/react/lib/TextField';
+import { createArray } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, createTheme, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Customizer } from '@fluentui/react/lib/Utilities';
+import { ITheme, createTheme, DefaultPalette } from '@fluentui/react/lib/Styling';
+import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import {
   CollapsibleSection,
   CollapsibleSectionStateless,

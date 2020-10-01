@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 const textFieldStyles: Partial<ITextFieldStyles> = { fieldGroup: { width: 300 } };
 const narrowTextFieldStyles: Partial<ITextFieldStyles> = { fieldGroup: { width: 100 } };

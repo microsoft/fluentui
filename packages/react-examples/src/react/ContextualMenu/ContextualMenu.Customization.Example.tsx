@@ -4,11 +4,11 @@ import {
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+} from '@fluentui/react/lib/ContextualMenu';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
+import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {

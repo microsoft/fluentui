@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { ContextualMenu } from '@fluentui/react/lib/ContextualMenu';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const modalPropsStyles = { main: { maxWidth: 450 } };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link } from '@fluentui/react/lib/Link';
 import {
   DetailsList,
   Selection,
@@ -8,12 +8,12 @@ import {
   IColumnReorderOptions,
   IDragDropEvents,
   IDragDropContext,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+} from '@fluentui/react/lib/DetailsList';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';

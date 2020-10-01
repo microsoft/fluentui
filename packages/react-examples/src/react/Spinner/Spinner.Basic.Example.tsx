@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IStackProps, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Label } from '@fluentui/react/lib/Label';
+import { IStackProps, Stack } from '@fluentui/react/lib/Stack';
 
 export const SpinnerBasicExample: React.FunctionComponent = () => {
   // This is just for laying out the label and spinner (spinners don't have to be inside a Stack)

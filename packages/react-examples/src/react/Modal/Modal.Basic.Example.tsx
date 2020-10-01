@@ -11,7 +11,7 @@ import {
   IDragOptions,
   IconButton,
   IIconProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const dragOptions: IDragOptions = {
   moveMenuItemText: 'Move',

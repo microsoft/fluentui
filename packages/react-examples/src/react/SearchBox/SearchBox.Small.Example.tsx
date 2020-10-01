@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
 
 const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
 

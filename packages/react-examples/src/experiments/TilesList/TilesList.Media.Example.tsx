@@ -6,10 +6,10 @@ import {
   ITilesGridItemCellProps,
 } from '@uifabric/experiments/lib/TilesList';
 import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Selection, SelectionZone } from '@fluentui/react/lib/Selection';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { AnimationClassNames } from '@fluentui/react/lib/Styling';
 import {
   IExampleGroup,
   IExampleItem,

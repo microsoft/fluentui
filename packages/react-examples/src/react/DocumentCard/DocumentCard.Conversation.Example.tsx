@@ -8,8 +8,8 @@ import {
   IDocumentCardLogoProps,
   IDocumentCardActivityPerson,
   IDocumentCardStyles,
-} from 'office-ui-fabric-react/lib/DocumentCard';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DocumentCard';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { TestImages } from '@uifabric/example-data';
 
 const conversationTileClass = mergeStyles({ height: 182 });

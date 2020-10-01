@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Facepile, IFacepilePersona } from 'office-ui-fabric-react/lib/Facepile';
-import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Checkbox, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Facepile, IFacepilePersona } from '@fluentui/react/lib/Facepile';
+import { PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
+import { Slider } from '@fluentui/react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const styles = mergeStyleSets({

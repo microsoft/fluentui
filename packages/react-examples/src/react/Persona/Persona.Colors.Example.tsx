@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Persona, PersonaInitialsColor, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Persona, PersonaInitialsColor, PersonaSize, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 const sharedPersonaProps: IPersonaProps = {
   size: PersonaSize.size100,

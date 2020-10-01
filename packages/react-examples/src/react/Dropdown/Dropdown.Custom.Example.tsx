@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from '@fluentui/react/lib/Dropdown';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { Label } from '@fluentui/react/lib/Label';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 const exampleOptions: IDropdownOption[] = [
   { key: 'Header', text: 'Options', itemType: DropdownMenuItemType.Header },

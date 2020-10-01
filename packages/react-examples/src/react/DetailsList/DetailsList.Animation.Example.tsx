@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 
 export interface IDetailsListAnimationExampleItem {
   key: number;

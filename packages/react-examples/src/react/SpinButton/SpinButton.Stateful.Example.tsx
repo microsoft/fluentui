@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton } from '@fluentui/react/lib/SpinButton';
 
 const hasSuffix = (value: string, unitSuffix: string): Boolean => {
   const subString = value.substr(value.length - unitSuffix.length);

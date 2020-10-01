@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { CompactPeoplePicker, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { CompactPeoplePicker, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { assign } from '@fluentui/react/lib/Utilities';
 import { people, mru } from '@uifabric/example-data';
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',

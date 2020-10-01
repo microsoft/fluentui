@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
+import { hiddenContentStyle, mergeStyles } from '@fluentui/react/lib/Styling';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { ContextualMenu } from '@fluentui/react/lib/ContextualMenu';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
 const dialogStyles = { main: { maxWidth: 450 } };

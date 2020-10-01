@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
+import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
 
 // Styles definition
 const stackStyles: IStackStyles = {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactIcons from '@fluentui/react-icons';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classes = mergeStyleSets({
   cell: {

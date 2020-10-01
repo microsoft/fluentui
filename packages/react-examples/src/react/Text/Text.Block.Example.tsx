@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Text } from '@fluentui/react/lib/Text';
 
 export const TextBlockExample = () => (
   <>

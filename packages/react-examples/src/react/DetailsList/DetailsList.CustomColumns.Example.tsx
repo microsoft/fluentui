@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Link } from '@fluentui/react/lib/Link';
+import { Image, ImageFit } from '@fluentui/react/lib/Image';
+import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 export interface IDetailsListCustomColumnsExampleState {
   sortedItems: IExampleItem[];

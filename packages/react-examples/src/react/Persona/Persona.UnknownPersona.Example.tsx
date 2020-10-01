@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Persona, PersonaSize } from '@fluentui/react/lib/Persona';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 
 export const UnknownPersonaExample: React.FunctionComponent = () => {

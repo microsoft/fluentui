@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import {
   IBaseFloatingPicker,
   IBaseFloatingPickerSuggestionProps,
   FloatingPeoplePicker,
   SuggestionsStore,
-} from 'office-ui-fabric-react/lib/FloatingPicker';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+} from '@fluentui/react/lib/FloatingPicker';
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { people } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 

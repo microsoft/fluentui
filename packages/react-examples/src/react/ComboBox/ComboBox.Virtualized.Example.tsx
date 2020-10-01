@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxStyles, VirtualizedComboBox, Fabric } from 'office-ui-fabric-react';
+import { IComboBoxOption, IComboBoxStyles, VirtualizedComboBox, Fabric } from '@fluentui/react';
 
 const comboBoxOption: IComboBoxOption[] = Array.from({ length: 1000 }).map((x, i) => ({
   key: `${i}`,

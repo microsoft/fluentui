@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const ExpensiveToMount: React.FC = () => {

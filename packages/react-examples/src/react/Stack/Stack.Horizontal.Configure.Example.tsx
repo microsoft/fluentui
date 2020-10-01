@@ -12,7 +12,7 @@ import {
   IStackTokens,
   IStackProps,
   TextField,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
 import { range } from '@uifabric/example-data';
 export interface IExampleOptions {

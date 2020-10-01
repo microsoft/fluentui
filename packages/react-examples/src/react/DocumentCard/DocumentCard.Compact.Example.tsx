@@ -8,9 +8,9 @@ import {
   IDocumentCardPreviewProps,
   DocumentCardType,
   IDocumentCardActivityPerson,
-} from 'office-ui-fabric-react/lib/DocumentCard';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DocumentCard';
+import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { TestImages } from '@uifabric/example-data';
 
 const stackTokens: IStackTokens = { childrenGap: 20 };

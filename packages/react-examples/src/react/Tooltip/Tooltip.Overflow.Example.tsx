@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TooltipHost, TooltipOverflowMode, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Label } from '@fluentui/react/lib/Label';
+import { TooltipHost, TooltipOverflowMode, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
+import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 import { useId } from '@uifabric/react-hooks';
 
 const contentParent =
