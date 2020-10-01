@@ -1,4 +1,4 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 
 const GlobalClassNames = {
   button: 'ms-SplitButton-button',
@@ -41,6 +41,7 @@ export const useSplitButtonClasses = makeVariantClasses({
     ],
 
     divider: {
+      flexShrink: 0,
       width: 'var(--button-dividerThickness)',
       backgroundColor: 'var(--button-dividerColor)',
       position: 'absolute',
@@ -62,5 +63,17 @@ export const useSplitButtonClasses = makeVariantClasses({
       },
     },
   },
-  variants: {},
+  variants: (theme: Theme) => {
+    const { palette } = theme;
+
+    return {
+      root: {
+        dividerThickness: '1px',
+        dividerColor: palette?.neutralTertiaryAlt,
+      },
+      primary: {
+        dividerColor: 'red',
+      },
+    };
+  },
 });

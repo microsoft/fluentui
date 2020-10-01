@@ -128,6 +128,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
       {
         color: 'var(--button-iconColor)',
         display: 'flex',
+        flexShrink: 0,
         alignItems: 'center',
         justifyContent: 'center',
         width: 'var(--button-iconSize)',
@@ -187,7 +188,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonText,
         iconColor: 'inherit',
-        dividerColor: palette?.neutralTertiaryAlt,
         secondaryContentColor: palette?.neutralSecondary,
 
         hovered: {

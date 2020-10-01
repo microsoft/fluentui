@@ -210,14 +210,16 @@ export const ButtonsWithInlineTokens = () => (
 );
 
 const theme: PartialTheme = {
-  variants: {
+  components: {
     Button: {
-      github: githubTokens,
-      amazon: amazonTokens,
-      netflix: netflixTokens,
-      spotifyPrimary: spotifyPrimaryTokens,
-      spotifySecondary: spotifyTokens,
-    } as ButtonVariants,
+      variants: {
+        github: githubTokens,
+        amazon: amazonTokens,
+        netflix: netflixTokens,
+        spotifyPrimary: spotifyPrimaryTokens,
+        spotifySecondary: spotifyTokens,
+      } as ButtonVariants,
+    },
   },
 };
 
