@@ -10,13 +10,13 @@ export const CheckboxIndeterminateExample: React.FunctionComponent = () => {
   const [isIndeterminate, setIsIndeterminate] = React.useState(true);
   const [isChecked, setIsChecked] = React.useState(false);
   const onChange = React.useCallback(
-    (ev: React.FormEvent<HTMLElement>, newChecked: boolean) => {
+    (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, newChecked?: boolean) => {
       if (isIndeterminate) {
         // If the checkbox was indeterminate, the first click should remove the indeterminate state
         // without affecting the checked state
         setIsIndeterminate(false);
       } else {
-        setIsChecked(newChecked);
+        setIsChecked(!!newChecked);
       }
     },
     [isIndeterminate],

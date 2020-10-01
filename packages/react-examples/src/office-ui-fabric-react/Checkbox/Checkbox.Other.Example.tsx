@@ -14,9 +14,12 @@ const stackTokens = { childrenGap: 10 };
 export const CheckboxOtherExample: React.FunctionComponent = () => {
   // Only for the first checkbox, which is controlled
   const [isChecked, setIsChecked] = React.useState(true);
-  const onChange = React.useCallback((ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
-    setIsChecked(!!checked);
-  }, []);
+  const onChange = React.useCallback(
+    (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean): void => {
+      setIsChecked(!!checked);
+    },
+    [],
+  );
 
   return (
     <Stack tokens={stackTokens}>
