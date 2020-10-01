@@ -108,7 +108,7 @@ export const defaultTests: TestObject = {
 
       expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
 
-      if (defaultClassNames.length) {
+      if (defaultClassNames.length && defaultClassNames[0] !== '') {
         for (const defaultClassName of defaultClassNames) {
           expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);
         }

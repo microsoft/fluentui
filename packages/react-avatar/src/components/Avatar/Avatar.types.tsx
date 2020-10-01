@@ -9,7 +9,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`. */
   label?: ShorthandValue<{}>;
 
-  /** Icon displayed when there's no image or intials available, or if `display="icon"`. */
+  /** Icon displayed when there's no image or initials available, or if `display="icon"`. */
   icon?: ShorthandValue<{}>;
 
   /** What the avatar displays. This can be used to override the default behavior, for example to show the icon even

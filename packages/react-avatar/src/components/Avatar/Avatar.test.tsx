@@ -20,7 +20,8 @@ describe('Avatar', () => {
     componentPath: path.join(__dirname, 'Avatar.tsx'),
     Component: Avatar,
     displayName: 'Avatar',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
+    asPropHandlesRef: true,
+    disabledTests: ['has-docblock'],
   });
 
   /**
