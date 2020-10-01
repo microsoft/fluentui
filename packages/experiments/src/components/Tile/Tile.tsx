@@ -5,7 +5,7 @@ import { SELECTION_CHANGE } from '@fluentui/react/lib/Selection';
 import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
-import * as CheckStylesModule from '@fluentui/react/lib/components/Check/Check.scss';
+import * as CheckStylesModule from './Check.scss';
 
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
