@@ -5,7 +5,7 @@ import {
   SelectableOptionMenuItemType,
   Fabric,
   mergeStyles,
-} from 'office-ui-fabric-react/lib/index';
+} from '@fluentui/react/lib/index';
 
 const wrapperClassName = mergeStyles({
   selectors: {

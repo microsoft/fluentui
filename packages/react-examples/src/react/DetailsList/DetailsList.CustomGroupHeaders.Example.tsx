@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link } from '@fluentui/react/lib/Link';
 import {
   DetailsHeader,
   DetailsList,
@@ -7,9 +7,9 @@ import {
   IGroupDividerProps,
   IDetailsListProps,
   IDetailsGroupRenderProps,
-} from 'office-ui-fabric-react/lib/DetailsList';
+} from '@fluentui/react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
-import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
+import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 
 const intervalDelay = 100;
 const intervalIncrement = 0.01;

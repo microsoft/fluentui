@@ -5,7 +5,7 @@ import {
   IFloatingPeopleSuggestionsProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePicker';
-import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import {
   ISelectedPeopleListProps,
@@ -15,7 +15,7 @@ import {
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
 } from '@uifabric/experiments/lib/SelectedItemsList';
-import { IInputProps } from 'office-ui-fabric-react';
+import { IInputProps } from '@fluentui/react';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 

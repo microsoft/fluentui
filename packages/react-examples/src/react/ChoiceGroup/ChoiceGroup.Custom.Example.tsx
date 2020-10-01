@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Dropdown, IDropdownStyles, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Dropdown, IDropdownStyles, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 export const ChoiceGroupCustomExample: React.FunctionComponent = () => {
   return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" />;

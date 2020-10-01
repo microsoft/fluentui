@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Layer, LayerHost } from '@fluentui/react/lib/Layer';
+import { AnimationClassNames, mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
+import { IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
 export const LayerHostedExample: React.FunctionComponent = () => {

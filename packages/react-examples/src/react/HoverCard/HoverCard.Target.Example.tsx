@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { HoverCard, IExpandingCardProps, DirectionalHint } from 'office-ui-fabric-react/lib/HoverCard';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { HoverCard, IExpandingCardProps, DirectionalHint } from '@fluentui/react/lib/HoverCard';
+import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { KeyCodes } from '@fluentui/react/lib/Utilities';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({

@@ -1,4 +1,4 @@
-import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { TestImages } from '@uifabric/example-data';
 
 /* eslint-disable deprecation/deprecation */

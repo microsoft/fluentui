@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from 'office-ui-fabric-react';
+import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from '@fluentui/react';
 import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const theme = getTheme();

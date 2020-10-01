@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const modelProps = {

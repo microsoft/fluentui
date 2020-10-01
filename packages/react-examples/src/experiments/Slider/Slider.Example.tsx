@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider } from '@uifabric/experiments';
-import { IStackTokens, Stack } from 'office-ui-fabric-react';
+import { IStackTokens, Stack } from '@fluentui/react';
 
 export interface ISliderBasicExampleState {
   value: number;

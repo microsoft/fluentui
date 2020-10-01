@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Breadcrumb, IBreadcrumbItem, IDividerAsProps } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Breadcrumb, IBreadcrumbItem, IDividerAsProps } from '@fluentui/react/lib/Breadcrumb';
+import { Label, ILabelStyles } from '@fluentui/react/lib/Label';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 const labelStyles: Partial<ILabelStyles> = {
   root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } },

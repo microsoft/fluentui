@@ -20,7 +20,7 @@ import {
   Stack,
   Toggle,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 

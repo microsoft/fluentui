@@ -6,7 +6,7 @@ import {
   mergeStyles,
   SelectableOptionMenuItemType,
   Toggle,
-} from 'office-ui-fabric-react/lib/index';
+} from '@fluentui/react/lib/index';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [

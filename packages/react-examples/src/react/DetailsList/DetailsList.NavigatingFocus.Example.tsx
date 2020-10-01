@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { DetailsList, IColumn } from '@fluentui/react/lib/DetailsList';
+import { Link } from '@fluentui/react/lib/Link';
 
 export interface IDetailsListNavigatingFocusExampleState {
   items: string[];

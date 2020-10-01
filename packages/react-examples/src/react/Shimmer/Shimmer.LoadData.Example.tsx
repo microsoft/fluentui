@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
-import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
+import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const wrapperClass = mergeStyles({

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 
 const styles: Partial<ISpinButtonStyles> = {
   root: {

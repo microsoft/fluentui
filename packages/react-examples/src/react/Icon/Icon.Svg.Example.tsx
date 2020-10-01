@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
-import { mergeStyles, registerIcons } from 'office-ui-fabric-react/lib/Styling';
+import { FontIcon } from '@fluentui/react/lib/Icon';
+import { mergeStyles, registerIcons } from '@fluentui/react/lib/Styling';
 
 // Use the registerIcons api from the styling package to register custom svg icons so that they
 // can be used by the Icon component (or in anything that renders Icons, like Buttons).

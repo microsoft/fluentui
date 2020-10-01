@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const stackTokens: IStackTokens = {

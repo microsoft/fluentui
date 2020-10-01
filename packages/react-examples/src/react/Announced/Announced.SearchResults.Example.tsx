@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import { TagPicker, ITag, IInputProps, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Announced } from '@fluentui/react/lib/Announced';
+import { TagPicker, ITag, IInputProps, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { Text } from '@fluentui/react/lib/Text';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 const inputProps: IInputProps = {
   'aria-label': 'Tag Picker',

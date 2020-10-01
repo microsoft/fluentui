@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
-import { mergeStyles, DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { Slider } from '@fluentui/react/lib/Slider';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react/lib/Stack';
+import { mergeStyles, DefaultPalette, IStyle } from '@fluentui/react/lib/Styling';
 
 // Non-mutating styles definition
 const stackItemStyles: IStackItemStyles = {

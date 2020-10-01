@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex, FlexItem, FlexProps, FlexTokens } from '@fluentui/react-flex';
-import { Slider, Dropdown, TextField, Checkbox, IDropdownOption, ICheckboxStyles } from 'office-ui-fabric-react';
+import { Slider, Dropdown, TextField, Checkbox, IDropdownOption, ICheckboxStyles } from '@fluentui/react';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ExampleOptions {

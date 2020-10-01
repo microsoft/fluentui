@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 export const FocusZoneDisabledExample: React.FunctionComponent = () => {
   const tokens = { childrenGap: 20 };

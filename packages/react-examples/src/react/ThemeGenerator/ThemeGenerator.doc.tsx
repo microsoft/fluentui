@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
-import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
+import { loadTheme } from '@fluentui/react/lib/Styling';
+import { IColor, getContrastRatio, isDark } from '@fluentui/react/lib/Color';
 
 import {
   ThemeGenerator,
@@ -10,12 +9,12 @@ import {
   FabricSlots,
   IThemeSlotRule,
   IThemeRules,
-} from 'office-ui-fabric-react/lib/ThemeGenerator';
+} from '@fluentui/react/lib/ThemeGenerator';
 
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { Callout } from '@fluentui/react/lib/Callout';
+import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../TeachingBubble/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextField/TextField.Basic.Example';
 import { ToggleBasicExample } from '../Toggle/Toggle.Basic.Example';
@@ -113,23 +112,6 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
             You can modify each individual slot below as well.
           </p>
         </div>
-        {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
-         * Cognitive Vision API, documented here:
-         * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
-         * We use that API to identify the most prominent background and foreground colors, and the accent color,
-         * and generate a theme based off of those.
-         * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/@fluentui/react-examples/src/office-ui-fabric-react/ThemeGenerator/ThemeGeneratorPage.tsx
-         * Then, just uncomment this section. */}
-        {/*}
-        <div style={ { display: 'flex' } }>
-          <div>URL to image:&nbsp;</div>
-          <input type='text' id='imageUrl' />
-          <button onClick={ this._makeThemeFromImg }>Create theme from image</button>
-        </div>
-        <div id='imageDescription' />
-        <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
-        {*/}
 
         {/* the shared popup color picker for slots */}
         {colorPickerVisible && colorPickerSlotRule && colorPickerElement && (

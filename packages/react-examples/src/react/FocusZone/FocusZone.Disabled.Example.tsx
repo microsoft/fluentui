@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 200 } };
 

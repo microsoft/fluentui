@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton } from '@fluentui/react/lib/SpinButton';
 
 export const SpinButtonBasicDisabledExample: React.FC = () => (
   <div style={{ width: '400px' }}>

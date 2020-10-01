@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Breadcrumb, IBreadcrumbItem } from '@fluentui/react/lib/Breadcrumb';
 
 const items: IBreadcrumbItem[] = [
   { text: 'Files', key: 'Files', onClick: _onBreadcrumbItemClicked },

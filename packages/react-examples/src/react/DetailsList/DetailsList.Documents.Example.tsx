@@ -1,17 +1,11 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  SelectionMode,
-  IColumn,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { Announced } from '@fluentui/react/lib/Announced';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {

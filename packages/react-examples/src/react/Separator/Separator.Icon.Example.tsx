@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Separator } from 'office-ui-fabric-react/lib/Separator';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
+import { Separator } from '@fluentui/react/lib/Separator';
+import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { Text } from '@fluentui/react/lib/Text';
+import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 
 const iconStyles: IIconStyles = {
   root: {

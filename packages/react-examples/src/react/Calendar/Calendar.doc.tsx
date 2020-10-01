@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { DateRangeType, DayOfWeek } from '@fluentui/react/lib/Calendar';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { CalendarButtonExample } from './Calendar.Button.Example';
 import { CalendarInlineExample } from './Calendar.Inline.Example';
 import { addMonths, addYears, addWeeks, addDays } from '@fluentui/date-time-utilities';
 
-const CalendarButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Calendar/Calendar.Button.Example.tsx') as string;
-const CalendarInlineExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Calendar/Calendar.Inline.Example.tsx') as string;
+const CalendarButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Calendar/Calendar.Button.Example.tsx') as string;
+const CalendarInlineExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Calendar/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 
 export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Calendar',
   examples: [
     {
       title: 'Inline Calendar',
@@ -232,12 +231,10 @@ export const CalendarPageProps: IDocPageProps = {
       ),
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Calendar/docs/CalendarOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Calendar/docs/CalendarOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Calendar/docs/CalendarBestPractices.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react/Calendar/docs/CalendarBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

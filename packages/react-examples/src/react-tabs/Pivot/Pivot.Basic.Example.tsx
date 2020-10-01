@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ILabelStyles, IStyleSet, Label } from '@fluentui/react';
+import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },

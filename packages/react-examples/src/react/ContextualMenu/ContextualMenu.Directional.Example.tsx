@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import {
   ContextualMenuItemType,
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Dropdown, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/ContextualMenu';
+import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
+import { getRTL } from '@fluentui/react/lib/Utilities';
+import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { useBoolean } from '@uifabric/react-hooks';
 
 export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { LayerHost, ILayerProps } from 'office-ui-fabric-react/lib/Layer';
-import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { IFocusTrapZoneProps } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { LayerHost, ILayerProps } from '@fluentui/react/lib/Layer';
+import { Panel } from '@fluentui/react/lib/Panel';
+import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { Customizer } from '@fluentui/react/lib/Utilities';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
 export const LayerCustomizedExample: React.FunctionComponent = () => {

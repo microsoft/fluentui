@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 

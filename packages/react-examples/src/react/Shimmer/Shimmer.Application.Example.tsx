@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from 'office-ui-fabric-react/lib/index';
-import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
+import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react/lib/index';
+import { ShimmeredDetailsList } from '@fluentui/react/lib/ShimmeredDetailsList';
 import { useSetInterval, useConst } from '@uifabric/react-hooks';
 
 interface IShimmerApplicationExampleState {

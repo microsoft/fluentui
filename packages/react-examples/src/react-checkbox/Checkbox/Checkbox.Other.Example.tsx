@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Checkbox, ICheckboxProps } from '@fluentui/react-checkbox';
+import { Link } from '@fluentui/react/lib/Link';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 // Optional extra props to pass through to the input element
 const inputProps: ICheckboxProps['inputProps'] = {

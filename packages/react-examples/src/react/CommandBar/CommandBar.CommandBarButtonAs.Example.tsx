@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Coachmark } from 'office-ui-fabric-react/lib/Coachmark';
-import { IComponentAsProps, IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { Coachmark } from '@fluentui/react/lib/Coachmark';
+import { IComponentAsProps, IComponentAs } from '@fluentui/react/lib/Utilities';
+import { TeachingBubbleContent } from '@fluentui/react/lib/TeachingBubble';
+import { CommandBarButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 interface IIndividualCommandBarButtonAsExampleProps {
   onDismissCoachmark: () => void;

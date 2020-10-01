@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { IContextualMenuProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 
 const textFieldStyles: Partial<ITextFieldStyles> = {
   subComponentStyles: {

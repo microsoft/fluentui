@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { lorem } from '@uifabric/example-data';
-import { ScrollablePane, IScrollablePaneStyles } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
+import { ScrollablePane, IScrollablePaneStyles } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
 
 export interface IScrollablePaneExampleItem {
   color: string;

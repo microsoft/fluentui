@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { TextField, MaskedTextField } from '@fluentui/react/lib/TextField';
+import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
 
 const stackTokens = { childrenGap: 50 };
 const iconProps = { iconName: 'Calendar' };

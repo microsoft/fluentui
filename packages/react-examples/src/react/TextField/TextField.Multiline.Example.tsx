@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { useBoolean } from '@uifabric/react-hooks';
 import { lorem } from '@uifabric/example-data';
-import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const stackTokens = { childrenGap: 50 };

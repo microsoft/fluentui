@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Label } from '@fluentui/react/lib/Label';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { useId } from '@uifabric/react-hooks';
 
 export const LabelBasicExample = () => {

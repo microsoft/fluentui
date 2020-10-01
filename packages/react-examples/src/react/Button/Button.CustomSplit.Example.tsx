@@ -6,7 +6,7 @@ import {
   Label,
   IContextualMenuProps,
   IIconProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

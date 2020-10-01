@@ -12,7 +12,7 @@ import {
   FontWeights,
   Link,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [

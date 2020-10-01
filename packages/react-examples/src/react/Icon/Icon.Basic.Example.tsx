@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { FontIcon } from '@fluentui/react/lib/Icon';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const iconClass = mergeStyles({
   fontSize: 50,

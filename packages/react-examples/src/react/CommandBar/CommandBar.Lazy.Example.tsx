@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
+import { ContextualMenuItemType } from '@fluentui/react/lib/ContextualMenu';
 
 export const CommandBarLazyExample: React.FunctionComponent = () => {
   const [menuItems, setMenuItems] = React.useState<ICommandBarItemProps[] | undefined>(undefined);

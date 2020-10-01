@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MaskedTextField, Stack } from 'office-ui-fabric-react';
+import { MaskedTextField, Stack } from '@fluentui/react';
 
 const maskFormat: { [key: string]: RegExp } = {
   '*': /[a-zA-Z0-9_]/,

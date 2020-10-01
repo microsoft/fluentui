@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import {
   TooltipHost,
   TooltipDelay,
   DirectionalHint,
   ITooltipProps,
   ITooltipHostStyles,
-} from 'office-ui-fabric-react/lib/Tooltip';
+} from '@fluentui/react/lib/Tooltip';
 import { useId } from '@uifabric/react-hooks';
 
 const tooltipProps: ITooltipProps = {

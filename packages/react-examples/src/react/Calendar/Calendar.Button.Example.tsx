@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
+import { Calendar, DayOfWeek } from '@fluentui/react/lib/Calendar';
+import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const DayPickerStrings = {

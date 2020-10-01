@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { GroupedList } from 'office-ui-fabric-react/lib/GroupedList';
-import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
-import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { GroupedList } from '@fluentui/react/lib/GroupedList';
+import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
+import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 

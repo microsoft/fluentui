@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@uifabric/experiments';
-import { Spinner, Stack, IStackProps } from 'office-ui-fabric-react';
+import { Spinner, Stack, IStackProps } from '@fluentui/react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 

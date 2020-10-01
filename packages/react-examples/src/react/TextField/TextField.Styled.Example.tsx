@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ITextFieldStyleProps, ITextFieldStyles, TextField } from 'office-ui-fabric-react/lib/TextField';
-import { ILabelStyles, ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
-import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { ITextFieldStyleProps, ITextFieldStyles, TextField } from '@fluentui/react/lib/TextField';
+import { ILabelStyles, ILabelStyleProps } from '@fluentui/react/lib/Label';
+import { Text, ITextStyles } from '@fluentui/react/lib/Text';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 const textStyles: Partial<ITextStyles> = { root: { maxWidth: 600 } };
 

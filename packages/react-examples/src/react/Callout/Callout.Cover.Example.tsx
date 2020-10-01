@@ -8,7 +8,7 @@ import {
   mergeStyleSets,
   FontWeights,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [

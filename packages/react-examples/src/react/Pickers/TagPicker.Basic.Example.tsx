@@ -1,14 +1,8 @@
 import * as React from 'react';
 
-import {
-  TagPicker,
-  IBasePicker,
-  ITag,
-  IInputProps,
-  IBasePickerSuggestionsProps,
-} from 'office-ui-fabric-react/lib/Pickers';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { TagPicker, IBasePicker, ITag, IInputProps, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const rootClass = mergeStyles({

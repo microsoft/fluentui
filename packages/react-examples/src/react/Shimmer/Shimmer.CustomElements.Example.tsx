@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const wrapperClass = mergeStyles({
   padding: 2,

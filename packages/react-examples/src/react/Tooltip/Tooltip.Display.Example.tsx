@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TooltipHost, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { useId } from '@uifabric/react-hooks';
 
 const theme = getTheme();

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
-import { DefaultButton, IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { TextField, ITextFieldProps } from '@fluentui/react/lib/TextField';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
+import { Callout } from '@fluentui/react/lib/Callout';
+import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
+import { Text } from '@fluentui/react/lib/Text';
+import { IRenderFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { getTheme, FontWeights, ITheme } from '@fluentui/react/lib/Styling';
 import { useBoolean, useId } from '@uifabric/react-hooks';
 
 export interface ITextFieldCustomRenderExampleState {

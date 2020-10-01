@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { css, createArray } from '@fluentui/react/lib/Utilities';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { MarqueeSelection, Selection, IObjectWithKey } from '@fluentui/react/lib/MarqueeSelection';
+import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useBoolean, useConst, useForceUpdate } from '@uifabric/react-hooks';
 
 interface IPhoto extends IObjectWithKey {

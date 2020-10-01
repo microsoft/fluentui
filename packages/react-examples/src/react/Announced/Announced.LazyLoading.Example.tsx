@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import { createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Announced } from '@fluentui/react/lib/Announced';
+import { createArray } from '@fluentui/react/lib/Utilities';
+import { Image } from '@fluentui/react/lib/Image';
+import { FocusZone } from '@fluentui/react/lib/FocusZone';
+import { Text } from '@fluentui/react/lib/Text';
+import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean, useSetInterval, useConst } from '@uifabric/react-hooks';
 
 const PHOTO_COUNT = 40;

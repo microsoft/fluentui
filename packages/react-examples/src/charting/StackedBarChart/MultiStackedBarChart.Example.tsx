@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [

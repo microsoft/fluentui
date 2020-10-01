@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 import { DropdownBasicExample } from './Dropdown.Basic.Example';
 import { DropdownControlledExample } from './Dropdown.Controlled.Example';
@@ -8,18 +8,17 @@ import { DropdownCustomExample } from './Dropdown.Custom.Example';
 import { DropdownErrorExample } from './Dropdown.Error.Example';
 import { DropdownRequiredExample } from './Dropdown.Required.Example';
 
-const DropdownBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.Basic.Example.tsx') as string;
-const DropdownControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.Controlled.Example.tsx') as string;
-const DropdownControlledMultiExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.ControlledMulti.Example.tsx') as string;
-const DropdownCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.Custom.Example.tsx') as string;
-const DropdownErrorExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.Error.Example.tsx') as string;
-const DropdownRequiredExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/Dropdown.Required.Example.tsx') as string;
+const DropdownBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.Basic.Example.tsx') as string;
+const DropdownControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.Controlled.Example.tsx') as string;
+const DropdownControlledMultiExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.ControlledMulti.Example.tsx') as string;
+const DropdownCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.Custom.Example.tsx') as string;
+const DropdownErrorExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.Error.Example.tsx') as string;
+const DropdownRequiredExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dropdown/Dropdown.Required.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
   componentName: 'Dropdown',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Dropdown',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Dropdown',
   examples: [
     {
       title: 'Basic Dropdowns',
@@ -57,12 +56,10 @@ export const DropdownPageProps: IDocPageProps = {
       ),
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/docs/DropdownOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Dropdown/docs/DropdownOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Dropdown/docs/DropdownBestPractices.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react/Dropdown/docs/DropdownBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

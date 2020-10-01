@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack, IStackProps, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Slider } from '@fluentui/react/lib/Slider';
+import { Stack, IStackProps, IStackStyles, IStackTokens } from '@fluentui/react/lib/Stack';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { range } from '@uifabric/example-data';
 
 export type Overflow = 'visible' | 'auto' | 'hidden';

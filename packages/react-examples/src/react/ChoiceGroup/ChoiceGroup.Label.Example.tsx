@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Label } from '@fluentui/react/lib/Label';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { useId } from '@uifabric/react-hooks';
 
 const options: IChoiceGroupOption[] = [

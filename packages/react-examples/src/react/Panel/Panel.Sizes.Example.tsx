@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Link } from '@fluentui/react/lib/Link';
 import { useBoolean } from '@uifabric/react-hooks';
 
 // The panel type and description are passed in by the PanelSizesExample component (later in this file)

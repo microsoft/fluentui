@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { Breadcrumb, IBreadcrumbItem } from '@fluentui/react/lib/Breadcrumb';
+import { Label, ILabelStyles } from '@fluentui/react/lib/Label';
 
 const labelStyles: Partial<ILabelStyles> = {
   root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } },

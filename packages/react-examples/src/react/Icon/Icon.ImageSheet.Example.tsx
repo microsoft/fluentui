@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ImageIcon } from 'office-ui-fabric-react/lib/Icon';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { ImageIcon } from '@fluentui/react/lib/Icon';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 import { TestImages } from '@uifabric/example-data';
 
 const classNames = mergeStyleSets({

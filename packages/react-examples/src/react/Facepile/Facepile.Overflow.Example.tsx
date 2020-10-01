@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Facepile, OverflowButtonType } from '@fluentui/react/lib/Facepile';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Slider } from '@fluentui/react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const styles = mergeStyleSets({
   container: {

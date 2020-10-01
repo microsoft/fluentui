@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav, INavStyles, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
 
 const navStyles: Partial<INavStyles> = { root: { width: 300 } };
 

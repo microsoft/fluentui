@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { List, ScrollToMode, IList } from 'office-ui-fabric-react/lib/List';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { List, ScrollToMode, IList } from '@fluentui/react/lib/List';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, getTheme, normalize } from '@fluentui/react/lib/Styling';
 import { useConst } from '@uifabric/react-hooks';
 
 const evenItemHeight = 25;

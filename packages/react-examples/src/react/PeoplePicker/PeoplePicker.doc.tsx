@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 import { PeoplePickerNormalExample } from './PeoplePicker.Normal.Example';
 import { PeoplePickerCompactExample } from './PeoplePicker.Compact.Example';
@@ -9,19 +9,18 @@ import { PeoplePickerLimitedSearchExample } from './PeoplePicker.LimitedSearch.E
 import { PeoplePickerProcessSelectionExample } from './PeoplePicker.ProcessSelection.Example';
 import { PeoplePickerControlledExample } from './PeoplePicker.Controlled.Example';
 
-const PeoplePickerNormalExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Normal.Example.tsx') as string;
-const PeoplePickerCompactExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Compact.Example.tsx') as string;
-const PeoplePickerListExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.List.Example.tsx') as string;
-const PeoplePickerPreselectedItemsExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.PreselectedItems.Example.tsx') as string;
-const PeoplePickerLimitedSearchExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.LimitedSearch.Example.tsx') as string;
-const PeoplePickerProcessSelectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.ProcessSelection.Example.tsx') as string;
-const PeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/PeoplePicker.Controlled.Example.tsx') as string;
+const PeoplePickerNormalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.Normal.Example.tsx') as string;
+const PeoplePickerCompactExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.Compact.Example.tsx') as string;
+const PeoplePickerListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.List.Example.tsx') as string;
+const PeoplePickerPreselectedItemsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.PreselectedItems.Example.tsx') as string;
+const PeoplePickerLimitedSearchExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.LimitedSearch.Example.tsx') as string;
+const PeoplePickerProcessSelectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.ProcessSelection.Example.tsx') as string;
+const PeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/PeoplePicker.Controlled.Example.tsx') as string;
 
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
   componentName: 'PeoplePicker',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/PeoplePicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/PeoplePicker',
   examples: [
     {
       title: 'Normal People Picker',
@@ -60,14 +59,12 @@ export const PeoplePickerPageProps: IDocPageProps = {
     },
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts'),
+    require<string>('!raw-loader!@fluentui/react-internal/src/components/pickers/BasePicker.types.ts'),
   ],
-  overview: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/docs/PeoplePickerOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/PeoplePicker/docs/PeoplePickerBestPractices.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

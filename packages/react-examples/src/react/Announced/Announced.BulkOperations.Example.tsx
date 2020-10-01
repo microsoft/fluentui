@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { Announced } from '@fluentui/react/lib/Announced';
 import { useConst } from '@uifabric/react-hooks';
-import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { createArray } from 'office-ui-fabric-react/lib/Utilities';
+import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import { Selection } from '@fluentui/react/lib/Selection';
+import { Text } from '@fluentui/react/lib/Text';
+import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { createArray } from '@fluentui/react/lib/Utilities';
 
 interface IExampleItem {
   key: string;
