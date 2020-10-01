@@ -3,9 +3,11 @@ import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
-  const { theme, rootIsTabs, rootIsLarge } = props;
+  const { theme, linkFormat, linkSize } = props;
   const { semanticColors } = theme;
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
+  const rootIsTabs = linkFormat === 'tabs';
+  const rootIsLarge = linkSize === 'large';
 
   return {
     root: [
