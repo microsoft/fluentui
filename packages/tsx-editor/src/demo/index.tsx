@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import { mergeStyles, initializeIcons, Fabric } from 'office-ui-fabric-react';
+import { mergeStyles, initializeIcons, Fabric } from '@fluentui/react';
 
 initializeIcons();
 
