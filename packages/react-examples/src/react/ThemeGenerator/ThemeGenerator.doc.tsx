@@ -17,7 +17,7 @@ import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../TeachingBubble/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextField/TextField.Basic.Example';
-import { ToggleBasicExample } from '../Toggle/Toggle.Basic.Example';
+import { ToggleBasicExample } from '../../react-toggle/Toggle/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/ProgressIndicator.Basic.Example';
 import { Async } from '@uifabric/utilities';
 
