@@ -44,14 +44,9 @@ const requiredProps: { [key: string]: any } = {
   ContextualMenu: {
     items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }],
   },
-  DetailsList: listProps,
   ExpandingCard: {
     onRenderCompactCard: () => null,
     onRenderExpandedCard: () => null,
-  },
-  GroupedList: {
-    ...listProps,
-    groups: [],
   },
   HoverCard: {
     target: { __events__: {} },
@@ -98,10 +93,8 @@ const requiredProps: { [key: string]: any } = {
  * so the test needs to look for className on the child props object that has the given class name
  */
 const classNameSelectors: { [key: string]: string } = {
-  Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
   ContextualMenu: 'ms-ContextualMenu',
-  DetailsList: 'ms-DetailsList',
   ExpandingCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',

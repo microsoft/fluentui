@@ -147,11 +147,6 @@ const mockNodeComponents = ['ScrollablePane'];
 /** Map from component name to alternative package name from which it should import a version file */
 const componentPackageMap: { [componentName: string]: string } = {
   FocusZone: '@fluentui/react-focus',
-  ChoiceGroupOption: '@fluentui/react',
-  PersonaPresence: '@fluentui/react',
-
-  Dropdown: '@fluentui/react',
-  OverflowSet: '@fluentui/react',
 };
 
 /**
@@ -310,13 +305,17 @@ describe('Top Level Component File Conformance', () => {
       //    import './version'; or
       // 2. Include the components unique package in componentPackageMap.
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const packages = (window as any).__packages__ || {};
       try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        expect((window as any).__packages__[packageName]).not.toBeUndefined();
+        expect(packages[packageName]).not.toBeUndefined();
       } catch (e) {
-        throw new Error(`Something went wrong when checking the version import.
-        Check to see if your component's top level file is importing a version file
-        or if is from a unique package besides react-next.`);
+        throw new Error(
+          `Something went wrong when checking the version import. ` +
+            `Check to see if your component's top level file is importing a version file ` +
+            `or if is from a unique package besides react-next.\n\n` +
+            `These are the packages defined:\n${Object.keys(packages).join('\n')}`,
+        );
       }
     });
   });
