@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "custom callout for area chart and line chart example code updated",
+  "packageName": "@fluentui/react-examples",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-28T11:07:23.919Z"
+}
