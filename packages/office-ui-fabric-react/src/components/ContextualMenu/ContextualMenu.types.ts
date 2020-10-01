@@ -564,7 +564,7 @@ export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The optional section title.
    */
-  title?: string;
+  title?: string | IContextualMenuItem;
 
   /**
    * If set to true, the section will display a divider at the top of the section.

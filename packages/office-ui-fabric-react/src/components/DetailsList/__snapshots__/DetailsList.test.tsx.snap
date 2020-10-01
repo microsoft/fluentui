@@ -1,5 +1,1293 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DetailsList handles updates to items and groups 1`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={9}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone109"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection110"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A1
+                                </div>
+                                <div>
+                                  B1
+                                </div>
+                                <div>
+                                  C1
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection111"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A2
+                                </div>
+                                <div>
+                                  B2
+                                </div>
+                                <div>
+                                  C2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={2}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 3
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection112"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A3
+                                </div>
+                                <div>
+                                  B3
+                                </div>
+                                <div>
+                                  C3
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={3}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 4
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection113"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A4
+                                </div>
+                                <div>
+                                  B4
+                                </div>
+                                <div>
+                                  C4
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList handles updates to items and groups 2`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={9}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone109"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection110"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A1
+                                </div>
+                                <div>
+                                  B1
+                                </div>
+                                <div>
+                                  C1
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection111"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A2
+                                </div>
+                                <div>
+                                  B2
+                                </div>
+                                <div>
+                                  C2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={2}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 3
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection112"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A3
+                                </div>
+                                <div>
+                                  B3
+                                </div>
+                                <div>
+                                  C3
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={3}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        one 4
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection113"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A4
+                                </div>
+                                <div>
+                                  B4
+                                </div>
+                                <div>
+                                  C4
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList handles updates to items and groups 3`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={7}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone109"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection114"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D1
+                                </div>
+                                <div>
+                                  E1
+                                </div>
+                                <div>
+                                  F1
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D2
+                                </div>
+                                <div>
+                                  E2
+                                </div>
+                                <div>
+                                  F2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection115"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D3
+                                </div>
+                                <div>
+                                  E3
+                                </div>
+                                <div>
+                                  F3
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D4
+                                </div>
+                                <div>
+                                  E4
+                                </div>
+                                <div>
+                                  F4
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList handles updates to items and groups 4`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={7}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone109"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection114"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D1
+                                </div>
+                                <div>
+                                  E1
+                                </div>
+                                <div>
+                                  F1
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D2
+                                </div>
+                                <div>
+                                  E2
+                                </div>
+                                <div>
+                                  F2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection115"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D3
+                                </div>
+                                <div>
+                                  E3
+                                </div>
+                                <div>
+                                  F3
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  D4
+                                </div>
+                                <div>
+                                  E4
+                                </div>
+                                <div>
+                                  F4
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DetailsList renders List correctly 1`] = `
 <div
   className="ms-Viewport"
@@ -4646,7 +5934,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={1}
+      aria-colcount={2}
       aria-readonly="true"
       aria-rowcount={8}
       role="grid"
@@ -4750,6 +6038,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 }
             data-is-focusable={true}
             onClick={[Function]}
+            role="columnheader"
           >
             <i
               aria-hidden={true}
@@ -5107,6 +6396,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         data-is-focusable={true}
                         onClick={[Function]}
                         onKeyUp={[Function]}
+                        role="row"
                         style={Object {}}
                       >
                         <div
@@ -5117,6 +6407,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 display: flex;
                                 height: 48px;
                               }
+                          role="presentation"
                         >
                           <div
                             className=
@@ -5134,6 +6425,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 .ms-Icon--Tag {
                                   position: absolute;
                                 }
+                            role="presentation"
                           >
                             <i
                               aria-hidden={true}
@@ -5153,77 +6445,81 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               
                             </i>
                           </div>
-                          <button
-                            aria-controls="GroupedListSection18"
-                            aria-expanded={true}
-                            aria-label="expand collapse group"
-                            className=
-                                ms-GroupHeader-expand
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  color: #605e5c;
-                                  cursor: default;
-                                  display: flex;
-                                  font-size: 12px;
-                                  height: 48px;
-                                  justify-content: center;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  width: 36px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                &:hover {
-                                  background-color: #edebe9;
-                                }
-                                &:active {
-                                  background-color: #e1dfdd;
-                                }
-                            data-is-focusable={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons-3";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                    transform-origin: 50% 50%;
-                                    transform: rotate(90deg);
-                                    transition: transform .1s linear;
-                                  }
-                              data-icon-name="ChevronRightMed"
-                            >
-                              
-                            </i>
-                          </button>
                           <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -5235,6 +6531,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            role="gridcell"
                           >
                             <span>
                               Group 0
@@ -5259,7 +6556,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection18"
-                        role="grid"
+                        role="presentation"
                       >
                         <div
                           className="ms-List-surface"
@@ -5277,6 +6574,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={1}
                                 aria-selected={false}
                                 className=
@@ -5363,6 +6661,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5381,7 +6680,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5462,6 +6761,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={2}
                                 aria-selected={false}
                                 className=
@@ -5548,6 +6848,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5566,7 +6867,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -5721,6 +7022,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         data-is-focusable={true}
                         onClick={[Function]}
                         onKeyUp={[Function]}
+                        role="row"
                         style={Object {}}
                       >
                         <div
@@ -5731,6 +7033,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 display: flex;
                                 height: 48px;
                               }
+                          role="presentation"
                         >
                           <div
                             className=
@@ -5748,6 +7051,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 .ms-Icon--Tag {
                                   position: absolute;
                                 }
+                            role="presentation"
                           >
                             <i
                               aria-hidden={true}
@@ -5767,77 +7071,81 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               
                             </i>
                           </div>
-                          <button
-                            aria-controls="GroupedListSection19"
-                            aria-expanded={true}
-                            aria-label="expand collapse group"
-                            className=
-                                ms-GroupHeader-expand
-                                {
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  color: #605e5c;
-                                  cursor: default;
-                                  display: flex;
-                                  font-size: 12px;
-                                  height: 48px;
-                                  justify-content: center;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  width: 36px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                &:hover {
-                                  background-color: #edebe9;
-                                }
-                                &:active {
-                                  background-color: #e1dfdd;
-                                }
-                            data-is-focusable={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons-3";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                    transform-origin: 50% 50%;
-                                    transform: rotate(90deg);
-                                    transition: transform .1s linear;
-                                  }
-                              data-icon-name="ChevronRightMed"
-                            >
-                              
-                            </i>
-                          </button>
                           <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={1}
                             className=
                                 ms-GroupHeader-title
                                 {
@@ -5849,6 +7157,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            role="gridcell"
                           >
                             <span>
                               Group 1
@@ -5873,7 +7182,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection19"
-                        role="grid"
+                        role="presentation"
                       >
                         <div
                           className="ms-List-surface"
@@ -5891,6 +7200,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
                                 className=
@@ -5977,6 +7287,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -5995,7 +7306,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -6076,6 +7387,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
                                 className=
@@ -6162,6 +7474,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -6180,7 +7493,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -6261,6 +7574,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
+                                aria-level={2}
                                 aria-rowindex={5}
                                 aria-selected={false}
                                 className=
@@ -6347,6 +7661,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               >
                                 <span
                                   className="ms-GroupSpacer"
+                                  role="gridcell"
                                   style={
                                     Object {
                                       "display": "inline-block",
@@ -6365,7 +7680,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={1}
+                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell

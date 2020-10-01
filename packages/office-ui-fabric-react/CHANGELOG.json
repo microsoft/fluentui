@@ -2,6 +2,162 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2020 12:27:45 GMT",
+      "tag": "office-ui-fabric-react_v7.144.1",
+      "version": "7.144.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix propagation of GroupedList state",
+            "author": "tmichon@microsoft.com",
+            "commit": "93655f3436b97f11e4f058344cd0233c37af1ded",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Sep 2020 12:27:52 GMT",
+      "tag": "office-ui-fabric-react_v7.144.0",
+      "version": "7.144.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update section header type to allow for it to be an item, to get itemProps",
+            "author": "tabrumle@microsoft.com",
+            "commit": "d27600ab0a00c50e482f8d77ff79c120d4cb462c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Sep 2020 12:27:17 GMT",
+      "tag": "office-ui-fabric-react_v7.143.0",
+      "version": "7.143.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Ensure GroupedList version is invalidated when parent list is invalidated",
+            "author": "tmichon@microsoft.com",
+            "commit": "3ce8f97fc9c9156323b4322fb50847b1cb388ea8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "office-ui-fabric-react_v7.142.1",
+      "version": "7.142.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove incorrect react-icons dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "511a202a3a3d2ff1c3a1e8ed41cb779adaf82ef2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "office-ui-fabric-react_v7.142.0",
+      "version": "7.142.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating FocusTrapZone.test 'Focusing the FTZ' tests to use componentRef instead of ref.",
+            "author": "czearing@outlook.com",
+            "commit": "6366313ff72aecf5b0d33fa8c87f27a374aa416b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix incorrect hover behavior during menu animation",
+            "author": "behowell@microsoft.com",
+            "commit": "730f0fc071f468fe6b3f552649b342f0131e3d25",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: Expose onRenderColorItem and override",
+            "author": "email not defined",
+            "commit": "1a84adac82add903a9deb6e430187e676aee40c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Breadcrumb: add role prop for items",
+            "author": "erabelle@microsoft.com",
+            "commit": "1a6887223e8223786236b6276754bbab6fc90790",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "office-ui-fabric-react_v7.141.0",
+      "version": "7.141.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update GroupList and Grouped DetailsList semantics to work with screen readers",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "452a387dd9353763c6c2adc8946a9378fd654994",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Support StrictMode in DetailsList hierarchy",
+            "author": "tmichon@microsoft.com",
+            "commit": "9ae733146fa3d9d71cf70cec6f7130e9de6e6466",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add Callout prop allowDismissOnTargetClick boolean.",
+            "author": "taenri@microsoft.com",
+            "commit": "b9e8c208d1d7139cccb58b17f323b696e4fb362a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Adding an elementRef to BaseButton.tsx to allow access to the root DOM element.",
+            "author": "czearing@outlook.com",
+            "commit": "ec1e6f7166c7d8d3044e6ed7d0fe77b613fb5a5d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: reordering FocusZone and SelectionZone to resolve onItemInvoked not being called on pressing enter on an item.",
+            "author": "dzearing@hotmail.com",
+            "commit": "a39779555a6fe5a8c0a33856190564a42f760fe2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix GroupedList expand/collapse behavior",
+            "author": "tmichon@microsoft.com",
+            "commit": "242e7b237a025a7f534148d76f7822fb469f130d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Removing an unused eslint-disable rule from Modal.base.tsx",
+            "author": "czearing@outlook.com",
+            "commit": "4c2969ca2fb4443534831ad2d615b714e42beec5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2020 00:46:56 GMT",
       "tag": "office-ui-fabric-react_v7.140.0",
       "version": "7.140.0",

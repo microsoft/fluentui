@@ -17,7 +17,7 @@ schedules:
     displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
     branches:
       include:
-        - master
+        - 7.0
 
 workspace:
   clean: all
@@ -90,7 +90,8 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y
+      git reset --hard origin/7.0
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
@@ -145,3 +146,7 @@ steps:
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'
       Gzip: false
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "area chart basic example code updated with change data button",
+  "packageName": "@fluentui/examples",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-25T05:47:11.711Z"
+}

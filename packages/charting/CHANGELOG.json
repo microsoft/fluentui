@@ -2,6 +2,44 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2020 12:27:45 GMT",
+      "tag": "@uifabric/charting_v4.3.0",
+      "version": "4.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Vertical bar chart code refactor and cartesian implemented in vertical chart base file.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "76f60a0ef82dd2ee380b185ba14ed39a5a63fe7a",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "area chart redraw issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4069d504f7bb55b70c7a1f55d5fdb841da2d4d5d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/charting_v4.2.4",
+      "version": "4.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Sep 2020 12:22:29 GMT",
       "tag": "@uifabric/charting_v4.2.0",
       "version": "4.2.0",

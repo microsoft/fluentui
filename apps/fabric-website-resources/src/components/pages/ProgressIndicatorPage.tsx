@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { ProgressIndicatorPageProps } from 'office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicator.doc';
+import { ProgressIndicatorPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ProgressIndicator/ProgressIndicator.doc';
 
 export const ProgressIndicatorPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

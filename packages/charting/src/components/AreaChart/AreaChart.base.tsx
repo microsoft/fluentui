@@ -4,15 +4,16 @@ import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CartesianChart,
+  IChartProps,
   IAreaChartProps,
-  IChildProps,
   IRefArrayData,
   IBasestate,
   ILineChartDataPoint,
   ILineChartPoints,
-} from '@uifabric/charting';
+} from '../../index';
 import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
 import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
@@ -41,27 +42,21 @@ export interface IAreaChartState extends IBasestate {
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  private _points: ILineChartPoints[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private dataSet: any;
+  private _createSet: (data: IChartProps) => { colors: string[]; stackedInfo: any; calloutPoints: any };
   private _colors: string[];
-  private _keys: string[];
   private _refArray: IRefArrayData[];
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
   private _uniqueCallOutID: string;
-  private containerHeight: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _stackedData: any;
   private _chart: JSX.Element[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _xAxisScale: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _yAxisScale: any;
 
   public constructor(props: IAreaChartProps) {
     super(props);
+    this._createSet = memoizeFunction((data: IChartProps) => this._createDataSet(data.lineChartData!));
     this.state = {
       activeLegend: '',
       hoverXValue: '',
@@ -79,34 +74,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
     });
     this._refArray = [];
-    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
-    this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
-    this.dataSet = this._createDataSet();
-  }
-
-  public componentDidUpdate(prevProps: IAreaChartProps): void {
-    if (
-      prevProps.data !== this.props.data ||
-      prevProps.height !== this.props.height ||
-      prevProps.width !== this.props.width
-    ) {
-      this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-      this.dataSet = this._createDataSet();
-      this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
-      this._drawGraph(this.containerHeight, this._xAxisScale, this._yAxisScale);
-    }
   }
 
   public render(): JSX.Element {
-    const isXAxisDateType = getXAxisType(this._points);
-    this._keys = this._createKeys();
-    this._colors = this._getColors();
-    const stackedInfo = this._getStackedData();
+    const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+    this._calloutPoints = calloutPoints;
+    const isXAxisDateType = getXAxisType(this.props.data.lineChartData!);
+    this._colors = colors;
     this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
+    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, this.props.data.lineChartData!);
 
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -128,7 +107,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return (
       <CartesianChart
         {...this.props}
-        points={this._points}
+        points={this.props.data.lineChartData!}
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
@@ -139,21 +118,46 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         getGraphData={this._getGraphData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          this.containerHeight = props.containerHeight!;
-          this._xAxisScale = props.xScale!;
-          this._yAxisScale = props.yScale!;
+        children={() => {
           return <g>{this._chart}</g>;
         }}
       />
     );
   }
 
-  private _createDataSet = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getStackedData = (keys: string[], dataSet: any) => {
+    const stackedValues = d3Stack().keys(keys)(dataSet);
+    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
+    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    stackedValues.forEach((layer: any) => {
+      const currentStack: IAreaChartDataSetPoint[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      layer.forEach((d: any) => {
+        currentStack.push({
+          values: d,
+          xVal: d.data.xVal,
+        });
+      });
+      stackedData.push(currentStack);
+    });
+    return {
+      stackedData,
+      maxOfYVal,
+    };
+  };
+
+  private _createDataSet = (points: ILineChartPoints[]) => {
     const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
-    this._points.length &&
-      this._points.forEach((singleChartPoint: ILineChartPoints) => {
+    const colors: string[] = [];
+    const calloutPoints = calloutData(points!);
+
+    points &&
+      points.length &&
+      points.forEach((singleChartPoint: ILineChartPoints) => {
+        colors.push(singleChartPoint.color);
         allChartPoints.push(...singleChartPoint.data);
       });
 
@@ -177,42 +181,23 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) !== val,
       );
     }
-    return dataSet;
-  };
 
-  private _getColors = (): string[] => {
-    return this._points.map((singlePoint: ILineChartPoints) => singlePoint.color);
-  };
-
-  private _createKeys = (): string[] => {
-    const keysLength: number = Object.keys(this.dataSet[0]).length;
+    // get keys from dataset, used to create stacked data
+    const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
     const keys: string[] = [];
     for (let i = 0; i < keysLength - 1; i++) {
       const keyVal = `chart${i}`;
       keys.push(keyVal);
     }
-    return keys;
-  };
 
-  private _getStackedData = () => {
-    const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedValues.forEach((layer: any) => {
-      const currentStack: IAreaChartDataSetPoint[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      layer.forEach((d: any) => {
-        currentStack.push({
-          values: d,
-          xVal: d.data.xVal,
-        });
-      });
-      stackedData.push(currentStack);
-    });
+    // Stacked Info used to draw graph
+    const stackedInfo = this._getStackedData(keys, dataSet);
+
     return {
-      stackedData,
-      maxOfYVal,
+      colors,
+      keys,
+      stackedInfo,
+      calloutPoints,
     };
   };
 
@@ -259,8 +244,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   }
 
-  private _getLegendData = (palette: IPalette): JSX.Element => {
-    const data = this._points;
+  private _getLegendData = (palette: IPalette, points: ILineChartPoints[]): JSX.Element => {
+    const data = points;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
@@ -402,6 +387,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any): JSX.Element[] => {
+    const points = this.props.data.lineChartData!;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
@@ -421,7 +407,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           key={`${index}-graph-${this._uniqueIdForGraph}`}
           d={area(singleStackedData)!}
           fill={this._colors[index]}
-          fillOpacity={this._getOpacity(this._points[index].legend)}
+          fillOpacity={this._getOpacity(points[index]!.legend)}
           strokeWidth={3}
         />,
       );
@@ -434,8 +420,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
             const xLineVal = xScale(singlePoint.xVal);
-            const xAxisCalloutData = this._points[index].data[index].xAxisCalloutData!;
-            lineColor = this._points[index].color;
+            const xAxisCalloutData = points[index]!.data[index].xAxisCalloutData!;
+            lineColor = points[index]!.color;
             return (
               <circle
                 key={circleId}
@@ -446,7 +432,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 r={this.state.activeCircleId === circleId ? 8 : 0.01}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this._getOpacityOfCircle(this._points[index].legend)}
+                visibility={this._getOpacityOfCircle(points[index]!.legend)}
                 fill={this._updateCircleFillColor(circleId, lineColor)}
                 ref={(e: SVGCircleElement | null) => {
                   this._refCallback(e!, circleId);
@@ -457,7 +443,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onBlur={this._mouseOutAction}
                 onClick={this._onDataPointClick.bind(
                   this,
-                  this._points[index].data[pointIndex].onDataPointClick!,
+                  points[index]!.data[pointIndex].onDataPointClick!,
                   circleId,
                   lineColor,
                 )}

@@ -7,7 +7,7 @@ const title = 'Template Page';
 
 // The location of the remote hosted page folder (GitHub/Azure). Used to generate the edit button for common sections.
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/PageTemplates/TemplatePage';
 
 // If multiple platforms share the same related pages, those pages can be listed in a common 'Related' file.
 // NOTE: This points to a Markdown file that does NOT live in a platform folder.

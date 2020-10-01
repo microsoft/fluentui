@@ -1,8 +1,30 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 21 Sep 2020 12:22:29 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Oct 2020 12:27:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.3.0)
+
+Thu, 01 Oct 2020 12:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.4..@uifabric/charting_v4.3.0)
+
+### Minor changes
+
+- Vertical bar chart code refactor and cartesian implemented in vertical chart base file. ([PR #15295](https://github.com/microsoft/fluentui/pull/15295) by v-jasha@microsoft.com)
+
+### Patches
+
+- area chart redraw issue resolved ([PR #15299](https://github.com/microsoft/fluentui/pull/15299) by v-jasha@microsoft.com)
+
+## [4.2.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.4)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.0..@uifabric/charting_v4.2.4)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [4.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.0)
 

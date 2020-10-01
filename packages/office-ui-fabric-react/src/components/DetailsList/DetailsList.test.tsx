@@ -1,18 +1,27 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
+import { ReactWrapper } from 'enzyme';
+import { safeMount } from '@uifabric/test-utilities';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 
-import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import {
+  IDetailsList,
+  IColumn,
+  DetailsListLayoutMode,
+  CheckboxVisibility,
+  IDetailsGroupDividerProps,
+} from './DetailsList.types';
+import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
 import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
 import { getTheme } from '../../Styling';
+import { KeyCodes } from '@uifabric/utilities';
+import { IGroup } from '../../GroupedList';
+import { IDetailsRowProps } from './DetailsRow';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -161,42 +170,67 @@ describe('DetailsList', () => {
     jest.useFakeTimers();
 
     let component: any;
-    mount(
+    safeMount(
       <DetailsList
         items={mockData(5)}
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
+      () => {
+        expect(component).toBeDefined();
+        (component as IDetailsList).focusIndex(2);
+        setTimeout(() => {
+          expect(
+            (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+          ).toEqual('2');
+          expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
     );
-
-    expect(component).toBeDefined();
-    (component as IDetailsList).focusIndex(2);
-    setTimeout(() => {
-      expect(
-        (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-      ).toEqual('2');
-      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-    }, 0);
-    jest.runOnlyPendingTimers();
   });
 
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];
 
-    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
-
-    expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
+      () => {
+        expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+      },
+    );
   });
 
   it('does not invoke optional onRenderMissingItem prop if no missing items are rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = mockData(5);
 
-    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
+      () => {
+        expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
+      },
+    );
+  });
 
-    expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
+  it('executes onItemInvoked when double click or enter is pressed', () => {
+    const items = mockData(5);
+    const onItemInvoked = jest.fn();
+
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+      (wrapper: ReactWrapper) => {
+        wrapper
+          .find('.ms-DetailsRow')
+          .first()
+          .simulate('dblclick')
+          .simulate('keydown', { which: KeyCodes.enter });
+
+        expect(onItemInvoked).toHaveBeenCalledTimes(2);
+      },
+    );
   });
 
   it('respects changed dragDropEvents prop on re-renders.', () => {
@@ -298,7 +332,7 @@ describe('DetailsList', () => {
     jest.useFakeTimers();
 
     let component: any;
-    mount(
+    safeMount(
       <DetailsList
         items={mockData(5)}
         componentRef={ref => (component = ref)}
@@ -307,34 +341,36 @@ describe('DetailsList', () => {
         onRenderItemColumn={onRenderColumn}
         getCellValueKey={getCellValueKey}
       />,
+      () => {
+        expect(component).toBeDefined();
+        (component as IDetailsList).focusIndex(3);
+        jest.runOnlyPendingTimers();
+        expect(
+          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+        ).toEqual('3');
+        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+
+        // Set element visibility manually as a test workaround
+        (component as IDetailsList).focusIndex(4);
+        jest.runOnlyPendingTimers();
+        ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
+        ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
+        ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
+
+        (component as IDetailsList).focusIndex(4, true);
+        jest.runOnlyPendingTimers();
+        expect((document.activeElement as HTMLElement).textContent).toEqual('4');
+        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
+      },
     );
-
-    expect(component).toBeDefined();
-    (component as IDetailsList).focusIndex(3);
-    jest.runOnlyPendingTimers();
-    expect(
-      (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-    ).toEqual('3');
-    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-
-    // Set element visibility manually as a test workaround
-    (component as IDetailsList).focusIndex(4);
-    jest.runOnlyPendingTimers();
-    ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
-    ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
-    ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
-
-    (component as IDetailsList).focusIndex(4, true);
-    jest.runOnlyPendingTimers();
-    expect((document.activeElement as HTMLElement).textContent).toEqual('4');
-    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
   });
 
   it('reset focusedItemIndex when setKey updates', () => {
     jest.useFakeTimers();
 
     let component: any;
-    const detailsList = mount(
+
+    safeMount(
       <DetailsList
         items={mockData(5)}
         setKey={'key1'}
@@ -343,29 +379,30 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
+      (wrapper: ReactWrapper) => {
+        expect(component).toBeDefined();
+        component.setState({ focusedItemIndex: 3 });
+        setTimeout(() => {
+          expect(component.state.focusedItemIndex).toEqual(3);
+        }, 0);
+        jest.runOnlyPendingTimers();
+
+        // update props to new setKey
+        const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
+        wrapper.setProps(newProps);
+        wrapper.update();
+
+        // verify that focusedItemIndex is reset to 0 and 0th row is focused
+        setTimeout(() => {
+          expect(component.state.focusedItemIndex).toEqual(0);
+          expect(
+            (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+          ).toEqual('0');
+          expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
     );
-
-    expect(component).toBeDefined();
-    component.setState({ focusedItemIndex: 3 });
-    setTimeout(() => {
-      expect(component.state.focusedItemIndex).toEqual(3);
-    }, 0);
-    jest.runOnlyPendingTimers();
-
-    // update props to new setKey
-    const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
-    detailsList.setProps(newProps);
-    detailsList.update();
-
-    // verify that focusedItemIndex is reset to 0 and 0th row is focused
-    setTimeout(() => {
-      expect(component.state.focusedItemIndex).toEqual(0);
-      expect(
-        (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-      ).toEqual('0');
-      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-    }, 0);
-    jest.runOnlyPendingTimers();
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
@@ -373,25 +410,26 @@ describe('DetailsList', () => {
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    mount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />);
-
-    expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
-    expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+    safeMount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />, () => {
+      expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+      expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('invokes optional onRenderDetailsHeader prop to customize DetailsHeader rendering when provided', () => {
     const onRenderDetailsHeaderMock = jest.fn();
 
-    mount(
+    safeMount(
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeaderMock}
       />,
+      () => {
+        expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
+      },
     );
-
-    expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
   });
 
   it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
@@ -404,23 +442,25 @@ describe('DetailsList', () => {
       return <DetailsHeader {...props} onRenderColumnHeaderTooltip={onRenderColumnHeaderTooltipMock} />;
     };
 
-    mount(
+    safeMount(
       <DetailsList
         items={mockData(NUM_COLUMNS)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
+      () => {
+        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+      },
     );
-
-    expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
   });
 
   it('invokes optional onRenderCheckbox callback to customize checkbox rendering when provided', () => {
     const onRenderCheckboxMock = jest.fn();
     const selection = new Selection();
     const theme = getTheme();
-    mount(
+
+    safeMount(
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
@@ -430,23 +470,173 @@ describe('DetailsList', () => {
         selectionMode={SelectionMode.multiple}
         selection={selection}
       />,
+      () => {
+        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
+        expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
+
+        selection.setAllSelected(true);
+
+        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
+        expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+      },
     );
-
-    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
-    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
-
-    selection.setAllSelected(true);
-
-    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
-    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
   });
 
   it('initializes the selection mode object with the selectionMode prop', () => {
-    const component = mount(
+    safeMount(
       <DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />,
+      (wrapper: ReactWrapper) => {
+        const selectionZone = wrapper.find(SelectionZone);
+
+        expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
+      },
+    );
+  });
+
+  it('handles updates to items and groups', () => {
+    const tableOneItems = [
+      {
+        f1: 'A1',
+        f2: 'B1',
+        f3: 'C1',
+      },
+      {
+        f1: 'A2',
+        f2: 'B2',
+        f3: 'C2',
+      },
+      {
+        f1: 'A3',
+        f2: 'B3',
+        f3: 'C3',
+      },
+      {
+        f1: 'A4',
+        f2: 'B4',
+        f3: 'C4',
+      },
+    ];
+    const tableTwoItems = [
+      {
+        f1: 'D1',
+        f2: 'E1',
+        f3: 'F1',
+      },
+      {
+        f1: 'D2',
+        f2: 'E2',
+        f3: 'F2',
+      },
+      {
+        f1: 'D3',
+        f2: 'E3',
+        f3: 'F3',
+      },
+      {
+        f1: 'D4',
+        f2: 'E4',
+        f3: 'F4',
+      },
+    ];
+
+    const groupOneGroups: IGroup[] = [
+      { key: 'one-1', name: 'one 1', count: 1, startIndex: 0 },
+      { key: 'one-2', name: 'one 2', count: 1, startIndex: 1 },
+      { key: 'one-3', name: 'one 3', count: 1, startIndex: 2 },
+      { key: 'one-4', name: 'one 4', count: 1, startIndex: 3 },
+    ];
+
+    const groupTwoGroups: IGroup[] = [
+      { key: 'two-1', name: 'two 1', count: 2, startIndex: 0 },
+      { key: 'two-2', name: 'two 2', count: 2, startIndex: 2 },
+    ];
+
+    const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (headerProps: IDetailsHeaderProps) => {
+      return (
+        <div>
+          {headerProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{column.name}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderRow = (rowProps: IDetailsRowProps) => {
+      return (
+        <div>
+          {rowProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{rowProps.item[column.key]}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderGroupHeader: IRenderFunction<IDetailsGroupDividerProps> = (
+      groupDividerProps: IDetailsGroupDividerProps,
+    ) => {
+      return <div>{groupDividerProps.group?.name}</div>;
+    };
+
+    const component = renderer.create(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableOneItems}
+        groups={groupOneGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
     );
 
-    const selectionZone = component.find(SelectionZone);
-    expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // New items, same groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableTwoItems}
+        groups={groupOneGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // Same items, new groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableTwoItems}
+        groups={groupTwoGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // New items, same groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableOneItems}
+        groups={groupTwoGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

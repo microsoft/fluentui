@@ -1,9 +1,8 @@
 pr:
-  - master
-  - website-content
+  - 7.0
 
 trigger:
-  - master
+  - 7.0
 
 variables:
   - group: fabric-variables
@@ -29,25 +28,27 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
-        displayName: do syncpack and no-tslint checks
+        displayName: do syncpack and lint-files checks
 
       ## only do scoped builds with PRs
       - script: |
           yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
         displayName: build, test, lint (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-      ## duplicated build step, but without --since flag for master CI builds
+      ## duplicated build step, but without --since flag for 7.0 CI builds
       - script: |
           yarn lage build test lint --verbose --no-cache --grouped
-        displayName: build, test, lint (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: build, test, lint (7.0)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - template: .devops/templates/cleanup.yml
 
   - job: Deploy
     workspace:
@@ -66,16 +67,16 @@ jobs:
       - script: |
           yarn lage bundle --verbose --no-cache --grouped --since $(target_branch)
         displayName: bundle (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-      ## duplicated for  master CI builds
+      ## duplicated for  7.0 CI builds
       - script: |
           yarn lage bundle --verbose --no-cache --grouped
-        displayName: bundle (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: bundle (7.0)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
@@ -97,47 +98,50 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)'
 
-      - task: AzureUpload@2
-        displayName: Upload demo images (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+      - task: GithubPRStatus@0
+        displayName: 'Update PR deploy site github status'
         inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-          BlobPrefix: 'assets'
-          CacheControl: 'public, max-age=600000'
-          ContainerName: 'fabric-website' # this container has a CDN
-          SourcePath: 'packages/fluentui/docs/src/public'
-          storage: fabricweb
+          githubOwner: microsoft
+          githubRepo: fluentui
+          githubContext: 'Pull request demo site'
+          githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
+          githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-  - job: ScreenerFluent
-    workspace:
-      clean: all
-    variables:
-      - template: .devops/templates/variables.yml
-        parameters:
-          pathPrefix: SourceVersion
-    steps:
-      - template: .devops/templates/tools.yml
+      - template: .devops/templates/cleanup.yml
 
-      - script: npx midgard-yarn install
-        displayName: yarn
+  # Disable this for 7.0 because we're likely going to delete it (don't need to establish a baseline)
+  # - job: ScreenerFluent
+  #   workspace:
+  #     clean: all
+  #   variables:
+  #     - template: .devops/templates/variables.yml
+  #       parameters:
+  #         pathPrefix: SourceVersion
+  #   steps:
+  #     - template: .devops/templates/tools.yml
 
-      - script: yarn workspace @fluentui/docs vr:build
-        displayName: build FUI N* VR Test
+  #     - script: npx midgard-yarn install
+  #       displayName: yarn
 
-      - task: AzureUpload@2
-        displayName: Upload N* doc site
-        inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-          BlobPrefix: '$(deployBasePath)/react-northstar'
-          CacheControl: 'public, max-age=600000'
-          ContainerName: '$web'
-          SourcePath: 'packages/fluentui/docs/dist'
-          storage: fabricweb
+  #     - script: yarn workspace @fluentui/docs vr:build
+  #       displayName: build FUI N* VR Test
 
-      - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
+  #     - task: AzureUpload@2
+  #       displayName: Upload N* doc site
+  #       inputs:
+  #         azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+  #         BlobPrefix: '$(deployBasePath)/react-northstar'
+  #         CacheControl: 'public, max-age=600000'
+  #         ContainerName: '$web'
+  #         SourcePath: 'packages/fluentui/docs/dist'
+  #         storage: fabricweb
+
+  #     - script: yarn workspace @fluentui/docs vr:test
+  #       displayName: start FUI N* VR Test
+  #       env:
+  #         SCREENER_API_KEY: $(screener.key)
+
+  #     - template: .devops/templates/cleanup.yml
 
   - job: Screener
     workspace:
@@ -157,3 +161,5 @@ jobs:
           SCREENER_API_KEY: $(screener.key)
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - template: .devops/templates/cleanup.yml

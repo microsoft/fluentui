@@ -13,8 +13,7 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/MotionPage/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/MotionPage/docs';
 
 const PatternTable = ({ rows }) => (
   <Table

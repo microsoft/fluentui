@@ -1,9 +1,9 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { TooltipPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Tooltip/Tooltip.doc';
+import { TooltipPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Tooltip/Tooltip.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/TooltipRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TooltipPage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/TooltipPage';
 
 export const TooltipPageProps: TFabricPlatformPageProps = {
   web: {

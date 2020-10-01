@@ -5,7 +5,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PeoplePickerPage/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/PeoplePickerPage/';
 
 export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

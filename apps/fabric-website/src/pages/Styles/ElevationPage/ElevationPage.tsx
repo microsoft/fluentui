@@ -7,7 +7,7 @@ import * as styles from './ElevationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
 
 export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Sep 2020 12:27:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.121](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.121)
+
+Wed, 30 Sep 2020 12:27:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.118..@fluentui/react-next_v8.0.0-alpha.121)
+
+### Changes
+
+- update section header type to allow for it to be an item, to get itemProps ([PR #15123](https://github.com/microsoft/fluentui/pull/15123) by tabrumle@microsoft.com)
+
+## [8.0.0-alpha.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.118)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.117..@fluentui/react-next_v8.0.0-alpha.118)
+
+### Changes
+
+- Updating FocusTrapZone to a function component. ([PR #14804](https://github.com/microsoft/fluentui/pull/14804) by czearing@outlook.com)
+- Porting a fix to callout dismissal when blurring to a new window. ([PR #15161](https://github.com/microsoft/fluentui/pull/15161) by czearing@outlook.com)
+- Exposed onRenderItem function for SwatchColorPicker ([PR #15180](https://github.com/microsoft/fluentui/pull/15180) by email not defined)
+- Breadcrumb: add role prop for items ([PR #15199](https://github.com/microsoft/fluentui/pull/15199) by erabelle@microsoft.com)
+- Update release notes related to ThemeProvider. ([PR #15194](https://github.com/microsoft/fluentui/pull/15194) by xgao@microsoft.com)
+
+## [8.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.117)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.116..@fluentui/react-next_v8.0.0-alpha.117)
+
+### Changes
+
+- Delete unneeded compat exports and move button migration guide ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Porting a patch to allow SpinButton to pass event information. ([PR #15164](https://github.com/microsoft/fluentui/pull/15164) by czearing@outlook.com)
 
 ## [8.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.116)
 

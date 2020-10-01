@@ -1,8 +1,42 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.2)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.1..@uifabric/experiments_v7.33.2)
+
+### Patches
+
+- Change doc links to point to 7.0 branch ([commit](https://github.com/microsoft/fluentui/commit/3e968de0afa15de7bcc988cd04dd2ed4133068ff) by elcraig@microsoft.com)
+
+## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.1)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.0..@uifabric/experiments_v7.33.1)
+
+### Patches
+
+- fixing input width in upp ([PR #15244](https://github.com/microsoft/fluentui/pull/15244) by nebhatna@microsoft.com)
+- Replace dep `@uifabric/fluent-theme` with `@fluentui/theme` and remove legacy theme examples. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+- Renaming @fluentui/examples to @fluentui/react-examples. ([PR #15254](https://github.com/microsoft/fluentui/pull/15254) by humbertomakotomorimoto@gmail.com)
+
+## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.15..@uifabric/experiments_v7.33.0)
+
+### Minor changes
+
+- Add callback to SelectedItemsList for when item is edited ([PR #15160](https://github.com/microsoft/fluentui/pull/15160) by elvonspa@microsoft.com)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Fix bug where drag index is set to -1 when it's 0 ([PR #15225](https://github.com/microsoft/fluentui/pull/15225) by elvonspa@microsoft.com)
 
 ## [7.32.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.15)
 

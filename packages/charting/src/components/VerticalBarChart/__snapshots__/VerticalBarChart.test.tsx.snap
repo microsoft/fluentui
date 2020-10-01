@@ -16,7 +16,8 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="VerticalBarChart"
+  id="chart_1"
+  role="presentation"
 >
   <div
     className=
@@ -30,42 +31,14 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={350}
+      height={0}
       style={
         Object {
           "display": "block",
         }
       }
-      width={600}
+      width={0}
     >
-      <g
-        className=
-
-            & text {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
-              fill: rgb(179, 179, 179);
-            }
-            & line {
-              opacity: 0.1;
-              width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
-            }
-            & path {
-              display: none;
-            }
-        id="xAxisGElement"
-        transform="translate(0, 315)"
-      />
       <g
         className=
 
@@ -86,17 +59,44 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
+              opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="yAxisGElement"
-        transform="translate(40, 0)"
+        id="xAxisGElementchart_1"
+        transform="translate(0, -35)"
       />
       <g
-        id="barGElement"
-      >
+        className=
+
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
+            @media screen and (-ms-high-contrast: white-on-black){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+            & line {
+              fill: #323130;
+              opacity: 0.2;
+            }
+            @media screen and (-ms-high-contrast: white-on-black){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+        id="yAxisGElementchart_1"
+        transform="translate(40, 0)"
+      />
+      <g>
         <rect
           aria-labelledby="callout1"
           className=
@@ -140,7 +140,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
     className=
 
         {
-          margin-left: 35px;
+          margin-left: 20px;
           margin-top: 8px;
         }
   >
@@ -369,8 +369,5 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;

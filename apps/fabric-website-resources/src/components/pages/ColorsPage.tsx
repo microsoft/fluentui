@@ -22,10 +22,10 @@ import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { TeachingBubbleBasicExample } from 'office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from 'office-ui-fabric-react/lib/components/TextField/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from 'office-ui-fabric-react/lib/components/Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from 'office-ui-fabric-react/lib/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { TeachingBubbleBasicExample } from '@fluentui/react-examples/lib/office-ui-fabric-react/TeachingBubble/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '@fluentui/react-examples/lib/office-ui-fabric-react/TextField/TextField.Basic.Example';
+import { ToggleBasicExample } from '@fluentui/react-examples/lib/office-ui-fabric-react/Toggle/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '@fluentui/react-examples/lib/office-ui-fabric-react/ProgressIndicator/ProgressIndicator.Basic.Example';
 
 export interface IColorsPageState {
   themeRules: IThemeRules;
@@ -119,7 +119,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/7.0/packages/styling';
 
     return (
       <div className="ms-themer">

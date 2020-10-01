@@ -1,6 +1,5 @@
 pr:
-  - master
-  - website-content
+  - 7.0
 
 trigger: none
 
@@ -8,6 +7,9 @@ variables:
   - group: fabric-variables
 
 pool: 'Self Host Ubuntu'
+
+workspace:
+  clean: all
 
 steps:
   - template: .devops/templates/tools.yml
@@ -28,14 +30,14 @@ steps:
   # @fluentui/perf-test Baseline
   - script: |
       yarn perf:test:base
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test Base (Fluent)
 
   # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
@@ -52,7 +54,7 @@ steps:
       azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
       storage: fabricweb
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test/fluentui'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
@@ -72,35 +74,22 @@ steps:
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
 
-  - task: GithubPRStatus@0
-    displayName: 'Update Github Pull Request Status'
-    inputs:
-      githubOwner: microsoft
-      githubRepo: 'fluentui'
-      githubContext: 'Pull Request Deployed Site'
-      githubDescription: 'Click "Details" to go to the Deployed Site'
-      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
-
   - script: |
       yarn stats:build
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Bundle Statistics (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Bundle Statistics (7.0 only)
 
   - script: |
       yarn perf
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Performance Tests (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Performance Tests (7.0 only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Save Statistics to DB (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Save Statistics to DB (7.0 only)
     env:
       STATS_URI: $(STATS_URI)
 
-  - task: DeleteFiles@1
-    inputs:
-      SourceFolder: $(Build.SourcesDirectory)
-      Contents: '**/*'
-    condition: always()
+  - template: .devops/templates/cleanup.yml

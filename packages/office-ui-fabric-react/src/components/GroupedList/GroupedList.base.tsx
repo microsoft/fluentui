@@ -21,8 +21,11 @@ const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListSty
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastSelectionMode?: SelectionMode;
+  selectionMode?: IGroupedListProps['selectionMode'];
+  compact?: IGroupedListProps['compact'];
   groups?: IGroup[];
+  listProps?: IGroupedListProps['listProps'];
+  version: {};
 }
 
 export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
@@ -39,7 +42,48 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _isSomeGroupExpanded: boolean;
 
-  private _groupRefs: Record<string, GroupedListSection | null> = {};
+  public static getDerivedStateFromProps(
+    nextProps: IGroupedListProps,
+    previousState: IGroupedListState,
+  ): IGroupedListState {
+    const { groups, selectionMode, compact, listProps } = nextProps;
+    const listVersion = listProps && listProps.version;
+
+    let nextState = {
+      ...previousState,
+      selectionMode,
+      compact,
+      listProps,
+    };
+
+    let shouldForceUpdates = false;
+
+    const previousListVersion = previousState.listProps && previousState.listProps.version;
+
+    if (listVersion !== previousListVersion) {
+      shouldForceUpdates = true;
+    }
+
+    if (groups !== previousState.groups) {
+      nextState = {
+        ...nextState,
+        groups,
+      };
+    }
+
+    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
+      shouldForceUpdates = true;
+    }
+
+    if (shouldForceUpdates) {
+      nextState = {
+        ...nextState,
+        version: {},
+      };
+    }
+
+    return nextState;
+  }
 
   constructor(props: IGroupedListProps) {
     super(props);
@@ -48,8 +92,12 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
+    const { listProps: { version = {} } = {} } = props;
+
     this.state = {
       groups: props.groups,
+      listProps: props.listProps,
+      version,
     };
   }
 
@@ -61,24 +109,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   public getStartItemIndexInView(): number {
     return this._list.current!.getStartItemIndexInView() || 0;
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
-    const { groups, selectionMode, compact } = this.props;
-    let shouldForceUpdates = false;
-
-    if (newProps.groups !== groups) {
-      this.setState({ groups: newProps.groups });
-      shouldForceUpdates = true;
-    }
-
-    if (newProps.selectionMode !== selectionMode || newProps.compact !== compact) {
-      shouldForceUpdates = true;
-    }
-
-    if (shouldForceUpdates) {
-      this._forceListUpdates();
-    }
   }
 
   public componentDidMount() {
@@ -95,19 +125,18 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       usePageCache,
       onShouldVirtualize,
       theme,
+      role = 'treegrid',
       styles,
       compact,
-      listProps = {},
       focusZoneProps = {},
     } = this.props;
-    const { groups } = this.state;
+    const { groups, version } = this.state;
+
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       compact: compact,
     });
-
-    const { version } = listProps;
 
     const { shouldEnterInnerZone = this._isInnerZoneKeystroke } = focusZoneProps;
 
@@ -126,7 +155,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         ) : (
           <List
             ref={this._list}
-            role="presentation"
+            role={role}
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
@@ -203,9 +232,13 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       return null;
     }
 
+    const finalListProps: IListProps = {
+      ...(listProps || {}),
+      version: this.state.version,
+    };
+
     return (
       <GroupedListSection
-        ref={ref => (this._groupRefs['group_' + groupIndex] = ref)}
         key={this._getGroupKey(group, groupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}
@@ -217,7 +250,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         groupNestingDepth={groupNestingDepth}
         groupProps={groupProps}
         headerProps={headerProps}
-        listProps={listProps}
+        listProps={finalListProps}
         items={items}
         onRenderCell={onRenderCell}
         onRenderGroupHeader={groupProps!.onRenderHeader}
@@ -314,25 +347,9 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _forceListUpdates(groups?: IGroup[]): void {
-    groups = groups || this.state.groups;
-
-    const groupCount = groups ? groups.length : 1;
-
-    if (this._list.current) {
-      this._list.current.forceUpdate();
-
-      for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.pageRefs['group_' + String(i)] as GroupedListSection;
-        if (group) {
-          group.forceListUpdate();
-        }
-      }
-    } else {
-      const group = this._groupRefs['group_' + String(0)];
-      if (group) {
-        group.forceListUpdate();
-      }
-    }
+    this.setState({
+      version: {},
+    });
   }
 
   private _onToggleSummarize = (group: IGroup): void => {

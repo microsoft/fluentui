@@ -3,7 +3,7 @@ import { KeytipLayer } from 'office-ui-fabric-react/lib/KeytipLayer';
 
 import { DemoPage } from '../DemoPage';
 
-import { KeytipsPageProps } from 'office-ui-fabric-react/lib/components/Keytip/Keytips.doc';
+import { KeytipsPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/Keytips.doc';
 
 export const KeytipsPage = (props: { isHeaderVisible: boolean }) => (
   <div>

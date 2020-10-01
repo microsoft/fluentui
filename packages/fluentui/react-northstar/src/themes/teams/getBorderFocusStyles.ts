@@ -1,8 +1,8 @@
 import { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 import * as React from 'react';
 
-type CSSBorderStyles = Pick<ICSSInJSStyle, 'borderWidth' | 'borderRadius'>;
-
+type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>;
+type BorderPadding = Record<'top' | 'bottom' | 'left' | 'right', string>;
 type BorderFocusStyles = CSSBorderStyles & {
   variables?:
     | SiteVariablesPrepared
@@ -11,32 +11,13 @@ type BorderFocusStyles = CSSBorderStyles & {
         borderRadius: string;
         focusInnerBorderColor: string;
         focusOuterBorderColor: string;
-
         zIndexes: { foreground: string };
       };
   focusInnerBorderColor?: string;
   focusOuterBorderColor?: string;
-  borderPadding?: React.CSSProperties['padding'];
+  borderPadding?: string | BorderPadding;
 };
-
 const defaultColor = 'transparent';
-
-const getPseudoElementStyles = (borderEdgeValue: string, styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return {
-    content: '""',
-    position: 'absolute',
-    borderStyle: 'solid',
-    pointerEvents: 'none',
-
-    top: borderEdgeValue,
-    right: borderEdgeValue,
-    bottom: borderEdgeValue,
-    left: borderEdgeValue,
-
-    ...styles,
-  };
-};
-
 /**
  * Returns style object that can be used for styling components on focus state.
  * NOTE: the element where this is used needs to have relative positioning so that the
@@ -51,31 +32,42 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
     focusOuterBorderColor = sv.focusOuterBorderColor || defaultColor,
     borderPadding,
   } = args;
-
-  const afterBorderEdgeValue =
-    borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`;
-  const beforeBorderEdgeValue = borderPadding == null ? '0' : `-${borderPadding}`;
-
+  const defaultPreudoStyles: React.CSSProperties = {
+    content: '""',
+    position: 'absolute',
+    borderStyle: 'solid',
+    pointerEvents: 'none',
+    borderWidth,
+    borderRadius,
+  };
+  const borderPaddingTop = (borderPadding as BorderPadding)?.top || borderPadding;
+  const borderPaddingBottom = (borderPadding as BorderPadding)?.bottom || borderPadding;
+  const borderPaddingLeft = (borderPadding as BorderPadding)?.left || borderPadding;
+  const borderPaddingRight = (borderPadding as BorderPadding)?.right || borderPadding;
   return {
     ':focus': {
       outline: 'none',
     },
     ':focus-visible': {
       borderColor: 'transparent',
-
-      ':before': getPseudoElementStyles(beforeBorderEdgeValue, {
+      ':before': {
+        ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusInnerBorderColor,
-        borderWidth,
-        borderRadius,
-      }),
-
-      ':after': getPseudoElementStyles(afterBorderEdgeValue, {
+        top: borderPadding == null ? '0' : `-${borderPaddingTop}`,
+        bottom: borderPadding == null ? '0' : `-${borderPaddingBottom}`,
+        left: borderPadding == null ? '0' : `-${borderPaddingLeft}`,
+        right: borderPadding == null ? '0' : `-${borderPaddingRight}`,
+      },
+      ':after': {
+        ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusOuterBorderColor,
-        borderWidth,
-        borderRadius,
-      }),
+        top: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPaddingTop} - ${borderWidth})`,
+        bottom: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPaddingBottom} - ${borderWidth})`,
+        left: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPaddingLeft} - ${borderWidth})`,
+        right: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPaddingRight} - ${borderWidth})`,
+      },
     },
   };
 };

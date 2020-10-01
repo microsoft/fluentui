@@ -1,8 +1,7 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AvatarPage/docs/AvatarRelated.md') as string;
-const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/AvatarPage';
+const componentUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/AvatarPage';
 
 export const AvatarPageProps: TFabricPlatformPageProps = {
   ios: {

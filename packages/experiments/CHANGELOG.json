@@ -2,6 +2,77 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@uifabric/experiments_v7.33.2",
+      "version": "7.33.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change doc links to point to 7.0 branch",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e968de0afa15de7bcc988cd04dd2ed4133068ff",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/experiments_v7.33.1",
+      "version": "7.33.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing input width in upp",
+            "author": "nebhatna@microsoft.com",
+            "commit": "be9ce6a186be6ea918257589984062348bb6e2fb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme` and remove legacy theme examples.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/experiments_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Fix bug where drag index is set to -1 when it's 0",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d5b214470577062469f4624ad4f4f892d432bb1a",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add callback to SelectedItemsList for when item is edited",
+            "author": "elvonspa@microsoft.com",
+            "commit": "b26950a2faab4ee8d9bbf506d32394032cfe355d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@uifabric/experiments_v7.32.15",
       "version": "7.32.15",

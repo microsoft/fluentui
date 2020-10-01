@@ -1,0 +1,324 @@
+{
+  "name": "@fluentui/react-examples",
+  "entries": [
+    {
+      "date": "Thu, 01 Oct 2020 12:27:45 GMT",
+      "tag": "@fluentui/react-examples_v0.4.4",
+      "version": "0.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Code optimization of vertical bar chart - examples updated",
+            "author": "email not defined",
+            "commit": "76f60a0ef82dd2ee380b185ba14ed39a5a63fe7a",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "area chart basic example code updated with change data button",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4069d504f7bb55b70c7a1f55d5fdb841da2d4d5d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@fluentui/react-examples_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect react-next references in OUFR docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "a56b6185efa1118ba2b36417a8dc6d30b6941b8d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-examples_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing MenuButton examples to use ContextualMenu as JSX slot replacement instead of using menuProps for the menu slot.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a51b4255e077c6ac6b52eb16d64c01988cbfe81b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/examples_v0.3.23",
+      "version": "0.3.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples from all other package into this package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Updating a DetailsList example.",
+            "author": "dzearing@hotmail.com",
+            "commit": "a39779555a6fe5a8c0a33856190564a42f760fe2",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Fix GroupedList expand/collapse behavior",
+            "author": "tmichon@microsoft.com",
+            "commit": "242e7b237a025a7f534148d76f7822fb469f130d",
+            "package": "@fluentui/examples"
+          },
+          {
+            "comment": "Updating examples for GroupedList.",
+            "author": "dzearing@hotmail.com",
+            "commit": "452a387dd9353763c6c2adc8946a9378fd654994",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/examples_v0.3.13",
+      "version": "0.3.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove reference to lists package",
+            "author": "elcraig@microsoft.com",
+            "commit": "855a9153a7361786e41c7fff5a90a2d646de382f",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/examples_v0.1.124",
+      "version": "0.1.124",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/examples_v0.1.98",
+      "version": "0.1.98",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/examples_v0.1.87",
+      "version": "0.1.87",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/examples_v0.1.59",
+      "version": "0.1.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@fluentui/examples_v0.1.57",
+      "version": "0.1.57",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating examples to use useId instead of getId and converting Dialog examples to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "c76ac73627c32efd10498faae8ab976e6c5adbc1",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/examples_v0.1.51",
+      "version": "0.1.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/examples_v0.1.46",
+      "version": "0.1.46",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating FocusZone examples to use non-deprecated prop names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/examples_v0.1.32",
+      "version": "0.1.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@fluentui/examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync packge version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/examples_v0.1.30",
+      "version": "0.1.30",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/examples_v0.1.21",
+      "version": "0.1.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@fluentui/examples_v0.1.19",
+      "version": "0.1.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@fluentui/examples_v0.1.18",
+      "version": "0.1.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@fluentui/examples_v0.1.9",
+      "version": "0.1.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@fluentui/examples_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create example package",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ]
+      }
+    }
+  ]
+}
