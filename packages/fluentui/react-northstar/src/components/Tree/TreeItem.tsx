@@ -143,7 +143,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const hasSubtreeItem = hasSubtree(props);
 
-  // const [showIndicator, setShowIndicator] = React.useState(false);
 
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
