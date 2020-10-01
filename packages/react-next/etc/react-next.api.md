@@ -12,11 +12,10 @@ import { Button } from '@fluentui/react/lib/Button';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
-import { DirectionalHint } from '@fluentui/react/lib/common/DirectionalHint';
-import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
-import { IAutofillProps as IAutofillProps_2 } from '@fluentui/react/lib/components/pickers/AutoFill/BaseAutoFill.types';
+import { IAutofillProps as IAutofillProps_2 } from '@fluentui/react-internal/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBasePicker } from '@fluentui/react/lib/Pickers';
 import { IBasePickerProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerState } from '@fluentui/react/lib/Pickers';
@@ -25,11 +24,11 @@ import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IButton } from '@fluentui/react/lib/Button';
-import { IButtonClassNames } from '@fluentui/react/src/components/Button/BaseButton.classNames';
+import { IButtonClassNames } from '@fluentui/react-internal/lib/components/Button/BaseButton.classNames';
 import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react/lib/components/Button/Button.types';
+import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
-import { ICalloutPositionedInfo } from '@fluentui/react/lib/utilities/positioning';
+import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react/lib/Utilities';
@@ -58,13 +57,13 @@ import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IPositionedData } from '@fluentui/react/lib/utilities/positioning';
+import { IPositionedData } from '@fluentui/react/lib/Positioning';
 import { IRawStyle } from '@fluentui/react/lib/Styling';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { ISelectableDroppableTextProps } from '@fluentui/react/lib/utilities/selectableOption/SelectableDroppableText.types';
-import { ISelectableOption } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
+import { ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
+import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
 import { IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
@@ -88,8 +87,8 @@ import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
-import { IVerticalDividerClassNames } from '@fluentui/react/src/components/Divider/VerticalDivider.types';
-import { IWithResponsiveModeState } from '@fluentui/react/lib/utilities/decorators/withResponsiveMode';
+import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { KeyCodes } from '@fluentui/react/lib/Utilities';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
@@ -101,11 +100,11 @@ import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
 import { Point } from '@fluentui/react/lib/Utilities';
-import { Position } from '@fluentui/react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { RectangleEdge } from '@fluentui/react/lib/utilities/positioning';
-import { ResponsiveMode } from '@fluentui/react/lib/utilities/decorators/withResponsiveMode';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { Selection } from '@fluentui/react/lib/Selection';
 import { SuggestionActionType } from '@fluentui/react/lib/Pickers';
 import { Suggestions } from '@fluentui/react/lib/Pickers';
@@ -446,7 +445,26 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
 
-export { DirectionalHint }
+// @public (undocumented)
+export const DirectionalHint: {
+    topLeftEdge: 0;
+    topCenter: 1;
+    topRightEdge: 2;
+    topAutoEdge: 3;
+    bottomLeftEdge: 4;
+    bottomCenter: 5;
+    bottomRightEdge: 6;
+    bottomAutoEdge: 7;
+    leftTopEdge: 8;
+    leftCenter: 9;
+    leftBottomEdge: 10;
+    rightTopEdge: 11;
+    rightCenter: 12;
+    rightBottomEdge: 13;
+};
+
+// @public (undocumented)
+export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
 
 // @public (undocumented)
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
@@ -868,10 +886,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -1414,9 +1431,9 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;
     delayUpdateFocusOnHover?: boolean;
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
@@ -1479,7 +1496,7 @@ export interface IContextualMenuState {
     // (undocumented)
     slideDirectionalClassName?: string;
     // (undocumented)
-    submenuDirection?: DirectionalHint_2;
+    submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
 }
@@ -2263,9 +2280,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
     minPagePadding?: number;
@@ -3650,8 +3667,6 @@ export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
-export * from "@uifabric/date-time/lib/Calendar";
-export * from "@uifabric/date-time/lib/DatePicker";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Check";
@@ -3672,6 +3687,7 @@ export * from "@fluentui/react/lib/Icons";
 export * from "@fluentui/react/lib/Keytip";
 export * from "@fluentui/react/lib/KeytipData";
 export * from "@fluentui/react/lib/KeytipLayer";
+export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
@@ -3693,7 +3709,8 @@ export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/ThemeGenerator";
 export * from "@fluentui/react/lib/Tooltip";
 export * from "@fluentui/react/lib/Utilities";
-export * from "@fluentui/react/lib/utilities/keytips/index";
+export * from "@uifabric/date-time/lib/Calendar";
+export * from "@uifabric/date-time/lib/DatePicker";
 
 // (No @packageDocumentation comment for this package)
 
