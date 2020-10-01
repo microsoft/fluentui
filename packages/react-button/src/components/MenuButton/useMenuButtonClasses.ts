@@ -52,6 +52,7 @@ export const useMenuButtonClasses = makeVariantClasses({
 
   variants: {
     root: {
+      menuIconSize: '12px',
       menuIconColor: 'var(--body-menuIconColor)',
     },
   },
