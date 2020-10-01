@@ -148,6 +148,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 border-color: Highlight;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Toggle0"
           onChange={[Function]}
           onClick={[Function]}

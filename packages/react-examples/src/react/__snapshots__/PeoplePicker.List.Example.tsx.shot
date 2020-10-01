@@ -160,10 +160,9 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
+      data-ktp-execute-target={true}
       id="checkbox-2"
-      onBlur={[Function]}
       onChange={[Function]}
-      onFocus={[Function]}
       type="checkbox"
     />
     <label
@@ -218,6 +217,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
+        data-ktp-target={true}
       >
         <i
           aria-hidden={true}
@@ -320,10 +320,9 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
+      data-ktp-execute-target={true}
       id="checkbox-3"
-      onBlur={[Function]}
       onChange={[Function]}
-      onFocus={[Function]}
       type="checkbox"
     />
     <label
@@ -378,6 +377,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
+        data-ktp-target={true}
       >
         <i
           aria-hidden={true}

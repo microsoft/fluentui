@@ -1346,6 +1346,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Toggle16"
           onChange={[Function]}
           onClick={[Function]}

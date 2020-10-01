@@ -130,6 +130,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border-color: Highlight;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}

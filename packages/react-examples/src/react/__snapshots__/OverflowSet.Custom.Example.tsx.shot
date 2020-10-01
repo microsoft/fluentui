@@ -85,10 +85,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
+        data-ktp-execute-target={true}
         id="checkbox-1"
-        onBlur={[Function]}
         onChange={[Function]}
-        onFocus={[Function]}
         role="menuitemcheckbox"
         type="checkbox"
       />
@@ -144,6 +143,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
+          data-ktp-target={true}
         >
           <i
             aria-hidden={true}
