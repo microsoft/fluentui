@@ -256,7 +256,7 @@ export const useButtonState: (draftState: ButtonState) => void;
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
 
 // @public (undocumented)
-export const useClasses: (state: CompoundButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useClasses: (state: CompoundButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {

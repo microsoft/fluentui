@@ -258,7 +258,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
 
       fluid: {
         width: '100%',
-        maxWidth: '100%',
+        maxWidth: 'none',
       },
 
       iconOnly: {

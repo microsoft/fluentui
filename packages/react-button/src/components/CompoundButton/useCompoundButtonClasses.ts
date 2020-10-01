@@ -80,6 +80,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
       iconOnly: {
         minHeight: 'var(--button-size-regular)',
         width: 'var(--button-minHeight)',
+        minWidth: 0,
         paddingBottom: 0,
         paddingTop: 0,
         paddingLeft: 0,
