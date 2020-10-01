@@ -10,7 +10,7 @@ const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-slider/src/components/slider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-slider/src/components/slider',
   examples: [
     {
       title: 'Horizontal sliders',

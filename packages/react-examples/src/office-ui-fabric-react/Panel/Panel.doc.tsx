@@ -27,8 +27,7 @@ const PanelHandleDismissTargetExampleCode = require('!raw-loader!@fluentui/react
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Panel',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Panel',
   examples: [
     {
       title: 'Basic',

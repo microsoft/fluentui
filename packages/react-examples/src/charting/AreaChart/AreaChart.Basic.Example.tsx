@@ -37,7 +37,11 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   };
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
-    this.setState({ isCalloutselected: true });
+    if (this.state.isCalloutselected) {
+      this.setState({ isCalloutselected: false });
+    } else {
+      this.setState({ isCalloutselected: true });
+    }
   };
 
   private _basicExample(): JSX.Element {

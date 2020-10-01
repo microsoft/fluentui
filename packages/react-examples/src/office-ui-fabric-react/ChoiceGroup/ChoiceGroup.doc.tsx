@@ -19,7 +19,7 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',
   componentName: 'ChoiceGroup',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ChoiceGroup',
   examples: [
     {
       title: 'Basic ChoiceGroup',

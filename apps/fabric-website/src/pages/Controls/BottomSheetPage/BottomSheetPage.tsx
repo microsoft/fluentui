@@ -5,7 +5,7 @@ import { BottomSheetPageProps } from './BottomSheetPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/BottomSheetPage/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/BottomSheetPage/';
 
 export const BottomSheetPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

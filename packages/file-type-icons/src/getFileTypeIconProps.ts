@@ -7,7 +7,8 @@ const GENERIC_FILE = 'genericfile';
 const FOLDER = 'folder';
 const SHARED_FOLDER = 'sharedfolder';
 const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'splist';
+const LIST_ITEM = 'listitem';
+const LIST = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
 const STREAM = 'stream';
@@ -92,6 +93,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.linkedFolder:
         iconBaseName = LINKED_FOLDER;
+        break;
+      case FileIconType.list:
+        iconBaseName = LIST;
         break;
     }
   }

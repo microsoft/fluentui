@@ -1,6 +1,5 @@
 pr:
-  - master
-  - website-content
+  - 7.0
 
 trigger: none
 
@@ -31,14 +30,14 @@ steps:
   # @fluentui/perf-test Baseline
   - script: |
       yarn perf:test:base
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test Base (Fluent)
 
   # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
@@ -77,19 +76,19 @@ steps:
 
   - script: |
       yarn stats:build
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Bundle Statistics (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Bundle Statistics (7.0 only)
 
   - script: |
       yarn perf
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Performance Tests (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Performance Tests (7.0 only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Save Statistics to DB (master only)
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    displayName: Save Statistics to DB (7.0 only)
     env:
       STATS_URI: $(STATS_URI)
 

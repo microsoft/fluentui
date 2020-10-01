@@ -21,7 +21,7 @@ export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
   componentName: 'SpinButton',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-next/src/components/SpinButton',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/@fluentui/react-next/src/components/SpinButton',
   examples: [
     {
       title: 'Basic SpinButton',

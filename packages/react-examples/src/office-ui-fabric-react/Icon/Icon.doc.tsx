@@ -16,7 +16,7 @@ const IconSvgFactoryExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',
   componentName: 'Icon',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Icon',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Icon',
   examples: [
     {
       title: 'Icon',

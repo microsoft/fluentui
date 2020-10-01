@@ -9,7 +9,7 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
   componentName: 'FloatingPeoplePicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/FloatingPeoplePicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/FloatingPeoplePicker',
   examples: [
     {
       title: 'Floating People Picker',

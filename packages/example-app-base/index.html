@@ -25,7 +25,11 @@
       var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
       var minParam = getParameterByName('min');
       var useMinified =
-        !isDev && minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
+        !isDev &&
+        minParam !== '0' &&
+        (minParam === '1' ||
+          location.pathname === '/fabric-react/master/' ||
+          location.pathname === '/fabric-react/7.0/');
 
       function loadScript(n) {
         for (var i = 0; i < n.length; i++) {

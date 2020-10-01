@@ -38,7 +38,7 @@ export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
   componentName: 'ContextualMenu',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ContextualMenu',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ContextualMenu',
   examples: [
     {
       title: 'Basic ContextualMenu',

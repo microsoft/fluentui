@@ -10,8 +10,7 @@ const SpinnerLabeledExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
   componentName: 'Spinner',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Spinner',
   examples: [
     {
       title: 'Spinner sizes',

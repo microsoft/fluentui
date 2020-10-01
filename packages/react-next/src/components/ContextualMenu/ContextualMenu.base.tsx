@@ -658,19 +658,37 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     let headerItem;
     let groupProps;
     if (sectionProps.title) {
-      // Since title is a user-facing string, it needs to be stripped of whitespace in order to build a valid element ID
-      const id = this._id + sectionProps.title.replace(/\s/g, '');
-      const headerContextualMenuItem: IContextualMenuItem = {
-        key: `section-${sectionProps.title}-title`,
-        itemType: ContextualMenuItemType.Header,
-        text: sectionProps.title,
-        id: id,
-      };
-      groupProps = {
-        role: 'group',
-        'aria-labelledby': id,
-      };
-      headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
+      let headerContextualMenuItem: IContextualMenuItem | undefined = undefined;
+      let ariaLabellledby = '';
+      if (typeof sectionProps.title === 'string') {
+        // Since title is a user-facing string, it needs to be stripped
+        // of whitespace in order to build a valid element ID
+        const id = this._id + sectionProps.title.replace(/\s/g, '');
+        headerContextualMenuItem = {
+          key: `section-${sectionProps.title}-title`,
+          itemType: ContextualMenuItemType.Header,
+          text: sectionProps.title,
+          id: id,
+        };
+        ariaLabellledby = id;
+      } else {
+        headerContextualMenuItem = sectionProps.title;
+        ariaLabellledby = this._id + sectionProps.title.text?.replace(/\s/g, '');
+      }
+
+      if (headerContextualMenuItem) {
+        groupProps = {
+          role: 'group',
+          'aria-labelledby': ariaLabellledby,
+        };
+        headerItem = this._renderHeaderMenuItem(
+          headerContextualMenuItem,
+          menuClassNames,
+          index,
+          hasCheckmarks,
+          hasIcons,
+        );
+      }
     }
 
     if (sectionProps.items && sectionProps.items.length > 0) {

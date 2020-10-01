@@ -13,7 +13,7 @@ const ListGhostingExampleCode = require('!raw-loader!@fluentui/react-examples/sr
 export const ListPageProps: IDocPageProps = {
   title: 'List',
   componentName: 'ListExample',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/List',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/List',
   examples: [
     {
       title: 'List of 5000 grid items',

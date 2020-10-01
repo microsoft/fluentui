@@ -7,7 +7,7 @@ import { getSubTitle } from '../../../utilities/index';
 export interface IGetStartedPageProps extends IPageProps<Platforms> {}
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Overviews/GetStartedPage/';
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 

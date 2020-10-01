@@ -8,8 +8,7 @@ const LabelBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
   componentName: 'Label',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Label',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Label',
   examples: [
     {
       title: 'Label',

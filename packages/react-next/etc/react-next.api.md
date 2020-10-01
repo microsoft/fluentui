@@ -1464,7 +1464,7 @@ export interface IContextualMenuRenderItem {
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
-    title?: string;
+    title?: string | IContextualMenuItem;
     topDivider?: boolean;
 }
 

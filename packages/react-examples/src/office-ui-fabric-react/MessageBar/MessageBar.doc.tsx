@@ -10,7 +10,7 @@ export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
   componentName: 'MessageBar',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/MessageBar',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/MessageBar',
   examples: [
     {
       title: 'Various MessageBar types',

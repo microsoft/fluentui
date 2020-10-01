@@ -4,7 +4,7 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsMessagingPageProps } from './MessagingPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/Colors/docs';
 
 export const ColorsMessagingPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

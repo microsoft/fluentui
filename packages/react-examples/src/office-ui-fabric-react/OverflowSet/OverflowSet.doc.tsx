@@ -15,7 +15,7 @@ export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
   componentName: 'OverflowSet',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/OverflowSet',
   examples: [
     {
       title: 'OverflowSet Basic Example',
