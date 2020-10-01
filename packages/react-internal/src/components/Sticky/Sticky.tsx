@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { initializeComponentRef } from '../../Utilities';
 import { hiddenContentStyle } from '../../Styling';
@@ -9,10 +8,6 @@ export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
   distanceFromTop?: number;
-}
-
-export interface IStickyContext {
-  scrollablePane: PropTypes.Requireable<object>;
 }
 
 export class Sticky extends React.Component<IStickyProps, IStickyState> {
