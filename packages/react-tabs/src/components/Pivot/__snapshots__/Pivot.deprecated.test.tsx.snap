@@ -119,6 +119,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -128,7 +131,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -139,8 +142,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -285,6 +288,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -294,7 +300,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -305,8 +311,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content=""
       data-is-focusable={true}

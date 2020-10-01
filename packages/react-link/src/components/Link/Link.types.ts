@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { LinkBase } from './Link.base';
+/* eslint-disable @typescript-eslint/naming-convention */
 
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import * as React from 'react';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
  * {@docCategory Link}
@@ -21,6 +21,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   type?: string;
 
   // Anchor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   download?: any;
   href?: string;
   hrefLang?: string;
@@ -41,6 +42,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   value?: string | string[] | number;
 
   // Any other props for HTMLElements or a React component passed to as=
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [index: string]: any;
 }
 
@@ -48,7 +50,8 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
  * {@docCategory Link}
  */
 export interface ILinkProps
-  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
+    React.RefAttributes<HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -71,12 +74,14 @@ export interface ILinkProps
   theme?: ITheme;
 
   /**
-   * A component that should be used as the root element of the link returned from the Link component.
+   * A component type or primitive that is rendered as the type of the root element.
    */
-  as?: string | React.ComponentClass | React.FunctionComponent;
+  as?: React.ElementType;
 
   /**
-   * Optional keytip for this Link
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 }

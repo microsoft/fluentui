@@ -5,7 +5,7 @@ import {
   AnimationVariables,
   getFocusStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
-} from '../../Styling';
+} from '@uifabric/styling';
 import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '@uifabric/utilities';
 import { LinkBase } from './Link.base';
 import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { getStyles } from './Link.styles';

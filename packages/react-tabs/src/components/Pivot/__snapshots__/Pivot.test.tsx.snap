@@ -119,6 +119,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -128,7 +131,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -139,8 +142,8 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -285,6 +288,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -294,7 +300,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -305,8 +311,8 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content="Test Link (20+)"
       data-is-focusable={true}
@@ -509,6 +515,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -518,7 +527,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -529,8 +538,8 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -675,6 +684,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -684,7 +696,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -695,8 +707,8 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content="Test Link 2"
       data-is-focusable={true}
@@ -888,6 +900,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -897,7 +912,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -908,8 +923,8 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -1054,6 +1069,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -1063,7 +1081,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -1074,8 +1092,8 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content="Test Link (12)"
       data-is-focusable={true}
@@ -1222,6 +1240,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -1231,7 +1252,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -1242,8 +1263,8 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content="Text with icon xx"
       data-is-focusable={true}
@@ -1455,6 +1476,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -1464,7 +1488,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -1475,8 +1499,8 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -1621,6 +1645,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -1630,7 +1657,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -1641,8 +1668,8 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content=""
       data-is-focusable={true}
@@ -1763,16 +1790,16 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #0078d4;
+            background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
             box-sizing: border-box;
-            color: #ffffff;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 600;
             height: 44px;
             line-height: 44px;
             margin-right: 0px;
@@ -1814,7 +1841,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #106ebe;
+            background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
@@ -1826,6 +1853,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             color: #0078d4;
           }
           &:focus {
+            color: #000000;
             outline-offset: -1px;
             outline: none;
           }
@@ -1836,16 +1864,19 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
-            background-color: transparent;
+            background-color: #0078d4;
             bottom: 0px;
             content: "";
-            height: 0px;
-            left: 0px;
+            height: 2px;
+            left: 8px;
             position: absolute;
-            right: 0px;
-            top: 0px;
-            transition: none;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -1856,13 +1887,39 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
-          }
           .ms-Fabric--isFocusVisible &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -1872,10 +1929,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             right: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            -ms-high-contrast-adjust: none;
-            background: Highlight;
-            color: HighlightText;
-            font-weight: 600;
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -2007,11 +2061,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             outline: none;
           }
           &:active {
-            background-color: #0078d4;
+            background-color: #005a9e;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
           }
           &:before {
             background-color: transparent;
@@ -2022,7 +2079,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -2033,13 +2090,39 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
-          }
           .ms-Fabric--isFocusVisible &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content=""
       data-is-focusable={true}
@@ -2229,6 +2312,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -2238,7 +2324,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -2249,8 +2335,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -2395,6 +2481,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -2404,7 +2493,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -2415,8 +2504,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content=""
       data-is-focusable={true}
@@ -2536,16 +2625,16 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #0078d4;
+            background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
             box-sizing: border-box;
-            color: #ffffff;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             height: 44px;
             line-height: 44px;
             margin-right: 0px;
@@ -2587,7 +2676,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #106ebe;
+            background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
@@ -2599,6 +2688,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             color: #0078d4;
           }
           &:focus {
+            color: #000000;
             outline-offset: -1px;
             outline: none;
           }
@@ -2609,16 +2699,19 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
-            background-color: transparent;
+            background-color: #0078d4;
             bottom: 0px;
             content: "";
-            height: 0px;
-            left: 0px;
+            height: 2px;
+            left: 8px;
             position: absolute;
-            right: 0px;
-            top: 0px;
-            transition: none;
+            right: 8px;
+            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -2629,13 +2722,39 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
-          }
           .ms-Fabric--isFocusVisible &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -2645,10 +2764,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             right: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            -ms-high-contrast-adjust: none;
-            background: Highlight;
-            color: HighlightText;
-            font-weight: 600;
+            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -2780,11 +2896,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             outline: none;
           }
           &:active {
-            background-color: #0078d4;
+            background-color: #005a9e;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
           }
           &:before {
             background-color: transparent;
@@ -2795,7 +2914,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -2806,13 +2925,39 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
-          }
           .ms-Fabric--isFocusVisible &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
+          }
+          &.is-selected {
+            background-color: #0078d4;
+            color: #ffffff;
+            font-weight: 400;
+          }
+          &.is-selected:before {
+            background-color: transparent;
+            bottom: 0px;
+            content: "";
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            transition: none;
+          }
+          &.is-selected:hover {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-selected {
+            -ms-high-contrast-adjust: none;
+            background: Highlight;
+            color: HighlightText;
+            font-weight: 600;
+          }
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content=""
       data-is-focusable={true}
@@ -3001,6 +3146,9 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -3010,7 +3158,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -3021,8 +3169,8 @@ exports[`Pivot supports JSX expressions 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -3158,6 +3306,9 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:active .ms-Button-icon {
             color: #004578;
           }
+          .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -3167,7 +3318,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             position: absolute;
             right: 8px;
             transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
           }
           &:after {
             color: transparent;
@@ -3178,8 +3329,8 @@ exports[`Pivot supports JSX expressions 1`] = `
             overflow: hidden;
             visibility: hidden;
           }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
+          &[data-is-overflowing='true'] {
+            display: none;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;

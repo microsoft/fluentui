@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../Icon/Icon.types';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
  * Checkbox class interface.
@@ -23,7 +25,9 @@ export interface ICheckbox {
  * Checkbox properties.
  * {@docCategory Checkbox}
  */
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface ICheckboxProps
+  extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

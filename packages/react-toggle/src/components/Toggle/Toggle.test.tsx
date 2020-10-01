@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
-
+import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
+import { isConformant } from '../../common/isConformant';
 
 describe('Toggle', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders a label', () => {
     const component = mount(<Toggle label="Label" />);
     expect(
@@ -17,33 +22,39 @@ describe('Toggle', () => {
   });
 
   it('renders toggle correctly', () => {
-    const component = renderer.create(<Toggle label="Label" />);
+    const component = create(<Toggle label="Label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (string)', () => {
-    const component = renderer.create(<Toggle label="Label" inlineLabel={true} />);
+    const component = create(<Toggle label="Label" inlineLabel={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (JSX Element)', () => {
-    const component = renderer.create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
+    const component = create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label and on/off text provided', () => {
-    const component = renderer.create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
+    const component = create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders hidden toggle correctly', () => {
-    const component = renderer.create(<Toggle hidden />);
+    const component = create(<Toggle hidden />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Toggle,
+    displayName: 'Toggle',
+    passesUnhandledPropsTo: Toggle,
   });
 
   it('renders aria-label', () => {
@@ -60,7 +71,7 @@ describe('Toggle', () => {
 
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
-    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
+    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled?: boolean) => {
       isToggledValue = isToggled;
     };
 
@@ -123,7 +134,6 @@ describe('Toggle', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    let component: any;
     const onSubmit = sinon.spy();
 
     const wrapper = mount(
@@ -134,13 +144,13 @@ describe('Toggle', () => {
           e.preventDefault();
         }}
       >
-        <Toggle componentRef={ref => (component = ref)} label="Label" />
+        <Toggle label="Label" />
       </form>,
     );
-    const button: any = wrapper.find('button');
-    // Simulate to change toggle state.
+    const button = wrapper.find('button');
+    // simulate to change toggle state
     button.simulate('click');
-    expect((component as React.Component<any, any>).state.checked).toEqual(true);
+    expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');
     expect(onSubmit.called).toEqual(false);
   });
 
@@ -181,8 +191,8 @@ describe('Toggle', () => {
       ).toBe('ToggleId-stateText');
     });
 
-    it('is labelled by the label AND state text elements if no aria labels are provided', () => {
-      const component = mount(<Toggle label="Label" onText="On" offText="Off" id="ToggleId" />);
+    it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
+      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
 
       expect(
         component
@@ -190,7 +200,7 @@ describe('Toggle', () => {
           .first()
           .getDOMNode()
           .getAttribute('aria-labelledby'),
-      ).toBe('ToggleId-label ToggleId-stateText');
+      ).toBe('ToggleId-stateText');
     });
   });
 });
