@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { classNamesFunction, css } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { SelectionMode } from '../../utilities/selection/interfaces';
+import { SelectionMode } from '../../Selection';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';

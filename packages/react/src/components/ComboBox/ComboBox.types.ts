@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
+import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
-import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
-import { IButtonProps } from '../Button/Button.types';
+import { IAutofillProps } from '../../Autofill';
+import { IButtonProps } from '@fluentui/react-internal/lib/Button';
 
 /**
  * {@docCategory ComboBox}

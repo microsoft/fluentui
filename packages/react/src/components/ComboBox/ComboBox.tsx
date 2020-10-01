@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autofill, IAutofill } from '../Autofill/index';
+import { Autofill, IAutofill } from '../../Autofill';
 import {
   initializeComponentRef,
   css,
@@ -22,7 +22,7 @@ import {
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import {
@@ -34,8 +34,8 @@ import {
 } from './ComboBox.types';
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
-import { BaseButton, Button } from '../Button/index';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+import { BaseButton, Button } from '@fluentui/react-internal/lib/Button';
 import { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {

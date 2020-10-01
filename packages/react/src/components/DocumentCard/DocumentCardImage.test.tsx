@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { TestImages } from '@uifabric/example-data';
-import { ImageFit } from '../Image/Image.types';
+import { ImageFit } from '../../Image';
 import { DocumentCardImage } from './DocumentCardImage';
 
 describe('DocumentCard', () => {

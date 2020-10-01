@@ -3,7 +3,7 @@ import { Icon, FontIcon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
 import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction } from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { IDragDropOptions } from '../../DragDrop';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import {
   IDetailsColumnStyleProps,

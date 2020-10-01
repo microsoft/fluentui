@@ -5,7 +5,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { ISelection, SelectionMode } from '../../utilities/selection/index';
+import { ISelection, SelectionMode } from '../../Selection';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsColumnRenderTooltipProps } from './DetailsColumn.types';
 

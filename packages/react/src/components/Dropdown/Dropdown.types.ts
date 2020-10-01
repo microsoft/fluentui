@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
-import { RectangleEdge } from '../../utilities/positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from '../Checkbox/Checkbox.types';
-import { ILabelStyleProps, ILabelStyles } from '../Label/Label.types';
-import { IPanelStyleProps, IPanelStyles } from '../Panel/Panel.types';
+import { RectangleEdge } from '../../Positioning';
+import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import { ILabelStyleProps, ILabelStyles } from '../../Label';
+import { IPanelStyleProps, IPanelStyles } from '../../Panel';
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../SelectableOption';
 
 export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
 

@@ -7,8 +7,8 @@ import { KeyCodes } from '../../Utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
+import { SelectableOptionMenuItemType } from '../../SelectableOption';
+import { expectOne, expectMissing, renderIntoDocument } from '@fluentui/react-internal/lib/common/testUtilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },

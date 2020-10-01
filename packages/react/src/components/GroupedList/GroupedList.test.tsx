@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { SelectionMode, Selection } from '../../Selection';
 import { GroupedList } from './GroupedList';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IGroup } from './GroupedList.types';
 import { IColumn } from '../DetailsList/DetailsList.types';
-import { List } from '../List/List';
+import { List } from '../../List';
 import { GroupShowAll } from './GroupShowAll';
-import { Link } from '../Link/Link';
+import { Link } from '../../Link';
 import { GroupHeader } from './GroupHeader';
 import { getTheme } from '../../Styling';
 import * as path from 'path';

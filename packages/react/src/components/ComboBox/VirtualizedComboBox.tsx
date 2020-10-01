@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.types';
 import { IList, List } from '../../List';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableOption } from '../../SelectableOption';
 import { initializeComponentRef } from '../../Utilities';
 
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {

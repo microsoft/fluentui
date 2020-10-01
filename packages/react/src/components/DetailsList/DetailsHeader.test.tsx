@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
 import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
 import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
-import { Selection, SelectionMode } from '../../utilities/selection/index';
+import { Selection, SelectionMode } from '../../Selection';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';

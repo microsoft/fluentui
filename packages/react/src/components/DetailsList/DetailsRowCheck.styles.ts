@@ -2,7 +2,7 @@ import { getGlobalClassNames, getFocusStyle } from '../../Styling';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';
-import { CheckGlobalClassNames } from '../Check/Check.styles';
+import { CheckGlobalClassNames } from '@fluentui/react-internal/lib/components/Check/Check.styles';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',

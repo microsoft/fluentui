@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IProcessedStyleSet, ITheme } from '../../Styling';
 import { composeRenderFunction, classNamesFunction, getRTL, getRTLSafeKeyCode, KeyCodes } from '../../Utilities';
-import { SelectionMode } from '../../utilities/selection/index';
+import { SelectionMode } from '../../Selection';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';

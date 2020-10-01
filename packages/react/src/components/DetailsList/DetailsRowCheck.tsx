@@ -5,10 +5,9 @@ import {
   IDetailsRowCheckStyleProps,
   IDetailsRowCheckStyles,
 } from './DetailsRowCheck.types';
-import { css, styled, classNamesFunction } from '../../Utilities';
+import { css, styled, classNamesFunction, composeRenderFunction } from '../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
-import { composeRenderFunction } from '@uifabric/utilities';
 import { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
