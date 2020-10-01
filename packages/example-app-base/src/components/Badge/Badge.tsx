@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeStyles } from 'office-ui-fabric-react';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors } from '@fluentui/theme';
 import { IBadgeProps } from './Badge.types';
 
 export const Badge = (props: IBadgeProps) => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
-import { ComboBoxPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/ComboBox/ComboBox.doc';
+import { ComboBoxPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ComboBox/ComboBox.doc';
 
 export const ComboBoxPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

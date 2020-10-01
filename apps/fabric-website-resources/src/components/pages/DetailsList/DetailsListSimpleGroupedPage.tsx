@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DemoPage } from '../../DemoPage';
-import { DetailsListSimpleGroupedPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/DetailsList/DetailsList.doc';
+import { DetailsListSimpleGroupedPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/DetailsList/DetailsList.doc';
 
 export const DetailsListSimpleGroupedPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage {...{ ...DetailsListSimpleGroupedPageProps, ...props }} />

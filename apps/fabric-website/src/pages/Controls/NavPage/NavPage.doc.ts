@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { NavPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/Nav/Nav.doc';
+import { NavPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Nav/Nav.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavPage/docs/NavRelated.md') as string;
 

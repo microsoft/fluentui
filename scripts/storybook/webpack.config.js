@@ -1,6 +1,7 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
 
@@ -74,7 +75,10 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.extensions.push('.ts', '.tsx');
 
-  config.resolve.alias = getResolveAlias();
+  config.resolve.alias = {
+    ...getResolveAlias(),
+    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
+  };
 
   config.plugins.push(
     new HardSourceWebpackPlugin(),

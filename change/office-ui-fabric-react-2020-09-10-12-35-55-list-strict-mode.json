@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support StrictMode in DetailsList hierarchy",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-10T19:35:55.800Z"
-}
