@@ -11,7 +11,7 @@ import {
   Icon,
   IContextualMenuProps,
   IFocusZone,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react-internal';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
 
