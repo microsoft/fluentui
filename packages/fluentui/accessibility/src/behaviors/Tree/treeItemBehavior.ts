@@ -8,6 +8,7 @@ import { treeTitleBehavior } from './treeTitleBehavior';
  * @description
  * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. In other cases 'performClick' is triggered with 'Spacebar' or 'Enter'.
  * Triggers 'performSelection' action with 'Spacebar' on 'root', when has a opened subtree.
+ * Use aria-checked instead of aria-selected because JAWS's bug of not narrating selection state with aria-selected.
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.
@@ -35,11 +36,6 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
-          /**
-           * Reason for aria-checked instead of aria-selected:
-           * JAWS does not narrate selection state with aria-selected. They admit it's a bug.
-           * aria-checked here will benifit our JAWS user. Plus it has 'mixed' state which suits our indeterminate selection state.
-           */
           ...(props.selectable && {
             'aria-checked': props.indeterminate ? ('mixed' as const) : !!props.selected,
           }),
