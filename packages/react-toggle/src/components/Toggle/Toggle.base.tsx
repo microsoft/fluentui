@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react-internal/lib/Label';
 import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@uifabric/utilities';
 import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
 
