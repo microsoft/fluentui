@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getRTL, classNamesFunction } from '@uifabric/utilities';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import {
   getDateRangeArray,
   getDayGrid,

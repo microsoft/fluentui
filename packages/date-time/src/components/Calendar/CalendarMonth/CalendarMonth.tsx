@@ -1,6 +1,6 @@
 import { CalendarMonthBase } from './CalendarMonth.base';
 import { getStyles } from './CalendarMonth.styles';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react-internal/lib/Utilities';
 
 /**
  * CalendarMonth description
