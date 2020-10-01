@@ -76,6 +76,9 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** For selectable parents define if all nested children are checked */
   indeterminate?: boolean;
+
+  /** The id of the parent tree title, if any. */
+  parent?: string;
 }
 
 export type TreeTitleStylesProps = Pick<
@@ -232,6 +235,7 @@ TreeTitle.propTypes = {
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,
+  parent: PropTypes.string,
 };
 TreeTitle.defaultProps = {
   as: 'a',
