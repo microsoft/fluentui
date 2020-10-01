@@ -96,6 +96,18 @@ exports[`Button renders a default state 1`] = `
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
       }
+      @media screen and (-ms-high-contrast: active){& {
+        --button-borderColor: WindowText;
+        --button-contentColor: WindowText;
+        --button-disabled-background: Window;
+        --button-disabled-borderColor: GrayText;
+        --button-disabled-contentColor: GrayText;
+        --button-disabled-iconColor: GrayText;
+        --button-hovered-borderColor: Highlight;
+        --button-hovered-contentColor: Highlight;
+        --button-hovered-iconColor: Highlight;
+        --button-iconColor: WindowText;
+      }
 >
   <span
     className=
@@ -204,6 +216,18 @@ exports[`Button renders anchor when href prop is provided 1`] = `
       }
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        --button-borderColor: WindowText;
+        --button-contentColor: WindowText;
+        --button-disabled-background: Window;
+        --button-disabled-borderColor: GrayText;
+        --button-disabled-contentColor: GrayText;
+        --button-disabled-iconColor: GrayText;
+        --button-hovered-borderColor: Highlight;
+        --button-hovered-contentColor: Highlight;
+        --button-hovered-iconColor: Highlight;
+        --button-iconColor: WindowText;
       }
   href="https://www.bing.com"
   role="button"
