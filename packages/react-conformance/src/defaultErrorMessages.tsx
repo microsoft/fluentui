@@ -650,7 +650,7 @@ function receivedErrorMessage(error: string) {
 /** Generates a paragraph.
  *  @param numberOfParagraphs The number of paragraphs to generate.
  */
-function paragraph(numberOfParagraphs?: number) {
+const paragraph = (numberOfParagraphs?: number) => {
   if (numberOfParagraphs) {
     const paragraphs = [];
     for (let i = -1; i < numberOfParagraphs; i++) {
@@ -663,7 +663,7 @@ function paragraph(numberOfParagraphs?: number) {
 
 `;
   }
-}
+};
 
 /** Formats a given object to be displayed in the console.
  *  @param obj The object to format.
