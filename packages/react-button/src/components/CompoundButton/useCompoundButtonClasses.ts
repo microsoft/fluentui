@@ -65,6 +65,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
       paddingTop: '16px',
       iconSize: '28px',
       secondaryContentGap: '4px',
+      secondaryContentFontWeight: 'normal',
 
       disabled: {
         secondaryContentColor: 'var(--button-disabled-contentColor)',
