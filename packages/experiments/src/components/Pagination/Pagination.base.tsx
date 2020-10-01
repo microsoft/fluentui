@@ -4,8 +4,9 @@ import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
 import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
 import { ComboBox, IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
-import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { IProcessedStyleSet } from '../../Styling';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
 
