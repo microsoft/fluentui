@@ -17,12 +17,6 @@ import * as React from 'react';
 import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 
-// @public
-export const createDefaultTheme: () => Theme;
-
-// @public (undocumented)
-export const FluentTheme: Theme;
-
 // @public (undocumented)
 export type FontFace = IFontFace;
 
@@ -94,9 +88,6 @@ export type StyleRendererOptions = {
     targetWindow: Window | undefined;
 };
 
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
-
 export { Theme }
 
 // @public (undocumented)
@@ -107,9 +98,9 @@ export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderPr
 
 // @public
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+    applyTo?: 'element' | 'body' | 'none';
     ref?: React.Ref<HTMLElement>;
     renderer?: StyleRenderer;
-    targetWindow?: Window | null;
     theme?: PartialTheme | Theme;
 }
 
@@ -140,7 +131,7 @@ export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLEl
 };
 
 // @public (undocumented)
-export const useThemeProviderClasses: (state: {}, theme?: import("@fluentui/theme").Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;

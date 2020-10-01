@@ -2,6 +2,42 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.18",
+      "version": "7.15.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.17",
+      "version": "7.15.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing imports so that they correctly point to moved @fluentui/examples examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Aug 2020 12:37:22 GMT",
       "tag": "@uifabric/fabric-website_v7.14.1",
       "version": "7.14.1",

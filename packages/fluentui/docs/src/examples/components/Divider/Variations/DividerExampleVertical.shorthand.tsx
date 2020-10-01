@@ -8,7 +8,7 @@ const DividerVerticalExampleShorthand = () => (
     <Text content="Application Title" />
     <Divider vertical />
     <Avatar
-      image="public/images/avatar/large/jerry.png"
+      image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/jerry.png"
       status={{
         color: 'green',
         title: 'Available',

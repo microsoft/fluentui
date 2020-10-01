@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { MenuButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
-import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
@@ -72,7 +72,7 @@ storiesOf('MenuButton Next', module)
     </MenuButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
 storiesOf('MenuButton Next - Teams Theme', module)
@@ -139,5 +139,5 @@ storiesOf('MenuButton Next - Teams Theme', module)
     </MenuButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));

@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { ModalPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Modal/Modal.doc';
+import { ModalPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Modal/Modal.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ModalPage/docs/ModalRelated.md') as string;
 

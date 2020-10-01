@@ -145,9 +145,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -316,9 +313,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content="Test Link (20+)"
       data-is-focusable={true}
@@ -547,9 +541,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -718,9 +709,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content="Test Link 2"
       data-is-focusable={true}
@@ -938,9 +926,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -1109,9 +1094,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content="Test Link (12)"
       data-is-focusable={true}
@@ -1283,9 +1265,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content="Text with icon xx"
       data-is-focusable={true}
@@ -1523,9 +1502,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -1694,9 +1670,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -1928,7 +1901,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             background-color: transparent;
             bottom: 0px;
             content: "";
-            height: auto;
+            height: 0px;
             left: 0px;
             position: absolute;
             right: 0px;
@@ -1947,9 +1920,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -2134,7 +2104,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             background-color: transparent;
             bottom: 0px;
             content: "";
-            height: auto;
+            height: 0px;
             left: 0px;
             position: absolute;
             right: 0px;
@@ -2153,9 +2123,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -2371,9 +2338,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -2542,9 +2506,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -2775,7 +2736,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             background-color: transparent;
             bottom: 0px;
             content: "";
-            height: auto;
+            height: 0px;
             left: 0px;
             position: absolute;
             right: 0px;
@@ -2794,9 +2755,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
@@ -2981,7 +2939,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             background-color: transparent;
             bottom: 0px;
             content: "";
-            height: auto;
+            height: 0px;
             left: 0px;
             position: absolute;
             right: 0px;
@@ -3000,9 +2958,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
@@ -3217,9 +3172,6 @@ exports[`Pivot supports JSX expressions 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
       data-content="Test Link 1"
       data-is-focusable={true}
       id="Pivot0-Tab0"
@@ -3379,9 +3331,6 @@ exports[`Pivot supports JSX expressions 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;

@@ -2,6 +2,36 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/dom-utilities_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/dom-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 15:52:49 GMT",
+      "tag": "@fluentui/dom-utilities_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: elementContains should behave like .contains()",
+            "author": "olfedias@microsoft.com",
+            "commit": "1cdb4aa1cd69dce6eabf8fc9551191eed2158821",
+            "package": "@fluentui/dom-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/dom-utilities_v1.1.0",
       "version": "1.1.0",

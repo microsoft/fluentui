@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { CompoundButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
-import { TeamsTheme } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
@@ -89,7 +89,7 @@ storiesOf('CompoundButton Next', module)
     <CompoundButton
       secondaryContent="This is some secondary text"
       icon={<AddIcon />}
-      tokens={{ iconSize: '40px' }}
+      tokens={{ iconSize: '30px' }}
     />
   ));
 
@@ -174,6 +174,6 @@ storiesOf('CompoundButton Next - Teams Theme', module)
     <CompoundButton
       secondaryContent="This is some secondary text"
       icon={<AddIcon />}
-      tokens={{ iconSize: '40px' }}
+      tokens={{ iconSize: '30px' }}
     />
   ));

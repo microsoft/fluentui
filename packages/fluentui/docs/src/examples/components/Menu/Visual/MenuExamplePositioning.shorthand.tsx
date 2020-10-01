@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Menu, MenuProps } from '@fluentui/react-northstar';
 
 const MenuExamplePositioningShorthand = () => {
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
   const [position, setPosition] = React.useState<'above' | 'before'>(undefined);
 
   const items: MenuProps['items'] = [
@@ -23,14 +24,14 @@ const MenuExamplePositioningShorthand = () => {
                 position,
               },
             },
-            menuOpen: true,
+            menuOpen,
           },
         ],
         popper: position && {
           position,
         },
       },
-      menuOpen: true,
+      menuOpen,
     },
   ];
 
@@ -47,6 +48,10 @@ const MenuExamplePositioningShorthand = () => {
       <Menu defaultActiveIndex={0} items={items} />
 
       <hr style={{ margin: 50 }} />
+
+      <button id="set-open" onClick={() => setMenuOpen(true)}>
+        Set open
+      </button>
       <button id="above" onClick={() => setPosition('above')}>
         Set above
       </button>

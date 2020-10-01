@@ -6,7 +6,7 @@ import { ColorSlider } from './ColorSlider';
 import { ColorSliderBase, IColorSliderState } from './ColorSlider.base';
 import { IColorSliderProps } from './ColorSlider.types';
 import { KeyCodes } from '../../../Utilities';
-import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from 'office-ui-fabric-react/lib/utilities/color';
+import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color';
 
 describe('ColorSlider', () => {
   let wrapper: ReactWrapper<IColorSliderProps, IColorSliderState, ColorSliderBase> | undefined;

@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { LabelPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Label/Label.doc';
+import { LabelPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Label/Label.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LabelPage/docs/LabelRelated.md') as string;
 

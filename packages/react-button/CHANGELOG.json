@@ -2,6 +2,103 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-button_v0.14.3",
+      "version": "0.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MenuButton: Removing office-ui-fabric-react dependency by having ContextualMenu as a JSX slot replacement instead of the default.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a51b4255e077c6ac6b52eb16d64c01988cbfe81b",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-button_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add migration guide to readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-button_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moving SizeValue const from react-button to theme package.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding conformant tests to v8 component test files.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 15:52:49 GMT",
+      "tag": "@fluentui/react-button_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix button styles to match v7 buttons.",
+            "author": "xgao@microsoft.com",
+            "commit": "70025f8282c9ba918580a1679ef3ae2ee217ecc9",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-button_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-button_v0.12.6",
       "version": "0.12.6",

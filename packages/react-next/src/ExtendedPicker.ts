@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/ExtendedPicker';
+import './version';
+export * from './components/ExtendedPicker/index';

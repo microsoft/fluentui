@@ -2,9 +2,24 @@
 
 ## Breaking changes
 
+### Button
+
+The Button has been completely rewritten to be faster, smaller, and easier to customize. By default, Buttons now have no opinion about icons, menuing, or split button behavior, which has led to large bundle and performance hits for the most common cases in the past.
+
+Please see the [`@fluentui/react-button` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-button/README.md) for details about improvements and a migration guide.
+
+If you would like to continue using the previous button components for now, update your imports to reference `@fluentui/react/lib/compat/Button`.
+
 ### Calendar
 
-TODO: Diff of OUFR vs date-time Calendar
+`Calendar` has been replaced with the version from the `@uifabric/date-time` package. This should be almost identical in visuals and functionality
+
+- Converted styling from legacy SCSS to CSS-in-JS. Styling can now be customized using `ICalendarProps.styles`.
+- Removed the following props (TODO: suggest alternatives)
+  - `autoNavigateOnSelection`
+  - `selectDateOnClick`
+  - `shouldFocusOnMount`
+  - `yearPickerHidden`
 
 ### Checkbox
 
@@ -28,7 +43,7 @@ TODO: Diff of OUFR vs date-time Calendar
 
 ### DatePicker
 
-TODO: Diff of OUFR vs date-time DatePicker
+`DatePicker` has been replaced with the version from the `@uifabric/date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
 
 ### OverflowSet
 
@@ -38,10 +53,10 @@ TODO: Diff of OUFR vs date-time DatePicker
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
-  - Removed deprecated styles prop `linkIsSelected?: boolean;`.
-  - Removed styles prop `rootIsLarge` and added `linkSize` instead.
-  - Removed styles prop `rootIsTabs` and added `linkFormat` instead.
-  - TODO: enumerate all removed props
+- `IPivotStyleProps` changes
+  - Replaced `rootIsLarge` with `linkSize`.
+  - Replaced `rootIsTabs` and `linkFormat`.
+  - Removed deprecated prop `linkIsSelected`.
 
 ### Rating
 
@@ -50,10 +65,6 @@ TODO: Diff of OUFR vs date-time DatePicker
 - Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
 - The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
-
-### Slider
-
-TODO: document any API or functionality changes
 
 ### SpinButton
 
@@ -90,18 +101,36 @@ TODO: document any API or functionality changes
   - If you need a former state property which is not included in the relevant `IComponentName` interface, please file an issue and we can consider adding it.
 - In your components which use the converted components, you may need to wrap certain test operations in `act` from `react-dom/test-utils`. [More details here.](https://reactjs.org/docs/test-utils.html#act)
 
+### ThemeProvider
+
+`ThemeProvider` is required to use if any button from `@fluentui/react/lib/Button` is used. We also deprecated `Fabric`, `Customizer` components in favor of using `ThemeProvider`.
+
+Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
+
+### Package rename and deletion
+
+- Discontinue `@fluentui/fluent-theme` package in favor of `@fluentui/theme` package; removed from `master`.
+
 ### Others
 
-- `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
+- `FluentStyles` is removed from `experiments` package.
 
 ## Minor changes
 
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+### FocusTrapZone
+
+- `FocusTrapZone's` `FocusStack` now takes an ID instead of component object.
+
+## New features
+
+- Pivot supports displaying an overflow menu when there is not enough room to display all of the tabs. This can be enabled by setting `overflowBehavior="menu"` on the Pivot.
 
 ## Other notable changes
 

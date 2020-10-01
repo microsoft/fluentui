@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Animations for avatar's active/inactive state",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-25T22:52:18.847Z"
+}
