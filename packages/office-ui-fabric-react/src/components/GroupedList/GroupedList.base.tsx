@@ -24,6 +24,7 @@ export interface IGroupedListState {
   selectionMode?: IGroupedListProps['selectionMode'];
   compact?: IGroupedListProps['compact'];
   groups?: IGroup[];
+  items?: IGroupedListProps['items'];
   listProps?: IGroupedListProps['listProps'];
   version: {};
 }
@@ -46,13 +47,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     nextProps: IGroupedListProps,
     previousState: IGroupedListState,
   ): IGroupedListState {
-    const { groups, selectionMode, compact, listProps } = nextProps;
+    const { groups, selectionMode, compact, items, listProps } = nextProps;
     const listVersion = listProps && listProps.version;
 
     let nextState = {
       ...previousState,
       selectionMode,
       compact,
+      groups,
       listProps,
     };
 
@@ -60,18 +62,16 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     const previousListVersion = previousState.listProps && previousState.listProps.version;
 
-    if (listVersion !== previousListVersion) {
-      shouldForceUpdates = true;
-    }
-
-    if (groups !== previousState.groups) {
-      nextState = {
-        ...nextState,
-        groups,
-      };
-    }
-
-    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
+    if (
+      listVersion !== previousListVersion ||
+      items !== previousState.items ||
+      groups !== previousState.groups ||
+      selectionMode !== previousState.selectionMode ||
+      compact !== previousState.compact
+    ) {
+      // If there are any props not passed explicitly to `List` which have an impact on the behavior of `onRenderCell`,
+      // these need to 'force-update' this component by revving the version. Otherwise, the List might render with stale
+      // data.
       shouldForceUpdates = true;
     }
 
@@ -96,6 +96,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this.state = {
       groups: props.groups,
+      items: props.items,
       listProps: props.listProps,
       version,
     };
