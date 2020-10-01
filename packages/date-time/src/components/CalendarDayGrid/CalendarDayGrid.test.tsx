@@ -10,6 +10,7 @@ describe('CalendarDayGrid', () => {
     formatYear: (date: Date) => 'y',
   };
 
+  console.log(new Date('2020-09-18T21:06:52.856Z'));
   isConformant({
     Component: CalendarDayGrid,
     displayName: 'CalendarDayGrid',
@@ -23,6 +24,6 @@ describe('CalendarDayGrid', () => {
       firstWeekOfYear: FirstWeekOfYear.FirstFullWeek,
       dateTimeFormatter: timeFormatter,
     },
-    isInternal: true,
+    disabledTests: ['exported-top-level', 'has-top-level-file'],
   });
 });
