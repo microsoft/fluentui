@@ -203,7 +203,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(-1);
   };
 
-  const _onDragOver = (event?: React.DragEvent<HTMLDivElement>) => {
+  const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
     if (defaultDragDropEnabled) {
       event?.preventDefault();
     }
@@ -399,7 +399,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   role="combobox"
                   className={css('ms-BasePicker-div', classNames.pickerDiv)}
                   onDrop={_onDropAutoFill}
-                  onDragOver={_onDragOver}
+                  onDragOver={_onDragOverAutofill}
                 >
                   <Autofill
                     {...(inputProps as IInputProps)}
