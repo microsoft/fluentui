@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Enabling asPropHandlesRef type in Avatar.test and fixing a minor typo in Avatar.types",
+  "packageName": "@fluentui/react-avatar",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-01T19:33:00.431Z"
+}
