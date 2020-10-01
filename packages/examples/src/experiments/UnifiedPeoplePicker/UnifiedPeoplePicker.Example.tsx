@@ -224,6 +224,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
+        autofillDragDropEnabled={false}
       />
     </>
   );

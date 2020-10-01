@@ -80,6 +80,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     [props.defaultDragDropEnabled],
   );
 
+  const autofillDragDropEnabled = React.useMemo(
+    () => (props.autofillDragDropEnabled != undefined ? props.defaultDragDropEnabled : defaultDragDropEnabled),
+    [props.defaultDragDropEnabled, defaultDragDropEnabled],
+  );
+
   React.useImperativeHandle(props.componentRef, () => ({
     clearInput: () => {
       if (input.current) {
@@ -119,14 +124,24 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     insertIndex = -1;
   };
 
-  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
-    return defaultDragDropEnabled && !focusedItemIndices.includes(dropContext!.index);
+  const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
+    if (autofillDragDropEnabled) {
+      event?.preventDefault();
+    }
   };
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
-    insertIndex = selectedItems.length;
-    event?.preventDefault();
-    _onDropInner(event?.dataTransfer);
+    if (props.onDropAutoFill) {
+      props.onDropAutoFill(event);
+    } else {
+      insertIndex = selectedItems.length;
+      event?.preventDefault();
+      _onDropInner(event?.dataTransfer);
+    }
+  };
+
+  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
+    return defaultDragDropEnabled && !focusedItemIndices.includes(dropContext!.index);
   };
 
   const _onDropList = (item?: any, event?: DragEvent): void => {
@@ -201,12 +216,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dataList?.clear();
     }
     setDraggedIndex(-1);
-  };
-
-  const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
-    if (defaultDragDropEnabled) {
-      event?.preventDefault();
-    }
   };
 
   const defaultDragDropEvents: IDragDropEvents = {

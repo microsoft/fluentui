@@ -101,4 +101,17 @@ export interface IUnifiedPickerProps<T> {
    * @defaultvalue true
    */
   defaultDragDropEnabled?: boolean;
+
+  /**
+   * If this property is not specified, defaultDragDropEnabled will be used
+   * @defaultvalue true
+   */
+  autofillDragDropEnabled?: boolean;
+
+  /**
+   * Function to customize drop behavior over the autofill portion
+   * If this is not set, but autofillDragDropEnabled is, the built
+   * in drop behavior will be used.
+   */
+  onDropAutoFill?: (event?: React.DragEvent<HTMLDivElement>) => void;
 }
