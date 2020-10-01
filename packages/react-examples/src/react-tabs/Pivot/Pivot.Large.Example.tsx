@@ -4,7 +4,7 @@ import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivo
 
 export const PivotLargeExample = () => (
   <div>
-    <Pivot aria-label="Large Link Size Pivot Example" linkSize={PivotLinkSize.large}>
+    <Pivot aria-label="Large Link Size Pivot Example" linkSize="large">
       <PivotItem headerText="My Files">
         <Label>Pivot #1</Label>
       </PivotItem>
