@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton } from '@fluentui/react/lib/SpinButton';
 var SpinButtonBasicExample = /** @class */ (function (_super) {
     __extends(SpinButtonBasicExample, _super);
     function SpinButtonBasicExample() {
