@@ -6,8 +6,8 @@ import {
   IStyle,
   normalize,
   FontWeights,
-} from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+} from '@uifabric/styling';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const globalClassNames = {
   count: 'ms-Pivot-count',
@@ -19,46 +19,30 @@ const globalClassNames = {
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
   text: 'ms-Pivot-text',
+  linkInMenu: 'ms-Pivot-linkInMenu',
+  overflowMenuButton: 'ms-Pivot-overflowMenuButton',
 };
 
-const linkStyles = (props: IPivotStyleProps): IStyle[] => {
-  const { rootIsLarge, rootIsTabs } = props;
+const getLinkStyles = (
+  props: IPivotStyleProps,
+  classNames: { [key: string]: string },
+  isLinkInOverflowMenu: boolean = false,
+): IStyle[] => {
+  const { linkSize, linkFormat } = props;
   const { semanticColors, fonts } = props.theme;
+  const rootIsLarge = linkSize === 'large';
+  const rootIsTabs = linkFormat === 'tabs';
+
   return [
     fonts.medium,
     {
       color: semanticColors.actionLink,
-      display: 'inline-block',
-      lineHeight: 44,
-      height: 44,
-      marginRight: 8,
       padding: '0 8px',
-      textAlign: 'center',
       position: 'relative',
       backgroundColor: 'transparent',
       border: 0,
       borderRadius: 0,
       selectors: {
-        ':before': {
-          backgroundColor: 'transparent',
-          bottom: 0,
-          content: '""',
-          height: 2,
-          left: 8,
-          position: 'absolute',
-          right: 8,
-          transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
-                      right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
-        },
-        ':after': {
-          color: 'transparent',
-          content: 'attr(data-content)',
-          display: 'block',
-          fontWeight: FontWeights.bold,
-          height: 1,
-          overflow: 'hidden',
-          visibility: 'hidden',
-        },
         ':hover': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
           color: semanticColors.buttonTextHovered,
@@ -81,37 +65,111 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
       },
     },
-    rootIsLarge && {
-      fontSize: fonts.large.fontSize,
-    },
-    rootIsTabs && [
+    !isLinkInOverflowMenu && [
       {
-        marginRight: 0,
-        height: 44,
+        display: 'inline-block',
         lineHeight: 44,
-        backgroundColor: semanticColors.buttonBackground,
-        padding: '0 10px',
-        verticalAlign: 'top',
+        height: 44,
+        marginRight: 8,
+        textAlign: 'center',
         selectors: {
-          ':focus': {
-            outlineOffset: '-1px',
+          ':before': {
+            backgroundColor: 'transparent',
+            bottom: 0,
+            content: '""',
+            height: 2,
+            left: 8,
+            position: 'absolute',
+            right: 8,
+            transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
+                        right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
           },
-          [`.${IsFocusVisibleClassName} &:focus::before`]: {
-            height: 'auto',
-            background: 'transparent',
-            transition: 'none',
+          ':after': {
+            color: 'transparent',
+            content: 'attr(data-content)',
+            display: 'block',
+            fontWeight: FontWeights.bold,
+            height: 1,
+            overflow: 'hidden',
+            visibility: 'hidden',
           },
         },
       },
+      rootIsLarge && {
+        fontSize: fonts.large.fontSize,
+      },
+      rootIsTabs && [
+        {
+          marginRight: 0,
+          height: 44,
+          lineHeight: 44,
+          backgroundColor: semanticColors.buttonBackground,
+          padding: '0 10px',
+          verticalAlign: 'top',
+
+          selectors: {
+            ':focus': {
+              outlineOffset: '-1px',
+            },
+            [`.${IsFocusVisibleClassName} &:focus::before`]: {
+              height: 'auto',
+              background: 'transparent',
+              transition: 'none',
+            },
+            '&:hover, &:focus': {
+              color: semanticColors.buttonTextCheckedHovered,
+            },
+            '&:active, &:hover': {
+              color: semanticColors.primaryButtonText,
+              backgroundColor: semanticColors.primaryButtonBackground,
+            },
+            [`&.${classNames.linkIsSelected}`]: {
+              backgroundColor: semanticColors.primaryButtonBackground,
+              color: semanticColors.primaryButtonText,
+              fontWeight: FontWeights.regular,
+              selectors: {
+                ':before': {
+                  backgroundColor: 'transparent',
+                  transition: 'none',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  content: '""',
+                  height: 0,
+                },
+                ':hover': {
+                  backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+                  color: semanticColors.primaryButtonText,
+                },
+                '&:active': {
+                  backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+                  color: semanticColors.primaryButtonText,
+                },
+                [HighContrastSelector]: {
+                  fontWeight: FontWeights.semibold,
+                  color: 'HighlightText',
+                  background: 'Highlight',
+                  MsHighContrastAdjust: 'none',
+                },
+              },
+            },
+          },
+        },
+      ],
     ],
   ];
 };
 
 export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
-  const { className, rootIsLarge, rootIsTabs, theme } = props;
+  const { className, linkSize, linkFormat, theme } = props;
   const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
+
+  const rootIsLarge = linkSize === 'large';
+  const rootIsTabs = linkFormat === 'tabs';
 
   return {
     root: [
@@ -136,23 +194,38 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     },
     link: [
       classNames.link,
-      ...linkStyles(props),
-      rootIsTabs && {
-        selectors: {
-          '&:hover, &:focus': {
-            color: semanticColors.buttonTextCheckedHovered,
-          },
-          '&:active, &:hover': {
-            color: semanticColors.primaryButtonText,
-            backgroundColor: semanticColors.primaryButtonBackground,
-          },
+      ...getLinkStyles(props, classNames),
+      {
+        [`&[data-is-overflowing='true']`]: {
+          display: 'none',
         },
+      },
+    ],
+    overflowMenuButton: [
+      classNames.overflowMenuButton,
+      {
+        visibility: 'hidden',
+        position: 'absolute',
+        right: 0,
+        [`.${classNames.link}[data-is-overflowing='true'] ~ &`]: {
+          visibility: 'visible',
+          position: 'relative',
+        },
+      },
+    ],
+    linkInMenu: [
+      classNames.linkInMenu,
+      ...getLinkStyles(props, classNames, true),
+      {
+        textAlign: 'left',
+        width: '100%',
+        height: 36,
+        lineHeight: 36,
       },
     ],
     linkIsSelected: [
       classNames.link,
       classNames.linkIsSelected,
-      ...linkStyles(props),
       {
         fontWeight: FontWeights.semibold,
         selectors: {
@@ -170,38 +243,6 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
           },
           [HighContrastSelector]: {
             color: 'Highlight',
-          },
-        },
-      },
-      rootIsTabs && {
-        backgroundColor: semanticColors.primaryButtonBackground,
-        color: semanticColors.primaryButtonText,
-        fontWeight: FontWeights.regular,
-        selectors: {
-          ':before': {
-            backgroundColor: 'transparent',
-            transition: 'none',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            content: '""',
-            height: 0,
-          },
-          ':hover': {
-            backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-            color: semanticColors.primaryButtonText,
-          },
-          '&:active': {
-            backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-            color: semanticColors.primaryButtonText,
-          },
-          [HighContrastSelector]: {
-            fontWeight: FontWeights.semibold,
-            color: 'HighlightText',
-            background: 'Highlight',
-            MsHighContrastAdjust: 'none',
           },
         },
       },

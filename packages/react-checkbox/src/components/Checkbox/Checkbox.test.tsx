@@ -1,9 +1,11 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
-import { IRefObject } from '../../Utilities';
+import { isConformant } from '../../common/isConformant';
+import { IRefObject, resetIds } from '@uifabric/utilities';
 import { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
@@ -15,7 +17,7 @@ const checkboxRef: IRefObject<ICheckbox> = (ref: ICheckbox | null) => {
 const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checked, setChecked] = React.useState(false);
-  const onChange = (ev: React.FormEvent<HTMLElement>, newChecked: boolean): void => {
+  const onChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, newChecked?: boolean): void => {
     // On first change, clear the indeterminate state and don't modify the checked state
     indeterminate ? setIndeterminate(false) : setChecked(!!newChecked);
   };
@@ -24,8 +26,12 @@ const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
 };
 
 describe('Checkbox', () => {
-  let renderedComponent: renderer.ReactTestRenderer | undefined;
+  let renderedComponent: ReactTestRenderer | undefined;
   let component: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     checkbox = undefined;
@@ -40,21 +46,26 @@ describe('Checkbox', () => {
   });
 
   it('renders unchecked correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders checked correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" checked />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" checked />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders indeterminate correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" indeterminate />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Checkbox,
+    displayName: 'Checkbox',
   });
 
   it('respects id prop', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '@uifabric/utilities';
 import { ToggleBase } from './Toggle.base';
 import { getStyles } from './Toggle.styles';
 import { IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
@@ -8,5 +8,7 @@ export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps
   ToggleBase,
   getStyles,
   undefined,
-  { scope: 'Toggle' },
+  {
+    scope: 'Toggle',
+  },
 );

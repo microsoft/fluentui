@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
-import { IKeytipProps } from '../../Keytip';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IButtonProps, IKeytipProps } from 'office-ui-fabric-react';
+import { IRefObject, IRenderFunction } from '@uifabric/utilities';
 
 /**
  * {@docCategory Pivot}
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
@@ -56,12 +56,12 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   itemIcon?: string;
 
   /**
-   * Optional custom renderer for the pivot item link.
+   * Optional custom renderer for the pivot item link
    */
   onRenderItemLink?: IRenderFunction<IPivotItemProps>;
 
   /**
-   * Optional keytip for this PivotItem.
+   * Optional keytip for this PivotItem
    */
   keytipProps?: IKeytipProps;
 

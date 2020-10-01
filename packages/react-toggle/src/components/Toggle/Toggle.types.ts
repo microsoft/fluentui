@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 
 /**
  * {@docCategory Toggle}
@@ -14,7 +16,7 @@ export interface IToggle {
  * Toggle component props.
  * {@docCategory Toggle}
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */
@@ -103,7 +105,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
-   * Optional keytip for this toggle
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 

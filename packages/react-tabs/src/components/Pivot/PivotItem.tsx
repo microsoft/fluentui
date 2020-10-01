@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '../../Utilities';
+import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '@uifabric/utilities';
 import { IPivotItemProps } from './PivotItem.types';
 
 const COMPONENT_NAME = 'PivotItem';

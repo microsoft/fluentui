@@ -65,10 +65,9 @@ exports[`Checkbox renders checked correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
-    id="checkbox-1"
-    onBlur={[Function]}
+    data-ktp-execute-target={true}
+    id="checkbox-0"
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -95,7 +94,7 @@ exports[`Checkbox renders checked correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    htmlFor="checkbox-1"
+    htmlFor="checkbox-0"
   >
     <div
       className=
@@ -126,6 +125,7 @@ exports[`Checkbox renders checked correctly 1`] = `
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
+      data-ktp-target={true}
     >
       <i
         aria-hidden={true}
@@ -236,10 +236,9 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
-    id="checkbox-2"
-    onBlur={[Function]}
+    data-ktp-execute-target={true}
+    id="checkbox-0"
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -266,7 +265,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    htmlFor="checkbox-2"
+    htmlFor="checkbox-0"
   >
     <div
       className=
@@ -314,6 +313,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
+      data-ktp-target={true}
     >
       <i
         aria-hidden={true}
@@ -418,10 +418,9 @@ exports[`Checkbox renders unchecked correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
+    data-ktp-execute-target={true}
     id="checkbox-0"
-    onBlur={[Function]}
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -476,6 +475,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
+      data-ktp-target={true}
     >
       <i
         aria-hidden={true}
