@@ -42,6 +42,34 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
+export const ButtonSizeVariants: {
+    size_smallest: {
+        height: string;
+        minHeight: string;
+    };
+    size_smaller: {
+        height: string;
+        minHeight: string;
+    };
+    size_small: {
+        height: string;
+        minHeight: string;
+    };
+    size_large: {
+        height: string;
+        minHeight: string;
+    };
+    size_larger: {
+        height: string;
+        minHeight: string;
+    };
+    size_largest: {
+        height: string;
+        minHeight: string;
+    };
+};
+
+// @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
     buttonRef?: React.RefObject<HTMLButtonElement>;
@@ -261,7 +289,7 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
