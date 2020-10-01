@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Persona';
+export * from '@fluentui/react-internal/lib/Persona';
