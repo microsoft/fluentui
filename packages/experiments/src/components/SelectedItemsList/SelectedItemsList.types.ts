@@ -134,4 +134,6 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Callback for when an item needs to be replaced with another item or items
    */
   replaceItem?: (newItem: T | T[], index: number) => void;
+
+  itemsAreEqual?: (item1?: any, item2?: any) => boolean;
 }

@@ -171,6 +171,10 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     }
   };
 
+  const _itemsAreEqual = (item1?: any, item2?: any): boolean => {
+    return item1?.key == item2?.key;
+  };
+
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
     // Updating the local copy as well at the parent level.
     const currentItems: IPersonaProps[] = [...peopleSelectedItems];
@@ -218,6 +222,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     serializeItemsForDrag: _serializeItemsForDrag,
     deserializeItemsFromDrop: _deserializeItemsFromDrop,
     dropItemsAt: _dropItemsAt,
+    itemsAreEqual: _itemsAreEqual,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
