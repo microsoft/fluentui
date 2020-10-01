@@ -11,6 +11,7 @@ const navigateToLastLevel = async () => {
   await e2e.focusOn(selectors.treeItemAt(1));
   await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(1), 'ArrowRight'); // Expand first level item
   await e2e.expectCount(selectors.treeItem, 3);
+
   await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(1), 'ArrowRight'); // Focus first child  2nd level
   await e2e.isFocused(selectors.treeItemAt(2));
 
