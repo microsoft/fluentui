@@ -2,7 +2,6 @@
 
 const { configure } = require('enzyme');
 const { initializeIcons } = require('@uifabric/icons');
-const { resetIds } = require('@uifabric/utilities');
 const Adapter = require('enzyme-adapter-react-16');
 
 // Initialize icons.
@@ -14,5 +13,3 @@ global.requestAnimationFrame = callback => {
 
 // Configure enzyme.
 configure({ adapter: new Adapter() });
-
-resetIds();
