@@ -6,7 +6,7 @@ export function isConformant(
   const defaultOptions = {
     disabledTests: ['has-docblock', 'kebab-aria-attributes'],
     componentPath: module!.parent!.filename.replace('.test', ''),
-    packageVersion: '@fluentui/date-time',
+    packageVersion: '@uifabric/date-time',
   };
 
   baseIsConformant(defaultOptions, testInfo);
