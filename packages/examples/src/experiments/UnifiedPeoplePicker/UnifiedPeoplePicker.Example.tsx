@@ -124,10 +124,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
-  const _itemsAreEqual = (item1?: any, item2?: any): boolean => {
-    return item1?.key == item2?.key;
-  };
-
   const _dropItemsAt = (insertIndex: number, newItems: IPersonaProps[], indicesToRemove: number[]): void => {
     // Insert those items into the current list
     if (insertIndex > -1) {
@@ -211,7 +207,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
     dropItemsAt: _dropItemsAt,
-    itemsAreEqual: _itemsAreEqual,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {

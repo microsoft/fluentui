@@ -124,11 +124,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropList = (item?: any, event?: DragEvent): void => {
-    insertIndex = selectedItems.findIndex(currentItem =>
-      props.selectedItemsListProps.itemsAreEqual
-        ? props.selectedItemsListProps.itemsAreEqual(currentItem, item)
-        : false,
-    );
+    /* indexOf compares using strict equality
+       if the item is something where properties can change frequently, then the
+       itemsAreEqual prop should be overloaded
+       Otherwise it's possible for the indexOf check to fail and return -1 */
+    if (props.selectedItemsListProps.itemsAreEqual) {
+      insertIndex = selectedItems.findIndex(currentItem =>
+        props.selectedItemsListProps.itemsAreEqual
+          ? props.selectedItemsListProps.itemsAreEqual(currentItem, item)
+          : false,
+      );
+    } else {
+      insertIndex = selectedItems.indexOf(item);
+    }
 
     _onDropInner(event);
   };
