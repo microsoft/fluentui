@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Fabric';
+export * from './components/Fabric/index';
