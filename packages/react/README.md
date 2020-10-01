@@ -116,7 +116,7 @@ To view the documentation including examples, contracts, component status, and t
 4. `yarn builddemo`
 5. `yarn start`
 
-This will start a demo page from the `office-ui-fabric-react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
+This will start a demo page from the `@fluentui/react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build and run tests for all packages in the repo, run `yarn build` from the root.
 
