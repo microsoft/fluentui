@@ -18,7 +18,7 @@ const DropdownRequiredExampleCode = require('!raw-loader!@fluentui/react-example
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
   componentName: 'Dropdown',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Dropdown',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/Dropdown',
   examples: [
     {
       title: 'Basic Dropdowns',

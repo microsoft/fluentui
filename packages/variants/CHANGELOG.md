@@ -1,8 +1,17 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.22](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.22)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.21..@uifabric/variants_v7.2.22)
+
+### Patches
+
+- Change doc links to point to 7.0 branch ([commit](https://github.com/microsoft/fluentui/commit/3e968de0afa15de7bcc988cd04dd2ed4133068ff) by elcraig@microsoft.com)
 
 ## [7.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.21)
 

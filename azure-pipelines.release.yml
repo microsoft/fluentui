@@ -10,15 +10,14 @@ variables:
 
 pool: 'Self Host Ubuntu'
 
-# DISABLED DURING BETA PREP
-# schedules:
-#   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
-#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-#   - cron: '0 12 * * 1-5'
-#     displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
-#     branches:
-#       include:
-#         - master
+schedules:
+  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+  - cron: '0 12 * * 1-5'
+    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+    branches:
+      include:
+        - 7.0
 
 workspace:
   clean: all
@@ -91,8 +90,8 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
-      git reset --hard origin/master
+      npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y
+      git reset --hard origin/7.0
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'

@@ -22,8 +22,7 @@ const PersonaPresenceExampleCode = require('!raw-loader!@fluentui/react-examples
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Persona',
   examples: [
     {
       title: 'Persona in various sizes',

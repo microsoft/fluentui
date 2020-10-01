@@ -3288,7 +3288,7 @@ export interface IContextualMenuRenderItem {
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
-    title?: string;
+    title?: string | IContextualMenuItem;
     topDivider?: boolean;
 }
 
@@ -5057,9 +5057,13 @@ export interface IGroupedListSectionState {
 // @public (undocumented)
 export interface IGroupedListState {
     // (undocumented)
+    compact?: IGroupedListProps['compact'];
+    // (undocumented)
     groups?: IGroup[];
     // (undocumented)
-    lastSelectionMode?: SelectionMode;
+    listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListProps['selectionMode'];
     // (undocumented)
     listProps?: IGroupedListProps['listProps'];
     // (undocumented)

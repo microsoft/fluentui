@@ -16,7 +16,7 @@ const AnnouncedQuickActionsExampleCode = require('!raw-loader!@fluentui/react-ex
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
   componentName: 'Announced',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/experiments/src/components/Announced',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/experiments/src/components/Announced',
   overview: require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Announced/docs/AnnouncedOverview.md'),
   isHeaderVisible: false,
 };
@@ -25,7 +25,7 @@ export const AnnouncedQuickActionsPageProps: IDocPageProps = {
   title: 'Quick Actions',
   componentName: 'Quick Actions',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Quick actions',
@@ -49,7 +49,7 @@ export const AnnouncedSearchResultsPageProps: IDocPageProps = {
   title: 'Search Results',
   componentName: 'Search Results',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Search results',
@@ -73,7 +73,7 @@ export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
   title: 'Asynchronous',
   componentName: 'Asynchronous',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Asynchronous',
@@ -97,7 +97,7 @@ export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
   title: 'Bulk Long Running',
   componentName: 'Bulk Long Running',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Announced',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Announced',
   examples: [
     {
       title: 'Bulk long running',

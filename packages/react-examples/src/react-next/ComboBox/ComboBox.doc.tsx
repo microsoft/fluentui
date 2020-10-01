@@ -23,7 +23,7 @@ const ComboBoxCustomStyledExampleCode = require('!raw-loader!@fluentui/react-exa
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
   componentName: 'ComboBox',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/ComboBox',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/ComboBox',
   examples: [
     {
       title: 'Basic uncontrolled ComboBox',

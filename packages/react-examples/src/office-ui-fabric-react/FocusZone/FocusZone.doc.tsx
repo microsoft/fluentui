@@ -18,7 +18,7 @@ export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
   componentName: 'FocusZone',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/FocusZone',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/FocusZone',
   examples: [
     {
       title: 'Non-uniform photos within bidirectional FocusZone',

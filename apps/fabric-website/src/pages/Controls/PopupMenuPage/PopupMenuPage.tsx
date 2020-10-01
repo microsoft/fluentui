@@ -4,8 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PopupMenuPageProps } from './PopupMenuPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PopupMenuPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/PopupMenuPage/';
 
 export const PopupMenuPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

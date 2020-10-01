@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Oct 2020 12:27:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.4)
+
+Thu, 01 Oct 2020 12:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.1..@fluentui/react-examples_v0.4.4)
+
+### Patches
+
+- Code optimization of vertical bar chart - examples updated ([PR #15295](https://github.com/microsoft/fluentui/pull/15295) by email not defined)
+- area chart basic example code updated with change data button ([PR #15299](https://github.com/microsoft/fluentui/pull/15299) by v-jasha@microsoft.com)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.1)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.0..@fluentui/react-examples_v0.4.1)
+
+### Patches
+
+- Fix incorrect react-next references in OUFR docs ([commit](https://github.com/microsoft/fluentui/commit/a56b6185efa1118ba2b36417a8dc6d30b6941b8d) by elcraig@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.0)
 

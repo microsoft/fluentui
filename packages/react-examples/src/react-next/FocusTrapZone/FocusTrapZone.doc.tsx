@@ -23,7 +23,7 @@ const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader!@fluentui/rea
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
   componentName: 'FocusTrapZone',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/FocusTrapZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/FocusTrapZone',
   examples: [
     {
       title: 'Simple box',

@@ -4744,6 +4744,19 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@uifabric/fluent-theme@^7.3.21":
+  version "7.3.21"
+  resolved "https://registry.yarnpkg.com/@uifabric/fluent-theme/-/fluent-theme-7.3.21.tgz#79a1917dd42323b22d9283e896400c6ac1ab5d44"
+  integrity sha512-q0aIhSDrowfginY68wK5GJONlyuygtUyY/0GL35a8sexfOHP8zQTfLVn5bVxp3rsVuFfcIwxrAYTpzOk0GhP9Q==
+  dependencies:
+    "@fluentui/theme" "^1.2.1"
+    "@uifabric/merge-styles" "^7.19.1"
+    "@uifabric/set-version" "^7.0.23"
+    "@uifabric/styling" "^7.16.9"
+    "@uifabric/variants" "^7.2.22"
+    office-ui-fabric-react "^7.144.1"
+    tslib "^1.10.0"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"

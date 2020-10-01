@@ -3,7 +3,7 @@ import { SeparatorPageProps as ExternalProps } from '@fluentui/react-examples/li
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/SeparatorRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/SeparatorPage';
 
 export const SeparatorPageProps: TFabricPlatformPageProps = {
   web: {

@@ -96,7 +96,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/7.0/packages/styling';
 
     return (
       <div className="ms-themer">

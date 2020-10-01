@@ -10,8 +10,7 @@ const PickerCustomResultExampleCode = require('!raw-loader!@fluentui/react-examp
 export const PickersPageProps: IDocPageProps = {
   title: 'Pickers',
   componentName: 'Pickers',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Pickers',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Pickers',
   examples: [
     {
       title: 'Tag Picker',

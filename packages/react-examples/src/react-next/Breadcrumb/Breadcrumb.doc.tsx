@@ -12,7 +12,7 @@ const BreadcrumbStaticExampleCode = require('!raw-loader!@fluentui/react-example
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
   componentName: 'Breadcrumb',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/Breadcrumb',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-next/src/components/Breadcrumb',
   examples: [
     {
       title: 'Breadcrumb rendering options',

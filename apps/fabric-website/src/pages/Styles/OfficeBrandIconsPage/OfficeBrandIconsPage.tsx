@@ -7,7 +7,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './OfficeBrandIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
 const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
 
 const productIcons = require<

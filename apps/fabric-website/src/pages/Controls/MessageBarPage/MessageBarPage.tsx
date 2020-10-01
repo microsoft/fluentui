@@ -4,8 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { MessageBarPageProps } from './MessageBarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/MessageBarPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/MessageBarPage/';
 
 export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (

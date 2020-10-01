@@ -12,7 +12,7 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',
   componentName: 'SelectedPeopleList',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SelectedPeopleList',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/SelectedPeopleList',
   examples: [
     {
       title: 'Selected People List (uncontrolled)',

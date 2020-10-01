@@ -11,8 +11,7 @@ const VerticalDividerCustomExampleCode = require('!raw-loader!@fluentui/react-ex
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
   componentName: 'Divider',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Divider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Divider',
   examples: [
     {
       title: 'Vertical Divider',
