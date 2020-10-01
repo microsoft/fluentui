@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { KeyCodes, css, classNamesFunction } from '@uifabric/utilities';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import {
-  addMonths,
-  compareDatePart,
-  getMonthStart,
-  getMonthEnd,
-} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { Icon } from '@fluentui/react-internal/lib/Icon';
+import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { CalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid';

@@ -4,7 +4,7 @@ import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
-import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 

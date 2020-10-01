@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 export interface IEditorErrorProps {
   error?: string | string[];

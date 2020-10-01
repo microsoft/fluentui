@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
-import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ILayerProps } from '../../Layer';
 import { Target } from '@uifabric/react-hooks';
 

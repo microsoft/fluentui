@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
-import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
+import { findIndex } from '@fluentui/react/lib/Utilities';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
 

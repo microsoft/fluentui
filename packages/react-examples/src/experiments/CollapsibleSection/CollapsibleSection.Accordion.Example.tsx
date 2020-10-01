@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone } from '@fluentui/react/lib/FocusZone';
 // TODO: move this file to Accordion
 import { Accordion } from '@uifabric/experiments/lib/Accordion';
 

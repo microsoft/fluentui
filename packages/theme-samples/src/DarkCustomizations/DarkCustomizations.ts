@@ -5,7 +5,7 @@ import {
   ITheme,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { DatePickerStyles } from './styles/DatePickerStyles';
 import { PeoplePickerItemStyles } from './styles/PeoplePickerStyles';
 import { addVariants } from '@uifabric/variants';

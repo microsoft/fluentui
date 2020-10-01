@@ -10,7 +10,9 @@ function lintFiles() {
   const gitRoot = findGitRoot();
 
   const exampleFiles = [
-    ...glob.sync('packages/!(react-examples)/!(fluentui|node_modules)/**/(docs|examples)/*', { cwd: gitRoot }),
+    ...glob.sync('packages/!(react-examples)/!(fluentui|node_modules)/**/(docs|examples)/*.{ts,tsx,scss,md}', {
+      cwd: gitRoot,
+    }),
     ...glob.sync('packages/!(react-examples)/!(fluentui|node_modules)/**/*.doc.ts*', { cwd: gitRoot }),
   ];
   if (exampleFiles.length) {

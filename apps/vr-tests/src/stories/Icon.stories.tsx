@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Icon, IconType, getIconClassName, Fabric } from 'office-ui-fabric-react';
+import { Icon, IconType, getIconClassName, Fabric } from '@fluentui/react';
 import * as IconNames from '../../../../packages/icons/src/IconNames';
 
 import { TestImages } from '@uifabric/example-data';

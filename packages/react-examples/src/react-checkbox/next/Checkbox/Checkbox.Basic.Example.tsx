@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox/lib/next';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };

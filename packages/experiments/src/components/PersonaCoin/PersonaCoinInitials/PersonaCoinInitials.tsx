@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Text } from 'office-ui-fabric-react';
+import { Icon, Text } from '@fluentui/react';
 import { ISlotProp } from '../../../Foundation';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { getInitials, getRTL } from '../../../Utilities';

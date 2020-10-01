@@ -4,8 +4,1987 @@
 
 ```ts
 
+import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
+import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
+import { IButtonProps } from '@fluentui/react-internal/lib/Button';
+import { IButtonStyles } from '@fluentui/react-internal/lib/Button';
+import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
+import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
+import { IDragDropContext } from '@fluentui/react-internal/lib/DragDrop';
+import { IDragDropEvents } from '@fluentui/react-internal/lib/DragDrop';
+import { IDragDropHelper } from '@fluentui/react-internal/lib/DragDrop';
+import { IDragDropOptions } from '@fluentui/react-internal/lib/DragDrop';
+import { IFocusZoneProps } from '@fluentui/react-internal/lib/FocusZone';
+import { IIconProps } from '@fluentui/react-internal/lib/Icon';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
+import { ILabelStyleProps } from '@fluentui/react-internal/lib/Label';
+import { ILabelStyles } from '@fluentui/react-internal/lib/Label';
+import { ILinkProps } from '@fluentui/react-link/lib/Link';
+import { IList } from '@fluentui/react-internal/lib/List';
+import { IListProps } from '@fluentui/react-internal/lib/List';
+import { ImageFit } from '@fluentui/react-internal/lib/Image';
+import { IPanelStyleProps } from '@fluentui/react-internal/lib/Panel';
+import { IPanelStyles } from '@fluentui/react-internal/lib/Panel';
+import { IProcessedStyleSet } from '@fluentui/react-internal/lib/Styling';
+import { IRefObject } from '@fluentui/react-internal/lib/Utilities';
+import { IRenderFunction } from '@fluentui/react-internal/lib/Utilities';
+import { ISelectableDroppableTextProps } from '@fluentui/react-internal/lib/SelectableOption';
+import { ISelectableOption } from '@fluentui/react-internal/lib/SelectableOption';
+import { ISelection } from '@fluentui/react-internal/lib/Selection';
+import { ISelectionZoneProps } from '@fluentui/react-internal/lib/Selection';
+import { IStyle } from '@fluentui/react-internal/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react-internal/lib/Utilities';
+import { ITheme } from '@fluentui/react-internal/lib/Styling';
+import { ITooltipHostProps } from '@fluentui/react-internal/lib/Tooltip';
+import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { IWithViewportProps } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { Omit } from '@fluentui/react-internal/lib/Utilities';
+import { PersonaInitialsColor } from '@fluentui/react-internal/lib/Persona';
+import * as React from 'react';
+import { RectangleEdge } from '@fluentui/react-internal/lib/Positioning';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ScrollToMode } from '@fluentui/react-internal/lib/List';
+import { SelectableOptionMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
+import { SelectionMode } from '@fluentui/react-internal/lib/Selection';
 
-export * from "office-ui-fabric-react";
+// @public (undocumented)
+export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
+
+// @public (undocumented)
+export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
+    constructor(props: IBreadcrumbProps);
+    // (undocumented)
+    static defaultProps: IBreadcrumbProps;
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+
+// @public (undocumented)
+export enum CheckboxVisibility {
+    always = 1,
+    hidden = 2,
+    onHover = 0
+}
+
+// @public (undocumented)
+export enum CollapseAllVisibility {
+    // (undocumented)
+    hidden = 0,
+    // (undocumented)
+    visible = 1
+}
+
+// @public
+export enum ColumnActionsMode {
+    clickable = 1,
+    disabled = 0,
+    hasDropdown = 2
+}
+
+// @public
+export enum ColumnDragEndLocation {
+    header = 2,
+    outside = 0,
+    surface = 1
+}
+
+// @public (undocumented)
+export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
+    constructor(props: IComboBoxProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IComboBoxProps;
+    dismissMenu: () => void;
+    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
+    //
+    // (undocumented)
+    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
+}
+
+// @public (undocumented)
+export enum ConstrainMode {
+    horizontalConstrained = 1,
+    unconstrained = 0
+}
+
+// @public (undocumented)
+export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps;
+
+// @public (undocumented)
+export const DEFAULT_ROW_HEIGHTS: {
+    rowHeight: number;
+    compactRowHeight: number;
+};
+
+// @public
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+    constructor(props: IDetailsColumnProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export const DetailsHeader: React.FunctionComponent<IDetailsHeaderBaseProps>;
+
+// @public (undocumented)
+export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+    constructor(props: IDetailsHeaderBaseProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        selectAllVisibility: SelectAllVisibility;
+        collapseAllVisibility: CollapseAllVisibility;
+        useFastIcons: boolean;
+    };
+    focus(): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export const DetailsList: React.FunctionComponent<IDetailsListProps>;
+
+// @public (undocumented)
+export class DetailsListBase extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
+    constructor(props: IDetailsListProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        layoutMode: DetailsListLayoutMode;
+        selectionMode: SelectionMode;
+        constrainMode: ConstrainMode;
+        checkboxVisibility: CheckboxVisibility;
+        isHeaderVisible: boolean;
+        compact: boolean;
+        useFastIcons: boolean;
+    };
+    // (undocumented)
+    focusIndex(index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
+    getStartItemIndexInView(): number;
+    // (undocumented)
+    protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps> | undefined) => JSX.Element;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    }
+
+// @public (undocumented)
+export enum DetailsListLayoutMode {
+    fixedColumns = 0,
+    justified = 1
+}
+
+// @public (undocumented)
+export const DetailsRow: React.FunctionComponent<IDetailsRowBaseProps>;
+
+// @public (undocumented)
+export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetailsRowState> {
+    constructor(props: IDetailsRowBaseProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IDetailsRowBaseProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    focus(forceIntoFirstElement?: boolean): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IDetailsRowBaseProps, previousState: IDetailsRowState): IDetailsRowState;
+    measureCell(index: number, onMeasureDone: (width: number) => void): void;
+    // (undocumented)
+    protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean;
+    }
+
+// @public (undocumented)
+export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
+
+// @public
+export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps>;
+
+// @public (undocumented)
+export const DetailsRowGlobalClassNames: {
+    root: string;
+    compact: string;
+    cell: string;
+    cellAnimation: string;
+    cellCheck: string;
+    check: string;
+    cellMeasurer: string;
+    listCellFirstChild: string;
+    isContentUnselectable: string;
+    isSelected: string;
+    isCheckVisible: string;
+    isRowHeader: string;
+    fields: string;
+};
+
+// @public (undocumented)
+export const DocumentCard: React.FunctionComponent<IDocumentCardProps>;
+
+// @public (undocumented)
+export const DocumentCardActions: React.FunctionComponent<IDocumentCardActionsProps>;
+
+// @public (undocumented)
+export const DocumentCardActivity: React.FunctionComponent<IDocumentCardActivityProps>;
+
+// @public (undocumented)
+export const DocumentCardDetails: React.FunctionComponent<IDocumentCardDetailsProps>;
+
+// @public (undocumented)
+export const DocumentCardImage: React.FunctionComponent<IDocumentCardImageProps>;
+
+// @public (undocumented)
+export const DocumentCardLocation: React.FunctionComponent<IDocumentCardLocationProps>;
+
+// @public (undocumented)
+export const DocumentCardLogo: React.FunctionComponent<IDocumentCardLogoProps>;
+
+// @public (undocumented)
+export const DocumentCardPreview: React.FunctionComponent<IDocumentCardPreviewProps>;
+
+// @public (undocumented)
+export const DocumentCardStatus: React.FunctionComponent<IDocumentCardStatusProps>;
+
+// @public (undocumented)
+export const DocumentCardTitle: React.FunctionComponent<IDocumentCardTitleProps>;
+
+// @public (undocumented)
+export enum DocumentCardType {
+    compact = 1,
+    normal = 0
+}
+
+// @public (undocumented)
+export const Dropdown: React.FunctionComponent<IDropdownProps>;
+
+// @public (undocumented)
+export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
+    constructor(props: IDropdownProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        options: any[];
+    };
+    // (undocumented)
+    focus(shouldOpenOnFocus?: boolean): void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
+    // (undocumented)
+    setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
+}
+
+// @public (undocumented)
+export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
+
+// @public (undocumented)
+export const GroupedList: React.FunctionComponent<IGroupedListProps>;
+
+// @public (undocumented)
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
+    constructor(props: IGroupedListProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    static defaultProps: {
+        selectionMode: SelectionMode;
+        isHeaderVisible: boolean;
+        groupProps: {};
+        compact: boolean;
+    };
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: IGroupedListProps, previousState: IGroupedListState): IGroupedListState;
+    // (undocumented)
+    getStartItemIndexInView(): number;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    toggleCollapseAll(allCollapsed: boolean): void;
+    }
+
+// @public (undocumented)
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
+    constructor(props: IGroupedListSectionProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IGroupedListSectionProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    forceListUpdate(): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export const GroupFooter: React.FunctionComponent<IGroupFooterProps>;
+
+// @public (undocumented)
+export const GroupHeader: React.FunctionComponent<IGroupHeaderProps>;
+
+// @public (undocumented)
+export const GroupShowAll: React.FunctionComponent<IGroupShowAllProps>;
+
+// @public (undocumented)
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
+
+// @public (undocumented)
+export interface IBreadcrumb {
+    focus(): void;
+}
+
+// @public @deprecated (undocumented)
+export type IBreadCrumbData = IBreadcrumbData;
+
+// @public (undocumented)
+export interface IBreadcrumbData {
+    // (undocumented)
+    props: IBreadcrumbProps;
+    // (undocumented)
+    renderedItems: IBreadcrumbItem[];
+    // (undocumented)
+    renderedOverflowItems: IBreadcrumbItem[];
+}
+
+// @public (undocumented)
+export interface IBreadcrumbItem {
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+    href?: string;
+    isCurrentItem?: boolean;
+    key: string;
+    onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    role?: string;
+    text: string;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IBreadcrumb>;
+    dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
+    items: IBreadcrumbItem[];
+    maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+    onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+    overflowAriaLabel?: string;
+    overflowIndex?: number;
+    // (undocumented)
+    styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+    // (undocumented)
+    theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IBreadcrumbStyles {
+    // (undocumented)
+    chevron: IStyle;
+    // (undocumented)
+    item: IStyle;
+    // (undocumented)
+    itemLink: IStyle;
+    // (undocumented)
+    list: IStyle;
+    // (undocumented)
+    listItem: IStyle;
+    // (undocumented)
+    overflow: IStyle;
+    // (undocumented)
+    overflowButton: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface ICellStyleProps {
+    // (undocumented)
+    cellExtraRightPadding: number;
+    // (undocumented)
+    cellLeftPadding: number;
+    // (undocumented)
+    cellRightPadding: number;
+}
+
+// @public (undocumented)
+export interface IColumn {
+    ariaLabel?: string;
+    calculatedWidth?: number;
+    className?: string;
+    columnActionsMode?: ColumnActionsMode;
+    currentWidth?: number;
+    data?: any;
+    fieldName?: string;
+    filterAriaLabel?: string;
+    getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+    groupAriaLabel?: string;
+    headerClassName?: string;
+    iconClassName?: string;
+    iconName?: string;
+    // @deprecated
+    isCollapsable?: boolean;
+    isCollapsible?: boolean;
+    isFiltered?: boolean;
+    isGrouped?: boolean;
+    isIconOnly?: boolean;
+    isMenuOpen?: boolean;
+    isMultiline?: boolean;
+    isPadded?: boolean;
+    isResizable?: boolean;
+    isRowHeader?: boolean;
+    isSorted?: boolean;
+    isSortedDescending?: boolean;
+    key: string;
+    maxWidth?: number;
+    minWidth: number;
+    name: string;
+    onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
+    onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
+    onColumnResize?: (width?: number) => void;
+    onRender?: (item?: any, index?: number, column?: IColumn) => any;
+    onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    sortAscendingAriaLabel?: string;
+    sortDescendingAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
+}
+
+// @public (undocumented)
+export interface IColumnDragDropDetails {
+    draggedIndex: number;
+    targetIndex: number;
+}
+
+// @public (undocumented)
+export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
+    onColumnDragEnd?: (props: {
+        dropLocation?: ColumnDragEndLocation;
+    }, event: MouseEvent) => void;
+}
+
+// @public (undocumented)
+export interface IColumnReorderOptions {
+    frozenColumnCountFromEnd?: number;
+    frozenColumnCountFromStart?: number;
+    // @deprecated
+    handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;
+    onColumnDragStart?: (dragStarted: boolean) => void;
+    onColumnDrop?: (dragDropDetails: IColumnDragDropDetails) => void;
+    onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+}
+
+// @public (undocumented)
+export interface IColumnResizeDetails {
+    // (undocumented)
+    columnIndex: number;
+    // (undocumented)
+    columnMinWidth: number;
+    // (undocumented)
+    originX?: number;
+}
+
+// @public (undocumented)
+export interface IComboBox {
+    dismissMenu: () => void;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
+}
+
+// @public (undocumented)
+export interface IComboBoxClassNames {
+    // (undocumented)
+    callout: string;
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    errorMessage: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    optionsContainer: string;
+    // (undocumented)
+    optionsContainerWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+}
+
+// @public (undocumented)
+export interface IComboBoxOption extends ISelectableOption {
+    styles?: Partial<IComboBoxOptionStyles>;
+    useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionClassNames {
+    // (undocumented)
+    optionText: string;
+    // (undocumented)
+    optionTextWrapper: string;
+    // (undocumented)
+    root: string;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionStyles extends IButtonStyles {
+    optionText: IStyle;
+    optionTextWrapper: IStyle;
+}
+
+// @public (undocumented)
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+    allowFreeform?: boolean;
+    ariaDescribedBy?: string;
+    autoComplete?: 'on' | 'off';
+    autofill?: IAutofillProps;
+    buttonIconProps?: IIconProps;
+    caretDownButtonStyles?: Partial<IButtonStyles>;
+    comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+    componentRef?: IRefObject<IComboBox>;
+    dropdownMaxWidth?: number;
+    dropdownWidth?: number;
+    getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
+    iconButtonProps?: IButtonProps;
+    isButtonAriaHidden?: boolean;
+    keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
+    onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
+    onMenuDismissed?: () => void;
+    onMenuOpen?: () => void;
+    onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+    onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
+    onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+    onScrollToItem?: (itemIndex: number) => void;
+    options: IComboBoxOption[];
+    persistMenu?: boolean;
+    scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
+    styles?: Partial<IComboBoxStyles>;
+    text?: string;
+    theme?: ITheme;
+    useComboBoxAsMenuWidth?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxState {
+    currentOptions: IComboBoxOption[];
+    currentPendingValue?: string;
+    currentPendingValueValidIndex: number;
+    currentPendingValueValidIndexOnHover: number;
+    focusState?: 'none' | 'focused' | 'focusing';
+    isOpen?: boolean;
+    selectedIndices?: number[];
+    suggestedDisplayValue?: string;
+}
+
+// @public (undocumented)
+export interface IComboBoxStyles {
+    callout: IStyle;
+    container: IStyle;
+    divider: IStyle;
+    errorMessage: IStyle;
+    header: IStyle;
+    input: IStyle;
+    inputDisabled: IStyle;
+    label: IStyle;
+    labelDisabled: IStyle;
+    optionsContainer: IStyle;
+    optionsContainerWrapper: IStyle;
+    root: IStyle;
+    rootDisabled: IStyle;
+    rootDisallowFreeForm: IStyle;
+    rootError: IStyle;
+    rootFocused: IStyle;
+    rootHovered: IStyle;
+    rootPressed: IStyle;
+    screenReaderText: IStyle;
+}
+
+// @public (undocumented)
+export interface IDetailsCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumnBase> {
+    cellStyleProps?: ICellStyleProps;
+    column: IColumn;
+    columnIndex: number;
+    componentRef?: () => void;
+    dragDropHelper?: IDragDropHelper | null;
+    isDraggable?: boolean;
+    isDropped?: boolean;
+    onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
+    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
+    parentId?: string;
+    // @deprecated (undocumented)
+    setDraggedItemIndex?: (itemIndex: number) => void;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
+    theme?: ITheme;
+    updateDragInfo?: (props: {
+        itemIndex: number;
+    }, event?: MouseEvent) => void;
+    useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnRenderTooltipProps extends ITooltipHostProps {
+    column?: IColumn;
+}
+
+// @public (undocumented)
+export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme' | 'cellStyleProps'>> & {
+    headerClassName?: string;
+    isActionable?: boolean;
+    isEmpty?: boolean;
+    isIconVisible?: boolean;
+    isPadded?: boolean;
+    isIconOnly?: boolean;
+    iconClassName?: string;
+    transitionDurationDrag?: number;
+    transitionDurationDrop?: number;
+};
+
+// @public (undocumented)
+export interface IDetailsColumnStyles {
+    accessibleLabel: IStyle;
+    borderAfterDropping: IStyle;
+    borderWhileDragging: IStyle;
+    cellName: IStyle;
+    cellTitle: IStyle;
+    cellTooltip: IStyle;
+    filterChevron: IStyle;
+    gripperBarVerticalStyle: IStyle;
+    iconClassName: IStyle;
+    nearIcon: IStyle;
+    noBorderAfterDropping: IStyle;
+    noBorderWhileDragging: IStyle;
+    root: IStyle;
+    sortIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IDetailsFooterBaseProps extends IDetailsItemProps {
+}
+
+// @public (undocumented)
+export interface IDetailsFooterProps extends IDetailsFooterBaseProps {
+    columns: IColumn[];
+    selection: ISelection;
+    selectionMode: SelectionMode;
+}
+
+// @public (undocumented)
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {
+}
+
+// @public (undocumented)
+export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+    // (undocumented)
+    onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+    // (undocumented)
+    onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+}
+
+// @public (undocumented)
+export interface IDetailsHeader {
+    focus: () => boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
+    ariaLabel?: string;
+    ariaLabelForSelectAllCheckbox?: string;
+    ariaLabelForSelectionColumn?: string;
+    ariaLabelForToggleAllGroupsButton?: string;
+    className?: string;
+    collapseAllVisibility?: CollapseAllVisibility;
+    columnReorderOptions?: IColumnReorderOptions;
+    columnReorderProps?: IColumnReorderHeaderProps;
+    componentRef?: IRefObject<IDetailsHeader>;
+    isAllCollapsed?: boolean;
+    layoutMode: DetailsListLayoutMode;
+    minimumPixelsForDrag?: number;
+    onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
+    onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
+    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
+    onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
+    onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+    onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    selectAllVisibility?: SelectAllVisibility;
+    styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
+    theme?: ITheme;
+    useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
+    columns: IColumn[];
+    selection: ISelection;
+    selectionMode: SelectionMode;
+}
+
+// @public (undocumented)
+export interface IDetailsHeaderState {
+    // (undocumented)
+    columnResizeDetails?: IColumnResizeDetails;
+    // (undocumented)
+    isAllCollapsed?: boolean;
+    // (undocumented)
+    isAllSelected?: boolean;
+    // (undocumented)
+    isSizing?: boolean;
+}
+
+// @public (undocumented)
+export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme'>> & Pick<IDetailsHeaderProps, 'className'> & {
+    isSelectAllHidden?: boolean;
+    isAllSelected?: boolean;
+    isResizingColumn?: boolean;
+    isAllCollapsed?: boolean;
+    isSizing?: boolean;
+    isCheckboxHidden?: boolean;
+    cellStyleProps?: ICellStyleProps;
+};
+
+// @public (undocumented)
+export interface IDetailsHeaderStyles {
+    // (undocumented)
+    accessibleLabel: IStyle;
+    // @deprecated (undocumented)
+    cellIsActionable: IStyle;
+    // (undocumented)
+    cellIsCheck: IStyle;
+    // @deprecated (undocumented)
+    cellIsEmpty: IStyle;
+    // (undocumented)
+    cellIsGroupExpander: IStyle;
+    // (undocumented)
+    cellIsResizing: IStyle;
+    // (undocumented)
+    cellSizer: IStyle;
+    // (undocumented)
+    cellSizerEnd: IStyle;
+    // (undocumented)
+    cellSizerStart: IStyle;
+    // @deprecated (undocumented)
+    cellWrapperPadded: IStyle;
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    checkTooltip: IStyle;
+    // (undocumented)
+    collapseButton: IStyle;
+    // (undocumented)
+    dropHintCaretStyle: IStyle;
+    // (undocumented)
+    dropHintCircleStyle: IStyle;
+    // (undocumented)
+    dropHintLineStyle: IStyle;
+    // (undocumented)
+    dropHintStyle: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    sizingOverlay: IStyle;
+}
+
+// @public (undocumented)
+export interface IDetailsItemProps {
+    cellStyleProps?: ICellStyleProps;
+    checkboxVisibility?: CheckboxVisibility | undefined;
+    columns?: IColumn[];
+    groupNestingDepth?: number;
+    indentWidth?: number | undefined;
+    rowWidth?: number;
+    selection?: ISelection | undefined;
+    selectionMode?: SelectionMode | undefined;
+    // @deprecated
+    viewport?: IViewport | undefined;
+}
+
+// @public (undocumented)
+export interface IDetailsList extends IList {
+    focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+    forceUpdate: () => void;
+    getStartItemIndexInView: () => number;
+}
+
+// @public (undocumented)
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
+}
+
+// @public (undocumented)
+export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
+    ariaLabel?: string;
+    ariaLabelForGrid?: string;
+    ariaLabelForListHeader?: string;
+    ariaLabelForSelectAllCheckbox?: string;
+    ariaLabelForSelectionColumn?: string;
+    cellStyleProps?: ICellStyleProps;
+    checkboxCellClassName?: string;
+    checkboxVisibility?: CheckboxVisibility;
+    checkButtonAriaLabel?: string;
+    className?: string;
+    columnReorderOptions?: IColumnReorderOptions;
+    columns?: IColumn[];
+    compact?: boolean;
+    componentRef?: IRefObject<IDetailsList>;
+    constrainMode?: ConstrainMode;
+    disableSelectionZone?: boolean;
+    dragDropEvents?: IDragDropEvents;
+    enableUpdateAnimations?: boolean;
+    enterModalSelectionOnTouch?: boolean;
+    getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+    getGroupHeight?: IGroupedListProps['getGroupHeight'];
+    getKey?: (item: any, index?: number) => string;
+    getRowAriaDescribedBy?: (item: any) => string;
+    getRowAriaLabel?: (item: any) => string;
+    groupProps?: IDetailsGroupRenderProps;
+    groups?: IGroup[];
+    indentWidth?: number;
+    initialFocusedIndex?: number;
+    isHeaderVisible?: boolean;
+    isPlaceholderData?: boolean;
+    items: any[];
+    layoutMode?: DetailsListLayoutMode;
+    listProps?: IListProps;
+    minimumPixelsForDrag?: number;
+    onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent<HTMLElement>) => void;
+    onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
+    onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
+    onColumnResize?: (column?: IColumn, newWidth?: number, columnIndex?: number) => void;
+    onDidUpdate?: (detailsList?: DetailsListBase) => void;
+    onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
+    onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+    onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
+    onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
+    onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+    onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
+    onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+    onRenderRow?: IRenderFunction<IDetailsRowProps>;
+    onRowDidMount?: (item?: any, index?: number) => void;
+    onRowWillUnmount?: (item?: any, index?: number) => void;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    rowElementEventMap?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    selectionPreservedOnEmptyClick?: boolean;
+    selectionZoneProps?: ISelectionZoneProps;
+    setKey?: string;
+    shouldApplyApplicationRole?: boolean;
+    styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+    theme?: ITheme;
+    useFastIcons?: boolean;
+    usePageCache?: boolean;
+    useReducedRowRenderer?: boolean;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IDetailsListState {
+    // (undocumented)
+    adjustedColumns: IColumn[];
+    // (undocumented)
+    focusedItemIndex: number;
+    // (undocumented)
+    getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
+    // (undocumented)
+    isCollapsed?: boolean;
+    // (undocumented)
+    isSizing?: boolean;
+    // (undocumented)
+    isSomeGroupExpanded?: boolean;
+    // (undocumented)
+    lastSelectionMode?: SelectionMode;
+    // (undocumented)
+    lastWidth?: number;
+    version: {};
+}
+
+// @public (undocumented)
+export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> & Pick<IDetailsListProps, 'className'> & {
+    isHorizontalConstrained?: boolean;
+    compact?: boolean;
+    isFixed?: boolean;
+};
+
+// @public (undocumented)
+export interface IDetailsListStyles {
+    // (undocumented)
+    contentWrapper: IStyle;
+    // (undocumented)
+    focusZone: IStyle;
+    // (undocumented)
+    headerWrapper: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDetailsRow {
+}
+
+// @public (undocumented)
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+    cellsByColumn?: {
+        [columnKey: string]: React.ReactNode;
+    };
+    checkboxCellClassName?: string;
+    checkButtonAriaLabel?: string;
+    className?: string;
+    collapseAllVisibility?: CollapseAllVisibility;
+    compact?: boolean;
+    componentRef?: IRefObject<IDetailsRow>;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    enableUpdateAnimations?: boolean;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (item?: any, index?: number, event?: any) => void;
+    }[];
+    getRowAriaDescribedBy?: (item: any) => string;
+    getRowAriaLabel?: (item: any) => string;
+    item: any;
+    itemIndex: number;
+    onDidMount?: (row?: DetailsRowBase) => void;
+    onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+    onWillUnmount?: (row?: DetailsRowBase) => void;
+    rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
+    styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
+    theme?: ITheme;
+    useFastIcons?: boolean;
+    useReducedRowRenderer?: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
+    anySelected?: boolean;
+    canSelect: boolean;
+    checkClassName?: string;
+    className?: string;
+    compact?: boolean;
+    isHeader?: boolean;
+    isVisible?: boolean;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+    selected?: boolean;
+    styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
+    theme?: ITheme;
+    useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> & Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
+    isVisible?: boolean;
+};
+
+// @public (undocumented)
+export interface IDetailsRowCheckStyles {
+    // @deprecated (undocumented)
+    check: IStyle;
+    // (undocumented)
+    isDisabled: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
+    cellStyleProps?: ICellStyleProps;
+    columns: IColumn[];
+    columnStartIndex: number;
+    compact?: boolean;
+    // (undocumented)
+    enableUpdateAnimations?: boolean;
+    item: any;
+    itemIndex: number;
+    rowClassNames: {
+        [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
+    };
+}
+
+// @public (undocumented)
+export interface IDetailsRowProps extends IDetailsRowBaseProps {
+    columns: IColumn[];
+    selection: ISelection;
+    selectionMode: SelectionMode;
+}
+
+// @public (undocumented)
+export interface IDetailsRowSelectionState {
+    // (undocumented)
+    isSelected: boolean;
+    // (undocumented)
+    isSelectionModal: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsRowState {
+    // (undocumented)
+    columnMeasureInfo?: {
+        index: number;
+        column: IColumn;
+        onMeasureDone: (measuredWidth: number) => void;
+    };
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    selectionState: IDetailsRowSelectionState;
+}
+
+// @public (undocumented)
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+    isSelected?: boolean;
+    anySelected?: boolean;
+    canSelect?: boolean;
+    droppingClassName?: string;
+    isCheckVisible?: boolean;
+    isRowHeader?: boolean;
+    checkboxCellClassName?: string;
+    className?: string;
+    compact?: boolean;
+    cellStyleProps?: ICellStyleProps;
+    enableUpdateAnimations?: boolean;
+};
+
+// @public (undocumented)
+export interface IDetailsRowStyles {
+    // (undocumented)
+    cell: IStyle;
+    // (undocumented)
+    cellAnimation: IStyle;
+    // (undocumented)
+    cellMeasurer: IStyle;
+    // (undocumented)
+    cellPadded: IStyle;
+    // (undocumented)
+    cellUnpadded: IStyle;
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    checkCell: IStyle;
+    // (undocumented)
+    checkCover: IStyle;
+    // (undocumented)
+    fields: IStyle;
+    // (undocumented)
+    isMultiline: IStyle;
+    // (undocumented)
+    isRowHeader: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDividerAsProps extends IIconProps {
+    item?: IBreadcrumbItem;
+}
+
+// @public (undocumented)
+export interface IDocumentCard {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActions {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardActionsBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
+    actions: IButtonProps[];
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardActions>;
+    styles?: IStyleFunctionOrObject<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>;
+    theme?: ITheme;
+    views?: Number;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActionsStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActionsStyles {
+    // (undocumented)
+    action: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    views: IStyle;
+    // (undocumented)
+    viewsIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActivity {
+}
+
+// @public (undocumented)
+export interface IDocumentCardActivityPerson {
+    allowPhoneInitials?: boolean;
+    initials?: string;
+    initialsColor?: PersonaInitialsColor;
+    name: string;
+    profileImageSrc: string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardActivityBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
+    activity: string;
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardActivity>;
+    people: IDocumentCardActivityPerson[];
+    styles?: IStyleFunctionOrObject<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActivityStyleProps {
+    className?: string;
+    multiplePeople?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardActivityStyles {
+    // (undocumented)
+    activity: IStyle;
+    // (undocumented)
+    avatar: IStyle;
+    // (undocumented)
+    avatars: IStyle;
+    // (undocumented)
+    details: IStyle;
+    // (undocumented)
+    name: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardDetails {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardDetails>;
+    styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardDetailsStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardDetailsStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardImage {
+}
+
+// @public (undocumented)
+export interface IDocumentCardImageProps extends IBaseProps<{}> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardImage>;
+    height?: number;
+    iconProps?: IIconProps;
+    imageFit?: ImageFit;
+    imageSrc?: string;
+    styles?: IStyleFunctionOrObject<IDocumentCardImageStyleProps, IDocumentCardImageStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {
+}
+
+// @public (undocumented)
+export interface IDocumentCardImageStyles {
+    // (undocumented)
+    centeredIcon: IStyle;
+    // (undocumented)
+    centeredIconWrapper: IStyle;
+    // (undocumented)
+    cornerIcon: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLocation {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardLocationBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
+    ariaLabel?: string;
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardLocation>;
+    location: string;
+    locationHref?: string;
+    onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+    styles?: IStyleFunctionOrObject<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLocationStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLocationStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLogo {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardLogoBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardLogo>;
+    logoIcon: string;
+    logoName?: string;
+    styles?: IStyleFunctionOrObject<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLogoStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardLogoStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardPreview {
+}
+
+// @public (undocumented)
+export interface IDocumentCardPreviewImage {
+    // @deprecated
+    accentColor?: string;
+    componentRef?: IRefObject<{}>;
+    // @deprecated
+    errorImageSrc?: string;
+    height?: number;
+    iconSrc?: string;
+    imageFit?: ImageFit;
+    linkProps?: ILinkProps;
+    name?: string;
+    previewIconContainerClass?: string;
+    previewIconProps?: IIconProps;
+    previewImageSrc?: string;
+    // @deprecated
+    url?: string;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardPreview>;
+    getOverflowDocumentCountText?: (overflowCount: number) => string;
+    previewImages: IDocumentCardPreviewImage[];
+    styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardPreviewStyleProps {
+    className?: string;
+    isFileList?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardPreviewStyles {
+    // (undocumented)
+    fileList: IStyle;
+    // (undocumented)
+    fileListIcon: IStyle;
+    // (undocumented)
+    fileListLink: IStyle;
+    // (undocumented)
+    fileListOverflowText: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    previewIcon: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLDivElement> {
+    // @deprecated
+    accentColor?: string;
+    children?: React.ReactNode;
+    className?: string;
+    componentRef?: IRefObject<IDocumentCard>;
+    onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+    onClickHref?: string;
+    onClickTarget?: string;
+    role?: string;
+    styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
+    theme?: ITheme;
+    type?: DocumentCardType;
+}
+
+// @public (undocumented)
+export interface IDocumentCardStatus {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardStatus>;
+    status: string;
+    statusIcon?: string;
+    styles?: IStyleFunctionOrObject<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardStatusStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardStatusStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardStyleProps {
+    actionable?: boolean;
+    className?: string;
+    compact?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDocumentCardTitle {
+}
+
+// Warning: (ae-forgotten-export) The symbol "DocumentCardTitleBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
+    className?: string;
+    componentRef?: IRefObject<IDocumentCardTitle>;
+    shouldTruncate?: boolean;
+    showAsSecondaryTitle?: boolean;
+    styles?: IStyleFunctionOrObject<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>;
+    theme?: ITheme;
+    title: string;
+}
+
+// @public (undocumented)
+export interface IDocumentCardTitleStyleProps {
+    className?: string;
+    showAsSecondaryTitle?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDocumentCardTitleStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+export { IDragDropContext }
+
+export { IDragDropEvents }
+
+export { IDragDropHelper }
+
+export { IDragDropOptions }
+
+// @public (undocumented)
+export interface IDropdown {
+    // (undocumented)
+    focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
+}
+
+// @public
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+}
+
+// @public (undocumented)
+export interface IDropdownOption extends ISelectableOption {
+    // @deprecated
+    isSelected?: boolean;
+}
+
+// @public (undocumented)
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+    defaultSelectedKeys?: string[] | number[];
+    dropdownWidth?: number;
+    // @deprecated
+    isDisabled?: boolean;
+    keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
+    notifyOnReselect?: boolean;
+    onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
+    // @deprecated (undocumented)
+    onChanged?: (option: IDropdownOption, index?: number) => void;
+    onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
+    // @deprecated
+    onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+    onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
+    onRenderTitle?: IRenderFunction<IDropdownOption[]>;
+    options: IDropdownOption[];
+    // @deprecated
+    placeHolder?: string;
+    responsiveMode?: ResponsiveMode;
+    selectedKeys?: string[] | number[] | null;
+    styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDropdownState {
+    // (undocumented)
+    calloutRenderEdge?: RectangleEdge;
+    hasFocus: boolean;
+    // (undocumented)
+    isOpen: boolean;
+    // (undocumented)
+    selectedIndices: number[];
+}
+
+// @public
+export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
+    hasError: boolean;
+    hasLabel: boolean;
+    isOpen: boolean;
+    isRenderingPlaceholder: boolean;
+    panelClassName?: string;
+    calloutClassName?: string;
+    calloutRenderEdge?: RectangleEdge;
+};
+
+// @public
+export interface IDropdownStyles {
+    callout: IStyle;
+    caretDown: IStyle;
+    caretDownWrapper: IStyle;
+    dropdown: IStyle;
+    dropdownDivider: IStyle;
+    dropdownItem: IStyle;
+    dropdownItemDisabled: IStyle;
+    dropdownItemHeader: IStyle;
+    dropdownItemHidden: IStyle;
+    dropdownItems: IStyle;
+    dropdownItemSelected: IStyle;
+    dropdownItemSelectedAndDisabled: IStyle;
+    dropdownItemsWrapper: IStyle;
+    dropdownOptionText: IStyle;
+    errorMessage: IStyle;
+    label: IStyle;
+    // @deprecated
+    panel: IStyle;
+    root: IStyle;
+    subComponentStyles: IDropdownSubComponentStyles;
+    title: IStyle;
+}
+
+// @public (undocumented)
+export interface IDropdownSubComponentStyles {
+    label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+}
+
+// @public (undocumented)
+export interface IDropHintDetails {
+    // (undocumented)
+    dropHintElementRef: HTMLElement;
+    // (undocumented)
+    endX: number;
+    // (undocumented)
+    originX: number;
+    // (undocumented)
+    startX: number;
+}
+
+// @public (undocumented)
+export interface IGroup {
+    ariaLabel?: string;
+    children?: IGroup[];
+    count: number;
+    data?: any;
+    hasMoreData?: boolean;
+    isCollapsed?: boolean;
+    isDropEnabled?: boolean;
+    // @deprecated
+    isSelected?: boolean;
+    isShowingAll?: boolean;
+    key: string;
+    level?: number;
+    name: string;
+    startIndex: number;
+}
+
+// @public (undocumented)
+export interface IGroupDividerProps {
+    ariaColSpan?: number;
+    className?: string;
+    compact?: boolean;
+    // (undocumented)
+    componentRef?: IRefObject<{}>;
+    // @deprecated
+    expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    footerText?: string;
+    group?: IGroup;
+    groupIndex?: number;
+    groupLevel?: number;
+    groups?: IGroup[];
+    indentWidth?: number;
+    isCollapsedGroupSelectVisible?: boolean;
+    isGroupLoading?: (group: IGroup) => boolean;
+    // @deprecated
+    isSelected?: boolean;
+    loadingText?: string;
+    onGroupHeaderClick?: (group: IGroup) => void;
+    onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+    onToggleCollapse?: (group: IGroup) => void;
+    onToggleSelectGroup?: (group: IGroup) => void;
+    onToggleSummarize?: (group: IGroup) => void;
+    selected?: boolean;
+    selectionMode?: SelectionMode;
+    showAllLinkText?: string;
+    theme?: ITheme;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedList extends IList {
+    forceUpdate: () => void;
+    toggleCollapseAll: (allCollapsed: boolean) => void;
+}
+
+// @public (undocumented)
+export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
+    className?: string;
+    compact?: boolean;
+    componentRef?: IRefObject<IGroupedList>;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    focusZoneProps?: IFocusZoneProps;
+    getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    items: any[];
+    listProps?: IListProps;
+    onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
+    theme?: ITheme;
+    usePageCache?: boolean;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
+    compact?: boolean;
+    componentRef?: () => void;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    group?: IGroup;
+    groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
+    groupIndex?: number;
+    groupNestingDepth?: number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    headerProps?: IGroupHeaderProps;
+    items: any[];
+    listProps?: IListProps;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
+    onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    showAllProps?: IGroupShowAllProps;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionState {
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    isSelected?: boolean;
+}
+
+// @public (undocumented)
+export interface IGroupedListState {
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    lastSelectionMode?: SelectionMode;
+    // (undocumented)
+    listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
+    version: {};
+}
+
+// @public (undocumented)
+export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> & Pick<IGroupedListProps, 'className'> & {
+    isCollapsed?: boolean;
+    compact?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupedListStyles {
+    // (undocumented)
+    group: IStyle;
+    // (undocumented)
+    groupIsDropping: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupFooterProps extends IGroupDividerProps {
+    styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
+}
+
+// @public (undocumented)
+export type IGroupFooterStyleProps = Required<Pick<IGroupFooterProps, 'theme'>> & Pick<IGroupFooterProps, 'selected' | 'className'> & {
+    isCollapsed?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupFooterStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupHeaderCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IGroupHeaderProps extends IGroupDividerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
+    expandButtonIcon?: string;
+    expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    groupedListId?: string;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
+    selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+    useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> & Pick<IGroupHeaderProps, 'selected' | 'className'> & {
+    isCollapsed?: boolean;
+    compact?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupHeaderStyles {
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    dropIcon: IStyle;
+    // (undocumented)
+    expand: IStyle;
+    // (undocumented)
+    expandIsCollapsed: IStyle;
+    // (undocumented)
+    groupHeaderContainer: IStyle;
+    // (undocumented)
+    headerCount: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    title: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupRenderProps {
+    collapseAllVisibility?: CollapseAllVisibility;
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    headerProps?: IGroupHeaderProps;
+    isAllGroupsCollapsed?: boolean;
+    onRenderFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    role?: string;
+    showAllProps?: IGroupShowAllProps;
+    showEmptyGroups?: boolean;
+}
+
+// @public (undocumented)
+export interface IGroupShowAllProps extends IGroupDividerProps {
+    showAllLinkText?: string;
+    styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
+}
+
+// @public (undocumented)
+export type IGroupShowAllStyleProps = Required<Pick<IGroupShowAllProps, 'theme'>>;
+
+// @public (undocumented)
+export interface IGroupShowAllStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupSpacerProps {
+    count: number;
+    indentWidth?: number;
+    role?: string;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+    // @deprecated
+    theme?: ITheme;
+}
+
+// @public @deprecated (undocumented)
+export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> & {
+    width?: number;
+};
+
+// @public @deprecated (undocumented)
+export interface IGroupSpacerStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IOnRenderComboBoxLabelProps {
+    multiselectAccessibleText?: string;
+    props: IComboBoxProps;
+}
+
+// @public
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+
+// @public
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+    ariaLabelForShimmer?: string;
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps, index?: number, defaultRender?: (props: IDetailsRowProps) => React.ReactNode) => React.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // @deprecated
+    shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
+export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
+
+// @public
+export interface IShimmeredDetailsListStyles {
+    root: IStyle;
+}
+
+export { IViewport }
+
+export { IWithViewportProps }
+
+export { ResponsiveMode }
+
+export { SelectableOptionMenuItemType as DropdownMenuItemType }
+
+export { SelectableOptionMenuItemType }
+
+// @public (undocumented)
+export enum SelectAllVisibility {
+    // (undocumented)
+    hidden = 1,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    visible = 2
+}
+
+// @public (undocumented)
+export const ShimmeredDetailsList: React.FunctionComponent<IShimmeredDetailsListProps>;
+
+// @public (undocumented)
+export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
+    constructor(props: IShimmeredDetailsListProps);
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
+    constructor(props: IComboBoxProps);
+    // (undocumented)
+    dismissMenu(): void;
+    // (undocumented)
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    // (undocumented)
+    protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
+    // (undocumented)
+    protected _onScrollToItem: (itemIndex: number) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
+}
+
+
+export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-internal";
+export * from "@fluentui/react-internal/lib/Selection";
+export * from "@fluentui/react-link/lib/Link";
+export * from "@fluentui/react-slider/lib/Slider";
+export * from "@fluentui/react-tabs/lib/Pivot";
+export * from "@fluentui/react-toggle/lib/Toggle";
 
 // (No @packageDocumentation comment for this package)
 

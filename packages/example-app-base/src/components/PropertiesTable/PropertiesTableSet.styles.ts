@@ -1,5 +1,5 @@
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { getTheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
 
 export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles> = props => {

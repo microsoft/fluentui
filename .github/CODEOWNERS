@@ -84,91 +84,91 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Components
-packages/office-ui-fabric-react/src/components/ActivityItem/ @xugao
-packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
-packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
-packages/office-ui-fabric-react/src/components/Button/ @khmakoto
+packages/react/src/components/ActivityItem/ @xugao
+packages/react/src/components/Announced/ @natalieethell
+packages/react/src/components/Breadcrumb/ @xugao
+packages/react/src/components/Button/ @khmakoto
 packages/react-next/src/components/Button/ @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/Callout/ @joschect
-packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
-packages/office-ui-fabric-react/src/components/Check/ @dzearing @xugao
-packages/office-ui-fabric-react/src/components/Checkbox/ @khmakoto @xugao
+packages/react/src/components/Calendar/ @lorejoh12 @pompomon
+packages/react/src/components/Callout/ @joschect
+packages/react/src/components/react-cards/Card/  @khmakoto
+packages/react/src/components/Check/ @dzearing @xugao
+packages/react/src/components/Checkbox/ @khmakoto @xugao
 packages/react-next/src/components/Checkbox/ @khmakoto @xugao
 packages/react-checkbox/ @khmakoto @xugao
-packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
-packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
-packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
-packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
-packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
-packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/DetailsList/ @dzearing
-packages/office-ui-fabric-react/src/components/Dialog/ @joschect
-packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
-packages/office-ui-fabric-react/src/components/Dropdown/ @joschect
-packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
+packages/react/src/components/ChoiceGroup/ @ecraig12345
+packages/react/src/components/Coachmark/ @leddie24
+packages/react/src/components/ColorPicker/ @ecraig12345
+packages/react/src/components/ComboBox/ @joschect
+packages/react/src/components/CommandBar/ @micahgodbolt @joschect
+packages/react/src/components/ContextualMenu/ @joschect
+packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
+packages/react/src/components/DetailsList/ @dzearing
+packages/react/src/components/Dialog/ @joschect
+packages/react/src/components/DocumentCard/ @yiminwu
+packages/react/src/components/Dropdown/ @joschect
+packages/react/src/components/Fabric/ @dzearing
 packages/react-next/src/components/Fabric/ @dzearing
-packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe
-packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
-packages/office-ui-fabric-react/src/components/FocusTrapZone/ @khmakoto
-packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
+packages/react/src/components/Facepile/ @markionium @mtennoe
+packages/react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
+packages/react/src/components/FocusTrapZone/ @khmakoto
+packages/react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
-packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @dzearing
-packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
-packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
-packages/office-ui-fabric-react/src/components/Image/ @dzearing
+packages/react/src/components/GroupedList/  @aditima @dzearing
+packages/react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
+packages/react/src/components/Icon/ @dzearing @ecraig12345
+packages/react/src/components/Image/ @dzearing
 packages/react-next/src/components/Image/ @dzearing
-packages/office-ui-fabric-react/src/components/Label/ @khmakoto
-packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon
-packages/office-ui-fabric-react/src/components/Link/ @khmakoto
+packages/react/src/components/Label/ @khmakoto
+packages/react/src/components/Layer/  @ThomasMichon
+packages/react/src/components/Link/ @khmakoto
 packages/react-next/src/components/Link/ @khmakoto
 packages/react-link/ @khmakoto
-packages/office-ui-fabric-react/src/components/List/ @dzearing
-packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
-packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Modal/ @joschect
-packages/office-ui-fabric-react/src/components/Nav/ @ecraig12345
-packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
+packages/react/src/components/List/ @dzearing
+packages/react/src/components/MarqueeSelection/ @dzearing
+packages/react/src/components/MessageBar/ @ecraig12345
+packages/react/src/components/Modal/ @joschect
+packages/react/src/components/Nav/ @ecraig12345
+packages/react/src/components/OverflowSet/ @micahgodbolt
 packages/react-next/src/components/OverflowSet/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Overlay/ @xugao
-packages/office-ui-fabric-react/src/components/Pagination/ @caradong
-packages/office-ui-fabric-react/src/components/Panel/ @xugao
-packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
-packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
-packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/office-ui-fabric-react/src/components/pickers/  @joschect
-packages/office-ui-fabric-react/src/components/Pivot/ @behowell
+packages/react/src/components/Overlay/ @xugao
+packages/react/src/components/Pagination/ @caradong
+packages/react/src/components/Panel/ @xugao
+packages/react/src/components/Persona/ @markionium @mtennoe
+packages/react/src/components/PersonaCoin/ @mtennoe @markionium
+packages/react/src/components/Persona/PersonaConsts.tsx @mtennoe
+packages/react/src/components/pickers/  @joschect
+packages/react/src/components/Pivot/ @behowell
 packages/react-next/src/components/Pivot/ @behowell
 packages/react-tabs/ @behowell
-packages/office-ui-fabric-react/src/components/Popup/ @joschect
+packages/react/src/components/Popup/ @joschect
 packages/react-next/src/components/Popup/ @joschect
-packages/office-ui-fabric-react/src/components/ProgressIndicator/ @xugao
-packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
-packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
+packages/react/src/components/ProgressIndicator/ @xugao
+packages/react/src/components/Rating/ @jdhuntington
+packages/react/src/components/ResizeGroup/ @micahgodbolt
 packages/react-next/src/components/ResizeGroup/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/SearchBox/ @ecraig12345
+packages/react/src/components/SearchBox/ @ecraig12345
 packages/react-next/src/components/SearchBox/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Separator/ @natalieethell
-packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1 @atneik
-packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Slider/ @joschect
+packages/react/src/components/Separator/ @natalieethell
+packages/react/src/components/Shimmer/ @Vitalius1 @atneik
+packages/react/src/components/Signals/ @ThomasMichon
+packages/react/src/components/Slider/ @joschect
 packages/react-next/src/components/Slider/ @joschect
 packages/react-slider/ @joschect
-packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
+packages/react/src/components/SpinButton/ @khmakoto
 packages/react-next/src/components/SpinButton/ @khmakoto
-packages/office-ui-fabric-react/src/components/Spinner/ @xugao
-packages/office-ui-fabric-react/src/components/Stack/  @khmakoto
-packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @ecraig12345
-packages/office-ui-fabric-react/src/components/TeachingBubble/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Text/ @natalieethell
-packages/office-ui-fabric-react/src/components/TextField/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Theme/ @dzearing
-packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Toggle/ @xugao
+packages/react/src/components/Spinner/ @xugao
+packages/react/src/components/Stack/  @khmakoto
+packages/react/src/components/SwatchColorPicker/ @ecraig12345
+packages/react/src/components/TeachingBubble/ @micahgodbolt
+packages/react/src/components/Text/ @natalieethell
+packages/react/src/components/TextField/ @ecraig12345
+packages/react/src/components/Theme/ @dzearing
+packages/react/src/components/Tile/ @ThomasMichon
+packages/react/src/components/TileList/ @ThomasMichon
+packages/react/src/components/Toggle/ @xugao
 packages/react-next/src/components/Toggle/ @xugao
 packages/react-toggle/ @xugao
-packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
+packages/react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto
 packages/react-spinbutton/ @dzearing @ecraig12345

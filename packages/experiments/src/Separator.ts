@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from office-ui-fabric-react package instead.
+ * @deprecated Import from `@fluentui/react` package instead.
  */
-export * from 'office-ui-fabric-react/lib/Separator';
+export * from '@fluentui/react/lib/Separator';

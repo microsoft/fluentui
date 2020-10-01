@@ -10,7 +10,7 @@ import {
   IStackProps,
   DefaultButton,
   PrimaryButton,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 interface IExampleProps {
   resetChoice?: () => void;

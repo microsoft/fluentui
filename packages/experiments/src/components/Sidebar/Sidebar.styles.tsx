@@ -2,8 +2,8 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { IButtonStyles } from 'office-ui-fabric-react';
-import { memoizeFunction, ITheme, concatStyleSets } from 'office-ui-fabric-react';
+import { IButtonStyles } from '@fluentui/react';
+import { memoizeFunction, ITheme, concatStyleSets } from '@fluentui/react';
 import { ISidebarStyles, SidebarStylingConstants } from './Sidebar.types';
 
 export const sidebarFonts = {

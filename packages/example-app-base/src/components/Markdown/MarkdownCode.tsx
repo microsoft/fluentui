@@ -1,10 +1,5 @@
-import {
-  IStyleFunctionOrObject,
-  IStyleFunction,
-  classNamesFunction,
-  styled,
-} from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject, IStyleFunction, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { NeutralColors } from '@fluentui/theme';
 import * as React from 'react';
 import { CodeSnippet } from '../CodeSnippet/index';

@@ -1,5 +1,5 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
-import { FontSizes, FontWeights, HighContrastSelector, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
   const {

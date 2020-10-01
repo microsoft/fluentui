@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { create } from 'react-test-renderer';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
 import { IFloatingSuggestionItem, IFloatingPeopleSuggestionsProps } from '../../../FloatingPeopleSuggestionsComposite';
 import { people, mru } from '@uifabric/example-data';

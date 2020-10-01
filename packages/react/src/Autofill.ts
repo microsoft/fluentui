@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Autofill';
+export * from '@fluentui/react-internal/lib/Autofill';

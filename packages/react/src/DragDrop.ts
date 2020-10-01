@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/DragDrop';
+export * from '@fluentui/react-internal/lib/DragDrop';

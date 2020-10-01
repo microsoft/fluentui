@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { css } from '@fluentui/react/lib/Utilities';
+import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import * as stylesImport from './DefaultPeopleSuggestionsItem.scss';
 
 export const DefaultPeopleSuggestionsItem = <TPersona extends IPersonaProps>(

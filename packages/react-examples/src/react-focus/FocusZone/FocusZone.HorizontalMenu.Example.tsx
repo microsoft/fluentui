@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createArray } from 'office-ui-fabric-react/lib/Utilities';
+import { createArray } from '@fluentui/react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const ITEMS = createArray(5, index => ({
   key: index.toString(),

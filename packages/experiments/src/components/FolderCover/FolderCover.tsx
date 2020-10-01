@@ -3,7 +3,7 @@ import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCov
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 const FolderCoverStyles = FolderCoverStylesModule as any;
 const SignalStyles = SignalStylesModule as any;

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react-next';
 import { useId } from '@uifabric/react-hooks';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton } from '@fluentui/react';
 
 const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
   const targetId = useId();

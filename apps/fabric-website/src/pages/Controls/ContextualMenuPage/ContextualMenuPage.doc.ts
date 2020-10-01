@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { ContextualMenuPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ContextualMenu/ContextualMenu.doc';
+import { ContextualMenuPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/ContextualMenu/ContextualMenu.doc';
 
 // const componentUrl =
 //   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ContextualMenuPage';

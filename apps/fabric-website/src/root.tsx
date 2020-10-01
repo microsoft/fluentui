@@ -1,4 +1,4 @@
-import { registerIcons, on, KeyCodes, setRTL } from 'office-ui-fabric-react';
+import { registerIcons, on, KeyCodes, setRTL } from '@fluentui/react';
 import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
 import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';

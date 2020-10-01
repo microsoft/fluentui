@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IChartHoverCardStyles, IChartHoverCardStyleProps, IChartHoverCardProps } from './ChartHoverCard.types';
-import { classNamesFunction, IProcessedStyleSet } from 'office-ui-fabric-react';
+import { classNamesFunction, IProcessedStyleSet } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IChartHoverCardStyleProps, IChartHoverCardStyles>();
 export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}> {

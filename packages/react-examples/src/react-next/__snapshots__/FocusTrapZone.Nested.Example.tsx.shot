@@ -84,8 +84,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="ToggleBase1"
-          id="ToggleBase1-label"
+          htmlFor="Toggle1"
+          id="Toggle1-label"
         >
           Enable trap zone 1
         </label>
@@ -99,7 +99,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
-            aria-labelledby="ToggleBase1-label ToggleBase1-stateText"
+            aria-labelledby="Toggle1-label Toggle1-stateText"
             checked={false}
             className=
                 ms-Toggle-background
@@ -150,7 +150,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 }
             data-is-focusable={true}
             data-ktp-target={true}
-            id="ToggleBase1"
+            id="Toggle1"
             onChange={[Function]}
             onClick={[Function]}
             role="switch"
@@ -210,8 +210,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   padding-top: 0;
                   user-select: none;
                 }
-            htmlFor="ToggleBase1"
-            id="ToggleBase1-stateText"
+            htmlFor="Toggle1"
+            id="Toggle1-stateText"
           >
             Off
           </label>
@@ -415,8 +415,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 5px;
                     word-wrap: break-word;
                   }
-              htmlFor="ToggleBase6"
-              id="ToggleBase6-label"
+              htmlFor="Toggle6"
+              id="Toggle6-label"
             >
               Enable trap zone 2
             </label>
@@ -430,7 +430,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             >
               <button
                 aria-checked={false}
-                aria-labelledby="ToggleBase6-label ToggleBase6-stateText"
+                aria-labelledby="Toggle6-label Toggle6-stateText"
                 checked={false}
                 className=
                     ms-Toggle-background
@@ -481,7 +481,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     }
                 data-is-focusable={true}
                 data-ktp-target={true}
-                id="ToggleBase6"
+                id="Toggle6"
                 onChange={[Function]}
                 onClick={[Function]}
                 role="switch"
@@ -541,8 +541,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                       padding-top: 0;
                       user-select: none;
                     }
-                htmlFor="ToggleBase6"
-                id="ToggleBase6-stateText"
+                htmlFor="Toggle6"
+                id="Toggle6-stateText"
               >
                 Off
               </label>
@@ -746,8 +746,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         padding-top: 5px;
                         word-wrap: break-word;
                       }
-                  htmlFor="ToggleBase11"
-                  id="ToggleBase11-label"
+                  htmlFor="Toggle11"
+                  id="Toggle11-label"
                 >
                   Enable trap zone 3
                 </label>
@@ -761,7 +761,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 >
                   <button
                     aria-checked={false}
-                    aria-labelledby="ToggleBase11-label ToggleBase11-stateText"
+                    aria-labelledby="Toggle11-label Toggle11-stateText"
                     checked={false}
                     className=
                         ms-Toggle-background
@@ -812,7 +812,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         }
                     data-is-focusable={true}
                     data-ktp-target={true}
-                    id="ToggleBase11"
+                    id="Toggle11"
                     onChange={[Function]}
                     onClick={[Function]}
                     role="switch"
@@ -872,8 +872,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                           padding-top: 0;
                           user-select: none;
                         }
-                    htmlFor="ToggleBase11"
-                    id="ToggleBase11-stateText"
+                    htmlFor="Toggle11"
+                    id="Toggle11-stateText"
                   >
                     Off
                   </label>
@@ -1091,8 +1091,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         padding-top: 5px;
                         word-wrap: break-word;
                       }
-                  htmlFor="ToggleBase16"
-                  id="ToggleBase16-label"
+                  htmlFor="Toggle16"
+                  id="Toggle16-label"
                 >
                   Enable trap zone 4
                 </label>
@@ -1106,7 +1106,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 >
                   <button
                     aria-checked={false}
-                    aria-labelledby="ToggleBase16-label ToggleBase16-stateText"
+                    aria-labelledby="Toggle16-label Toggle16-stateText"
                     checked={false}
                     className=
                         ms-Toggle-background
@@ -1157,7 +1157,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         }
                     data-is-focusable={true}
                     data-ktp-target={true}
-                    id="ToggleBase16"
+                    id="Toggle16"
                     onChange={[Function]}
                     onClick={[Function]}
                     role="switch"
@@ -1217,8 +1217,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                           padding-top: 0;
                           user-select: none;
                         }
-                    htmlFor="ToggleBase16"
-                    id="ToggleBase16-stateText"
+                    htmlFor="Toggle16"
+                    id="Toggle16-stateText"
                   >
                     Off
                   </label>
@@ -1449,8 +1449,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 5px;
                     word-wrap: break-word;
                   }
-              htmlFor="ToggleBase21"
-              id="ToggleBase21-label"
+              htmlFor="Toggle21"
+              id="Toggle21-label"
             >
               Enable trap zone 5
             </label>
@@ -1464,7 +1464,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             >
               <button
                 aria-checked={false}
-                aria-labelledby="ToggleBase21-label ToggleBase21-stateText"
+                aria-labelledby="Toggle21-label Toggle21-stateText"
                 checked={false}
                 className=
                     ms-Toggle-background
@@ -1515,7 +1515,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     }
                 data-is-focusable={true}
                 data-ktp-target={true}
-                id="ToggleBase21"
+                id="Toggle21"
                 onChange={[Function]}
                 onClick={[Function]}
                 role="switch"
@@ -1575,8 +1575,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                       padding-top: 0;
                       user-select: none;
                     }
-                htmlFor="ToggleBase21"
-                id="ToggleBase21-stateText"
+                htmlFor="Toggle21"
+                id="Toggle21-stateText"
               >
                 Off
               </label>

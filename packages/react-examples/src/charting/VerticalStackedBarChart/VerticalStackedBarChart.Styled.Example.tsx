@@ -6,8 +6,8 @@ import {
   IVerticalStackedChartProps,
   IVerticalStackedBarChartProps,
 } from '@uifabric/charting';
-import { DefaultPalette, IStyle, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
-import { DirectionalHint } from 'office-ui-fabric-react';
+import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
+import { DirectionalHint } from '@fluentui/react';
 
 interface IVerticalStackedBarState {
   width: number;

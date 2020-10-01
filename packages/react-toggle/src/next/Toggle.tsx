@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react-internal/lib/Label';
 import { getGlobalClassNames, ITheme } from '@uifabric/styling';
 import { css, memoizeFunction, styled } from '@uifabric/utilities';
 import { ToggleBase } from './ToggleBase';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
+import { css } from '@fluentui/react';
 import { Markdown, Table, IPageSectionProps, MarkdownCode } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ElevationPageProps, depthUsage } from './ElevationPage.doc';

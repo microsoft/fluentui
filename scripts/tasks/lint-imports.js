@@ -38,7 +38,7 @@ function lintImports() {
     // TODO: Ideally these would eventually be removed.
     '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
     '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
-    '@fluentui/react-examples/lib/office-ui-fabric-react/Keytip/KeytipSetup',
+    '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
@@ -250,7 +250,7 @@ function lintImports() {
           importErrors.pathReExported,
           relativePath,
           importPath,
-          'office-ui-fabric-react/lib/' + reExportedPackages[pkgName],
+          '@fluentui/react/lib/' + reExportedPackages[pkgName],
         );
       }
 
@@ -308,8 +308,8 @@ function lintImports() {
         'example files are using deep imports. To promote best practices, ' +
         `please only import from root-level files ('<package-name>' or '<package-name>/lib/<file>').`,
       pathReExported:
-        'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
-        'Please change the following imports to reference office-ui-fabric-react instead:',
+        'example files are directly importing from packages that @fluentui/react re-exports. ' +
+        'Please change the following imports to reference @fluentui/react instead:',
       importStar:
         'example files are using "import *" which causes problems with the website example editor. Please import things by name instead.',
       exportMulti:

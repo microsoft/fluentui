@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SliderBasicExample } from './Slider.Basic.Example';
 import { SliderVerticalExample } from './Slider.Vertical.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 const SliderBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/Slider.Basic.Example.tsx') as string;
 const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/Slider.Vertical.Example.tsx') as string;
@@ -10,7 +10,7 @@ const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-slider/src/components/slider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-slider/src/components/undefined',
   examples: [
     {
       title: 'Horizontal sliders',

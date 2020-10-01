@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IContextualMenuProps, Stack } from 'office-ui-fabric-react'; // IStackTokens
+import { DefaultButton, IContextualMenuProps, Stack } from '@fluentui/react'; // IStackTokens
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

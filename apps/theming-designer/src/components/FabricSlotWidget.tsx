@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IThemeRules, FabricSlots, IThemeSlotRule } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { IColor } from 'office-ui-fabric-react/lib/Color';
-import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { IThemeRules, FabricSlots, IThemeSlotRule } from '@fluentui/react/lib/ThemeGenerator';
+import { IColor } from '@fluentui/react/lib/Color';
+import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 
 export interface IFabricSlotWidgetProps {
   slot: FabricSlots;

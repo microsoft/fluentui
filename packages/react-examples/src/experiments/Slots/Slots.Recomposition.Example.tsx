@@ -5,7 +5,7 @@ import { withSlots } from '@uifabric/foundation';
 // Temporary import file to experiment with next version of foundation.
 import { composed } from '@uifabric/foundation/lib/next/composed';
 import { buttonProperties, getNativeProps } from '@uifabric/utilities';
-import { Spinner, Stack, IStackProps } from 'office-ui-fabric-react';
+import { Spinner, Stack, IStackProps } from '@fluentui/react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 

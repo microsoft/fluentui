@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { mergeStyles } from '@uifabric/styling';
 import { Persona } from '@uifabric/experiments';

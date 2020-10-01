@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeytipLayer } from 'office-ui-fabric-react/lib/Keytips';
+import { KeytipLayer } from '@fluentui/react/lib/Keytips';
 
 export const CompatKeytipLayerWrapper: React.FunctionComponent<{}> = props => {
   return (

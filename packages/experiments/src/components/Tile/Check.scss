@@ -1,0 +1,93 @@
+@import '~@fluentui/common-styles/src/common';
+
+// Check styles
+
+$checkBoxHeight: 18px;
+
+.root {
+  line-height: 1;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
+  vertical-align: top;
+  position: relative;
+
+  @include ms-user-select(none);
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    border-radius: 50%;
+    opacity: 1;
+    background: $bodyBackgroundColor;
+  }
+
+  &.rootIsChecked:before {
+    background: $ms-color-themePrimary;
+    opacity: 1;
+    @include high-contrast {
+      background: Window;
+    }
+  }
+
+  .check {
+    opacity: 0;
+  }
+
+  .checkHost:hover &,
+  .checkHost:focus &,
+  &:hover,
+  &:focus,
+  &.rootIsChecked {
+    .check {
+      opacity: 1;
+    }
+  }
+}
+
+.circle,
+.check {
+  font-size: $checkBoxHeight;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.circle {
+  color: $ms-color-neutralSecondary;
+
+  @include high-contrast {
+    color: WindowText;
+  }
+}
+
+.rootIsChecked .circle {
+  color: $ms-color-white;
+}
+
+.check {
+  color: $ms-color-neutralSecondary;
+  font-size: 16px;
+  left: 0.5px;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
+}
+
+.rootIsChecked .check {
+  color: $ms-color-white;
+  font-weight: 900;
+
+  @include high-contrast {
+    border: none;
+    color: WindowText;
+  }
+}

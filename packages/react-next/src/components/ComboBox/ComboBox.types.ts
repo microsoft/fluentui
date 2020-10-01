@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
-import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableDroppableText.types';
+import { ISelectableOption, ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles, IButtonProps } from '../../compat/Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
-import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
+import { IAutofillProps } from '@fluentui/react-internal/lib/components/pickers/AutoFill/BaseAutoFill.types';
 
 /**
  * {@docCategory ComboBox}

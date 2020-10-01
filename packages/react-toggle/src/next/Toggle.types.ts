@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 
 /**
  * {@docCategory Toggle}

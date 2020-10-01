@@ -1,4 +1,4 @@
-import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
+import { ImageLoadState, IBaseProps } from '@fluentui/react';
 import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';

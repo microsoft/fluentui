@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Separator';
+export * from '@fluentui/react-internal/lib/Separator';
