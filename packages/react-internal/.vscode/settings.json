@@ -5,8 +5,6 @@
   "editor.detectIndentation": false,
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
-  // Controls if the editor should automatically close brackets after opening them
-  "editor.autoClosingBrackets": false,
   // Controls whether the editor should render whitespace characters
   "editor.renderWhitespace": "all",
   // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
@@ -14,9 +12,9 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/bower_components": true,
     "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/*.scss.ts": true,
+    "**/.eslintcache": true
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
@@ -24,12 +22,9 @@
     "**/lib": true,
     "**/lib-amd": true,
     "**/lib-commonjs": true,
-    "**/lib-es2015": true,
     "**/dist": true,
-    "**/*.scss.ts": true,
-    "**/*.Example.js*": true,
-    "**/*.Example.d.ts": true,
-    "**/*.Example.tsx.shot": true
+    "**/dist-storybook": true,
+    "**/*.scss.ts": true
   },
   // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping
   "editor.wrappingColumn": 140,

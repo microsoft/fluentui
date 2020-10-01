@@ -24,8 +24,6 @@ node_modules
 results
 src/**/*
 !src/**/*.types.ts
-!src/**/examples/*.tsx
-!src/**/docs/**/*.md
 temp
 tsconfig.json
 tsd.json

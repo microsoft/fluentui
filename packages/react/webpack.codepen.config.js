@@ -5,9 +5,9 @@ module.exports = resources.createServeConfig({
   entry: './src/index.bundle.ts',
 
   output: {
-    filename: 'office-ui-fabric-react.js',
+    filename: 'fluentui-react.js',
     libraryTarget: 'var',
-    library: 'Fabric',
+    library: 'FluentUIReact',
   },
 
   externals: {

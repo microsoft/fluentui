@@ -1,8 +1,7 @@
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
-const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
-const BUNDLE_NAME = 'fluentui-react';
+const BUNDLE_NAME = 'fluentui-react-internal';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 function createConfig(config, onlyProduction) {
@@ -29,25 +28,12 @@ function createConfig(config, onlyProduction) {
   );
 }
 
-module.exports = [
-  ...createConfig(
-    {
-      output: {
-        libraryTarget: 'var',
-        library: 'FluentUIReact',
-      },
+module.exports = createConfig(
+  {
+    output: {
+      libraryTarget: 'var',
+      library: 'FluentUIReactInternal',
     },
-    false,
-  ),
-  ...createConfig(
-    {
-      plugins: [new ManifestServicePlugin()],
-      output: {
-        libraryTarget: 'umd',
-        library: 'FluentUIReact',
-        filename: `${BUNDLE_NAME}.umd.js`,
-      },
-    },
-    true,
-  ),
-];
+  },
+  false,
+);
