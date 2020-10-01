@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from @fluentui/react package instead.
+ * @deprecated Import from `@fluentui/react` package instead.
  */
 export { Text } from '@fluentui/react/lib/Text';
