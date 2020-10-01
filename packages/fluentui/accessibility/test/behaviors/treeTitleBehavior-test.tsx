@@ -26,17 +26,17 @@ describe('TreeTitleBehavior', () => {
     });
   });
 
-  describe('aria-selected', () => {
+  describe('aria-checked', () => {
     test(`is added with 'selected' prop value to a title with hasSubtree prop false, when tree title is 'selectable'`, () => {
       const expectedResultWhenSelected = treeTitleBehavior({ hasSubtree: false, selectable: true, selected: true });
       const expectedResultWhenNotSelected = treeTitleBehavior({ hasSubtree: false, selectable: true, selected: false });
-      expect(expectedResultWhenSelected.attributes.root['aria-selected']).toEqual(true);
-      expect(expectedResultWhenNotSelected.attributes.root['aria-selected']).toEqual(false);
+      expect(expectedResultWhenSelected.attributes.root['aria-checked']).toEqual(true);
+      expect(expectedResultWhenNotSelected.attributes.root['aria-checked']).toEqual(false);
     });
 
     test(`is not added to a title, when tree title is NOT 'selectable'`, () => {
       const expectedResult = treeTitleBehavior({ selectable: false });
-      expect(expectedResult.attributes.root['aria-selected']).toBeUndefined();
+      expect(expectedResult.attributes.root['aria-checked']).toBeUndefined();
     });
   });
 
