@@ -16,7 +16,7 @@ const navigateToLastLevel = async () => {
   await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'ArrowRight'); // Expand second level item
   await e2e.expectCount(selectors.treeItem, 4);
   await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'ArrowRight'); // Focus first child 3rd level
-  await e2e.isFocused(selectors.treeTitleAt(3)); // last levet has always tree title focused
+  await e2e.isFocused(selectors.treeTitleAt(3)); // last level has always tree title focused
 };
 
 describe('Tree keyboard navigation', () => {
