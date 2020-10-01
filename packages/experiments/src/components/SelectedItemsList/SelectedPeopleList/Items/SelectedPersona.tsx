@@ -103,7 +103,7 @@ const SelectedPersonaInner = React.memo(
     );
 
     const isDraggable = React.useMemo(
-      () => (dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined),
+      () => (dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined),
       [dragDropEvents],
     );
 

@@ -95,4 +95,10 @@ export interface IUnifiedPickerProps<T> {
    * if this is used
    */
   customClipboardType?: string;
+
+  /**
+   * If dragDropEvents is set, this property will be ignored
+   * @defaultvalue true
+   */
+  defaultDragDropEnabled?: boolean;
 }

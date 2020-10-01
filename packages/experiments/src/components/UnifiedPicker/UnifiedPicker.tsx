@@ -75,6 +75,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
+  const defaultDragDropEnabled = React.useMemo(
+    () => (props.defaultDragDropEnabled != undefined ? props.defaultDragDropEnabled : true),
+    [props.defaultDragDropEnabled],
+  );
+
   React.useImperativeHandle(props.componentRef, () => ({
     clearInput: () => {
       if (input.current) {
@@ -115,7 +120,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
-    return !focusedItemIndices.includes(dropContext!.index);
+    return defaultDragDropEnabled && !focusedItemIndices.includes(dropContext!.index);
   };
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
@@ -199,12 +204,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragOver = (event?: React.DragEvent<HTMLDivElement>) => {
-    event?.preventDefault();
+    if (defaultDragDropEnabled) {
+      event?.preventDefault();
+    }
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
     canDrop: _canDrop,
-    canDrag: () => true,
+    canDrag: () => defaultDragDropEnabled,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
     onDrop: _onDropList,
