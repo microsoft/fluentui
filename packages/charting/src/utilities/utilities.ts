@@ -739,6 +739,7 @@ export function getDomainNRangeValues(
         break;
       case ChartTypes.HeatMapChart:
         domainNRangeValue = getDomainAndRangeForStringAxisForHeatMap(margins, width, isRTL);
+        break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
