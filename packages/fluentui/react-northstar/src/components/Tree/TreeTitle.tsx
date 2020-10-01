@@ -119,7 +119,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   } = props;
 
   const handleFocusParent = e => {
-    _.invoke(props, 'onFocusParent', e, props);
     onFocusParent(props.parent);
   };
 
