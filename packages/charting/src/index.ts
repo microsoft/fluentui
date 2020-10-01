@@ -11,5 +11,6 @@ export * from './GroupedVerticalBarChart';
 export * from './CartesianChart';
 export * from './types';
 export * from './utilities/ChartHoverCard';
+export * from './HeatMapChart';
 
 import './version';
