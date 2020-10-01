@@ -37,6 +37,7 @@ describe('Tree keyboard navigation', () => {
     await e2e.waitForSelectorAndPressKey(selectors.treeTitleAt(3), 'ArrowLeft'); // Focus parent 2nd level
     await e2e.isFocused(selectors.treeItemAt(2));
     await e2e.expectCount(selectors.treeItem, 4);
+
     await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'ArrowLeft'); // Focus parent 1nd level and closes 3rd level
     await e2e.expectCount(selectors.treeItem, 3);
     await e2e.isFocused(selectors.treeItemAt(1));
