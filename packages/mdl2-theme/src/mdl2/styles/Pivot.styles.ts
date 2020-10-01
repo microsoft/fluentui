@@ -2,8 +2,9 @@ import { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Pivot';
 import { AnimationVariables } from '@fluentui/react/lib/Styling';
 
 export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
-  const { theme, rootIsTabs } = props;
+  const { theme, linkFormat } = props;
   const { palette } = theme;
+  const rootIsTabs = linkFormat === 'tabs';
 
   return {
     link: [
@@ -33,8 +34,9 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
             backgroundColor: 'transparent',
           },
           ':before': {
-            transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
-                        right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
+            transition:
+              `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}, ` +
+              `right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
           },
           ':hover::before': {
             left: 8,
