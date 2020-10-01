@@ -149,7 +149,7 @@
   },
   "bundlesize": [
     {
-      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
+      "path": "../apps/test-bundles/dist/fluentui-react-Button.min.js",
       "maxSize": "50.1 kB"
     }
   ]
