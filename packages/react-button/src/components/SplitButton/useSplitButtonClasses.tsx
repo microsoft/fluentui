@@ -56,6 +56,7 @@ export const useSplitButtonClasses = makeVariantClasses({
 
       [`.${GlobalClassNames.button}`]: {
         flexGrow: 1,
+        maxWidth: '100%',
       },
 
       [`.${GlobalClassNames.menuButton}`]: {
