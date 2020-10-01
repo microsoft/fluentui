@@ -237,7 +237,7 @@ describe('TextField basic props', () => {
   });
 
   it('should not render reveal password button if showRevealPassword=false', () => {
-    const component = renderer.create(<TextField type="password" showRevealPassword={false} />);
+    const component = renderer.create(<TextField type="password" canRevealPassword={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

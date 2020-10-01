@@ -255,7 +255,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Whether to show the reveal password button for input type 'password'
    * @defaultvalue true
    */
-  showRevealPassword?: boolean;
+  canRevealPassword?: boolean;
 
   /**
    * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
@@ -368,9 +368,19 @@ export interface ITextFieldStyles {
   subComponentStyles: ITextFieldSubComponentStyles;
 
   /**
-   * Styling for Password Peek Button
+   * Styling for reveal password button
    */
   revealButton: IStyle;
+
+  /**
+   * Styling for reveal password span
+   */
+  revealSpan: IStyle;
+
+  /**
+   * Styling for reveal password icon
+   */
+  revealIcon: IStyle;
 }
 
 /**

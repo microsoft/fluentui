@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { IconButton, IButtonProps } from '../../Button';
-import { Icon } from '../../Icon';
+import { Icon, IIconProps } from '../../Icon';
 import {
   Async,
   DelayedRender,
@@ -60,7 +59,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     resizable: true,
     deferredValidationTime: 200,
     validateOnLoad: true,
-    showRevealPassword: true,
+    canRevealPassword: true,
   };
 
   /** Fallback ID if none is provided in props. Access proper value via `this._id`. */
@@ -79,8 +78,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _isPassword = false;
   private _showRevealButton = false;
-  private _revealButtonProps: IButtonProps = { iconProps: { iconName: 'RedEye' } };
-  private _hideButtonProps: IButtonProps = { iconProps: { iconName: 'Hide' } };
+  private _revealIconProps: IIconProps = { iconName: 'RedEye' };
+  private _hideIconProps: IIconProps = { iconName: 'Hide' };
+
   public constructor(props: ITextFieldProps) {
     super(props);
 
@@ -241,11 +241,14 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {multiline ? this._renderTextArea() : this._renderInput()}
             {iconProps && <Icon className={this._classNames.icon} {...iconProps} />}
             {this._isPassword && this._showRevealButton && (
-              <IconButton
-                className={this._classNames.revealButton}
-                onClick={this._onRevealButtonClick}
-                {...(this.state.type === 'password' ? this._revealButtonProps : this._hideButtonProps)}
-              />
+              <button className={this._classNames.revealButton} onClick={this._onRevealButtonClick}>
+                <span className={this._classNames.revealSpan} data-automationid="splitbuttonprimary">
+                  <Icon
+                    className={this._classNames.revealIcon}
+                    {...(this.state.type === 'password' ? this._revealIconProps : this._hideIconProps)}
+                  />
+                </span>
+              </button>
             )}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
               <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
@@ -602,7 +605,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       return false;
     }
 
-    if (this.props.showRevealPassword) {
+    if (this.props.canRevealPassword) {
       const userAgent = window.navigator.userAgent;
 
       // CHROME

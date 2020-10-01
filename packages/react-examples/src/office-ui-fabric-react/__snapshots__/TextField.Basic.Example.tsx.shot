@@ -2111,127 +2111,68 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           />
           <button
             className=
+                ms-TextField-reveal
                 ms-Button
                 ms-Button--icon
-                ms-TextField-reveal
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   background-color: transparent;
-                  border-radius: 2px;
                   border: none;
-                  box-sizing: border-box;
                   color: #0078d4;
-                  cursor: pointer;
-                  display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   height: 30px;
-                  outline: transparent;
-                  padding-bottom: 0;
+                  padding-bottom: 0px;
                   padding-left: 4px;
                   padding-right: 4px;
-                  padding-top: 0;
-                  position: relative;
-                  text-align: center;
-                  text-decoration: none;
-                  user-select: none;
+                  padding-top: 0px;
                   width: 32px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 2px;
-                  content: "";
-                  left: 2px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 2px;
-                  top: 2px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  bottom: -2px;
-                  left: -2px;
-                  outline-color: ButtonText;
-                  right: -2px;
-                  top: -2px;
-                }
-                &:active > * {
-                  left: 0px;
-                  position: relative;
-                  top: 0px;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #106ebe;
+                  outline: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
-                &:active {
-                  background-color: #edebe9;
-                  color: #005a9e;
+                &:focus {
+                  outline: 0px;
                 }
-            data-is-focusable={true}
             onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            type="button"
           >
             <span
               className=
-                  ms-Button-flexContainer
+
                   {
                     align-items: center;
                     display: flex;
-                    flex-wrap: nowrap;
                     height: 100%;
-                    justify-content: center;
                   }
               data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
                 className=
-                    ms-Icon
-                    ms-Button-icon
-                    {
-                      display: inline-block;
-                    }
+
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      bottom: 6px;
+                      display: inline-block;
                       font-family: "FabricMDL2Icons-1";
+                      font-size: 16px;
                       font-style: normal;
                       font-weight: normal;
-                      speak: none;
-                    }
-                    {
-                      flex-shrink: 0;
-                      font-size: 16px;
-                      height: 16px;
-                      line-height: 16px;
-                      margin-bottom: 0;
+                      line-height: 18px;
+                      margin-bottom: 0px;
                       margin-left: 4px;
                       margin-right: 4px;
-                      margin-top: 0;
-                      text-align: center;
+                      margin-top: 0px;
+                      pointer-events: none;
+                      right: 8px;
+                      speak: none;
+                      top: auto;
                     }
                 data-icon-name="RedEye"
-                role="presentation"
-                style={
-                  Object {
-                    "fontFamily": "\\"FabricMDL2Icons-1\\"",
-                  }
-                }
               >
                 
               </i>
