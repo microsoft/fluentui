@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2020 12:27:45 GMT",
+      "tag": "office-ui-fabric-react_v7.144.1",
+      "version": "7.144.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix propagation of GroupedList state",
+            "author": "tmichon@microsoft.com",
+            "commit": "93655f3436b97f11e4f058344cd0233c37af1ded",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Sep 2020 12:27:52 GMT",
       "tag": "office-ui-fabric-react_v7.144.0",
       "version": "7.144.0",

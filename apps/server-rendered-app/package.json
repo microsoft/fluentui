@@ -30,7 +30,7 @@
     "@uifabric/icons": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.144.0",
+    "office-ui-fabric-react": "^7.144.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

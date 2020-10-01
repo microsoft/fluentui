@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2020 12:27:45 GMT",
+      "tag": "@fluentui/react-examples_v0.4.4",
+      "version": "0.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Code optimization of vertical bar chart - examples updated",
+            "author": "email not defined",
+            "commit": "76f60a0ef82dd2ee380b185ba14ed39a5a63fe7a",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "area chart basic example code updated with change data button",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4069d504f7bb55b70c7a1f55d5fdb841da2d4d5d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Sep 2020 12:28:49 GMT",
       "tag": "@fluentui/react-examples_v0.4.1",
       "version": "0.4.1",
