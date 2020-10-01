@@ -30,6 +30,12 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
       '&:active': {
         '--button-secondaryContentColor': 'var(--button-pressed-secondaryContentColor)',
       },
+
+      '@media screen and (-ms-high-contrast: active)': {
+        '--button-secondaryContentColor': 'WindowText',
+        '--button-hovered-secondaryContentColor': 'Highlight',
+        '--button-disabled-secondaryContentColor': 'GrayText',
+      },
     },
   ],
 
@@ -67,6 +73,13 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     '--button-focused-secondaryContentColor': 'var(--ghost-focused-secondaryContentColor)',
     '--button-hovered-secondaryContentColor': 'var(--ghost-hovered-secondaryContentColor)',
     '--button-pressed-secondaryContentColor': 'var(--ghost-pressed-secondaryContentColor)',
+
+    '@media screen and (-ms-high-contrast: active)': {
+      '--button-secondaryContentColor': 'WindowText',
+      '--button-hovered-secondaryContentColor': 'Highlight',
+      '--button-pressed-secondaryContentColor': 'Highlight',
+      '--button-disabled-secondaryContentColor': 'GrayText',
+    },
   },
 
   _primary: {
@@ -74,6 +87,13 @@ export const useCompoundButtonClasses = makeClasses<CompoundButtonState>({
     '--button-focused-secondaryContentColor': 'var(--color-brand-focused-secondaryContentColor)',
     '--button-hovered-secondaryContentColor': 'var(--color-brand-hovered-secondaryContentColor)',
     '--button-pressed-secondaryContentColor': 'var(--color-brand-pressed-secondaryContentColor)',
+
+    '@media screen and (-ms-high-contrast: active)': {
+      '--button-secondaryContentColor': 'Window',
+      '--button-hovered-secondaryContentColor': 'Window',
+      '--button-pressed-secondaryContentColor': 'Window',
+      '--button-disabled-secondaryContentColor': 'GrayText',
+    },
   },
 
   _disabled: {

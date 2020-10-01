@@ -115,6 +115,21 @@ export const useButtonClasses = makeClasses<ButtonState>({
           color: 'var(--button-disabled-iconColor)',
         },
       },
+
+      '@media screen and (-ms-high-contrast: active)': {
+        '--button-borderColor': 'WindowText',
+        '--button-contentColor': 'WindowText',
+        '--button-iconColor': 'WindowText',
+
+        '--button-hovered-borderColor': 'Highlight',
+        '--button-hovered-contentColor': 'Highlight',
+        '--button-hovered-iconColor': 'Highlight',
+
+        '--button-disabled-background': 'Window',
+        '--button-disabled-borderColor': 'GrayText',
+        '--button-disabled-contentColor': 'GrayText',
+        '--button-disabled-iconColor': 'GrayText',
+      },
     },
   ],
 
@@ -162,6 +177,32 @@ export const useButtonClasses = makeClasses<ButtonState>({
     '--button-disabled-borderColor': 'var(--color-brand-disabled-borderColor)',
     '--button-disabled-contentColor': 'var(--color-brand-disabled-contentColor)',
     '--button-disabled-iconColor': 'var(--color-brand-disabled-iconColor)',
+
+    '@media screen and (-ms-high-contrast: active)': {
+      MsHighContrastAdjust: 'none',
+
+      '--button-background': 'WindowText',
+      '--button-borderColor': 'WindowText',
+      '--button-contentColor': 'Window',
+      '--button-focusColor': 'WindowText',
+      '--button-focusInnerColor': 'Window',
+      '--button-iconColor': 'Window',
+
+      '--button-hovered-background': 'Highlight',
+      '--button-hovered-borderColor': 'Highlight',
+      '--button-hovered-contentColor': 'Window',
+      '--button-hovered-iconColor': 'Window',
+
+      '--button-pressed-background': 'WindowText',
+      '--button-pressed-borderColor': 'WindowText',
+      '--button-pressed-contentColor': 'Window',
+      '--button-pressed-iconColor': 'Window',
+
+      '--button-disabled-background': 'Window',
+      '--button-disabled-borderColor': 'GrayText',
+      '--button-disabled-contentColor': 'GrayText',
+      '--button-disabled-iconColor': 'GrayText',
+    },
   },
 
   _ghost: {
@@ -190,6 +231,30 @@ export const useButtonClasses = makeClasses<ButtonState>({
     '--button-pressed-borderColor': 'var(--ghost-pressed-borderColor)',
     '--button-pressed-contentColor': 'var(--ghost-pressed-contentColor)',
     '--button-pressed-iconColor': 'var(--ghost-pressed-iconColor',
+
+    '@media screen and (-ms-high-contrast: active)': {
+      MsHighContrastAdjust: 'none',
+
+      '--button-background': 'Window',
+      '--button-borderColor': 'transparent',
+      '--button-contentColor': 'WindowText',
+      '--button-iconColor': 'WindowText',
+
+      '--button-hovered-background': 'Window',
+      '--button-hovered-borderColor': 'transparent',
+      '--button-hovered-contentColor': 'Highlight',
+      '--button-hovered-iconColor': 'Highlight',
+
+      '--button-pressed-background': 'Window',
+      '--button-pressed-borderColor': 'transparent',
+      '--button-pressed-contentColor': 'Highlight',
+      '--button-pressed-iconColor': 'Highlight',
+
+      '--button-disabled-background': 'Window',
+      '--button-disabled-borderColor': 'transparent',
+      '--button-disabled-contentColor': 'GrayText',
+      '--button-disabled-iconColor': 'GrayText',
+    },
   },
 
   _iconOnly: {

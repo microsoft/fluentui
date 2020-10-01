@@ -16,6 +16,11 @@ export const useSplitButtonClasses = makeClasses({
     [`.${GlobalClassNames.menuButton}`]: {
       '--button-width': menuButtonWidth,
     },
+
+    '@media screen and (-ms-high-contrast: active)': {
+      '--button-dividerColor': 'WindowText',
+      '--button-disabled-dividerColor': 'GrayText',
+    },
   },
 
   button: [
@@ -57,5 +62,16 @@ export const useSplitButtonClasses = makeClasses({
     [`.${GlobalClassNames.menuButton}`]: {
       width: menuButtonWidth,
     },
+  },
+
+  _primary: {
+    '@media screen and (-ms-high-contrast: active)': {
+      '--button-dividerColor': 'Window',
+      '--button-disabled-dividerColor': 'GrayText',
+    },
+  },
+
+  _disabled: {
+    '--button-dividerColor': 'var(--button-disabled-dividerColor)',
   },
 });

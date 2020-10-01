@@ -42,7 +42,9 @@ export const useSplitButton = (
       as: 'span',
       className,
       style,
+      disabled,
       fluid,
+      primary,
       size,
 
       button: {

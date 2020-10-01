@@ -60,11 +60,13 @@ export function getTokens(theme: Theme): Tokens {
           checked: {
             background: semanticColors.primaryButtonBackgroundPressed,
             contentColor: semanticColors.primaryButtonTextPressed,
+            iconColor: semanticColors.primaryButtonTextPressed,
           },
 
           checkedHovered: {
             background: semanticColors.primaryButtonBackgroundPressed,
             contentColor: semanticColors.primaryButtonTextPressed,
+            iconColor: semanticColors.primaryButtonTextPressed,
           },
         },
       },
@@ -214,11 +216,13 @@ export function getTokens(theme: Theme): Tokens {
         checked: {
           background: semanticColors.buttonBackgroundPressed,
           contentColor: semanticColors.buttonTextChecked,
+          iconColor: semanticColors.buttonTextChecked,
         },
 
         checkedHovered: {
           background: semanticColors.buttonBackgroundPressed,
           contentColor: semanticColors.buttonTextCheckedHovered,
+          iconColor: semanticColors.buttonTextCheckedHovered,
         },
 
         disabled: {
