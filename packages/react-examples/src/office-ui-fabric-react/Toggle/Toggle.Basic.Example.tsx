@@ -35,6 +35,6 @@ export const ToggleBasicExample: React.FunctionComponent = () => {
   );
 };
 
-function _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }

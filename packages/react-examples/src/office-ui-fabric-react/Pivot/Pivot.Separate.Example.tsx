@@ -8,8 +8,10 @@ const getTabId = (itemKey: string) => {
 export const PivotSeparateExample = () => {
   const [selectedKey, setSelectedKey] = React.useState('rectangleRed');
 
-  const handleLinkClick = (item: PivotItem) => {
-    setSelectedKey(item.props.itemKey!);
+  const handleLinkClick = (item?: PivotItem) => {
+    if (item) {
+      setSelectedKey(item.props.itemKey!);
+    }
   };
 
   return (

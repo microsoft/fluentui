@@ -5,7 +5,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export const PivotOverrideExample = () => {
   const [selectedKey, setSelectedKey] = React.useState(0);
-  const DefaultButtonOnClick = () => {
+  const onButtonClick = () => {
     setSelectedKey((selectedKey + 1) % 3);
   };
   return (
@@ -21,12 +21,8 @@ export const PivotOverrideExample = () => {
           <Label>Pivot #3</Label>
         </PivotItem>
       </Pivot>
-      <DefaultButton
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={DefaultButtonOnClick}
-      >
-        Select next item
-      </DefaultButton>
+      {/* eslint-disable-next-line react/jsx-no-bind */}
+      <DefaultButton onClick={onButtonClick}>Select next item</DefaultButton>
     </div>
   );
 };

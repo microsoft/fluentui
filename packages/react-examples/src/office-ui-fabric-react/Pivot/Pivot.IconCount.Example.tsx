@@ -32,11 +32,18 @@ export const PivotIconCountExample: React.FunctionComponent = () => {
   );
 };
 
-function _customRenderer(link: IPivotItemProps, defaultRenderer: (link: IPivotItemProps) => JSX.Element): JSX.Element {
+function _customRenderer(
+  link?: IPivotItemProps,
+  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
+): JSX.Element | null {
+  if (!link || !defaultRenderer) {
+    return null;
+  }
+
   return (
-    <span>
-      {defaultRenderer(link)}
-      <Icon iconName="Airplane" style={{ color: 'red' }} />
+    <span style={{ flex: '0 1 100%' }}>
+      {defaultRenderer({ ...link, itemIcon: undefined })}
+      <Icon iconName={link.itemIcon} style={{ color: 'red' }} />
     </span>
   );
 }
