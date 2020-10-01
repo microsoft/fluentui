@@ -145,9 +145,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
-          }
           @media screen and (-ms-high-contrast: active){&:before {
             background-color: Highlight;
           }
@@ -316,9 +313,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           }
           &[data-is-overflowing='true'] {
             display: none;
-          }
-          &[data-is-overflowing='true'] ~ * .ms-Pivot-overflowMenuButton {
-            visibility: visible;
           }
       data-content=""
       data-is-focusable={true}
