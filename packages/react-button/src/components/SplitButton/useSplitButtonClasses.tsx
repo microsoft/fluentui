@@ -1,4 +1,5 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { ButtonSizeVariants } from '../Button/index';
 
 const GlobalClassNames = {
   button: 'ms-SplitButton-button',
@@ -41,11 +42,10 @@ export const useSplitButtonClasses = makeVariantClasses({
     ],
 
     divider: {
-      flexShrink: 0,
       width: 'var(--button-dividerThickness)',
       backgroundColor: 'var(--button-dividerColor)',
       position: 'absolute',
-      right: menuButtonWidth,
+      right: 'var(--button-height, 32px)',
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
     },
@@ -69,12 +69,24 @@ export const useSplitButtonClasses = makeVariantClasses({
 
     return {
       root: {
+        size: {
+          smallest: '24px',
+          smaller: '24px',
+          small: '24px',
+          regular: '32px',
+          large: '40px',
+          larger: '48px',
+          largest: '64px',
+        },
+
         dividerThickness: '1px',
         dividerColor: palette?.neutralTertiaryAlt,
       },
+
       primary: {
-        dividerColor: 'red',
+        dividerColor: palette.white,
       },
+      ...ButtonSizeVariants,
     };
   },
 });

@@ -16,12 +16,6 @@ const menuProps = {
   ],
 };
 
-export const OneSplitButton = () => (
-  <SplitButton primary menu={menuProps}>
-    Hello, world
-  </SplitButton>
-);
-
 const SplitButtonExamples = (props: SplitButtonProps) => (
   <div className={classes.hStack}>
     <SplitButton {...props} menu={menuProps}>

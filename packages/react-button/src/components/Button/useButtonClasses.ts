@@ -7,6 +7,38 @@ const GlobalClassNames = {
   icon: 'ms-Button-icon',
 };
 
+export const ButtonSizeVariants = {
+  size_smallest: {
+    height: 'var(--button-size-smallest)',
+    minHeight: 'var(--button-size-smallest)',
+  },
+
+  size_smaller: {
+    height: 'var(--button-size-smaller)',
+    minHeight: 'var(--button-size-smaller)',
+  },
+
+  size_small: {
+    height: 'var(--button-size-small)',
+    minHeight: 'var(--button-size-small)',
+  },
+
+  size_large: {
+    height: 'var(--button-size-large)',
+    minHeight: 'var(--button-size-large)',
+  },
+
+  size_larger: {
+    height: 'var(--button-size-larger)',
+    minHeight: 'var(--button-size-larger)',
+  },
+
+  size_largest: {
+    height: 'var(--button-size-largest)',
+    minHeight: 'var(--button-size-largest)',
+  },
+};
+
 export const useButtonClasses = makeVariantClasses<ButtonState>({
   name: 'Button',
   prefix: '--button',
@@ -310,36 +342,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           secondaryContentColor: palette?.black,
         },
       },
-
-      size_smallest: {
-        height: 'var(--button-size-smallest)',
-        minHeight: 'var(--button-size-smallest)',
-      },
-
-      size_smaller: {
-        height: 'var(--button-size-smaller)',
-        minHeight: 'var(--button-size-smaller)',
-      },
-
-      size_small: {
-        height: 'var(--button-size-small)',
-        minHeight: 'var(--button-size-small)',
-      },
-
-      size_large: {
-        height: 'var(--button-size-large)',
-        minHeight: 'var(--button-size-large)',
-      },
-
-      size_larger: {
-        height: 'var(--button-size-larger)',
-        minHeight: 'var(--button-size-larger)',
-      },
-
-      size_largest: {
-        height: 'var(--button-size-largest)',
-        minHeight: 'var(--button-size-largest)',
-      },
+      ...ButtonSizeVariants,
     };
   },
 });
