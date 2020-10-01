@@ -8,7 +8,8 @@ import { treeTitleBehavior } from './treeTitleBehavior';
  * @description
  * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. In other cases 'performClick' is triggered with 'Spacebar' or 'Enter'.
  * Triggers 'performSelection' action with 'Spacebar' on 'root', when has a opened subtree.
- * Use aria-checked instead of aria-selected because JAWS's bug of not narrating selection state with aria-selected.
+ * Adds attribute 'aria-checked=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property true. Does not set anything if false or undefined.
+ *
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.
