@@ -6,7 +6,7 @@ import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks'
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
-const COMPONENT_NAME = 'ToggleBase';
+const COMPONENT_NAME = 'Toggle';
 
 export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRef<HTMLElement, IToggleProps>(
   (props, forwardedRef) => {
@@ -148,7 +148,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
   },
 );
 
-ToggleBase.displayName = COMPONENT_NAME;
+ToggleBase.displayName = COMPONENT_NAME + 'Base';
 
 const useComponentRef = (
   props: IToggleProps,
