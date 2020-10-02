@@ -126,8 +126,8 @@ Note that directly importing from the `@fluentui/react-internal` package (the ro
 - `WindowProvider` is required for child windows/embeds.
 - `FluentStyles` is removed from `experiments` package.
 - Removed various files which were originally in `office-ui-fabric-react` and not intended to be part of the public API:
-  - `office-ui-fabric-react/src/components/Theme/defaultTheme.ts`
-  - `office-ui-fabric-react/src/customizations/TeamsTheme.ts` (use `@fluentui/theme`)
+  - `office-ui-fabric-react/src/components/Theme/defaultTheme.ts` (use `@fluentui/theme`)
+  - `office-ui-fabric-react/src/customizations/TeamsTheme.ts` (use `@fluentui/theme-samples`)
   - `office-ui-fabric-react/src/utilities/exampleData.ts` (use `@fluentui/example-data`)
 
 ## Minor changes
