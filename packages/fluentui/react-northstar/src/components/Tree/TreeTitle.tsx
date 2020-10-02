@@ -121,10 +121,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     indeterminate,
   } = props;
 
-  const handleFocusParent = e => {
-    onFocusParent(props.parent);
-  };
-
   const getA11Props = useAccessibility(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
