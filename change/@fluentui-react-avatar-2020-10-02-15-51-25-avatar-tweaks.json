@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update active animation and examples. Tweak styles from design updates, and clean up styles.",
+  "comment": "Design updates and clean up for Avatar styles.",
   "packageName": "@fluentui/react-avatar",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
