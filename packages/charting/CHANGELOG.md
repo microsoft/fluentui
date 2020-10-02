@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 21 Sep 2020 12:22:29 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.2.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.4)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.0..@uifabric/charting_v4.2.4)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [4.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.0)
 

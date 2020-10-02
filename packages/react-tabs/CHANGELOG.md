@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.8)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v0.6.7..@fluentui/react-tabs_v0.6.8)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [0.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.7)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v0.6.6..@fluentui/react-tabs_v0.6.7)
+
+### Patches
+
+- Fix HC styling for pivot tabs to show text when selected ([PR #15166](https://github.com/microsoft/fluentui/pull/15166) by ololubek@microsoft.com)
 
 ## [0.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.5)
 

@@ -5,8 +5,8 @@ import {
   classNamesFunction,
   styled,
   IStyleFunctionOrObject,
-} from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 
 export interface IMarkdownParagraphProps {
   styles?: IStyleFunctionOrObject<IMarkdownParagraphStyleProps, IMarkdownParagraphStyles>;

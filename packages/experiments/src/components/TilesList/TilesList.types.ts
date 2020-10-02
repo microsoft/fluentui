@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IRefObject, IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
+import { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import { TilesList } from './TilesList';
-import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { IListProps } from 'office-ui-fabric-react/lib/List';
+import { IFocusZone } from '@fluentui/react/lib/FocusZone';
+import { IListProps } from '@fluentui/react/lib/List';
 import { IRenderFunction } from '@uifabric/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {

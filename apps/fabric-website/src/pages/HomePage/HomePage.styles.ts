@@ -1,5 +1,5 @@
-import { IStyle, getGlobalClassNames, FontWeights } from 'office-ui-fabric-react';
-import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
+import { IStyle, getGlobalClassNames, FontWeights } from '@fluentui/react';
+import { MotionDurations, MotionTimings, FontSizes } from '@fluentui/theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
 

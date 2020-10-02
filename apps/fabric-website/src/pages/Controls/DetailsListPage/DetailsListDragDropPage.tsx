@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { DetailsListDragDropPageProps } from './DetailsListDragDropPage.doc';
-import { mergeStyles } from 'office-ui-fabric-react';
+import { mergeStyles } from '@fluentui/react';
 
 export const DetailsListDragDropPage: React.FunctionComponent<IControlsPageProps> = props => {
   const className = mergeStyles({

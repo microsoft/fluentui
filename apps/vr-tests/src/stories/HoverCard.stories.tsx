@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { HoverCard } from 'office-ui-fabric-react';
+import { HoverCard } from '@fluentui/react';
 
 const onRenderCardContent = (item: any) => {
   return (

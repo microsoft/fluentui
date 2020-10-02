@@ -1,0 +1,917 @@
+@import '../../common/common';
+
+// Calendar styles
+$Calendar-day: 28px;
+$Calendar-dayPicker-margin: 10px;
+.root {
+  @include ms-normalize;
+
+  * {
+    overflow: visible;
+    @include focus-border($color: $ms-color-neutralSecondary);
+  }
+}
+
+// Base wrapper for the date picker.
+.picker {
+  color: $ms-color-black;
+  font-size: $ms-font-size-m;
+  position: relative;
+  @include text-align(left);
+}
+
+// The holder is the only "scrollable" top-level container element.
+.holder {
+  -webkit-overflow-scrolling: touch;
+  @include ms-borderBox;
+  display: none;
+}
+
+// When the picker opens, reveal the content.
+.picker.pickerIsOpened .holder {
+  @include ms-borderBox;
+  display: inline-block;
+}
+
+// When a picker opens, always open it in front of other closed pickers
+.pickerIsOpened {
+  position: relative;
+}
+
+// The frame and wrap work together to ensure that
+// clicks within the picker don’t reach the holder.
+.frame {
+  position: relative;
+}
+
+.wrap {
+  &.goTodaySpacing {
+    min-height: 228px;
+  }
+  min-height: 212px;
+  padding: 12px;
+  display: flex;
+  box-sizing: content-box;
+}
+
+// Wrapper containing the calendar view to pick a specific date.
+.dayPicker {
+  display: block;
+}
+
+// The header containing the month and year.
+.header {
+  position: relative;
+  display: inline-flex;
+  height: $Calendar-day;
+  line-height: 44px;
+  width: 100%;
+}
+
+.divider {
+  top: 0;
+  margin-top: -12px;
+  margin-bottom: -12px;
+  @include border-right(1px, solid, $ms-color-neutralLight);
+}
+
+// The month and year labels.
+.monthAndYear,
+.year,
+.decade {
+  display: inline-flex;
+  flex-grow: 1;
+  @include ms-font-m;
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
+  padding: 0 5px;
+}
+
+.monthAndYear:hover,
+.currentYear:hover,
+.currentDecade:hover {
+  cursor: default;
+}
+
+// The calendar table of dates.
+.table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: inherit;
+  margin-top: 4px;
+  width: 197px;
+  td {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// The days on the calendar.
+.dayWrapper,
+.weekday {
+  width: $Calendar-day;
+  height: $Calendar-day;
+  padding: 0;
+  line-height: $Calendar-day;
+  font-size: $ms-font-size-s;
+  @include ms-font-m-plus;
+  color: $ms-color-neutralPrimary;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+
+  * {
+    @include focus-border(-2px, $color: $ms-color-neutralSecondary);
+  }
+}
+
+.day {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  line-height: 100%;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+.daySelection .day {
+  &:hover,
+  &:active {
+    @include high-contrast {
+      outline: 1px solid Highlight;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+  &:active {
+    @include high-contrast {
+      color: Highlight;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+}
+
+// Today.
+.dayIsToday {
+  border-radius: 100%;
+}
+.dayIsToday,
+.dayIsToday:hover {
+  position: relative;
+  background-color: $ms-color-neutralLighter;
+  @include high-contrast {
+    background-color: Highlight;
+    -ms-high-contrast-adjust: none;
+  }
+  &:hover {
+    border-radius: 100%;
+  }
+}
+
+// Disabled day.
+.dayIsDisabled:before {
+  border-top-color: $ms-color-neutralTertiary;
+}
+
+// Out of focus days.
+.dayIsUnfocused {
+  color: $ms-color-neutralSecondary;
+  font-weight: $ms-font-weight-regular;
+}
+
+// Hovered date picker items.
+.dayIsFocused:hover,
+.dayIsUnfocused:hover {
+  cursor: pointer;
+  background: $ms-color-neutralLighter;
+  color: $ms-color-neutralDark;
+}
+
+// Highlighted and hovered/focused dates.
+.daySelection.dayIsHighlighted:hover,
+.pickerIsFocused .dayIsHighlighted.daySelection {
+  cursor: pointer;
+  background-color: $ms-color-neutralLight;
+  border-radius: 2px;
+  @include high-contrast {
+    outline: 2px solid Highlight;
+    :not(.dayIsToday) span {
+      color: Highlight;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+}
+
+.dayIsHighlighted {
+  button.dayIsToday {
+    @include high-contrast {
+      border-radius: 100%;
+    }
+    span {
+      @include high-contrast {
+        color: Window;
+        -ms-high-contrast-adjust: none;
+      }
+    }
+  }
+}
+
+.dayIsFocused:active,
+.dayIsHighlighted {
+  background-color: $ms-color-themeLight;
+}
+
+.dayIsFocused:active,
+.dayIsHighlighted {
+  &.day {
+    color: $ms-color-neutralDark;
+    background-color: $ms-color-neutralLight;
+  }
+}
+
+// Disabled and highlighted dates.
+.dayIsHighlighted.dayDisabled,
+.dayIsHighlighted.dayDisabled:hover {
+  background: $ms-color-neutralTertiary;
+}
+
+// Highlighted date squares
+.dayBackground,
+.dayBackground:hover,
+.dayBackground:active {
+  border-radius: 2px;
+}
+
+.dayHover,
+.dayHover:hover {
+  cursor: pointer;
+  background: $ms-color-neutralLighter;
+  color: $ms-color-neutralDark;
+}
+
+.dayPress,
+.dayPress:hover {
+  cursor: pointer;
+  color: $ms-color-neutralDark;
+  background-color: $ms-color-neutralLight;
+  .dayIsToday {
+    background: $ms-color-themePrimary;
+    border-radius: 100%;
+  }
+}
+
+.dayIsUnfocused:active,
+.dayIsFocused:active,
+.dayIsHighlighted,
+.dayIsHighlighted:hover,
+.dayIsHighlighted:active,
+.weekBackground,
+.weekBackground:hover,
+.weekBackground:active {
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
+}
+
+// Today.
+.dayIsToday,
+.pickerIsFocused .dayIsToday,
+.dayIsToday.day:active {
+  position: relative;
+  color: $ms-color-white;
+  font-weight: $ms-font-weight-semibold;
+  background: $ms-color-themePrimary;
+  border-radius: 100%;
+  @include high-contrast {
+    background-color: Highlight;
+    color: HighlightText;
+    -ms-high-contrast-adjust: none;
+  }
+}
+
+.showWeekNumbers {
+  .weekNumbers {
+    border-right: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+    width: 28px;
+    padding: 0;
+    .dayWrapper {
+      color: $ms-color-neutralSecondary;
+      &.weekIsHighlighted {
+        color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+  .table {
+    .dayWrapper,
+    .weekday {
+      width: 30px;
+    }
+    width: 225px;
+  }
+}
+
+// week numbers style in right-to-left view
+.showWeekNumbersRTL {
+  .weekNumbers {
+    border-left: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+    .dayWrapper {
+      color: $ms-color-neutralSecondary;
+      &.weekIsHighlighted {
+        color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+  .table {
+    .dayWrapper,
+    .weekday {
+      width: 30px;
+    }
+    width: 225px;
+  }
+}
+
+// Month and year previous/next components.
+.monthComponents,
+.yearComponents,
+.decadeComponents {
+  display: inline-flex;
+  align-self: flex-end;
+}
+
+.closeButton,
+.prevMonth,
+.nextMonth,
+.prevYear,
+.nextYear,
+.prevDecade,
+.nextDecade {
+  font-family: inherit;
+  width: $Calendar-day;
+  height: $Calendar-day;
+  display: block;
+  text-align: center;
+  line-height: $Calendar-day;
+  text-align: center;
+  font-size: $ms-icon-size-s;
+  color: $ms-color-neutralPrimary;
+  border-radius: 2px;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  &:hover {
+    color: $ms-color-neutralDark;
+    cursor: pointer;
+    outline: 1px solid transparent;
+  }
+}
+
+.prevMonthIsDisabled,
+.nextMonthIsDisabled,
+.prevYearIsDisabled,
+.nextYearIsDisabled,
+.prevDecadeIsDisabled,
+.nextDecadeIsDisabled {
+  color: $ms-color-neutralTertiaryAlt;
+  pointer-events: none;
+}
+
+// Without modifying the Pickadate JS, this transparent
+// button is necessary to toggle the month view.
+.headerToggleView {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+}
+
+.headerToggleView:hover {
+  color: $ms-color-black;
+  cursor: pointer;
+  @include high-contrast {
+    outline: 1px solid highlight;
+  }
+}
+
+.headerToggleView:hover:active {
+  @include high-contrast {
+    color: highlight;
+  }
+}
+
+// Text showing the currently-selected year.
+.currentYear,
+.currentDecade {
+  display: inline-flex;
+  flex-grow: 1;
+  padding: 0 5px;
+  @include ms-font-m;
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
+  height: $Calendar-day;
+  line-height: $Calendar-day;
+  @include margin-left(5px);
+}
+
+// A grid of month or year options, which pushes them over
+// five pixels for horizontal centering and moves them down.
+.optionGrid {
+  position: relative;
+  height: 210px;
+  width: 196px;
+  @include margin(4px, 0, 0, 0);
+}
+
+// Button to select a different month.
+.monthOption,
+.yearOption {
+  width: 60px;
+  height: 60px;
+  line-height: 100%;
+  cursor: pointer;
+  @include float(left);
+  @include margin(0, 10px, 10px, 0);
+  @include ms-font-s-plus;
+  font-family: inherit;
+  color: $ms-color-neutralPrimary;
+  text-align: center;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 2px;
+  &:hover {
+    color: $ms-color-neutralDark;
+    background-color: $ms-color-neutralLighter;
+    outline: 1px solid transparent;
+    @include high-contrast {
+      outline-color: highlight;
+    }
+  }
+  &:active {
+    @include high-contrast {
+      color: highlight;
+    }
+  }
+  &.isHighlighted {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-neutralDark;
+  }
+}
+
+.dayIsDisabled,
+.monthOptionIsDisabled,
+.yearOptionIsDisabled {
+  color: $ms-color-neutralTertiaryAlt;
+  pointer-events: none;
+}
+
+// Button to navigate to the current date.
+.goToday {
+  bottom: 0;
+  color: $ms-color-themePrimary;
+  cursor: pointer;
+  @include ms-font-s;
+  font-family: inherit;
+  color: $ms-color-neutralPrimary;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  position: absolute !important;
+  box-sizing: content-box;
+  @include ms-right(13px);
+  &:hover {
+    color: $ms-color-themePrimary;
+    outline: 1px solid transparent;
+    @include high-contrast {
+      outline-color: highlight;
+    }
+  }
+  &:active {
+    color: $ms-color-themeDark;
+    @include high-contrast {
+      color: highlight;
+    }
+  }
+}
+
+.goToTodayIsDisabled {
+  color: $ms-color-neutralTertiaryAlt;
+  pointer-events: none;
+}
+
+.goTodayInlineMonth {
+  top: 212px;
+}
+
+// Additional 28px padding needed when "Go to today" button is visible
+.wrap.goTodaySpacing {
+  padding-bottom: 28px;
+}
+
+// State: The picker is showing the year components.
+.root.isPickingYears {
+  // Hide the day picking components.
+  .dayPicker,
+  .monthComponents {
+    display: none;
+  } // Hide the month picking components.
+  .monthPicker {
+    display: none;
+  } // Show the year picking components.
+  .yearPicker {
+    display: block;
+  }
+}
+
+// 460px and up.
+//
+// On screens that can fit it, we show the month picker next to the day picker if we have it enabled.
+@media (min-device-width: 460px) {
+  $Calendar-day: 28px;
+  $Calendar-month: 40px;
+  .wrap {
+    padding: 12px;
+  } // Update the spacing and text for the day and month pickers
+  .dayPicker,
+  .monthPicker {
+    min-height: 200px;
+  }
+  .header {
+    height: $Calendar-day;
+    line-height: $Calendar-day;
+    width: 100%;
+  } // Calendar day cells are smaller.
+  .dayWrapper,
+  .weekday {
+    width: $Calendar-day;
+    height: $Calendar-day;
+    line-height: $Calendar-day;
+    font-size: $ms-font-size-s;
+  } // Reduce the size of arrows to change month/year.
+  .closeButton,
+  .prevMonth,
+  .nextMonth,
+  .prevYear,
+  .nextYear,
+  .prevDecade,
+  .nextDecade {
+    font-size: $ms-font-size-s;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .holder {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+  }
+  .monthAndYear,
+  .year,
+  .decade {
+    font-size: $ms-font-size-m;
+    color: $ms-color-neutralPrimary;
+  }
+  .yearComponents {
+    margin-left: 1px;
+  }
+  .goToday {
+    padding: 0 3px;
+    @include ms-right(20px);
+  }
+  .showWeekNumbers {
+    .table {
+      .dayWrapper,
+      .weekday {
+        width: 28px;
+      }
+    }
+  } // week numbers style in right-to-left view
+  .showWeekNumbersRTL {
+    .table {
+      .dayWrapper,
+      .weekday {
+        width: 28px;
+      }
+    }
+  } // Show month picker, if enabled
+  .monthPickerVisible {
+    .wrap {
+      padding: 12px;
+    } // Swap margin for padding so that the border extends the full height.
+    .dayPicker {
+      margin: -$Calendar-dayPicker-margin 0;
+      padding: $Calendar-dayPicker-margin 0;
+    } // Contains the calendar view for picking a day.
+    .dayPicker {
+      @include ms-borderBox;
+      width: 212px;
+      min-height: 200px;
+    } // Show the month picker.
+    .monthPicker {
+      display: block;
+    }
+    .optionGrid {
+      height: 150px;
+      width: 196px;
+    } // This component is only used on small displays.
+    .toggleMonthView {
+      display: none;
+    } // Position the current year and decade labels.
+    .currentYear,
+    .currentDecade {
+      font-size: $ms-font-size-m;
+      margin: 0;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
+      display: inline-block;
+    } // Reduce the size of the month buttons.
+    .monthOption,
+    .yearOption {
+      width: $Calendar-month;
+      height: $Calendar-month;
+      line-height: 100%;
+      font-size: $ms-font-size-s;
+      @include margin(0, 12px, 16px, 0);
+      &:hover {
+        outline: 1px solid transparent;
+      }
+      &:nth-child(4n + 4) {
+        @include margin(0, 0px, 16px, 0);
+      }
+    } // Position the "Go to today" button below the month picker.
+    .goToday {
+      font-size: $ms-font-size-s;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
+      padding: 0 10px;
+      @include ms-right(8px);
+      @include text-align(right);
+    } // When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
+    // State: The picker is showing the year components.
+    // On larger screens the calendar will remain and the years
+    // will replace the months.
+    .root.isPickingYears {
+      // On large screens, we need to keep the day picker
+      // and month components in view.
+      .dayPicker,
+      .monthComponents {
+        display: block;
+      } // Hide the month picking components.
+      .monthPicker {
+        display: none;
+      } // Show the year picking components.
+      .yearPicker {
+        display: block;
+      }
+    }
+  }
+  .calendarsInline {
+    .wrap {
+      padding: 12px;
+    }
+    .holder {
+      height: auto;
+    }
+    .table {
+      @include margin-right(12px);
+    }
+    .dayPicker {
+      width: auto;
+    }
+    .monthPicker {
+      @include margin-left(12px);
+    }
+    .yearPicker {
+      @include margin-left(12px);
+    }
+    .goToday {
+      @include ms-right(14px);
+      padding: 0 10px;
+    }
+    .monthComponents {
+      @include margin-right(12px);
+    }
+  } //when month picker is only visible
+  .monthPickerOnly {
+    .wrap {
+      padding: 12px;
+    }
+  }
+  .monthPickerAsOverlay {
+    .wrap {
+      padding-bottom: 28px;
+      margin-bottom: 6px;
+    }
+    .holder {
+      height: 240px;
+      min-height: 240px;
+    }
+
+    .holderWithButton {
+      padding-top: 6px;
+      height: auto;
+    }
+  }
+}
+
+// On smaller screens the month button toggles to the picking months state.
+@media (max-device-width: 459px) {
+  .calendarsInline {
+    // Month and year pickers, hidden on small screens by default.
+    .monthPicker,
+    .yearPicker {
+      display: none;
+    }
+  } // position year components so they do not move when switching between calendars (overlayed calendars)
+  .yearComponents {
+    margin-top: 2px;
+  }
+}
+
+.goToday {
+  width: auto;
+}
+
+.closeButton,
+.nextMonth,
+.prevMonth,
+.nextYear,
+.prevYear,
+.nextDecade,
+.prevDecade {
+  display: inline-block;
+
+  &:hover {
+    background-color: $ms-color-neutralLighter;
+    color: $ms-color-neutralDark;
+    @include high-contrast {
+      outline: 1px solid Highlight;
+    }
+  }
+  &:active {
+    background-color: $ms-color-neutralLight;
+    @include high-contrast {
+      color: highlight;
+    }
+  }
+}
+
+.monthIsHighlighted {
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
+  &.monthOption:hover {
+    background-color: $ms-color-neutralLight;
+  }
+  @include high-contrast {
+    color: highlight;
+    border: 2px solid highlight;
+    border-radius: 2px;
+    &:hover {
+      outline: 0 !important;
+    }
+  }
+}
+
+.monthIsCurrentMonth {
+  color: $ms-color-white;
+  background-color: $ms-color-neutralLight;
+  &.monthOption:hover {
+    color: $ms-color-white;
+    background-color: $ms-color-neutralLighter;
+  }
+}
+
+.monthOption:active {
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
+}
+
+.yearIsHighlighted {
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
+  &.yearOption:hover {
+    background-color: $ms-color-neutralLighter;
+  }
+}
+
+.yearIsCurrentYear {
+  color: $ms-color-white;
+  background-color: $ms-color-neutralLight;
+  &.yearOption:hover {
+    color: $ms-color-white;
+    background-color: $ms-color-neutralLighter;
+  }
+}
+
+.yearOption:active {
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
+}
+
+// Highlighted Month date styling.
+.topLeftCornerDate {
+  border-top-left-radius: 2px;
+}
+
+.topRightCornerDate {
+  border-top-right-radius: 2px;
+}
+
+.bottomLeftCornerDate {
+  border-bottom-left-radius: 2px;
+}
+
+.bottomRightCornerDate {
+  border-bottom-right-radius: 2px;
+}
+
+@include high-contrast {
+  // Selected week
+  .weekBackground {
+    border-top: 1px solid highlight;
+    border-bottom: 1px solid highlight;
+
+    &.bottomRightCornerDate.topRightCornerDate {
+      border-right: 1px solid highlight;
+      border-left: none;
+      padding-left: 1px;
+    }
+
+    &.bottomLeftCornerDate.topLeftCornerDate {
+      border-left: 1px solid highlight;
+      border-right: none;
+      padding-right: 1px;
+    }
+
+    :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
+
+  // Week hover
+  .weekSelection.dayHover {
+    border-top: 1px solid highlight;
+    border-bottom: 1px solid highlight;
+    &.bottomLeftCornerDate.topLeftCornerDate {
+      border-left: 1px solid highlight;
+      padding-right: 1px;
+    }
+    &.bottomRightCornerDate.topRightCornerDate {
+      border-right: 1px solid highlight;
+      padding-left: 1px;
+    }
+
+    &.dayPress :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
+
+  .monthSelection.dayHover {
+    &.bottomLeftCornerDate,
+    &.topLeftCornerDate {
+      border-left: 1px solid highlight;
+      padding-right: 1px;
+    }
+    &.bottomRightCornerDate,
+    &.topRightCornerDate {
+      border-right: 1px solid highlight;
+      padding-left: 1px;
+    }
+  }
+
+  .monthSelection.dayIsFocused.dayHover,
+  .monthSelection.dayIsUnfocused.dayHover {
+    &.topDate {
+      border-top: 1px solid highlight;
+      padding-bottom: 1px;
+    }
+    &.rightDate {
+      border-right: 1px solid highlight;
+      padding-left: 1px;
+    }
+    &.bottomDate {
+      border-bottom: 1px solid highlight;
+      padding-top: 1px;
+    }
+    &.leftdate {
+      border-left: 1px solid highlight;
+      padding-right: 1px;
+    }
+
+    &.dayPress :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
+}

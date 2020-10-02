@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, find, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction, find, getId } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
   IChartProps,
   IHorizontalBarChartProps,
@@ -8,7 +8,7 @@ import {
   IHorizontalBarChartStyles,
   IChartDataPoint,
 } from './index';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink } from '@fluentui/react/lib/Nav';
 
 const links: INavLink[] = [
   {

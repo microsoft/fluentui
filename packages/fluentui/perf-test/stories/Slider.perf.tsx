@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider as SliderFabric } from 'office-ui-fabric-react';
+import { Slider as SliderFabric } from '@fluentui/react';
 import { Slider as SliderFluent } from '@fluentui/react-northstar';
 
 export default {

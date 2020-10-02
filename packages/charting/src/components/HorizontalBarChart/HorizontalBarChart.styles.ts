@@ -1,4 +1,4 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {

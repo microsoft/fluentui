@@ -1,11 +1,11 @@
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { EnterKey, SpacebarKey, keyboardKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AriaRole } from '../../types';
 
 /**
  * @description
- *  Adds attribute 'aria-selected=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
+ *  Adds attribute 'aria-checked=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
  *  Triggers 'performClick' action with 'Spacebar' on 'root', when tree title is selectable.
  *  @specification
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is false or undefined. Does not set the attribute if true.
@@ -26,7 +26,7 @@ export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props =>
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
-          ...(props.selectable && { 'aria-selected': props.selected }),
+          ...(props.selectable && { 'aria-checked': props.selected }),
         }),
       },
     },
@@ -36,6 +36,9 @@ export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props =>
           keyCombinations: props.selectable
             ? [{ keyCode: SpacebarKey }]
             : [{ keyCode: SpacebarKey }, { keyCode: EnterKey }],
+        },
+        focusParent: {
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         },
       },
     },

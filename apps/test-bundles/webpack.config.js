@@ -2,7 +2,7 @@ const path = require('path');
 const { createWebpackConfig, buildEntries, buildEntry } = require('./webpackUtils');
 
 // Create entries for all top level imports.
-const entries = buildEntries('office-ui-fabric-react');
+const entries = buildEntries('@fluentui/react');
 buildEntries('@fluentui/react-next', entries, false /* do not include stats for better performance. */);
 
 // Create entries for single top level import.

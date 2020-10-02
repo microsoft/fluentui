@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IFloatingPeopleSuggestionsProps } from './FloatingPeopleSuggestions.types';
 import { BaseFloatingSuggestions } from '../FloatingSuggestions';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { IFloatingSuggestionOnRenderItemProps } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { SuggestionItemNormal } from './FloatingPeopleSuggestionItems/SuggestionItemDefault';
 

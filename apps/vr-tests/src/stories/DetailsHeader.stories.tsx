@@ -9,12 +9,13 @@ import {
   ColumnActionsMode,
   Selection,
   SelectionMode,
-} from 'office-ui-fabric-react';
-import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader';
+} from '@fluentui/react';
+import { DetailsHeader } from '@fluentui/react/lib/DetailsList';
 
 const _items: {}[] = [];
 const _selection = new Selection();
 // script to simulate drag so that drop hint is rendered
+// eslint-disable-next-line import/no-webpack-loader-syntax
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [

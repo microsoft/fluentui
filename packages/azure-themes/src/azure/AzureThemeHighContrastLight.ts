@@ -1,4 +1,4 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme, ITheme } from '@fluentui/react';
 import { CommonSemanticColors, HighContrastLightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';

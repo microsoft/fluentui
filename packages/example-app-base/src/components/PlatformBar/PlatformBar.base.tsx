@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, FocusZone, DefaultButton, Icon, TooltipHost } from 'office-ui-fabric-react';
+import { classNamesFunction, FocusZone, DefaultButton, Icon, TooltipHost } from '@fluentui/react';
 import { IPlatformBarProps, IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { IPlatform } from '../PlatformPicker/index';
 import { INavPage } from '../Nav/index';

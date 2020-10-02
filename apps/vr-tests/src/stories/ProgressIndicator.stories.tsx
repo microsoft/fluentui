@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ProgressIndicator } from 'office-ui-fabric-react';
+import { ProgressIndicator } from '@fluentui/react';
 
 storiesOf('ProgressIndicator', module)
   .addDecorator(FabricDecorator)

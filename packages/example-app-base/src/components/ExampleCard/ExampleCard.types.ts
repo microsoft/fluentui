@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IDropdownStyleProps } from '@fluentui/react/lib/Dropdown';
 import { IPackageGroup } from '@uifabric/tsx-editor';
 
 export interface IExampleCardProps {

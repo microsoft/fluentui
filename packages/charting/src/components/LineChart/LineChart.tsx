@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 import { ILineChartProps, ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 import { LineChartBase } from './LineChart.base';
 import { getStyles } from './LineChart.styles';

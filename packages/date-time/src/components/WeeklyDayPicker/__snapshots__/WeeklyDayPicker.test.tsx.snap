@@ -33,6 +33,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -3058,6 +3059,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -3167,6 +3169,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;
@@ -6184,6 +6187,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           background-color: #f3f2f1;
           border: none;
           display: flex;
+          font-family: inherit;
           font-size: 12px;
           height: 0px;
           margin-bottom: 0px;

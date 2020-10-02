@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ChoiceGroup';
+export * from '@fluentui/react-internal/lib/ChoiceGroup';

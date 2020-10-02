@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
+import { Panel, PanelType, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
   isOpen: true,

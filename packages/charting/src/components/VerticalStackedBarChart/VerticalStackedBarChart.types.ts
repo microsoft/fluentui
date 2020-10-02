@@ -1,13 +1,13 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
-import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyle } from '@fluentui/react/lib/Styling';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
-} from '@uifabric/charting';
+} from '../../index';
 
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**

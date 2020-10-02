@@ -1,5 +1,5 @@
-import { IGroupHeaderStyleProps, IGroupHeaderStyles } from 'office-ui-fabric-react/lib/GroupedList';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { IGroupHeaderStyleProps, IGroupHeaderStyles } from '@fluentui/react/lib/GroupedList';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const GroupHeaderStyles = (props: IGroupHeaderStyleProps): Partial<IGroupHeaderStyles> => {
   const { compact, theme } = props;

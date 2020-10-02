@@ -4,123 +4,120 @@
 
 ```ts
 
-import { BaseButton } from 'office-ui-fabric-react/lib/Button';
-import { BasePeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { BasePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { BasePickerListBelow } from 'office-ui-fabric-react/lib/Pickers';
-import { Button } from 'office-ui-fabric-react/lib/Button';
-import { CompactPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { CompactPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
-import { createGenericItem } from 'office-ui-fabric-react/lib/Pickers';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { Autofill as FabricAutofill } from 'office-ui-fabric-react/lib/Pickers';
-import { IAutofillProps as FabricAutofillProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IAutofillProps as IAutofillProps_2 } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
-import { IBasePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { IBasePickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IBasePickerState } from 'office-ui-fabric-react/lib/Pickers';
-import { IBasePickerStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IBasePickerStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButton } from 'office-ui-fabric-react/lib/Button';
-import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
-import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
-import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { BaseButton } from '@fluentui/react/lib/Button';
+import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
+import { BasePicker } from '@fluentui/react/lib/Pickers';
+import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
+import { Button } from '@fluentui/react/lib/Button';
+import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
+import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
+import { createGenericItem } from '@fluentui/react/lib/Pickers';
+import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
+import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
+import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
+import { IAutofillProps as IAutofillProps_2 } from '@fluentui/react-internal/lib/components/pickers/AutoFill/BaseAutoFill.types';
+import { IBasePicker } from '@fluentui/react/lib/Pickers';
+import { IBasePickerProps } from '@fluentui/react/lib/Pickers';
+import { IBasePickerState } from '@fluentui/react/lib/Pickers';
+import { IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
+import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
+import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import { IButton } from '@fluentui/react/lib/Button';
+import { IButtonClassNames } from '@fluentui/react-internal/lib/components/Button/BaseButton.classNames';
+import { IButtonProps } from '@fluentui/react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
+import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
-import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { IAutofill as IFabricAutofill } from 'office-ui-fabric-react/lib/Pickers';
-import { IAutofillState as IFabricAutofillState } from 'office-ui-fabric-react/lib/Pickers';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
-import { IGenericItem } from 'office-ui-fabric-react/lib/Pickers';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IInputProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
-import { ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
-import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
-import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
-import { IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
-import { IPeoplePickerItemSelectedProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSelectedStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSelectedSubComponentStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSharedProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { IPeoplePickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPickerAriaIds } from 'office-ui-fabric-react/lib/Pickers';
-import { IPickerItem } from 'office-ui-fabric-react/lib/Pickers';
-import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IRawStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableDroppableText.types';
-import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestions } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsItem } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsItemStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsItemStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsState } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsSubComponentStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { ITag } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemSuggestionProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemSuggestionStyleProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagItemSuggestionStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
-import { ListPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { ListPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
-import { MemberListPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
-import { NormalPeoplePickerBase } from 'office-ui-fabric-react/lib/Pickers';
-import { PeoplePickerItem } from 'office-ui-fabric-react/lib/Pickers';
-import { PeoplePickerItemBase } from 'office-ui-fabric-react/lib/Pickers';
-import { PeoplePickerItemSuggestion } from 'office-ui-fabric-react/lib/Pickers';
-import { PeoplePickerItemSuggestionBase } from 'office-ui-fabric-react/lib/Pickers';
-import { Point } from 'office-ui-fabric-react/lib/Utilities';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IComponentAs } from '@fluentui/react/lib/Utilities';
+import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
+import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
+import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
+import { IGenericItem } from '@fluentui/react/lib/Pickers';
+import { IIconProps } from '@fluentui/react/lib/Icon';
+import { IInputProps } from '@fluentui/react/lib/Pickers';
+import { IKeytipProps } from '@fluentui/react/lib/Keytip';
+import { ILabelStyleProps } from '@fluentui/react/lib/Label';
+import { ILabelStyles } from '@fluentui/react/lib/Label';
+import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
+import { IOverlayProps } from '@fluentui/react/lib/Overlay';
+import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
+import { IPanelStyles } from '@fluentui/react/lib/Panel';
+import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSelectedStyleProps } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSelectedStyles } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSelectedSubComponentStyles } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSharedProps } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSuggestionProps } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
+import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
+import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
+import { IPickerItem } from '@fluentui/react/lib/Pickers';
+import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
+import { IPositionedData } from '@fluentui/react/lib/Positioning';
+import { IRawStyle } from '@fluentui/react/lib/Styling';
+import { IRectangle } from '@fluentui/react/lib/Utilities';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
+import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
+import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import { ISuggestions } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsItem } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsItemStyleProps } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsItemStyles } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsState } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsStyleProps } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsStyles } from '@fluentui/react/lib/Pickers';
+import { ISuggestionsSubComponentStyles } from '@fluentui/react/lib/Pickers';
+import { ITag } from '@fluentui/react/lib/Pickers';
+import { ITagItemProps } from '@fluentui/react/lib/Pickers';
+import { ITagItemStyleProps } from '@fluentui/react/lib/Pickers';
+import { ITagItemStyles } from '@fluentui/react/lib/Pickers';
+import { ITagItemSuggestionProps } from '@fluentui/react/lib/Pickers';
+import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
+import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
+import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
+import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { KeyCodes } from '@fluentui/react/lib/Utilities';
+import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
+import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
+import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
+import { NormalPeoplePicker } from '@fluentui/react/lib/Pickers';
+import { NormalPeoplePickerBase } from '@fluentui/react/lib/Pickers';
+import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
+import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
+import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
+import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
+import { Point } from '@fluentui/react/lib/Utilities';
+import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SuggestionActionType } from 'office-ui-fabric-react/lib/Pickers';
-import { Suggestions } from 'office-ui-fabric-react/lib/Pickers';
-import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
-import { SuggestionsItem } from 'office-ui-fabric-react/lib/Pickers';
-import { TagItem } from 'office-ui-fabric-react/lib/Pickers';
-import { TagItemBase } from 'office-ui-fabric-react/lib/Pickers';
-import { TagItemSuggestion } from 'office-ui-fabric-react/lib/Pickers';
-import { TagItemSuggestionBase } from 'office-ui-fabric-react/lib/Pickers';
-import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
-import { TagPickerBase } from 'office-ui-fabric-react/lib/Pickers';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { Selection } from '@fluentui/react/lib/Selection';
+import { SuggestionActionType } from '@fluentui/react/lib/Pickers';
+import { Suggestions } from '@fluentui/react/lib/Pickers';
+import { SuggestionsController } from '@fluentui/react/lib/Pickers';
+import { SuggestionsItem } from '@fluentui/react/lib/Pickers';
+import { TagItem } from '@fluentui/react/lib/Pickers';
+import { TagItemBase } from '@fluentui/react/lib/Pickers';
+import { TagItemSuggestion } from '@fluentui/react/lib/Pickers';
+import { TagItemSuggestionBase } from '@fluentui/react/lib/Pickers';
+import { TagPicker } from '@fluentui/react/lib/Pickers';
+import { TagPickerBase } from '@fluentui/react/lib/Pickers';
 import { Target } from '@uifabric/react-hooks';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { ValidationState } from '@fluentui/react/lib/Pickers';
 
 // @public (undocumented)
 export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
@@ -140,6 +137,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     focus(): void;
     // (undocumented)
+    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
+    // (undocumented)
     readonly inputElement: HTMLInputElement | null;
     // (undocumented)
     readonly isValueSelected: boolean;
@@ -150,10 +149,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     readonly selectionStart: number | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
-    // (undocumented)
     readonly value: string;
-    }
+}
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -448,7 +445,26 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
 
-export { DirectionalHint }
+// @public (undocumented)
+export const DirectionalHint: {
+    topLeftEdge: 0;
+    topCenter: 1;
+    topRightEdge: 2;
+    topAutoEdge: 3;
+    bottomLeftEdge: 4;
+    bottomCenter: 5;
+    bottomRightEdge: 6;
+    bottomAutoEdge: 7;
+    leftTopEdge: 8;
+    leftCenter: 9;
+    leftBottomEdge: 10;
+    rightTopEdge: 11;
+    rightCenter: 12;
+    rightBottomEdge: 13;
+};
+
+// @public (undocumented)
+export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
 
 // @public (undocumented)
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
@@ -491,21 +507,9 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
-    constructor(props: IFocusTrapZoneProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
-    }
+export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
+    focusStack: string[];
+};
 
 // @public
 export const getMeasurementCache: () => {
@@ -556,18 +560,19 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string;
+    onInputChange?: (value: string, composing: boolean) => string | void;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
+    // @deprecated
     updateValueInWillReceiveProps?: () => string | null;
 }
 
 // @public (undocumented)
 export interface IAutofillState {
     // (undocumented)
-    displayValue?: string;
+    inputValue: string;
 }
 
 // @public (undocumented)
@@ -731,6 +736,7 @@ export interface IBreadcrumbItem {
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    role?: string;
     text: string;
 }
 
@@ -880,10 +886,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -898,13 +903,19 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     onScroll?: () => void;
+    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
+    // @deprecated
     preventDismissOnLostFocus?: boolean;
+    // @deprecated
     preventDismissOnResize?: boolean;
+    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldDismissOnWindowFocus?: boolean;
     // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -1420,9 +1431,9 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;
     delayUpdateFocusOnHover?: boolean;
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
@@ -1442,6 +1453,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+        documentContainsFocus: boolean;
+    }) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -1480,7 +1496,7 @@ export interface IContextualMenuState {
     // (undocumented)
     slideDirectionalClassName?: string;
     // (undocumented)
-    submenuDirection?: DirectionalHint_2;
+    submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
 }
@@ -1723,7 +1739,7 @@ export interface IFocusTrapZone {
 }
 
 // @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
@@ -2242,6 +2258,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
+        documentContainsFocus: boolean;
     }) => void;
     role?: string;
     // @deprecated
@@ -2263,9 +2280,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;
-    directionalHint?: DirectionalHint_2;
+    directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint_2;
+    directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
     minPagePadding?: number;
@@ -2400,7 +2417,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
-    clearButtonProps?: IButtonProps_2;
+    clearButtonProps?: IButtonProps;
     componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
@@ -2666,8 +2683,8 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     decrementButtonIcon?: IIconProps;
     defaultValue?: string;
     disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles_2>;
-    iconButtonProps?: IButtonProps_3;
+    downArrowButtonStyles?: Partial<IButtonStyles>;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -2678,16 +2695,16 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string) => string | void;
+    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string) => string | void;
+    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
     styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles_2>;
+    upArrowButtonStyles?: Partial<IButtonStyles>;
     value?: string;
 }
 
@@ -2832,6 +2849,7 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
     onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
+    onRenderColorCell?: IRenderFunction<IColorCellProps>;
     selectedId?: string;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
@@ -3649,50 +3667,50 @@ export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
+export * from "@fluentui/react/lib/ActivityItem";
+export * from "@fluentui/react/lib/Announced";
+export * from "@fluentui/react/lib/Check";
+export * from "@fluentui/react/lib/Color";
+export * from "@fluentui/react/lib/ColorPicker";
+export * from "@fluentui/react/lib/CommandBar";
+export * from "@fluentui/react/lib/DetailsList";
+export * from "@fluentui/react/lib/Dialog";
+export * from "@fluentui/react/lib/Divider";
+export * from "@fluentui/react/lib/DocumentCard";
+export * from "@fluentui/react/lib/DragDrop";
+export * from "@fluentui/react/lib/Facepile";
+export * from "@fluentui/react/lib/FocusZone";
+export * from "@fluentui/react/lib/GroupedList";
+export * from "@fluentui/react/lib/HoverCard";
+export * from "@fluentui/react/lib/Icon";
+export * from "@fluentui/react/lib/Icons";
+export * from "@fluentui/react/lib/Keytip";
+export * from "@fluentui/react/lib/KeytipData";
+export * from "@fluentui/react/lib/KeytipLayer";
+export * from "@fluentui/react/lib/Keytips";
+export * from "@fluentui/react/lib/Label";
+export * from "@fluentui/react/lib/List";
+export * from "@fluentui/react/lib/MarqueeSelection";
+export * from "@fluentui/react/lib/Nav";
+export * from "@fluentui/react/lib/Overlay";
+export * from "@fluentui/react/lib/Panel";
+export * from "@fluentui/react/lib/Positioning";
+export * from "@fluentui/react/lib/ProgressIndicator";
+export * from "@fluentui/react/lib/ScrollablePane";
+export * from "@fluentui/react/lib/SelectableOption";
+export * from "@fluentui/react/lib/Selection";
+export * from "@fluentui/react/lib/Separator";
+export * from "@fluentui/react/lib/ShimmeredDetailsList";
+export * from "@fluentui/react/lib/Spinner";
+export * from "@fluentui/react/lib/Stack";
+export * from "@fluentui/react/lib/Sticky";
+export * from "@fluentui/react/lib/Styling";
+export * from "@fluentui/react/lib/Text";
+export * from "@fluentui/react/lib/ThemeGenerator";
+export * from "@fluentui/react/lib/Tooltip";
+export * from "@fluentui/react/lib/Utilities";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
-export * from "office-ui-fabric-react/lib/ActivityItem";
-export * from "office-ui-fabric-react/lib/Announced";
-export * from "office-ui-fabric-react/lib/Check";
-export * from "office-ui-fabric-react/lib/Color";
-export * from "office-ui-fabric-react/lib/ColorPicker";
-export * from "office-ui-fabric-react/lib/CommandBar";
-export * from "office-ui-fabric-react/lib/DetailsList";
-export * from "office-ui-fabric-react/lib/Dialog";
-export * from "office-ui-fabric-react/lib/Divider";
-export * from "office-ui-fabric-react/lib/DocumentCard";
-export * from "office-ui-fabric-react/lib/DragDrop";
-export * from "office-ui-fabric-react/lib/Facepile";
-export * from "office-ui-fabric-react/lib/FocusZone";
-export * from "office-ui-fabric-react/lib/GroupedList";
-export * from "office-ui-fabric-react/lib/HoverCard";
-export * from "office-ui-fabric-react/lib/Icon";
-export * from "office-ui-fabric-react/lib/Icons";
-export * from "office-ui-fabric-react/lib/Keytip";
-export * from "office-ui-fabric-react/lib/KeytipData";
-export * from "office-ui-fabric-react/lib/KeytipLayer";
-export * from "office-ui-fabric-react/lib/Label";
-export * from "office-ui-fabric-react/lib/List";
-export * from "office-ui-fabric-react/lib/MarqueeSelection";
-export * from "office-ui-fabric-react/lib/Nav";
-export * from "office-ui-fabric-react/lib/Overlay";
-export * from "office-ui-fabric-react/lib/Panel";
-export * from "office-ui-fabric-react/lib/Positioning";
-export * from "office-ui-fabric-react/lib/ProgressIndicator";
-export * from "office-ui-fabric-react/lib/ScrollablePane";
-export * from "office-ui-fabric-react/lib/SelectableOption";
-export * from "office-ui-fabric-react/lib/Selection";
-export * from "office-ui-fabric-react/lib/Separator";
-export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
-export * from "office-ui-fabric-react/lib/Spinner";
-export * from "office-ui-fabric-react/lib/Stack";
-export * from "office-ui-fabric-react/lib/Sticky";
-export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/Text";
-export * from "office-ui-fabric-react/lib/ThemeGenerator";
-export * from "office-ui-fabric-react/lib/Tooltip";
-export * from "office-ui-fabric-react/lib/Utilities";
-export * from "office-ui-fabric-react/lib/utilities/keytips/index";
 
 // (No @packageDocumentation comment for this package)
 

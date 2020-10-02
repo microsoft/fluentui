@@ -1,6 +1,6 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import {
   FontWeights,
   HighContrastSelector,

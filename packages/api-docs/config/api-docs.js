@@ -9,17 +9,24 @@ const apiDocs = require('../lib/index');
 module.exports = {
   apiJsonPaths: [
     path.resolve(__dirname, '../../styling/dist/styling.api.json'),
+    path.resolve(__dirname, '../../theme/dist/theme.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
     path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
-    path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
-    path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
     path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json'),
+    path.resolve(__dirname, '../../react-checkbox/dist/react-checkbox.api.json'),
+    path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
+    path.resolve(__dirname, '../../react-internal/dist/react-internal.api.json'),
+    path.resolve(__dirname, '../../react-link/dist/react-link.api.json'),
+    path.resolve(__dirname, '../../react-slider/dist/react-slider.api.json'),
+    path.resolve(__dirname, '../../react-tabs/dist/react-tabs.api.json'),
+    path.resolve(__dirname, '../../react-toggle/dist/react-toggle.api.json'),
+    path.resolve(__dirname, '../../react/dist/react.api.json'),
     path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
   ],
   outputRoot: path.resolve(__dirname, '../lib/pages'),
   fallbackGroup: 'references',
   pageGroups: {
-    'office-ui-fabric-react': [
+    react: [
       'ActivityItem',
       'Announced',
       'Breadcrumb',

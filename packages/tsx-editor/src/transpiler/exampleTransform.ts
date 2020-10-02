@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
+import { getWindow } from '@fluentui/react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
 import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';

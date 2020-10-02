@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
-import { ISelection } from 'office-ui-fabric-react/lib/Selection';
+import { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
+import { ISelection } from '@fluentui/react/lib/Selection';
 
 export type TileSize = keyof {
   small: 'small';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
-import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
+import { DragDropHelper, IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import {
   FocusZoneDirection,
@@ -11,15 +11,14 @@ import {
   IInputProps,
   MarqueeSelection,
   IDragDropEvents,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -99,7 +98,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
-  const _dropItemsAt = (insertIndex: number, newItems: T[]): void => {
+  let insertIndex = -1;
+  const _dropItemsAt = (newItems: T[]): void => {
     let indicesToRemove: number[] = [];
     // If we are moving items within the same picker, remove them from their old places as well
     if (draggedIndex > -1) {
@@ -110,6 +110,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
     dropItemsAt(insertIndex, newItems, indicesToRemove);
     unselectAll();
+    insertIndex = -1;
   };
 
   const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
@@ -117,7 +118,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
-    const insertIndex = selectedItems.indexOf(item);
+    insertIndex = selectedItems.indexOf(item);
     let isDropHandled = false;
     if (event?.dataTransfer) {
       event.preventDefault();
@@ -128,7 +129,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           data[i].getAsString((dropText: string) => {
             if (props.selectedItemsListProps.deserializeItemsFromDrop) {
               const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
-              _dropItemsAt(insertIndex, newItems);
+              _dropItemsAt(newItems);
             }
           });
         }
@@ -138,12 +139,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const newItems = focusedItemIndices.includes(draggedIndex)
         ? (getSelectedItems() as T[])
         : [selectedItems[draggedIndex]];
-      _dropItemsAt(insertIndex, newItems);
+      _dropItemsAt(newItems);
     }
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
-    const draggedItemIndex = itemIndex ? itemIndex! : -1;
+    /* eslint-disable-next-line eqeqeq */
+    const draggedItemIndex = itemIndex != null ? itemIndex! : -1;
     setDraggedIndex(draggedItemIndex);
     if (event) {
       const dataList = event?.dataTransfer?.items;
@@ -360,6 +362,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   aria-expanded={isSuggestionsShown}
                   aria-haspopup="listbox"
                   role="combobox"
+                  className={css('ms-BasePicker-div', classNames.pickerDiv)}
                 >
                   <Autofill
                     {...(inputProps as IInputProps)}

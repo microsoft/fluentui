@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { CheckboxPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Checkbox/Checkbox.doc';
+import { CheckboxPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-checkbox/Checkbox/Checkbox.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/CheckboxPage/docs/CheckboxRelated.md') as string;
 

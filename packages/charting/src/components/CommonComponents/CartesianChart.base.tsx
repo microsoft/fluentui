@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { IProcessedStyleSet, mergeStyles } from '@fluentui/react/lib/Styling';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { Callout } from '@fluentui/react/lib/Callout';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-} from '@uifabric/charting';
+} from '../../index';
 import {
   createNumericXAxis,
   createStringXAxis,

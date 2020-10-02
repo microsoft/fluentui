@@ -1,7 +1,7 @@
 {
   "buildCommand": "build:min",
   "packages": [
-    "packages/office-ui-fabric-react",
+    "packages/react",
     "packages/react-button",
     "packages/react-icons",
     "packages/react-next",

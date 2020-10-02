@@ -1,4 +1,4 @@
-import { createTheme, ICustomizations } from 'office-ui-fabric-react';
+import { createTheme, ICustomizations } from '@fluentui/react';
 import { addVariants } from '@uifabric/variants';
 
 export const TeamsCustomizations: ICustomizations = {

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
-import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { ResizeGroupPageProps } from 'office-ui-fabric-react/lib/components/ResizeGroup/ResizeGroup.doc';
+import { LayerHost } from '@fluentui/react/lib/Layer';
+import { ResizeGroupPageProps } from '@fluentui/react-examples/lib/react/ResizeGroup/ResizeGroup.doc';
 
 export const ResizeGroupPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/ResizeGroup.page.json')}
+      jsonDocs={require('@uifabric/api-docs/lib/pages/react/ResizeGroup.page.json')}
       {...{ ...ResizeGroupPageProps, ...props }}
     />
   </LayerHost>

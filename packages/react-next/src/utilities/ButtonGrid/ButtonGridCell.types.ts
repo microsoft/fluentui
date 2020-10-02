@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonClassNames } from 'office-ui-fabric-react/src/components/Button/BaseButton.classNames';
+import { IButtonClassNames } from '@fluentui/react-internal/lib/components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
 
 export interface IButtonGridCellProps<T> {
@@ -14,7 +14,7 @@ export interface IButtonGridCellProps<T> {
   id: string;
 
   /**
-   * Optional, if the this option should be diabled
+   * Optional, if the this option should be disabled
    */
   disabled?: boolean;
 

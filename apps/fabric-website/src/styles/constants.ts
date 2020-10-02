@@ -1,4 +1,4 @@
-import { ScreenWidthMinUhfMobile, ScreenWidthMinXLarge } from 'office-ui-fabric-react/lib/Styling';
+import { ScreenWidthMinUhfMobile, ScreenWidthMinXLarge } from '@fluentui/react/lib/Styling';
 
 // Padding matches padding used by UHF at the same (lg / sm) UHF breakpoints
 export const appPaddingLeftLg = 32;

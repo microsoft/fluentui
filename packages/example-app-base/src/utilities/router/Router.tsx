@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { initializeComponentRef, on } from 'office-ui-fabric-react/lib/Utilities';
+import { initializeComponentRef, on } from '@fluentui/react/lib/Utilities';
 import { IRouteProps } from './Route';
 
 export interface IRouterProps {

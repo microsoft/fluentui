@@ -24,50 +24,50 @@ const diagnostics: IDiagnostic[] = [
 const lineStarts = [
   0,
   32,
-  100,
-  101,
-  173,
-  206,
-  219,
-  258,
-  278,
-  305,
-  343,
-  361,
-  381,
-  400,
-  459,
-  518,
-  577,
-  588,
+  93,
+  94,
+  166,
+  199,
+  212,
+  251,
+  271,
+  298,
+  336,
+  354,
+  374,
+  393,
+  452,
+  511,
+  570,
+  581,
+  594,
   601,
-  608,
-  612,
-  614,
+  605,
+  607,
 ];
 const lineStartsCRLF = [
   0,
   33,
-  102,
-  104,
-  177,
-  211,
-  225,
-  265,
-  286,
-  314,
-  353,
-  372,
-  393,
-  413,
-  473,
-  533,
-  593,
-  605,
-  619,
-  627,
-  632,
-  635,
+  95,
+  97,
+  170,
+  204,
+  218,
+  258,
+  279,
+  307,
+  346,
+  365,
+  386,
+  406,
+  466,
+  526,
+  586,
+  598,
+  612,
+  620,
+  625,
+  628,
 ];
 
 describe('_getLineStarts', () => {
@@ -82,16 +82,34 @@ describe('_getLineStarts', () => {
 
 describe('_getErrorLineInfo', () => {
   it('works', () => {
-    expect(_getErrorLineInfo(diagnostics[0], lineStarts)).toEqual({ line: 1, col: 24 });
-    expect(_getErrorLineInfo(diagnostics[1], lineStarts)).toEqual({ line: 5, col: 20 });
-    expect(_getErrorLineInfo(diagnostics[2], lineStarts)).toEqual({ line: 7, col: 7 });
+    expect(_getErrorLineInfo(diagnostics[0], lineStarts)).toMatchInlineSnapshot(`
+      Object {
+        "col": 24,
+        "line": 1,
+      }
+    `);
+    expect(_getErrorLineInfo(diagnostics[1], lineStarts)).toMatchInlineSnapshot(`
+      Object {
+        "col": 27,
+        "line": 5,
+      }
+    `);
+    expect(_getErrorLineInfo(diagnostics[2], lineStarts)).toMatchInlineSnapshot(`
+      Object {
+        "col": 14,
+        "line": 7,
+      }
+    `);
   });
 
   it('works at last line of file', () => {
-    expect(_getErrorLineInfo({ start: 615, messageText: 'fake', code: 0, category: 1 }, lineStarts)).toEqual({
-      line: 22,
-      col: 2,
-    });
+    expect(_getErrorLineInfo({ start: 615, messageText: 'fake', code: 0, category: 1 }, lineStarts))
+      .toMatchInlineSnapshot(`
+      Object {
+        "col": 9,
+        "line": 22,
+      }
+    `);
   });
 });
 
@@ -114,7 +132,7 @@ describe('_getErrorMessages', () => {
 describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
     expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
-      'office-ui-fabric-react': 'Fabric',
+      '@fluentui/react': 'Fabric',
       '@fluentui/date-time-utilities': 'Fabric',
       '@fluentui/react-focus': 'Fabric',
       '@uifabric/foundation': 'Fabric',

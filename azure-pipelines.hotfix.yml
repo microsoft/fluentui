@@ -4,6 +4,9 @@ trigger: none
 
 pool: 'Self Host Ubuntu'
 
+workspace:
+  clean: all
+
 steps:
   - template: .devops/templates/tools.yml
 
@@ -22,23 +25,27 @@ steps:
 
   - script: |
       npm version $(targetNpmVersion)
-    workingDirectory: 'packages/office-ui-fabric-react'
-    displayName: 'Manually set fabric version'
+    workingDirectory: 'packages/react'
+    displayName: 'Manually set package version'
 
   - script: |
-      yarn buildto office-ui-fabric-react --production
-    displayName: yarn build to OUFR (Create production build)
+      yarn buildto @fluentui/react --production
+    displayName: yarn build to FUIR (Create production build)
 
-  - script: yarn workspace office-ui-fabric-react bundle --production
-    displayName: yarn bundle OUFR
+  - script: yarn workspace @fluentui/react bundle --production
+    displayName: yarn bundle FUIR
 
   - script: |
       npm pack
     displayName: 'Create tarball'
-    workingDirectory: 'packages/office-ui-fabric-react'
+    workingDirectory: 'packages/react'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: oufr'
     inputs:
-      PathtoPublish: 'packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz'
+      PathtoPublish: 'packages/react/react-$(targetNpmVersion).tgz'
       ArtifactName: oufr
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

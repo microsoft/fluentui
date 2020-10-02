@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ImageFit } from 'office-ui-fabric-react';
+import { Image, ImageFit } from '@fluentui/react';
 import { createComponent } from '../../../Foundation';
 import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
 import { IPersonaCoinComponent } from '../PersonaCoin.types';

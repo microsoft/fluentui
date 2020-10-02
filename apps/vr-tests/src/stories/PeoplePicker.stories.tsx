@@ -10,7 +10,7 @@ import {
   NormalPeoplePicker,
   IPersonaProps,
   PersonaPresence,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { TestImages } from '@uifabric/example-data';
 
@@ -131,7 +131,8 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addStory('Normal disabled', () => (

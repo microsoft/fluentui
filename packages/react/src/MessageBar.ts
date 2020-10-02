@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/MessageBar';
+export * from '@fluentui/react-internal/lib/MessageBar';
