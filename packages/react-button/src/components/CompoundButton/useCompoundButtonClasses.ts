@@ -3,9 +3,9 @@ import { CompoundButtonState } from './CompoundButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
 
 const GlobalClassNames = {
-  root: 'ms-Button',
-  contentContainer: 'ms-Button-contentContainer',
-  secondaryContent: 'ms-Button-secondaryContent',
+  root: 'ms-CompoundButton',
+  contentContainer: 'ms-CompoundButton-contentContainer',
+  secondaryContent: 'ms-CompoundButton-secondaryContent',
 };
 
 export const useClasses = makeVariantClasses<CompoundButtonState>({
@@ -37,11 +37,11 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         lineHeight: '100%',
         marginTop: 'var(--button-secondaryContentGap)',
 
-        [`${GlobalClassNames.root}:hover &`]: {
+        [`.${GlobalClassNames.root}:hover &`]: {
           color: 'var(--button-hovered-secondaryContentColor, var(--button-secondaryContentColor))',
         },
 
-        [`${GlobalClassNames.root}:active &`]: {
+        [`.${GlobalClassNames.root}:active &`]: {
           color:
             'var(--button-pressed-secondaryContentColor, ' +
             'var(--button-hovered-secondaryContentColor, ' +
@@ -56,7 +56,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
   },
 
   variants: (theme: Theme) => {
-    const { palette } = theme;
+    const { palette, semanticColors } = theme;
 
     return {
       root: {
@@ -72,6 +72,14 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         secondaryContentGap: '4px',
         secondaryContentFontWeight: 'normal',
 
+        hovered: {
+          secondaryContentColor: palette.neutralDark,
+        },
+
+        pressed: {
+          secondaryContentColor: semanticColors.buttonTextPressed,
+        },
+
         disabled: {
           secondaryContentColor: 'var(--button-disabled-contentColor)',
         },
@@ -85,19 +93,6 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         paddingTop: 0,
         paddingLeft: 0,
         paddingRight: 0,
-      },
-
-      ghost: {
-        secondaryContentColor: 'var(--ghost-secondaryContentColor)',
-        focused: {
-          secondaryContentColor: 'var(--ghost-focused-secondaryContentColor)',
-        },
-        hovered: {
-          secondaryContentColor: 'var(--ghost-hovered-secondaryContentColor)',
-        },
-        pressed: {
-          secondaryContentColor: 'var(--ghost-pressed-secondaryContentColor)',
-        },
       },
 
       primary: {
