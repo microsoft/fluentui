@@ -7,6 +7,7 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
+import { ISuggestionsHeaderFooterProps, SuggestionsHeaderFooterItem } from 'office-ui-fabric-react/lib/FloatingPicker';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
@@ -14,6 +15,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   const classNames = getClassNames(getStyles);
   const { className, suggestionItems, onRenderNoResultFound, ariaLabel, noResultsFoundText } = props;
   const hasNoSuggestions = !suggestionItems || !suggestionItems.length;
+  const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(-1);
 
   const noResults = () => {
     return noResultsFoundText ? <div className={classNames.noSuggestions}>{noResultsFoundText}</div> : null;
@@ -29,7 +31,40 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderFooter = (): JSX.Element | null => {
-    const { onRenderFooter } = props;
+    const { onRenderFooter, footerItemsProps } = props;
+
+    if (footerItemsProps) {
+      return (
+        <div
+          className={css('ms-Suggestions-footerContainer' /*, styles.suggestionsContainer*/)}
+          id="suggestionFooter-list"
+          role="list"
+          //aria-label={suggestionsFooterContainerAriaLabel}
+        >
+          {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+            const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
+            return footerItemProps.shouldShow() ? (
+              <div
+                //ref={isSelected ? this._selectedElement : undefined}
+                id={'sug-footer' + index}
+                key={'sug-footer' + index}
+                role="listitem"
+                aria-label={footerItemProps.ariaLabel}
+              >
+                <SuggestionsHeaderFooterItem
+                  id={'sug-footer-item' + index}
+                  isSelected={isSelected}
+                  renderItem={footerItemProps.renderItem}
+                  onExecute={footerItemProps.onExecute}
+                  className={footerItemProps.className}
+                />
+              </div>
+            ) : null;
+          })}
+        </div>
+      );
+    }
+
     if (onRenderFooter) {
       return onRenderFooter(suggestionItems);
     }

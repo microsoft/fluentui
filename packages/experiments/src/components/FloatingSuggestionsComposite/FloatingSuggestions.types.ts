@@ -7,6 +7,7 @@ import {
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
+import { IBaseFloatingPickerSuggestionProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 
 /**
  * FloatingSuggestions component props
@@ -127,6 +128,8 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Arrow key callback
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
+
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
 }
 
 /**
