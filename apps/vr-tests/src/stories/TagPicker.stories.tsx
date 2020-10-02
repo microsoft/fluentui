@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
-import { TagPicker, Fabric, ITag } from '@fluentui/react';
+import { TagPicker, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
   'black',
@@ -66,19 +66,17 @@ storiesOf('TagPicker', module)
   .addStory(
     'Selected',
     () => (
-      <Fabric>
-        <TagPicker
-          defaultSelectedItems={[testTags[4]]}
-          onResolveSuggestions={getList}
-          onEmptyInputFocus={getList}
-          getTextFromItem={getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found',
-          }}
-          itemLimit={2}
-        />
-      </Fabric>
+      <TagPicker
+        defaultSelectedItems={[testTags[4]]}
+        onResolveSuggestions={getList}
+        onEmptyInputFocus={getList}
+        getTextFromItem={getTextFromItem}
+        pickerSuggestionsProps={{
+          suggestionsHeaderText: 'Suggested Tags',
+          noResultsFoundText: 'No Color Tags Found',
+        }}
+        itemLimit={2}
+      />
     ),
     { rtl: true },
   );
@@ -92,7 +90,7 @@ storiesOf('TagPicker', module)
   ))
   .addStory('With long tag', () => (
     // This example MUST be inside a narrow container which forces the tag to overflow
-    <Fabric style={{ width: 180 }}>
+    <div style={{ width: 180 }}>
       <TagPicker
         onResolveSuggestions={getList}
         defaultSelectedItems={[
@@ -102,7 +100,7 @@ storiesOf('TagPicker', module)
           },
         ]}
       />
-    </Fabric>
+    </div>
   ));
 
 storiesOf('TagItem', module)
@@ -127,19 +125,17 @@ storiesOf('TagItem', module)
   .addStory(
     'Selected',
     () => (
-      <Fabric>
-        <TagPicker
-          defaultSelectedItems={[testTags[4]]}
-          onResolveSuggestions={getList}
-          onEmptyInputFocus={getList}
-          getTextFromItem={getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found',
-          }}
-          itemLimit={2}
-        />
-      </Fabric>
+      <TagPicker
+        defaultSelectedItems={[testTags[4]]}
+        onResolveSuggestions={getList}
+        onEmptyInputFocus={getList}
+        getTextFromItem={getTextFromItem}
+        pickerSuggestionsProps={{
+          suggestionsHeaderText: 'Suggested Tags',
+          noResultsFoundText: 'No Color Tags Found',
+        }}
+        itemLimit={2}
+      />
     ),
     { rtl: true },
   );

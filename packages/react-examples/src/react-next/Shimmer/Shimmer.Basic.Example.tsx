@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Shimmer, ShimmerElementType, IShimmerElement, Fabric, mergeStyles } from '@fluentui/react-next';
+import { Shimmer, ShimmerElementType, IShimmerElement, mergeStyles } from '@fluentui/react-next';
 
 const wrapperClass = mergeStyles({
   padding: 2,
@@ -52,7 +52,7 @@ const shimmerVerticalElement: IShimmerElement[] = [
 
 export const ShimmerBasicExample: React.FunctionComponent = () => {
   return (
-    <Fabric className={wrapperClass}>
+    <div className={wrapperClass}>
       Basic Shimmer with no elements provided. It defaults to a line of 16px height.
       <Shimmer />
       <Shimmer width="75%" />
@@ -63,6 +63,6 @@ export const ShimmerBasicExample: React.FunctionComponent = () => {
       <Shimmer width="70%" shimmerElements={shimmerWithElementThirdRow} />
       Variations of vertical alignment for Circles and Lines.
       <Shimmer shimmerElements={shimmerVerticalElement} />
-    </Fabric>
+    </div>
   );
 };

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  Fabric,
   IComboBox,
   IComboBoxOption,
   IComboBoxProps,
@@ -49,7 +48,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
 
   public render(): JSX.Element {
     return (
-      <Fabric className={wrapperClassName}>
+      <div className={wrapperClassName}>
         <div>
           {/* This example demonstrates various props, but only `options` is required. */}
           <ComboBox
@@ -120,7 +119,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
         />
 
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
-      </Fabric>
+      </div>
     );
   }
 

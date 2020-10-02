@@ -11,7 +11,7 @@ import {
   IPivotItemProps,
   Label,
   Icon,
-  Fabric,
+  ThemeProvider,
 } from '@fluentui/react-next';
 
 storiesOf('Pivot Next', module)
@@ -176,7 +176,7 @@ storiesOf('Pivot Next Overflow', module)
     </Pivot>
   ))
   .addStory('Tabs - RTL', () => (
-    <Fabric dir="rtl">
+    <ThemeProvider dir="rtl" theme={{ rtl: true }}>
       <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu" linkFormat="tabs">
         <PivotItem headerText="My Files">
           <Label>Pivot #1</Label>
@@ -201,7 +201,7 @@ storiesOf('Pivot Next Overflow', module)
           <Label>Pivot #6</Label>
         </PivotItem>
       </Pivot>
-    </Fabric>
+    </ThemeProvider>
   ));
 
 function _customRenderer(

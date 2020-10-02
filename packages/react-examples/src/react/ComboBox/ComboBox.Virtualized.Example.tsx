@@ -9,7 +9,7 @@ const comboBoxOption: IComboBoxOption[] = Array.from({ length: 1000 }).map((x, i
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: '300px' } };
 
 export const ComboBoxVirtualizedExample: React.FC = () => (
-  <Fabric className="ms-ComboBoxExample">
+  <div className="ms-ComboBoxExample">
     <VirtualizedComboBox
       styles={comboBoxStyles}
       defaultSelectedKey="547"
@@ -20,5 +20,5 @@ export const ComboBoxVirtualizedExample: React.FC = () => (
       dropdownMaxWidth={200}
       useComboBoxAsMenuWidth
     />
-  </Fabric>
+  </div>
 );

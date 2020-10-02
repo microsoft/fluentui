@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { SearchBox, Fabric } from '@fluentui/react-next';
+import { SearchBox } from '@fluentui/react-next';
 import { FabricDecorator } from '../utilities';
 
 // FabricDecorator isn't added at the top level so that the full SearchBox can be rendered without a parent div
@@ -24,23 +24,23 @@ storiesOf('SearchBox Next', module)
   .addStory(
     'Root',
     () => (
-      <Fabric style={{ display: 'flex' }}>
+      <div style={{ display: 'flex' }}>
         <div
           className="testWrapper"
           style={{ padding: '10px', overflow: 'hidden', width: '300px' }}
         >
           <SearchBox placeholder="Search" />
         </div>
-      </Fabric>
+      </div>
     ),
     { rtl: true },
   )
   .addStory(
     'Full',
     () => (
-      <Fabric className="testWrapper">
+      <div className="testWrapper">
         <SearchBox placeholder="Search" />
-      </Fabric>
+      </div>
     ),
     { rtl: true },
   );

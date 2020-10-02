@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  Fabric,
   IComboBoxOption,
   mergeStyles,
   SelectableOptionMenuItemType,
@@ -38,7 +37,7 @@ export const ComboBoxTogglesExample: React.FC = () => {
   const [allowFreeform, { toggle: ToggleAllowFreeform }] = useBoolean(true);
 
   return (
-    <Fabric className={wrapperClassName}>
+    <div className={wrapperClassName}>
       <ComboBox
         label="ComboBox with toggleable freeform/auto-complete"
         key={'' + autoComplete + allowFreeform}
@@ -48,6 +47,6 @@ export const ComboBoxTogglesExample: React.FC = () => {
       />
       <Toggle label="Allow freeform" checked={allowFreeform} onChange={ToggleAllowFreeform} />
       <Toggle label="Auto-complete" checked={autoComplete} onChange={ToggleAutoComplete} />
-    </Fabric>
+    </div>
   );
 };

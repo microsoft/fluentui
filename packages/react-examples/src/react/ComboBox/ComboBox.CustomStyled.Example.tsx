@@ -71,7 +71,7 @@ const onRenderOption = (item: IComboBoxOption) => {
 };
 
 export const ComboBoxCustomStyledExample: React.FC = () => (
-  <Fabric className={wrapperClassName}>
+  <div className={wrapperClassName}>
     <ComboBox
       defaultSelectedKey="Calibri"
       label="Custom styled ComboBox"
@@ -86,5 +86,5 @@ export const ComboBoxCustomStyledExample: React.FC = () => (
       options={optionsForCustomRender}
       onRenderOption={onRenderOption}
     />
-  </Fabric>
+  </div>
 );
