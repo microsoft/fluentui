@@ -30,6 +30,8 @@ export interface IFloatingSuggestionsListProps<T> {
   pickerWidth?: string;
   headerItemsProps?: ISuggestionsHeaderFooterProps[];
   footerItemsProps?: ISuggestionsHeaderFooterProps[];
+  selectedFooterIndex?: number;
+  selectedHeaderIndex?: number;
 }
 
 export interface IFloatingSuggestionsListStyleProps {}

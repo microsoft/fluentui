@@ -15,14 +15,45 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   const classNames = getClassNames(getStyles);
   const { className, suggestionItems, onRenderNoResultFound, ariaLabel, noResultsFoundText } = props;
   const hasNoSuggestions = !suggestionItems || !suggestionItems.length;
-  const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(-1);
 
   const noResults = () => {
     return noResultsFoundText ? <div className={classNames.noSuggestions}>{noResultsFoundText}</div> : null;
   };
 
   const renderHeader = (): JSX.Element | null => {
-    const { onRenderHeader, suggestionsHeaderText } = props;
+    const { onRenderHeader, suggestionsHeaderText, headerItemsProps, selectedHeaderIndex } = props;
+
+    if (headerItemsProps) {
+      return (
+        <div
+          className={css('ms-Suggestions-headerContainer' /*, styles.suggestionsContainer*/)}
+          id="suggestionHeader-list"
+          role="list"
+          //aria-label={suggestionsHeaderContainerAriaLabel}
+        >
+          {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+            const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
+            return headerItemProps.shouldShow() ? (
+              <div
+                //ref={isSelected ? this._selectedElement : undefined}
+                id={'sug-header' + index}
+                key={'sug-header' + index}
+                role="listitem"
+                aria-label={headerItemProps.ariaLabel}
+              >
+                <SuggestionsHeaderFooterItem
+                  id={'sug-header-item' + index}
+                  isSelected={isSelected}
+                  renderItem={headerItemProps.renderItem}
+                  onExecute={headerItemProps.onExecute}
+                  className={headerItemProps.className}
+                />
+              </div>
+            ) : null;
+          })}
+        </div>
+      );
+    }
 
     if (onRenderHeader) {
       return onRenderHeader(suggestionItems);
@@ -31,7 +62,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderFooter = (): JSX.Element | null => {
-    const { onRenderFooter, footerItemsProps } = props;
+    const { onRenderFooter, footerItemsProps, selectedFooterIndex } = props;
 
     if (footerItemsProps) {
       return (

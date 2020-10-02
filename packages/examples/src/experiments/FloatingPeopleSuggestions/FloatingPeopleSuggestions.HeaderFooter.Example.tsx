@@ -59,6 +59,16 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
 
   const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
     return {
+      headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+        },
+      ],
       footerItemsProps: [
         {
           renderItem: () => {
@@ -68,7 +78,18 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
             return peopleSuggestions.length > 0;
           },
           onExecute: () => {
-            alert('it worked');
+            alert('You selected people suggstions');
+          },
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
           },
         },
       ],
