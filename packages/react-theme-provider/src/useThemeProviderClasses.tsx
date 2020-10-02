@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { css } from '@uifabric/utilities';
-import { IRawStyle } from '@uifabric/merge-styles';
 import { useDocument } from '@fluentui/react-window-provider';
 import { makeStyles } from './makeStyles';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { tokensToStyleObject } from './tokensToStyleObject';
+import { Theme } from './types';
 
-const useThemeProviderStyles = makeStyles(theme => {
+const useThemeProviderStyles = makeStyles((theme: Theme) => {
   const { tokens } = theme;
-  const tokenStyles = React.useMemo(() => tokensToStyleObject(tokens) as IRawStyle, [tokens]);
+  const tokenStyles = tokensToStyleObject(tokens);
 
   return {
     root: tokenStyles,
@@ -23,7 +23,8 @@ const useThemeProviderStyles = makeStyles(theme => {
         WebkitFontSmoothing: 'var(--body-webkitFontSmoothing)',
       },
     ],
-  };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as Record<string, any>;
 });
 
 /**

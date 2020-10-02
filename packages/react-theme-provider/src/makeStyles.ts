@@ -54,8 +54,11 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
     const win = useWindow();
 
     // Expected: theme and renderer are either always provided or never.
-    theme = theme || useTheme() || {};
-    renderer = (renderer || useStyleRenderer()) as StyleRenderer;
+    const contextualTheme = useTheme();
+    const contextualRenderer = useStyleRenderer();
+
+    theme = theme || contextualTheme || {};
+    renderer = (renderer || contextualRenderer) as StyleRenderer;
 
     const id = renderer.getId();
     const isStyleFunction = typeof styleOrFunction === 'function';
