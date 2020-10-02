@@ -1,1 +1,1 @@
-export * from './components/HeatMapChart';
+export * from './components/HeatMapChart/index';

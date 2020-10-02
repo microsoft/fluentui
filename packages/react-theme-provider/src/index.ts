@@ -13,7 +13,7 @@ export * from './getStyleFromPropsAndOptions';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';
 export { createDefaultTheme } from './createDefaultTheme';
-export * from './themes';
+export * from './themes/index';
 export * from './makeStyles';
 export * from './makeClasses';
 export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@uifabric/merge-styles';
