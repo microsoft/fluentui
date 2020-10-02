@@ -49,7 +49,6 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React
 
   const showOverflow = !!overflowItems && overflowItems.length > 0;
 
-  // console.log('hello 831289731289732189713289712389713298731298');
   return (
     <div
       {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
