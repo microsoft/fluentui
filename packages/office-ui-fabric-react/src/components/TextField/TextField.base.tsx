@@ -59,7 +59,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     resizable: true,
     deferredValidationTime: 200,
     validateOnLoad: true,
-    canRevealPassword: true,
+    canRevealPassword: false,
   };
 
   /** Fallback ID if none is provided in props. Access proper value via `this._id`. */
@@ -608,24 +608,17 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     if (this.props.canRevealPassword) {
       const userAgent = window.navigator.userAgent;
 
-      // CHROME
-      const isChrome = /Chrome/.test(userAgent) && !/Edg\//.test(userAgent);
+      //IE
+      const isIE = /rv:11.0/.test(userAgent);
 
-      // FIREFOX
-      const isFirefox = /Firefox/.test(userAgent);
+      //Edge
+      //Chromium Edge
+      const isEdge = /Edg/.test(userAgent);
 
-      // SAFARI
-      const isSafari = /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
-
-      // OPERA
-      const isOpera = /Opera/.test(userAgent);
-
-      // Jest test framework
-      const isJest = /jsdom/.test(userAgent);
-
-      if (isChrome || isFirefox || isSafari || isOpera || isJest) {
-        return true;
+      if (isIE || isEdge) {
+        return false;
       }
+      return true;
     }
     return false;
   };

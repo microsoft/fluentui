@@ -1982,7 +1982,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           htmlFor="TextField30"
           id="TextFieldLabel32"
         >
-          Secure Text
+          Password with Reveal Button
         </label>
         <div
           className=
