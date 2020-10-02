@@ -8,7 +8,7 @@ import {
   DefaultCustomizations,
   DarkCustomizations,
 } from '@uifabric/theme-samples';
-import { ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizations } from '@fluentui/react/lib/Utilities';
 
 export interface IExampleCardThemes {
   /**

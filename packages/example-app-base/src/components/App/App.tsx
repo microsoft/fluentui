@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { AppThemeContext } from '../../utilities/theme';
-import { classNamesFunction, css, styled, Customizer } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, css, styled } from '@fluentui/react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getStyles } from './App.styles';
 import { Header } from '../Header/Header';
 import { INavLink, Nav } from '@fluentui/react/lib/Nav';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { IProcessedStyleSet, ThemeProvider } from '@fluentui/react/lib/Styling';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import {
   ResponsiveMode,
