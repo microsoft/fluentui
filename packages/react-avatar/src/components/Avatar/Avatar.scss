@@ -15,12 +15,11 @@ $default-activeRingColor: $color-default-brand;
 $default-activeGlowColor: rgba($color-default-brand, 0.3);
 
 $default-inactiveOpacity: 0.8;
-$default-inactiveScaleFactor: 0.8;
+$default-inactiveScale: 0.875;
 
 // Root slot
 .root {
   position: relative;
-  background-color: inherit;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
@@ -29,33 +28,36 @@ $default-inactiveScaleFactor: 0.8;
   font-family: var(--avatar-fontFamily, $default-fontFamily);
   font-size: var(--avatar-fontSize, $default-fontSize);
   font-weight: var(--avatar-fontWeight, $default-fontWeight);
+  border-radius: var(--avatar-borderRadius, $default-borderRadius);
 }
 
 // Image slot
 .image {
   position: absolute;
-  border-radius: var(--avatar-borderRadius, $default-borderRadius);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   vertical-align: top;
+  border-radius: inherit;
 }
 
 // Label slot
 .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--avatar-background, $default-background);
-  width: 100%;
-  height: 100%;
   vertical-align: top;
   text-align: center;
-  padding: 0px;
-  border-radius: var(--avatar-borderRadius, $default-borderRadius);
+  border-radius: inherit;
   color: var(--avatar-color, $default-color);
+  background: var(--avatar-background, $default-background);
 }
 
 // Badge slot
@@ -200,20 +202,17 @@ $default-inactiveScaleFactor: 0.8;
   // &._size_32,
   // &._size_36,
   // &._size_40 {
-  --avatar-activeRingMargin: -2px;
-  --avatar-activeRingWidth: #{$stroke-thin};
+  --avatar-activeRingWidth: #{$stroke-thick};
   // }
   &._size_48,
   &._size_56,
   &._size_64 {
-    --avatar-activeRingMargin: -4px;
-    --avatar-activeRingWidth: #{$stroke-thick};
+    --avatar-activeRingWidth: #{$stroke-thicker};
   }
   &._size_72,
   &._size_96,
   &._size_120,
   &._size_128 {
-    --avatar-activeRingMargin: -8px;
     --avatar-activeRingWidth: #{$stroke-thickest};
   }
 }
@@ -269,38 +268,35 @@ $default-inactiveScaleFactor: 0.8;
 // Activity modifiers
 ._active,
 ._inactive {
-  // Work-around pixel snapping jankiness at the end of the animation if the scale factor is 1.0
-  transform: scale(0.9999);
+  transform: perspective(1px); // Work-around for text pixel snapping at the end of the animation
   transition: transform $anim-ultraSlow $anim-fastEase, opacity $anim-faster $anim-nullEasing;
 
   &:before {
     content: '';
     position: absolute;
-    top: var(--avatar-activeRingMargin, 0);
-    left: var(--avatar-activeRingMargin, 0);
-    bottom: var(--avatar-activeRingMargin, 0);
-    right: var(--avatar-activeRingMargin, 0);
-    border-radius: var(--avatar-borderRadius, $default-borderRadius);
-    border-style: solid;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: calc(-2 * var(--avatar-activeRingWidth));
+    border-width: var(--avatar-activeRingWidth);
     border-color: var(--avatar-activeRingColor, $default-activeRingColor);
-    border-width: var(--avatar-activeRingWidth, 0);
+    border-style: solid;
+    border-radius: inherit;
     box-shadow: var(--avatar-activeShadow);
-    transition: all $anim-ultraSlow $anim-fastEase, opacity $anim-slower $anim-nullEasing;
+    transition: margin $anim-ultraSlow $anim-fastEase, opacity $anim-slower $anim-nullEasing;
   }
 }
 
 ._inactive {
   opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
-  transform: scale(var(--avatar-inactiveScaleFactor, $default-inactiveScaleFactor));
+  transform: scale(var(--avatar-inactiveScale, $default-inactiveScale));
   transition: transform $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-faster $anim-nullEasing;
 
   &:before {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    margin: 0;
     opacity: 0;
-    transition: all $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-slower $anim-nullEasing;
+    transition: margin $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-slower $anim-nullEasing;
   }
 }
 
