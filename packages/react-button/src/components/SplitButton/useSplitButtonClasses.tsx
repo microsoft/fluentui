@@ -16,10 +16,6 @@ export const useSplitButtonClasses = makeVariantClasses({
       display: 'inline-flex',
       justifyContent: 'stretch',
       position: 'relative',
-
-      [`.${GlobalClassNames.menuButton}`]: {
-        '--button-width': menuButtonWidth,
-      },
     },
 
     button: [
@@ -34,6 +30,8 @@ export const useSplitButtonClasses = makeVariantClasses({
     menuButton: [
       GlobalClassNames.menuButton,
       {
+        '--button-minWidth': menuButtonWidth,
+        '--button-width': menuButtonWidth,
         '--button-borderLeftWidth': 0,
         '--button-borderTopLeftRadius': 0,
         '--button-borderBottomLeftRadius': 0,
@@ -45,7 +43,7 @@ export const useSplitButtonClasses = makeVariantClasses({
       width: 'var(--button-dividerThickness)',
       backgroundColor: 'var(--button-dividerColor)',
       position: 'absolute',
-      right: 'var(--button-height, 32px)',
+      right: menuButtonWidth,
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
     },
