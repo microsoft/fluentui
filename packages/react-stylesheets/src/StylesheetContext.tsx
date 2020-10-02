@@ -51,7 +51,7 @@ export const registerStyles = (sheets: undefined | string | string[], context: S
  * Default renderStyles implementation, which will render the give sheets to the contextual
  * target.
  */
-const renderStyles = (sheets: string[], context: StylesheetContextType): void => {
+const renderStyles = (sheets: string[], context: StylesheetContextType) => {
   const { target } = context;
 
   if (sheets.length && target) {
