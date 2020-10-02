@@ -2,26 +2,7 @@
 
 exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1`] = `
 <div
-  className=
-      ms-Fabric
-      ms-ComboBoxExample
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        color: #323130;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-      }
-      & button {
-        font-family: inherit;
-      }
-      & input {
-        font-family: inherit;
-      }
-      & textarea {
-        font-family: inherit;
-      }
+  className="ms-ComboBoxExample"
 >
   <div
     className="ms-ComboBox-container "
