@@ -4,6 +4,7 @@ import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { merge } from './utils/merge';
+import os from 'os';
 import chalk from 'chalk';
 import { getComponentDoc } from './utils/getComponentDoc';
 
@@ -44,26 +45,22 @@ export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
       });
     }
   } else if (components.length === 0) {
-    console.log(chalk.yellow(`No exported components in path: `) + paragraph() + chalk.green.italic(componentPath));
+    console.log(
+      chalk.yellow(`No exported components in path: `) + os.EOL.repeat(2) + chalk.green.italic(componentPath),
+    );
     throw new Error('No exported components in path');
   } else {
     console.log(
       chalk.yellow(`No component with name `) +
         chalk.hex('#e00000')(displayName) +
         chalk.yellow(' was found at:') +
-        paragraph() +
+        os.EOL.repeat(2) +
         chalk.green.italic(componentPath) +
-        paragraph() +
+        os.EOL.repeat(2) +
         'These are the exported component names:' +
-        paragraph() +
+        os.EOL.repeat(2) +
         chalk.white.bold.italic.bgHex('#2e2e2e')(components.map(component => component.displayName).join(', ')),
     );
     throw new Error(`No component was found that matches the displayName.`);
   }
-}
-
-function paragraph() {
-  return `
-
-`;
 }

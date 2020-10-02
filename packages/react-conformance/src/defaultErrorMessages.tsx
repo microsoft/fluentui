@@ -2,6 +2,7 @@ import { IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
+import os from 'os';
 import * as _ from 'lodash';
 import * as path from 'path';
 import parseDocblock from './utils/parseDocblock';
@@ -620,7 +621,12 @@ function resolveErrorMessages(resolveMessages: string[]) {
     resolveMessage.push(paragraph() + chalk.cyan(i + 1 + '. ' + resolveMessages[i]));
   }
 
-  return paragraph() + chalk.yellow.bold('To resolve this issue:') + resolveMessage.join('') + paragraph();
+  return (
+    paragraph() +
+    chalk.white.bold.italic.bgHex('#2e2e2e')('To resolve this issue:') +
+    resolveMessage.join('') +
+    paragraph()
+  );
 }
 
 /** Generates the starting default error message: ( "It appears that __displayName__ doesn't have a __errorMessage__." )
@@ -651,18 +657,7 @@ function receivedErrorMessage(error: string) {
  *  @param numberOfParagraphs The number of paragraphs to generate.
  */
 const paragraph = (numberOfParagraphs?: number) => {
-  if (numberOfParagraphs) {
-    const paragraphs = [];
-    for (let i = -1; i < numberOfParagraphs; i++) {
-      paragraphs.push(`
-`);
-    }
-    return paragraphs.join('');
-  } else {
-    return `
-
-`;
-  }
+  return os.EOL.repeat(numberOfParagraphs || 2);
 };
 
 /** Formats a given object to be displayed in the console.
