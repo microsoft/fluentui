@@ -130,6 +130,9 @@ export interface IBaseFloatingSuggestionsProps<T> {
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+
+  selectedFooterIndex?: number;
+  selectedHeaderIndex?: number;
 }
 
 /**
