@@ -4,20 +4,45 @@ import { Maybe, Nothing, Something } from '../helpers/maybe';
 import { Err } from '../helpers/result';
 import { Logger } from './logger';
 
+interface Results {
+  modName: string;
+  logs: (string | undefined)[];
+  status: string;
+}
+
 export function runMods<T>(
   codeMods: CodeMod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
+  onFileComplete: (result: { file: T; resultList: Results[] }) => void,
+  loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    for (const mod of codeMods) {
-      try {
-        loggingCallback({ mod, file, result: mod.run(file) });
-      } catch (e) {
-        loggingCallback({ mod, file, result: Err({ reason: e }) });
-      }
-    }
+    const results = codeMods.map(m =>
+      runMod(m, file, loggingCallback).resolve<Results>(
+        ok => ({ modName: m.name, status: 'success', logs: ok.logs }),
+        err => ({ modName: m.name, status: err.reason, logs: [err.log] }),
+      ),
+    );
+    onFileComplete({ file, resultList: results });
   }
+}
+
+function runMod<T>(
+  codeMod: CodeMod<T>,
+  file: T,
+  loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
+): CodeModResult {
+  let result: CodeModResult;
+  try {
+    result = codeMod.run(file);
+  } catch (e) {
+    result = Err({ reason: 'error', log: e });
+  }
+
+  if (loggingCallback) {
+    loggingCallback({ mod: codeMod, file: file, result: result });
+  }
+  return result;
 }
 
 export function getModsRootPath() {
