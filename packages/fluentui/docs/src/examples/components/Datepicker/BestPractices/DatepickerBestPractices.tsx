@@ -18,7 +18,7 @@ const doList = [
 ];
 
 const dontList = [
-  'Use standalone `Datepicker` with allowed user manual date input, because standalone `Datepicker` does not have mechanisms to announce validation errors.',
+  'Use standalone `Datepicker` with allowed user manual date input, because standalone `Datepicker` does not have a mechanism to announce validation errors.',
 ];
 
 const DatepickerBestPractices = () => {
