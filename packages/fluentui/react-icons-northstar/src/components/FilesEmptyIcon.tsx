@@ -1,19 +1,21 @@
 import * as React from 'react';
-import cx from 'classnames';
 import { createSvgIcon } from '../utils/createSvgIcon';
-import { iconClassNames } from '../utils/iconClassNames';
 
 export const FilesEmptyIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
+    <svg role="presentation" viewBox="0 0 32 32" className={classes.svg}>
       <path
-        className={cx(iconClassNames.outline, classes.outlinePart)}
-        d="M20.5 8H15c-.4 0-.777.156-1.083.463l-3.478 3.968A1.49 1.49 0 0 0 10 13.49V22.5c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-13c0-.827-.673-1.5-1.5-1.5zm-6.514 1.9V13H11.27l2.717-3.1zM21 22.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V14h3.986V9.003c.005 0 .01-.003.014-.003h5.5a.5.5 0 0 1 .5.5v13z"
+        d="M6.5 29H25.5C25.775 29 26 28.775 26 28.5V9H21.5C20.673 9 20 8.327 20 7.5V3H6.5C6.225 3 6 3.225 6 3.5V28.5C6 28.775 6.225 29 6.5 29Z"
+        fill="white"
       />
-      <g className={cx(iconClassNames.filled, classes.filledPart)}>
-        <path d="M20.5 8H15l-.014.001V14H10v8.5c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-13c0-.827-.673-1.5-1.5-1.5z" />
-        <path d="M13.986 13V8.405c-.022.021-.047.036-.069.058l-3.478 3.968a1.486 1.486 0 0 0-.35.569h3.897z" />
-      </g>
+      <path d="M25.293 8.00003L21 3.70703V7.50003C21 7.77503 21.225 8.00003 21.5 8.00003H25.293Z" fill="white" />
+      <path
+        opacity="0.64"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M26.56 7.854L21.146 2.439C20.8642 2.15891 20.4833 2.00117 20.086 2H6.5C5.673 2 5 2.673 5 3.5V28.5C5 29.327 5.673 30 6.5 30H25.5C26.327 30 27 29.327 27 28.5V8.914C27 8.514 26.844 8.137 26.56 7.854ZM21 3.707L25.293 8H21.5C21.2241 7.99945 21.0005 7.77591 21 7.5V3.707ZM6.5 29H25.5C25.775 29 26 28.775 26 28.5V9H21.5C20.673 9 20 8.327 20 7.5V3H6.5C6.225 3 6 3.225 6 3.5V28.5C6.00055 28.7759 6.22409 28.9995 6.5 29Z"
+        fill="#605E5C"
+      />
     </svg>
   ),
   displayName: 'FilesEmptyIcon',

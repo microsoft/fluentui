@@ -3,18 +3,26 @@ import { createSvgIcon } from '../utils/createSvgIcon';
 
 export const FilesVideoIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
-      <g>
-        <path d="M22.3 22H9.7c-.9 0-1.7-.8-1.7-1.7v-8.6c0-.9.8-1.7 1.7-1.7h12.6c.9 0 1.7.8 1.7 1.7v8.6c0 .9-.8 1.7-1.7 1.7zM9.7 11c-.4 0-.7.3-.7.7v8.6c0 .4.3.7.7.7h12.6c.4 0 .7-.3.7-.7v-8.6c0-.4-.3-.7-.7-.7H9.7zm5.2 8c-.2 0-.3 0-.4-.1-.3-.2-.5-.5-.5-.9v-4c0-.4.2-.7.5-.8.3-.2.7-.2 1 0l3.1 2c.3.2.4.5.4.8 0 .3-.2.6-.4.8l-3.1 2.1c-.2 0-.4.1-.6.1zm.1-5v3.9l3-2-3-1.9z" />
-        <circle cx="10.5" cy="13" r=".5" />
-        <circle cx="10.5" cy="15" r=".5" />
-        <circle cx="10.5" cy="17" r=".5" />
-        <circle cx="10.5" cy="19" r=".5" />
-        <circle cx="21.5" cy="13" r=".5" />
-        <circle cx="21.5" cy="15" r=".5" />
-        <circle cx="21.5" cy="17" r=".5" />
-        <circle cx="21.5" cy="19" r=".5" />
-      </g>
+    <svg role="presentation" viewBox="0 0 32 32" className={classes.svg} fill="none">
+      <path
+        d="M4.5 28H27.5C27.775 28 28 27.775 28 27.5V4.5C28 4.225 27.775 4 27.5 4H4.5C4.225 4 4 4.225 4 4.5V27.5C4 27.775 4.225 28 4.5 28Z"
+        fill="white"
+      />
+      <path
+        opacity="0.64"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4.5 29H27.5C28.327 29 29 28.327 29 27.5V4.5C29 3.673 28.327 3 27.5 3H4.5C3.673 3 3 3.673 3 4.5V27.5C3 28.327 3.673 29 4.5 29ZM4 4.5C4 4.22386 4.22386 4 4.5 4H27.5C27.7761 4 28 4.22386 28 4.5V27.5C28 27.7761 27.7761 28 27.5 28H4.5C4.22386 28 4 27.7761 4 27.5V4.5Z"
+        fill="#605E5C"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21.5 16L13.5 11V21L21.5 16Z"
+        stroke="#69AFE5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   ),
   displayName: 'FilesVideoIcon',

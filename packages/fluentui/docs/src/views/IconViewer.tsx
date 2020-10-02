@@ -256,7 +256,7 @@ const IconViewer = () => {
               >
                 <Card.Header>
                   <Flex gap="gap.small" column hAlign="center">
-                    <Icon size="largest" />
+                    <Icon outline size="largest" />
                     <br />
                     <CopyToClipboard value={`<${Icon.displayName} />`} timeout={3000}>
                       {(active, onClick) => (
