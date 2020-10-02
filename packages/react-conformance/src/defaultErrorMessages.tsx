@@ -617,8 +617,12 @@ export const defaultErrorMessages = {
 function resolveErrorMessages(resolveMessages: string[]) {
   const resolveMessage = [];
 
-  for (let i = 0; i < resolveMessages.length; i++) {
-    resolveMessage.push(paragraph() + chalk.cyan(i + 1 + '. ' + resolveMessages[i]));
+  if (resolveMessages.length > 1) {
+    for (let i = 0; i < resolveMessages.length; i++) {
+      resolveMessage.push(paragraph() + chalk.cyan(i + 1 + '. ' + resolveMessages[i]));
+    }
+  } else {
+    resolveMessage.push(paragraph() + chalk.cyan(resolveMessages[0]));
   }
 
   return (
@@ -667,8 +671,12 @@ const paragraph = (numberOfParagraphs?: number) => {
 function formatObject(obj: any) {
   if (obj) {
     const results = [];
-    for (const libName of Object.keys(obj)) {
-      results.push(parseInt(libName, 10) + 1 + `: ${obj[libName]} `);
+    if (obj.length > 1) {
+      for (const libName of Object.keys(obj)) {
+        results.push(parseInt(libName, 10) + 1 + `: ${obj[libName]} `);
+      }
+    } else {
+      results.push(`${obj[0]}`);
     }
     return results.join('\n');
   } else {
