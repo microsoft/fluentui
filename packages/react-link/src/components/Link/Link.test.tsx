@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { create } from '@uifabric/utilities/lib/test';
-import { ThemeProvider } from '@fluentui/react/lib/Styling';
+import { ThemeProvider } from '@fluentui/react-internal/lib/Styling';
 import { createTheme } from '@uifabric/styling';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
