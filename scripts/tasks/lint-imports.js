@@ -128,6 +128,7 @@ function lintImports() {
    * @param {boolean} isExample
    */
   function _evaluateFile(filePath, importErrors, isExample) {
+    // !! be careful !! changing the regex can affect matched parts below.
     const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
 
     const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -175,7 +176,7 @@ function lintImports() {
    * @param {boolean} isExample
    */
   function _evaluateImport(filePath, importMatch, importErrors, isExample) {
-    const importPath = importMatch[1];
+    const importPath = importMatch[2];
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
     let fullImportPath;

@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Popup';
+export * from './components/Popup/index';

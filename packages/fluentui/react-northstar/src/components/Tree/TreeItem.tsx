@@ -136,6 +136,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     selectable,
     indeterminate,
     id,
+    parent,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
@@ -225,7 +226,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
-    onFocusParent(props.parent);
+    onFocusParent(parent);
   };
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
@@ -263,6 +264,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
                 index,
                 selected,
                 selectable,
+                parent,
                 ...(hasSubtreeItem && !selectableParent && { selectable: false }),
                 ...(selectableParent && { indeterminate }),
                 selectableParent,

@@ -1,4 +1,4 @@
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { EnterKey, SpacebarKey, keyboardKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AriaRole } from '../../types';
@@ -36,6 +36,9 @@ export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props =>
           keyCombinations: props.selectable
             ? [{ keyCode: SpacebarKey }]
             : [{ keyCode: SpacebarKey }, { keyCode: EnterKey }],
+        },
+        focusParent: {
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         },
       },
     },
