@@ -1,6 +1,6 @@
 {
   "name": "perf-test",
-  "description": "Perf tests for office-ui-fabric-react.",
+  "description": "Perf tests for @fluentui/react.",
   "version": "7.0.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -24,13 +24,14 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.11.4",
-    "@fluentui/react-next": "^8.0.0-alpha.98",
-    "@uifabric/set-version": "^7.0.22",
-    "@uifabric/example-app-base": "^7.15.3",
-    "@uifabric/experiments": "^7.32.3",
+    "@fluentui/react": "^7.142.0",
+    "@fluentui/react-avatar": "^0.6.5",
+    "@fluentui/react-button": "^0.14.3",
+    "@fluentui/react-next": "^8.0.0-alpha.118",
+    "@uifabric/set-version": "^7.0.23",
+    "@uifabric/example-app-base": "^7.15.18",
+    "@uifabric/experiments": "^7.33.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.134.1",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

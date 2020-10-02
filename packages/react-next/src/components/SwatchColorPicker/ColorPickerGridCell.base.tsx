@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
-import { getColorFromString } from 'office-ui-fabric-react/lib/Color';
-import { GridCell } from '../../utilities/grid/GridCell';
-import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components/Button/ActionButton/ActionButton.styles';
-import { IButtonClassNames } from 'office-ui-fabric-react/lib/components/Button/BaseButton.classNames';
+import { getColorFromString } from '@fluentui/react/lib/Color';
+import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
+import { getStyles as getActionButtonStyles } from '@fluentui/react-internal/lib/components/Button/ActionButton/ActionButton.styles';
+import { IButtonClassNames } from '@fluentui/react-internal/lib/components/Button/BaseButton.classNames';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -110,7 +110,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   };
 
   return (
-    <GridCell
+    <ButtonGridCell
       item={item}
       id={`${idPrefix}-${item.id}-${item.index}`}
       key={item.id}

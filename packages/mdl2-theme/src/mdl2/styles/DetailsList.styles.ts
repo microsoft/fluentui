@@ -1,12 +1,12 @@
-import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
+import { ICheckStyleProps, ICheckStyles } from '@fluentui/react/lib/Check';
 import {
   IDetailsRowStyleProps,
   IDetailsRowStyles,
   IDetailsRowCheckStyleProps,
   IDetailsRowCheckStyles,
   IDetailsHeaderStyles,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DetailsList';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;

@@ -8,9 +8,7 @@ import {
   divProperties,
   elementContains,
   focusFirstChild,
-  getDocument,
   getNativeProps,
-  getWindow,
   on,
   shallowCompare,
   getPropsWithDefaults,
@@ -24,11 +22,11 @@ import {
   RectangleEdge,
   positionCard,
   getBoundsFromTargetWindow,
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+} from '@fluentui/react/lib/Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -63,73 +61,22 @@ const DEFAULT_PROPS = {
 } as const;
 
 /**
- * Get a reference to the configured target of the Callout, as well as its parent window.
- */
-function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement | null>) {
-  const previousTargetProp = React.useRef<
-    Element | string | MouseEvent | Point | React.RefObject<Element> | null | undefined
-  >();
-
-  const targetRef = React.useRef<Element | MouseEvent | Point | null>(null);
-  /**
-   * Stores an instance of Window, used to check
-   * for server side rendering and if focus was lost.
-   */
-  const targetWindowRef = React.useRef<Window>();
-
-  // If the target element changed, find the new one. If we are tracking
-  // target with class name, always find element because we do not know if
-  // fabric has rendered a new element and disposed the old element.
-  if (!target || target !== previousTargetProp.current || typeof target === 'string') {
-    const currentElement = calloutElement.current;
-    if (target) {
-      if (typeof target === 'string') {
-        const currentDoc: Document = getDocument(currentElement)!;
-        targetRef.current = currentDoc ? currentDoc.querySelector(target) : null;
-        targetWindowRef.current = getWindow(currentElement)!;
-      } else if ('stopPropagation' in target) {
-        targetWindowRef.current = getWindow(target.target as Element)!;
-        targetRef.current = target;
-      } else if ('getBoundingClientRect' in target) {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target;
-      } else if ('current' in target && target.current !== undefined) {
-        targetRef.current = target.current;
-        targetWindowRef.current = getWindow(target.current)!;
-      } else {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target as Point;
-      }
-    } else {
-      targetWindowRef.current = getWindow(currentElement)!;
-    }
-    previousTargetProp.current = target;
-  }
-
-  return [targetRef, targetWindowRef] as const;
-}
-
-/**
  * Returns a function to lazily fetch the bounds of the target element for the callout
  */
 function useBounds(
   { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
+  targetWindow: Window | undefined,
 ) {
   const cachedBounds = React.useRef<IRectangle | undefined>();
 
   const getBounds = React.useCallback((): IRectangle | undefined => {
     if (!cachedBounds.current) {
       let currentBounds =
-        typeof bounds === 'function'
-          ? targetWindowRef.current
-            ? bounds(target, targetWindowRef.current)
-            : undefined
-          : bounds;
+        typeof bounds === 'function' ? (targetWindow ? bounds(target, targetWindow) : undefined) : bounds;
 
-      if (!currentBounds && targetWindowRef.current) {
-        currentBounds = getBoundsFromTargetWindow(targetRef.current, targetWindowRef.current);
+      if (!currentBounds && targetWindow) {
+        currentBounds = getBoundsFromTargetWindow(targetRef.current, targetWindow);
         currentBounds = {
           top: currentBounds.top + minPagePadding,
           left: currentBounds.left + minPagePadding,
@@ -142,7 +89,7 @@ function useBounds(
       cachedBounds.current = currentBounds;
     }
     return cachedBounds.current;
-  }, [bounds, minPagePadding, target, targetRef, targetWindowRef]);
+  }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
   return getBounds;
 }
@@ -158,7 +105,7 @@ function useMaxHeight(
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
 
-  // Updating targetRef won't rerender the component, but it's recalcuated (if needed) with every render
+  // Updating targetRef won't re-render the component, but it's recalculated (if needed) with every render
   // If it mutates, we want to re-run the effect
   const currentTarget = targetRef.current;
 
@@ -337,11 +284,22 @@ function useAutoFocus(
  * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
-  { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
+  {
+    hidden,
+    onDismiss,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnScroll,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnResize,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnLostFocus,
+    shouldDismissOnWindowFocus,
+    preventDismissOnEvent,
+  }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
-  targetWindowRef: React.RefObject<Window | undefined>,
+  targetWindow: Window | undefined,
 ) {
   const isMouseDownOnPopup = React.useRef(false);
   const async = useAsync();
@@ -388,11 +346,27 @@ function useDismissHandlers(
 
       if (
         (!targetRef.current && isEventTargetOutsideCallout) ||
-        (ev.target !== targetWindowRef.current &&
+        (ev.target !== targetWindow &&
           isEventTargetOutsideCallout &&
           (!targetRef.current ||
             'stopPropagation' in targetRef.current ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+      ) {
+        onDismiss?.(ev);
+      }
+    };
+
+    const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
+      // Do nothing
+      if (!shouldDismissOnWindowFocus) {
+        return;
+      }
+
+      if (
+        ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+          (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
+        !targetWindow?.document.hasFocus() &&
+        ev.relatedTarget === null
       ) {
         onDismiss?.(ev);
       }
@@ -403,12 +377,13 @@ function useDismissHandlers(
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the callout.
     async.setTimeout(() => {
-      if (!hidden && targetWindowRef.current) {
+      if (!hidden && targetWindow) {
         const disposables = [
-          on(targetWindowRef.current, 'scroll', dismissOnScroll, true),
-          on(targetWindowRef.current, 'resize', dismissOnResize, true),
-          on(targetWindowRef.current.document.documentElement, 'focus', dismissOnLostFocus, true),
-          on(targetWindowRef.current.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindow, 'scroll', dismissOnScroll, true),
+          on(targetWindow, 'resize', dismissOnResize, true),
+          on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
+          on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
         ];
 
         return () => {
@@ -421,19 +396,23 @@ function useDismissHandlers(
     async,
     hostElement,
     targetRef,
-    targetWindowRef,
+    targetWindow,
     onDismiss,
+    shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
     preventDismissOnScroll,
     positionsExists,
+    preventDismissOnEvent,
   ]);
 
   return mouseDownHandlers;
 }
 
-export const CalloutContentBase = React.memo(
-  React.forwardRef((propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+const COMPONENT_NAME = 'CalloutContentBase';
+
+export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.memo(
+  React.forwardRef<HTMLDivElement, ICalloutProps>((propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     const {
@@ -464,8 +443,8 @@ export const CalloutContentBase = React.memo(
     const calloutElement = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
-    const [targetRef, targetWindowRef] = useTargets(props, calloutElement);
-    const getBounds = useBounds(props, targetRef, targetWindowRef);
+    const [targetRef, targetWindow] = useTarget(props.target, calloutElement);
+    const getBounds = useBounds(props, targetRef, targetWindow);
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
@@ -474,7 +453,7 @@ export const CalloutContentBase = React.memo(
       positions,
       hostElement,
       targetRef,
-      targetWindowRef,
+      targetWindow,
     );
 
     useAutoFocus(props, positions, calloutElement);
@@ -487,7 +466,7 @@ export const CalloutContentBase = React.memo(
     }, [hidden]);
 
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!targetWindowRef.current) {
+    if (!targetWindow) {
       return null;
     }
 
@@ -562,7 +541,7 @@ export const CalloutContentBase = React.memo(
     return shallowCompare(previousProps, nextProps);
   },
 );
-CalloutContentBase.displayName = 'CalloutContentBase';
+CalloutContentBase.displayName = COMPONENT_NAME;
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPostionStyle: React.CSSProperties = {

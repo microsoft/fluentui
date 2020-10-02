@@ -1,1 +1,2 @@
-export * from './components/ComboBox';
+import './version';
+export * from './components/ComboBox/index';

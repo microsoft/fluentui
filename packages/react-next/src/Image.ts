@@ -1,1 +1,2 @@
-export * from './components/Image';
+import './version';
+export * from './components/Image/index';

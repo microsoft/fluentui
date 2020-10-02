@@ -2,6 +2,21 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/variants_v7.2.21",
+      "version": "7.2.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/variants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/variants_v7.1.117",
       "version": "7.1.117",

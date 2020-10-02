@@ -4,7 +4,7 @@ import { ToggleBase } from './Toggle.base';
 import { getStyles } from './Toggle.styles';
 import { IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
-export const Toggle = styled<IToggleProps & React.RefAttributes<HTMLDivElement>, IToggleStyleProps, IToggleStyles>(
+export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps, IToggleStyleProps, IToggleStyles>(
   ToggleBase,
   getStyles,
   undefined,

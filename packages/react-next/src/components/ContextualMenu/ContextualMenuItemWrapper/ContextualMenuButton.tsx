@@ -4,7 +4,7 @@ import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IKeytipDataProps } from 'office-ui-fabric-react/lib/components/KeytipData/KeytipData.types';
+import { IKeytipDataProps } from '@fluentui/react/lib/KeytipData';
 import { IKeytipProps } from '../../../Keytip';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {

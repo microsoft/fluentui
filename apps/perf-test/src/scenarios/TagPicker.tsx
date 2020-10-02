@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITag, TagPicker } from 'office-ui-fabric-react';
+import { ITag, TagPicker } from '@fluentui/react';
 
 const testTags: ITag[] = ['black', 'blue', 'brown', 'cyan', 'green'].map(item => ({ key: item, name: item }));
 

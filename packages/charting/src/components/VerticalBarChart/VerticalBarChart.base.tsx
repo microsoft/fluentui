@@ -4,9 +4,9 @@ import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisB
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
@@ -132,7 +132,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
@@ -252,7 +252,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = axis
       .tickPadding(5)
       .tickValues(domains)
-      .tickFormat(d3Format('.2s'))
+      .tickFormat(d3Format('.2~s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }

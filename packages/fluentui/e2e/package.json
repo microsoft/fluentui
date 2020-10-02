@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react": "^7.142.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@types/node": "^10.3.2",

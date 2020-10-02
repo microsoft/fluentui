@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { EditSection } from '../../EditSection/index';
-import { css } from 'office-ui-fabric-react';
+import { css } from '@fluentui/react';
 import { getEditUrl, pascalize } from '../../../utilities/index2';
 import { Markdown, MarkdownHeader } from '../../Markdown/index';
 import { IPageSectionPropsWithSectionName } from '../Page.types';

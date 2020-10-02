@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/MarqueeSelection';
+import './version';
+export * from '@fluentui/react/lib/MarqueeSelection';

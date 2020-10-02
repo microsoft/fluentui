@@ -1,8 +1,35 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.15)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.14..@uifabric/date-time_v7.17.15)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [7.17.14](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.14)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.13..@uifabric/date-time_v7.17.14)
+
+### Patches
+
+- Set font-family inherit on button element. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+
+## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.6)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.1..@uifabric/date-time_v7.17.6)
+
+### Patches
+
+- Remove useConstCallback usage ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
 
 ## [7.17.1](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.1)
 

@@ -1,0 +1,107 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
+
+import { IBasePicker } from '../BasePicker.types';
+import { resetIds } from '@uifabric/utilities';
+import { people } from '@uifabric/example-data';
+import { NormalPeoplePicker } from './PeoplePicker';
+import { IPersonaProps } from '../../Persona/Persona.types';
+import { isConformant } from '../../../common/isConformant';
+
+function onResolveSuggestions(text: string): IPersonaProps[] {
+  return people.filter((person: IPersonaProps) => person.text!.toLowerCase().indexOf(text.toLowerCase()) === 0);
+}
+
+describe('PeoplePicker', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  it('renders correctly', () => {
+    const component = renderer.create(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with preselected items', () => {
+    const component = renderer.create(
+      <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can search for, select people and remove them', () => {
+    jest.useFakeTimers();
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<IPersonaProps>>();
+
+    ReactDOM.render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />, root);
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'Valentyna';
+
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(1);
+
+    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+    expect(currentPicker![0].text).toEqual('Valentyna Lovrique');
+
+    const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
+    expect(removeButton).toBeDefined();
+
+    ReactTestUtils.Simulate.click(removeButton);
+    const currentPickerAfterRemove = picker.current!.items;
+    expect(currentPickerAfterRemove).toHaveLength(0);
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  it('can not remove people when disabled', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<IPersonaProps>>();
+    const selectedPeople = people.splice(0, 1);
+    ReactDOM.render(
+      <NormalPeoplePicker
+        onResolveSuggestions={onResolveSuggestions}
+        componentRef={picker}
+        disabled={true}
+        defaultSelectedItems={selectedPeople}
+      />,
+      root,
+    );
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+
+    const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
+    expect(removeButton).toBeDefined();
+
+    ReactTestUtils.Simulate.click(removeButton);
+    const currentPickerAfterClick = picker.current!.items;
+    expect(currentPickerAfterClick).toHaveLength(1);
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  isConformant({
+    Component: NormalPeoplePicker,
+    displayName: 'NormalPeoplePicker',
+    disabledTests: ['has-top-level-file', 'name-matches-filename'],
+  });
+});

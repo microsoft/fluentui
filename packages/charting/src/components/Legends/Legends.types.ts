@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
+import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface ILegendOverflowData {
@@ -50,6 +50,11 @@ export interface ILegendsStyles {
    * Style for the text that indicates the no.of legends that are in hovercard due to lack of space
    */
   overflowIndicationTextStyle: IStyle;
+
+  /**
+   * Style for the overflow container
+   */
+  hoverCardRoot: IStyle;
 
   /**
    * sub component styles

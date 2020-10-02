@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { IToggleProps, Toggle } from 'office-ui-fabric-react';
+import { IToggleProps, Toggle } from '@fluentui/react';
 
 const baseProps: IToggleProps = {
   label: 'Toggle label',

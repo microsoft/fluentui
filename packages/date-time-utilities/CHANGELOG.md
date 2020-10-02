@@ -1,8 +1,26 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Wed, 02 Sep 2020 12:26:41 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.9.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.8.1..@fluentui/date-time-utilities_v7.9.0)
+
+### Minor changes
+
+- Removing calendarCellFormatString from date-time-utilities. ([PR #15062](https://github.com/microsoft/fluentui/pull/15062) by karymes@microsoft.com)
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.8.0)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.7.0..@fluentui/date-time-utilities_v7.8.0)
+
+### Minor changes
+
+- Add helper function to compute end of week date, give a current date and starting day of week ([PR #14862](https://github.com/microsoft/fluentui/pull/14862) by pompomon@gmail.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.7.0)
 

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "createMergedRef: fix internal typings",
-  "packageName": "@uifabric/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-02T22:55:10.828Z"
-}

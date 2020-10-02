@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react-internal/lib/Label';
 import { getGlobalClassNames, ITheme } from '@uifabric/styling';
 import { css, memoizeFunction, styled } from '@uifabric/utilities';
 import { ToggleBase } from './ToggleBase';
@@ -53,7 +53,7 @@ const getStaticStyles = (props: IToggleStyleProps): Required<IToggleStyles> => {
   return getStaticStylesMemoized(theme!, className, checked, disabled, inlineLabel, onOffMissing);
 };
 
-export const Toggle = styled<IToggleProps & React.RefAttributes<HTMLDivElement>, IToggleStyleProps, IToggleStyles>(
+export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps, IToggleStyleProps, IToggleStyles>(
   compose<'div', {}, {}, IToggleProps, IToggleProps>(ToggleBase, {
     slots: {
       label: Label,

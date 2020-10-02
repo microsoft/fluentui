@@ -1,5 +1,5 @@
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { getFocusStyle } from '@fluentui/react/lib/Styling';
+import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/Button';
 
 export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;

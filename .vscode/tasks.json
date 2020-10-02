@@ -5,13 +5,7 @@
       "label": "Typescript (oufr) watch",
       "type": "process",
       "command": "node",
-      "args": [
-        "./node_modules/typescript/bin/tsc",
-        "-p",
-        "packages/office-ui-fabric-react/tsconfig.json",
-        "-w",
-        "--noEmit"
-      ],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/react/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",

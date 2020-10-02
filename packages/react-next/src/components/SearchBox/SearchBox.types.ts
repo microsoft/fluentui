@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
+import { IButtonProps } from '../../compat/Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
@@ -22,7 +22,9 @@ export interface ISearchBox {
 /**
  * {@docCategory SearchBox}
  */
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

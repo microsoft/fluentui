@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle } from '@fluentui/react/lib/Styling';
 import { IDataPoint } from '../PieChart.types';
 
 export interface IArcProps {

@@ -6,7 +6,7 @@ import {
   IRenderFunction,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
@@ -16,7 +16,8 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { useWarnings } from '@uifabric/react-hooks';
+import { useWarnings, useMergedRefs } from '@uifabric/react-hooks';
+import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -41,11 +42,13 @@ function useDebugWarnings(props: IPersonaProps) {
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaBase = React.forwardRef(
-  (propsWithoutDefaults: IPersonaProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forwardRef<HTMLDivElement, IPersonaProps>(
+  (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     useDebugWarnings(props);
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
     /**
      * Deprecation helper for getting text.
@@ -80,10 +83,10 @@ export const PersonaBase = React.forwardRef(
      * @param text - text to render
      */
     const onRenderText = (text: string | undefined): IRenderFunction<IPersonaProps> | undefined => {
-      // return default render behaviour for valid text or undefined
+      // return default render behavior for valid text or undefined
       return text
         ? (): JSX.Element => {
-            // default onRender behaviour
+            // default onRender behavior
             return (
               <TooltipHost
                 content={text}
@@ -189,6 +192,7 @@ export const PersonaBase = React.forwardRef(
     return (
       <div
         {...divProps}
+        ref={mergedRootRef}
         className={classNames.root}
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >

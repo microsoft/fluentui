@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import {
   addYears,
   setMonth,
@@ -8,15 +8,15 @@ import {
   getMonthStart,
   getMonthEnd,
   compareDatePart,
-} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+} from '@fluentui/date-time-utilities';
+import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
 import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { usePrevious, useConstCallback } from '@uifabric/react-hooks';
+import { usePrevious } from '@uifabric/react-hooks';
 
 const MONTHS_PER_ROW = 4;
 
@@ -46,13 +46,13 @@ function useFocusLogic({ componentRef }: ICalendarMonthProps) {
   const calendarYearRef = React.useRef<ICalendarYear>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = useConstCallback(() => {
+  const focus = React.useCallback(() => {
     if (calendarYearRef.current) {
       calendarYearRef.current.focus();
     } else if (navigatedMonthRef.current) {
       navigatedMonthRef.current.focus();
     }
-  });
+  }, []);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 

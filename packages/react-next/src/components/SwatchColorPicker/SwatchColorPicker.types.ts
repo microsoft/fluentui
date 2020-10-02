@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellStyleProps,
@@ -10,7 +10,7 @@ import {
 /**
  * {@docCategory SwatchColorPicker}
  */
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
   /**
    * Number of columns for the swatch color picker
    */
@@ -82,6 +82,11 @@ export interface ISwatchColorPickerProps {
    * If `id` and `color` are unspecified, cells are no longer being focused.
    */
   onCellFocused?: (id?: string, color?: string) => void;
+
+  /**
+   * Custom render function for the color cell
+   */
+  onRenderColorCell?: IRenderFunction<IColorCellProps>;
 
   /**
    * Whether the control is disabled.

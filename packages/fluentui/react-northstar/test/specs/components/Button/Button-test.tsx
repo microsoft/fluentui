@@ -10,9 +10,16 @@ import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils'
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
 import { Button } from 'src/components/Button/Button';
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  buttonBehaviorDefinition,
+  toggleButtonBehaviorDefinition,
+} from '@fluentui/a11y-testing';
 
 describe('Button', () => {
   isConformant(Button, {
+    testPath: __filename,
     constructorName: 'Button',
   });
 
@@ -161,5 +168,17 @@ describe('Button', () => {
         expect.objectContaining({ onClick }),
       );
     });
+  });
+
+  describe('ButtonBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, {});
+    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('ButtonToggleBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, { accessibility: toggleButtonBehavior });
+    const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
   });
 });

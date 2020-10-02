@@ -116,6 +116,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
   };
 
+  /** A label for selected items listbox. */
+  a11ySelectedItemsMessage?: string;
+
   /**
    * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
    * @param messageGenerationProps - Object with properties to generate message from. See getA11yStatusMessage from Downshift repo.
@@ -378,6 +381,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     error,
     fluid,
     getA11ySelectionMessage,
+    a11ySelectedItemsMessage,
     getA11yStatusMessage,
     inline,
     inverted,
@@ -750,7 +754,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       return null;
     }
 
-    return value.map((item: DropdownItemProps, index) =>
+    const selectedItems = value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
@@ -765,6 +769,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
       }),
+    );
+    return (
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+        {selectedItems}
+      </div>
     );
   };
 

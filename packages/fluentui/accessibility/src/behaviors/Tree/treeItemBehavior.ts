@@ -8,6 +8,8 @@ import { treeTitleBehavior } from './treeTitleBehavior';
  * @description
  * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. In other cases 'performClick' is triggered with 'Spacebar' or 'Enter'.
  * Triggers 'performSelection' action with 'Spacebar' on 'root', when has a opened subtree.
+ * Adds attribute 'aria-checked=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property true. Does not set anything if false or undefined.
+ *
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.
@@ -29,13 +31,15 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
         role: 'none',
         ...(props.hasSubtree && {
           'aria-expanded': props.expanded,
-          'aria-selected': props.selectable ? props.selected || false : undefined,
           tabIndex: -1,
           [IS_FOCUSABLE_ATTRIBUTE]: true,
           role: 'treeitem' as AriaRole,
           'aria-setsize': props.treeSize,
           'aria-posinset': props.index,
           'aria-level': props.level,
+          ...(props.selectable && {
+            'aria-checked': props.indeterminate ? ('mixed' as const) : !!props.selected,
+          }),
         }),
       },
     },
@@ -99,6 +103,7 @@ export type TreeItemBehaviorProps = {
   treeSize?: number;
   selectable?: boolean;
   selected?: boolean;
+  indeterminate?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is expanded */

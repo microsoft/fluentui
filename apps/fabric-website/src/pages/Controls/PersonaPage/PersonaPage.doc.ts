@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { PersonaPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Persona/Persona.doc';
+import { PersonaPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Persona/Persona.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/PersonaRelated.md') as string;
 const componentUrl =

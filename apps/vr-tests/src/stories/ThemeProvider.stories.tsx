@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { loadTheme, createTheme, Customizer } from 'office-ui-fabric-react';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { loadTheme, createTheme, Customizer } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { Button } from '@fluentui/react-button';
 import { FabricDecorator } from '../utilities';

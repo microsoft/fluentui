@@ -2,6 +2,104 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-focus_v7.16.8",
+      "version": "7.16.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-focus_v7.16.7",
+      "version": "7.16.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating isConformant version.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-focus_v7.16.6",
+      "version": "7.16.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Moving custom onFocus call at the end of private onFocus logic.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1a1c112eb9daeecf9693cf2bfe2741fbaf51e777",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding isConformant file and implementing conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-focus_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-focus_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d1423ec6ee302d74966497ba4b8f6abb022aa884",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-focus_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix typo in docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Sep 2020 12:26:41 GMT",
       "tag": "@fluentui/react-focus_v7.15.0",
       "version": "7.15.0",

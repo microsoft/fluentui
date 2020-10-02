@@ -3,7 +3,7 @@ import { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPersonaProps } from '../../../../Persona';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle } from '@fluentui/react/lib/Styling';
 
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

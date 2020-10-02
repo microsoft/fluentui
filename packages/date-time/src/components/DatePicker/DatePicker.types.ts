@@ -4,8 +4,8 @@ import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
-import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
-import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
+import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
+import { ITextFieldProps } from '@fluentui/react-internal/lib/TextField';
 
 /**
  * {@docCategory DatePicker}

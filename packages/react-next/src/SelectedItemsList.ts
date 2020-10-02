@@ -1,1 +1,2 @@
-export * from './components/SelectedItemsList';
+import './version';
+export * from './components/SelectedItemsList/index';

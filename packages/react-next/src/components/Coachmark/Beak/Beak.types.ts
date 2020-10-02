@@ -1,6 +1,7 @@
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import * as React from 'react';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 
-export interface IBeakProps {
+export interface IBeakProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Beak width.
    * @defaultvalue 18

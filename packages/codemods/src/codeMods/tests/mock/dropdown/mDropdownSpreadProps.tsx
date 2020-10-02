@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+// @ts-ignore
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
 export const RenderDropdown = (props: any) => {

@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { IProcessedStyleSet, mergeStyles } from '@fluentui/react/lib/Styling';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { Callout } from '@fluentui/react/lib/Callout';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-} from './CartesianChart.types';
+} from '../../index';
 import {
   createNumericXAxis,
+  createStringXAxis,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
   additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
-  ChartTypes,
+  XAxisTypes,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -30,6 +31,12 @@ export interface ICartesianChartState {
   _height: number;
 }
 
+/**
+ * Cartesian chart used for
+ * 1.draw X and Y axis of the chart
+ * 2.Callout
+ * 3.Fit parent Continer
+ */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
@@ -69,17 +76,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
-      this._fitParentContainer(true);
+      this._fitParentContainer();
     }
   }
 
   public render(): JSX.Element {
-    const { calloutProps, isXAxisDateType, points, chartType } = this.props;
+    const { calloutProps, points, chartType } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
     // Callback for margins to the chart
-    this.props.getmargins(this.margins);
+    this.props.getmargins && this.props.getmargins(this.margins);
 
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
@@ -87,8 +94,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.margins,
         this.state.containerWidth,
         chartType,
-        isXAxisDateType,
         this._isRtl,
+        this.props.xAxisType,
+        this.props.barwidth!,
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
@@ -108,9 +116,34 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
     };
 
-    const xScale = this.props.isXAxisDateType
-      ? createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl)
-      : createNumericXAxis(XAxisParams, this._isRtl);
+    /**
+     * These scales used for 2 purposes.
+     * 1. To create x and y axis
+     * 2. To draw the graph.
+     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let xScale: any;
+    switch (this.props.xAxisType!) {
+      case XAxisTypes.NumericAxis:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        break;
+      case XAxisTypes.DateAxis:
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
+        break;
+      case XAxisTypes.StringAxis:
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
+        break;
+      default:
+        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+    }
+
+    /**
+     * These scales used for 2 purposes.
+     * 1. To create x and y axis
+     * 2. To draw the graph.
+     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+     */
     const yScale = createYAxis(YAxisParams, this._isRtl);
 
     // Callback function for chart, returns axis
@@ -132,7 +165,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xScale,
       yScale,
     });
-    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+    let focusDirection;
+    if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
+      focusDirection = this.props.focusZoneDirection;
+    } else if (this.props.focusZoneDirection) {
+      focusDirection = this.props.focusZoneDirection;
+    } else {
+      focusDirection = FocusZoneDirection.horizontal;
+    }
     return (
       <div
         id={this.idForGraph}
@@ -140,8 +180,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+        <FocusZone direction={focusDirection}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
@@ -167,35 +207,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          // need to handle for single callout (Future purpose)
           <Callout {...calloutProps}>
-            {this.props.isMultiStackCallout ? (
-              <div className={this._classNames.calloutContentRoot}>
-                <div
-                  className={this._classNames.calloutDateTimeContainer}
-                  style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-                >
-                  <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
-                </div>
-                <div
-                  className={this._classNames.calloutInfoContainer}
-                  style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-                >
-                  {calloutProps!.YValueHover &&
-                    calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-                      const isLast: boolean = index + 1 === yValues.length;
-                      return (
-                        <div
-                          key={`callout-content-${index}`}
-                          style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
-                        >
-                          {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-            ) : (
+            {/** Given custom callout, then it will render */}
+            {this.props.customizedCallout && this.props.customizedCallout}
+            {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+            {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+            {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+            {!this.props.customizedCallout && !this.props.isCalloutForStack && (
               <ChartHoverCard
                 XValue={calloutProps.XValue}
                 Legend={calloutProps.legend!}
@@ -208,6 +226,39 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
+
+  // TO DO: Write a common funtional component for Multi value callout and divide sub count method
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _multiValueCallout = (calloutProps: any) => {
+    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+    return (
+      <div className={this._classNames.calloutContentRoot}>
+        <div
+          className={this._classNames.calloutDateTimeContainer}
+          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+        >
+          <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+        </div>
+        <div
+          className={this._classNames.calloutInfoContainer}
+          style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+        >
+          {calloutProps!.YValueHover &&
+            calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+              const isLast: boolean = index + 1 === yValues.length;
+              return (
+                <div
+                  key={`callout-content-${index}`}
+                  style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                >
+                  {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    );
+  };
 
   private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
     if (yValueHover) {
@@ -229,6 +280,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       y?: number;
       color?: string;
       yAxisCalloutData?: string | { [id: string]: number };
+      data?: string | number;
     },
     index: number,
     yValueHoverSubCountsExists: boolean,
@@ -252,7 +304,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           >
             <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
             <div className={this._classNames.calloutContentY}>
-              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
             </div>
           </div>
         </div>
@@ -282,7 +334,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
-  private _fitParentContainer(fromDidUpdate?: boolean): void {
+  private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
 
     this._reqID = requestAnimationFrame(() => {
@@ -301,19 +353,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState(
-          {
-            containerWidth: currentContainerWidth,
-            containerHeight: currentContainerHeight - legendContainerHeight,
-          },
-          () => {
-            if (fromDidUpdate) {
-              this.props.chartType === ChartTypes.AreaChart &&
-                this.props.getRerenderProp &&
-                this.props.getRerenderProp(true);
-            }
-          },
-        );
+        this.setState({
+          containerWidth: currentContainerWidth,
+          containerHeight: currentContainerHeight - legendContainerHeight,
+        });
       }
     });
   }

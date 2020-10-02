@@ -1,13 +1,14 @@
 import * as React from 'react';
 
+// @ts-ignore
 import { Persona, IPersonaSharedProps, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+// @ts-ignore
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const renderCoin: IRenderFunction<IPersonaSharedProps> = (props: IPersonaSharedProps | undefined) => {
   return <div>Foo</div>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderPersona = (props: any) => {
   const propsTest = { onRenderCoin: renderCoin, primaryText: 'ConstPersona' };
   return (
@@ -21,7 +22,6 @@ export const RenderPersona = (props: any) => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderLetPersona = (props: any) => {
   // eslint-disable-next-line prefer-const
   let propsTest = { onRenderCoin: renderCoin, primaryText: 'LetPersona' };
@@ -48,7 +48,6 @@ export const RenderPersonaProps = (props: IPersonaProps) => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function RenderPersonaPropsFunc(props: IPersonaProps) {
   return (
     <div>

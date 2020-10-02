@@ -7,7 +7,7 @@ import {
 } from './FloatingSuggestionsItem.types';
 import { classNamesFunction, css } from '../../../Utilities';
 import { getStyles } from './FloatingSuggestionsItem.styles';
-import { CommandButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton, IconButton } from '@fluentui/react/lib/Button';
 
 export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSX.Element => {
   const {

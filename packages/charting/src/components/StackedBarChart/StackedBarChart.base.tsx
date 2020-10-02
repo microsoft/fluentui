@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard } from '../../utilities/index';
 
@@ -264,7 +264,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={true}
-          focusable={'true'}
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,

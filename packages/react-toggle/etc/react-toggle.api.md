@@ -4,7 +4,8 @@
 
 ```ts
 
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IComponentAs } from '@uifabric/utilities';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 import { IRefObject } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
@@ -17,13 +18,10 @@ export interface IToggle {
     focus: () => void;
 }
 
-// @public (undocumented)
-export interface IToggleOptions {
-}
-
 // @public
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -44,15 +42,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export type IToggleSlotProps = {
-    [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-// @public (undocumented)
-export interface IToggleSlots {
 }
 
 // @public
@@ -76,10 +65,10 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
+export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.ForwardRefExoticComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
+export const ToggleBase: React.FunctionComponent<IToggleProps>;
 
 
 // (No @packageDocumentation comment for this package)

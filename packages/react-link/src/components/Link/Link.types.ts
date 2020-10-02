@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 
 /**
  * {@docCategory Link}
@@ -17,8 +17,6 @@ export interface ILink {
  * {@docCategory Link}
  */
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-  as?: React.ElementType;
-
   // Shared
   type?: string;
 
@@ -51,7 +49,9 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 /**
  * {@docCategory Link}
  */
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface ILinkProps
+  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
+    React.RefAttributes<HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -72,6 +72,11 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+
+  /**
+   * A component type or primitive that is rendered as the type of the root element.
+   */
+  as?: React.ElementType;
 
   /**
    * Optional keytip.
@@ -97,20 +102,3 @@ export interface ILinkStyleProps {
 export interface ILinkStyles {
   root: IStyle;
 }
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkSlots {}
-
-/**
- * {@docCategory Link}
- */
-export type LinkSlotProps = {
-  [key in keyof ILinkSlots]: ILinkProps[key];
-};
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkOptions {}

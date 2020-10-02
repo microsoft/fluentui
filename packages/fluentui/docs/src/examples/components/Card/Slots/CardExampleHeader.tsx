@@ -5,7 +5,12 @@ const CardExampleHeader = () => (
   <Card aria-roledescription="card avatar">
     <Card.Header fitted>
       <Flex gap="gap.small">
-        <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />
+        <Avatar
+          image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+          label="Copy bandwidth"
+          name="Evie yundt"
+          status="unknown"
+        />
         <Flex column>
           <Text content="Title goes here" weight="bold" />
           <Text content="Secondary line" size="small" />

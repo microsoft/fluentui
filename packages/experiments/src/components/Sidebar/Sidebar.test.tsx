@@ -3,8 +3,8 @@
  */
 
 import * as Enzyme from 'enzyme';
-import { getTheme } from 'office-ui-fabric-react';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { getTheme } from '@fluentui/react';
+import { CommandBarButton } from '@fluentui/react/lib/Button';
 import * as React from 'react';
 import { ISidebar, ISidebarProps, Sidebar, SidebarButton } from './index';
 

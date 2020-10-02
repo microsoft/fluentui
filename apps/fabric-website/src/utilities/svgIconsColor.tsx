@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, getId } from 'office-ui-fabric-react';
+import { css, getId } from '@fluentui/react';
 import * as styles from './svgIcons.module.scss';
 import { ISVGIconProps } from './svgIcons';
 

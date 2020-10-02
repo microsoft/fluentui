@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ResizeGroup';
+export * from '@fluentui/react-internal/lib/ResizeGroup';

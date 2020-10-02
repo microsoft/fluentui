@@ -3,15 +3,16 @@ import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '@uifabric/utilities';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { Callout } from '@fluentui/react-internal/lib/Callout';
 import { safeCreate } from '@uifabric/test-utilities';
-import { TextField } from 'office-ui-fabric-react';
+import { TextField } from '@fluentui/react-internal/lib/TextField';
 import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';
 import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
+import { isConformant } from '../../common/isConformant';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -29,6 +30,11 @@ describe('DatePicker', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: DatePicker,
+    displayName: 'DatePicker',
   });
 
   it('can add an id to the container', () => {

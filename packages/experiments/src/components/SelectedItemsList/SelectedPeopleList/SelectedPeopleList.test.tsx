@@ -10,8 +10,8 @@ import {
   ISelectedItemProps,
   ItemWithContextMenu,
   TriggerOnContextMenu,
-} from '@uifabric/experiments/lib/SelectedItemsList';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+} from '../index';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { groupOne } from '@uifabric/example-data';
 
 describe('SelectedPeopleList', () => {

@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData } from '@fluentui/react/lib/Positioning';
 import { ReactNode } from 'react';
 
 /**
@@ -11,11 +12,14 @@ export interface IPositioningContainer {}
 /**
  * {@docCategory Coachmark}
  */
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+export interface IPositioningContainerProps
+  extends IBaseProps<IPositioningContainer>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * All props for your component are to be defined here.
    */
   componentRef?: IRefObject<IPositioningContainer>;
+
   /**
    * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement

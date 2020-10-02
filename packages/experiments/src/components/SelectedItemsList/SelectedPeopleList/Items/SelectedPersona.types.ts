@@ -1,7 +1,7 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IPersonaStyleProps, IPersonaCoinStyleProps } from 'office-ui-fabric-react/lib/Persona';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IPersonaStyleProps, IPersonaCoinStyleProps } from '@fluentui/react/lib/Persona';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 
 export interface ISelectedPersonaStyleProps {
   theme: ITheme;

@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
-import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableDroppableText.types';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { ISelectableOption, ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
+import { ILabelStyleProps, ILabelStyles } from '@fluentui/react/lib/Label';
+import { IPanelStyleProps, IPanelStyles } from '@fluentui/react/lib/Panel';
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 
 export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
 
@@ -29,7 +28,9 @@ export interface IDropdown {
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps
+  extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`

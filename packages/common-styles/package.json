@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/common-styles",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Common style definitions for Fluent UI React components",
   "repository": {
     "type": "git",
@@ -11,11 +11,15 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "just": "just-scripts"
+    "just": "just-scripts",
+    "update-sass-theme-files": "node ./scripts/generateDefaultThemeSassFiles.js"
+  },
+  "dependencies": {
+    "office-ui-fabric-core": "^11.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.0",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@uifabric/build": "^7.0.0",
-    "office-ui-fabric-core": "^11.0.0"
+    "@uifabric/styling": "^7.16.9"
   }
 }

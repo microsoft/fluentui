@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from '@fluentui/react/lib/Utilities';
 import * as SignalFieldStyles from './SignalField.scss';
 
 export type SignalFieldMode = 'wide' | 'compact';

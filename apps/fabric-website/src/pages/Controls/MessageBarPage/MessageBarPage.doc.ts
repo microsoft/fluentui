@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { MessageBarPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/MessageBar/MessageBar.doc';
+import { MessageBarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/MessageBar/MessageBar.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MessageBarPage/docs/MessageBarRelated.md') as string;
 const componentUrl =

@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/HoverCard';
+import './version';
+export * from '@fluentui/react/lib/HoverCard';

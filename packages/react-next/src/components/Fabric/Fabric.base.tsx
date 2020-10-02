@@ -32,21 +32,23 @@ const getDir = ({ theme, dir }: IFabricProps) => {
   };
 };
 
-export const FabricBase = React.forwardRef((props: IFabricProps, ref: React.Ref<HTMLDivElement>) => {
-  const { className, theme, applyTheme, applyThemeToBody, styles } = props;
+export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRef<HTMLDivElement, IFabricProps>(
+  (props, ref) => {
+    const { className, theme, applyTheme, applyThemeToBody, styles } = props;
 
-  const classNames = getClassNames(styles, {
-    theme: theme!,
-    applyTheme: applyTheme,
-    className,
-  });
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      applyTheme: applyTheme,
+      className,
+    });
 
-  const rootElement = React.useRef<HTMLDivElement | null>(null);
-  useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
-  useFocusRects(rootElement);
+    const rootElement = React.useRef<HTMLDivElement | null>(null);
+    useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
+    useFocusRects(rootElement);
 
-  return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
-});
+    return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
+  },
+);
 FabricBase.displayName = 'FabricBase';
 
 function useRenderedContent(
