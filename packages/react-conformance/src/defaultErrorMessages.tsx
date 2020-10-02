@@ -242,7 +242,7 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received: ' + chalk.green.bold(componentDisplayName.replace('Styled', '')),
+          'correct display name. It received: ' + chalk.green(componentDisplayName.replace('Styled', '')),
         ) +
           resolveErrorMessages([
             'Make sure that ' +
@@ -394,7 +394,7 @@ export const defaultErrorMessages = {
     }
 
     for (let i = 0; i < ariaProps.length; i++) {
-      ariaPropsDif.push(ariaProps[i] + ': ' + chalk.green(kebabAriaProps[i]));
+      ariaPropsDif.push(ariaProps[i] + ' → ' + chalk.green(kebabAriaProps[i]));
     }
 
     // Message Description: Handles scenario where an aria prop doesn't match kebab-casing.
