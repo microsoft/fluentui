@@ -86,7 +86,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
 
   fs.readdirSync(packagePath).forEach(itemName => {
     const isJavascriptFile = itemName.match(/.js$/);
-    const isAllowedFile = TopLevelEntryFileExclusions.includes(itemName);
+    const isAllowedFile = !TopLevelEntryFileExclusions.includes(itemName);
 
     if (isJavascriptFile && isAllowedFile) {
       const entryName = itemName.replace(/.js$/, '');
