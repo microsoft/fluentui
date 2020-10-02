@@ -136,8 +136,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         handleClick(e);
       },
       focusParent: e => {
-
-        handleFocusParent(e);
+        onFocusParent(props.parent);
       },
       performSelection: e => {
         e.preventDefault();
