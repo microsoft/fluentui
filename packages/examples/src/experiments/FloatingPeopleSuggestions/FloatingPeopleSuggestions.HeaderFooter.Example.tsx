@@ -8,6 +8,8 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 import { IBaseFloatingPickerSuggestionProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { useConst } from '@uifabric/react-hooks';
+import { Autofill } from 'office-ui-fabric-react';
+import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
 
 const _suggestions = [
   {
@@ -56,6 +58,11 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = React.useState<number>(0);
+  const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(0);
+  const [selectedHeaderIndex, setSelectedHeaderIndex] = React.useState<number>(0);
+
+  const input = React.useRef<Autofill>(null);
 
   const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
     return {
@@ -124,21 +131,80 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     });
   };
 
+  const selectPreviousItem = () => {
+    console.log('selectPreviousItem');
+  };
+
+  const selectNextItem = () => {
+    console.log('selectNextItem');
+  };
+
+  const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
+    const keyCode = ev.which;
+    switch (keyCode) {
+      case KeyCodes.enter:
+      case KeyCodes.tab:
+        alert('an item was selected');
+        break;
+      case KeyCodes.up:
+        ev.preventDefault();
+        ev.stopPropagation();
+        selectPreviousItem();
+        break;
+      case KeyCodes.down:
+        ev.preventDefault();
+        ev.stopPropagation();
+        selectNextItem();
+        break;
+    }
+  };
+
+  const _renderExtendedPicker = () => {
+    return (
+      <>
+        <FloatingPeopleSuggestions
+          suggestions={[...peopleSuggestions]}
+          isSuggestionsVisible={true}
+          targetElement={input.current?.inputElement}
+          /* eslint-disable react/jsx-no-bind */
+          onSuggestionSelected={_onSuggestionSelected}
+          onRemoveSuggestion={_onSuggestionRemoved}
+          /* eslint-enable react/jsx-no-bind */
+          noResultsFoundText={'No suggestions'}
+          onFloatingSuggestionsDismiss={undefined}
+          showSuggestionRemoveButton={true}
+          pickerSuggestionsProps={suggestionProps}
+          selectedSuggestionIndex={selectedSuggestionIndex}
+          selectedFooterIndex={selectedFooterIndex}
+          selectedHeaderIndex={selectedHeaderIndex}
+        />
+      </>
+    );
+  };
+
   return (
-    <>
-      <FloatingPeopleSuggestions
-        suggestions={[...peopleSuggestions]}
-        isSuggestionsVisible={true}
-        targetElement={null}
-        /* eslint-disable react/jsx-no-bind */
-        onSuggestionSelected={_onSuggestionSelected}
-        onRemoveSuggestion={_onSuggestionRemoved}
-        /* eslint-enable react/jsx-no-bind */
-        noResultsFoundText={'No suggestions'}
-        onFloatingSuggestionsDismiss={undefined}
-        showSuggestionRemoveButton={true}
-        pickerSuggestionsProps={suggestionProps}
+    <div className={'ms-BasePicker-text'}>
+      <Autofill
+        ref={input}
+        suggestedDisplayValue={'Try hitting key down'}
+        style={{
+          display: 'flex',
+          flex: '1 1 auto',
+          height: '34px',
+          border: 'none',
+          flexGrow: '1',
+          outline: 'none',
+          padding: '0 6px 0px',
+          margin: '1px',
+          selectors: {
+            '&::-ms-clear': {
+              display: 'none',
+            },
+          },
+        }}
+        onKeyDown={_onInputKeyDown}
       />
-    </>
+      {_renderExtendedPicker()}
+    </div>
   );
 };
