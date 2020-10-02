@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.3",
+      "version": "0.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "17b03b14a3278ad716f57a81f8bb2547c3bd28db",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@fluentui/react-theme-provider_v0.14.2",
       "version": "0.14.2",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.3)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.2..@fluentui/react-theme-provider_v0.14.3)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.2)
 

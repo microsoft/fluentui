@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@fluentui/react-examples_v0.4.5",
+      "version": "0.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding heatmap example",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "6bf22de2fa257f9d48f3f339abff426d1d2b2e13",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2020 12:27:45 GMT",
       "tag": "@fluentui/react-examples_v0.4.4",
       "version": "0.4.4",

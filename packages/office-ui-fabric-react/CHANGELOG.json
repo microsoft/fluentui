@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "office-ui-fabric-react_v7.144.2",
+      "version": "7.144.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix paging within groups for GroupedList",
+            "author": "tmichon@microsoft.com",
+            "commit": "d0b49bd8dfd5418ff225dee1a48aa0eae265cf10",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2020 12:27:45 GMT",
       "tag": "office-ui-fabric-react_v7.144.1",
       "version": "7.144.1",

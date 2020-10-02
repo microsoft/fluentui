@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v0.4.9)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v0.4.3..@fluentui/react-toggle_v0.4.9)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v0.4.3)
 
