@@ -2468,10 +2468,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/package-deps-hash/-/package-deps-hash-2.2.158.tgz#57a02d6ee62fd95390a477120ab24186767cb0fe"
   integrity sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
 
-"@microsoft/task-scheduler@^2.6.2":
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.2.tgz#03bd53251424267375803e9c3c868dc31825b34e"
-  integrity sha512-0T0TkxjxTeC6u8whkMMxxV16bvC9TzCRJqF3uyJ5EZ8SOOese2wPkfT7n4EzI4zSsjMwEbbWFLAb5CpdIdu09Q==
+"@microsoft/task-scheduler@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.0.tgz#6108b2264711299d1d0350c4def6f038b73ea504"
+  integrity sha512-KeMyrw5c9IAQxKYn/QrnqT9BNfLC7UUY2OwyXNaMKOcSRKMscPzYilPir0LzwHwSzg9uAmNX9rJ87sKKJ7mOVw==
 
 "@microsoft/ts-command-line@4.3.6":
   version "4.3.6"
@@ -15218,12 +15218,12 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.19.8:
-  version "0.19.8"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.8.tgz#0a45cdeee307918d25b57ce6eb7370ae50755008"
-  integrity sha512-ssSF+EtYkd3PHdFs59wMLFBii/xJf7Ox/RoLyldOUtzzoAxMbV3Ms1izd15v7+ZlRpF0u/5BoaQ3dYU//4JsGg==
+lage@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.0.tgz#b95f59a80b784ff3e2391adc497b165e18c15963"
+  integrity sha512-PFyOWebV+Za5n5e4uuk66TZQNiFD4OG3UUnrM3JoqOPAxFPogMDr+PuYDj01R0U6ENMaOrH0pC0EypcH+P9HrQ==
   dependencies:
-    "@microsoft/task-scheduler" "^2.6.2"
+    "@microsoft/task-scheduler" "^2.6.0"
     abort-controller "^3.0.0"
     backfill "^6.0.1"
     backfill-config "^6.0.0"
@@ -15235,7 +15235,7 @@ lage@^0.19.8:
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
     p-profiler "^0.1.2"
-    workspace-tools "^0.9.8"
+    workspace-tools "^0.9.1"
     yargs-parser "^18.1.3"
 
 last-run@^1.1.0:
@@ -24784,10 +24784,10 @@ workspace-tools@^0.9.0:
     multimatch "^4.0.0"
     read-yaml-file "^2.0.0"
 
-workspace-tools@^0.9.8:
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.8.tgz#fe53254bf56da289a8e9a6d9e8a0647f69bd964e"
-  integrity sha512-Vbyuc8fRLnbkE/n7Qb8wKEwexGEujTQamEGNFd/1RmgANCFk1u4FBI2PVoF/Tf32JbbtAlw/JkWtxmemRG4b8g==
+workspace-tools@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.1.tgz#86d8d9affbb29ee0ded94a1eed2165c5bb206dbb"
+  integrity sha512-yVYslHnDGr1b13ldBUly23W+FUxt4f7s/ovWZThw3YNPW3tcvJ9jDC5UYEWAqRXRbLXOMYFHRgQ1S1Iom/Ze6Q==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"
