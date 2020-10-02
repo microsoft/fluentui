@@ -2,6 +2,7 @@ import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { ButtonSizeVariants } from '../Button/index';
 
 const GlobalClassNames = {
+  root: 'ms-SplitButton',
   button: 'ms-SplitButton-button',
   menuButton: 'ms-SplitButton-menuButton',
 };
@@ -12,11 +13,14 @@ export const useSplitButtonClasses = makeVariantClasses({
   name: 'SplitButton',
   prefix: '--button',
   styles: {
-    root: {
-      display: 'inline-flex',
-      justifyContent: 'stretch',
-      position: 'relative',
-    },
+    root: [
+      GlobalClassNames.root,
+      {
+        display: 'inline-flex',
+        justifyContent: 'stretch',
+        position: 'relative',
+      },
+    ],
 
     button: [
       GlobalClassNames.button,
@@ -30,12 +34,14 @@ export const useSplitButtonClasses = makeVariantClasses({
     menuButton: [
       GlobalClassNames.menuButton,
       {
-        '--button-minWidth': menuButtonWidth,
-        '--button-width': menuButtonWidth,
+        width: menuButtonWidth,
+        minWidth: menuButtonWidth,
         '--button-borderLeftWidth': 0,
         '--button-borderTopLeftRadius': 0,
         '--button-borderBottomLeftRadius': 0,
-        '--button-iconSize': 'var(--button-menuIconSize)',
+        // This one is problematic; we will need to figure out how to apply tokens to child components in a way that
+        // won't fight specificity of rules. Using classnames to encapsulate tokens values, especially
+        '--button-iconSize': 'var(--button-menuIconSize) !important',
       },
     ],
 
@@ -46,6 +52,10 @@ export const useSplitButtonClasses = makeVariantClasses({
       right: menuButtonWidth,
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+
+      [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
+        backgroundColor: 'var(--button-disabled-dividerColor)',
+      },
     },
 
     _fluid: {
@@ -63,7 +73,7 @@ export const useSplitButtonClasses = makeVariantClasses({
     },
   },
   variants: (theme: Theme) => {
-    const { palette } = theme;
+    const { palette, semanticColors } = theme;
 
     return {
       root: {
@@ -76,13 +86,19 @@ export const useSplitButtonClasses = makeVariantClasses({
           larger: '48px',
           largest: '64px',
         },
-
         dividerThickness: '1px',
         dividerColor: palette?.neutralTertiaryAlt,
+        disabled: {
+          dividerColor: semanticColors.disabledText,
+        },
+        menuIconSize: '99px',
       },
-
       primary: {
         dividerColor: palette.white,
+
+        disabled: {
+          dividerColor: semanticColors.disabledText,
+        },
       },
       ...ButtonSizeVariants,
     };
