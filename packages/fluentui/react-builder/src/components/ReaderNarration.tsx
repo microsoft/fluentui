@@ -6,11 +6,11 @@ import { DescendantNarrationsComputer } from './../narration/DescendantNarration
 const computer: DescendantNarrationsComputer = new DescendantNarrationsComputer();
 let narrationTexts: Record<string, string> = {};
 
-export type ReaderTextProps = {
+export type ReaderNarrationProps = {
   selector: string;
 };
 
-export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector }) => {
+export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ selector }) => {
   const ref = React.useRef<HTMLElement>();
   const [narrationText, setNarrationText] = React.useState('');
   const [narrationPath, setNarrationPath] = React.useState('');
@@ -35,16 +35,16 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
         // Update the narration paths dropdown values
         setNarrationPaths(paths);
 
-        //  Choose the first narration as the narration to be displayed
-        const text = `Narration: ${narrations[0].text}`;
-        setNarrationText(narrations.length > 0 ? text : undefined);
+        // If some narration has been retrieved, choose the first one as the narration to be displayed
+        const text = narrations[0]?.text || undefined;
+        setNarrationText(text);
       }); // End compute
     } // End if 1
   }, [setNarrationText, setNarrationPath, setNarrationPaths, ref, selector]);
 
   const handleNarrationPathChange = (event: any, props: DropdownProps) => {
     setNarrationPath(props.value as string);
-    const text = `Narration: ${narrationTexts[props.value as string]}`;
+    const text = narrationTexts[props.value as string];
     setNarrationText(text);
   }; // End handleNarrationPathChange
 
@@ -54,19 +54,27 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
 
   return (
     <>
-      Testing
-      <Dropdown
-        items={narrationPaths}
-        defaultValue={narrationPath}
-        value={narrationPath}
-        onChange={handleNarrationPathChange}
-        getA11ySelectionMessage={{
-          onAdd: item => `${item} has been selected.`,
-        }}
-        aria-label="Select a descendant element"
-      />
+      {narrationPaths.length > 0 && (
+        <Dropdown
+          items={narrationPaths}
+          defaultValue={narrationPath}
+          value={narrationPath}
+          onChange={handleNarrationPathChange}
+          getA11ySelectionMessage={{
+            onAdd: item => `${item} has been selected.`,
+          }}
+          placeholder="Select a descendant element"
+        />
+      )}
       <Ref innerRef={ref}>
-        <Alert warning content={narrationText} />
+        <Alert
+          warning
+          content={
+            narrationText !== undefined
+              ? `Narration: ${narrationText}`
+              : 'The selected component has no tab reachable elements.'
+          }
+        />
       </Ref>
     </>
   );
