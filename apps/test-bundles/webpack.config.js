@@ -1,4 +1,4 @@
-const path = require('path');
+// @ts-check
 const { createWebpackConfig, buildEntries, buildEntry } = require('./webpackUtils');
 
 // Create entries for all top level imports.
