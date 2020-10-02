@@ -63,6 +63,18 @@ describe('StylesheetProvider', () => {
     expect(result).toEqual([FooStylesheet]);
   });
 
+  it('can render without target (ssr)', () => {
+    mountWithContext(
+      <StylesheetProvider target={undefined}>
+        <Foo />
+        <Foo />
+      </StylesheetProvider>,
+    );
+
+    expect(lastContext?.target).toBe(undefined);
+    expect(result).toEqual([FooStylesheet]);
+  });
+
   it('can provide a custom target', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const customTarget: any = {};
