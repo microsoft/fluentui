@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {
-  Customizer,
+  ThemeProvider,
   DefaultButton,
   PrimaryButton,
   TextField,
   Stack,
-  Fabric,
   CompoundButton,
   Checkbox,
   SearchBox,
@@ -14,10 +13,10 @@ import {
   Text,
 } from '@fluentui/react';
 import {
-  AzureCustomizationsLight,
-  AzureCustomizationsDark,
-  AzureCustomizationsHighContrastLight,
-  AzureCustomizationsHighContrastDark,
+  AzureThemeLight,
+  AzureThemeDark,
+  AzureThemeHighContrastLight,
+  AzureThemeHighContrastDark,
 } from '@uifabric/azure-themes';
 import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
@@ -143,33 +142,25 @@ const Example = () => (
 );
 
 export const Light = () => (
-  <Customizer {...AzureCustomizationsLight}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const Dark = () => (
-  <Customizer {...AzureCustomizationsDark}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastLight = () => (
-  <Customizer {...AzureCustomizationsHighContrastLight}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastDark = () => (
-  <Customizer {...AzureCustomizationsHighContrastDark}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );

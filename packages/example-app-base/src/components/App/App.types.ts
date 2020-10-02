@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject, ICustomizations } from '@fluentui/react/lib/Utilities';
+import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup, INavStyleProps } from '@fluentui/react/lib/Nav';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
-import { IAppCustomizations } from '../../utilities/customizations';
+import { IAppThemes } from '../../utilities/theme';
 import { IHeaderStyleProps } from '../Header/index';
+import { PartialTheme, Theme } from '@fluentui/theme';
 
 export enum ExampleStatus {
   placeholder = 0,
@@ -29,23 +30,15 @@ export interface IAppDefinition {
   testPages: IAppLink[];
   examplePages: IAppLinkGroup[];
   headerLinks: IAppLink[];
-  /**
-   * Optional customizations to apply to the application.
-   *
-   * `IAppCustomizations` members (`exampleCardCustomizations` and `hideSchemes`), if provided,
-   * are applied using `AppCustomizationsContext`.
-   *
-   * `ICustomizations` members (`settings` and `scopedSettings`), if provided, are applied
-   * using `Customizer`.
-   */
-  customizations?: IAppCustomizations & Partial<ICustomizations>;
+
+  themes?: IAppThemes & PartialTheme;
 }
 
 export interface IAppProps extends IWithResponsiveModeState {
   appDefinition: IAppDefinition;
 
   /** Theme provided by higher-order component. */
-  theme?: ITheme;
+  theme?: Theme;
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IAppStyleProps, IAppStyles>;

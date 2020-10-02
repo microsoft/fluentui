@@ -3,15 +3,15 @@ import { DefaultPalette } from './colors/index';
 import { DefaultEffects } from './effects/index';
 import { DefaultFontStyles } from './fonts/index';
 import { DefaultSpacing } from './spacing/index';
-import { IFontStyles, IPartialTheme, ITheme } from './types/index';
+import { IFontStyles, PartialTheme, Theme } from './types/index';
 import { makeSemanticColors } from './utilities/makeSemanticColors';
 
 /**
- * Creates a custom theme definition which can be used with the Customizer.
+ * Creates a custom theme definition.
  * @param theme - Partial theme object.
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
+export function createTheme(theme: PartialTheme = {}, depComments: boolean = false): Theme {
   const newPalette = { ...DefaultPalette, ...theme.palette };
   const newEffects = { ...DefaultEffects, ...theme.effects };
 
@@ -40,6 +40,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   }
 
   return {
+    ...theme,
     palette: newPalette,
     fonts: {
       ...defaultFontStyles,

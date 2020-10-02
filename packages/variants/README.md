@@ -9,14 +9,14 @@ Example of normal, soft, and strong variants:
 
 ![example of variants](https://github.com/microsoft/fluentui/blob/master/packages/variants/example.png)
 
-This project provides helper functions to create variants of a given theme, which can be used with the [Customizer](https://github.com/microsoft/fluentui/blob/master/packages/utilities/src/Customizer.tsx) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/interfaces/ITheme.ts) and returns an [ITheme](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/interfaces/ITheme.ts).
+This project provides helper functions to create variants of a given theme, which can be used with the [ThemeProvider](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/microsoft/fluentui/blob/master/packages/theme/src/types/ITheme.ts) and returns an [ITheme](https://github.com/microsoft/fluentui/blob/master/packages/theme/src/types/ITheme.ts).
 
-The following example uses [getTheme()](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/styles/theme.ts) to grab the current global theme, then creates a strong variant of the that theme, and applies that strong variant to the components wrapped by Customizer.
+The following example uses [getTheme()](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/styles/theme.ts) to grab the current global theme, then creates a strong variant of the that theme, and applies that strong variant to the components wrapped by ThemeProvider.
 
 ```
-<Customizer settings={ { theme: getStrongVariant(getTheme()) } }>
+<ThemeProvider theme={ getStrongVariant(getTheme()) }>
   <components... />
-</Customizer>
+</ThemeProvider>
 ```
 
 The available variants are:

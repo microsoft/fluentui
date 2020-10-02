@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Async, css, Customizer, ICustomizations, ILinkProps } from '@fluentui/react';
+import { Async, css, ThemeProvider, ILinkProps } from '@fluentui/react';
+import { PartialTheme } from '@fluentui/theme';
 import { slugify } from '../../utilities/index2';
 import { PageHeader } from '../PageHeader/index';
 import { Markdown } from '../Markdown/index';
@@ -20,7 +21,6 @@ import {
 import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
 import { getLinkColors } from '../../utilities/getLinkColors';
-
 const SECTION_STAGGER_INTERVAL = 0.05;
 /** Section key/id prefix for sections which don't have a title */
 const GENERIC_SECTION = 'genericsection';
@@ -38,8 +38,8 @@ const linkCustomizations: Partial<ILinkProps> = {
   },
 };
 
-const scopedSettings: ICustomizations['scopedSettings'] = {
-  Link: linkCustomizations,
+const theme: PartialTheme = {
+  components: { Link: linkCustomizations },
 };
 
 // TODO: I think this component should be templated to forward the TPlatform type to props.
@@ -79,7 +79,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
 
     const sections = this._getPageSections();
     return (
-      <Customizer scopedSettings={scopedSettings}>
+      <ThemeProvider theme={theme}>
         <div className={css(styles.Page, className)}>
           {this._getPageHeader()}
           <div className={styles.main}>
@@ -87,7 +87,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
             {this._getSideRail(sections)}
           </div>
         </div>
-      </Customizer>
+      </ThemeProvider>
     );
   }
 

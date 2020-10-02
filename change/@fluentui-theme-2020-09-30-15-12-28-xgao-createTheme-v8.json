@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal.",
+  "packageName": "@fluentui/theme",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-30T22:12:28.784Z"
+}

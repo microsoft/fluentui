@@ -1,32 +1,32 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '@uifabric/experiments';
-import { Customizer, IStackProps, Stack } from '@fluentui/react';
+import { ThemeProvider, IStackProps, Stack } from '@fluentui/react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
-const ButtonTheme = {
-  scopedSettings: {
-    Icon: {
-      styles: {
-        root: {
-          fontSize: 24,
-          color: 'purple',
-        },
+const componentStyles = {
+  Icon: {
+    styles: {
+      root: {
+        fontSize: 24,
+        color: 'purple',
       },
     },
-    Text: {
-      styles: {
-        root: {
-          color: 'purple',
-        },
+  },
+  Text: {
+    styles: {
+      root: {
+        color: 'purple',
       },
     },
   },
 };
 
+const buttonTheme = { components: componentStyles };
+
 const getButtonStyles: IButtonComponent['styles'] = {
-  icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  content: ButtonTheme.scopedSettings.Text.styles.root,
+  icon: componentStyles.Icon.styles.root,
+  content: componentStyles.Text.styles.root,
 };
 
 export class SlotsStyledExample extends React.Component<{}, {}> {
@@ -35,21 +35,21 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
       <Stack>
         <Stack {...stackProps}>
           <Button
-            icon={{ iconName: 'share', style: ButtonTheme.scopedSettings.Icon.styles.root }}
+            icon={{ iconName: 'share', style: componentStyles.Icon.styles.root }}
             content="Icon as IIconProps with style"
           />
           <Button
             icon="share"
-            content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }}
+            content={{ children: 'Text as ITextProps with styles', styles: componentStyles.Text.styles }}
           />
           <Button
             icon={{ iconName: 'share', style: { color: 'red' } }}
             styles={getButtonStyles}
             content="Button styles prop"
           />
-          <Customizer {...ButtonTheme}>
-            <Button icon="share" content="Button scopedSettings" />
-          </Customizer>
+          <ThemeProvider theme={buttonTheme}>
+            <Button icon="share" content="Button theme" />
+          </ThemeProvider>
         </Stack>
       </Stack>
     );

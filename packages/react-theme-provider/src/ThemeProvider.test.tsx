@@ -90,8 +90,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme: Theme = mergeThemes(createTheme({}), lightTheme);
-    expectedTheme.tokens = getTokens(expectedTheme);
+    const expectedTheme: Theme = createTheme(lightTheme);
+    expectedTheme.tokens = getTokens(expectedTheme, expectedTheme.tokens);
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 

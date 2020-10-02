@@ -94,7 +94,7 @@ export { Theme }
 export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
-export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderProps, string | number> & React.RefAttributes<HTMLDivElement>>;
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
 
 // @public
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {

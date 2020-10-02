@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Customizer, Async } from '@fluentui/react';
+import { css, ThemeProvider, Async } from '@fluentui/react';
 import {
   baseDefinition,
   EventNames,
@@ -23,8 +23,8 @@ import {
   getQueryParam,
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
-import { AppCustomizations } from './customizations';
-import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
+import { AppThemes } from './AppThemes';
+import { AppThemeContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 
@@ -148,7 +148,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   public render() {
     const { platform, isContentFullBleed } = this.state;
     const { children, siteDefinition } = this.props;
-    const { customizations } = siteDefinition;
+    const { theme } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
       React.cloneElement(child, { platform }),
     );
@@ -176,15 +176,15 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
     const app = (
       <PlatformContext.Provider value={platform}>
-        <AppCustomizationsContext.Provider value={AppCustomizations}>
-          {customizations ? (
-            <Customizer {...customizations}>
+        <AppThemeContext.Provider value={AppThemes}>
+          {theme ? (
+            <ThemeProvider theme={theme}>
               <SiteContent />
-            </Customizer>
+            </ThemeProvider>
           ) : (
             <SiteContent />
           )}
-        </AppCustomizationsContext.Provider>
+        </AppThemeContext.Provider>
       </PlatformContext.Provider>
     );
 

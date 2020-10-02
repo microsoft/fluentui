@@ -6,8 +6,7 @@ import {
   ShimmerElementsGroup,
   ShimmerElementType,
 } from '@fluentui/react/lib/Shimmer';
-import { mergeStyleSets, ITheme, createTheme } from '@fluentui/react/lib/Styling';
-import { Customizer } from '@fluentui/react/lib/Utilities';
+import { mergeStyleSets, ITheme, createTheme, ThemeProvider } from '@fluentui/react/lib/Styling';
 
 // Custom theme passed to Customizer
 const customThemeForShimmer: ITheme = createTheme({
@@ -155,13 +154,13 @@ export const ShimmerStylingExample: React.FunctionComponent = () => {
         />
       </div>
       <div>
-        <b>2. </b>Another way of doing it by using <b>Customizer</b> component wrapper.
+        <b>2. </b>Another way of doing it by using <b>ThemeProvider</b> component wrapper.
       </div>
-      <Customizer settings={{ theme: { ...customThemeForShimmer } }}>
+      <ThemeProvider theme={customThemeForShimmer}>
         <div className={classNames.themedBackgroundWrapper2}>
           <Shimmer customElementsGroup={getCustomElements()} width="300" />
         </div>
-      </Customizer>
+      </ThemeProvider>
       <div>
         <b>3. </b>Style overrides of shimmering wave using <b>styles</b> prop.
       </div>

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
-import { LayerHost, ILayerProps } from '@fluentui/react-next/lib/Layer';
+import { LayerHost } from '@fluentui/react-next/lib/Layer';
 import { Panel } from '@fluentui/react-next/lib/Panel';
 import { IFocusTrapZoneProps } from '@fluentui/react-next/lib/FocusTrapZone';
 import { mergeStyles } from '@fluentui/react-next/lib/Styling';
-import { Customizer } from '@fluentui/react-next/lib/Utilities';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
 export const LayerCustomizedExample: React.FunctionComponent = () => {
@@ -15,8 +14,6 @@ export const LayerCustomizedExample: React.FunctionComponent = () => {
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const layerHostId = useId('layerHost');
 
-  const scopedSettings = useLayerSettings(trapPanel, layerHostId);
-
   return (
     <div>
       <p>
@@ -25,19 +22,18 @@ export const LayerCustomizedExample: React.FunctionComponent = () => {
       </p>
       <Toggle label="Show panel" inlineLabel checked={isPanelOpen} onChange={isPanelOpen ? dismissPanel : showPanel} />
       <Toggle label="Trap panel" inlineLabel checked={trapPanel} onChange={toggleTrapPanel} />
-      <Customizer scopedSettings={scopedSettings}>
-        {isPanelOpen && (
-          <Panel
-            isOpen
-            hasCloseButton
-            headerText="Sample panel"
-            focusTrapZoneProps={focusTrapZoneProps}
-            onDismiss={dismissPanel}
-          >
-            This panel {trapPanel ? 'is' : 'is not'} trapped.
-          </Panel>
-        )}
-      </Customizer>
+      {isPanelOpen && (
+        <Panel
+          isOpen
+          hasCloseButton
+          headerText="Sample panel"
+          focusTrapZoneProps={focusTrapZoneProps}
+          onDismiss={dismissPanel}
+          layerProps={trapPanel ? { hostId: layerHostId } : undefined}
+        >
+          This panel {trapPanel ? 'is' : 'is not'} trapped.
+        </Panel>
+      )}
       <LayerHost id={layerHostId} className={layerHostClass} />
     </div>
   );
@@ -54,13 +50,3 @@ const focusTrapZoneProps: IFocusTrapZoneProps = {
   isClickableOutsideFocusTrap: true,
   forceFocusInsideTrap: false,
 };
-
-function useLayerSettings(trapPanel: boolean, layerHostId: string): { Layer?: ILayerProps } {
-  return React.useMemo(() => {
-    if (trapPanel) {
-      const layerProps: ILayerProps = { hostId: layerHostId };
-      return { Layer: layerProps };
-    }
-    return {};
-  }, [trapPanel, layerHostId]);
-}

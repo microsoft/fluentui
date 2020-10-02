@@ -1,8 +1,9 @@
-import { createTheme, ITheme } from '@fluentui/react';
+import { createTheme, Theme } from '@fluentui/theme';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
+import { AzureStyleSettings } from './AzureStyleSettings';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
@@ -125,7 +126,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   linkBorderStyle: 'dashed',
 };
 
-export const AzureThemeLight: ITheme = createTheme({
+export const AzureThemeLight: Theme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
@@ -145,3 +146,5 @@ export const AzureThemeLight: ITheme = createTheme({
   },
   semanticColors: lightExtendedSemanticColors,
 });
+
+AzureThemeLight.components = AzureStyleSettings(AzureThemeLight);

@@ -93,12 +93,16 @@ export interface ComponentStyles {
  */
 export interface Theme extends ITheme {
   components?: ComponentStyles;
-  tokens?: Tokens;
   stylesheets?: string[];
+
+  /** @internal
+   * This is currently only for internal use and not production-ready.
+   * */
+  tokens?: RecursivePartial<Tokens>;
 }
 
 /**
- * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
+ * A partial theme object.
  */
 export interface PartialTheme extends IPartialTheme {
   components?: ComponentStyles;

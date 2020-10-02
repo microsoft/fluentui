@@ -14,7 +14,7 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
   draftState.theme = React.useMemo<Theme>(() => {
     const mergedTheme = mergeThemes<Theme>(parentTheme, userTheme);
 
-    mergedTheme.tokens = getTokens(mergedTheme);
+    mergedTheme.tokens = getTokens(mergedTheme, userTheme?.tokens);
     return mergedTheme;
   }, [parentTheme, userTheme]);
 };

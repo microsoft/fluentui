@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove react-theme-provider export as it's exported by oufr already.",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-01T01:02:03.559Z"
+}

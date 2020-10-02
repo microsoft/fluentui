@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { create } from '@uifabric/utilities/lib/test';
-import { Customizer } from '@uifabric/utilities';
+import { ThemeProvider } from '@fluentui/react/lib/Styling';
 import { createTheme } from '@uifabric/styling';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
@@ -97,9 +97,9 @@ describe('Link', () => {
     expect(
       /ms-Link($| )/.test(
         ReactDOM.renderToStaticMarkup(
-          <Customizer settings={{ theme: NoClassNamesTheme }}>
+          <ThemeProvider theme={NoClassNamesTheme}>
             <Link href="helloworld.html">My Link</Link>
-          </Customizer>,
+          </ThemeProvider>,
         ),
       ),
     ).toBe(false);

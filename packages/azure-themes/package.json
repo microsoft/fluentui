@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^7.142.0",
+    "@fluentui/theme": "^1.2.1",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/set-version": "^7.0.23",
     "tslib": "^1.10.0"

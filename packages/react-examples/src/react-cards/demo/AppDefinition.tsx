@@ -1,9 +1,9 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
-import { AppCustomizations } from './customizations';
+import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Cards',
-  customizations: AppCustomizations,
+  themes: AppThemes,
   testPages: [],
   examplePages: [
     {

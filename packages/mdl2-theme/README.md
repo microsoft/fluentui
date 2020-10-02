@@ -8,5 +8,5 @@ This package contains MDL2 coloring, theming and styling for use with Fluent UI 
 To import MDL2 theme:
 
 ```js
-import { MDL2Customizations } from '@uifabric/mdl2-theme';
+import { MDL2Theme } from '@uifabric/mdl2-theme';
 ```

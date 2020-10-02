@@ -10,12 +10,12 @@ const v8ThemeOptions = [
   { label: 'V8 - Teams', theme: V8Themes.TeamsTheme },
 ];
 const v7ThemeOptions = [
-  { label: 'V7 - Fluent', theme: V7Themes.FluentTheme },
+  { label: 'V7 - Fluent', theme: V7Themes.DefaultTheme },
   { label: 'V7 - Dark', theme: V7Themes.DarkTheme, isDark: true },
   { label: 'V7 - Word', theme: V7Themes.WordTheme },
   { label: 'V7 - Teams', theme: V7Themes.TeamsTheme },
-  { label: 'V7 - Azure Light', theme: V7Themes.AzureLightTheme },
-  { label: 'V7 - Azure Dark', theme: V7Themes.AzureDarkTheme, isDark: true },
+  { label: 'V7 - Azure Light', theme: V7Themes.AzureThemeLight },
+  { label: 'V7 - Azure Dark', theme: V7Themes.AzureThemeLight, isDark: true },
   { label: 'V7 - MDL2', theme: V7Themes.MDL2Theme },
 ];
 

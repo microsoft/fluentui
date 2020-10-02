@@ -73,7 +73,7 @@ export interface ComponentStyles {
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export function createTheme(theme?: PartialTheme, depComments?: boolean): Theme;
 
 // @public (undocumented)
 export const DefaultEffects: IEffects;
@@ -833,8 +833,8 @@ export interface Theme extends ITheme {
     components?: ComponentStyles;
     // (undocumented)
     stylesheets?: string[];
-    // (undocumented)
-    tokens?: Tokens;
+    // @internal
+    tokens?: RecursivePartial<Tokens>;
 }
 
 // @public (undocumented)
