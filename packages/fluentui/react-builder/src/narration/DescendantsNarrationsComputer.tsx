@@ -1,14 +1,14 @@
 import { NarrationComputer, IAriaElement } from './NarrationComputer';
 
-export interface INarration {
+interface INarration {
   path: string[];
   text: string;
 }
 
-export class DescendantNarrationsComputer {
+export class DescendantsNarrationsComputer {
   computer: NarrationComputer = new NarrationComputer();
 
-  // Computes the screen reader narrations for the given element and all its Tab reachable descendants, for the given platform.
+  // Computes the screen reader narrations for the given element and all its focusable descendants, for the given platform.
   async compute(element: IAriaElement, platform: string): Promise<INarration[]> {
     // Prepare all the arrays
     const activeDescendantsParents: IAriaElement[] = [];
@@ -35,7 +35,7 @@ export class DescendantNarrationsComputer {
     } // End for 1
   } // End findActiveDescendantsParents
 
-  // Traverses the given element and computes the narrations for it and its descendants which are reachable with the Tab key..
+  // Traverses the given element and computes the narrations for it and its descendants which are focusable..
   async traverse(
     element: IAriaElement,
     platform: string,
@@ -45,20 +45,22 @@ export class DescendantNarrationsComputer {
   ) {
     // Determine the path
     const newPath = path.slice();
-    const role = await this.getRole(element);
+    const node = await (window as any).getComputedAccessibleNode(element);
 
-    // Only add the role to the path if the role is not a generic container
-    if (role !== 'genericContainer') {
-      newPath.push(role);
+    // Only add the item  to the path if the role is not a generic container
+    if (node.role !== 'genericContainer') {
+      const item = node.name ? `${node.role} (${node.name})` : node.role;
+      newPath.push(item);
     }
 
-    // If the element is reachable by the Tab key, stop the traversal and compute and save the narration
-    const isInTabSequence = element.tabIndex >= 0 && element.ariaActiveDescendantElement == null;
+    // If the element is focusable, stop the traversal and compute and save the narration
+    const isDirectlyFocusable =
+      (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement == null;
     const isActiveDescendant = activeDescendantsParents.some(parent => {
       // Begin some 1
       return parent.tabIndex >= 0 && parent.ariaActiveDescendantElement === element;
     }); // End some 1
-    if (isInTabSequence || isActiveDescendant) {
+    if (isDirectlyFocusable || isActiveDescendant) {
       // Begin if 1
       const narration: INarration = {
         path: newPath,
@@ -75,10 +77,4 @@ export class DescendantNarrationsComputer {
       await this.traverse(child, platform, newPath, narrations, activeDescendantsParents);
     } // End for 1
   } // End traverse
-
-  // Returns the computed accessible role name for the given element.
-  async getRole(element: Element): Promise<string> {
-    const node = await (window as any).getComputedAccessibleNode(element);
-    return node.role;
-  } // End getRole
-} // End DescendantNarrationsComputer
+} // End DescendantsNarrationsComputer

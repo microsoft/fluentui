@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Alert, Ref, Dropdown, DropdownProps } from '@fluentui/react-northstar';
 import { IAriaElement } from './../narration/NarrationComputer';
-import { DescendantNarrationsComputer } from './../narration/DescendantNarrationsComputer';
+import { DescendantsNarrationsComputer } from './../narration/DescendantsNarrationsComputer';
 
-const computer: DescendantNarrationsComputer = new DescendantNarrationsComputer();
+const computer: DescendantsNarrationsComputer = new DescendantsNarrationsComputer();
 let narrationTexts: Record<string, string> = {};
 
 export type ReaderNarrationProps = {
@@ -21,7 +21,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       // Begin if 1
       const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
 
-      // Compute and store the narrations for the element and its Tab reachable descendants
+      // Compute and store the narrations for the element and its focusable descendants
       computer.compute(element, 'Win/JAWS').then(narrations => {
         const paths: string[] = [];
         narrationTexts = {};
@@ -54,7 +54,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
-      {narrationPaths.length > 0 && (
+      {narrationPaths.length > 1 && (
         <Dropdown
           items={narrationPaths}
           defaultValue={narrationPath}
@@ -72,7 +72,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           content={
             narrationText !== undefined
               ? `Narration: ${narrationText}`
-              : 'The selected component has no tab reachable elements.'
+              : 'The selected component has no focusable elements.'
           }
         />
       </Ref>
