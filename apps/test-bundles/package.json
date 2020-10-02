@@ -8,8 +8,7 @@
     "bundle:size": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "just": "just-scripts"
   },
   "dependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
