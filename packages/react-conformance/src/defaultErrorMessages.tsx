@@ -602,7 +602,7 @@ export const defaultErrorMessages = {
       console.log(
         paragraph() +
           chalk.red.bold.underline(displayName) +
-          chalk.white.bold(' seems to have failed during the following isConformant tests:') +
+          chalk.white.bold(' failed during the following isConformant tests:') +
           paragraph() +
           chalk.white.bold.italic.bgHex('#2e2e2e')(formatObject(failedTests)),
       );
