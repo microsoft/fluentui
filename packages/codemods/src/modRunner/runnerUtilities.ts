@@ -17,12 +17,15 @@ export function runMods<T>(
   loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    const results = codeMods.map(m =>
-      runMod(m, file, loggingCallback).resolve<Results>(
-        ok => ({ modName: m.name, status: 'success', logs: ok.logs }),
-        err => ({ modName: m.name, status: err.reason, logs: [err.log] }),
-      ),
-    );
+    const results: Results[] = [];
+    for (let i = 0; i < codeMods.length; i++) {
+      const mod = codeMods[i];
+      const result = runMod(mod, file, loggingCallback).resolve<Results>(
+        ok => ({ modName: mod.name, status: 'success', logs: ok.logs }),
+        err => ({ modName: mod.name, status: err.reason, logs: [err.log] }),
+      );
+      results.push(result);
+    }
     onFileComplete({ file, resultList: results });
   }
 }
