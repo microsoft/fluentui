@@ -12,7 +12,7 @@ import { makeClasses } from './makeClasses';
 const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
-const processVariants = (variants: Variants | undefined, theme: Theme, name: string, prefix: string) => {
+const processVariants = (variants: Variants | undefined, theme: Theme, name?: string, prefix?: string) => {
   const result: Record<string, IStyle> = {};
 
   if (variants) {
@@ -78,8 +78,8 @@ export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptio
 
     return [
       callOrReturn(styles, theme),
-      processVariants(variants!, theme, name!, prefix!),
-      processVariants(themeVariants, theme, name!, prefix!),
+      processVariants(variants, theme, name, prefix),
+      processVariants(themeVariants, theme, name, prefix),
     ];
   };
 
