@@ -52,8 +52,6 @@ export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
 
   return (theme?: Theme, renderer?: StyleRenderer) => {
     const win = useWindow();
-
-    // Expected: theme and renderer are either always provided or never.
     const contextualTheme = useTheme();
     const contextualRenderer = useStyleRenderer();
 

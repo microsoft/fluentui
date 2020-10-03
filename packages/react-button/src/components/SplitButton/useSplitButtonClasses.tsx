@@ -12,6 +12,7 @@ const menuButtonWidth = '32px';
 export const useSplitButtonClasses = makeVariantClasses({
   name: 'SplitButton',
   prefix: '--button',
+
   styles: {
     root: [
       GlobalClassNames.root,
@@ -19,6 +20,9 @@ export const useSplitButtonClasses = makeVariantClasses({
         display: 'inline-flex',
         justifyContent: 'stretch',
         position: 'relative',
+
+        // Forward the menuIconSize to a variable which can be consumed by the child menu button.
+        '--button-splitMenuIconSize': 'var(--button-menuIconSize)',
       },
     ],
 
@@ -39,9 +43,11 @@ export const useSplitButtonClasses = makeVariantClasses({
         '--button-borderLeftWidth': 0,
         '--button-borderTopLeftRadius': 0,
         '--button-borderBottomLeftRadius': 0,
-        // This one is problematic; we will need to figure out how to apply tokens to child components in a way that
-        // won't fight specificity of rules. Using classnames to encapsulate tokens values, especially
-        '--button-iconSize': 'var(--button-menuIconSize) !important',
+
+        // Scope the override to a child component, increase specificity.
+        [`.${GlobalClassNames.root} &`]: {
+          '--button-iconSize': 'var(--button-splitMenuIconSize)',
+        },
       },
     ],
 
@@ -91,8 +97,9 @@ export const useSplitButtonClasses = makeVariantClasses({
         disabled: {
           dividerColor: semanticColors.disabledText,
         },
-        menuIconSize: '99px',
+        menuIconSize: '12px',
       },
+
       primary: {
         dividerColor: palette.white,
 
