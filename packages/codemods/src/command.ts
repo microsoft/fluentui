@@ -9,6 +9,7 @@ import { getEnabledMods, getModsPaths } from './modRunner/runnerUtilities';
 export interface CommandParserResult<T = CodeMod> {
   shouldExit?: boolean;
   modsFilter: (mod: T) => boolean;
+  saveSync?: boolean;
 }
 export interface Commands {
   help?: boolean;
@@ -51,6 +52,15 @@ export const yargsParse = (passedArgs: string[]) => {
       default: false,
       description: 'lists the provided enabled codemods.',
     })
+    .option('saveSync', {
+      alias: 's',
+      type: 'boolean',
+      default: false,
+      description:
+        'saves all of the changes syncronously file by file rather than saving the project as a whole.' +
+        ' Helps prevent memory from running out if your project is very large.' +
+        ' Increases the time it takes to complete upgrade',
+    })
     .parse(passedArgs);
 };
 /* Class responsible for parsing the npx command that runs codemods on a repo.
@@ -92,6 +102,7 @@ export class CommandParser {
     return {
       shouldExit: false,
       modsFilter: filter,
+      saveSync: parsed.saveSync,
     };
   }
 }
@@ -106,7 +117,7 @@ function getModRunnerConfig(): Result<ModRunnerConfigType, NoOp> {
   let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
   console.log('Configuration detected. Attempting to run mods from config...');
   if (!foundJsonFile.found || foundJsonFile.found.length !== 1) {
-    return Err({ reason: 'Error, could not locate correct config file.' });
+    return Err({ reason: 'error', log: 'Error, could not locate correct config file.' });
   } else {
     configObj = require(foundJsonFile.found[0]);
     return Ok(configObj);
