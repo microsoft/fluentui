@@ -33,6 +33,10 @@ function lintImports() {
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
 
+  if (!fs.existsSync(sourcePath)) {
+    return;
+  }
+
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
