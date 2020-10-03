@@ -1,3 +1,4 @@
+// @ts-check
 const path = require('path');
 const fs = require('fs');
 const resources = require('@uifabric/build/webpack/webpack-resources');
@@ -85,7 +86,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
 
   fs.readdirSync(packagePath).forEach(itemName => {
     const isJavascriptFile = itemName.match(/.js$/);
-    const isAllowedFile = TopLevelEntryFileExclusions.indexOf(itemName) === -1;
+    const isAllowedFile = !TopLevelEntryFileExclusions.includes(itemName);
 
     if (isJavascriptFile && isAllowedFile) {
       const entryName = itemName.replace(/.js$/, '');
