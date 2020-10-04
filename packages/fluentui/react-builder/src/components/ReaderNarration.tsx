@@ -42,7 +42,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     } // End if 1
   }, [setNarrationText, setNarrationPath, setNarrationPaths, ref, selector]);
 
-  // Compose and set the complete screen reader narration text to be displayed
+  // Composes and sets the complete screen reader narration text to be displayed
   const setCompleteText = text => {
     setNarrationText(`Narration: ${text}`);
   }; // End setCompleteText
