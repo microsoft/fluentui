@@ -44,7 +44,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   const setCompleteText = text => {
     setNarrationText(`Narration: ${text}`);
-  };
+  }; // End setCompleteText
 
   const handleNarrationPathChange = (event: any, props: DropdownProps) => {
     setNarrationPath(props.value as string);
