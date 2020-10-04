@@ -36,16 +36,20 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
         setNarrationPaths(paths);
 
         // If some narration has been retrieved, choose the first one as the narration to be displayed
-        const text = narrations[0]?.text || undefined;
-        setNarrationText(text);
+        const text = narrations[0]?.text || null;
+        setCompleteText(text);
       }); // End compute
     } // End if 1
   }, [setNarrationText, setNarrationPath, setNarrationPaths, ref, selector]);
 
+  const setCompleteText = text => {
+    setNarrationText(`Narration: ${text}`);
+  };
+
   const handleNarrationPathChange = (event: any, props: DropdownProps) => {
     setNarrationPath(props.value as string);
     const text = narrationTexts[props.value as string];
-    setNarrationText(text);
+    setCompleteText(text);
   }; // End handleNarrationPathChange
 
   if (!selector) {
@@ -69,11 +73,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       <Ref innerRef={ref}>
         <Alert
           warning
-          content={
-            narrationText !== undefined
-              ? `Narration: ${narrationText}`
-              : 'The selected component has no focusable elements.'
-          }
+          content={narrationText !== null ? narrationText : 'The selected component has no focusable elements.'}
         />
       </Ref>
     </>
