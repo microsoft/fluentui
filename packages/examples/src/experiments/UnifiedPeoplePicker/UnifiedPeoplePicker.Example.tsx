@@ -74,9 +74,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
           shouldShow: () => {
             return peopleSuggestions.length > 0;
           },
-          onExecute: () => {
-            alert('You selected people suggestions');
-          },
         },
         {
           renderItem: () => {

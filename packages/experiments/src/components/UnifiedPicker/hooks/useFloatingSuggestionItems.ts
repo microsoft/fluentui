@@ -38,6 +38,60 @@ export const useFloatingSuggestionItems = <T extends {}>(
     setSuggestionItems(floatingSuggestionItems);
   }, [floatingSuggestionItems]);
 
+  const footerItemsHaveExecute = (): boolean => {
+    let haveExecute = false;
+    footerItems!.forEach(item => {
+      if (item.onExecute !== undefined) {
+        haveExecute = true;
+      }
+    });
+    return haveExecute;
+  };
+
+  const hasSelectableFooters = footerItems ? footerItemsHaveExecute() : false;
+
+  const selectNextSelectableFooter = () => {
+    if (!footerItems) {
+      return;
+    }
+    let nextIndex = -1;
+    let i = footerItemIndex + 1;
+    while (i < footerItems.length) {
+      if (footerItems[i].onExecute && footerItems[i].shouldShow()) {
+        nextIndex = i;
+        i = footerItems.length;
+      }
+      i++;
+    }
+    if (nextIndex === -1) {
+      setFooterItemIndex(-1);
+      setFocusItemIndex(0);
+    } else {
+      setFooterItemIndex(nextIndex);
+    }
+  };
+
+  const selectPreviousSelectableFooter = () => {
+    if (!footerItems) {
+      return;
+    }
+    let nextIndex = -1;
+    let i = footerItemIndex != -1 ? footerItemIndex - 1 : footerItems.length - 1;
+    while (i > -1) {
+      if (footerItems[i].onExecute && footerItems[i].shouldShow()) {
+        nextIndex = i;
+        i = -1;
+      }
+      i--;
+    }
+    if (nextIndex === -1) {
+      setFooterItemIndex(-1);
+      setFocusItemIndex(suggestionItems.length - 1);
+    } else {
+      setFooterItemIndex(nextIndex);
+    }
+  };
+
   const showPicker = (show: boolean) => {
     setFocusItemIndex(-1);
     setFooterItemIndex(-1);
@@ -51,20 +105,15 @@ export const useFloatingSuggestionItems = <T extends {}>(
       } else if (focusItemIndex < suggestionItems.length - 1) {
         setFocusItemIndex(focusItemIndex + 1);
       } else if (focusItemIndex === suggestionItems.length - 1) {
-        if (footerItems) {
+        if (hasSelectableFooters) {
           setFocusItemIndex(-1);
-          setFooterItemIndex(0);
+          selectNextSelectableFooter();
         } else {
           setFocusItemIndex(0);
         }
       }
     } else if (footerItemIndex > -1) {
-      if (footerItemIndex == footerItems!.length - 1) {
-        setFooterItemIndex(-1);
-        setFocusItemIndex(0);
-      } else {
-        setFooterItemIndex(footerItemIndex + 1);
-      }
+      selectNextSelectableFooter();
     }
   };
 
@@ -76,20 +125,20 @@ export const useFloatingSuggestionItems = <T extends {}>(
           setFocusItemIndex(suggestionItems.length - 1);
         }
       } else {
-        setFooterItemIndex(footerItemIndex - 1);
+        selectPreviousSelectableFooter();
       }
     } else if (suggestionItems && suggestionItems.length > 0) {
       if (focusItemIndex === -1) {
-        if (footerItems) {
-          setFooterItemIndex(footerItems.length! - 1);
+        if (hasSelectableFooters) {
+          selectPreviousSelectableFooter();
         } else {
           setFocusItemIndex(suggestionItems.length - 1);
         }
       } else if (focusItemIndex > 0) {
         setFocusItemIndex(focusItemIndex - 1);
       } else if (focusItemIndex === 0) {
-        if (footerItems) {
-          setFooterItemIndex(footerItems.length! - 1);
+        if (hasSelectableFooters) {
+          selectPreviousSelectableFooter();
           setFocusItemIndex(-1);
         } else {
           setFocusItemIndex(suggestionItems.length - 1);
