@@ -32,7 +32,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
     if (headerItemsProps) {
       return (
         <div
-          className={css('ms-Suggestions-headerContainer' /*, styles.suggestionsContainer*/)}
+          className={css('ms-Suggestions-headerContainer', classNames.suggestionsContainer)}
           id="suggestionHeader-list"
           role="list"
           aria-label={suggestionsHeaderContainerAriaLabel}
@@ -72,7 +72,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
     if (footerItemsProps) {
       return (
         <div
-          className={css('ms-Suggestions-footerContainer' /*, styles.suggestionsContainer*/)}
+          className={css('ms-Suggestions-footerContainer', classNames.suggestionsContainer)}
           id="suggestionFooter-list"
           role="list"
           aria-label={suggestionsFooterContainerAriaLabel}
