@@ -38,14 +38,13 @@ export const useSplitButtonClasses = makeVariantClasses({
     menuButton: [
       GlobalClassNames.menuButton,
       {
-        width: menuButtonWidth,
-        minWidth: menuButtonWidth,
-        '--button-borderLeftWidth': 0,
-        '--button-borderTopLeftRadius': 0,
-        '--button-borderBottomLeftRadius': 0,
-
         // Scope the override to a child component, increase specificity.
         [`.${GlobalClassNames.root} &`]: {
+          width: menuButtonWidth,
+          minWidth: menuButtonWidth,
+          '--button-borderLeftWidth': 0,
+          '--button-borderTopLeftRadius': 0,
+          '--button-borderBottomLeftRadius': 0,
           '--button-iconSize': 'var(--button-splitMenuIconSize)',
         },
       },
