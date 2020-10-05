@@ -54,12 +54,14 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized styles</PrimaryButton>
     </ThemeProvider>
   ))
-  .addStory('Use tokens on new button', () => (
+  .addStory('Use variants on new button', () => (
     <ThemeProvider
       theme={{
-        tokens: {
-          button: {
-            background: 'yellow',
+        variants: {
+          Button: {
+            root: {
+              background: 'yellow',
+            },
           },
         },
       }}
