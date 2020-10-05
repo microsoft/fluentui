@@ -6,7 +6,13 @@ import { safeMount } from '@uifabric/test-utilities';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 
-import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
+import {
+  IDetailsList,
+  IColumn,
+  DetailsListLayoutMode,
+  CheckboxVisibility,
+  IDetailsGroupDividerProps,
+} from './DetailsList.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
@@ -14,6 +20,8 @@ import { IDragDropEvents } from './../../utilities/dragdrop/index';
 import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
 import { getTheme } from '../../Styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { IGroup } from '../../GroupedList';
+import { IDetailsRowProps } from './DetailsRow';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -483,5 +491,258 @@ describe('DetailsList', () => {
         expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
       },
     );
+  });
+
+  it('handles updates to items and groups', () => {
+    const tableOneItems = [
+      {
+        f1: 'A1',
+        f2: 'B1',
+        f3: 'C1',
+      },
+      {
+        f1: 'A2',
+        f2: 'B2',
+        f3: 'C2',
+      },
+      {
+        f1: 'A3',
+        f2: 'B3',
+        f3: 'C3',
+      },
+      {
+        f1: 'A4',
+        f2: 'B4',
+        f3: 'C4',
+      },
+    ];
+    const tableTwoItems = [
+      {
+        f1: 'D1',
+        f2: 'E1',
+        f3: 'F1',
+      },
+      {
+        f1: 'D2',
+        f2: 'E2',
+        f3: 'F2',
+      },
+      {
+        f1: 'D3',
+        f2: 'E3',
+        f3: 'F3',
+      },
+      {
+        f1: 'D4',
+        f2: 'E4',
+        f3: 'F4',
+      },
+    ];
+
+    const groupOneGroups: IGroup[] = [
+      { key: 'one-1', name: 'one 1', count: 1, startIndex: 0 },
+      { key: 'one-2', name: 'one 2', count: 1, startIndex: 1 },
+      { key: 'one-3', name: 'one 3', count: 1, startIndex: 2 },
+      { key: 'one-4', name: 'one 4', count: 1, startIndex: 3 },
+    ];
+
+    const groupTwoGroups: IGroup[] = [
+      { key: 'two-1', name: 'two 1', count: 2, startIndex: 0 },
+      { key: 'two-2', name: 'two 2', count: 2, startIndex: 2 },
+    ];
+
+    const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (headerProps: IDetailsHeaderProps) => {
+      return (
+        <div>
+          {headerProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{column.name}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderRow = (rowProps: IDetailsRowProps) => {
+      return (
+        <div>
+          {rowProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{rowProps.item[column.key]}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderGroupHeader: IRenderFunction<IDetailsGroupDividerProps> = (
+      groupDividerProps: IDetailsGroupDividerProps,
+    ) => {
+      return <div>{groupDividerProps.group?.name}</div>;
+    };
+
+    const component = renderer.create(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableOneItems}
+        groups={groupOneGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // New items, same groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableTwoItems}
+        groups={groupOneGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // Same items, new groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableTwoItems}
+        groups={groupTwoGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // New items, same groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={tableOneItems}
+        groups={groupTwoGroups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('handles paged updates to items within groups', () => {
+    const roundOneItems = [
+      {
+        f1: 'A1',
+        f2: 'B1',
+        f3: 'C1',
+      },
+      undefined,
+      {
+        f1: 'A3',
+        f2: 'B3',
+        f3: 'C3',
+      },
+      undefined,
+    ];
+    const roundTwoItems = [
+      {
+        f1: 'A1',
+        f2: 'B1',
+        f3: 'C1',
+      },
+      {
+        f1: 'A2',
+        f2: 'B2',
+        f3: 'C2',
+      },
+      {
+        f1: 'A3',
+        f2: 'B3',
+        f3: 'C3',
+      },
+      {
+        f1: 'A4',
+        f2: 'B4',
+        f3: 'C4',
+      },
+    ];
+
+    const groups: IGroup[] = [
+      { key: 'two-1', name: 'two 1', count: 2, startIndex: 0 },
+      { key: 'two-2', name: 'two 2', count: 2, startIndex: 2 },
+    ];
+
+    const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (headerProps: IDetailsHeaderProps) => {
+      return (
+        <div>
+          {headerProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{column.name}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderRow = (rowProps: IDetailsRowProps) => {
+      return (
+        <div>
+          {rowProps.columns.map((column: IColumn) => {
+            return <div key={column.key}>{rowProps.item[column.key]}</div>;
+          })}
+        </div>
+      );
+    };
+
+    const onRenderMissingItem = () => {
+      return <div>Placeholder</div>;
+    };
+
+    const onRenderGroupHeader: IRenderFunction<IDetailsGroupDividerProps> = (
+      groupDividerProps: IDetailsGroupDividerProps,
+    ) => {
+      return <div>{groupDividerProps.group?.name}</div>;
+    };
+
+    const component = renderer.create(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        onRenderMissingItem={onRenderMissingItem}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={roundOneItems}
+        groups={groups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // New items, same groups
+
+    component.update(
+      <DetailsList
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderRow={onRenderRow}
+        onRenderMissingItem={onRenderMissingItem}
+        groupProps={{ onRenderHeader: onRenderGroupHeader }}
+        items={roundTwoItems}
+        groups={groups}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

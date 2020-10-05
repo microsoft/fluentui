@@ -2,8 +2,7 @@ import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { PivotPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Pivot/Pivot.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/PivotRelated.md') as string;
-const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PivotPage';
+const componentUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/PivotPage';
 
 export const PivotPageProps: TFabricPlatformPageProps = {
   web: {

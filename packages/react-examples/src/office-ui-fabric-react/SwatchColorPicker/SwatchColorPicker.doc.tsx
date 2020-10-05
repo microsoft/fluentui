@@ -9,7 +9,7 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',
   componentName: 'SwatchColorPicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SwatchColorPicker',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/SwatchColorPicker',
   examples: [
     {
       title: 'SwatchColorPicker',

@@ -17,7 +17,7 @@ const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!@fluentui/react-
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
   componentName: 'FocusZone',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-examples/src/react-focus/FocusZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-examples/src/react-focus/FocusZone',
   examples: [
     {
       title: 'Non-uniform photos within bidirectional FocusZone',

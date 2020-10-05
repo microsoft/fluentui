@@ -17,7 +17,7 @@ export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',
   componentName: 'DocumentCard',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DocumentCard',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/DocumentCard',
   examples: [
     {
       title: 'Default DocumentCard',

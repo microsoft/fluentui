@@ -1,8 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.144.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.144.2)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.144.1..office-ui-fabric-react_v7.144.2)
+
+### Patches
+
+- Fix paging within groups for GroupedList ([PR #15335](https://github.com/microsoft/fluentui/pull/15335) by tmichon@microsoft.com)
+
+## [7.144.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.144.1)
+
+Thu, 01 Oct 2020 12:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.144.0..office-ui-fabric-react_v7.144.1)
+
+### Patches
+
+- Fix propagation of GroupedList state ([PR #15321](https://github.com/microsoft/fluentui/pull/15321) by tmichon@microsoft.com)
+
+## [7.144.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.144.0)
+
+Wed, 30 Sep 2020 12:27:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.143.0..office-ui-fabric-react_v7.144.0)
+
+### Minor changes
+
+- update section header type to allow for it to be an item, to get itemProps ([PR #15123](https://github.com/microsoft/fluentui/pull/15123) by tabrumle@microsoft.com)
+
+## [7.143.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.143.0)
+
+Tue, 29 Sep 2020 12:27:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.142.1..office-ui-fabric-react_v7.143.0)
+
+### Minor changes
+
+- Ensure GroupedList version is invalidated when parent list is invalidated ([PR #15287](https://github.com/microsoft/fluentui/pull/15287) by tmichon@microsoft.com)
+
+## [7.142.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.1)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.142.0..office-ui-fabric-react_v7.142.1)
+
+### Patches
+
+- Remove incorrect react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/511a202a3a3d2ff1c3a1e8ed41cb779adaf82ef2) by elcraig@microsoft.com)
 
 ## [7.142.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.0)
 

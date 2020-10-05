@@ -11,7 +11,7 @@ export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
   componentName: 'ScrollablePane',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/ScrollablePane',
   examples: [
     {
       title: 'Default',

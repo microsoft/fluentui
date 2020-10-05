@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@fluentui/web-components_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "export DesignSystem interface",
+            "author": "chhol@microsoft.com",
+            "commit": "d5b08022819761ce2995073f9cc69019bc951625",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/web-components_v0.4.0",
       "version": "0.4.0",

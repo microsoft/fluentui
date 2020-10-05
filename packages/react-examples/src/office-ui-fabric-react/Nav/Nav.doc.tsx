@@ -13,7 +13,7 @@ const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/react-ex
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Nav',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Nav',
   examples: [
     {
       title: 'Basic nav with sample links',

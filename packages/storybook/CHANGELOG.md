@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.6)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.0..@fluentui/storybook_v0.5.6)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.0)
 

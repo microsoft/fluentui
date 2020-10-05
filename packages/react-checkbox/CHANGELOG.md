@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.14)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v0.3.8..@fluentui/react-checkbox_v0.3.14)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [0.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.8)
 

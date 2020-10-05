@@ -1,8 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.6)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.2..@uifabric/experiments_v7.33.6)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
+
+## [7.33.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.2)
+
+Mon, 28 Sep 2020 12:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.1..@uifabric/experiments_v7.33.2)
+
+### Patches
+
+- Change doc links to point to 7.0 branch ([commit](https://github.com/microsoft/fluentui/commit/3e968de0afa15de7bcc988cd04dd2ed4133068ff) by elcraig@microsoft.com)
 
 ## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.1)
 

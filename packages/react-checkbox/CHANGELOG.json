@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@fluentui/react-checkbox_v0.3.14",
+      "version": "0.3.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "17b03b14a3278ad716f57a81f8bb2547c3bd28db",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/react-checkbox_v0.3.8",
       "version": "0.3.8",

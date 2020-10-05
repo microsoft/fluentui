@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.8.19",
+      "version": "7.8.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change doc links to point to 7.0 branch",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e968de0afa15de7bcc988cd04dd2ed4133068ff",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.8.18",
       "version": "7.8.18",

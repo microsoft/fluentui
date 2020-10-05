@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@uifabric/experiments_v7.33.6",
+      "version": "7.33.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "17b03b14a3278ad716f57a81f8bb2547c3bd28db",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Sep 2020 12:28:49 GMT",
+      "tag": "@uifabric/experiments_v7.33.2",
+      "version": "7.33.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change doc links to point to 7.0 branch",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e968de0afa15de7bcc988cd04dd2ed4133068ff",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@uifabric/experiments_v7.33.1",
       "version": "7.33.1",

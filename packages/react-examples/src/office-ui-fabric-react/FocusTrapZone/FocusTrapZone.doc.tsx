@@ -24,7 +24,7 @@ export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
   componentName: 'FocusTrapZone',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/FocusTrapZone',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/FocusTrapZone',
   examples: [
     {
       title: 'Simple box',

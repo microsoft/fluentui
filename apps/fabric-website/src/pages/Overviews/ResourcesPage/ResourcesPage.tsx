@@ -3,8 +3,7 @@ import { Markdown, PlatformContext, Page, IPageProps, IPageSectionProps } from '
 import { ResourcesPageProps } from './ResourcesPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
 
 export interface IResourcesPageProps extends IPageProps<Platforms> {}
 

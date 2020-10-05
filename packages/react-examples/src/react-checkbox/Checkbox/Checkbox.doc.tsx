@@ -13,7 +13,7 @@ export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
   componentName: 'Checkbox',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/@fluentui/react-checkbox/src/components/Checkbox',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/@fluentui/react-checkbox/src/components/Checkbox',
   examples: [
     {
       title: 'Basic Checkboxes',

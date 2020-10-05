@@ -21,7 +21,7 @@ export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',
   componentName: 'CommandBar',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/CommandBar',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/CommandBar',
   examples: [
     {
       title: 'CommandBar with overflowing menu items',

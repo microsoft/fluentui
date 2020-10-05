@@ -2,6 +2,36 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.123",
+      "version": "8.0.0-alpha.123",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "17b03b14a3278ad716f57a81f8bb2547c3bd28db",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Sep 2020 12:27:52 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.121",
+      "version": "8.0.0-alpha.121",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update section header type to allow for it to be an item, to get itemProps",
+            "author": "tabrumle@microsoft.com",
+            "commit": "d27600ab0a00c50e482f8d77ff79c120d4cb462c",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.118",
       "version": "8.0.0-alpha.118",

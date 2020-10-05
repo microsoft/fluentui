@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.5.0)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.4.0..@fluentui/web-components_v0.5.0)
+
+### Minor changes
+
+- export DesignSystem interface ([PR #15313](https://github.com/microsoft/fluentui/pull/15313) by chhol@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.4.0)
 

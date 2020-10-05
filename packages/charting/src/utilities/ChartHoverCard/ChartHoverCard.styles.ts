@@ -1,7 +1,7 @@
 import { IChartHoverCardStyles, IChartHoverCardStyleProps } from './ChartHoverCard.types';
-
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChartHoverCardStyles => {
-  const { color, XValue, theme } = props;
+  const { color, XValue, theme, isRatioPresent = false } = props;
   return {
     calloutContentRoot: [
       {
@@ -48,6 +48,34 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
         color: color ? color : theme.semanticColors.bodyText,
         fontWeight: 'bold',
         lineHeight: '36px',
+      },
+    ],
+    calloutInfoContainer: [
+      isRatioPresent && {
+        display: 'flex',
+        alignItems: 'flex-end',
+      },
+    ],
+    ratio: [
+      theme.fonts.small,
+      {
+        marginLeft: '6px',
+        color: theme.semanticColors.bodyText,
+      },
+    ],
+    numerator: {
+      fontWeight: FontWeights.bold,
+    },
+    denominator: {
+      fontWeight: FontWeights.semibold,
+    },
+    descriptionMessage: [
+      theme.fonts.small,
+      {
+        color: theme.semanticColors.bodyText,
+        marginTop: '10px',
+        paddingTop: '10px',
+        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
   };

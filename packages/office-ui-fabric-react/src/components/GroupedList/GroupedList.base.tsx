@@ -21,8 +21,11 @@ const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListSty
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastSelectionMode?: SelectionMode;
+  selectionMode?: IGroupedListProps['selectionMode'];
+  compact?: IGroupedListProps['compact'];
   groups?: IGroup[];
+  items?: IGroupedListProps['items'];
+  listProps?: IGroupedListProps['listProps'];
   version: {};
 }
 
@@ -44,28 +47,31 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     nextProps: IGroupedListProps,
     previousState: IGroupedListState,
   ): IGroupedListState {
-    let nextState = previousState;
+    const { groups, selectionMode, compact, items, listProps } = nextProps;
+    const listVersion = listProps && listProps.version;
 
-    const { listProps: { version = undefined } = {} } = nextProps;
+    let nextState = {
+      ...previousState,
+      selectionMode,
+      compact,
+      groups,
+      listProps,
+    };
 
-    if (version) {
-      nextState = {
-        ...nextState,
-        version,
-      };
-    }
-
-    const { groups, selectionMode, compact } = nextProps;
     let shouldForceUpdates = false;
 
-    if (nextProps.groups !== groups) {
-      nextState = {
-        ...nextState,
-        groups: nextProps.groups,
-      };
-    }
+    const previousListVersion = previousState.listProps && previousState.listProps.version;
 
-    if (nextProps.selectionMode !== selectionMode || nextProps.compact !== compact) {
+    if (
+      listVersion !== previousListVersion ||
+      items !== previousState.items ||
+      groups !== previousState.groups ||
+      selectionMode !== previousState.selectionMode ||
+      compact !== previousState.compact
+    ) {
+      // If there are any props not passed explicitly to `List` which have an impact on the behavior of `onRenderCell`,
+      // these need to 'force-update' this component by revving the version. Otherwise, the List might render with stale
+      // data.
       shouldForceUpdates = true;
     }
 
@@ -90,6 +96,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this.state = {
       groups: props.groups,
+      items: props.items,
+      listProps: props.listProps,
       version,
     };
   }

@@ -1,13 +1,32 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
+import { ChartHoverCard, VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
+interface IVerticalChartState {
+  width: number;
+  height: number;
+}
+export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, IVerticalChartState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
+    this.state = {
+      width: 650,
+      height: 350,
+    };
   }
 
   public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const points = [
       {
         x: 0,
@@ -75,11 +94,34 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         yAxisCalloutData: '33%',
       },
     ];
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <div style={{ width: '650px', height: '400px' }}>
-        <VerticalBarChart data={points} width={650} height={400} chartLabel={'Basic Chart with Numeric Axes'} />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <VerticalBarChart
+            data={points}
+            width={this.state.width}
+            height={this.state.height}
+            chartLabel={'Basic Chart with Numeric Axes'}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCalloutPerDataPoint={props =>
+              props ? (
+                <ChartHoverCard
+                  XValue={props.xAxisCalloutData}
+                  Legend={props.legend}
+                  YValue={props.yAxisCalloutData || props.x}
+                  color={props.color}
+                />
+              ) : null
+            }
+          />
+        </div>
+      </>
     );
   }
 }

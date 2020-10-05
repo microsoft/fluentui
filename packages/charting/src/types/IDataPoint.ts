@@ -342,3 +342,33 @@ export interface IGVForBarChart {
    */
   [key: string]: IGVBarChartSeriesPoint;
 }
+
+export interface IHeatMapChartDataPoint {
+  x: string | Date | number;
+  y: string | Date | number;
+  value: number;
+  /**
+   * The value/ text to be rendered in the rectange
+   */
+  rectText?: string | number;
+  /**
+   * denomination to show in the callout
+   */
+  ratio?: [number, number];
+  /**
+   * description message to the callout
+   */
+  descriptionMessage?: string;
+}
+
+export interface IHeatMapChartData {
+  /**
+   * name of the legend
+   */
+  legend: string;
+  data: IHeatMapChartDataPoint[];
+  /**
+   * This  number will be used to get the color for the legend
+   */
+  value: number;
+}

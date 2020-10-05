@@ -3,7 +3,7 @@ import { DatePickerPageProps as ExternalProps } from '@fluentui/react-examples/l
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/DatePickerRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/DatePickerPage';
 
 export const DatePickerPageProps: TFabricPlatformPageProps = {
   web: {

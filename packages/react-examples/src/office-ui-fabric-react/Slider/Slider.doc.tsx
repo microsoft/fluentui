@@ -11,7 +11,7 @@ export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/undefined',
+    'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/undefined',
   examples: [
     {
       title: 'Horizontal sliders',

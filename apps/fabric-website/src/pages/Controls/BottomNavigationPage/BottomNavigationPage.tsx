@@ -5,7 +5,7 @@ import { BottomNavigationPageProps } from './BottomNavigationPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/BottomNavigationPage/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/BottomNavigationPage/';
 
 export const BottomNavigationPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (

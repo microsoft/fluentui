@@ -26,7 +26,7 @@ function getCurrentHash() {
 
 const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
-  : 'master';
+  : '7.0';
 
 // https://github.com/screener-io/screener-storybook#config-options
 const config = {

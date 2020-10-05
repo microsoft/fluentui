@@ -10,8 +10,7 @@ const ToggleCustomLabelExampleCode = require('!raw-loader!@fluentui/react-exampl
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
   componentName: 'Toggle',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/office-ui-fabric-react/src/components/Toggle',
   examples: [
     {
       title: 'Basic Toggles',

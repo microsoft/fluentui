@@ -8,7 +8,7 @@ const LinkBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/r
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
   componentName: 'Link',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-link/src/components/Link',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/7.0/packages/react-link/src/components/Link',
   examples: [
     {
       title: 'Link Basic',

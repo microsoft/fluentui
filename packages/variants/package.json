@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/variants",
-  "version": "7.2.21",
+  "version": "7.2.22",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
