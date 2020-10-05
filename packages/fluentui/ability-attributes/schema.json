@@ -506,6 +506,21 @@
         }
       }
     },
+    "TreeItemList": {
+      "inherits": "TreeItem",
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listitem",
+              "overrides": "role",
+              "overridable": "role"
+            }
+          ]
+        }
+      }
+    },
     "TreeItemOption": {
       "inherits": "TreeItem",
       "parameters": [
@@ -580,6 +595,21 @@
             },
             {
               "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitleList": {
+      "inherits": "TreeTitle",
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listitem",
+              "overrides": "role",
+              "overridable": "role"
             }
           ]
         }

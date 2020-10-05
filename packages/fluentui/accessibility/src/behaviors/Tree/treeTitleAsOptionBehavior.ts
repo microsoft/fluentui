@@ -33,8 +33,8 @@ export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = 
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    if (props.hasSubtree) definition.attributes.root['data-aa-class'] = 'ExpandableTreeTitle';
-    else definition.attributes.root['data-aa-class'] = 'TreeTitleOption';
+    if (!props.hasSubtree) definition.attributes.root['data-aa-class'] = 'TreeTitleOption';
+    else definition.attributes.root['data-aa-class'] = behavior.attributes.root['data-aa-class'];
   }
 
   return definition;
