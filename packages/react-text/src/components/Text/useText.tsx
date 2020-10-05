@@ -1,17 +1,10 @@
 import * as React from 'react';
-import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+
+import { renderText } from './renderText';
 import { TextProps } from './Text.types';
 
 const mergeProps = makeMergeProps();
-
-/**
- * Define the render function. Given the state of a text, renders it.
- */
-export const renderText = (state: TextProps) => {
-  const { slots, slotProps } = getSlots(state, [] /* there are no slots in Text */);
-
-  return <slots.root {...slotProps.root} />;
-};
 
 /**
  * Given user props, returns state and render function for a Text.
