@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
+import {
+  IChartProps,
+  ILineChartPoints,
+  ILineChartProps,
+  LineChart,
+  ChartHoverCard,
+  ICustomizedCalloutData,
+} from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 interface IStyledLineChartExampleState {
@@ -65,6 +72,17 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             hideLegend={true}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+              props ? (
+                <ChartHoverCard
+                  XValue={'Custom XVal'}
+                  Legend={'Custom Legend'}
+                  YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
+                  color={'red'}
+                />
+              ) : null
+            }
           />
         </div>
       </>

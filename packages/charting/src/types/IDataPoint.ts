@@ -372,3 +372,20 @@ export interface IHeatMapChartData {
    */
   value: number;
 }
+
+export interface ICustomizedCalloutDataPoint {
+  legend: string;
+  y: number;
+  color: string;
+  xAxisCalloutData?: string;
+  yAxisCalloutData?: string | { [id: string]: number };
+}
+
+/**
+ * Used for custom callout data interface. As Area chart callout data will be prepared from given props.data,
+ * Those required data passing to onRenderCalloutPerDataPoint and onRenderCalloutPerStack.
+ */
+export interface ICustomizedCalloutData {
+  x: number | string | Date;
+  values: ICustomizedCalloutDataPoint[];
+}
