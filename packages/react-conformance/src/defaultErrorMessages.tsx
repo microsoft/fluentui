@@ -9,12 +9,35 @@ import parseDocblock from './utils/parseDocblock';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
-// An array of all the failed isConformant tests for the component.
-const failedTests: string[] = [];
-
+/**
+ * General structure of isConformant error messages:
+ * 1. Call __defaultErrorMessage()__ and pass in the `testName`, `displayName`, and the `errorMessage`.
+ *    It will return:
+ *
+ *    `testName`
+ *
+ *    It appears that `displayName` does not have a `errorMessage`
+ *
+ * 2. Call __resolveErrorMessages()__ and pass in a array of `resolveErrorMessages` to help solve the error.
+ *    It will return:
+ *
+ *    To resolve this issue:
+ *    [`resolveErrorMessages`]
+ *
+ * 3. Call __receivedErrorMessage__ and pass in the `error` caught from the isConformant test.
+ *    It will return:
+ *
+ *    Here's the full error message:
+ *
+ *    `error`
+ *
+ * 4. Reference __errorMessageColors__ and color code the passed arguments for `errorMessage` and
+ *    `resolveErrorMessages` array accordingly.
+ */
 export const defaultErrorMessages = {
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
+    const { testErrorName, testErrorInfo, testErrorPath, resolveInfo } = errorMessageColors;
     const fileName = path.basename(componentPath);
     const docblock = parseDocblock(componentInfo.description);
     const docBlockLength = _.words(docblock.description).length.toString();
@@ -29,15 +52,15 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `has-docblock`,
           displayName,
-          'docblock in the file: ' + paragraph() + chalk.green.italic(componentPath),
+          'docblock in the file: ' + paragraph() + testErrorPath(componentPath),
         ) +
           resolveErrorMessages([
             `Consider adding a descriptive` +
-              chalk.hex('#e00000')(' 5 ') +
+              resolveInfo(' 5 ') +
               'to' +
-              chalk.hex('#e00000')(' 25 ') +
+              resolveInfo(' 25 ') +
               'word docblock in ' +
-              chalk.hex('#e00000')(fileName),
+              resolveInfo(fileName),
           ]),
         receivedErrorMessage(error),
       );
@@ -56,20 +79,19 @@ export const defaultErrorMessages = {
           `has-docblock`,
           displayName,
           'docblock between 5 and 25 words. It has a word count of: ' +
-            chalk.green.italic(docBlockLength) +
+            testErrorInfo(docBlockLength) +
             paragraph() +
             'Here is ' +
-            chalk.white(displayName) +
-            chalk.white(`'s`) +
+            testErrorName(displayName + `'s`) +
             ' docblock: ' +
             paragraph() +
-            chalk.green.italic(docblock.description),
+            testErrorInfo(docblock.description),
         ) +
           resolveErrorMessages([
             `Make sure that your docblock meets the required word count of ` +
-              chalk.hex('#e00000')('5') +
+              resolveInfo('5') +
               ' to ' +
-              chalk.hex('#e00000')(`25`) +
+              resolveInfo(`25`) +
               ' words.',
           ]),
         receivedErrorMessage(error),
@@ -80,6 +102,7 @@ export const defaultErrorMessages = {
 
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, displayName } = testInfo;
+    const { testErrorPath, resolveInfo } = errorMessageColors;
     const fileName = path.basename(componentPath);
 
     // Message Description: There are no matching exported components that match the displayName.
@@ -94,16 +117,18 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `exports-component`,
         displayName,
-        'export in: ' + paragraph() + chalk.green.italic(componentPath),
+        'export in: ' + paragraph() + testErrorPath(componentPath),
       ) +
         resolveErrorMessages([
           `Make sure that your component's ` +
-            chalk.hex('#e00000')(fileName) +
+            resolveInfo(fileName) +
             ' file contains an export for ' +
-            chalk.hex('#e00000')(displayName) +
+            resolveInfo(displayName) +
             '.',
-          'Check to see if you component uses export default and consider enabling' +
-            chalk.hex('#e00000')(' useDefaultExport ') +
+          'Check to see if you component uses' +
+            resolveInfo(' export default ') +
+            'and consider enabling' +
+            resolveInfo(' useDefaultExport ') +
             'in your isConformant test.',
         ]),
       receivedErrorMessage(error),
@@ -113,6 +138,7 @@ export const defaultErrorMessages = {
 
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath, requiredProps } = testInfo;
+    const { testErrorInfo, testErrorPath, resolveInfo } = errorMessageColors;
     const typesFile = componentPath.replace('tsx', 'types.ts');
 
     // Message Description: Handles scenario where a invalid return is received and the user provides requiredProps.
@@ -126,12 +152,9 @@ export const defaultErrorMessages = {
     // 3. Check to see if your component works as expected with mount and safeMount.
     if (requiredProps) {
       const formatRequiredProps = () => {
-        const results = [];
-        for (const libName of Object.keys(requiredProps)) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          results.push(libName + `: ${(requiredProps as any)[libName] + ', '}`);
-        }
-        return results.join('\n');
+        return Object.entries(requiredProps)
+          .map(([propName, propValue]) => `${propName}: ${propValue}`)
+          .join(',\n');
       };
 
       console.log(
@@ -140,23 +163,23 @@ export const defaultErrorMessages = {
           displayName,
           'valid return. It currently is receiving the requiredProps:' +
             paragraph() +
-            chalk.green(formatRequiredProps()) +
+            testErrorInfo(formatRequiredProps()) +
             paragraph() +
             'Check to see if you are including all of the required props in your types file: ' +
             paragraph() +
-            chalk.green.italic(typesFile),
+            testErrorPath(typesFile),
         ) +
           resolveErrorMessages([
             `Make sure that your are including all of the required props to render in isConformant ` +
-              chalk.hex('#e00000')('requiredProps') +
+              resolveInfo('requiredProps') +
               '.',
             `Make sure that your component's ` +
-              chalk.hex('#e00000')(displayName + '.base.tsx') +
+              resolveInfo(displayName + '.base.tsx') +
               ' file contains a valid return statement.',
             'Check to see if your component works as expected with' +
-              chalk.hex('#e00000')(' mount ') +
+              resolveInfo(' mount ') +
               'and' +
-              chalk.hex('#e00000')(' safeMount') +
+              resolveInfo(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
@@ -180,19 +203,19 @@ export const defaultErrorMessages = {
             paragraph() +
             `Check to see if you are missing any required props in your component's types file:` +
             paragraph() +
-            chalk.green.italic(typesFile),
+            testErrorPath(typesFile),
         ) +
           resolveErrorMessages([
             `Make sure that your are including all of the required props to render in isConformant ` +
-              chalk.hex('#e00000')('requiredProps') +
+              resolveInfo('requiredProps') +
               '.',
             `Make sure that your component's ` +
-              chalk.hex('#e00000')(displayName + '.base.tsx') +
+              resolveInfo(displayName + '.base.tsx') +
               ' file contains a valid return statement.',
             'Check to see if your component works as expected with' +
-              chalk.hex('#e00000')(' mount ') +
+              resolveInfo(' mount ') +
               'and' +
-              chalk.hex('#e00000')(' safeMount') +
+              resolveInfo(' safeMount') +
               '.',
           ]),
         receivedErrorMessage(error),
@@ -203,6 +226,7 @@ export const defaultErrorMessages = {
 
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, Component, displayName } = testInfo;
+    const { testErrorInfo, testErrorPath, resolveInfo } = errorMessageColors;
     const constructorName = Component.prototype?.constructor.name;
     const componentDisplayName = Component.displayName || constructorName;
     const fileName = path.basename(componentPath);
@@ -218,15 +242,15 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'display name in:' + paragraph() + chalk.green.italic(componentPath),
+          'display name in:' + paragraph() + testErrorPath(componentPath),
         ) +
           resolveErrorMessages([
             'Make sure that ' +
-              chalk.hex('#e00000')(fileName) +
+              resolveInfo(fileName) +
               ' contains ' +
-              chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(`'` + displayName + `'`),
-            'Check to see if something is removing ' + chalk.hex('#e00000')(displayName + `'s`) + ` displayName.`,
+              resolveInfo(displayName + '.displayName = ') +
+              resolveInfo(`'` + displayName + `'`),
+            'Check to see if something is removing ' + resolveInfo(displayName + `'s`) + ` displayName.`,
           ]) +
           receivedErrorMessage(error),
       );
@@ -242,14 +266,14 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received: ' + chalk.green(componentDisplayName.replace('Styled', '')),
+          'correct display name. It received: ' + testErrorInfo(componentDisplayName.replace('Styled', '')),
         ) +
           resolveErrorMessages([
             'Make sure that ' +
-              chalk.hex('#e00000')(fileName) +
+              resolveInfo(fileName) +
               ' contains ' +
-              chalk.hex('#e00000')(displayName + '.displayName = ') +
-              chalk.hex('#e00000')(`'` + displayName + `'`),
+              resolveInfo(displayName + '.displayName = ') +
+              resolveInfo(`'` + displayName + `'`),
           ]) +
           receivedErrorMessage(error),
       );
@@ -259,6 +283,7 @@ export const defaultErrorMessages = {
 
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
     const fileName = path.basename(componentPath, path.extname(componentPath));
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
@@ -274,13 +299,12 @@ export const defaultErrorMessages = {
         'matching filename.' +
           paragraph() +
           'It received a filename called ' +
-          chalk.green(fileName) +
+          testErrorInfo(fileName) +
           ' instead of ' +
-          chalk.green(displayName),
+          testErrorInfo(displayName),
       ) +
         resolveErrorMessages([
-          `Make sure that your component's filename matches the isConformant displayName: ` +
-            chalk.hex('#e00000')(displayName),
+          `Make sure that your component's filename matches the isConformant displayName: ` + resolveInfo(displayName),
         ]) +
         receivedErrorMessage(error),
     );
@@ -289,6 +313,7 @@ export const defaultErrorMessages = {
 
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
+    const { testErrorPath, resolveInfo } = errorMessageColors;
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const indexFile = path.join(rootPath, 'src', 'index');
 
@@ -302,15 +327,15 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `exported-top-level`,
         displayName,
-        'top level export in:' + paragraph() + chalk.green.italic(indexFile),
+        'top level export in:' + paragraph() + testErrorPath(indexFile),
       ) +
         resolveErrorMessages([
           `Make sure that your component's ` +
-            chalk.hex('#e00000')('index.ts') +
+            resolveInfo('index.ts') +
             ' file contains ' +
-            chalk.hex('#e00000')(`export * from './` + displayName + `';`),
+            resolveInfo(`export * from './` + displayName + `';`),
           'Check if your component is internal and consider enabling' +
-            chalk.hex('#e00000')(' isInternal ') +
+            resolveInfo(' isInternal ') +
             'in your isConformant test.',
         ]),
       receivedErrorMessage(error),
@@ -320,6 +345,7 @@ export const defaultErrorMessages = {
 
   'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, componentPath } = testInfo;
+    const { testErrorPath, resolveInfo } = errorMessageColors;
     const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
     const topLevelFile = path.join(rootPath, 'src', displayName);
 
@@ -333,13 +359,12 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `has-top-level-file`,
         displayName,
-        'top level file in:' + paragraph() + chalk.green.italic(topLevelFile),
+        'top level file in:' + paragraph() + testErrorPath(topLevelFile),
       ) +
         resolveErrorMessages([
-          `Make sure that your component's folder and name match it's displayName: ` +
-            chalk.hex('#e00000')(displayName),
+          `Make sure that your component's folder and name match it's displayName: ` + resolveInfo(displayName),
           'Check if your component is internal and consider enabling' +
-            chalk.hex('#e00000')(' isInternal ') +
+            resolveInfo(' isInternal ') +
             'in your isConformant test.',
         ]) +
         receivedErrorMessage(error),
@@ -349,6 +374,7 @@ export const defaultErrorMessages = {
 
   'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
     const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
     const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
 
@@ -362,16 +388,16 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `is-static-property-of-parent`,
         displayName,
-        'existing static property in: ' + chalk.green.italic(dirName),
+        'existing static property in: ' + testErrorInfo(dirName),
       ) +
         resolveErrorMessages([
           'Include the child component: ' +
-            chalk.hex('#e00000')(displayName) +
+            resolveInfo(displayName) +
             ' as a static property of the parent: ' +
-            chalk.hex('#e00000')(dirName) +
+            resolveInfo(dirName) +
             '.',
           'Check to see if ' +
-            chalk.hex('#e00000')(displayName) +
+            resolveInfo(displayName) +
             ` is a parent component but contained in a directory with a different name.`,
         ]) +
         receivedErrorMessage(error),
@@ -381,6 +407,7 @@ export const defaultErrorMessages = {
 
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
+    const { testErrorName, testErrorInfo, resolveInfo } = errorMessageColors;
     const props = Object.keys(componentInfo.props);
     const ariaProps = [];
     const kebabAriaProps = [];
@@ -394,7 +421,7 @@ export const defaultErrorMessages = {
     }
 
     for (let i = 0; i < ariaProps.length; i++) {
-      ariaPropsDif.push(ariaProps[i] + ' → ' + chalk.green(kebabAriaProps[i]));
+      ariaPropsDif.push(ariaProps[i] + ' → ' + testErrorInfo(kebabAriaProps[i]));
     }
 
     // Message Description: Handles scenario where an aria prop doesn't match kebab-casing.
@@ -411,10 +438,10 @@ export const defaultErrorMessages = {
           paragraph() +
           'The received aria attributes should be renamed to:' +
           paragraph() +
-          chalk.white(formatObject(ariaPropsDif)),
+          testErrorName(formatObject(ariaPropsDif)),
       ) +
         resolveErrorMessages([
-          'Make sure that ' + chalk.hex('#e00000')(displayName + 's') + ` aria attribute props are using kebab-case.`,
+          'Make sure that ' + resolveInfo(displayName + 's') + ` aria attribute props are using kebab-case.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -423,6 +450,7 @@ export const defaultErrorMessages = {
 
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName, testOptions = {} } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
     const propNames = Object.keys(componentInfo.props);
     const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
     const callbackNames = [];
@@ -454,11 +482,11 @@ export const defaultErrorMessages = {
           paragraph() +
           'The received callback needs to be renamed:' +
           paragraph() +
-          chalk.green(formatObject(callbackNames)),
+          testErrorInfo(formatObject(callbackNames)),
       ) +
         resolveErrorMessages([
-          'Rename ' + chalk.hex('#e00000')(displayName + `'s`) + ` callback props to include "ed".`,
-          `Include the prop in TestOptions` + chalk.hex('#e00000')(' ignoreProps') + '.',
+          'Rename ' + resolveInfo(displayName + `'s`) + ` callback props to include "ed".`,
+          `Include the prop in TestOptions` + resolveInfo(' ignoreProps') + '.',
         ]) +
         receivedErrorMessage(error),
     );
@@ -467,6 +495,7 @@ export const defaultErrorMessages = {
 
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
 
     // Message Description: Receives an error when attempting to render as a functional component
     // or pass as to the next component.
@@ -480,17 +509,17 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-fc`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
           `If your component handles a forwardRef you will need to enable isConformant's ` +
-            chalk.hex('#e00000')('asPropHandlesRef') +
+            resolveInfo('asPropHandlesRef') +
             '.',
           `Make sure that your component's ` +
-            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            resolveInfo(displayName + '.base.tsx') +
             ' file contains a valid return statement.',
           'Check to see if your component works as expected with' +
-            chalk.hex('#e00000')(' mount ') +
+            resolveInfo(' mount ') +
             'and' +
-            chalk.hex('#e00000')(' safeMount') +
+            resolveInfo(' safeMount') +
             '.',
         ]) +
         receivedErrorMessage(error),
@@ -500,6 +529,7 @@ export const defaultErrorMessages = {
 
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
 
     // Message Description: Receives an error when attempting to render as a class component
     // or pass as to the next component.
@@ -513,17 +543,17 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-react-class`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
           `If your component handles a forwardRef you will need to enable isConformant's ` +
-            chalk.hex('#e00000')('asPropHandlesRef') +
+            resolveInfo('asPropHandlesRef') +
             '.',
           `Make sure that your component's ` +
-            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            resolveInfo(displayName + '.base.tsx') +
             ' file contains a valid return statement.',
           'Check to see if your component works as expected with' +
-            chalk.hex('#e00000')(' mount ') +
+            resolveInfo(' mount ') +
             'and' +
-            chalk.hex('#e00000')(' safeMount') +
+            resolveInfo(' safeMount') +
             '.',
         ]) +
         receivedErrorMessage(error),
@@ -533,6 +563,7 @@ export const defaultErrorMessages = {
 
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
 
     // Message Description: Receives an error when attempting to render as a functional component
     // or pass as to the next component.
@@ -546,17 +577,17 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-passes-as-value`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + chalk.hex('#e00000')(' requiredProps ') + `within the test's isConformant. `,
+          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
           `If your component handles a forwardRef you will need to enable isConformant's ` +
-            chalk.hex('#e00000')('asPropHandlesRef') +
+            resolveInfo('asPropHandlesRef') +
             '.',
           `Make sure that your component's ` +
-            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            resolveInfo(displayName + '.base.tsx') +
             ' file contains a valid return statement.',
           'Check to see if your component works as expected with' +
-            chalk.hex('#e00000')(' mount ') +
+            resolveInfo(' mount ') +
             'and' +
-            chalk.hex('#e00000')(' safeMount') +
+            resolveInfo(' safeMount') +
             '.',
         ]) +
         receivedErrorMessage(error),
@@ -566,6 +597,7 @@ export const defaultErrorMessages = {
 
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
 
     // Message Description: Receives an error when attempting to render as a functional component
     // or pass as to the next component.
@@ -579,17 +611,17 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-html`, displayName, `'as' property that can render HTML tags.`) +
         resolveErrorMessages([
-          'Make sure that your component can correctly render as' + chalk.hex('#e00000')(' HTML tags') + '.',
+          'Make sure that your component can correctly render as' + resolveInfo(' HTML tags') + '.',
           'Check if you are missing any' +
-            chalk.hex('#e00000')(' requiredProps ') +
+            resolveInfo(' requiredProps ') +
             'within the isConformant in your test file. ',
           `Make sure that your component's ` +
-            chalk.hex('#e00000')(displayName + '.base.tsx') +
+            resolveInfo(displayName + '.base.tsx') +
             ' file contains a valid return statement.',
           'Check to see if your component works as expected with' +
-            chalk.hex('#e00000')(' mount ') +
+            resolveInfo(' mount ') +
             'and' +
-            chalk.hex('#e00000')(' safeMount') +
+            resolveInfo(' safeMount') +
             '.',
         ]) +
         receivedErrorMessage(error),
@@ -599,53 +631,76 @@ export const defaultErrorMessages = {
 
   'display-failed-tests': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { displayName } = testInfo;
+    const { failedText, failedDisplayname, sectionBackground } = errorMessageColors;
+
     if (failedTests.length > 0) {
       console.log(
         paragraph() +
-          chalk.red.bold.underline(displayName) +
-          chalk.white.bold(' failed during the following isConformant tests:') +
+          failedDisplayname(displayName) +
+          failedText(' failed during the following isConformant tests:') +
           paragraph() +
-          chalk.white.bold.italic.bgHex('#2e2e2e')(formatObject(failedTests)),
+          sectionBackground(formatObject(failedTests)),
       );
     }
   },
+};
+
+// An array of all the failed isConformant tests for the component.
+const failedTests: string[] = [];
+
+// Console message colors used in the test.
+const errorMessageColors = {
+  // Colors for the defaultErrorMessage section.
+  testErrorText: chalk.yellow,
+  testErrorName: chalk.white,
+  testErrorInfo: chalk.green,
+  testErrorPath: chalk.green.italic,
+  // Colors for the resolveErrorMessages section.
+  resolveText: chalk.cyan,
+  resolveInfo: chalk.hex('#e00000'),
+  // Colors for the receivedErrorMessage section.
+  receivedErrorHeader: chalk.white.bold.bgRed,
+  // Colors for the display-failed-tests section.
+  failedText: chalk.white.bold,
+  failedDisplayname: chalk.red.bold.underline,
+  // Color for section headers.
+  sectionBackground: chalk.white.bold.italic.bgHex('#2e2e2e'),
 };
 
 /** Generates the message for resolving the test error.
  *  @param resolveMessages Why the test is failing.
  */
 function resolveErrorMessages(resolveMessages: string[]) {
+  const { resolveText, sectionBackground } = errorMessageColors;
   const resolveMessage = [];
 
   if (resolveMessages.length > 1) {
     for (let i = 0; i < resolveMessages.length; i++) {
-      resolveMessage.push(paragraph() + chalk.cyan(i + 1 + '. ' + resolveMessages[i]));
+      resolveMessage.push(paragraph() + resolveText(i + 1 + '. ' + resolveMessages[i]));
     }
   } else {
-    resolveMessage.push(paragraph() + chalk.cyan(resolveMessages[0]));
+    resolveMessage.push(paragraph() + resolveText(resolveMessages[0]));
   }
 
-  return (
-    paragraph() +
-    chalk.white.bold.italic.bgHex('#2e2e2e')('To resolve this issue:') +
-    resolveMessage.join('') +
-    paragraph()
-  );
+  return paragraph() + sectionBackground('To resolve this issue:') + resolveMessage.join('') + paragraph();
 }
 
-/** Generates the starting default error message: ( "It appears that __displayName__ doesn't have a __errorMessage__." )
- *  @param testName The conformance test's name.
- *  @param displayName The component's name.
- *  @param errorMessage Why the test is failing.
+/**
+ * Generates the starting default error message: ( "It appears that __displayName__ doesn't have a __errorMessage__." )
+ * @param testName The conformance test's name.
+ * @param displayName The component's name.
+ * @param errorMessage Why the test is failing.
  */
 function defaultErrorMessage(testName: string, displayName: string, errorMessage: string) {
+  const { testErrorText, testErrorName, sectionBackground } = errorMessageColors;
+
   return (
     paragraph() +
-    chalk.white.bold.italic.bgHex('#2e2e2e')(testName) +
+    sectionBackground(testName) +
     paragraph() +
-    chalk.yellow(`It appears that `) +
-    chalk.white(displayName) +
-    chalk.yellow(` doesn't have a ` + errorMessage) +
+    testErrorText(`It appears that `) +
+    testErrorName(displayName) +
+    testErrorText(` doesn't have a ` + errorMessage) +
     paragraph()
   );
 }
@@ -654,7 +709,9 @@ function defaultErrorMessage(testName: string, displayName: string, errorMessage
  *  @param error The caught error message in defaultTests.
  */
 function receivedErrorMessage(error: string) {
-  return paragraph() + chalk.white.bold.bgRed(`Here's the full error message:`) + paragraph() + error + paragraph(2);
+  const { receivedErrorHeader } = errorMessageColors;
+
+  return paragraph() + receivedErrorHeader(`Here's the full error message:`) + paragraph() + error + paragraph(2);
 }
 
 /** Generates a paragraph.
