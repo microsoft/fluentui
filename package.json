@@ -72,7 +72,7 @@
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
     "lerna": "^3.15.0",
-    "lage": "0.19.8",
+    "lage": "0.19.9",
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
