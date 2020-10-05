@@ -12,7 +12,7 @@ import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
  */
 export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = props => {
   const behavior = treeBehavior(props);
-  return _.merge(behavior, {
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         role: 'listbox',
@@ -23,4 +23,9 @@ export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = props => 
       title: treeTitleAsOptionBehavior,
     },
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    definition.attributes.root['data-aa-class'] = 'TreeListbox';
+  }
+  return definition;
 };

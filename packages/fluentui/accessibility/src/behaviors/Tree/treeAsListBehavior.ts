@@ -10,7 +10,7 @@ import { treeItemAsListItemBehavior } from './treeItemAsListItemBehavior';
  */
 export const treeAsListBehavior: Accessibility<TreeBehaviorProps> = props => {
   const behavior = treeBehavior(props);
-  return _.merge(behavior, {
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         role: 'list',
@@ -20,4 +20,9 @@ export const treeAsListBehavior: Accessibility<TreeBehaviorProps> = props => {
       item: treeItemAsListItemBehavior,
     },
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    definition.attributes.root['data-aa-class'] = 'TreeList';
+  }
+  return definition;
 };

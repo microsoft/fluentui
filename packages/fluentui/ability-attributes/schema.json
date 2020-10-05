@@ -28,6 +28,18 @@
     "$isValidRadioGroup": {
       "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby|@aria-label])",
       "description": "RadioGroup inside form should have aria-labelledby attribute"
+    },
+    "$isValidTree": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='treeitem']) or boolean(./*[@role!='treeitem' and @role!='group' and @role!='none']))",
+      "description": "Children of tree should have role='treeitem' or role='group'"
+    },
+    "$isValidTreeList": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='listitem']) or boolean(./*[@role!='listitem' and @role!='group' and @role!='none']))",
+      "description": "Children of tree as list should have role='listitem' or role='group'"
+    },
+    "$isValidTreeListbox": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='option']) or boolean(./*[@role!='option' and @role!='group' and @role!='none']))",
+      "description": "Children of tree as listbox should have role='option' or role='group'"
     }
   },
   "parameters": {
@@ -390,6 +402,24 @@
           ]
         }
       ]
+    },
+    "$isMultiselectable": {
+      "name": "isMultiselectable",
+      "attributes": [
+        {
+          "name": "aria-multiselectable",
+          "value": [
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": false,
+              "attribute": "false"
+            }
+          ]
+        }
+      ]
     }
   },
   "attributes": {
@@ -447,6 +477,95 @@
             {
               "name": "aria-level",
               "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    "Tree": {
+      "constraints": [
+        {
+          "ref": "$isValidTree"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$isMultiselectable",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "tree"
+            }
+          ]
+        }
+      }
+    },
+    "TreeList": {
+      "constraints": [
+        {
+          "ref": "$isValidTreeList"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "list"
+            }
+          ]
+        }
+      }
+    },
+    "TreeListbox": {
+      "constraints": [
+        {
+          "ref": "$isValidTreeListbox"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$isMultiselectable",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listbox"
             }
           ]
         }
