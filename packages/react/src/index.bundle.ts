@@ -1,3 +1,4 @@
+import './version';
 export * from './index';
 
 // Using the default import, include all icon definitions. Products that care

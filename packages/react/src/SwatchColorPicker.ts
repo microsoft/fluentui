@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/SwatchColorPicker';
+import './version';
+export * from './components/SwatchColorPicker/index';
