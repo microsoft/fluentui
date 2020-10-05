@@ -270,12 +270,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
     }
   };
-  const _onInputChange = (value: string, composing?: boolean) => {
+  const _onInputChange = (value: string, composing?: boolean, resultItemsList?: T[]) => {
     if (!composing) {
       // update query string
       setQueryString(value);
       !isSuggestionsShown ? showPicker(true) : null;
-      onInputChange ? onInputChange(value) : null;
+      if (!resultItemsList) {
+        resultItemsList = [];
+      }
+      onInputChange ? onInputChange(value, composing, resultItemsList) : null;
+
+      if (resultItemsList && resultItemsList.length > 0) {
+        addItems(resultItemsList);
+      }
     }
   };
   const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
