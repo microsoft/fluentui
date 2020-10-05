@@ -58,6 +58,34 @@ describe('ThemeProvider', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('sets correct dir', () => {
+    const wrapper = mount(
+      <ThemeProvider className="tp-1" theme={{ rtl: true }}>
+        <ThemeProvider className="tp-2" theme={{ rtl: false }}>
+          Hello
+        </ThemeProvider>
+      </ThemeProvider>,
+    );
+
+    const themeProvider1 = wrapper
+      .find('.tp-1')
+      .first()
+      .getDOMNode();
+    const themeProvider2 = wrapper
+      .find('.tp-2')
+      .first()
+      .getDOMNode();
+
+    expect(themeProvider1.getAttribute('dir')).toBe('rtl');
+    expect(themeProvider2.getAttribute('dir')).toBe('ltr');
+
+    wrapper.setProps({ theme: { rtl: false } });
+    expect(themeProvider1.getAttribute('dir')).toBe('ltr');
+    expect(themeProvider2.getAttribute('dir')).toBe(null);
+
+    wrapper.unmount();
+  });
+
   it('renders a div with styling', () => {
     const component = renderer.create(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
     const tree = component.toJSON();
