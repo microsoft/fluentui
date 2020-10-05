@@ -194,33 +194,12 @@ describe('Top Level Component File Conformance', () => {
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
     const packageName = componentPackageMap[componentName] || '@fluentui/react';
-    const packages = (window as any).__packages__;
 
     it(`${componentName} imports the ${packageName} version file`, () => {
-      try {
-        delete require.cache[file];
-        require(file);
+      delete require.cache[file];
+      require(file);
 
-        expect(packages[packageName]).not.toBeUndefined();
-      } catch (e) {
-        const versionImports: any = [];
-        const versionObject = () => {
-          for (const libName of Object.keys(packages)) {
-            versionImports.push(`${libName}: ${packages[libName].join(', ')}`);
-          }
-          return versionImports.join('\n');
-        };
-
-        if (packages === null) {
-          console.log(`There are no existing version imports in the @fluentui/react package.`);
-        } else {
-          console.log(
-            'There are no matching version imports for @fluentui/react. Here are the existing version imports:' +
-              versionObject(),
-          );
-          throw new Error('No corresponding @fluentui/react version import');
-        }
-      }
+      expect((window as any).__packages__[packageName]).not.toBeUndefined();
     });
   });
 });
