@@ -1,1 +1,3 @@
-export * from '@fluentui/react-internal/lib/Image';
+import { version } from 'process';
+
+export * from './components/Image/index';

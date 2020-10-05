@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../..//Utilities';
 
 /**
  * {@docCategory Image}
