@@ -10,6 +10,10 @@ export interface IUseFloatingSuggestionItems<T> {
   setfooterItemIndex: React.Dispatch<React.SetStateAction<number>>;
   footerItems: ISuggestionsHeaderFooterProps[];
   setFooterItems: React.Dispatch<React.SetStateAction<ISuggestionsHeaderFooterProps[]>>;
+  headerItemIndex: number;
+  setHeaderItemIndex: React.Dispatch<React.SetStateAction<number>>;
+  headerItems: ISuggestionsHeaderFooterProps[];
+  setHeaderItems: React.Dispatch<React.SetStateAction<ISuggestionsHeaderFooterProps[]>>;
   isSuggestionsShown: boolean;
   showPicker: (show: boolean) => void;
   selectNextSuggestion: () => void;
@@ -24,6 +28,8 @@ export const useFloatingSuggestionItems = <T extends {}>(
   focusSuggestionIndex?: number,
   focusFooterIndex?: number,
   footerSuggestionItems?: ISuggestionsHeaderFooterProps[],
+  focusHeaderIndex?: number,
+  headerSuggestionItems?: ISuggestionsHeaderFooterProps[],
   isSuggestionsVisible?: boolean,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
@@ -32,15 +38,18 @@ export const useFloatingSuggestionItems = <T extends {}>(
   const [footerItemIndex, setFooterItemIndex] = React.useState(focusFooterIndex || -1);
   const [footerItems, setFooterItems] = React.useState(footerSuggestionItems);
 
+  const [headerItemIndex, setHeaderItemIndex] = React.useState(focusHeaderIndex || -1);
+  const [headerItems, setHeaderItems] = React.useState(headerSuggestionItems);
+
   const [isSuggestionsShown, setIsSuggestionsShown] = React.useState(isSuggestionsVisible || false);
 
   React.useEffect(() => {
     setSuggestionItems(floatingSuggestionItems);
   }, [floatingSuggestionItems]);
 
-  const footerItemsHaveExecute = (): boolean => {
+  const headerFooterItemsHaveExecute = (items: ISuggestionsHeaderFooterProps[]): boolean => {
     let haveExecute = false;
-    footerItems!.forEach(item => {
+    items!.forEach(item => {
       if (item.onExecute !== undefined) {
         haveExecute = true;
       }
@@ -48,48 +57,37 @@ export const useFloatingSuggestionItems = <T extends {}>(
     return haveExecute;
   };
 
-  const hasSelectableFooters = footerItems ? footerItemsHaveExecute() : false;
+  const hasSelectableFooters = footerItems ? headerFooterItemsHaveExecute(footerItems) : false;
+  const hasSelectableHeaders = headerItems ? headerFooterItemsHaveExecute(headerItems) : false;
 
-  const selectNextSelectableFooter = () => {
-    if (!footerItems) {
-      return;
-    }
+  const getNextSelectableHeaderOrFooter = (items: ISuggestionsHeaderFooterProps[], itemIndex: number): number => {
     let nextIndex = -1;
-    let i = footerItemIndex + 1;
-    while (i < footerItems.length) {
-      if (footerItems[i].onExecute && footerItems[i].shouldShow()) {
-        nextIndex = i;
-        i = footerItems.length;
+    if (items) {
+      let i = itemIndex + 1;
+      while (i < items.length) {
+        if (items[i].onExecute && items[i].shouldShow()) {
+          nextIndex = i;
+          i = items.length;
+        }
+        i++;
       }
-      i++;
     }
-    if (nextIndex === -1) {
-      setFooterItemIndex(-1);
-      setFocusItemIndex(0);
-    } else {
-      setFooterItemIndex(nextIndex);
-    }
+    return nextIndex;
   };
 
-  const selectPreviousSelectableFooter = () => {
-    if (!footerItems) {
-      return;
-    }
+  const getPreviousSelectableHeaderOrFooter = (items: ISuggestionsHeaderFooterProps[], itemIndex: number): number => {
     let nextIndex = -1;
-    let i = footerItemIndex != -1 ? footerItemIndex - 1 : footerItems.length - 1;
-    while (i > -1) {
-      if (footerItems[i].onExecute && footerItems[i].shouldShow()) {
-        nextIndex = i;
-        i = -1;
+    if (items) {
+      let i = itemIndex != -1 ? itemIndex - 1 : items.length - 1;
+      while (i > -1) {
+        if (items[i].onExecute && items[i].shouldShow()) {
+          nextIndex = i;
+          i = -1;
+        }
+        i--;
       }
-      i--;
     }
-    if (nextIndex === -1) {
-      setFooterItemIndex(-1);
-      setFocusItemIndex(suggestionItems.length - 1);
-    } else {
-      setFooterItemIndex(nextIndex);
-    }
+    return nextIndex;
   };
 
   const showPicker = (show: boolean) => {
@@ -99,51 +97,131 @@ export const useFloatingSuggestionItems = <T extends {}>(
   };
 
   const selectNextSuggestion = (): void => {
-    if (suggestionItems && suggestionItems.length > 0 && footerItemIndex == -1) {
-      if (focusItemIndex === -1) {
-        setFocusItemIndex(0);
-      } else if (focusItemIndex < suggestionItems.length - 1) {
-        setFocusItemIndex(focusItemIndex + 1);
-      } else if (focusItemIndex === suggestionItems.length - 1) {
+    // We're currently selected on a header
+    if (headerItemIndex > -1) {
+      // First, try and find another header
+      const nextHeaderIndex = getNextSelectableHeaderOrFooter(headerItems!, headerItemIndex);
+      if (nextHeaderIndex != -1) {
+        setHeaderItemIndex(nextHeaderIndex);
+      } else {
+        // select the first suggestion item
+        setHeaderItemIndex(-1);
+        if (suggestionItems && suggestionItems.length > 0) {
+          // select the first suggestion item
+          setFocusItemIndex(0);
+        } else if (hasSelectableFooters) {
+          setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
+        }
+      }
+    }
+    // We're currently selected on a selected item
+    else if (focusItemIndex > -1) {
+      // If we're at the end of the list
+      if (focusItemIndex == suggestionItems.length - 1) {
         if (hasSelectableFooters) {
+          setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
           setFocusItemIndex(-1);
-          selectNextSelectableFooter();
+        } else if (hasSelectableHeaders) {
+          setHeaderItemIndex(getNextSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+          setFocusItemIndex(-1);
         } else {
           setFocusItemIndex(0);
         }
+      } else {
+        setFocusItemIndex(focusItemIndex + 1);
       }
-    } else if (footerItemIndex > -1) {
-      selectNextSelectableFooter();
+    }
+    // We're currently selected on a footer
+    else if (footerItemIndex > -1) {
+      // First, try and find another footer
+      const nextFooterIndex = getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex);
+      if (nextFooterIndex != -1) {
+        setFooterItemIndex(nextFooterIndex);
+      } else {
+        setFooterItemIndex(-1);
+        if (hasSelectableHeaders) {
+          setHeaderItemIndex(getNextSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+        } else if (suggestionItems && suggestionItems.length > 0) {
+          // select the first suggestion item
+          setFocusItemIndex(0);
+        }
+      }
+    }
+    // else, we have no items selected, so select the first one available
+    else {
+      if (hasSelectableHeaders) {
+        setHeaderItemIndex(getNextSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+      } else if (suggestionItems && suggestionItems.length > 0) {
+        // select the first suggestion item
+        setFocusItemIndex(0);
+      } else if (hasSelectableFooters) {
+        setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
+      }
+      // else, we stay in the state with nothing selected
     }
   };
 
   const selectPreviousSuggestion = (): void => {
+    // We're currently selected on a footer
     if (footerItemIndex > -1) {
-      if (footerItemIndex == 0) {
+      // First, try and find another footer
+      const previousFooterIndex = getPreviousSelectableHeaderOrFooter(footerItems!, footerItemIndex);
+      if (previousFooterIndex != -1) {
+        setFooterItemIndex(previousFooterIndex);
+      } else {
         setFooterItemIndex(-1);
         if (suggestionItems && suggestionItems.length > 0) {
+          // select the first suggestion item
+          setFocusItemIndex(suggestionItems.length - 1);
+        } else if (hasSelectableHeaders) {
+          setHeaderItemIndex(getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+        }
+      }
+    }
+    // We're currently selected on a selected item
+    else if (focusItemIndex > -1) {
+      // If we're at the beginning of the list
+      if (focusItemIndex == 0) {
+        setFocusItemIndex(-1);
+        if (hasSelectableHeaders) {
+          setHeaderItemIndex(getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+        } else if (hasSelectableFooters) {
+          setFooterItemIndex(getPreviousSelectableHeaderOrFooter(footerItems!, footerItemIndex));
+        } else {
           setFocusItemIndex(suggestionItems.length - 1);
         }
       } else {
-        selectPreviousSelectableFooter();
-      }
-    } else if (suggestionItems && suggestionItems.length > 0) {
-      if (focusItemIndex === -1) {
-        if (hasSelectableFooters) {
-          selectPreviousSelectableFooter();
-        } else {
-          setFocusItemIndex(suggestionItems.length - 1);
-        }
-      } else if (focusItemIndex > 0) {
         setFocusItemIndex(focusItemIndex - 1);
-      } else if (focusItemIndex === 0) {
+      }
+    }
+    // We're currently selected on a header
+    else if (headerItemIndex > -1) {
+      // First, try and find another header
+      const nextHeaderIndex = getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex);
+      if (nextHeaderIndex != -1) {
+        setHeaderItemIndex(nextHeaderIndex);
+      } else {
+        // select the first suggestion item
+        setHeaderItemIndex(-1);
         if (hasSelectableFooters) {
-          selectPreviousSelectableFooter();
-          setFocusItemIndex(-1);
-        } else {
+          setFooterItemIndex(getPreviousSelectableHeaderOrFooter(footerItems!, footerItemIndex));
+        } else if (suggestionItems && suggestionItems.length > 0) {
+          // select the first suggestion item
           setFocusItemIndex(suggestionItems.length - 1);
         }
       }
+    }
+    // else, we have no items selected, so select the last one available
+    else {
+      if (hasSelectableFooters) {
+        setFooterItemIndex(getPreviousSelectableHeaderOrFooter(footerItems!, footerItemIndex));
+      } else if (suggestionItems && suggestionItems.length > 0) {
+        // select the last suggestion item
+        setFocusItemIndex(suggestionItems.length - 1);
+      } else if (hasSelectableHeaders) {
+        setHeaderItemIndex(getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex));
+      }
+      // else, we stay in the state with nothing selected
     }
   };
 
@@ -170,6 +248,10 @@ export const useFloatingSuggestionItems = <T extends {}>(
     setFooterItemIndex: setFooterItemIndex,
     footerItems: footerItems,
     setFooterItems: setFooterItems,
+    headerItemIndex: headerItemIndex,
+    setHeaderItemIndex: setHeaderItemIndex,
+    headerItems: headerItems,
+    setHeaderItems: setHeaderItems,
     isSuggestionsShown: isSuggestionsShown,
     showPicker: showPicker,
     selectNextSuggestion: selectNextSuggestion,

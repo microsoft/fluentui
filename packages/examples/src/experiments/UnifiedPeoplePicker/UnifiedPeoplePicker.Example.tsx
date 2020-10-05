@@ -66,6 +66,19 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
     return {
+      /*headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            alert('People suggestions selected');
+          },
+        },
+      ],*/
       footerItemsProps: [
         {
           renderItem: () => {
@@ -74,6 +87,9 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
           shouldShow: () => {
             return peopleSuggestions.length > 0;
           },
+          /*onExecute: () => {
+            alert('Showing people suggestions executed');
+          },*/
         },
         {
           renderItem: () => {

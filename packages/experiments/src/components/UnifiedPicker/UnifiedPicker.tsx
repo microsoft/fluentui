@@ -34,6 +34,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     suggestions,
     selectedSuggestionIndex,
     selectedFooterIndex,
+    selectedHeaderIndex,
     pickerSuggestionsProps,
     isSuggestionsVisible,
   } = props.floatingSuggestionProps;
@@ -47,6 +48,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     suggestionItems,
     footerItemIndex,
     footerItems,
+    headerItemIndex,
+    headerItems,
     isSuggestionsShown,
     showPicker,
     selectPreviousSuggestion,
@@ -56,6 +59,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectedSuggestionIndex,
     selectedFooterIndex,
     pickerSuggestionsProps?.footerItemsProps,
+    selectedHeaderIndex,
+    pickerSuggestionsProps?.headerItemsProps,
     isSuggestionsVisible,
   );
 
@@ -252,6 +257,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
             } else if (footerItemIndex >= 0) {
               // execute the footer action
               footerItems![footerItemIndex].onExecute!();
+            } else if (headerItemIndex >= 0) {
+              // execute the header action
+              headerItems![headerItemIndex].onExecute!();
             }
           }
           break;
@@ -358,6 +366,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       suggestions: suggestionItems,
       selectedSuggestionIndex: focusItemIndex,
       selectedFooterIndex: footerItemIndex,
+      selectedHeaderIndex: headerItemIndex,
       pickerSuggestionsProps: pickerSuggestionsProps,
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
