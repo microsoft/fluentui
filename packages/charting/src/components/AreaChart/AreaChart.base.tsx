@@ -8,6 +8,7 @@ import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CartesianChart,
   IChartProps,
+  ICustomizedCalloutData,
   IAreaChartProps,
   IRefArrayData,
   IBasestate,
@@ -37,6 +38,8 @@ export interface IAreaChartState extends IBasestate {
   displayOfLine: string;
   activeCircleId: string;
   isCircleClicked: boolean;
+  dataPointCalloutProps?: ICustomizedCalloutData;
+  stackCalloutProps?: ICustomizedCalloutData;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -116,6 +119,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         tickParams={tickParams}
         maxOfYVal={stackedInfo.maxOfYVal}
         getGraphData={this._getGraphData}
+        customizedCallout={this._getCustomizedCallout()}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -199,6 +203,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       stackedInfo,
       calloutPoints,
     };
+  };
+
+  private _getCustomizedCallout = () => {
+    return this.props.onRenderCalloutPerStack
+      ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
+      : this.props.onRenderCalloutPerDataPoint
+      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+      : null;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -316,6 +328,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       displayOfLine: 'visibility',
       activeCircleId: circleId,
       isCircleClicked: false,
+      stackCalloutProps: found!,
+      dataPointCalloutProps: found!,
     });
   };
 
@@ -349,6 +363,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           displayOfLine: 'visibility',
           activeCircleId: circleId,
           isCircleClicked: false,
+          stackCalloutProps: found!,
+          dataPointCalloutProps: found!,
         });
       }
     });

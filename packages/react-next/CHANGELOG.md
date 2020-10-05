@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 30 Sep 2020 12:27:52 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.123](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.123)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.121..@fluentui/react-next_v8.0.0-alpha.123)
+
+### Changes
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.121](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.121)
 

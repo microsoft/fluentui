@@ -1,8 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 01 Oct 2020 12:27:45 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.4.0)
+
+Fri, 02 Oct 2020 12:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.3.0..@uifabric/charting_v4.4.0)
+
+### Minor changes
+
+-  implemented heat chart and introduced some api's in cartesian base to support heat chart ([PR #15296](https://github.com/microsoft/fluentui/pull/15296) by v-sivsar@microsoft.com)
+
+### Patches
+
+- Fix imports to reference physical files. ([PR #15339](https://github.com/microsoft/fluentui/pull/15339) by xgao@microsoft.com)
 
 ## [4.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.3.0)
 

@@ -571,3 +571,8 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
   })
   public neutralOutlineFocusDelta: number;
 }
+
+export type FluentDesignSystem = Omit<
+  DesignSystem,
+  'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'
+>;

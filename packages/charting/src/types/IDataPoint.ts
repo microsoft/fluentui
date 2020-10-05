@@ -342,3 +342,50 @@ export interface IGVForBarChart {
    */
   [key: string]: IGVBarChartSeriesPoint;
 }
+
+export interface IHeatMapChartDataPoint {
+  x: string | Date | number;
+  y: string | Date | number;
+  value: number;
+  /**
+   * The value/ text to be rendered in the rectange
+   */
+  rectText?: string | number;
+  /**
+   * denomination to show in the callout
+   */
+  ratio?: [number, number];
+  /**
+   * description message to the callout
+   */
+  descriptionMessage?: string;
+}
+
+export interface IHeatMapChartData {
+  /**
+   * name of the legend
+   */
+  legend: string;
+  data: IHeatMapChartDataPoint[];
+  /**
+   * This  number will be used to get the color for the legend
+   */
+  value: number;
+}
+
+export interface ICustomizedCalloutDataPoint {
+  legend: string;
+  y: number;
+  color: string;
+  xAxisCalloutData?: string;
+  yAxisCalloutData?: string | { [id: string]: number };
+}
+
+/**
+ * Used for custom callout data interface. As Area chart callout data will be prepared from given props.data,
+ * Those required data passing to onRenderCalloutPerDataPoint and onRenderCalloutPerStack.
+ */
+export interface ICustomizedCalloutData {
+  x: number | string | Date;
+  values: ICustomizedCalloutDataPoint[];
+}

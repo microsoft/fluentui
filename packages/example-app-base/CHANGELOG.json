@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 02 Oct 2020 12:28:46 GMT",
+      "tag": "@uifabric/example-app-base_v7.15.23",
+      "version": "7.15.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "17b03b14a3278ad716f57a81f8bb2547c3bd28db",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Sep 2020 12:28:49 GMT",
       "tag": "@uifabric/example-app-base_v7.15.19",
       "version": "7.15.19",

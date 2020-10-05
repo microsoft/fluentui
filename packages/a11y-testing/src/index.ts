@@ -1,3 +1,3 @@
 export * from './types';
-export * from './validators';
-export * from './facades';
+export * from './validators/index';
+export * from './facades/index';

@@ -9,7 +9,8 @@ export * from './VerticalBarChart';
 export * from './VerticalStackedBarChart';
 export * from './GroupedVerticalBarChart';
 export * from './CartesianChart';
-export * from './types';
-export * from './utilities/ChartHoverCard';
+export * from './types/index';
+export * from './utilities/ChartHoverCard/index';
+export * from './HeatMapChart';
 
 import './version';
