@@ -44,8 +44,7 @@ export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = pr
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'TreeItemList';
+    definition.attributes.root['data-aa-class'] = 'TreeItemOption';
   }
 
   return definition;

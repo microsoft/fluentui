@@ -429,7 +429,8 @@
           "rel": "@tabbable"
         },
         {
-          "ref": "$isExpanded"
+          "ref": "$isExpanded",
+          "overridable": "isExpanded"
         },
         {
           "ref": "$isSelected",
@@ -442,7 +443,8 @@
           "ref": "$posinset"
         },
         {
-          "ref": "$level"
+          "ref": "$level",
+          "overridable": "level"
         }
       ],
       "tags": {
@@ -461,6 +463,31 @@
             },
             {
               "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeItemOption": {
+      "inherits": "TreeItem",
+      "parameters": [
+        {
+          "overrides": "isExpanded",
+          "ref": null
+        },
+        {
+          "overrides": "level",
+          "ref": null
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "option",
+              "overrides": "role",
+              "overridable": "role"
             }
           ]
         }
@@ -491,7 +518,8 @@
           "ref": "$posinset"
         },
         {
-          "ref": "$level"
+          "ref": "$level",
+          "overridable": "level"
         }
       ],
       "tags": {
@@ -510,6 +538,27 @@
             },
             {
               "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitleOption": {
+      "inherits": "TreeTitle",
+      "parameters": [
+        {
+          "overrides": "level",
+          "ref": null
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "option",
+              "overrides": "role",
+              "overridable": "role"
             }
           ]
         }

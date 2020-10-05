@@ -33,8 +33,8 @@ export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = 
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+    if (props.hasSubtree) definition.attributes.root['data-aa-class'] = 'ExpandableTreeTitle';
+    else definition.attributes.root['data-aa-class'] = 'TreeTitleOption';
   }
 
   return definition;
