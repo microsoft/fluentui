@@ -8,7 +8,7 @@ const mergeProps = makeMergeProps();
  * Define the render function. Given the state of a text, renders it.
  */
 export const renderText = (state: TextProps) => {
-  const { slots, slotProps } = getSlots(state, [] /* there is no slots in Text */);
+  const { slots, slotProps } = getSlots(state, [] /* there are no slots in Text */);
 
   return <slots.root {...slotProps.root} />;
 };
