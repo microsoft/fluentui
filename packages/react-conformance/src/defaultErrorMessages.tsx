@@ -55,12 +55,9 @@ export const defaultErrorMessages = {
           'docblock in the file: ' + paragraph() + testErrorPath(componentPath),
         ) +
           resolveErrorMessages([
-            `Consider adding a descriptive` +
-              resolveInfo(' 5 ') +
-              'to' +
-              resolveInfo(' 25 ') +
-              'word docblock in ' +
-              resolveInfo(fileName),
+            `Consider adding a descriptive ${resolveInfo('5')} to ${resolveInfo('25')} word docblock in ${resolveInfo(
+              fileName,
+            )}`,
           ]),
         receivedErrorMessage(error),
       );
@@ -78,21 +75,16 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `has-docblock`,
           displayName,
-          'docblock between 5 and 25 words. It has a word count of: ' +
-            testErrorInfo(docBlockLength) +
+          `docblock between 5 and 25 words. It has a word count of: ${testErrorInfo(docBlockLength)}` +
             paragraph() +
-            'Here is ' +
-            testErrorName(displayName + `'s`) +
-            ' docblock: ' +
+            `Here is ${testErrorName(displayName + `'s`)} docblock: ` +
             paragraph() +
             testErrorInfo(docblock.description),
         ) +
           resolveErrorMessages([
-            `Make sure that your docblock meets the required word count of ` +
-              resolveInfo('5') +
-              ' to ' +
-              resolveInfo(`25`) +
-              ' words.',
+            `Make sure that your docblock meets the required word count of ${resolveInfo('5')} to ${resolveInfo(
+              `25`,
+            )} words.`,
           ]),
         receivedErrorMessage(error),
       );
@@ -120,16 +112,12 @@ export const defaultErrorMessages = {
         'export in: ' + paragraph() + testErrorPath(componentPath),
       ) +
         resolveErrorMessages([
-          `Make sure that your component's ` +
-            resolveInfo(fileName) +
-            ' file contains an export for ' +
-            resolveInfo(displayName) +
-            '.',
-          'Check to see if you component uses' +
-            resolveInfo(' export default ') +
-            'and consider enabling' +
-            resolveInfo(' useDefaultExport ') +
-            'in your isConformant test.',
+          `Make sure that your component's ${resolveInfo(fileName)} file contains an export for ${resolveInfo(
+            displayName,
+          )}.`,
+          `Check to see if you component uses ${resolveInfo('export default')} and consider enabling ${resolveInfo(
+            'useDefaultExport',
+          )} in your isConformant test.`,
         ]),
       receivedErrorMessage(error),
     );
@@ -170,17 +158,15 @@ export const defaultErrorMessages = {
             testErrorPath(typesFile),
         ) +
           resolveErrorMessages([
-            `Make sure that your are including all of the required props to render in isConformant ` +
-              resolveInfo('requiredProps') +
-              '.',
-            `Make sure that your component's ` +
-              resolveInfo(displayName + '.base.tsx') +
-              ' file contains a valid return statement.',
-            'Check to see if your component works as expected with' +
-              resolveInfo(' mount ') +
-              'and' +
-              resolveInfo(' safeMount') +
-              '.',
+            `Make sure that your are including all of the required props to render in isConformant ${resolveInfo(
+              'requiredProps',
+            )}.`,
+            `Make sure that your component's ${resolveInfo(
+              displayName + '.base.tsx',
+            )} file contains a valid return statement.`,
+            `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+              'safeMount',
+            )}.`,
           ]),
         receivedErrorMessage(error),
       );
@@ -209,14 +195,12 @@ export const defaultErrorMessages = {
             `Make sure that your are including all of the required props to render in isConformant ` +
               resolveInfo('requiredProps') +
               '.',
-            `Make sure that your component's ` +
-              resolveInfo(displayName + '.base.tsx') +
-              ' file contains a valid return statement.',
-            'Check to see if your component works as expected with' +
-              resolveInfo(' mount ') +
-              'and' +
-              resolveInfo(' safeMount') +
-              '.',
+            `Make sure that your component's ${resolveInfo(
+              displayName + '.base.tsx',
+            )} file contains a valid return statement.`,
+            `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+              'safeMount',
+            )}.`,
           ]),
         receivedErrorMessage(error),
       );
@@ -245,12 +229,10 @@ export const defaultErrorMessages = {
           'display name in:' + paragraph() + testErrorPath(componentPath),
         ) +
           resolveErrorMessages([
-            'Make sure that ' +
-              resolveInfo(fileName) +
-              ' contains ' +
-              resolveInfo(displayName + '.displayName = ') +
-              resolveInfo(`'` + displayName + `'`),
-            'Check to see if something is removing ' + resolveInfo(displayName + `'s`) + ` displayName.`,
+            `Make sure that ${resolveInfo(fileName)} contains ${resolveInfo(
+              displayName + `.displayName = '` + displayName + `'`,
+            )}`,
+            `Check to see if something is removing ${resolveInfo(displayName + `'s`)} displayName.`,
           ]) +
           receivedErrorMessage(error),
       );
@@ -266,14 +248,12 @@ export const defaultErrorMessages = {
         defaultErrorMessage(
           `component-has-displayname`,
           displayName,
-          'correct display name. It received: ' + testErrorInfo(componentDisplayName.replace('Styled', '')),
+          `correct display name. It received: ${testErrorInfo(componentDisplayName.replace('Styled', ''))}`,
         ) +
           resolveErrorMessages([
-            'Make sure that ' +
-              resolveInfo(fileName) +
-              ' contains ' +
-              resolveInfo(displayName + '.displayName = ') +
-              resolveInfo(`'` + displayName + `'`),
+            `Make sure that ${resolveInfo(fileName)} contains ${resolveInfo(
+              displayName + `.displayName = '` + displayName + `'`,
+            )}`,
           ]) +
           receivedErrorMessage(error),
       );
@@ -298,13 +278,10 @@ export const defaultErrorMessages = {
         displayName,
         'matching filename.' +
           paragraph() +
-          'It received a filename called ' +
-          testErrorInfo(fileName) +
-          ' instead of ' +
-          testErrorInfo(displayName),
+          `It received a filename called ${testErrorInfo(fileName)} instead of ${testErrorInfo(displayName)}`,
       ) +
         resolveErrorMessages([
-          `Make sure that your component's filename matches the isConformant displayName: ` + resolveInfo(displayName),
+          `Make sure that your component's filename matches the isConformant displayName: ${resolveInfo(displayName)}`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -330,13 +307,12 @@ export const defaultErrorMessages = {
         'top level export in:' + paragraph() + testErrorPath(indexFile),
       ) +
         resolveErrorMessages([
-          `Make sure that your component's ` +
-            resolveInfo('index.ts') +
-            ' file contains ' +
-            resolveInfo(`export * from './` + displayName + `';`),
-          'Check if your component is internal and consider enabling' +
-            resolveInfo(' isInternal ') +
-            'in your isConformant test.',
+          `Make sure that your component's ${resolveInfo('index.ts')} file contains ${resolveInfo(
+            `export * from './` + displayName + `';`,
+          )}`,
+          `Check if your component is internal and consider enabling ${resolveInfo(
+            'isInternal',
+          )} in your isConformant test.`,
         ]),
       receivedErrorMessage(error),
     );
@@ -362,10 +338,10 @@ export const defaultErrorMessages = {
         'top level file in:' + paragraph() + testErrorPath(topLevelFile),
       ) +
         resolveErrorMessages([
-          `Make sure that your component's folder and name match it's displayName: ` + resolveInfo(displayName),
-          'Check if your component is internal and consider enabling' +
-            resolveInfo(' isInternal ') +
-            'in your isConformant test.',
+          `Make sure that your component's folder and name match it's displayName: ${resolveInfo(displayName)}`,
+          `Check if your component is internal and consider enabling ${resolveInfo(
+            'isInternal',
+          )} in your isConformant test.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -388,17 +364,15 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `is-static-property-of-parent`,
         displayName,
-        'existing static property in: ' + testErrorInfo(dirName),
+        `existing static property in: ${testErrorInfo(dirName)}`,
       ) +
         resolveErrorMessages([
-          'Include the child component: ' +
-            resolveInfo(displayName) +
-            ' as a static property of the parent: ' +
-            resolveInfo(dirName) +
-            '.',
-          'Check to see if ' +
-            resolveInfo(displayName) +
-            ` is a parent component but contained in a directory with a different name.`,
+          `Include the child component: ${resolveInfo(displayName)} as a static property of the parent: ${resolveInfo(
+            dirName,
+          )}.`,
+          `Check to see if ${resolveInfo(
+            displayName,
+          )} is a parent component but contained in a directory with a different name.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -441,7 +415,7 @@ export const defaultErrorMessages = {
           testErrorName(formatObject(ariaPropsDif)),
       ) +
         resolveErrorMessages([
-          'Make sure that ' + resolveInfo(displayName + 's') + ` aria attribute props are using kebab-case.`,
+          `Make sure that ${resolveInfo(displayName + 's')} aria attribute props are using kebab-case.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -485,8 +459,8 @@ export const defaultErrorMessages = {
           testErrorInfo(formatObject(callbackNames)),
       ) +
         resolveErrorMessages([
-          'Rename ' + resolveInfo(displayName + `'s`) + ` callback props to include "ed".`,
-          `Include the prop in TestOptions` + resolveInfo(' ignoreProps') + '.',
+          `Rename ${resolveInfo(displayName + `'s`)} callback props to include "ed".`,
+          `Include the prop in TestOptions ${resolveInfo('ignoreProps')}.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -509,18 +483,16 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-fc`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
-          `If your component handles a forwardRef you will need to enable isConformant's ` +
-            resolveInfo('asPropHandlesRef') +
-            '.',
-          `Make sure that your component's ` +
-            resolveInfo(displayName + '.base.tsx') +
-            ' file contains a valid return statement.',
-          'Check to see if your component works as expected with' +
-            resolveInfo(' mount ') +
-            'and' +
-            resolveInfo(' safeMount') +
-            '.',
+          `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
+          `If your component handles a forwardRef you will need to enable isConformant's ${resolveInfo(
+            'asPropHandlesRef',
+          )}.`,
+          `Make sure that your component's ${resolveInfo(
+            displayName + '.base.tsx',
+          )} file contains a valid return statement.`,
+          `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+            'safeMount',
+          )}.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -543,18 +515,16 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-react-class`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
-          `If your component handles a forwardRef you will need to enable isConformant's ` +
-            resolveInfo('asPropHandlesRef') +
-            '.',
-          `Make sure that your component's ` +
-            resolveInfo(displayName + '.base.tsx') +
-            ' file contains a valid return statement.',
-          'Check to see if your component works as expected with' +
-            resolveInfo(' mount ') +
-            'and' +
-            resolveInfo(' safeMount') +
-            '.',
+          `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
+          `If your component handles a forwardRef you will need to enable isConformant's ${resolveInfo(
+            'asPropHandlesRef',
+          )}.`,
+          `Make sure that your component's ${resolveInfo(
+            displayName + '.base.tsx',
+          )} file contains a valid return statement.`,
+          `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+            'safeMount',
+          )}.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -577,18 +547,16 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-passes-as-value`, displayName, `valid return.`) +
         resolveErrorMessages([
-          'Check if you are missing any' + resolveInfo(' requiredProps ') + `within the test's isConformant. `,
-          `If your component handles a forwardRef you will need to enable isConformant's ` +
-            resolveInfo('asPropHandlesRef') +
-            '.',
-          `Make sure that your component's ` +
-            resolveInfo(displayName + '.base.tsx') +
-            ' file contains a valid return statement.',
-          'Check to see if your component works as expected with' +
-            resolveInfo(' mount ') +
-            'and' +
-            resolveInfo(' safeMount') +
-            '.',
+          `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
+          `If your component handles a forwardRef you will need to enable isConformant's ${resolveInfo(
+            'asPropHandlesRef',
+          )}.`,
+          `Make sure that your component's ${resolveInfo(
+            displayName + '.base.tsx',
+          )} file contains a valid return statement.`,
+          `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+            'safeMount',
+          )}.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -611,18 +579,14 @@ export const defaultErrorMessages = {
     console.log(
       defaultErrorMessage(`as-renders-html`, displayName, `'as' property that can render HTML tags.`) +
         resolveErrorMessages([
-          'Make sure that your component can correctly render as' + resolveInfo(' HTML tags') + '.',
-          'Check if you are missing any' +
-            resolveInfo(' requiredProps ') +
-            'within the isConformant in your test file. ',
-          `Make sure that your component's ` +
-            resolveInfo(displayName + '.base.tsx') +
-            ' file contains a valid return statement.',
-          'Check to see if your component works as expected with' +
-            resolveInfo(' mount ') +
-            'and' +
-            resolveInfo(' safeMount') +
-            '.',
+          `Make sure that your component can correctly render as ${resolveInfo(' HTML tags')}.`,
+          `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
+          `Make sure that your component's ${resolveInfo(
+            displayName + '.base.tsx',
+          )} file contains a valid return statement.`,
+          `Check to see if your component works as expected with ${resolveInfo('mount')} and ${resolveInfo(
+            'safeMount',
+          )}.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -698,9 +662,7 @@ function defaultErrorMessage(testName: string, displayName: string, errorMessage
     paragraph() +
     sectionBackground(testName) +
     paragraph() +
-    testErrorText(`It appears that `) +
-    testErrorName(displayName) +
-    testErrorText(` doesn't have a ` + errorMessage) +
+    testErrorText(`It appears that ${testErrorName(displayName)} doesn't have a ${errorMessage}`) +
     paragraph()
   );
 }
