@@ -365,7 +365,7 @@ export interface IMaskedTextField extends ITextField {
  * MaskedTextField component props.
  * {@docCategory TextField}
  */
-export interface IMaskedTextFieldProps extends ITextFieldProps {
+export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMaskedTextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
