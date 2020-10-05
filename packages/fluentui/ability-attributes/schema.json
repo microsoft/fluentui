@@ -392,12 +392,12 @@
               "attribute": "time"
             },
             {
-              "parameter": "true",
-              "attribute": ["true", true]
+              "parameter": true,
+              "attribute": "true"
             },
             {
-              "parameter": "false",
-              "attribute": ["false", false]
+              "parameter": false,
+              "attribute": "false"
             }
           ]
         }
