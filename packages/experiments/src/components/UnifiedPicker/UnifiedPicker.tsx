@@ -30,7 +30,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const { setQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
-  const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
+  const {
+    suggestions,
+    selectedSuggestionIndex,
+    selectedFooterIndex,
+    pickerSuggestionsProps,
+    isSuggestionsVisible,
+  } = props.floatingSuggestionProps;
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
@@ -39,11 +45,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     focusItemIndex,
     suggestionItems,
+    footerItemIndex,
+    footerItems,
     isSuggestionsShown,
     showPicker,
     selectPreviousSuggestion,
     selectNextSuggestion,
-  } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
+  } = useFloatingSuggestionItems(
+    suggestions,
+    selectedSuggestionIndex,
+    selectedFooterIndex,
+    pickerSuggestionsProps?.footerItemsProps,
+    isSuggestionsVisible,
+  );
 
   const {
     selectedItems,
@@ -228,12 +242,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           break;
         case KeyCodes.enter:
         case KeyCodes.tab:
-          if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
+          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0)) {
             ev.preventDefault();
             ev.stopPropagation();
-            // Get the focused element and add it to selectedItemsList
-            showPicker(false);
-            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+            if (focusItemIndex >= 0) {
+              // Get the focused element and add it to selectedItemsList
+              showPicker(false);
+              _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+            } else if (footerItemIndex >= 0) {
+              // execute the footer action
+              footerItems![footerItemIndex].onExecute!();
+            }
           }
           break;
         case KeyCodes.up:
@@ -338,6 +357,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,
       selectedSuggestionIndex: focusItemIndex,
+      selectedFooterIndex: footerItemIndex,
+      pickerSuggestionsProps: pickerSuggestionsProps,
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
       onKeyDown: _onInputKeyDown,
