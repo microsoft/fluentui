@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CompoundButton, CompoundButtonProps } from '@fluentui/react-button';
-import * as classes from '../utils/Button.stories.scss';
+import * as classes from '../Button.stories.scss';
 
 /**
  * Temporary Stack until there's one in its own package.
@@ -17,82 +17,63 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 // eslint-disable-next-line jsx-a11y/heading-has-content -- content passed via children
 const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
-const CompoundButtonVariants = (props: CompoundButtonProps) => (
+const CompoundButtonExamples = (props: CompoundButtonProps) => (
   <Stack horizontal>
     <CompoundButton {...props} icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} primary icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} primary disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} primary disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} ghost icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-    <CompoundButton {...props} ghost disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton {...props} ghost disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   </Stack>
 );
 
-export const CompoundButtonCss = () => (
+export const CompoundButtons = () => (
   <Stack>
     <Text>A CompoundButton comes in default and `primary` flavors.</Text>
-    <CompoundButtonVariants />
+    <CompoundButtonExamples />
 
     <Text>A CompoundButton can appear round using the `circular` prop.</Text>
-    <CompoundButtonVariants circular />
+    <CompoundButtonExamples circular />
 
     <Text>A CompoundButton can fill the width of its container using the `fluid` prop.</Text>
-    <Stack horizontal>
-      <CompoundButton fluid icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid primary icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid primary disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid ghost icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-      <CompoundButton fluid ghost disabled icon="X" secondaryContent="This is some secondary text">
-        Hello, world
-      </CompoundButton>
-    </Stack>
+    <CompoundButtonExamples fluid />
 
     <Text>A CompoundButton can contain only an icon using the `iconOnly` prop.</Text>
-    <CompoundButtonVariants iconOnly />
+    <CompoundButtonExamples iconOnly />
 
     <Text>A CompoundButton can be both `circular` and `iconOnly`.</Text>
-    <CompoundButtonVariants circular iconOnly />
+    <CompoundButtonExamples circular iconOnly />
 
     <Text>An icon CompoundButton can format its Icon to appear before or after its content.</Text>
     <Stack>
-      <CompoundButtonVariants iconPosition="before" />
-      <CompoundButtonVariants iconPosition="after" />
+      <CompoundButtonExamples iconPosition="before" />
+      <CompoundButtonExamples iconPosition="after" />
     </Stack>
 
     <Text>A CompoundButton can show a loading indicator using the `loading` prop.</Text>
-    <CompoundButtonVariants loading />
+    <CompoundButtonExamples loading />
 
     <Text>A CompoundButton can be sized.</Text>
     <Stack>
-      <CompoundButtonVariants size="smallest" />
-      <CompoundButtonVariants size="smaller" />
-      <CompoundButtonVariants size="small" />
-      <CompoundButtonVariants size="large" />
-      <CompoundButtonVariants size="larger" />
-      <CompoundButtonVariants size="largest" />
+      <CompoundButtonExamples size="smallest" />
+      <CompoundButtonExamples size="smaller" />
+      <CompoundButtonExamples size="small" />
+      <CompoundButtonExamples size="large" />
+      <CompoundButtonExamples size="larger" />
+      <CompoundButtonExamples size="largest" />
     </Stack>
   </Stack>
 );

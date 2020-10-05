@@ -1,6 +1,4 @@
-import * as React from 'react';
-import { SlotProps } from '@fluentui/react-compose';
-import { ButtonProps, ButtonSlots } from '../Button/Button.types';
+import { ButtonProps } from '../Button/Button.types';
 
 export interface ToggleButtonProps extends ButtonProps {
   /**
@@ -19,11 +17,3 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 export interface ToggleButtonState extends ToggleButtonProps {}
-
-export interface ToggleButtonSlots extends ButtonSlots {}
-
-export type ToggleButtonSlotProps = SlotProps<
-  ToggleButtonSlots,
-  ToggleButtonProps,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->;

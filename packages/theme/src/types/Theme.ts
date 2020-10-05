@@ -9,18 +9,18 @@ export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 
 /**
  * A baseline set of color plates.
  */
-export type ColorTokens = Partial<{
-  background: string;
-  contentColor: string;
-  secondaryContentColor: string;
-  linkColor: string;
-  iconColor: string;
-  borderColor: string;
-  dividerColor: string;
-  focusColor: string;
-  focusInnerColor: string;
-  opacity: string;
-}>;
+export type ColorTokenSet = {
+  background?: string;
+  contentColor?: string;
+  secondaryContentColor?: string;
+  linkColor?: string;
+  iconColor?: string;
+  borderColor?: string;
+  dividerColor?: string;
+  focusColor?: string;
+  focusInnerColor?: string;
+  opacity?: string;
+};
 
 /**
  * A set of states for each color plate to use.
@@ -42,16 +42,14 @@ export type ColorTokens = Partial<{
  * compatible with other platforms reusing token names, we have decided to snap
  * to "pressed".
  */
-export type ColorTokenStates = Partial<{
-  hovered: ColorTokens;
-  pressed: ColorTokens;
-  disabled: ColorTokens;
-  checked: ColorTokens;
-  checkedHovered: ColorTokens;
-  checkedPressed: ColorTokens;
-}>;
-
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+  hovered?: ColorTokens;
+  pressed?: ColorTokens;
+  disabled?: ColorTokens;
+  checked?: ColorTokens;
+  checkedHovered?: ColorTokens;
+  checkedPressed?: ColorTokens;
+};
 
 export type FontTokens = Partial<{
   fontFamily: string;
@@ -81,10 +79,14 @@ export interface Tokens {
   [key: string]: TokenSetType;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare type Variants = Record<string, any>;
+
 export interface ComponentStyles {
   [componentName: string]: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     styles?: IStyleFunctionOrObject<any, any>;
+    variants?: Variants;
   };
 }
 
@@ -95,6 +97,7 @@ export interface Theme extends ITheme {
   components?: ComponentStyles;
   tokens?: Tokens;
   stylesheets?: string[];
+  id?: string;
 }
 
 /**
@@ -104,4 +107,5 @@ export interface PartialTheme extends IPartialTheme {
   components?: ComponentStyles;
   tokens?: RecursivePartial<Tokens>;
   stylesheets?: string[];
+  variants?: RecursivePartial<Variants>;
 }
