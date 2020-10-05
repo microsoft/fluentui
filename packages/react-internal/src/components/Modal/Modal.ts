@@ -10,7 +10,7 @@ export const Modal: React.FunctionComponent<IModalProps> = styled<IModalProps, I
   undefined,
   {
     scope: 'Modal',
-    fields: ['theme', 'styles'],
+    fields: ['theme', 'styles', 'enableAriaHiddenSiblings'],
   },
 );
 Modal.displayName = 'Modal';

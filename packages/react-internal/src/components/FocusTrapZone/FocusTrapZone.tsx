@@ -8,6 +8,7 @@ import {
   getNextElement,
   focusAsync,
   IRefObject,
+  modalize,
   on,
 } from '../../Utilities';
 import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
@@ -77,6 +78,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     onFocus,
     onBlur,
     onFocusCapture,
+    enableAriaHiddenSiblings,
   } = props;
 
   const bumperProps = {
@@ -292,6 +294,8 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
   // Updates focusStack and the previouslyFocusedElementOutsideTrapZone on prop change.
   React.useEffect(() => {
+    let unmodalize: (() => void) | undefined;
+
     const newForceFocusInsideTrap = forceFocusInsideTrap !== undefined ? forceFocusInsideTrap : true;
     const newDisabled = disabled !== undefined ? disabled : false;
 
@@ -309,9 +313,15 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       if (!disableFirstFocus && !elementContains(root.current, internalState.previouslyFocusedElementOutsideTrapZone)) {
         focus();
       }
+      if (!unmodalize && root.current && enableAriaHiddenSiblings) {
+        unmodalize = modalize(root.current);
+      }
     } else if (!newForceFocusInsideTrap || newDisabled) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       returnFocusToInitiator();
+      if (unmodalize) {
+        unmodalize();
+      }
     }
 
     if (elementToFocusOnDismiss && internalState.previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {

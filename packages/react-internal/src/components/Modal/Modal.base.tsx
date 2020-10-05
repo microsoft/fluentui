@@ -78,8 +78,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
-      // TODO: investigate removing
-      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
@@ -154,6 +152,9 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         isVisible: true,
       });
     }
+    if (!prevProps.isOpen && this.props.isOpen) {
+      requestAnimationFrame(() => setTimeout(this._registerInitialModalPosition, 0));
+    }
   }
 
   public componentWillUnmount(): void {
@@ -186,6 +187,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       onLayerDidMount,
       isModeless,
       dragOptions,
+      enableAriaHiddenSiblings,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -219,6 +221,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     };
     const modalContent = (
       <FocusTrapZone
+        data-id={this.state.id}
         componentRef={this._focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -228,6 +231,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
+        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
       >
         {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -271,11 +275,10 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
-            <div className={classNames.root}>
+            <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   onClick={isBlocking ? undefined : (onDismiss as any)}
                   allowTouchBodyScroll={this._allowTouchBodyScroll}
                   {...overlay}
@@ -467,19 +470,19 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         }
         case KeyCodes.down: {
           this.setState({
-            y: this._getClampedPositionY(this.state.y - delta),
+            y: this._getClampedPositionY(this.state.y + delta),
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this._getClampedPositionY(this.state.x - delta),
+            x: this._getClampedPositionX(this.state.x - delta),
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this._getClampedPositionY(this.state.x - delta),
+            x: this._getClampedPositionX(this.state.x + delta),
           });
           break;
         }
