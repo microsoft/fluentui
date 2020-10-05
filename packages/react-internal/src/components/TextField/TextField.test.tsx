@@ -1,15 +1,17 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import * as path from 'path';
 import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
 import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
+import { isConformant } from '../../common/isConformant';
 
 /**
  * The currently rendered ITextField.
@@ -36,8 +38,9 @@ function sharedAfterEach() {
   }
   textField = undefined;
 
-  // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
+  // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
@@ -49,33 +52,31 @@ describe('TextField snapshots', () => {
   it('renders correctly', () => {
     const className = 'testClassName';
     const inputClassName = 'testInputClassName';
-    const component = renderer.create(
-      <TextField label="Label" className={className} inputClassName={inputClassName} />,
-    );
+    const component = create(<TextField label="Label" className={className} inputClassName={inputClassName} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders multiline unresizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={false} />);
+  it('renders multiline non resizable correctly', () => {
+    const component = create(<TextField label="Label" multiline={true} resizable={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline resizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={true} />);
+    const component = create(<TextField label="Label" multiline={true} resizable={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline with placeholder correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
+    const component = create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline correctly with props affecting styling', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -89,7 +90,7 @@ describe('TextField snapshots', () => {
   });
 
   it('renders multiline correctly with errorMessage', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -102,7 +103,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should resepect user component and subcomponent styling', () => {
+  it('should respect user component and subcomponent styling', () => {
     const styles: Partial<ITextFieldStyles> = {
       root: 'root-testClassName',
       subComponentStyles: {
@@ -111,7 +112,7 @@ describe('TextField snapshots', () => {
         },
       },
     };
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -129,6 +130,12 @@ describe('TextField snapshots', () => {
 describe('TextField rendering values from props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  isConformant({
+    Component: TextField,
+    displayName: 'TextField',
+    componentPath: path.join(__dirname, 'TextField.ts'),
+  });
 
   it('can render a value', () => {
     const testText = 'initial value';
@@ -148,6 +155,7 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a value of 0 when given the number 0', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<TextField value={0 as any} onChange={noOp} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -170,6 +178,7 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a default value of 0 when given the number 0', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<TextField defaultValue={0 as any} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -595,6 +604,7 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('warns if value is null', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mount(<TextField value={null as any} onChange={noOp} />);
     expect(warnFn).toHaveBeenCalledTimes(1);
   });
@@ -605,6 +615,7 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('does not warn if defaultValue is null', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mount(<TextField defaultValue={null as any} />);
     expect(warnFn).toHaveBeenCalledTimes(0);
   });
@@ -728,14 +739,18 @@ describe('TextField onChange', () => {
   });
 
   it('respects prop updates in response to onChange', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);
   });
 
   it('should apply edits after clearing field', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);

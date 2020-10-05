@@ -52,6 +52,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentRef?: IRefObject<ITextField>;
 
   /**
+   * Optional callback to access the root DOM element.
+   * @deprecated Temporary solution which will be replaced with ref once TextField is converted to a function component.
+   */
+  elementRef?: React.Ref<HTMLDivElement>;
+
+  /**
    * Whether or not the text field is a multiline text field.
    * @defaultvalue false
    */
@@ -250,21 +256,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
   autoComplete?: string;
-
-  /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
-   */
-  mask?: string;
-
-  /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
-   */
-  maskChar?: string;
-
-  /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
-   */
-  maskFormat?: { [key: string]: RegExp };
 }
 
 /**
@@ -360,11 +351,24 @@ export interface ITextFieldStyles {
   subComponentStyles: ITextFieldSubComponentStyles;
 }
 
+export interface IMaskedTextField extends ITextField {
+  /**
+   * The value of all filled format characters, or undefined if not all format characters are filled.
+   */
+  value: string | undefined;
+}
+
 /**
  * MaskedTextField component props.
  * {@docCategory TextField}
  */
 export interface IMaskedTextFieldProps extends ITextFieldProps {
+  /**
+   * Optional callback to access the IMaskedTextField interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IMaskedTextField>;
+
   /**
    * The masking string that defines the mask's behavior.
    * A backslash will escape any character.
