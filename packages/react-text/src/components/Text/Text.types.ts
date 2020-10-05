@@ -2,7 +2,7 @@ import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-compose';
 import { RecursivePartial } from '@fluentui/theme';
 import * as React from 'react';
 
-export interface TextProps extends ComponentProps, React.ImgHTMLAttributes<HTMLSpanElement> {
+export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
   /** A text can define its look via defined variants. */
   variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
 
