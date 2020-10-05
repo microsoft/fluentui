@@ -120,7 +120,7 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
 // @public
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
     theme: Theme;
-    customizerProps: ICustomizerContext;
+    customizerContext: ICustomizerContext;
 };
 
 // @public (undocumented)

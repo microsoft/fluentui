@@ -42,5 +42,5 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
   theme: Theme;
 
-  customizerProps: ICustomizerContext;
+  customizerContext: ICustomizerContext;
 };

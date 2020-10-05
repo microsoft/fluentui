@@ -42,7 +42,7 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
     return mergedTheme;
   }, [parentTheme, userTheme]));
 
-  draftState.customizerProps = React.useMemo<ICustomizerContext>(
+  draftState.customizerContext = React.useMemo<ICustomizerContext>(
     () => ({
       customizations: {
         inCustomizerContext: true,

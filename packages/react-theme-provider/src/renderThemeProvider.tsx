@@ -7,12 +7,12 @@ import { StyleRendererContext } from './styleRenderers/useStyleRenderer';
 
 export const renderThemeProvider = (state: ThemeProviderState) => {
   const { slots, slotProps } = getSlots(state);
-  const { theme, customizerProps } = state;
+  const { theme, customizerContext } = state;
 
   return (
     <ThemeContext.Provider value={theme}>
       <StyleRendererContext.Provider value={state.renderer!}>
-        <CustomizerContext.Provider value={customizerProps}>
+        <CustomizerContext.Provider value={customizerContext}>
           <slots.root {...slotProps.root} />
         </CustomizerContext.Provider>
       </StyleRendererContext.Provider>
