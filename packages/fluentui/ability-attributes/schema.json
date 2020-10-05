@@ -264,7 +264,7 @@
               "attribute": "true"
             },
             {
-              "parameter": true,
+              "parameter": false,
               "attribute": "false"
             }
           ]
@@ -350,6 +350,44 @@
             }
           ],
           "optional": true
+        }
+      ]
+    },
+    "$isCurrent": {
+      "name": "isCurrent",
+      "attributes": [
+        {
+          "name": "aria-current",
+          "value": [
+            {
+              "parameter": "page",
+              "attribute": "page"
+            },
+            {
+              "parameter": "step",
+              "attribute": "step"
+            },
+            {
+              "parameter": "location",
+              "attribute": "location"
+            },
+            {
+              "parameter": "date",
+              "attribute": "date"
+            },
+            {
+              "parameter": "time",
+              "attribute": "time"
+            },
+            {
+              "parameter": "true",
+              "attribute": ["true", true]
+            },
+            {
+              "parameter": "false",
+              "attribute": ["false", false]
+            }
+          ]
         }
       ]
     }
@@ -520,6 +558,10 @@
         {
           "ref": "$level",
           "overridable": "level"
+        },
+        {
+          "ref": "$isCurrent",
+          "optional": true
         }
       ],
       "tags": {
