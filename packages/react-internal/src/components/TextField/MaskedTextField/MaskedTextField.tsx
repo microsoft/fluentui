@@ -87,7 +87,10 @@ const useComponentRef = (
 
 export const DEFAULT_MASK_CHAR = '_';
 
-export const MaskedTextField = React.forwardRef<HTMLDivElement, IMaskedTextFieldProps>((props, ref) => {
+export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = React.forwardRef<
+  HTMLDivElement,
+  IMaskedTextFieldProps
+>((props, ref) => {
   const textField = React.useRef<IMaskedTextField>(null);
 
   const {

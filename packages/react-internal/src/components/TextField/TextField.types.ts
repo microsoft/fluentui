@@ -351,6 +351,9 @@ export interface ITextFieldStyles {
   subComponentStyles: ITextFieldSubComponentStyles;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export interface IMaskedTextField extends ITextField {
   /**
    * The value of all filled format characters, or undefined if not all format characters are filled.
