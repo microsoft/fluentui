@@ -6,8 +6,17 @@ import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { mount } from 'enzyme';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
+import { resetIds } from '../../Utilities';
 
 describe('TeachingBubble', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
     const component = mount(
       <TeachingBubble

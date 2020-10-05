@@ -4,9 +4,18 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
+import { resetIds } from '../../Utilities';
 import { mount } from 'enzyme';
 
 describe('TeachingBubble', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
     const component = mount(
       <TeachingBubble

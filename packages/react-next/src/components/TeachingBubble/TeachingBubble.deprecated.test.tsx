@@ -1,8 +1,17 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
+import { resetIds } from '../../Utilities';
 
 describe('TeachingBubble', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   it('renders renders with hasCloseIcon which is deprecated', () => {
     const componentContent = renderer.create(
       <TeachingBubbleContent

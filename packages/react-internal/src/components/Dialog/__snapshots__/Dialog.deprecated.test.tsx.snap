@@ -369,8 +369,8 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
     onTouchStart={[Function]}
   >
     <div
-      aria-describedby="Dialog3-subText"
-      aria-labelledby="Dialog3-title"
+      aria-describedby="Dialog0-subText"
+      aria-labelledby="Dialog0-title"
       aria-modal={true}
       onKeyDown={[Function]}
       role="dialog"
@@ -516,7 +516,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                         padding-right: 46px;
                         padding-top: 16px;
                       }
-                  id="Dialog3-title"
+                  id="Dialog0-title"
                   role="heading"
                 >
                   Sample title
@@ -595,7 +595,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                           margin-top: 0;
                           word-wrap: break-word;
                         }
-                    id="Dialog3-subText"
+                    id="Dialog0-subText"
                   >
                     Sample subtext
                   </p>
@@ -680,8 +680,8 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
     onTouchStart={[Function]}
   >
     <div
-      aria-describedby="Dialog6-subText"
-      aria-labelledby="Dialog6-title"
+      aria-describedby="Dialog0-subText"
+      aria-labelledby="Dialog0-title"
       aria-modal={true}
       onKeyDown={[Function]}
       role="alertdialog"
@@ -827,7 +827,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                         padding-right: 46px;
                         padding-top: 16px;
                       }
-                  id="Dialog6-title"
+                  id="Dialog0-title"
                   role="heading"
                 >
                   Sample title
@@ -1038,7 +1038,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           margin-top: 0;
                           word-wrap: break-word;
                         }
-                    id="Dialog6-subText"
+                    id="Dialog0-subText"
                   >
                     Sample subtext
                   </p>
@@ -1123,8 +1123,8 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
     onTouchStart={[Function]}
   >
     <div
-      aria-describedby="Dialog12-subText"
-      aria-labelledby="Dialog12-title"
+      aria-describedby="Dialog0-subText"
+      aria-labelledby="Dialog0-title"
       aria-modal={true}
       onKeyDown={[Function]}
       role="dialog"
@@ -1270,7 +1270,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                         padding-right: 46px;
                         padding-top: 16px;
                       }
-                  id="Dialog12-title"
+                  id="Dialog0-title"
                   role="heading"
                 >
                   Sample title
@@ -1349,7 +1349,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                           margin-top: 0;
                           word-wrap: break-word;
                         }
-                    id="Dialog12-subText"
+                    id="Dialog0-subText"
                   >
                     Sample subtext
                   </p>
