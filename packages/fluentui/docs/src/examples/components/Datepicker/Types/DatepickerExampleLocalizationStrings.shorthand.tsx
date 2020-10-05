@@ -38,6 +38,6 @@ const DatepickerExampleLocalizationStrings = () => {
     invalidInputErrorMessage: 'التاريخ الذي تم إدخاله يدويًا ليس بالتنسيق الصحيح.',
     isOutOfBoundsErrorMessage: 'التاريخ المحدد من النطاق المقيد.',
   };
-  return <Datepicker {...localizationStrings} today={new Date(2020, 9, 1, 0, 0, 0, 0)} />;
+  return <Datepicker strings={localizationStrings} today={new Date(2020, 9, 1, 0, 0, 0, 0)} />;
 };
 export default DatepickerExampleLocalizationStrings;

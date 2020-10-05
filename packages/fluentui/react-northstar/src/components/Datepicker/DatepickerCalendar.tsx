@@ -41,7 +41,7 @@ import { DatepickerCalendarCellButtonProps, DatepickerCalendarCellButton } from 
 import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { navigateToNewDate, contstraintNavigatedDate } from './navigateToNewDate';
 
-export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDayGridOptions> {
+export interface DatepickerCalendarProps extends UIComponentProps, Partial<IDayGridOptions> {
   /** Calendar can have header. */
   header?: ShorthandValue<DatepickerCalendarHeaderProps>;
 
@@ -79,6 +79,9 @@ export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICale
    * @param data - All props and proposed value.
    */
   onDateChange?: ComponentEventHandler<DatepickerCalendarProps & { value: IDay }>;
+
+  /** Localized strings to use in the Calendar. */
+  strings?: ICalendarStrings;
 }
 
 export type DatepickerCalendarStylesProps = never;
@@ -115,13 +118,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     navigatedDate,
     firstDayOfWeek,
     today,
-    formatMonthDayYear,
-    formatMonthYear,
-    shortDays,
-    days,
     minDate,
     maxDate,
     restrictedDates,
+    strings,
   } = props;
 
   const restrictedDatesOptions: IRestrictedDatesOptions = {
@@ -280,13 +280,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     }
   }, [gridNavigatedDate, visibleGrid, normalizedGridDate]);
 
-  const dateFormatting: IDateGridStrings = {
-    months: props.months,
-    shortMonths: props.shortMonths,
-    days: props.days,
-    shortDays: props.shortDays,
-  };
-
   const focusDateRef = React.useRef(null);
 
   const changeMonth = (nextMonth: boolean) => {
@@ -330,7 +323,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       defaultProps: () =>
         getA11yProps('calendarCell', {
           content: day.date,
-          'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
+          'aria-label': strings.formatMonthDayYear(day.originalDate, strings),
           selected: day.isSelected,
           disabled: !day.isInBounds,
           quiet: !day.isInMonth,
@@ -361,12 +354,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     >
       {createShorthand(DatepickerCalendarHeader, header, {
         defaultProps: () => ({
-          label: formatMonthYear(normalizedGridDate, dateFormatting),
-          'aria-label': formatMonthYear(normalizedGridDate, dateFormatting),
+          label: strings.formatMonthYear(normalizedGridDate, strings),
+          'aria-label': strings.formatMonthYear(normalizedGridDate, strings),
           disabledNextButton: nextMonthOutOfBounds,
           disabledPreviousButton: prevMonthOutOfBounds,
-          prevMonthAriaLabel: props.prevMonthAriaLabel,
-          nextMonthAriaLabel: props.nextMonthAriaLabel,
+          prevMonthAriaLabel: strings.prevMonthAriaLabel,
+          nextMonthAriaLabel: strings.nextMonthAriaLabel,
         }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
           onPreviousClick: (e, data) => {
@@ -392,8 +385,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                           createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                             defaultProps: () =>
                               getA11yProps('calendarHeaderCell', {
-                                'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                                content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                                'aria-label': strings.days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                                content: strings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                                 key: dayNumber,
                               }),
                           }),
@@ -449,41 +442,7 @@ DatepickerCalendar.propTypes = {
   workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
   weeksToShow: PropTypes.number,
 
-  formatDay: PropTypes.func,
-  formatYear: PropTypes.func,
-  formatMonthDayYear: PropTypes.func,
-  formatMonthYear: PropTypes.func,
-
-  parseDate: PropTypes.func,
-
-  months: PropTypes.arrayOf(PropTypes.string),
-  shortMonths: PropTypes.arrayOf(PropTypes.string),
-  days: PropTypes.arrayOf(PropTypes.string),
-  shortDays: PropTypes.arrayOf(PropTypes.string),
-
-  isRequiredErrorMessage: PropTypes.string,
-  invalidInputErrorMessage: PropTypes.string,
-  isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
-  openCalendarTitle: PropTypes.string,
-  inputPlaceholder: PropTypes.string,
-  prevMonthAriaLabel: PropTypes.string,
-  nextMonthAriaLabel: PropTypes.string,
-  prevYearAriaLabel: PropTypes.string,
-  nextYearAriaLabel: PropTypes.string,
-  prevYearRangeAriaLabel: PropTypes.string,
-  nextYearRangeAriaLabel: PropTypes.string,
-  monthPickerHeaderAriaLabel: PropTypes.string,
-  yearPickerHeaderAriaLabel: PropTypes.string,
-  closeButtonAriaLabel: PropTypes.string,
-  weekNumberFormatString: PropTypes.string,
-  selectedDateFormatString: PropTypes.string,
-  todayDateFormatString: PropTypes.string,
-
-  inputAriaLabel: PropTypes.string,
-  inputBoundedFormatString: PropTypes.string,
-  inputMinBoundedFormatString: PropTypes.string,
-  inputMaxBoundedFormatString: PropTypes.string,
+  strings: PropTypes.any,
 };
 
 DatepickerCalendar.defaultProps = {
@@ -497,7 +456,7 @@ DatepickerCalendar.defaultProps = {
   calendarHeaderCell: {},
   calendarGrid: {},
   calendarGridRow: {},
-  ...DEFAULT_CALENDAR_STRINGS,
+  strings: DEFAULT_CALENDAR_STRINGS,
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;

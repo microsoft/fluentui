@@ -41,7 +41,7 @@ import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
-export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
+export interface DatepickerProps extends UIComponentProps, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -99,6 +99,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Marks that the datepicker should only render the trigger button with an icon and not the input field. */
   buttonOnly?: boolean;
+
+  /** Localized strings to use in the Calendar. */
+  strings?: ICalendarStrings;
 }
 
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
@@ -150,42 +153,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   setStart();
   const inputRef = React.useRef<HTMLElement>();
 
-  const dateFormatting: ICalendarStrings = {
-    formatDay: props.formatDay,
-    formatYear: props.formatYear,
-    formatMonthDayYear: props.formatMonthDayYear,
-    formatMonthYear: props.formatMonthYear,
-    parseDate: props.parseDate,
-    months: props.months,
-    shortMonths: props.shortMonths,
-    days: props.days,
-    shortDays: props.shortDays,
-    isRequiredErrorMessage: props.isRequiredErrorMessage,
-    invalidInputErrorMessage: props.invalidInputErrorMessage,
-    isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
-    goToToday: props.goToToday,
-    openCalendarTitle: props.openCalendarTitle,
-    inputPlaceholder: props.inputPlaceholder,
-    prevMonthAriaLabel: props.prevMonthAriaLabel,
-    nextMonthAriaLabel: props.nextMonthAriaLabel,
-    prevYearAriaLabel: props.prevYearAriaLabel,
-    nextYearAriaLabel: props.nextYearAriaLabel,
-    prevYearRangeAriaLabel: props.prevYearRangeAriaLabel,
-    nextYearRangeAriaLabel: props.nextYearRangeAriaLabel,
-    monthPickerHeaderAriaLabel: props.monthPickerHeaderAriaLabel,
-    yearPickerHeaderAriaLabel: props.yearPickerHeaderAriaLabel,
-    closeButtonAriaLabel: props.closeButtonAriaLabel,
-    weekNumberFormatString: props.weekNumberFormatString,
-    selectedDateFormatString: props.selectedDateFormatString,
-    todayDateFormatString: props.todayDateFormatString,
-    inputAriaLabel: props.inputAriaLabel,
-    inputBoundedFormatString: props.inputBoundedFormatString,
-    inputMinBoundedFormatString: props.inputMinBoundedFormatString,
-    inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
-  };
+  const { calendar, popup, input, className, design, styles, variables, allowManualInput, strings } = props;
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
-  const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
+  const valueFormatter = date => (date ? strings.formatMonthDayYear(date, strings) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,
@@ -208,7 +178,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const [error, setError] = React.useState<string>(() =>
     !!props.selectedDate || !!props.defaultSelectedDate
-      ? validateDate(selectedDate, formattedDate, restrictedDatesOptions, dateFormatting, props.required)
+      ? validateDate(selectedDate, formattedDate, restrictedDatesOptions, strings, props.required)
       : '',
   );
 
@@ -271,7 +241,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const calendarElement = createShorthand(DatepickerCalendar, calendar, {
-    defaultProps: () => getA11yProps('calendar', { ...calendarOptions, ...dateFormatting }),
+    defaultProps: () => getA11yProps('calendar', { ...calendarOptions, ...strings }),
     overrideProps: overrideDatepickerCalendarProps,
   });
 
@@ -287,8 +257,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       _.invoke(predefinedProps, 'onClick', e, predefinedProps);
     },
     onChange: (e, target: { value: string }) => {
-      const parsedDate = props.parseDate(target.value);
-      const validationError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
+      const parsedDate = strings.parseDate(target.value);
+      const validationError = validateDate(parsedDate, target.value, calendarOptions, strings, props.required);
       setError(validationError);
       setFormattedDate(target.value);
       if (!!validationError) {
@@ -307,7 +277,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           selectedDate,
           futureFormattedDate,
           calendarOptions,
-          dateFormatting,
+          strings,
           props.required,
         );
         setError(validationError);
@@ -327,7 +297,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
-    <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
+    <Button
+      icon={<CalendarIcon />}
+      title={strings.openCalendarTitle}
+      iconOnly
+      disabled={props.disabled}
+      type="button"
+    />
   );
 
   const element = getA11yProps.unstable_wrapWithFocusZone(
@@ -341,13 +317,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         createShorthand(Input, input, {
           defaultProps: () =>
             getA11yProps('input', {
-              placeholder: props.inputPlaceholder,
+              placeholder: strings.inputPlaceholder,
               disabled: props.disabled,
               error: !!error,
               value: formattedDate,
               readOnly: !allowManualInput,
               required: props.required,
-              'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
+              'aria-label': formatRestrictedInput(restrictedDatesOptions, strings),
             }),
           overrideProps: overrideInputProps,
         })}
@@ -414,41 +390,7 @@ Datepicker.propTypes = {
   showWeekNumbers: PropTypes.bool,
   workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
 
-  formatDay: PropTypes.func,
-  formatYear: PropTypes.func,
-  formatMonthDayYear: PropTypes.func,
-  formatMonthYear: PropTypes.func,
-
-  parseDate: PropTypes.func,
-
-  months: PropTypes.arrayOf(PropTypes.string),
-  shortMonths: PropTypes.arrayOf(PropTypes.string),
-  days: PropTypes.arrayOf(PropTypes.string),
-  shortDays: PropTypes.arrayOf(PropTypes.string),
-
-  isRequiredErrorMessage: PropTypes.string,
-  invalidInputErrorMessage: PropTypes.string,
-  isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
-  openCalendarTitle: PropTypes.string,
-  inputPlaceholder: PropTypes.string,
-  prevMonthAriaLabel: PropTypes.string,
-  nextMonthAriaLabel: PropTypes.string,
-  prevYearAriaLabel: PropTypes.string,
-  nextYearAriaLabel: PropTypes.string,
-  prevYearRangeAriaLabel: PropTypes.string,
-  nextYearRangeAriaLabel: PropTypes.string,
-  monthPickerHeaderAriaLabel: PropTypes.string,
-  yearPickerHeaderAriaLabel: PropTypes.string,
-  closeButtonAriaLabel: PropTypes.string,
-  weekNumberFormatString: PropTypes.string,
-  selectedDateFormatString: PropTypes.string,
-  todayDateFormatString: PropTypes.string,
-
-  inputAriaLabel: PropTypes.string,
-  inputBoundedFormatString: PropTypes.string,
-  inputMinBoundedFormatString: PropTypes.string,
-  inputMaxBoundedFormatString: PropTypes.string,
+  strings: PropTypes.any,
 };
 
 Datepicker.defaultProps = {
@@ -468,7 +410,7 @@ Datepicker.defaultProps = {
   allowManualInput: true,
   required: false,
 
-  ...DEFAULT_CALENDAR_STRINGS,
+  strings: DEFAULT_CALENDAR_STRINGS,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
