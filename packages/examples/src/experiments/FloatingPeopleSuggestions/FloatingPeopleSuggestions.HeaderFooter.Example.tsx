@@ -59,8 +59,8 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     ..._suggestions,
   ]);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = React.useState<number>(0);
-  const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(0);
-  const [selectedHeaderIndex, setSelectedHeaderIndex] = React.useState<number>(0);
+  const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(-1);
+  const selectedHeaderIndex = -1;
 
   const input = React.useRef<Autofill>(null);
 
@@ -85,7 +85,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
             return peopleSuggestions.length > 0;
           },
           onExecute: () => {
-            alert('You selected people suggstions');
+            alert('You selected people suggestions');
           },
         },
         {
@@ -132,11 +132,53 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
   };
 
   const selectPreviousItem = () => {
-    console.log('selectPreviousItem');
+    // Headers are not selectable in this example
+    // Suggestions
+    if (selectedSuggestionIndex > -1) {
+      if (selectedSuggestionIndex == 0) {
+        setSelectedSuggestionIndex(-1);
+      }
+      // otherwise, move up one
+      else {
+        setSelectedSuggestionIndex(selectedSuggestionIndex - 1);
+      }
+    }
+    // footers
+    else if (selectedFooterIndex > -1) {
+      if (selectedFooterIndex == 0) {
+        // move to suggestions
+        setSelectedFooterIndex(-1);
+        setSelectedSuggestionIndex(peopleSuggestions.length - 1);
+      } else {
+        setSelectedFooterIndex(selectedFooterIndex - 1);
+      }
+    }
   };
 
   const selectNextItem = () => {
-    console.log('selectNextItem');
+    // Headers are not selectable in this example
+    // Suggestions
+    if (selectedSuggestionIndex == -1 && selectedFooterIndex == -1) {
+      setSelectedSuggestionIndex(0);
+    } else if (selectedSuggestionIndex > -1) {
+      // if we're at the end of the suggestions, move to the footer
+      if (selectedSuggestionIndex == peopleSuggestions.length - 1) {
+        setSelectedSuggestionIndex(-1);
+        setSelectedFooterIndex(0);
+      }
+      // otherwise, move down one
+      else {
+        setSelectedSuggestionIndex(selectedSuggestionIndex + 1);
+      }
+    }
+    // footers
+    else if (selectedFooterIndex > -1) {
+      if (selectedFooterIndex == suggestionProps.footerItemsProps!.length - 1) {
+        // if we're at the end, stay there
+      } else {
+        setSelectedFooterIndex(selectedFooterIndex + 1);
+      }
+    }
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
@@ -144,7 +186,9 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     switch (keyCode) {
       case KeyCodes.enter:
       case KeyCodes.tab:
-        alert('an item was selected');
+        if (selectedSuggestionIndex > -1) {
+          alert('an item was selected');
+        }
         break;
       case KeyCodes.up:
         ev.preventDefault();
