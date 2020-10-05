@@ -133,6 +133,9 @@ export interface IBaseFloatingSuggestionsProps<T> {
 
   selectedFooterIndex?: number;
   selectedHeaderIndex?: number;
+
+  suggestionsHeaderContainerAriaLabel?: string;
+  suggestionsFooterContainerAriaLabel?: string;
 }
 
 /**

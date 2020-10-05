@@ -74,6 +74,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           shouldShow: () => {
             return peopleSuggestions.length > 0;
           },
+          ariaLabel: 'People suggestions header',
         },
       ],
       footerItemsProps: [
@@ -87,6 +88,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           onExecute: () => {
             alert('You selected people suggestions');
           },
+          ariaLabel: 'Showing results',
         },
         {
           renderItem: () => {
@@ -98,6 +100,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           onExecute: () => {
             console.log(peopleSuggestions);
           },
+          ariaLabel: 'Select to log out to console',
         },
       ],
     };
@@ -224,6 +227,8 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           selectedSuggestionIndex={selectedSuggestionIndex}
           selectedFooterIndex={selectedFooterIndex}
           selectedHeaderIndex={selectedHeaderIndex}
+          suggestionsFooterContainerAriaLabel={'Footer container'}
+          suggestionsHeaderContainerAriaLabel={'Header container'}
         />
       </>
     );
@@ -233,7 +238,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     <div className={'ms-BasePicker-text'}>
       <Autofill
         ref={input}
-        suggestedDisplayValue={'Try hitting key down'}
+        aria-label={'input'}
         style={{
           display: 'flex',
           flex: '1 1 auto',

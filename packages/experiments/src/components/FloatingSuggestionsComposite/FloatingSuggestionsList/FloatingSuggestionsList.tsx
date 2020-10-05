@@ -21,7 +21,13 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderHeader = (): JSX.Element | null => {
-    const { onRenderHeader, suggestionsHeaderText, headerItemsProps, selectedHeaderIndex } = props;
+    const {
+      onRenderHeader,
+      suggestionsHeaderText,
+      headerItemsProps,
+      selectedHeaderIndex,
+      suggestionsHeaderContainerAriaLabel,
+    } = props;
 
     if (headerItemsProps) {
       return (
@@ -29,13 +35,12 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
           className={css('ms-Suggestions-headerContainer' /*, styles.suggestionsContainer*/)}
           id="suggestionHeader-list"
           role="list"
-          //aria-label={suggestionsHeaderContainerAriaLabel}
+          aria-label={suggestionsHeaderContainerAriaLabel}
         >
           {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
             const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
             return headerItemProps.shouldShow() ? (
               <div
-                //ref={isSelected ? this._selectedElement : undefined}
                 id={'sug-header' + index}
                 key={'sug-header' + index}
                 role="listitem"
@@ -62,7 +67,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderFooter = (): JSX.Element | null => {
-    const { onRenderFooter, footerItemsProps, selectedFooterIndex } = props;
+    const { onRenderFooter, footerItemsProps, selectedFooterIndex, suggestionsFooterContainerAriaLabel } = props;
 
     if (footerItemsProps) {
       return (
@@ -70,13 +75,12 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
           className={css('ms-Suggestions-footerContainer' /*, styles.suggestionsContainer*/)}
           id="suggestionFooter-list"
           role="list"
-          //aria-label={suggestionsFooterContainerAriaLabel}
+          aria-label={suggestionsFooterContainerAriaLabel}
         >
           {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
             const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
             return footerItemProps.shouldShow() ? (
               <div
-                //ref={isSelected ? this._selectedElement : undefined}
                 id={'sug-footer' + index}
                 key={'sug-footer' + index}
                 role="listitem"
