@@ -78,7 +78,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   const getPreviousSelectableHeaderOrFooter = (items: ISuggestionsHeaderFooterProps[], itemIndex: number): number => {
     let nextIndex = -1;
     if (items) {
-      let i = itemIndex != -1 ? itemIndex - 1 : items.length - 1;
+      let i = itemIndex !== -1 ? itemIndex - 1 : items.length - 1;
       while (i > -1) {
         if (items[i].onExecute && items[i].shouldShow()) {
           nextIndex = i;
@@ -101,7 +101,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     if (headerItemIndex > -1) {
       // First, try and find another header
       const nextHeaderIndex = getNextSelectableHeaderOrFooter(headerItems!, headerItemIndex);
-      if (nextHeaderIndex != -1) {
+      if (nextHeaderIndex !== -1) {
         setHeaderItemIndex(nextHeaderIndex);
       } else {
         // select the first suggestion item
@@ -117,7 +117,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     // We're currently selected on a selected item
     else if (focusItemIndex > -1) {
       // If we're at the end of the list
-      if (focusItemIndex == suggestionItems.length - 1) {
+      if (focusItemIndex === suggestionItems.length - 1) {
         if (hasSelectableFooters) {
           setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
           setFocusItemIndex(-1);
@@ -135,7 +135,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     else if (footerItemIndex > -1) {
       // First, try and find another footer
       const nextFooterIndex = getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex);
-      if (nextFooterIndex != -1) {
+      if (nextFooterIndex !== -1) {
         setFooterItemIndex(nextFooterIndex);
       } else {
         setFooterItemIndex(-1);
@@ -166,7 +166,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     if (footerItemIndex > -1) {
       // First, try and find another footer
       const previousFooterIndex = getPreviousSelectableHeaderOrFooter(footerItems!, footerItemIndex);
-      if (previousFooterIndex != -1) {
+      if (previousFooterIndex !== -1) {
         setFooterItemIndex(previousFooterIndex);
       } else {
         setFooterItemIndex(-1);
@@ -181,7 +181,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     // We're currently selected on a selected item
     else if (focusItemIndex > -1) {
       // If we're at the beginning of the list
-      if (focusItemIndex == 0) {
+      if (focusItemIndex === 0) {
         setFocusItemIndex(-1);
         if (hasSelectableHeaders) {
           setHeaderItemIndex(getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex));
@@ -198,7 +198,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     else if (headerItemIndex > -1) {
       // First, try and find another header
       const nextHeaderIndex = getPreviousSelectableHeaderOrFooter(headerItems!, headerItemIndex);
-      if (nextHeaderIndex != -1) {
+      if (nextHeaderIndex !== -1) {
         setHeaderItemIndex(nextHeaderIndex);
       } else {
         // select the first suggestion item

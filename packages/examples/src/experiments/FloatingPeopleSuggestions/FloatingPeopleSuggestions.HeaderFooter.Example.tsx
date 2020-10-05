@@ -135,7 +135,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     // Headers are not selectable in this example
     // Suggestions
     if (selectedSuggestionIndex > -1) {
-      if (selectedSuggestionIndex == 0) {
+      if (selectedSuggestionIndex === 0) {
         setSelectedSuggestionIndex(-1);
       }
       // otherwise, move up one
@@ -145,7 +145,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     }
     // footers
     else if (selectedFooterIndex > -1) {
-      if (selectedFooterIndex == 0) {
+      if (selectedFooterIndex === 0) {
         // move to suggestions
         setSelectedFooterIndex(-1);
         setSelectedSuggestionIndex(peopleSuggestions.length - 1);
@@ -158,11 +158,11 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
   const selectNextItem = () => {
     // Headers are not selectable in this example
     // Suggestions
-    if (selectedSuggestionIndex == -1 && selectedFooterIndex == -1) {
+    if (selectedSuggestionIndex === -1 && selectedFooterIndex === -1) {
       setSelectedSuggestionIndex(0);
     } else if (selectedSuggestionIndex > -1) {
       // if we're at the end of the suggestions, move to the footer
-      if (selectedSuggestionIndex == peopleSuggestions.length - 1) {
+      if (selectedSuggestionIndex === peopleSuggestions.length - 1) {
         setSelectedSuggestionIndex(-1);
         setSelectedFooterIndex(0);
       }
@@ -173,7 +173,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     }
     // footers
     else if (selectedFooterIndex > -1) {
-      if (selectedFooterIndex == suggestionProps.footerItemsProps!.length - 1) {
+      if (selectedFooterIndex === suggestionProps.footerItemsProps!.length - 1) {
         // if we're at the end, stay there
       } else {
         setSelectedFooterIndex(selectedFooterIndex + 1);
@@ -249,6 +249,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
             },
           },
         }}
+        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={_onInputKeyDown}
       />
       {_renderExtendedPicker()}
