@@ -9,6 +9,8 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { IInputProps } from 'office-ui-fabric-react';
+import { IBaseFloatingPickerSuggestionProps } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { useConst } from '@uifabric/react-hooks';
 
 const _suggestions = [
   {
@@ -61,6 +63,35 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
   const ref = React.useRef<any>();
+
+  const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
+    return {
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {peopleSuggestions.length} results</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            alert('You selected people suggestions');
+          },
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
+          },
+        },
+      ],
+    };
+  });
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -194,6 +225,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     onFloatingSuggestionsDismiss: undefined,
     showSuggestionRemoveButton: true,
     pickerWidth: '300px',
+    pickerSuggestionsProps: suggestionProps,
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
