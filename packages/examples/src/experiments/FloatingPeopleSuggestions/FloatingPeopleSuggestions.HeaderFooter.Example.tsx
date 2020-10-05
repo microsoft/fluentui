@@ -189,6 +189,9 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
         if (selectedSuggestionIndex > -1) {
           alert('an item was selected');
         }
+        if (selectedFooterIndex > -1) {
+          suggestionProps.footerItemsProps![selectedFooterIndex]!.onExecute!();
+        }
         break;
       case KeyCodes.up:
         ev.preventDefault();
