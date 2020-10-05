@@ -2973,6 +2973,7 @@ export interface IDragDropTarget {
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
+    keepInBounds?: boolean;
     keyboardMoveIconProps?: IIconProps;
     menu: React.FunctionComponent<IContextualMenuProps>;
     moveMenuItemText: string;
