@@ -1,4 +1,4 @@
-import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { getDocument } from '@fluentui/react/lib/Utilities';
 
 export interface IEditUrlOptions {
   name: string;

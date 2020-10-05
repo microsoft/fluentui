@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Customizer } from '@fluentui/react/lib/Utilities';
+import { IStyleSet } from '@fluentui/react/lib/Styling';
 import { IComponentPageStyles } from '@uifabric/example-app-base/lib/index';
 import { fullWidth, fullHeight, contentPadding } from '../../styles/mixins';
 

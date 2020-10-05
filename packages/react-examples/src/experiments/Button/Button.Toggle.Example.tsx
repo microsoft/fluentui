@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@uifabric/experiments';
-import { Stack, IStackTokens } from 'office-ui-fabric-react';
+import { Stack, IStackTokens } from '@fluentui/react';
 
 export interface IButtonToggleExampleState {
   defaultButtonToggled?: boolean;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Markdown } from '@uifabric/example-app-base';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const rootClass = mergeStyles({
   marginTop: -20,

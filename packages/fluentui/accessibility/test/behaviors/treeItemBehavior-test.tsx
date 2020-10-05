@@ -62,4 +62,25 @@ describe('TreeItemBehavior', () => {
       expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(keyboardKey.Enter);
     });
   });
+
+  describe('aria-checked', () => {
+    test(`is added with 'true' value to an item that has hasSubtree, is selectable and selected`, () => {
+      const expectedResult = treeItemBehavior({ hasSubtree: true, selectable: true, selected: true });
+      expect(expectedResult.attributes.root['aria-checked']).toEqual(true);
+    });
+
+    test(`is added with 'false' value to an item that has hasSubtree, is selectable and not selected`, () => {
+      const expectedResult = treeItemBehavior({ hasSubtree: true, selectable: true });
+      expect(expectedResult.attributes.root['aria-checked']).toEqual(false);
+    });
+    test(`is added with 'mixed' value to an item that has hasSubtree, is selectable and in indeterminate state`, () => {
+      const expectedResult = treeItemBehavior({ hasSubtree: true, selectable: true, indeterminate: true });
+      expect(expectedResult.attributes.root['aria-checked']).toEqual('mixed');
+    });
+
+    test(`is not added to an item that is not selectable`, () => {
+      const expectedResult = treeItemBehavior({ hasSubtree: true });
+      expect(expectedResult.attributes.root['aria-checked']).toBeUndefined();
+    });
+  });
 });

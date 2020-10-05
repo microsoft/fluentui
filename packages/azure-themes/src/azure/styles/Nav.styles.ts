@@ -1,4 +1,4 @@
-import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
+import { INavStyleProps, INavStyles } from '@fluentui/react/lib/Nav';
 import { borderNone } from '../Constants';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {

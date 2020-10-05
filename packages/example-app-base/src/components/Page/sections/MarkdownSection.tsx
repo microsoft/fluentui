@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
+import { css } from '@fluentui/react';
 import { EditSection } from '../../EditSection/index';
 import { getEditUrl, pascalize } from '../../../utilities/index2';
 import { Markdown } from '../../Markdown/index';

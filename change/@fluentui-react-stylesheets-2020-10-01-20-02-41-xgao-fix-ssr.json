@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix error when target is undefined (in case of SSR).",
+  "packageName": "@fluentui/react-stylesheets",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-02T03:02:41.498Z"
+}

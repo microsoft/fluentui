@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActivityItem, Icon, Link, mergeStyleSets } from 'office-ui-fabric-react';
+import { ActivityItem, Icon, Link, mergeStyleSets } from '@fluentui/react';
 
 const classNames = mergeStyleSets({
   exampleRoot: {

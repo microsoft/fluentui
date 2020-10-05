@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import { Link } from '@fluentui/react/lib/Link';
+import { MessageBar } from '@fluentui/react/lib/MessageBar';
 import { ISiteMessageBarProps } from './SiteMessageBar.types';
 
 export interface ISiteMessageBarState {

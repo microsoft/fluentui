@@ -3,7 +3,7 @@ import { Button } from '@fluentui/react-button';
 import { UploadIcon } from '@fluentui/react-icons';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { mergeThemes, PartialTheme } from '@fluentui/theme';
-import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
+import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';
 
 const paletteAccent = 'var(--palette-accent)';
 const paletteSoftest = 'var(--palette-softest)';

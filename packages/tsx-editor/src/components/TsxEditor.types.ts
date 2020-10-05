@@ -25,7 +25,7 @@ export interface ITsxEditorProps {
 
   /**
    * Supported packages for imports (React is implicitly supported).
-   * Defaults to `office-ui-fabric-react` (and everything it exports) plus `@uifabric/example-data`.
+   * Defaults to `@fluentui/react` (and everything it exports) plus `@uifabric/example-data`.
    *
    * WARNING: Changing this prop will cause editor initialization to re-run.
    * (Save the value in a constant to prevent it from mutating every render.)

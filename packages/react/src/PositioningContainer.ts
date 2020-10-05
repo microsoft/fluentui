@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/PositioningContainer';
+export * from '@fluentui/react-internal/lib/PositioningContainer';

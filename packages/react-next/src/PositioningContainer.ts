@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Coachmark/PositioningContainer';
+export * from './components/Coachmark/PositioningContainer/index';

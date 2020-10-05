@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
 
 const _items: ICommandBarItemProps[] = [
   {

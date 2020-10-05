@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Text, createItem } from 'office-ui-fabric-react';
+import { Stack, Text, createItem } from '@fluentui/react';
 
 export interface ITimings {
   count: number;

@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { TestImages } from '@uifabric/example-data';
-import {
-  DefaultButton,
-  IconButton,
-  Image,
-  ImageFit,
-  Persona,
-  PersonaPresence,
-  Stack,
-  Text,
-} from 'office-ui-fabric-react';
+import { DefaultButton, IconButton, Image, ImageFit, Persona, PersonaPresence, Stack, Text } from '@fluentui/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@uifabric/react-cards/lib/next/index';
 
 function onClick() {

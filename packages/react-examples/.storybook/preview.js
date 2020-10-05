@@ -32,7 +32,7 @@ if (
 if (['react-next'].includes('PACKAGE_NAME')) {
   addDecorator(withKeytipLayer);
 }
-if (['office-ui-fabric-react'].includes('PACKAGE_NAME')) {
+if (['@fluentui/react'].includes('PACKAGE_NAME')) {
   addDecorator(withCompatKeytipLayer);
 }
 addParameters({

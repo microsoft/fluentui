@@ -32,7 +32,7 @@ const dependencies = [
   '@uifabric/experiments',
   '@uifabric/fabric-website',
   '@uifabric/fabric-website-resources',
-  'office-ui-fabric-react',
+  '@fluentui/react',
   'perf-test',
   'theming-designer',
   'todo-app',

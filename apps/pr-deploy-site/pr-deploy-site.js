@@ -9,7 +9,7 @@ const siteInfo = [
   },
   {
     package: '@uifabric/fabric-website-resources',
-    link: './office-ui-fabric-react/dist-storybook/index.html',
+    link: './@fluentui/react/dist-storybook/index.html',
     icon: 'FavoriteStar',
     title: 'Fabric Storybook Site',
   },

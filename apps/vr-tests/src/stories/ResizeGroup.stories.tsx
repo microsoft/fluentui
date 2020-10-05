@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ResizeGroup, OverflowSet, DefaultButton } from 'office-ui-fabric-react';
+import { ResizeGroup, OverflowSet, DefaultButton } from '@fluentui/react';
 
 const list = {
   primary: [

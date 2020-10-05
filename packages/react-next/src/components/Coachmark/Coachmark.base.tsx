@@ -11,7 +11,7 @@ import {
   EventGroup,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData, RectangleEdge, getOppositeEdge } from '@fluentui/react/lib/Positioning';
 
 // Component Dependencies
 import { PositioningContainer } from './PositioningContainer/index';

@@ -12,7 +12,7 @@ import {
   Link,
   Label,
   Text,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import {
   AzureCustomizationsLight,
   AzureCustomizationsDark,

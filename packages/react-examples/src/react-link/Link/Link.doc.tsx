@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LinkBasicExample } from './Link.Basic.Example';
 
-import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 const LinkBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-link/Link/Link.Basic.Example.tsx') as string;
 
@@ -11,7 +11,7 @@ export const LinkPageProps: IDocPageProps = {
   componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-link/src/components/Link',
   examples: [
     {
-      title: 'Link Basic',
+      title: 'Link',
       code: LinkBasicExampleCode,
       view: <LinkBasicExample />,
       styles: ({ theme }) => {
@@ -21,24 +21,10 @@ export const LinkPageProps: IDocPageProps = {
           root: {
             selectors: {
               '.ms-Link': {
-                color: theme!.palette.themePrimary,
                 margin: 0,
                 padding: 0,
                 overflow: 'inherit',
                 textOverflow: 'inherit',
-                selectors: {
-                  ':active, :hover, :active:hover': {
-                    color: theme!.palette.themeDarker,
-                  },
-                  ':focus': {
-                    color: theme!.palette.themePrimary,
-                  },
-                },
-              },
-              '.ms-Link.is-disabled': {
-                color: theme!.palette.neutralTertiary,
-                pointerEvents: 'none',
-                cursor: 'default',
               },
             },
           },

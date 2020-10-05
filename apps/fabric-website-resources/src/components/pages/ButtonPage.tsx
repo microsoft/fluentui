@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ButtonPageProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Button/Button.doc';
+import { ButtonPageProps } from '@fluentui/react-examples/lib/react/Button/Button.doc';
 import { DemoPage } from '../DemoPage';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
@@ -64,7 +64,7 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
 
     return (
       <DemoPage
-        jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/Button.page.json')}
+        jsonDocs={require('@uifabric/api-docs/lib/pages/react/Button.page.json')}
         {...{
           ...ButtonPageProps({ areButtonsDisabled, areButtonsChecked }),
           ...this.props,

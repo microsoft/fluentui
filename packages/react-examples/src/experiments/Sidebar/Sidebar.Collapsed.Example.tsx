@@ -2,7 +2,7 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { getTheme } from 'office-ui-fabric-react';
+import { getTheme } from '@fluentui/react';
 import * as React from 'react';
 import { Sidebar } from '@uifabric/experiments/lib/Sidebar';
 

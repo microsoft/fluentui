@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toggle, IToggle } from '@uifabric/experiments';
-import { DefaultButton, Label, Spinner } from 'office-ui-fabric-react';
+import { DefaultButton, Label, Spinner } from '@fluentui/react';
 
 export interface IToggleExampleState {
   checked: boolean;
