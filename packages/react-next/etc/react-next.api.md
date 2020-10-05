@@ -34,6 +34,7 @@ import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react/lib/Utilities';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
+import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
@@ -42,7 +43,6 @@ import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
 import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
-import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
 import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
@@ -506,11 +506,6 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
-// @public (undocumented)
-export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
-    focusStack: string[];
-};
-
 // @public
 export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
@@ -532,16 +527,6 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
-// @public (undocumented)
-export interface IAccessiblePopupProps {
-    closeButtonAriaLabel?: string;
-    elementToFocusOnDismiss?: HTMLElement;
-    firstFocusableSelector?: string | (() => string);
-    forceFocusInsideTrap?: boolean;
-    ignoreExternalFocusing?: boolean;
-    isClickableOutsideFocusTrap?: boolean;
-}
 
 // @public (undocumented)
 export interface IAutofill {
@@ -1526,41 +1511,8 @@ export interface IContextualMenuSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface IDialogState {
-    // (undocumented)
-    hasBeenOpened?: boolean;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isInKeyboardMoveMode?: boolean;
-    // (undocumented)
-    isModalMenuOpen?: boolean;
-    // (undocumented)
-    isOpen?: boolean;
-    // (undocumented)
-    isVisible?: boolean;
-    // (undocumented)
-    isVisibleClose?: boolean;
-    // (undocumented)
-    modalRectangleTop?: number;
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
-}
-
-// @public (undocumented)
 export interface IDividerAsProps extends IIconProps {
     item?: IBreadcrumbItem;
-}
-
-// @public (undocumented)
-export interface IDragOptions {
-    closeMenuItemText: string;
-    dragHandleSelector?: string;
-    keyboardMoveIconProps?: IIconProps;
-    menu: React.FunctionComponent<IContextualMenuProps>;
-    moveMenuItemText: string;
 }
 
 // @public (undocumented)
@@ -1731,25 +1683,6 @@ export interface IFabricStyles {
 // @public (undocumented)
 export interface IFocusTrapCalloutProps extends ICalloutProps {
     focusTrapProps?: IFocusTrapZoneProps;
-}
-
-// @public (undocumented)
-export interface IFocusTrapZone {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabelledBy?: string;
-    componentRef?: IRefObject<IFocusTrapZone>;
-    disabled?: boolean;
-    disableFirstFocus?: boolean;
-    elementToFocusOnDismiss?: HTMLElement;
-    firstFocusableSelector?: string | (() => string);
-    focusPreviouslyFocusedInnerElement?: boolean;
-    forceFocusInsideTrap?: boolean;
-    ignoreExternalFocusing?: boolean;
-    isClickableOutsideFocusTrap?: boolean;
 }
 
 // @public
@@ -1972,63 +1905,6 @@ export interface IMessageBarStyles {
     innerText?: IStyle;
     root?: IStyle;
     text?: IStyle;
-}
-
-// @public (undocumented)
-export interface IModal {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
-    allowTouchBodyScroll?: boolean;
-    className?: string;
-    componentRef?: IRefObject<IModal>;
-    containerClassName?: string;
-    dragOptions?: IDragOptions;
-    enableAriaHiddenSiblings?: boolean;
-    isBlocking?: boolean;
-    isDarkOverlay?: boolean;
-    isModeless?: boolean;
-    isOpen?: boolean;
-    layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-    onDismissed?: () => any;
-    // @deprecated
-    onLayerDidMount?: () => void;
-    overlay?: IOverlayProps;
-    scrollableContentClassName?: string;
-    styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
-    subtitleAriaId?: string;
-    theme?: ITheme;
-    titleAriaId?: string;
-    topOffsetFixed?: boolean;
-}
-
-// @public (undocumented)
-export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
-    isOpen?: boolean;
-    isVisible?: boolean;
-    hasBeenOpened?: boolean;
-    modalRectangleTop?: number;
-    layerClassName?: string;
-    isDefaultDragHandle?: boolean;
-};
-
-// @public (undocumented)
-export interface IModalStyles {
-    // (undocumented)
-    keyboardMoveIcon: IStyle;
-    // (undocumented)
-    keyboardMoveIconContainer: IStyle;
-    // (undocumented)
-    layer: IStyle;
-    // (undocumented)
-    main: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    scrollableContent: IStyle;
 }
 
 // @public (undocumented)
@@ -2891,6 +2767,8 @@ export interface ITeachingBubble {
     focus(): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
+//
 // @public
 export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     ariaDescribedBy?: string;
@@ -3103,28 +2981,6 @@ export enum MessageBarType {
     severeWarning = 3,
     success = 4,
     warning = 5
-}
-
-// @public (undocumented)
-export const Modal: React.FunctionComponent<IModalProps>;
-
-// @public (undocumented)
-export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
-    constructor(props: IModalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IModalProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
 export { NormalPeoplePicker }
@@ -3679,6 +3535,7 @@ export * from "@fluentui/react/lib/Divider";
 export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
 export * from "@fluentui/react/lib/Facepile";
+export * from "@fluentui/react/lib/FocusTrapZone";
 export * from "@fluentui/react/lib/FocusZone";
 export * from "@fluentui/react/lib/GroupedList";
 export * from "@fluentui/react/lib/HoverCard";
@@ -3691,6 +3548,7 @@ export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
+export * from "@fluentui/react/lib/Modal";
 export * from "@fluentui/react/lib/Nav";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";

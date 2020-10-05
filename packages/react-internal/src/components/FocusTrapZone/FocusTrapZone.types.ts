@@ -15,7 +15,7 @@ export interface IFocusTrapZone {
 /**
  * {@docCategory FocusTrapZone}
  */
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -78,11 +78,4 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * @defaultvalue false
    */
   focusPreviouslyFocusedInnerElement?: boolean;
-
-  /**
-   * Puts aria-hidden=true on all non-ancestors of the current element, for screen readers.
-   * This is an experimental feature that will be graduated to default behavior after testing.
-   * This flag will be removed with the next major release.
-   */
-  enableAriaHiddenSiblings?: boolean;
 }

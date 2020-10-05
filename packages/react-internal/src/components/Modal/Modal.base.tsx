@@ -19,7 +19,7 @@ import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
-import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
+import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
@@ -63,8 +63,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
   private _hasRegisteredKeyUp: boolean;
   private _async: Async;
   private _events: EventGroup;
-  private _minClampedPosition: ICoordinates;
-  private _maxClampedPosition: ICoordinates;
 
   constructor(props: IModalProps) {
     super(props);
@@ -78,6 +76,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
+      // TODO: investigate removing
+      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
@@ -142,7 +142,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
     if (this.state.isOpen && this.state.isVisible) {
       this._registerForKeyUp();
-      this._registerInitialModalPosition();
     }
   }
 
@@ -151,9 +150,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       this.setState({
         isVisible: true,
       });
-    }
-    if (!prevProps.isOpen && this.props.isOpen) {
-      requestAnimationFrame(() => setTimeout(this._registerInitialModalPosition, 0));
     }
   }
 
@@ -187,7 +183,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       onLayerDidMount,
       isModeless,
       dragOptions,
-      enableAriaHiddenSiblings,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -221,7 +216,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     };
     const modalContent = (
       <FocusTrapZone
-        data-id={this.state.id}
         componentRef={this._focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -231,7 +225,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
-        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
       >
         {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -275,10 +268,11 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
-            <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
+            <div className={classNames.root}>
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   onClick={isBlocking ? undefined : (onDismiss as any)}
                   allowTouchBodyScroll={this._allowTouchBodyScroll}
                   {...overlay}
@@ -310,51 +304,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     if (this._focusTrapZone.current) {
       this._focusTrapZone.current.focus();
     }
-  }
-
-  private _registerInitialModalPosition = (): void => {
-    if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
-      const dialogMain = document.querySelector(`[data-id=${this.state.id}]`);
-      if (dialogMain) {
-        const modalRectangle = dialogMain.getBoundingClientRect();
-        this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
-        this._maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
-      }
-    }
-  };
-
-  /**
-   * Clamps the position coordinates to the maximum/minimum value specified in props
-   */
-  private _getClampedPosition(position: ICoordinates) {
-    if (!this.props.dragOptions || !this.props.dragOptions.keepInBounds) {
-      return position;
-    }
-    return { x: this._getClampedPositionX(position.x), y: this._getClampedPositionY(position.y) };
-  }
-
-  private _getClampedPositionY(y: number) {
-    const minPosition = this._minClampedPosition;
-    const maxPosition = this._maxClampedPosition;
-    if (minPosition) {
-      y = Math.max(minPosition.y, y);
-    }
-    if (maxPosition) {
-      y = Math.min(maxPosition.y, y);
-    }
-    return y;
-  }
-
-  private _getClampedPositionX(x: number) {
-    const minPosition = this._minClampedPosition;
-    const maxPosition = this._maxClampedPosition;
-    if (minPosition) {
-      x = Math.max(minPosition.x, x);
-    }
-    if (maxPosition) {
-      x = Math.min(maxPosition.x, x);
-    }
-    return x;
   }
 
   // Allow the user to scroll within the modal but not on the body
@@ -403,7 +352,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
   private _onDrag = (_: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, ui: IDragData): void => {
     const { x, y } = this.state;
-    this.setState(this._getClampedPosition({ x: x + ui.delta.x, y: y + ui.delta.y }));
+    this.setState({ x: x + ui.delta.x, y: y + ui.delta.y });
   };
 
   private _onDragStop = (): void => {
@@ -464,25 +413,25 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         }
         case KeyCodes.up: {
           this.setState({
-            y: this._getClampedPositionY(this.state.y - delta),
+            y: this.state.y - delta,
           });
           break;
         }
         case KeyCodes.down: {
           this.setState({
-            y: this._getClampedPositionY(this.state.y + delta),
+            y: this.state.y + delta,
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this._getClampedPositionX(this.state.x - delta),
+            x: this.state.x - delta,
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this._getClampedPositionX(this.state.x + delta),
+            x: this.state.x + delta,
           });
           break;
         }

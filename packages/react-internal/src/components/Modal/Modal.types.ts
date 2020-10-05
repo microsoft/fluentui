@@ -12,7 +12,7 @@ import { IOverlayProps } from '../../Overlay';
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initiated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 
@@ -35,11 +35,6 @@ export interface IDragOptions {
    * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
    */
   menu: React.FunctionComponent<IContextualMenuProps>;
-
-  /**
-   * Whether the draggable content should be prevented from going off-screen
-   */
-  keepInBounds?: boolean;
 }
 
 /**
@@ -87,11 +82,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismissed?: () => any;
 
   /**
@@ -164,13 +161,6 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * @defaultvalue false
    */
   allowTouchBodyScroll?: boolean;
-
-  /**
-   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
-   * This is an experimental feature that will be graduated to default behavior after testing.
-   * This flag will be removed with the next major release.
-   */
-  enableAriaHiddenSiblings?: boolean;
 }
 
 /**

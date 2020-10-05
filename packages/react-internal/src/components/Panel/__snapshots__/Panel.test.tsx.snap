@@ -209,7 +209,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                         word-break: break-word;
                         word-wrap: break-word;
                       }
-                  id="Panel12-headerText"
+                  id="Panel15-headerText"
                   role="heading"
                 >
                   Test Panel

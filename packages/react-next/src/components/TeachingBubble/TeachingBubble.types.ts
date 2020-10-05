@@ -5,7 +5,7 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
+import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { Target } from '@uifabric/react-hooks';
 
 /**
