@@ -24,6 +24,7 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     // Render styles.
     useThemeProviderClasses(state);
 
+    // Apply focus rect class on key presses.
     useFocusRects(state.ref);
 
     // Return the rendered content.
