@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
-import { Customizer } from '@uifabric/utilities';
+//import { Customizer } from '@uifabric/utilities';
 import { Fabric } from './Fabric';
-import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { createTheme } from '../../Styling';
+//import { Checkbox } from '@fluentui/react/lib/Checkbox';
+//import { createTheme } from '../../Styling';
 import { mount } from 'enzyme';
 
-const rtlTheme = createTheme({ rtl: true });
-const ltrTheme = createTheme({ rtl: false });
+//const rtlTheme = createTheme({ rtl: true });
+//const ltrTheme = createTheme({ rtl: false });
 
 describe('Fabric', () => {
   it('renders a Fabric component correctly', () => {
@@ -22,7 +22,7 @@ describe('Fabric', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a Fabric component in RTL and LTR theme', () => {
+  /*it('renders a Fabric component in RTL and LTR theme', () => {
     const content = (
       <div>
         <Fabric dir="ltr">
@@ -62,7 +62,7 @@ describe('Fabric', () => {
     expect(tree).toMatchSnapshot();
     expect(rtlTree).toMatchSnapshot();
     expect(ltrTree).toMatchSnapshot();
-  });
+  });*/
 
   it('renders as a span using the "as" prop', () => {
     const component = create(<Fabric as="span" />);
