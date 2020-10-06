@@ -1,178 +1,145 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import {
-  classNamesFunction,
-  customizable,
-  getDocument,
-  setPortalAttribute,
-  setVirtualParent,
-  warnDeprecations,
-} from '../../Utilities';
+import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-
-export type ILayerBaseState = {
-  hostId?: string;
-  layerElement?: HTMLElement;
-};
+import { useMergedRefs, useWarnings } from '@uifabric/react-hooks';
+import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-@customizable('Layer', ['theme', 'hostId'])
-export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
-  public static defaultProps: ILayerProps = {
-    onLayerDidMount: () => undefined,
-    onLayerWillUnmount: () => undefined,
-  };
+export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
+  (props, ref) => {
+    const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
 
-  private _rootRef = React.createRef<HTMLSpanElement>();
+    const rootRef = React.useRef<HTMLSpanElement>(null);
+    const mergedRef = useMergedRefs(rootRef, ref);
 
-  constructor(props: ILayerProps) {
-    super(props);
+    const doc = useDocument();
 
-    this.state = {};
+    const {
+      eventBubblingEnabled,
+      styles,
+      theme,
+      className,
+      children,
+      hostId,
+      onLayerDidMount = () => undefined,
+      // eslint-disable-next-line deprecation/deprecation
+      onLayerMounted = () => undefined,
+      onLayerWillUnmount,
+      insertFirst,
+    } = props;
 
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Layer', props, {
-        onLayerMounted: 'onLayerDidMount',
-      });
-    }
-  }
-
-  public componentDidMount(): void {
-    const { hostId } = this.props;
-
-    this._createLayerElement();
-
-    if (hostId) {
-      registerLayer(hostId, this._createLayerElement);
-    }
-  }
-
-  public render(): React.ReactNode {
-    const { layerElement } = this.state;
-    const classNames = this._getClassNames();
-    const { eventBubblingEnabled } = this.props;
-
-    return (
-      <span className="ms-layer" ref={this._rootRef}>
-        {layerElement &&
-          ReactDOM.createPortal(
-            <Fabric {...(!eventBubblingEnabled && _getFilteredEvents())} className={classNames.content}>
-              {this.props.children}
-            </Fabric>,
-            layerElement,
-          )}
-      </span>
-    );
-  }
-
-  public componentDidUpdate(): void {
-    if (this.props.hostId !== this.state.hostId) {
-      this._createLayerElement();
-    }
-  }
-
-  public componentWillUnmount(): void {
-    const { hostId } = this.props;
-
-    this._removeLayerElement();
-    if (hostId) {
-      unregisterLayer(hostId, this._createLayerElement);
-    }
-  }
-
-  private _createLayerElement = () => {
-    const { hostId } = this.props;
-
-    const doc = getDocument(this._rootRef.current);
-    const host = this._getHost();
-
-    if (!doc || !host) {
-      return;
-    }
-
-    // If one was already existing, remove.
-    this._removeLayerElement();
-
-    const layerElement = doc.createElement('div');
-    const classNames = this._getClassNames();
-
-    layerElement.className = classNames.root!;
-    setPortalAttribute(layerElement);
-    setVirtualParent(layerElement, this._rootRef.current!);
-
-    this.props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
-
-    this.setState(
-      {
-        hostId,
-        layerElement,
-      },
-      () => {
-        // eslint-disable-next-line deprecation/deprecation
-        const { onLayerDidMount, onLayerMounted } = this.props;
-        if (onLayerMounted) {
-          onLayerMounted();
-        }
-
-        if (onLayerDidMount) {
-          onLayerDidMount();
-        }
-      },
-    );
-  };
-
-  private _removeLayerElement(): void {
-    const { onLayerWillUnmount } = this.props;
-    const { layerElement } = this.state;
-
-    if (layerElement) {
-      setVirtualParent(layerElement, null);
-    }
-
-    if (onLayerWillUnmount) {
-      onLayerWillUnmount();
-    }
-
-    if (layerElement && layerElement.parentNode) {
-      const parentNode = layerElement.parentNode;
-      if (parentNode) {
-        parentNode.removeChild(layerElement);
-      }
-    }
-  }
-
-  private _getClassNames() {
-    const { className, styles, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isNotHost: !this.props.hostId,
+      isNotHost: !hostId,
     });
 
-    return classNames;
-  }
+    const [layerHostId, setLayerHostId] = React.useState<string | undefined>(hostId);
 
-  private _getHost(): Node | undefined {
-    const { hostId } = this.props;
-    const doc = getDocument(this._rootRef.current);
-    if (!doc) {
-      return undefined;
-    }
+    // Returns the user provided hostId props element, the default target selector,
+    // or undefined if document doesn't exist.
+    const getHost = React.useCallback((): Node | undefined => {
+      if (!doc) {
+        return undefined;
+      }
 
-    if (hostId) {
-      return doc.getElementById(hostId) as Node;
-    } else {
-      const defaultHostSelector = getDefaultTarget();
-      return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
-    }
-  }
-}
+      if (hostId) {
+        return doc.getElementById(hostId) as Node;
+      } else {
+        const defaultHostSelector = getDefaultTarget();
+        return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
+      }
+    }, [doc, hostId]);
 
-const _onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
+    // Removes the current layer element's parentNode and runs onLayerWillUnmount prop if provided.
+    const removeLayerElement = React.useCallback((): void => {
+      onLayerWillUnmount?.();
+
+      if (currentLayerElement && currentLayerElement.parentNode) {
+        if (currentLayerElement.parentNode) {
+          currentLayerElement.parentNode.removeChild(currentLayerElement);
+        }
+      }
+    }, [currentLayerElement, onLayerWillUnmount]);
+
+    // If a doc or host exists, it will remove and update layer parentNodes.
+    const createLayerElement = React.useCallback(() => {
+      const host = getHost();
+
+      if (!doc || !host) {
+        return;
+      }
+
+      // Remove and re-create any previous existing layer elements.
+      removeLayerElement();
+
+      const layerElement = doc.createElement('div');
+
+      layerElement.className = classNames.root!;
+      setPortalAttribute(layerElement);
+      setVirtualParent(layerElement, rootRef.current!);
+
+      insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
+
+      setLayerHostId(hostId);
+      setCurrentLayerElement(layerElement);
+      onLayerMounted?.();
+      onLayerDidMount?.();
+    }, [classNames.root, doc, getHost, hostId, insertFirst, onLayerDidMount, onLayerMounted, removeLayerElement]);
+
+    React.useEffect(() => {
+      // On initial render:
+      // Create a new layer element
+      createLayerElement();
+
+      // Check if the user provided a hostId prop and register the layer with the ID.
+      if (hostId) {
+        registerLayer(hostId, createLayerElement);
+      }
+
+      // On component unmount:
+      // Remove previous layer elements and unregister the layer if a hostId prop was provided.
+      return () => {
+        removeLayerElement();
+
+        if (hostId) {
+          unregisterLayer(hostId, createLayerElement);
+        }
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
+    }, []);
+
+    React.useEffect(() => {
+      // If the the user's hostID prop doesn't equal the state layerHostId, re-create a new layer element.
+      if (hostId !== layerHostId) {
+        createLayerElement();
+      }
+    }, [createLayerElement, hostId, layerHostId]);
+
+    useDebugWarnings(props);
+
+    return (
+      <span className="ms-layer" ref={mergedRef}>
+        {currentLayerElement &&
+          ReactDOM.createPortal(
+            <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
+              {children}
+            </Fabric>,
+            currentLayerElement,
+          )}
+      </span>
+    );
+  },
+);
+LayerBase.displayName = 'LayerBase';
+
+let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
+
+const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
   // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
   // mouseenter and mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
   // event name rather than ev.bubble.
@@ -187,11 +154,9 @@ const _onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
   }
 };
 
-let _filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
-
-function _getFilteredEvents() {
-  if (!_filteredEventProps) {
-    _filteredEventProps = {} as any;
+function getFilteredEvents() {
+  if (!filteredEventProps) {
+    filteredEventProps = {} as any;
 
     [
       'onClick',
@@ -225,8 +190,19 @@ function _getFilteredEvents() {
       'onInput',
       'onInvalid',
       'onSubmit',
-    ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
+    ].forEach(name => (filteredEventProps[name] = onFilterEvent));
   }
 
-  return _filteredEventProps;
+  return filteredEventProps;
+}
+
+function useDebugWarnings(props: ILayerProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Layer',
+      props,
+      deprecations: { onLayerMounted: 'onLayerDidMount' },
+    });
+  }
 }
