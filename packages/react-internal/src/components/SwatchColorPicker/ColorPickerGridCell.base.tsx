@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets } from '../../Styling';
+import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
-import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { getColorFromString } from '../../../lib/Color';
 import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
-import { IButtonGridCellProps } from '../../utilities/ButtonGrid/ButtonGridCell.types';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import {
@@ -12,6 +11,14 @@ import {
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
+
+const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
+
+/** Validate if the cell's color is white or not to apply whiteCell style */
+const isWhiteCell = (inputColor: string): boolean => {
+  const currentColor = getColorFromString(inputColor!);
+  return currentColor?.hex === 'ffffff';
+};
 
 const getColorPickerGridCellButtonClassNames = memoizeFunction(
   (
@@ -56,103 +63,74 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
   },
 );
 
-const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
+  const {
+    item,
+    // eslint-disable-next-line deprecation/deprecation
+    idPrefix = props.id,
+    selected = false,
+    disabled = false,
+    styles,
+    circle = true,
+    color,
+    onClick,
+    onHover,
+    onFocus,
+    onMouseEnter,
+    onMouseMove,
+    onMouseLeave,
+    onWheel,
+    onKeyDown,
+    height,
+    width,
+    borderWidth,
+  } = props;
 
-class ColorCell extends ButtonGridCell<IColorCellProps, IButtonGridCellProps<IColorCellProps>> {}
+  const classNames: IProcessedStyleSet<IColorPickerGridCellStyles> = getClassNames(styles!, {
+    theme: props.theme!,
+    disabled,
+    selected,
+    circle,
+    isWhite: isWhiteCell(color!),
+    height,
+    width,
+    borderWidth,
+  });
 
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-  public static defaultProps: Partial<IColorPickerGridCellProps> = {
-    circle: true,
-    disabled: false,
-    selected: false,
-  };
+  // Render the core of a color cell
+  const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
+    const svgClassName = classNames.svg;
 
-  private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
-
-  public render(): JSX.Element {
-    const {
-      item,
-      // eslint-disable-next-line deprecation/deprecation
-      idPrefix = this.props.id,
-      selected,
-      disabled,
-      styles,
-      theme,
-      circle,
-      color,
-      onClick,
-      onHover,
-      onFocus,
-      onMouseEnter,
-      onMouseMove,
-      onMouseLeave,
-      onWheel,
-      onKeyDown,
-      height,
-      width,
-      borderWidth,
-    } = this.props;
-
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      disabled,
-      selected,
-      circle,
-      isWhite: this._isWhiteCell(color),
-      height,
-      width,
-      borderWidth,
-    });
-
-    return (
-      <ColorCell
-        item={item}
-        id={`${idPrefix}-${item.id}-${item.index}`}
-        key={item.id}
-        disabled={disabled}
-        role={'gridcell'}
-        onRenderItem={this._onRenderColorOption}
-        selected={selected}
-        onClick={onClick}
-        onHover={onHover}
-        onFocus={onFocus}
-        label={item.label}
-        className={this._classNames.colorCell}
-        getClassNames={getColorPickerGridCellButtonClassNames}
-        index={item.index}
-        onMouseEnter={onMouseEnter}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-        onWheel={onWheel}
-        onKeyDown={onKeyDown}
-      />
-    );
-  }
-
-  /**
-   * Render the core of a color cell
-   * @returns - Element representing the core of the item
-   */
-  private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg
-        className={this._classNames.svg}
-        viewBox="0 0 20 20"
-        fill={getColorFromString(colorOption.color as string)!.str}
-      >
-        {this.props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
+      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)?.str}>
+        {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );
   };
 
-  /**
-   * Validate if the cell's color is white or not to apply whiteCell style
-   * @param inputColor - The color of the current cell
-   * @returns - Whether the cell's color is white or not.
-   */
-  private _isWhiteCell(inputColor: string | undefined): boolean {
-    const color = getColorFromString(inputColor!);
-    return color!.hex === 'ffffff';
-  }
-}
+  return (
+    <ButtonGridCell
+      item={item}
+      id={`${idPrefix}-${item.id}-${item.index}`}
+      key={item.id}
+      disabled={disabled}
+      role={'gridcell'}
+      // eslint-disable-next-line react/jsx-no-bind
+      onRenderItem={onRenderColorOption}
+      selected={selected}
+      onClick={onClick}
+      onHover={onHover}
+      onFocus={onFocus}
+      label={item.label}
+      className={classNames.colorCell}
+      getClassNames={getColorPickerGridCellButtonClassNames}
+      index={item.index}
+      onMouseEnter={onMouseEnter}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      onWheel={onWheel}
+      onKeyDown={onKeyDown}
+    />
+  );
+};
