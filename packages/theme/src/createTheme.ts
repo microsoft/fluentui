@@ -3,7 +3,7 @@ import { DefaultEffects } from './effects/index';
 import { DefaultFontStyles } from './fonts/index';
 import { mergeThemes } from './mergeThemes';
 import { DefaultSpacing } from './spacing/index';
-import { ITheme, PartialTheme, Theme } from './types/index';
+import { PartialTheme, Theme } from './types/index';
 import { makeSemanticColors } from './utilities/makeSemanticColors';
 
 /**
@@ -12,14 +12,14 @@ import { makeSemanticColors } from './utilities/makeSemanticColors';
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function createTheme(theme: PartialTheme = {}, depComments: boolean = false): Theme {
-  const baseTheme: ITheme = {
+  const baseTheme: Theme = {
     palette: DefaultPalette,
     effects: DefaultEffects,
     fonts: DefaultFontStyles,
     spacing: DefaultSpacing,
     isInverted: false,
     disableGlobalClassNames: false,
-    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false, depComments),
+    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false),
     rtl: undefined,
   };
 

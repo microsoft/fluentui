@@ -4,110 +4,109 @@ import { IEffects, IPalette, ISemanticColors } from '../types/index';
  * We'll use these as fallbacks for semantic slots that the passed in theme did not define.
  * The caller must still mix in the customized semantic slots at the end.
  */
-export function makeSemanticColors(
-  p: IPalette,
-  e: IEffects,
-  s: Partial<ISemanticColors> | undefined,
+export function makeSemanticColors<TResult = Partial<ISemanticColors>>(
+  palette: Partial<IPalette> | undefined,
+  effects: Partial<IEffects> | undefined,
+  semanticColors: Partial<ISemanticColors> | undefined,
   isInverted: boolean,
-  depComments: boolean,
-): ISemanticColors {
-  let toReturn: ISemanticColors = {
+): TResult {
+  let result: Partial<ISemanticColors> = {
     // DEFAULTS
-    bodyBackground: p.white,
-    bodyBackgroundHovered: p.neutralLighter,
-    bodyBackgroundChecked: p.neutralLight,
-    bodyStandoutBackground: p.neutralLighterAlt,
-    bodyFrameBackground: p.white,
-    bodyFrameDivider: p.neutralLight,
-    bodyText: p.neutralPrimary,
-    bodyTextChecked: p.black,
-    bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralLight,
-    disabledBodyText: p.neutralTertiary,
-    disabledBodySubtext: p.neutralTertiaryAlt,
-    disabledBorder: p.neutralTertiaryAlt,
-    focusBorder: p.neutralSecondary,
-    cardStandoutBackground: p.white,
-    cardShadow: e.elevation4,
+    bodyBackground: palette?.white,
+    bodyBackgroundHovered: palette?.neutralLighter,
+    bodyBackgroundChecked: palette?.neutralLight,
+    bodyStandoutBackground: palette?.neutralLighterAlt,
+    bodyFrameBackground: palette?.white,
+    bodyFrameDivider: palette?.neutralLight,
+    bodyText: palette?.neutralPrimary,
+    bodyTextChecked: palette?.black,
+    bodySubtext: palette?.neutralSecondary,
+    bodyDivider: palette?.neutralLight,
+    disabledBodyText: palette?.neutralTertiary,
+    disabledBodySubtext: palette?.neutralTertiaryAlt,
+    disabledBorder: palette?.neutralTertiaryAlt,
+    focusBorder: palette?.neutralSecondary,
+    cardStandoutBackground: palette?.white,
+    cardShadow: effects?.elevation4,
     cardShadowHovered: '', // set in second pass
-    variantBorder: p.neutralLight,
-    variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralLighterAlt,
+    variantBorder: palette?.neutralLight,
+    variantBorderHovered: palette?.neutralTertiary,
+    defaultStateBackground: palette?.neutralLighterAlt,
 
     // LINKS
-    actionLink: p.neutralPrimary,
-    actionLinkHovered: p.neutralDark,
-    link: p.themePrimary,
-    linkHovered: p.themeDarker,
+    actionLink: palette?.neutralPrimary,
+    actionLinkHovered: palette?.neutralDark,
+    link: palette?.themePrimary,
+    linkHovered: palette?.themeDarker,
 
     // BUTTONS
-    buttonBackground: p.white,
-    buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLighter,
-    buttonBackgroundCheckedHovered: p.neutralLight,
-    buttonBackgroundPressed: p.neutralLight,
-    buttonBackgroundDisabled: p.neutralLighter,
-    buttonBorder: p.neutralSecondaryAlt,
-    buttonText: p.neutralPrimary,
-    buttonTextHovered: p.neutralDark,
-    buttonTextChecked: p.neutralDark,
-    buttonTextCheckedHovered: p.black,
-    buttonTextPressed: p.neutralDark,
-    buttonTextDisabled: p.neutralTertiary,
-    buttonBorderDisabled: p.neutralLighter,
+    buttonBackground: palette?.white,
+    buttonBackgroundChecked: palette?.neutralTertiaryAlt,
+    buttonBackgroundHovered: palette?.neutralLighter,
+    buttonBackgroundCheckedHovered: palette?.neutralLight,
+    buttonBackgroundPressed: palette?.neutralLight,
+    buttonBackgroundDisabled: palette?.neutralLighter,
+    buttonBorder: palette?.neutralSecondaryAlt,
+    buttonText: palette?.neutralPrimary,
+    buttonTextHovered: palette?.neutralDark,
+    buttonTextChecked: palette?.neutralDark,
+    buttonTextCheckedHovered: palette?.black,
+    buttonTextPressed: palette?.neutralDark,
+    buttonTextDisabled: palette?.neutralTertiary,
+    buttonBorderDisabled: palette?.neutralLighter,
 
-    primaryButtonBackground: p.themePrimary,
-    primaryButtonBackgroundHovered: p.themeDarkAlt,
-    primaryButtonBackgroundPressed: p.themeDark,
-    primaryButtonBackgroundDisabled: p.neutralLighter,
+    primaryButtonBackground: palette?.themePrimary,
+    primaryButtonBackgroundHovered: palette?.themeDarkAlt,
+    primaryButtonBackgroundPressed: palette?.themeDark,
+    primaryButtonBackgroundDisabled: palette?.neutralLighter,
     primaryButtonBorder: 'transparent',
-    primaryButtonText: p.white,
-    primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white,
-    primaryButtonTextDisabled: p.neutralQuaternary,
+    primaryButtonText: palette?.white,
+    primaryButtonTextHovered: palette?.white,
+    primaryButtonTextPressed: palette?.white,
+    primaryButtonTextDisabled: palette?.neutralQuaternary,
 
-    accentButtonBackground: p.accent,
-    accentButtonText: p.white,
+    accentButtonBackground: palette?.accent,
+    accentButtonText: palette?.white,
 
     // INPUTS
-    inputBorder: p.neutralSecondary,
-    inputBorderHovered: p.neutralPrimary,
-    inputBackground: p.white,
-    inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDark,
-    inputPlaceholderBackgroundChecked: p.themeLighter,
-    inputForegroundChecked: p.white,
-    inputIcon: p.themePrimary,
-    inputIconHovered: p.themeDark,
-    inputIconDisabled: p.neutralTertiary,
-    inputFocusBorderAlt: p.themePrimary,
-    smallInputBorder: p.neutralSecondary,
-    inputText: p.neutralPrimary,
-    inputTextHovered: p.neutralDark,
-    inputPlaceholderText: p.neutralSecondary,
-    disabledBackground: p.neutralLighter,
-    disabledText: p.neutralTertiary,
-    disabledSubtext: p.neutralQuaternary,
+    inputBorder: palette?.neutralSecondary,
+    inputBorderHovered: palette?.neutralPrimary,
+    inputBackground: palette?.white,
+    inputBackgroundChecked: palette?.themePrimary,
+    inputBackgroundCheckedHovered: palette?.themeDark,
+    inputPlaceholderBackgroundChecked: palette?.themeLighter,
+    inputForegroundChecked: palette?.white,
+    inputIcon: palette?.themePrimary,
+    inputIconHovered: palette?.themeDark,
+    inputIconDisabled: palette?.neutralTertiary,
+    inputFocusBorderAlt: palette?.themePrimary,
+    smallInputBorder: palette?.neutralSecondary,
+    inputText: palette?.neutralPrimary,
+    inputTextHovered: palette?.neutralDark,
+    inputPlaceholderText: palette?.neutralSecondary,
+    disabledBackground: palette?.neutralLighter,
+    disabledText: palette?.neutralTertiary,
+    disabledSubtext: palette?.neutralQuaternary,
 
     // LISTS
-    listBackground: p.white,
-    listText: p.neutralPrimary,
-    listItemBackgroundHovered: p.neutralLighter,
-    listItemBackgroundChecked: p.neutralLight,
-    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
+    listBackground: palette?.white,
+    listText: palette?.neutralPrimary,
+    listItemBackgroundHovered: palette?.neutralLighter,
+    listItemBackgroundChecked: palette?.neutralLight,
+    listItemBackgroundCheckedHovered: palette?.neutralQuaternaryAlt,
 
-    listHeaderBackgroundHovered: p.neutralLighter,
-    listHeaderBackgroundPressed: p.neutralLight,
+    listHeaderBackgroundHovered: palette?.neutralLighter,
+    listHeaderBackgroundPressed: palette?.neutralLight,
 
     // MENUS
-    menuBackground: p.white,
-    menuDivider: p.neutralTertiaryAlt,
-    menuIcon: p.themePrimary,
-    menuHeader: p.themePrimary,
-    menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundPressed: p.neutralLight,
-    menuItemText: p.neutralPrimary,
-    menuItemTextHovered: p.neutralDark,
+    menuBackground: palette?.white,
+    menuDivider: palette?.neutralTertiaryAlt,
+    menuIcon: palette?.themePrimary,
+    menuHeader: palette?.themePrimary,
+    menuItemBackgroundHovered: palette?.neutralLighter,
+    menuItemBackgroundPressed: palette?.neutralLight,
+    menuItemText: palette?.neutralPrimary,
+    menuItemTextHovered: palette?.neutralDark,
 
     errorText: !isInverted ? '#a4262c' : '#F1707B',
 
@@ -129,38 +128,17 @@ export function makeSemanticColors(
     severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
     successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
 
-    // Deprecated slots, later pass by _fixDeprecatedSlots() for self-referential slots
-    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    warningText: '',
-    successText: !isInverted ? '#107C10' : '#92c353',
-    listTextColor: '',
-    menuItemBackgroundChecked: p.neutralLight,
+    // mix in customized semantic slots for second pass
+    ...semanticColors,
   };
 
   // second pass for self-referential slots
-  toReturn = {
-    ...toReturn,
-    cardShadowHovered: !isInverted ? e.elevation8 : '0 0 1px ' + toReturn.variantBorderHovered,
-    // mix in customized semantic slots for second pass
-    ...s,
+  result = {
+    ...result,
+    cardShadowHovered:
+      semanticColors?.cardShadowHovered ||
+      (!isInverted ? effects?.elevation8 : '0 0 1px ' + result.variantBorderHovered),
   };
 
-  return _fixDeprecatedSlots(toReturn, depComments!);
-}
-
-function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanticColors {
-  // Add @deprecated tag as comment if enabled
-  let dep = '';
-  if (depComments === true) {
-    dep = ' /* @deprecated */';
-  }
-
-  /* eslint-disable deprecation/deprecation */
-  s.listTextColor = s.listText + dep;
-  s.menuItemBackgroundChecked += dep;
-  s.warningHighlight += dep;
-  s.warningText = s.messageText + dep;
-  s.successText += dep;
-  /* eslint-enable deprecation/deprecation */
-  return s;
+  return result as TResult;
 }
