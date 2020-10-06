@@ -5,6 +5,7 @@ export * from './ThemeProvider.types';
 export * from './useThemeProviderClasses';
 export * from './useThemeProvider';
 export * from './useThemeProviderState';
+export * from './withThemeProvider';
 
 export { useTheme } from './useTheme';
 export { ThemeContext } from './ThemeContext';
@@ -14,6 +15,7 @@ export * from './tokensToStyleObject';
 export * from './useInlineTokens';
 export { createDefaultTheme } from './createDefaultTheme';
 export * from './themes/index';
+export * from './makeVariantClasses';
 export * from './makeStyles';
 export * from './makeClasses';
 export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@uifabric/merge-styles';

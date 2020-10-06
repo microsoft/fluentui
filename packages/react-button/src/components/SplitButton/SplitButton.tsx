@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
 import { SplitButtonProps } from './SplitButton.types';
 import { useSplitButton } from './useSplitButton';
 import { useSplitButtonClasses } from './useSplitButtonClasses';
@@ -15,7 +14,6 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   });
 
   useSplitButtonClasses(state);
-  useFocusRects(state.ref);
 
   // TODO remove any
   /**
