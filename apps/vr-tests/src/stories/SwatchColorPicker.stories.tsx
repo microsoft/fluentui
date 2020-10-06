@@ -13,6 +13,10 @@ const props: ISwatchColorPickerProps = {
     { id: 'b', label: 'orange', color: '#ffa500' },
     { id: 'c', label: 'blue', color: '#0000ff' },
     { id: 'd', label: 'red', color: '#ff0000' },
+    { id: 'e', label: 'green', color: '#00ff00' },
+    { id: 'f', label: 'orange', color: '#ffa500' },
+    { id: 'g', label: 'blue', color: '#0000ff' },
+    { id: 'h', label: 'red', color: '#ff0000' },
   ],
 };
 storiesOf('SwatchColorPicker', module)
@@ -55,9 +59,5 @@ storiesOf('SwatchColorPicker', module)
   ))
   .addStory('Disabled', () => <SwatchColorPicker {...props} disabled />)
   .addStory('Multiple rows', () => (
-    <SwatchColorPicker
-      {...props}
-      columnCount={4}
-      colorCells={props.colorCells.concat(props.colorCells)}
-    />
+    <SwatchColorPicker {...props} columnCount={4} colorCells={props.colorCells} />
   ));
