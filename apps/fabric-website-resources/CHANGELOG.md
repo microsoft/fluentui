@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.18](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.8.18)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.8.17..@uifabric/fabric-website-resources_v7.8.18)
+
+### Patches
+
+- Renaming @fluentui/examples to @fluentui/react-examples. ([PR #15254](https://github.com/microsoft/fluentui/pull/15254) by humbertomakotomorimoto@gmail.com)
 
 ## [7.8.17](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.8.17)
 

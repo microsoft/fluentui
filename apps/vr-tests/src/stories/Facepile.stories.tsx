@@ -9,7 +9,7 @@ import {
   PersonaSize,
   OverflowButtonType,
   IFacepileProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { TestImages } from '@uifabric/example-data';
 

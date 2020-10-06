@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { SeparatorPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/Separator/Separator.doc';
+import { SeparatorPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Separator/Separator.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/SeparatorRelated.md') as string;
 const componentUrl =

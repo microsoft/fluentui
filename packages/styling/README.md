@@ -7,9 +7,9 @@
 
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
-If you're using `@fluentui/react`, the `@uifabric/styling` package contents are re-exported under `@fluentui/react/lib/Styling` (for `office-ui-fabric-react`, use `office-ui-fabric-react/lib/Styling`). It's recommended to access styling this way rather than via a direct dependency.
+If you're using `@fluentui/react`, the `@uifabric/styling` package contents are re-exported under `@fluentui/react/lib/Styling`. It's recommended to access styling this way rather than via a direct dependency.
 
-In a project which doesn't use `@fluentui/react` (or `office-ui-fabric-react`), you can still install the styling package as a dependency:
+In a project which doesn't use `@fluentui/react`, you can still install the styling package as a dependency:
 
 ```bash
 npm install --save @uifabric/styling

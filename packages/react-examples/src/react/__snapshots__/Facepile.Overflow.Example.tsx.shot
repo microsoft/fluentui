@@ -1,0 +1,1233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] = `
+<div
+  className=
+
+      {
+        max-width: 300px;
+      }
+>
+  <div
+    className=
+        ms-Facepile
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: auto;
+        }
+  >
+    <span
+      className=
+
+          {
+            border: 0px;
+            height: 1px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: absolute;
+            width: 1px;
+          }
+      id="id__0"
+    >
+      To move through the items use left and right arrow keys.
+    </span>
+    <div
+      className=
+          ms-Facepile-itemContainer
+          {
+            display: flex;
+          }
+    >
+      <ul
+        aria-label="Example list of Facepile personas"
+        className=
+            ms-Facepile-members
+            {
+              display: flex;
+              list-style-type: none;
+              margin-bottom: -2px;
+              margin-left: -2px;
+              margin-right: -2px;
+              margin-top: -2px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+      >
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                ms-Button--facepile
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: inline;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseUp={[Function]}
+            title="Annie Lindqvist"
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <div
+                className=
+                    ms-Persona-coin
+                    ms-Persona--size32
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                    }
+                role="presentation"
+              >
+                <div
+                  className=
+                      ms-Persona-imageArea
+                      {
+                        flex: 0 0 auto;
+                        height: 32px;
+                        position: relative;
+                        text-align: center;
+                        width: 32px;
+                      }
+                  role="presentation"
+                >
+                  <div
+                    className=
+                        ms-Image
+                        ms-Persona-image
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          border-radius: 50%;
+                          border: 0px;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: 32px;
+                          left: 0px;
+                          margin-right: 10px;
+                          overflow: hidden;
+                          perspective: 1px;
+                          position: absolute;
+                          top: 0px;
+                          width: 32px;
+                        }
+                    style={
+                      Object {
+                        "height": 32,
+                        "width": 32,
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      className=
+                          ms-Image-image
+                          ms-Image-image--cover
+                          ms-Image-image--portrait
+                          is-notLoaded
+                          is-fadeIn
+                          {
+                            display: block;
+                            height: 100%;
+                            left: 50% /* @noflip */;
+                            object-fit: cover;
+                            opacity: 0;
+                            position: absolute;
+                            top: 50%;
+                            transform: translate(-50%,-50%);
+                            width: 100%;
+                          }
+                      onError={[Function]}
+                      onLoad={[Function]}
+                      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </span>
+          </button>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
+            className=
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                {
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            title="Aaron Reid"
+          >
+            <div
+              className=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+              role="presentation"
+            >
+              <div
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+                role="presentation"
+              >
+                <div
+                  className=
+                      ms-Image
+                      ms-Persona-image
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        border-radius: 50%;
+                        border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
+                      }
+                  style={
+                    Object {
+                      "height": 32,
+                      "width": 32,
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    className=
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
+                        {
+                          display: block;
+                          height: 100%;
+                          left: 50% /* @noflip */;
+                          object-fit: cover;
+                          opacity: 0;
+                          position: absolute;
+                          top: 50%;
+                          transform: translate(-50%,-50%);
+                          width: 100%;
+                        }
+                    onError={[Function]}
+                    onLoad={[Function]}
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                ms-Button--facepile
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: inline;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseUp={[Function]}
+            title="Alex Lundberg"
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <div
+                className=
+                    ms-Persona-coin
+                    ms-Persona--size32
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                    }
+                role="presentation"
+              >
+                <div
+                  className=
+                      ms-Persona-imageArea
+                      {
+                        flex: 0 0 auto;
+                        height: 32px;
+                        position: relative;
+                        text-align: center;
+                        width: 32px;
+                      }
+                  role="presentation"
+                >
+                  <div
+                    aria-hidden="true"
+                    className=
+                        ms-Persona-initials
+                        {
+                          background-color: #8E562E;
+                          border-radius: 50%;
+                          color: #ffffff;
+                          font-size: 14px;
+                          font-weight: 600;
+                          height: 32px;
+                          line-height: 32px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          -ms-high-contrast-adjust: none;
+                          background-color: Window !important;
+                          border: 1px solid WindowText;
+                          box-sizing: border-box;
+                          color: WindowText;
+                        }
+                        & i {
+                          font-weight: 600;
+                        }
+                  >
+                    <span>
+                      AL
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </button>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
+            className=
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                {
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            title="Roko Kolar"
+          >
+            <div
+              className=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+              role="presentation"
+            >
+              <div
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+                role="presentation"
+              >
+                <div
+                  aria-hidden="true"
+                  className=
+                      ms-Persona-initials
+                      {
+                        background-color: #0B6A0B;
+                        border-radius: 50%;
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 600;
+                        height: 32px;
+                        line-height: 32px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: none;
+                        background-color: Window !important;
+                        border: 1px solid WindowText;
+                        box-sizing: border-box;
+                        color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
+                      }
+                >
+                  <span>
+                    RK
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
+            className=
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                {
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            title="Christian Bergqvist"
+          >
+            <div
+              className=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+              role="presentation"
+            >
+              <div
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+                role="presentation"
+              >
+                <div
+                  aria-hidden="true"
+                  className=
+                      ms-Persona-initials
+                      {
+                        background-color: #498205;
+                        border-radius: 50%;
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 600;
+                        height: 32px;
+                        line-height: 32px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: none;
+                        background-color: Window !important;
+                        border: 1px solid WindowText;
+                        box-sizing: border-box;
+                        color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
+                      }
+                >
+                  <span>
+                    CB
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          padding-top: 20px;
+        }
+  >
+    <div
+      className=
+          ms-Slider
+          ms-Slider-enabled
+          ms-Slider-row
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
+            user-select: none;
+          }
+    >
+      <label
+        className=
+            ms-Label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              word-wrap: break-word;
+            }
+        htmlFor="Slider7"
+      >
+        Number of Personas:
+      </label>
+      <div
+        className=
+            ms-Slider-container
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
+      >
+        <div
+          aria-disabled={false}
+          aria-label="Number of Personas:"
+          aria-valuemax={5}
+          aria-valuemin={1}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className=
+              ms-Slider-slideBox
+              ms-Slider-showValue
+              ms-Slider-showTransitions
+              {
+                align-items: center;
+                background: transparent;
+                border: none;
+                display: flex;
+                flex-grow: 1;
+                height: 28px;
+                line-height: 28px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                position: relative;
+                width: auto;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active .ms-Slider-active {
+                background-color: #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                background-color: Highlight;
+              }
+              &:hover .ms-Slider-active {
+                background-color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
+                background-color: Highlight;
+              }
+              &:active .ms-Slider-inactive {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-inactive {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-zeroTick {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
+                background-color: Highlight;
+              }
+              &:hover .ms-Slider-zeroTick {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
+                background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
+          data-is-focusable={true}
+          id="Slider7"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchStart={[Function]}
+          role="slider"
+          tabIndex={0}
+        >
+          <div
+            className=
+                ms-Slider-line
+                {
+                  display: flex;
+                  position: relative;
+                  width: 100%;
+                }
+          >
+            <span
+              className=
+                  ms-Slider-thumb
+                  {
+                    background: #ffffff;
+                    border-color: #605e5c;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-width: 2px;
+                    box-sizing: border-box;
+                    display: block;
+                    height: 16px;
+                    position: absolute;
+                    top: -6px;
+                    transform: translateX(-50%);
+                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                    width: 16px;
+                  }
+              style={
+                Object {
+                  "left": "100%",
+                }
+              }
+            />
+            <span
+              className=
+                  ms-Slider-inactive
+                  {
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #c8c6c4;
+                    transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: 1px solid WindowText;
+                  }
+              style={
+                Object {
+                  "width": "0%",
+                }
+              }
+            />
+            <span
+              className=
+                  ms-Slider-active
+                  {
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #605e5c;
+                    transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                  }
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+            <span
+              className=
+                  ms-Slider-inactive
+                  {
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #c8c6c4;
+                    transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: 1px solid WindowText;
+                  }
+              style={
+                Object {
+                  "width": "0%",
+                }
+              }
+            />
+          </div>
+        </div>
+        <label
+          className=
+              ms-Label
+              ms-Slider-value
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: block;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1;
+                margin-bottom: 0;
+                margin-left: 8px;
+                margin-right: 8px;
+                margin-top: 0;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                white-space: nowrap;
+                width: 40px;
+                word-wrap: break-word;
+              }
+        >
+          5
+        </label>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Dropdown-container
+          {
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
+            padding-top: 0px;
+          }
+    >
+      <label
+        className=
+            ms-Label
+            ms-Dropdown-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        id="Dropdown8-label"
+      >
+        Overflow Button Type:
+      </label>
+      <div
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown8-label Dropdown8-option"
+        className=
+            ms-Dropdown
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-color: #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              outline: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              user-select: none;
+            }
+            &:hover .ms-Dropdown-title {
+              border-color: #323130;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:focus .ms-Dropdown-title {
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+              color: Highlight;
+            }
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-title {
+              border-color: #0078d4;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:hover .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:active .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+            &:active .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+        data-is-focusable={true}
+        id="Dropdown8"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        role="listbox"
+        tabIndex={0}
+      >
+        <span
+          aria-atomic={true}
+          aria-invalid={false}
+          aria-live="polite"
+          aria-posinset={1}
+          aria-selected={true}
+          aria-setsize={4}
+          className=
+              ms-Dropdown-title
+              {
+                background-color: #ffffff;
+                border-color: #605e5c;
+                border-radius: 2px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: none;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: block;
+                height: 32px;
+                line-height: 30px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow: hidden;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 28px;
+                padding-top: 0;
+                position: relative;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          id="Dropdown8-option"
+          role="option"
+        >
+          none
+        </span>
+        <span
+          className=
+              ms-Dropdown-caretDownWrapper
+              {
+                cursor: pointer;
+                height: 32px;
+                line-height: 30px;
+                position: absolute;
+                right: 8px;
+                top: 1px;
+              }
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Dropdown-caretDown
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
+                  pointer-events: none;
+                  speak: none;
+                }
+            data-icon-name="ChevronDown"
+          >
+            
+          </i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

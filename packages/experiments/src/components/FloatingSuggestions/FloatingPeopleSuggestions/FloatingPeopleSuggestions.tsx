@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { IFloatingSuggestionsProps } from '../FloatingSuggestions.types';
 import { DefaultPeopleSuggestionsItem } from './defaults/DefaultPeopleSuggestionsItem';
 import { FloatingSuggestions } from '../FloatingSuggestions';

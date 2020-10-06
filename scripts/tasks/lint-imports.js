@@ -33,12 +33,16 @@ function lintImports() {
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
 
+  if (!fs.existsSync(sourcePath)) {
+    return;
+  }
+
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    '@fluentui/examples/lib/experiments/TilesList/ExampleHelpers',
-    '@fluentui/examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
-    '@fluentui/examples/lib/office-ui-fabric-react/Keytip/KeytipSetup',
+    '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
+    '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
+    '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
     '@uifabric/charting/lib/types/IDataPoint',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
@@ -128,6 +132,7 @@ function lintImports() {
    * @param {boolean} isExample
    */
   function _evaluateFile(filePath, importErrors, isExample) {
+    // !! be careful !! changing the regex can affect matched parts below.
     const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
 
     const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -175,7 +180,7 @@ function lintImports() {
    * @param {boolean} isExample
    */
   function _evaluateImport(filePath, importMatch, importErrors, isExample) {
-    const importPath = importMatch[1];
+    const importPath = importMatch[2];
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
     let fullImportPath;
@@ -250,7 +255,7 @@ function lintImports() {
           importErrors.pathReExported,
           relativePath,
           importPath,
-          'office-ui-fabric-react/lib/' + reExportedPackages[pkgName],
+          '@fluentui/react/lib/' + reExportedPackages[pkgName],
         );
       }
 
@@ -308,8 +313,8 @@ function lintImports() {
         'example files are using deep imports. To promote best practices, ' +
         `please only import from root-level files ('<package-name>' or '<package-name>/lib/<file>').`,
       pathReExported:
-        'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
-        'Please change the following imports to reference office-ui-fabric-react instead:',
+        'example files are directly importing from packages that @fluentui/react re-exports. ' +
+        'Please change the following imports to reference @fluentui/react instead:',
       importStar:
         'example files are using "import *" which causes problems with the website example editor. Please import things by name instead.',
       exportMulti:

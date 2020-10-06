@@ -9,7 +9,7 @@ import {
   IDropdownProps,
   Icon,
   IDropdownOption,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)

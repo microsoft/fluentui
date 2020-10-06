@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
-import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
+import { DragDropHelper, IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import {
   FocusZoneDirection,
@@ -11,15 +11,14 @@ import {
   IInputProps,
   MarqueeSelection,
   IDragDropEvents,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();

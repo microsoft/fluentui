@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { MarqueeSelectionPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/MarqueeSelection/MarqueeSelection.doc';
+import { MarqueeSelectionPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/MarqueeSelection/MarqueeSelection.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MarqueeSelectionPage/docs/MarqueeSelectionRelated.md') as string;
 

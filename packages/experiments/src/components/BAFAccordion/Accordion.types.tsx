@@ -2,10 +2,10 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IButtonProps } from '@fluentui/react/lib/Button';
+import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { IComponentAs } from '@fluentui/react/lib/Utilities';
 
 export interface IAccordion {}
 

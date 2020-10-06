@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoin } from './index';
-import { Icon, Image, Text } from 'office-ui-fabric-react';
+import { Icon, Image, Text } from '@fluentui/react';
 import { setRTL } from '../../Utilities';
 import { PersonaTestImages } from '../../common/TestImages';
 

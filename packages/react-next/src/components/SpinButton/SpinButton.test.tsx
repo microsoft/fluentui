@@ -6,7 +6,7 @@ import { ReactWrapper, mount } from 'enzyme';
 import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
+import { mockEvent } from '@fluentui/react-internal/lib/common/testUtilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('SpinButton', () => {

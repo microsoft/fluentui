@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.3)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.2..@fluentui/react-button_v0.14.3)
+
+### Patches
+
+- MenuButton: Removing office-ui-fabric-react dependency by having ContextualMenu as a JSX slot replacement instead of the default. ([PR #15257](https://github.com/microsoft/fluentui/pull/15257) by humbertomakotomorimoto@gmail.com)
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.2)
 

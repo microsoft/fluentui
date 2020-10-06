@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
-import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, find } from '@fluentui/react/lib/Utilities';
 import {
   CartesianChart,
   IBasestate,
@@ -12,7 +12,7 @@ import {
   IMargins,
   IRefArrayData,
 } from '../../index';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
 

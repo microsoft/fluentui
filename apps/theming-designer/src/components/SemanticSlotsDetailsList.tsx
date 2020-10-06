@@ -8,7 +8,7 @@ import {
   IColumn,
   IGroup,
   SelectionMode,
-} from 'office-ui-fabric-react/lib/DetailsList';
+} from '@fluentui/react/lib/DetailsList';
 
 export interface ISemanticSlotsDetailsListProps {
   slotNames: string[];

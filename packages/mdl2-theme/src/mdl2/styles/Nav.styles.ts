@@ -1,4 +1,4 @@
-import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
+import { INavStyleProps, INavStyles } from '@fluentui/react/lib/Nav';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme, isDisabled, isSelected, isGroup, isLink, navHeight = 36 } = props;
