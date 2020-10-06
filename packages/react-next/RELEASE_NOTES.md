@@ -21,18 +21,15 @@ If you would like to continue using the previous button components for now, upda
   - `shouldFocusOnMount`
   - `yearPickerHidden`
 
-### Checkbox
-
-- Removed `styles` prop.
-- Removed `checkmarkIconProps` prop.
-- Deprecated `onRenderLabel`.
-- Added `label`/`checkmark` slot props.
-
 ### ChoiceGroup
 
-- Moved `root` class to the actual root element by replacing `applicationRole`.
-- Removed `applicationRole` from IChoiceGroupStyles.
-- Removed deprecated `onChanged` prop.
+- Setting `checked` on individual options to indicate their checked state is no longer supported. Instead, use `defaultSelectedKey` or `selectedKey`.
+- Moved `root` style to the actual root element and removed `applicationRole` style.
+- Removed deprecated props and types:
+  - `onChanged` from `IChoiceGroupProps`
+  - `checked` from `IChoiceGroupOption` (see above for alternative)
+  - `applicationRole` from `IChoiceGroupStyles`
+  - Type aliases `OnFocusCallback` and `OnChangeCallback`: use `IChoiceGroupOptionProps['onFocus']` and `IChoiceGroupOptionProps['onChange']`
 
 ### Coachmark
 

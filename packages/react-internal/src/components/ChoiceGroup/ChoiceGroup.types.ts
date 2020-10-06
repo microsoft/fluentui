@@ -23,7 +23,9 @@ export interface IChoiceGroup {
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps
+  extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -57,12 +59,6 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * Descriptive label for the choice group.
    */
   label?: string;
-
-  /**
-   * Deprecated and will be removed by 07/17/2017. Use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
   /**
    * Theme (provided through customization).
@@ -137,17 +133,6 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   disabled?: boolean;
 
   /**
-   * Whether or not the option is checked.
-   * @deprecated Do not track checked state in the options themselves. Instead, either pass
-   * `defaultSelectedKey` to the `ChoiceGroup` and allow it to track selection state internally
-   * (uncontrolled), or pass `selectedKey` and `onChange` to the `ChoiceGroup` to track/update
-   * the selection state manually (controlled).
-   */
-  // This should move from IChoiceGroupOption to IChoiceGroupOptionProps, so that the ChoiceGroup
-  // can still set the option as checked for rendering purposes
-  checked?: boolean;
-
-  /**
    * ID used on the option's input element.
    */
   id?: string;
@@ -181,15 +166,6 @@ export interface IChoiceGroupStyleProps {
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupStyles {
-  /**
-   * The actual root of the component.
-   * @deprecated Styles will be merged with `root` in a future release.
-   */
-  applicationRole?: IStyle;
-  /**
-   * Not currently the actual root of the component (will be fixed in a future release).
-   * For now, to style the actual root, use `applicationRole`.
-   */
   root?: IStyle;
   label?: IStyle;
   flexContainer?: IStyle;
