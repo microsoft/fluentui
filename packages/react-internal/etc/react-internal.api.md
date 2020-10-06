@@ -3396,7 +3396,7 @@ export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
     // @deprecated
@@ -3698,19 +3698,7 @@ export interface IListState<T = any> {
 export const Image: React.FunctionComponent<IImageProps>;
 
 // @public (undocumented)
-export class ImageBase extends React.Component<IImageProps, IImageState> {
-    constructor(props: IImageProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void;
-    // (undocumented)
-    static defaultProps: {
-        shouldFadeIn: boolean;
-    };
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void;
-}
+export const ImageBase: React.FunctionComponent<IImageProps>;
 
 // @public
 export enum ImageCoverStyle {
