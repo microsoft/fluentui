@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "move Image component to react and delete from react-next",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T19:10:48.698Z"
+}
