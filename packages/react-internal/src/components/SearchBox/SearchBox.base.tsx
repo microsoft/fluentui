@@ -53,6 +53,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disableAnimation = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
+    onEscape,
+    onSearch,
     iconProps,
   } = props;
 
@@ -124,14 +126,14 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
       case KeyCodes.escape:
-        props.onEscape?.(ev);
+        onEscape?.(ev);
         if (!ev.defaultPrevented) {
           onClear(ev);
         }
         break;
       case KeyCodes.enter:
-        if (props.onSearch) {
-          props.onSearch(value);
+        if (onSearch) {
+          onSearch(value);
           break;
         }
         // if we don't handle the enter press then we shouldn't prevent default
@@ -148,15 +150,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     ev.stopPropagation();
   };
 
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
-    useWarnings({
-      name: COMPONENT_NAME,
-      props,
-      deprecations: { labelText: 'placeholder' },
-    });
-  }
-
+  useDebugWarning(props);
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
@@ -194,3 +188,14 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   );
 });
 SearchBoxBase.displayName = COMPONENT_NAME;
+
+function useDebugWarning(props: ISearchBoxProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: { labelText: 'placeholder' },
+    });
+  }
+}
