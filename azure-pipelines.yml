@@ -32,7 +32,7 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
-          yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
+          yarn buildci --no-cache --since $(target_branch)
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -41,7 +41,7 @@ jobs:
 
       ## duplicated build step, but without --since flag for master CI builds
       - script: |
-          yarn lage build test lint --verbose --no-cache --grouped
+          yarn buildci --no-cache
         displayName: build, test, lint (master)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -65,7 +65,7 @@ jobs:
 
       ## only do scoped bundle with PRs
       - script: |
-          yarn lage bundle --verbose --no-cache --grouped --since $(target_branch)
+          yarn bundle --no-cache --grouped --since $(target_branch)
         displayName: bundle (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -74,7 +74,7 @@ jobs:
 
       ## duplicated for  master CI builds
       - script: |
-          yarn lage bundle --verbose --no-cache --grouped
+          yarn bundle --no-cache --grouped
         displayName: bundle (master)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -165,7 +165,7 @@ jobs:
       - template: .devops/templates/pr-target-branch.yml
 
       - script: |
-          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
+          yarn lage screener --to vr-tests --debug --verbose --no-cache --grouped
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
