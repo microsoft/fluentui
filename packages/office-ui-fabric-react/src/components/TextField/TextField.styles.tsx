@@ -22,6 +22,7 @@ const globalClassNames = {
   prefix: 'ms-TextField-prefix',
   suffix: 'ms-TextField-suffix',
   wrapper: 'ms-TextField-wrapper',
+  reveal: 'ms-TextField-reveal',
 
   multiline: 'ms-TextField--multiline',
   borderless: 'ms-TextField--borderless',
@@ -79,9 +80,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasErrorMessage,
     inputClassName,
     autoAdjustHeight,
+    hasRevealButton,
   } = props;
 
-  const { semanticColors, effects, fonts } = theme;
+  const { semanticColors, effects, fonts, palette } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -336,9 +338,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         autoAdjustHeight && {
           overflow: 'hidden',
         },
-      hasIcon && {
-        paddingRight: 24,
-      },
+      hasIcon &&
+        !hasRevealButton && {
+          paddingRight: 24,
+        },
       multiline &&
         hasIcon && {
           paddingRight: 40,
@@ -416,5 +419,53 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     subComponentStyles: {
       label: getLabelStyles(props),
     },
+    revealButton: [
+      classNames.reveal,
+      'ms-Button',
+      'ms-Button--icon',
+      {
+        height: 30,
+        width: 32,
+        border: 'none',
+        padding: '0px 4px',
+        backgroundColor: 'transparent',
+        color: semanticColors.link,
+        selectors: {
+          ':hover': {
+            outline: 0,
+            color: palette.themeDarkAlt,
+            backgroundColor: palette.neutralLighter,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight',
+                color: 'Highlight',
+              },
+            },
+          },
+          ':focus': { outline: 0 },
+        },
+      },
+      hasIcon && {
+        marginRight: 28,
+      },
+    ],
+    revealSpan: [
+      {
+        display: 'flex',
+        height: '100%',
+        alignItems: 'center',
+      },
+    ],
+    revealIcon: [
+      {
+        margin: '0px 4px',
+        pointerEvents: 'none',
+        bottom: 6,
+        right: 8,
+        top: 'auto',
+        fontSize: IconFontSizes.medium,
+        lineHeight: 18,
+      },
+    ],
   };
 }
