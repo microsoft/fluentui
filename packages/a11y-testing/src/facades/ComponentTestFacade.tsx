@@ -1,7 +1,28 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Props, PropValue, TestFacade } from '../types';
+import { emptyTheme, ThemePrepared } from '@fluentui/styles';
+import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import { Telemetry, Unstable_FluentContextProvider, ProviderContextPrepared } from '@fluentui/react-bindings';
+
+const EmptyThemeProvider: React.FunctionComponent<{
+  disableAnimations?: boolean;
+  telemetry?: Telemetry;
+  renderer?: Renderer;
+  theme?: ThemePrepared;
+  rtl?: boolean;
+}> = ({ children, disableAnimations = true, renderer = noopRenderer, telemetry, theme = emptyTheme, rtl = false }) => {
+  const value: ProviderContextPrepared = {
+    renderer,
+    target: document,
+    disableAnimations,
+    rtl,
+    theme,
+    telemetry,
+    performance: {} as any,
+  };
+  return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;
+};
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,11 +47,13 @@ export class ComponentTestFacade implements TestFacade {
     const container = document.createElement('div');
     document.body.appendChild(container);
 
-    ReactDOM.render(<Component {...props} />, container);
-    this.actual = container.lastChild;
+    // we need to render it in this way because some component liek popup use context from wrapper component
+    this.renderedComponent = mount(<Component {...props} />, {
+      attachTo: container,
+      wrappingComponent: EmptyThemeProvider,
+    });
 
-    // we need to render it in this way because using simulate function to fire mouse/keyboard event
-    this.renderedComponent = mount(<Component {...props} />).find(Component);
+    this.actual = container.firstChild;
   }
 
   public slotExists(selector: string) {
@@ -85,7 +108,11 @@ export class ComponentTestFacade implements TestFacade {
       this.renderedComponent.simulate('click');
       return;
     }
-    this.renderedComponent.find(selector).simulate('click');
+    console.log(`selector is: ${selector}`);
+    console.log(selector);
+    const test = this.renderedComponent.find(selector);
+
+    test.simulate('click');
   }
 
   public pressSpaceKey(selector: string) {

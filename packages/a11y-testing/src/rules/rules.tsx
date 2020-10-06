@@ -62,7 +62,11 @@ export class SlotRule implements Rule {
 
   public stringify = () => {
     return [
-      this.data.expectAttribute !== undefined && this.data.expectAttribute ? 'Adds' : 'Does not add attribute',
+      this.data.expectAttribute !== undefined
+        ? this.data.expectAttribute
+          ? 'Adds'
+          : 'Does not add attribute'
+        : undefined,
       this.data.expectAttribute !== undefined &&
         this._expectedAttributeAndValueFormat(
           this.data.expectAttribute,

@@ -2,12 +2,22 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
+import { Box } from 'src/components/Box/Box';
 import { Popup, PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
 import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
 import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
+
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  popupBehaviorDefinitionTriggerSlotNotTabbable,
+  popupBehaviorDefinitionTriggerSlotTabbable,
+  popupBehaviorDefinitionTriggerSlotWithTabIndex,
+  popupBehaviorDefinitionPopupSlot,
+} from '@fluentui/a11y-testing';
 
 describe('Popup', () => {
   implementsPopperProps(Popup, {
@@ -230,6 +240,8 @@ describe('Popup', () => {
 
   describe('inline', () => {
     test('renders the content in the document body the inline prop is not provided', () => {
+      // reset body, because then "firstElementChild" was not properly getting right element
+      document.body.innerHTML = '';
       mountWithProvider(<Popup trigger={<button />} content="Content" open />);
       const contentElement = document.body.firstElementChild;
 
@@ -277,6 +289,67 @@ describe('Popup', () => {
     });
     test('does not stop when focus is not trapped', () => {
       expectPopupToHandleStopPropagation(false, false);
+    });
+  });
+  describe('PopupBehavior', () => {
+    describe('trigger slot - tabbable - Button', () => {
+      const triggerWithoutTabIndex = <button id="trigger" />;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - tabbable - Anchor', () => {
+      const triggerWithoutTabIndex = <a href="" id="trigger" />;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - NO tabbabble - Anchor without href', () => {
+      const triggerAnchorWtihoutHref = <a id="trigger" />;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerAnchorWtihoutHref, id: 'popup2' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - tabbable - Input', () => {
+      const triggerWithoutTabIndex = <input id="trigger" />;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - NO tabbabble - Span', () => {
+      const triggerWithoutTabIndex = <span id="trigger"> text to trigger popup </span>;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup2' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - tabbable - Box as button', () => {
+      const triggerWithoutTabIndex = <Box id="trigger" as="button"></Box>;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup2' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('trigger slot - doesnt override tabIndex if exists', () => {
+      const triggerWithoutTabIndex = <button id="trigger" tabIndex={-1} />;
+      const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
+      const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotWithTabIndex, testFacade);
+      expect(errors).toEqual([]);
+    });
+
+    describe('popup content slot ', () => {
+      const triggerWithoutTabIndex = <button id="trigger" tabIndex={-1} />;
+      const testFacade = new ComponentTestFacade(Popup, {
+        trigger: triggerWithoutTabIndex,
+        content: { content: triggerWithoutTabIndex, id: 'popup' },
+        open: true,
+      });
+      const errors = validateBehavior(popupBehaviorDefinitionPopupSlot, testFacade);
+      expect(errors).toEqual([]);
     });
   });
 });
