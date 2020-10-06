@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { List } from 'office-ui-fabric-react';
+import { List } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
 const items = [

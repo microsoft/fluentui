@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Pivot, PivotItem } from '@fluentui/react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';

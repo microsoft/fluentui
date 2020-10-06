@@ -21,7 +21,7 @@ steps:
 
   # @fluentui/perf-test needs build and bundle steps
   - script: |
-      yarn lage build --scope @fluentui/perf-test --scope perf-test --no-deps --verbose --no-cache --grouped
+      yarn lage build --to @fluentui/perf-test --to perf-test --verbose --no-cache --grouped
     displayName: build  @fluentui v0
     env:
       BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -74,15 +74,6 @@ steps:
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
-
-  - task: GithubPRStatus@0
-    displayName: 'Update Github Pull Request Status'
-    inputs:
-      githubOwner: microsoft
-      githubRepo: 'fluentui'
-      githubContext: 'Pull Request Deployed Site'
-      githubDescription: 'Click "Details" to go to the Deployed Site'
-      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
   - script: |
       yarn stats:build

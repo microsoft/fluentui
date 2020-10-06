@@ -15,31 +15,28 @@ export const AnimationStyles: IAnimationStyles;
 export const AnimationVariables: IAnimationVariables;
 
 // @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    secondaryContentColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-    opacity: string;
-}>;
-
-// @public (undocumented)
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+    hovered?: ColorTokens;
+    pressed?: ColorTokens;
+    disabled?: ColorTokens;
+    checked?: ColorTokens;
+    checkedHovered?: ColorTokens;
+    checkedPressed?: ColorTokens;
+};
 
 // @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export type ColorTokenSet = {
+    background?: string;
+    contentColor?: string;
+    secondaryContentColor?: string;
+    linkColor?: string;
+    iconColor?: string;
+    borderColor?: string;
+    dividerColor?: string;
+    focusColor?: string;
+    focusInnerColor?: string;
+    opacity?: string;
+};
 
 // @public (undocumented)
 export namespace CommunicationColors {
@@ -66,6 +63,7 @@ export interface ComponentStyles {
     // (undocumented)
     [componentName: string]: {
         styles?: IStyleFunctionOrObject<any, any>;
+        variants?: Variants;
     };
 }
 
@@ -88,6 +86,23 @@ export const DefaultPalette: IPalette;
 //
 // @public (undocumented)
 export const DefaultSpacing: ISpacing;
+
+// @public (undocumented)
+export namespace Depths {
+    const // (undocumented)
+    depth0 = "0 0 0 0 transparent";
+    const // (undocumented)
+    depth4 = "0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth8 = "0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth16 = "0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth64 = "0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18)";
+}
+
+// @public (undocumented)
+export const FluentTheme: ITheme;
 
 // @public (undocumented)
 export namespace FontSizes {
@@ -815,6 +830,8 @@ export interface Theme extends ITheme {
     // (undocumented)
     components?: ComponentStyles;
     // (undocumented)
+    id?: string;
+    // (undocumented)
     stylesheets?: string[];
     // (undocumented)
     tokens?: Tokens;
@@ -836,6 +853,9 @@ export interface Tokens {
 export type TokenSetType = {
     [key: string]: TokenSetType | string | number | undefined;
 };
+
+// @public (undocumented)
+export type Variants = Record<string, any>;
 
 
 // Warnings were encountered during analysis:

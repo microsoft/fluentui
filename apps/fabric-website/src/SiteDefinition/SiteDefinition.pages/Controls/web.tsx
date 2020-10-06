@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
 import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
-import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { Omit } from 'office-ui-fabric-react/lib/Utilities';
+import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { Omit } from '@fluentui/react/lib/Utilities';
 
 export type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 

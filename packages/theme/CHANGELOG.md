@@ -1,8 +1,18 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.1)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.0..@fluentui/theme_v1.2.1)
+
+### Patches
+
+- Disable pointer-events during slide animations ([PR #15219](https://github.com/microsoft/fluentui/pull/15219) by behowell@microsoft.com)
+- Add FluentTheme and Depths exports. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.0)
 

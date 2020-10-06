@@ -6,6 +6,7 @@
 
 import { ColorTokenSet } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ICustomizerContext } from '@uifabric/utilities';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IKeyframes } from '@uifabric/merge-styles';
 import { IRawFontStyle } from '@uifabric/merge-styles';
@@ -16,12 +17,7 @@ import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
-
-// @public
-export const createDefaultTheme: () => Theme;
-
-// @public (undocumented)
-export const FluentTheme: Theme;
+import { Variants } from '@fluentui/theme';
 
 // @public (undocumented)
 export type FontFace = IFontFace;
@@ -48,6 +44,17 @@ export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
     [key in keyof TStyleSet]: string;
+};
+
+// @public
+export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+
+// @public
+export type MakeVariantClassesOptions = {
+    name?: string;
+    prefix?: string;
+    styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
+    variants?: Variants | ((theme: Theme) => Variants);
 };
 
 // @public (undocumented)
@@ -90,12 +97,9 @@ export const StyleRendererContext: React.Context<StyleRenderer>;
 
 // @public (undocumented)
 export type StyleRendererOptions = {
-    rtl: boolean;
+    rtl?: boolean;
     targetWindow: Window | undefined;
 };
-
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
 
 export { Theme }
 
@@ -116,10 +120,11 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
 // @public
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
     theme: Theme;
+    customizerContext: ICustomizerContext;
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
+export const tokensToStyleObject: (tokens?: React.CSSProperties | TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
 
 // @public
 export const useInlineTokens: (draftState: {
@@ -144,6 +149,9 @@ export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;
+
+// @public (undocumented)
+export const withThemeProvider: <TProps>(Component: React.FunctionComponent<TProps>) => React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps> & React.RefAttributes<HTMLButtonElement>>;
 
 
 // (No @packageDocumentation comment for this package)

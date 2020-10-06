@@ -12,7 +12,7 @@ import {
   ItemWithContextMenu,
   TriggerOnContextMenu,
 } from '../index';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { groupOne } from '@uifabric/example-data';
 
 describe('SelectedPeopleList', () => {

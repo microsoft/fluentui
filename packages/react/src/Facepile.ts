@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Facepile';
+export * from '@fluentui/react-internal/lib/Facepile';

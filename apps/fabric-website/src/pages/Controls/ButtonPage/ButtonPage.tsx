@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ButtonPageProps } from './ButtonPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
-import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 

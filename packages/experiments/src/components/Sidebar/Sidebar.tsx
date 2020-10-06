@@ -2,12 +2,12 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { KeyCodes, initializeComponentRef, FocusRects } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
+import { concatStyleSets, ITheme } from '@fluentui/react/lib/Styling';
+import { KeyCodes, initializeComponentRef, FocusRects } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import { Accordion } from '../BAFAccordion/Accordion';
 import { getSidebarClassNames, ISidebarClassNames } from './Sidebar.classNames';

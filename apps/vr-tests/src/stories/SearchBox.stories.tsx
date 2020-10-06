@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { SearchBox, Fabric } from 'office-ui-fabric-react';
+import { SearchBox, Fabric } from '@fluentui/react';
 import { FabricDecorator } from '../utilities';
 
 // FabricDecorator isn't added at the top level so that the full SearchBox can be rendered without a parent div

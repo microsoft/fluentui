@@ -22,7 +22,7 @@ import {
   RectangleEdge,
   positionCard,
   getBoundsFromTargetWindow,
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+} from '@fluentui/react/lib/Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
@@ -284,7 +284,18 @@ function useAutoFocus(
  * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
-  { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
+  {
+    hidden,
+    onDismiss,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnScroll,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnResize,
+    // eslint-disable-next-line deprecation/deprecation
+    preventDismissOnLostFocus,
+    shouldDismissOnWindowFocus,
+    preventDismissOnEvent,
+  }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -345,6 +356,22 @@ function useDismissHandlers(
       }
     };
 
+    const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
+      // Do nothing
+      if (!shouldDismissOnWindowFocus) {
+        return;
+      }
+
+      if (
+        ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
+          (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
+        !targetWindow?.document.hasFocus() &&
+        ev.relatedTarget === null
+      ) {
+        onDismiss?.(ev);
+      }
+    };
+
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -356,6 +383,7 @@ function useDismissHandlers(
           on(targetWindow, 'resize', dismissOnResize, true),
           on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
           on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
         ];
 
         return () => {
@@ -370,10 +398,12 @@ function useDismissHandlers(
     targetRef,
     targetWindow,
     onDismiss,
+    shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
     preventDismissOnScroll,
     positionsExists,
+    preventDismissOnEvent,
   ]);
 
   return mouseDownHandlers;

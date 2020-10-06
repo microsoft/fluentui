@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.2)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.1..@fluentui/react-theme-provider_v0.14.2)
+
+### Patches
+
+- Add instructions to replace Fabric, Customizer, loadTheme in README. ([PR #15194](https://github.com/microsoft/fluentui/pull/15194) by xgao@microsoft.com)
 
 ## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.1)
 

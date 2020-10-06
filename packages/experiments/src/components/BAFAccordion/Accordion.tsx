@@ -2,8 +2,8 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { initializeComponentRef, css, composeRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { initializeComponentRef, css, composeRenderFunction } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import './Accordion.scss';
 import { IAccordion, IAccordionProps } from './Accordion.types';

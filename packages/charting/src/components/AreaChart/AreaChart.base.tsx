@@ -2,8 +2,8 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { getId, find } from '@fluentui/react/lib/Utilities';
+import { IPalette } from '@fluentui/react/lib/Styling';
 import {
   CartesianChart,
   IAreaChartProps,
@@ -13,10 +13,10 @@ import {
   ILineChartDataPoint,
   ILineChartPoints,
 } from '../../index';
-import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
+import { warnDeprecations } from '@fluentui/react/lib/Utilities';
 import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 const COMPONENT_NAME = 'AREA CHART';
 export interface IAreaChartAreaPoint {

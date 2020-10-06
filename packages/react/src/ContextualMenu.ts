@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ContextualMenu';
+export * from '@fluentui/react-internal/lib/ContextualMenu';

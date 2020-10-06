@@ -8,7 +8,7 @@ import {
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
+import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { FabricDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {

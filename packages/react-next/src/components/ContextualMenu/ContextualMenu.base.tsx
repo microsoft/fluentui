@@ -48,8 +48,8 @@ import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
-import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -480,6 +480,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _tryFocusPreviousActiveElement = (options: {
     containsFocus: boolean;
+    documentContainsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {

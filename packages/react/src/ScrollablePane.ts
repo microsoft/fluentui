@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ScrollablePane';
+export * from '@fluentui/react-internal/lib/ScrollablePane';

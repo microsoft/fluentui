@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Page, IPageProps, PlatformContext } from '@uifabric/example-app-base/lib/index2';
 import { getSubTitle } from '../../utilities/index';
 import { Platforms } from '../../interfaces/Platforms';
-import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 

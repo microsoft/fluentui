@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, SearchBox } from 'office-ui-fabric-react';
+import { Icon, SearchBox } from '@fluentui/react';
 import * as stylesImport from './IconGrid.module.scss';
 const styles: any = stylesImport;
 

@@ -1,4 +1,4 @@
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 
 const getContextOrFalse = memoizeFunction(
   (): CanvasRenderingContext2D | false => document.createElement('canvas').getContext('2d') || false,

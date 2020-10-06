@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Persona, PersonaSize } from 'office-ui-fabric-react';
+import { Persona, PersonaSize } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)

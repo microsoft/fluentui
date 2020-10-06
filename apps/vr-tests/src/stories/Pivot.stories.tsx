@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react';
+import { Pivot, PivotItem, PivotLinkSize, PivotLinkFormat } from '@fluentui/react';
 
 storiesOf('Pivot', module)
   .addDecorator(FabricDecorator)

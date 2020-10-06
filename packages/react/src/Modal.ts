@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Modal';
+export * from '@fluentui/react-internal/lib/Modal';

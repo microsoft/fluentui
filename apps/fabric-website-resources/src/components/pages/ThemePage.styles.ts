@@ -1,4 +1,4 @@
-import { getFocusStyle, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle, getTheme, IStyle } from '@fluentui/react/lib/Styling';
 
 export interface IThemePageStyles {
   colorSwatch: IStyle;

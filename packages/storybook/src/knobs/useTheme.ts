@@ -1,5 +1,5 @@
 import { select } from '@storybook/addon-knobs';
-import * as V8Themes from '@fluentui/react-theme-provider/lib/themes/index';
+import * as V8Themes from '../themes/v8/index';
 import * as V7Themes from '../themes/v7/index';
 
 const themeSelectorLabel = 'Theme';

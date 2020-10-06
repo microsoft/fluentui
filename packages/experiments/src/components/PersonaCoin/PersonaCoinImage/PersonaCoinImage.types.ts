@@ -1,4 +1,4 @@
-import { ImageLoadState } from 'office-ui-fabric-react';
+import { ImageLoadState } from '@fluentui/react';
 import { ISlotProp } from '../../../Foundation';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 

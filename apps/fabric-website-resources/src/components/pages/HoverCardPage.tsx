@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
-import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { HoverCardPageProps } from '@fluentui/examples/lib/office-ui-fabric-react/HoverCard/HoverCard.doc';
+import { LayerHost } from '@fluentui/react/lib/Layer';
+import { HoverCardPageProps } from '@fluentui/react-examples/lib/react/HoverCard/HoverCard.doc';
 
 export const HoverCardPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/HoverCard.page.json')}
+      jsonDocs={require('@uifabric/api-docs/lib/pages/react/HoverCard.page.json')}
       {...{ ...HoverCardPageProps, ...props }}
     />
   </LayerHost>

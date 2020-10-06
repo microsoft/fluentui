@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update release notes to reflect OUFR/react merge PR #15271",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-02T01:09:25.212Z"
+}
