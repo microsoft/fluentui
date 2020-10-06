@@ -24,7 +24,6 @@ import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IButton } from '@fluentui/react/lib/Button';
-import { IButtonClassNames } from '@fluentui/react-internal/lib/components/Button/BaseButton.classNames';
 import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
@@ -358,12 +357,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     }
 
 // @public (undocumented)
-export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
-
-// @public (undocumented)
-export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
-
-// @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
@@ -386,12 +379,6 @@ export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
 export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps>;
-
-// @public (undocumented)
-export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
-
-// @public (undocumented)
-export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
 export const ComboBox: React.FunctionComponent<IComboBoxProps>;
@@ -791,67 +778,6 @@ export interface IBreadcrumbStyles {
 }
 
 // @public (undocumented)
-export interface IButtonGrid {
-}
-
-// @public (undocumented)
-export interface IButtonGridCellProps<T> {
-    cellDisabledStyle?: string[];
-    cellIsSelectedStyle?: string[];
-    className?: string;
-    disabled?: boolean;
-    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
-    id: string;
-    index?: number;
-    item: T;
-    label?: string;
-    onClick?: (item: T) => void;
-    onFocus?: (item: T) => void;
-    onHover?: (item?: T) => void;
-    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
-    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    onRenderItem: (item: T) => JSX.Element;
-    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    role?: string;
-    selected?: boolean;
-}
-
-// @public (undocumented)
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement>, React.RefAttributes<HTMLElement> {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
-    columnCount: number;
-    componentRef?: IRefObject<IButtonGrid>;
-    // @deprecated
-    containerClassName?: string;
-    doNotContainWithinFocusZone?: boolean;
-    items: any[];
-    onBlur?: () => void;
-    onRenderItem: (item: any, index: number) => JSX.Element;
-    // @deprecated (undocumented)
-    positionInSet?: number;
-    // @deprecated (undocumented)
-    setSize?: number;
-    shouldFocusCircularNavigate?: boolean;
-    styles?: IStyleFunctionOrObject<IButtonGridStyleProps, IButtonGridStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export interface IButtonGridStyleProps {
-    theme: ITheme;
-}
-
-// @public
-export interface IButtonGridStyles {
-    focusedContainer?: IStyle;
-    root: IStyle;
-    tableCell: IStyle;
-}
-
-// @public (undocumented)
 export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
@@ -1126,64 +1052,6 @@ export interface ICoachmarkStyles {
 
 // @public @deprecated (undocumented)
 export type ICoachmarkTypes = ICoachmarkProps;
-
-// @public (undocumented)
-export interface IColorCellProps {
-    color: string;
-    id: string;
-    index?: number;
-    label?: string;
-}
-
-// @public (undocumented)
-export interface IColorPickerGridCellProps {
-    borderWidth?: number;
-    circle?: boolean;
-    color: string;
-    disabled?: boolean;
-    height?: number;
-    // @deprecated
-    id?: string;
-    idPrefix?: string;
-    index?: number;
-    item: IColorCellProps;
-    label?: string;
-    onClick?: (item: IColorCellProps) => void;
-    // (undocumented)
-    onFocus?: (item: IColorCellProps) => void;
-    // (undocumented)
-    onHover?: (item?: IColorCellProps) => void;
-    // (undocumented)
-    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
-    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    // (undocumented)
-    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    // (undocumented)
-    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    selected: boolean;
-    styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
-    theme?: ITheme;
-    width?: number;
-}
-
-// @public (undocumented)
-export interface IColorPickerGridCellStyleProps {
-    borderWidth?: number;
-    circle?: boolean;
-    disabled?: boolean;
-    height?: number;
-    isWhite?: boolean;
-    selected?: boolean;
-    theme: ITheme;
-    width?: number;
-}
-
-// @public (undocumented)
-export interface IColorPickerGridCellStyles {
-    colorCell: IStyle;
-    svg: IStyle;
-}
 
 // @public (undocumented)
 export interface IComboBox {
@@ -2823,53 +2691,6 @@ export { ISuggestionsStyles }
 
 export { ISuggestionsSubComponentStyles }
 
-// @public (undocumented)
-export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
-    cellBorderWidth?: number;
-    cellHeight?: number;
-    cellMargin?: number;
-    cellShape?: 'circle' | 'square';
-    cellWidth?: number;
-    className?: string;
-    colorCells: IColorCellProps[];
-    columnCount: number;
-    defaultSelectedId?: string | undefined;
-    disabled?: boolean;
-    doNotContainWithinFocusZone?: boolean;
-    focusOnHover?: boolean;
-    getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
-    id?: string;
-    // @deprecated (undocumented)
-    isControlled?: boolean;
-    mouseLeaveParentSelector?: string | undefined;
-    onCellFocused?: (id?: string, color?: string) => void;
-    onCellHovered?: (id?: string, color?: string) => void;
-    onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
-    // @deprecated (undocumented)
-    onColorChanged?: (id?: string, color?: string) => void;
-    onRenderColorCell?: IRenderFunction<IColorCellProps>;
-    selectedId?: string;
-    shouldFocusCircularNavigate?: boolean;
-    styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export interface ISwatchColorPickerStyleProps {
-    cellMargin?: number;
-    className?: string;
-    theme: ITheme;
-}
-
-// @public
-export interface ISwatchColorPickerStyles {
-    focusedContainer?: IStyle;
-    root: IStyle;
-    tableCell: IStyle;
-}
-
 export { ITag }
 
 export { ITagItemProps }
@@ -3571,12 +3392,6 @@ export type SuggestionsStoreOptions<T> = {
     getAriaLabel?: (item: T) => string;
 };
 
-// @public (undocumented)
-export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
-
-// @public (undocumented)
-export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps>;
-
 export { TagItem }
 
 export { TagItemBase }
@@ -3680,6 +3495,7 @@ export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
 export * from "@fluentui/react/lib/Facepile";
 export * from "@fluentui/react/lib/FocusZone";
+export * from "@fluentui/react/lib/Grid";
 export * from "@fluentui/react/lib/GroupedList";
 export * from "@fluentui/react/lib/HoverCard";
 export * from "@fluentui/react/lib/Icon";
@@ -3705,6 +3521,7 @@ export * from "@fluentui/react/lib/Spinner";
 export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
+export * from "@fluentui/react/lib/SwatchColorPicker";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/ThemeGenerator";
 export * from "@fluentui/react/lib/Tooltip";

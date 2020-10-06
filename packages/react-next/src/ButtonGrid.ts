@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react/lib/utilities/ButtonGrid/index';
+export * from '@fluentui/react/lib/Grid';
