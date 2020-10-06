@@ -487,15 +487,9 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     render(): JSX.Element;
 }
 
-// @public (undocumented)
-export const Fabric: React.FunctionComponent<IFabricProps>;
-
 export { FabricAutofill }
 
 export { FabricAutofillProps }
-
-// @public (undocumented)
-export const FabricBase: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
@@ -1701,32 +1695,6 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 export { IFabricAutofill }
 
 export { IFabricAutofillState }
-
-// @public (undocumented)
-export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    applyTheme?: boolean;
-    applyThemeToBody?: boolean;
-    as?: React.ElementType;
-    // (undocumented)
-    componentRef?: IRefObject<{}>;
-    dir?: 'rtl' | 'ltr' | 'auto';
-    styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IFabricStyleProps extends IFabricProps {
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IFabricStyles {
-    // (undocumented)
-    bodyThemed: IStyle;
-    // (undocumented)
-    root: IStyle;
-}
 
 // @public (undocumented)
 export interface IFocusTrapCalloutProps extends ICalloutProps {
@@ -3678,6 +3646,7 @@ export * from "@fluentui/react/lib/Dialog";
 export * from "@fluentui/react/lib/Divider";
 export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
+export * from "@fluentui/react/lib/Fabric";
 export * from "@fluentui/react/lib/Facepile";
 export * from "@fluentui/react/lib/FocusZone";
 export * from "@fluentui/react/lib/GroupedList";
