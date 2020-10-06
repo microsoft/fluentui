@@ -26,6 +26,24 @@ class ResultInternal<R, E> implements Chainable<R> {
     return Err(this.value);
   }
 
+  public biChain<R2, E2>(
+    this: Result<R, E>,
+    fnOk: (v: R) => Result<R2, E2>,
+    fnErr: (v: E) => Result<R2, E2>,
+  ): Result<R2, E2> {
+    if (this.ok) {
+      return fnOk(this.value);
+    }
+    return fnErr(this.value);
+  }
+
+  public biMap<R2, E2>(this: Result<R, E>, fnOk: (v: R) => R2, fnErr: (v: E) => E2): Result<R2, E2> {
+    if (this.ok) {
+      return Ok(fnOk(this.value));
+    }
+    return Err(fnErr(this.value));
+  }
+
   /**
    * Works just like chain, but is only called if this Result is an error.
    * This returns a new Result with type Result<R, NewType>
@@ -149,4 +167,33 @@ export const isOk = <R, E>(r: Result<R, E>): r is Ok<R, E> => {
 
 export const isErr = <R, E>(r: Result<R, E>): r is Err<R, E> => {
   return !r.ok;
+};
+
+export const biReduce = <R, E>(
+  results: Result<R, E>[],
+  fnOk: (v: R, v2: R) => Result<R, E>,
+  fnErr: (v: R, v2: E) => Result<R, E>,
+): Result<R, E> => {
+  return results.reduce((acc, value) =>
+    acc.chain(v =>
+      value.biChain(
+        r => fnOk(v, r),
+        e => fnErr(v, e),
+      ),
+    ),
+  );
+};
+
+export const partitionResults = <R, E>(results: Result<R, E>[]): [R[], E[]] => {
+  return results.reduce<[R[], E[]]>(
+    (acc, value) => {
+      if (value.ok) {
+        acc[0].push(value.value);
+      } else {
+        acc[1].push(value.value);
+      }
+      return acc;
+    },
+    [[], []],
+  );
 };

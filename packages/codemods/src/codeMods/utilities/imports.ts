@@ -1,5 +1,5 @@
 import { SourceFile, ImportDeclaration, ImportSpecifierStructure } from 'ts-morph';
-import { ModFunctionResult, ModResult, NoOp } from '../types';
+import { ModFunctionResult, ModResult, NoOp, Reasons } from '../types';
 import { Ok, Err, Result } from '../../helpers/result';
 
 export function renameImport(file: SourceFile, originalImport: string, renamedImport: string): Result<ModResult, NoOp> {
@@ -9,7 +9,7 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
     });
   });
   if (imps.length === 0) {
-    return Err({ reason: 'No matching imports could be found.' });
+    return Err({ reason: Reasons.NO_OP, logs: ['No matching imports could be found.'] });
   }
   imps[0].getNamedImports().forEach(name => {
     if (name.getText() === originalImport) {
@@ -70,7 +70,7 @@ export function appendOrCreateNamedImport(
     );
   }
 
-  return Err({ reason: 'Named import is already not present in module' });
+  return Err({ reason: Reasons.NO_OP, logs: ['Named import is not present in module'] });
 }
 
 export function repathImport(

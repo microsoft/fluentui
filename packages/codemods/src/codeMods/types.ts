@@ -5,10 +5,22 @@ export interface ModResult {
   logs: string[];
 }
 
-export type NoOp = {
-  reason: string;
-  log?: string;
+export enum Reasons {
+  ERROR = -1,
+  NO_OP = 0,
+}
+
+export type ModNoOp = {
+  reason: Reasons.NO_OP;
+  logs: string[];
 };
+
+export type ModError = {
+  reason: Reasons.ERROR;
+  error: Error | string;
+};
+
+export type NoOp = ModError | ModNoOp;
 
 export type ModFunctionResult<T> = Result<T, NoOp>;
 

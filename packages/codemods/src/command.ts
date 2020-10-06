@@ -117,7 +117,7 @@ function getModRunnerConfig(): Result<ModRunnerConfigType, NoOp> {
   let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
   console.log('Configuration detected. Attempting to run mods from config...');
   if (!foundJsonFile.found || foundJsonFile.found.length !== 1) {
-    return Err({ reason: 'error', log: 'Error, could not locate correct config file.' });
+    return Err({ reason: -1, error: new Error('Error, could not locate correct config file.') });
   } else {
     configObj = require(foundJsonFile.found[0]);
     return Ok(configObj);
