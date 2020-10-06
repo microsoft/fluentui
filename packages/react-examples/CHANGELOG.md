@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Oct 2020 12:25:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.6)
+
+Tue, 06 Oct 2020 12:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.5..@fluentui/react-examples_v0.4.6)
+
+### Patches
+
+- Charting: Customized callout support added to area chart and line chart. ([PR #15361](https://github.com/microsoft/fluentui/pull/15361) by v-gorraj@microsoft.com)
 
 ## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.5)
 
