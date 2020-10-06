@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
 import { useButtonClasses } from '../Button/index';
@@ -14,8 +13,6 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
 
   useButtonClasses(state);
   useMenuButtonClasses(state);
-
-  useFocusRects(state.ref);
 
   // TODO remove any
   /**

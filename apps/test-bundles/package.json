@@ -1,45 +1,24 @@
 {
   "name": "test-bundles",
   "version": "7.0.0",
-  "description": "Testing the button for bundling.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
-  "typings": "lib/index.d.ts",
+  "description": "Testing Fluent UI React bundle sizes.",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
     "bundle:size": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "parallel-webpack": "^2.4.0"
+    "just": "just-scripts"
   },
   "dependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react": "^7.142.0",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-next": "^8.0.0-alpha.118",
-    "@uifabric/experiments": "^7.33.1",
-    "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.9",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "tslib": "^1.10.0"
+    "@uifabric/build": "^7.0.0",
+    "parallel-webpack": "^2.4.0",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
