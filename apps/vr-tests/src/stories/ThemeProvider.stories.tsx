@@ -37,8 +37,10 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized theme 1</PrimaryButton>
       <ThemeProvider
         theme={{
+          palette: {
+            themePrimary: '#FFF',
+          },
           semanticColors: {
-            primaryButtonBackground: '#FFF',
             primaryButtonText: '#000',
           },
         }}
