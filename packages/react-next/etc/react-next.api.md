@@ -37,10 +37,12 @@ import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pick
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
+import { IImageProps } from '@fluentui/react-internal/lib/Image';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
+import { ImageLoadState } from '@fluentui/react-internal/lib/Image';
 import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
@@ -1760,63 +1762,6 @@ export interface IGap extends IShimmerElement {
 
 export { IGenericItem }
 
-// @public (undocumented)
-export interface IImage {
-}
-
-// @public (undocumented)
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
-    className?: string;
-    coverStyle?: ImageCoverStyle;
-    // @deprecated
-    errorSrc?: string;
-    imageFit?: ImageFit;
-    maximizeFrame?: boolean;
-    onLoadingStateChange?: (loadState: ImageLoadState) => void;
-    shouldFadeIn?: boolean;
-    shouldStartVisible?: boolean;
-    styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IImageState {
-    // (undocumented)
-    loadState?: ImageLoadState;
-}
-
-// @public (undocumented)
-export interface IImageStyleProps {
-    className?: string;
-    height?: number | string;
-    isCenter?: boolean;
-    // (undocumented)
-    isCenterContain?: boolean;
-    // (undocumented)
-    isCenterCover?: boolean;
-    // (undocumented)
-    isContain?: boolean;
-    // (undocumented)
-    isCover?: boolean;
-    isError?: boolean;
-    isLandscape?: boolean;
-    isLoaded?: boolean;
-    // (undocumented)
-    isNone?: boolean;
-    isNotImageFit?: boolean;
-    maximizeFrame?: boolean;
-    shouldFadeIn?: boolean;
-    shouldStartVisible?: boolean;
-    theme: ITheme;
-    width?: number | string;
-}
-
-// @public (undocumented)
-export interface IImageStyles {
-    image: IStyle;
-    root: IStyle;
-}
-
 export { IInputProps }
 
 // @public (undocumented)
@@ -1865,37 +1810,6 @@ export interface ILayerStyles {
 export interface ILine extends IShimmerElement {
     height?: number;
     width?: number | string;
-}
-
-// @public (undocumented)
-export const Image: React.FunctionComponent<IImageProps>;
-
-// @public (undocumented)
-export const ImageBase: React.FunctionComponent<IImageProps>;
-
-// @public
-export enum ImageCoverStyle {
-    landscape = 0,
-    portrait = 1
-}
-
-// @public
-export enum ImageFit {
-    center = 0,
-    centerContain = 5,
-    centerCover = 4,
-    contain = 1,
-    cover = 2,
-    none = 3
-}
-
-// @public (undocumented)
-export enum ImageLoadState {
-    error = 2,
-    // @deprecated
-    errorLoaded = 3,
-    loaded = 1,
-    notLoaded = 0
 }
 
 // @public (undocumented)
@@ -3662,6 +3576,7 @@ export * from "@fluentui/react-button/lib/MenuButton";
 export * from "@fluentui/react-button/lib/SplitButton";
 export * from "@fluentui/react-button/lib/ToggleButton";
 export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-internal/lib/Image";
 export * from "@fluentui/react-link/lib/Link";
 export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
