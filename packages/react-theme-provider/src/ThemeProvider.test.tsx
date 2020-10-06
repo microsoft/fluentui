@@ -93,7 +93,7 @@ describe('ThemeProvider', () => {
 
     const expectedTheme: Theme = mergeThemes(createDefaultTheme(), lightTheme);
     expectedTheme.tokens = getTokens(expectedTheme);
-    expectedTheme.id = '0-1';
+    expectedTheme.id = '0-0';
 
     expect(resolvedTheme).toEqual(expectedTheme);
   });
