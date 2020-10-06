@@ -45,105 +45,124 @@ export const emptyTheme: ThemePrepared = {
  * Merges a single component's styles (keyed by component part) with another component's styles.
  */
 export const mergeComponentStyles__PROD = (
-  ...sources: (ComponentSlotStylesInput | null | undefined)[]
+  stylesA: ComponentSlotStyle | null | undefined,
+  stylesB: ComponentSlotStyle | null | undefined,
 ): ComponentSlotStylesPrepared => {
-  const initial: ComponentSlotStylesPrepared = {};
+  const result = {};
 
-  return sources.reduce<ComponentSlotStylesPrepared>((partStylesPrepared, stylesByPart) => {
-    // The of "[].forEach()" instead of "_.forEach" has zero sense, but somehow it solves a reported memory leak.
-    // There is no 100% confidence that it actually fixes anything.
-    if (_.isPlainObject(stylesByPart)) {
-      Object.keys(stylesByPart).forEach(partName => {
-        const partStyle = stylesByPart[partName];
-
-        // Break references to avoid an infinite loop.
-        // We are replacing functions with a new ones that calls the originals.
-        const originalTarget = partStylesPrepared[partName];
-        const originalSource = partStyle;
-
-        // if there is no source, merging is a no-op, skip it
-        if (
-          typeof originalSource === 'undefined' ||
-          originalSource === null ||
-          (typeof originalSource === 'object' && Object.keys(originalSource).length === 0)
-        ) {
-          return;
-        }
-
-        // no target means source doesn't need to merge onto anything
-        // just ensure source is callable (prepared format)
-        if (typeof originalTarget === 'undefined') {
-          partStylesPrepared[partName] = callable(originalSource);
-          return;
-        }
-
-        // We have both target and source, replace with merge fn
-        partStylesPrepared[partName] = styleParam => {
-          // originalTarget is always prepared, fn is guaranteed
-          return _.merge(originalTarget(styleParam), callable(originalSource)(styleParam));
-        };
-      });
-    }
-
-    return partStylesPrepared;
-  }, initial);
-};
-
-export const mergeComponentStyles__DEV = (
-  ...sources: (ComponentSlotStylesInput | null | undefined)[]
-): ComponentSlotStylesPrepared => {
-  if (!isDebugEnabled) {
-    return mergeComponentStyles__PROD(...sources);
-  }
-  const initial: ComponentSlotStylesPrepared = {};
-
-  return sources.reduce<ComponentSlotStylesPrepared>((partStylesPrepared, stylesByPart) => {
-    _.forEach(stylesByPart, (partStyle, partName) => {
-      // Break references to avoid an infinite loop.
-      // We are replacing functions with a new ones that calls the originals.
-      const originalTarget = partStylesPrepared[partName];
-      const originalSource = partStyle;
+  if (stylesA) {
+    Object.keys(stylesA).forEach(partName => {
+      const slotA = stylesA[partName];
+      const slotB = stylesB?.[partName];
 
       // if there is no source, merging is a no-op, skip it
-      if (
-        typeof originalSource === 'undefined' ||
-        originalSource === null ||
-        (typeof originalSource === 'object' && Object.keys(originalSource).length === 0)
-      ) {
+      if (typeof slotA === 'undefined' || slotA === null) {
         return;
       }
 
       // no target means source doesn't need to merge onto anything
-      // just ensure source is callable (prepared format) and has _debug
-      if (typeof originalTarget === 'undefined') {
-        partStylesPrepared[partName] = styleParam => {
-          // originalTarget is always prepared, fn is guaranteed, _debug always exists
-          const { _debug = undefined, ...styles } = callable(originalSource)(styleParam) || {};
+      // just ensure source is callable (prepared format)
+      if (typeof slotB === 'undefined' || slotB === null) {
+        result[partName] = typeof slotA === 'function' ? slotA : () => slotA;
+        return;
+      }
 
-          // new object required to prevent circular JSON structure error in <Debug />
-          return {
-            ...styles,
-            _debug: _debug || [{ styles: { ...styles }, debugId: stylesByPart._debugId }],
-          };
-        };
+      if (slotA === slotB) {
+        result[partName] = typeof slotA === 'function' ? slotA : () => slotA;
+      }
+    });
+  }
 
+  if (stylesB) {
+    Object.keys(stylesB).forEach(partName => {
+      const slotA = stylesA?.[partName];
+      const slotB = stylesB[partName];
+
+      // if there is no source, merging is a no-op, skip it
+      if (typeof slotB === 'undefined' || slotB === null) {
+        return;
+      }
+
+      // no target means source doesn't need to merge onto anything
+      // just ensure source is callable (prepared format)
+      if (typeof slotA === 'undefined' || slotA === null) {
+        result[partName] = typeof slotB === 'function' ? slotB : () => slotB;
+        return;
+      }
+
+      if (slotA === slotB) {
         return;
       }
 
       // We have both target and source, replace with merge fn
-      partStylesPrepared[partName] = styleParam => {
-        // originalTarget is always prepared, fn is guaranteed, _debug always exists
-        const { _debug: targetDebug, ...targetStyles } = originalTarget(styleParam);
-        const { _debug: sourceDebug = undefined, ...sourceStyles } = callable(originalSource)(styleParam) || {};
-
-        const merged = _.merge(targetStyles, sourceStyles);
-        merged._debug = targetDebug.concat(sourceDebug || { styles: sourceStyles, debugId: stylesByPart._debugId });
-        return merged;
+      result[partName] = function mergedStyleFunction(styleParam) {
+        // originalTarget is always prepared, fn is guaranteed
+        return _.merge(
+          typeof slotA === 'function' ? slotA(styleParam) : slotA,
+          typeof slotB === 'function' ? slotB(styleParam) : slotB,
+        );
       };
     });
+  }
 
-    return partStylesPrepared;
-  }, initial);
+  return result;
+};
+
+export const mergeComponentStyles__DEV = (
+  stylesA: ComponentSlotStylesInput | null | undefined,
+  stylesB: ComponentSlotStylesInput | null | undefined,
+): ComponentSlotStylesPrepared => {
+  if (!isDebugEnabled) {
+    return mergeComponentStyles__PROD(stylesA, stylesB);
+  }
+
+  const mergedKeys = [...(stylesA ? Object.keys(stylesA) : []), ...(stylesB ? Object.keys(stylesB) : [])];
+  const result = {};
+
+  mergedKeys.forEach(slotName => {
+    const slotA = styleParam => {
+      // originalTarget is always prepared, fn is guaranteed, _debug always exists
+      const { _debug = undefined, ...styles } = callable(stylesA?.[slotName])(styleParam) || {};
+
+      // new object required to prevent circular JSON structure error in <Debug />
+      return {
+        ...styles,
+        _debug: _debug || [{ styles: { ...styles }, debugId: stylesA._debugId }],
+      };
+    };
+
+    const slotB = styleParam => {
+      // originalTarget is always prepared, fn is guaranteed, _debug always exists
+      const { _debug = undefined, ...styles } = callable(stylesB?.[slotName])(styleParam) || {};
+
+      // new object required to prevent circular JSON structure error in <Debug />
+      return {
+        ...styles,
+        _debug: _debug || [{ styles: { ...styles }, debugId: stylesB._debugId }],
+      };
+    };
+
+    if (stylesA?.[slotName] && stylesB?.[slotName]) {
+      // We have both target and source, replace with merge fn
+      result[slotName] = styleParam => {
+        // originalTarget is always prepared, fn is guaranteed, _debug always exists
+        const { _debug: debugA, ...resolvedStylesA } = slotA(styleParam);
+        const { _debug: debugB, ...resolvedStylesB } = slotB(styleParam);
+
+        const merged = _.merge(resolvedStylesA, resolvedStylesB);
+
+        merged._debug = debugA.concat(debugB || { styles: resolvedStylesB, debugId: resolvedStylesB._debugId });
+
+        return merged;
+      };
+    } else if (stylesA?.[slotName]) {
+      result[slotName] = slotA;
+    } else if (stylesB?.[slotName]) {
+      result[slotName] = slotB;
+    }
+  });
+
+  return result;
 };
 
 export const mergeComponentStyles: (

@@ -64,16 +64,6 @@ describe('mergeComponentStyles', () => {
       expect(() => mergeComponentStyles(stylesWithUndefined, styles)).not.toThrow();
     });
 
-    test('component parts without styles are not merged', () => {
-      const target = { root: {} };
-      const source = { icon: {} };
-
-      const merged = mergeComponentStyles(target, source);
-
-      expect(merged).not.toHaveProperty('root');
-      expect(merged).not.toHaveProperty('icon');
-    });
-
     test('component parts with style properties are merged', () => {
       const target = { root: { color: 'red' } };
       const source = { icon: { color: 'red' } };
@@ -165,6 +155,18 @@ describe('mergeComponentStyles', () => {
       const resolvedRoot = merged.root(styleParam);
       expect(resolvedRoot._debug).toBe(undefined);
     });
+
+    test('keeps references if possible', () => {
+      const styleRoot = jest.fn();
+
+      const firstMerge = mergeComponentStyles__PROD({ root: styleRoot }, { root: styleRoot });
+      const secondMerge = mergeComponentStyles__PROD(firstMerge, { root: styleRoot });
+
+      expect(secondMerge.root).toBe(styleRoot);
+
+      secondMerge.root(styleParam);
+      expect(styleRoot).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('dev version, debug disabled', () => {
@@ -225,47 +227,25 @@ describe('mergeComponentStyles', () => {
       });
 
       test('are flat for recursive merge', () => {
-        const target = withDebugId(
-          {
-            root: {
-              a: 'tA',
-            },
-          },
-          'target',
-        );
-        const source1 = withDebugId(
-          {
-            root: {
-              a: 'tB',
-            },
-          },
-          'source1',
-        );
-        const source2 = withDebugId(
-          {
-            root: {
-              a: 'tC',
-            },
-          },
-          'source2',
-        );
+        const target = withDebugId({ root: { a: 'tA' } }, 'target');
+        const source2 = withDebugId({ root: { a: 'tB' } }, 'source');
 
-        const merged1 = mergeComponentStyles__DEV(target, source1, source2);
+        const merged1 = mergeComponentStyles__DEV(target, source2);
         const resolvedRoot1 = merged1.root(styleParam);
         expect(resolvedRoot1).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }],
         });
 
-        const merged2 = mergeComponentStyles__DEV(mergeComponentStyles__DEV(target, source1), source2);
+        const merged2 = mergeComponentStyles__DEV(mergeComponentStyles__DEV(target, source2), source2);
         const resolvedRoot2 = merged2.root(styleParam);
         expect(resolvedRoot2).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }, { debugId: 'source' }],
         });
 
-        const merged3 = mergeComponentStyles__DEV(target, mergeComponentStyles__DEV(source1, source2));
+        const merged3 = mergeComponentStyles__DEV(target, mergeComponentStyles__DEV(source2, source2));
         const resolvedRoot3 = merged3.root(styleParam);
         expect(resolvedRoot3).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }, { debugId: 'source' }],
         });
       });
     });

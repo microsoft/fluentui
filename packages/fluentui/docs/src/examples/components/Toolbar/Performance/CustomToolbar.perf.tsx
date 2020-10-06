@@ -499,8 +499,7 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
 };
 
 const CustomToolbarPrototype = () => {
-  let theme = {};
-  theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
+  const theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
 
   return (
     <Provider theme={theme}>

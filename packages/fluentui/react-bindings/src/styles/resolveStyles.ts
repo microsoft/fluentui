@@ -109,8 +109,10 @@ export const resolveStyles = (
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      design && withDebugId({ root: design }, 'props.design'),
-      styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
+      mergeComponentStyles(
+        design && withDebugId({ root: design }, 'props.design'),
+        styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
+      ),
     );
   }
 
