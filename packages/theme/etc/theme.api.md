@@ -740,8 +740,6 @@ export interface PartialTheme extends IPartialTheme {
     stylesheets?: string[];
     // (undocumented)
     tokens?: RecursivePartial<Tokens>;
-    // (undocumented)
-    variants?: RecursivePartial<Variants>;
 }
 
 // @public
