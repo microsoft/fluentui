@@ -283,6 +283,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         clearQueryString();
         if (resultItemsList && resultItemsList.length > 0) {
           addItems(resultItemsList);
+          showPicker(false);
+          if (input.current) {
+            input.current._value = '';
+          }
         }
       }
     }
