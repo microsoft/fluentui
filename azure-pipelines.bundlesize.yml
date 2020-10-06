@@ -9,7 +9,7 @@ jobs:
           versionSpec: '10.x'
         displayName: 'Install Node.js'
 
-      - script: yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - script: yarn buildto test-bundles
