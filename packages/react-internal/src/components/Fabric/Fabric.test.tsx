@@ -2,7 +2,7 @@ import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import { Customizer } from '@uifabric/utilities';
 import { Fabric } from './Fabric';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { createTheme } from '../../Styling';
 import { mount } from 'enzyme';
 
