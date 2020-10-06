@@ -1,6 +1,5 @@
 pr:
   - master
-  - website-content
 
 trigger:
   - master
