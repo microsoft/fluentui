@@ -41,6 +41,9 @@ const backgroundStyles = css`
   name: 'fluent-design-system-provider',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentDesignSystemProvider extends DesignSystemProvider
   implements

@@ -15,6 +15,9 @@ import { ProgressStyles as styles } from './progress.styles';
   name: 'fluent-progress',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentProgress extends BaseProgress {}
 
