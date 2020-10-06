@@ -6,4 +6,5 @@ export * from './spacing/index';
 export * from './motion/index';
 export * from './fonts/index';
 export * from './createTheme';
+export { makeSemanticColors } from './utilities/makeSemanticColors';
 export { FluentTheme } from './FluentTheme';

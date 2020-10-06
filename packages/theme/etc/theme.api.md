@@ -71,7 +71,7 @@ export interface ComponentStyles {
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export function createTheme(theme?: PartialTheme, depComments?: boolean): Theme;
 
 // @public (undocumented)
 export const DefaultEffects: IEffects;
@@ -626,7 +626,10 @@ export namespace LocalizedFontNames {
 }
 
 // @public
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
+export function makeSemanticColors(p: IPalette, e: IEffects, s: Partial<ISemanticColors> | undefined, isInverted: boolean, depComments: boolean): ISemanticColors;
+
+// @public (undocumented)
+export function mergeThemes(theme: Theme, partialTheme?: PartialTheme): Theme;
 
 // @public (undocumented)
 export namespace MotionAnimations {
@@ -833,8 +836,8 @@ export interface Theme extends ITheme {
     id?: string;
     // (undocumented)
     stylesheets?: string[];
-    // (undocumented)
-    tokens?: Tokens;
+    // @internal
+    tokens?: RecursivePartial<Tokens>;
 }
 
 // @public (undocumented)

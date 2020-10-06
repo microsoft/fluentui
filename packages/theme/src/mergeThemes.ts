@@ -1,15 +1,27 @@
 import { merge } from '@uifabric/utilities';
-import { PartialTheme, Theme } from './types/index';
+import { IFontStyles, PartialTheme, Theme } from './types/index';
+import { makeSemanticColors } from './utilities/makeSemanticColors';
 
-/**
- * Merges multiple themes.
- */
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult {
-  const partialTheme = merge<PartialTheme | Theme>({}, ...themes);
+export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Theme {
+  const mergedTheme = merge<Theme | PartialTheme>({}, theme, partialTheme) as Theme;
 
-  // Correctly merge stylesheets array
-  partialTheme.stylesheets = [];
-  themes.forEach(theme => theme && theme.stylesheets && partialTheme.stylesheets?.push(...theme.stylesheets));
+  mergedTheme.semanticColors = makeSemanticColors(
+    mergedTheme.palette,
+    mergedTheme.effects,
+    partialTheme?.semanticColors,
+    !!partialTheme?.isInverted,
+    false,
+  );
 
-  return partialTheme as TResult;
+  if (partialTheme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(mergedTheme.fonts) as (keyof IFontStyles)[]) {
+      mergedTheme.fonts[fontStyle] = merge(mergedTheme.fonts[fontStyle], partialTheme.defaultFontStyle);
+    }
+  }
+
+  if (partialTheme.stylesheets) {
+    mergedTheme.stylesheets = (theme.stylesheets || []).concat(partialTheme.stylesheets);
+  }
+
+  return mergedTheme;
 }
