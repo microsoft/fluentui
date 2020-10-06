@@ -26,7 +26,7 @@ class ResultInternal<R, E> implements Chainable<R> {
     return Err(this.value);
   }
 
-  public biChain<R2, E2>(
+  public bothChain<R2, E2>(
     this: Result<R, E>,
     fnOk: (v: R) => Result<R2, E2>,
     fnErr: (v: E) => Result<R2, E2>,
@@ -35,13 +35,6 @@ class ResultInternal<R, E> implements Chainable<R> {
       return fnOk(this.value);
     }
     return fnErr(this.value);
-  }
-
-  public biMap<R2, E2>(this: Result<R, E>, fnOk: (v: R) => R2, fnErr: (v: E) => E2): Result<R2, E2> {
-    if (this.ok) {
-      return Ok(fnOk(this.value));
-    }
-    return Err(fnErr(this.value));
   }
 
   /**
@@ -167,21 +160,6 @@ export const isOk = <R, E>(r: Result<R, E>): r is Ok<R, E> => {
 
 export const isErr = <R, E>(r: Result<R, E>): r is Err<R, E> => {
   return !r.ok;
-};
-
-export const biReduce = <R, E>(
-  results: Result<R, E>[],
-  fnOk: (v: R, v2: R) => Result<R, E>,
-  fnErr: (v: R, v2: E) => Result<R, E>,
-): Result<R, E> => {
-  return results.reduce((acc, value) =>
-    acc.chain(v =>
-      value.biChain(
-        r => fnOk(v, r),
-        e => fnErr(v, e),
-      ),
-    ),
-  );
 };
 
 export const partitionResults = <R, E>(results: Result<R, E>[]): [R[], E[]] => {

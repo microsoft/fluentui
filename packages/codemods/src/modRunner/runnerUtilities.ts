@@ -1,4 +1,4 @@
-import { CodeMod, CodeModResult, Reasons } from '../codeMods/types';
+import { CodeMod, CodeModResult } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
 import { Err, Result, Ok, partitionResults } from '../helpers/result';
@@ -23,10 +23,10 @@ export function runMods<T>(
     const results: Result<RunResult, ErrorResult>[] = [];
     for (let i = 0; i < codeMods.length; i++) {
       const mod = codeMods[i];
-      const result = runMod(mod, file, loggingCallback).biChain<RunResult, ErrorResult>(
+      const result = runMod(mod, file, loggingCallback).bothChain<RunResult, ErrorResult>(
         v => Ok({ logs: v.logs, modName: mod.name }),
         err => {
-          if (err.reason === Reasons.ERROR) {
+          if ('error' in err) {
             return Err({ modName: mod.name, error: err.error });
           }
 
@@ -49,7 +49,7 @@ function runMod<T>(
   try {
     result = codeMod.run(file);
   } catch (e) {
-    result = Err({ reason: Reasons.ERROR, error: e });
+    result = Err({ error: e });
   }
 
   if (loggingCallback) {

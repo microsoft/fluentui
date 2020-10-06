@@ -1,5 +1,5 @@
 import { SourceFile } from 'ts-morph';
-import { CodeMod, Reasons, CodeModResult } from '../../types';
+import { CodeMod, CodeModResult } from '../../types';
 import { getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
@@ -8,12 +8,12 @@ const newString = '@fluentui/react';
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
   return result.chain(v =>
-    result2.biChain(
+    result2.bothChain(
       r => {
         return Ok({ logs: v.logs.concat(...r.logs) });
       },
       e => {
-        if (e.reason === Reasons.ERROR) {
+        if ('error' in e) {
           return Err(e);
         }
         return Ok({ logs: v.logs.concat(...e.logs) });
@@ -36,7 +36,7 @@ const RepathOfficeToFluentImports: CodeMod = {
         if (v.length > 0) {
           return v.reduce(combineResults);
         } else {
-          return Err({ reason: Reasons.NO_OP, logs: ['Nothing to rename found'] });
+          return Err({ logs: ['Nothing to rename found'] });
         }
       });
   },

@@ -6,13 +6,10 @@ import {
   CodeModMapType,
   ModOptions,
   RenameImportType,
-  NoOp,
-  ModResult,
-  Reasons,
   CodeModResult,
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
-import { Ok, Err, Result } from '../../../helpers/result';
+import { Ok, Err } from '../../../helpers/result';
 import { MaybeDictionary, isSomething } from '../../../helpers/maybe';
 
 import jsonObj from '../upgrades.json';
@@ -50,14 +47,14 @@ export function getCodeModsFromJson(): CodeMod[] {
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
-export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>): CodeMod {
+export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => CodeModResult): CodeMod {
   return {
     run: (file: SourceFile) => {
       try {
         /* Codemod body. */
         return mod(file);
       } catch (e) {
-        return Err({ reason: Reasons.ERROR, error: e });
+        return Err({ error: e });
       }
     },
     version: options.version,
@@ -78,14 +75,13 @@ const _codeModMap: CodeModMapType = {
         return Ok({ logs: [res.value] });
       } else {
         return Err({
-          reason: Reasons.NO_OP,
           logs: [`unable to rename the prop ${mod.options.from.toRename} in all files.`],
         });
       }
     };
   },
   repathImport: (mod: RepathImportModType) => {
-    return (file: SourceFile) => {
+    return (file: SourceFile): CodeModResult => {
       /* If the json indicates our search string is a regex, convert it. */
       const searchString = mod.options.from.isRegex
         ? new RegExp(
@@ -108,12 +104,12 @@ const _codeModMap: CodeModMapType = {
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
   return result.chain(v =>
-    result2.biChain(
+    result2.bothChain(
       r => {
         return Ok({ logs: v.logs.concat(...r.logs) });
       },
       e => {
-        if (e.reason === Reasons.ERROR) {
+        if ('error' in e) {
           return Err(e);
         }
         return Ok({ logs: v.logs.concat(...e.logs) });
@@ -134,7 +130,6 @@ const configMod: CodeMod = {
       __configs = getCodeModsFromJson();
       if (__configs === undefined || __configs.length === 0) {
         return Err({
-          reason: Reasons.NO_OP,
           logs: ['failed to get any mods from json. Perhaps the file is missing or malformed?'],
         });
       }
@@ -146,7 +141,7 @@ const configMod: CodeMod = {
       results.push(mod.run(file));
     }
     if (results.length === 0) {
-      return Err({ reason: Reasons.NO_OP, logs: ['No runabble mods were found in the config'] });
+      return Err({ logs: ['No runabble mods were found in the config'] });
     }
 
     return results.reduce(combineResults);

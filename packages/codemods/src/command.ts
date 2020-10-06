@@ -1,6 +1,6 @@
 import yarr from 'yargs';
 import { Maybe } from './helpers/maybe';
-import { CodeMod, ModRunnerConfigType, NoOp } from './codeMods/types';
+import { CodeMod, ModRunnerConfigType, ModError } from './codeMods/types';
 import { getModFilter, getModExcludeFilter } from './modRunner/modFilter';
 import { Glob } from 'glob';
 import { Result, Err, Ok } from './helpers/result';
@@ -107,7 +107,7 @@ export class CommandParser {
   }
 }
 
-function getModRunnerConfig(): Result<ModRunnerConfigType, NoOp> {
+function getModRunnerConfig(): Result<ModRunnerConfigType, ModError> {
   const foundJsonFile = new Glob('/**/modConfig.json', {
     absolute: false,
     root: process.cwd(),
@@ -117,7 +117,7 @@ function getModRunnerConfig(): Result<ModRunnerConfigType, NoOp> {
   let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
   console.log('Configuration detected. Attempting to run mods from config...');
   if (!foundJsonFile.found || foundJsonFile.found.length !== 1) {
-    return Err({ reason: -1, error: new Error('Error, could not locate correct config file.') });
+    return Err({ error: new Error('Error, could not locate correct config file.') });
   } else {
     configObj = require(foundJsonFile.found[0]);
     return Ok(configObj);

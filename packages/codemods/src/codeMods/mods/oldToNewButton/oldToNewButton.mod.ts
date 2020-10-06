@@ -1,5 +1,5 @@
 import { SourceFile } from 'ts-morph';
-import { CodeMod, Reasons } from '../../types';
+import { CodeMod } from '../../types';
 import { renameProp, findJsxTag } from '../../utilities/index';
 import { Err } from '../../../helpers/result';
 
@@ -11,7 +11,7 @@ const oldToNewButton: CodeMod = {
         logs: ['rename completed'],
       }));
     } catch (e) {
-      return Err({ reason: Reasons.ERROR, error: e });
+      return Err({ error: e });
     }
   },
   version: '100000',

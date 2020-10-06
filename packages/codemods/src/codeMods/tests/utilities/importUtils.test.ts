@@ -1,7 +1,7 @@
 import { getImportsByPath, repathImport } from '../../utilities';
 import { Err, Ok } from '../../../helpers/result';
 import { Project, ImportDeclaration } from 'ts-morph';
-import { NoOp, Reasons } from '../../types';
+import { NoOp } from '../../types';
 
 const fileName = 'mockImports.tsx';
 const rootPath = 'office-ui-fabric-react';
@@ -36,7 +36,7 @@ describe('Import Utilities test', () => {
     const imp = getImportsByPath(file, /office\-ui\-fabric\-react.+Button/)
       .chain(v => {
         if (v.length !== 1) {
-          return Err<ImportDeclaration, NoOp>({ reason: Reasons.NO_OP, logs: ['wrong number of results'] });
+          return Err<ImportDeclaration, NoOp>({ logs: ['wrong number of results'] });
         }
         return Ok(v[0]);
       })
@@ -51,9 +51,7 @@ describe('Import Utilities test', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const imps = getImportsByPath(file, /office\-ui\-fabric\-react/)
       .chain(v => {
-        return v.length > 1
-          ? Ok(v)
-          : Err<ImportDeclaration[], NoOp>({ reason: Reasons.NO_OP, logs: ['too few values returned'] });
+        return v.length > 1 ? Ok(v) : Err<ImportDeclaration[], NoOp>({ logs: ['too few values returned'] });
       })
       .then(v => v.map(i => i.getModuleSpecifierValue()))
       .resolveOk(() => ['error']);
