@@ -69,7 +69,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
     });
   };
 
-  private _getExpandedGroupItems(item: IPersonaProps): IPersonaProps[] {
+  private async _getExpandedGroupItems(item: IPersonaProps): Promise<IPersonaProps[]> {
     switch (item.text) {
       case 'Group One':
         return groupOne;
