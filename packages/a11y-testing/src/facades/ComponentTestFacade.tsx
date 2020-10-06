@@ -47,7 +47,7 @@ export class ComponentTestFacade implements TestFacade {
     const container = document.createElement('div');
     document.body.appendChild(container);
 
-    // we need to render it in this way because some component liek popup use context from wrapper component
+    // we need to render it in this way because some component like popup use context from wrapper component
     this.renderedComponent = mount(<Component {...props} />, {
       attachTo: container,
       wrappingComponent: EmptyThemeProvider,
@@ -108,11 +108,7 @@ export class ComponentTestFacade implements TestFacade {
       this.renderedComponent.simulate('click');
       return;
     }
-    console.log(`selector is: ${selector}`);
-    console.log(selector);
-    const test = this.renderedComponent.find(selector);
-
-    test.simulate('click');
+    this.renderedComponent.find(selector).simulate('click');
   }
 
   public pressSpaceKey(selector: string) {
