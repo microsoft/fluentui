@@ -107,5 +107,4 @@ export interface PartialTheme extends IPartialTheme {
   components?: ComponentStyles;
   tokens?: RecursivePartial<Tokens>;
   stylesheets?: string[];
-  variants?: RecursivePartial<Variants>;
 }
