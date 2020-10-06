@@ -278,11 +278,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       if (!resultItemsList) {
         resultItemsList = [];
       }
-      onInputChange ? onInputChange(value, composing, resultItemsList) : null;
-
-      if (resultItemsList && resultItemsList.length > 0) {
-        addItems(resultItemsList);
+      if (onInputChange) {
+        onInputChange(value, composing, resultItemsList);
+        if (resultItemsList && resultItemsList.length > 0) {
+          addItems(resultItemsList);
+          showPicker(false);
+          setQueryString('');
+          if (input.current) {
+            input.current._value = '';
+          }
+        }
       }
+    } else {
+      alert(composing);
     }
   };
   const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
