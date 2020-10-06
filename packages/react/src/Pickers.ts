@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Pickers';
+export * from '@fluentui/react-internal/lib/Pickers';

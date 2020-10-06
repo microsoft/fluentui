@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 import { IRefObject } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';

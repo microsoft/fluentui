@@ -1,6 +1,6 @@
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from './GroupedVerticalBarChart.types';
-import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { isIE11 } from 'office-ui-fabric-react';
+import { HighContrastSelectorBlack, FontWeights } from '@fluentui/react/lib/Styling';
+import { isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
 

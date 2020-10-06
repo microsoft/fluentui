@@ -1,4 +1,4 @@
-import { ButtonPageProps as ExternalProps } from '@fluentui/examples/lib/office-ui-fabric-react/Button/Button.doc';
+import { ButtonPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Button/Button.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { TPlatformPageProps } from '@uifabric/example-app-base/lib/index2';
 

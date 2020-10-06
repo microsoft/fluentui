@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 import { ISuggestionsCoreProps } from './Suggestions/Suggestions.types';
 

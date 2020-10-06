@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxBase } from 'office-ui-fabric-react';
+import { CheckboxBase } from '@fluentui/react';
 
 const Scenario = () => <CheckboxBase />;
 

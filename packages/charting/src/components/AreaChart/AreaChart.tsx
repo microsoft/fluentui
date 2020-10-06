@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
 import { AreaChartBase } from '../AreaChart/AreaChart.base';
 import { getStyles } from './AreaChart.styles';

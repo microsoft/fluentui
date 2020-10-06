@@ -1,4 +1,4 @@
-import { getGlobalClassNames, IStyle } from 'office-ui-fabric-react';
+import { getGlobalClassNames, IStyle } from '@fluentui/react';
 import { IMarkdownTableStyleProps, IMarkdownTableStyles } from './MarkdownTable.types';
 
 const GlobalClassNames = {

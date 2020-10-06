@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
+import { KeytipManager } from '@fluentui/react/lib/Keytips';
 import { IKeytipProps } from '../../Keytip';
 import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst } from '@uifabric/react-hooks';

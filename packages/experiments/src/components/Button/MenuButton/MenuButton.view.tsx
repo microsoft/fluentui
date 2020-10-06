@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { ContextualMenu, DirectionalHint, Text } from 'office-ui-fabric-react';
+import { ContextualMenu, DirectionalHint, Text } from '@fluentui/react';
 import { withSlots } from '../../../Foundation';
 import { FontIcon } from '../../../utilities/factoryComponents';
 

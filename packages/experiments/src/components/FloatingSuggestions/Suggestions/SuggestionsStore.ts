@@ -1,4 +1,4 @@
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];

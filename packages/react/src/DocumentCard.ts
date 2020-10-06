@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/DocumentCard';
+export * from './components/DocumentCard/index';

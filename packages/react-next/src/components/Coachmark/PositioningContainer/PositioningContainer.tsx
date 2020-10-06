@@ -22,7 +22,7 @@ import {
   IPositionProps,
   IPosition,
   RectangleEdge,
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+} from '@fluentui/react/lib/Positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';

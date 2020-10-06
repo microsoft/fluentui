@@ -1,4 +1,4 @@
-import { ICustomizations } from 'office-ui-fabric-react';
+import { ICustomizations } from '@fluentui/react';
 import { AzureThemeDark } from './azure/AzureThemeDark';
 import { AzureThemeLight } from './azure/AzureThemeLight';
 import { AzureThemeHighContrastLight } from './azure/AzureThemeHighContrastLight';

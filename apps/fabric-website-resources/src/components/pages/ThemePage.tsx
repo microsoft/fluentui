@@ -1,15 +1,30 @@
 import * as React from 'react';
-import { ThemePageProps } from '@fluentui/examples/lib/office-ui-fabric-react/Theme/Theme.doc';
-import { defaultPalette, defaultSemanticColors } from 'office-ui-fabric-react/lib/components/Theme/defaultTheme';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ThemePageProps } from '@fluentui/react-examples/lib/react/Theme/Theme.doc';
+import { IColor } from '@fluentui/react/lib/Color';
+import { Callout } from '@fluentui/react/lib/Callout';
+import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
+import { DetailsList, DetailsListLayoutMode } from '@fluentui/react/lib/DetailsList';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { IPalette, ISemanticColors, loadTheme, getTheme } from '@fluentui/react/lib/Styling';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { DemoPage } from '../DemoPage';
 import { getStyles, IThemePageStyles } from './ThemePage.styles';
+
+const defaultTheme = getTheme(true);
+
+export const defaultPalette = Object.keys(defaultTheme.palette).map(variableName => ({
+  key: variableName,
+  name: variableName,
+  value: (defaultTheme.palette as any)[variableName],
+  description: '',
+}));
+
+export const defaultSemanticColors = Object.keys(defaultTheme.semanticColors).map(variableName => ({
+  key: variableName,
+  name: variableName,
+  value: (defaultTheme.semanticColors as any)[variableName],
+  description: (defaultTheme.semanticColors as any)[variableName].indexOf('@deprecated') >= 0 ? 'Deprecated' : '',
+}));
 
 const getClassNames = classNamesFunction<{}, IThemePageStyles>();
 

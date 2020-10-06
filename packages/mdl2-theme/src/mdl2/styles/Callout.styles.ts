@@ -1,4 +1,4 @@
-import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
   const { theme } = props;

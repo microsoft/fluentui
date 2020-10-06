@@ -1,5 +1,5 @@
-import { IStyleFunction, IRawStyle } from 'office-ui-fabric-react';
-import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
+import { IStyleFunction, IRawStyle } from '@fluentui/react';
+import { FontSizes, NeutralColors } from '@fluentui/theme';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles } from './CodeSnippet';
 
 export const codeFontFamily = 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace';

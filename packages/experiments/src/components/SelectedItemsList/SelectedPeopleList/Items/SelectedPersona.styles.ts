@@ -1,5 +1,5 @@
-import { FontSizes, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
-import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes, IRawStyle } from '@fluentui/react/lib/Styling';
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ISelectedPersonaStyleProps, ISelectedPersonaStyles } from './SelectedPersona.types';
 
 export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaStyles => {

@@ -53,8 +53,8 @@ function checkForStorybookExistence() {
   // contains a folder with the current package's name.
   return (
     !!resolveCwd('./.storybook/main.js') ||
-    (!!resolveCwd('../examples/.storybook/main.js') &&
-      fs.existsSync(path.join(findGitRoot(), `packages/examples/src/${packageName}`)))
+    (!!resolveCwd('../react-examples/.storybook/main.js') &&
+      fs.existsSync(path.join(findGitRoot(), `packages/react-examples/src/${packageName}`)))
   );
 }
 

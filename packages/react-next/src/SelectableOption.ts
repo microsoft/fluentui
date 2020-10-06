@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/SelectableOption';
+export * from '@fluentui/react/lib/SelectableOption';

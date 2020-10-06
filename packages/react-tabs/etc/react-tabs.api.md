@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IButtonProps } from 'office-ui-fabric-react';
-import { IKeytipProps } from 'office-ui-fabric-react';
+import { IButtonProps } from '@fluentui/react-internal';
+import { IKeytipProps } from '@fluentui/react-internal';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderFunction } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';

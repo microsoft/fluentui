@@ -24,7 +24,7 @@ import {
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
+import { Fabric } from '@fluentui/react';
 
 interface ISignalExampleProps {
   name: string;

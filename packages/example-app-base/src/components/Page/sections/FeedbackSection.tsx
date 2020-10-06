@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FeedbackList } from '../../FeedbackList/index';
-import { css } from 'office-ui-fabric-react';
+import { css } from '@fluentui/react';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 

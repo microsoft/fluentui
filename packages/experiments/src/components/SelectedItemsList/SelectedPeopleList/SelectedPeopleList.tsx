@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SelectedItemsList } from '../SelectedItemsList';
 import { SelectedPersona } from './Items/SelectedPersona';
 import { ISelectedItemsListProps, ISelectedItemsList, BaseSelectedItem } from '../SelectedItemsList.types';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 
 export type ISelectedPeopleListProps<TPersona> = ISelectedItemsListProps<TPersona>;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { FocusZone } from '@fluentui/react/lib/FocusZone';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 
 // TODO: may be hooks?
 export default class FocusZoneExample extends React.Component<{}, {}> {
