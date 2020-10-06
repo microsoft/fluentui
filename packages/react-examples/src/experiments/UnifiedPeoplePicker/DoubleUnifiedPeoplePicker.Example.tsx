@@ -65,7 +65,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, item.item]);
+    setPeopleSelectedItems((prevPeopleSelectedItems) => [...prevPeopleSelectedItems, item.item]);
   };
 
   const _onSuggestionRemoved = (
@@ -74,15 +74,15 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   ) => {
     // Intentionally checking on complete item object to ensure it is removed. Id cannot be used as the
     // property is not populated for all the suggestions, and key does not exist on type checking.
-    setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.filter(suggestion => suggestion.item !== suggestionToRemove.item);
+    setPeopleSuggestions((suggestions) => {
+      const modifiedSuggestions = suggestions.filter((suggestion) => suggestion.item !== suggestionToRemove.item);
       return modifiedSuggestions;
     });
   };
 
   const _markSuggestionSelected = (selectedSuggestion: IFloatingSuggestionItemProps<IPersonaProps>) => {
-    setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.map(suggestion =>
+    setPeopleSuggestions((suggestions) => {
+      const modifiedSuggestions = suggestions.map((suggestion) =>
         suggestion.id === selectedSuggestion.id
           ? { ...suggestion, isSelected: true }
           : { ...suggestion, isSelected: false },
@@ -94,7 +94,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _getItemsCopyText = (itemsToCopy: IPersonaProps[]): string => {
     let copyText = '';
     if (itemsToCopy && itemsToCopy.length > 0) {
-      itemsToCopy.forEach(item => {
+      itemsToCopy.forEach((item) => {
         copyText = copyText.concat((item.text || '') + ',');
       });
     }
@@ -107,9 +107,9 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     // and update the selectedItemsList to re-render everything.
     const newList: IPersonaProps[] = [];
     if (pastedValue !== null) {
-      pastedValue.split(',').forEach(textValue => {
+      pastedValue.split(',').forEach((textValue) => {
         if (textValue) {
-          people.forEach(suggestionItem => {
+          people.forEach((suggestionItem) => {
             if (suggestionItem.text === textValue) {
               selectedItemsList.push(suggestionItem);
               newList.push(suggestionItem);
@@ -119,7 +119,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
       });
     }
 
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
+    setPeopleSelectedItems((prevPeopleSelectedItems) => [...prevPeopleSelectedItems, ...newList]);
   };
 
   const _serializeItemsForDrag = (items: IPersonaProps[]): string => {
@@ -130,9 +130,9 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     // Turn the dropped text into items
     const newItems: IPersonaProps[] = [];
     if (input !== null) {
-      input.split(',').forEach(textValue => {
+      input.split(',').forEach((textValue) => {
         if (textValue) {
-          people.forEach(suggestionItem => {
+          people.forEach((suggestionItem) => {
             if (suggestionItem.text === textValue) {
               newItems.push(suggestionItem);
             }
@@ -153,7 +153,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         const item = currentItems[i];
         // If this is the insert before index, insert the dragged items, then the current item
         if (i === insertIndex) {
-          newItems.forEach(draggedItem => {
+          newItems.forEach((draggedItem) => {
             updatedItems.push(draggedItem);
           });
           updatedItems.push(item);
@@ -162,8 +162,17 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
           updatedItems.push(item);
         }
       }
+      if (insertIndex === currentItems.length) {
+        newItems.forEach((draggedItem) => {
+          updatedItems.push(draggedItem);
+        });
+      }
       setPeopleSelectedItems(updatedItems);
     }
+  };
+
+  const _itemsAreEqual = (item1?: any, item2?: any): boolean => {
+    return item1?.key === item2?.key;
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
@@ -172,7 +181,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     const updatedItems: IPersonaProps[] = currentItems;
     // Intentionally not using .filter here as we want to only remove a specific
     // item in case of duplicates of same item.
-    itemsToRemove.forEach(item => {
+    itemsToRemove.forEach((item) => {
       const index: number = updatedItems.indexOf(item);
       updatedItems.splice(index, 1);
     });
@@ -182,7 +191,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _onInputChange = (filterText: string): void => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
-    const suggestionList = suggestions.map(item => {
+    const suggestionList = suggestions.map((item) => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     // We want to show top 5 results
@@ -213,6 +222,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     serializeItemsForDrag: _serializeItemsForDrag,
     deserializeItemsFromDrop: _deserializeItemsFromDrop,
     dropItemsAt: _dropItemsAt,
+    itemsAreEqual: _itemsAreEqual,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {

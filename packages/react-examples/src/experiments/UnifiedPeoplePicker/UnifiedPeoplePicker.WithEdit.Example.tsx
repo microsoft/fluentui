@@ -81,7 +81,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   const SelectedItem = EditableItem({
     itemComponent: TriggerOnContextMenu(SelectedPersona),
     editingItemComponent: DefaultEditingItem({
-      getEditingItemText: persona => persona.text || '',
+      getEditingItemText: (persona) => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
         <FloatingPeopleSuggestions
           {...props}
@@ -97,7 +97,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, item.item]);
+    setPeopleSelectedItems((prevPeopleSelectedItems) => [...prevPeopleSelectedItems, item.item]);
   };
 
   const _onSuggestionRemoved = (
@@ -106,15 +106,15 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   ) => {
     // Intentionally checking on complete item object to ensure it is removed. Id cannot be used as the
     // property is not populated for all the suggestions, and key does not exist on type checking.
-    setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.filter(suggestion => suggestion.item !== suggestionToRemove.item);
+    setPeopleSuggestions((suggestions) => {
+      const modifiedSuggestions = suggestions.filter((suggestion) => suggestion.item !== suggestionToRemove.item);
       return modifiedSuggestions;
     });
   };
 
   const _markSuggestionSelected = (selectedSuggestion: IFloatingSuggestionItemProps<IPersonaProps>) => {
-    setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.map(suggestion =>
+    setPeopleSuggestions((suggestions) => {
+      const modifiedSuggestions = suggestions.map((suggestion) =>
         suggestion.id === selectedSuggestion.id
           ? { ...suggestion, isSelected: true }
           : { ...suggestion, isSelected: false },
@@ -126,7 +126,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   const _getItemsCopyText = (itemsToCopy: IPersonaProps[]): string => {
     let copyText = '';
     if (itemsToCopy && itemsToCopy.length > 0) {
-      itemsToCopy.forEach(item => {
+      itemsToCopy.forEach((item) => {
         copyText = copyText.concat((item.text || '') + ',');
       });
     }
@@ -139,9 +139,9 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     // and update the selectedItemsList to re-render everything.
     const newList: IPersonaProps[] = [];
     if (pastedValue !== null) {
-      pastedValue.split(',').forEach(textValue => {
+      pastedValue.split(',').forEach((textValue) => {
         if (textValue) {
-          people.forEach(suggestionItem => {
+          people.forEach((suggestionItem) => {
             if (suggestionItem.text === textValue) {
               selectedItemsList.push(suggestionItem);
               newList.push(suggestionItem);
@@ -151,30 +151,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       });
     }
 
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
-  };
-
-  const _dropItemsAt = (insertIndex: number, newItems: IPersonaProps[], indicesToRemove: number[]): void => {
-    // Insert those items into the current list
-    if (insertIndex > -1) {
-      const currentItems: IPersonaProps[] = [...peopleSelectedItems];
-      const updatedItems: IPersonaProps[] = [];
-
-      for (let i = 0; i < currentItems.length; i++) {
-        const item = currentItems[i];
-        // If this is the insert before index, insert the dragged items, then the current item
-        if (i === insertIndex) {
-          newItems.forEach(draggedItem => {
-            updatedItems.push(draggedItem);
-          });
-          updatedItems.push(item);
-        } else if (!indicesToRemove.includes(i)) {
-          // only insert items into the new list that are not being dragged
-          updatedItems.push(item);
-        }
-      }
-      setPeopleSelectedItems(updatedItems);
-    }
+    setPeopleSelectedItems((prevPeopleSelectedItems) => [...prevPeopleSelectedItems, ...newList]);
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
@@ -183,7 +160,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     const updatedItems: IPersonaProps[] = currentItems;
     // Intentionally not using .filter here as we want to only remove a specific
     // item in case of duplicates of same item.
-    itemsToRemove.forEach(item => {
+    itemsToRemove.forEach((item) => {
       const index: number = updatedItems.indexOf(item);
       updatedItems.splice(index, 1);
     });
@@ -212,7 +189,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
-    const suggestionList = suggestions.map(item => {
+    const suggestionList = suggestions.map((item) => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     // We want to show top 5 results
@@ -241,7 +218,6 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
-    dropItemsAt: _dropItemsAt,
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
@@ -261,6 +237,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
+        defaultDragDropEnabled={false}
       />
     </>
   );
@@ -319,6 +296,6 @@ class ExampleSuggestionsModel<T extends IBaseExampleType> {
   }
 
   private _convertResultsToPromise(results: T[]): Promise<T[]> {
-    return new Promise<T[]>(resolve => setTimeout(() => resolve(results), 150));
+    return new Promise<T[]>((resolve) => setTimeout(() => resolve(results), 150));
   }
 }
