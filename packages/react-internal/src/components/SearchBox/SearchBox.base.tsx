@@ -31,13 +31,14 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   HTMLDivElement,
   ISearchBoxProps
 >((props, forwardedRef) => {
+  const { defaultValue = '' } = props;
   const [hasFocus, setHasFocus] = React.useState(false);
-  const [value = '', setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
+  const [uncastValue, setValue] = useControllableValue(props.value, defaultValue, props.onChange);
+  const value = String(uncastValue);
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
   const id = useId(COMPONENT_NAME, props.id);
-
   const {
     ariaLabel,
     className,

@@ -155,6 +155,12 @@ describe('SearchBox', () => {
     expect(wrapper.find('input').prop('value')).toBe('');
   });
 
+  it('handles setting null value', () => {
+    // this is not allowed per typings, but users might do it anyway
+    wrapper = mount(<SearchBox value={null as any} />);
+    expect(wrapper.find('input').prop('value')).toBe(`null`);
+  });
+
   it('handles rendering 0', () => {
     wrapper = mount(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
