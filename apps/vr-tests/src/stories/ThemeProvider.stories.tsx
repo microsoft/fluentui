@@ -57,10 +57,12 @@ storiesOf('ThemeProvider', module)
   .addStory('Use variants on new button', () => (
     <ThemeProvider
       theme={{
-        variants: {
+        components: {
           Button: {
-            root: {
-              background: 'yellow',
+            variants: {
+              root: {
+                background: 'yellow',
+              },
             },
           },
         },
