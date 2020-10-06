@@ -49,8 +49,12 @@ exports[`CommandBar renders commands correctly 1`] = `
       >
         <div
           className=
+              ms-FocusZone
               ms-OverflowSet
               ms-CommandBar-primaryCommand
+              &:focus {
+                outline: none;
+              }
               {
                 align-items: stretch;
                 display: flex;
@@ -58,6 +62,10 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
+          data-focuszone-id="FocusZone1"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
           role="group"
         >
           <div
@@ -194,7 +202,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__1"
+                    id="id__2"
                   >
                     asdf
                   </span>
@@ -336,7 +344,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__4"
+                    id="id__5"
                   >
                     asdf
                   </span>
@@ -390,7 +398,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
               padding-right: 14px;
               padding-top: 0;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone8"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -398,8 +406,12 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
       >
         <div
           className=
+              ms-FocusZone
               ms-OverflowSet
               ms-CommandBar-primaryCommand
+              &:focus {
+                outline: none;
+              }
               {
                 align-items: stretch;
                 display: flex;
@@ -407,6 +419,10 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
+          data-focuszone-id="FocusZone9"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
           role="group"
         >
           <div
@@ -543,7 +559,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__8"
+                    id="id__10"
                   >
                     asdf
                   </span>
@@ -685,7 +701,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__11"
+                    id="id__13"
                   >
                     asdf
                   </span>

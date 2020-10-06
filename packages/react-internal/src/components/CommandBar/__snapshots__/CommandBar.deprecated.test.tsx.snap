@@ -49,8 +49,12 @@ exports[`CommandBar renders commands correctly 1`] = `
       >
         <div
           className=
+              ms-FocusZone
               ms-OverflowSet
               ms-CommandBar-primaryCommand
+              &:focus {
+                outline: none;
+              }
               {
                 align-items: stretch;
                 display: flex;
@@ -58,6 +62,10 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
+          data-focuszone-id="FocusZone1"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
           role="group"
         >
           <div
@@ -195,7 +203,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__1"
+                    id="id__2"
                   >
                     asdf
                   </span>
@@ -338,7 +346,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__4"
+                    id="id__5"
                   >
                     asdf
                   </span>
