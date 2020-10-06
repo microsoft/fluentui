@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.4)
+
+Tue, 06 Oct 2020 17:31:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.3..@fluentui/react-theme-provider_v0.14.4)
+
+### Patches
+
+- ThemeProvider: RecursivePartial now correctly works. ([PR #14562](https://github.com/microsoft/fluentui/pull/14562) by dzearing@hotmail.com)
 
 ## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.3)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 06 Oct 2020 12:25:11 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.7)
+
+Tue, 06 Oct 2020 17:31:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.6..@fluentui/react-examples_v0.4.7)
+
+### Patches
+
+- Updating examples. ([PR #15375](https://github.com/microsoft/fluentui/pull/15375) by dzearing@hotmail.com)
 
 ## [0.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.6)
 
