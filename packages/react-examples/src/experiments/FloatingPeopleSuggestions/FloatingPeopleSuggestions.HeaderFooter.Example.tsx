@@ -4,11 +4,11 @@ import {
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@uifabric/example-data';
-import { IBaseFloatingPickerSuggestionProps } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { IBaseFloatingPickerSuggestionProps } from '@fluentui/react/lib/FloatingPicker';
 import { useConst } from '@uifabric/react-hooks';
-import { Autofill } from 'office-ui-fabric-react';
+import { Autofill } from '@fluentui/react';
 import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
 
 const _suggestions = [

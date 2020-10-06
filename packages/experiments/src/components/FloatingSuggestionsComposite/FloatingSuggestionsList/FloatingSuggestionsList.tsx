@@ -7,7 +7,7 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
-import { ISuggestionsHeaderFooterProps, SuggestionsHeaderFooterItem } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { ISuggestionsHeaderFooterProps, SuggestionsHeaderFooterItem } from '@fluentui/react/lib/FloatingPicker';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
