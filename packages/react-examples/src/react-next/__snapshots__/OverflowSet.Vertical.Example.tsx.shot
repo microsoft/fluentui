@@ -5,13 +5,21 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
   aria-label="Vertical Example"
   aria-orientation="vertical"
   className=
+      ms-FocusZone
       ms-OverflowSet
+      &:focus {
+        outline: none;
+      }
       {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         position: relative;
       }
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
   role="menubar"
 >
   <div
