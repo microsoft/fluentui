@@ -19,6 +19,12 @@ export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Them
     }
   }
 
+  if (partialTheme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts) as (keyof IFontStyles)[]) {
+      mergedTheme.fonts[fontStyle] = merge(mergedTheme.fonts[fontStyle], partialTheme.fonts[fontStyle]);
+    }
+  }
+
   if (partialTheme.stylesheets) {
     mergedTheme.stylesheets = (theme.stylesheets || []).concat(partialTheme.stylesheets);
   }

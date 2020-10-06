@@ -135,15 +135,14 @@ export function makeSemanticColors(
     successText: !isInverted ? '#107C10' : '#92c353',
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight,
-
-    // mix in customized semantic slots for second pass
-    ...s,
   };
 
   // second pass for self-referential slots
   toReturn = {
     ...toReturn,
     cardShadowHovered: !isInverted ? e.elevation8 : '0 0 1px ' + toReturn.variantBorderHovered,
+    // mix in customized semantic slots for second pass
+    ...s,
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
