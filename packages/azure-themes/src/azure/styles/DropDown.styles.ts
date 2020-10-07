@@ -1,13 +1,16 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
   const { disabled, theme, hasError, isOpen } = props;
+
   if (!theme) {
     return {};
   }
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     callout: {
       border: 'none',
@@ -42,7 +45,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         border: 0,
         selectors: {
           ':focus::after, :focus': {
-            borderColor: semanticColors.inputBorderHovered,
+            borderColor: extendedSemanticColors.controlAccent,
           },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
@@ -78,7 +81,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     ],
     dropdownDivider: {
-      backgroundColor: semanticColors.inputBorder,
+      backgroundColor: extendedSemanticColors.rowBorder,
     },
     title: [
       {

@@ -28,6 +28,7 @@ export const DropdownBasicExample: React.FunctionComponent = () => {
         placeholder="Select an option"
         label="Basic uncontrolled example"
         options={options}
+        errorMessage={'Error message!'}
         styles={dropdownStyles}
       />
 
