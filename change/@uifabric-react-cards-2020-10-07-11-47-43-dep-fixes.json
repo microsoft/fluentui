@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove unused example-app-base dev dependency",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T18:47:34.251Z"
+}

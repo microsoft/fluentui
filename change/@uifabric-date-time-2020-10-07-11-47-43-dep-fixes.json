@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove unused example-app-base dev dependency",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T18:47:22.021Z"
+}
