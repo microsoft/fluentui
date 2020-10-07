@@ -170,7 +170,7 @@ const PersonaToAvatarMod: CodeMod = {
       renamePrimaryTextProp(file);
       renameRenderCoin(file);
     } catch (e) {
-      return Err({ reason: 'Error', log: JSON.stringify(e) });
+      return Err({ error: e });
     }
     return Ok({ logs: ['Replaced Persona with Avatar'] });
   },
