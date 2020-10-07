@@ -299,14 +299,18 @@ describe('Popup', () => {
     });
 
     describe('trigger slot - tabbable - Anchor', () => {
-      const triggerWithoutTabIndex = <a href="" id="trigger" />;
+      const triggerWithoutTabIndex = (
+        <a href="" id="trigger">
+          triggerLink
+        </a>
+      );
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('trigger slot - NO tabbabble - Anchor without href', () => {
-      const triggerAnchorWtihoutHref = <a id="trigger" />;
+      const triggerAnchorWtihoutHref = <a id="trigger"> triggerLink </a>;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerAnchorWtihoutHref, id: 'popup2' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
       expect(errors).toEqual([]);
@@ -327,7 +331,7 @@ describe('Popup', () => {
     });
 
     describe('trigger slot - tabbable - Box as button', () => {
-      const triggerWithoutTabIndex = <Box id="trigger" as="button"></Box>;
+      const triggerWithoutTabIndex = <Box id="trigger" as="button" />;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup2' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
       expect(errors).toEqual([]);

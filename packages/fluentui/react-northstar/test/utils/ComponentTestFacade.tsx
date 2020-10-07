@@ -5,13 +5,13 @@ import { mountWithProviderAndGetComponent } from './';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private actual: any;
-  private renderedComponent: ReactWrapper<any, any>;
-  private onClickExecuted: boolean;
+  _actual: any;
+  _renderedComponent: ReactWrapper<any, any>;
+  _onClickExecuted: boolean;
 
-  constructor(private Component: React.FC, private props: Props = {}) {
-    props.onClick = () => {
-      this.onClickExecuted = true;
+  constructor(_Component: React.FC, _props: Props = {}) {
+    _props.onClick = () => {
+      this._onClickExecuted = true;
     };
 
     // reset body
@@ -20,20 +20,22 @@ export class ComponentTestFacade implements TestFacade {
     document.body.appendChild(container);
 
     // we need to render it in this way because some component like popup use context from wrapper component
-    this.renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />, {
+    this._renderedComponent = mountWithProviderAndGetComponent(_Component, <_Component {..._props} />, {
       attachTo: container,
     });
 
-    this.actual = container.firstChild;
+    this._actual = container.firstChild;
   }
 
-  public slotExists(selector: string) {
+  slotExists(selector: string) {
     return selector === 'root' || !!document.getElementById(selector);
   }
 
-  public attributeExists(selector: string, attributeName: string) {
+  attributeExists(selector: string, attributeName: string) {
     if (this.slotExists(selector) && selector === 'root') {
-      return this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null;
+      return (
+        this._actual.getAttribute(attributeName) !== undefined && this._actual.getAttribute(attributeName) !== null
+      );
     }
 
     const element = document.getElementById(selector);
@@ -43,9 +45,9 @@ export class ComponentTestFacade implements TestFacade {
     return false;
   }
 
-  public attributeHasValue(selector: string, attributeName: string, value: PropValue) {
+  attributeHasValue(selector: string, attributeName: string, value: PropValue) {
     if (this.attributeExists(selector, attributeName) && selector === 'root') {
-      return this.actual.getAttribute(attributeName) === value;
+      return this._actual.getAttribute(attributeName) === value;
     }
 
     const element = document.getElementById(selector);
@@ -56,9 +58,9 @@ export class ComponentTestFacade implements TestFacade {
     return false;
   }
 
-  public getAttributeValue = (selector: string, attributeName: string) => {
+  getAttributeValue = (selector: string, attributeName: string) => {
     if (selector === 'root') {
-      return this.actual.getAttribute(attributeName) as PropValue;
+      return this._actual.getAttribute(attributeName) as PropValue;
     }
     const element = document.getElementById(selector);
     if (element) {
@@ -68,37 +70,37 @@ export class ComponentTestFacade implements TestFacade {
     return null;
   };
 
-  public verifyOnclickExecution = (selector: string) => {
-    const previousValue = this.onClickExecuted;
-    this.onClickExecuted = false;
+  verifyOnclickExecution = (selector: string) => {
+    const previousValue = this._onClickExecuted;
+    this._onClickExecuted = false;
     return previousValue;
   };
 
-  public afterClick(selector: string) {
+  afterClick(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('click');
+      this._renderedComponent.simulate('click');
       return;
     }
-    this.renderedComponent.find(selector).simulate('click');
+    this._renderedComponent.find(selector).simulate('click');
   }
 
-  public pressSpaceKey(selector: string) {
+  pressSpaceKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 32 });
+      this._renderedComponent.simulate('keydown', { keyCode: 32 });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
+    this._renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
   }
 
-  public pressEnterKey(selector: string) {
+  pressEnterKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 13 });
+      this._renderedComponent.simulate('keydown', { keyCode: 13 });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
+    this._renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
   }
 
-  public forProps = (props: Props): TestFacade => {
+  forProps = (props: Props): TestFacade => {
     return new ComponentTestFacade(this.Component, { ...this.props, ...props });
   };
 }
