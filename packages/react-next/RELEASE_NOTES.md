@@ -87,6 +87,10 @@ If you would like to continue using the previous button components for now, upda
 - Removed unused `defaultProps` from TeachingBubbleContent.
 - Removed `rootElementRef` from public API.
 
+### TextField
+
+- Moved MaskedTextField-specific props `mask`, `maskChar`, and `maskCharData` from the general `ITextFieldProps` to a new `IMaskedTextFieldProps`.
+
 ## Breaking changes: general
 
 ### Function component conversions

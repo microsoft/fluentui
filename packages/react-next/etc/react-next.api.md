@@ -31,7 +31,6 @@ import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
-import { IComponentAs } from '@fluentui/react/lib/Utilities';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
@@ -88,7 +87,6 @@ import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
 import { ITheme } from '@fluentui/react/lib/Styling';
-import { ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
 import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { KeyCodes } from '@fluentui/react/lib/Utilities';
@@ -347,19 +345,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 }
 
 // @public (undocumented)
-export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
-
-// @public (undocumented)
-export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
-    constructor(props: IBreadcrumbProps);
-    // (undocumented)
-    static defaultProps: IBreadcrumbProps;
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
-
-// @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
@@ -443,9 +428,6 @@ export { createGenericItem }
 
 // @public (undocumented)
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
-
-// @public (undocumented)
-export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
 export const DirectionalHint: {
@@ -705,85 +687,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
-}
-
-// @public (undocumented)
-export interface IBreadcrumb {
-    focus(): void;
-}
-
-// @public @deprecated (undocumented)
-export type IBreadCrumbData = IBreadcrumbData;
-
-// @public (undocumented)
-export interface IBreadcrumbData {
-    // (undocumented)
-    props: IBreadcrumbProps;
-    // (undocumented)
-    renderedItems: IBreadcrumbItem[];
-    // (undocumented)
-    renderedOverflowItems: IBreadcrumbItem[];
-}
-
-// @public (undocumented)
-export interface IBreadcrumbItem {
-    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
-    href?: string;
-    isCurrentItem?: boolean;
-    key: string;
-    onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
-    role?: string;
-    text: string;
-}
-
-// @public (undocumented)
-export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
-    ariaLabel?: string;
-    className?: string;
-    componentRef?: IRefObject<IBreadcrumb>;
-    dividerAs?: IComponentAs<IDividerAsProps>;
-    focusZoneProps?: IFocusZoneProps;
-    items: IBreadcrumbItem[];
-    maxDisplayedItems?: number;
-    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
-    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
-    onRenderItem?: IRenderFunction<IBreadcrumbItem>;
-    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
-    overflowAriaLabel?: string;
-    overflowIndex?: number;
-    // (undocumented)
-    styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
-    // (undocumented)
-    theme?: ITheme;
-    tooltipHostProps?: ITooltipHostProps;
-}
-
-// @public (undocumented)
-export interface IBreadcrumbStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IBreadcrumbStyles {
-    // (undocumented)
-    chevron: IStyle;
-    // (undocumented)
-    item: IStyle;
-    // (undocumented)
-    itemLink: IStyle;
-    // (undocumented)
-    list: IStyle;
-    // (undocumented)
-    listItem: IStyle;
-    // (undocumented)
-    overflow: IStyle;
-    // (undocumented)
-    overflowButton: IStyle;
-    // (undocumented)
-    root: IStyle;
 }
 
 // @public (undocumented)
@@ -1546,11 +1449,6 @@ export interface IDialogState {
 }
 
 // @public (undocumented)
-export interface IDividerAsProps extends IIconProps {
-    item?: IBreadcrumbItem;
-}
-
-// @public (undocumented)
 export interface IDragOptions {
     closeMenuItemText: string;
     dragHandleSelector?: string;
@@ -1780,20 +1678,6 @@ export interface ILine extends IShimmerElement {
     width?: number | string;
 }
 
-// @public (undocumented)
-export interface IMaskedTextField extends ITextField {
-    value: string | undefined;
-}
-
-// @public
-export interface IMaskedTextFieldProps extends ITextFieldProps {
-    componentRef?: IRefObject<IMaskedTextField>;
-    mask?: string;
-    maskChar?: string;
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
-}
 
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
@@ -2844,101 +2728,6 @@ export interface ITeachingBubbleSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface ITextField {
-    blur: () => void;
-    focus: () => void;
-    select: () => void;
-    selectionEnd: number | null;
-    selectionStart: number | null;
-    setSelectionEnd: (value: number) => void;
-    setSelectionRange: (start: number, end: number) => void;
-    setSelectionStart: (value: number) => void;
-    value: string | undefined;
-}
-
-// @public
-export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-    ariaLabel?: string;
-    autoAdjustHeight?: boolean;
-    autoComplete?: string;
-    borderless?: boolean;
-    className?: string;
-    componentRef?: IRefObject<ITextField>;
-    defaultValue?: string;
-    deferredValidationTime?: number;
-    description?: string;
-    disabled?: boolean;
-    // @deprecated
-    elementRef?: React.Ref<HTMLDivElement>;
-    errorMessage?: string | JSX.Element;
-    iconProps?: IIconProps;
-    inputClassName?: string;
-    label?: string;
-    multiline?: boolean;
-    onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
-    onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
-    onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
-    onRenderDescription?: IRenderFunction<ITextFieldProps>;
-    onRenderLabel?: IRenderFunction<ITextFieldProps>;
-    onRenderPrefix?: IRenderFunction<ITextFieldProps>;
-    onRenderSuffix?: IRenderFunction<ITextFieldProps>;
-    prefix?: string;
-    readOnly?: boolean;
-    resizable?: boolean;
-    styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
-    suffix?: string;
-    theme?: ITheme;
-    underlined?: boolean;
-    validateOnFocusIn?: boolean;
-    validateOnFocusOut?: boolean;
-    validateOnLoad?: boolean;
-    value?: string;
-}
-
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldSnapshot" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export interface ITextFieldSnapshot {
-    selection?: [number | null, number | null];
-}
-
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldState" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export interface ITextFieldState {
-    errorMessage: string | JSX.Element;
-    isFocused?: boolean;
-    uncontrolledValue: string | undefined;
-}
-
-// @public (undocumented)
-export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
-    hasErrorMessage?: boolean;
-    hasIcon?: boolean;
-    hasLabel?: boolean;
-    focused?: boolean;
-};
-
-// @public (undocumented)
-export interface ITextFieldStyles {
-    description: IStyle;
-    errorMessage: IStyle;
-    field: IStyle;
-    fieldGroup: IStyle;
-    icon: IStyle;
-    prefix: IStyle;
-    root: IStyle;
-    subComponentStyles: ITextFieldSubComponentStyles;
-    suffix: IStyle;
-    wrapper: IStyle;
-}
-
-// @public (undocumented)
-export interface ITextFieldSubComponentStyles {
-    label: IStyleFunctionOrObject<any, any>;
-}
-
-// @public (undocumented)
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -2960,9 +2749,6 @@ export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 export { ListPeoplePicker }
 
 export { ListPeoplePickerBase }
-
-// @public (undocumented)
-export const MaskedTextField: React.ForwardRefExoticComponent<IMaskedTextFieldProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{
@@ -3486,38 +3272,6 @@ export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps
 export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export const TextField: React.FunctionComponent<ITextFieldProps>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
-//
-// @public (undocumented)
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
-    constructor(props: ITextFieldProps);
-    blur(): void;
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ITextFieldProps;
-    focus(): void;
-    // (undocumented)
-    getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null;
-    // (undocumented)
-    render(): JSX.Element;
-    select(): void;
-    readonly selectionEnd: number | null;
-    readonly selectionStart: number | null;
-    setSelectionEnd(value: number): void;
-    setSelectionRange(start: number, end: number): void;
-    setSelectionStart(value: number): void;
-    readonly value: string | undefined;
-    }
-
-// @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
 
 export { ValidationState }
@@ -3551,6 +3305,7 @@ export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
+export * from "@fluentui/react/lib/Breadcrumb";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/Color";
 export * from "@fluentui/react/lib/ColorPicker";
@@ -3590,6 +3345,7 @@ export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
 export * from "@fluentui/react/lib/Text";
+export * from "@fluentui/react/lib/TextField";
 export * from "@fluentui/react/lib/ThemeGenerator";
 export * from "@fluentui/react/lib/Tooltip";
 export * from "@fluentui/react/lib/Utilities";

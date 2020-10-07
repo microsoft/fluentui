@@ -3758,19 +3758,19 @@ export interface IMarqueeSelectionStyles {
     root?: IStyle;
 }
 
+// @public (undocumented)
+export interface IMaskedTextField extends ITextField {
+    value: string | undefined;
+}
+
 // @public
-export interface IMaskedTextFieldProps extends ITextFieldProps {
+export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttributes<HTMLDivElement> {
+    componentRef?: IRefObject<IMaskedTextField>;
     mask?: string;
     maskChar?: string;
     maskFormat?: {
         [key: string]: RegExp;
     };
-}
-
-// @public
-export interface IMaskedTextFieldState {
-    displayValue: string;
-    maskCursorPosition?: number;
 }
 
 // @public (undocumented)
@@ -5864,18 +5864,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLDivElement>;
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
-    // @deprecated (undocumented)
-    mask?: string;
-    // @deprecated (undocumented)
-    maskChar?: string;
-    // @deprecated (undocumented)
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
@@ -6324,37 +6318,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<IMaskedTextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: IMaskedTextFieldProps);
-    // (undocumented)
-    blur(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: IMaskedTextFieldProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    select(): void;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    setSelectionEnd(value: number): void;
-    // (undocumented)
-    setSelectionRange(start: number, end: number): void;
-    // (undocumented)
-    setSelectionStart(value: number): void;
-    // (undocumented)
-    setValue(newValue: string): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IMaskedTextFieldProps): void;
-    // (undocumented)
-    readonly value: string | undefined;
-}
+export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps>;
 
 // @public (undocumented)
 export const MAX_COLOR_ALPHA = 100;
