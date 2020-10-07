@@ -103,7 +103,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<Rea
           width={650}
           showYAxisGridLines
           showXAxisLablesTooltip
-          noOfCharsToTruncate={6}
+          noOfCharsToTruncate={4}
         />
       </div>
     );
