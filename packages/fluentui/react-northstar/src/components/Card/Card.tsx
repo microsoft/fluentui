@@ -3,7 +3,7 @@ import {
   ComponentWithAs,
   getElementType,
   useAccessibility,
-  useStyles,
+  useClasses,
   useFluentContext,
   useTelemetry,
   useUnhandledProps,
@@ -155,7 +155,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<CardStylesProps>(Card.displayName, {
+  const classes = useClasses<CardStylesProps>(Card.displayName, {
     className: cardClassName,
     mapPropsToStyles: () => ({
       centered,
@@ -177,7 +177,6 @@ export const Card: ComponentWithAs<'div', CardProps> &
       styles,
       variables,
     }),
-    rtl: context.rtl,
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -194,7 +193,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
       {getA11yProps.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11yProps('root', {
-            className: classes.root,
+            className: classes,
             onClick: handleClick,
             ...unhandledProps,
           })}
