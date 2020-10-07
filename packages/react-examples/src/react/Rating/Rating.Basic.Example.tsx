@@ -13,7 +13,7 @@ customTheme.semanticColors.bodyTextChecked = '#1E9FE8';
 export const RatingBasicExample: React.FunctionComponent = () => {
   const [largeStarRating, setLargeStarsRating] = React.useState(1);
   const [smallStarRating, setSmallStarRating] = React.useState(3);
-  const [tenStarRating, setTenStarRatingg] = React.useState(1);
+  const [tenStarRating, setTenStarRating] = React.useState(1);
   const [customIconStarRating, setCustomIconStarRating] = React.useState(2.5);
   const [themedStarRating, setThemedStarRating] = React.useState(1);
 
@@ -26,7 +26,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
   };
 
   const onTenStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
-    setTenStarRatingg(rating);
+    setTenStarRating(rating);
   };
   const onCustomIconStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     setCustomIconStarRating(rating);

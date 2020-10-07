@@ -121,10 +121,10 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
       showForceResolve: this._shouldShowForceResolve,
       onInputChanged: this._onInputChanged,
       onSuggestionsHidden: () => {
-        console.log('FLOATINGPICKER: hidden');
+        console.log('FloatingPicker: hidden');
       },
       onSuggestionsShown: () => {
-        console.log('FLOATINGPICKER: shown');
+        console.log('FloatingPicker: shown');
       },
     };
 
