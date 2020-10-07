@@ -40,7 +40,6 @@ function sharedAfterEach() {
 
   // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
@@ -155,7 +154,6 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a value of 0 when given the number 0', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<TextField value={0 as any} onChange={noOp} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -178,7 +176,6 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a default value of 0 when given the number 0', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<TextField defaultValue={0 as any} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -604,7 +601,6 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('warns if value is null', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mount(<TextField value={null as any} onChange={noOp} />);
     expect(warnFn).toHaveBeenCalledTimes(1);
   });
@@ -615,7 +611,6 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('does not warn if defaultValue is null', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mount(<TextField defaultValue={null as any} />);
     expect(warnFn).toHaveBeenCalledTimes(0);
   });
