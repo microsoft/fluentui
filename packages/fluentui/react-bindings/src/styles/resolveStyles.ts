@@ -100,7 +100,9 @@ export const resolveStyles = (
     const styles = allDisplayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
     if (styles.length > 0) {
-      mergedStyles = mergeComponentStyles(...styles);
+      mergedStyles = styles.reduce<ComponentSlotStylesPrepared>((acc, styles) => {
+        return mergeComponentStyles(acc, styles);
+      }, {});
     } else {
       mergedStyles = { root: () => ({}) };
     }
