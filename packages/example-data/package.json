@@ -17,7 +17,6 @@
     "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "update-api": "just-scripts update-api",
     "just": "just-scripts"
   },
   "devDependencies": {

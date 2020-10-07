@@ -61,7 +61,7 @@
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
     "test:fluentui:projects": "yarn workspace @fluentui/projects-test test",
-    "update-api": "cd packages/react && yarn update-api",
+    "update-api": "echo API files are now updated when running yarn build",
     "update-snapshots": "lage update-snapshots --verbose",
     "update-a11y": "cd apps/a11y-tests && yarn update-snapshots",
     "vrtest": "cd apps && cd vr-tests && yarn screener"

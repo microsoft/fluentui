@@ -21,7 +21,6 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api",
     "just": "just-scripts"
   },
   "devDependencies": {

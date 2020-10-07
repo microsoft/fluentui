@@ -21,8 +21,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev",
-    "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",

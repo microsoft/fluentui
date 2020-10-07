@@ -2,7 +2,7 @@
 
 const glob = require('glob');
 const path = require('path');
-const { apiExtractorVerifyTask, apiExtractorUpdateTask, task, series } = require('just-scripts');
+const { apiExtractorVerifyTask, task, series } = require('just-scripts');
 
 const apiExtractorConfigs = glob
   .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
@@ -11,11 +11,11 @@ const apiExtractorConfigs = glob
 // Whether to update automatically on build
 const localBuild = !process.env.TF_BUILD;
 
-function verifyApiExtractor() {
+function apiExtractor() {
   return apiExtractorConfigs.length
     ? series(
         ...apiExtractorConfigs.map(([configPath, configName]) => {
-          const taskName = `api-extractor:${configName}:verify`;
+          const taskName = `api-extractor:${configName}`;
           task(taskName, apiExtractorVerifyTask({ configJsonFilePath: configPath, localBuild }));
           return taskName;
         }),
@@ -23,16 +23,4 @@ function verifyApiExtractor() {
     : 'no-op';
 }
 
-function updateApiExtractor() {
-  return apiExtractorConfigs.length
-    ? series(
-        ...apiExtractorConfigs.map(([configPath, configName]) => {
-          const taskName = `api-extractor:${configName}:update`;
-          task(taskName, apiExtractorUpdateTask({ configJsonFilePath: configPath, localBuild }));
-          return taskName;
-        }),
-      )
-    : 'no-op';
-}
-
-module.exports = { verifyApiExtractor, updateApiExtractor };
+module.exports = { apiExtractor };

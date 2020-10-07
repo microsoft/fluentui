@@ -22,8 +22,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "just-scripts test",
-    "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api"
+    "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",

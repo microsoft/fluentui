@@ -24,8 +24,7 @@
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u",
-    "update-api": "just-scripts update-api"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
