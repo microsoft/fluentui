@@ -876,6 +876,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   className=
 
                                       {
+                                        transform-origin: center bottom;
                                         transform: scale(0);
                                         transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
                                       }
