@@ -29,10 +29,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
-- Beak:
-  - Removed empty `IBeak` interface
-  - Removed `componentRef` prop
+- Removed deprecated `isBeaconAnimating` and `isMeasured` style props
 
 ### DatePicker
 
@@ -53,11 +50,12 @@ If you would like to continue using the previous button components for now, upda
 
 ### Rating
 
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 - Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
 - `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
 - Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
-- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
+- Corrected type of `IRatingProp.onChange`'s `event` parameter to reflect how it's used internally. It should be `React.FormEvent<HTMLElement>`, not `React.FocusEvent<HTMLElement>`.
 
 ### SpinButton
 

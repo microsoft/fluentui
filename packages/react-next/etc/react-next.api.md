@@ -54,7 +54,6 @@ import { IPersonaProps } from '@fluentui/react-internal/lib/Persona';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IPositionedData } from '@fluentui/react/lib/Positioning';
 import { IRawStyle } from '@fluentui/react/lib/Styling';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
@@ -82,7 +81,6 @@ import { ITagItemSuggestionProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
-import { ITeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
@@ -96,10 +94,8 @@ import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
-import { Point } from '@fluentui/react/lib/Utilities';
 import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
-import { ReactNode } from 'react';
 import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { Selection } from '@fluentui/react/lib/Selection';
@@ -346,15 +342,6 @@ export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
-
-// @public (undocumented)
-export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
-
-// @public (undocumented)
-export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
-
-// @public (undocumented)
-export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps>;
 
 // @public (undocumented)
 export const ComboBox: React.FunctionComponent<IComboBoxProps>;
@@ -740,90 +727,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 export interface ICircle extends IShimmerElement {
     height?: number;
 }
-
-// @public (undocumented)
-export interface ICoachmark {
-    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-}
-
-// @public
-export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
-    ariaAlertText?: string;
-    ariaDescribedBy?: string;
-    ariaDescribedByText?: string;
-    ariaLabelledBy?: string;
-    ariaLabelledByText?: string;
-    beaconColorOne?: string;
-    beaconColorTwo?: string;
-    // @deprecated
-    beakHeight?: number;
-    // @deprecated
-    beakWidth?: number;
-    children?: React.ReactNode;
-    className?: string;
-    // @deprecated
-    collapsed?: boolean;
-    color?: string;
-    componentRef?: IRefObject<ICoachmark>;
-    delayBeforeCoachmarkAnimation?: number;
-    delayBeforeMouseOpen?: number;
-    // @deprecated
-    height?: number;
-    isCollapsed?: boolean;
-    isPositionForced?: boolean;
-    mouseProximityOffset?: number;
-    onAnimationOpenEnd?: () => void;
-    onAnimationOpenStart?: () => void;
-    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-    onMouseMove?: (e: MouseEvent) => void;
-    persistentBeak?: boolean;
-    positioningContainerProps?: IPositioningContainerProps;
-    preventDismissOnLostFocus?: boolean;
-    preventFocusOnMount?: boolean;
-    styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
-    target: HTMLElement | string | null;
-    // @deprecated
-    teachingBubbleRef?: ITeachingBubble;
-    theme?: ITheme;
-    // @deprecated
-    width?: number;
-}
-
-// @public
-export interface ICoachmarkStyleProps {
-    beaconColorOne?: string;
-    beaconColorTwo?: string;
-    className?: string;
-    // @deprecated
-    collapsed?: boolean;
-    color?: string;
-    delayBeforeCoachmarkAnimation?: string;
-    entityHostHeight?: string;
-    entityHostWidth?: string;
-    height?: string;
-    isCollapsed: boolean;
-    isMeasuring: boolean;
-    theme?: ITheme;
-    transformOrigin?: string;
-    width?: string;
-}
-
-// @public
-export interface ICoachmarkStyles {
-    ariaContainer?: IStyle;
-    childrenContainer: IStyle;
-    collapsed?: IStyle;
-    entityHost?: IStyle;
-    entityInnerHost: IStyle;
-    pulsingBeacon?: IStyle;
-    root?: IStyle;
-    rotateAnimationLayer?: IStyle;
-    scaleAnimationLayer?: IStyle;
-    translateAnimationContainer?: IStyle;
-}
-
-// @public @deprecated (undocumented)
-export type ICoachmarkTypes = ICoachmarkProps;
 
 // @public (undocumented)
 export interface IComboBox {
@@ -1305,14 +1208,6 @@ export interface IEditingSelectedPeopleItemStyles {
 export interface IEditingSelectedPeopleItemStylesProps {
 }
 
-// @public
-export interface IEntityRect {
-    // (undocumented)
-    height?: number;
-    // (undocumented)
-    width?: number;
-}
-
 // @public (undocumented)
 export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
 }
@@ -1588,109 +1483,6 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 }
 
 // @public (undocumented)
-export interface IPositioningContainer {
-}
-
-// @public (undocumented)
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, React.RefAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    backgroundColor?: string;
-    bounds?: IRectangle;
-    children?: ReactNode;
-    className?: string;
-    componentRef?: IRefObject<IPositioningContainer>;
-    coverTarget?: boolean;
-    directionalHint?: DirectionalHint;
-    directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint;
-    doNotLayer?: boolean;
-    finalHeight?: number;
-    minPagePadding?: number;
-    offsetFromTarget?: number;
-    onDismiss?: (ev?: any) => void;
-    onLayerMounted?: () => void;
-    onPositioned?: (positions?: IPositionedData) => void;
-    positioningContainerMaxHeight?: number;
-    positioningContainerWidth?: number;
-    preventDismissOnScroll?: boolean;
-    role?: string;
-    setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | Point | null;
-    // @deprecated
-    targetPoint?: Point;
-    // @deprecated
-    useTargetPoint?: boolean;
-}
-
-// @public @deprecated (undocumented)
-export type IPositioningContainerTypes = IPositioningContainerProps;
-
-// @public (undocumented)
-export interface IRating {
-    rating: number;
-}
-
-// @public
-export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    allowZeroStars?: boolean;
-    ariaLabelFormat?: string;
-    componentRef?: IRefObject<IRating>;
-    defaultRating?: number;
-    disabled?: boolean;
-    // (undocumented)
-    getAriaLabel?: (rating: number, max: number) => string;
-    icon?: string;
-    max?: number;
-    // @deprecated
-    min?: number;
-    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
-    rating?: number;
-    readOnly?: boolean;
-    size?: RatingSize;
-    styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
-    theme?: ITheme;
-    unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingStyleProps {
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    readOnly?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IRatingStyles {
-    // (undocumented)
-    labelText: IStyle;
-    // (undocumented)
-    ratingButton: IStyle;
-    // (undocumented)
-    ratingFocusZone: IStyle;
-    // (undocumented)
-    ratingStar: IStyle;
-    // (undocumented)
-    ratingStarBack: IStyle;
-    // (undocumented)
-    ratingStarFront: IStyle;
-    // (undocumented)
-    ratingStarIsLarge: IStyle;
-    // (undocumented)
-    ratingStarIsSmall: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    rootIsLarge: IStyle;
-    // (undocumented)
-    rootIsSmall: IStyle;
-}
-
-// @public (undocumented)
 export interface IResizeGroup {
     remeasure(): void;
 }
@@ -1727,68 +1519,6 @@ export interface IResizeGroupStyleProps {
 // @public (undocumented)
 export interface IResizeGroupStyles {
     root: IStyle;
-}
-
-// @public (undocumented)
-export interface ISearchBox {
-    focus(): void;
-    hasFocus(): boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabel?: string;
-    className?: string;
-    clearButtonProps?: IButtonProps;
-    componentRef?: React.Ref<ISearchBox>;
-    defaultValue?: string;
-    disableAnimation?: boolean;
-    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
-    // @deprecated
-    labelText?: string;
-    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
-    // @deprecated
-    onChanged?: (newValue: any) => void;
-    onClear?: (ev?: any) => void;
-    onEscape?: (ev?: any) => void;
-    onSearch?: (newValue: any) => void;
-    placeholder?: string;
-    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
-    theme?: ITheme;
-    underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disableAnimation?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
-    hasInput?: boolean;
-    // (undocumented)
-    theme: ITheme;
-    // (undocumented)
-    underlined?: boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyles {
-    // (undocumented)
-    clearButton?: IStyle;
-    // (undocumented)
-    field?: IStyle;
-    // (undocumented)
-    icon?: IStyle;
-    // (undocumented)
-    iconContainer?: IStyle;
-    // (undocumented)
-    root?: IStyle;
 }
 
 // @public (undocumented)
@@ -2235,23 +1965,6 @@ export { PeoplePickerItemSuggestionBase }
 export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
-export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps>;
-
-// @public (undocumented)
-export const Rating: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export const RatingBase: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export enum RatingSize {
-    // (undocumented)
-    Large = 1,
-    // (undocumented)
-    Small = 0
-}
-
-// @public (undocumented)
 export const ResizeGroup: import("react").FunctionComponent<import("./ResizeGroup.types").IResizeGroupProps>;
 
 // @public (undocumented)
@@ -2266,12 +1979,6 @@ export enum ResizeGroupDirection {
 }
 
 export { ResponsiveMode }
-
-// @public (undocumented)
-export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
-
-// @public (undocumented)
-export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
@@ -2471,9 +2178,6 @@ export { TagPickerBase }
 
 export { Target }
 
-// @public (undocumented)
-export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
-
 export { ValidationState }
 
 // @public (undocumented)
@@ -2510,6 +2214,7 @@ export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Breadcrumb";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
+export * from "@fluentui/react/lib/Coachmark";
 export * from "@fluentui/react/lib/Color";
 export * from "@fluentui/react/lib/ColorPicker";
 export * from "@fluentui/react/lib/CommandBar";
@@ -2539,8 +2244,11 @@ export * from "@fluentui/react/lib/Nav";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
 export * from "@fluentui/react/lib/Positioning";
+export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
+export * from "@fluentui/react/lib/Rating";
 export * from "@fluentui/react/lib/ScrollablePane";
+export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
