@@ -1,8 +1,13 @@
+pr:
+  - master
+  - 7.0
+
+trigger: none
+
 jobs:
   - job: build
     pool:
-      name: Hosted VS2017
-      demands: npm
+      vmImage: 'windows-2019'
     steps:
       - task: NodeTool@0
         inputs:
