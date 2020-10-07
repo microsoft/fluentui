@@ -20,16 +20,19 @@ export function upgrade(options: CommandParserResult) {
     try {
       const files = project.getSourceFiles();
       runMods(mods, files, result => {
-        if (!result.resultList.some(v => v.status === 'error')) {
-          if (options.saveSync) {
-            result.file.saveSync();
-          }
-        } else {
+        const [okays, errors] = result.resultList;
+
+        if (errors.length > 0) {
           error = true;
+          logger.error(`File ${result.file.getBaseName()} has had the following mods error: `);
+          errors.forEach(v => {
+            logger.error('name: ', v.modName, 'errorData: ', v);
+          });
         }
+
         logger.log(`File ${result.file.getBaseName()} has had the following mods run: `);
-        result.resultList.forEach(v => {
-          logger.log('name: ', v.modName, 'result: ', v.status, 'logdata: ', v.logs);
+        okays.forEach(v => {
+          logger.log('name: ', v.modName, 'logdata: ', v.logs);
         });
       });
     } catch (e) {

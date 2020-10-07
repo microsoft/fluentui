@@ -517,16 +517,7 @@ export const CheckBase: React.FunctionComponent<ICheckProps>;
 export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
-export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
-    constructor(props: IChoiceGroupProps);
-    readonly checkedOption: IChoiceGroupOption | undefined;
-    // (undocumented)
-    componentDidUpdate(prevProps: IChoiceGroupProps, prevState: IChoiceGroupState): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
 export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
@@ -1818,7 +1809,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
         height: number;
     };
     imageSrc?: string;
-    key: string;
+    key?: string;
     labelId?: string;
     onRenderField?: IRenderFunction<IChoiceGroupOption>;
     onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
@@ -1828,9 +1819,11 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
+    // (undocumented)
+    itemKey?: string;
     name?: string;
     onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
     onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
@@ -1877,24 +1870,16 @@ export interface IChoiceGroupOptionStyles {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IChoiceGroup>;
     defaultSelectedKey?: string | number;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
-    // @deprecated
-    onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
     options?: IChoiceGroupOption[];
     selectedKey?: string | number;
     styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupState {
-    keyChecked?: string | number;
-    keyFocused?: string | number;
 }
 
 // @public (undocumented)
@@ -1909,12 +1894,11 @@ export interface IChoiceGroupStyleProps {
 
 // @public (undocumented)
 export interface IChoiceGroupStyles {
-    // @deprecated
-    applicationRole?: IStyle;
     // (undocumented)
     flexContainer?: IStyle;
     // (undocumented)
     label?: IStyle;
+    // (undocumented)
     root?: IStyle;
 }
 
@@ -3713,7 +3697,7 @@ export interface IMessageBar {
 }
 
 // @public (undocumented)
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     actions?: JSX.Element;
     // @deprecated
     ariaLabel?: string;
@@ -3729,16 +3713,6 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarState {
-    // (undocumented)
-    expandSingleLine?: boolean;
-    // (undocumented)
-    labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)
@@ -6265,13 +6239,7 @@ export function mergeOverflows(keySequences: string[], overflowKeySequences: str
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-    constructor(props: IMessageBarProps);
-    // (undocumented)
-    static defaultProps: IMessageBarProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
 export class MessageBarButton extends React.Component<IButtonProps, {}> {
