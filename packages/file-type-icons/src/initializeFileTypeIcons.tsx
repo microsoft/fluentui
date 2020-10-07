@@ -31,12 +31,12 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     let src: string;
     let iconName: string;
 
-    src = `{${baseUrlSizeType} + '.png'}`;
+    src = `${baseUrlSizeType}.png`;
     iconName = type + size + PNG_SUFFIX;
     fileTypeIcons[iconName] = <img src={src} alt="" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" alt="" />`;
 
-    src = `{${baseUrlSizeType} + '.svg'}`;
+    src = `${baseUrlSizeType}.svg`;
     iconName = type + size + SVG_SUFFIX;
     fileTypeIcons[iconName] = <img src={src} alt="" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" alt="" />`;
@@ -48,27 +48,27 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     // 1.5x is a special case where both SVGs and PNGs need a different image.
 
     iconName = type + size + '_1.5x' + PNG_SUFFIX;
-    src = `{${baseUrl} + ${size} + _1.5x/ + ${type} + .png}`;
+    src = `${baseUrl}${size}_1.5x/${type}.png`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
 
     iconName = type + size + '_1.5x' + SVG_SUFFIX;
-    src = `{${baseUrl} + ${size} + _1.5x/ + ${type} + .svg}`;
+    src = `${baseUrl}${size}_1.5x/${type}.svg`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
 
     iconName = type + size + '_2x' + PNG_SUFFIX;
-    src = `{${baseUrl} + ${size} + _2x/ + ${type} + .png}`;
+    src = `${baseUrl}${size}_2x/${type}.png`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
 
     iconName = type + size + '_3x' + PNG_SUFFIX;
-    src = `{${baseUrl} + ${size} + _3x/ + ${type} + .png}`;
+    src = `${baseUrl}${size}_3x/${type}.png`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
 
     iconName = type + size + '_4x' + PNG_SUFFIX;
-    src = `{${baseUrl} + ${size} + _4x/ + ${type} + .png}`;
+    src = `${baseUrl}${size}_4x/${type}.png`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
     _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
   });
