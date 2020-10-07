@@ -58,6 +58,7 @@ storiesOf('SwatchColorPicker', module)
     <SwatchColorPicker
       {...props}
       columnCount={4}
-      colorCells={props.colorCells.concat(props.colorCells)}
+      // Duplicate the cells but add unique IDs
+      colorCells={[...props.colorCells, ...props.colorCells.map(c => ({ ...c, id: c.id + c.id }))]}
     />
   ));

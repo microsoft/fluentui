@@ -14,7 +14,7 @@ export interface IButtonGridCellProps<T> {
   id: string;
 
   /**
-   * Optional, if the this option should be diabled
+   * Optional, if the this option should be disabled
    */
   disabled?: boolean;
 
@@ -119,8 +119,3 @@ export interface IButtonGridCellProps<T> {
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
-
-/**
- * @deprecated - use IButtonGridCellProps instead
- */
-export interface IGridCellProps<T> extends IButtonGridCellProps<T> {}

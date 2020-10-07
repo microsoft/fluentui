@@ -460,14 +460,7 @@ export class Button extends React.Component<IButtonProps, {}> {
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
-export class ButtonGridCell<T, P extends IButtonGridCellProps<T>> extends React.Component<P, {}> {
-    // (undocumented)
-    static defaultProps: {
-        disabled: boolean;
-    };
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
 export enum ButtonType {
@@ -587,12 +580,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-    // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
 export const CommandBar: React.FunctionComponent<ICommandBarProps>;
@@ -1047,12 +1035,6 @@ export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
-// @public @deprecated (undocumented)
-export const Grid: React.FunctionComponent<IButtonGridProps>;
-
-// @public @deprecated (undocumented)
-export const GridCell: typeof ButtonGridCell;
-
 // @public
 export const HEX_REGEX: RegExp;
 
@@ -1482,7 +1464,7 @@ export interface IButtonGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement>, React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     columnCount: number;
@@ -2072,7 +2054,7 @@ export interface IColor extends IRGB, IHSV {
 
 // @public (undocumented)
 export interface IColorCellProps {
-    color?: string;
+    color: string;
     id: string;
     index?: number;
     label?: string;
@@ -2087,7 +2069,7 @@ export interface IColorPicker {
 export interface IColorPickerGridCellProps {
     borderWidth?: number;
     circle?: boolean;
-    color?: string;
+    color: string;
     disabled?: boolean;
     height?: number;
     // @deprecated
@@ -3236,26 +3218,6 @@ export interface IGenericItem {
     primaryText: string;
     // (undocumented)
     ValidationState: ValidationState;
-}
-
-// @public @deprecated (undocumented)
-export interface IGrid extends IButtonGrid {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridCellProps<T> extends IButtonGridCellProps<T> {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridProps extends IButtonGridProps {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridStyleProps extends IButtonGridStyleProps {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridStyles extends IButtonGridStyles {
 }
 
 // @public (undocumented)
@@ -5659,7 +5621,7 @@ export interface ISuggestionsSubComponentStyles {
 export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     cellBorderWidth?: number;
@@ -5670,31 +5632,25 @@ export interface ISwatchColorPickerProps {
     className?: string;
     colorCells: IColorCellProps[];
     columnCount: number;
+    defaultSelectedId?: string | undefined;
     disabled?: boolean;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
+    // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
     onRenderColorCell?: IRenderFunction<IColorCellProps>;
-    // @deprecated (undocumented)
-    positionInSet?: number;
     selectedId?: string;
-    // @deprecated (undocumented)
-    setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ISwatchColorPickerState {
-    // (undocumented)
-    selectedIndex?: number;
 }
 
 // @public
@@ -7461,17 +7417,7 @@ export type SuggestionsStoreOptions<T> = {
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
-    constructor(props: ISwatchColorPickerProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISwatchColorPickerProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
 export const TagItem: React.FunctionComponent<ITagItemProps>;
