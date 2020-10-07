@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getWindow } from '@uifabric/utilities';
 import { useOnEvent } from '@uifabric/react-hooks';
 import { ResponsiveMode, getResponsiveMode, getInitialResponsiveMode } from '../decorators/withResponsiveMode';
+import { useWindow } from '@fluentui/react-window-provider';
 
 export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
   const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(getInitialResponsiveMode);
@@ -15,7 +16,8 @@ export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null
     }
   }, [elementRef, lastResponsiveMode]);
 
-  useOnEvent(window, 'resize', onResize as (ev: Event) => void);
+  const win = useWindow();
+  useOnEvent(win, 'resize', onResize as (ev: Event) => void);
 
   // Call resize function initially on mount.
   React.useEffect(() => {
