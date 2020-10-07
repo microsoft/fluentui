@@ -17,7 +17,7 @@ export const renderText: (state: TextProps) => JSX.Element;
 export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface TextProps extends ComponentProps, React.ImgHTMLAttributes<HTMLSpanElement> {
+export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
     // (undocumented)
     tokens?: RecursivePartial<TextTokenSet>;
     variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
