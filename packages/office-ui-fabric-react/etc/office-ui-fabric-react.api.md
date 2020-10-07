@@ -8055,6 +8055,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     autoAdjustHeight?: boolean;
     autoComplete?: string;
     borderless?: boolean;
+    canRevealPassword?: boolean;
     className?: string;
     componentRef?: IRefObject<ITextField>;
     defaultValue?: string;
@@ -8107,6 +8108,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
+    type: string;
     uncontrolledValue: string | undefined;
 }
 
@@ -8116,6 +8118,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
     hasIcon?: boolean;
     hasLabel?: boolean;
     focused?: boolean;
+    hasRevealButton?: boolean;
 };
 
 // @public (undocumented)
@@ -8126,6 +8129,9 @@ export interface ITextFieldStyles {
     fieldGroup: IStyle;
     icon: IStyle;
     prefix: IStyle;
+    revealButton: IStyle;
+    revealIcon: IStyle;
+    revealSpan: IStyle;
     root: IStyle;
     subComponentStyles: ITextFieldSubComponentStyles;
     suffix: IStyle;

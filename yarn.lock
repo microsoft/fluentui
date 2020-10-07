@@ -2395,17 +2395,17 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.17.0.tgz#2d52b6c83375fbf2c6d05bc45211dad3960dff1a"
-  integrity sha512-bPkPPYcZ+hojPQ3m1WPdI5Z3d+fJbpddCdSspZy6T6NV9JoIDRg+gaJcBWWQmeBDsCsG+dVNK1RezXuWLP5qpA==
+"@microsoft/fast-element@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.19.0.tgz#f5abbe9facba7488f1df68ce4400caa10358c1b0"
+  integrity sha512-YGVYvENaQBURZXSuHAoO0d3tbOz9HtmUHYJsA75Dszrq6UVaV/EAIDeFe8isqTkTIz/4HyzldFfsjVrvmWYljA==
 
-"@microsoft/fast-foundation@^1.7.0":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.7.1.tgz#17fede34bf76bd0195b5c5b76a73ce765d69edd1"
-  integrity sha512-8eTpcBRz6aLiVP6/FMUEiFw/t3DxA6xnT/8UkFI8NJQtBlZdIatt5+2PSwj5IsS4sqkniCeIv+wWa5jX6FHrSQ==
+"@microsoft/fast-foundation@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.8.0.tgz#8bf1f0ec461557add1f7c89bc04cbcfa11e47a1c"
+  integrity sha512-Q3gthzOXUjNyMo60JgXk2N7mPz0wSK/6Q0eljgIA1YVsZjsJVnhm22ipWkPpSNqXpoa1y7gGn4ky98BeXzYcVw==
   dependencies:
-    "@microsoft/fast-element" "^0.17.0"
+    "@microsoft/fast-element" "^0.19.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
@@ -2468,10 +2468,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/package-deps-hash/-/package-deps-hash-2.2.158.tgz#57a02d6ee62fd95390a477120ab24186767cb0fe"
   integrity sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
 
-"@microsoft/task-scheduler@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.0.tgz#6108b2264711299d1d0350c4def6f038b73ea504"
-  integrity sha512-KeMyrw5c9IAQxKYn/QrnqT9BNfLC7UUY2OwyXNaMKOcSRKMscPzYilPir0LzwHwSzg9uAmNX9rJ87sKKJ7mOVw==
+"@microsoft/task-scheduler@^2.6.4":
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.4.tgz#ba684e26380f6b5d660656858a5f417a9c42487a"
+  integrity sha512-4RXr5Q0/CfRHAjJ6J+8V/if0LGoScTc4iFVnSHiLnJEEJRNWviLeBNgiDb/fI4H9vbdM+KF71agzKsji1C4jtQ==
 
 "@microsoft/ts-command-line@4.3.6":
   version "4.3.6"
@@ -15218,12 +15218,12 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.0.tgz#b95f59a80b784ff3e2391adc497b165e18c15963"
-  integrity sha512-PFyOWebV+Za5n5e4uuk66TZQNiFD4OG3UUnrM3JoqOPAxFPogMDr+PuYDj01R0U6ENMaOrH0pC0EypcH+P9HrQ==
+lage@0.19.9:
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.9.tgz#3b4d1644bfa0cf20a1c440b05172c2bdd49ddf4a"
+  integrity sha512-SOvsegn67DFTFUTvEE3xUy79nH1DoPzSkOPymTLSbNWt8FWjTsUcVWxmV8adJ+2E0vJRwYFiXIt8jLo0tqMosw==
   dependencies:
-    "@microsoft/task-scheduler" "^2.6.0"
+    "@microsoft/task-scheduler" "^2.6.4"
     abort-controller "^3.0.0"
     backfill "^6.0.1"
     backfill-config "^6.0.0"
@@ -15235,7 +15235,7 @@ lage@^0.19.0:
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
     p-profiler "^0.1.2"
-    workspace-tools "^0.9.1"
+    workspace-tools "^0.9.8"
     yargs-parser "^18.1.3"
 
 last-run@^1.1.0:
@@ -24784,10 +24784,10 @@ workspace-tools@^0.9.0:
     multimatch "^4.0.0"
     read-yaml-file "^2.0.0"
 
-workspace-tools@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.1.tgz#86d8d9affbb29ee0ded94a1eed2165c5bb206dbb"
-  integrity sha512-yVYslHnDGr1b13ldBUly23W+FUxt4f7s/ovWZThw3YNPW3tcvJ9jDC5UYEWAqRXRbLXOMYFHRgQ1S1Iom/Ze6Q==
+workspace-tools@^0.9.8:
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.8.tgz#fe53254bf56da289a8e9a6d9e8a0647f69bd964e"
+  integrity sha512-Vbyuc8fRLnbkE/n7Qb8wKEwexGEujTQamEGNFd/1RmgANCFk1u4FBI2PVoF/Tf32JbbtAlw/JkWtxmemRG4b8g==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"

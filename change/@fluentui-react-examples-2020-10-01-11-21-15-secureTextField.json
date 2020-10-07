@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding reveal password functionality to TextField",
+  "packageName": "@fluentui/react-examples",
+  "email": "jrhutch@live.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-01T15:21:15.435Z"
+}

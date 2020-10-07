@@ -25,6 +25,7 @@ import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
+import { Skeleton } from '@microsoft/fast-foundation';
 import { Slider } from '@microsoft/fast-foundation';
 import { SliderLabel } from '@microsoft/fast-foundation';
 import { Switch } from '@microsoft/fast-foundation';
@@ -389,6 +390,10 @@ export class FluentRadioGroup extends RadioGroup {
 }
 
 // @public
+export class FluentSkeleton extends Skeleton {
+}
+
+// @public
 export class FluentSlider extends Slider {
 }
 
@@ -608,6 +613,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SkeletonStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;

@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Button } from './Button';
+import { Button as BaseButton } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { withThemeProvider } from '@fluentui/react-theme-provider';
 
-import { MergeStylesProvider } from '@fluentui/react-theme-provider';
-import { ButtonProps } from './Button.types';
+/** Use a ThemeProvider wrapper around the component to ensure styles show up in snapshots. */
+const Button = withThemeProvider(BaseButton);
 
-/** Use merge-styles provider to ensure styles show up in snapshots. */
-const ButtonWrapper = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
-  <MergeStylesProvider>
-    <Button {...props} ref={ref} />
-  </MergeStylesProvider>
-));
+describe('Button (isConformant)', () =>
+  isConformant({
+    Component: BaseButton,
+    displayName: 'Button',
+  }));
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -24,22 +24,17 @@ describe('Button', () => {
     }
   });
 
-  isConformant({
-    Component: Button,
-    displayName: 'Button',
-  });
-
   /**
    * Note: see more visual regression tests for Button in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<ButtonWrapper>Default button</ButtonWrapper>);
+    const component = renderer.create(<Button>Default button</Button>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders anchor when href prop is provided', () => {
-    const component = renderer.create(<ButtonWrapper href="https://www.bing.com">Default button</ButtonWrapper>);
+    const component = renderer.create(<Button href="https://www.bing.com">Default button</Button>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -47,7 +42,7 @@ describe('Button', () => {
   it('can be focused', () => {
     const rootRef = React.createRef<HTMLButtonElement>();
 
-    wrapper = mount(<ButtonWrapper ref={rootRef}>Focus me</ButtonWrapper>);
+    wrapper = mount(<Button ref={rootRef}>Focus me</Button>);
 
     expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);

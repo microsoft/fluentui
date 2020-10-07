@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 06 Oct 2020 12:25:11 GMT",
+      "tag": "@uifabric/charting_v4.5.0",
+      "version": "4.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Charting: Customized callout support added to area chart and line chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "429de88d35fc15e6b98c246a7e74b3e2059f2871",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@uifabric/charting_v4.4.0",
       "version": "4.4.0",

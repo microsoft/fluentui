@@ -23,6 +23,9 @@ export type TextAreaAppearance = 'filled' | 'outline';
   name: 'fluent-text-area',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentTextArea extends TextArea {
   /**

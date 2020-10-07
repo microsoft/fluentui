@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { mergeThemes } from '@fluentui/theme';
 import { createDefaultTheme } from './createDefaultTheme';
 import { Stylesheet } from '@uifabric/merge-styles';
+import { getTokens } from './getTokens';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -90,7 +91,10 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    const expectedTheme: Theme = mergeThemes(createDefaultTheme(), lightTheme);
+    expectedTheme.tokens = getTokens(expectedTheme);
+    expectedTheme.id = '0-0';
+
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 

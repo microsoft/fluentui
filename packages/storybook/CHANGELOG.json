@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Tue, 06 Oct 2020 17:31:19 GMT",
+      "tag": "@fluentui/storybook_v0.5.7",
+      "version": "0.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating theme used in stories",
+            "author": "dzearing@hotmail.com",
+            "commit": "ad2fdb05f33e0dd41c5671d02aff22a027fc4097",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/storybook_v0.5.6",
       "version": "0.5.6",

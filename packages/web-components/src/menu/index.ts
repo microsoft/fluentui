@@ -15,6 +15,9 @@ import { MenuStyles as styles } from './menu.styles';
   name: 'fluent-menu',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentMenu extends Menu {}
 
