@@ -408,14 +408,28 @@ export const Popup: React.FC<PopupProps> &
               {popupContent}
             </Ref>
 
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="contextmenu" capture />
-            <EventListener listener={handleDocumentKeyDown(getRefs)} target={context.target} type="keydown" capture />
-
-            {isOpenedByRightClick && (
+            {context.target && (
               <>
-                <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="contextmenu"
+                  capture
+                />
+                <EventListener
+                  listener={handleDocumentKeyDown(getRefs)}
+                  target={context.target}
+                  type="keydown"
+                  capture
+                />
+
+                {isOpenedByRightClick && (
+                  <>
+                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                  </>
+                )}
               </>
             )}
           </>
