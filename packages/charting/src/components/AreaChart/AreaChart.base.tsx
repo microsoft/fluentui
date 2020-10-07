@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
-import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
+import { max as d3Max, bisector } from 'd3-array';
+import { clientPoint } from 'd3-selection';
+import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -10,17 +10,25 @@ import {
   IChartProps,
   ICustomizedCalloutData,
   IAreaChartProps,
-  IRefArrayData,
   IBasestate,
   ILineChartDataPoint,
   ILineChartPoints,
+  IChildProps,
+  IMargins,
 } from '../../index';
 import { warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
-import { calloutData, getXAxisType, ChartTypes, XAxisTypes } from '../../utilities/index';
+import { calloutData, getXAxisType, ChartTypes, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const bisect = bisector((d: any) => d.x).left;
 const COMPONENT_NAME = 'AREA CHART';
+
+enum InterceptVisibility {
+  show = 'visibility',
+  hide = 'hidden',
+}
 export interface IAreaChartAreaPoint {
   xVal: string | number;
   values: IAreaChartDataSetPoint;
@@ -30,16 +38,16 @@ export interface IAreaChartDataSetPoint {
 }
 export interface IDPointType {
   values: { 0: number; 1: number; data: {} };
-  xVal: number;
+  xVal: number | Date;
 }
 
 export interface IAreaChartState extends IBasestate {
   lineXValue: number;
-  displayOfLine: string;
-  activeCircleId: string;
+  displayOfLine: InterceptVisibility;
   isCircleClicked: boolean;
   dataPointCalloutProps?: ICustomizedCalloutData;
   stackCalloutProps?: ICustomizedCalloutData;
+  nearestCircleToHighlight: number | string | Date | null;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -48,7 +56,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createSet: (data: IChartProps) => { colors: string[]; stackedInfo: any; calloutPoints: any };
   private _colors: string[];
-  private _refArray: IRefArrayData[];
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
@@ -56,6 +63,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _stackedData: any;
   private _chart: JSX.Element[];
+  private margins: IMargins;
+  private _rectId: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxisRectScale: any;
+  // determines if the given area chart has multiple stacked bar charts
+  private _isMultiStackChart: boolean;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -69,17 +82,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       refSelected: null,
       YValueHover: [],
       lineXValue: 0,
-      displayOfLine: 'hidden',
-      activeCircleId: '',
+      displayOfLine: InterceptVisibility.hide,
       isCircleClicked: false,
+      nearestCircleToHighlight: null,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
     });
-    this._refArray = [];
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
+    this._rectId = getId('rectangle');
   }
 
   public render(): JSX.Element {
@@ -119,15 +132,120 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         tickParams={tickParams}
         maxOfYVal={stackedInfo.maxOfYVal}
         getGraphData={this._getGraphData}
+        getmargins={this._getMargins}
         customizedCallout={this._getCustomizedCallout()}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
-        children={() => {
-          return <g>{this._chart}</g>;
+        children={(props: IChildProps) => {
+          this._xAxisRectScale = props.xScale;
+          const ticks = this._xAxisRectScale.ticks();
+          const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
+          const rectHeight = props.containerHeight! - this.margins.top!;
+          return (
+            <>
+              <g>
+                <rect
+                  id={this._rectId}
+                  width={width1}
+                  height={rectHeight}
+                  fill={'transparent'}
+                  onMouseMove={this._onRectMouseMove}
+                  onMouseOut={this._onRectMouseOut}
+                  onMouseOver={this._onRectMouseMove}
+                />
+              </g>
+              <g>{this._chart}</g>
+            </>
+          );
         }}
       />
     );
   }
+
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
+  };
+
+  private _onRectMouseMove = (mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>) => {
+    mouseEvent.persist();
+    const { data } = this.props;
+    const { lineChartData } = data;
+    // This will get the value of the X when mouse is on the chart
+    const xOffset = this._xAxisRectScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
+    const i = bisect(lineChartData![0].data, xOffset);
+    const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
+    const d1 = lineChartData![0].data[i] as ILineChartDataPoint;
+    let axisType: XAxisTypes | null = null;
+    let pointToHighlight: string | Date | number | null = null;
+    let index: null | number = null;
+    if (d0 === undefined && d1 !== undefined) {
+      pointToHighlight = d1.x;
+      index = i;
+    } else if (d0 !== undefined && d1 === undefined) {
+      pointToHighlight = d0.x;
+      index = i - 1;
+    } else {
+      axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
+      let x0;
+      let point0;
+      let point1;
+      switch (axisType) {
+        case XAxisTypes.DateAxis:
+          x0 = new Date(xOffset).getTime();
+          point0 = (d0.x as Date).getTime();
+          point1 = (d1.x as Date).getTime();
+          pointToHighlight = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? d1.x : d0.x;
+          index = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? i : i - 1;
+          break;
+        case XAxisTypes.NumericAxis:
+          x0 = xOffset as number;
+          point0 = d0.x as number;
+          point1 = d1.x as number;
+          pointToHighlight = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? d1.x : d0.x;
+          index = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? i : i - 1;
+          break;
+        default:
+          break;
+      }
+    }
+    const xAxisCalloutData = lineChartData![0].data[index as number].xAxisCalloutData;
+    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
+    const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
+      return element.x === modifiedXVal;
+    });
+    this.setState({
+      refSelected: mouseEvent,
+      isCalloutVisible: true,
+      nearestCircleToHighlight:
+        axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight,
+      lineXValue: this._xAxisRectScale(pointToHighlight),
+      displayOfLine: InterceptVisibility.show,
+      isCircleClicked: false,
+      stackCalloutProps: found!,
+      YValueHover: found.values,
+      dataPointCalloutProps: found!,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+    });
+  };
+  /**
+   * just cleaning up the state which we have set in the mouse move event
+   */
+  private _onRectMouseOut = () => {
+    this.setState({
+      refSelected: null,
+      isCalloutVisible: false,
+      nearestCircleToHighlight: null,
+      lineXValue: 0,
+      displayOfLine: InterceptVisibility.hide,
+      isCircleClicked: false,
+      stackCalloutProps: undefined,
+      dataPointCalloutProps: undefined,
+      hoverXValue: undefined,
+      YValueHover: [],
+    });
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getStackedData = (keys: string[], dataSet: any) => {
@@ -146,6 +264,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       stackedData.push(currentStack);
     });
+    this._isMultiStackChart = stackedData && stackedData.length > 1 ? true : false;
     return {
       stackedData,
       maxOfYVal,
@@ -299,105 +418,45 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     );
   };
 
-  private _refCallback(element: SVGGElement, legendTitle: string): void {
-    this._refArray.push({ index: legendTitle, refElement: element });
-  }
-
-  private _handleMouseHover = (
-    xLineVal: number,
-    xVal: number | Date,
-    circleId: string,
-    xAxisCalloutData: string,
-    mouseEvent: React.MouseEvent<SVGPathElement>,
-  ) => {
-    mouseEvent.persist();
-    this._uniqueCallOutID = circleId;
-    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
-    const formattedDate = xVal instanceof Date ? xVal.toLocaleDateString() : xVal;
-    const modifiedXVal = xVal instanceof Date ? xVal.getTime() : xVal;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
-      return element.x === modifiedXVal;
-    });
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-      YValueHover: found.values,
-      lineXValue: xLineVal,
-      displayOfLine: 'visibility',
-      activeCircleId: circleId,
-      isCircleClicked: false,
-      stackCalloutProps: found!,
-      dataPointCalloutProps: found!,
-    });
-  };
-
-  private _mouseOutAction = (): void => {
-    this.setState({
-      isCalloutVisible: false,
-      lineXValue: 0,
-      displayOfLine: 'hidden',
-      activeCircleId: '',
-      isCircleClicked: false,
-    });
-  };
-
-  private _handleOnFocus = (xLineVal: number, x: number | Date, circleId: string, xAxisCalloutData: string) => {
-    this._uniqueCallOutID = circleId;
-    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
-    const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
-      return element.x === xVal;
-    });
-    this._refArray.forEach((obj: IRefArrayData) => {
-      if (obj.index === circleId) {
-        this.setState({
-          refSelected: obj.refElement,
-          isCalloutVisible: true,
-          hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-          YValueHover: found.values,
-          lineXValue: xLineVal,
-          displayOfLine: 'visibility',
-          activeCircleId: circleId,
-          isCircleClicked: false,
-          stackCalloutProps: found!,
-          dataPointCalloutProps: found!,
-        });
-      }
-    });
-  };
-
-  private _onDataPointClick = (func: (() => void) | undefined, circleId: string, color: string) => {
+  private _onDataPointClick = (func: (() => void) | undefined) => {
     if (func) {
       func();
     }
-    this.setState({ isCircleClicked: true, activeCircleId: circleId });
+    this.setState({ isCircleClicked: true });
   };
 
-  private _getOpacity = (selectedArea: string) => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = this.state.activeLegend === selectedArea;
+  private _getOpacity = (selectedArea: string): number => {
+    if (!this._isMultiStackChart) {
+      return 0.8;
+    } else {
+      let opacity = 0.8;
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        opacity = this.state.activeLegend === selectedArea ? 0.8 : 0.1;
+      }
+      return opacity;
     }
-    return shouldHighlight ? '1' : '0.1';
   };
 
-  private _getOpacityOfCircle = (selectedArea: string) => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = this.state.activeLegend === selectedArea;
+  private _getLineOpacity = (legend: string): number => {
+    if (!this._isMultiStackChart) {
+      return 1;
+    } else {
+      let opacity = 0.3;
+      if (this.state.isCalloutVisible) {
+        opacity = 1;
+      }
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        opacity = this.state.activeLegend === legend ? 0 : 0.1;
+      }
+      return opacity;
     }
-    return shouldHighlight ? 'visibility' : 'hidden';
   };
 
-  private _updateCircleFillColor = (circleId: string, lineColor: string): string => {
-    if (this.state.isCircleClicked && this.state.activeCircleId === circleId) {
+  private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string): string => {
+    if (this.state.isCircleClicked && this.state.nearestCircleToHighlight === xDataPoint) {
       return lineColor;
     } else {
-      return this.state.activeCircleId === circleId ? this.props.theme!.palette.white : lineColor;
+      return this.state.nearestCircleToHighlight === xDataPoint ? this.props.theme!.palette.white : lineColor;
     }
   };
 
@@ -412,31 +471,53 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y1((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);
+    const line = d3Line()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .x((d: any) => xScale(d.xVal))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .y((d: any) => yScale(d.values[1]))
+      .curve(d3CurveBasis);
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
-        <path
-          id={`${index}-graph-${this._uniqueIdForGraph}`}
-          key={`${index}-graph-${this._uniqueIdForGraph}`}
-          d={area(singleStackedData)!}
-          fill={this._colors[index]}
-          fillOpacity={this._getOpacity(points[index]!.legend)}
-          strokeWidth={3}
-        />,
+        <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
+          <path
+            id={`${index}-line-${this._uniqueIdForGraph}`}
+            d={line(singleStackedData)!}
+            fill={'transparent'}
+            strokeWidth={3}
+            stroke={this._colors[index]}
+            opacity={this._getLineOpacity(points[index]!.legend)}
+            onMouseMove={this._onRectMouseMove}
+            onMouseOut={this._onRectMouseOut}
+            onMouseOver={this._onRectMouseMove}
+          />
+          <path
+            id={`${index}-graph-${this._uniqueIdForGraph}`}
+            d={area(singleStackedData)!}
+            fill={this._colors[index]}
+            fillOpacity={this._getOpacity(points[index]!.legend)}
+            onMouseMove={this._onRectMouseMove}
+            onMouseOut={this._onRectMouseOut}
+            onMouseOver={this._onRectMouseMove}
+          />
+        </React.Fragment>,
       );
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+      if (points.length === index) {
+        return;
+      }
       graph.push(
         <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
           {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
-            const xLineVal = xScale(singlePoint.xVal);
-            const xAxisCalloutData = points[index]!.data[index].xAxisCalloutData!;
+            const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
             lineColor = points[index]!.color;
             return (
               <circle
@@ -445,24 +526,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 data-is-focusable={true}
                 cx={xScale(singlePoint.xVal)}
                 cy={yScale(singlePoint.values[1])}
-                r={this.state.activeCircleId === circleId ? 8 : 0.01}
+                r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this._getOpacityOfCircle(points[index]!.legend)}
-                fill={this._updateCircleFillColor(circleId, lineColor)}
-                ref={(e: SVGCircleElement | null) => {
-                  this._refCallback(e!, circleId);
-                }}
-                onMouseOver={this._handleMouseHover.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
-                onMouseOut={this._mouseOutAction}
-                onFocus={this._handleOnFocus.bind(this, xLineVal, singlePoint.xVal, circleId, xAxisCalloutData)}
-                onBlur={this._mouseOutAction}
-                onClick={this._onDataPointClick.bind(
-                  this,
-                  points[index]!.data[pointIndex].onDataPointClick!,
-                  circleId,
-                  lineColor,
-                )}
+                visibility={this.state.isCalloutVisible ? 'visibility' : 'hidden'}
+                fill={this._updateCircleFillColor(xDataPoint, lineColor)}
+                onMouseOut={this._onRectMouseOut}
+                onMouseOver={this._onRectMouseMove}
+                onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
               />
             );
           })}
@@ -485,5 +556,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />,
     );
     return graph;
+  };
+  private _getCircleRadius = (xDataPoint: number): number => {
+    const { isCircleClicked, nearestCircleToHighlight } = this.state;
+    if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
+      return 1;
+    } else if (nearestCircleToHighlight === xDataPoint) {
+      return 8;
+    } else {
+      return 0;
+    }
   };
 }
