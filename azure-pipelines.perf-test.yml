@@ -16,7 +16,7 @@ steps:
   - template: .devops/templates/tools.yml
 
   - script: |
-      yarn
+      npx midgard-yarn install
     displayName: yarn
 
   # @fluentui/perf-test needs build and bundle steps

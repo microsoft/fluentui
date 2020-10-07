@@ -11,10 +11,10 @@ jobs:
     steps:
       - task: NodeTool@0
         inputs:
-          versionSpec: '10.x'
+          versionSpec: '12.x'
         displayName: 'Install Node.js'
 
-      - script: yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
       - script: yarn build --to test-bundles --no-cache --grouped
