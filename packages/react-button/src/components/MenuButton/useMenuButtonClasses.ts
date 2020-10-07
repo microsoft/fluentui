@@ -1,4 +1,4 @@
-import { makeClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses } from '@fluentui/react-theme-provider';
 
 const GlobalClassNames = {
   root: 'ms-Button-root',
@@ -8,56 +8,52 @@ const GlobalClassNames = {
   _expanded: 'ms-Button--expanded',
 };
 
-export const useMenuButtonClasses = makeClasses({
-  root: [
-    GlobalClassNames.root,
-    {
-      // This seems like a bad selector.
-      '& > .ms-Button-menuIcon + *': {
-        marginLeft: 0,
-      },
+export const useMenuButtonClasses = makeVariantClasses({
+  name: 'MenuButton',
+  prefix: '--button',
+  styles: {
+    root: [
+      GlobalClassNames.root,
+      {
+        // This seems like a bad selector.
+        '& > .ms-Button-menuIcon + *': {
+          marginLeft: 0,
+        },
 
-      '& .ms-layer': {
-        position: 'absolute',
-      },
+        '& .ms-layer': {
+          position: 'absolute',
+        },
 
-      [`&:hover .${GlobalClassNames.menuIcon}`]: {
-        color: 'var(--button-hovered-menuIconColor, var(--button-menuIconColor))',
-      },
+        [`&:hover .${GlobalClassNames.menuIcon}`]: {
+          color: 'var(--button-hovered-menuIconColor, var(--button-menuIconColor))',
+        },
 
-      [`&:active .${GlobalClassNames.menuIcon}`]: {
-        color: 'var(--button-hovered-menuIconColor, var(--button-menuIconColor))',
+        [`&:active .${GlobalClassNames.menuIcon}`]: {
+          color:
+            'var(--button-pressed-menuIconColor, var(--button-hovered-menuIconColor, var(--button-menuIconColor)))',
+        },
       },
+    ],
+
+    menuIcon: [
+      GlobalClassNames.menuIcon,
+      {
+        color: 'var(--button-menuIconColor)',
+        fontSize: 'var(--button-menuIconSize)',
+
+        [`.${GlobalClassNames._disabled} &`]: {
+          color: 'var(--button-disabled-menuIconColor)',
+        },
+      },
+    ],
+
+    _disabled: [GlobalClassNames._disabled],
+  },
+
+  variants: {
+    root: {
+      menuIconSize: '12px',
+      menuIconColor: 'var(--body-menuIconColor)',
     },
-  ],
-
-  menuIcon: [
-    GlobalClassNames.menuIcon,
-    {
-      color: 'var(--button-menuIconColor)',
-      fontSize: 'var(--button-menuIconSize)',
-
-      [`.${GlobalClassNames._disabled} &`]: {
-        color: 'var(--button-disabled-menuIconColor)',
-      },
-    },
-  ],
-
-  _disabled: [GlobalClassNames._disabled],
-
-  _ghost: [
-    GlobalClassNames._ghost,
-    {
-      '--button-menuIconColor': 'var(--body-menuIconColor)',
-    },
-  ],
-
-  _expanded: [
-    GlobalClassNames._expanded,
-    {
-      [`.${GlobalClassNames}&`]: {
-        '--button-contentColor': 'var(--ghost-expanded-contentColor)',
-      },
-    },
-  ],
+  },
 });

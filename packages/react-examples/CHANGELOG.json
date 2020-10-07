@@ -2,6 +2,51 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 07 Oct 2020 12:24:30 GMT",
+      "tag": "@fluentui/react-examples_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding reveal password functionality to TextField",
+            "author": "jrhutch@live.com",
+            "commit": "2313140f44fad2c6da5cebade4b9125db0b73657",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Oct 2020 17:31:19 GMT",
+      "tag": "@fluentui/react-examples_v0.4.7",
+      "version": "0.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating examples.",
+            "author": "dzearing@hotmail.com",
+            "commit": "ad2fdb05f33e0dd41c5671d02aff22a027fc4097",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Oct 2020 12:25:11 GMT",
+      "tag": "@fluentui/react-examples_v0.4.6",
+      "version": "0.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Customized callout support added to area chart and line chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "429de88d35fc15e6b98c246a7e74b3e2059f2871",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/react-examples_v0.4.5",
       "version": "0.4.5",

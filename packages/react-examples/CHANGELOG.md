@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.5.0)
+
+Wed, 07 Oct 2020 12:24:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.7..@fluentui/react-examples_v0.5.0)
+
+### Minor changes
+
+- Adding reveal password functionality to TextField ([PR #15021](https://github.com/microsoft/fluentui/pull/15021) by jrhutch@live.com)
+
+## [0.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.7)
+
+Tue, 06 Oct 2020 17:31:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.6..@fluentui/react-examples_v0.4.7)
+
+### Patches
+
+- Updating examples. ([PR #15375](https://github.com/microsoft/fluentui/pull/15375) by dzearing@hotmail.com)
+
+## [0.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.6)
+
+Tue, 06 Oct 2020 12:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.4.5..@fluentui/react-examples_v0.4.6)
+
+### Patches
+
+- Charting: Customized callout support added to area chart and line chart. ([PR #15361](https://github.com/microsoft/fluentui/pull/15361) by v-gorraj@microsoft.com)
 
 ## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.4.5)
 

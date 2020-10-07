@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 06 Oct 2020 17:31:19 GMT",
+      "tag": "@fluentui/react-button_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating styling to use variants.",
+            "author": "dzearing@hotmail.com",
+            "commit": "ad2fdb05f33e0dd41c5671d02aff22a027fc4097",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@fluentui/react-button_v0.14.3",
       "version": "0.14.3",

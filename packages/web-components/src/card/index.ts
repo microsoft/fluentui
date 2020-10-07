@@ -18,6 +18,9 @@ import { CardStyles as styles } from './card.styles';
   name: 'fluent-card',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentCard extends FluentDesignSystemProvider
   implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {

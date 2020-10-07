@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleRenderer } from './styleRenderers/types';
 import { Theme, PartialTheme } from './types';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ICustomizerContext } from '@uifabric/utilities';
 /**
  * Props for the ThemeProvider component.
  */
@@ -40,4 +41,6 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
  */
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
   theme: Theme;
+
+  customizerContext: ICustomizerContext;
 };
