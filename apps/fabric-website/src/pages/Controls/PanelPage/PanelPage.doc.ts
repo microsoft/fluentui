@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { PanelPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Panel/Panel.doc';
+import { PanelPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Panel/Panel.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PanelPage/docs/PanelRelated.md') as string;
 

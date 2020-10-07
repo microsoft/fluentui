@@ -18,9 +18,9 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "just-scripts": "0.43.1",
+    "just-scripts": "0.44.5",
     "querystring": "^0.2.0",
-    "webpack": "4.35.0"
+    "webpack": "4.43.0"
   },
   "devDependencies": {
     "@types/node": "^10.3.2",

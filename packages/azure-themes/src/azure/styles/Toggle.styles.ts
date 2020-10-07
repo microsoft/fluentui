@@ -1,6 +1,5 @@
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { BaseColors } from '../AzureColors';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
@@ -73,7 +72,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     ],
     root: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '.ms-Toggle-stateText': {
             color: semanticColors.bodyText,

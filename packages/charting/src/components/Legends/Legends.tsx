@@ -1,4 +1,5 @@
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import * as React from 'react';
+import { styled } from '@fluentui/react/lib/Utilities';
 import { ILegendsProps, ILegendStyleProps, ILegendsStyles } from './Legends.types';
 import { LegendsBase } from './Legends.base';
 import { getStyles } from './Legends.styles';

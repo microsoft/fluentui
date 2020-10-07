@@ -1,7 +1,6 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import * as StyleConstants from '../Constants';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '../AzureType';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
@@ -10,7 +9,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
@@ -20,6 +19,36 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '&.is-expanded': {
           color: semanticColors.buttonTextHovered,
           borderColor: semanticColors.inputBorderHovered,
+        },
+        '&.ms-Button--primary.is-disabled': {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+          color: semanticColors.primaryButtonTextDisabled,
+          border: `${StyleConstants.borderWidth} solid
+          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+        },
+        '&.ms-Button--primary': {
+          backgroundColor: semanticColors.primaryButtonBackground,
+          height: StyleConstants.inputControlHeight,
+          padding: '0px 16px',
+          color: semanticColors.primaryButtonText,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
+          selectors: {
+            ':hover': {
+              backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+              color: semanticColors.primaryButtonTextHovered,
+              borderColor: semanticColors.primaryButtonBackgroundHovered,
+            },
+            ':active': {
+              backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+              color: semanticColors.primaryButtonTextPressed,
+              borderColor: semanticColors.primaryButtonBackgroundPressed,
+            },
+            ':focus': {
+              backgroundColor: semanticColors.primaryButtonBackground,
+              color: semanticColors.primaryButtonText,
+              borderColor: extendedSemanticColors.primaryCompoundButtonBorder,
+            },
+          },
         },
       },
     },

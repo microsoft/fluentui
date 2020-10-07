@@ -3,28 +3,20 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import {
-  Checkbox,
-  ICheckboxProps,
-  Persona,
-  PersonaSize,
-  ThemeProvider,
-  Icon,
-} from '@fluentui/react-next';
+import { Persona, PersonaSize } from '@fluentui/react';
+import { Checkbox } from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>,
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
@@ -52,27 +44,12 @@ storiesOf('Checkbox Next', module)
       defaultChecked={true}
     />
   ))
-  .addStory('Custom render Checkbox using onRenderLabel', () => (
+  .addStory('Custom render Checkbox', () => (
     <Checkbox
       label="Persona Checkbox"
-      onRenderLabel={(props: ICheckboxProps) => {
-        return <Persona text={props!.label as string} size={PersonaSize.size32} />;
+      onRenderLabel={props => {
+        return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
-    />
-  ))
-  .addStory('Custom render Checkbox using label render prop', () => (
-    <Checkbox
-      label={{
-        children: () => {
-          return <Persona text="Persona Checkbox" size={PersonaSize.size32} />;
-        },
-      }}
-    />
-  ))
-  .addStory('Custom render CheckMark icon', () => (
-    <Checkbox
-      label="Checkbox with customized icon"
-      checkmark={{ children: () => <Icon iconName="CheckboxComposite" /> }}
     />
   ));
 
@@ -80,19 +57,17 @@ storiesOf('Checkbox Next Indeterminate', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('.ms-Checkbox')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('.ms-Checkbox')
-          .snapshot('clicked', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </Screener>
-    </ThemeProvider>,
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Checkbox')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Checkbox')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>,
   )
   .addStory('Uncontrolled Indeterminate checkbox', () => (
     <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />

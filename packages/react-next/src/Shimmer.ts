@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Shimmer';
+import './version';
+export * from './components/Shimmer/index';

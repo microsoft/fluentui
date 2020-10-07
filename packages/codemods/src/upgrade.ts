@@ -1,14 +1,18 @@
 import { runMods, getTsConfigs, getEnabledMods } from './modRunner/runnerUtilities';
 import { CommandParserResult } from './command';
+import { Logger } from './modRunner/logger';
 import { Project } from 'ts-morph';
-
-// TODO actually do console logging, implement some nice callbacks.
+// Injection point for logger so that it can easily be replaced.
+const logger: Logger = console;
 export function upgrade(options: CommandParserResult) {
-  const mods = getEnabledMods().filter(options.modsFilter);
+  const mods = getEnabledMods(logger).filter(options.modsFilter);
 
-  console.log('getting configs');
+  logger.log('getting configs');
   const configs = getTsConfigs();
 
+  if (options.saveSync) {
+    logger.log('Saving files synchronously');
+  }
   configs.forEach(configString => {
     // Lazily create/load each project to help deal with large monorepos
     const project = new Project({ tsConfigFilePath: configString });
@@ -16,18 +20,23 @@ export function upgrade(options: CommandParserResult) {
     try {
       const files = project.getSourceFiles();
       runMods(mods, files, result => {
-        if (result.error) {
-          console.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
-          error = true;
+        if (!result.resultList.some(v => v.status === 'error')) {
+          if (options.saveSync) {
+            result.file.saveSync();
+          }
         } else {
-          console.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`);
+          error = true;
         }
+        logger.log(`File ${result.file.getBaseName()} has had the following mods run: `);
+        result.resultList.forEach(v => {
+          logger.log('name: ', v.modName, 'result: ', v.status, 'logdata: ', v.logs);
+        });
       });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       error = true;
     }
-    if (!error) {
+    if (!error && !options.saveSync) {
       project.save();
     }
   });

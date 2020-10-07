@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
-import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DetailsListBasicExample } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.Basic.Example';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
 
 const propertiesTableMargins = mergeStyles({

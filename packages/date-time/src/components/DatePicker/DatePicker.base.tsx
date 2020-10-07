@@ -10,10 +10,9 @@ import {
 } from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart } from '@fluentui/date-time-utilities';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { Callout, DirectionalHint } from '@fluentui/react-internal/lib/Callout';
+import { TextField, ITextField } from '@fluentui/react-internal/lib/TextField';
+import { FocusTrapZone } from '@fluentui/react-internal/lib/FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
@@ -132,9 +131,7 @@ function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) 
 
   React.useEffect(() => {
     setFormattedDate(value && formatDate ? formatDate(value) : '');
-    // setSelectedDate already updates the formatetd date if value changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formatDate]);
+  }, [formatDate, value]);
 
   return [selectedDate, formattedDate, setSelectedDate, setFormattedDate] as const;
 }
@@ -418,6 +415,10 @@ export const DatePickerBase = React.forwardRef(
       // don't need to focus the text box, if necessary the focusTrapZone will do it
     };
 
+    const calloutDismissed = (ev: React.MouseEvent<HTMLElement>): void => {
+      calendarDismissed();
+    };
+
     const handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
       ev.stopPropagation();
       calendarDismissed();
@@ -436,7 +437,12 @@ export const DatePickerBase = React.forwardRef(
 
     return (
       <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-        <div ref={datePickerDiv} aria-haspopup="true" aria-owns={isCalendarShown ? calloutId : undefined}>
+        <div
+          ref={datePickerDiv}
+          aria-haspopup="true"
+          aria-owns={isCalendarShown ? calloutId : undefined}
+          className={classNames.wrapper}
+        >
           <TextField
             role="combobox"
             label={label}
@@ -487,7 +493,7 @@ export const DatePickerBase = React.forwardRef(
             {...calloutProps}
             className={css(classNames.callout, calloutProps && calloutProps.className)}
             // eslint-disable-next-line react/jsx-no-bind
-            onDismiss={calendarDismissed}
+            onDismiss={calloutDismissed}
             // eslint-disable-next-line react/jsx-no-bind
             onPositioned={onCalloutPositioned}
           >

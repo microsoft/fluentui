@@ -1,8 +1,59 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.18)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.4..@uifabric/example-app-base_v7.15.18)
+
+### Patches
+
+- Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+
+## [7.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.4)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.14.0..@uifabric/example-app-base_v7.15.4)
+
+### Patches
+
+- Adding check for undefined FluentTheme in CodeSnippet.tsx. ([PR #14567](https://github.com/microsoft/fluentui/pull/14567) by humbertomakotomorimoto@gmail.com)
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.14.0)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.13.0..@uifabric/example-app-base_v7.14.0)
+
+### Minor changes
+
+- Markdown: add support for custom HTML ([PR #14545](https://github.com/microsoft/fluentui/pull/14545) by elcraig@microsoft.com)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.13.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.114..@uifabric/example-app-base_v7.13.0)
+
+### Patches
+
+- Add back UHF link style overrides via Customizer ([PR #14542](https://github.com/microsoft/fluentui/pull/14542) by elcraig@microsoft.com)
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.12.114](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.114)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.109..@uifabric/example-app-base_v7.12.114)
+
+### Patches
+
+- @uifabric/example-app-base: Updating dependencies to resolve security issues. ([PR #14543](https://github.com/microsoft/fluentui/pull/14543) by humbertomakotomorimoto@gmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
 

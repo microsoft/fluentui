@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/set-version",
-  "version": "7.0.21",
+  "version": "7.0.23",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/jest": "~24.9.0",
     "@uifabric/build": "^7.0.0"
   },

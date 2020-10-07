@@ -1,6 +1,5 @@
-import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import { ISearchBoxStyleProps, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
 import * as StyleConstants from '../Constants';
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
@@ -51,7 +50,7 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
     icon: {
       color: extendedSemanticColors.iconButtonFill,
       width: '20px',
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

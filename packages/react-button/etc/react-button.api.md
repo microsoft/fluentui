@@ -4,12 +4,14 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { FontTokens } from '@fluentui/theme';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { SlotProps } from '@fluentui/react-compose';
+import { SizeValue } from '@fluentui/theme';
+import { Theme } from '@fluentui/react-theme-provider';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -18,7 +20,7 @@ export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | 
 export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
-    children?: ShorthandProps;
+    content?: ShorthandProps;
     href?: string;
     target?: string;
     circular?: boolean;
@@ -27,26 +29,45 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
+    variant?: string;
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
+    ghost?: boolean;
     size?: SizeValue;
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: RecursivePartial<ButtonTokens>;
 };
 
 // @public
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
-
-// @public (undocumented)
-export interface ButtonSlots extends BaseSlots {
-    // (undocumented)
-    icon: React.ElementType;
-    // (undocumented)
-    loader: React.ElementType;
-}
+export const ButtonSizeVariants: {
+    size_smallest: {
+        height: string;
+        minHeight: string;
+    };
+    size_smaller: {
+        height: string;
+        minHeight: string;
+    };
+    size_small: {
+        height: string;
+        minHeight: string;
+    };
+    size_large: {
+        height: string;
+        minHeight: string;
+    };
+    size_larger: {
+        height: string;
+        minHeight: string;
+    };
+    size_largest: {
+        height: string;
+        minHeight: string;
+    };
+};
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
@@ -55,37 +76,50 @@ export interface ButtonState extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ButtonTokenSet = ColorTokenSet & {
-    padding: string;
-    margin: string;
-    height: string;
-    minWidth: string;
-    maxWidth: string;
-    minHeight: string;
-    contentGap: string;
-    iconSize: string;
-    borderRadius: string;
-    borderWidth: string;
-    boxShadow: string;
-    width: string;
-    size: {
-        smallest: string;
-        smaller: string;
-        small: string;
-        regular: string;
-        large: string;
-        larger: string;
-        largest: string;
+export type ButtonTokens = ColorTokens & FontTokens & {
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    margin?: string;
+    height?: string;
+    minWidth?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    contentGap?: string;
+    iconSize?: string;
+    borderRadius?: string;
+    borderTopLeftRadius?: string;
+    borderTopRightRadius?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
+    borderWidth?: string;
+    boxShadow?: string;
+    width?: string;
+    transform?: string;
+    transition?: string;
+    size?: {
+        smallest?: string;
+        smaller?: string;
+        small?: string;
+        regular?: string;
+        large?: string;
+        larger?: string;
+        largest?: string;
     };
-    transform: string;
-    transition: string;
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    pressed: {
-        transform: string;
-        transition: string;
+    pressed?: {
+        transform?: string;
+        transition?: string;
     };
+};
+
+// @public (undocumented)
+export type ButtonVariants<TTokens = ButtonTokens> = {
+    base?: TTokens;
+    primary?: TTokens;
+    iconOnly?: TTokens;
+    circular?: TTokens;
+    fluid?: TTokens;
 };
 
 // @public (undocumented)
@@ -103,6 +137,33 @@ export interface CheckedState {
     // (undocumented)
     role?: string;
 }
+
+// @public
+export const CompoundButton: React.ForwardRefExoticComponent<Pick<CompoundButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonProps extends ButtonProps {
+    contentContainer?: ShorthandProps;
+    secondaryContent?: ShorthandProps;
+}
+
+// @public
+export const compoundButtonShorthandProps: string[];
+
+// @public (undocumented)
+export interface CompoundButtonState extends CompoundButtonProps {
+}
+
+// @public (undocumented)
+export type CompoundButtonTokens = ButtonTokens & {
+    secondaryContentColor: string;
+    secondaryContentFontSize: string;
+    secondaryContentFontWeight: string;
+    secondaryContentGap: string;
+};
+
+// @public (undocumented)
+export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;
 
 // @public (undocumented)
 export type ExpandedState = {
@@ -142,10 +203,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 }
 
 // @public (undocumented)
-export type MenuButtonTokens = ButtonTokenSet;
-
-// @public (undocumented)
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export type MenuButtonTokens = ButtonTokens;
 
 // @public (undocumented)
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -179,13 +237,6 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ToggleButtonSlotProps = SlotProps<ToggleButtonSlots, ToggleButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
-
-// @public (undocumented)
-export interface ToggleButtonSlots extends ButtonSlots {
-}
-
-// @public (undocumented)
 export interface ToggleButtonState extends ToggleButtonProps {
 }
 
@@ -196,13 +247,25 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 };
 
 // @public (undocumented)
-export const useButtonClasses: (state: Record<string, any>) => void;
+export const useButtonClasses: (state: ButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public (undocumented)
+export const useClasses: (state: CompoundButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+
+// @public
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
@@ -214,7 +277,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: Record<string, any>) => void;
+export const useMenuButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
@@ -226,24 +289,17 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: Record<string, any>) => void;
+export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
-export const useSplitButtonState: (state: SplitButtonState) => void;
-
-// @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
     state: Record<string, any>;
     render: (state: import("../Button").ButtonState) => JSX.Element;
 };
 
 // @public (undocumented)
-export const useToggleButtonClasses: (state: Record<string, any>) => void;
+export const useToggleButtonClasses: (state: ToggleButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/components/Button/Button.types.d.ts:65:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

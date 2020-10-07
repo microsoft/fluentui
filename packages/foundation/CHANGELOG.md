@@ -1,8 +1,26 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.8](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.9.8)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.9.2..@uifabric/foundation_v7.9.8)
+
+### Patches
+
+- Using getResolveAlias for webpack config. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [7.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.8.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.38..@uifabric/foundation_v7.8.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
 
 ## [7.7.38](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.38)
 

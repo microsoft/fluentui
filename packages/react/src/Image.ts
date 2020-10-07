@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Image';
+export * from '@fluentui/react-internal/lib/Image';

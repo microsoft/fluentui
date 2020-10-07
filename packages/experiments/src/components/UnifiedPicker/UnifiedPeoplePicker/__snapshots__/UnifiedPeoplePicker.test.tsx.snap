@@ -12,7 +12,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -47,6 +47,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
+                flex: 1 1 auto;
                 min-height: 32px;
                 min-width: 180px;
                 padding-bottom: 1px;
@@ -61,6 +62,13 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
           <div
             aria-expanded={false}
             aria-haspopup="listbox"
+            className=
+                ms-BasePicker-div
+                ms-UnifiedPicker-div
+                {
+                  display: flex;
+                  flex: 1 1 auto;
+                }
             role="combobox"
           >
             <input
@@ -72,7 +80,9 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                   ms-UnifiedPicker-input
                   {
                     border: none;
+                    display: flex;
                     flex-grow: 1;
+                    flex: 1 1 auto;
                     height: 34px;
                     margin-bottom: 1px;
                     margin-left: 1px;
@@ -127,7 +137,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -162,6 +172,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
+                flex: 1 1 auto;
                 min-height: 32px;
                 min-width: 180px;
                 padding-bottom: 1px;
@@ -177,7 +188,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             role="list"
           >
             <div
-              aria-labelledby="selectedItemPersona-id__3"
+              aria-labelledby="selectedItemPersona-id__2"
               className=
                   ms-PickerPersona-container
                   {
@@ -205,11 +216,11 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                     background: Highlight;
                     border-color: Highlight;
                   }
-              data-is-draggable={false}
+              data-is-draggable={true}
               data-is-focusable={true}
               data-is-sub-focuszone={true}
               data-selection-index={0}
-              draggable={false}
+              draggable={true}
               role="listitem"
             >
               <div
@@ -367,7 +378,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         max-width: 100%;
                         min-width: 0px;
                       }
-                  id="selectedItemPersona-id__3"
+                  id="selectedItemPersona-id__2"
                 >
                   <div
                     className=
@@ -785,6 +796,13 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
           <div
             aria-expanded={false}
             aria-haspopup="listbox"
+            className=
+                ms-BasePicker-div
+                ms-UnifiedPicker-div
+                {
+                  display: flex;
+                  flex: 1 1 auto;
+                }
             role="combobox"
           >
             <input
@@ -796,7 +814,9 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   ms-UnifiedPicker-input
                   {
                     border: none;
+                    display: flex;
                     flex-grow: 1;
+                    flex: 1 1 auto;
                     height: 34px;
                     margin-bottom: 1px;
                     margin-left: 1px;

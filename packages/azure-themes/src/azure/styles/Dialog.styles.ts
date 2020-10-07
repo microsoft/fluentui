@@ -3,7 +3,7 @@ import {
   IDialogContentStyles,
   IDialogFooterStyleProps,
   IDialogFooterStyles,
-} from 'office-ui-fabric-react/lib/Dialog';
+} from '@fluentui/react/lib/Dialog';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import { BaseColors } from '../AzureColors';
@@ -15,7 +15,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
   return {
     content: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     title: [
       {
@@ -45,11 +45,11 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
     },
     innerContent: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     subText: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

@@ -11,7 +11,7 @@ import {
   EventGroup,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData, RectangleEdge, getOppositeEdge } from '@fluentui/react/lib/Positioning';
 
 // Component Dependencies
 import { PositioningContainer } from './PositioningContainer/index';
@@ -401,126 +401,128 @@ function useDeprecationWarning(props: ICoachmarkProps) {
 }
 
 const COMPONENT_NAME = 'CoachmarkBase';
-export const CoachmarkBase = React.forwardRef(
-  (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
-    const translateAnimationContainer = React.useRef<HTMLDivElement | null>(null);
+export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.forwardRef<
+  HTMLDivElement,
+  ICoachmarkProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
-    const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
-    const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
-    const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
-    const alertText = useAriaAlert(props);
-    const entityHost = useAutoFocus(props);
+  const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
+  const translateAnimationContainer = React.useRef<HTMLDivElement | null>(null);
 
-    useListeners(props, translateAnimationContainer, openCoachmark);
-    useComponentRef(props);
-    useProximityHandlers(props, translateAnimationContainer, openCoachmark);
-    useDeprecationWarning(props);
+  const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
+  const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
+  const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
+  const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
+  const alertText = useAriaAlert(props);
+  const entityHost = useAutoFocus(props);
 
-    const {
-      beaconColorOne,
-      beaconColorTwo,
-      children,
-      target,
-      color,
-      positioningContainerProps,
-      ariaDescribedBy,
-      ariaDescribedByText,
-      ariaLabelledBy,
-      ariaLabelledByText,
-      ariaAlertText,
-      delayBeforeCoachmarkAnimation,
-      styles,
-      theme,
-      className,
-      persistentBeak,
-    } = props;
+  useListeners(props, translateAnimationContainer, openCoachmark);
+  useComponentRef(props);
+  useProximityHandlers(props, translateAnimationContainer, openCoachmark);
+  useDeprecationWarning(props);
 
-    // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
-    let defaultColor = color;
-    if (!defaultColor && theme) {
-      defaultColor = theme.semanticColors.primaryButtonBackground;
-    }
+  const {
+    beaconColorOne,
+    beaconColorTwo,
+    children,
+    target,
+    color,
+    positioningContainerProps,
+    ariaDescribedBy,
+    ariaDescribedByText,
+    ariaLabelledBy,
+    ariaLabelledByText,
+    ariaAlertText,
+    delayBeforeCoachmarkAnimation,
+    styles,
+    theme,
+    className,
+    persistentBeak,
+  } = props;
 
-    const classNames = getClassNames(styles, {
-      theme,
-      beaconColorOne,
-      beaconColorTwo,
-      className,
-      isCollapsed,
-      isMeasuring,
-      color: defaultColor,
-      transformOrigin,
-      entityHostHeight: entityInnerHostRect.height === undefined ? undefined : `${entityInnerHostRect.height}px`,
-      entityHostWidth: entityInnerHostRect.width === undefined ? undefined : `${entityInnerHostRect.width}px`,
-      width: `${COACHMARK_WIDTH}px`,
-      height: `${COACHMARK_HEIGHT}px`,
-      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`,
-    });
+  // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
+  let defaultColor = color;
+  if (!defaultColor && theme) {
+    defaultColor = theme.semanticColors.primaryButtonBackground;
+  }
 
-    const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
+  const classNames = getClassNames(styles, {
+    theme,
+    beaconColorOne,
+    beaconColorTwo,
+    className,
+    isCollapsed,
+    isMeasuring,
+    color: defaultColor,
+    transformOrigin,
+    entityHostHeight: entityInnerHostRect.height === undefined ? undefined : `${entityInnerHostRect.height}px`,
+    entityHostWidth: entityInnerHostRect.width === undefined ? undefined : `${entityInnerHostRect.width}px`,
+    width: `${COACHMARK_WIDTH}px`,
+    height: `${COACHMARK_HEIGHT}px`,
+    delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`,
+  });
 
-    return (
-      <PositioningContainer
-        target={target}
-        offsetFromTarget={BEAK_HEIGHT}
-        finalHeight={finalHeight}
-        ref={forwardedRef}
-        onPositioned={onPositioned}
-        bounds={getBounds(props)}
-        {...positioningContainerProps}
-      >
-        <div className={classNames.root}>
-          {ariaAlertText && (
-            <div className={classNames.ariaContainer} role="alert" aria-hidden={!isCollapsed}>
-              {alertText}
-            </div>
-          )}
-          <div className={classNames.pulsingBeacon} />
-          <div className={classNames.translateAnimationContainer} ref={translateAnimationContainer}>
-            <div className={classNames.scaleAnimationLayer}>
-              <div className={classNames.rotateAnimationLayer}>
-                {(isCollapsed || persistentBeak) && <Beak {...beakPositioningProps} color={defaultColor} />}
-                <div
-                  className={classNames.entityHost}
-                  ref={entityHost}
-                  tabIndex={-1}
-                  data-is-focusable={true}
-                  role="dialog"
-                  aria-labelledby={ariaLabelledBy}
-                  aria-describedby={ariaDescribedBy}
-                >
-                  {isCollapsed && [
-                    ariaLabelledBy && (
-                      <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
-                        {ariaLabelledByText}
-                      </p>
-                    ),
-                    ariaDescribedBy && (
-                      <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
-                        {ariaDescribedByText}
-                      </p>
-                    ),
-                  ]}
-                  <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
-                    <div className={classNames.entityInnerHost} ref={entityInnerHostElementRef}>
-                      <div className={classNames.childrenContainer} aria-hidden={isCollapsed}>
-                        {children}
-                      </div>
+  const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
+
+  return (
+    <PositioningContainer
+      target={target}
+      offsetFromTarget={BEAK_HEIGHT}
+      finalHeight={finalHeight}
+      ref={forwardedRef}
+      onPositioned={onPositioned}
+      bounds={getBounds(props)}
+      {...positioningContainerProps}
+    >
+      <div className={classNames.root}>
+        {ariaAlertText && (
+          <div className={classNames.ariaContainer} role="alert" aria-hidden={!isCollapsed}>
+            {alertText}
+          </div>
+        )}
+        <div className={classNames.pulsingBeacon} />
+        <div className={classNames.translateAnimationContainer} ref={translateAnimationContainer}>
+          <div className={classNames.scaleAnimationLayer}>
+            <div className={classNames.rotateAnimationLayer}>
+              {(isCollapsed || persistentBeak) && <Beak {...beakPositioningProps} color={defaultColor} />}
+              <div
+                className={classNames.entityHost}
+                ref={entityHost}
+                tabIndex={-1}
+                data-is-focusable={true}
+                role="dialog"
+                aria-labelledby={ariaLabelledBy}
+                aria-describedby={ariaDescribedBy}
+              >
+                {isCollapsed && [
+                  ariaLabelledBy && (
+                    <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
+                      {ariaLabelledByText}
+                    </p>
+                  ),
+                  ariaDescribedBy && (
+                    <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
+                      {ariaDescribedByText}
+                    </p>
+                  ),
+                ]}
+                <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+                  <div className={classNames.entityInnerHost} ref={entityInnerHostElementRef}>
+                    <div className={classNames.childrenContainer} aria-hidden={isCollapsed}>
+                      {children}
                     </div>
-                  </FocusTrapZone>
-                </div>
+                  </div>
+                </FocusTrapZone>
               </div>
             </div>
           </div>
         </div>
-      </PositioningContainer>
-    );
-  },
-);
+      </div>
+    </PositioningContainer>
+  );
+});
 CoachmarkBase.displayName = COMPONENT_NAME;
 
 function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkProps): IRectangle | undefined {

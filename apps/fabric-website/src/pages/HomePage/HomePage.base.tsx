@@ -14,9 +14,9 @@ import {
   Stack,
   IRawStyle,
   css,
-} from 'office-ui-fabric-react';
+  IStackProps,
+} from '@fluentui/react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
-import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
 import {
   androidLogoColor,
   appleLogoColor,
@@ -27,7 +27,7 @@ import {
 } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
-const reactPackageData = require<any>('office-ui-fabric-react/package.json');
+const reactPackageData = require<any>('@fluentui/react/package.json');
 
 const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>();
 
@@ -65,6 +65,10 @@ const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
   checked: version === CURRENT_VERSION,
 }));
+
+const TitleStack: React.FunctionComponent<IStackProps> = props => (
+  <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
+);
 
 interface IRenderLinkOptions {
   disabled?: boolean;
@@ -167,25 +171,14 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const { isMountedOffset } = this.state;
     const { theme, styles } = this.props;
 
-    const platformKeys = Object.keys(platforms);
-    const lastPlatform = platformKeys.length - 1;
-    const beforeColor = platforms[platformKeys[0]].color;
-    const afterColor = platforms[platformKeys[lastPlatform]].color;
-
     const classNames = getClassNames(styles, {
       theme,
       isMountedOffset,
-      beforeColor,
-      afterColor,
       isInverted: true,
     });
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
     const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
-
-    const TitleStack = props => (
-      <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
-    );
 
     return (
       <div className={classNames.platformCardsSection}>

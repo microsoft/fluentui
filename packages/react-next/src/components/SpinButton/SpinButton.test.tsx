@@ -6,7 +6,8 @@ import { ReactWrapper, mount } from 'enzyme';
 import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
+import { mockEvent } from '@fluentui/react-internal/lib/common/testUtilities';
+import { isConformant } from '../../common/isConformant';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
@@ -26,6 +27,11 @@ describe('SpinButton', () => {
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
+  });
+
+  isConformant({
+    Component: SpinButton,
+    displayName: 'SpinButton',
   });
 
   it('renders correctly', () => {

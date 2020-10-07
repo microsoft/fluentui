@@ -1,5 +1,4 @@
-import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { FontSizes } from '../AzureType';
+import { IDropdownStyleProps, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 
@@ -37,7 +36,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     ],
     dropdown: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
 
@@ -111,7 +110,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItem: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
@@ -123,10 +122,10 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
       selectors: {
@@ -143,7 +142,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
     },
   };
 };

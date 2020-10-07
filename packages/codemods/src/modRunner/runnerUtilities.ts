@@ -1,25 +1,51 @@
-import { CodeMod } from '../codeMods/types';
+import { CodeMod, CodeModResult } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
+import { Err } from '../helpers/result';
+import { Logger } from './logger';
 
-// TODO ensure that async for all these utilities works
+interface Results {
+  modName: string;
+  logs: (string | undefined)[];
+  status: string;
+}
+
 export function runMods<T>(
   codeMods: CodeMod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: CodeMod<T>; file: T; error?: Error }) => void,
+  onFileComplete: (result: { file: T; resultList: Results[] }) => void,
+  loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    // Run every mod on each file?
-    // I like that
-    for (const mod of codeMods) {
-      try {
-        mod.run(file);
-        loggingCallback({ mod, file });
-      } catch (e) {
-        loggingCallback({ mod, file, error: e });
-      }
+    const results: Results[] = [];
+    for (let i = 0; i < codeMods.length; i++) {
+      const mod = codeMods[i];
+      const result = runMod(mod, file, loggingCallback).resolve<Results>(
+        ok => ({ modName: mod.name, status: 'success', logs: ok.logs }),
+        err => ({ modName: mod.name, status: err.reason, logs: [err.log] }),
+      );
+      results.push(result);
     }
+    onFileComplete({ file, resultList: results });
   }
+}
+
+function runMod<T>(
+  codeMod: CodeMod<T>,
+  file: T,
+  loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
+): CodeModResult {
+  let result: CodeModResult;
+  try {
+    result = codeMod.run(file);
+  } catch (e) {
+    result = Err({ reason: 'error', log: e });
+  }
+
+  if (loggingCallback) {
+    loggingCallback({ mod: codeMod, file: file, result: result });
+  }
+  return result;
 }
 
 export function getModsRootPath() {
@@ -71,12 +97,12 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
   return Nothing();
 }
 
-export function getEnabledMods(getPaths = getModsPaths, loadM = loadMod) {
+export function getEnabledMods(logger: Logger, getPaths = getModsPaths, loadM = loadMod) {
   return getPaths()
     .map(pth => {
-      console.log('fetching codeMod at ', pth);
+      logger.log('fetching codeMod at ', pth);
       return loadM(pth, e => {
-        console.error(e);
+        logger.error(e);
       });
     })
     .filter(modEnabled)

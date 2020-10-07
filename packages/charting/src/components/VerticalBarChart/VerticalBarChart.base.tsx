@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { format as d3Format } from 'd3-format';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
@@ -56,6 +57,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -115,6 +117,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       width: this.state._width,
       height: this.state._height,
       legendColor: this.state.color,
+      isRtl: this._isRtl,
     });
 
     const svgDimensions = {
@@ -129,7 +132,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
@@ -140,7 +143,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               id="yAxisGElement"
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
-              transform={`translate(40, 0)`}
+              transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right - 10 : 40}, 0)`}
             />
             <g id="barGElement">{bars}</g>
           </svg>
@@ -214,7 +217,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _createNumericXAxis(): NumericAxis {
     const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
     const xAxisScale = d3ScaleLinear()
-      .domain([0, xMax])
+      .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
       .range([this.margins.left + this._barWidth, this.state.containerWidth - this.margins.right - this._barWidth]);
     const xAxis = d3AxisBottom(xAxisScale).tickPadding(10);
@@ -224,7 +227,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _createStringXAxis(): StringAxis {
     const xAxisScale = d3ScaleBand()
       .domain(this._points.map((point: IVerticalBarChartDataPoint) => point.x as string))
-      .range([this.margins.left, this.state.containerWidth - this.margins.right]);
+      .range(
+        this._isRtl
+          ? [this.state.containerWidth - this.margins.right, this.margins.left]
+          : [this.margins.left, this.state.containerWidth - this.margins.right],
+      );
     const xAxis = d3AxisBottom(xAxisScale)
       .tickFormat((x: string, index: number) => this._points[index].x as string)
       .tickPadding(10);
@@ -241,10 +248,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
-    const yAxis = d3AxisLeft(yAxisScale)
+    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+    const yAxis = axis
       .tickPadding(5)
       .tickValues(domains)
-      .ticks(this._yAxisTickCount, 's')
+      .tickFormat(d3Format('.2~s'))
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
     return yAxis;
   }
@@ -333,7 +341,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { theme, className, styles } = this.props;
 
     const xBarScale = d3ScaleLinear()
-      .domain([0, xMax])
+      .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
       .range([
         this.margins.left + this._barWidth / 2,
@@ -407,7 +415,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
     const endpointDistance = 0.5 * ((this.state.containerWidth - this.margins.right) / this._points.length);
     const xBarScale = d3ScaleLinear()
-      .domain([0, this._points.length - 1])
+      .domain(this._isRtl ? [this._points.length - 1, 0] : [0, this._points.length - 1])
       .range([
         this.margins.left + endpointDistance - 0.5 * this._barWidth,
         this.state.containerWidth - this.margins.right - endpointDistance - 0.5 * this._barWidth,
@@ -514,6 +522,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return legends;

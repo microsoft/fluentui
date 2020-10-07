@@ -1,5 +1,5 @@
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps, ButtonState, ButtonTokenSet } from '../Button/Button.types';
+import { ButtonProps, ButtonState, ButtonTokens } from '../Button/Button.types';
 import { ExpandedState } from './useExpanded';
 
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
@@ -37,4 +37,4 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
   menu: ExpandedState['menu'];
 }
 
-export type MenuButtonTokens = ButtonTokenSet;
+export type MenuButtonTokens = ButtonTokens;

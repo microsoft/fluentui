@@ -105,6 +105,9 @@ export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays:
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
 
 // @public
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+
+// @public
 export function getMonthEnd(date: Date): Date;
 
 // @public
@@ -136,6 +139,11 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 export interface ICalendarStrings extends IDateFormatting {
     closeButtonAriaLabel?: string;
     goToToday: string;
+    inputAriaLabel?: string;
+    inputBoundedFormatString?: string;
+    inputMaxBoundedFormatString?: string;
+    inputMinBoundedFormatString?: string;
+    inputPlaceholder: string;
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;

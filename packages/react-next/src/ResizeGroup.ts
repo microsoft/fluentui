@@ -1,1 +1,2 @@
-export * from './components/ResizeGroup';
+import './version';
+export * from './components/ResizeGroup/index';

@@ -3,9 +3,8 @@ import {
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+} from '@fluentui/react/lib/ContextualMenu';
 import { Depths } from '../AzureDepths';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -34,7 +33,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
         return {
           root: [
             {
-              fontSize: FontSizes.size13,
+              fontSize: theme.fonts.medium.fontSize,
               selectors: {
                 '&:hover': {
                   backgroundColor: semanticColors.buttonBackgroundHovered,
@@ -52,7 +51,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
             },
           ],
           splitPrimary: {
-            fontSize: FontSizes.size13,
+            fontSize: theme.fonts.medium.fontSize,
           },
           divider: {
             backgroundColor: semanticColors.inputBorder,

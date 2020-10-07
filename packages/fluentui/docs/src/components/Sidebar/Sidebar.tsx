@@ -22,14 +22,16 @@ import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 import { renderSidebarTitle } from './SidebarTitle';
 import config from '../../config';
+import componentInfoContext from '../../utils/componentInfoContext';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
-const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
+
+const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const componentsBlackList = ['Debug', 'Design', process.env.NODE_ENV === 'production' && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -164,13 +166,26 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
-    id: 'virtualized-table',
-    title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
+    id: 'menulist',
+    title: {
+      content: 'Menu List',
+      as: NavLink,
+      to: '/prototype-menu-list',
+    },
+    public: false,
+  },
+  {
+    id: 'text-area',
+    title: {
+      content: 'TextArea Auto Size',
+      as: NavLink,
+      to: '/prototype-text-area-autosize',
+    },
     public: true,
   },
   {
-    id: 'unstable-datepicker',
-    title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
+    id: 'virtualized-table',
+    title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
     public: true,
   },
 ];
@@ -500,7 +515,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
           <Box>
             GitHub
-            <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
+            <Image
+              src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+              width="20px"
+              height="20px"
+              styles={{ float: 'right' }}
+            />
           </Box>
         </a>
         <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>

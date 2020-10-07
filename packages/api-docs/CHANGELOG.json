@@ -2,6 +2,36 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/api-docs_v7.5.17",
+      "version": "7.5.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix references from theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "728bf4da9e9f3d8b1429d2e2fad52d6fe034a0f3",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/api-docs_v7.3.40",
+      "version": "7.3.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/api-docs_v7.3.15",
       "version": "7.3.15",

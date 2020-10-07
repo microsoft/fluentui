@@ -36,6 +36,23 @@
       "console": "integratedTerminal"
     },
     {
+      "name": "Debug current open test (v0)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--inspect"],
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Run server",
       "type": "node",
       "request": "launch",
@@ -55,7 +72,7 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just-scripts.js",
-      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["ts"],
       "runtimeExecutable": null,
@@ -135,7 +152,7 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/tasks/lint-imports.js",
-      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,

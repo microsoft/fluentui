@@ -9,6 +9,7 @@
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
+    "@fluentui/code-sandbox": "^0.51.0",
     "immer": "^7.0.5",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
@@ -19,7 +20,7 @@
     "use-immer": "^0.4.1"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/react-frame-component": "^4.1.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",

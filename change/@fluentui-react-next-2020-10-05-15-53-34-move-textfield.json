@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Move TextField \"next\" changes back to main package",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T22:53:34.127Z"
+}

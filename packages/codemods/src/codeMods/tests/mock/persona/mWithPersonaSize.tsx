@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+// @ts-ignore
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 
 export const RenderPersona = (props: { size: PersonaSize }) => {

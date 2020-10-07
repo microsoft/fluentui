@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/TextField';
+export * from '@fluentui/react-internal/lib/TextField';

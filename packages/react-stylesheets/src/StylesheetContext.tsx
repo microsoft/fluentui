@@ -1,10 +1,12 @@
 import * as React from 'react';
 export type HTMLDirection = 'rtl' | 'ltr' | 'auto';
 
+const defaultDocument = { document: 'document' };
+
 export interface StylesheetContextType {
   target: Document | undefined;
   registerStyles: (stylesheets: undefined | string | string[], context: StylesheetContextType) => void;
-  styleCache: WeakMap<Document, Map<string, boolean>>;
+  styleCache: WeakMap<Document | typeof defaultDocument, Map<string, boolean>>;
   renderStyles: (stylesheets: string[], context: StylesheetContextType) => void;
 }
 
@@ -15,7 +17,7 @@ export interface StylesheetContextType {
  */
 export const registerStyles = (sheets: undefined | string | string[], context: StylesheetContextType) => {
   const { styleCache, target } = context;
-  if (!sheets) {
+  if (!sheets || sheets.length < 1) {
     return;
   }
 
@@ -25,11 +27,12 @@ export const registerStyles = (sheets: undefined | string | string[], context: S
 
   // Grab the style cache for the target document.
   const sheetsToRender = [];
-  let targetStylesheets = styleCache.get(target!);
+  const cacheKey = target || defaultDocument;
+  let targetStylesheets = styleCache.get(cacheKey);
 
   if (!targetStylesheets) {
     targetStylesheets = new Map();
-    styleCache.set(target!, targetStylesheets);
+    styleCache.set(cacheKey, targetStylesheets);
   }
 
   for (const sheet of sheets) {
@@ -64,5 +67,5 @@ export const StylesheetContext = React.createContext<StylesheetContextType>({
   registerStyles,
   renderStyles,
   target: typeof window === 'object' ? window.document : undefined,
-  styleCache: new WeakMap<Document, Map<string, boolean>>(),
+  styleCache: new WeakMap<Document | typeof defaultDocument, Map<string, boolean>>(),
 });

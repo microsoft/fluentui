@@ -1,5 +1,5 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { FontWeights } from '@fluentui/react/lib/Styling';
+import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { disabled, checked, theme } = props;

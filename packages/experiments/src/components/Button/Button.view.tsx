@@ -1,5 +1,6 @@
 /** @jsx withSlots */
-import { Text, KeytipData } from 'office-ui-fabric-react';
+import * as React from 'react';
+import { Text, KeytipData } from '@fluentui/react';
 import { withSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { FontIcon } from '../../utilities/factoryComponents';

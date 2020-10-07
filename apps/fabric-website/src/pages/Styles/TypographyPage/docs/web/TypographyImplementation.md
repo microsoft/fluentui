@@ -1,35 +1,33 @@
 ### Fluent UI React (JavaScript variables)
 
 ```tsx
-import { FontSizes } from '@uifabric/fluent-theme/lib/fluent/FluentType';
+import { FontSizes } from '@fluentui/theme';
 
 <div style={{ fontSize: FontSizes.size42 }} />;
 ```
 
-### Fabric Core (SCSS variables)
+### Fabric Core (SCSS)
+
+The typography styles are available from either `office-ui-fabric-core` or `@fluentui/react` as SCSS variables and mixins.
 
 ```scss
-@import '../src/sass/References.scss'; // Import all mixins and variables.
+// Import all mixins and variables.
+// (These are also available from '@fluentui/react/dist/sass/References'.)
+@import 'office-ui-fabric-core/dist/sass/References';
 
-.myClass {
-  font-size: $ms-font-size-42;
+.myClass1 {
+  font-size: $ms-font-size-42; // Using variables
 }
-```
 
-### Fabric Core (SCSS mixins)
-
-```scss
-@import '../src/sass/References.scss'; // Import all mixins and variables.
-
-.myClass {
-  @include ms-fontSize-42;
+.myClass2 {
+  @include ms-fontSize-42; // Using mixins
 }
 ```
 
 ### Fabric Core (CSS classes)
 
-```html
-<link rel="stylesheet" href="fabric.css" />
+First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
 
+```html
 <div class="ms-fontSize-42"></div>
 ```

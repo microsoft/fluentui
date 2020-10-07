@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { css, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { css, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { SuggestionsItem } from './SuggestionsItem';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';

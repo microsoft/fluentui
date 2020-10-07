@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Rename office-ui-fabric-react package and update references",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-30T20:43:16.157Z"
+}

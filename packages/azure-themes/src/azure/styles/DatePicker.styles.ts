@@ -1,6 +1,5 @@
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
-import { IDatePickerStyles, IDatePickerStyleProps } from 'office-ui-fabric-react/lib/DatePicker';
+import { IDatePickerStyles, IDatePickerStyleProps } from '@fluentui/react/lib/DatePicker';
 import { BaseColors } from '../AzureColors';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -94,7 +93,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   return {
     //placeholder : inputPlaceholderText
     callout: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
@@ -153,7 +152,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     ],
     root: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '.ms-TextField-field': {
             lineHeight: 22,

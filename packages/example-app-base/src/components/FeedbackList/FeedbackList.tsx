@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { List } from '@fluentui/react/lib/List';
+import { Link } from '@fluentui/react/lib/Link';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { Label } from '@fluentui/react/lib/Label';
+import { styled, classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
 import { relativeDates } from './relativeDates';
 import { IFeedbackListProps, IFeedbackListStyleProps, IFeedbackListStyles } from './FeedbackList.types';

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
-import { menuButtonShorthandProps } from '../MenuButton/useMenuButton';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
-import { useSplitButtonState } from './useSplitButtonState';
 import { renderSplitButton } from './renderSplitButton';
+import { useMergedRefs } from '@uifabric/react-hooks';
+import { useExpanded } from '../MenuButton/useExpanded';
 
-export const splitButtonShorthandProps = [...menuButtonShorthandProps, 'button', 'divider', 'loader', 'menuButton'];
+export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
+
+const mergeProps = makeMergeProps({ deepMerge: splitButtonShorthandProps });
 
 /**
  * Redefine the component factory, reusing button factory.
@@ -15,26 +17,69 @@ export const useSplitButton = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: SplitButtonProps,
 ) => {
-  // Note: because menu button's template and slots are different, we can't reuse
-  // those, but the useMenuButtonState hook can reuse useButtonState.
+  const {
+    as = 'span',
+    className,
+    style,
+    primary,
+    ghost,
+    disabled,
+    loading,
+    circular,
+    fluid,
+    menu,
+    size,
+    ...userProps
+  } = resolveShorthandProps(props, splitButtonShorthandProps);
+
+  ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
+
+  // A split button should be disabled when disabled or loading.
+  const disabledOrLoading = disabled || loading;
+
   const state = mergeProps(
     {
-      ref,
-      as: 'button',
-      button: { as: 'div', children: null },
-      children: { as: 'span' },
+      as: 'span',
+      className,
+      style,
+      fluid,
+      size,
+      primary,
+      'aria-disabled': disabledOrLoading,
+
+      button: {
+        as: 'span',
+        ref,
+        primary,
+        ghost,
+        circular,
+        disabled: disabledOrLoading,
+        loading,
+        size,
+        ...userProps,
+      },
+
       divider: { as: 'span', children: null },
-      icon: { as: 'span' },
-      loader: { as: 'span' },
-      menu: { as: 'span' },
-      menuButton: { as: 'div', children: null },
-      menuIcon: { as: 'span' },
+      menuButton: {
+        as: 'span',
+        primary,
+        ghost,
+        circular,
+        size,
+        disabled: disabledOrLoading,
+        loading,
+        menu: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ...(menu as any),
+          target: ref,
+        },
+        children: null,
+      },
     },
     defaultProps,
-    resolveShorthandProps(props, splitButtonShorthandProps),
   ) as SplitButtonState;
 
-  useSplitButtonState(state);
+  useExpanded(state);
 
   return {
     state,

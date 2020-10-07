@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
@@ -12,7 +12,7 @@ import { IOverlayProps } from '../../Overlay';
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initiated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 

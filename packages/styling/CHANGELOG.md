@@ -1,8 +1,46 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.8)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.7..@uifabric/styling_v7.16.8)
+
+### Patches
+
+- Move AnimationStyles code to theme package. ([PR #15162](https://github.com/microsoft/fluentui/pull/15162) by xgao@microsoft.com)
+- Move createTheme from styling to theme package. ([PR #15163](https://github.com/microsoft/fluentui/pull/15163) by xgao@microsoft.com)
+- Add missing index from import path in fonts.ts ([PR #15230](https://github.com/microsoft/fluentui/pull/15230) by xgao@microsoft.com)
+
+## [7.16.7](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.7)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.6..@uifabric/styling_v7.16.7)
+
+### Patches
+
+- set theme package version to be 1.0.0. ([PR #15174](https://github.com/microsoft/fluentui/pull/15174) by xgao@microsoft.com)
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.2..@uifabric/styling_v7.16.6)
+
+### Patches
+
+- Move default fonts to theme package. ([PR #15129](https://github.com/microsoft/fluentui/pull/15129) by xgao@microsoft.com)
+
+## [7.15.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.15.2)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.14.1..@uifabric/styling_v7.15.2)
+
+### Patches
+
+- Move Fluent theme constants to @fluentui/theme package. ([PR #14650](https://github.com/microsoft/fluentui/pull/14650) by xgao@microsoft.com)
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.14.0)
 

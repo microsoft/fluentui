@@ -1,8 +1,9 @@
 import { IChartProps } from './index';
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IMultiStackedBarChartProps {
   /**
@@ -79,6 +80,11 @@ export interface IMultiStackedBarChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IMultiStackedBarChartStyleProps {

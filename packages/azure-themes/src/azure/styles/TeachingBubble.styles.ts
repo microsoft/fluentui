@@ -1,4 +1,4 @@
-import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from '@fluentui/react/lib/TeachingBubble';
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
@@ -90,7 +90,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
           color: extendedSemanticColors.teachingBubbleBackground,
         },
         '.ms-Button-label': {
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
         },
       },
     },
@@ -98,7 +98,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       backgroundColor: extendedSemanticColors.teachingBubbleBackground,
       selectors: {
         '.ms-Button-label': {
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
         },
         '&:hover': {
           backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,

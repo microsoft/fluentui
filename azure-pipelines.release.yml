@@ -10,20 +10,21 @@ variables:
 
 pool: 'Self Host Ubuntu'
 
-schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
-    branches:
-      include:
-        - master
+# DISABLED DURING BETA PREP
+# schedules:
+#   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+#   - cron: '0 12 * * 1-5'
+#     displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+#     branches:
+#       include:
+#         - master
+
+workspace:
+  clean: all
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+  - template: .devops/templates/tools.yml
 
   - script: |
       git config user.name "Fluent UI Build"
@@ -32,7 +33,7 @@ steps:
     displayName: Authenticate git for pushes
 
   - script: |
-      yarn
+      npx midgard-yarn install
     displayName: yarn
 
   - script: |
@@ -40,8 +41,20 @@ steps:
     displayName: yarn generate-version-files
 
   - script: |
-      yarn buildci:prod
-    displayName: yarn buildci:prod (Create production build)
+      yarn run:published build --production
+    displayName: yarn build (Create production build)
+
+  - script: |
+      yarn run:published test --production
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn run:published bundle --production
+    displayName: yarn bundle
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
@@ -72,13 +85,14 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: packages/office-ui-fabric-react/dist
+      pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
@@ -88,7 +102,7 @@ steps:
     displayName: 'Update github release notes'
 
   - script: |
-      oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
+      oufrVersion=$(node -p -e "require('./packages/react/package.json').version") &&
       echo "OUFR Version: $oufrVersion" &&
       echo $oufrVersion > oufr-version.txt &&
       echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
@@ -124,7 +138,7 @@ steps:
       yarn workspace @uifabric/build just generate-package-manifest
     displayName: 'Generates a package manifest'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
@@ -132,3 +146,8 @@ steps:
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'
+      Gzip: false
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

@@ -2,26 +2,35 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
-import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps } from './LineChart.types';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { getId, find } from '@fluentui/react/lib/Utilities';
+import {
+  CartesianChart,
+  IBasestate,
+  IChildProps,
+  ILineChartProps,
+  ILineChartPoints,
+  IMargins,
+  IRefArrayData,
+} from '../../index';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, IMargins } from '../../utilities/index';
-import { ChartHelper } from '../CommonComponents/ChartHelper';
+import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
-export interface IRefArrayData {
-  index?: string;
-  refElement?: SVGGElement;
-}
 export interface IContainerValues {
   width: number;
   height: number;
   shouldResize: boolean;
   reqID: number;
 }
-export interface ILineChartState extends IBasestate {}
+export interface ILineChartState extends IBasestate {
+  // This array contais data of selected legends
+  selectedLegendPoints: ILineChartPoints[];
+  // This is a boolean value which is set to true
+  // when at least one legend is selected
+  isSelectedLegend: boolean;
+}
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
   private _points: ILineChartPoints[];
@@ -49,6 +58,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       refSelected: '',
       selectedLegend: '',
       isCalloutVisible: false,
+      selectedLegendPoints: [],
+      isSelectedLegend: false,
     };
     this._refArray = [];
     this._points = this.props.data.lineChartData || [];
@@ -56,12 +67,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
-    this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 35,
-    };
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -82,18 +87,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public render(): JSX.Element {
-    const { tickValues, tickFormat, eventAnnotationProps } = this.props;
+    const { tickValues, tickFormat, eventAnnotationProps, legendProps } = this.props;
     this._points = this.props.data.lineChartData || [];
 
-    let dataType = false;
-    if (this._points && this._points.length > 0) {
-      this._points.forEach((chartData: ILineChartPoints) => {
-        if (chartData.data.length > 0) {
-          dataType = chartData.data[0].x instanceof Date;
-          return;
-        }
-      });
+    const isXAxisDateType = getXAxisType(this._points);
+    let points = this._points;
+    if (legendProps && !!legendProps.canSelectMultipleLegends) {
+      points = this.state.selectedLegendPoints.length >= 1 ? this.state.selectedLegendPoints : this._points;
+      this._calloutPoints = calloutData(points);
     }
+
     const legendBars = this._createLegends(this._points!);
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
@@ -104,20 +107,25 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      ...this.props.calloutProps,
     };
     const tickParams = {
       tickValues: tickValues,
       tickFormat: tickFormat,
     };
+
     return (
-      <ChartHelper
+      <CartesianChart
         {...this.props}
-        points={this._points}
-        getGraphData={this._getLinesData}
+        points={points}
+        chartType={ChartTypes.LineChart}
+        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        isXAxisDateType={dataType}
+        getmargins={this._getMargins}
+        getGraphData={this._getLinesData}
+        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -153,6 +161,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getLinesData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
     this._xAxisScale = xScale;
@@ -160,7 +172,55 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return (this.lines = this._createLines());
   };
 
+  private _canSelectOnlySingleLegend = (point: ILineChartPoints) => {
+    if (this.state.selectedLegend === point.legend) {
+      this.setState({ selectedLegend: '', activeLegend: point.legend });
+      this._handleLegendClick(point, null);
+    } else {
+      this.setState({
+        selectedLegend: point.legend,
+        activeLegend: point.legend,
+      });
+      this._handleLegendClick(point, point.legend);
+    }
+  };
+
+  private _canSelectMultipleLegends = (
+    point: ILineChartPoints,
+    isLegendMultiSelectEnabled: boolean,
+    selectedLegendTitles: string[],
+  ) => {
+    let values: ILineChartPoints[];
+    const selectedLegendIndex = selectedLegendTitles.indexOf(point.legend);
+    if (selectedLegendIndex === -1) {
+      values = [...this.state.selectedLegendPoints, point];
+    } else {
+      values = this.state.selectedLegendPoints
+        .slice(0, selectedLegendIndex)
+        .concat(this.state.selectedLegendPoints.slice(selectedLegendIndex + 1));
+    }
+    const totalLegendsLength =
+      this.props.data && this.props.data.lineChartData && this.props.data.lineChartData!.length;
+    const points = values.length === totalLegendsLength ? [] : values;
+    this.setState({
+      selectedLegendPoints: isLegendMultiSelectEnabled ? points : [],
+      isSelectedLegend: points.length >= 1 ? true : false,
+    });
+    const selectedLegendTitlesToPass = points.map((item: ILineChartPoints) => item.legend);
+    this._handleLegendClick(point, selectedLegendTitlesToPass);
+  };
+
+  private _onHoverCardHide = () => {
+    this.setState({
+      selectedLegendPoints: [],
+      isSelectedLegend: false,
+    });
+  };
+
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
+    const { legendProps } = this.props;
+    const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
+    const selectedLegendTitles = this.state.selectedLegendPoints.map((item: ILineChartPoints) => item.legend);
     const legendDataItems = data.map((point: ILineChartPoints, index: number) => {
       const color: string = point.color;
       // mapping data to the format Legends component needs
@@ -168,14 +228,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         title: point.legend!,
         color: color,
         action: () => {
-          if (this.state.selectedLegend === point.legend) {
-            this.setState({ selectedLegend: '' });
-            this._handleLegendClick(point, null);
+          if (isLegendMultiSelectEnabled) {
+            this._canSelectMultipleLegends(point, isLegendMultiSelectEnabled, selectedLegendTitles);
           } else {
-            this.setState({ selectedLegend: point.legend });
-            this._handleLegendClick(point, point.legend);
+            this._canSelectOnlySingleLegend(point);
           }
-          this.setState({ activeLegend: point.legend });
         },
         onMouseOutAction: () => {
           this.setState({ activeLegend: '' });
@@ -193,6 +250,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
+        {...this.props.legendProps}
       />
     );
     return legends;
@@ -200,6 +259,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createLines(): JSX.Element[] {
     const lines = [];
+    if (this.state.selectedLegendPoints.length > 0) {
+      this._points = this.state.selectedLegendPoints;
+      // eslint-disable-next-line no-console
+      console.log(this.state.selectedLegendPoints);
+    }
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color;
@@ -225,7 +289,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const x2 = this._points[i].data[j].x;
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
-        if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+        if (
+          this.state.activeLegend === legendVal ||
+          this.state.activeLegend === '' ||
+          this.state.selectedLegendPoints.length > 0 ||
+          this.state.isSelectedLegend
+        ) {
           lines.push(
             <line
               id={lineId}
@@ -410,7 +479,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  private _handleLegendClick = (point: ILineChartPoints, selectedLegend: string | null): void => {
+  private _handleLegendClick = (point: ILineChartPoints, selectedLegend: string | null | string[]): void => {
     if (point.onLegendClick) {
       point.onLegendClick(selectedLegend);
     }

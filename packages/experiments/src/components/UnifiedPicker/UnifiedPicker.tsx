@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
-import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
+import { DragDropHelper, IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import {
   FocusZoneDirection,
@@ -11,14 +11,14 @@ import {
   IInputProps,
   MarqueeSelection,
   IDragDropEvents,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '../SelectedItemsList/index';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from '@fluentui/react/lib/Styling';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -30,7 +30,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
-  const [draggedItem, setDraggedItem] = React.useState<T>();
+  const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
   });
@@ -74,16 +74,20 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
-  // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
-  const _insertBeforeItem = (item: T): void => {
-    const draggedItemIndex = selectedItems.indexOf(draggedItem!);
-    const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
-      ? [...focusedItemIndices]
-      : [draggedItemIndex];
-    const insertIndex = selectedItems.indexOf(item);
-    dropItemsAt(insertIndex, draggedItemsIndices);
-  };
+  React.useImperativeHandle(props.componentRef, () => ({
+    clearInput: () => {
+      if (input.current) {
+        input.current.clear();
+      }
+    },
+    focus: () => {
+      if (input.current) {
+        input.current.focus();
+      }
+    },
+  }));
 
+  // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
   const theme = getTheme();
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
@@ -94,22 +98,84 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
+  let insertIndex = -1;
+  const _dropItemsAt = (newItems: T[]): void => {
+    let indicesToRemove: number[] = [];
+    // If we are moving items within the same picker, remove them from their old places as well
+    if (draggedIndex > -1) {
+      indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
+    }
+    if (props.selectedItemsListProps.dropItemsAt) {
+      props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
+    }
+    dropItemsAt(insertIndex, newItems, indicesToRemove);
+    unselectAll();
+    insertIndex = -1;
+  };
+
+  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
+    return !focusedItemIndices.includes(dropContext!.index);
+  };
+
   const _onDrop = (item?: any, event?: DragEvent): void => {
-    if (draggedItem) {
-      _insertBeforeItem(item);
+    insertIndex = selectedItems.indexOf(item);
+    let isDropHandled = false;
+    if (event?.dataTransfer) {
+      event.preventDefault();
+      const data = event.dataTransfer.items;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+          isDropHandled = true;
+          data[i].getAsString((dropText: string) => {
+            if (props.selectedItemsListProps.deserializeItemsFromDrop) {
+              const newItems = props.selectedItemsListProps.deserializeItemsFromDrop(dropText);
+              _dropItemsAt(newItems);
+            }
+          });
+        }
+      }
+    }
+    if (!isDropHandled && draggedIndex > -1) {
+      const newItems = focusedItemIndices.includes(draggedIndex)
+        ? (getSelectedItems() as T[])
+        : [selectedItems[draggedIndex]];
+      _dropItemsAt(newItems);
     }
   };
 
-  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
-    setDraggedItem(item);
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
+    /* eslint-disable-next-line eqeqeq */
+    const draggedItemIndex = itemIndex != null ? itemIndex! : -1;
+    setDraggedIndex(draggedItemIndex);
+    if (event) {
+      const dataList = event?.dataTransfer?.items;
+      if (props.selectedItemsListProps.serializeItemsForDrag && props.customClipboardType) {
+        const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
+        const dragText = props.selectedItemsListProps.serializeItemsForDrag(draggedItems);
+        dataList?.add(dragText, props.customClipboardType);
+      }
+    }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    setDraggedItem(undefined);
+    if (event) {
+      // If we have a move event, and we still have selected items (indicating that we
+      // haven't already moved items within the well) we should remove the item(s)
+      if (event.dataTransfer?.dropEffect === 'move' && focusedItemIndices.length > 0) {
+        const itemsToRemove = focusedItemIndices.includes(draggedIndex)
+          ? (getSelectedItems() as T[])
+          : [selectedItems[draggedIndex]];
+        _onRemoveSelectedItems(itemsToRemove);
+      }
+      // Clear any remaining drag data
+      const dataList = event?.dataTransfer?.items;
+      dataList?.clear();
+    }
+    setDraggedIndex(-1);
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
-    canDrop: () => true,
+    canDrop: _canDrop,
     canDrag: () => true,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
@@ -183,11 +249,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onCopy = () => {
+  const _onCopy = (ev: React.ClipboardEvent<HTMLInputElement>) => {
     if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
       const copyItems = selection.getSelection() as T[];
       const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
-      copyToClipboard(copyString);
+      ev.clipboardData.setData('text/plain', copyString);
+      ev.preventDefault();
     }
   };
   const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
@@ -196,15 +263,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
   };
-  const _onInputClick = () => {
+  const _onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
     unselectAll();
     showPicker(true);
+    if (props.inputProps && props.inputProps.onClick) {
+      props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
+    }
   };
   const _onInputChange = (value: string, composing?: boolean) => {
     if (!composing) {
       // update query string
       setQueryString(value);
-      !isSuggestionsVisible ? showPicker(true) : null;
+      !isSuggestionsShown ? showPicker(true) : null;
       onInputChange ? onInputChange(value) : null;
     }
   };
@@ -262,6 +332,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
+      pickerWidth: props.floatingSuggestionProps.pickerWidth ? props.floatingSuggestionProps.pickerWidth : '300px',
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,
@@ -291,6 +362,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   aria-expanded={isSuggestionsShown}
                   aria-haspopup="listbox"
                   role="combobox"
+                  className={css('ms-BasePicker-div', classNames.pickerDiv)}
                 >
                   <Autofill
                     {...(inputProps as IInputProps)}

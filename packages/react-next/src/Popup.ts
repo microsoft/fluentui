@@ -1,1 +1,2 @@
-export * from './components/Popup';
+import './version';
+export * from './components/Popup/index';

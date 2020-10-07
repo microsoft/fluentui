@@ -1,8 +1,11 @@
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from './GroupedVerticalBarChart.types';
-import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { HighContrastSelectorBlack, FontWeights } from '@fluentui/react/lib/Styling';
+import { isIE11 } from '@fluentui/react';
+
+const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
-  const { theme, className, showXAxisPath, showYAxisPath, href } = props;
+  const { theme, className, showXAxisPath, showYAxisPath, href, isRtl } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -73,6 +76,12 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
         path: {
           display: showYAxisPath ? 'block' : 'none',
         },
+        g: [
+          isRtl &&
+            !isIE11Var && {
+              textAnchor: 'end',
+            },
+        ],
       },
     },
 

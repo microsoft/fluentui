@@ -7,9 +7,11 @@ import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
-import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/lib/utilities/keytips/index';
+import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '@fluentui/react/lib/Keytips';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
@@ -67,6 +69,12 @@ describe('OverflowSet', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: OverflowSet,
+    displayName: 'OverflowSet',
+    componentPath: path.join(__dirname, 'OverflowSet.ts'),
   });
 
   it('does not render overflow when there are no overflow items', () => {

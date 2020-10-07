@@ -42,7 +42,7 @@ const renderImages = () => {
       key={imageName}
       style={getMSGridPositions(index % 7, index % 3)}
       fluid
-      src={`public/images/avatar/large/${imageName}.jpg`}
+      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`}
       data-is-focusable="true"
     />
   ));
@@ -55,7 +55,7 @@ const renderImageButtons = () => {
       style={{ ...imageButtonStyles, ...getMSGridPositions(index % 7, index % 3) }}
       title={imageName}
     >
-      <Image fluid src={`public/images/avatar/large/${imageName}.jpg`} />
+      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`} />
     </Button>
   ));
 };

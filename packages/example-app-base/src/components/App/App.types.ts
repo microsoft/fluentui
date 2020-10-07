@@ -1,8 +1,9 @@
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject, ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup, INavStyleProps } from 'office-ui-fabric-react/lib/Nav';
-import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject, ICustomizations } from '@fluentui/react/lib/Utilities';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { INavLink, INavLinkGroup, INavStyleProps } from '@fluentui/react/lib/Nav';
+import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IAppCustomizations } from '../../utilities/customizations';
 import { IHeaderStyleProps } from '../Header/index';
 

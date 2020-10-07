@@ -1,8 +1,8 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
-import { Stack, IStackComponent } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackComponent } from '@fluentui/react/lib/Stack';
+import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@fluentui/react/lib/Utilities';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';

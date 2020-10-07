@@ -1,8 +1,68 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Sep 2020 00:46:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.4.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.3.1..@fluentui/web-components_v0.4.0)
+
+### Minor changes
+
+- Feat: adds automatic card background color calculation ([PR #15126](https://github.com/microsoft/fluentui/pull/15126) by jes@microsoft.com)
+
+### Patches
+
+- center align the start and end slot on tabs ([PR #14852](https://github.com/microsoft/fluentui/pull/14852) by 37851220+khamudom@users.noreply.github.com)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.3.1)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.3.0..@fluentui/web-components_v0.3.1)
+
+### Patches
+
+- update sizing on indeterminate indicator ([PR #14836](https://github.com/microsoft/fluentui/pull/14836) by 37851220+khamudom@users.noreply.github.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.3.0)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.2.0..@fluentui/web-components_v0.3.0)
+
+### Minor changes
+
+- fix design system properties inheritance ([PR #15106](https://github.com/microsoft/fluentui/pull/15106) by jes@microsoft.com)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.2.0)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.8..@fluentui/web-components_v0.2.0)
+
+### Minor changes
+
+- Feat: convert card to be design system provider ([PR #15068](https://github.com/microsoft/fluentui/pull/15068) by jes@microsoft.com)
+
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.8)
+
+Tue, 01 Sep 2020 12:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.7..@fluentui/web-components_v0.1.8)
+
+### Patches
+
+- update fast packages and add font-family inherit to controls of button and accordion-item ([PR #14828](https://github.com/microsoft/fluentui/pull/14828) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.5..@fluentui/web-components_v0.1.7)
+
+### Patches
+
+- fix: apply badge appearance styling to control not host element ([PR #14539](https://github.com/microsoft/fluentui/pull/14539) by chhol@microsoft.com)
+- update fast element version to leverage latest changes ([PR #14573](https://github.com/microsoft/fluentui/pull/14573) by chhol@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
 

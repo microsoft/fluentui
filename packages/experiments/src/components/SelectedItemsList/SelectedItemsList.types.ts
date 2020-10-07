@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDragDropEvents, IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
+import { IPickerItemProps, ISuggestionModel, ValidationState } from '@fluentui/react/lib/Pickers';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
+import { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -114,4 +114,24 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Helper for the drag and drop
    */
   dragDropHelper?: IDragDropHelper;
+
+  /**
+   * Callback for when items need to be converted to a string for a drag action
+   */
+  serializeItemsForDrag?: (items: T[]) => string;
+
+  /**
+   * Callback for when a data transfer item (drag drop action) needs to be converted to an item or items
+   */
+  deserializeItemsFromDrop?: (input: string) => T[];
+
+  /**
+   * Callback for when an item or items needs to be inserted into the list
+   */
+  dropItemsAt?: (insertIndex: number, itemsToInsert: T[], indicesToRemove: number[]) => void;
+
+  /**
+   * Callback for when an item needs to be replaced with another item or items
+   */
+  replaceItem?: (newItem: T | T[], index: number) => void;
 }

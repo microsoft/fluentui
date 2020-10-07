@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Text';
+import './version';
+export * from '@fluentui/react/lib/Text';

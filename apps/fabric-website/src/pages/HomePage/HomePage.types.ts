@@ -1,4 +1,4 @@
-import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { ITheme, IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 import { IPageProps } from '@uifabric/example-app-base/lib/index2';
 
 export interface IHomePageProps extends IPageProps {
@@ -12,8 +12,6 @@ export interface IHomePageStyleProps {
   isMountedOffset: boolean;
   /** On this page, a *light* background is inverted and a dark background is normal. */
   isInverted?: boolean;
-  beforeColor?: string;
-  afterColor?: string;
 }
 
 export interface IHomePageStyles {

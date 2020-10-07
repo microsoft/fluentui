@@ -1,1 +1,2 @@
-export * from './components/ContextualMenu';
+import './version';
+export * from './components/ContextualMenu/index';

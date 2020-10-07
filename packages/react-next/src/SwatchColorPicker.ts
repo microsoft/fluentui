@@ -1,1 +1,2 @@
-export * from './components/SwatchColorPicker/index';
+import './version';
+export * from '@fluentui/react/lib/SwatchColorPicker';

@@ -1,5 +1,5 @@
 import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import * as React from 'react';
 import { getStyles } from './FloatingSuggestions.styles';
 import { classNamesFunction, css } from '../../Utilities';
@@ -29,6 +29,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     onFloatingSuggestionsDismiss,
     targetElement,
     calloutProps,
+    pickerWidth,
     onKeyDown,
   } = props;
 
@@ -69,6 +70,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             suggestionsContainerAriaLabel={suggestionsContainerAriaLabel}
             selectedSuggestionIndex={selectedSuggestionIndex}
             suggestionsHeaderText={suggestionsHeaderText}
+            pickerWidth={pickerWidth}
           />
         </Callout>
       ) : null}

@@ -1,6 +1,5 @@
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from '@fluentui/react/lib/ChoiceGroup';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
@@ -9,12 +8,12 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size13,
+      fontSize: theme.fonts.medium.fontSize,
       color: extendedSemanticColors.labelText,
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '.ms-ChoiceFieldLabel': {
-          fontSize: FontSizes.size13,
+          fontSize: theme.fonts.medium.fontSize,
           verticalAlign: 'middle',
         },
         '.is-inFocus': {

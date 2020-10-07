@@ -2,6 +2,93 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.18",
+      "version": "7.15.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace dep `@uifabric/fluent-theme` with `@fluentui/theme`.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Renaming @fluentui/examples to @fluentui/react-examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a05ade31605674221b203425570078b2227973b8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.17",
+      "version": "7.15.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing imports so that they correctly point to moved @fluentui/examples examples.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix styles implementation instructions",
+            "author": "elcraig@microsoft.com",
+            "commit": "da80ad676c5bf4ba3e0713944040ab26c3a15ec4",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/fabric-website_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.25",
+      "version": "7.13.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update web components to use latest version of fast-element (#14573)",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 22:49:13 GMT",
       "tag": "@uifabric/fabric-website_v7.13.18",
       "version": "7.13.18",

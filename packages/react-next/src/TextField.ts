@@ -1,1 +1,2 @@
-export * from './components/TextField/index';
+import './version';
+export * from '@fluentui/react/lib/TextField';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Link } from 'office-ui-fabric-react';
+import { Icon, Link } from '@fluentui/react';
 import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
@@ -39,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 }
               </Markdown>
 
-              <MarkdownHeader as="h3">When should I use File type icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use file type icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -136,7 +136,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
 
         {
-          sectionName: 'File-type icon examples',
+          sectionName: 'Examples',
           content: (
             <>
               <ul className={styles.iconList}>

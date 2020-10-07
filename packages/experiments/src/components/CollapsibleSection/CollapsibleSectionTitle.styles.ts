@@ -2,7 +2,7 @@ import {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleStylesReturnType,
 } from './CollapsibleSectionTitle.types';
-import { getFocusStyle } from 'office-ui-fabric-react';
+import { getFocusStyle } from '@fluentui/react';
 
 export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (
   props,

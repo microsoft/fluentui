@@ -1,4 +1,4 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme, ITheme } from '@fluentui/react';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
@@ -30,6 +30,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxCheck: LightSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: LightSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: LightSemanticColors.checkBox.rest.hover,
+  checkBoxCheckedDisabledBackground: LightSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: LightSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: LightSemanticColors.checkBox.rest.check,
   checkBoxIndeterminateDefaultChecked: LightSemanticColors.checkBox.checked.default,
@@ -93,18 +94,24 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   iconButtonFill: LightSemanticColors.primaryButton.rest.background,
   iconButtonFillHovered: LightSemanticColors.primaryButton.hover.background,
   labelText: LightSemanticColors.text.label,
-  statusErrorBackground: LightSemanticColors.statusBar.error,
+  statusDefaultBackground: LightSemanticColors.statusBar.background.default,
+  statusDefaultBorder: LightSemanticColors.statusBar.border.default,
+  statusErrorBackground: LightSemanticColors.statusBar.background.error,
+  statusErrorBorder: LightSemanticColors.statusBar.border.error,
   statusErrorText: LightSemanticColors.text.body,
-  statusErrorIcon: CommonSemanticColors.icons.error,
-  statusInformationBackground: LightSemanticColors.statusBar.information,
+  statusErrorIcon: LightSemanticColors.statusBar.icon.error,
+  statusInformationBackground: LightSemanticColors.statusBar.background.information,
   statusInformationText: LightSemanticColors.text.body,
-  statusInformationIcon: CommonSemanticColors.icons.information,
-  statusSuccessBackground: LightSemanticColors.statusBar.okay,
+  statusInformationIcon: LightSemanticColors.statusBar.icon.default,
+  statusSuccessBackground: LightSemanticColors.statusBar.background.okay,
+  statusSuccessBorder: LightSemanticColors.statusBar.border.okay,
   statusSuccessText: LightSemanticColors.text.body,
-  statusSuccessIcon: CommonSemanticColors.icons.okay,
-  statusWarningBackground: LightSemanticColors.statusBar.warning,
+  statusSuccessIcon: LightSemanticColors.statusBar.icon.okay,
+  statusLink: LightSemanticColors.statusBar.link,
+  statusWarningBackground: LightSemanticColors.statusBar.background.warning,
+  statusWarningBorder: LightSemanticColors.statusBar.border.warning,
   statusWarningText: LightSemanticColors.text.body,
-  statusWarningIcon: CommonSemanticColors.icons.warning,
+  statusWarningIcon: LightSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: LightSemanticColors.teachingBubble.rest.background,
   teachingBubblePrimaryButtonHover: LightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: LightSemanticColors.teachingBubble.rest.secondaryBackround,
@@ -122,7 +129,7 @@ export const AzureThemeLight: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   },
   palette: {

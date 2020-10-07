@@ -5,7 +5,12 @@ import { AcceptIcon, TranslationIcon } from '@fluentui/react-icons-northstar';
 const items: ShorthandCollection<ChatItemProps> = [
   {
     contentPosition: 'start',
-    gutter: <Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
+    gutter: (
+      <Avatar
+        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg"
+        status={{ color: 'green', icon: <AcceptIcon /> }}
+      />
+    ),
     message: (
       <Chat.Message
         content="Hello"
@@ -22,7 +27,12 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     contentPosition: 'end',
-    gutter: <Avatar image="public/images/avatar/small/joe.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
+    gutter: (
+      <Avatar
+        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/joe.jpg"
+        status={{ color: 'green', icon: <AcceptIcon /> }}
+      />
+    ),
     message: (
       <Chat.Message
         content="Hi"

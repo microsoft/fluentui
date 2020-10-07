@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IButtonSlot } from '../Button/Button.types';
-import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
+import { IStackSlot, ITextSlot } from '@fluentui/react';
 
 export type IMicroFeedbackComponent = IComponent<
   IMicroFeedbackProps,

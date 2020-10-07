@@ -12,16 +12,16 @@ import {
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DetailsList';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { TooltipHost, ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
+import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { Breadcrumb } from '@fluentui/react/lib/Breadcrumb';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { getTheme } from '@fluentui/react/lib/Styling';
 
 const _columns: IColumn[] = [
   {
@@ -166,7 +166,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
                 selectionPreservedOnEmptyClick={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+                onItemInvoked={item => console.log(`Item invoked: ${item.name}`)}
               />
             </MarqueeSelection>
           </ScrollablePane>

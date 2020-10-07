@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/ComboBox';
+import './version';
+export * from './components/ComboBox/index';

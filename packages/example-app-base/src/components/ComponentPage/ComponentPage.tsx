@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { css, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
-import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import { css, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { Link } from '@fluentui/react/lib/Link';
+import { Stack, IStackProps } from '@fluentui/react/lib/Stack';
+import { MessageBar } from '@fluentui/react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import {
   IComponentPageProps,

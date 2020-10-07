@@ -1,8 +1,9 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
+import { ILegendsProps } from '../Legends/index';
 
 export { IDataPoint, IVerticalBarChartDataPoint } from '../../types/IDataPoint';
 
@@ -96,6 +97,11 @@ export interface IVerticalBarChartProps {
    * this prop takes its parent as a HTML element to define the width and height of the line chart
    */
   parentRef?: HTMLElement | null;
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 }
 
 export interface IVerticalBarChartStyleProps {
@@ -133,6 +139,11 @@ export interface IVerticalBarChartStyleProps {
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IVerticalBarChartStyles {
