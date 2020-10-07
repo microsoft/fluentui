@@ -13,7 +13,7 @@ export * from './menu-item/';
 export * from './progress/';
 export * from './radio/';
 export * from './radio-group/';
-export * from './skeleton';
+export * from './skeleton/';
 export * from './slider/';
 export * from './slider-label/';
 export * from './switch/';
