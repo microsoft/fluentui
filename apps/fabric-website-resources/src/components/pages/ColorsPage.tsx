@@ -34,7 +34,7 @@ export interface IColorsPageState {
 }
 
 const codeHeader = "import { loadTheme } from '@fluentui/react';\n\n";
-const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
+const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = FluentUIReact;\n\n';
 const codepenSamples = `
 
 class Content extends React.Component {

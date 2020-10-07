@@ -132,14 +132,14 @@ describe('_getErrorMessages', () => {
 describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
     expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
-      '@fluentui/react': 'Fabric',
-      '@fluentui/date-time-utilities': 'Fabric',
-      '@fluentui/react-focus': 'Fabric',
-      '@uifabric/foundation': 'Fabric',
-      '@uifabric/icons': 'Fabric',
-      '@uifabric/merge-styles': 'Fabric',
-      '@uifabric/styling': 'Fabric',
-      '@uifabric/utilities': 'Fabric',
+      '@fluentui/react': 'FluentUIReact',
+      '@fluentui/date-time-utilities': 'FluentUIReact',
+      '@fluentui/react-focus': 'FluentUIReact',
+      '@uifabric/foundation': 'FluentUIReact',
+      '@uifabric/icons': 'FluentUIReact',
+      '@uifabric/merge-styles': 'FluentUIReact',
+      '@uifabric/styling': 'FluentUIReact',
+      '@uifabric/utilities': 'FluentUIReact',
       '@uifabric/react-hooks': 'FabricReactHooks',
       '@uifabric/example-data': 'FabricExampleData',
     });
