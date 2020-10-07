@@ -4,11 +4,9 @@
 
 ```ts
 
-import { BaseButton } from '@fluentui/react/lib/Button';
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
-import { Button } from '@fluentui/react/lib/Button';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
@@ -1925,56 +1923,6 @@ export interface IMenuItemStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IMessageBar {
-}
-
-// @public (undocumented)
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
-    actions?: JSX.Element;
-    // @deprecated
-    ariaLabel?: string;
-    className?: string;
-    componentRef?: IRefObject<IMessageBar>;
-    dismissButtonAriaLabel?: string;
-    dismissIconProps?: IIconProps;
-    isMultiline?: boolean;
-    messageBarIconProps?: IIconProps;
-    messageBarType?: MessageBarType;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
-    overflowButtonAriaLabel?: string;
-    styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
-    theme?: ITheme;
-    truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarStyleProps {
-    actions?: boolean;
-    className?: string;
-    expandSingleLine?: boolean;
-    isMultiline?: boolean;
-    messageBarType?: MessageBarType;
-    onDismiss?: boolean;
-    theme: ITheme;
-    truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarStyles {
-    actions?: IStyle;
-    content?: IStyle;
-    dismissal?: IStyle;
-    dismissSingleLine?: IStyle;
-    expand?: IStyle;
-    expandSingleLine?: IStyle;
-    icon?: IStyle;
-    iconContainer?: IStyle;
-    innerText?: IStyle;
-    root?: IStyle;
-    text?: IStyle;
-}
-
-// @public (undocumented)
 export interface IModal {
     focus: () => void;
 }
@@ -3090,22 +3038,6 @@ export const MeasuredContext: React.Context<{
 export { MemberListPeoplePicker }
 
 // @public (undocumented)
-export const MessageBar: React.FunctionComponent<IMessageBarProps>;
-
-// @public (undocumented)
-export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
-
-// @public (undocumented)
-export enum MessageBarType {
-    blocked = 2,
-    error = 1,
-    info = 0,
-    severeWarning = 3,
-    success = 4,
-    warning = 5
-}
-
-// @public (undocumented)
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
@@ -3691,6 +3623,7 @@ export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
+export * from "@fluentui/react/lib/MessageBar";
 export * from "@fluentui/react/lib/Nav";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
