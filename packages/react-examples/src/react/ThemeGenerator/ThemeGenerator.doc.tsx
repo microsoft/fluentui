@@ -243,7 +243,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
-    // but high enough that quick changes don't get bogged down by a million changes inbetween
+    // but high enough that quick changes don't get bogged down by a million changes in-between
   };
 
   private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
@@ -429,7 +429,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
-      // but high enough that quick changes don't get bogged down by a million changes inbetween
+      // but high enough that quick changes don't get bogged down by a million changes in-between
     };
 
     return (
