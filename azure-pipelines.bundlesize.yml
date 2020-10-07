@@ -17,7 +17,7 @@ jobs:
       - script: yarn
         displayName: yarn
 
-      - script: yarn buildto test-bundles
+      - script: yarn build --to test-bundles --no-cache --grouped
         displayName: yarn build to test-bundles
 
       - script: yarn workspace test-bundles bundle:size
