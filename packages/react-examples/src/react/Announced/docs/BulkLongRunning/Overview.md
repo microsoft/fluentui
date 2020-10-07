@@ -8,7 +8,7 @@ Copying, uploading, or moving many items
 
 **User moves 30 items to another folder:**
 The Announced component should announce the total number of items moved.
-There should only be one annouced message per group of items instead of per item operation.
+There should only be one announced message per group of items instead of per item operation.
 It would not be desirable to read off the details of every item that is moved to the other folder.
 
 With the code snippet below, the screen reader should announce "30 items moved".

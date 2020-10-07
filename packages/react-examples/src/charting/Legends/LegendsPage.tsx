@@ -41,8 +41,8 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <p>
               The legends wrap based upon the space available for them. If there is not enough space to show all legends
-              on a single line, the legends fall into a overfow menu. Text appears indicating the number of legends in
-              the overflow menu. The legneds are selectable and action to be performed upon clicking a certain legend
+              on a single line, the legends fall into an overflow menu. Text appears indicating the number of legends in
+              the overflow menu. The legends are selectable and action to be performed upon clicking a certain legend
               can be passed.
             </p>
           </div>

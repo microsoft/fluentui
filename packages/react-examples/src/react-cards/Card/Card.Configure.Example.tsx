@@ -129,7 +129,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
       minWidth: 0,
     };
 
-    // Debug card esction definition
+    // Debug card section definition
     const DebugCardSection = (props: { height: number; text: string }): JSX.Element => {
       const { height, text } = props;
 

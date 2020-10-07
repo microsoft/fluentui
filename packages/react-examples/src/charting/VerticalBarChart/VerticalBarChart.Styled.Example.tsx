@@ -19,7 +19,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
       { x: 'Eight', y: 57 },
       { x: 'Nine', y: 14 },
       { x: 'Ten', y: 35 },
-      { x: 'Elven', y: 20 },
+      { x: 'Eleven', y: 20 },
       { x: 'Twelve', y: 44 },
       { x: 'Thirteen', y: 33 },
     ];

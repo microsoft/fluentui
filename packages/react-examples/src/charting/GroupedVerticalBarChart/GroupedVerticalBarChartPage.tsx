@@ -3,12 +3,12 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.Basic.Example';
-import { GroupedVerticalBarChartBasic2Example } from './GroupedVerticalBarChart.Basic2.Example';
+import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
-const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
+const GroupedVerticalTruncatedExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,11 +18,11 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
         componentName="GroupedVerticalBarChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="Grouped Vertical Bar Chart basic" code={GroupedVerticalBasicExampleCode}>
+            <ExampleCard title="Grouped Vertical Bar Chart Basic" code={GroupedVerticalBasicExampleCode}>
               <GroupedVerticalBarChartBasicExample />
             </ExampleCard>
-            <ExampleCard title="Grouped Vertical Bar Chart basic 2" code={GroupedVerticalBasic2ExampleCode}>
-              <GroupedVerticalBarChartBasic2Example />
+            <ExampleCard title="Grouped Vertical Bar Chart Truncated" code={GroupedVerticalTruncatedExampleCode}>
+              <GroupedVerticalBarChartTruncatedExample />
             </ExampleCard>
             <ExampleCard title="Grouped Vertical Bar Chart Styled" code={GroupedVerticalStyledExampleCode}>
               <GroupedVerticalBarChartStyledExample />

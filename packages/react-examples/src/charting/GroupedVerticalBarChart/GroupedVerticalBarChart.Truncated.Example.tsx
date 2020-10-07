@@ -3,11 +3,11 @@ import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
-export class GroupedVerticalBarChartBasic2Example extends React.Component<Readonly<{}>, {}> {
+export class GroupedVerticalBarChartTruncatedExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'thirdGraph third Graphthir  dGraphthir dGraphthird Graphthird Graphthird Graphthird Graphthird Graph',
+        name: 'Data (Text that exceeds the maximum number of characters is truncated)',
         series: [
           {
             key: 'series1',
@@ -21,14 +21,14 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
             key: 'series2',
             data: 44000,
             color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '44%',
           },
         ],
       },
       {
-        name: 'Ju St',
+        name: 'Data',
         series: [
           {
             key: 'series1',
@@ -42,50 +42,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
             key: 'series2',
             data: 3000,
             color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '3%',
-          },
-        ],
-      },
-
-      {
-        name: 'SecondONe IamALLL ',
-        series: [
-          {
-            key: 'series1',
-            data: 14000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '14%',
-          },
-          {
-            key: 'series2',
-            data: 50000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '50%',
-          },
-        ],
-      },
-      {
-        name: 'kowsar shaik',
-        series: [
-          {
-            key: 'series1',
-            data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
-          },
-          {
-            key: 'series2',
-            data: 3000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
           },
@@ -103,7 +60,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
           width={650}
           showYAxisGridLines
           showXAxisLablesTooltip
-          noOfCharsToTruncate={6}
+          noOfCharsToTruncate={4}
         />
       </div>
     );

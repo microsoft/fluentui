@@ -74,6 +74,6 @@ const navLinkGroups: INavLinkGroup[] = [
 
 export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
-    <Nav styles={navStyles} ariaLabel="Nav example similiar to one found in this demo page" groups={navLinkGroups} />
+    <Nav styles={navStyles} ariaLabel="Nav example similar to one found in this demo page" groups={navLinkGroups} />
   );
 };

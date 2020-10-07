@@ -90,7 +90,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     ];
 
     const chartData = {
-      chartTtitle: 'Area chart styled example',
+      chartTitle: 'Area chart styled example',
       lineChartData: chartPoints,
     };
 
