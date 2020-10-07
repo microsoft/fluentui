@@ -14,7 +14,6 @@ storiesOf('Button Next', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -56,7 +55,6 @@ storiesOf('Button Next - Teams Theme', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -92,7 +90,6 @@ storiesOf('Button Next - With icon before content', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -146,7 +143,6 @@ storiesOf('Button Next - With icon after content', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -203,7 +199,6 @@ storiesOf('Button Next - Circular', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -260,7 +255,6 @@ storiesOf('Button Next - Icon only', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -317,7 +311,6 @@ storiesOf('Button Next - Fluid', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -374,7 +367,6 @@ storiesOf('Button Next - Inverted', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -431,7 +423,6 @@ storiesOf('Button Next - Loading', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -488,7 +479,6 @@ storiesOf('Button Next - Sizes', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -545,7 +535,6 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript('location.reload()')
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
