@@ -40,7 +40,6 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
-import { ImageLoadState } from '@fluentui/react/lib/Image';
 import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
@@ -54,6 +53,7 @@ import { IPeoplePickerItemSuggestionProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
+import { IPersonaProps } from '@fluentui/react-internal/lib/Persona';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
@@ -491,9 +491,6 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
-
-// @public
-export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1546,7 +1543,6 @@ export interface ILine extends IShimmerElement {
     width?: number | string;
 }
 
-
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
@@ -1741,140 +1737,6 @@ export { IPeoplePickerItemSuggestionStyleProps }
 export { IPeoplePickerItemSuggestionStyles }
 
 export { IPeoplePickerProps }
-
-// @public (undocumented)
-export interface IPersona {
-}
-
-// @public (undocumented)
-export interface IPersonaCoinProps extends IPersonaSharedProps {
-    className?: string;
-    componentRef?: IRefObject<{}>;
-    styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
-}
-
-// @public (undocumented)
-export interface IPersonaCoinStyleProps {
-    className?: string;
-    coinSize?: number;
-    showUnknownPersonaCoin?: boolean;
-    size?: PersonaSize;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IPersonaCoinStyles {
-    // (undocumented)
-    coin: IStyle;
-    // (undocumented)
-    image: IStyle;
-    // (undocumented)
-    imageArea: IStyle;
-    // (undocumented)
-    initials: IStyle;
-    // (undocumented)
-    size10WithoutPresenceIcon: IStyle;
-}
-
-// @public (undocumented)
-export interface IPersonaPresenceProps extends IPersonaSharedProps {
-    componentRef?: IRefObject<{}>;
-    styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
-}
-
-// @public (undocumented)
-export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> & Pick<IPersonaProps, 'className'>;
-
-// @public (undocumented)
-export interface IPersonaPresenceStyles {
-    // (undocumented)
-    presence: IStyle;
-    // (undocumented)
-    presenceIcon: IStyle;
-}
-
-// @public (undocumented)
-export interface IPersonaProps extends IPersonaSharedProps {
-    className?: string;
-    componentRef?: IRefObject<IPersona>;
-    onRenderOptionalText?: IRenderFunction<IPersonaProps>;
-    onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
-    onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
-    onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
-    styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
-}
-
-// @public (undocumented)
-export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    allowPhoneInitials?: boolean;
-    coinProps?: IPersonaCoinProps;
-    coinSize?: number;
-    hidePersonaDetails?: boolean;
-    imageAlt?: string;
-    imageInitials?: string;
-    imageShouldFadeIn?: boolean;
-    imageShouldStartVisible?: boolean;
-    imageUrl?: string;
-    initialsColor?: PersonaInitialsColor | string;
-    isOutOfOffice?: boolean;
-    onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
-    // @deprecated
-    onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
-    onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
-    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
-    optionalText?: string;
-    presence?: PersonaPresence;
-    presenceColors?: {
-        available: string;
-        away: string;
-        busy: string;
-        dnd: string;
-        offline: string;
-        oof: string;
-        background: string;
-    };
-    presenceTitle?: string;
-    // @deprecated
-    primaryText?: string;
-    secondaryText?: string;
-    showInitialsUntilImageLoads?: boolean;
-    // (undocumented)
-    showSecondaryText?: boolean;
-    showUnknownPersonaCoin?: boolean;
-    size?: PersonaSize;
-    tertiaryText?: string;
-    text?: string;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IPersonaStyleProps {
-    className?: string;
-    coinSize?: number;
-    presence?: PersonaPresence;
-    // (undocumented)
-    showSecondaryText?: boolean;
-    size?: PersonaSize;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IPersonaStyles {
-    // (undocumented)
-    details: IStyle;
-    // (undocumented)
-    optionalText: IStyle;
-    // (undocumented)
-    primaryText: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    secondaryText: IStyle;
-    // (undocumented)
-    tertiaryText: IStyle;
-    // (undocumented)
-    textContent: IStyle;
-}
 
 export { IPickerAriaIds }
 
@@ -2641,183 +2503,10 @@ export { PeoplePickerItemSuggestion }
 export { PeoplePickerItemSuggestionBase }
 
 // @public
-export const Persona: React.FunctionComponent<IPersonaProps>;
-
-// @public
-export const PersonaBase: React.FunctionComponent<IPersonaProps>;
-
-// @public
-export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
-
-// @public
-export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps>;
-
-// @public (undocumented)
-export enum PersonaInitialsColor {
-    // @deprecated
-    black = 11,
-    // (undocumented)
-    blue = 1,
-    // (undocumented)
-    burgundy = 19,
-    // (undocumented)
-    coolGray = 21,
-    // (undocumented)
-    cyan = 23,
-    // (undocumented)
-    darkBlue = 2,
-    // (undocumented)
-    darkGreen = 6,
-    // (undocumented)
-    darkRed = 14,
-    // (undocumented)
-    gold = 18,
-    gray = 22,
-    // (undocumented)
-    green = 5,
-    // (undocumented)
-    lightBlue = 0,
-    // (undocumented)
-    lightGreen = 4,
-    // (undocumented)
-    lightPink = 7,
-    // (undocumented)
-    lightRed = 17,
-    // (undocumented)
-    magenta = 9,
-    // (undocumented)
-    orange = 12,
-    // (undocumented)
-    pink = 8,
-    // (undocumented)
-    purple = 10,
-    // @deprecated
-    red = 13,
-    // (undocumented)
-    rust = 24,
-    // (undocumented)
-    teal = 3,
-    transparent = 15,
-    // (undocumented)
-    violet = 16,
-    // (undocumented)
-    warmGray = 20
-}
-
-// @public (undocumented)
-export enum PersonaPresence {
-    // (undocumented)
-    away = 3,
-    // (undocumented)
-    blocked = 5,
-    // (undocumented)
-    busy = 6,
-    // (undocumented)
-    dnd = 4,
-    // (undocumented)
-    none = 0,
-    // (undocumented)
-    offline = 1,
-    // (undocumented)
-    online = 2
-}
-
-// @public (undocumented)
-export namespace personaPresenceSize {
-    const // (undocumented)
-    size6 = "6px";
-    const // (undocumented)
-    size8 = "8px";
-    const // (undocumented)
-    size12 = "12px";
-    const // (undocumented)
-    size16 = "16px";
-    const // (undocumented)
-    size20 = "20px";
-    const // (undocumented)
-    size28 = "28px";
-    const // (undocumented)
-    size32 = "32px";
-    const // @deprecated (undocumented)
-    border = "2px";
-}
-
-// @public (undocumented)
-export enum PersonaSize {
-    // @deprecated
-    extraExtraSmall = 1,
-    // @deprecated
-    extraLarge = 6,
-    // @deprecated
-    extraSmall = 2,
-    // @deprecated
-    large = 5,
-    // @deprecated
-    regular = 4,
-    // @deprecated
-    size10 = 9,
-    size100 = 15,
-    size120 = 18,
-    // @deprecated
-    size16 = 8,
-    size24 = 10,
-    // @deprecated
-    size28 = 7,
-    size32 = 11,
-    size40 = 12,
-    size48 = 13,
-    size56 = 16,
-    size72 = 14,
-    size8 = 17,
-    // @deprecated
-    small = 3,
-    // @deprecated
-    tiny = 0
-}
-
-// @public (undocumented)
-export namespace personaSize {
-    const // (undocumented)
-    size8 = "20px";
-    const // (undocumented)
-    size10 = "20px";
-    const // (undocumented)
-    size16 = "16px";
-    const // (undocumented)
-    size24 = "24px";
-    const // (undocumented)
-    size28 = "28px";
-    const // (undocumented)
-    size32 = "32px";
-    const // (undocumented)
-    size40 = "40px";
-    const // (undocumented)
-    size48 = "48px";
-    const // (undocumented)
-    size56 = "56px";
-    const // (undocumented)
-    size72 = "72px";
-    const // (undocumented)
-    size100 = "100px";
-    const // (undocumented)
-    size120 = "120px";
-}
-
-// @public
 export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
 export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps>;
-
-// @public (undocumented)
-export const presenceBoolean: (presence: PersonaPresence) => {
-    isAvailable: boolean;
-    isAway: boolean;
-    isBlocked: boolean;
-    isBusy: boolean;
-    isDoNotDisturb: boolean;
-    isOffline: boolean;
-};
 
 // @public (undocumented)
 export const Rating: React.FunctionComponent<IRatingProps>;
@@ -2906,27 +2595,6 @@ export const ShimmerLine: React.FunctionComponent<IShimmerLineProps>;
 
 // @public (undocumented)
 export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
-
-// @public (undocumented)
-export const sizeBoolean: (size: PersonaSize) => {
-    isSize8: boolean;
-    isSize10: boolean;
-    isSize16: boolean;
-    isSize24: boolean;
-    isSize28: boolean;
-    isSize32: boolean;
-    isSize40: boolean;
-    isSize48: boolean;
-    isSize56: boolean;
-    isSize72: boolean;
-    isSize100: boolean;
-    isSize120: boolean;
-};
-
-// @public (undocumented)
-export const sizeToPixels: {
-    [key: number]: number;
-};
 
 // @public
 export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
@@ -3113,6 +2781,8 @@ export * from "@fluentui/react-button/lib/MenuButton";
 export * from "@fluentui/react-button/lib/SplitButton";
 export * from "@fluentui/react-button/lib/ToggleButton";
 export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-internal/lib/Persona";
+export * from "@fluentui/react-internal/lib/PersonaCoin";
 export * from "@fluentui/react-link/lib/Link";
 export * from "@fluentui/react-slider/lib/Slider";
 export * from "@fluentui/react-tabs/lib/Pivot";
