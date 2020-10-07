@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Delete update-api script which is no longer needed",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T04:15:40.148Z"
+}

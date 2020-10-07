@@ -22,7 +22,6 @@
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean",
     "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {

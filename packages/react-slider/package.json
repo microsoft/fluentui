@@ -21,7 +21,6 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
     "start-test": "just-scripts jest-watch"

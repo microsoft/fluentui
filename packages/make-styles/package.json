@@ -22,8 +22,7 @@
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
     "test": "just-scripts test",
-    "test:watch": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
+    "test:watch": "just-scripts jest-watch"
   },
   "beachball": {
     "tag": "latest",

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Delete update-api script which is no longer needed",
+  "packageName": "@fluentui/make-styles",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-27T23:05:19.323Z"
+}
