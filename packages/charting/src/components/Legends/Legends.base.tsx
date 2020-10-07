@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { HoverCard, HoverCardType, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { classNamesFunction, find, getNativeProps, buttonProperties } from 'office-ui-fabric-react/lib/Utilities';
-import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { HoverCard, HoverCardType, IExpandingCardProps } from '@fluentui/react/lib/HoverCard';
+import { classNamesFunction, find, getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
+import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react/lib/OverflowSet';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ILegend,

@@ -2,8 +2,8 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { ISidebarStyles } from './Sidebar.types';
 
 export interface ISidebarClassNames {

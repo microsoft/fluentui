@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { FocusZone } from '@fluentui/react-focus';
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Image } from '@fluentui/react/lib/Image';
+import { getId } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
 
 const theme = getTheme();
 const classNames = mergeStyleSets({

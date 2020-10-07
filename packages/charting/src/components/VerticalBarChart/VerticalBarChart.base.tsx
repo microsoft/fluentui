@@ -4,9 +4,9 @@ import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisB
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
-import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';

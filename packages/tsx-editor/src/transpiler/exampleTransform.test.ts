@@ -94,7 +94,7 @@ describe('example transform', () => {
   const fooGroup: IBasicPackageGroup = { globalName: 'Foo', packages: [{ packageName: 'foo' }] };
   const fabricGroup: IBasicPackageGroup = {
     globalName: 'Fabric',
-    packages: [{ packageName: 'office-ui-fabric-react' }],
+    packages: [{ packageName: '@fluentui/react' }],
   };
 
   it('handles examples with custom supportedPackages', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton } from 'office-ui-fabric-react';
+import { PrimaryButton } from '@fluentui/react';
 
 const styles = { root: { background: 'red' } };
 const Scenario = () => <PrimaryButton styles={styles}>I am a button</PrimaryButton>;

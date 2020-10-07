@@ -7,7 +7,7 @@ import {
   IProcessedStyleSet,
   classNamesFunction,
   styled,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { isPageActive, removeAnchorLink, jumpToAnchor } from '../../utilities/index2';
 import { MarkdownHeader } from '../Markdown/index';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';

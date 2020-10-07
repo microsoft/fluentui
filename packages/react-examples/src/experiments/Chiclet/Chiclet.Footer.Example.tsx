@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
+import { Text } from '@fluentui/react/lib/Text';
+import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react';
+import { classNamesFunction } from '@fluentui/react';
 import {
   Page,
   PlatformContext,

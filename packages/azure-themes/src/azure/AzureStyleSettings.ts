@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react';
+import { ITheme } from '@fluentui/react';
 import { ActionButtonStyles } from './styles/ActionButton.styles';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';

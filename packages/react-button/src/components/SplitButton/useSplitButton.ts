@@ -46,6 +46,7 @@ export const useSplitButton = (
       fluid,
       primary,
       size,
+      'aria-disabled': disabledOrLoading,
 
       button: {
         as: 'span',

@@ -6,10 +6,10 @@ import {
   ITilesGridItemCellProps,
 } from '@uifabric/experiments/lib/TilesList';
 import { Tile, ShimmerTile } from '@uifabric/experiments/lib/Tile';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Selection, SelectionZone } from '@fluentui/react/lib/Selection';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { AnimationClassNames } from '@fluentui/react/lib/Styling';
 import {
   IExampleGroup,
   IExampleItem,
@@ -20,7 +20,7 @@ import {
   onRenderTilesListExampleRoot,
   onRenderTilesListExampleRow,
 } from '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers';
-import { ShimmerElementType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
+import { ShimmerElementType, ShimmerElementsGroup } from '@fluentui/react/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, ILinkStyleProps } from '@fluentui/react-link/lib/next';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { Customizer } from '@uifabric/utilities';
 
 const customStyles = { root: { background: 'lightblue' } };

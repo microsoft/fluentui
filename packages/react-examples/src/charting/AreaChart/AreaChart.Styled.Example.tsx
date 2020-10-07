@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AreaChart } from '@uifabric/charting';
 import { ILineChartProps } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IAreaChartBasicState {
   width: number;

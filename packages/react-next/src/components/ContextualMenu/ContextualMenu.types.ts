@@ -6,9 +6,9 @@ import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
+import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
 import {
   IContextualMenuItemProps,
   IContextualMenuRenderItem,
@@ -18,7 +18,7 @@ import {
 import { IKeytipProps } from '../../Keytip';
 import { Target } from '@uifabric/react-hooks';
 
-export { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+export { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
  * {@docCategory ContextualMenu}

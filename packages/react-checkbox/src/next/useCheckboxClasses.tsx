@@ -1,5 +1,4 @@
 import { createClassResolver, ClassFunction } from '@fluentui/react-compose';
-import { useGlobalClassNames } from '@fluentui/react-theme-provider/lib/useGlobalClassNames';
 import { css } from '@uifabric/utilities';
 import { ICheckboxClasses } from './Checkbox.types';
 import * as classes from './Checkbox.scss';
@@ -16,7 +15,7 @@ const defaultClassResolver = createClassResolver(classes);
 
 export const useCheckboxClasses: ClassFunction[] = [
   defaultClassResolver,
-  () => useGlobalClassNames(GlobalClassNames),
+  () => GlobalClassNames,
   state => {
     const { boxSide, checked, disabled } = state;
     return {

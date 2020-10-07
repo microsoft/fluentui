@@ -7,7 +7,7 @@ import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
-import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/lib/utilities/keytips/index';
+import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '@fluentui/react/lib/Keytips';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import * as path from 'path';

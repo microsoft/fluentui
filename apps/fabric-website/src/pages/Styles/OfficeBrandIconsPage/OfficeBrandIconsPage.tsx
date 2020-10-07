@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Link } from 'office-ui-fabric-react';
+import { Image, Link } from '@fluentui/react';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';

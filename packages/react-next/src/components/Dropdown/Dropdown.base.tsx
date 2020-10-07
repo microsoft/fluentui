@@ -32,23 +32,23 @@ import {
 } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ICalloutPositionedInfo, RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICalloutPositionedInfo, RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
   ISelectableDroppableTextProps,
-} from 'office-ui-fabric-react/lib/utilities/selectableOption/index';
+} from '@fluentui/react/lib/SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
-import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
 import { getPropsWithDefaults } from '@uifabric/utilities';
-import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
+import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();

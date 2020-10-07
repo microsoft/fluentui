@@ -12,7 +12,7 @@ import {
   IStackTokens,
   Text,
   ITextStyles,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const alertClicked = (): void => {
   alert('Clicked');

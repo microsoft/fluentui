@@ -1,88 +1,113 @@
-import { makeClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { ToggleButtonState } from './ToggleButton.types';
 
-export const useToggleButtonClasses = makeClasses({
-  // When checked is applied, apply the right tokens to the right css properties.
-  _checked: {
-    background: 'var(--button-checked-background)',
-    color: 'var(--button-checked-contentColor)',
-    '> .ms-Button-icon': {
-      color: 'var(--button-checked-iconColor)',
-    },
+export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
+  name: 'ToggleButton',
+  prefix: '--button',
 
-    ':hover': {
-      background: 'var(--button-checkedHovered-background)',
-      color: 'var(--button-checkedHovered-contentColor)',
-      '> .ms-Button-icon': {
-        color: 'var(--button-checkedHovered-iconColor)',
+  styles: {
+    // When checked is applied, apply the right tokens to the right css properties.
+    _checked: {
+      background: 'var(--button-checked-background)',
+      color: 'var(--button-checked-contentColor)',
+
+      '@media (forced-colors: active)': {
+        background: 'var(--button-highContrast-checked-background)',
+        color: 'var(--button-highContrast-checked-contentColor)',
+        '.ms-Button-icon': {
+          color: 'var(--button-highContrast-checked-iconColor)',
+        },
       },
-    },
 
-    ':active': {
-      background: 'var(--button-checkedPressed-background, var(--button-checkedHovered-background))',
-      color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
-      '> .ms-Button-icon': {
-        color: 'var(--button-checkedPressed-iconColor)',
+      ':hover': {
+        background: 'var(--button-checked-hovered-background)',
+        color: 'var(--button-checked-hovered-contentColor)',
+
+        '@media (forced-colors: active)': {
+          background:
+            'var(--button-highContrast-checked-hovered-background, var(--button-highContrast-checked-background))',
+          color:
+            'var(--button-highContrast-checked--hovered-contentColor, var(--button-highContrast-checked-contentColor))',
+          '.ms-Button-icon': {
+            color:
+              'var(--button-highContrast-checked-hovered-iconColor, var(--button-highContrast-checked-contentColor))',
+          },
+        },
       },
-    },
 
-    '@media screen and (-ms-high-contrast: active)': {
-      '--button-checked-background': 'Window',
-      '--button-checked-contentColor': 'Highlight',
-      '--button-checked-iconColor': 'Highlight',
-      '--button-checkedHovered-background': 'var(--button-checked-background)',
-      '--button-checkedHovered-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedHovered-iconColor': 'var(--button-checked-iconColor)',
-      '--button-checkedPressed-background': 'var(--button-checked-background)',
-      '--button-checkedPressed-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedPressed-iconColor': 'var(--button-checked-iconColor)',
+      ':active': {
+        background: 'var(--button-checked-pressed-background, var(--button-checked-hovered-background))',
+        color: 'var(--button-checked-pressed-contentColor, var(--button-checked-hovered-contentColor))',
+
+        '@media (forced-colors: active)': {
+          background:
+            'var(--button-highContrast-checked-pressed-background, ' +
+            'var(--button-highContrast-checked-hovered-background, ' +
+            'var(--button-highContrast-checked-background)))',
+          color:
+            'var(--button-highContrast-checked--pressed-contentColor, ' +
+            'var(--button-highContrast-checked--hovered-contentColor, ' +
+            'var(--button-highContrast-checked-contentColor)))',
+          '.ms-Button-icon': {
+            color:
+              'var(--button-highContrast-checked-pressed-iconColor, ' +
+              'var(--button-highContrast-checked-hovered-iconColor, ' +
+              '--button-highContrast-checked-contentColor)))',
+          },
+        },
+      },
     },
   },
 
-  _primary: {
-    '--button-checked-background': 'var(--color-brand-checked-background)',
-    '--button-checked-contentColor': 'var(--color-brand-checked-contentColor)',
-    '--button-checked-iconColor': 'var(--color-brand-checked-iconColor)',
-    '--button-checkedHovered-background': 'var(--color-brand-checkedHovered-background)',
-    '--button-checkedHovered-contentColor': 'var(--color-brand-checkedHovered-contentColor)',
-    '--button-checkedHovered-iconColor': 'var(--color-brand-checkedHovered-iconColor)',
-    '--button-checkedPressed-background': 'var(--color-brand-checkedPressed-background)',
-    '--button-checkedPressed-contentColor': 'var(--color-brand-checkedPressed-contentColor)',
-    '--button-checkedPressed-iconColor': 'var(--color-brand-checkedPressed-iconColor)',
-
-    '@media screen and (-ms-high-contrast: active)': {
-      '--button-checked-background': 'Highlight',
-      '--button-checked-contentColor': 'Window',
-      '--button-checked-iconColor': 'Window',
-      '--button-checkedHovered-background': 'var(--button-checked-background)',
-      '--button-checkedHovered-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedHovered-iconColor': 'var(--button-checked-iconColor)',
-      '--button-checkedPressed-background': 'var(--button-checked-background)',
-      '--button-checkedPressed-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedPressed-iconColor': 'var(--button-checked-iconColor)',
+  variants: {
+    root: {
+      highContrast: {
+        checked: {
+          background: 'Window',
+          contentColor: 'Highlight',
+          iconColor: 'Highlight',
+        },
+      },
     },
-  },
 
-  _ghost: {
-    '--button-checked-background': 'var(--ghost-checked-background)',
-    '--button-checked-contentColor': 'var(--ghost-checked-contentColor)',
-    '--button-checked-iconColor': 'var(--ghost-checked-iconColor)',
-    '--button-checkedHovered-background': 'var(--ghost-checkedHovered-background)',
-    '--button-checkedHovered-contentColor': 'var(--ghost-checkedHovered-contentColor)',
-    '--button-checkedHovered-iconColor': 'var(--ghost-checkedHovered-iconColor)',
-    '--button-checkedPressed-background': 'var(--ghost-checkedPressed-background)',
-    '--button-checkedPressed-contentColor': 'var(--ghost-checkedPressed-contentColor)',
-    '--button-checkedPressed-iconColor': 'var(--ghost-checkedPressed-iconColor)',
+    primary: {
+      checked: {
+        background: 'var(--color-brand-checked-background)',
+        contentColor: 'var(--color-brand-checked-contentColor)',
 
-    '@media screen and (-ms-high-contrast: active)': {
-      '--button-checked-background': 'Window',
-      '--button-checked-contentColor': 'Highlight',
-      '--button-checked-iconColor': 'Highlight',
-      '--button-checkedHovered-background': 'var(--button-checked-background)',
-      '--button-checkedHovered-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedHovered-iconColor': 'var(--button-checked-iconColor)',
-      '--button-checkedPressed-background': 'var(--button-checked-background)',
-      '--button-checkedPressed-contentColor': 'var(--button-checked-contentColor)',
-      '--button-checkedPressed-iconColor': 'var(--button-checked-iconColor)',
+        hovered: {
+          background: 'var(--color-brand-checkedHovered-background)',
+          contentColor: 'var(--color-brand-checkedHovered-contentColor)',
+        },
+
+        pressed: {
+          background: 'var(--color-brand-checkedPressed-background)',
+          contentColor: 'var(--color-brand-checkedPressed-contentColor)',
+        },
+      },
+
+      highContrast: {
+        checked: {
+          background: 'Highlight',
+          contentColor: 'Window',
+          iconColor: 'Window',
+        },
+      },
+    },
+
+    ghost: {
+      checked: {
+        background: 'var(--ghost-checked-background)',
+        contentColor: 'var(--ghost-checked-contentColor)',
+      },
+      checkedHovered: {
+        background: 'var(--ghost-checkedHovered-background)',
+        contentColor: 'var(--ghost-checkedHovered-contentColor)',
+      },
+      checkedPressed: {
+        background: 'var(--ghost-checkedPressed-background)',
+        contentColor: 'var(--ghost-checkedPressed-contentColor)',
+      },
     },
   },
 });

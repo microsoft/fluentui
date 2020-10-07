@@ -1,5 +1,5 @@
-import { ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { ITheme } from 'office-ui-fabric-react';
+import { ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+import { ITheme } from '@fluentui/react';
 
 export const SpinButtonStyles = (theme: ITheme): Partial<ISpinButtonStyles> => {
   const { semanticColors } = theme;

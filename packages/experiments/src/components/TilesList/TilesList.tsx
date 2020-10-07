@@ -9,17 +9,11 @@ import {
   ITilesListRowProps,
   ITilesListRootProps,
 } from './TilesList.types';
-import { List, IPageProps, ScrollToMode, IListOnRenderRootProps } from 'office-ui-fabric-react/lib/List';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import {
-  css,
-  IRenderFunction,
-  IRectangle,
-  FocusRects,
-  composeRenderFunction,
-} from 'office-ui-fabric-react/lib/Utilities';
+import { List, IPageProps, ScrollToMode, IListOnRenderRootProps } from '@fluentui/react/lib/List';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { css, IRenderFunction, IRectangle, FocusRects, composeRenderFunction } from '@fluentui/react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
-import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer } from '@fluentui/react/lib/Shimmer';
 
 const TilesListStyles: any = TilesListStylesModule;
 

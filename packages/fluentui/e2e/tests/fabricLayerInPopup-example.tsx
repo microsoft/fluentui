@@ -1,5 +1,5 @@
 import { Button, Popup, Flex, Ref } from '@fluentui/react-northstar';
-import { ContextualMenu } from 'office-ui-fabric-react';
+import { ContextualMenu } from '@fluentui/react';
 import * as React from 'react';
 
 const selectors = {

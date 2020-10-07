@@ -1,77 +1,136 @@
-import { makeClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { ButtonSizeVariants } from '../Button/index';
 
 const GlobalClassNames = {
+  root: 'ms-SplitButton',
   button: 'ms-SplitButton-button',
   menuButton: 'ms-SplitButton-menuButton',
 };
 
 const menuButtonWidth = '32px';
 
-export const useSplitButtonClasses = makeClasses({
-  root: {
-    display: 'inline-flex',
-    justifyContent: 'stretch',
-    position: 'relative',
+export const useSplitButtonClasses = makeVariantClasses({
+  name: 'SplitButton',
+  prefix: '--button',
 
-    [`.${GlobalClassNames.menuButton}`]: {
-      '--button-width': menuButtonWidth,
+  styles: {
+    root: [
+      GlobalClassNames.root,
+      {
+        display: 'inline-flex',
+        justifyContent: 'stretch',
+        position: 'relative',
+
+        // Forward the menuIconSize to a variable which can be consumed by the child menu button.
+        '--button-splitMenuIconSize': 'var(--button-menuIconSize)',
+      },
+    ],
+
+    button: [
+      GlobalClassNames.button,
+      {
+        '--button-borderRightWidth': 0,
+        '--button-borderTopRightRadius': 0,
+        '--button-borderBottomRightRadius': 0,
+      },
+    ],
+
+    menuButton: [
+      GlobalClassNames.menuButton,
+      {
+        // Scope the override to a child component, increase specificity.
+        [`.${GlobalClassNames.root} &`]: {
+          width: menuButtonWidth,
+          minWidth: menuButtonWidth,
+          '--button-borderLeftWidth': 0,
+          '--button-borderTopLeftRadius': 0,
+          '--button-borderBottomLeftRadius': 0,
+          '--button-iconSize': 'var(--button-splitMenuIconSize)',
+        },
+      },
+    ],
+
+    divider: {
+      width: 'var(--button-dividerThickness)',
+      backgroundColor: 'var(--button-dividerColor)',
+      position: 'absolute',
+      right: menuButtonWidth,
+      top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+      bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+
+      '@media (forced-colors: active)': {
+        backgroundColor: 'var(--button-highContrast-dividerColor)',
+      },
+
+      [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
+        backgroundColor: 'var(--button-disabled-dividerColor)',
+
+        '@media (forced-colors: active)': {
+          backgroundColor: 'var(--button-highContrast-disabled-dividerColor, var(--button-highContrast-dividerColor))',
+        },
+      },
     },
 
-    '@media screen and (-ms-high-contrast: active)': {
-      '--button-dividerColor': 'WindowText',
-      '--button-disabled-dividerColor': 'GrayText',
+    _fluid: {
+      width: '100%',
+      maxWidth: '100%',
+
+      [`.${GlobalClassNames.button}`]: {
+        flexGrow: 1,
+        maxWidth: '100%',
+      },
+
+      [`.${GlobalClassNames.menuButton}`]: {
+        width: menuButtonWidth,
+      },
     },
   },
+  variants: (theme: Theme) => {
+    const { palette, semanticColors } = theme;
 
-  button: [
-    GlobalClassNames.button,
-    {
-      '--button-borderRightWidth': 0,
-      '--button-borderTopRightRadius': 0,
-      '--button-borderBottomRightRadius': 0,
-    },
-  ],
+    return {
+      root: {
+        size: {
+          smallest: '24px',
+          smaller: '24px',
+          small: '24px',
+          regular: '32px',
+          large: '40px',
+          larger: '48px',
+          largest: '64px',
+        },
+        dividerThickness: '1px',
+        dividerColor: palette?.neutralTertiaryAlt,
+        disabled: {
+          dividerColor: semanticColors.disabledText,
+        },
+        menuIconSize: '12px',
 
-  menuButton: [
-    GlobalClassNames.menuButton,
-    {
-      '--button-borderLeftWidth': 0,
-      '--button-borderTopLeftRadius': 0,
-      '--button-borderBottomLeftRadius': 0,
-      '--button-iconSize': 'var(--button-menuIconSize)',
-    },
-  ],
+        highContrast: {
+          dividerColor: 'WindowText',
 
-  divider: {
-    width: 'var(--button-dividerThickness)',
-    backgroundColor: 'var(--button-dividerColor)',
-    position: 'absolute',
-    right: menuButtonWidth,
-    top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
-    bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
-  },
+          disabled: {
+            dividerColor: 'GrayText',
+          },
+        },
+      },
 
-  _fluid: {
-    width: '100%',
-    maxWidth: '100%',
+      primary: {
+        dividerColor: palette.white,
 
-    [`.${GlobalClassNames.button}`]: {
-      flexGrow: 1,
-    },
+        disabled: {
+          dividerColor: semanticColors.disabledText,
+        },
 
-    [`.${GlobalClassNames.menuButton}`]: {
-      width: menuButtonWidth,
-    },
-  },
+        highContrast: {
+          dividerColor: 'Window',
 
-  _primary: {
-    '@media screen and (-ms-high-contrast: active)': {
-      '--button-dividerColor': 'Window',
-      '--button-disabled-dividerColor': 'GrayText',
-    },
-  },
-
-  _disabled: {
-    '--button-dividerColor': 'var(--button-disabled-dividerColor)',
+          disabled: {
+            dividerColor: 'GrayText',
+          },
+        },
+      },
+      ...ButtonSizeVariants,
+    };
   },
 });

@@ -9,7 +9,7 @@ import {
   IColumn,
   CheckboxVisibility,
   SelectionMode,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const items = [
   {

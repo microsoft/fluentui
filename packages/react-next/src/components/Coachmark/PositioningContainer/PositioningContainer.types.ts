@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData } from '@fluentui/react/lib/Positioning';
 import { ReactNode } from 'react';
 
 /**

@@ -1,4 +1,4 @@
-import { ICustomizations } from 'office-ui-fabric-react';
+import { ICustomizations } from '@fluentui/react';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';

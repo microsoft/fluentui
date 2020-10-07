@@ -24,7 +24,7 @@ import {
   Stack,
   Text,
   ITextStyles,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const cardClicked = (): void => {
   /** no-impl **/

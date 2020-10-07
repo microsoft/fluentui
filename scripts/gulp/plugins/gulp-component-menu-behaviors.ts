@@ -1,3 +1,4 @@
+import * as behaviorDefinitions from '@fluentui/a11y-testing';
 import gutil from 'gulp-util';
 import path from 'path';
 import through2 from 'through2';
@@ -59,12 +60,31 @@ export default () => {
         variation.specification = getTextFromCommentToken(commentTokens, 'specification');
       }
 
-      result.push({
-        displayName: behaviorName,
-        type: componentType,
-        variations: variation,
-      });
-      cb();
+      // generate behavior description from 'behavior definition' file if no was found in behavior file
+      if (!variation.description && !variation.specification) {
+        const variationName = variation.name.replace('.ts', '');
+        const definitionName = `${variationName}Definition`;
+
+        const definition = behaviorDefinitions[definitionName];
+        const descriptionFromDefinition = definition.map(definition => {
+          return definition.stringify();
+        });
+
+        variation.description = descriptionFromDefinition.join('\r\n');
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
+      } else {
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
+      }
     } catch (err) {
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);
