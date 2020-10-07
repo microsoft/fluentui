@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Persona/index';
+export * from '@fluentui/react-internal/lib/Persona';
