@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import { ContextualMenu, DirectionalHint, Text } from '@fluentui/react';
-import { withSlots } from '../../../Foundation';
+import { withSlots } from '@uifabric/foundation';
 import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';

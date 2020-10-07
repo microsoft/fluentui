@@ -39,7 +39,7 @@ export const KeytipsPageProps: IDocPageProps = {
       view: <KeytipsBasicExample />,
     },
     {
-      title: 'Dyanmically updating keytips',
+      title: 'Dynamically updating keytips',
       code: KeytipsDynamicCode,
       view: <KeytipsDynamicExample />,
     },
