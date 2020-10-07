@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Delete update-api script which is no longer needed",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T04:15:10.498Z"
+}
