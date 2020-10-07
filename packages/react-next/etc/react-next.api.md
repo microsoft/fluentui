@@ -41,7 +41,6 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
-import { ImageLoadState } from '@fluentui/react/lib/Image';
 import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
@@ -1675,7 +1674,6 @@ export interface ILine extends IShimmerElement {
     height?: number;
     width?: number | string;
 }
-
 
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
