@@ -1,17 +1,19 @@
-<fluent-design-system-provider use-defaults>
+<fluent-design-system-provider background-color="#f7f7f7" use-defaults>
   <style>
-    .card-placeholder {
-      background-color: #fff;
+    fluent-card {
+      --card-width: 500px;
+      --card-height: auto;
+    }
+
+    .card-padding {
       padding: 20px;
-      width: 500px;
-      border-radius: 4px;
     }
   </style>
 
   <h1>Skeleton</h1>
 
   <h4>Used as element blocks</h4>
-  <div class="card-placeholder">
+  <fluent-card class="card-padding">
     <fluent-skeleton style="border-radius: 4px; width: 50px; height: 50px;" shape="circle"></fluent-skeleton>
     <fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px;" shape="rect"></fluent-skeleton>
     <fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px;" shape="rect"></fluent-skeleton>
@@ -26,10 +28,10 @@
             "
       shape="rect"
     ></fluent-skeleton>
-  </div>
+  </fluent-card>
 
   <h4>Used as element blocks with shimmer effect element</h4>
-  <div class="card-placeholder">
+  <fluent-card class="card-padding">
     <fluent-skeleton style="border-radius: 4px; width: 50px; height: 50px;" shape="circle" shimmer></fluent-skeleton>
     <fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px;" shape="rect" shimmer></fluent-skeleton>
     <fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px;" shape="rect" shimmer></fluent-skeleton>
@@ -45,29 +47,33 @@
       shape="rect"
       shimmer
     ></fluent-skeleton>
-  </div>
+  </fluent-card>
 
   <h4>Using SVG via Pattern attribute</h4>
-  <fluent-skeleton
-    style="border-radius: 4px; width: 500px; height: 250px;"
-    shape="rect"
-    pattern="https://static.fast.design/assets/skeleton-test-pattern.svg"
-    shimmer
-  ></fluent-skeleton>
+  <fluent-card>
+    <fluent-skeleton
+      style="border-radius: 4px; width: 500px; height: 250px;"
+      shape="rect"
+      pattern="https://static.fast.design/assets/skeleton-test-pattern.svg"
+      shimmer
+    ></fluent-skeleton>
+  </fluent-card>
 
   <h4>Using inline SVG</h4>
-  <fluent-skeleton style="border-radius: 4px; width: 500px; height: 250px;" shape="rect" shimmer>
-    <svg style="position: absolute; left: 0; top: 0;" id="pattern" width="100%" height="100%">
-      <defs>
-        <mask id="mask" x="0" y="0" width="100%" height="100%">
-          <rect x="0" y="0" width="100%" height="100%" fill="#ffffff" />
-          <rect x="0" y="0" width="100%" height="45%" rx="4" />
-          <rect x="25" y="55%" width="90%" height="15px" rx="4" />
-          <rect x="25" y="65%" width="70%" height="15px" rx="4" />
-          <rect x="25" y="80%" width="90px" height="30px" rx="4" />
-        </mask>
-      </defs>
-      <rect x="0" y="0" width="100%" height="100%" mask="url(#mask)" fill="#ffffff" />
-    </svg>
-  </fluent-skeleton>
+  <fluent-card>
+    <fluent-skeleton style="border-radius: 4px; width: 500px; height: 250px;" shape="rect" shimmer>
+      <svg style="position: absolute; left: 0; top: 0;" id="pattern" width="100%" height="100%">
+        <defs>
+          <mask id="mask" x="0" y="0" width="100%" height="100%">
+            <rect x="0" y="0" width="100%" height="100%" fill="#ffffff" />
+            <rect x="0" y="0" width="100%" height="45%" rx="4" />
+            <rect x="25" y="55%" width="90%" height="15px" rx="4" />
+            <rect x="25" y="65%" width="70%" height="15px" rx="4" />
+            <rect x="25" y="80%" width="90px" height="30px" rx="4" />
+          </mask>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" mask="url(#mask)" fill="#ffffff" />
+      </svg>
+    </fluent-skeleton>
+  </fluent-card>
 </fluent-design-system-provider>
