@@ -4731,12 +4731,11 @@ export interface ISearchBox {
 }
 
 // @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     clearButtonProps?: IButtonProps;
-    componentRef?: IRefObject<ISearchBox>;
-    // @deprecated
+    componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
@@ -4752,14 +4751,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxState {
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
     value?: string;
 }
 
@@ -6792,17 +6783,7 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
-    constructor(props: ISearchBoxProps);
-    // (undocumented)
-    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
-    focus(): void;
-    hasFocus(): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
-}
+export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
 export enum SelectableOptionMenuItemType {
@@ -7489,6 +7470,8 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 
 export * from "@fluentui/react-focus";
+export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/theme";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";

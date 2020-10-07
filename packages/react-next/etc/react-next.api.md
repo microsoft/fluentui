@@ -1523,68 +1523,6 @@ export interface IResizeGroupStyles {
 }
 
 // @public (undocumented)
-export interface ISearchBox {
-    focus(): void;
-    hasFocus(): boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabel?: string;
-    className?: string;
-    clearButtonProps?: IButtonProps;
-    componentRef?: React.Ref<ISearchBox>;
-    defaultValue?: string;
-    disableAnimation?: boolean;
-    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
-    // @deprecated
-    labelText?: string;
-    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
-    // @deprecated
-    onChanged?: (newValue: any) => void;
-    onClear?: (ev?: any) => void;
-    onEscape?: (ev?: any) => void;
-    onSearch?: (newValue: any) => void;
-    placeholder?: string;
-    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
-    theme?: ITheme;
-    underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disableAnimation?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
-    hasInput?: boolean;
-    // (undocumented)
-    theme: ITheme;
-    // (undocumented)
-    underlined?: boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyles {
-    // (undocumented)
-    clearButton?: IStyle;
-    // (undocumented)
-    field?: IStyle;
-    // (undocumented)
-    icon?: IStyle;
-    // (undocumented)
-    iconContainer?: IStyle;
-    // (undocumented)
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
     // (undocumented)
     onCopyItem: (item: T) => void;
@@ -2118,12 +2056,6 @@ export enum ResizeGroupDirection {
 
 export { ResponsiveMode }
 
-// @public (undocumented)
-export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
-
-// @public (undocumented)
-export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
-
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     // (undocumented)
@@ -2404,6 +2336,7 @@ export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
 export * from "@fluentui/react/lib/Rating";
 export * from "@fluentui/react/lib/ScrollablePane";
+export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";

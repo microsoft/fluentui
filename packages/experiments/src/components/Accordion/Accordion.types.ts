@@ -1,5 +1,5 @@
 import { IStyle } from '../../Styling';
-import { IComponent, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
 
 export type IAccordionComponent = IComponent<IAccordionProps, IAccordionTokens, IAccordionStyles>;
 
