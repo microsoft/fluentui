@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "7.5.24",
+  "version": "7.5.25",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -23,10 +23,10 @@
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
     "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/react-cards": "^0.113.9",
+    "@uifabric/react-cards": "^0.113.10",
     "@uifabric/styling": "^7.16.10",
     "@uifabric/utilities": "^7.32.4",
-    "office-ui-fabric-react": "^7.144.3"
+    "office-ui-fabric-react": "^7.145.0"
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.7.1",

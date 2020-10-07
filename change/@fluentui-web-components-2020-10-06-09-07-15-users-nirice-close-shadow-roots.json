@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "close shadow roots of all web components",
-  "packageName": "@fluentui/web-components",
-  "email": "nicholasrice@users.noreply.github.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-06T16:07:15.935Z"
-}

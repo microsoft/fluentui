@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.0)
+
+Wed, 07 Oct 2020 12:24:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.5.0..@fluentui/web-components_v0.6.0)
+
+### Minor changes
+
+- close shadow roots of all web components ([PR #15382](https://github.com/microsoft/fluentui/pull/15382) by nicholasrice@users.noreply.github.com)
+- add skeleton as a new component ([PR #15397](https://github.com/microsoft/fluentui/pull/15397) by chhol@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.5.0)
 

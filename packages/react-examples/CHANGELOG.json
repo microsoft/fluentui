@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 07 Oct 2020 12:24:30 GMT",
+      "tag": "@fluentui/react-examples_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding reveal password functionality to TextField",
+            "author": "jrhutch@live.com",
+            "commit": "2313140f44fad2c6da5cebade4b9125db0b73657",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@fluentui/react-examples_v0.4.7",
       "version": "0.4.7",

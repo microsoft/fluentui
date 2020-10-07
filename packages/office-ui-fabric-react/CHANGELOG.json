@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 07 Oct 2020 12:24:30 GMT",
+      "tag": "office-ui-fabric-react_v7.145.0",
+      "version": "7.145.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add 'Reveal Password' button to Textfield",
+            "author": "jehutchi@microsoft.com",
+            "commit": "2313140f44fad2c6da5cebade4b9125db0b73657",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "office-ui-fabric-react_v7.144.3",
       "version": "7.144.3",

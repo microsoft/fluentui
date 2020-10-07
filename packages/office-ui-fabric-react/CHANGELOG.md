@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.145.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.145.0)
+
+Wed, 07 Oct 2020 12:24:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.144.3..office-ui-fabric-react_v7.145.0)
+
+### Minor changes
+
+- Add 'Reveal Password' button to Textfield ([PR #15021](https://github.com/microsoft/fluentui/pull/15021) by jehutchi@microsoft.com)
 
 ## [7.144.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.144.3)
 
