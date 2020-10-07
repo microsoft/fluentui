@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add tokens for `react-text`",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-01T11:31:11.633Z"
+}

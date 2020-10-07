@@ -222,18 +222,9 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                       <ChoiceGroup
                         defaultSelectedKey="A"
                         options={[
-                          {
-                            key: 'A',
-                            text: 'Option 1',
-                          } as IChoiceGroupOption,
-                          {
-                            key: 'B',
-                            text: 'Option 2',
-                          },
-                          {
-                            key: 'C',
-                            text: 'Option 3',
-                          },
+                          { key: 'A', text: 'Option 1' },
+                          { key: 'B', text: 'Option 2' },
+                          { key: 'C', text: 'Option 3' },
                         ]}
                         disabled={this.state.choicegroupDisabled}
                       />
