@@ -21,13 +21,6 @@ If you would like to continue using the previous button components for now, upda
   - `shouldFocusOnMount`
   - `yearPickerHidden`
 
-### Checkbox
-
-- Removed `styles` prop.
-- Removed `checkmarkIconProps` prop.
-- Deprecated `onRenderLabel`.
-- Added `label`/`checkmark` slot props.
-
 ### ChoiceGroup
 
 - Moved `root` class to the actual root element by replacing `applicationRole`.
@@ -36,10 +29,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
-- Beak:
-  - Removed empty `IBeak` interface
-  - Removed `componentRef` prop
+- Removed deprecated `isBeaconAnimating` and `isMeasured` style props
 
 ### DatePicker
 
@@ -86,6 +76,10 @@ If you would like to continue using the previous button components for now, upda
 
 - Removed unused `defaultProps` from TeachingBubbleContent.
 - Removed `rootElementRef` from public API.
+
+### TextField
+
+- Moved MaskedTextField-specific props `mask`, `maskChar`, and `maskCharData` from the general `ITextFieldProps` to a new `IMaskedTextFieldProps`.
 
 ## Breaking changes: general
 

@@ -1,22 +1,23 @@
 import * as React from 'react';
 import {
-  Customizer,
   getNativeProps,
   divProperties,
   classNamesFunction,
   getDocument,
   memoizeFunction,
   getRTL,
-  FocusRects,
+  Customizer,
+  useFocusRects,
 } from '../../Utilities';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
 
-const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
+const getDir = ({ theme, dir }: IFabricProps) => {
   const contextDir = getRTL(theme) ? 'rtl' : 'ltr';
   const pageDir = getRTL() ? 'rtl' : 'ltr';
   const componentDir = dir ? dir : contextDir;
@@ -31,62 +32,65 @@ const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
   };
 };
 
-export class FabricBase extends React.Component<IFabricProps> {
-  private _rootElement = React.createRef<HTMLDivElement>();
-  private _removeClassNameFromBody?: () => void = undefined;
+export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRef<HTMLDivElement, IFabricProps>(
+  (props, ref) => {
+    const { className, theme, applyTheme, applyThemeToBody, styles } = props;
 
-  public render() {
-    const { as: Root = 'div', theme, dir } = this.props;
-    const classNames = this._getClassNames();
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
-    const { rootDir, needsTheme } = getDir(theme, dir);
-
-    let renderedContent = <Root dir={rootDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
-
-    if (needsTheme) {
-      renderedContent = (
-        <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
-      );
-    }
-
-    return (
-      <>
-        {renderedContent}
-        <FocusRects rootRef={this._rootElement} />
-      </>
-    );
-  }
-
-  public componentDidMount(): void {
-    this._addClassNameToBody();
-  }
-
-  public componentWillUnmount(): void {
-    if (this._removeClassNameFromBody) {
-      this._removeClassNameFromBody();
-    }
-  }
-
-  private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
-    const { className, theme, applyTheme, styles } = this.props;
     const classNames = getClassNames(styles, {
       theme: theme!,
       applyTheme: applyTheme,
       className,
     });
-    return classNames;
+
+    const rootElement = React.useRef<HTMLDivElement | null>(null);
+    useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
+    useFocusRects(rootElement);
+
+    return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
+  },
+);
+FabricBase.displayName = 'FabricBase';
+
+function useRenderedContent(
+  props: IFabricProps,
+  { root }: IProcessedStyleSet<IFabricStyles>,
+  rootElement: React.RefObject<HTMLDivElement | undefined>,
+  ref: React.Ref<HTMLDivElement>,
+) {
+  const { as: Root = 'div', dir, theme } = props;
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['dir']);
+
+  const { rootDir, needsTheme } = getDir(props);
+
+  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />;
+
+  // Create the contextual theme if component direction does not match parent direction.
+  if (needsTheme) {
+    // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
+    renderedContent = (
+      <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
+    );
   }
 
-  private _addClassNameToBody(): void {
-    if (this.props.applyThemeToBody) {
-      const classNames = this._getClassNames();
-      const currentDoc = getDocument(this._rootElement.current);
+  return renderedContent;
+}
+
+function useApplyThemeToBody(
+  applyThemeToBody: boolean | undefined,
+  { bodyThemed }: IProcessedStyleSet<IFabricStyles>,
+  rootElement: React.RefObject<HTMLDivElement | undefined>,
+) {
+  React.useEffect((): void | (() => void) => {
+    if (applyThemeToBody) {
+      const currentDoc = getDocument(rootElement.current);
       if (currentDoc) {
-        currentDoc.body.classList.add(classNames.bodyThemed);
-        this._removeClassNameFromBody = () => {
-          currentDoc.body.classList.remove(classNames.bodyThemed);
+        currentDoc.body.classList.add(bodyThemed);
+        return () => {
+          currentDoc.body.classList.remove(bodyThemed);
         };
       }
     }
-  }
+  }, [bodyThemed, applyThemeToBody, rootElement]);
+
+  return rootElement;
 }
