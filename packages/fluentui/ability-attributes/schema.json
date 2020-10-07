@@ -346,6 +346,10 @@
             {
               "parameter": false,
               "attribute": [false, "false"]
+            },
+            {
+              "parameter": "mixed",
+              "attribute": "mixed"
             }
           ]
         },
@@ -359,6 +363,10 @@
             {
               "parameter": false,
               "attribute": false
+            },
+            {
+              "parameter": "mixed",
+              "attribute": "mixed"
             }
           ],
           "optional": true
@@ -602,6 +610,10 @@
         {
           "ref": "$level",
           "overridable": "level"
+        },
+        {
+          "ref": "$checked-custom",
+          "optional": true
         }
       ],
       "tags": {
@@ -695,6 +707,10 @@
         },
         {
           "ref": "$isCurrent",
+          "optional": true
+        },
+        {
+          "ref": "$checked-custom",
           "optional": true
         }
       ],
