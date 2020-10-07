@@ -26,6 +26,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Use `aria-checked` for multi-select tree instead of `aria-selected` @yuanboxue-amber ([#15142](https://github.com/microsoft/fluentui/pull/15142))
+- Rework `mergeComponentStyles()` to avoid additional merging @layershifter ([#15381](https://github.com/microsoft/fluentui/pull/15381))
 - Fix `Breadcrumb` to have the `div` wrapping all items obtain a11y attributes from `container` slot @yuanboxue-amber ([#15303](https://github.com/microsoft/fluentui/pull/15303))
 - Fix scrollbar color to have higher contrast ratio @yuanboxue-amber ([#15209](https://github.com/microsoft/fluentui/pull/15209))
 - Fix `Tree` to have un-selectable `treeItem` with `selectable` prop false @yuanboxue-amber ([#15170](https://github.com/microsoft/fluentui/pull/15170))
