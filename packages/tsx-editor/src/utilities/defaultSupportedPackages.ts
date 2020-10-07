@@ -1,7 +1,7 @@
 import { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
-  globalName: 'Fabric',
+  globalName: 'FluentUIReact',
   // Theoretically we could use import() here, but that pulls things into bundles when using
   // commonjs modules due to the way import is transpiled for commonjs
   // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412

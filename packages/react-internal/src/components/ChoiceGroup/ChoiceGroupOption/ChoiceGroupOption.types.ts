@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
 import { IRefObject } from '../../../Utilities';
-import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
+import { IChoiceGroupOption } from '../ChoiceGroup.types';
 
 /**
  * @deprecated Use `IChoiceGroupOptionProps['onFocus']` directly
@@ -18,7 +18,8 @@ export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+  itemKey?: string;
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -46,7 +47,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   focused?: boolean;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization)
    */
   theme?: ITheme;
 
@@ -87,7 +88,7 @@ export interface IChoiceGroupOptionStyleProps {
 
   /**
    * Image sizes used when `hasImage` or `hasIcon` style props are enabled.
-   * @defaultvalue \{height: 32, width: 32\}
+   * @defaultvalue `{height: 32, width: 32 }`
    */
   imageSize?: { height: number; width: number };
 
