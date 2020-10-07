@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "changes in the hover behavior of circles and also removed focusing of circles ",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T10:46:40.863Z"
+}
