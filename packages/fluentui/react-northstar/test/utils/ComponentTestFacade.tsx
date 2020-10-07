@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Props, PropValue, TestFacade } from '@fluentui/a11y-testing';
-import { ReactWrapper } from 'enzyme';
-import { mountWithProviderAndGetComponent } from './';
+import { ReactWrapper, mount } from 'enzyme';
+// import * as ReactDOM from 'react-dom';
+// import { mountWithProviderAndGetComponent } from './';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,11 +22,19 @@ export class ComponentTestFacade implements TestFacade {
     const container = document.createElement('div');
     document.body.appendChild(container);
 
-    // we need to render it in this way because some component like popup use context from wrapper component
-    this._renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />, {
+    // >>> mountWithProvider approach
+    //   this._renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />, {
+    //     attachTo: container,
+    // });
+
+    // >>> older approach, without ReactDOMrender and not attach into container
+    // ReactDOM.render(<Component {...props} />, container);
+    // this._actual = container.lastChild;
+    // this._renderedComponent = mount(<Component {...props} />).find(Component);
+
+    this._renderedComponent = mount(<Component {...props} />, {
       attachTo: container,
     });
-
     this._actual = container.firstChild;
   }
 
