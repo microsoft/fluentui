@@ -776,6 +776,37 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 }
                           >
                             <div
+                              className=
+
+                                  {
+                                    border: none;
+                                    bottom: 3px;
+                                    box-shadow: inherit;
+                                    box-sizing: border-box;
+                                    height: 10px;
+                                    left: calc(50% - 9px);
+                                    position: absolute;
+                                    transform: translateY(100%);
+                                    width: 18px;
+                                  }
+                              role="presentation"
+                            >
+                              <svg
+                                className=
+
+                                    {
+                                      display: block;
+                                      fill: #0078d4;
+                                    }
+                                height={10}
+                                width={18}
+                              >
+                                <polygon
+                                  points="0, 0 18, 0 9, 10"
+                                />
+                              </svg>
+                            </div>
+                            <div
                               aria-describedby="coachmark-desc1"
                               aria-labelledby="coachmark-label1"
                               className=
@@ -847,6 +878,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   className=
 
                                       {
+                                        transform-origin: center bottom;
                                         transform: scale(0);
                                         transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
                                       }
