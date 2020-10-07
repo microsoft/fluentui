@@ -87,15 +87,17 @@ export class SlotRule implements Rule {
       return '';
     }
 
-    return this.data.props.map(prop => {
-      const propNames = Object.keys(prop);
-      return propNames
-        .map(propName => {
-          const propValue = prop[propName];
-          return `prop '${propName}' is '${propValue}'`;
-        })
-        .join('and ');
-    });
+    return this.data.props
+      .map(prop => {
+        const propNames = Object.keys(prop);
+        return propNames
+          .map(propName => {
+            const propValue = prop[propName];
+            return `prop '${propName}' is '${propValue}'`;
+          })
+          .join(' and ');
+      })
+      .join(' or ');
   };
 
   private _expectedAttributeAndValueFormat = (
