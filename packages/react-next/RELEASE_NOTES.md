@@ -23,14 +23,9 @@ If you would like to continue using the previous button components for now, upda
 
 ### ChoiceGroup
 
-- Setting `checked` on individual options to indicate their checked state is no longer supported. Instead, use `defaultSelectedKey` or `selectedKey`.
-- Moved `root` style to the actual root element and removed `applicationRole` style.
-- Removed deprecated props and types:
-  - `onChanged` from `IChoiceGroupProps` (use `onChange`)
-  - `checked` from `IChoiceGroupOption`. (See above for alternative. Also note that this is still available via `IChoiceGroupOptionProps` for custom rendering purposes only, and will be set correctly by the parent `ChoiceGroup`.)
-  - `applicationRole` from `IChoiceGroupStyles`
-  - Type aliases `OnFocusCallback` and `OnChangeCallback`: use `IChoiceGroupOptionProps['onFocus']` and `IChoiceGroupOptionProps['onChange']`
-- Only if manually rendering the `ChoiceGroupOption` component, the new prop `itemKey` is now required. (You can still use `key` when passing options via `IChoiceGroupProps.options`, which is by far the most common.)
+- Moved `root` class to the actual root element by replacing `applicationRole`.
+- Removed `applicationRole` from IChoiceGroupStyles.
+- Removed deprecated `onChanged` prop.
 
 ### Coachmark
 

@@ -88,30 +88,24 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   useDebugWarnings(props);
   useComponentRef(options, keyChecked, id, componentRef);
 
-  const onFocus = React.useCallback((ev?: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
-    if (option) {
-      setKeyFocused(option.itemKey);
-      option.onFocus?.(ev);
-    }
+  const onFocus = React.useCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
+    setKeyFocused(option.itemKey);
   }, []);
 
-  const onBlur = React.useCallback((ev: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
+  const onBlur = React.useCallback((ev: React.FocusEvent<HTMLElement>) => {
     setKeyFocused(undefined);
-    option?.onBlur?.(ev);
   }, []);
 
   const onOptionChange = React.useCallback(
-    (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOptionProps) => {
-      if (!option) {
-        return;
-      }
+    (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOptionProps) => {
       setKeyChecked(option.itemKey);
 
-      option.onChange?.(evt);
-      onChange?.(
-        evt,
-        find(options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
-      );
+      if (onChange) {
+        onChange(
+          evt,
+          find(options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
+        );
+      }
     },
     [onChange, options, setKeyChecked],
   );
@@ -130,10 +124,10 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
               <ChoiceGroupOption
                 key={option.key}
                 itemKey={option.key}
-                {...option}
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onOptionChange}
+                {...option}
                 focused={option.key === keyFocused}
                 checked={option.key === keyChecked}
                 disabled={option.disabled || disabled}

@@ -25,9 +25,7 @@ const DEFAULT_PROPS: Partial<IChoiceGroupOptionProps> = {
 };
 
 export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionProps> = propsWithoutDefaults => {
-  // Mix the `key` prop back in since custom render functions may be expecting it
-  // (React uses `key` internally rather than passing it through to the component)
-  const props = getPropsWithDefaults({ ...DEFAULT_PROPS, key: propsWithoutDefaults.itemKey }, propsWithoutDefaults);
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
   const {
     ariaLabel,
@@ -38,6 +36,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
     imageSrc,
     imageSize,
     disabled,
+    // eslint-disable-next-line deprecation/deprecation
     checked,
     id,
     styles,

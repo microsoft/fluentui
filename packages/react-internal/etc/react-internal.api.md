@@ -1813,8 +1813,10 @@ export interface IChoiceGroup {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaLabel?: string;
+    // @deprecated
+    checked?: boolean;
     disabled?: boolean;
     iconProps?: IIconProps;
     id?: string;
@@ -1824,10 +1826,10 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
         height: number;
     };
     imageSrc?: string;
-    key: string;
+    key?: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
+    onRenderField?: IRenderFunction<IChoiceGroupOption>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -1835,15 +1837,14 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
 
 // @public (undocumented)
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
-    checked?: boolean;
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
-    itemKey: string;
-    key?: string;
+    // (undocumented)
+    itemKey?: string;
     name?: string;
-    onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
-    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;
-    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void | undefined;
+    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -6369,6 +6370,12 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+// @public @deprecated (undocumented)
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
+
+// @public @deprecated (undocumented)
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export enum OpenCardMode {

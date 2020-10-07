@@ -3,11 +3,7 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import {
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles,
-  IChoiceGroupOptionProps,
-} from './ChoiceGroupOption/ChoiceGroupOption.types';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
 /**
  * {@docCategory ChoiceGroup}
@@ -83,11 +79,11 @@ export interface IChoiceGroupProps
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */
-  key: string;
+  key?: string;
 
   /**
    * The text string for the option.
@@ -97,12 +93,12 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
   /**
    * Used to customize option rendering.
    */
-  onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
+  onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
    * Used to customize label rendering.
    */
-  onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
 
   /**
    * Props for an icon to display with this option.
@@ -135,6 +131,17 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
+
+  /**
+   * Whether or not the option is checked.
+   * @deprecated Do not track checked state in the options themselves. Instead, either pass
+   * `defaultSelectedKey` to the `ChoiceGroup` and allow it to track selection state internally
+   * (uncontrolled), or pass `selectedKey` and `onChange` to the `ChoiceGroup` to track/update
+   * the selection state manually (controlled).
+   */
+  // This should move from IChoiceGroupOption to IChoiceGroupOptionProps, so that the ChoiceGroup
+  // can still set the option as checked for rendering purposes
+  checked?: boolean;
 
   /**
    * ID used on the option's input element.
