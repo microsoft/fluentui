@@ -2395,17 +2395,17 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.17.0.tgz#2d52b6c83375fbf2c6d05bc45211dad3960dff1a"
-  integrity sha512-bPkPPYcZ+hojPQ3m1WPdI5Z3d+fJbpddCdSspZy6T6NV9JoIDRg+gaJcBWWQmeBDsCsG+dVNK1RezXuWLP5qpA==
+"@microsoft/fast-element@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.19.0.tgz#f5abbe9facba7488f1df68ce4400caa10358c1b0"
+  integrity sha512-YGVYvENaQBURZXSuHAoO0d3tbOz9HtmUHYJsA75Dszrq6UVaV/EAIDeFe8isqTkTIz/4HyzldFfsjVrvmWYljA==
 
-"@microsoft/fast-foundation@^1.7.0":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.7.1.tgz#17fede34bf76bd0195b5c5b76a73ce765d69edd1"
-  integrity sha512-8eTpcBRz6aLiVP6/FMUEiFw/t3DxA6xnT/8UkFI8NJQtBlZdIatt5+2PSwj5IsS4sqkniCeIv+wWa5jX6FHrSQ==
+"@microsoft/fast-foundation@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.8.0.tgz#8bf1f0ec461557add1f7c89bc04cbcfa11e47a1c"
+  integrity sha512-Q3gthzOXUjNyMo60JgXk2N7mPz0wSK/6Q0eljgIA1YVsZjsJVnhm22ipWkPpSNqXpoa1y7gGn4ky98BeXzYcVw==
   dependencies:
-    "@microsoft/fast-element" "^0.17.0"
+    "@microsoft/fast-element" "^0.19.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
