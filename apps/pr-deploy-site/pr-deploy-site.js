@@ -51,6 +51,12 @@ const siteInfo = [
     title: 'Tabs',
   },
   {
+    package: '@fluentui/react-text',
+    link: './react-text/dist-storybook/index.html',
+    icon: 'TextOverflow',
+    title: 'Text',
+  },
+  {
     package: '@fluentui/react-slider',
     link: './react-slider/dist-storybook/index.html',
     icon: 'Slider',

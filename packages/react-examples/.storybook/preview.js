@@ -22,6 +22,7 @@ if (
     'react-next',
     'react-slider',
     'react-tabs',
+    'react-text',
     'react-toggle',
   ].includes('PACKAGE_NAME')
 ) {

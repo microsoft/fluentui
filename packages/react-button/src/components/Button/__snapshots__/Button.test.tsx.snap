@@ -42,6 +42,33 @@ exports[`Button renders a default state 1`] = `
         --color-brand-pressed-iconColor: var(--color-brand-iconColor);
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
       }
       {
         -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
@@ -250,6 +277,33 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         --color-brand-pressed-iconColor: var(--color-brand-iconColor);
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
       }
       {
         -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
