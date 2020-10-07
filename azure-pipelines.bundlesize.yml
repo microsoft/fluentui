@@ -1,8 +1,8 @@
 pr:
-  - master
   - 7.0
 
-trigger: none
+trigger:
+  - 7.0
 
 jobs:
   - job: build
