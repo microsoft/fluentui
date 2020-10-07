@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Async, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@uifabric/react-hooks';
+import { useWindow } from '@fluentui/react-window-provider';
 
 const RESIZE_DELAY = 16;
 
@@ -421,7 +422,8 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
     });
   });
 
-  useOnEvent(window, 'resize', async.debounce(remeasure, RESIZE_DELAY, { leading: true }));
+  const win = useWindow();
+  useOnEvent(win, 'resize', async.debounce(remeasure, RESIZE_DELAY, { leading: true }));
 
   const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(
     stateRef.current.dataToMeasure,

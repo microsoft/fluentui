@@ -780,9 +780,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
 
                                   {
                                     border: none;
+                                    bottom: 3px;
                                     box-shadow: inherit;
                                     box-sizing: border-box;
                                     height: 10px;
+                                    left: calc(50% - 9px);
                                     position: absolute;
                                     transform: translateY(100%);
                                     width: 18px;
