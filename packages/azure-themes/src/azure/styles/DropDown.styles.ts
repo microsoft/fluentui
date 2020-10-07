@@ -17,7 +17,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: '0',
+          borderWidth: 0,
         },
       },
     },
@@ -39,10 +39,10 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         fontSize: theme.fonts.medium.fontSize,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
-
+        border: 0,
         selectors: {
           ':focus::after, :focus': {
-            //borderColor: semanticColors.inputBorderHovered,
+            borderColor: semanticColors.inputBorderHovered,
           },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
@@ -107,6 +107,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdownItemsWrapper: {
       backgroundColor: semanticColors.bodyBackground,
       borderColor: semanticColors.inputBorder,
+      border: 0,
     },
     dropdownItem: {
       color: semanticColors.bodyText,

@@ -1,6 +1,5 @@
 import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabric-react/lib/Callout';
 import { Depths } from '../AzureDepths';
-import * as StyleConstants from '../Constants';
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
   const { theme } = props;
@@ -8,10 +7,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
 
   return {
     root: {
-      borderColor: semanticColors.inputBorder,
-      borderStyle: StyleConstants.borderSolid,
-      borderWidth: StyleConstants.borderWidth,
-      boxShadow: Depths.depth8,
+      boxShadow: Depths.depth16,
     },
     calloutMain: {
       color: semanticColors.bodyText,
