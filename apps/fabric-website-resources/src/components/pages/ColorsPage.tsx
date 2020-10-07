@@ -209,36 +209,22 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
           <div className="ms-themer-example">
             <ToggleBasicExample />
             <ChoiceGroup
+              defaultSelectedKey="B"
               options={[
-                {
-                  key: 'A',
-                  text: 'Option A',
-                },
-                {
-                  key: 'B',
-                  text: 'Option B',
-                  checked: true,
-                },
+                { key: 'A', text: 'Option A' },
+                { key: 'B', text: 'Option B' },
               ]}
               label="Pick one"
-              required={true}
+              required
             />
             <ChoiceGroup
+              defaultSelectedKey="D"
               options={[
-                {
-                  key: 'C',
-                  text: 'Option C',
-                  disabled: true,
-                },
-                {
-                  key: 'D',
-                  text: 'Option D',
-                  checked: true,
-                  disabled: true,
-                },
+                { key: 'C', text: 'Option C', disabled: true },
+                { key: 'D', text: 'Option D', disabled: true },
               ]}
               label="Pick one"
-              required={true}
+              required
             />
           </div>
           <div className="ms-themer-example">

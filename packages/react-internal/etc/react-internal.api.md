@@ -1813,7 +1813,7 @@ export interface IChoiceGroup {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
     ariaLabel?: string;
     disabled?: boolean;
     iconProps?: IIconProps;
@@ -1826,8 +1826,8 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     imageSrc?: string;
     key: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+    onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -1839,6 +1839,7 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
     itemKey: string;
+    key?: string;
     name?: string;
     onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
     onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;

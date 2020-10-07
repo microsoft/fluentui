@@ -3,6 +3,9 @@ import { ITheme, IStyle } from '../../../Styling';
 import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../ChoiceGroup.types';
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
@@ -14,6 +17,12 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
    * Unique key for the option, set based on `IChoiceGroupOption.key`.
    */
   itemKey: string;
+
+  /**
+   * The option key. This will always be provided for callbacks (copied from `itemKey`) but is
+   * optional when manually creating ChoiceGroupOptions.
+   */
+  key?: string;
 
   /**
    * Whether or not the option is checked. Set by `ChoiceGroup` based on `selectedKey` or

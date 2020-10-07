@@ -3,7 +3,11 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
+import {
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+  IChoiceGroupOptionProps,
+} from './ChoiceGroupOption/ChoiceGroupOption.types';
 
 /**
  * {@docCategory ChoiceGroup}
@@ -79,7 +83,7 @@ export interface IChoiceGroupProps
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -93,12 +97,12 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   /**
    * Used to customize option rendering.
    */
-  onRenderField?: IRenderFunction<IChoiceGroupOption>;
+  onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
 
   /**
    * Used to customize label rendering.
    */
-  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
 
   /**
    * Props for an icon to display with this option.

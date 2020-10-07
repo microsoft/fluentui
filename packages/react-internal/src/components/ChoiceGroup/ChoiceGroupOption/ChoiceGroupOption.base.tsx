@@ -23,14 +23,11 @@ const DEFAULT_PROPS: Partial<IChoiceGroupOptionProps> = {
   // This ensures default imageSize value doesn't mutate. Mutation can cause style re-calcuation.
   imageSize: { width: 32, height: 32 },
 };
-type IChoiceGroupOptionPropsWithKey = IChoiceGroupOptionProps & { key: string };
 
 export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionProps> = propsWithoutDefaults => {
   // Mix the `key` prop back in since custom render functions may be expecting it
-  const props = getPropsWithDefaults(
-    { ...DEFAULT_PROPS, key: propsWithoutDefaults.itemKey },
-    propsWithoutDefaults as IChoiceGroupOptionPropsWithKey,
-  );
+  // (React uses `key` internally rather than passing it through to the component)
+  const props = getPropsWithDefaults({ ...DEFAULT_PROPS, key: propsWithoutDefaults.itemKey }, propsWithoutDefaults);
 
   const {
     ariaLabel,
