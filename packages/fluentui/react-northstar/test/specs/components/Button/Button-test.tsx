@@ -6,16 +6,11 @@ import {
   htmlIsAccessibilityCompliant,
   getRenderedAttribute,
 } from 'test/specs/commonTests';
-import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
+import { mountWithProvider, mountWithProviderAndGetComponent, ComponentTestFacade } from 'test/utils';
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
 import { Button } from 'src/components/Button/Button';
-import {
-  validateBehavior,
-  ComponentTestFacade,
-  buttonBehaviorDefinition,
-  toggleButtonBehaviorDefinition,
-} from '@fluentui/a11y-testing';
+import { validateBehavior, buttonBehaviorDefinition, toggleButtonBehaviorDefinition } from '@fluentui/a11y-testing';
 
 describe('Button', () => {
   isConformant(Button, {

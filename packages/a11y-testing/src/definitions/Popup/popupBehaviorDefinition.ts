@@ -5,27 +5,23 @@ export const popupBehaviorDefinitionTriggerSlotNotTabbable: Rule[] = [
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: true })
     .hasAttribute('tabIndex', '0')
-    .hasAttribute('aria-haspopup', 'dialog')
-    .description(`if 'tabbableTrigger' is 'true'.`),
+    .hasAttribute('aria-haspopup', 'dialog'),
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: true })
-    .hasAttribute('tabIndex', '0')
-    .description(`if it is 'not tabbable' and 'tabbableTrigger' is 'true'.`),
+    .hasAttribute('tabIndex', '0'),
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: false })
-    .doesNotHaveAttribute('tabIndex')
-    .description(`if 'tabbableTrigger' is 'false'.`),
+    .doesNotHaveAttribute('tabIndex'),
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: false })
-    .doesNotHaveAttribute('aria-haspopup')
-    .description(`if 'tabbableTrigger' is 'false'.`),
+    .doesNotHaveAttribute('aria-haspopup'),
 ];
 
 export const popupBehaviorDefinitionTriggerSlotTabbable: Rule[] = [
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: true })
     .hasAttribute('aria-haspopup', 'dialog')
-    .description(`if 'tabbableTrigger' is 'true'.`),
+    .hide(),
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: true })
     .doesNotHaveAttribute('tabIndex')
@@ -42,8 +38,7 @@ export const popupBehaviorDefinitionTriggerSlotWithTabIndex: Rule[] = [
 export const popupBehaviorDefinitionPopupSlot: Rule[] = [
   BehaviorRule.slot('popup')
     .forProps({ trapFocus: true })
-    .hasAttribute('role', 'dialog')
-    .description(`if 'trapFocus' is 'true'.`),
+    .hasAttribute('role', 'dialog'),
   BehaviorRule.slot('popup')
     .forProps({ trapFocus: true })
     .hasAttribute('aria-modal', 'true')
@@ -58,13 +53,7 @@ export const popupBehaviorDefinitionPopupSlot: Rule[] = [
     .description(`if 'trapFocus' is 'false'.`),
 ];
 
-// remove 'definition' which contains 'dialog' rule because description is already cover in popupBehaviorDefinitionTriggerSlotNotTabbable
-// just want to keep 'definition' in the array, in order to test 'tabbable' and 'notTabbable' trigger
-const modifiedForDocumentation = popupBehaviorDefinitionTriggerSlotTabbable.filter(
-  definition => definition.stringify().search('dialog') === -1,
-);
-
 export const popupBehaviorDefinition = popupBehaviorDefinitionTriggerSlotNotTabbable
-  .concat(modifiedForDocumentation)
+  .concat(popupBehaviorDefinitionTriggerSlotTabbable)
   .concat(popupBehaviorDefinitionTriggerSlotWithTabIndex)
   .concat(popupBehaviorDefinitionPopupSlot);

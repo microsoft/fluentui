@@ -1,40 +1,12 @@
 import * as React from 'react';
-import { Props, PropValue, TestFacade } from '../types';
-import { emptyTheme, ThemePrepared } from '@fluentui/styles';
-import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
-import { mount, ReactWrapper } from 'enzyme';
-import { Telemetry, Unstable_FluentContextProvider, ProviderContextPrepared } from '@fluentui/react-bindings';
-
-const EmptyThemeProvider: React.FunctionComponent<{
-  disableAnimations?: boolean;
-  telemetry?: Telemetry;
-  renderer?: Renderer;
-  theme?: ThemePrepared;
-  rtl?: boolean;
-}> = ({ children, disableAnimations = true, renderer = noopRenderer, telemetry, theme = emptyTheme, rtl = false }) => {
-  const value: ProviderContextPrepared = {
-    renderer,
-    target: document,
-    disableAnimations,
-    rtl,
-    theme,
-    telemetry,
-    performance: {} as any,
-  };
-  return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;
-};
+import { Props, PropValue, TestFacade } from '@fluentui/a11y-testing';
+import { ReactWrapper } from 'enzyme';
+import { mountWithProviderAndGetComponent } from './';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private actual: any;
-  private renderedComponent: ReactWrapper<
-    {
-      children?: React.ReactNode;
-    },
-    never,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    React.Component<{}, {}, any>
-  >;
+  private renderedComponent: ReactWrapper<any, any>;
   private onClickExecuted: boolean;
 
   constructor(private Component: React.FC, private props: Props = {}) {
@@ -48,9 +20,8 @@ export class ComponentTestFacade implements TestFacade {
     document.body.appendChild(container);
 
     // we need to render it in this way because some component like popup use context from wrapper component
-    this.renderedComponent = mount(<Component {...props} />, {
+    this.renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />, {
       attachTo: container,
-      wrappingComponent: EmptyThemeProvider,
     });
 
     this.actual = container.firstChild;
