@@ -28,11 +28,10 @@ export class DescendantsNarrationsComputer {
       // Begin if 1
       parents.push(element);
     } // End if 1
-    for (let i = 0; i < element.children.length; i++) {
-      // Begin for 1
-      const child = element.children[i] as IAriaElement;
+    Array.from(element.children).forEach((child: IAriaElement) => {
+      // Begin foreach 1
       this.findActiveDescendantsParents(child, parents);
-    } // End for 1
+    }); // End foreach 1
   } // End findActiveDescendantsParents
 
   // Traverses the given element and computes the narrations for it and its descendants which are focusable..
