@@ -9,8 +9,10 @@ export class ComponentTestFacade implements TestFacade {
   _renderedComponent: ReactWrapper<any, any>;
   _onClickExecuted: boolean;
 
-  constructor(_Component: React.FC, _props: Props = {}) {
-    _props.onClick = () => {
+  // using eslint disable, otherwise typescript doesn't create property itself
+  // eslint-disable-next-line @fluentui/no-visibility-modifiers
+  constructor(private Component: React.FC, private props: Props = {}) {
+    props.onClick = () => {
       this._onClickExecuted = true;
     };
 
@@ -20,7 +22,7 @@ export class ComponentTestFacade implements TestFacade {
     document.body.appendChild(container);
 
     // we need to render it in this way because some component like popup use context from wrapper component
-    this._renderedComponent = mountWithProviderAndGetComponent(_Component, <_Component {..._props} />, {
+    this._renderedComponent = mountWithProviderAndGetComponent(Component, <Component {...props} />, {
       attachTo: container,
     });
 
