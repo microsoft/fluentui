@@ -3751,7 +3751,7 @@ export interface IMessageBar {
 }
 
 // @public (undocumented)
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     actions?: JSX.Element;
     // @deprecated
     ariaLabel?: string;
@@ -3767,16 +3767,6 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarState {
-    // (undocumented)
-    expandSingleLine?: boolean;
-    // (undocumented)
-    labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)
@@ -6308,13 +6298,7 @@ export function mergeOverflows(keySequences: string[], overflowKeySequences: str
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-    constructor(props: IMessageBarProps);
-    // (undocumented)
-    static defaultProps: IMessageBarProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
 export class MessageBarButton extends React.Component<IButtonProps, {}> {
