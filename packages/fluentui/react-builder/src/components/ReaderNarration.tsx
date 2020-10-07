@@ -17,29 +17,29 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   const [narrationPaths, setNarrationPaths] = React.useState([]);
 
   React.useEffect(() => {
-    if (ref.current) {
-      // Begin if 1
-      const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
+    if (!ref.current) {
+      return;
+    }
+    const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
 
-      // Compute and store the narrations for the element and its focusable descendants
-      computer.compute(element, 'Win/JAWS').then(narrations => {
-        const paths: string[] = [];
-        narrationTexts = {};
-        narrations.forEach(narration => {
-          // Begin forEach 1
-          const path = narration.path.join(' > ');
-          paths.push(path);
-          narrationTexts[path] = narration.text;
-        }); // End forEach 1
+    // Compute and store the narrations for the element and its focusable descendants
+    computer.compute(element, 'Win/JAWS').then(narrations => {
+      const paths: string[] = [];
+      narrationTexts = {};
+      narrations.forEach(narration => {
+        // Begin forEach 1
+        const path = narration.path.join(' > ');
+        paths.push(path);
+        narrationTexts[path] = narration.text;
+      }); // End forEach 1
 
-        // Update the narration paths dropdown values
-        setNarrationPaths(paths);
+      // Update the narration paths dropdown values
+      setNarrationPaths(paths);
 
-        // If some narration has been retrieved, choose the first one as the narration to be displayed
-        const text = narrations[0]?.text || null;
-        setCompleteText(text);
-      }); // End compute
-    } // End if 1
+      // If some narration has been retrieved, choose the first one as the narration to be displayed
+      const text = narrations[0]?.text || null;
+      setCompleteText(text);
+    }); // End compute
   }, [setNarrationText, setNarrationPath, setNarrationPaths, ref, selector]);
 
   // Composes and sets the complete screen reader narration text to be displayed

@@ -88,7 +88,7 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host: '0.0.0.0',
+  server_host: 'localhost',
   server_port: Number(process.env.PORT) || 8080,
   perf_port: Number(process.env.PERF_PORT) || 8081,
   e2e_port: Number(process.env.E2E_PORT) || 8082,
