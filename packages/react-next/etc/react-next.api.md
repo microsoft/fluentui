@@ -453,22 +453,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     focusStack: string[];
 };
 
-// @public
-export const getMeasurementCache: () => {
-    getCachedMeasurement: (data: any) => number | undefined;
-    addMeasurementToCache: (data: any, measurement: number) => void;
-};
-
-// @public
-export const getNextResizeGroupStateProvider: (measurementCache?: {
-    getCachedMeasurement: (data: any) => number | undefined;
-    addMeasurementToCache: (data: any, measurement: number) => void;
-}) => {
-    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
-    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
-    getInitialResizeGroupState: (data: any) => IResizeGroupState;
-};
-
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
@@ -1484,45 +1468,6 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 }
 
 // @public (undocumented)
-export interface IResizeGroup {
-    remeasure(): void;
-}
-
-// @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: IRefObject<IResizeGroup>;
-    data: any;
-    dataDidRender?: (renderedData: any) => void;
-    direction?: ResizeGroupDirection;
-    onGrowData?: (prevData: any) => any;
-    onReduceData: (prevData: any) => any;
-    onRenderData: (data: any) => JSX.Element;
-    // @deprecated
-    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IResizeGroupState {
-    dataToMeasure?: any;
-    measureContainer?: boolean;
-    renderedData?: any;
-    resizeDirection?: 'grow' | 'shrink';
-}
-
-// @public (undocumented)
-export interface IResizeGroupStyleProps {
-    className?: string;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IResizeGroupStyles {
-    root: IStyle;
-}
-
-// @public (undocumented)
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
     // (undocumented)
     onCopyItem: (item: T) => void;
@@ -1990,11 +1935,6 @@ export { ListPeoplePicker }
 
 export { ListPeoplePickerBase }
 
-// @public (undocumented)
-export const MeasuredContext: React.Context<{
-    isMeasured: boolean;
-}>;
-
 export { MemberListPeoplePicker }
 
 // @public (undocumented)
@@ -2039,20 +1979,6 @@ export { PeoplePickerItemSuggestionBase }
 
 // @public
 export const Popup: React.FunctionComponent<IPopupProps>;
-
-// @public (undocumented)
-export const ResizeGroup: import("react").FunctionComponent<import("./ResizeGroup.types").IResizeGroupProps>;
-
-// @public (undocumented)
-export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps>;
-
-// @public (undocumented)
-export enum ResizeGroupDirection {
-    // (undocumented)
-    horizontal = 0,
-    // (undocumented)
-    vertical = 1
-}
 
 export { ResponsiveMode }
 
@@ -2335,6 +2261,7 @@ export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
 export * from "@fluentui/react/lib/Rating";
+export * from "@fluentui/react/lib/ResizeGroup";
 export * from "@fluentui/react/lib/ScrollablePane";
 export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
