@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getControlledDerivedProps, useControlledState } from '../../Foundation';
+import { getControlledDerivedProps, useControlledState } from '@uifabric/foundation';
 import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
 export const useToggleState: IToggleComponent['state'] = props => {

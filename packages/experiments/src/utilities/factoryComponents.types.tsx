@@ -8,7 +8,7 @@ import {
   IPersonaPresenceProps,
   PersonaPresence,
 } from '@fluentui/react';
-import { ISlotProp } from '../Foundation';
+import { ISlotProp } from '@uifabric/foundation';
 
 // TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 

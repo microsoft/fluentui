@@ -46,6 +46,7 @@
     "@fluentui/theme": "^1.2.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.5",
+    "@uifabric/foundation": "^7.9.9",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/tsx-editor": "^0.13.18",

@@ -1,5 +1,5 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
-import { IComponent, IHTMLSlot, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
 import { ITextSlot } from '@fluentui/react';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 

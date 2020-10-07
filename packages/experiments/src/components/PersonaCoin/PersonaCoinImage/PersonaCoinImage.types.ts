@@ -1,5 +1,5 @@
 import { ImageLoadState } from '@fluentui/react';
-import { ISlotProp } from '../../../Foundation';
+import { ISlotProp } from '@uifabric/foundation';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 
 export type IPersonaCoinImageSlot = ISlotProp<IPersonaCoinImageProps>;

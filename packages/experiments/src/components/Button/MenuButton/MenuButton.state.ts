@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControlledState } from '../../../Foundation';
+import { useControlledState } from '@uifabric/foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 

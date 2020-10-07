@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '@fluentui/react';
-import { ISlotProp } from '../../../Foundation';
+import { ISlotProp } from '@uifabric/foundation';
 
 export interface IPersonaCoinSizeProps {}
 

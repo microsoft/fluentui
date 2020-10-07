@@ -8,7 +8,7 @@ import {
   ISlotProp,
   ISlottableProps,
   IStyleableComponentProps,
-} from '../../../Foundation';
+} from '@uifabric/foundation';
 import { IBaseProps } from '../../../Utilities';
 
 /**

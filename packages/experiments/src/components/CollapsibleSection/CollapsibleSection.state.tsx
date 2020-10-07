@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCallback, useImperativeHandle, useRef } from 'react';
-import { useControlledState } from '../../Foundation';
+import { useControlledState } from '@uifabric/foundation';
 import { getRTL, KeyCodes } from '../../Utilities';
 import {
   ICollapsibleSectionProps,

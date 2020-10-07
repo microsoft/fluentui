@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
+import {
+  IComponent,
+  IComponentStyles,
+  IHTMLSlot,
+  ISlottableProps,
+  IStyleableComponentProps,
+} from '@uifabric/foundation';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 

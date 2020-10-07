@@ -7,7 +7,7 @@ import {
   ISlotProp,
   ISlottableProps,
   IStyleableComponentProps,
-} from '../../Foundation';
+} from '@uifabric/foundation';
 import { ITextSlot } from '@fluentui/react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 

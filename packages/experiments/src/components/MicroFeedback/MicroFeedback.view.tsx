@@ -2,7 +2,7 @@
 import { Callout, IconButton, FocusZone, FocusZoneDirection, List, Stack, Text } from '@fluentui/react';
 import { Button } from '../Button/Button';
 import { IButtonTokens } from '../Button/Button.types';
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@uifabric/foundation';
 
 import {
   IMicroFeedbackComponent,

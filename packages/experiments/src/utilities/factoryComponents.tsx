@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react';
 // PersonaPresence is not exported by OUFR, so we have to import it directly.
 import { PersonaPresence as FabricPersonaPresence } from '@fluentui/react/lib/PersonaPresence';
-import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundation';
+import { createFactory, ISlottableComponentType, ISlotFactory } from '@uifabric/foundation';
 
 // TODO: All contents of this file should be moved to each respective component as they are converted to use slots.
 // TODO: createFactory should no longer have to be explicitly called with component options containing defaultProp.

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@uifabric/foundation';
 import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IButtonSlot } from '../Button/Button.types';
