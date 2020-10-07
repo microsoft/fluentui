@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Removing react-next messageBar examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T00:16:50.414Z"
+}

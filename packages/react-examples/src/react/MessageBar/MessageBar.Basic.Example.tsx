@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-  MessageBarButton,
-  Link,
-  Stack,
-  StackItem,
-  MessageBar,
-  MessageBarType,
-  ChoiceGroup,
-  IStackProps,
-} from '@fluentui/react';
+import { Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from '@fluentui/react';
+import { MessageBarButton } from '@fluentui/react-next/lib/compat/Button';
 
 interface IExampleProps {
   resetChoice?: () => void;
