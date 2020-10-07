@@ -1,3 +1,9 @@
+pr:
+  - master
+  - 7.0
+
+trigger: none
+
 jobs:
   - job: build
     pool:
