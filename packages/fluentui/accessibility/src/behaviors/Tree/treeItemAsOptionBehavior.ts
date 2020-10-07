@@ -44,7 +44,8 @@ export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = pr
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    definition.attributes.root['data-aa-class'] = 'TreeItemOption';
+    if (props.hasSubtree) definition.attributes.root['data-aa-class'] = 'TreeItemOption';
+    else definition.attributes.root['data-aa-class'] = behavior.attributes.root['data-aa-class'];
   }
 
   return definition;
