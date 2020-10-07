@@ -7,7 +7,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
 
   return {
     root: {
-      boxShadow: Depths.depth16,
+      boxShadow: Depths.depth8,
     },
     calloutMain: {
       color: semanticColors.bodyText,
