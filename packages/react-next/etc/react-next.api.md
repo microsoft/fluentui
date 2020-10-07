@@ -1484,69 +1484,6 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 }
 
 // @public (undocumented)
-export interface IRating {
-    rating: number;
-}
-
-// @public
-export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    allowZeroStars?: boolean;
-    ariaLabelFormat?: string;
-    componentRef?: IRefObject<IRating>;
-    defaultRating?: number;
-    disabled?: boolean;
-    // (undocumented)
-    getAriaLabel?: (rating: number, max: number) => string;
-    icon?: string;
-    max?: number;
-    // @deprecated
-    min?: number;
-    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
-    rating?: number;
-    readOnly?: boolean;
-    size?: RatingSize;
-    styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
-    theme?: ITheme;
-    unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingStyleProps {
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    readOnly?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IRatingStyles {
-    // (undocumented)
-    labelText: IStyle;
-    // (undocumented)
-    ratingButton: IStyle;
-    // (undocumented)
-    ratingFocusZone: IStyle;
-    // (undocumented)
-    ratingStar: IStyle;
-    // (undocumented)
-    ratingStarBack: IStyle;
-    // (undocumented)
-    ratingStarFront: IStyle;
-    // (undocumented)
-    ratingStarIsLarge: IStyle;
-    // (undocumented)
-    ratingStarIsSmall: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    rootIsLarge: IStyle;
-    // (undocumented)
-    rootIsSmall: IStyle;
-}
-
-// @public (undocumented)
 export interface IResizeGroup {
     remeasure(): void;
 }
@@ -2104,20 +2041,6 @@ export { PeoplePickerItemSuggestionBase }
 export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
-export const Rating: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export const RatingBase: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export enum RatingSize {
-    // (undocumented)
-    Large = 1,
-    // (undocumented)
-    Small = 0
-}
-
-// @public (undocumented)
 export const ResizeGroup: import("react").FunctionComponent<import("./ResizeGroup.types").IResizeGroupProps>;
 
 // @public (undocumented)
@@ -2411,6 +2334,7 @@ export * from "@fluentui/react/lib/Panel";
 export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
+export * from "@fluentui/react/lib/Rating";
 export * from "@fluentui/react/lib/ScrollablePane";
 export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
