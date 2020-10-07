@@ -143,7 +143,7 @@ export const mergeComponentStyles__DEV = (
     };
 
     if (stylesA?.[slotName] && stylesB?.[slotName]) {
-      // We have both target and source, replace with merge fn
+      // We have both, replace with merge fn
       result[slotName] = styleParam => {
         // slot* are always prepared, fn is guaranteed, _debug always exists
         const { _debug: debugA, ...resolvedStylesA } = slotA(styleParam);
