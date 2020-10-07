@@ -1,2 +1,2 @@
 import './version';
-export * from './components/ChoiceGroup/index';
+export * from '@fluentui/react/lib/ChoiceGroup';

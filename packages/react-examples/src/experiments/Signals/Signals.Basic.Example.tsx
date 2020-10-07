@@ -74,7 +74,7 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
           <ChoiceGroup
             label="Font size"
             defaultSelectedKey={fontSize}
-            onChanged={this._onFontSizeChoiceChanged}
+            onChange={this._onFontSizeChoiceChanged}
             options={[
               { key: 'small', text: 'Small' },
               { key: 'medium', text: 'Medium' },
@@ -123,9 +123,9 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
     );
   }
 
-  private _onFontSizeChoiceChanged = (option: IChoiceGroupOption): void => {
+  private _onFontSizeChoiceChanged = (ev: any, option?: IChoiceGroupOption): void => {
     this.setState({
-      fontSize: option.key as ISignalsBasicExampleState['fontSize'],
+      fontSize: option?.key as ISignalsBasicExampleState['fontSize'],
     });
   };
 

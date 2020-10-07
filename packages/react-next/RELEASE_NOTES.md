@@ -21,13 +21,6 @@ If you would like to continue using the previous button components for now, upda
   - `shouldFocusOnMount`
   - `yearPickerHidden`
 
-### Checkbox
-
-- Removed `styles` prop.
-- Removed `checkmarkIconProps` prop.
-- Deprecated `onRenderLabel`.
-- Added `label`/`checkmark` slot props.
-
 ### ChoiceGroup
 
 - Moved `root` class to the actual root element by replacing `applicationRole`.

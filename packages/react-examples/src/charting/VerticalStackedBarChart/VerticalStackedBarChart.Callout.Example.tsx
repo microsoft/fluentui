@@ -37,7 +37,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   };
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
-    this.setState({ selectedCallout: option.key });
+    this.setState({ selectedCallout: option.key! });
   };
 
   private _basicExample(): JSX.Element {
