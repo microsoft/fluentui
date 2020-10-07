@@ -29,10 +29,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
-- Beak:
-  - Removed empty `IBeak` interface
-  - Removed `componentRef` prop
+- Removed deprecated `isBeaconAnimating` and `isMeasured` style props
 
 ### DatePicker
 
