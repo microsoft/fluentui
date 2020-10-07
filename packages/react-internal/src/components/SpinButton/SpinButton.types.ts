@@ -270,20 +270,9 @@ export interface ISpinButtonStyles {
   icon: IStyle;
 
   /**
-   * Style for the icon when the control is disabled.
-   */
-  // iconDisabled: IStyle;
-
-  /**
    * Style for the label text.
    */
   label: IStyle;
-
-  /**
-   * Style for the label text when the control is disabled.
-   * @deprecated Disabled styles taken care by `Label` component.
-   */
-  // labelDisabled: IStyle;
 
   /**
    * Style for the wrapper element of the input field and arrow buttons.
@@ -291,49 +280,14 @@ export interface ISpinButtonStyles {
   spinButtonWrapper: IStyle;
 
   /**
-   * Style override when label is positioned at the top/bottom.
-   */
-  // spinButtonWrapperTopBottom: IStyle;
-
-  /**
-   * Style override when control is enabled/hovered.
-   */
-  // spinButtonWrapperHovered: IStyle;
-
-  /**
-   * Style override when SpinButton is enabled/focused.
-   */
-  // spinButtonWrapperFocused: IStyle;
-
-  /**
-   * Style override when control is disabled.
-   */
-  // spinButtonWrapperDisabled: IStyle;
-
-  /**
    * Styles for the input.
    */
   input: IStyle;
 
   /**
-   * Style override for ::selection
-   */
-  // inputTextSelected: IStyle;
-
-  /**
-   * Style override when control is disabled.
-   */
-  // inputDisabled: IStyle;
-
-  /**
    * Styles for the arrowButtonsContainer
    */
   arrowButtonsContainer: IStyle;
-
-  /**
-   * Style override for the arrowButtonsContainer when control is disabled.
-   */
-  // arrowButtonsContainerDisabled: IStyle;
 }
 
 /**
