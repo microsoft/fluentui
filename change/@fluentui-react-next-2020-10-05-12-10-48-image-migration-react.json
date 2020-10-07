@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "move Image component from react-next to react-internal",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T19:10:36.514Z"
+}
