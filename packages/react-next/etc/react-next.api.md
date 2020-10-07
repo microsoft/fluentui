@@ -348,15 +348,6 @@ export const Callout: React.FunctionComponent<ICalloutProps>;
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
 // @public (undocumented)
-export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
-
-// @public (undocumented)
-export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps>;
-
-// @public (undocumented)
-export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
-
-// @public (undocumented)
 export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 
 // @public (undocumented)
@@ -743,119 +734,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroup {
-    checkedOption: IChoiceGroupOption | undefined;
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
-    ariaLabel?: string;
-    // @deprecated
-    checked?: boolean;
-    disabled?: boolean;
-    iconProps?: IIconProps;
-    id?: string;
-    imageAlt?: string;
-    imageSize?: {
-        width: number;
-        height: number;
-    };
-    imageSrc?: string;
-    key?: string;
-    labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
-    selectedImageSrc?: string;
-    styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
-    text: string;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
-    componentRef?: IRefObject<IChoiceGroupOption>;
-    focused?: boolean;
-    // (undocumented)
-    itemKey?: string;
-    name?: string;
-    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
-    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
-    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
-    required?: boolean;
-    theme?: ITheme;
-}
-
-// @public
-export interface IChoiceGroupOptionStyleProps {
-    checked?: boolean;
-    disabled?: boolean;
-    focused?: boolean;
-    hasIcon?: boolean;
-    hasImage?: boolean;
-    imageIsLarge?: boolean;
-    imageSize?: {
-        height: number;
-        width: number;
-    };
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupOptionStyles {
-    // (undocumented)
-    choiceFieldWrapper?: IStyle;
-    // (undocumented)
-    field?: IStyle;
-    // (undocumented)
-    iconWrapper?: IStyle;
-    // (undocumented)
-    imageWrapper?: IStyle;
-    // (undocumented)
-    innerField?: IStyle;
-    // (undocumented)
-    input?: IStyle;
-    // (undocumented)
-    labelWrapper?: IStyle;
-    // (undocumented)
-    root?: IStyle;
-    // (undocumented)
-    selectedImageWrapper?: IStyle;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabelledBy?: string;
-    componentRef?: IRefObject<IChoiceGroup>;
-    defaultSelectedKey?: string | number;
-    label?: string;
-    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
-    options?: IChoiceGroupOption[];
-    selectedKey?: string | number;
-    styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    optionsContainIconOrImage?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupStyles {
-    // (undocumented)
-    flexContainer?: IStyle;
-    // (undocumented)
-    label?: IStyle;
-    // (undocumented)
-    root?: IStyle;
 }
 
 // @public
@@ -2414,12 +2292,6 @@ export { NormalPeoplePicker }
 
 export { NormalPeoplePickerBase }
 
-// @public @deprecated (undocumented)
-export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
-
-// @public @deprecated (undocumented)
-export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
-
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
@@ -2724,6 +2596,7 @@ export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Breadcrumb";
 export * from "@fluentui/react/lib/Check";
+export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Color";
 export * from "@fluentui/react/lib/ColorPicker";
 export * from "@fluentui/react/lib/CommandBar";
