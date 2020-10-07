@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "move Image component to react and delete from react-next",
+  "comment": "move Image component from react-next to react-internal",
   "packageName": "@fluentui/react-next",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
