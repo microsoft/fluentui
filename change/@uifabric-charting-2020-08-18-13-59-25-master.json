@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added color fill bar feature to line chart component",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T20:59:25.017Z"
+}
