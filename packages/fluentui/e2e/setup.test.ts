@@ -41,5 +41,8 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
-  await browser.close();
+  // Sometimes in CI this is undefined, not sure how
+  if (browser) {
+    await browser.close();
+  }
 });
