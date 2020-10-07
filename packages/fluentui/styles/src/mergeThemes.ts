@@ -132,7 +132,6 @@ export const mergeComponentStyles__DEV = (
     };
 
     const slotB = styleParam => {
-      // originalTarget is always prepared, fn is guaranteed, _debug always exists
       const { _debug = undefined, ...styles } = callable(stylesB?.[slotName])(styleParam) || {};
 
       // new object required to prevent circular JSON structure error in <Debug />
