@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { CoachmarkBase } from './Coachmark.base';
 import { ITeachingBubble } from '../../TeachingBubble';
 
 /**
@@ -12,14 +11,14 @@ export interface ICoachmark {
   /**
    * Forces the Coachmark to dismiss
    */
-  dismiss?: (ev?: any) => void;
+  dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
  * Coachmark component props
  * {@docCategory Coachmark}
  */
-export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
+export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -194,12 +193,17 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   /**
    * Callback when the Coachmark tries to close.
    */
-  onDismiss?: (ev?: any) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
   /**
    * Theme provided by higher order component.
    */
   theme?: ITheme;
+
+  /**
+   * Child nodes to render inside the Coachmark dialog
+   */
+  children?: React.ReactNode;
 }
 
 /**
@@ -230,25 +234,12 @@ export interface ICoachmarkStyleProps {
   isCollapsed: boolean;
 
   /**
-   * Is the beacon currently animating.
-   * @deprecated Property is never used
-   */
-  isBeaconAnimating: boolean;
-
-  /**
    * Is the component taking measurements
    */
   isMeasuring: boolean;
 
   /**
-   * Is the Coachmark finished measuring the dimensions of innerHostElement
-   * @deprecated Value is always the inverse of `isMeasuring`
-   */
-  isMeasured: boolean;
-
-  /**
-   * The height measured before the component has been mounted
-   * in pixels
+   * The height measured before the component has been mounted in pixels
    */
   entityHostHeight?: string;
 
