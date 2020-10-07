@@ -203,7 +203,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.
         paddingBottom: 0.5,
-        // This removes the IE specific clear button in the input since we implimented our own
+        // This removes the IE specific clear button in the input since we implemented our own
         selectors: {
           '::-ms-clear': {
             display: 'none',
