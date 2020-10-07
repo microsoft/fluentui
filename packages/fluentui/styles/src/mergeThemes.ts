@@ -121,7 +121,6 @@ export const mergeComponentStyles__DEV = (
 
   mergedKeys.forEach(slotName => {
     const slotA = styleParam => {
-      // originalTarget is always prepared, fn is guaranteed, _debug always exists
       const { _debug = undefined, ...styles } = callable(stylesA?.[slotName])(styleParam) || {};
 
       // new object required to prevent circular JSON structure error in <Debug />
