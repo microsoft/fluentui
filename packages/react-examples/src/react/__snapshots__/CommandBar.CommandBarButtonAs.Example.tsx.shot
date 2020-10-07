@@ -776,6 +776,35 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 }
                           >
                             <div
+                              className=
+
+                                  {
+                                    border: none;
+                                    box-shadow: inherit;
+                                    box-sizing: border-box;
+                                    height: 10px;
+                                    position: absolute;
+                                    transform: translateY(100%);
+                                    width: 18px;
+                                  }
+                              role="presentation"
+                            >
+                              <svg
+                                className=
+
+                                    {
+                                      display: block;
+                                      fill: #0078d4;
+                                    }
+                                height={10}
+                                width={18}
+                              >
+                                <polygon
+                                  points="0, 0 18, 0 9, 10"
+                                />
+                              </svg>
+                            </div>
+                            <div
                               aria-describedby="coachmark-desc1"
                               aria-labelledby="coachmark-label1"
                               className=
