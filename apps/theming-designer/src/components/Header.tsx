@@ -63,11 +63,13 @@ const codepenHeader = `const {
   PivotItem,
   PrimaryButton,
   Stack,
-  Toggle
-} = Fabric;\n\n`;
+  Toggle,
+} = FluentUIReact;\n\n`;
 const codepenSamples = `\n\n
+
+loadTheme(myTheme);\n
+
 const Content = () => {
-    Customizations.applySettings({ theme: myTheme });
     return (
       <Fabric applyThemeToBody>
         <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
