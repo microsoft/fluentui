@@ -656,6 +656,10 @@
       "inherits": "TreeItem",
       "parameters": [
         {
+          "ref": "$label",
+          "optional": true
+        },
+        {
           "overrides": "isExpanded",
           "ref": null
         },
