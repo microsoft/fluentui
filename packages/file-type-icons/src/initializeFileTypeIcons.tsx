@@ -60,7 +60,7 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     iconName = type + size + '_2x' + PNG_SUFFIX;
     src = `{${baseUrl} + ${size} + _2x/ + ${type} + .png}`;
     fileTypeIcons[iconName] = <img src={src} height="100%" width="100%" />;
-    _fileTypeIconsAsString[iconName] = `<img src={src} height="100%" width="100%" />`;
+    _fileTypeIconsAsString[iconName] = `<img src="${src}" height="100%" width="100%" />`;
 
     iconName = type + size + '_3x' + PNG_SUFFIX;
     src = `{${baseUrl} + ${size} + _3x/ + ${type} + .png}`;
