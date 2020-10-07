@@ -54,14 +54,15 @@ export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps> =
     target,
   } = props;
 
-  const calloutProps: ICalloutProps = React.useMemo(() => ({ ...defaultCalloutProps, ...setCalloutProps }), [
-    setCalloutProps,
-  ]);
+  const calloutProps: ICalloutProps & Required<Pick<ICalloutProps, 'theme'>> = React.useMemo(
+    () => ({ ...defaultCalloutProps, ...setCalloutProps, theme: theme! }),
+    [setCalloutProps, theme],
+  );
 
   const stylesProps: ITeachingBubbleStyleProps = {
     theme: theme!,
     isWide,
-    calloutProps: calloutProps as ICalloutProps & Required<Pick<ICalloutProps, 'theme'>>,
+    calloutProps,
     hasCloseButton,
   };
 
