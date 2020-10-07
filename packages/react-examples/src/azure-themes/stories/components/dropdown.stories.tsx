@@ -26,9 +26,16 @@ export const DropdownBasicExample: React.FunctionComponent = () => {
     <Stack tokens={stackTokens}>
       <Dropdown
         placeholder="Select an option"
+        label="Basic uncontrolled example with error"
+        options={options}
+        errorMessage={'Error message!'}
+        styles={dropdownStyles}
+      />
+
+      <Dropdown
+        placeholder="Select an option"
         label="Basic uncontrolled example"
         options={options}
-        // errorMessage={'Error message!'}
         styles={dropdownStyles}
       />
 

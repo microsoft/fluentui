@@ -94,9 +94,6 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
           '.ms-Fabric--isFocusVisible': {
             outline: '1px solid black !important',
           },
-          '::focus': {
-            // waiting on design team's input for focus behavior
-          },
           ':active': {
             backgroundColor: semanticColors.bodyBackground,
           },
