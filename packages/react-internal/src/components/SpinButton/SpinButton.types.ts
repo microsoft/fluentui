@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Position } from '../../utilities/positioning';
+import { Position } from '../../Positioning';
+import { IButtonStyles } from '../../Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
-import { KeyboardSpinDirection } from './SpinButton';
-import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../Button/Button.types';
 
 /**
@@ -21,6 +20,15 @@ export interface ISpinButton {
    * Sets focus to the control.
    */
   focus: () => void;
+}
+
+/**
+ * {@docCategory SpinButton}
+ */
+export enum KeyboardSpinDirection {
+  down = -1,
+  notSpinning = 0,
+  up = 1,
 }
 
 /**
@@ -163,25 +171,12 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styling for individual elements within the control.
    */
-  styles?: Partial<ISpinButtonStyles>;
-
-  /**
-   * Custom function for providing the classNames for the control. Can be used to provide
-   * all styles for the component instead of applying them on top of the default styles.
-   */
-  getClassNames?: (
-    theme: ITheme,
-    disabled: boolean,
-    isFocused: boolean,
-    keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition?: Position,
-    className?: string,
-  ) => ISpinButtonClassNames;
+  styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
 
   /**
    * Custom styles for the up arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -189,7 +184,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles for the down arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;
@@ -270,26 +265,6 @@ export interface ISpinButtonStyles {
   labelWrapper: IStyle;
 
   /**
-   * Style override when the label is positioned at the start.
-   */
-  labelWrapperStart: IStyle;
-
-  /**
-   * Style override when the label is positioned at the end.
-   */
-  labelWrapperEnd: IStyle;
-
-  /**
-   * Style override when the label is positioned at the top.
-   */
-  labelWrapperTop: IStyle;
-
-  /**
-   * Style override when the label is positioned at the bottom.
-   */
-  labelWrapperBottom: IStyle;
-
-  /**
    * Style for the icon.
    */
   icon: IStyle;
@@ -297,7 +272,7 @@ export interface ISpinButtonStyles {
   /**
    * Style for the icon when the control is disabled.
    */
-  iconDisabled: IStyle;
+  // iconDisabled: IStyle;
 
   /**
    * Style for the label text.
@@ -308,7 +283,7 @@ export interface ISpinButtonStyles {
    * Style for the label text when the control is disabled.
    * @deprecated Disabled styles taken care by `Label` component.
    */
-  labelDisabled: IStyle;
+  // labelDisabled: IStyle;
 
   /**
    * Style for the wrapper element of the input field and arrow buttons.
@@ -318,22 +293,22 @@ export interface ISpinButtonStyles {
   /**
    * Style override when label is positioned at the top/bottom.
    */
-  spinButtonWrapperTopBottom: IStyle;
+  // spinButtonWrapperTopBottom: IStyle;
 
   /**
    * Style override when control is enabled/hovered.
    */
-  spinButtonWrapperHovered: IStyle;
+  // spinButtonWrapperHovered: IStyle;
 
   /**
    * Style override when SpinButton is enabled/focused.
    */
-  spinButtonWrapperFocused: IStyle;
+  // spinButtonWrapperFocused: IStyle;
 
   /**
    * Style override when control is disabled.
    */
-  spinButtonWrapperDisabled: IStyle;
+  // spinButtonWrapperDisabled: IStyle;
 
   /**
    * Styles for the input.
@@ -343,12 +318,12 @@ export interface ISpinButtonStyles {
   /**
    * Style override for ::selection
    */
-  inputTextSelected: IStyle;
+  // inputTextSelected: IStyle;
 
   /**
    * Style override when control is disabled.
    */
-  inputDisabled: IStyle;
+  // inputDisabled: IStyle;
 
   /**
    * Styles for the arrowButtonsContainer
@@ -358,18 +333,17 @@ export interface ISpinButtonStyles {
   /**
    * Style override for the arrowButtonsContainer when control is disabled.
    */
-  arrowButtonsContainerDisabled: IStyle;
+  // arrowButtonsContainerDisabled: IStyle;
 }
 
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonClassNames {
-  root: string;
-  labelWrapper: string;
-  icon: string;
-  label: string;
-  spinButtonWrapper: string;
-  input: string;
-  arrowBox: string;
+export interface ISpinButtonStyleProps {
+  theme: ITheme;
+  className: string | undefined;
+  disabled: boolean;
+  isFocused: boolean;
+  keyboardSpinDirection: KeyboardSpinDirection;
+  labelPosition: Position;
 }

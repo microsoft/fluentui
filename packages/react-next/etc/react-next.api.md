@@ -23,7 +23,6 @@ import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IButton } from '@fluentui/react/lib/Button';
 import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -97,7 +96,6 @@ import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
 import { Point } from '@fluentui/react/lib/Utilities';
-import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { RectangleEdge } from '@fluentui/react/lib/Positioning';
@@ -2106,79 +2104,6 @@ export interface IShimmerStyles {
     shimmerWrapper?: IStyle;
 }
 
-// @public (undocumented)
-export interface ISpinButton {
-    focus: () => void;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
-    ariaValueNow?: number;
-    // (undocumented)
-    ariaValueText?: string;
-    className?: string;
-    componentRef?: IRefObject<ISpinButton>;
-    decrementButtonAriaLabel?: string;
-    decrementButtonIcon?: IIconProps;
-    defaultValue?: string;
-    disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles>;
-    iconButtonProps?: IButtonProps_2;
-    iconProps?: IIconProps;
-    incrementButtonAriaLabel?: string;
-    incrementButtonIcon?: IIconProps;
-    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
-    keytipProps?: IKeytipProps;
-    label?: string;
-    labelPosition?: Position;
-    max?: number;
-    min?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
-    precision?: number;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
-    theme?: ITheme;
-    title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles>;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyleProps {
-    // (undocumented)
-    className: string | undefined;
-    // (undocumented)
-    disabled: boolean;
-    // (undocumented)
-    isFocused: boolean;
-    // (undocumented)
-    keyboardSpinDirection: KeyboardSpinDirection;
-    // (undocumented)
-    labelPosition: Position;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyles {
-    arrowButtonsContainer: IStyle;
-    icon: IStyle;
-    input: IStyle;
-    label: IStyle;
-    labelWrapper: IStyle;
-    root: IStyle;
-    spinButtonWrapper: IStyle;
-}
-
 export { ISuggestionItemProps }
 
 export { ISuggestionModel }
@@ -2359,16 +2284,6 @@ export interface ITeachingBubbleSubComponentStyles {
 }
 
 // @public (undocumented)
-export enum KeyboardSpinDirection {
-    // (undocumented)
-    down = -1,
-    // (undocumented)
-    notSpinning = 0,
-    // (undocumented)
-    up = 1
-}
-
-// @public (undocumented)
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
@@ -2527,9 +2442,6 @@ export const ShimmerLine: React.FunctionComponent<IShimmerLineProps>;
 
 // @public (undocumented)
 export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
-
-// @public
-export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
 export { SuggestionActionType }
 
@@ -2759,6 +2671,7 @@ export * from "@fluentui/react/lib/SelectableOption";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
 export * from "@fluentui/react/lib/ShimmeredDetailsList";
+export * from "@fluentui/react/lib/SpinButton";
 export * from "@fluentui/react/lib/Spinner";
 export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
