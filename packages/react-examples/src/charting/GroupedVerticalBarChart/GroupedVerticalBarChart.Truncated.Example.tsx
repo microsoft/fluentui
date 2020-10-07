@@ -3,11 +3,11 @@ import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
-export class GroupedVerticalBarChartBasic2Example extends React.Component<Readonly<{}>, {}> {
+export class GroupedVerticalBarChartTruncatedExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'thirdGraph third Graphthir  dGraphthir dGraphthird Graphthird Graphthird Graphthird Graphthird Graph',
+        name: 'Data 1',
         series: [
           {
             key: 'series1',
@@ -28,7 +28,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
         ],
       },
       {
-        name: 'Ju St',
+        name: 'Data 2',
         series: [
           {
             key: 'series1',
@@ -50,7 +50,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
       },
 
       {
-        name: 'SecondONe IamALLL ',
+        name: 'Data 3',
         series: [
           {
             key: 'series1',
@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
         ],
       },
       {
-        name: 'kowsar shaik',
+        name: 'Data 4',
         series: [
           {
             key: 'series1',

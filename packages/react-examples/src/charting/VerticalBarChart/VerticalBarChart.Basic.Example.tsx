@@ -37,7 +37,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       {
         x: 40000,
         y: 13000,
-        legend: 'seventh',
+        legend: 'Fourth',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '88%',
@@ -45,7 +45,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       {
         x: 52000,
         y: 43000,
-        legend: 'Eighith',
+        legend: 'Fifth',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '71%',
@@ -53,7 +53,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       {
         x: 68000,
         y: 30000,
-        legend: 'Nighth',
+        legend: 'Sixth',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
@@ -61,7 +61,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       {
         x: 80000,
         y: 20000,
-        legend: 'Fourth',
+        legend: 'Seventh',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '87%',
@@ -69,7 +69,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       {
         x: 92000,
         y: 45000,
-        legend: 'tenth',
+        legend: 'Eighth',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
