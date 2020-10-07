@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fileicons as html strings",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "arkgupta@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T15:57:44.145Z"
+}
