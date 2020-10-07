@@ -16,7 +16,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -65,7 +65,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -93,12 +93,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -116,7 +116,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           y={-35}
         />
         <rect
-          aria-labelledby="callout1"
+          aria-labelledby="callout0"
           className=
 
               {
@@ -187,7 +187,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

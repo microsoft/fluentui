@@ -7,7 +7,7 @@ import {
   ChartHoverCard,
   ICustomizedCalloutData,
 } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@uifabric/styling';
 
 interface IStyledLineChartExampleState {
   width: number;
