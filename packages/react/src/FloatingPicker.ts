@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/FloatingPicker';
+export * from '@fluentui/react-internal/lib/FloatingPicker';

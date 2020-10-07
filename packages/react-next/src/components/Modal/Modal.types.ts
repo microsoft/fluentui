@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';

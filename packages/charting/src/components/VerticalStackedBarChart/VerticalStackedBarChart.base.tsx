@@ -2,9 +2,9 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, find, warnDeprecations } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { classNamesFunction, getId, getRTL, find, warnDeprecations } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
   CartesianChart,

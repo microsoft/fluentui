@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text } from '@fluentui/react';
 import { MenuButton } from './MenuButton';
 import { IMenuButton, IMenuButtonProps } from './MenuButton.types';
 

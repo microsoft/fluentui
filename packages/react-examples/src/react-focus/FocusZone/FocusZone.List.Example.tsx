@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, createArray, getRTLSafeKeyCode } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
-import { TextField } from 'office-ui-fabric-react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from '@fluentui/react';
+import { Link } from '@fluentui/react/lib/Link';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsRow, IColumn, Selection, SelectionMode } from '@fluentui/react/lib/DetailsList';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),

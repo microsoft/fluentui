@@ -6,7 +6,7 @@ import {
   Markdown,
   PropertiesTableSet,
 } from '@uifabric/example-app-base';
-import { KeytipLayer } from 'office-ui-fabric-react';
+import { KeytipLayer } from '@fluentui/react';
 
 import { ButtonExample } from './Button.Example';
 import { MenuButtonExample } from './MenuButton/MenuButton.Example';

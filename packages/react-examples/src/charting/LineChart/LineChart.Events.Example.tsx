@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 
 const calloutItemStyle = mergeStyles({

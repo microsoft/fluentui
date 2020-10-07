@@ -11,7 +11,7 @@ import {
   ISpinButtonStyles,
   ITextFieldStyles,
 } from '@fluentui/react-next';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 
 const props: ISpinButtonProps = {
   defaultValue: '0',

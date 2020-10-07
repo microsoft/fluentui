@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, FocusZone, IStackTokens, Stack } from 'office-ui-fabric-react';
+import { DefaultButton, FocusZone, IStackTokens, Stack } from '@fluentui/react';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 
 export interface ICollapsibleSectionControlledExampleState {

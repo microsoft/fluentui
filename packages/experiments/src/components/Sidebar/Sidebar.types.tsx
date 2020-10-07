@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IButtonProps, IButtonStyles } from '@fluentui/react/lib/Button';
+import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IComponentAs } from '@fluentui/react/lib/Utilities';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { SidebarColors } from './Sidebar.styles';
 
 export interface ISidebar {

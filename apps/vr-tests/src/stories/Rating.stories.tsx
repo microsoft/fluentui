@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Rating, RatingSize } from 'office-ui-fabric-react';
+import { Rating, RatingSize } from '@fluentui/react';
 
 storiesOf('Rating', module)
   .addDecorator(FabricDecorator)

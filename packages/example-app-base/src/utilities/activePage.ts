@@ -1,6 +1,6 @@
 import { INavPage } from '../components/Nav/index';
 import { removeAnchorLink } from './removeAnchorLink';
-import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { getDocument } from '@fluentui/react/lib/Utilities';
 
 const doc = getDocument();
 const _urlResolver = doc && doc.createElement('a');

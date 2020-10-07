@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
+import { KeytipData } from '@fluentui/react/lib/KeytipData';
 import { Label } from '../../utilities/factoryComponents';
 
 import { withSlots, getSlots } from '../../Foundation';

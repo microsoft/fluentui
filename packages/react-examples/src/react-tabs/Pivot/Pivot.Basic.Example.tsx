@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ILabelStyles, IStyleSet, Label } from 'office-ui-fabric-react';
+import { ILabelStyles, IStyleSet, Label } from '@fluentui/react';
 import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {

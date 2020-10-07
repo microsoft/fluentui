@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { IScrollContainerProps } from './ScrollContainer.types';
-import { css, Async, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
+import { css, Async, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
 

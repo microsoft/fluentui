@@ -1,1 +1,1 @@
-export * from './components/FloatingSuggestions/FloatingPeopleSuggestions';
+export * from './components/FloatingSuggestions/FloatingPeopleSuggestions/index';

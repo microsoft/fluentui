@@ -5,7 +5,7 @@ import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as Utilities from '../../Utilities';
-import * as positioning from 'office-ui-fabric-react/lib/utilities/positioning';
+import * as positioning from '@fluentui/react/lib/Positioning';
 import { safeCreate } from '@uifabric/test-utilities';
 import { isConformant } from '../../common/isConformant';
 

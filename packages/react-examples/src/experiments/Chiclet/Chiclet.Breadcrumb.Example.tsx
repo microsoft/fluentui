@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { Breadcrumb, IBreadcrumbItem } from '@fluentui/react/lib/Breadcrumb';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { TooltipHost, TooltipOverflowMode } from '@fluentui/react/lib/Tooltip';
+import { getRTL } from '@fluentui/react/lib/Utilities';
+import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

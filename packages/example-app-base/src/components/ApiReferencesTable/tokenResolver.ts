@@ -1,4 +1,4 @@
-import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ILinkToken } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { TokenResolver } from './ApiReferencesTableSet.types';
 import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 

@@ -1,4 +1,4 @@
-import { IStyle, ITheme, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { IStyle, ITheme, IStyleFunctionOrObject } from '@fluentui/react';
 
 export interface IMarkdownTableProps {
   className?: string;

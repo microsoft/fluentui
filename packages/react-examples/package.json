@@ -41,17 +41,20 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^7.9.0",
     "@fluentui/ie11-polyfills": "^0.1.2",
+    "@fluentui/react": "^7.142.0",
     "@fluentui/react-avatar": "^0.6.5",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-checkbox": "^0.3.9",
     "@fluentui/react-flex": "^0.1.2",
     "@fluentui/react-focus": "^7.16.9",
     "@fluentui/react-icons": "^0.3.5",
+    "@fluentui/react-internal": "^7.142.0",
     "@fluentui/react-image": "^0.6.10",
     "@fluentui/react-link": "^0.4.4",
     "@fluentui/react-next": "^8.0.0-alpha.118",
@@ -80,7 +83,6 @@
     "@uifabric/utilities": "^7.32.3",
     "@uifabric/variants": "^7.2.21",
     "d3-format": "^1.4.4",
-    "office-ui-fabric-react": "^7.142.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

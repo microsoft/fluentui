@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
-import { resetIds } from 'office-ui-fabric-react/lib/Utilities';
+import { resetIds } from '@fluentui/react/lib/Utilities';
 
 import * as DataUtil from '@uifabric/example-data';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
@@ -118,7 +118,7 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = ['office-ui-fabric-react', 'react-cards', 'react-focus', 'react-next'];
+const includedPackages = ['react', 'react-cards', 'react-focus', 'react-next'];
 
 declare const global: any;
 

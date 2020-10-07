@@ -1,5 +1,5 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
 export { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}

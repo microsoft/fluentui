@@ -45,12 +45,12 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^0.3.5",
+    "@fluentui/react-internal": "^7.142.0",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
-    "office-ui-fabric-react": "^7.142.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

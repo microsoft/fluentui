@@ -1,4 +1,4 @@
-import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { ITheme, IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 import { IPageProps } from '@uifabric/example-app-base/lib/index2';
 import { Platforms } from '../../../interfaces/Platforms';
 

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { IComponentAs } from 'office-ui-fabric-react';
+import { IComponentAs } from '@fluentui/react';
 
 export interface IBadgeProps {
   /**

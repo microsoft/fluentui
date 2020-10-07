@@ -8,7 +8,7 @@ import {
   mergeStyles,
   PrimaryButton,
   SelectableOptionMenuItemType,
-} from 'office-ui-fabric-react/lib/index';
+} from '@fluentui/react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },

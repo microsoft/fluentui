@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 import { IButtonStyles } from '../../compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from '@fluentui/react-internal/lib/components/Button/Button.types';
 
 /**
  * {@docCategory SpinButton}

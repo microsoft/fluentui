@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
-import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IMargins } from '../../types/index';
 import { ChartTypes, XAxisTypes } from '../../utilities/index';

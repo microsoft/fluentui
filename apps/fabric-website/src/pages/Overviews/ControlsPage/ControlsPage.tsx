@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Link } from 'office-ui-fabric-react';
+import { css, Link } from '@fluentui/react';
 import { Page, PlatformContext, INavPage, IPageSectionProps, IPageProps } from '@uifabric/example-app-base/lib/index2';
 import * as PageStyles from '@uifabric/example-app-base/lib/components/Page/Page.module.scss';
 import { SiteDefinition } from '../../../SiteDefinition/index';

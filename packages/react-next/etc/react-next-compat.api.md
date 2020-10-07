@@ -5,7 +5,7 @@
 ```ts
 
 
-export * from "office-ui-fabric-react/lib/Button";
+export * from "@fluentui/react/lib/Button";
 
 // (No @packageDocumentation comment for this package)
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export interface IWeeklyDayPickerInlineExpandableExampleState {
   selectedDate?: Date;

@@ -2,9 +2,9 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from 'office-ui-fabric-react';
+import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react';
 import { useId } from '@uifabric/react-hooks';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton } from '@fluentui/react';
 
 const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
   const targetId = useId();

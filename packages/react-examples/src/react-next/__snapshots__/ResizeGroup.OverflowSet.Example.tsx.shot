@@ -3623,8 +3623,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="ToggleBase60"
-        id="ToggleBase60-label"
+        htmlFor="Toggle60"
+        id="Toggle60-label"
       >
         Enable caching
       </label>
@@ -3638,7 +3638,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="ToggleBase60-label"
+          aria-labelledby="Toggle60-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -3689,7 +3689,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
           data-is-focusable={true}
           data-ktp-target={true}
-          id="ToggleBase60"
+          id="Toggle60"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"
@@ -3752,8 +3752,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="ToggleBase61"
-        id="ToggleBase61-label"
+        htmlFor="Toggle61"
+        id="Toggle61-label"
       >
         Enable onGrowData
       </label>
@@ -3767,7 +3767,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="ToggleBase61-label"
+          aria-labelledby="Toggle61-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -3818,7 +3818,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
           data-is-focusable={true}
           data-ktp-target={true}
-          id="ToggleBase61"
+          id="Toggle61"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"
@@ -3881,8 +3881,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="ToggleBase62"
-        id="ToggleBase62-label"
+        htmlFor="Toggle62"
+        id="Toggle62-label"
       >
         Buttons checked
       </label>
@@ -3896,7 +3896,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="ToggleBase62-label"
+          aria-labelledby="Toggle62-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -3947,7 +3947,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
           data-is-focusable={true}
           data-ktp-target={true}
-          id="ToggleBase62"
+          id="Toggle62"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"

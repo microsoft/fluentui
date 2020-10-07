@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/Facepile';
+export * from '@fluentui/react/lib/Facepile';

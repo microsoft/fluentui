@@ -1,4 +1,4 @@
-import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxStyleProps, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Modal } from 'office-ui-fabric-react/lib/Modal';
+import { Modal } from '@fluentui/react/lib/Modal';
 
 storiesOf('Modal', module)
   .addDecorator(FabricDecorator)

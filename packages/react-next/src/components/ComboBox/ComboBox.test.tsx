@@ -5,7 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { renderIntoDocument } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@uifabric/test-utilities';
