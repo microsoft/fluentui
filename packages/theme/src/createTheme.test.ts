@@ -4,7 +4,11 @@ import { DefaultFontStyles } from './fonts/index';
 
 describe('createTheme', () => {
   it('create default theme', () => {
-    expect(createTheme({})).toMatchSnapshot();
+    expect(createTheme()).toMatchSnapshot();
+  });
+
+  it('maps semantic colors', () => {
+    expect(createTheme({ palette: { themePrimary: 'red' } })).toMatchSnapshot();
   });
 
   it('applies defaultFontStyle to fonts and retains all other default values', () => {

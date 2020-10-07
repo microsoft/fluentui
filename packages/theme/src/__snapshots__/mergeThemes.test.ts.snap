@@ -107,7 +107,7 @@ Object {
   },
   "isInverted": false,
   "palette": Object {
-    "accent": "#0078d4",
+    "accent": "red",
     "black": "#000000",
     "blackTranslucent40": "rgba(0,0,0,.4)",
     "blue": "#0078d4",
@@ -202,7 +202,7 @@ Object {
     "disabledText": "#a19f9d",
     "errorBackground": "#FDE7E9",
     "errorIcon": "#A80000",
-    "errorText": "#a4262c",
+    "errorText": "yellow",
     "focusBorder": "#605e5c",
     "infoBackground": "#f3f2f1",
     "infoIcon": "#605e5c",

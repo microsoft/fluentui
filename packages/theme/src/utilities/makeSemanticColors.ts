@@ -4,109 +4,14 @@ import { IEffects, IPalette, ISemanticColors } from '../types/index';
  * We'll use these as fallbacks for semantic slots that the passed in theme did not define.
  * The caller must still mix in the customized semantic slots at the end.
  */
-export function makeSemanticColors<TResult = Partial<ISemanticColors>>(
-  palette: Partial<IPalette> | undefined,
-  effects: Partial<IEffects> | undefined,
-  semanticColors: Partial<ISemanticColors> | undefined,
+export function makeSemanticColors(
+  p: IPalette,
+  e: IEffects,
+  s: Partial<ISemanticColors> | undefined,
   isInverted: boolean,
-): TResult {
-  let result: Partial<ISemanticColors> = {
-    // DEFAULTS
-    bodyBackground: palette?.white,
-    bodyBackgroundHovered: palette?.neutralLighter,
-    bodyBackgroundChecked: palette?.neutralLight,
-    bodyStandoutBackground: palette?.neutralLighterAlt,
-    bodyFrameBackground: palette?.white,
-    bodyFrameDivider: palette?.neutralLight,
-    bodyText: palette?.neutralPrimary,
-    bodyTextChecked: palette?.black,
-    bodySubtext: palette?.neutralSecondary,
-    bodyDivider: palette?.neutralLight,
-    disabledBodyText: palette?.neutralTertiary,
-    disabledBodySubtext: palette?.neutralTertiaryAlt,
-    disabledBorder: palette?.neutralTertiaryAlt,
-    focusBorder: palette?.neutralSecondary,
-    cardStandoutBackground: palette?.white,
-    cardShadow: effects?.elevation4,
-    cardShadowHovered: '', // set in second pass
-    variantBorder: palette?.neutralLight,
-    variantBorderHovered: palette?.neutralTertiary,
-    defaultStateBackground: palette?.neutralLighterAlt,
-
-    // LINKS
-    actionLink: palette?.neutralPrimary,
-    actionLinkHovered: palette?.neutralDark,
-    link: palette?.themePrimary,
-    linkHovered: palette?.themeDarker,
-
-    // BUTTONS
-    buttonBackground: palette?.white,
-    buttonBackgroundChecked: palette?.neutralTertiaryAlt,
-    buttonBackgroundHovered: palette?.neutralLighter,
-    buttonBackgroundCheckedHovered: palette?.neutralLight,
-    buttonBackgroundPressed: palette?.neutralLight,
-    buttonBackgroundDisabled: palette?.neutralLighter,
-    buttonBorder: palette?.neutralSecondaryAlt,
-    buttonText: palette?.neutralPrimary,
-    buttonTextHovered: palette?.neutralDark,
-    buttonTextChecked: palette?.neutralDark,
-    buttonTextCheckedHovered: palette?.black,
-    buttonTextPressed: palette?.neutralDark,
-    buttonTextDisabled: palette?.neutralTertiary,
-    buttonBorderDisabled: palette?.neutralLighter,
-
-    primaryButtonBackground: palette?.themePrimary,
-    primaryButtonBackgroundHovered: palette?.themeDarkAlt,
-    primaryButtonBackgroundPressed: palette?.themeDark,
-    primaryButtonBackgroundDisabled: palette?.neutralLighter,
+): ISemanticColors {
+  const semanticColors: Partial<ISemanticColors> = {
     primaryButtonBorder: 'transparent',
-    primaryButtonText: palette?.white,
-    primaryButtonTextHovered: palette?.white,
-    primaryButtonTextPressed: palette?.white,
-    primaryButtonTextDisabled: palette?.neutralQuaternary,
-
-    accentButtonBackground: palette?.accent,
-    accentButtonText: palette?.white,
-
-    // INPUTS
-    inputBorder: palette?.neutralSecondary,
-    inputBorderHovered: palette?.neutralPrimary,
-    inputBackground: palette?.white,
-    inputBackgroundChecked: palette?.themePrimary,
-    inputBackgroundCheckedHovered: palette?.themeDark,
-    inputPlaceholderBackgroundChecked: palette?.themeLighter,
-    inputForegroundChecked: palette?.white,
-    inputIcon: palette?.themePrimary,
-    inputIconHovered: palette?.themeDark,
-    inputIconDisabled: palette?.neutralTertiary,
-    inputFocusBorderAlt: palette?.themePrimary,
-    smallInputBorder: palette?.neutralSecondary,
-    inputText: palette?.neutralPrimary,
-    inputTextHovered: palette?.neutralDark,
-    inputPlaceholderText: palette?.neutralSecondary,
-    disabledBackground: palette?.neutralLighter,
-    disabledText: palette?.neutralTertiary,
-    disabledSubtext: palette?.neutralQuaternary,
-
-    // LISTS
-    listBackground: palette?.white,
-    listText: palette?.neutralPrimary,
-    listItemBackgroundHovered: palette?.neutralLighter,
-    listItemBackgroundChecked: palette?.neutralLight,
-    listItemBackgroundCheckedHovered: palette?.neutralQuaternaryAlt,
-
-    listHeaderBackgroundHovered: palette?.neutralLighter,
-    listHeaderBackgroundPressed: palette?.neutralLight,
-
-    // MENUS
-    menuBackground: palette?.white,
-    menuDivider: palette?.neutralTertiaryAlt,
-    menuIcon: palette?.themePrimary,
-    menuHeader: palette?.themePrimary,
-    menuItemBackgroundHovered: palette?.neutralLighter,
-    menuItemBackgroundPressed: palette?.neutralLight,
-    menuItemText: palette?.neutralPrimary,
-    menuItemTextHovered: palette?.neutralDark,
 
     errorText: !isInverted ? '#a4262c' : '#F1707B',
 
@@ -127,17 +32,178 @@ export function makeSemanticColors<TResult = Partial<ISemanticColors>>(
     warningBackground: !isInverted ? '#FFF4CE' : '#433519',
     severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
     successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
-
-    // mix in customized semantic slots for second pass
-    ...semanticColors,
+    ...s,
   };
 
-  // second pass for self-referential slots
+  return mapSemanticColors(p, e, semanticColors, isInverted);
+}
+
+/**
+ * Map partial platte and effects to partial semantic colors.
+ */
+export function mapSemanticColors<TResult = Partial<ISemanticColors>>(
+  p: Partial<IPalette> | undefined,
+  e: Partial<IEffects> | undefined,
+  s: Partial<ISemanticColors> | undefined,
+  isInverted: boolean,
+): TResult {
+  let result: Partial<ISemanticColors> = {};
+
+  // map palette
+  const {
+    white,
+    black,
+    themePrimary,
+    themeDark,
+    themeDarker,
+    themeDarkAlt,
+    themeLighter,
+    neutralLight,
+    neutralLighter,
+    neutralDark,
+    neutralQuaternary,
+    neutralQuaternaryAlt,
+    neutralPrimary,
+    neutralSecondary,
+    neutralSecondaryAlt,
+    neutralTertiary,
+    neutralTertiaryAlt,
+    neutralLighterAlt,
+    accent,
+  } = p || {};
+
+  if (white) {
+    result.bodyBackground = white;
+    result.bodyFrameBackground = white;
+    result.accentButtonText = white;
+    result.buttonBackground = white;
+    result.primaryButtonText = white;
+    result.primaryButtonTextHovered = white;
+    result.primaryButtonTextPressed = white;
+    result.inputBackground = white;
+    result.inputForegroundChecked = white;
+    result.listBackground = white;
+    result.menuBackground = white;
+    result.cardStandoutBackground = white;
+  }
+  if (black) {
+    result.bodyTextChecked = black;
+    result.buttonTextCheckedHovered = black;
+  }
+  if (themePrimary) {
+    result.link = themePrimary;
+    result.primaryButtonBackground = themePrimary;
+    result.inputBackgroundChecked = themePrimary;
+    result.inputIcon = themePrimary;
+    result.inputFocusBorderAlt = themePrimary;
+    result.menuIcon = themePrimary;
+    result.menuHeader = themePrimary;
+  }
+  if (themeDark) {
+    result.primaryButtonBackgroundPressed = themeDark;
+    result.inputBackgroundCheckedHovered = themeDark;
+    result.inputIconHovered = themeDark;
+  }
+  if (themeDarker) {
+    result.linkHovered = themeDarker;
+  }
+  if (themeDarkAlt) {
+    result.primaryButtonBackgroundHovered = themeDarkAlt;
+  }
+  if (themeLighter) {
+    result.inputPlaceholderBackgroundChecked = themeLighter;
+  }
+  if (neutralLight) {
+    result.bodyBackgroundChecked = neutralLight;
+    result.bodyFrameDivider = neutralLight;
+    result.bodyDivider = neutralLight;
+    result.variantBorder = neutralLight;
+    result.buttonBackgroundCheckedHovered = neutralLight;
+    result.buttonBackgroundPressed = neutralLight;
+    result.listItemBackgroundChecked = neutralLight;
+    result.listHeaderBackgroundPressed = neutralLight;
+    result.menuItemBackgroundPressed = neutralLight;
+  }
+  if (neutralLighter) {
+    result.bodyBackgroundHovered = neutralLighter;
+    result.buttonBackgroundHovered = neutralLighter;
+    result.buttonBackgroundDisabled = neutralLighter;
+    result.buttonBorderDisabled = neutralLighter;
+    result.primaryButtonBackgroundDisabled = neutralLighter;
+    result.disabledBackground = neutralLighter;
+    result.listItemBackgroundHovered = neutralLighter;
+    result.listHeaderBackgroundHovered = neutralLighter;
+    result.menuItemBackgroundHovered = neutralLighter;
+  }
+  if (neutralQuaternary) {
+    result.primaryButtonTextDisabled = neutralQuaternary;
+    result.disabledSubtext = neutralQuaternary;
+  }
+  if (neutralQuaternaryAlt) {
+    result.listItemBackgroundCheckedHovered = neutralQuaternaryAlt;
+  }
+  if (neutralTertiary) {
+    result.disabledBodyText = neutralTertiary;
+    result.variantBorderHovered = s?.variantBorderHovered || neutralTertiary;
+    result.buttonTextDisabled = neutralTertiary;
+    result.inputIconDisabled = neutralTertiary;
+    result.disabledText = neutralTertiary;
+  }
+  if (neutralPrimary) {
+    result.bodyText = neutralPrimary;
+    result.actionLink = neutralPrimary;
+    result.buttonText = neutralPrimary;
+    result.inputBorderHovered = neutralPrimary;
+    result.inputText = neutralPrimary;
+    result.listText = neutralPrimary;
+    result.menuItemText = neutralPrimary;
+  }
+  if (neutralLighterAlt) {
+    result.bodyStandoutBackground = neutralLighterAlt;
+    result.defaultStateBackground = neutralLighterAlt;
+  }
+  if (neutralDark) {
+    result.actionLinkHovered = neutralDark;
+    result.buttonTextHovered = neutralDark;
+    result.buttonTextChecked = neutralDark;
+    result.buttonTextPressed = neutralDark;
+    result.inputTextHovered = neutralDark;
+    result.menuItemTextHovered = neutralDark;
+  }
+  if (neutralSecondary) {
+    result.bodySubtext = neutralSecondary;
+    result.focusBorder = neutralSecondary;
+    result.inputBorder = neutralSecondary;
+    result.smallInputBorder = neutralSecondary;
+    result.inputPlaceholderText = neutralSecondary;
+  }
+  if (neutralSecondaryAlt) {
+    result.buttonBorder = neutralSecondaryAlt;
+  }
+  if (neutralTertiaryAlt) {
+    result.disabledBodySubtext = neutralTertiaryAlt;
+    result.disabledBorder = neutralTertiaryAlt;
+    result.buttonBackgroundChecked = neutralTertiaryAlt;
+    result.menuDivider = neutralTertiaryAlt;
+  }
+  if (accent) {
+    result.accentButtonBackground = accent;
+  }
+
+  // map effects
+  if (e?.elevation4) {
+    result.cardShadow = e.elevation4;
+  }
+  if (!isInverted && e?.elevation8) {
+    result.cardShadowHovered = e.elevation8;
+  } else if (result.variantBorderHovered) {
+    result.cardShadowHovered = '0 0 1px ' + result.variantBorderHovered;
+  }
+
   result = {
     ...result,
-    cardShadowHovered:
-      semanticColors?.cardShadowHovered ||
-      (!isInverted ? effects?.elevation8 : '0 0 1px ' + result.variantBorderHovered),
+    // mix in customized semantic slots
+    ...s,
   };
 
   return result as TResult;

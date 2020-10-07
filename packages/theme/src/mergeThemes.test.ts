@@ -1,10 +1,11 @@
 import { createTheme } from './createTheme';
-import { FluentTheme } from './FluentTheme';
 import { mergeThemes } from './mergeThemes';
 
 describe('mergeThemes', () => {
   it('can merge themes', () => {
-    expect(mergeThemes(FluentTheme, { palette: { themePrimary: 'red' } })).toMatchSnapshot();
+    expect(
+      mergeThemes(createTheme({ semanticColors: { errorText: 'yellow' } }), { palette: { themePrimary: 'red' } }),
+    ).toMatchSnapshot();
   });
 
   it('can merge stylesheets', () => {

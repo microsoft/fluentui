@@ -1,11 +1,21 @@
 import { merge } from '@uifabric/utilities';
-import { IFontStyles, ISemanticColors, PartialTheme, Theme } from './types/index';
-import { makeSemanticColors } from './utilities/makeSemanticColors';
+import { IFontStyles, PartialTheme, Theme } from './types/index';
+import { mapSemanticColors } from './utilities/makeSemanticColors';
 
 export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Theme {
-  const mergedTheme = merge<Theme | PartialTheme>({}, theme, partialTheme) as Theme;
+  const newTheme = { ...partialTheme };
+  newTheme.semanticColors = mapSemanticColors(
+    newTheme.palette,
+    newTheme.effects,
+    newTheme.semanticColors,
+    newTheme.isInverted === undefined ? theme.isInverted : newTheme.isInverted,
+  );
 
-  mergedTheme.semanticColors = getSemanticColors(mergedTheme, partialTheme);
+  const mergedTheme = merge<Theme | PartialTheme>({}, theme, newTheme) as Theme;
+
+  if (newTheme.palette?.themePrimary && !newTheme.palette?.accent) {
+    mergedTheme.palette.accent = newTheme.palette.themePrimary;
+  }
 
   if (partialTheme.defaultFontStyle) {
     for (const fontStyle of Object.keys(mergedTheme.fonts) as (keyof IFontStyles)[]) {
@@ -24,22 +34,4 @@ export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Them
   }
 
   return mergedTheme;
-}
-
-function getSemanticColors(mergedTheme: Theme, newTheme: PartialTheme): ISemanticColors {
-  const newSemanticColors = makeSemanticColors(
-    newTheme.palette,
-    newTheme.effects,
-    newTheme?.semanticColors,
-    !!mergedTheme?.isInverted,
-  );
-
-  // remove properties with undefined value
-  (Object.keys(newSemanticColors) as (keyof ISemanticColors)[]).forEach(key => {
-    if (newSemanticColors[key] === undefined) {
-      delete newSemanticColors[key];
-    }
-  });
-
-  return { ...mergedTheme.semanticColors, ...newSemanticColors };
 }
