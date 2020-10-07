@@ -8,7 +8,7 @@ import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.
 
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
-const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
+const GroupedVerticalTruncatedExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,10 +18,10 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
         componentName="GroupedVerticalBarChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="Grouped Vertical Bar Chart basic" code={GroupedVerticalBasicExampleCode}>
+            <ExampleCard title="Grouped Vertical Bar Chart Basic" code={GroupedVerticalBasicExampleCode}>
               <GroupedVerticalBarChartBasicExample />
             </ExampleCard>
-            <ExampleCard title="Grouped Vertical Bar Chart basic 2" code={GroupedVerticalBasic2ExampleCode}>
+            <ExampleCard title="Grouped Vertical Bar Chart Truncated" code={GroupedVerticalTruncatedExampleCode}>
               <GroupedVerticalBarChartTruncatedExample />
             </ExampleCard>
             <ExampleCard title="Grouped Vertical Bar Chart Styled" code={GroupedVerticalStyledExampleCode}>

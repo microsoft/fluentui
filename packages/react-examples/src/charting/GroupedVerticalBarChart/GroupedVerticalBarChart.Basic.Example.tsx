@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'Data 5',
+        name: 'Name is not truncated by default.',
         series: [
           {
             key: 'series1',
