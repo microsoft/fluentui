@@ -278,12 +278,12 @@ $default-inactiveScale: 0.875;
     left: 0;
     bottom: 0;
     right: 0;
-    margin: calc(-2 * var(--avatar-activeRingWidth));
-    border-width: var(--avatar-activeRingWidth);
+    margin: calc(-2 * var(--avatar-activeRingWidth, 0));
+    border-width: var(--avatar-activeRingWidth, 0);
     border-color: var(--avatar-activeRingColor, $default-activeRingColor);
     border-style: solid;
     border-radius: inherit;
-    box-shadow: var(--avatar-activeShadow);
+    box-shadow: var(--avatar-activeShadow, none);
     transition: margin $anim-ultraSlow $anim-fastEase, opacity $anim-slower $anim-nullEasing;
   }
 }
