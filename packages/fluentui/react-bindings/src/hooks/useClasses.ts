@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import hash from '@emotion/hash';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import {
