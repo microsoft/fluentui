@@ -57,14 +57,14 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React
       className={classNames.root}
       ref={mergedRef}
     >
-      {overflowSide === 'start' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
+      {overflowSide === 'start' && showOverflow && <OverflowButton {...props} className={classNames.overflowButton} />}
       {items &&
         items.map((item, i) => (
-          <div key={item.key} className={classNames.item}>
+          <div className={classNames.item} key={item.key}>
             {onRenderItem(item)}
           </div>
         ))}
-      {overflowSide === 'end' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
+      {overflowSide === 'end' && showOverflow && <OverflowButton {...props} className={classNames.overflowButton} />}
     </div>
   );
 });

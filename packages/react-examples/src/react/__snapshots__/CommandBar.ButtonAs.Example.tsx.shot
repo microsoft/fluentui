@@ -830,11 +830,10 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
           </div>
           <div
             className=
-                ms-CommandBar-primaryCommand
+                ms-OverflowSet-overflowButton
                 {
-                  align-items: stretch;
-                  display: flex;
-                  flex-grow: 1;
+                  display: inherit;
+                  flex-shrink: 0;
                 }
           >
             <button
