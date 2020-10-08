@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ToggleButtonProps } from './ToggleButton.types';
 import { useToggleButton } from './useToggleButton';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useButtonClasses } from '../Button/useButtonClasses';
 import { useToggleButtonClasses } from './useToggleButtonClasses';
 
 /**
@@ -11,7 +10,6 @@ import { useToggleButtonClasses } from './useToggleButtonClasses';
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const { render, state } = useToggleButton(props, ref);
 
-  useButtonClasses(state);
   useToggleButtonClasses(state);
   useInlineTokens(state, '--button');
 

@@ -71,6 +71,58 @@ describe('makeVariantClasses', () => {
     );
   });
 
+  it('can extend previously created variant classes', () => {
+    const useBarClasses = makeVariantClasses({
+      name: 'Bar',
+      prefix: '--bar',
+
+      styles: {
+        root: {
+          background: 'var(--bar-background)',
+        },
+      },
+
+      variants: {
+        root: {
+          background: 'red',
+        },
+      },
+    });
+
+    const useBazClasses = makeVariantClasses({
+      extends: useBarClasses,
+      styles: {
+        root: {
+          color: 'green',
+        },
+      },
+      variants: {
+        root: {
+          background: 'blue',
+        },
+      },
+    });
+
+    const Baz = () => {
+      const state = { className: '' };
+
+      useBazClasses(state);
+
+      return <div className={state.className} />;
+    };
+
+    safeMount(
+      <MergeStylesProvider>
+        <Baz />
+      </MergeStylesProvider>,
+      () => {
+        expect(_stylesheet.getRules()).toEqual(
+          '.Bar-0{background:var(--bar-background);color:green;--bar-background:blue;}',
+        );
+      },
+    );
+  });
+
   it('can respect themed variant overrides', () => {
     const theme = ({
       components: {
