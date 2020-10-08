@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Popup } from './Popup';
 
 /**
  * {@docCategory Popup}
  */
-export interface IPopupProps extends React.HTMLAttributes<Popup> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Aria role for popup
    */
@@ -27,9 +26,9 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
 
   /**
    * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
-   * handle escape keypresses and call this. The event will be stopped/canceled.
+   * handle escape key press and call this. The event will be stopped/canceled.
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
 
   /**
    *  Optional class name for the root popup div.
