@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating react-internal SpinButton to handle onChange.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-08T18:29:41.503Z"
+}
