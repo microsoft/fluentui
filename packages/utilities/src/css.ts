@@ -49,5 +49,8 @@ export function css(...args: ICssInput[]): string {
     }
   }
 
-  return classes.join(' ');
+  return classes
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
