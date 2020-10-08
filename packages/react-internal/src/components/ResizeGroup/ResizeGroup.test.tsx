@@ -4,6 +4,7 @@ import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
+import { isConformant } from '../../common/isConformant';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -47,6 +48,18 @@ describe('ResizeGroup', () => {
         )
         .toJSON(),
     ).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: ResizeGroup,
+    displayName: 'ResizeGroup',
+    requiredProps: {
+      data: { content: 5 },
+      onRenderData: () => {
+        return;
+      },
+      onReduceData: onReduceScalingData,
+    },
   });
 
   it('renders the result of onRenderData', () => {
