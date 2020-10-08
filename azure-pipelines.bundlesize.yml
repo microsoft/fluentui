@@ -1,18 +1,23 @@
+pr:
+  - master
+
+trigger:
+  - master
+
 jobs:
   - job: build
     pool:
-      name: Hosted VS2017
-      demands: npm
+      vmImage: 'windows-2019'
     steps:
       - task: NodeTool@0
         inputs:
-          versionSpec: '10.x'
+          versionSpec: '12.x'
         displayName: 'Install Node.js'
 
-      - script: yarn
+      - script: npx midgard-yarn install
         displayName: yarn
 
-      - script: yarn buildto test-bundles
+      - script: yarn build --to test-bundles --no-cache --grouped
         displayName: yarn build to test-bundles
 
       - script: yarn workspace test-bundles bundle:size

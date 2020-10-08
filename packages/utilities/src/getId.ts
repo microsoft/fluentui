@@ -32,7 +32,7 @@ export function getId(prefix?: string): string {
 
   let index = _global[CURRENT_ID_PROPERTY]++;
 
-  return (prefix || DEFAULT_ID_STRING) + index;
+  return (prefix === undefined ? DEFAULT_ID_STRING : prefix) + index;
 }
 
 /**

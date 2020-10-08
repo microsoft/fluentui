@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
 import { ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
-import * as classes from '../utils/Button.stories.scss';
+import * as classes from '../Button.stories.scss';
 
 const menuProps = {
   items: [
@@ -20,15 +20,15 @@ const Menu = (defaultSlotType: string, props: IContextualMenuProps) => {
   return <ContextualMenu {...props} {...menuProps} />;
 };
 
-const MenuButtonVariants = (props: MenuButtonProps) => (
+const MenuButtonExamples = (props: MenuButtonProps) => (
   <div className={classes.hStack}>
     <MenuButton {...props} icon="O" menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" primary menu={Menu}>
+    <MenuButton {...props} icon="O" disabled menu={Menu}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} icon="O" disabled menu={Menu}>
+    <MenuButton {...props} icon="O" primary menu={Menu}>
       Hello, world
     </MenuButton>
     <MenuButton {...props} icon="O" primary disabled menu={Menu}>
@@ -43,53 +43,36 @@ const MenuButtonVariants = (props: MenuButtonProps) => (
   </div>
 );
 
-export const MenuButtonCss = () => (
+export const MenuButtons = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
-    <MenuButtonVariants />
+    <MenuButtonExamples />
 
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
-    <MenuButtonVariants circular />
+    <MenuButtonExamples circular />
 
     <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
     <div className={classes.vStack}>
-      <MenuButton fluid menu={Menu}>
-        Hello, world
-      </MenuButton>
-      <MenuButton fluid primary menu={Menu}>
-        Hello, world
-      </MenuButton>
-      <MenuButton fluid disabled menu={Menu}>
-        Hello, world
-      </MenuButton>
-      <MenuButton fluid primary disabled menu={Menu}>
-        Hello, world
-      </MenuButton>
-      <MenuButton fluid ghost menu={Menu}>
-        Hello, world
-      </MenuButton>
-      <MenuButton fluid ghost disabled menu={Menu}>
-        Hello, world
-      </MenuButton>
+      <MenuButtonExamples fluid />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
-    <MenuButtonVariants iconOnly />
+    <MenuButtonExamples iconOnly />
 
     <Text>A button can be both `circular` and `iconOnly`.</Text>
-    <MenuButtonVariants circular iconOnly />
+    <MenuButtonExamples circular iconOnly />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
-    <MenuButtonVariants loading />
+    <MenuButtonExamples loading />
 
     <Text variant="xLarge">A button can be sized.</Text>
     <div className={classes.vStack}>
-      <MenuButtonVariants size="smallest" />
-      <MenuButtonVariants size="smaller" />
-      <MenuButtonVariants size="small" />
-      <MenuButtonVariants size="large" />
-      <MenuButtonVariants size="larger" />
-      <MenuButtonVariants size="largest" />
+      <MenuButtonExamples size="smallest" />
+      <MenuButtonExamples size="smaller" />
+      <MenuButtonExamples size="small" />
+      <MenuButtonExamples size="large" />
+      <MenuButtonExamples size="larger" />
+      <MenuButtonExamples size="largest" />
     </div>
   </Stack>
 );
