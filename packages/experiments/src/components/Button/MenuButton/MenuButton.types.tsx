@@ -1,7 +1,13 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
-import { IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  ISlottableProps,
+  ISlotProp,
+  IStyleableComponentProps,
+} from '@uifabric/foundation';
 import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import {

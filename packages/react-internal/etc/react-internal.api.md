@@ -4528,36 +4528,29 @@ export interface IProgressIndicatorStyles {
 
 // @public (undocumented)
 export interface IRating {
+    rating: number;
 }
 
 // @public
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
-    // @deprecated
-    ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    defaultRating?: number;
+    disabled?: boolean;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
     // @deprecated
     min?: number;
-    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (rating: number) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingState {
-    // (undocumented)
-    rating: number | null | undefined;
 }
 
 // @public (undocumented)
@@ -4622,7 +4615,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -4734,12 +4727,11 @@ export interface ISearchBox {
 }
 
 // @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     clearButtonProps?: IButtonProps;
-    componentRef?: IRefObject<ISearchBox>;
-    // @deprecated
+    componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
@@ -4755,14 +4747,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxState {
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
     value?: string;
 }
 
@@ -4925,10 +4909,6 @@ export interface ISeparatorStyles {
 }
 
 // @public (undocumented)
-export interface IShimmer {
-}
-
-// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -5056,11 +5036,9 @@ export interface IShimmerLineStyles {
 }
 
 // @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
-    // @deprecated (undocumented)
-    componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
@@ -5068,11 +5046,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
     theme?: ITheme;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerState {
-    contentLoaded?: boolean;
 }
 
 // @public
@@ -6629,13 +6602,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-    constructor(props: IRatingProps);
-    // (undocumented)
-    static defaultProps: IRatingProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const RatingBase: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
 export enum RatingSize {
@@ -6658,24 +6625,10 @@ export enum RectangleEdge {
 }
 
 // @public (undocumented)
-export const ResizeGroup: typeof ResizeGroupBase;
+export const ResizeGroup: React.FunctionComponent<IResizeGroupProps>;
 
 // @public (undocumented)
-export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
-    constructor(props: IResizeGroupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IResizeGroupProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    remeasure(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
-    }
+export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {
@@ -6787,17 +6740,7 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
-    constructor(props: ISearchBoxProps);
-    // (undocumented)
-    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
-    focus(): void;
-    hasFocus(): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
-}
+export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
 export enum SelectableOptionMenuItemType {
@@ -6893,17 +6836,7 @@ export enum Shade {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
-    constructor(props: IShimmerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IShimmerProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IShimmerProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
@@ -7484,6 +7417,8 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 
 export * from "@fluentui/react-focus";
+export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/theme";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";

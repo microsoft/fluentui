@@ -55,7 +55,6 @@ import { IPersonaProps } from '@fluentui/react-internal/lib/Persona';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRawStyle } from '@fluentui/react/lib/Styling';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
@@ -453,22 +452,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     focusStack: string[];
 };
 
-// @public
-export const getMeasurementCache: () => {
-    getCachedMeasurement: (data: any) => number | undefined;
-    addMeasurementToCache: (data: any, measurement: number) => void;
-};
-
-// @public
-export const getNextResizeGroupStateProvider: (measurementCache?: {
-    getCachedMeasurement: (data: any) => number | undefined;
-    addMeasurementToCache: (data: any, measurement: number) => void;
-}) => {
-    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
-    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
-    getInitialResizeGroupState: (data: any) => IResizeGroupState;
-};
-
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
@@ -722,11 +705,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
-}
-
-// @public
-export interface ICircle extends IShimmerElement {
-    height?: number;
 }
 
 // @public (undocumented)
@@ -1257,12 +1235,6 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     isClickableOutsideFocusTrap?: boolean;
 }
 
-// @public
-export interface IGap extends IShimmerElement {
-    height?: number;
-    width?: number | string;
-}
-
 export { IGenericItem }
 
 export { IInputProps }
@@ -1307,12 +1279,6 @@ export interface ILayerStyleProps {
 export interface ILayerStyles {
     content?: IStyle;
     root?: IStyle;
-}
-
-// @public
-export interface ILine extends IShimmerElement {
-    height?: number;
-    width?: number | string;
 }
 
 // @public (undocumented)
@@ -1445,170 +1411,6 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 }
 
 // @public (undocumented)
-export interface IRating {
-    rating: number;
-}
-
-// @public
-export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    allowZeroStars?: boolean;
-    ariaLabelFormat?: string;
-    componentRef?: IRefObject<IRating>;
-    defaultRating?: number;
-    disabled?: boolean;
-    // (undocumented)
-    getAriaLabel?: (rating: number, max: number) => string;
-    icon?: string;
-    max?: number;
-    // @deprecated
-    min?: number;
-    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
-    rating?: number;
-    readOnly?: boolean;
-    size?: RatingSize;
-    styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
-    theme?: ITheme;
-    unselectedIcon?: string;
-}
-
-// @public (undocumented)
-export interface IRatingStyleProps {
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    readOnly?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IRatingStyles {
-    // (undocumented)
-    labelText: IStyle;
-    // (undocumented)
-    ratingButton: IStyle;
-    // (undocumented)
-    ratingFocusZone: IStyle;
-    // (undocumented)
-    ratingStar: IStyle;
-    // (undocumented)
-    ratingStarBack: IStyle;
-    // (undocumented)
-    ratingStarFront: IStyle;
-    // (undocumented)
-    ratingStarIsLarge: IStyle;
-    // (undocumented)
-    ratingStarIsSmall: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    rootIsLarge: IStyle;
-    // (undocumented)
-    rootIsSmall: IStyle;
-}
-
-// @public (undocumented)
-export interface IResizeGroup {
-    remeasure(): void;
-}
-
-// @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: IRefObject<IResizeGroup>;
-    data: any;
-    dataDidRender?: (renderedData: any) => void;
-    direction?: ResizeGroupDirection;
-    onGrowData?: (prevData: any) => any;
-    onReduceData: (prevData: any) => any;
-    onRenderData: (data: any) => JSX.Element;
-    // @deprecated
-    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IResizeGroupState {
-    dataToMeasure?: any;
-    measureContainer?: boolean;
-    renderedData?: any;
-    resizeDirection?: 'grow' | 'shrink';
-}
-
-// @public (undocumented)
-export interface IResizeGroupStyleProps {
-    className?: string;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IResizeGroupStyles {
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface ISearchBox {
-    focus(): void;
-    hasFocus(): boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabel?: string;
-    className?: string;
-    clearButtonProps?: IButtonProps;
-    componentRef?: React.Ref<ISearchBox>;
-    defaultValue?: string;
-    disableAnimation?: boolean;
-    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
-    // @deprecated
-    labelText?: string;
-    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
-    // @deprecated
-    onChanged?: (newValue: any) => void;
-    onClear?: (ev?: any) => void;
-    onEscape?: (ev?: any) => void;
-    onSearch?: (newValue: any) => void;
-    placeholder?: string;
-    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
-    theme?: ITheme;
-    underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disableAnimation?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
-    hasInput?: boolean;
-    // (undocumented)
-    theme: ITheme;
-    // (undocumented)
-    underlined?: boolean;
-}
-
-// @public (undocumented)
-export interface ISearchBoxStyles {
-    // (undocumented)
-    clearButton?: IStyle;
-    // (undocumented)
-    field?: IStyle;
-    // (undocumented)
-    icon?: IStyle;
-    // (undocumented)
-    iconContainer?: IStyle;
-    // (undocumented)
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
     // (undocumented)
     onCopyItem: (item: T) => void;
@@ -1640,165 +1442,6 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
     // (undocumented)
     removeMenuItemText?: string;
-}
-
-// @public (undocumented)
-export interface IShimmerCircle {
-}
-
-// @public
-export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerCircle>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export type IShimmerCircleStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerCircleStyles {
-    root?: IStyle;
-    svg?: IStyle;
-}
-
-// @public
-export interface IShimmerColors {
-    background?: string;
-    shimmer?: string;
-    shimmerWave?: string;
-}
-
-// @public
-export interface IShimmerElement {
-    height?: number;
-    type: ShimmerElementType;
-    verticalAlign?: 'top' | 'center' | 'bottom';
-    width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerElementsGroup {
-}
-
-// @public
-export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
-    backgroundColor?: string;
-    componentRef?: IRefObject<IShimmerElementsGroup>;
-    flexWrap?: boolean;
-    rowHeight?: number;
-    shimmerElements?: IShimmerElement[];
-    styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
-    theme?: ITheme;
-    width?: string;
-}
-
-// @public
-export interface IShimmerElementsGroupStyleProps {
-    flexWrap?: boolean;
-    theme: ITheme;
-}
-
-// @public
-export interface IShimmerElementsGroupStyles {
-    root?: IStyle;
-}
-
-// @public (undocumented)
-export interface IShimmerGap {
-}
-
-// @public
-export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerGap>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export type IShimmerGapStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerGapStyles {
-    root?: IStyle;
-}
-
-// @public (undocumented)
-export interface IShimmerLine {
-}
-
-// @public
-export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerLine>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export type IShimmerLineStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerLineStyles {
-    bottomLeftCorner?: IStyle;
-    bottomRightCorner?: IStyle;
-    root?: IStyle;
-    topLeftCorner?: IStyle;
-    topRightCorner?: IStyle;
-}
-
-// @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
-    ariaLabel?: string;
-    className?: string;
-    customElementsGroup?: React.ReactNode;
-    isDataLoaded?: boolean;
-    shimmerColors?: IShimmerColors;
-    shimmerElements?: IShimmerElement[];
-    styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export interface IShimmerStyleProps {
-    className?: string;
-    isDataLoaded?: boolean;
-    shimmerColor?: string;
-    shimmerWaveColor?: string;
-    theme: ITheme;
-    transitionAnimationInterval?: number;
-}
-
-// @public
-export interface IShimmerStyles {
-    dataWrapper?: IStyle;
-    root?: IStyle;
-    screenReaderText?: IStyle;
-    shimmerGradient?: IStyle;
-    shimmerWrapper?: IStyle;
 }
 
 // @public (undocumented)
@@ -2076,11 +1719,6 @@ export { ListPeoplePicker }
 
 export { ListPeoplePickerBase }
 
-// @public (undocumented)
-export const MeasuredContext: React.Context<{
-    isMeasured: boolean;
-}>;
-
 export { MemberListPeoplePicker }
 
 // @public (undocumented)
@@ -2120,41 +1758,7 @@ export { PeoplePickerItemSuggestionBase }
 // @public
 export const Popup: React.FunctionComponent<IPopupProps>;
 
-// @public (undocumented)
-export const Rating: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export const RatingBase: React.FunctionComponent<IRatingProps>;
-
-// @public (undocumented)
-export enum RatingSize {
-    // (undocumented)
-    Large = 1,
-    // (undocumented)
-    Small = 0
-}
-
-// @public (undocumented)
-export const ResizeGroup: import("react").FunctionComponent<import("./ResizeGroup.types").IResizeGroupProps>;
-
-// @public (undocumented)
-export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps>;
-
-// @public (undocumented)
-export enum ResizeGroupDirection {
-    // (undocumented)
-    horizontal = 0,
-    // (undocumented)
-    vertical = 1
-}
-
 export { ResponsiveMode }
-
-// @public (undocumented)
-export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
-
-// @public (undocumented)
-export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
@@ -2163,50 +1767,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     // (undocumented)
     protected renderItems: () => JSX.Element[];
 }
-
-// @public (undocumented)
-export const Shimmer: React.FunctionComponent<IShimmerProps>;
-
-// @public (undocumented)
-export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
-
-// @public (undocumented)
-export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
-
-// @public (undocumented)
-export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
-
-// @public
-export enum ShimmerElementsDefaultHeights {
-    circle = 24,
-    gap = 16,
-    line = 16
-}
-
-// @public (undocumented)
-export const ShimmerElementsGroup: React.FunctionComponent<IShimmerElementsGroupProps>;
-
-// @public (undocumented)
-export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps>;
-
-// @public
-export enum ShimmerElementType {
-    circle = 2,
-    gap = 3,
-    line = 1
-}
-
-// @public (undocumented)
-export const ShimmerGap: React.FunctionComponent<IShimmerGapProps>;
-
-// @public (undocumented)
-export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps>;
-
-// @public (undocumented)
-export const ShimmerLine: React.FunctionComponent<IShimmerLineProps>;
-
-// @public (undocumented)
-export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
 
 // @public
 export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
@@ -2435,10 +1995,14 @@ export * from "@fluentui/react/lib/Panel";
 export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
+export * from "@fluentui/react/lib/Rating";
+export * from "@fluentui/react/lib/ResizeGroup";
 export * from "@fluentui/react/lib/ScrollablePane";
+export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
+export * from "@fluentui/react/lib/Shimmer";
 export * from "@fluentui/react/lib/ShimmeredDetailsList";
 export * from "@fluentui/react/lib/Spinner";
 export * from "@fluentui/react/lib/Stack";

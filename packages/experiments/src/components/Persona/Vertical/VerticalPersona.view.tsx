@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
-import { getSlots, withSlots } from '../../../Foundation';
+import { getSlots, withSlots } from '@uifabric/foundation';
 import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
 
