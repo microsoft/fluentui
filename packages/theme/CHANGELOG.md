@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.3.0)
+
+Tue, 06 Oct 2020 17:31:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.1..@fluentui/theme_v1.3.0)
+
+### Minor changes
+
+- Updating typings to add `Variants`. ([PR #15375](https://github.com/microsoft/fluentui/pull/15375) by dzearing@hotmail.com)
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.1)
 

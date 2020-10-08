@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.4)
+
+Tue, 06 Oct 2020 17:31:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.3..@uifabric/utilities_v7.32.4)
+
+### Patches
+
+- getId now can take in a blank string as prefix. ([PR #15375](https://github.com/microsoft/fluentui/pull/15375) by dzearing@hotmail.com)
 
 ## [7.32.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.3)
 

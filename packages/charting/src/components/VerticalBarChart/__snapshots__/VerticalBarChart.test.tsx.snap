@@ -249,6 +249,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     className=
 
                         {
+                          background-image: ;
                           border-color: #8a8886;
                           border: 1px solid;
                           height: 12px;
@@ -333,6 +334,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     className=
 
                         {
+                          background-image: ;
                           border-color: #8a8886;
                           border: 1px solid;
                           height: 12px;

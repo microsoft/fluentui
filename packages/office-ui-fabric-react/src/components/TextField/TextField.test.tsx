@@ -230,6 +230,37 @@ describe('TextField basic props', () => {
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
   });
 
+  it('should render reveal password button if showRevealPassword=true', () => {
+    const component = renderer.create(<TextField type="password" canRevealPassword={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should not render reveal password button if showRevealPassword=false', () => {
+    const component = renderer.create(<TextField type="password" canRevealPassword={false} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should not render reveal password button if showRevealPassword is not set', () => {
+    const component = renderer.create(<TextField type="password" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should toggle reveal password on reveal button click', () => {
+    wrapper = mount(<TextField type="password" canRevealPassword={true} />);
+    const input = wrapper.find('input');
+    const reveal = wrapper.find('button');
+
+    input.simulate('input', mockEvent('Password123$'));
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('text');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
+  });
+
   it('should not give an aria-labelledby if no label is provided', () => {
     wrapper = mount(<TextField />);
 

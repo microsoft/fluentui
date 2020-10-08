@@ -25,6 +25,7 @@ export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' 
   styles,
   shadowOptions: {
     delegatesFocus: true,
+    mode: 'closed',
   },
 })
 export class FluentButton extends Button {

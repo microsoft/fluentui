@@ -25,6 +25,7 @@ export type TextFieldAppearance = 'filled' | 'outline';
   styles,
   shadowOptions: {
     delegatesFocus: true,
+    mode: 'closed',
   },
 })
 export class FluentTextField extends TextField {

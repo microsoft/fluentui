@@ -15,6 +15,9 @@ import { TreeViewStyles as styles } from './tree-view.styles';
   name: 'fluent-tree-view',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentTreeView extends TreeView {}
 

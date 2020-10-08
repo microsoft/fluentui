@@ -15,6 +15,9 @@ import { SwitchStyles as styles } from './switch.styles';
   name: 'fluent-switch',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentSwitch extends Switch {}
 

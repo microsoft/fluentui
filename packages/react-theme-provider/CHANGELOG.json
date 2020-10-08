@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Tue, 06 Oct 2020 17:31:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.4",
+      "version": "0.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ThemeProvider: RecursivePartial now correctly works.",
+            "author": "dzearing@hotmail.com",
+            "commit": "f155a92488fbe53ebeadd9b5b153d35a753e5647",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/react-theme-provider_v0.14.3",
       "version": "0.14.3",

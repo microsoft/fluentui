@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 06 Oct 2020 17:31:19 GMT",
+      "tag": "@uifabric/utilities_v7.32.4",
+      "version": "7.32.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getId now can take in a blank string as prefix.",
+            "author": "dzearing@hotmail.com",
+            "commit": "ad2fdb05f33e0dd41c5671d02aff22a027fc4097",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2020 12:25:45 GMT",
       "tag": "@uifabric/utilities_v7.32.3",
       "version": "7.32.3",

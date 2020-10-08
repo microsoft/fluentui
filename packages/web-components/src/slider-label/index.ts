@@ -15,6 +15,9 @@ import { SliderLabelStyles as styles } from './slider-label.styles';
   name: 'fluent-slider-label',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentSliderLabel extends SliderLabel {}
 
