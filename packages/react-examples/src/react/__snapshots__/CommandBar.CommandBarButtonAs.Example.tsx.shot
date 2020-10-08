@@ -48,11 +48,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
       >
         <div
           className=
+              ms-OverflowSet
               ms-CommandBar-primaryCommand
               {
                 align-items: stretch;
                 display: flex;
                 flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
               }
           role="group"
         >

@@ -49,11 +49,14 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
         >
           <div
             className=
+                ms-OverflowSet
                 ms-CommandBar-primaryCommand
                 {
                   align-items: stretch;
                   display: flex;
                   flex-grow: 1;
+                  flex-wrap: nowrap;
+                  position: relative;
                 }
             role="group"
           >
@@ -987,11 +990,14 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
           </div>
           <div
             className=
+                ms-OverflowSet
                 ms-CommandBar-secondaryCommand
                 {
                   align-items: stretch;
                   display: flex;
                   flex-shrink: 0;
+                  flex-wrap: nowrap;
+                  position: relative;
                 }
             role="group"
           >

@@ -51,11 +51,11 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React
 
   return (
     <div
+      {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
       role={role || 'group'}
       aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
       className={classNames.root}
       ref={mergedRef}
-      {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
     >
       {overflowSide === 'start' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
       {items &&

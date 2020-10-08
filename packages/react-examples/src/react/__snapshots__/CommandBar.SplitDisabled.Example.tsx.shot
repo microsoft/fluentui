@@ -49,11 +49,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
         >
           <div
             className=
+                ms-OverflowSet
                 ms-CommandBar-primaryCommand
                 {
                   align-items: stretch;
                   display: flex;
                   flex-grow: 1;
+                  flex-wrap: nowrap;
+                  position: relative;
                 }
             role="group"
           >

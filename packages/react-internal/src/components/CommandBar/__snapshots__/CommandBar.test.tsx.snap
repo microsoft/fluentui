@@ -49,11 +49,14 @@ exports[`CommandBar renders commands correctly 1`] = `
       >
         <div
           className=
+              ms-OverflowSet
               ms-CommandBar-primaryCommand
               {
                 align-items: stretch;
                 display: flex;
                 flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
               }
           role="group"
         >
@@ -395,11 +398,14 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
       >
         <div
           className=
+              ms-OverflowSet
               ms-CommandBar-primaryCommand
               {
                 align-items: stretch;
                 display: flex;
                 flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
               }
           role="group"
         >
