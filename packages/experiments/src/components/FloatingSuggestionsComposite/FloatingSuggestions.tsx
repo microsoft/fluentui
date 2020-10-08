@@ -34,8 +34,6 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     pickerSuggestionsProps,
     selectedFooterIndex,
     selectedHeaderIndex,
-    suggestionsFooterContainerAriaLabel,
-    suggestionsHeaderContainerAriaLabel,
   } = props;
 
   const hidePicker = (ev: React.MouseEvent): void => {
@@ -80,8 +78,8 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             selectedHeaderIndex={selectedHeaderIndex}
             suggestionsHeaderText={suggestionsHeaderText}
             pickerWidth={pickerWidth}
-            suggestionsHeaderContainerAriaLabel={suggestionsHeaderContainerAriaLabel}
-            suggestionsFooterContainerAriaLabel={suggestionsFooterContainerAriaLabel}
+            suggestionsHeaderContainerAriaLabel={pickerSuggestionsProps?.suggestionsHeaderContainerAriaLabel}
+            suggestionsFooterContainerAriaLabel={pickerSuggestionsProps?.suggestionsFooterContainerAriaLabel}
           />
         </Callout>
       ) : null}

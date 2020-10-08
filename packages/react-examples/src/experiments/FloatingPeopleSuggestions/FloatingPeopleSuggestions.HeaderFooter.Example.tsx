@@ -3,10 +3,10 @@ import {
   IFloatingSuggestionItemProps,
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
+  IBaseFloatingPickerHeaderFooterProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@uifabric/example-data';
-import { IBaseFloatingPickerSuggestionProps } from '@fluentui/react/lib/FloatingPicker';
 import { useConst } from '@uifabric/react-hooks';
 import { Autofill } from '@fluentui/react';
 import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
@@ -64,7 +64,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
 
   const input = React.useRef<Autofill>(null);
 
-  const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
+  const suggestionProps: IBaseFloatingPickerHeaderFooterProps = useConst(() => {
     return {
       headerItemsProps: [
         {

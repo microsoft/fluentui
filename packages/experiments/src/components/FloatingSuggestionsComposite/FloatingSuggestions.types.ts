@@ -7,7 +7,7 @@ import {
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
-import { IBaseFloatingPickerSuggestionProps } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { ISuggestionsControlProps } from '../FloatingSuggestions/Suggestions/Suggestions.types';
 
 /**
  * FloatingSuggestions component props
@@ -129,14 +129,34 @@ export interface IBaseFloatingSuggestionsProps<T> {
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+  /**
+   * The properties used for selectable headers and footers
+   * takes precedence over onRenderHeader and onRenderFooter
+   */
+  pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
 
-  selectedFooterIndex?: number;
+  /**
+   * Index to indicate the selected header
+   * This logic must be driven by parent component
+   * Should be used with the headerItemProps on the pickerSuggestionProps
+   */
   selectedHeaderIndex?: number;
 
-  suggestionsHeaderContainerAriaLabel?: string;
-  suggestionsFooterContainerAriaLabel?: string;
+  /**
+   * Index to indicate the selected footer
+   * This logic must be driven by parent component
+   * Should be used with the footerItemProps on the pickerSuggestionProps
+   */
+  selectedFooterIndex?: number;
 }
+
+export type IBaseFloatingPickerHeaderFooterProps = Pick<
+  ISuggestionsControlProps<any>,
+  | 'suggestionsHeaderContainerAriaLabel'
+  | 'headerItemsProps'
+  | 'footerItemsProps'
+  | 'suggestionsFooterContainerAriaLabel'
+>;
 
 /**
  * FLoatingSuggestions style props

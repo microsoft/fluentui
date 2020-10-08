@@ -246,7 +246,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           break;
         case KeyCodes.enter:
         case KeyCodes.tab:
-          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0)) {
+          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
             ev.preventDefault();
             ev.stopPropagation();
             if (focusItemIndex >= 0) {
