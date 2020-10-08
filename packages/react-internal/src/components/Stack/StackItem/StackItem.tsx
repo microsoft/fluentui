@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createComponent, getSlots } from '../../../Foundation';
+import { withSlots, createComponent, getSlots } from '@uifabric/foundation';
 import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
 import { StackItemStyles as styles } from './StackItem.styles';
 
