@@ -21,6 +21,7 @@ interface IFocusTrapZoneInternalState {
   previouslyFocusedElementOutsideTrapZone: HTMLElement | undefined;
   previouslyFocusedElementInTrapZone: HTMLElement | undefined;
   hasFocus: boolean;
+  unmodalize: (() => void) | undefined;
 }
 
 const COMPONENT_NAME = 'FocusTrapZone';
@@ -59,6 +60,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     disposeFocusHandler: undefined,
     disposeClickHandler: undefined,
     hasFocus: false,
+    unmodalize: undefined,
   }));
 
   const {
@@ -294,8 +296,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
   // Updates focusStack and the previouslyFocusedElementOutsideTrapZone on prop change.
   React.useEffect(() => {
-    let unmodalize: (() => void) | undefined;
-
     const newForceFocusInsideTrap = forceFocusInsideTrap !== undefined ? forceFocusInsideTrap : true;
     const newDisabled = disabled !== undefined ? disabled : false;
 
@@ -313,14 +313,14 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       if (!disableFirstFocus && !elementContains(root.current, internalState.previouslyFocusedElementOutsideTrapZone)) {
         focus();
       }
-      if (!unmodalize && root.current && enableAriaHiddenSiblings) {
-        unmodalize = modalize(root.current);
+      if (!internalState.unmodalize && root.current && enableAriaHiddenSiblings) {
+        internalState.unmodalize = modalize(root.current);
       }
     } else if (!newForceFocusInsideTrap || newDisabled) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       returnFocusToInitiator();
-      if (unmodalize) {
-        unmodalize();
+      if (internalState.unmodalize) {
+        internalState.unmodalize();
       }
     }
 
@@ -341,9 +341,12 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       internalState.disposeFocusHandler();
       internalState.disposeFocusHandler = undefined;
     }
+    if (internalState.unmodalize) {
+      internalState.unmodalize();
+    }
     // Dispose of element references so the DOM Nodes can be garbage-collected
-    internalState.previouslyFocusedElementInTrapZone = undefined;
-    internalState.previouslyFocusedElementOutsideTrapZone = undefined;
+    delete internalState.previouslyFocusedElementInTrapZone;
+    delete internalState.previouslyFocusedElementOutsideTrapZone;
   });
 
   useComponentRef(componentRef, internalState.previouslyFocusedElementInTrapZone, focus);
