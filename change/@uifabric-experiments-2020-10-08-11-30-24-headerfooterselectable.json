@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add selectable headers and footers to FloatingSuggestionsComposite",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-08T18:29:40.044Z"
+}
