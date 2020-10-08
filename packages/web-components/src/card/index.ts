@@ -1,5 +1,5 @@
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
-import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
+import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
 import { FluentDesignSystemProvider } from '../design-system-provider';
@@ -36,7 +36,7 @@ export class FluentCard extends FluentDesignSystemProvider
     const parsedColor = parseColorHexRGB(this.backgroundColor);
 
     if (parsedColor !== null) {
-      this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
+      this.neutralPalette = createColorPalette(parsedColor);
     }
   }
 
@@ -54,7 +54,7 @@ export class FluentCard extends FluentDesignSystemProvider
     const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
 
     if (parsedColor !== null) {
-      this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64); // This palette should *probably* come from the parent. Also, I'm not sure that
+      this.neutralPalette = createColorPalette(parsedColor);
       this.backgroundColor = this.cardBackgroundColor;
     }
   }
