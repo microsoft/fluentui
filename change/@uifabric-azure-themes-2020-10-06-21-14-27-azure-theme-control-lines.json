@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Control outlines, pivot indentation, label weight",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T04:13:13.772Z"
+}

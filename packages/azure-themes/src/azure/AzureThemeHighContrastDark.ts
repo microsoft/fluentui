@@ -131,6 +131,9 @@ export const AzureThemeHighContrastDark: ITheme = createTheme({
       fontFamily: StyleConstants.fontFamily,
       fontSize: FontSizes.size13,
     },
+    large: {
+      fontSize: FontSizes.size14,
+    },
   },
   palette: {
     themePrimary: HighContrastDarkSemanticColors.controlOutlines.accent,
