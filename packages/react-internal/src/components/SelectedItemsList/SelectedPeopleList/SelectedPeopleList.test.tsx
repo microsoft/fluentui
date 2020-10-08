@@ -1,11 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList';
 
 describe('SelectedPeopleList', () => {
   describe('Element keying behavior', () => {
+    isConformant({
+      Component: SelectedPeopleList,
+      displayName: 'SelectedPeopleList',
+      disabledTests: [`has-top-level-file`],
+    });
+
     it('renders keyed personas when there is no context menu', () => {
       const r = renderer.create(<SelectedPeopleList />);
       expect(r.root.instance).toBeInstanceOf(SelectedPeopleList);
@@ -56,7 +63,7 @@ describe('SelectedPeopleList', () => {
       const getEditingItemText = (i: IExtendedPersonaProps) => i.text || 'lmao oops';
       const ref = React.createRef<SelectedPeopleList>();
 
-      // editingitem has unlisted constraints on being mounted on an actual DOM.
+      // EditingItem has unlisted constraints on being mounted on an actual DOM.
       // so we can't render it with `renderer` and expect the internal state of the EditingItem to be
       // initialized
       const root = document.createElement('div');

@@ -7,6 +7,7 @@
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
+import { BaseSelectedItemsList } from '@fluentui/react/lib/SelectedItemsList';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
@@ -21,12 +22,14 @@ import { IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IButton } from '@fluentui/react/lib/Button';
 import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
@@ -36,7 +39,6 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
-import { IObjectWithKey } from '@fluentui/react/lib/Utilities';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
@@ -274,65 +276,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
 export { BasePeoplePicker }
 
-// @public (undocumented)
-export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
-}
-
 export { BasePicker }
 
 export { BasePickerListBelow }
-
-// @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
-    constructor(basePickerProps: P);
-    // (undocumented)
-    addItems: (items: T[]) => void;
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
-    // (undocumented)
-    protected copyItems(items: T[]): void;
-    // (undocumented)
-    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
-        items: any[];
-    } | null;
-    // (undocumented)
-    hasSelectedItems(): boolean;
-    // (undocumented)
-    highlightedItems(): T[];
-    // (undocumented)
-    readonly items: T[];
-    // (undocumented)
-    protected onChange(items?: T[]): void;
-    // (undocumented)
-    onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
-    // (undocumented)
-    protected onItemChange: (changedItem: T, index: number) => void;
-    // (undocumented)
-    protected onSelectionChanged: () => void;
-    // (undocumented)
-    removeItem: (item: T) => void;
-    // (undocumented)
-    removeItemAt: (index: number) => void;
-    // (undocumented)
-    removeItems: (itemsToRemove: any[]) => void;
-    // (undocumented)
-    removeSelectedItems(): void;
-    // (undocumented)
-    render(): any;
-    // (undocumented)
-    protected renderItems: () => JSX.Element[];
-    // (undocumented)
-    replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
-    // (undocumented)
-    protected root: HTMLElement;
-    // (undocumented)
-    protected readonly selection: Selection;
-    // (undocumented)
-    unselectAll(): void;
-    updateItems(items: T[], focusIndex?: number): void;
-}
 
 // @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
@@ -420,15 +366,6 @@ export { DropdownMenuItemType }
 
 // @public (undocumented)
 export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
-}
-
-// @public (undocumented)
-export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-    constructor(props: ISelectedPeopleItemProps);
-    // (undocumented)
-    protected persona: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    render(): JSX.Element;
 }
 
 export { FabricAutofill }
@@ -597,38 +534,6 @@ export { IBasePickerStyleProps }
 export { IBasePickerStyles }
 
 export { IBasePickerSuggestionsProps }
-
-// @public (undocumented)
-export interface IBaseSelectedItemsList<T> {
-    // (undocumented)
-    addItems: (items: T[]) => void;
-    items: T[] | undefined;
-}
-
-// @public (undocumented)
-export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
-    canRemoveItem?: (item: T) => boolean;
-    // (undocumented)
-    componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
-    createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
-    defaultSelectedItems?: T[];
-    onChange?: (items?: T[]) => void;
-    onCopyItems?: (items: T[]) => string;
-    // @deprecated
-    onItemDeleted?: (deletedItem: T) => void;
-    onItemsDeleted?: (deletedItems: T[]) => void;
-    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
-    onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
-    removeButtonAriaLabel?: string;
-    selectedItems?: T[];
-    selection?: Selection;
-}
-
-// @public (undocumented)
-export interface IBaseSelectedItemsListState<T> {
-    // (undocumented)
-    items: T[];
-}
 
 // @public (undocumented)
 export interface ICalloutContentStyleProps {
@@ -1161,47 +1066,7 @@ export interface IDropdownSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
-    // (undocumented)
-    floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
-    // (undocumented)
-    getEditingItemText?: (item: IExtendedPersonaProps) => string;
-    // (undocumented)
-    onEditingComplete: (oldItem: any, newItem: any) => void;
-    // (undocumented)
-    onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
-}
-
-// @public (undocumented)
-export interface IEditingSelectedPeopleItemStyles {
-    // (undocumented)
-    input: IStyle;
-    // (undocumented)
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface IEditingSelectedPeopleItemStylesProps {
-}
-
-// @public (undocumented)
 export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
-}
-
-// @public (undocumented)
-export interface IExtendedPersonaProps extends IPersonaProps {
-    // (undocumented)
-    blockRecipientRemoval?: boolean;
-    // (undocumented)
-    canExpand?: boolean;
-    // (undocumented)
-    isEditing?: boolean;
-    // (undocumented)
-    isValid: boolean;
-    // (undocumented)
-    key?: React.Key;
-    // (undocumented)
-    shouldBlockSelection?: boolean;
 }
 
 export { IFabricAutofill }
@@ -1370,12 +1235,6 @@ export { IPeoplePickerItemSelectedSubComponentStyles }
 
 export { IPeoplePickerItemSharedProps }
 
-// @public (undocumented)
-export interface IPeoplePickerItemState {
-    // (undocumented)
-    contextualMenuVisible: boolean;
-}
-
 export { IPeoplePickerItemSuggestionProps }
 
 export { IPeoplePickerItemSuggestionStyleProps }
@@ -1405,40 +1264,6 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
-}
-
-// @public (undocumented)
-export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
-    // (undocumented)
-    onCopyItem: (item: T) => void;
-}
-
-// @public (undocumented)
-export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps> {
-    // (undocumented)
-    onExpandItem?: () => void;
-    // (undocumented)
-    renderPersonaCoin?: IRenderFunction<IPersonaProps>;
-    // (undocumented)
-    renderPrimaryText?: IRenderFunction<IPersonaProps>;
-}
-
-// @public (undocumented)
-export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPersonaProps> {
-    // (undocumented)
-    copyMenuItemText?: string;
-    // (undocumented)
-    editMenuItemText?: string;
-    // (undocumented)
-    floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
-    // (undocumented)
-    getEditingItemText?: (item: IExtendedPersonaProps) => string;
-    // (undocumented)
-    onExpandGroup?: (item: IExtendedPersonaProps) => void;
-    // (undocumented)
-    onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
-    // (undocumented)
-    removeMenuItemText?: string;
 }
 
 export { ISuggestionItemProps }
@@ -1598,14 +1423,6 @@ export { PeoplePickerItemSuggestionBase }
 export const Popup: React.FunctionComponent<IPopupProps>;
 
 export { ResponsiveMode }
-
-// @public
-export class SelectedPeopleList extends BasePeopleSelectedItemsList {
-    // (undocumented)
-    static defaultProps: any;
-    // (undocumented)
-    protected renderItems: () => JSX.Element[];
-}
 
 export { SuggestionActionType }
 
@@ -1824,6 +1641,7 @@ export * from "@fluentui/react/lib/ResizeGroup";
 export * from "@fluentui/react/lib/ScrollablePane";
 export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
+export * from "@fluentui/react/lib/SelectedItemsList";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
 export * from "@fluentui/react/lib/Shimmer";
