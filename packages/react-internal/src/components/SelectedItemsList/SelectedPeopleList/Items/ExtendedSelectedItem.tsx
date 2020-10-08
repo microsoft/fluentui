@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '../../../Button';
+import { IconButton } from '../../../../Button';
 import { css, getId, initializeComponentRef } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
