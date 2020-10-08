@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps -- will come back and fix separately */
 import * as React from 'react';
-import { IconButton } from '../../compat/Button';
+import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -15,7 +15,7 @@ import {
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
-import { Position } from '@fluentui/react/lib/Positioning';
+import { Position } from '../../Positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
@@ -391,8 +391,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
         </div>
       )}
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (keytipAttributes: any): JSX.Element => (
+        {(keytipAttributes: any): JSX.Element => (
           <div
             {...nativeProps}
             className={classNames.spinButtonWrapper}
