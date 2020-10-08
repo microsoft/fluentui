@@ -12,6 +12,13 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
   const { semanticColors } = theme;
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
+    root: {
+      selectors: {
+        '.ms-Dropdown': {
+          height: StyleConstants.inputControlHeight,
+        },
+      },
+    },
     callout: {
       border: 'none',
       boxShadow: Depths.depth8,
@@ -40,7 +47,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdown: [
       {
         fontSize: theme.fonts.medium.fontSize,
-        height: StyleConstants.inputControlHeight,
+        height: StyleConstants.dropDownItemHeight,
         color: semanticColors.inputText,
         border: 0,
         selectors: {
