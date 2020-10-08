@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Moving react-next SelectedPeopleList to react-internal package.",
+  "comment": "Moving react-next SelectedItemsList to react-internal package.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
