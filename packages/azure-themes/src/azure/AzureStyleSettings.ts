@@ -164,7 +164,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
       styles: SearchBoxStyles,
     },
     SpinButton: {
-      styles: SpinButtonStyles(theme),
+      styles: SpinButtonStyles,
     },
     TagPicker: {
       styles: TagPickerStyles,

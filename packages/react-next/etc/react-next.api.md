@@ -23,7 +23,6 @@ import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IButton } from '@fluentui/react/lib/Button';
 import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -33,7 +32,6 @@ import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pick
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
-import { IImageProps } from '@fluentui/react/lib/Image';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
@@ -55,7 +53,6 @@ import { IPersonaProps } from '@fluentui/react-internal/lib/Persona';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRawStyle } from '@fluentui/react/lib/Styling';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
@@ -95,7 +92,6 @@ import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
-import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
@@ -708,11 +704,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     theme?: ITheme;
 }
 
-// @public
-export interface ICircle extends IShimmerElement {
-    height?: number;
-}
-
 // @public (undocumented)
 export interface IComboBox {
     dismissMenu: () => void;
@@ -1241,12 +1232,6 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     isClickableOutsideFocusTrap?: boolean;
 }
 
-// @public
-export interface IGap extends IShimmerElement {
-    height?: number;
-    width?: number | string;
-}
-
 export { IGenericItem }
 
 export { IInputProps }
@@ -1291,12 +1276,6 @@ export interface ILayerStyleProps {
 export interface ILayerStyles {
     content?: IStyle;
     root?: IStyle;
-}
-
-// @public
-export interface ILine extends IShimmerElement {
-    height?: number;
-    width?: number | string;
 }
 
 // @public (undocumented)
@@ -1501,238 +1480,6 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     removeMenuItemText?: string;
 }
 
-// @public (undocumented)
-export interface IShimmerCircle {
-}
-
-// @public
-export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerCircle>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export type IShimmerCircleStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerCircleStyles {
-    root?: IStyle;
-    svg?: IStyle;
-}
-
-// @public
-export interface IShimmerColors {
-    background?: string;
-    shimmer?: string;
-    shimmerWave?: string;
-}
-
-// @public
-export interface IShimmerElement {
-    height?: number;
-    type: ShimmerElementType;
-    verticalAlign?: 'top' | 'center' | 'bottom';
-    width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerElementsGroup {
-}
-
-// @public
-export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
-    backgroundColor?: string;
-    componentRef?: IRefObject<IShimmerElementsGroup>;
-    flexWrap?: boolean;
-    rowHeight?: number;
-    shimmerElements?: IShimmerElement[];
-    styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
-    theme?: ITheme;
-    width?: string;
-}
-
-// @public
-export interface IShimmerElementsGroupStyleProps {
-    flexWrap?: boolean;
-    theme: ITheme;
-}
-
-// @public
-export interface IShimmerElementsGroupStyles {
-    root?: IStyle;
-}
-
-// @public (undocumented)
-export interface IShimmerGap {
-}
-
-// @public
-export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerGap>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export type IShimmerGapStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerGapStyles {
-    root?: IStyle;
-}
-
-// @public (undocumented)
-export interface IShimmerLine {
-}
-
-// @public
-export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
-    // @deprecated
-    borderStyle?: IRawStyle;
-    componentRef?: IRefObject<IShimmerLine>;
-    height?: number;
-    styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export type IShimmerLineStyleProps = {
-    theme: ITheme;
-    height?: number;
-    borderStyle?: IRawStyle;
-};
-
-// @public
-export interface IShimmerLineStyles {
-    bottomLeftCorner?: IStyle;
-    bottomRightCorner?: IStyle;
-    root?: IStyle;
-    topLeftCorner?: IStyle;
-    topRightCorner?: IStyle;
-}
-
-// @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
-    ariaLabel?: string;
-    className?: string;
-    customElementsGroup?: React.ReactNode;
-    isDataLoaded?: boolean;
-    shimmerColors?: IShimmerColors;
-    shimmerElements?: IShimmerElement[];
-    styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
-    theme?: ITheme;
-    width?: number | string;
-}
-
-// @public
-export interface IShimmerStyleProps {
-    className?: string;
-    isDataLoaded?: boolean;
-    shimmerColor?: string;
-    shimmerWaveColor?: string;
-    theme: ITheme;
-    transitionAnimationInterval?: number;
-}
-
-// @public
-export interface IShimmerStyles {
-    dataWrapper?: IStyle;
-    root?: IStyle;
-    screenReaderText?: IStyle;
-    shimmerGradient?: IStyle;
-    shimmerWrapper?: IStyle;
-}
-
-// @public (undocumented)
-export interface ISpinButton {
-    focus: () => void;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
-    ariaValueNow?: number;
-    // (undocumented)
-    ariaValueText?: string;
-    className?: string;
-    componentRef?: IRefObject<ISpinButton>;
-    decrementButtonAriaLabel?: string;
-    decrementButtonIcon?: IIconProps;
-    defaultValue?: string;
-    disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles>;
-    iconButtonProps?: IButtonProps_2;
-    iconProps?: IIconProps;
-    incrementButtonAriaLabel?: string;
-    incrementButtonIcon?: IIconProps;
-    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
-    keytipProps?: IKeytipProps;
-    label?: string;
-    labelPosition?: Position;
-    max?: number;
-    min?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
-    precision?: number;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
-    theme?: ITheme;
-    title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles>;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyleProps {
-    // (undocumented)
-    className: string | undefined;
-    // (undocumented)
-    disabled: boolean;
-    // (undocumented)
-    isFocused: boolean;
-    // (undocumented)
-    keyboardSpinDirection: KeyboardSpinDirection;
-    // (undocumented)
-    labelPosition: Position;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyles {
-    arrowButtonsContainer: IStyle;
-    icon: IStyle;
-    input: IStyle;
-    label: IStyle;
-    labelWrapper: IStyle;
-    root: IStyle;
-    spinButtonWrapper: IStyle;
-}
-
 export { ISuggestionItemProps }
 
 export { ISuggestionModel }
@@ -1838,91 +1585,6 @@ export { ITagItemSuggestionStyles }
 export { ITagPickerProps }
 
 // @public (undocumented)
-export interface ITeachingBubble {
-    focus(): void;
-}
-
-// @public
-export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
-    ariaDescribedBy?: string;
-    ariaLabelledBy?: string;
-    calloutProps?: ICalloutProps;
-    componentRef?: IRefObject<ITeachingBubble>;
-    focusTrapZoneProps?: IFocusTrapZoneProps;
-    footerContent?: string | JSX.Element;
-    hasCloseButton?: boolean;
-    // @deprecated (undocumented)
-    hasCloseIcon?: boolean;
-    hasCondensedHeadline?: boolean;
-    hasSmallHeadline?: boolean;
-    headline?: string;
-    illustrationImage?: IImageProps;
-    isWide?: boolean;
-    onDismiss?: (ev?: any) => void;
-    primaryButtonProps?: IButtonProps;
-    secondaryButtonProps?: IButtonProps;
-    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
-    target?: Target;
-    // @deprecated (undocumented)
-    targetElement?: HTMLElement;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutProps?: ICalloutContentStyleProps;
-    primaryButtonClassName?: string;
-    secondaryButtonClassName?: string;
-    hasCloseButton?: boolean;
-    hasHeadline?: boolean;
-};
-
-// @public (undocumented)
-export interface ITeachingBubbleStyles {
-    // (undocumented)
-    body: IStyle;
-    // (undocumented)
-    bodyContent: IStyle;
-    // (undocumented)
-    closeButton: IStyle;
-    // (undocumented)
-    content: IStyle;
-    // (undocumented)
-    footer: IStyle;
-    // (undocumented)
-    header: IStyle;
-    // (undocumented)
-    headline: IStyle;
-    // (undocumented)
-    imageContent: IStyle;
-    // (undocumented)
-    primaryButton: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    secondaryButton: IStyle;
-    // (undocumented)
-    subComponentStyles?: ITeachingBubbleSubComponentStyles;
-    // (undocumented)
-    subText: IStyle;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleSubComponentStyles {
-    callout: IStyleFunctionOrObject<any, any>;
-}
-
-// @public (undocumented)
-export enum KeyboardSpinDirection {
-    // (undocumented)
-    down = -1,
-    // (undocumented)
-    notSpinning = 0,
-    // (undocumented)
-    up = 1
-}
-
-// @public (undocumented)
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
@@ -1989,53 +1651,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     // (undocumented)
     protected renderItems: () => JSX.Element[];
 }
-
-// @public (undocumented)
-export const Shimmer: React.FunctionComponent<IShimmerProps>;
-
-// @public (undocumented)
-export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
-
-// @public (undocumented)
-export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
-
-// @public (undocumented)
-export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
-
-// @public
-export enum ShimmerElementsDefaultHeights {
-    circle = 24,
-    gap = 16,
-    line = 16
-}
-
-// @public (undocumented)
-export const ShimmerElementsGroup: React.FunctionComponent<IShimmerElementsGroupProps>;
-
-// @public (undocumented)
-export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps>;
-
-// @public
-export enum ShimmerElementType {
-    circle = 2,
-    gap = 3,
-    line = 1
-}
-
-// @public (undocumented)
-export const ShimmerGap: React.FunctionComponent<IShimmerGapProps>;
-
-// @public (undocumented)
-export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps>;
-
-// @public (undocumented)
-export const ShimmerLine: React.FunctionComponent<IShimmerLineProps>;
-
-// @public (undocumented)
-export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
-
-// @public
-export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
 export { SuggestionActionType }
 
@@ -2180,18 +1795,6 @@ export { TagPickerBase }
 
 export { Target }
 
-// @public (undocumented)
-export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
-
 export { ValidationState }
 
 // @public (undocumented)
@@ -2267,12 +1870,15 @@ export * from "@fluentui/react/lib/SearchBox";
 export * from "@fluentui/react/lib/SelectableOption";
 export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
+export * from "@fluentui/react/lib/Shimmer";
 export * from "@fluentui/react/lib/ShimmeredDetailsList";
+export * from "@fluentui/react/lib/SpinButton";
 export * from "@fluentui/react/lib/Spinner";
 export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
 export * from "@fluentui/react/lib/SwatchColorPicker";
+export * from "@fluentui/react/lib/TeachingBubble";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/TextField";
 export * from "@fluentui/react/lib/ThemeGenerator";
