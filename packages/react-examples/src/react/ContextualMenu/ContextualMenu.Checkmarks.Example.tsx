@@ -4,8 +4,8 @@ import {
   DirectionalHint,
   IContextualMenuItem,
   IContextualMenuProps,
-} from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+} from '@fluentui/react-next/lib/ContextualMenu';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 
 const keys: string[] = [
   'newItem',
