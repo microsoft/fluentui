@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Delete react-next coachmark examples",
+  "packageName": "@fluentui/react-examples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T06:24:08.021Z"
+}

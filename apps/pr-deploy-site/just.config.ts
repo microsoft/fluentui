@@ -25,6 +25,7 @@ const dependencies = [
   '@fluentui/react-next',
   '@fluentui/react-slider',
   '@fluentui/react-tabs',
+  '@fluentui/react-text',
   '@fluentui/react-toggle',
   '@uifabric/charting',
   '@uifabric/date-time',

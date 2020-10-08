@@ -169,36 +169,22 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
           <div className="ms-themer-example">
             <ToggleBasicExample />
             <ChoiceGroup
+              defaultSelectedKey="B"
               options={[
-                {
-                  key: 'A',
-                  text: 'Option A',
-                },
-                {
-                  key: 'B',
-                  text: 'Option B',
-                  checked: true,
-                },
+                { key: 'A', text: 'Option A' },
+                { key: 'B', text: 'Option B' },
               ]}
               label="Pick one"
-              required={true}
+              required
             />
             <ChoiceGroup
               options={[
-                {
-                  key: 'C',
-                  text: 'Option C',
-                  disabled: true,
-                },
-                {
-                  key: 'D',
-                  text: 'Option D',
-                  checked: true,
-                  disabled: true,
-                },
+                { key: 'C', text: 'Option C', disabled: true },
+                { key: 'D', text: 'Option D', disabled: true },
               ]}
+              defaultSelectedKey="D"
               label="Pick one"
-              required={true}
+              required
             />
           </div>
           <div className="ms-themer-example">
@@ -243,7 +229,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
-    // but high enough that quick changes don't get bogged down by a million changes inbetween
+    // but high enough that quick changes don't get bogged down by a million changes in-between
   };
 
   private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
@@ -429,7 +415,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
-      // but high enough that quick changes don't get bogged down by a million changes inbetween
+      // but high enough that quick changes don't get bogged down by a million changes in-between
     };
 
     return (

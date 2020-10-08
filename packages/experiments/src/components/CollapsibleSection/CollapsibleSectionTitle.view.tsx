@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Icon, Text } from '@fluentui/react';
 import { getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@uifabric/foundation';
 import {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleProps,

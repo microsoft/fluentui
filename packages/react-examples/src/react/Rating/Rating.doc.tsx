@@ -10,7 +10,7 @@ const RatingButtonControlledExampleCode = require('!raw-loader!@fluentui/react-e
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
   componentName: 'Rating',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Rating',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Rating',
   examples: [
     {
       title: 'Rating',
@@ -18,7 +18,7 @@ export const RatingPageProps: IDocPageProps = {
       view: <RatingBasicExample />,
     },
     {
-      title: 'Button Controlled Rating',
+      title: 'Button-controlled rating',
       code: RatingButtonControlledExampleCode,
       view: <RatingButtonControlledExample />,
     },

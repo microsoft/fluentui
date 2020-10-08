@@ -42,7 +42,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
     // boilerplate for codepen API
     const htmlContent = [
       // load core Fabric bundle and hooks bundle
-      script('@fluentui/react@7/dist/@fluentui/react.js'),
+      script('@fluentui/react@7/dist/fluentui-react.js'),
       script('@uifabric/react-hooks@7/dist/react-hooks.js'),
       // load example data bundle only if used
       jsContentStr.indexOf('window.FabricExampleData') !== -1

@@ -68,6 +68,7 @@ export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './Text';
 export * from './TextField';
+export * from './Theme';
 export * from './ThemeGenerator';
 export * from './Tooltip';
 export * from './Utilities';

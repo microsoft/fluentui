@@ -7,7 +7,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'LongLong text here It should Display all',
+        name: `Data 1`,
         series: [
           {
             key: 'series1',
@@ -28,7 +28,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'Just Checking',
+        name: 'Data 3',
         series: [
           {
             key: 'series1',
@@ -50,7 +50,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
       },
 
       {
-        name: 'SecondONe IamALLL ',
+        name: 'Data 4',
         series: [
           {
             key: 'series1',
@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'Hello World!!!',
+        name: 'Name is not truncated by default.',
         series: [
           {
             key: 'series1',
