@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, DirectionalHint, IContextualMenuProps } from '@fluentui/react-next/lib/ContextualMenu';
-import { DefaultButton, IconButton } from '@fluentui/react-next/lib/compat/Button';
-import { FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
-import { mergeStyleSets } from '@fluentui/react-next/lib/Styling';
-import { css } from '@fluentui/react-next/lib/Utilities';
+import { ContextualMenuItemType, DirectionalHint, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
+import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
