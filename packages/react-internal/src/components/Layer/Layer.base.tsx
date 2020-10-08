@@ -4,14 +4,15 @@ import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-import { useMergedRefs, useWarnings } from '@uifabric/react-hooks';
+import { useMergedRefs, useWarnings, useBoolean } from '@uifabric/react-hooks';
 import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
-    const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
+    const layerElement = React.useRef<HTMLElement | undefined>();
+    const [isLayerOpen, { setTrue: showLayer, setFalse: hideLayer }] = useBoolean(false);
 
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
@@ -59,12 +60,14 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const removeLayerElement = React.useCallback((): void => {
       onLayerWillUnmount?.();
 
-      if (currentLayerElement && currentLayerElement.parentNode) {
-        if (currentLayerElement.parentNode) {
-          currentLayerElement.parentNode.removeChild(currentLayerElement);
+      if (layerElement.current && layerElement.current?.parentNode) {
+        if (layerElement.current?.parentNode) {
+          layerElement.current?.parentNode.removeChild(layerElement.current);
         }
       }
-    }, [currentLayerElement, onLayerWillUnmount]);
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [onLayerWillUnmount]);
 
     // If a doc or host exists, it will remove and update layer parentNodes.
     const createLayerElement = React.useCallback(() => {
@@ -77,59 +80,69 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();
 
-      const layerElement = doc.createElement('div');
+      const el = doc.createElement('div');
 
-      layerElement.className = classNames.root!;
-      setPortalAttribute(layerElement);
-      setVirtualParent(layerElement, rootRef.current!);
+      el.className = classNames.root!;
+      setPortalAttribute(el);
+      setVirtualParent(el, rootRef.current!);
 
-      insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
+      insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
 
       setLayerHostId(hostId);
-      setCurrentLayerElement(layerElement);
+      layerElement.current = el;
       onLayerMounted?.();
       onLayerDidMount?.();
     }, [classNames.root, doc, getHost, hostId, insertFirst, onLayerDidMount, onLayerMounted, removeLayerElement]);
 
     React.useEffect(() => {
       // On initial render:
-      // Create a new layer element
-      createLayerElement();
-
       // Check if the user provided a hostId prop and register the layer with the ID.
       if (hostId) {
+        showLayer();
         registerLayer(hostId, createLayerElement);
       }
-
-      // On component unmount:
-      // Remove previous layer elements and unregister the layer if a hostId prop was provided.
-      return () => {
+      // Create a new layer element
+      else {
+        showLayer();
+        createLayerElement();
+      }
+      () => {
+        // On component unmount:
+        // Remove previous layer elements and unregister the layer if a hostId prop was provided.
+        console.log(layerElement.current);
+        hideLayer();
         removeLayerElement();
 
         if (hostId) {
           unregisterLayer(hostId, createLayerElement);
         }
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
-    }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount.
+    }, [showLayer]);
+
+    // useUnmount(() => {
+
+    // });
 
     React.useEffect(() => {
       // If the the user's hostID prop doesn't equal the state layerHostId, re-create a new layer element.
       if (hostId !== layerHostId) {
+        showLayer();
         createLayerElement();
       }
-    }, [createLayerElement, hostId, layerHostId]);
+    }, [hostId, layerHostId, showLayer]);
 
     useDebugWarnings(props);
 
     return (
       <span className="ms-layer" ref={mergedRef}>
-        {currentLayerElement &&
+        {isLayerOpen &&
+          layerElement.current &&
           ReactDOM.createPortal(
             <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
               {children}
             </Fabric>,
-            currentLayerElement,
+            layerElement.current,
           )}
       </span>
     );
@@ -206,3 +219,16 @@ function useDebugWarnings(props: ILayerProps) {
     });
   }
 }
+
+const useUnmount = (unmountFunction: () => void) => {
+  const unmountRef = React.useRef(unmountFunction);
+  unmountRef.current = unmountFunction;
+  React.useEffect(
+    () => () => {
+      if (unmountRef.current) {
+        unmountRef.current();
+      }
+    },
+    [unmountFunction],
+  );
+};
