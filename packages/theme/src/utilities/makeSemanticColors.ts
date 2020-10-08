@@ -98,6 +98,7 @@ export function mapSemanticColors<TResult = Partial<ISemanticColors>>(
     result.inputFocusBorderAlt = themePrimary;
     result.menuIcon = themePrimary;
     result.menuHeader = themePrimary;
+    result.accentButtonBackground = themePrimary;
   }
   if (themeDark) {
     result.primaryButtonBackgroundPressed = themeDark;

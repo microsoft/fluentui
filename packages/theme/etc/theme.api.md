@@ -615,7 +615,7 @@ export namespace LocalizedFontNames {
     Georgian = "Segoe UI Web (Georgian)";
 }
 
-// @public (undocumented)
+// @public
 export function mergeThemes(theme: Theme, partialTheme?: PartialTheme): Theme;
 
 // @public (undocumented)

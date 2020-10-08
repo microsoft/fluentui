@@ -2,19 +2,21 @@ import { merge } from '@uifabric/utilities';
 import { IFontStyles, PartialTheme, Theme } from './types/index';
 import { mapSemanticColors } from './utilities/makeSemanticColors';
 
+/**
+ * Merge a partial/full theme into a full theme and returns a merged full theme.
+ */
 export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Theme {
-  const newTheme = { ...partialTheme };
-  newTheme.semanticColors = mapSemanticColors(
-    newTheme.palette,
-    newTheme.effects,
-    newTheme.semanticColors,
-    newTheme.isInverted === undefined ? theme.isInverted : newTheme.isInverted,
-  );
+  const mergedTheme = merge<Theme | PartialTheme>({}, theme, partialTheme, {
+    semanticColors: mapSemanticColors(
+      partialTheme.palette,
+      partialTheme.effects,
+      partialTheme.semanticColors,
+      partialTheme.isInverted === undefined ? theme.isInverted : partialTheme.isInverted,
+    ),
+  }) as Theme;
 
-  const mergedTheme = merge<Theme | PartialTheme>({}, theme, newTheme) as Theme;
-
-  if (newTheme.palette?.themePrimary && !newTheme.palette?.accent) {
-    mergedTheme.palette.accent = newTheme.palette.themePrimary;
+  if (partialTheme.palette?.themePrimary && !partialTheme.palette?.accent) {
+    mergedTheme.palette.accent = partialTheme.palette.themePrimary;
   }
 
   if (partialTheme.defaultFontStyle) {

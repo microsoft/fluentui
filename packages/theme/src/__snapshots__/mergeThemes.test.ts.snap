@@ -160,7 +160,7 @@ Object {
   },
   "rtl": undefined,
   "semanticColors": Object {
-    "accentButtonBackground": "#0078d4",
+    "accentButtonBackground": "red",
     "accentButtonText": "#ffffff",
     "actionLink": "#323130",
     "actionLinkHovered": "#201f1e",
