@@ -7,6 +7,11 @@ TODO:
 import { SRNC } from './SRNC-Definitions';
 import './SRNC-Rules-Win_JAWS';
 
+export interface IAriaElement extends HTMLElement {
+  ariaDescribedByElements: HTMLElement[] | null;
+  ariaActiveDescendantElement: HTMLElement | null;
+}
+
 export class NarrationComputer {
   computedParts: Record<string, string> = {
     value: '',
@@ -18,8 +23,8 @@ export class NarrationComputer {
     usage: '',
   };
 
-  // Computes and returns the complete screen reader narration for the given element and platform.
-  async computeNarration(element: Element, platform: string): Promise<string> {
+  // Computes and returns the screen reader narration for the given element and platform.
+  async compute(element: Element, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Retrieve the computed accessible node
@@ -30,7 +35,7 @@ export class NarrationComputer {
     this.computeDescription(definitionName, element, platform);
     this.computeNameAndTitle(node, element);
     this.computeValue(node);
-    this.computePosition(definitionName);
+    this.computePosition();
     this.computeTypeAndState(node, definitionName, element, platform);
 
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
@@ -115,13 +120,10 @@ export class NarrationComputer {
     } else {
       // else if 1
       this.computedParts.description =
-        element
-          .getAttribute('aria-describedby')
-          ?.split(/\s+/)
-          .map((id: string) => {
-            return element.ownerDocument?.getElementById(id)?.textContent || null;
+        (element as IAriaElement).ariaDescribedByElements
+          ?.map((descElement: Element) => {
+            return descElement.textContent;
           })
-          .filter(x => x !== null)
           .join('') || '';
     } // End if 1
   } // End computeDescription
@@ -143,11 +145,10 @@ export class NarrationComputer {
     this.computedParts.value = node.valueText;
   } // End computeValue
 
-  // Computes the position part of the narration for the given definitionName.
-  computePosition(definitionName: string) {
-    // The computation of the position in set would be too difficult, so use just "X of Y" instead
-    const positionRoles = ['role=menuitem', 'role=menuitemcheckbox', 'role=menuitemradio', 'role=tab', 'role=option'];
-    this.computedParts.position = positionRoles.includes(definitionName) ? '[X of Y]' : '';
+  // Actually, the computation of the position in set would be too difficult, so it just returns "[X of Y]" instead.
+  // We can set the position part for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
+  computePosition() {
+    this.computedParts.position = '[X of Y]';
   } // End computePosition
 
   // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.

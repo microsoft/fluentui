@@ -187,13 +187,15 @@ export const SRNC: Record<string, any> = {
       '[default]': ['name', 'type', 'state', 'description', 'usage'],
       'input:text': ['name', 'type', 'state', 'value', 'description', 'usage'],
       'role=combobox': 'input:text',
+      'input:radio': ['name', 'type', 'state', 'position', 'description', 'usage'],
+      'role=radio': 'input:radio',
       a: ['name', 'state', 'type', 'description', 'usage'],
-      'role=menuitem': ['name', 'type', 'state', 'position', 'description', 'usage'],
-      'role=menuitemcheckbox': 'role=menuitem',
-      'role=menuitemradio': 'role=menuitem',
+      'role=menuitem': 'input:radio',
+      'role=menuitemcheckbox': 'input:radio',
+      'role=menuitemradio': 'input:radio',
       select: 'input:text',
-      'role=tab': 'role=menuitem',
-      'role=option': 'role=menuitem',
+      'role=tab': 'input:radio',
+      'role=option': 'input:radio',
     }, // End Win/JAWS
   }, // End readingOrder
 
