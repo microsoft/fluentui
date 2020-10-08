@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Delete extra ComponentConformance.test.tsx in wrong place and copy changes",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-02T01:09:30.109Z"
+}

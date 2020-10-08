@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-import { IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { CommandButton } from '@fluentui/react/lib/Button';
+import { IStyleFunction, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
 import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
 
 /** ID to render the example into */
@@ -42,7 +42,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
     // boilerplate for codepen API
     const htmlContent = [
       // load core Fabric bundle and hooks bundle
-      script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
+      script('@fluentui/react@7/dist/fluentui-react.js'),
       script('@uifabric/react-hooks@7/dist/react-hooks.js'),
       // load example data bundle only if used
       jsContentStr.indexOf('window.FabricExampleData') !== -1

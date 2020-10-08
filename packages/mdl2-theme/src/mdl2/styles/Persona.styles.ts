@@ -4,8 +4,8 @@ import {
   PersonaSize,
   sizeBoolean,
   IPersonaCoinStyles,
-} from 'office-ui-fabric-react/lib/Persona';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/Persona';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const PersonaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles> => {
   const size = sizeBoolean(props.size as PersonaSize);

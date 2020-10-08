@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 

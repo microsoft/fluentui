@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Stack';
+export * from '@fluentui/react-internal/lib/Stack';

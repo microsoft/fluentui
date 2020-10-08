@@ -3,7 +3,7 @@ import { initializeComponentRef, classNamesFunction } from '../../../Utilities';
 import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import { TileSize } from '../Tile.types';
 import { TileLayoutSizes } from '../Tile';
-import { ShimmerGap, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
+import { ShimmerGap, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
 
 const ShimmerTileLayoutValues = {
   largeSquareWidth: 96,

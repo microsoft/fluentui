@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Grid';
+export * from '@fluentui/react-internal/lib/Grid';

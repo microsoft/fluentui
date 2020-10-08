@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
-import { Callout, DirectionalHint, ICalloutProps } from 'office-ui-fabric-react';
+import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 
 const calloutContent = (
   <p className="ms-CalloutExample-subText" id="callout-description-1">

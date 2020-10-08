@@ -4,7 +4,7 @@ import {
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 
 const _suggestions = [

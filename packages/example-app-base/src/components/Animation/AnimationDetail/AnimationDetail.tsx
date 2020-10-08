@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react';
+import { mergeStyleSets, FontWeights } from '@fluentui/react';
 import { IAnimationDetailProps } from './AnimationDetail.types';
 
 import { AnimationExample } from '../index';

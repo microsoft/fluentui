@@ -43,12 +43,12 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/react-hooks": "^7.13.5",
     "@fluentui/react-compose": "^0.19.4",
+    "@fluentui/react-internal": "^7.142.0",
+    "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
-    "office-ui-fabric-react": "^7.142.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

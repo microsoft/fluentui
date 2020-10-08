@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PersonaCoin } from '@uifabric/experiments';
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
 const tokens = {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react';
-import { ISlotProp } from '../../../Foundation';
+import { Icon } from '@fluentui/react';
+import { ISlotProp } from '@uifabric/foundation';
 
 export interface IPersonaCoinSizeProps {}
 

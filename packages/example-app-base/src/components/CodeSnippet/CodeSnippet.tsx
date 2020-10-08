@@ -7,7 +7,7 @@ import {
   classNamesFunction,
   IRawStyle,
   DefaultPalette,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import { NeutralColors, SharedColors } from '@fluentui/theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 

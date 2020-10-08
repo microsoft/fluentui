@@ -1,11 +1,11 @@
 import { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
-  globalName: 'Fabric',
+  globalName: 'FluentUIReact',
   // Theoretically we could use import() here, but that pulls things into bundles when using
   // commonjs modules due to the way import is transpiled for commonjs
   // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
-  loadGlobal: cb => require.ensure([], require => cb(require('office-ui-fabric-react'))),
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/react'))),
   packages: [],
 };
 const hooksGroup: IPackageGroup = {
@@ -33,10 +33,9 @@ if (typesContext) {
     // as the filename.
     // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
-    const packageName =
-      unscopedName === 'office-ui-fabric-react'
-        ? unscopedName
-        : `${unscopedName === 'react-focus' ? '@fluentui' : '@uifabric'}/${unscopedName}`;
+    const packageName = `${
+      ['react-focus', 'react'].includes(unscopedName) ? '@fluentui' : '@uifabric'
+    }/${unscopedName}`;
     const packageGroup =
       packageName === '@uifabric/example-data'
         ? exampleDataGroup
@@ -57,7 +56,9 @@ if (typesContext) {
   // Use some defaults for jest tests (real types won't be loaded)
   const loadTypes = () => '';
   fabricGroup.packages.push(
-    { packageName: 'office-ui-fabric-react', loadTypes },
+    // TODO: this probably needs to be dynamically generated so it doesn't break every time we
+    // add a new component package exported by @fluentui/react
+    { packageName: '@fluentui/react', loadTypes },
     { packageName: '@uifabric/foundation', loadTypes },
     { packageName: '@uifabric/icons', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
@@ -71,7 +72,7 @@ if (typesContext) {
 }
 
 /**
- * Default supported packages for imports: `office-ui-fabric-react` and everything it exports,
+ * Default supported packages for imports: `@fluentui/react` and everything it exports,
  * plus `@uifabric/example-data`. (React is implicitly supported.)
  */
 export const SUPPORTED_PACKAGES: IPackageGroup[] = [fabricGroup, hooksGroup, exampleDataGroup];

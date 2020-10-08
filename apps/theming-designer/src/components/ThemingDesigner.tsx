@@ -6,20 +6,20 @@ import {
   FabricSlots,
   ThemeGenerator,
   themeRulesStandardCreator,
-} from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/ThemeGenerator';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { createTheme, ITheme } from '@fluentui/react/lib/Styling';
 import { ThemeSlots } from './ThemeSlots';
-import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
+import { getColorFromString, IColor } from '@fluentui/react/lib/Color';
 import { Header } from './Header';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { isDark } from '@fluentui/react/lib/Color';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Samples } from './Samples/index';
-import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from '@fluentui/react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { Text } from 'office-ui-fabric-react';
-import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { Text } from '@fluentui/react';
+import { ThemeProvider } from '@uifabric/foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 
 export interface IThemingDesignerState {

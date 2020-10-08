@@ -15,7 +15,7 @@ import {
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 

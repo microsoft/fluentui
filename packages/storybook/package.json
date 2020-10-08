@@ -25,6 +25,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/react": "^7.142.0",
     "@fluentui/react-next": "^8.0.0-alpha.118",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@fluentui/theme": "^1.2.1",
@@ -33,7 +34,6 @@
     "@uifabric/azure-themes": "^7.5.18",
     "@uifabric/mdl2-theme": "^0.3.17",
     "@uifabric/theme-samples": "^7.1.21",
-    "office-ui-fabric-react": "^7.142.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

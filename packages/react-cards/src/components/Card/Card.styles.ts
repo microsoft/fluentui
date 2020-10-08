@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { getGlobalClassNames, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 
 const GlobalClassNames = {

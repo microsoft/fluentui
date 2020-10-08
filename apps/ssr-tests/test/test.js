@@ -12,16 +12,16 @@ themeLoader.configureLoadStyles(styles => {
 });
 
 // Set ssr mode to true, and rtl to false.
-let library = require('office-ui-fabric-react/lib/Utilities');
+let library = require('@fluentui/react/lib/Utilities');
 library.setSSR(true);
 library.setRTL(false);
 
 // Assume a large screen.
-let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
+let responsiveLib = require('@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 // Initialize icons.
-const { initializeIcons } = require('office-ui-fabric-react/lib/Icons');
+const { initializeIcons } = require('@fluentui/react/lib/Icons');
 initializeIcons('dist/', { disableWarnings: true });
 
 let React = require('react');

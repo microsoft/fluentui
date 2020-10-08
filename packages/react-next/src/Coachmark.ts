@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Coachmark';
+export * from '@fluentui/react/lib/Coachmark';

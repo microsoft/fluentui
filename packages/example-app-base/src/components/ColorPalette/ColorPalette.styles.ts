@@ -1,4 +1,4 @@
-import { IRawStyle, IStyleFunction, FontWeights, getFocusStyle } from 'office-ui-fabric-react';
+import { IRawStyle, IStyleFunction, FontWeights, getFocusStyle } from '@fluentui/react';
 import { NeutralColors, MotionDurations, MotionTimings } from '@fluentui/theme';
 import { IColorPaletteStyleProps, IColorPaletteStyles } from './ColorPalette.types';
 

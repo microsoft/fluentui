@@ -1,8 +1,8 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { Icon, Text } from 'office-ui-fabric-react';
-import { getNativeProps, buttonProperties } from 'office-ui-fabric-react/lib/Utilities';
-import { withSlots, getSlots } from '../../Foundation';
+import { Icon, Text } from '@fluentui/react';
+import { getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
+import { withSlots, getSlots } from '@uifabric/foundation';
 import {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleProps,

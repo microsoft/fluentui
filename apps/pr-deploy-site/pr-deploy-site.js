@@ -9,7 +9,7 @@ const siteInfo = [
   },
   {
     package: '@uifabric/fabric-website-resources',
-    link: './office-ui-fabric-react/dist-storybook/index.html',
+    link: './@fluentui/react/dist-storybook/index.html',
     icon: 'FavoriteStar',
     title: 'Fabric Storybook Site',
   },
@@ -49,6 +49,12 @@ const siteInfo = [
     link: './react-tabs/dist-storybook/index.html',
     icon: 'BrowserTab',
     title: 'Tabs',
+  },
+  {
+    package: '@fluentui/react-text',
+    link: './react-text/dist-storybook/index.html',
+    icon: 'TextOverflow',
+    title: 'Text',
   },
   {
     package: '@fluentui/react-slider',

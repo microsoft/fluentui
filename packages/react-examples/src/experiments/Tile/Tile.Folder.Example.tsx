@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { SignalField, NewSignal, CommentsSignal, SharedSignal, Tile } from '@uifabric/experiments';
 import {
   FolderCover,

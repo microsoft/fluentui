@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
 import { IArcProps, IArcStyles } from './Arc.types';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 

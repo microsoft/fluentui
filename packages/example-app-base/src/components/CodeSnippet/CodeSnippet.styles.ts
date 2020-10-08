@@ -1,4 +1,4 @@
-import { IStyleFunction, IRawStyle } from 'office-ui-fabric-react';
+import { IStyleFunction, IRawStyle } from '@fluentui/react';
 import { FontSizes, NeutralColors } from '@fluentui/theme';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles } from './CodeSnippet';
 

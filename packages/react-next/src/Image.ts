@@ -1,2 +1,1 @@
-import './version';
-export * from './components/Image';
+export * from '@fluentui/react/lib/Image';

@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { ImageLoadState } from 'office-ui-fabric-react';
+import { ImageLoadState } from '@fluentui/react';
 import { IPersonaCoinViewProps, IPersonaCoinComponent } from './PersonaCoin.types';
 
 export const usePersonaCoinState: IPersonaCoinComponent['state'] = props => {

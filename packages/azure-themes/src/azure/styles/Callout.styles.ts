@@ -1,4 +1,4 @@
-import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 

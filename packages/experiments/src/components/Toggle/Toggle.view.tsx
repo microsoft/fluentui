@@ -1,8 +1,8 @@
 /** @jsx withSlots */
-import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
+import { KeytipData } from '@fluentui/react/lib/KeytipData';
 import { Label } from '../../utilities/factoryComponents';
 
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@uifabric/foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 

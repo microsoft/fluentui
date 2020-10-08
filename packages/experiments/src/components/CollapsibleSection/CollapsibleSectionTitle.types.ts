@@ -7,8 +7,8 @@ import {
   ISlotProp,
   ISlottableProps,
   IStyleableComponentProps,
-} from '../../Foundation';
-import { ITextSlot } from 'office-ui-fabric-react';
+} from '@uifabric/foundation';
+import { ITextSlot } from '@fluentui/react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IComponent<

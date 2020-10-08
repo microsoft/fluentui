@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { Text } from '@fluentui/react/lib/Text';
 import {
   IMenuButtonProps,
   IMenuButtonStyles,

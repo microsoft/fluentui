@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from 'office-ui-fabric-react';
+import { SearchBox } from '@fluentui/react';
 
 const Scenario = () => <SearchBox placeholder="Search" />;
 

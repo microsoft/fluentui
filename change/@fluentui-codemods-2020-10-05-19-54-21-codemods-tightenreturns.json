@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Codemods: Tighten up NoOp return types",
+  "packageName": "@fluentui/codemods",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T02:54:21.910Z"
+}

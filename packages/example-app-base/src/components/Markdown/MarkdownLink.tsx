@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, ILinkProps } from 'office-ui-fabric-react/lib/Link';
+import { Link, ILinkProps } from '@fluentui/react/lib/Link';
 import { removeAnchorLink } from '../../utilities/index2';
 
 export const MarkdownLink: React.FunctionComponent<ILinkProps> = props => {

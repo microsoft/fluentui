@@ -10,7 +10,7 @@ import {
   IconButton,
   IButtonProps,
   CommandBarButton,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const baseProps: IButtonProps = {
   iconProps: {

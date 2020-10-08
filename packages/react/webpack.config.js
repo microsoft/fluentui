@@ -14,14 +14,10 @@ function createConfig(config, onlyProduction) {
         [BUNDLE_NAME]: './lib/index.bundle.js',
       },
 
-      externals: [
-        {
-          react: 'React',
-        },
-        {
-          'react-dom': 'ReactDOM',
-        },
-      ],
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
 
       resolve: {
         alias: getResolveAlias(true /*useLib*/),

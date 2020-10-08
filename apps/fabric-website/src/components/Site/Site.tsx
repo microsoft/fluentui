@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Customizer, Async } from 'office-ui-fabric-react';
+import { css, Customizer, Async } from '@fluentui/react';
 import {
   baseDefinition,
   EventNames,

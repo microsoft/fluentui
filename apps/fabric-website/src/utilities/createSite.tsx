@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
+import { Fabric, setBaseUrl } from '@fluentui/react';
 import { initializeIcons } from '@uifabric/icons/lib/index';
 import {
   INavPage,

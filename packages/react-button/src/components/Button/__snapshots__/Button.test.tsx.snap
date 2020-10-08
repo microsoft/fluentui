@@ -1,221 +1,473 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders a default state 1`] = `
-<button
+<div
   className=
-      ms-Button
+
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        align-items: center;
-        background: var(--button-background, white);
-        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
-        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-        border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
-        border-color: var(--button-borderColor);
-        border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
-        border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
-        border-style: solid;
-        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
-        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-        border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
-        box-shadow: var(--button-boxShadow);
-        box-sizing: border-box;
-        color: var(--button-contentColor);
-        cursor: pointer;
-        display: inline-flex;
-        font-family: var(--button-fontFamily);
-        font-size: var(--button-fontSize);
-        font-weight: var(--button-fontWeight);
-        height: var(--button-height);
-        justify-content: center;
-        max-width: var(--button-maxWidth);
-        min-height: var(--button-minHeight);
-        min-width: var(--button-minWidth);
-        outline: none;
-        padding-bottom: var(--button-paddingBottom);
-        padding-left: var(--button-paddingLeft);
-        padding-right: var(--button-paddingRight);
-        padding-top: var(--button-paddingTop);
-        position: relative;
-        text-decoration: none;
-        transition: var(--button-transition);
-        user-select: none;
-        vertical-align: middle;
-        white-space: var(--button-whiteSpace);
-        width: var(--button-width);
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
+        --color-body-background: #ffffff;
+        --color-body-contentColor: #323130;
+        --color-brand-background: #0078d4;
+        --color-brand-borderColor: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checkedHovered-background: #005a9e;
+        --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-contentColor: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-contentColor: #a19f9d;
+        --color-brand-disabled-dividerColor: #c8c6c4;
+        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-dividerColor: #ffffff;
+        --color-brand-focused-background: var(--color-brand-background);
+        --color-brand-focused-borderColor: var(--color-brand-borderColor);
+        --color-brand-focused-contentColor: var(--color-brand-contentColor);
+        --color-brand-focused-iconColor: var(--color-brand-iconColor);
+        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-contentColor: #ffffff;
+        --color-brand-hovered-secondaryContentColor: #ffffff;
+        --color-brand-iconColor: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-contentColor: #ffffff;
+        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-secondaryContentColor: #ffffff;
+        --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
       }
-      .ms-Fabric--isFocusVisible &:focus::after {
-        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
-        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-        border-color: var(--button-focusColor, black);
-        border-style: solid;
-        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
-        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-        border-width: var(--button-focusWidth, 1.6px);
-        bottom: -1px;
-        box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
-        content: "";
-        left: -1px;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
-      }
-      & > *:not(:first-child) {
-        margin-left: var(--button-contentGap);
-      }
-      &:hover {
-        background: var(--button-hovered-background, var(--button-background));
-        border-color: var(--button-hovered-borderColor, var(--button-borderColor));
-        box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
-        color: var(--button-hovered-contentColor, var(--button-contentColor));
-      }
-      &:hover .ms-Button-icon {
-        color: var(--button-hovered-iconColor, var(--button-iconColor));
-      }
-      &:active {
-        background: var(--button-pressed-background, var(--button-hovered-background));
-        border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
-        box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
-        color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
-        transform: var(--button-pressed-transform);
-        transition: var(--button-pressed-transition);
-      }
-      &:active .ms-Button-icon {
-        color: var(--button-pressed-iconColor, var(--button-iconColor));
-      }
-      &[aria-disabled=true] {
-        background-color: var(--button-disabled-background);
-        border-color: var(--button-disabled-borderColor);
-        box-shadow: var(--button-disabled-boxShadow);
-        color: var(--button-disabled-contentColor);
-        opacity: var(--button-disabled-opacity);
-        pointer-events: none;
-      }
-      &[aria-disabled=true] .ms-Button-icon {
-        color: var(--button-disabled-iconColor);
+      {
+        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
+        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
+        background: var(--color-body-background);
+        color: var(--color-body-contentColor);
+        font-family: var(--body-fontFamily);
+        font-size: var(--body-fontSize);
+        font-weight: var(--body-fontWeight);
       }
 >
-  <span
+  <button
     className=
-
+        ms-Button
         {
-          line-height: 1;
+          --button-background: #ffffff;
+          --button-borderColor: #8a8886;
+          --button-borderRadius: 2px;
+          --button-borderWidth: 1px;
+          --button-boxShadow: none;
+          --button-checked-background: #edebe9;
+          --button-checked-contentColor: #201f1e;
+          --button-checkedHovered-background: #edebe9;
+          --button-checkedHovered-contentColor: #000000;
+          --button-contentColor: #323130;
+          --button-contentGap: 8px;
+          --button-disabled-background: #f3f2f1;
+          --button-disabled-borderColor: #f3f2f1;
+          --button-disabled-contentColor: #a19f9d;
+          --button-disabled-secondaryContentColor: #a19f9d;
+          --button-focusColor: #000000;
+          --button-focusInnerColor: #ffffff;
+          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --button-fontSize: 14px;
+          --button-fontWeight: 600;
+          --button-hovered-background: #f3f2f1;
+          --button-hovered-contentColor: #201f1e;
+          --button-hovered-secondaryContentColor: #201f1e;
+          --button-iconColor: inherit;
+          --button-iconSize: 16px;
+          --button-margin: 0;
+          --button-maxWidth: 280px;
+          --button-minHeight: var(--button-size-regular);
+          --button-minWidth: 96px;
+          --button-paddingBottom: 0;
+          --button-paddingLeft: 20px;
+          --button-paddingRight: 20px;
+          --button-paddingTop: 0;
+          --button-pressed-background: #edebe9;
+          --button-pressed-contentColor: #201f1e;
+          --button-pressed-secondaryContentColor: #201f1e;
+          --button-secondaryContentColor: #605e5c;
+          --button-secondaryContentFontSize: 12px;
+          --button-size-large: 40px;
+          --button-size-larger: 48px;
+          --button-size-largest: 64px;
+          --button-size-regular: 32px;
+          --button-size-small: 24px;
+          --button-size-smaller: 24px;
+          --button-size-smallest: 24px;
+          --button-width: auto;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          background: var(--button-background);
+          border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+          border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+          border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
+          border-color: var(--button-borderColor);
+          border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
+          border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
+          border-style: solid;
+          border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+          border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+          border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
+          box-shadow: var(--button-boxShadow);
+          box-sizing: border-box;
+          color: var(--button-contentColor);
+          cursor: pointer;
+          display: inline-flex;
+          font-family: var(--button-fontFamily);
+          font-size: var(--button-fontSize);
+          font-weight: var(--button-fontWeight);
+          height: var(--button-height);
+          justify-content: center;
+          max-width: var(--button-maxWidth);
+          min-height: var(--button-minHeight);
+          min-width: var(--button-minWidth);
+          outline: none;
+          padding-bottom: var(--button-paddingBottom);
+          padding-left: var(--button-paddingLeft);
+          padding-right: var(--button-paddingRight);
+          padding-top: var(--button-paddingTop);
+          position: relative;
+          text-decoration: none;
+          transition: var(--button-transition);
+          user-select: none;
+          vertical-align: middle;
+          white-space: var(--button-whiteSpace);
+          width: var(--button-width);
+        }
+        .ms-Fabric--isFocusVisible &:focus::after {
+          border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+          border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+          border-color: var(--button-focusColor, black);
+          border-style: solid;
+          border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+          border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+          border-width: var(--button-focusWidth, 2px);
+          bottom: -1px;
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
+          content: "";
+          left: -1px;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+        }
+        & > *:not(:first-child) {
+          margin-left: var(--button-contentGap);
+        }
+        &:hover {
+          background: var(--button-hovered-background, var(--button-background));
+          border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+          box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+          color: var(--button-hovered-contentColor, var(--button-contentColor));
+        }
+        &:hover .ms-Button-icon {
+          color: var(--button-hovered-iconColor, var(--button-iconColor));
+        }
+        &:active {
+          background: var(--button-pressed-background, var(--button-hovered-background));
+          border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+          box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+          color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+          transform: var(--button-pressed-transform);
+          transition: var(--button-pressed-transition);
+        }
+        &:active .ms-Button-icon {
+          color: var(--button-pressed-iconColor, var(--button-iconColor));
+        }
+        &[aria-disabled=true] {
+          background-color: var(--button-disabled-background);
+          border-color: var(--button-disabled-borderColor);
+          box-shadow: var(--button-disabled-boxShadow);
+          color: var(--button-disabled-contentColor);
+          opacity: var(--button-disabled-opacity);
+          pointer-events: none;
+        }
+        &[aria-disabled=true] .ms-Button-icon {
+          color: var(--button-disabled-iconColor);
         }
   >
-    Default button
-  </span>
-</button>
+    <span
+      className=
+
+          {
+            line-height: 1;
+          }
+    >
+      Default button
+    </span>
+  </button>
+</div>
 `;
 
 exports[`Button renders anchor when href prop is provided 1`] = `
-<a
+<div
   className=
-      ms-Button
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        align-items: center;
-        background: var(--button-background, white);
-        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
-        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-        border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
-        border-color: var(--button-borderColor);
-        border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
-        border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
-        border-style: solid;
-        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
-        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-        border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
-        box-shadow: var(--button-boxShadow);
-        box-sizing: border-box;
-        color: var(--button-contentColor);
-        cursor: pointer;
-        display: inline-flex;
-        font-family: var(--button-fontFamily);
-        font-size: var(--button-fontSize);
-        font-weight: var(--button-fontWeight);
-        height: var(--button-height);
-        justify-content: center;
-        max-width: var(--button-maxWidth);
-        min-height: var(--button-minHeight);
-        min-width: var(--button-minWidth);
-        outline: none;
-        padding-bottom: var(--button-paddingBottom);
-        padding-left: var(--button-paddingLeft);
-        padding-right: var(--button-paddingRight);
-        padding-top: var(--button-paddingTop);
-        position: relative;
-        text-decoration: none;
-        transition: var(--button-transition);
-        user-select: none;
-        vertical-align: middle;
-        white-space: var(--button-whiteSpace);
-        width: var(--button-width);
-      }
-      .ms-Fabric--isFocusVisible &:focus::after {
-        border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
-        border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-        border-color: var(--button-focusColor, black);
-        border-style: solid;
-        border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
-        border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
-        border-width: var(--button-focusWidth, 1.6px);
-        bottom: -1px;
-        box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
-        content: "";
-        left: -1px;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
-      }
-      & > *:not(:first-child) {
-        margin-left: var(--button-contentGap);
-      }
-      &:hover {
-        background: var(--button-hovered-background, var(--button-background));
-        border-color: var(--button-hovered-borderColor, var(--button-borderColor));
-        box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
-        color: var(--button-hovered-contentColor, var(--button-contentColor));
-      }
-      &:hover .ms-Button-icon {
-        color: var(--button-hovered-iconColor, var(--button-iconColor));
-      }
-      &:active {
-        background: var(--button-pressed-background, var(--button-hovered-background));
-        border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
-        box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
-        color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
-        transform: var(--button-pressed-transform);
-        transition: var(--button-pressed-transition);
-      }
-      &:active .ms-Button-icon {
-        color: var(--button-pressed-iconColor, var(--button-iconColor));
-      }
-      &[aria-disabled=true] {
-        background-color: var(--button-disabled-background);
-        border-color: var(--button-disabled-borderColor);
-        box-shadow: var(--button-disabled-boxShadow);
-        color: var(--button-disabled-contentColor);
-        opacity: var(--button-disabled-opacity);
-        pointer-events: none;
-      }
-      &[aria-disabled=true] .ms-Button-icon {
-        color: var(--button-disabled-iconColor);
-      }
-  href="https://www.bing.com"
-  role="button"
->
-  <span
-    className=
 
+      {
+        --body-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-fontSize: 14px;
+        --body-fontWeight: 400;
+        --body-mozOsxFontSmoothing: grayscale;
+        --body-webkitFontSmoothing: antialiased;
+        --color-body-background: #ffffff;
+        --color-body-contentColor: #323130;
+        --color-brand-background: #0078d4;
+        --color-brand-borderColor: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checkedHovered-background: #005a9e;
+        --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-contentColor: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-contentColor: #a19f9d;
+        --color-brand-disabled-dividerColor: #c8c6c4;
+        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-dividerColor: #ffffff;
+        --color-brand-focused-background: var(--color-brand-background);
+        --color-brand-focused-borderColor: var(--color-brand-borderColor);
+        --color-brand-focused-contentColor: var(--color-brand-contentColor);
+        --color-brand-focused-iconColor: var(--color-brand-iconColor);
+        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-contentColor: #ffffff;
+        --color-brand-hovered-secondaryContentColor: #ffffff;
+        --color-brand-iconColor: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-contentColor: #ffffff;
+        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-secondaryContentColor: #ffffff;
+        --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
+        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
+        background: var(--color-body-background);
+        color: var(--color-body-contentColor);
+        font-family: var(--body-fontFamily);
+        font-size: var(--body-fontSize);
+        font-weight: var(--body-fontWeight);
+      }
+>
+  <a
+    className=
+        ms-Button
         {
-          line-height: 1;
+          --button-background: #ffffff;
+          --button-borderColor: #8a8886;
+          --button-borderRadius: 2px;
+          --button-borderWidth: 1px;
+          --button-boxShadow: none;
+          --button-checked-background: #edebe9;
+          --button-checked-contentColor: #201f1e;
+          --button-checkedHovered-background: #edebe9;
+          --button-checkedHovered-contentColor: #000000;
+          --button-contentColor: #323130;
+          --button-contentGap: 8px;
+          --button-disabled-background: #f3f2f1;
+          --button-disabled-borderColor: #f3f2f1;
+          --button-disabled-contentColor: #a19f9d;
+          --button-disabled-secondaryContentColor: #a19f9d;
+          --button-focusColor: #000000;
+          --button-focusInnerColor: #ffffff;
+          --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --button-fontSize: 14px;
+          --button-fontWeight: 600;
+          --button-hovered-background: #f3f2f1;
+          --button-hovered-contentColor: #201f1e;
+          --button-hovered-secondaryContentColor: #201f1e;
+          --button-iconColor: inherit;
+          --button-iconSize: 16px;
+          --button-margin: 0;
+          --button-maxWidth: 280px;
+          --button-minHeight: var(--button-size-regular);
+          --button-minWidth: 96px;
+          --button-paddingBottom: 0;
+          --button-paddingLeft: 20px;
+          --button-paddingRight: 20px;
+          --button-paddingTop: 0;
+          --button-pressed-background: #edebe9;
+          --button-pressed-contentColor: #201f1e;
+          --button-pressed-secondaryContentColor: #201f1e;
+          --button-secondaryContentColor: #605e5c;
+          --button-secondaryContentFontSize: 12px;
+          --button-size-large: 40px;
+          --button-size-larger: 48px;
+          --button-size-largest: 64px;
+          --button-size-regular: 32px;
+          --button-size-small: 24px;
+          --button-size-smaller: 24px;
+          --button-size-smallest: 24px;
+          --button-width: auto;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          background: var(--button-background);
+          border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+          border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+          border-bottom-width: var(--button-borderBottomWidth, var(--button-borderWidth));
+          border-color: var(--button-borderColor);
+          border-left-width: var(--button-borderLeftWidth, var(--button-borderWidth));
+          border-right-width: var(--button-borderRightWidth, var(--button-borderWidth));
+          border-style: solid;
+          border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+          border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+          border-top-width: var(--button-borderTopWidth, var(--button-borderWidth));
+          box-shadow: var(--button-boxShadow);
+          box-sizing: border-box;
+          color: var(--button-contentColor);
+          cursor: pointer;
+          display: inline-flex;
+          font-family: var(--button-fontFamily);
+          font-size: var(--button-fontSize);
+          font-weight: var(--button-fontWeight);
+          height: var(--button-height);
+          justify-content: center;
+          max-width: var(--button-maxWidth);
+          min-height: var(--button-minHeight);
+          min-width: var(--button-minWidth);
+          outline: none;
+          padding-bottom: var(--button-paddingBottom);
+          padding-left: var(--button-paddingLeft);
+          padding-right: var(--button-paddingRight);
+          padding-top: var(--button-paddingTop);
+          position: relative;
+          text-decoration: none;
+          transition: var(--button-transition);
+          user-select: none;
+          vertical-align: middle;
+          white-space: var(--button-whiteSpace);
+          width: var(--button-width);
         }
+        .ms-Fabric--isFocusVisible &:focus::after {
+          border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
+          border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
+          border-color: var(--button-focusColor, black);
+          border-style: solid;
+          border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
+          border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
+          border-width: var(--button-focusWidth, 2px);
+          bottom: -1px;
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
+          content: "";
+          left: -1px;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+        }
+        & > *:not(:first-child) {
+          margin-left: var(--button-contentGap);
+        }
+        &:hover {
+          background: var(--button-hovered-background, var(--button-background));
+          border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+          box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+          color: var(--button-hovered-contentColor, var(--button-contentColor));
+        }
+        &:hover .ms-Button-icon {
+          color: var(--button-hovered-iconColor, var(--button-iconColor));
+        }
+        &:active {
+          background: var(--button-pressed-background, var(--button-hovered-background));
+          border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+          box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+          color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+          transform: var(--button-pressed-transform);
+          transition: var(--button-pressed-transition);
+        }
+        &:active .ms-Button-icon {
+          color: var(--button-pressed-iconColor, var(--button-iconColor));
+        }
+        &[aria-disabled=true] {
+          background-color: var(--button-disabled-background);
+          border-color: var(--button-disabled-borderColor);
+          box-shadow: var(--button-disabled-boxShadow);
+          color: var(--button-disabled-contentColor);
+          opacity: var(--button-disabled-opacity);
+          pointer-events: none;
+        }
+        &[aria-disabled=true] .ms-Button-icon {
+          color: var(--button-disabled-iconColor);
+        }
+    href="https://www.bing.com"
+    role="button"
   >
-    Default button
-  </span>
-</a>
+    <span
+      className=
+
+          {
+            line-height: 1;
+          }
+    >
+      Default button
+    </span>
+  </a>
+</div>
 `;

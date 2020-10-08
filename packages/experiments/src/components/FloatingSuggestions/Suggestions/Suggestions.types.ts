@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { ISuggestionItemProps } from './SuggestionsItem.types';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**

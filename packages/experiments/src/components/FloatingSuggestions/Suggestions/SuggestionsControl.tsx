@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { css, KeyCodes, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { css, KeyCodes, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,

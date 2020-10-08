@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];

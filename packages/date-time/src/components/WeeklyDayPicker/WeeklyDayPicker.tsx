@@ -1,6 +1,6 @@
 import { WeeklyDayPickerBase } from './WeeklyDayPicker.base';
 import { styles } from './WeeklyDayPicker.styles';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react-internal/lib/Utilities';
 
 /**
  * WeeklyDayPicker description

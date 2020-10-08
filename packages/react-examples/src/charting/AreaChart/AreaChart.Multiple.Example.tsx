@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@uifabric/charting';
 
@@ -178,7 +178,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
     ];
 
     const chartData = {
-      chartTtitle: 'Area chart multiple example',
+      chartTitle: 'Area chart multiple example',
       lineChartData: chartPoints,
     };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };

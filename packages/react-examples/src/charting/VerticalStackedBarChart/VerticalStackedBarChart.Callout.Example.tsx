@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { VerticalStackedBarChart } from '@uifabric/charting';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { DirectionalHint } from 'office-ui-fabric-react';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { DirectionalHint } from '@fluentui/react';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: 'Single callout' },
@@ -37,7 +37,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   };
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
-    this.setState({ selectedCallout: option.key });
+    this.setState({ selectedCallout: option.key! });
   };
 
   private _basicExample(): JSX.Element {

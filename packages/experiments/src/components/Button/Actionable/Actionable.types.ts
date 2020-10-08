@@ -1,14 +1,14 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
-import { IFontWeight, IKeytipProps } from 'office-ui-fabric-react';
+import { IFontWeight, IKeytipProps } from '@fluentui/react';
 import {
   IComponentStyles,
   IHTMLElementSlot,
   ISlotProp,
   ISlottableProps,
   IStyleableComponentProps,
-} from '../../../Foundation';
+} from '@uifabric/foundation';
 import { IBaseProps } from '../../../Utilities';
 
 /**

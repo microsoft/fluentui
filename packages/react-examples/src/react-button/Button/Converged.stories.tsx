@@ -3,42 +3,34 @@ import { Button } from '@fluentui/react-button';
 import { UploadIcon } from '@fluentui/react-icons';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { mergeThemes, PartialTheme } from '@fluentui/theme';
-import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
+import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';
 
-const paletteAccent = 'var(--palette-accent)';
-const paletteSoftest = 'var(--palette-softest)';
-const paletteStrongest = 'var(--palette-strongest)';
-
-const getThemes = (accent: string) => {
+const getThemes = (brand: string) => {
   const lightTheme = mergeThemes({
     tokens: {
-      palette: {
-        accent: accent,
-        softest: 'white',
-        strongest: 'black',
-      },
-
-      body: {
-        background: 'white',
-        contentColor: 'black',
-      },
-
-      accent: {
-        background: paletteAccent,
-        contentColor: paletteSoftest,
-
-        hovered: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
+      color: {
+        body: {
+          background: 'white',
+          contentColor: 'black',
         },
-        pressed: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
-        },
-      },
 
-      button: {
-        background: '#ddd',
+        brand: {
+          background: brand,
+          contentColor: 'var(--color-body-contentColor)',
+
+          hovered: {
+            background: brand,
+            contentColor: 'var(--color-body-contentColor)',
+          },
+          pressed: {
+            background: brand,
+            contentColor: 'var(--color-body-contentColor)',
+          },
+        },
+
+        button: {
+          background: '#ddd',
+        },
       },
     },
     stylesheets: [],
@@ -46,33 +38,26 @@ const getThemes = (accent: string) => {
 
   const darkTheme = mergeThemes(lightTheme, {
     tokens: {
-      palette: {
-        softest: 'black',
-        strongest: 'white',
-      },
-
-      body: {
-        background: '#333',
-        contentColor: paletteStrongest,
-      },
-
-      button: {
-        background: 'transparent',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
+      color: {
+        body: {
+          background: '#333',
+          contentColor: 'white',
         },
-      },
 
-      accent: {
-        background: 'blue',
-        contentColor: paletteStrongest,
+        button: {
+          background: 'transparent',
 
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
+          hovered: {
+            background: '#555',
+          },
+        },
+
+        brand: {
+          background: brand,
+
+          hovered: {
+            background: '#555',
+          },
         },
       },
     },
@@ -103,7 +88,7 @@ export const ThemeExample = () => {
 
   return (
     <Stack gap={16}>
-      <Text variant="xLarge">Accent color</Text>
+      <Text variant="xLarge">brand color</Text>
       <ColorPicker color={color} onChange={onColorChange} />
 
       <ExampleBox title="Light" theme={lightTheme} />

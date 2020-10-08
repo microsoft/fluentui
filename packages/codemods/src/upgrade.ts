@@ -10,27 +10,36 @@ export function upgrade(options: CommandParserResult) {
   logger.log('getting configs');
   const configs = getTsConfigs();
 
+  if (options.saveSync) {
+    logger.log('Saving files synchronously');
+  }
   configs.forEach(configString => {
     // Lazily create/load each project to help deal with large monorepos
     const project = new Project({ tsConfigFilePath: configString });
     let error = false;
     try {
       const files = project.getSourceFiles();
-      runMods(mods, files, logValue => {
-        logValue.result.resolve(
-          v => {
-            logger.log(`Upgraded file ${logValue.file.getBaseName()} with mod ${logValue.mod.name}`, v.logs);
-          },
-          e => {
-            logger.warn(`Mod ${logValue.mod.name} did not run on file ${logValue.file.getBaseName()} for: `, e.reason);
-          },
-        );
+      runMods(mods, files, result => {
+        const [okays, errors] = result.resultList;
+
+        if (errors.length > 0) {
+          error = true;
+          logger.error(`File ${result.file.getBaseName()} has had the following mods error: `);
+          errors.forEach(v => {
+            logger.error('name: ', v.modName, 'errorData: ', v);
+          });
+        }
+
+        logger.log(`File ${result.file.getBaseName()} has had the following mods run: `);
+        okays.forEach(v => {
+          logger.log('name: ', v.modName, 'logdata: ', v.logs);
+        });
       });
     } catch (e) {
       logger.error(e);
       error = true;
     }
-    if (!error) {
+    if (!error && !options.saveSync) {
       project.save();
     }
   });
