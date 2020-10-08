@@ -32,7 +32,6 @@ import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pick
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
-import { IImageProps } from '@fluentui/react/lib/Image';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
@@ -1586,81 +1585,6 @@ export { ITagItemSuggestionStyles }
 export { ITagPickerProps }
 
 // @public (undocumented)
-export interface ITeachingBubble {
-    focus(): void;
-}
-
-// @public
-export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
-    ariaDescribedBy?: string;
-    ariaLabelledBy?: string;
-    calloutProps?: ICalloutProps;
-    componentRef?: IRefObject<ITeachingBubble>;
-    focusTrapZoneProps?: IFocusTrapZoneProps;
-    footerContent?: string | JSX.Element;
-    hasCloseButton?: boolean;
-    // @deprecated (undocumented)
-    hasCloseIcon?: boolean;
-    hasCondensedHeadline?: boolean;
-    hasSmallHeadline?: boolean;
-    headline?: string;
-    illustrationImage?: IImageProps;
-    isWide?: boolean;
-    onDismiss?: (ev?: any) => void;
-    primaryButtonProps?: IButtonProps;
-    secondaryButtonProps?: IButtonProps;
-    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
-    target?: Target;
-    // @deprecated (undocumented)
-    targetElement?: HTMLElement;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutProps?: ICalloutContentStyleProps;
-    primaryButtonClassName?: string;
-    secondaryButtonClassName?: string;
-    hasCloseButton?: boolean;
-    hasHeadline?: boolean;
-};
-
-// @public (undocumented)
-export interface ITeachingBubbleStyles {
-    // (undocumented)
-    body: IStyle;
-    // (undocumented)
-    bodyContent: IStyle;
-    // (undocumented)
-    closeButton: IStyle;
-    // (undocumented)
-    content: IStyle;
-    // (undocumented)
-    footer: IStyle;
-    // (undocumented)
-    header: IStyle;
-    // (undocumented)
-    headline: IStyle;
-    // (undocumented)
-    imageContent: IStyle;
-    // (undocumented)
-    primaryButton: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    secondaryButton: IStyle;
-    // (undocumented)
-    subComponentStyles?: ITeachingBubbleSubComponentStyles;
-    // (undocumented)
-    subText: IStyle;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleSubComponentStyles {
-    callout: IStyleFunctionOrObject<any, any>;
-}
-
-// @public (undocumented)
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
@@ -1871,18 +1795,6 @@ export { TagPickerBase }
 
 export { Target }
 
-// @public (undocumented)
-export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
-
 export { ValidationState }
 
 // @public (undocumented)
@@ -1966,6 +1878,7 @@ export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
 export * from "@fluentui/react/lib/SwatchColorPicker";
+export * from "@fluentui/react/lib/TeachingBubble";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/TextField";
 export * from "@fluentui/react/lib/ThemeGenerator";
