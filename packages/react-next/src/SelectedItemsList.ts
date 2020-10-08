@@ -1,2 +1,2 @@
 import './version';
-export * from './components/SelectedItemsList/index';
+export * from '@fluentui/react/lib/SelectedItemsList';

@@ -139,8 +139,8 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
       copyMenuItemText: 'Copy name',
       editMenuItemText: 'Edit',
       getEditingItemText: this._getEditingItemText,
-      onRenderFloatingPicker: FloatingPeoplePicker,
-      floatingPickerProps: this._floatingPickerProps,
+      onRenderFloatingPicker: FloatingPeoplePicker as any,
+      floatingPickerProps: this._floatingPickerProps as any,
     };
 
     this._focusZoneProps = {

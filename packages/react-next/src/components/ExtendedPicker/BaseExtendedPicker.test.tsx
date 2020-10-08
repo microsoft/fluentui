@@ -5,7 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
 import { BaseExtendedPicker } from './BaseExtendedPicker';
 import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
-import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../SelectedItemsList/index';
+import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../../SelectedItemsList';
 import { KeyCodes } from '../../Utilities';
 
 function onResolveSuggestions(text: string): ISimple[] {

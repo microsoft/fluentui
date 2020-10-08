@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme } from '../../../../Styling';
 import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
 
 const GlobalClassNames = {
