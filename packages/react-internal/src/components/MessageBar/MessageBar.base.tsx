@@ -1,210 +1,123 @@
 import * as React from 'react';
-import {
-  DelayedRender,
-  getId,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties,
-  css,
-  initializeComponentRef,
-} from '../../Utilities';
+import { DelayedRender, classNamesFunction, getNativeProps, htmlElementProperties, css } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { useId, useBoolean } from '@uifabric/react-hooks';
+
+const ICON_MAP = {
+  [MessageBarType.info]: 'Info',
+  [MessageBarType.warning]: 'Info',
+  [MessageBarType.error]: 'ErrorBadge',
+  [MessageBarType.blocked]: 'Blocked2',
+  [MessageBarType.severeWarning]: 'Warning',
+  [MessageBarType.success]: 'Completed',
+};
+
+const COMPONENT_NAME = 'MessageBar';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
-export interface IMessageBarState {
-  labelId?: string;
-  showContent?: boolean;
-  expandSingleLine?: boolean;
-}
-
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-  public static defaultProps: IMessageBarProps = {
-    messageBarType: MessageBarType.info,
-    onDismiss: undefined,
-    isMultiline: true,
-  };
-
-  private ICON_MAP = {
-    [MessageBarType.info]: 'Info',
-    [MessageBarType.warning]: 'Info',
-    [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.blocked]: 'Blocked2',
-    [MessageBarType.severeWarning]: 'Warning',
-    [MessageBarType.success]: 'Completed',
-  };
-
-  private _classNames: { [key in keyof IMessageBarStyles]: string };
-
-  constructor(props: IMessageBarProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this.state = {
-      labelId: getId('MessageBar'),
-      // eslint-disable-next-line react/no-unused-state
-      showContent: false,
-      expandSingleLine: false,
-    };
+const getAnnouncementPriority = (messageBarType: MessageBarType): 'assertive' | 'polite' => {
+  switch (messageBarType) {
+    case MessageBarType.blocked:
+    case MessageBarType.error:
+    case MessageBarType.severeWarning:
+      return 'assertive';
   }
+  return 'polite';
+};
 
-  public render(): JSX.Element {
-    const { isMultiline } = this.props;
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.forwardRef<
+  HTMLDivElement,
+  IMessageBarProps
+>((props, ref) => {
+  const [expandSingleLine, { toggle: toggleExpandSingleLine }] = useBoolean(false);
+  const labelId = useId('MessageBar');
 
-    this._classNames = this._getClassNames();
+  const {
+    actions,
+    className,
+    children,
+    overflowButtonAriaLabel,
+    dismissIconProps,
+    styles,
+    theme,
+    messageBarType = MessageBarType.info,
+    onDismiss = undefined,
+    isMultiline = true,
+    truncated,
+    dismissButtonAriaLabel,
+    messageBarIconProps,
+  } = props;
 
-    return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
-  }
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
+    'className',
+  ]);
 
-  private _getActionsDiv(): JSX.Element | null {
-    if (this.props.actions) {
-      return <div className={this._classNames.actions}>{this.props.actions}</div>;
-    }
-    return null;
-  }
+  const classNames: { [key in keyof IMessageBarStyles]: string } = getClassNames(styles, {
+    theme: theme!,
+    messageBarType: messageBarType || MessageBarType.info,
+    onDismiss: onDismiss !== undefined,
+    actions: actions !== undefined,
+    truncated: truncated,
+    isMultiline: isMultiline,
+    expandSingleLine: expandSingleLine,
+    className,
+  });
 
-  private _getDismissDiv(): JSX.Element | null {
-    const { onDismiss, dismissIconProps } = this.props;
-    if (onDismiss) {
-      return (
-        <IconButton
-          disabled={false}
-          className={this._classNames.dismissal}
-          onClick={onDismiss}
-          iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
-          title={this.props.dismissButtonAriaLabel}
-          ariaLabel={this.props.dismissButtonAriaLabel}
-        />
-      );
-    }
-    return null;
-  }
+  const expandIconProps = { iconName: expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' };
+  const regionProps = actions || onDismiss ? { 'aria-describedby': labelId, role: 'region' } : {};
+  const actionsDiv = actions ? <div className={classNames.actions}>{actions}</div> : null;
 
-  private _getDismissSingleLine(): JSX.Element | null {
-    if (this.props.onDismiss) {
-      return <div className={this._classNames.dismissSingleLine}>{this._getDismissDiv()}</div>;
-    }
-    return null;
-  }
+  const dismissButton = onDismiss ? (
+    <IconButton
+      disabled={false}
+      className={classNames.dismissal}
+      onClick={onDismiss}
+      iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+      title={dismissButtonAriaLabel}
+      ariaLabel={dismissButtonAriaLabel}
+    />
+  ) : null;
 
-  private _getExpandSingleLine(): JSX.Element | null {
-    if (!this.props.actions && this.props.truncated) {
-      return (
-        <div className={this._classNames.expandSingleLine}>
-          <IconButton
-            disabled={false}
-            className={this._classNames.expand}
-            onClick={this._onClick}
-            iconProps={{ iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' }}
-            ariaLabel={this.props.overflowButtonAriaLabel}
-            aria-expanded={this.state.expandSingleLine}
-          />
+  return (
+    <div ref={ref} className={classNames.root} {...regionProps}>
+      <div className={classNames.content}>
+        <div className={classNames.iconContainer} aria-hidden>
+          {messageBarIconProps ? (
+            <Icon {...messageBarIconProps} className={css(classNames.icon, messageBarIconProps.className)} />
+          ) : (
+            <Icon iconName={ICON_MAP[messageBarType!]} className={classNames.icon} />
+          )}
         </div>
-      );
-    }
-    return null;
-  }
-
-  private _getIconSpan(): JSX.Element {
-    const { messageBarIconProps } = this.props;
-    return (
-      <div className={this._classNames.iconContainer} aria-hidden>
-        {messageBarIconProps ? (
-          <Icon {...messageBarIconProps} className={css(this._classNames.icon, messageBarIconProps.className)} />
-        ) : (
-          <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
+        <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority(messageBarType)}>
+          <span className={classNames.innerText} {...nativeProps}>
+            <DelayedRender>
+              <span>{children}</span>
+            </DelayedRender>
+          </span>
+        </div>
+        {/* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
+          <div className={classNames.expandSingleLine}>
+            <IconButton
+              disabled={false}
+              className={classNames.expand}
+              onClick={toggleExpandSingleLine}
+              iconProps={expandIconProps}
+              ariaLabel={overflowButtonAriaLabel}
+              aria-expanded={expandSingleLine}
+            />
+          </div>
         )}
+        {/* singleline actions */ !isMultiline && actionsDiv}
+        {/* singleline dismiss */ !isMultiline && dismissButton && (
+          <div className={classNames.dismissSingleLine}>{dismissButton}</div>
+        )}
+        {/* multiline dismiss */ isMultiline && dismissButton}
       </div>
-    );
-  }
-
-  private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    return (
-      <div className={this._classNames.root} {...this._getRegionProps()}>
-        <div className={this._classNames.content}>
-          {this._getIconSpan()}
-          {this._renderInnerText()}
-          {this._getDismissDiv()}
-        </div>
-        {this._getActionsDiv()}
-      </div>
-    );
-  }
-
-  private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    return (
-      <div className={this._classNames.root} {...this._getRegionProps()}>
-        <div className={this._classNames.content}>
-          {this._getIconSpan()}
-          {this._renderInnerText()}
-          {this._getExpandSingleLine()}
-          {this._getActionsDiv()}
-          {this._getDismissSingleLine()}
-        </div>
-      </div>
-    );
-  }
-
-  private _renderInnerText(): JSX.Element {
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, [
-      'className',
-    ]);
-
-    return (
-      <div
-        className={this._classNames.text}
-        id={this.state.labelId}
-        role="status"
-        aria-live={this._getAnnouncementPriority()}
-      >
-        <span className={this._classNames.innerText} {...nativeProps}>
-          <DelayedRender>
-            <span>{this.props.children}</span>
-          </DelayedRender>
-        </span>
-      </div>
-    );
-  }
-
-  private _getRegionProps = () => {
-    const hasActions = !!this._getActionsDiv() || !!this._getDismissDiv();
-    const regionProps = {
-      'aria-describedby': this.state.labelId,
-      role: 'region',
-    };
-
-    return hasActions ? regionProps : {};
-  };
-
-  private _getClassNames(): { [key in keyof IMessageBarStyles]: string } {
-    const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline } = this.props;
-    const { expandSingleLine } = this.state;
-
-    return getClassNames(this.props.styles!, {
-      theme: theme!,
-      messageBarType: messageBarType || MessageBarType.info,
-      onDismiss: onDismiss !== undefined,
-      actions: actions !== undefined,
-      truncated: truncated,
-      isMultiline: isMultiline,
-      expandSingleLine: expandSingleLine,
-      className,
-    });
-  }
-
-  private _getAnnouncementPriority(): 'assertive' | 'polite' {
-    switch (this.props.messageBarType) {
-      case MessageBarType.blocked:
-      case MessageBarType.error:
-      case MessageBarType.severeWarning:
-        return 'assertive';
-    }
-    return 'polite';
-  }
-
-  private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    this.setState({ expandSingleLine: !this.state.expandSingleLine });
-  };
-}
+      {/* multiline actions */ isMultiline && actionsDiv}
+    </div>
+  );
+});
+MessageBarBase.displayName = COMPONENT_NAME;

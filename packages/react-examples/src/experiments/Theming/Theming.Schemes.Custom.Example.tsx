@@ -356,9 +356,10 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
           }}
         >
           <ChoiceGroup
+            defaultSelectedKey="B"
             options={[
               { key: 'A', text: 'Option A' },
-              { key: 'B', text: 'Option B', checked: true },
+              { key: 'B', text: 'Option B' },
               { key: 'C', text: 'Option C', disabled: true },
             ]}
           />

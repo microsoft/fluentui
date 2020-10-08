@@ -1,5 +1,5 @@
 import { ImageLoadState, IBaseProps } from '@fluentui/react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '@uifabric/foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
