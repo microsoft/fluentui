@@ -5586,7 +5586,7 @@ export interface ITeachingBubble {
 }
 
 // @public
-export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
@@ -5609,12 +5609,6 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleState {
-    // (undocumented)
-    isTeachingBubbleVisible?: boolean;
 }
 
 // @public (undocumented)
@@ -7219,43 +7213,13 @@ export { Target }
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    static defaultProps: {
-        calloutProps: {
-            beakWidth: number;
-            gapSpace: number;
-            setInitialFocus: boolean;
-            doNotLayer: boolean;
-            directionalHint: 12;
-        };
-    };
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const Text: React.FunctionComponent<ITextProps>;

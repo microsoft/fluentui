@@ -1,10 +1,11 @@
 import * as React from 'react';
-
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { mount } from 'enzyme';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 describe('TeachingBubble', () => {
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
@@ -112,6 +113,12 @@ describe('TeachingBubble', () => {
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: TeachingBubble,
+    displayName: 'TeachingBubble',
+    componentPath: path.join(__dirname, 'TeachingBubble.ts'),
   });
 
   it('merges callout classNames', () => {
