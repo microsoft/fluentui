@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
-import { ISearchBoxStyles, SearchBox } from '@fluentui/react-next/lib/SearchBox';
-import { Icon } from '@fluentui/react-next/lib/Icon';
-import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
-import { IRenderFunction } from '@fluentui/react-next/lib/Utilities';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { ISearchBoxStyles, SearchBox } from '@fluentui/react/lib/SearchBox';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
