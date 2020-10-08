@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useConst, useBoolean } from '@uifabric/react-hooks';
-import { DefaultButton } from '@fluentui/react/lib/Button';
-import { Callout } from '@fluentui/react/lib/Callout';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
+import { Callout } from '@fluentui/react-next/lib/Callout';
 import {
   ContextualMenuItemType,
   IContextualMenuProps,
   IContextualMenuItemProps,
-} from '@fluentui/react/lib/ContextualMenu';
-import { Icon } from '@fluentui/react/lib/Icon';
-import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
+} from '@fluentui/react-next/lib/ContextualMenu';
+import { Icon } from '@fluentui/react-next/lib/Icon';
+import { mergeStyleSets, getTheme } from '@fluentui/react-next/lib/Styling';
 
 export const ContextualMenuIconExample: React.FunctionComponent = () => {
   const [showCallout, { setTrue: onShowCallout, setFalse: onHideCallout }] = useBoolean(false);

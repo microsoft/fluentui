@@ -4,8 +4,8 @@ import {
   DirectionalHint,
   IContextualMenuItem,
   IContextualMenuProps,
-} from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+} from '@fluentui/react-next/lib/ContextualMenu';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 
 const keys: string[] = [
   'newItem',
@@ -167,7 +167,7 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           iconProps: {
             iconName: selection[keys[13]] ? 'SingleBookmarkSolid' : 'SingleBookmark',
           },
-          name: selection[keys[13]] ? 'Toogled command no checkmark' : 'Toogle command no checkmark',
+          name: selection[keys[13]] ? 'Toggled command no checkmark' : 'Toggle command no checkmark',
           canCheck: false,
           isChecked: selection[keys[13]],
           onClick: onToggleSelect,

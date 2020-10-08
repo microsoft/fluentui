@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import {
   IContextualMenuProps,
   IContextualMenuItemProps,
   IContextualMenuItemRenderFunctions,
-} from '@fluentui/react/lib/ContextualMenu';
+} from '@fluentui/react-next/lib/ContextualMenu';
 import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent = () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-next/lib/common/DocPage.types';
 
 import { ContextualMenuBasicExample } from './ContextualMenu.Basic.Example';
 import { ContextualMenuDefaultExample } from './ContextualMenu.Default.Example';
@@ -18,26 +18,26 @@ import { ContextualMenuWithCustomMenuListExample } from './ContextualMenu.Custom
 import { ContextualMenuHeaderExample } from './ContextualMenu.Header.Example';
 import { ContextualMenuPersistedExample } from './ContextualMenu.Persisted.Example';
 
-const ContextualMenuBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Basic.Example.tsx') as string;
-const ContextualMenuDefaultExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Default.Example.tsx') as string;
-const ContextualMenuPersistedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Persisted.Example.tsx') as string;
-const ContextualMenuIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Icon.Example.tsx') as string;
-const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
-const ContextualMenuSubmenuExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Submenu.Example.tsx') as string;
-const ContextualMenuSectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Section.Example.tsx') as string;
-const ContextualMenuCheckmarksExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Checkmarks.Example.tsx') as string;
-const ContextualMenuDirectionalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Directional.Example.tsx') as string;
-const ContextualMenuCustomizationExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Customization.Example.tsx') as string;
-const ContextualMenuCustomizationWithNoWrapExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomizationWithNoWrap.Example.tsx') as string;
-const ContextualMenuWithScrollBarExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.ScrollBar.Example.tsx') as string;
-const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomMenuItem.Example.tsx') as string;
-const ContextualMenuCustomMenuListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomMenuList.Example.tsx') as string;
-const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
+const ContextualMenuBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuDefaultExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Default.Example.tsx') as string;
+const ContextualMenuPersistedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Persisted.Example.tsx') as string;
+const ContextualMenuIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Icon.Example.tsx') as string;
+const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
+const ContextualMenuSubmenuExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Submenu.Example.tsx') as string;
+const ContextualMenuSectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Section.Example.tsx') as string;
+const ContextualMenuCheckmarksExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Checkmarks.Example.tsx') as string;
+const ContextualMenuDirectionalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Directional.Example.tsx') as string;
+const ContextualMenuCustomizationExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuCustomizationWithNoWrapExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.CustomizationWithNoWrap.Example.tsx') as string;
+const ContextualMenuWithScrollBarExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.ScrollBar.Example.tsx') as string;
+const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.CustomMenuItem.Example.tsx') as string;
+const ContextualMenuCustomMenuListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.CustomMenuList.Example.tsx') as string;
+const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
 
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
   componentName: 'ContextualMenu',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ContextualMenu',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/ContextualMenu',
   examples: [
     {
       title: 'Basic ContextualMenu',
@@ -117,10 +117,10 @@ export const ContextualMenuPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuOverview.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/docs/ContextualMenuOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuBestPractices.md'),
+  >('!raw-loader!@fluentui/react-examples/src/react-next/ContextualMenu/docs/ContextualMenuBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
