@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, omit } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
-import { nullRender } from './nullRender';
+// import { NullRender } from '../resolveSlotProps';
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -21,31 +21,40 @@ import { nullRender } from './nullRender';
  */
 export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefined) => {
   const slots: GenericDictionary = {
+    // TODO: It is strange that there is no props.components.root, but there is a slots.root generated.
     root: state.as || 'div',
   };
+
   const slotProps: GenericDictionary = {
-    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, ['as']),
+    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state) : omit(state, ['as', 'components']),
   };
 
   if (slotNames) {
     for (const name of slotNames) {
-      const slotDefinition = state[name] || {};
-      const { as: slotAs = 'span', children } = slotDefinition;
-      const isSlotPrimitive = typeof slotAs === 'string';
-      const isSlotEmpty = isSlotPrimitive && slotDefinition.children === undefined;
+      const slotDefinition = state[name];
+      const Component = state?.components?.[name];
 
-      slots[name] = isSlotEmpty ? nullRender : slotAs;
+      // TODO: Handle slots that are "empty" or not defined by the user
+      //        was handled with nullRenderer (prob right)
 
-      if (typeof children === 'function') {
+      // slot has been opted-out
+      if (Component === null || slotDefinition === null) {
+        continue;
+      }
+
+      slots[name] = Component;
+
+      // children render function
+      if (typeof slotDefinition?.children === 'function') {
         slotProps[name] = {
-          children: children(slots[name], omit(slotDefinition, ['as', 'children'])),
+          children: slotDefinition.children(Component, omit(slotDefinition, ['children'])),
         };
         slots[name] = React.Fragment;
-      } else if (slots[name] !== nullRender) {
-        slotProps[name] = isSlotPrimitive
-          ? getNativeElementProps(slotAs, slotDefinition)
-          : omit(slotDefinition, ['as']);
+        continue;
       }
+
+      slotProps[name] =
+        typeof Component === 'string' ? getNativeElementProps(Component, slotDefinition) : slotDefinition;
     }
   }
 
