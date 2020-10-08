@@ -59,8 +59,29 @@ If you would like to continue using the previous button components for now, upda
 
 ### SpinButton
 
-- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
+- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring in line with other components. As a result, the following props have been removed (see below for migration tips):
+  - `arrowButtonsContainerDisabled`
+  - `inputDisabled`
+  - `inputTextSelected`
+  - `labelDisabled`
+  - `spinButtonWrapperDisabled`
+  - `spinButtonWrapperFocused`
+  - `spinButtonWrapperHovered`
+  - `spinButtonWrapperTopBottom`
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
+
+If you're using a removed `ISpinButtonStyles` prop, you can instead pass a style function which returns appropriate styles based on the current state of the component. For example, instead of setting `spinButtonWrapperFocused`, you can do this:
+
+```tsx
+<SpinButton styles={(props: ISpinButtonStyleProps) => {
+  const { isFocused, theme } = props;
+  return {
+    spinButtonWrapper: isFocused && {
+      outline: '5px solid ' + theme.palette.yellow,
+    },
+  };
+}}>
+```
 
 ### Shimmer
 

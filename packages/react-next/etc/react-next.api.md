@@ -23,7 +23,6 @@ import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IButton } from '@fluentui/react/lib/Button';
 import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from '@fluentui/react-internal/lib/components/Button/Button.types';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -33,7 +32,6 @@ import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pick
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
-import { IImageProps } from '@fluentui/react/lib/Image';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
@@ -94,7 +92,6 @@ import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
-import { Position } from '@fluentui/react/lib/Positioning';
 import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
@@ -1444,79 +1441,6 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     removeMenuItemText?: string;
 }
 
-// @public (undocumented)
-export interface ISpinButton {
-    focus: () => void;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
-    ariaValueNow?: number;
-    // (undocumented)
-    ariaValueText?: string;
-    className?: string;
-    componentRef?: IRefObject<ISpinButton>;
-    decrementButtonAriaLabel?: string;
-    decrementButtonIcon?: IIconProps;
-    defaultValue?: string;
-    disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles>;
-    iconButtonProps?: IButtonProps_2;
-    iconProps?: IIconProps;
-    incrementButtonAriaLabel?: string;
-    incrementButtonIcon?: IIconProps;
-    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
-    keytipProps?: IKeytipProps;
-    label?: string;
-    labelPosition?: Position;
-    max?: number;
-    min?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
-    onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
-    precision?: number;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
-    theme?: ITheme;
-    title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles>;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyleProps {
-    // (undocumented)
-    className: string | undefined;
-    // (undocumented)
-    disabled: boolean;
-    // (undocumented)
-    isFocused: boolean;
-    // (undocumented)
-    keyboardSpinDirection: KeyboardSpinDirection;
-    // (undocumented)
-    labelPosition: Position;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ISpinButtonStyles {
-    arrowButtonsContainer: IStyle;
-    icon: IStyle;
-    input: IStyle;
-    label: IStyle;
-    labelWrapper: IStyle;
-    root: IStyle;
-    spinButtonWrapper: IStyle;
-}
-
 export { ISuggestionItemProps }
 
 export { ISuggestionModel }
@@ -1622,91 +1546,6 @@ export { ITagItemSuggestionStyles }
 export { ITagPickerProps }
 
 // @public (undocumented)
-export interface ITeachingBubble {
-    focus(): void;
-}
-
-// @public
-export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
-    ariaDescribedBy?: string;
-    ariaLabelledBy?: string;
-    calloutProps?: ICalloutProps;
-    componentRef?: IRefObject<ITeachingBubble>;
-    focusTrapZoneProps?: IFocusTrapZoneProps;
-    footerContent?: string | JSX.Element;
-    hasCloseButton?: boolean;
-    // @deprecated (undocumented)
-    hasCloseIcon?: boolean;
-    hasCondensedHeadline?: boolean;
-    hasSmallHeadline?: boolean;
-    headline?: string;
-    illustrationImage?: IImageProps;
-    isWide?: boolean;
-    onDismiss?: (ev?: any) => void;
-    primaryButtonProps?: IButtonProps;
-    secondaryButtonProps?: IButtonProps;
-    styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
-    target?: Target;
-    // @deprecated (undocumented)
-    targetElement?: HTMLElement;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutProps?: ICalloutContentStyleProps;
-    primaryButtonClassName?: string;
-    secondaryButtonClassName?: string;
-    hasCloseButton?: boolean;
-    hasHeadline?: boolean;
-};
-
-// @public (undocumented)
-export interface ITeachingBubbleStyles {
-    // (undocumented)
-    body: IStyle;
-    // (undocumented)
-    bodyContent: IStyle;
-    // (undocumented)
-    closeButton: IStyle;
-    // (undocumented)
-    content: IStyle;
-    // (undocumented)
-    footer: IStyle;
-    // (undocumented)
-    header: IStyle;
-    // (undocumented)
-    headline: IStyle;
-    // (undocumented)
-    imageContent: IStyle;
-    // (undocumented)
-    primaryButton: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    secondaryButton: IStyle;
-    // (undocumented)
-    subComponentStyles?: ITeachingBubbleSubComponentStyles;
-    // (undocumented)
-    subText: IStyle;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleSubComponentStyles {
-    callout: IStyleFunctionOrObject<any, any>;
-}
-
-// @public (undocumented)
-export enum KeyboardSpinDirection {
-    // (undocumented)
-    down = -1,
-    // (undocumented)
-    notSpinning = 0,
-    // (undocumented)
-    up = 1
-}
-
-// @public (undocumented)
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
@@ -1767,9 +1606,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     // (undocumented)
     protected renderItems: () => JSX.Element[];
 }
-
-// @public
-export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
 export { SuggestionActionType }
 
@@ -1914,18 +1750,6 @@ export { TagPickerBase }
 
 export { Target }
 
-// @public (undocumented)
-export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
-
-// @public (undocumented)
-export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
-
 export { ValidationState }
 
 // @public (undocumented)
@@ -2004,11 +1828,13 @@ export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
 export * from "@fluentui/react/lib/Shimmer";
 export * from "@fluentui/react/lib/ShimmeredDetailsList";
+export * from "@fluentui/react/lib/SpinButton";
 export * from "@fluentui/react/lib/Spinner";
 export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
 export * from "@fluentui/react/lib/SwatchColorPicker";
+export * from "@fluentui/react/lib/TeachingBubble";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/TextField";
 export * from "@fluentui/react/lib/ThemeGenerator";
