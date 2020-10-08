@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "removes palette generation for every card and adds better null checking to avoid runtime errors",
+  "packageName": "@fluentui/web-components",
+  "email": "nicholasrice@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-08T17:29:03.955Z"
+}
