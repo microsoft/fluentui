@@ -21,7 +21,7 @@ import {
   IVSChartDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
+import { ChartTypes, XAxisTypes } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -374,8 +374,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
   };
 
-  private _redirectToUrl(): void {
-    this.props.href ? (window.location.href = this.props.href) : '';
+  private _redirectToUrl(href: string): void {
+    href ? (window.location.href = href) : '';
   }
 
   private _getYMax(dataset: IDataPoint[]) {
@@ -420,7 +420,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           onMouseLeave: this._handleMouseOut,
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber),
           onBlur: this._handleMouseOut,
-          onClick: this._redirectToUrl,
+          onClick: this._redirectToUrl.bind(this, this.props.href!),
         };
         return (
           <rect
@@ -445,7 +445,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         onMouseLeave: this._handleMouseOut,
         onFocus: this._onStackFocus.bind(this, singleChartData.xAxisPoint),
         onBlur: this._handleMouseOut,
-        onClick: this._redirectToUrl,
+        onClick: this._redirectToUrl.bind(this, this.props.href!),
       };
       return (
         <g
@@ -473,7 +473,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       .nice()
       .range([
         this.margins.left!,
-        containerWidth - this.margins.right! - this._barWidth - (this._isRtl ? additionalMarginRight : 0),
+        containerWidth - this.margins.right! - this._barWidth - (this._isRtl ? this.margins.right! : 0),
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
@@ -494,7 +494,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           this.margins.right! -
           endpointDistance -
           0.5 * this._barWidth -
-          (this._isRtl ? additionalMarginRight : 0),
+          (this._isRtl ? this.margins.right! : 0),
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])

@@ -118,7 +118,6 @@ export interface IFitContainerParams {
   legendContainer: HTMLDivElement;
   container: HTMLDivElement | null | HTMLElement;
 }
-export const additionalMarginRight: number = 20;
 
 /**
  * Create Numeric X axis
@@ -530,7 +529,7 @@ export function domainRangeOfDateForAreaChart(
   });
 
   const rStartValue = margins.left!;
-  const rEndValue = width - margins.right! - (isRTL ? additionalMarginRight : 0);
+  const rEndValue = width - margins.right! - (isRTL ? margins.right! : 0);
 
   return isRTL
     ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
@@ -564,7 +563,7 @@ export function domainRangeOfNumericForAreaChart(
   })!;
 
   const rStartValue = margins.left!;
-  const rEndValue = width - margins.right! - (isRTL ? additionalMarginRight : 0);
+  const rEndValue = width - margins.right! - (isRTL ? margins.right! : 0);
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
@@ -584,7 +583,7 @@ export function domainRangeOfNumericForAreaChart(
  */
 export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
   const rMin = margins.left!;
-  const rMax = width - margins.right! - (isRTL ? additionalMarginRight : 0);
+  const rMax = width - margins.right! - (isRTL ? margins.right! : 0);
 
   return isRTL
     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
@@ -628,7 +627,7 @@ export function domainRangeOfVSBCNumeric(
   const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
   // barWidth / 2 - for to get tick middle of the bar
   const rMax = margins.left! + barWidth / 2;
-  const rMin = width - margins.right! - barWidth / 2 - (isRTL ? additionalMarginRight : 0);
+  const rMin = width - margins.right! - barWidth / 2 - (isRTL ? margins.right! : 0);
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };

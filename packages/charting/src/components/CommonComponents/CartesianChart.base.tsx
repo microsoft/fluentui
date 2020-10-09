@@ -15,7 +15,6 @@ import {
   createDateXAxis,
   createYAxis,
   createStringYAxis,
-  additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
   XAxisTypes,
@@ -200,7 +199,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -208,9 +207,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.yAxisElement = e;
               }}
               id={`yAxisGElement${this.idForGraph}`}
-              transform={`translate(${
-                this._isRtl ? svgDimensions.width - this.margins.right! - additionalMarginRight : 40
-              }, 0)`}
+              // Removing margins.right 2 times from width for RTL.
+              transform={`translate(${this._isRtl ? svgDimensions.width - 2 * this.margins.right! : 40}, 0)`}
               className={this._classNames.yAxis}
             />
             {children}
