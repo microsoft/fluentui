@@ -52,4 +52,8 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
     }),
     [theme],
   );
+
+  if (draftState.theme.rtl !== parentTheme.rtl) {
+    draftState.dir = draftState.theme.rtl ? 'rtl' : 'ltr';
+  }
 };

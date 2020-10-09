@@ -27,6 +27,7 @@
   "dependencies": {
     "@fluentui/react-next": "^8.0.0-alpha.125",
     "@fluentui/react-theme-provider": "^0.14.4",
+    "@fluentui/theme": "^1.3.0",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.5.26",

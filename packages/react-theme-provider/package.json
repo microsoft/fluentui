@@ -36,6 +36,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
+    "@uifabric/styling": "^7.16.10",
     "@uifabric/test-utilities": "^7.3.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -50,7 +51,6 @@
     "@fluentui/react-window-provider": "^0.3.3",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/styling": "^7.16.10",
     "@uifabric/utilities": "^7.32.4",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
