@@ -5,6 +5,7 @@ import { DescendantsNarrationsComputer } from './../narration/DescendantsNarrati
 
 const computer: DescendantsNarrationsComputer = new DescendantsNarrationsComputer();
 let narrationTexts: Record<string, string> = {};
+const aomMissing = !(window as any).getComputedAccessibleNode;
 
 export type ReaderNarrationProps = {
   selector: string;
@@ -20,6 +21,11 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     if (!ref.current) {
       return;
     }
+
+    if (aomMissing) {
+      return;
+    }
+
     const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
 
     // Compute and store the narrations for the element and its focusable descendants
@@ -40,7 +46,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       const text = narrations[0]?.text || null;
       setCompleteText(text);
     }); // End compute
-  }, [setNarrationText, setNarrationPath, setNarrationPaths, ref, selector]);
+  });
 
   // Composes and sets the complete screen reader narration text to be displayed
   const setCompleteText = text => {
@@ -74,7 +80,20 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       <Ref innerRef={ref}>
         <Alert
           warning
-          content={narrationText !== null ? narrationText : 'The selected component has no focusable elements.'}
+          content={
+            aomMissing ? (
+              <>
+                AOM is not available.{' '}
+                <a target="_blank" href="http://wicg.github.io/aom/caniuse.html">
+                  Enable AOM
+                </a>
+              </>
+            ) : narrationText !== null ? (
+              narrationText
+            ) : (
+              'The selected component has no focusable elements.'
+            )
+          }
         />
       </Ref>
     </>

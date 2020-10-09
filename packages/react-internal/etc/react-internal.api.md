@@ -395,7 +395,13 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -427,11 +433,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void;
+    protected readonly selection: Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -1385,7 +1387,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
     // @deprecated
     onItemDeleted?: (deletedItem: T) => void;
     onItemsDeleted?: (deletedItems: T[]) => void;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
     onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
     removeButtonAriaLabel?: string;
     selectedItems?: T[];
@@ -1393,7 +1395,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 }
 
 // @public (undocumented)
-export interface IBaseSelectedItemsListState<T = any> {
+export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
 }
