@@ -13,13 +13,14 @@ const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
 const processVariants = (options: MakeVariantClassesOptions | undefined, theme: Theme) => {
-  const result: Record<string, IStyle> = {};
+  const results: Record<string, IStyle>[] = [];
   const { name, prefix } = options || {};
   const variantSet = [options?.variants, theme?.components?.[name!]?.variants];
 
   for (let variants of variantSet) {
     if (variants) {
       variants = callOrReturn(variants, theme);
+      const result = {};
 
       for (const variantName of Object.keys(variants!)) {
         const modifierName = variantName === 'root' ? variantName : '_' + variantName;
@@ -35,10 +36,12 @@ const processVariants = (options: MakeVariantClassesOptions | undefined, theme: 
           }
         }
       }
+
+      results.push(result);
     }
   }
 
-  return result;
+  return results;
 };
 
 /**
@@ -89,8 +92,8 @@ export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptio
     return [
       callOrReturn(parentOptions?.styles, theme),
       callOrReturn(styles, theme),
-      processVariants(parentOptions, theme),
-      processVariants(
+      ...processVariants(parentOptions, theme),
+      ...processVariants(
         {
           ...options,
           prefix: options.prefix || parentOptions?.prefix,
