@@ -1,15 +1,37 @@
 import { merge } from '@uifabric/utilities';
-import { PartialTheme, Theme } from './types/index';
+import { IFontStyles, PartialTheme, Theme } from './types/index';
+import { getSemanticColors } from './utilities/makeSemanticColors';
 
 /**
- * Merges multiple themes.
+ * Merge a partial/full theme into a full theme and returns a merged full theme.
  */
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult {
-  const partialTheme = merge<PartialTheme | Theme>({}, ...themes);
+export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Theme {
+  const mergedTheme = merge<Theme | PartialTheme>({}, theme, partialTheme, {
+    semanticColors: getSemanticColors(
+      partialTheme.palette,
+      partialTheme.effects,
+      partialTheme.semanticColors,
+      partialTheme.isInverted === undefined ? theme.isInverted : partialTheme.isInverted,
+    ),
+  }) as Theme;
 
-  // Correctly merge stylesheets array
-  partialTheme.stylesheets = [];
-  themes.forEach(theme => theme && theme.stylesheets && partialTheme.stylesheets?.push(...theme.stylesheets));
+  if (partialTheme.palette?.themePrimary && !partialTheme.palette?.accent) {
+    mergedTheme.palette.accent = partialTheme.palette.themePrimary;
+  }
 
-  return partialTheme as TResult;
+  if (partialTheme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(mergedTheme.fonts) as (keyof IFontStyles)[]) {
+      mergedTheme.fonts[fontStyle] = merge(
+        mergedTheme.fonts[fontStyle],
+        partialTheme.defaultFontStyle,
+        partialTheme?.fonts?.[fontStyle],
+      );
+    }
+  }
+
+  if (partialTheme.stylesheets) {
+    mergedTheme.stylesheets = (theme.stylesheets || []).concat(partialTheme.stylesheets);
+  }
+
+  return mergedTheme;
 }

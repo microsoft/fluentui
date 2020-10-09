@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { UploadIcon } from '@fluentui/react-icons';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { mergeThemes, PartialTheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/theme';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
 const getThemes = (brand: string) => {
-  const lightTheme = mergeThemes({
+  const lightTheme: PartialTheme = {
     tokens: {
       color: {
         body: {
@@ -16,40 +16,24 @@ const getThemes = (brand: string) => {
 
         brand: {
           background: brand,
-          contentColor: 'var(--color-body-contentColor)',
 
           hovered: {
             background: brand,
-            contentColor: 'var(--color-body-contentColor)',
           },
           pressed: {
             background: brand,
-            contentColor: 'var(--color-body-contentColor)',
           },
-        },
-
-        button: {
-          background: '#ddd',
         },
       },
     },
-    stylesheets: [],
-  });
+  };
 
-  const darkTheme = mergeThemes(lightTheme, {
+  const darkTheme: PartialTheme = {
     tokens: {
       color: {
         body: {
           background: '#333',
           contentColor: 'white',
-        },
-
-        button: {
-          background: 'transparent',
-
-          hovered: {
-            background: '#555',
-          },
         },
 
         brand: {
@@ -58,10 +42,13 @@ const getThemes = (brand: string) => {
           hovered: {
             background: '#555',
           },
+          pressed: {
+            background: '#555',
+          },
         },
       },
     },
-  } as PartialTheme);
+  };
 
   return { lightTheme, darkTheme };
 };
