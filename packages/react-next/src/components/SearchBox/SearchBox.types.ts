@@ -109,6 +109,11 @@ export interface ISearchBoxProps
   underlined?: boolean;
 
   /**
+   * The role assigned to the root DIV element of the SearchBox, useful for defining a landmark role, such as "search".
+   */
+  role?: string;
+
+  /**
    * Theme (provided through customization).
    */
   theme?: ITheme;
