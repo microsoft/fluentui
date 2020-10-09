@@ -6,6 +6,7 @@ trigger:
 
 jobs:
   - job: build
+    timeoutInMinutes: 75
     pool:
       vmImage: 'windows-2019'
     steps:
