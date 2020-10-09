@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 08 Oct 2020 12:23:24 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.125",
+      "version": "8.0.0-alpha.125",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removed whitespace",
+            "author": "memille@microsoft.com",
+            "commit": "4c6a2e332d80d3cb0187dd1653c44cf32af06e31",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.123",
       "version": "8.0.0-alpha.123",

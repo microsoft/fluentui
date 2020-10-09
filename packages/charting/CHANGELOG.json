@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 18:03:19 GMT",
+      "tag": "@uifabric/charting_v4.6.1",
+      "version": "4.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "changes in the hover behavior of circles and also removed focusing of circles ",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fba5c1c00f53783fc783ca9f39e5f35fa456e987",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Oct 2020 12:23:24 GMT",
+      "tag": "@uifabric/charting_v4.6.0",
+      "version": "4.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added color fill bar feature to line chart component",
+            "author": "email not defined",
+            "commit": "4c6a2e332d80d3cb0187dd1653c44cf32af06e31",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 12:25:11 GMT",
       "tag": "@uifabric/charting_v4.5.0",
       "version": "4.5.0",

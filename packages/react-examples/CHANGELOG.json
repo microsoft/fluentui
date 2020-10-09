@@ -2,6 +2,36 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 12:23:45 GMT",
+      "tag": "@fluentui/react-examples_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added error message to check color",
+            "author": "jagaheri@microsoft.com",
+            "commit": "2f6ebac31bb8d1aa3d4f7d8e5975c1226b75d8f5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Oct 2020 12:23:24 GMT",
+      "tag": "@fluentui/react-examples_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Made color fill bars compatible with multi select legends",
+            "author": "memille@microsoft.com",
+            "commit": "4c6a2e332d80d3cb0187dd1653c44cf32af06e31",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Oct 2020 12:24:30 GMT",
       "tag": "@fluentui/react-examples_v0.5.0",
       "version": "0.5.0",

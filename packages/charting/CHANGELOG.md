@@ -1,8 +1,26 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 06 Oct 2020 12:25:11 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Oct 2020 18:03:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.1)
+
+Fri, 09 Oct 2020 18:03:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.6.0..@uifabric/charting_v4.6.1)
+
+### Patches
+
+- changes in the hover behavior of circles and also removed focusing of circles  ([PR #15403](https://github.com/microsoft/fluentui/pull/15403) by v-sivsar@microsoft.com)
+
+## [4.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.0)
+
+Thu, 08 Oct 2020 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.5.0..@uifabric/charting_v4.6.0)
+
+### Minor changes
+
+- Added color fill bar feature to line chart component ([PR #14597](https://github.com/microsoft/fluentui/pull/14597) by email not defined)
 
 ## [4.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.5.0)
 

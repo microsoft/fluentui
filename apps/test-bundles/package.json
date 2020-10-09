@@ -33,7 +33,7 @@
     "@fluentui/react-button": "^0.15.1",
     "@fluentui/react-compose": "^0.19.5",
     "@fluentui/react-next": "^8.0.0-alpha.125",
-    "@uifabric/experiments": "^7.33.8",
+    "@uifabric/experiments": "^7.33.9",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.10",
     "office-ui-fabric-react": "^7.145.0",

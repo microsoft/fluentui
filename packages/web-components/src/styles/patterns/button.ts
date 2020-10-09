@@ -61,6 +61,10 @@ export const BaseButtonStyles: ElementStyles = css`
         font-family: inherit;
     }
 
+    .control, .end, .start {
+        font: inherit;
+    }
+
     :host(:hover) {
         background-color: ${neutralFillHoverBehavior.var};
     }

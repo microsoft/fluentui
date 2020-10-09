@@ -13,7 +13,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^7.8.26",
+    "@uifabric/fabric-website-resources": "^7.8.29",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
