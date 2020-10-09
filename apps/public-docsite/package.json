@@ -48,7 +48,7 @@
     "@uifabric/api-docs": "^7.5.18",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/experiments": "^7.33.1",
-    "@uifabric/fabric-website-resources": "^7.8.18",
+    "@fluentui/public-docsite-resources": "^7.8.18",
     "@uifabric/file-type-icons": "^7.6.9",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/set-version": "^7.0.23",

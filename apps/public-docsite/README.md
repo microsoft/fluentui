@@ -8,13 +8,13 @@ Fluent UI is a collection of projects that represent the Fluent design language 
 
 See the [readme](https://github.com/microsoft/fluentui) for instructions on getting started with Fluent UI development.
 
-Once your repo is set up, run the following to start a local copy of the website. (Be sure to **start from the root of the repo**, not the `fabric-website` folder.)
+Once your repo is set up, run the following to start a local copy of the website. (Be sure to **start from the root of the repo**, not the `public-docsite` folder.)
 
 ```
 yarn
-yarn buildto fabric-website
+yarn buildto public-docsite
 cd apps
-cd fabric-website
+cd public-docsite
 yarn start
 ```
 

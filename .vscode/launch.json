@@ -111,7 +111,7 @@
       }
     },
     {
-      "name": "Debug npm start (fabric-website)",
+      "name": "Debug npm start (public-docsite)",
       "type": "node",
       "request": "launch",
       // scripts/start.js generates this script path and launches a subprocess (which is harder
@@ -120,7 +120,7 @@
       "stopOnEntry": true,
       "cwd": "${workspaceRoot}/apps/public-docsite",
       "runtimeExecutable": null,
-      // Use the config file for fabric-website, plus command line options used in start.js
+      // Use the config file for public-docsite, plus command line options used in start.js
       "args": [
         "--nolazy",
         "--debug",
