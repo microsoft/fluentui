@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 12:23:45 GMT",
+      "tag": "@fluentui/react-examples_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added error message to check color",
+            "author": "jagaheri@microsoft.com",
+            "commit": "2f6ebac31bb8d1aa3d4f7d8e5975c1226b75d8f5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Oct 2020 12:23:24 GMT",
       "tag": "@fluentui/react-examples_v0.6.0",
       "version": "0.6.0",

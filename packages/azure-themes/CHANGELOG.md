@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.26](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.26)
+
+Fri, 09 Oct 2020 12:23:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.17..@uifabric/azure-themes_v7.5.26)
+
+### Patches
+
+- Control outlines, pivot indentation, label weight ([PR #15395](https://github.com/microsoft/fluentui/pull/15395) by jagaheri@microsoft.com)
 
 ## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
 

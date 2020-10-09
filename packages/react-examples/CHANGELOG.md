@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 08 Oct 2020 12:23:24 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.1)
+
+Fri, 09 Oct 2020 12:23:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.0..@fluentui/react-examples_v0.6.1)
+
+### Patches
+
+- Added error message to check color ([PR #15395](https://github.com/microsoft/fluentui/pull/15395) by jagaheri@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.0)
 

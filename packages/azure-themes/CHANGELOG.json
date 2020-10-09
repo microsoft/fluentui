@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 12:23:45 GMT",
+      "tag": "@uifabric/azure-themes_v7.5.26",
+      "version": "7.5.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Control outlines, pivot indentation, label weight",
+            "author": "jagaheri@microsoft.com",
+            "commit": "2f6ebac31bb8d1aa3d4f7d8e5975c1226b75d8f5",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/azure-themes_v7.5.17",
       "version": "7.5.17",

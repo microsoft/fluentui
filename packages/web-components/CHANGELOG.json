@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 12:23:45 GMT",
+      "tag": "@fluentui/web-components_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: ensure font properties are inherited to control and start/end content",
+            "author": "chhol@microsoft.com",
+            "commit": "7bac606fa371d6ca46fe69611da12a3cb0af6a4e",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Oct 2020 12:24:30 GMT",
       "tag": "@fluentui/web-components_v0.6.0",
       "version": "0.6.0",
