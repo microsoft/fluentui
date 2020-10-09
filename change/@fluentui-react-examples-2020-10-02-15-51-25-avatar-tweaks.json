@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update Avatar active animation example.",
+  "packageName": "@fluentui/react-examples",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-02T22:51:25.018Z"
+}
