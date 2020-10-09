@@ -16,10 +16,8 @@ exports[`Button renders a default state 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
-        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
-        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -44,6 +42,33 @@ exports[`Button renders a default state 1`] = `
         --color-brand-pressed-iconColor: var(--color-brand-iconColor);
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
       }
       {
         -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
@@ -161,13 +186,13 @@ exports[`Button renders a default state 1`] = `
         .ms-Fabric--isFocusVisible &:focus::after {
           border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
           border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-          border-color: var(--button-highContrast-focusColor);
+          border-color: var(--button-focusColor, black);
           border-style: solid;
           border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
           border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
           border-width: var(--button-focusWidth, 2px);
           bottom: -1px;
-          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
           content: "";
           left: -1px;
           position: absolute;
@@ -175,16 +200,20 @@ exports[`Button renders a default state 1`] = `
           top: -1px;
           z-index: 1;
         }
+        @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+          border-color: var(--button-highContrast-focusColor);
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+        }
         & > *:not(:first-child) {
           margin-left: var(--button-contentGap);
         }
-        @media (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           background: var(--button-highContrast-background);
           border-color: var(--button-highContrast-borderColor);
           color: var(--button-highContrast-contentColor);
           forced-color-adjust: var(--button-forcedColorAdjust);
         }
-        @media (forced-colors: active){& .ms-Button-icon {
+        @media screen and (forced-colors: active){& .ms-Button-icon {
           color: var(--button-highContrast-iconColor);
         }
         &:hover {
@@ -196,12 +225,12 @@ exports[`Button renders a default state 1`] = `
         &:hover .ms-Button-icon {
           color: var(--button-hovered-iconColor, var(--button-iconColor));
         }
-        @media (forced-colors: active){&:hover {
+        @media screen and (forced-colors: active){&:hover {
           background: var(--button-highContrast-hovered-background, var(--button-highContrast-background));
           border-color: var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor));
           color: var(--button-highContrast-hovered-contentColor, var(--button-highContrast-contentColor));
         }
-        @media (forced-colors: active){&:hover .ms-Button-icon {
+        @media screen and (forced-colors: active){&:hover .ms-Button-icon {
           color: var(--button-highContrast-hovered-iconColor, --button-highContrast-iconColor);
         }
         &:active {
@@ -215,12 +244,12 @@ exports[`Button renders a default state 1`] = `
         &:active .ms-Button-icon {
           color: var(--button-pressed-iconColor, var(--button-iconColor));
         }
-        @media (forced-colors: active){&:active {
+        @media screen and (forced-colors: active){&:active {
           background: var(--button-highContrast-pressed-background, var(--button-highContrast-hovered-background, var(--button-highContrast-background)));
           border-color: var(--button-highContrast-pressed-borderColor, var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor)));
           color: var(--button-highContrast-pressed-contentColor, var(--button-highContrast-hovered-contentColor, var(--button-highContarst-contentColor)));
         }
-        @media (forced-colors: active){&:active .ms-Button-icon {
+        @media screen and (forced-colors: active){&:active .ms-Button-icon {
           color: var(--button-highContrast-pressed-iconColor, var(--button-highContrast-hovered-iconColor, var(--button-highContrast-iconColor)));
         }
         &[aria-disabled=true] {
@@ -234,12 +263,12 @@ exports[`Button renders a default state 1`] = `
         &[aria-disabled=true] .ms-Button-icon {
           color: var(--button-disabled-iconColor);
         }
-        @media (forced-colors: active){&[aria-disabled=true] {
+        @media screen and (forced-colors: active){&[aria-disabled=true] {
           background: var(--button-highContrast-disabled-background, var(--button-highContrast-background));
           border-color: var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor));
           color: var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor));
         }
-        @media (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
+        @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
           color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
         }
   >
@@ -272,10 +301,8 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
-        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
-        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -300,6 +327,33 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         --color-brand-pressed-iconColor: var(--color-brand-iconColor);
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
+        --text-variant-body-fontSize: 14px;
+        --text-variant-body-fontWeight: 400;
+        --text-variant-body-lineHeight: 20px;
+        --text-variant-caption-fontSize: 12px;
+        --text-variant-caption-fontWeight: 400;
+        --text-variant-caption-lineHeight: 14px;
+        --text-variant-display-fontSize: 68px;
+        --text-variant-display-fontWeight: 600;
+        --text-variant-display-lineHeight: 92px;
+        --text-variant-headline-fontSize: 20px;
+        --text-variant-headline-fontWeight: 600;
+        --text-variant-headline-lineHeight: 28px;
+        --text-variant-largeTitle-fontSize: 40px;
+        --text-variant-largeTitle-fontWeight: 600;
+        --text-variant-largeTitle-lineHeight: 52px;
+        --text-variant-subHeadline-fontSize: 16px;
+        --text-variant-subHeadline-fontWeight: 600;
+        --text-variant-subHeadline-lineHeight: 22px;
+        --text-variant-title1-fontSize: 32px;
+        --text-variant-title1-fontWeight: 600;
+        --text-variant-title1-lineHeight: 40px;
+        --text-variant-title2-fontSize: 28px;
+        --text-variant-title2-fontWeight: 600;
+        --text-variant-title2-lineHeight: 36px;
+        --text-variant-title3-fontSize: 24px;
+        --text-variant-title3-fontWeight: 600;
+        --text-variant-title3-lineHeight: 32px;
       }
       {
         -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
@@ -417,13 +471,13 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         .ms-Fabric--isFocusVisible &:focus::after {
           border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
           border-bottom-right-radius: var(--button-borderBottomRightRadius, var(--button-borderRadius));
-          border-color: var(--button-highContrast-focusColor);
+          border-color: var(--button-focusColor, black);
           border-style: solid;
           border-top-left-radius: var(--button-borderTopLeftRadius, var(--button-borderRadius));
           border-top-right-radius: var(--button-borderTopRightRadius, var(--button-borderRadius));
           border-width: var(--button-focusWidth, 2px);
           bottom: -1px;
-          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset;
           content: "";
           left: -1px;
           position: absolute;
@@ -431,16 +485,20 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           top: -1px;
           z-index: 1;
         }
+        @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+          border-color: var(--button-highContrast-focusColor);
+          box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+        }
         & > *:not(:first-child) {
           margin-left: var(--button-contentGap);
         }
-        @media (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           background: var(--button-highContrast-background);
           border-color: var(--button-highContrast-borderColor);
           color: var(--button-highContrast-contentColor);
           forced-color-adjust: var(--button-forcedColorAdjust);
         }
-        @media (forced-colors: active){& .ms-Button-icon {
+        @media screen and (forced-colors: active){& .ms-Button-icon {
           color: var(--button-highContrast-iconColor);
         }
         &:hover {
@@ -452,12 +510,12 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         &:hover .ms-Button-icon {
           color: var(--button-hovered-iconColor, var(--button-iconColor));
         }
-        @media (forced-colors: active){&:hover {
+        @media screen and (forced-colors: active){&:hover {
           background: var(--button-highContrast-hovered-background, var(--button-highContrast-background));
           border-color: var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor));
           color: var(--button-highContrast-hovered-contentColor, var(--button-highContrast-contentColor));
         }
-        @media (forced-colors: active){&:hover .ms-Button-icon {
+        @media screen and (forced-colors: active){&:hover .ms-Button-icon {
           color: var(--button-highContrast-hovered-iconColor, --button-highContrast-iconColor);
         }
         &:active {
@@ -471,12 +529,12 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         &:active .ms-Button-icon {
           color: var(--button-pressed-iconColor, var(--button-iconColor));
         }
-        @media (forced-colors: active){&:active {
+        @media screen and (forced-colors: active){&:active {
           background: var(--button-highContrast-pressed-background, var(--button-highContrast-hovered-background, var(--button-highContrast-background)));
           border-color: var(--button-highContrast-pressed-borderColor, var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor)));
           color: var(--button-highContrast-pressed-contentColor, var(--button-highContrast-hovered-contentColor, var(--button-highContarst-contentColor)));
         }
-        @media (forced-colors: active){&:active .ms-Button-icon {
+        @media screen and (forced-colors: active){&:active .ms-Button-icon {
           color: var(--button-highContrast-pressed-iconColor, var(--button-highContrast-hovered-iconColor, var(--button-highContrast-iconColor)));
         }
         &[aria-disabled=true] {
@@ -490,12 +548,12 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         &[aria-disabled=true] .ms-Button-icon {
           color: var(--button-disabled-iconColor);
         }
-        @media (forced-colors: active){&[aria-disabled=true] {
+        @media screen and (forced-colors: active){&[aria-disabled=true] {
           background: var(--button-highContrast-disabled-background, var(--button-highContrast-background));
           border-color: var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor));
           color: var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor));
         }
-        @media (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
+        @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
           color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
         }
     href="https://www.bing.com"

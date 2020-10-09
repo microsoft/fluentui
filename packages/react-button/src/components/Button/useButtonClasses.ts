@@ -109,6 +109,11 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderBottomRightRadius: 'var(--button-borderBottomRightRadius, var(--button-borderRadius))',
           boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
           zIndex: 1,
+
+          [EdgeChromiumHighContrastSelector]: {
+            borderColor: 'var(--button-highContrast-focusColor)',
+            boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
+          },
         },
 
         ['& > *:not(:first-child)']: {
@@ -121,11 +126,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           background: 'var(--button-highContrast-background)',
           borderColor: 'var(--button-highContrast-borderColor)',
           color: 'var(--button-highContrast-contentColor)',
-
-          ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
-            borderColor: 'var(--button-highContrast-focusColor)',
-            boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
-          },
 
           [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-highContrast-iconColor)',
