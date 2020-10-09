@@ -8,10 +8,10 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './FileTypeIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FileTypeIconsPage/docs';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const documentIcons = require<{ name: string }[]>('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
+const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/brand-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -35,7 +35,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
                 }
               </Markdown>
 
@@ -95,7 +95,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
+                      require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -129,7 +129,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
               }
             </Markdown>
           ),

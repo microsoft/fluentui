@@ -14,7 +14,7 @@ import { MotionPageProps } from './MotionPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/MotionPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/MotionPage/docs';
 
 const PatternTable = ({ rows }) => (
   <Table
@@ -52,7 +52,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionAnimationPatterns.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionAnimationPatterns.md') as string
                 }
               </Markdown>
 
@@ -199,7 +199,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionBasicAnimations.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionBasicAnimations.md') as string
                 }
               </Markdown>
 

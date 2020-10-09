@@ -25,7 +25,7 @@ import {
 } from './palettes/index';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
 
 export interface IColorsProductsPageState {
   activeAppColorPalette?: IColorPaletteTheme;
@@ -60,7 +60,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
               <>
                 <Markdown>
                   {
-                    require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsProducts.md') as string
+                    require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsProducts.md') as string
                   }
                 </Markdown>
                 <ColorPalette colors={AppColorSwatches} onColorSelected={this._changeApp} />

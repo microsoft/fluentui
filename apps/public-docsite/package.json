@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/fabric-website",
+  "name": "@fluentui/public-docsite",
   "version": "7.15.18",
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",

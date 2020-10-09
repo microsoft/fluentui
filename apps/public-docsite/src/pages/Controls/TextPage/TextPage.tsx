@@ -7,7 +7,7 @@ import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TextPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TextPage/';
 
 export const TextPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
         },
       ];
 
@@ -37,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
         },
       ];
     case 'cross':

@@ -5,7 +5,7 @@ import { SnackbarPageProps } from './SnackbarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SnackbarPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SnackbarPage/';
 
 export const SnackbarPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -25,7 +25,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/SnackbarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SnackbarPage/docs/android/SnackbarImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SnackbarPage/docs/android/SnackbarImplementation.md') as string,
         },
       ];
   }

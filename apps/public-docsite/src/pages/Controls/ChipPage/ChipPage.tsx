@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ChipPageProps } from './ChipPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ChipPage/';
 
 export const ChipPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -27,7 +27,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string
               }
             </Markdown>
           ),
@@ -42,7 +42,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string
               }
             </Markdown>
           ),

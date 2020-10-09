@@ -103,7 +103,7 @@
       "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
       "args": ["webpack", "--", "--production", "--dogfood"],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "cwd": "${workspaceRoot}/apps/public-docsite",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
@@ -118,14 +118,14 @@
       // to debug), so in the launch configuration we start the script directly instead.
       "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
       "stopOnEntry": true,
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "cwd": "${workspaceRoot}/apps/public-docsite",
       "runtimeExecutable": null,
       // Use the config file for fabric-website, plus command line options used in start.js
       "args": [
         "--nolazy",
         "--debug",
         "--config",
-        "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js",
+        "${workspaceRoot}/apps/public-docsite/webpack.serve.config.js",
         "--open"
       ],
       "env": {

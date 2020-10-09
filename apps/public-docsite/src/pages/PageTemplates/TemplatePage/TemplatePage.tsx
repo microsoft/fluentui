@@ -10,7 +10,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 // If you'll have multiple custom sections, define the base url on the remote host
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/PageTemplates/TemplatePage/';
 
 // You can add additional page props by extending `IPageProps`.
 export interface ITemplatePageProps extends IPageProps<Platforms> {}
@@ -73,7 +73,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
             <Markdown>
               {
                 // Use raw-loader to point the markdown file you want to use for the section.
-                require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
               }
             </Markdown>
           ),

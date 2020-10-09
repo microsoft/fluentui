@@ -1,9 +1,9 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 
 const title = 'Elevation';
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/ElevationRelated.md') as string;
+const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/ElevationRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/ElevationPage';
 
 export const ElevationPageProps: TFabricPlatformPageProps = {
   web: {

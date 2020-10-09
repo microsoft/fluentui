@@ -4,7 +4,7 @@ import { ResourcesPageProps } from './ResourcesPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Overviews/ResourcesPage/';
 
 export interface IResourcesPageProps extends IPageProps<Platforms> {}
 
@@ -20,7 +20,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
+            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
           }
         </Markdown>
       ),
@@ -31,7 +31,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
+            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
           }
         </Markdown>
       ),
@@ -42,7 +42,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
+            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
           }
         </Markdown>
       ),
@@ -53,7 +53,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
+            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
           }
         </Markdown>
       ),

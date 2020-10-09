@@ -166,7 +166,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown enableRenderHtmlBlock>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LayoutPage/docs/web/LayoutGridImplementation.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LayoutPage/docs/web/LayoutGridImplementation.md') as string
                 }
               </Markdown>
 

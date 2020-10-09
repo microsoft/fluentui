@@ -9,7 +9,7 @@ import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 /* eslint-disable @fluentui/max-len */
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SeparatorPage/';
 
 export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -30,7 +30,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string,
         },
       ];
 
@@ -39,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
         },
       ];
 
@@ -48,7 +48,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/mac/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
         },
       ];
 

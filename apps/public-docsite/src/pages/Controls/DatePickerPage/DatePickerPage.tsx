@@ -5,7 +5,7 @@ import { DatePickerPageProps } from './DatePickerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/DatePickerPage/';
 
 export const DatePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
               }
             </Markdown>
           ),
@@ -43,7 +43,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
               }
             </Markdown>
           ),
@@ -58,7 +58,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
               }
             </Markdown>
           ),

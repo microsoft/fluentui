@@ -7,7 +7,7 @@ import * as styles from './LocalizationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/LocalizationPage/docs';
 
 const directionalIconsData = require<[string, string][]>('../../../data/directional-icons.json');
 const localizedFontsData = require<ITableContent>('../../../data/localized-fonts.json');
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           editUrl: `${baseUrl}/web/LocalizationRTL.md`,
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
+              {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
             </Markdown>
           ),
         },
@@ -68,7 +68,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
+                {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
               </Markdown>
               <MarkdownHeader as="h3">Supported languages</MarkdownHeader>
               <p>Fluent UI supports a variety of language codes, which map to the following font stacks:</p>
