@@ -117,7 +117,7 @@ export type AvatarTokenSet = {
   inactiveOpacity?: string;
 
   /** Scale transform applied to the avatar when active=false */
-  inactiveScaleFactor?: string;
+  inactiveScale?: string;
 };
 
 export type AvatarState = AvatarProps;
