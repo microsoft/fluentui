@@ -30,7 +30,7 @@ const dependencies = [
   '@uifabric/charting',
   '@uifabric/date-time',
   '@uifabric/experiments',
-  '@uifabric/fabric-website',
+  '@fluentui/public-docsite',
   '@uifabric/fabric-website-resources',
   '@fluentui/react',
   'perf-test',

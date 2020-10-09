@@ -14,7 +14,7 @@ const siteInfo = [
     title: 'Fabric Storybook Site',
   },
   {
-    package: '@uifabric/fabric-website',
+    package: '@fluentui/public-docsite',
     link: './fabric-website/dist/index.html?devhost',
     icon: 'Website',
     title: 'Website',

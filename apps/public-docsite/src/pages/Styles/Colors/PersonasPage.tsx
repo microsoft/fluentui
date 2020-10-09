@@ -5,11 +5,11 @@ import { ColorsPersonasPageProps } from './PersonasPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
 // eslint-disable-next-line import/no-extraneous-dependencies
-const personaColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-personas.json');
+const personaColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-personas.json');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const personaGroupColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-persona-groups.json');
+const personaGroupColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-persona-groups.json');
 
 export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -33,7 +33,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsPersonas.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonas.md') as string
                 }
               </Markdown>
               <ColorPalette colors={personaColors} />
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsPersonasGroups.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonasGroups.md') as string
                 }
               </Markdown>
               <ColorPalette colors={personaGroupColors} />

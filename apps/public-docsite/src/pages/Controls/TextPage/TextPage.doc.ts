@@ -1,9 +1,9 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { TextPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Text/Text.doc';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/TextRelated.md') as string;
+const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/TextRelated.md') as string;
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TextPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TextPage';
 
 export const TextPageProps: TFabricPlatformPageProps = {
   web: {
@@ -11,18 +11,18 @@ export const TextPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
+    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
+    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
     related,
     componentUrl,
   },
   cross: {
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
-    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
+    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
+    usage: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
     related,
     componentUrl,
   },

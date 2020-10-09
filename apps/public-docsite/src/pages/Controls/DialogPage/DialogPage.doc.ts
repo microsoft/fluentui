@@ -1,7 +1,7 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { DialogPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Dialog/Dialog.doc';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DialogPage/docs/DialogRelated.md') as string;
+const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DialogPage/docs/DialogRelated.md') as string;
 
 export const DialogPageProps: TFabricPlatformPageProps = {
   web: {

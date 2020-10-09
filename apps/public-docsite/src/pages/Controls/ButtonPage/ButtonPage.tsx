@@ -12,7 +12,7 @@ import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
 };
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ButtonPage/';
 
 export class ButtonPage extends React.Component<
   IControlsPageProps,
@@ -72,7 +72,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/ios/ButtonImplementation.md',
-            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
+            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
           },
         ];
 
@@ -81,7 +81,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/android/ButtonImplementation.md',
-            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
+            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
           },
         ];
       case 'windows':
@@ -96,7 +96,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/mac/ButtonImplementation.md',
-            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
+            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
           },
         ];
       case 'cross':

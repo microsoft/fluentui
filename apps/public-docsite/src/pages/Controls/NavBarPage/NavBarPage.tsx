@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { NavBarPageProps } from './NavBarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/NavBarPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/NavBarPage/';
 
 export const NavBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -24,7 +24,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/NavBarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/ios/NavBarImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/ios/NavBarImplementation.md') as string,
         },
       ];
     case 'android':
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/NavBarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/android/NavBarImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/android/NavBarImplementation.md') as string,
         },
       ];
   }

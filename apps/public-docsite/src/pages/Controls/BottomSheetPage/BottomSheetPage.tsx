@@ -5,7 +5,7 @@ import { BottomSheetPageProps } from './BottomSheetPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/BottomSheetPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/BottomSheetPage/';
 
 export const BottomSheetPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -26,7 +26,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/BottomSheetImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetImplementation.md') as string,
         },
       ];
   }

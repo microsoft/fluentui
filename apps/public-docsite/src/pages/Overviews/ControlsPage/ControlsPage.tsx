@@ -60,27 +60,27 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
     case 'web':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
+        content: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
+        content: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
+        content: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
     case 'mac':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
+        content: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
       };
     case 'cross':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
+        content: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
       };
   }
   return undefined;

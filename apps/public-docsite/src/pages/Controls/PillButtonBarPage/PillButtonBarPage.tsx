@@ -5,7 +5,7 @@ import { PillButtonBarPageProps } from './PillButtonBarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PillButtonBarPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PillButtonBarPage/';
 
 export const PillButtonBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
@@ -24,7 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PillButtonBarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string,
         },
       ];
   }

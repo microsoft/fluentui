@@ -7,13 +7,13 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './OfficeBrandIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs';
 const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
 
 const productIcons = require<
   { icon: string; name: string }[]
   // eslint-disable-next-line import/no-extraneous-dependencies
->('@uifabric/fabric-website/lib/data/brand-icons-products.json');
+>('@fluentui/public-docsite/lib/data/brand-icons-products.json');
 
 export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -37,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
                 }
               </Markdown>
               <MarkdownHeader as="h3">When should I use Office Brand icons?</MarkdownHeader>
@@ -97,7 +97,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsFormat.md') as string
+                      require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -151,7 +151,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
               }
             </Markdown>
           ),
@@ -162,7 +162,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
               }
             </Markdown>
           ),

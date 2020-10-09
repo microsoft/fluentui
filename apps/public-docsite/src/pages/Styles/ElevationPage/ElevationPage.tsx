@@ -7,7 +7,7 @@ import * as styles from './ElevationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/ElevationPage/docs';
 
 export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -31,7 +31,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string
                 }
               </Markdown>
               <div style={{ marginTop: 12 }}>{_renderDepthsTable()}</div>
@@ -41,7 +41,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 

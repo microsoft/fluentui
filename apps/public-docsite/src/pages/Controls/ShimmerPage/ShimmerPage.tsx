@@ -4,7 +4,7 @@ import { ShimmerPageProps } from './ShimmerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ShimmerPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ShimmerPage/';
 
 export const ShimmerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -25,7 +25,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/ShimmerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
         },
       ];
   }

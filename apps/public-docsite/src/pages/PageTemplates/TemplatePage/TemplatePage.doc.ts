@@ -7,11 +7,11 @@ const title = 'Template Page';
 
 // The location of the remote hosted page folder (GitHub/Azure). Used to generate the edit button for common sections.
 const componentUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/PageTemplates/TemplatePage';
 
 // If multiple platforms share the same related pages, those pages can be listed in a common 'Related' file.
 // NOTE: This points to a Markdown file that does NOT live in a platform folder.
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/TemplateRelated.md');
+const related = require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/TemplateRelated.md');
 
 // An object containing the page props for each platform. Remove as needed.
 // NOTE: A section won't render if the Markdown file imported here is empty.
@@ -29,31 +29,31 @@ export const TemplatePageProps: TFabricPlatformPageProps = {
     related,
 
     // Raw import of overview Markdown file.
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateOverview.md') as string,
+    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateOverview.md') as string,
 
     // Raw import of best practices Markdown file.
-    bestPractices: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateBestPractices.md') as string,
+    bestPractices: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateBestPractices.md') as string,
 
     // Raw import of do's Markdown file.
-    dos: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDos.md') as string,
+    dos: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDos.md') as string,
 
     // Raw import of don'ts Markdown file.
-    donts: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDonts.md') as string,
+    donts: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDonts.md') as string,
 
     // Raw import of usage guidelines Markdown file.
-    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateUsage.md') as string,
+    usage: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateUsage.md') as string,
 
     // Raw import of design guidelines Markdown file.
-    design: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDesign.md') as string,
+    design: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDesign.md') as string,
 
     // Optional title of the generic Markdown section.
     addlContentTitle: 'Markdown Section',
 
     // Raw import of the generic Markdown file.
-    addlContent: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateMarkdown.md') as string,
+    addlContent: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateMarkdown.md') as string,
 
     // Raw import of the page contact Markdown file.
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateContact.md') as string,
+    contact: require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateContact.md') as string,
 
     // Raw import of a types definition file to render the Implementation Section. (Array)
     propertiesTablesSources: [

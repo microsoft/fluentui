@@ -4,7 +4,7 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsPresencePageProps } from './PresencePage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
 
 export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsPresence.md') as string
+                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPresence.md') as string
                 }
               </Markdown>
               <ColorPalette

@@ -8,7 +8,7 @@ import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
 const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Usage',
           editUrl: `${baseUrl}/web/FabricIconsUsage.md`,
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
             // prettier-ignore
             { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },

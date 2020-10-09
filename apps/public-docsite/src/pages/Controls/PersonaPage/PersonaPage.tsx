@@ -8,7 +8,7 @@ import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PersonaPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PersonaPage/';
 
 export const PersonaPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
               }
             </Markdown>
           ),
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
               }
             </Markdown>
           ),

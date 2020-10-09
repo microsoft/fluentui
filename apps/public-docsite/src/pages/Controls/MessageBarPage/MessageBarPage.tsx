@@ -5,7 +5,7 @@ import { MessageBarPageProps } from './MessageBarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/MessageBarPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/MessageBarPage/';
 
 export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
@@ -24,7 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/MessageBarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
         },
       ];
   }

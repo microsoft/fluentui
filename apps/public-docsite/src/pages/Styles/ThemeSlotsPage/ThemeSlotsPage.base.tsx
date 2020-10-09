@@ -15,13 +15,13 @@ import { ThemeSlotsPageProps } from './ThemeSlotsPage.doc';
 
 const getClassNames = classNamesFunction<IThemeSlotsPageStyleProps, IThemeSlotsPageStyles>();
 const baseUrl =
-  'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
+  'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/public-docsite/src/pages/Styles/';
 
 // Color palettes
 /* eslint-disable import/no-extraneous-dependencies */
-const themeColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-slots.json');
-const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-neutrals.json');
-const accentColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-accents.json');
+const themeColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-slots.json');
+const neutralColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-neutrals.json');
+const accentColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-accents.json');
 /* eslint-enable import/no-extraneous-dependencies */
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
@@ -69,7 +69,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/web/ThemeSlotsImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
+          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
         },
       ];
 
