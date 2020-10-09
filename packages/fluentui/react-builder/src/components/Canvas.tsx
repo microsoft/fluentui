@@ -332,7 +332,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               )}
               {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {selectedComponent && <ReaderNarration selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
+              {selectedComponent && (
+                <div style={{ bottom: '0', position: 'absolute' }}>
+                  <ReaderNarration selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
+                </div>
+              )}
             </Provider>
           </>
         )}
