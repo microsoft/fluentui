@@ -1,5 +1,5 @@
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
-import { ColorRGBA64, parseColorHexRGB } from '@microsoft/fast-colors';
+import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
 import { FluentDesignSystemProvider } from '../design-system-provider';
@@ -37,7 +37,10 @@ export class FluentCard extends FluentDesignSystemProvider
   public backgroundColor: string;
   protected backgroundColorChanged(): void {
     const parsedColor = parseColorHexRGB(this.backgroundColor);
-    this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
+
+    if (parsedColor !== null) {
+      this.neutralPalette = createColorPalette(parsedColor);
+    }
   }
 
   /**
@@ -52,8 +55,11 @@ export class FluentCard extends FluentDesignSystemProvider
   public cardBackgroundColor: string;
   private cardBackgroundColorChanged(): void {
     const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
-    this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
-    this.backgroundColor = this.cardBackgroundColor;
+
+    if (parsedColor !== null) {
+      this.neutralPalette = createColorPalette(parsedColor);
+      this.backgroundColor = this.cardBackgroundColor;
+    }
   }
 
   /**
@@ -72,21 +78,15 @@ export class FluentCard extends FluentDesignSystemProvider
    */
   public handleChange(source: DesignSystem, name: string): void {
     if (!this.cardBackgroundColor) {
-      const parsedColor = parseColorHexRGB(source[name]);
-      this.neutralPalette = createColorPalette(parsedColor as ColorRGBA64);
-      const designSystem: DesignSystem = Object.assign({}, this.designSystem, {
-        backgroundColor: source[name],
-        neutralPallette: this.neutralPalette,
-      } as any);
-      this.backgroundColor = neutralFillCard(designSystem);
+      this.backgroundColor = neutralFillCard(source);
     }
   }
 
   connectedCallback(): void {
     super.connectedCallback();
-    const desinSystemNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
-    desinSystemNotifier.subscribe(this, 'backgroundColor');
-    desinSystemNotifier.subscribe(this, 'neutralPalette');
+    const designSystemNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
+    designSystemNotifier.subscribe(this, 'backgroundColor');
+    designSystemNotifier.subscribe(this, 'neutralPalette');
     this.handleChange(this.provider?.designSystem as DesignSystem, 'backgroundColor');
   }
 }
