@@ -39,6 +39,7 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
+import { ILayerProps } from '@fluentui/react/lib/Layer';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
@@ -1102,48 +1103,6 @@ export { IGenericItem }
 export { IInputProps }
 
 // @public (undocumented)
-export interface ILayer {
-}
-
-// @public (undocumented)
-export interface ILayerHost {
-}
-
-// @public (undocumented)
-export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
-    componentRef?: IRefObject<ILayerHost>;
-    id?: string;
-}
-
-// @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: IRefObject<ILayer>;
-    eventBubblingEnabled?: boolean;
-    hostId?: string;
-    insertFirst?: boolean;
-    onLayerDidMount?: () => void;
-    // @deprecated
-    onLayerMounted?: () => void;
-    onLayerWillUnmount?: () => void;
-    styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyleProps {
-    className?: string;
-    isNotHost?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyles {
-    content?: IStyle;
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
     checkmarkIcon: IStyle;
@@ -1409,15 +1368,6 @@ export { ITagItemSuggestionStyles }
 
 export { ITagPickerProps }
 
-// @public (undocumented)
-export const Layer: React.FunctionComponent<ILayerProps>;
-
-// @public (undocumented)
-export const LayerBase: React.FunctionComponent<ILayerProps>;
-
-// @public (undocumented)
-export const LayerHost: React.FunctionComponent<ILayerHostProps>;
-
 export { ListPeoplePicker }
 
 export { ListPeoplePickerBase }
@@ -1671,6 +1621,7 @@ export * from "@fluentui/react/lib/KeytipData";
 export * from "@fluentui/react/lib/KeytipLayer";
 export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
+export * from "@fluentui/react/lib/Layer";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
 export * from "@fluentui/react/lib/MessageBar";
