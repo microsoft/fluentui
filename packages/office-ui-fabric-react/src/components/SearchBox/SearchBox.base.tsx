@@ -76,6 +76,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       clearButtonProps,
       disableAnimation,
       iconProps,
+      role,
       id = this._fallbackId,
     } = this.props;
     const { value, hasFocus } = this.state;
@@ -97,10 +98,11 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       'onFocus',
       'onBlur',
       'value',
+      'role',
     ]);
 
     return (
-      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+      <div role={role} ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
