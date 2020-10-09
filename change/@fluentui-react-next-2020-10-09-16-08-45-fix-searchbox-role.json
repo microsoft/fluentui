@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Partial theme merging fixes (for ThemeProvider) and update createTheme to use Theme/PartialTheme (7.0) (#15452)",
+  "packageName": "@fluentui/react-next",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-09T23:08:45.481Z"
+}
