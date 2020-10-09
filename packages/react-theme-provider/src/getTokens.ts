@@ -1,14 +1,14 @@
-import { Tokens, Theme } from '@fluentui/theme';
+import { Tokens, Theme, RecursivePartial } from '@fluentui/theme';
 import { merge } from '@uifabric/utilities';
 
 /**
  * Get tokens from theme object.
  */
-export function getTokens(theme: Theme): Tokens {
-  const { tokens, fonts } = theme;
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens> {
+  const { fonts } = theme;
   const { palette, semanticColors } = theme;
 
-  const preparedTokens: Tokens = merge(
+  const preparedTokens = merge<RecursivePartial<Tokens>>(
     {
       color: {
         body: {
@@ -132,7 +132,7 @@ export function getTokens(theme: Theme): Tokens {
       },
     },
 
-    tokens,
+    userTokens,
   );
 
   return preparedTokens;

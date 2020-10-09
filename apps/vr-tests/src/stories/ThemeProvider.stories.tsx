@@ -37,8 +37,10 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized theme 1</PrimaryButton>
       <ThemeProvider
         theme={{
+          palette: {
+            themePrimary: '#FFF',
+          },
           semanticColors: {
-            primaryButtonBackground: '#FFF',
             primaryButtonText: '#000',
           },
         }}
@@ -69,6 +71,22 @@ storiesOf('ThemeProvider', module)
       }}
     >
       <Button>New Button customized with tokens</Button>
+
+      <ThemeProvider
+        theme={{
+          components: {
+            Button: {
+              variants: {
+                root: {
+                  background: 'green',
+                },
+              },
+            },
+          },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ))
   .addStory('Use compat theme on new button', () => (
@@ -78,6 +96,14 @@ storiesOf('ThemeProvider', module)
       }}
     >
       <Button>New Button customized with compat theme</Button>
+
+      <ThemeProvider
+        theme={{
+          semanticColors: { buttonBackground: 'green' },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ));
 
