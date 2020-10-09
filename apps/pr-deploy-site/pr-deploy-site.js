@@ -21,6 +21,12 @@ const siteInfo = [
   },
   { package: '@fluentui/docs', link: './react-northstar', icon: 'FavoriteStar', title: 'react-northstar' },
   {
+    package: '@fluentui/react-avatar',
+    link: './react-avatar/dist-storybook/index.html',
+    icon: 'Contact',
+    title: 'Avatar',
+  },
+  {
     package: '@fluentui/react-button',
     link: './react-button/dist-storybook/index.html',
     icon: 'LikeSolid',
