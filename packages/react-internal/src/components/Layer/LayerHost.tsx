@@ -27,6 +27,6 @@ const useUnmount = (unmountFunction: () => void) => {
         unmountRef.current();
       }
     },
-    [unmountFunction],
+    [],
   );
 };

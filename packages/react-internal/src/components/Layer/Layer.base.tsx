@@ -4,16 +4,14 @@ import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-import { useMergedRefs, useWarnings, useBoolean } from '@uifabric/react-hooks';
+import { useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
-    const layerElement = React.useRef<HTMLElement | undefined>();
-    const [isLayerOpen, { setTrue: showLayer, setFalse: hideLayer }] = useBoolean(false);
-
+    const [layerElement, setLayerElement] = React.useState<HTMLDivElement | undefined>();
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
 
@@ -39,11 +37,9 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       isNotHost: !hostId,
     });
 
-    const [layerHostId, setLayerHostId] = React.useState<string | undefined>(hostId);
-
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = React.useCallback((): Node | undefined => {
+    const getHost = (): Node | undefined => {
       if (!doc) {
         return undefined;
       }
@@ -54,23 +50,22 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         const defaultHostSelector = getDefaultTarget();
         return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
       }
-    }, [doc, hostId]);
+    };
 
     // Removes the current layer element's parentNode and runs onLayerWillUnmount prop if provided.
-    const removeLayerElement = React.useCallback((): void => {
+    const removeLayerElement = (): void => {
       onLayerWillUnmount?.();
 
-      if (layerElement.current && layerElement.current?.parentNode) {
-        if (layerElement.current?.parentNode) {
-          layerElement.current?.parentNode.removeChild(layerElement.current);
+      if (layerElement && layerElement.parentNode) {
+        const parentNode = layerElement.parentNode;
+        if (parentNode) {
+          parentNode.removeChild(layerElement);
         }
       }
-
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [onLayerWillUnmount]);
+    };
 
     // If a doc or host exists, it will remove and update layer parentNodes.
-    const createLayerElement = React.useCallback(() => {
+    const createLayerElement = () => {
       const host = getHost();
 
       if (!doc || !host) {
@@ -80,7 +75,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();
 
-      const el = doc.createElement('div');
+      const el: HTMLDivElement = doc.createElement('div');
 
       el.className = classNames.root!;
       setPortalAttribute(el);
@@ -88,61 +83,49 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
       insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
 
-      setLayerHostId(hostId);
-      layerElement.current = el;
+      setLayerElement(el);
+
       onLayerMounted?.();
       onLayerDidMount?.();
-    }, [classNames.root, doc, getHost, hostId, insertFirst, onLayerDidMount, onLayerMounted, removeLayerElement]);
+    };
 
     React.useEffect(() => {
-      // On initial render:
+      // During the initial render and any hostId updates:
+      //
       // Check if the user provided a hostId prop and register the layer with the ID.
       if (hostId) {
-        showLayer();
         registerLayer(hostId, createLayerElement);
       }
-      // Create a new layer element
+      // The user didn't provide a hostId, create a new layer element.
       else {
-        showLayer();
         createLayerElement();
       }
-      () => {
-        // On component unmount:
-        // Remove previous layer elements and unregister the layer if a hostId prop was provided.
-        console.log(layerElement.current);
-        hideLayer();
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount and if the hostId updates.
+    }, [hostId]);
+
+    useUnmount(() => {
+      // During component unmount:
+      //
+      // Check if the user provided a hostId prop and unregister it.
+      if (hostId) {
+        unregisterLayer(hostId, createLayerElement);
+      }
+      // The user didn't provide a hostId prop, remove the layerElement.
+      else {
         removeLayerElement();
-
-        if (hostId) {
-          unregisterLayer(hostId, createLayerElement);
-        }
-      };
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount.
-    }, [showLayer]);
-
-    // useUnmount(() => {
-
-    // });
-
-    React.useEffect(() => {
-      // If the the user's hostID prop doesn't equal the state layerHostId, re-create a new layer element.
-      if (hostId !== layerHostId) {
-        showLayer();
-        createLayerElement();
       }
-    }, [hostId, layerHostId, showLayer]);
+    });
 
     useDebugWarnings(props);
 
     return (
       <span className="ms-layer" ref={mergedRef}>
-        {isLayerOpen &&
-          layerElement.current &&
+        {layerElement &&
           ReactDOM.createPortal(
             <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
               {children}
             </Fabric>,
-            layerElement.current,
+            layerElement,
           )}
       </span>
     );
@@ -170,7 +153,6 @@ const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
 function getFilteredEvents() {
   if (!filteredEventProps) {
     filteredEventProps = {} as any;
-
     [
       'onClick',
       'onContextMenu',
@@ -205,7 +187,6 @@ function getFilteredEvents() {
       'onSubmit',
     ].forEach(name => (filteredEventProps[name] = onFilterEvent));
   }
-
   return filteredEventProps;
 }
 
@@ -229,6 +210,6 @@ const useUnmount = (unmountFunction: () => void) => {
         unmountRef.current();
       }
     },
-    [unmountFunction],
+    [],
   );
 };
