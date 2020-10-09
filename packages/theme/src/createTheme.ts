@@ -19,7 +19,7 @@ export function createTheme(theme: PartialTheme = {}, depComments: boolean = fal
     spacing: DefaultSpacing,
     isInverted: false,
     disableGlobalClassNames: false,
-    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false),
+    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false, depComments),
     rtl: undefined,
   };
 

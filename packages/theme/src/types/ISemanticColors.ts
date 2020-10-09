@@ -441,4 +441,21 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The background color for a pressed list header.
    */
   listHeaderBackgroundPressed: string;
+
+  //// DEPRECATED SLOTS
+  // Do not use these slots, they are only maintained for backwards compatibility.
+
+  /**
+   * @deprecated
+   * (Checked menu items no longer get a background color.)
+   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   */
+  menuItemBackgroundChecked: string;
+
+  /**
+   * @deprecated
+   * (no longer used)
+   * Foreground color for warning highlights
+   */
+  warningHighlight: string;
 }

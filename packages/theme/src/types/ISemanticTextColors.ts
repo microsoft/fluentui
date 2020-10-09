@@ -147,4 +147,21 @@ export interface ISemanticTextColors {
    * The default text color for list item titles and text in column fields.
    */
   listText: string;
+
+  //// DEPRECATED SLOTS
+  // Do not use these slots, they are only maintained for backwards compatibility.
+
+  /** @deprecated
+   * This slot was incorrectly named. Use listText instead. */
+  listTextColor: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or warningIcon instead.
+   */
+  warningText: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or successIcon instead.
+   */
+  successText: string;
 }

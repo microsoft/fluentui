@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes interface (breaking change).",
+  "comment": "Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes.",
   "packageName": "@fluentui/theme",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

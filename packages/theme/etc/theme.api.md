@@ -475,6 +475,8 @@ export interface ISemanticColors extends ISemanticTextColors {
     menuDivider: string;
     menuHeader: string;
     menuIcon: string;
+    // @deprecated (undocumented)
+    menuItemBackgroundChecked: string;
     menuItemBackgroundHovered: string;
     menuItemBackgroundPressed: string;
     menuItemText: string;
@@ -494,6 +496,8 @@ export interface ISemanticColors extends ISemanticTextColors {
     variantBorder: string;
     variantBorderHovered: string;
     warningBackground: string;
+    // @deprecated (undocumented)
+    warningHighlight: string;
     warningIcon: string;
 }
 
@@ -522,11 +526,17 @@ export interface ISemanticTextColors {
     link: string;
     linkHovered: string;
     listText: string;
+    // @deprecated (undocumented)
+    listTextColor: string;
     messageText: string;
     primaryButtonText: string;
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    // @deprecated (undocumented)
+    successText: string;
+    // @deprecated (undocumented)
+    warningText: string;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "ISpacing" should be prefixed with an underscore because the declaration is marked as @internal
