@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove react-next ChoiceGroup examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-06T00:37:05.466Z"
-}

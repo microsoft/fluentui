@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/public-docsite",
   "version": "7.15.18",
+  "private": true,
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
