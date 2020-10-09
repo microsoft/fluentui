@@ -395,7 +395,13 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -427,11 +433,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void;
+    protected readonly selection: Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -715,9 +717,6 @@ export class DefaultButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
-
-// @public (undocumented)
-export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public (undocumented)
 export const Dialog: React.FunctionComponent<IDialogProps>;
@@ -1388,7 +1387,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
     // @deprecated
     onItemDeleted?: (deletedItem: T) => void;
     onItemsDeleted?: (deletedItems: T[]) => void;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
     onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
     removeButtonAriaLabel?: string;
     selectedItems?: T[];
@@ -1396,7 +1395,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 }
 
 // @public (undocumented)
-export interface IBaseSelectedItemsListState<T = any> {
+export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
 }
@@ -4913,10 +4912,6 @@ export interface ISeparatorStyles {
 }
 
 // @public (undocumented)
-export interface IShimmer {
-}
-
-// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -5044,11 +5039,9 @@ export interface IShimmerLineStyles {
 }
 
 // @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
-    // @deprecated (undocumented)
-    componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
@@ -5056,11 +5049,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
     theme?: ITheme;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerState {
-    contentLoaded?: boolean;
 }
 
 // @public
@@ -5089,24 +5077,6 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonClassNames {
-    // (undocumented)
-    arrowBox: string;
-    // (undocumented)
-    icon: string;
-    // (undocumented)
-    input: string;
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    labelWrapper: string;
-    // (undocumented)
-    root: string;
-    // (undocumented)
-    spinButtonWrapper: string;
-}
-
-// @public (undocumented)
 export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -5122,7 +5092,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     defaultValue?: string;
     disabled?: boolean;
     downArrowButtonStyles?: Partial<IButtonStyles>;
-    getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
     iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
@@ -5140,7 +5109,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
-    styles?: Partial<ISpinButtonStyles>;
+    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
     upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -5148,35 +5117,30 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface ISpinButtonState {
+export interface ISpinButtonStyleProps {
+    // (undocumented)
+    className: string | undefined;
+    // (undocumented)
+    disabled: boolean;
+    // (undocumented)
     isFocused: boolean;
+    // (undocumented)
     keyboardSpinDirection: KeyboardSpinDirection;
-    value: string;
+    // (undocumented)
+    labelPosition: Position;
+    // (undocumented)
+    theme: ITheme;
 }
 
 // @public (undocumented)
 export interface ISpinButtonStyles {
     arrowButtonsContainer: IStyle;
-    arrowButtonsContainerDisabled: IStyle;
     icon: IStyle;
-    iconDisabled: IStyle;
     input: IStyle;
-    inputDisabled: IStyle;
-    inputTextSelected: IStyle;
     label: IStyle;
-    // @deprecated
-    labelDisabled: IStyle;
     labelWrapper: IStyle;
-    labelWrapperBottom: IStyle;
-    labelWrapperEnd: IStyle;
-    labelWrapperStart: IStyle;
-    labelWrapperTop: IStyle;
     root: IStyle;
     spinButtonWrapper: IStyle;
-    spinButtonWrapperDisabled: IStyle;
-    spinButtonWrapperFocused: IStyle;
-    spinButtonWrapperHovered: IStyle;
-    spinButtonWrapperTopBottom: IStyle;
 }
 
 // @public (undocumented)
@@ -5624,7 +5588,7 @@ export interface ITeachingBubble {
 }
 
 // @public
-export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
@@ -5647,12 +5611,6 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleState {
-    // (undocumented)
-    isTeachingBubbleVisible?: boolean;
 }
 
 // @public (undocumented)
@@ -6865,17 +6823,7 @@ export enum Shade {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
-    constructor(props: IShimmerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IShimmerProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IShimmerProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
@@ -6936,20 +6884,8 @@ export const sizeToPixels: {
     [key: number]: number;
 };
 
-// @public (undocumented)
-export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-    constructor(props: ISpinButtonProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: DefaultProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
-    readonly value: string | undefined;
-    }
+// @public
+export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
 // @public (undocumented)
 export const Spinner: React.FunctionComponent<ISpinnerProps>;
@@ -7279,43 +7215,13 @@ export { Target }
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    static defaultProps: {
-        calloutProps: {
-            beakWidth: number;
-            gapSpace: number;
-            setInitialFocus: boolean;
-            doNotLayer: boolean;
-            directionalHint: 12;
-        };
-    };
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const Text: React.FunctionComponent<ITextProps>;
