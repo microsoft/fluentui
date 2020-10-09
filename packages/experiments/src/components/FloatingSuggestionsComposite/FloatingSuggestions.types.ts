@@ -52,7 +52,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Callback when the callout dismiss is called
    * When this callback is called parent comoponent must handle suggestion visibility
    */
-  onFloatingSuggestionsDismiss?: (ev?: React.MouseEvent) => void;
+  onFloatingSuggestionsDismiss?: (ev?: React.MouseEvent | Event | React.KeyboardEvent) => void;
   /**
    * Option to show suggestion remove button
    * By default this is false

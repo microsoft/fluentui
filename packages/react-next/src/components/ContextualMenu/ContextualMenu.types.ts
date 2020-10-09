@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../../Icon';
-import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps, DirectionalHint } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -18,7 +17,7 @@ import {
 import { IKeytipProps } from '../../Keytip';
 import { Target } from '@uifabric/react-hooks';
 
-export { DirectionalHint } from '../../common/DirectionalHint';
+export { DirectionalHint } from '../../Callout';
 
 /**
  * {@docCategory ContextualMenu}

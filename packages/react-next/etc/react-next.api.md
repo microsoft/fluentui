@@ -11,6 +11,7 @@ import { BaseSelectedItemsList } from '@fluentui/react/lib/SelectedItemsList';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
@@ -26,7 +27,8 @@ import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsLi
 import { IButton } from '@fluentui/react/lib/Button';
 import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
-import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
+import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
@@ -280,9 +282,6 @@ export { BasePicker }
 
 export { BasePickerListBelow }
 
-// @public (undocumented)
-export const Callout: React.FunctionComponent<ICalloutProps>;
-
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
@@ -335,26 +334,7 @@ export { createGenericItem }
 // @public (undocumented)
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
 
-// @public (undocumented)
-export const DirectionalHint: {
-    topLeftEdge: 0;
-    topCenter: 1;
-    topRightEdge: 2;
-    topAutoEdge: 3;
-    bottomLeftEdge: 4;
-    bottomCenter: 5;
-    bottomRightEdge: 6;
-    bottomAutoEdge: 7;
-    leftTopEdge: 8;
-    leftCenter: 9;
-    leftBottomEdge: 10;
-    rightTopEdge: 11;
-    rightCenter: 12;
-    rightBottomEdge: 13;
-};
-
-// @public (undocumented)
-export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
+export { DirectionalHint }
 
 // @public (undocumented)
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
@@ -377,9 +357,6 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
     // (undocumented)
     static defaultProps: any;
 }
-
-// @public
-export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
 export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
@@ -534,80 +511,6 @@ export { IBasePickerStyleProps }
 export { IBasePickerStyles }
 
 export { IBasePickerSuggestionsProps }
-
-// @public (undocumented)
-export interface ICalloutContentStyleProps {
-    backgroundColor?: string;
-    beakWidth?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    overflowYHidden?: boolean;
-    positions?: ICalloutPositionedInfo;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ICalloutContentStyles {
-    beak: IStyle;
-    beakCurtain: IStyle;
-    calloutMain: IStyle;
-    container: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    alignTargetEdge?: boolean;
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    backgroundColor?: string;
-    beakWidth?: number;
-    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
-    calloutMaxHeight?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    coverTarget?: boolean;
-    directionalHint?: DirectionalHint;
-    directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint;
-    doNotLayer?: boolean;
-    finalHeight?: number;
-    gapSpace?: number;
-    hidden?: boolean;
-    hideOverflow?: boolean;
-    isBeakVisible?: boolean;
-    layerProps?: ILayerProps;
-    minPagePadding?: number;
-    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-    onLayerMounted?: () => void;
-    onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    onScroll?: () => void;
-    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
-    // @deprecated
-    preventDismissOnLostFocus?: boolean;
-    // @deprecated
-    preventDismissOnResize?: boolean;
-    // @deprecated
-    preventDismissOnScroll?: boolean;
-    role?: string;
-    setInitialFocus?: boolean;
-    shouldDismissOnWindowFocus?: boolean;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-    shouldUpdateWhenHidden?: boolean;
-    style?: React.CSSProperties;
-    styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Target;
-    theme?: ITheme;
-}
 
 // @public (undocumented)
 export interface IComboBox {
@@ -919,8 +822,10 @@ export interface IContextualMenuState {
     positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
+    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    submenuDirection?: DirectionalHint;
+    submenuDirection?: DirectionalHint_2;
     // (undocumented)
     subMenuId?: string;
 }
@@ -1072,11 +977,6 @@ export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPe
 export { IFabricAutofill }
 
 export { IFabricAutofillState }
-
-// @public (undocumented)
-export interface IFocusTrapCalloutProps extends ICalloutProps {
-    focusTrapProps?: IFocusTrapZoneProps;
-}
 
 // @public (undocumented)
 export interface IFocusTrapZone {
@@ -1610,8 +1510,6 @@ export { TagPicker }
 
 export { TagPickerBase }
 
-export { Target }
-
 export { ValidationState }
 
 // @public (undocumented)
@@ -1646,6 +1544,7 @@ export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Breadcrumb";
+export * from "@fluentui/react/lib/Callout";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";

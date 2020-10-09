@@ -3,7 +3,7 @@ import { ISuggestionModel, ISuggestionItemProps } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
-import { ICalloutProps } from '../Callout/Callout.types';
+import { ICalloutProps } from '../../Callout';
 /* eslint-disable */
 
 export interface IBaseFloatingPicker {
