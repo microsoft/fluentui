@@ -427,11 +427,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _getOpacity = (selectedArea: string): number => {
     if (!this._isMultiStackChart) {
-      return 0.8;
+      return 0.7;
     } else {
-      let opacity = 0.8;
+      let opacity = 0.7;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        opacity = this.state.activeLegend === selectedArea ? 0.8 : 0.1;
+        opacity = this.state.activeLegend === selectedArea ? 0.7 : 0.1;
       }
       return opacity;
     }
