@@ -1,4 +1,5 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ButtonSizeVariants } from '../Button/index';
 
 const GlobalClassNames = {
@@ -58,14 +59,14 @@ export const useSplitButtonClasses = makeVariantClasses({
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
 
-      '@media (forced-colors: active)': {
+      [EdgeChromiumHighContrastSelector]: {
         backgroundColor: 'var(--button-highContrast-dividerColor)',
       },
 
       [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
         backgroundColor: 'var(--button-disabled-dividerColor)',
 
-        '@media (forced-colors: active)': {
+        [EdgeChromiumHighContrastSelector]: {
           backgroundColor: 'var(--button-highContrast-disabled-dividerColor, var(--button-highContrast-dividerColor))',
         },
       },

@@ -1,4 +1,5 @@
 import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ToggleButtonState } from './ToggleButton.types';
 
 export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
@@ -11,7 +12,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
       background: 'var(--button-checked-background)',
       color: 'var(--button-checked-contentColor)',
 
-      '@media (forced-colors: active)': {
+      [EdgeChromiumHighContrastSelector]: {
         background: 'var(--button-highContrast-checked-background)',
         color: 'var(--button-highContrast-checked-contentColor)',
         '.ms-Button-icon': {
@@ -23,7 +24,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         background: 'var(--button-checked-hovered-background)',
         color: 'var(--button-checked-hovered-contentColor)',
 
-        '@media (forced-colors: active)': {
+        [EdgeChromiumHighContrastSelector]: {
           background:
             'var(--button-highContrast-checked-hovered-background, var(--button-highContrast-checked-background))',
           color:
@@ -39,7 +40,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         background: 'var(--button-checked-pressed-background, var(--button-checked-hovered-background))',
         color: 'var(--button-checked-pressed-contentColor, var(--button-checked-hovered-contentColor))',
 
-        '@media (forced-colors: active)': {
+        [EdgeChromiumHighContrastSelector]: {
           background:
             'var(--button-highContrast-checked-pressed-background, ' +
             'var(--button-highContrast-checked-hovered-background, ' +

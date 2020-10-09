@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ButtonState } from './Button.types';
 
 const GlobalClassNames = {
@@ -114,7 +115,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           marginLeft: 'var(--button-contentGap)',
         },
 
-        '@media (forced-colors: active)': {
+        [EdgeChromiumHighContrastSelector]: {
           forcedColorAdjust: 'var(--button-forcedColorAdjust)',
 
           background: 'var(--button-highContrast-background)',
@@ -126,7 +127,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
             boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
           },
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-highContrast-iconColor)',
           },
         },
@@ -137,15 +138,15 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderColor: 'var(--button-hovered-borderColor, var(--button-borderColor))',
           boxShadow: 'var(--button-hovered-boxShadow, var(--button-boxShadow))',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-hovered-iconColor, var(--button-iconColor))',
           },
 
-          '@media (forced-colors: active)': {
+          [EdgeChromiumHighContrastSelector]: {
             background: 'var(--button-highContrast-hovered-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor))',
             color: 'var(--button-highContrast-hovered-contentColor, var(--button-highContrast-contentColor))',
-            '.ms-Button-icon': {
+            [`.${GlobalClassNames.icon}`]: {
               color: 'var(--button-highContrast-hovered-iconColor, --button-highContrast-iconColor)',
             },
           },
@@ -161,11 +162,11 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           transform: 'var(--button-pressed-transform)',
           transition: 'var(--button-pressed-transition)',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-pressed-iconColor, var(--button-iconColor))',
           },
 
-          '@media (forced-colors: active)': {
+          [EdgeChromiumHighContrastSelector]: {
             background:
               'var(--button-highContrast-pressed-background, ' +
               'var(--button-highContrast-hovered-background, ' +
@@ -178,7 +179,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
               'var(--button-highContrast-pressed-contentColor, ' +
               'var(--button-highContrast-hovered-contentColor, ' +
               'var(--button-highContarst-contentColor)))',
-            '.ms-Button-icon': {
+            [`.${GlobalClassNames.icon}`]: {
               color:
                 'var(--button-highContrast-pressed-iconColor, ' +
                 'var(--button-highContrast-hovered-iconColor, ' +
@@ -195,15 +196,15 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderColor: 'var(--button-disabled-borderColor)',
           boxShadow: 'var(--button-disabled-boxShadow)',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-disabled-iconColor)',
           },
 
-          '@media (forced-colors: active)': {
+          [EdgeChromiumHighContrastSelector]: {
             background: 'var(--button-highContrast-disabled-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor))',
             color: 'var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor))',
-            '.ms-Button-icon': {
+            [`.${GlobalClassNames.icon}`]: {
               color: 'var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor)',
             },
           },
