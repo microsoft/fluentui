@@ -498,13 +498,8 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -1708,7 +1703,7 @@ export interface ICalloutPositionProps extends IPositionProps {
 }
 
 // @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -1724,7 +1719,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
-    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -1733,7 +1727,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     isBeakVisible?: boolean;
     layerProps?: ILayerProps;
     minPagePadding?: number;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
     onRestoreFocus?: (options: {
@@ -2461,7 +2455,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;

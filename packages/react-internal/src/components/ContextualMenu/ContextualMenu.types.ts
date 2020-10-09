@@ -150,7 +150,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Callback when the ContextualMenu tries to close. If `dismissAll` is true then all
    * submenus will be dismissed.
    */
-  onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
 
   /**
    * Click handler which is invoked if `onClick` is not passed for individual contextual
