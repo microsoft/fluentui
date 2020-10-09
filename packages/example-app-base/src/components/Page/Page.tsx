@@ -49,7 +49,7 @@ const scopedSettings: ICustomizations['scopedSettings'] = {
 // This change will expose a domino effect where other page components in this package should use
 //    IPageSection props with a templated arg rather than just defaulting to string. These
 //    issues could probably be more easily found by removing the default TPlatform generic type.
-// To work around this issue for now, a bunch of "as IPageSectionProps[]" casts were added to fabric-website package.
+// To work around this issue for now, a bunch of "as IPageSectionProps[]" casts were added to public-docsite package.
 // export class Page<TPlatform extends string> extends React.Component<IPageProps<TPlatform>, IPageState> {
 export class Page extends React.Component<IPageProps, IPageState> {
   public static defaultProps: Partial<IPageProps> = {

@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/fabric-website-resources",
+  "name": "@fluentui/public-docsite-resources",
   "version": "7.8.18",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",

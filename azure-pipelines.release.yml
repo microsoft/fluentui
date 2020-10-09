@@ -71,14 +71,14 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/dist
+      pathtoPublish: apps/public-docsite/dist
       artifactName: 'fabric-website'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/index.html
+      pathtoPublish: apps/public-docsite/index.html
       artifactName: 'fabric-website-index'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website index.html'
@@ -117,19 +117,19 @@ steps:
 
   - script: |
       npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
-    workingDirectory: apps/fabric-website
+    workingDirectory: apps/public-docsite
     displayName: 'Generate Fabric Website Flight Manifest Files'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/flights
+      pathtoPublish: apps/public-docsite/flights
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website-resources/dist
+      pathtoPublish: apps/public-docsite-resources/dist
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'

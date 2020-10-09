@@ -31,7 +31,7 @@ const dependencies = [
   '@uifabric/date-time',
   '@uifabric/experiments',
   '@fluentui/public-docsite',
-  '@uifabric/fabric-website-resources',
+  '@fluentui/public-docsite-resources',
   '@fluentui/react',
   'perf-test',
   'theming-designer',
@@ -47,17 +47,7 @@ repoDeps.forEach(dep => {
   if (fs.existsSync(distPath)) {
     let sourcePath = distPath;
 
-    // NOTE for backwards compatibility: @uifabric/* projects gets the dist folders themselves copied
-    // otherwise copy the contents not the dist directory itself
-    if (dep.packageJson.name.includes('@uifabric')) {
-      instructions.push(
-        ...copyInstructions.copyFilesToDestinationDirectory(
-          sourcePath,
-          path.join('dist', path.basename(dep.packagePath)),
-        ),
-      );
-      deployedPackages.add(dep.packageJson.name);
-    } else if (dep.packageJson.name === '@fluentui/docs') {
+    if (dep.packageJson.name === '@fluentui/docs') {
       instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'react-northstar')));
       deployedPackages.add(dep.packageJson.name);
     } else if (dep.packageJson.name === '@fluentui/perf-test') {

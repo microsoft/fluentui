@@ -48,8 +48,8 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Apps
 # component-demo/
-fabric-website/ @ecraig12345 @Jahnp
-fabric-website-resources/ @ecraig12345
+public-docsite/ @ecraig12345 @Jahnp
+public-docsite-resources/ @ecraig12345
 perf-test/ @JasonGore @xugao
 # ssr-tests/
 # test-bundle-button/ @dzearing
