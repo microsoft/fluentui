@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Vertical stacked bar chart minor edits",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-10-09T15:29:42.466Z"
+}
