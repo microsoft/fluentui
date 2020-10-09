@@ -36,7 +36,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/azure-themes": "^7.5.18",
+    "@fluentui/azure-themes": "^7.5.18",
     "@uifabric/build": "^7.0.0",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/jest-serializer-merge-styles": "^7.2.2",

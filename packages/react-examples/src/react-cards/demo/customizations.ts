@@ -1,5 +1,5 @@
 import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azure-themes';
+import { AzureCustomizationsLight, AzureCustomizationsDark } from '@fluentui/azure-themes';
 import { DefaultCustomizations, TeamsCustomizations, WordCustomizations } from '@uifabric/theme-samples';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [

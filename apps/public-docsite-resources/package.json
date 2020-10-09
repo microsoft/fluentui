@@ -42,7 +42,7 @@
     "@fluentui/react-internal": "^7.142.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.18",
-    "@uifabric/azure-themes": "^7.5.18",
+    "@fluentui/azure-themes": "^7.5.18",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/mdl2-theme": "^0.3.17",

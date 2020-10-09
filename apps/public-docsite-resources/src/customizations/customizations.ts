@@ -1,6 +1,6 @@
 import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
 import { MDL2Customizations } from '@uifabric/mdl2-theme';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azure-themes';
+import { AzureCustomizationsLight, AzureCustomizationsDark } from '@fluentui/azure-themes';
 import {
   TeamsCustomizations,
   WordCustomizations,

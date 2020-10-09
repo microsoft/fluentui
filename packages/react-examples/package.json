@@ -67,7 +67,7 @@
     "@fluentui/theme": "^1.2.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.18",
-    "@uifabric/azure-themes": "^7.5.18",
+    "@fluentui/azure-themes": "^7.5.18",
     "@uifabric/charting": "^4.2.5",
     "@uifabric/date-time": "^7.17.16",
     "@uifabric/example-app-base": "^7.15.18",
