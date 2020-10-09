@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Oct 2020 18:03:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.2)
+
+Fri, 09 Oct 2020 18:03:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.1..@fluentui/web-components_v0.6.2)
+
+### Patches
+
+- removes palette generation for every card and adds better null checking to avoid runtime errors ([PR #15429](https://github.com/microsoft/fluentui/pull/15429) by nicholasrice@users.noreply.github.com)
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.1)
 

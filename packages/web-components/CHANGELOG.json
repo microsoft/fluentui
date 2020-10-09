@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 18:03:19 GMT",
+      "tag": "@fluentui/web-components_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removes palette generation for every card and adds better null checking to avoid runtime errors",
+            "author": "nicholasrice@users.noreply.github.com",
+            "commit": "6e09556ae9cd59f9174a211e6987237e8f22f54f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Oct 2020 12:23:45 GMT",
       "tag": "@fluentui/web-components_v0.6.1",
       "version": "0.6.1",
