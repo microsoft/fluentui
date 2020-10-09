@@ -15,6 +15,7 @@
     "lz-string": "^1.4.4",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-document-title": "^2.0.3",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
     "use-immer": "^0.4.1"

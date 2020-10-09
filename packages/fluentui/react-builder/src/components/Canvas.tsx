@@ -224,7 +224,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: 'calc(100vh - 1.5rem)';
+            min-height: calc(100vh - 1.5rem);
           }
           `,
         isExpanding &&
@@ -332,7 +332,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               )}
               {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {selectedComponent && <ReaderNarration selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
+              {selectedComponent && (
+                <div style={{ bottom: '0', position: 'absolute' }}>
+                  <ReaderNarration selector={`[data-builder-id="${selectedComponent.uuid}"]`} />
+                </div>
+              )}
             </Provider>
           </>
         )}
