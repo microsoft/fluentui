@@ -35,13 +35,13 @@ export function makeSemanticColors(
     ...s,
   };
 
-  return mapSemanticColors(p, e, semanticColors, isInverted);
+  return getSemanticColors(p, e, semanticColors, isInverted);
 }
 
 /**
  * Map partial platte and effects to partial semantic colors.
  */
-export function mapSemanticColors<TResult = Partial<ISemanticColors>>(
+export function getSemanticColors<TResult = Partial<ISemanticColors>>(
   p: Partial<IPalette> | undefined,
   e: Partial<IEffects> | undefined,
   s: Partial<ISemanticColors> | undefined,

@@ -1,13 +1,13 @@
 import { merge } from '@uifabric/utilities';
 import { IFontStyles, PartialTheme, Theme } from './types/index';
-import { mapSemanticColors } from './utilities/makeSemanticColors';
+import { getSemanticColors } from './utilities/makeSemanticColors';
 
 /**
  * Merge a partial/full theme into a full theme and returns a merged full theme.
  */
 export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Theme {
   const mergedTheme = merge<Theme | PartialTheme>({}, theme, partialTheme, {
-    semanticColors: mapSemanticColors(
+    semanticColors: getSemanticColors(
       partialTheme.palette,
       partialTheme.effects,
       partialTheme.semanticColors,
@@ -21,13 +21,11 @@ export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Them
 
   if (partialTheme.defaultFontStyle) {
     for (const fontStyle of Object.keys(mergedTheme.fonts) as (keyof IFontStyles)[]) {
-      mergedTheme.fonts[fontStyle] = merge(mergedTheme.fonts[fontStyle], partialTheme.defaultFontStyle);
-    }
-  }
-
-  if (partialTheme.fonts) {
-    for (const fontStyle of Object.keys(theme.fonts) as (keyof IFontStyles)[]) {
-      mergedTheme.fonts[fontStyle] = merge(mergedTheme.fonts[fontStyle], partialTheme.fonts[fontStyle]);
+      mergedTheme.fonts[fontStyle] = merge(
+        mergedTheme.fonts[fontStyle],
+        partialTheme.defaultFontStyle,
+        partialTheme?.fonts?.[fontStyle],
+      );
     }
   }
 
