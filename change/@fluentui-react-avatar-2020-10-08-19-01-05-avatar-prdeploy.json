@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add Avatar to the PR deploy site",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-09T02:01:04.931Z"
-}
