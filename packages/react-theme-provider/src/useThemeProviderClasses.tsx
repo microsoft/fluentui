@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { css } from '@uifabric/utilities';
-import { IRawStyle } from '@uifabric/merge-styles';
 import { useDocument } from '@fluentui/react-window-provider';
 import { makeStyles } from './makeStyles';
 import { ThemeProviderState } from './ThemeProvider.types';

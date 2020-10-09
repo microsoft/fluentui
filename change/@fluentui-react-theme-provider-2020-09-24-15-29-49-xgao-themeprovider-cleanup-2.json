@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider.",
+  "comment": "Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider. Set correct dir on root element based on rtl value in theme.",
   "packageName": "@fluentui/react-theme-provider",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
