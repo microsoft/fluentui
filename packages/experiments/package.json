@@ -65,7 +65,7 @@
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.9",
-    "@uifabric/theme-samples": "^7.1.21",
+    "@fluentui/theme-samples": "^7.1.21",
     "@uifabric/utilities": "^7.32.3",
     "@uifabric/variants": "^7.2.21",
     "deep-assign": "^2.0.0",

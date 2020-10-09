@@ -6,7 +6,7 @@ import {
   WordCustomizations,
   DefaultCustomizations,
   DarkCustomizations,
-} from '@uifabric/theme-samples';
+} from '@fluentui/theme-samples';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },

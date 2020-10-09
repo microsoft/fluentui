@@ -81,7 +81,7 @@
     "@uifabric/react-cards": "^0.113.3",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/styling": "^7.16.9",
-    "@uifabric/theme-samples": "^7.1.21",
+    "@fluentui/theme-samples": "^7.1.21",
     "@uifabric/utilities": "^7.32.3",
     "@uifabric/variants": "^7.2.21",
     "d3-format": "^1.4.4",

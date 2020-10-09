@@ -47,7 +47,7 @@
     "@uifabric/icons": "^7.5.8",
     "@uifabric/mdl2-theme": "^0.3.17",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/theme-samples": "^7.1.21",
+    "@fluentui/theme-samples": "^7.1.21",
     "@uifabric/tsx-editor": "^0.13.18",
     "office-ui-fabric-core": "^11.0.0",
     "tslib": "^1.10.0"
