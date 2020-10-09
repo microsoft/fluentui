@@ -42,7 +42,7 @@ const config = {
     {
       browserName: 'internet explorer',
       version: '11',
-      includeRules: [/([a-z | A-Z]*ButtonNext - [a-z | A-Z]*)$/g],
+      includeRules: [/(Button Next[\s]*[-]*[a-z | A-Z]*: [a-z | A-Z]*: [a-z | A-Z]*)/$],
     },
   ],
   failureExitCode: 0,
