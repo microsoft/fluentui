@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@fluentui/common-styles": "^0.2.6",
+    "@fluentui/eslint-plugin": "^0.54.1",
     "@types/chalk": "^2.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
