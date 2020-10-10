@@ -1218,45 +1218,6 @@ export interface IOnRenderComboBoxLabelProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSet {
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-}
-
-// @public (undocumented)
-export interface IOverflowSetItemProps {
-    [propertyName: string]: any;
-    key: string;
-    keytipProps?: IKeytipProps;
-}
-
-// @public (undocumented)
-export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
-    className?: string;
-    componentRef?: IRefObject<IOverflowSet>;
-    items?: IOverflowSetItemProps[];
-    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
-    keytipSequences?: string[];
-    onRenderItem: (item: IOverflowSetItemProps) => any;
-    onRenderOverflowButton: IRenderFunction<any[]>;
-    overflowItems?: IOverflowSetItemProps[];
-    overflowSide?: 'start' | 'end';
-    role?: string;
-    styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
-    vertical?: boolean;
-}
-
-// @public
-export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
-
-// @public (undocumented)
-export interface IOverflowSetStyles {
-    item?: IStyle;
-    overflowButton?: IStyle;
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
 }
 
@@ -1432,12 +1393,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 export { NormalPeoplePicker }
 
 export { NormalPeoplePickerBase }
-
-// @public (undocumented)
-export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
-
-// @public (undocumented)
-export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
 
 export { PeoplePickerItem }
 
@@ -1655,6 +1610,7 @@ export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
 export * from "@fluentui/react/lib/MessageBar";
 export * from "@fluentui/react/lib/Nav";
+export * from "@fluentui/react/lib/OverflowSet";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
 export * from "@fluentui/react/lib/Popup";
