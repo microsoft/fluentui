@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add missing eslintrc, version.ts; Remove unneeded package dependencies.",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-10T04:09:09.356Z"
+}

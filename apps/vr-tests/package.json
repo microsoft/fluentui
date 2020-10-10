@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@fluentui/react": "^7.142.0",
-    "@fluentui/react-avatar": "^0.6.5",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-icons": "^0.3.5",
     "@fluentui/react-next": "^8.0.0-alpha.118",

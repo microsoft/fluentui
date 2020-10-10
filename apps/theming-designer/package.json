@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@fluentui/react": "^7.142.0",
-    "@uifabric/react-cards": "^0.113.3",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/foundation": "^7.9.9",
