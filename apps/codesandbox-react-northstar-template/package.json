@@ -18,9 +18,7 @@
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "@fluentui/accessibility": "^0.51.0",
     "@fluentui/code-sandbox": "^0.51.0",
-    "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "prettier": "~1.19.1",
     "react": "16.8.6",

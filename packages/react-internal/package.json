@@ -42,7 +42,6 @@
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/jest-serializer-merge-styles": "^7.2.2",
     "@uifabric/test-utilities": "^7.3.0",
-    "@uifabric/webpack-utils": "^7.0.25",
     "@fluentui/react-conformance": "^0.1.5",
     "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
@@ -58,7 +57,6 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^7.16.9",
-    "@fluentui/react-icons": "^0.3.5",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@fluentui/theme": "^1.2.1",
     "@microsoft/load-themed-styles": "^1.10.26",
