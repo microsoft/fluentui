@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/azure-themes",
+  "name": "@fluentui/azure-themes",
   "version": "7.5.18",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",

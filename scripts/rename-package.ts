@@ -1,15 +1,15 @@
 import { spawnSync } from 'child_process';
 import * as fs from 'fs-extra';
-import { IOptions as GlobOptions } from 'glob';
+import { IOptions as GlobOptions, sync as globSync } from 'glob';
 import inquirer from 'inquirer';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import * as path from 'path';
 import * as replaceInFile from 'replace-in-file';
-import { findGitRoot, PackageInfo, listAllTrackedFiles, getUnstagedChanges, stageAndCommit } from 'workspace-tools';
+import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'workspace-tools';
 
 const readConfig: (pth: string) => PackageInfo = require('./read-config').readConfig;
 const writeConfig: (pth: string, newValue: any) => void = require('./write-config');
-const runPrettier = require('./prettier/prettier-helpers').runPrettier;
+const { runPrettier, prettierExtensions } = require('./prettier/prettier-helpers');
 
 const gitRoot = findGitRoot(process.cwd());
 const uifabric = '@uifabric';
@@ -22,7 +22,7 @@ const getPackagePath = (unscopedPackageName: string) => {
 const getPackageJson = (unscopedPackageName: string) =>
   readConfig(path.join(getPackagePath(unscopedPackageName), 'package.json'));
 
-interface PackageRenameInfo {
+interface RenameInfo {
   /** Old unscoped name (under `@uifabric`) */
   oldName: string;
   /** New unscoped name (under `@fluentui`) */
@@ -31,7 +31,7 @@ interface PackageRenameInfo {
   packageJson: PackageInfo;
 }
 
-async function getPackageToRename(): Promise<PackageRenameInfo> {
+async function getPackageToRename(): Promise<RenameInfo> {
   const [oldNameArg, newNameArg, versionArg] = process.argv.slice(2);
   let packageJson = oldNameArg ? getPackageJson(oldNameArg) : undefined;
 
@@ -44,7 +44,7 @@ async function getPackageToRename(): Promise<PackageRenameInfo> {
     };
   }
 
-  const answers = await inquirer.prompt<Pick<PackageRenameInfo, 'oldName' | 'newName' | 'newVersion'>>([
+  const answers = await inquirer.prompt<Pick<RenameInfo, 'oldName' | 'newName' | 'newVersion'>>([
     {
       type: 'input',
       name: 'oldName',
@@ -70,7 +70,7 @@ async function getPackageToRename(): Promise<PackageRenameInfo> {
   return { ...answers, newVersion: answers.newVersion || packageJson.version, packageJson };
 }
 
-function updatePackage(renameInfo: PackageRenameInfo) {
+function updatePackage(renameInfo: RenameInfo): string[] {
   const { oldName, newName, packageJson, newVersion } = renameInfo;
 
   const oldPath = getPackagePath(oldName);
@@ -92,9 +92,11 @@ function updatePackage(renameInfo: PackageRenameInfo) {
   packageJson.name = `${fluentui}/${newName}`;
   packageJson.version = newVersion;
   writeConfig(newPackageJsonPath, packageJson);
+
+  return [newPackageJsonPath];
 }
 
-function updateDependents(renameInfo: PackageRenameInfo) {
+function updateDependents(renameInfo: RenameInfo): string[] {
   const { oldName, newName, newVersion } = renameInfo;
   console.log('\nUpdating name and version in other package.json files');
 
@@ -109,11 +111,12 @@ function updateDependents(renameInfo: PackageRenameInfo) {
     glob,
   });
 
-  const dependentPackageFolders = depResults.filter(res => res.hasChanged).map(res => path.dirname(res.file));
-  console.log(`  ${dependentPackageFolders.join('\n  ')}`);
+  const changedPackageJson = depResults.filter(res => res.hasChanged).map(res => res.file);
+  console.log(`  ${changedPackageJson.join('\n  ')}`);
+  return changedPackageJson;
 }
 
-function updateReferences(renameInfo: PackageRenameInfo) {
+function updateReferences(renameInfo: RenameInfo): string[] {
   console.log('\nReplacing old package name and path in all tracked files (this will take awhile)...');
 
   const files = listAllTrackedFiles([], gitRoot).filter(f => !/CHANGELOG/.test(f));
@@ -122,15 +125,15 @@ function updateReferences(renameInfo: PackageRenameInfo) {
 
   // Replace name references (@uifabric/utilities) AND path references (packages/utilities).
   // To prevent replacing other package names which share substrings, only replace the name if it's:
-  // - Preceded by a string start '"` or / or ! (loader path) or space or start of string
-  // - Followed by a string end '"` or / or space or end of string
-  const nameRegex = new RegExp(`(?<=['"\`/! ]|^)(${uifabric}|apps|packages)/${oldName}(?=['"\`/ ]|$)`);
+  // - Preceded by a string start or / or ! (loader path) or space or start of line
+  // - Followed by a string end or / or space or @ (certain URLs) or end of line
+  const nameRegex = new RegExp(`(?<=['"\`/! ]|^)(${uifabric}|apps|packages)/${oldName}(?=['"\`/ @]|$)`);
 
   let lastUpdatedFile = '';
 
-  replaceInFile.sync({
+  const results = replaceInFile.sync({
     files,
-    from: new RegExp(nameRegex.source, 'g'),
+    from: new RegExp(nameRegex.source, 'gm'),
     to: (substr, ...args) => {
       const file = args.slice(-1)[0];
       if (lastUpdatedFile !== file) {
@@ -144,16 +147,57 @@ function updateReferences(renameInfo: PackageRenameInfo) {
       return `${firstPart}/${newName}`;
     },
   });
+
+  return results.filter(res => res.hasChanged).map(res => res.file);
 }
 
-async function runPrettierForChanged() {
-  const changedFiles = getUnstagedChanges(gitRoot);
-  console.log('\nRunning prettier on changed files...');
-  await runPrettier(changedFiles, true, true);
+function updateConfigs(renameInfo: RenameInfo): string[] {
+  const { oldName, newName } = renameInfo;
+
+  const newPackagePath = getPackagePath(newName);
+  const bundleFiles = globSync(path.join(newPackagePath, 'webpack*.js'));
+
+  if (!bundleFiles.length) {
+    return [];
+  }
+
+  console.log('\nUpdating bundle names...');
+
+  // Assorted special files which are known to reference bundle names
+  bundleFiles.push(
+    path.join(gitRoot, 'packages/example-app-base/src/components/CodepenComponent/CodepenComponent.tsx'),
+    path.join(gitRoot, 'packages/tsx-editor/src/transpiler/transpileHelpers.test.ts'),
+    path.join(gitRoot, 'packages/tsx-editor/src/utilities/defaultSupportedPackages.ts'),
+    path.join(gitRoot, 'packages/tsx-editor/src/transpiler/__snapshots__/exampleTransform.test.ts.snap'),
+  );
+
+  // Replace the bundle name and the library name in any webpack configs
+  // (these names aren't the same in all packages)
+  const oldBundleNameMaybe = 'Fabric' + _.upperFirst(_.camelCase(oldName));
+  const newBundleName = 'FluentUI' + _.upperFirst(_.camelCase(newName));
+
+  for (const configPath of bundleFiles) {
+    let content = fs.readFileSync(configPath, 'utf8');
+    content = content.replace(new RegExp(oldBundleNameMaybe, 'g'), newBundleName);
+    content = content.replace(new RegExp(oldName, 'g'), newName);
+    fs.writeFileSync(configPath, content);
+  }
+
+  return bundleFiles;
+}
+
+async function runPrettierForFiles(modifiedFiles: string[]) {
+  // Only run prettier on supported extensions (note: the slice() is because extname returns
+  // .extension but prettierExtensions doesn't include the leading . )
+  const filesToFormat = modifiedFiles.filter(f => prettierExtensions.includes(path.extname(f).slice(1)));
+  if (filesToFormat.length) {
+    console.log('\nRunning prettier on changed files...');
+    await runPrettier(filesToFormat, true, true);
+  }
 }
 
 function runYarn() {
-  console.log('Running `yarn` to update links...');
+  console.log('\nRunning `yarn` to update links...');
   const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: gitRoot, stdio: 'inherit', shell: true });
   if (yarnResult.status !== 0) {
     console.error('Something went wrong with running yarn. Please check previous logs for details');
@@ -164,10 +208,15 @@ function runYarn() {
 async function run() {
   const renameInfo = await getPackageToRename();
 
-  updatePackage(renameInfo);
-  updateDependents(renameInfo);
-  updateReferences(renameInfo);
-  await runPrettierForChanged();
+  const modifiedFiles = [
+    ...updatePackage(renameInfo),
+    ...updateDependents(renameInfo),
+    ...updateReferences(renameInfo),
+    ...updateConfigs(renameInfo),
+  ];
+
+  await runPrettierForFiles(modifiedFiles);
+
   runYarn();
 
   console.log(`
@@ -175,7 +224,9 @@ Almost done!
 
 PLEASE VERIFY ALL THE CHANGES ARE CORRECT! (Easy way to view them all: \`git diff -U1\`)
 
-You may also need to run a build to ensure API files are properly updated.
+Other follow-up steps:
+- Run a search for the old scoped and unscoped package names in case of non-standard references
+- You may need to run a build to ensure API files are properly updated
 `);
 }
 

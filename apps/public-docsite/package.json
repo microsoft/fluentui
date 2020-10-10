@@ -53,7 +53,7 @@
     "@uifabric/file-type-icons": "^7.6.9",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/theme-samples": "^7.1.21",
+    "@fluentui/theme-samples": "^7.1.21",
     "json-loader": "^0.5.7",
     "office-ui-fabric-core": "^11.0.0",
     "tslib": "^1.10.0",

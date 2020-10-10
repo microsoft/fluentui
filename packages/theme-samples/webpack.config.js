@@ -11,7 +11,7 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   output: {
     libraryTarget: 'var',
-    library: 'FabricThemeSamples',
+    library: 'FluentUIThemeSamples',
   },
 
   resolve: {

@@ -1,12 +1,12 @@
 import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
 import { MDL2Customizations } from '@uifabric/mdl2-theme';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azure-themes';
+import { AzureCustomizationsLight, AzureCustomizationsDark } from '@fluentui/azure-themes';
 import {
   TeamsCustomizations,
   WordCustomizations,
   DefaultCustomizations,
   DarkCustomizations,
-} from '@uifabric/theme-samples';
+} from '@fluentui/theme-samples';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },
