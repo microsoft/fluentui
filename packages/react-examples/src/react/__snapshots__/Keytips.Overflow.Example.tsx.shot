@@ -8,21 +8,13 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
   <div
     aria-orientation="horizontal"
     className=
-        ms-FocusZone
         ms-OverflowSet
-        &:focus {
-          outline: none;
-        }
         {
           display: flex;
           flex-wrap: nowrap;
           margin-bottom: 28px;
           position: relative;
         }
-    data-focuszone-id="FocusZone0"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
     role="menubar"
   >
     <div
@@ -160,7 +152,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__1"
+              id="id__0"
             >
               Link 1
             </span>
@@ -303,7 +295,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__4"
+              id="id__3"
             >
               Link 2
             </span>
@@ -446,7 +438,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__7"
+              id="id__6"
             >
               Link 3
             </span>
@@ -727,7 +719,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__13"
+          id="id__12"
         >
           Move overflow items
         </span>

@@ -49,11 +49,6 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           data={data}
           innerRadius={55}
           legendProps={{
-            overflowProps: {
-              focusZoneProps: {
-                'aria-label': 'Legends container',
-              },
-            },
             allowFocusOnLegends: true,
           }}
         />

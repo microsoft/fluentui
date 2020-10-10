@@ -147,11 +147,6 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             width={this.state.width}
             chartLabel="Card title"
             legendProps={{
-              overflowProps: {
-                focusZoneProps: {
-                  'aria-label': 'Legends container',
-                },
-              },
               allowFocusOnLegends: true,
             }}
           />

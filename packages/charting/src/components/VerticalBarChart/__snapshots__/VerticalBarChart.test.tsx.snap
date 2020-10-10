@@ -176,21 +176,13 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
           >
             <div
               className=
-                  ms-FocusZone
                   ms-OverflowSet
-                  &:focus {
-                    outline: none;
-                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone2"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div

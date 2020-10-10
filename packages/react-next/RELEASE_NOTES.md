@@ -37,8 +37,8 @@ If you would like to continue using the previous button components for now, upda
 
 ### OverflowSet
 
+- Contents of the `OverflowSet` are no longer wrapped in a `FocusZone`.
 - Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
-- Removed uses of `FocusZone` from render and the public-api.
 
 ### Pivot
 

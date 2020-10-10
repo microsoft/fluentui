@@ -177,12 +177,6 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
       },
     ];
 
-    return (
-      <Legends
-        legends={legends}
-        enabledWrapLines={true}
-        overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }}
-      />
-    );
+    return <Legends legends={legends} enabledWrapLines={true} />;
   }
 }

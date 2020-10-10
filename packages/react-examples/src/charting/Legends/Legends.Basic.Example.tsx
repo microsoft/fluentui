@@ -52,6 +52,6 @@ export class LegendBasicExample extends React.Component<{}, {}> {
       },
     ];
 
-    return <Legends legends={legends} overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }} />;
+    return <Legends legends={legends} />;
   }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeytipManager } from '@fluentui/react/lib/Keytips';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
 import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst } from '@uifabric/react-hooks';
