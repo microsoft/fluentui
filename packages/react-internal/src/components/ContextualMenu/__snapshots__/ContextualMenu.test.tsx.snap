@@ -248,7 +248,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
               onScroll={[Function]}
               style={
                 Object {
-                  "maxHeight": 752,
+                  "maxHeight": undefined,
                   "outline": "none",
                   "overflowY": undefined,
                 }
