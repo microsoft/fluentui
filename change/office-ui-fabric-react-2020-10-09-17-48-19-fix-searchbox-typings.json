@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "SearchBox: role now applies correctly on the root and is no longer hardcoded to \"search\".",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-10T00:48:17.193Z"
+}
