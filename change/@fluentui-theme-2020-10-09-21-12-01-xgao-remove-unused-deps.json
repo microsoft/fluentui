@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add missing version.ts; Remove unneeded package dependencies.",
+  "comment": "Add missing version.ts.",
   "packageName": "@fluentui/theme",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
