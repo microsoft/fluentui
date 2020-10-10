@@ -1,4 +1,4 @@
-import { DefaultCustomizations, DarkCustomizations } from '@uifabric/theme-samples';
+import { DefaultCustomizations, DarkCustomizations } from '@fluentui/theme-samples';
 import { IAppCustomizations, IExampleCardCustomizations } from '@uifabric/example-app-base';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
