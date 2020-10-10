@@ -1288,23 +1288,6 @@ export { IPickerItem }
 
 export { IPickerItemProps }
 
-// @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    role?: string;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-}
-
 export { ISuggestionItemProps }
 
 export { ISuggestionModel }
@@ -1463,9 +1446,6 @@ export { PeoplePickerItemBase }
 export { PeoplePickerItemSuggestion }
 
 export { PeoplePickerItemSuggestionBase }
-
-// @public
-export const Popup: React.FunctionComponent<IPopupProps>;
 
 export { ResponsiveMode }
 
@@ -1677,6 +1657,7 @@ export * from "@fluentui/react/lib/MessageBar";
 export * from "@fluentui/react/lib/Nav";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
+export * from "@fluentui/react/lib/Popup";
 export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";

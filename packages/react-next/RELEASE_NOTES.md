@@ -48,6 +48,10 @@ If you would like to continue using the previous button components for now, upda
   - Replaced `rootIsTabs` and `linkFormat`.
   - Removed deprecated prop `linkIsSelected`.
 
+### Popup
+
+- Updated signature of `onDismiss` to include the native `KeyboardEvent` as a possible type of the `ev` parameter: `onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any`
+
 ### Rating
 
 - The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
