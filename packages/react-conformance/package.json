@@ -40,6 +40,7 @@
   "dependencies": {
     "doctrine": "^3.0.0",
     "lodash": "^4.17.15",
+    "chalk": "^2.1.0",
     "react-docgen-typescript": "^1.16.6",
     "react-is": "^16.6.3",
     "tslib": "^1.10.0"
