@@ -51,7 +51,6 @@ Array [
             color: #005a9e;
           }
       onFocusCapture={[Function]}
-      role="search"
     >
       <div
         aria-hidden={true}

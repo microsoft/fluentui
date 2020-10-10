@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "SearchBox: role=search on root div is now opt in; if you want it, you must provide it as a role prop.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-09T18:54:58.004Z"
+}

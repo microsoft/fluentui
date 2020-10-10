@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating example snapshots.",
+  "packageName": "@fluentui/react-examples",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-09T23:08:29.797Z"
+}
