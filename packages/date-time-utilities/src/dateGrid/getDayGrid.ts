@@ -56,16 +56,14 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
 
   let selectedDates: Date[] = [];
 
-  if (!!selectedDate) {
-    selectedDates = getDateRangeArray(
-      selectedDate,
-      selectedDateRangeType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-    );
-    selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
-  }
+  selectedDates = getDateRangeArray(
+    selectedDate,
+    selectedDateRangeType,
+    firstDayOfWeek,
+    workWeekDays,
+    daysToSelectInDayView,
+  );
+  selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
 
   let shouldGetWeeks = true;
 
