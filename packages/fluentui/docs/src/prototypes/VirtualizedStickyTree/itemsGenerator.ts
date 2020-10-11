@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
 
-function getItems(minItems = 5, maxItems = 15, maxLevel = 3) {
-  function getItemsNumber(minItems, maxItems) {
-    return _.random(minItems, maxItems);
+function getItems(minItems = 5, maxItems = 15, maxLevel = 2, maxSticky = 10) {
+  function getItemsNumber(min, max) {
+    return _.random(min, max);
   }
 
   function generateLevel(level, parent = '') {
     const result = [];
-    _.times(getItemsNumber(minItems, maxItems), index => {
+    _.times(getItemsNumber(minItems, level === 0 ? Math.min(maxSticky, maxItems) : maxItems), index => {
       const item = {
         id: `${parent}${parent ? '-' : ''}${index}`,
         title: `Tree-Item-${parent}${parent ? '-' : ''}${index}`,
