@@ -55,7 +55,6 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 const codepenHeader = `const {
   createTheme,
   Checkbox,
-  Customizations,
   DefaultButton,
   Fabric,
   loadTheme,
@@ -63,11 +62,13 @@ const codepenHeader = `const {
   PivotItem,
   PrimaryButton,
   Stack,
-  Toggle
-} = Fabric;\n\n`;
+  Toggle,
+} = FluentUIReact;\n\n`;
 const codepenSamples = `\n\n
+
+loadTheme(myTheme);\n
+
 const Content = () => {
-    Customizations.applySettings({ theme: myTheme });
     return (
       <Fabric applyThemeToBody>
         <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
@@ -135,9 +136,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           <span>
             <p>
               This code block creates the theme you have configured above using the createTheme utility function.
-              Calling Customizations.applySettings with this theme will automatically apply the configured theming to
-              any Fabric controls used within the same app. You can also export this example to CodePen with a few
-              component examples below.
+              Calling loadTheme with this theme will automatically apply the configured theming to any Fabric controls
+              used within the same app. You can also export this example to CodePen with a few component examples below.
             </p>
           </span>
           <div className={outputPanelClassName}>

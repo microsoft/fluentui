@@ -27,7 +27,10 @@ describe('Tests a simple data-driven codeMod', () => {
             console.log(`Upgraded file ${result.file.getBaseName()} with mod ${result.mod.name}`, v.logs);
           },
           e => {
-            console.warn(`Mod ${result.mod.name} did not run on file ${result.file.getBaseName()} for: `, e.reason);
+            console.warn(
+              `Mod ${result.mod.name} did not run on file ${result.file.getBaseName()} for: `,
+              'error' in e ? e.error : e.logs,
+            );
           },
         );
       },

@@ -132,7 +132,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
     ];
 
     const chartData = {
-      chartTtitle: 'Area chart basic example',
+      chartTitle: 'Area chart basic example',
       lineChartData: chartPoints,
     };
 

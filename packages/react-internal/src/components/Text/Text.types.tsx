@@ -6,7 +6,7 @@ import {
   IComponent,
   IStyleableComponentProps,
   ISlottableProps,
-} from '../../Foundation';
+} from '@uifabric/foundation';
 import { IFontStyles } from '../../Styling';
 
 /**

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "create `react-text` package",
+  "packageName": "@fluentui/react-text",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-09-30T13:13:29.504Z"
+}

@@ -3,20 +3,12 @@
 exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
 <div
   className=
-      ms-FocusZone
       ms-OverflowSet
-      &:focus {
-        outline: none;
-      }
       {
         display: flex;
         flex-wrap: nowrap;
         position: relative;
       }
-  data-focuszone-id="FocusZone0"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
   role="group"
 />
 `;
@@ -24,21 +16,13 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
 exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
 <div
   className=
-      ms-FocusZone
       ms-OverflowSet
       foobar
-      &:focus {
-        outline: none;
-      }
       {
         display: flex;
         flex-wrap: nowrap;
         position: relative;
       }
-  data-focuszone-id="FocusZone1"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
   role="group"
 />
 `;
@@ -46,22 +30,14 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
 exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 1`] = `
 <div
   className=
-      ms-FocusZone
       ms-OverflowSet
       foobar
-      &:focus {
-        outline: none;
-      }
       {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         position: relative;
       }
-  data-focuszone-id="FocusZone2"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
   role="group"
 />
 `;

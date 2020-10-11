@@ -2,24 +2,30 @@
 
 const siteInfo = [
   {
-    package: '@uifabric/fabric-website-resources',
-    link: './fabric-website-resources/dist/index.html',
+    package: '@fluentui/public-docsite-resources',
+    link: './public-docsite-resources/index.html',
     icon: 'FavoriteStar',
     title: 'Demo Site',
   },
   {
-    package: '@uifabric/fabric-website-resources',
-    link: './@fluentui/react/dist-storybook/index.html',
+    package: '@fluentui/react',
+    link: './react/dist-storybook/index.html',
     icon: 'FavoriteStar',
     title: 'Fabric Storybook Site',
   },
   {
-    package: '@uifabric/fabric-website',
-    link: './fabric-website/dist/index.html?devhost',
+    package: '@fluentui/public-docsite',
+    link: './public-docsite/index.html?devhost',
     icon: 'Website',
     title: 'Website',
   },
   { package: '@fluentui/docs', link: './react-northstar', icon: 'FavoriteStar', title: 'react-northstar' },
+  {
+    package: '@fluentui/react-avatar',
+    link: './react-avatar/dist-storybook/index.html',
+    icon: 'Contact',
+    title: 'Avatar',
+  },
   {
     package: '@fluentui/react-button',
     link: './react-button/dist-storybook/index.html',
@@ -51,6 +57,12 @@ const siteInfo = [
     title: 'Tabs',
   },
   {
+    package: '@fluentui/react-text',
+    link: './react-text/dist-storybook/index.html',
+    icon: 'TextOverflow',
+    title: 'Text',
+  },
+  {
     package: '@fluentui/react-slider',
     link: './react-slider/dist-storybook/index.html',
     icon: 'Slider',
@@ -68,9 +80,9 @@ const siteInfo = [
     icon: 'DoubleChevronRight12',
     title: 'Next',
   },
-  { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
-  { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
-  { package: '@uifabric/date-time', link: './date-time/dist/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
+  { package: '@uifabric/experiments', link: './experiments/index.html', icon: 'TestBeaker', title: 'Experiments' },
+  { package: '@uifabric/charting', link: './charting/index.html', icon: 'BarChart4', title: 'Charting' },
+  { package: '@uifabric/date-time', link: './date-time/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
   { package: 'todo-app', link: './todo-app/index.html', icon: 'CheckMark', title: 'Todo Example' },
   {
     package: 'theming-designer',

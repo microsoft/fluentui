@@ -14,10 +14,10 @@ import {
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 import { StoryExample } from '../utils/StoryExample';
-import { Stack } from '@fluentui/react-next';
+import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react-next';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
-const examplePeople = [
+const people = [
   { name: 'Ade Q', image: imageRoot + '/ade.jpg' },
   { name: 'Christain W', image: imageRoot + '/christian.jpg' },
   { name: 'Daniel E', image: imageRoot + '/daniel.jpg' },
@@ -44,8 +44,8 @@ const examplePeople = [
 
 /** Values used for the example avatars */
 const examples = {
-  names: examplePeople.map(p => p.name),
-  images: examplePeople.map(p => p.image),
+  names: people.map(p => p.name),
+  images: people.map(p => p.image),
   icons: [
     /* eslint-disable react/jsx-key */
     <GroupIcon />,
@@ -154,36 +154,45 @@ export const Active = () => (
   </>
 );
 
+const useStateSelector = function<T>(values: readonly T[], initialValue = values[0]) {
+  const [value, setValue] = React.useState<T>(initialValue);
+  const next = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) + 1)), [values]);
+  const prev = React.useCallback(() => setValue(v => wrapIndex(values, values.indexOf(v) - 1)), [values]);
+  return [value, next, prev] as const;
+};
+
 export const ActiveAnimation = () => {
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = React.useState(false);
+  const [size, nextSize, prevSize] = useStateSelector(avatarSizeValues, 96);
+  const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useStateSelector(examples.activeDisplay, 'ring');
+  const [display, nextDisplay, prevDisplay] = useStateSelector(examples.display, 'image');
 
   React.useEffect(() => {
-    const id = setInterval(() => setActive(a => !a), 2500);
-    return () => clearInterval(id);
+    const id = setTimeout(() => setActive(true), 500);
+    return () => clearTimeout(id);
   }, []);
 
   return (
-    <>
-      <StoryExample title="ring">
-        <Stack horizontal tokens={{ childrenGap: '24px' }}>
-          <Avatar size={64} {...examplePeople[9]} display="image" active={active} activeDisplay="ring" />
-          <Avatar size={64} {...examplePeople[9]} display="icon" active={active} activeDisplay="ring" />
-          <Avatar size={64} {...examplePeople[9]} display="label" active={active} activeDisplay="ring" />
+    <ThemeProvider>
+      <Stack>
+        <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Avatar size={size} display={display} active={active} activeDisplay={activeDisplay} {...people[9]} />
+        </div>
+        <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
+          <Button primary onClick={React.useCallback(() => setActive(a => !a), [])}>
+            Toggle Active
+          </Button>
+          <SpinButton
+            label="activeDisplay"
+            value={activeDisplay}
+            onIncrement={nextActiveDisplay}
+            onDecrement={prevActiveDisplay}
+          />
+          <SpinButton label="display" value={display} onIncrement={nextDisplay} onDecrement={prevDisplay} />
+          <SpinButton label="size" value={`${size}`} onIncrement={nextSize} onDecrement={prevSize} />
         </Stack>
-      </StoryExample>
-      <StoryExample title="ring-shadow">
-        <Avatar size={64} {...examplePeople[10]} active={active} activeDisplay="ring-shadow" />
-      </StoryExample>
-      <StoryExample title="ring-glow">
-        <Avatar size={64} {...examplePeople[11]} active={active} activeDisplay="ring-glow" />
-      </StoryExample>
-      <StoryExample title="shadow">
-        <Avatar size={64} {...examplePeople[15]} active={active} activeDisplay="shadow" />
-      </StoryExample>
-      <StoryExample title="glow">
-        <Avatar size={64} {...examplePeople[18]} active={active} activeDisplay="glow" />
-      </StoryExample>
-    </>
+      </Stack>
+    </ThemeProvider>
   );
 };
 

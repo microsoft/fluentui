@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove unneeded package dependencies.",
+  "packageName": "@fluentui/codemods",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-10T04:08:45.736Z"
+}

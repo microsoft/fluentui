@@ -2,19 +2,19 @@
 
 exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 <div
-  className="testClassName"
+  className=
+      testClassName
+      ms-ChoiceFieldGroup
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   <div
-    className=
-        ms-ChoiceFieldGroup
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
     role="radiogroup"
   >
     <div
@@ -434,20 +434,20 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
 exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
 <div
-  className="testClassName"
+  className=
+      testClassName
+      ms-ChoiceFieldGroup
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   <div
-    aria-labelledby="ChoiceGroup0-label"
-    className=
-        ms-ChoiceFieldGroup
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+    aria-labelledby="ChoiceGroupLabel1"
     role="radiogroup"
   >
     <label
@@ -479,7 +479,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             content: ' *';
             padding-right: 12px;
           }
-      id="ChoiceGroup0-label"
+      id="ChoiceGroupLabel1"
     >
       test label
     </label>

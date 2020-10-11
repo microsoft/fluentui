@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import {
   ComponentWithAs,
+  defaultContextValue,
   getElementType,
   useUnhandledProps,
   StylesContextPerformanceInput,
@@ -112,20 +113,32 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
     return telemetryRef.current;
   }, [telemetryRef]);
-  const inputContext: ProviderContextInput = {
-    disableAnimations: props.disableAnimations,
-    performance: props.performance,
-    rtl: props.rtl,
-    target: props.target,
-    telemetry,
-    theme: props.theme,
-  };
 
   const consumedContext = useFluentContext();
-  const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
+  const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite
+    ? defaultContextValue
+    : consumedContext;
   const createRenderer = React.useContext(RendererContext);
 
-  const outgoingContext = mergeProviderContexts(createRenderer, incomingContext, inputContext);
+  // Memoization of `inputContext` & `outgoingContext` is required to avoid useless notifications of components that
+  // consume `useFluentContext()` on each render
+  // @see https://reactjs.org/docs/context.html#caveats
+  const inputContext = React.useMemo<ProviderContextInput>(
+    () => ({
+      disableAnimations: props.disableAnimations,
+      performance: props.performance,
+      rtl: props.rtl,
+      target: props.target,
+      telemetry,
+      theme: props.theme,
+    }),
+    [props.disableAnimations, props.performance, props.rtl, props.target, telemetry, props.theme],
+  );
+  const outgoingContext = React.useMemo(() => mergeProviderContexts(createRenderer, incomingContext, inputContext), [
+    createRenderer,
+    incomingContext,
+    inputContext,
+  ]);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child

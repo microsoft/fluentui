@@ -21,13 +21,6 @@ If you would like to continue using the previous button components for now, upda
   - `shouldFocusOnMount`
   - `yearPickerHidden`
 
-### Checkbox
-
-- Removed `styles` prop.
-- Removed `checkmarkIconProps` prop.
-- Deprecated `onRenderLabel`.
-- Added `label`/`checkmark` slot props.
-
 ### ChoiceGroup
 
 - Moved `root` class to the actual root element by replacing `applicationRole`.
@@ -36,10 +29,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
-- Beak:
-  - Removed empty `IBeak` interface
-  - Removed `componentRef` prop
+- Removed deprecated `isBeaconAnimating` and `isMeasured` style props
 
 ### DatePicker
 
@@ -47,8 +37,8 @@ If you would like to continue using the previous button components for now, upda
 
 ### OverflowSet
 
+- Contents of the `OverflowSet` are no longer wrapped in a `FocusZone`.
 - Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
-- Removed uses of `FocusZone` from render and the public-api.
 
 ### Pivot
 
@@ -58,18 +48,44 @@ If you would like to continue using the previous button components for now, upda
   - Replaced `rootIsTabs` and `linkFormat`.
   - Removed deprecated prop `linkIsSelected`.
 
+### Popup
+
+- Updated signature of `onDismiss` to include the native `KeyboardEvent` as a possible type of the `ev` parameter: `onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any`
+
 ### Rating
 
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 - Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
 - `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
 - Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
-- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
+- Corrected type of `IRatingProp.onChange`'s `event` parameter to reflect how it's used internally. It should be `React.FormEvent<HTMLElement>`, not `React.FocusEvent<HTMLElement>`.
 
 ### SpinButton
 
-- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
+- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring in line with other components. As a result, the following props have been removed (see below for migration tips):
+  - `arrowButtonsContainerDisabled`
+  - `inputDisabled`
+  - `inputTextSelected`
+  - `labelDisabled`
+  - `spinButtonWrapperDisabled`
+  - `spinButtonWrapperFocused`
+  - `spinButtonWrapperHovered`
+  - `spinButtonWrapperTopBottom`
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
+
+If you're using a removed `ISpinButtonStyles` prop, you can instead pass a style function which returns appropriate styles based on the current state of the component. For example, instead of setting `spinButtonWrapperFocused`, you can do this:
+
+```tsx
+<SpinButton styles={(props: ISpinButtonStyleProps) => {
+  const { isFocused, theme } = props;
+  return {
+    spinButtonWrapper: isFocused && {
+      outline: '5px solid ' + theme.palette.yellow,
+    },
+  };
+}}>
+```
 
 ### Shimmer
 
