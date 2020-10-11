@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "withSlots: avoid calling traverseAllChildren twice",
+  "packageName": "@uifabric/foundation",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-11T17:30:57.102Z"
+}
