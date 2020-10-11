@@ -83,6 +83,9 @@ const NestedPopupsAndDialogsPrototype = React.lazy(() =>
 const VirtualizedTreePrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTree'),
 );
+const VirtualizedStickyTreePrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedStickyTree'),
+);
 const CopyToClipboardPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/CopyToClipboard'),
 );
@@ -152,6 +155,7 @@ const Routes = () => (
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+                <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />
