@@ -152,7 +152,7 @@ const ReRenderStickyTree = ({
     setItemIdTobeFocused(newItemIdTobeFocused);
   }, []);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     // retain focus after sticky items gotten clicked and triggers DOM updates
     if (itemIdTobeFocused === null) return;
 
