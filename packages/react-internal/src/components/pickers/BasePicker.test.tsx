@@ -6,7 +6,6 @@ import * as renderer from 'react-test-renderer';
 import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
-import { safeMount } from '@uifabric/test-utilities';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
 import { isConformant } from '../../common/isConformant';
 
@@ -316,7 +315,7 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    safeMount(
+    ReactDOM.render(
       <BasePickerWithType
         onResolveSuggestions={onResolveSuggestions}
         onEmptyInputFocus={resolveSuggestions}
@@ -324,17 +323,19 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
         componentRef={picker}
       />,
-      wrapper => {
-        wrapper.find('input').simulate('focus');
-        expect(getSuggestions(document)).toBeDefined();
-
-        const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
-        expect(suggestionOptions.length).toEqual(15);
-
-        const currentPicker = picker.current!.items;
-        expect(currentPicker).toHaveLength(0);
-      },
+      root,
     );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+
+    expect(getSuggestions(document)).toBeDefined();
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(15);
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(0);
   });
 
   it('Closes menu when escape is pressed', () => {

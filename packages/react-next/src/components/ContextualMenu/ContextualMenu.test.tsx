@@ -437,7 +437,6 @@ describe('ContextualMenu', () => {
   it('closes all menus on alt only', () => {
     let menuDismissed = false;
     let dismissedAll = false;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;
@@ -1068,18 +1067,14 @@ describe('ContextualMenu', () => {
     });
 
     it('ContextualMenu should be present in DOM when hidden', () => {
-      ReactTestUtils.act(() => {
-        button.current!.openMenu();
-        button.current!.dismissMenu();
-      });
+      button.current!.openMenu();
+      button.current!.dismissMenu();
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
     });
 
     it('Submenu should not be shown when ContextualMenu is hidden', () => {
       // 1. Open parent menu
-      ReactTestUtils.act(() => {
-        button.current!.openMenu();
-      });
+      button.current!.openMenu();
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
 
       // 2. Open sub menu
@@ -1090,17 +1085,13 @@ describe('ContextualMenu', () => {
 
       // 3. Dismiss parent menu - sub menu should disappear from DOM.
       // Submenus are not persisted using the hidden prop as of now
-      ReactTestUtils.act(() => {
-        button.current!.dismissMenu();
-      });
+      button.current!.dismissMenu();
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
     });
 
     it('Submenu should not be shown by default when ContextualMenu is shown', () => {
       // 1. Open parent menu
-      ReactTestUtils.act(() => {
-        button.current!.openMenu();
-      });
+      button.current!.openMenu();
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
 
       // 2. Open sub menu
@@ -1110,15 +1101,11 @@ describe('ContextualMenu', () => {
       expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
 
       // 3. Dismiss parent menu - sub menu should disappear from DOM.
-      ReactTestUtils.act(() => {
-        button.current!.dismissMenu();
-      });
+      button.current!.dismissMenu();
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
 
       // 4. Reopen parent menu - sub menu should not be present by default
-      ReactTestUtils.act(() => {
-        button.current!.openMenu();
-      });
+      button.current!.openMenu();
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
     });
 
@@ -1212,7 +1199,6 @@ describe('ContextualMenu', () => {
   describe('IContextualMenuRenderItem function tests', () => {
     const contextualItem = React.createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;

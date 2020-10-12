@@ -19,4 +19,3 @@ const LocalContextualMenu: React.FunctionComponent<IContextualMenuProps> = style
  * ContextualMenu description
  */
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps> = LocalContextualMenu;
-ContextualMenu.displayName = 'ContextualMenu';
