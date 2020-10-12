@@ -45,8 +45,7 @@
     "react-textarea-autosize": "7.0.0",
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6",
-    "react-window": "^1.8.5",
-    "what-input": "^5.2.10"
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
