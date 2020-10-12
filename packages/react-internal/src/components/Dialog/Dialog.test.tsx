@@ -49,13 +49,7 @@ describe('Dialog', () => {
         }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  isConformant({
-    Component: Dialog,
-    displayName: 'Dialog',
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('Fires dismissed after closing', () => {
@@ -249,5 +243,10 @@ describe('Dialog', () => {
       expect(dialogTitle).not.toBeNull();
       wrapper.unmount();
     });
+  });
+
+  isConformant({
+    Component: Dialog,
+    displayName: 'Dialog',
   });
 });
