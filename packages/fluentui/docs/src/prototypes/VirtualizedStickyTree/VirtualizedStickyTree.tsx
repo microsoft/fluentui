@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { VariableSizeList as List } from 'react-window';
-import { ObjectShorthandCollection, Tree, TreeItemProps, treeTitleClassName } from '@fluentui/react-northstar';
+import {
+  ComponentEventHandler,
+  ObjectShorthandCollection,
+  Tree,
+  TreeItemProps,
+  treeTitleClassName,
+} from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
 
@@ -25,7 +31,7 @@ class ItemWrapper extends React.PureComponent<{
                 // don't care about onsibling Expand for sticky headers
                 data.handleOnSiblingsExpand(event, treeItemProps);
             },
-            onFocus: (e: React.SyntheticEvent<HTMLElement>) => {
+            onFocus: (e: React.FocusEvent<HTMLElement>) => {
               if (item.props.level === 1) return;
               data.handleOnFocus(e);
             },
@@ -114,11 +120,11 @@ interface ReRenderStickyTreeProps {
 interface ItemDataType {
   renderedItems: React.ReactElement<TreeItemProps>[];
   isNonSticky: (item: React.ReactElement<TreeItemProps>) => boolean;
-  onClick: (event: React.SyntheticEvent<HTMLElement>, itemProps: TreeItemProps) => void;
-  handleOnFocus: (event: React.SyntheticEvent<HTMLElement>) => void;
-  handleFocusParent: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
-  handleFocusFirstChild: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
-  handleOnSiblingsExpand: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
+  onClick: (event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => void;
+  handleOnFocus: (event: React.FocusEvent<HTMLElement>) => void;
+  handleFocusParent: ComponentEventHandler<TreeItemProps>;
+  handleFocusFirstChild: ComponentEventHandler<TreeItemProps>;
+  handleOnSiblingsExpand: ComponentEventHandler<TreeItemProps>;
 }
 
 const ReRenderStickyTree = ({
@@ -167,7 +173,7 @@ const ReRenderStickyTree = ({
   );
 
   const onClick = React.useCallback(
-    (_event: React.SyntheticEvent<HTMLElement>, itemProps: TreeItemProps) => {
+    (_event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => {
       // when a sticky header (itemProps.level === 1) is clicked, there'll be re-render afterwards to pull up its right siblings.
       // Therefore call passItemIdTobeFocused to retain focus
       if (itemProps.level === 1) passItemIdTobeFocused(itemProps.id);
@@ -215,7 +221,7 @@ const ReRenderStickyTree = ({
   );
 
   const onClickSticky = React.useCallback(
-    (_event: React.SyntheticEvent<HTMLElement>, itemProps: TreeItemProps) => {
+    (_event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => {
       passItemIdTobeFocused(itemProps.id); // retain focus after re-render
 
       if (itemProps.expanded) return; // it is already the main item stick to top, do nothing
@@ -238,7 +244,7 @@ const ReRenderStickyTree = ({
   // When using keyboard, and navigate to non-sticky items, they could be hidden behind sticky headers.
   // Scroll to make the focused non-sticky items always visible
   const handleOnFocus = React.useCallback(
-    (e: React.SyntheticEvent<HTMLElement>) => {
+    (e: React.FocusEvent<HTMLElement>) => {
       let itemRef = e.target as any;
       if (itemRef.className.includes(treeTitleClassName)) itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
 
