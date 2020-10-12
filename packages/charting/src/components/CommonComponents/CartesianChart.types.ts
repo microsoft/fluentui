@@ -157,6 +157,12 @@ export interface ICartesianChartProps {
 
   /**
    * Margins for the chart
+   * @default top: 20
+   * @default bottom: 35
+   * @default left: 40
+   * @default right: 20
+   *
+   * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
   margins?: IMargins;
 

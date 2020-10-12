@@ -59,11 +59,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       _height: this.props.height || 350,
     };
     this.idForGraph = getId('chart_');
+    /**
+     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
+     * So that, in RTL, left margins becomes right margins and viceversa.
+     * As graph needs to be drawn perfecty, these values consider as default values.
+     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
+     */
     this.margins = {
       top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
       bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 40,
+      right: this._isRtl ? this.props.margins?.left || 40 : this.props.margins?.right || 20,
+      left: this._isRtl ? this.props.margins?.right || 20 : this.props.margins?.left || 40,
     };
   }
 
@@ -207,8 +213,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.yAxisElement = e;
               }}
               id={`yAxisGElement${this.idForGraph}`}
-              // Removing margins.right 2 times from width for RTL.
-              transform={`translate(${this._isRtl ? svgDimensions.width - 2 * this.margins.right! : 40}, 0)`}
+              transform={`translate(${
+                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
+              }, 0)`}
               className={this._classNames.yAxis}
             />
             {children}

@@ -374,9 +374,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
   };
 
-  private _redirectToUrl(href: string): void {
-    href ? (window.location.href = href) : '';
-  }
+  private _redirectToUrl = (): void => {
+    this.props.href ? (window.location.href = this.props.href) : '';
+  };
 
   private _getYMax(dataset: IDataPoint[]) {
     return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
@@ -420,7 +420,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           onMouseLeave: this._handleMouseOut,
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber),
           onBlur: this._handleMouseOut,
-          onClick: this._redirectToUrl.bind(this, this.props.href!),
+          onClick: this._redirectToUrl,
         };
         return (
           <rect
@@ -445,7 +445,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         onMouseLeave: this._handleMouseOut,
         onFocus: this._onStackFocus.bind(this, singleChartData.xAxisPoint),
         onBlur: this._handleMouseOut,
-        onClick: this._redirectToUrl.bind(this, this.props.href!),
+        onClick: this._redirectToUrl,
       };
       return (
         <g
@@ -471,10 +471,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xBarScale = d3ScaleLinear()
       .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
-      .range([
-        this.margins.left!,
-        containerWidth - this.margins.right! - this._barWidth - (this._isRtl ? this.margins.right! : 0),
-      ]);
+      .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -490,11 +487,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       .domain(this._isRtl ? [this._dataset.length - 1, 0] : [0, this._dataset.length - 1])
       .range([
         this.margins.left! + endpointDistance - 0.5 * this._barWidth,
-        containerWidth -
-          this.margins.right! -
-          endpointDistance -
-          0.5 * this._barWidth -
-          (this._isRtl ? this.margins.right! : 0),
+        containerWidth - this.margins.right! - endpointDistance - 0.5 * this._barWidth,
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])

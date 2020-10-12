@@ -46,18 +46,22 @@ export interface IWrapLabelProps {
 export interface IMargins {
   /**
    * left margin for the chart.
+   * @default 40
    */
   left?: number;
   /**
    * Right margin for the chart.
+   * @default 20
    */
   right?: number;
   /**
    * Top margin for the chart.
+   * @default 20
    */
   top?: number;
   /**
    * Bottom margin for the chart.
+   * @default 35
    */
   bottom?: number;
 }
@@ -529,7 +533,7 @@ export function domainRangeOfDateForAreaChart(
   });
 
   const rStartValue = margins.left!;
-  const rEndValue = width - margins.right! - (isRTL ? margins.right! : 0);
+  const rEndValue = width - margins.right!;
 
   return isRTL
     ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
@@ -563,7 +567,7 @@ export function domainRangeOfNumericForAreaChart(
   })!;
 
   const rStartValue = margins.left!;
-  const rEndValue = width - margins.right! - (isRTL ? margins.right! : 0);
+  const rEndValue = width - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
@@ -583,7 +587,7 @@ export function domainRangeOfNumericForAreaChart(
  */
 export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
   const rMin = margins.left!;
-  const rMax = width - margins.right! - (isRTL ? margins.right! : 0);
+  const rMax = width - margins.right!;
 
   return isRTL
     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
@@ -627,7 +631,7 @@ export function domainRangeOfVSBCNumeric(
   const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
   // barWidth / 2 - for to get tick middle of the bar
   const rMax = margins.left! + barWidth / 2;
-  const rMin = width - margins.right! - barWidth / 2 - (isRTL ? margins.right! : 0);
+  const rMin = width - margins.right! - barWidth / 2;
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };
