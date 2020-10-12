@@ -154,7 +154,7 @@ const ReRenderStickyTree = ({
 
   React.useEffect(() => {
     // retain focus after sticky items gotten clicked and triggers DOM updates
-    if (itemIdTobeFocused === null) return;
+    if (!itemIdTobeFocused) return;
 
     const toFocusIndex = renderedItems.findIndex(item => item.props.id === itemIdTobeFocused);
     const toFocusItem = renderedItems[toFocusIndex];
