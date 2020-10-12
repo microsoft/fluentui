@@ -60,11 +60,10 @@ export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): 
           checked: {
             background: semanticColors.primaryButtonBackgroundPressed,
             contentColor: semanticColors.primaryButtonTextPressed,
-          },
-
-          checkedHovered: {
-            background: semanticColors.primaryButtonBackgroundPressed,
-            contentColor: semanticColors.primaryButtonTextPressed,
+            hovered: {
+              background: semanticColors.primaryButtonBackgroundPressed,
+              contentColor: semanticColors.primaryButtonTextPressed,
+            },
           },
         },
       },

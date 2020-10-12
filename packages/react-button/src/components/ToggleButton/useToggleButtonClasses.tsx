@@ -1,4 +1,4 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 
 export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
@@ -10,48 +10,85 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     _checked: {
       background: 'var(--button-checked-background)',
       color: 'var(--button-checked-contentColor)',
+      '.ms-Button-icon': {
+        color: 'var(--button-checked-iconColor)',
+      },
 
       ':hover': {
-        background: 'var(--button-checkedHovered-background)',
-        color: 'var(--button-checkedHovered-contentColor)',
+        background: 'var(--button-checked-hovered-background)',
+        color: 'var(--button-checked-hovered-contentColor)',
+        '.ms-Button-icon': {
+          color: 'var(--button-checked-hovered-iconColor)',
+        },
       },
 
       ':active': {
-        background: 'var(--button-checkedPressed-background, var(--button-checkedHovered-background))',
-        color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
+        background: 'var(--button-checked-pressed-background, var(--button-checked-hovered-background))',
+        color: 'var(--button-checked-pressed-contentColor, var(--button-checked-hovered-contentColor))',
+        '.ms-Button-icon': {
+          color: 'var(--button-checked-pressed-iconColor, var(--button-checked-hovered-iconColor))',
+        },
       },
     },
   },
 
-  variants: {
-    primary: {
-      checked: {
-        background: 'var(--color-brand-checked-background)',
-        contentColor: 'var(--color-brand-checked-contentColor)',
-      },
-      checkedHovered: {
-        background: 'var(--color-brand-checkedHovered-background)',
-        contentColor: 'var(--color-brand-checkedHovered-contentColor)',
-      },
-      checkedPressed: {
-        background: 'var(--color-brand-checkedPressed-background)',
-        contentColor: 'var(--color-brand-checkedPressed-contentColor)',
-      },
-    },
+  variants: (theme: Theme) => {
+    const { palette, semanticColors } = theme;
 
-    ghost: {
-      checked: {
-        background: 'var(--ghost-checked-background)',
-        contentColor: 'var(--ghost-checked-contentColor)',
+    return {
+      root: {
+        checked: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextChecked,
+
+          hovered: {
+            background: semanticColors?.buttonBackgroundPressed,
+            contentColor: semanticColors?.buttonTextCheckedHovered,
+          },
+        },
       },
-      checkedHovered: {
-        background: 'var(--ghost-checkedHovered-background)',
-        contentColor: 'var(--ghost-checkedHovered-contentColor)',
+
+      primary: {
+        checked: {
+          background: 'var(--color-brand-checked-background)',
+          contentColor: 'var(--color-brand-checked-contentColor)',
+          hovered: {
+            background: 'var(--color-brand-checked-hovered-background)',
+            contentColor: 'var(--color-brand-checked-hovered-contentColor)',
+          },
+          pressed: {
+            background: 'var(--color-brand-checked-pressed-background)',
+            contentColor: 'var(--color-brand-checked-pressed-contentColor)',
+          },
+        },
       },
-      checkedPressed: {
-        background: 'var(--ghost-checkedPressed-background)',
-        contentColor: 'var(--ghost-checkedPressed-contentColor)',
+
+      ghost: {
+        checked: {
+          background: palette?.neutralLight,
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+
+          hovered: {
+            background: palette?.neutralQuaternaryAlt,
+            contentColor: palette?.themePrimary,
+            iconColor: palette?.themePrimary,
+          },
+        },
       },
-    },
+
+      transparent: {
+        checked: {
+          background: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+          hovered: {
+            background: 'transparent',
+            contentColor: palette?.black,
+            iconColor: palette?.themeDarker,
+          },
+        },
+      },
+    };
   },
 });
