@@ -41,7 +41,7 @@ const InnerElementType = ({ children, style }) => {
   const context = React.useContext(InnerElementContext);
   const { height, stickyItemSize, stickyTopIds, stickyBottomIds, onClickSticky } = context;
 
-  if (!children.length) return <></>;
+  if (!children?.length) return null;
 
   const data = children[0]?.props?.data;
   const { renderedItems } = data;
