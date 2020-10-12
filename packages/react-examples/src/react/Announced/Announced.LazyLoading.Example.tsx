@@ -71,7 +71,7 @@ export const AnnouncedLazyLoadingExample = () => {
       }, 500);
 
       const announceIntervalId = setInterval(() => {
-        // Refering to total directly would cause the effect to dispose.
+        // Referring to total directly would cause the effect to dispose.
         // Instead pull the total value from the setter to apply to the announcement.
         setTotal((t: number) => {
           setAnnouncedMessage(`${t} of ${PHOTO_COUNT} photos loaded`);

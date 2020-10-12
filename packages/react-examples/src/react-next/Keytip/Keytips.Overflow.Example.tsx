@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
-import { IOverflowSetItemProps, OverflowSet, IOverflowSetStyles } from '@fluentui/react-next/lib/OverflowSet';
-import { CommandBarButton, DefaultButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
+import { IOverflowSetItemProps, OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet';
+import { CommandBarButton, DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { marginBottom: 28 } };
 const commandBarButtonStyles: Partial<IButtonStyles> = { root: { padding: '10px' } };

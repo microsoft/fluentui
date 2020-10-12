@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/react": "^7.142.0",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",

@@ -15,7 +15,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 }
 
 // Type T is the type of the item that is displayed
-// For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
+// For example, if the picker is displaying persona's than type T could either be of Persona or IPersona props
 export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
 
@@ -46,7 +46,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
   /**
    * A callback to process a selection after the user selects something from the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
   /**
    * The items that the base picker should currently display as selected.
    * If this is provided then the picker will act as a controlled component.
