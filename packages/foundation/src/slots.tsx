@@ -40,13 +40,6 @@ export function withSlots<P>(
 ): ReturnType<React.FunctionComponent<P>> {
   const slotType = type as ISlot<P>;
   if (slotType.isSlot) {
-    // TODO: There is something weird going on here with children embedded in props vs. rest args.
-    // Comment out these lines to see. Make sure this function is doing the right things.
-    const numChildren = React.Children.count(children);
-    if (numChildren === 0) {
-      return slotType(props);
-    }
-
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are
     // properly assigned keys.
     // TODO: should this be mutating? does React mutate children subprop with createElement?
@@ -55,6 +48,12 @@ export function withSlots<P>(
     //        Even children passed to createElement without keys don't generate this warning.
     //        Is there a better way to prevent slots from appearing in hierarchy? toArray doesn't address root issue.
     children = React.Children.toArray(children);
+
+    // TODO: There is something weird going on here with children embedded in props vs. rest args.
+    // Comment out these lines to see. Make sure this function is doing the right things.
+    if (children.length === 0) {
+      return slotType(props);
+    }
 
     return slotType({ ...(props as any), children });
   } else {
