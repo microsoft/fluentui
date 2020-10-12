@@ -148,7 +148,14 @@ function _getRelativeRectEdgeValue(edge: RectangleEdge, rect: Rectangle): number
 
 function _getRelativeEdgeDifference(rect: Rectangle, hostRect: Rectangle, edge: RectangleEdge): number {
   const edgeDifference = _getEdgeValue(rect, edge) - _getEdgeValue(hostRect, edge);
-  return _getRelativeEdgeValue(edge, edgeDifference);
+  const relativeEdgeValue = _getRelativeEdgeValue(edge, edgeDifference);
+  if (edge === RectangleEdge.left) {
+      return Math.ceil(relativeEdgeValue);
+  }
+  if (edge === RectangleEdge.right) {
+      return Math.floor(relativeEdgeValue);
+  }
+  return relativeEdgeValue;
 }
 
 /**
@@ -423,11 +430,11 @@ function _finalizeReturnEdge(
 }
 
 /**
- * Finalizes the element positon based on the hostElement. Only returns the
+ * Finalizes the element position based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
  * For instance, if the target edge is top and aligned with the left side then
- * the bottom and left values are returned so as the callou shrinks it shrinks towards that corner.
+ * the bottom and left values are returned so as the callout shrinks it shrinks towards that corner.
  */
 function _finalizeElementPosition(
   elementRectangle: Rectangle,
