@@ -37,8 +37,8 @@ If you would like to continue using the previous button components for now, upda
 
 ### OverflowSet
 
+- Contents of the `OverflowSet` are no longer wrapped in a `FocusZone`.
 - Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
-- Removed uses of `FocusZone` from render and the public-api.
 
 ### Pivot
 
@@ -47,6 +47,10 @@ If you would like to continue using the previous button components for now, upda
   - Replaced `rootIsLarge` with `linkSize`.
   - Replaced `rootIsTabs` and `linkFormat`.
   - Removed deprecated prop `linkIsSelected`.
+
+### Popup
+
+- Updated signature of `onDismiss` to include the native `KeyboardEvent` as a possible type of the `ev` parameter: `onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any`
 
 ### Rating
 

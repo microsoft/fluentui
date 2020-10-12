@@ -1,0 +1,66 @@
+{
+  "name": "@fluentui/public-docsite",
+  "version": "7.15.18",
+  "private": true,
+  "description": "The official website for the Fluent UI project.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": true,
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "create-internal-flight-config": "just-scripts create-internal-flight-config",
+    "create-public-flight-config": "just-scripts create-public-flight-config",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "production": "npx -n=--max_old_space_size=8192 just-scripts build --production",
+    "dogfood": "npx -n=--max_old_space_size=8192 just-scripts build --dogfood",
+    "startuhf": "just-scripts dev --webpackConfig webpack.uhf.serve.config.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@types/node": "^10.3.2",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tsx-editor": "^0.13.18",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "write-file-webpack-plugin": "^4.1.0"
+  },
+  "dependencies": {
+    "@fluentui/react": "^7.142.0",
+    "@fluentui/react-internal": "^7.142.0",
+    "@fluentui/react-examples": "^0.4.0",
+    "@fluentui/theme": "^1.2.1",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/api-docs": "^7.5.18",
+    "@uifabric/example-app-base": "^7.15.18",
+    "@uifabric/experiments": "^7.33.1",
+    "@fluentui/public-docsite-resources": "^7.8.18",
+    "@uifabric/file-type-icons": "^7.6.9",
+    "@uifabric/icons": "^7.5.8",
+    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/theme-samples": "^7.1.21",
+    "json-loader": "^0.5.7",
+    "office-ui-fabric-core": "^11.0.0",
+    "tslib": "^1.10.0",
+    "whatwg-fetch": "2.0.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
+  }
+}

@@ -9,105 +9,10 @@ export function makeSemanticColors(
   e: IEffects,
   s: Partial<ISemanticColors> | undefined,
   isInverted: boolean,
-  depComments: boolean,
+  depComments: boolean = false,
 ): ISemanticColors {
-  let toReturn: ISemanticColors = {
-    // DEFAULTS
-    bodyBackground: p.white,
-    bodyBackgroundHovered: p.neutralLighter,
-    bodyBackgroundChecked: p.neutralLight,
-    bodyStandoutBackground: p.neutralLighterAlt,
-    bodyFrameBackground: p.white,
-    bodyFrameDivider: p.neutralLight,
-    bodyText: p.neutralPrimary,
-    bodyTextChecked: p.black,
-    bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralLight,
-    disabledBodyText: p.neutralTertiary,
-    disabledBodySubtext: p.neutralTertiaryAlt,
-    disabledBorder: p.neutralTertiaryAlt,
-    focusBorder: p.neutralSecondary,
-    cardStandoutBackground: p.white,
-    cardShadow: e.elevation4,
-    cardShadowHovered: '', // set in second pass
-    variantBorder: p.neutralLight,
-    variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralLighterAlt,
-
-    // LINKS
-    actionLink: p.neutralPrimary,
-    actionLinkHovered: p.neutralDark,
-    link: p.themePrimary,
-    linkHovered: p.themeDarker,
-
-    // BUTTONS
-    buttonBackground: p.white,
-    buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLighter,
-    buttonBackgroundCheckedHovered: p.neutralLight,
-    buttonBackgroundPressed: p.neutralLight,
-    buttonBackgroundDisabled: p.neutralLighter,
-    buttonBorder: p.neutralSecondaryAlt,
-    buttonText: p.neutralPrimary,
-    buttonTextHovered: p.neutralDark,
-    buttonTextChecked: p.neutralDark,
-    buttonTextCheckedHovered: p.black,
-    buttonTextPressed: p.neutralDark,
-    buttonTextDisabled: p.neutralTertiary,
-    buttonBorderDisabled: p.neutralLighter,
-
-    primaryButtonBackground: p.themePrimary,
-    primaryButtonBackgroundHovered: p.themeDarkAlt,
-    primaryButtonBackgroundPressed: p.themeDark,
-    primaryButtonBackgroundDisabled: p.neutralLighter,
+  const semanticColors: Partial<ISemanticColors> = {
     primaryButtonBorder: 'transparent',
-    primaryButtonText: p.white,
-    primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white,
-    primaryButtonTextDisabled: p.neutralQuaternary,
-
-    accentButtonBackground: p.accent,
-    accentButtonText: p.white,
-
-    // INPUTS
-    inputBorder: p.neutralSecondary,
-    inputBorderHovered: p.neutralPrimary,
-    inputBackground: p.white,
-    inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDark,
-    inputPlaceholderBackgroundChecked: p.themeLighter,
-    inputForegroundChecked: p.white,
-    inputIcon: p.themePrimary,
-    inputIconHovered: p.themeDark,
-    inputIconDisabled: p.neutralTertiary,
-    inputFocusBorderAlt: p.themePrimary,
-    smallInputBorder: p.neutralSecondary,
-    inputText: p.neutralPrimary,
-    inputTextHovered: p.neutralDark,
-    inputPlaceholderText: p.neutralSecondary,
-    disabledBackground: p.neutralLighter,
-    disabledText: p.neutralTertiary,
-    disabledSubtext: p.neutralQuaternary,
-
-    // LISTS
-    listBackground: p.white,
-    listText: p.neutralPrimary,
-    listItemBackgroundHovered: p.neutralLighter,
-    listItemBackgroundChecked: p.neutralLight,
-    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
-
-    listHeaderBackgroundHovered: p.neutralLighter,
-    listHeaderBackgroundPressed: p.neutralLight,
-
-    // MENUS
-    menuBackground: p.white,
-    menuDivider: p.neutralTertiaryAlt,
-    menuIcon: p.themePrimary,
-    menuHeader: p.themePrimary,
-    menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundPressed: p.neutralLight,
-    menuItemText: p.neutralPrimary,
-    menuItemTextHovered: p.neutralDark,
 
     errorText: !isInverted ? '#a4262c' : '#F1707B',
 
@@ -129,24 +34,190 @@ export function makeSemanticColors(
     severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
     successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
 
-    // Deprecated slots, later pass by _fixDeprecatedSlots() for self-referential slots
+    // deprecated
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    warningText: '',
     successText: !isInverted ? '#107C10' : '#92c353',
-    listTextColor: '',
-    menuItemBackgroundChecked: p.neutralLight,
 
-    // mix in customized semantic slots for second pass
     ...s,
   };
 
-  // second pass for self-referential slots
-  toReturn = {
-    ...toReturn,
-    cardShadowHovered: !isInverted ? e.elevation8 : '0 0 1px ' + toReturn.variantBorderHovered,
+  const fullSemanticColors = getSemanticColors<ISemanticColors>(p, e, semanticColors, isInverted);
+  return _fixDeprecatedSlots(fullSemanticColors, depComments);
+}
+
+/**
+ * Map partial platte and effects to partial semantic colors.
+ */
+export function getSemanticColors<TResult = Partial<ISemanticColors>>(
+  p: Partial<IPalette> | undefined,
+  e: Partial<IEffects> | undefined,
+  s: Partial<ISemanticColors> | undefined,
+  isInverted: boolean,
+  depComments: boolean = false,
+): TResult {
+  let result: Partial<ISemanticColors> = {};
+
+  // map palette
+  const {
+    white,
+    black,
+    themePrimary,
+    themeDark,
+    themeDarker,
+    themeDarkAlt,
+    themeLighter,
+    neutralLight,
+    neutralLighter,
+    neutralDark,
+    neutralQuaternary,
+    neutralQuaternaryAlt,
+    neutralPrimary,
+    neutralSecondary,
+    neutralSecondaryAlt,
+    neutralTertiary,
+    neutralTertiaryAlt,
+    neutralLighterAlt,
+    accent,
+  } = p || {};
+
+  if (white) {
+    result.bodyBackground = white;
+    result.bodyFrameBackground = white;
+    result.accentButtonText = white;
+    result.buttonBackground = white;
+    result.primaryButtonText = white;
+    result.primaryButtonTextHovered = white;
+    result.primaryButtonTextPressed = white;
+    result.inputBackground = white;
+    result.inputForegroundChecked = white;
+    result.listBackground = white;
+    result.menuBackground = white;
+    result.cardStandoutBackground = white;
+  }
+  if (black) {
+    result.bodyTextChecked = black;
+    result.buttonTextCheckedHovered = black;
+  }
+  if (themePrimary) {
+    result.link = themePrimary;
+    result.primaryButtonBackground = themePrimary;
+    result.inputBackgroundChecked = themePrimary;
+    result.inputIcon = themePrimary;
+    result.inputFocusBorderAlt = themePrimary;
+    result.menuIcon = themePrimary;
+    result.menuHeader = themePrimary;
+    result.accentButtonBackground = themePrimary;
+  }
+  if (themeDark) {
+    result.primaryButtonBackgroundPressed = themeDark;
+    result.inputBackgroundCheckedHovered = themeDark;
+    result.inputIconHovered = themeDark;
+  }
+  if (themeDarker) {
+    result.linkHovered = themeDarker;
+  }
+  if (themeDarkAlt) {
+    result.primaryButtonBackgroundHovered = themeDarkAlt;
+  }
+  if (themeLighter) {
+    result.inputPlaceholderBackgroundChecked = themeLighter;
+  }
+  if (neutralLight) {
+    result.bodyBackgroundChecked = neutralLight;
+    result.bodyFrameDivider = neutralLight;
+    result.bodyDivider = neutralLight;
+    result.variantBorder = neutralLight;
+    result.buttonBackgroundCheckedHovered = neutralLight;
+    result.buttonBackgroundPressed = neutralLight;
+    result.listItemBackgroundChecked = neutralLight;
+    result.listHeaderBackgroundPressed = neutralLight;
+    result.menuItemBackgroundPressed = neutralLight;
+    // eslint-disable-next-line deprecation/deprecation
+    result.menuItemBackgroundChecked = neutralLight;
+  }
+  if (neutralLighter) {
+    result.bodyBackgroundHovered = neutralLighter;
+    result.buttonBackgroundHovered = neutralLighter;
+    result.buttonBackgroundDisabled = neutralLighter;
+    result.buttonBorderDisabled = neutralLighter;
+    result.primaryButtonBackgroundDisabled = neutralLighter;
+    result.disabledBackground = neutralLighter;
+    result.listItemBackgroundHovered = neutralLighter;
+    result.listHeaderBackgroundHovered = neutralLighter;
+    result.menuItemBackgroundHovered = neutralLighter;
+  }
+  if (neutralQuaternary) {
+    result.primaryButtonTextDisabled = neutralQuaternary;
+    result.disabledSubtext = neutralQuaternary;
+  }
+  if (neutralQuaternaryAlt) {
+    result.listItemBackgroundCheckedHovered = neutralQuaternaryAlt;
+  }
+  if (neutralTertiary) {
+    result.disabledBodyText = neutralTertiary;
+    result.variantBorderHovered = s?.variantBorderHovered || neutralTertiary;
+    result.buttonTextDisabled = neutralTertiary;
+    result.inputIconDisabled = neutralTertiary;
+    result.disabledText = neutralTertiary;
+  }
+  if (neutralPrimary) {
+    result.bodyText = neutralPrimary;
+    result.actionLink = neutralPrimary;
+    result.buttonText = neutralPrimary;
+    result.inputBorderHovered = neutralPrimary;
+    result.inputText = neutralPrimary;
+    result.listText = neutralPrimary;
+    result.menuItemText = neutralPrimary;
+  }
+  if (neutralLighterAlt) {
+    result.bodyStandoutBackground = neutralLighterAlt;
+    result.defaultStateBackground = neutralLighterAlt;
+  }
+  if (neutralDark) {
+    result.actionLinkHovered = neutralDark;
+    result.buttonTextHovered = neutralDark;
+    result.buttonTextChecked = neutralDark;
+    result.buttonTextPressed = neutralDark;
+    result.inputTextHovered = neutralDark;
+    result.menuItemTextHovered = neutralDark;
+  }
+  if (neutralSecondary) {
+    result.bodySubtext = neutralSecondary;
+    result.focusBorder = neutralSecondary;
+    result.inputBorder = neutralSecondary;
+    result.smallInputBorder = neutralSecondary;
+    result.inputPlaceholderText = neutralSecondary;
+  }
+  if (neutralSecondaryAlt) {
+    result.buttonBorder = neutralSecondaryAlt;
+  }
+  if (neutralTertiaryAlt) {
+    result.disabledBodySubtext = neutralTertiaryAlt;
+    result.disabledBorder = neutralTertiaryAlt;
+    result.buttonBackgroundChecked = neutralTertiaryAlt;
+    result.menuDivider = neutralTertiaryAlt;
+  }
+  if (accent) {
+    result.accentButtonBackground = accent;
+  }
+
+  // map effects
+  if (e?.elevation4) {
+    result.cardShadow = e.elevation4;
+  }
+  if (!isInverted && e?.elevation8) {
+    result.cardShadowHovered = e.elevation8;
+  } else if (result.variantBorderHovered) {
+    result.cardShadowHovered = '0 0 1px ' + result.variantBorderHovered;
+  }
+
+  result = {
+    ...result,
+    // mix in customized semantic slots
+    ...s,
   };
 
-  return _fixDeprecatedSlots(toReturn, depComments!);
+  return result as TResult;
 }
 
 function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanticColors {

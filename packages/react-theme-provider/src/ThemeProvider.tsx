@@ -9,27 +9,28 @@ import { useFocusRects } from '@uifabric/utilities';
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
  */
-export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
-  (props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {
-    const { render, state } = useThemeProvider(props, ref, {
-      // The renderer default value is required to be defined, so if you're recomposing
-      // this component, be sure to do so.
-      renderer: mergeStylesRenderer,
-      applyTo: 'element',
-    });
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.forwardRef<
+  HTMLDivElement,
+  ThemeProviderProps
+>((props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {
+  const { render, state } = useThemeProvider(props, ref, {
+    // The renderer default value is required to be defined, so if you're recomposing
+    // this component, be sure to do so.
+    renderer: mergeStylesRenderer,
+    applyTo: 'element',
+  });
 
-    // Register stylesheets as needed.
-    useStylesheet(state.theme.stylesheets);
+  // Register stylesheets as needed.
+  useStylesheet(state.theme.stylesheets);
 
-    // Render styles.
-    useThemeProviderClasses(state);
+  // Render styles.
+  useThemeProviderClasses(state);
 
-    // Apply focus rect class on key presses.
-    useFocusRects(state.ref);
+  // Apply focus rect class on key presses.
+  useFocusRects(state.ref);
 
-    // Return the rendered content.
-    return render(state);
-  },
-);
+  // Return the rendered content.
+  return render(state);
+});
 
 ThemeProvider.displayName = 'ThemeProvider';

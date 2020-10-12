@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "Updating SpinButton.styles to a StyleFunction.",
-  "packageName": "@uifabric/azure-themes",
+  "packageName": "@fluentui/azure-themes",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
   "date": "2020-10-08T00:45:15.624Z"

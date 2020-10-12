@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update text references to fabric-website",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-09T01:50:24.702Z"
+}
