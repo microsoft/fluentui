@@ -43,7 +43,7 @@ const InnerElementType = ({ children, style }) => {
 
   if (!children?.length) return null;
 
-  const data = children[0]?.props?.data;
+  const data = children[0].props?.data;
   const { renderedItems } = data;
 
   const stickyTopItemsIndex = stickyTopIds.map((id: string) =>
