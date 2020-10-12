@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VariableSizeList as List } from 'react-window';
-import { ObjectShorthandCollection, Tree, TreeItemProps } from '@fluentui/react-northstar';
+import { ObjectShorthandCollection, Tree, TreeItemProps, treeTitleClassName } from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
 
@@ -239,7 +239,7 @@ const ReRenderStickyTree = ({
   const handleOnFocus = React.useCallback(
     (e: React.SyntheticEvent<HTMLElement>) => {
       let itemRef = e.target as any;
-      if (itemRef.className.includes('ui-tree__title')) itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
+      if (itemRef.className.includes(treeTitleClassName)) itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
 
       if (itemRef.style.position !== 'sticky') {
         const scrolled = ref.current.state.scrollOffset;
