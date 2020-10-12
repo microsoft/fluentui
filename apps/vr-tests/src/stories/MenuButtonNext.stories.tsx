@@ -6,7 +6,7 @@ import { MenuButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
 storiesOf('MenuButton Next', module)
   .addDecorator(FabricDecorator)
@@ -61,11 +61,6 @@ storiesOf('MenuButton Next', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Fluid', () => (
-    <MenuButton fluid icon="X">
-      Hello, world
-    </MenuButton>
-  ))
   .addStory('Icon only', () => (
     <MenuButton iconOnly icon="X">
       Hello, world
@@ -73,6 +68,72 @@ storiesOf('MenuButton Next', module)
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
     <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+  ));
+
+storiesOf('MenuButton Next - Fluid', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByClassName('ms-Button-root')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <MenuButton fluid icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Primary', () => (
+    <MenuButton fluid primary icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Disabled', () => (
+    <MenuButton fluid disabled icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <MenuButton fluid primary disabled icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Ghost', () => (
+    <MenuButton fluid ghost icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <MenuButton fluid disabled ghost icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Transparent', () => (
+    <MenuButton fluid transparent icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <MenuButton fluid disabled transparent icon="X">
+      Hello, world
+    </MenuButton>
   ));
 
 storiesOf('MenuButton Next - Teams Theme', module)

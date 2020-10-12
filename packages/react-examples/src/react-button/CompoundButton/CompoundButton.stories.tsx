@@ -37,6 +37,12 @@ const CompoundButtonExamples = (props: CompoundButtonProps) => (
     <CompoundButton {...props} ghost disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
+    <CompoundButton {...props} transparent icon="O" secondaryContent="This is some secondary text">
+      Hello, world
+    </CompoundButton>
+    <CompoundButton {...props} transparent disabled icon="O" secondaryContent="This is some secondary text">
+      Hello, world
+    </CompoundButton>
   </Stack>
 );
 

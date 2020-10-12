@@ -234,16 +234,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-
         disabled: {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
@@ -299,18 +289,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         menuIconColor: palette?.neutralSecondary,
         secondaryContentColor: palette?.neutralPrimary,
 
-        checked: {
-          background: palette?.neutralLight,
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-        },
-
-        checkedHovered: {
-          background: palette?.neutralQuaternaryAlt,
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-        },
-
         disabled: {
           background: semanticColors?.disabledBackground,
           contentColor: palette?.neutralTertiary,
@@ -342,6 +320,35 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           secondaryContentColor: palette?.black,
         },
       },
+
+      // TODO: no references to palette.
+      transparent: {
+        background: 'transparent',
+        borderColor: 'transparent',
+        contentColor: palette?.neutralPrimary,
+        fontWeight: 'normal',
+        iconColor: palette?.themeDarkAlt,
+
+        disabled: {
+          background: 'transparent',
+          borderColor: 'transparent',
+          contentColor: palette.neutralTertiary,
+          iconColor: 'inherit',
+        },
+
+        hovered: {
+          background: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        pressed: {
+          background: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+      },
+
       ...ButtonSizeVariants,
     };
   },
