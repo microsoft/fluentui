@@ -239,7 +239,7 @@ const ReRenderStickyTree = ({
   const handleOnFocus = React.useCallback(
     (e: React.SyntheticEvent<HTMLElement>) => {
       let itemRef = e.target as any;
-      if (itemRef.tagName !== 'DIV') itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
+      if (itemRef.className.includes('ui-tree__title')) itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
 
       if (itemRef.style.position !== 'sticky') {
         const scrolled = ref.current.state.scrollOffset;
