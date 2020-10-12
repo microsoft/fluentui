@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving react-next Layer into react-internal package.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T21:06:27.824Z"
+}
