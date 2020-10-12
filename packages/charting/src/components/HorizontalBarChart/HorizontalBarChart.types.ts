@@ -1,6 +1,7 @@
-import { IChartProps } from './index';
+import { IChartProps, IChartDataPoint } from './index';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IHorizontalBarChartProps {
   /**
@@ -51,6 +52,16 @@ export interface IHorizontalBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>;
+
+  /**
+   * Define a custom callout renderer for a horizontal bar
+   */
+  onRenderCalloutPerHorizonalBar?: IRenderFunction<IChartDataPoint>;
+
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IHorizontalBarChartStyleProps {

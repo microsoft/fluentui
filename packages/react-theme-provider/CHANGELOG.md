@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.15.0)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.4..@fluentui/react-theme-provider_v0.15.0)
+
+### Minor changes
+
+- Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider. Set correct dir on root element based on rtl value in theme. ([PR #15449](https://github.com/microsoft/fluentui/pull/15449) by xgao@microsoft.com)
+
+### Patches
+
+- Fix getTokens to only override with user provided tokens. ([PR #15452](https://github.com/microsoft/fluentui/pull/15452) by xgao@microsoft.com)
 
 ## [0.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.4)
 

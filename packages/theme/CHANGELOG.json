@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/theme_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes.",
+            "author": "xgao@microsoft.com",
+            "commit": "5b99c2fc197a3e06f50a8529b4b1990edcc516c6",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@fluentui/theme_v1.3.0",
       "version": "1.3.0",

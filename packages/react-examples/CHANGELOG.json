@@ -2,6 +2,42 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/react-examples_v0.6.3",
+      "version": "0.6.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update react-button story theme example.",
+            "author": "xgao@microsoft.com",
+            "commit": "5b99c2fc197a3e06f50a8529b4b1990edcc516c6",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Updating example snapshots.",
+            "author": "dzearing@hotmail.com",
+            "commit": "23ec52b64876ce29bbfdfbc872b82e22c8ca03af",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Oct 2020 12:23:45 GMT",
+      "tag": "@fluentui/react-examples_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added error message to check color",
+            "author": "jagaheri@microsoft.com",
+            "commit": "2f6ebac31bb8d1aa3d4f7d8e5975c1226b75d8f5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Oct 2020 12:23:24 GMT",
       "tag": "@fluentui/react-examples_v0.6.0",
       "version": "0.6.0",

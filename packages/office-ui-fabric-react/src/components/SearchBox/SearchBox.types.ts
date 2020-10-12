@@ -99,6 +99,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
 
   /**
+   * The role assigned to the root DIV element of the SearchBox, useful for defining a landmark role, such as "search".
+   */
+  role?: string;
+
+  /**
    * Whether or not the SearchBox is underlined.
    * @defaultvalue false
    */

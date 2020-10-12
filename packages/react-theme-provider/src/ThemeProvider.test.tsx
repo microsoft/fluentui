@@ -4,12 +4,11 @@ import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes } from '@fluentui/theme';
-import { createDefaultTheme } from './createDefaultTheme';
+import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@uifabric/merge-styles';
 import { getTokens } from './getTokens';
 
-const lightTheme = mergeThemes({
+const lightTheme = {
   stylesheets: [],
   tokens: {
     color: {
@@ -19,9 +18,9 @@ const lightTheme = mergeThemes({
       },
     },
   },
-});
+};
 
-const darkTheme = mergeThemes({
+const darkTheme = {
   tokens: {
     color: {
       body: {
@@ -30,7 +29,7 @@ const darkTheme = mergeThemes({
       },
     },
   },
-});
+};
 
 describe('ThemeProvider', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -57,6 +56,34 @@ describe('ThemeProvider', () => {
     const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('sets correct dir', () => {
+    const wrapper = mount(
+      <ThemeProvider className="tp-1" theme={{ rtl: true }}>
+        <ThemeProvider className="tp-2" theme={{ rtl: false }}>
+          Hello
+        </ThemeProvider>
+      </ThemeProvider>,
+    );
+
+    const themeProvider1 = wrapper
+      .find('.tp-1')
+      .first()
+      .getDOMNode();
+    const themeProvider2 = wrapper
+      .find('.tp-2')
+      .first()
+      .getDOMNode();
+
+    expect(themeProvider1.getAttribute('dir')).toBe('rtl');
+    expect(themeProvider2.getAttribute('dir')).toBe('ltr');
+
+    wrapper.setProps({ theme: { rtl: false } });
+    expect(themeProvider1.getAttribute('dir')).toBe('ltr');
+    expect(themeProvider2.getAttribute('dir')).toBe(null);
+
+    wrapper.unmount();
   });
 
   it('renders a div with styling', () => {
@@ -91,9 +118,9 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme: Theme = mergeThemes(createDefaultTheme(), lightTheme);
-    expectedTheme.tokens = getTokens(expectedTheme);
-    expectedTheme.id = '0-0';
+    const expectedTheme: Theme = createTheme(lightTheme);
+    expectedTheme.tokens = getTokens(expectedTheme, lightTheme.tokens);
+    expectedTheme.id = '0-1';
 
     expect(resolvedTheme).toEqual(expectedTheme);
   });

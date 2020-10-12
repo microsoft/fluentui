@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/react-checkbox_v0.3.17",
+      "version": "0.3.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove useGlobalClassNames usage from next.",
+            "author": "xgao@microsoft.com",
+            "commit": "40edbe0aa78c0d1a56a3609318431fb4ceb4abe5",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/react-checkbox_v0.3.14",
       "version": "0.3.14",

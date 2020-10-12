@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 09 Oct 2020 18:03:19 GMT",
+      "tag": "@uifabric/charting_v4.6.1",
+      "version": "4.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "changes in the hover behavior of circles and also removed focusing of circles ",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fba5c1c00f53783fc783ca9f39e5f35fa456e987",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Oct 2020 12:23:24 GMT",
       "tag": "@uifabric/charting_v4.6.0",
       "version": "4.6.0",
