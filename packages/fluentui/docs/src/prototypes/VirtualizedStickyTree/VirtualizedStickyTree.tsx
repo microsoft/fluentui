@@ -3,7 +3,6 @@ import { VariableSizeList as List } from 'react-window';
 import { ObjectShorthandCollection, Tree, TreeItemProps } from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
-import whatInput from 'what-input';
 
 class ItemWrapper extends React.PureComponent<{
   index: number;
@@ -27,7 +26,7 @@ class ItemWrapper extends React.PureComponent<{
                 data.handleOnSiblingsExpand(event, treeItemProps);
             },
             onFocus: (e: React.SyntheticEvent<HTMLElement>) => {
-              if (whatInput.ask() !== 'keyboard' || item.props.level === 1) return;
+              if (item.props.level === 1) return;
               data.handleOnFocus(e);
             },
           })
@@ -239,8 +238,6 @@ const ReRenderStickyTree = ({
   // Scroll to make the focused non-sticky items always visible
   const handleOnFocus = React.useCallback(
     (e: React.SyntheticEvent<HTMLElement>) => {
-      if (whatInput.ask() !== 'keyboard') return;
-
       let itemRef = e.target as any;
       if (itemRef.tagName !== 'DIV') itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
 
