@@ -15,7 +15,7 @@ storiesOf('Button Next', module)
     <Screener
       steps={new Steps()
         .executeScript(
-          'const script=document.createElement(\'script\');script.src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js";document.head.appendChild(script)',
+          'const script=document.createElement(\'script\');script.src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js";document.head.appendChild(script);location.reload();',
         )
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
