@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update Theme instances to contain components/scopedSettings.",
+  "packageName": "@uifabric/azure-themes",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T20:37:00.499Z"
+}
