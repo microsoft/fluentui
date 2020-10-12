@@ -158,7 +158,8 @@ const ReRenderStickyTree = ({
     const toFocusIndex = renderedItems.findIndex(item => item.props.id === itemIdTobeFocused);
     const toFocusItem = renderedItems[toFocusIndex];
     const toFocus = (toFocusItem?.props.contentRef as any)?.current;
-    if (toFocus&& toFocusItem.props.level !== 1) ref.current.scrollToItem(toFocusIndex, 'center');
+    if (toFocus) {
+      if (toFocusItem.props.level !== 1) ref.current.scrollToItem(toFocusIndex, 'center');
       toFocus.focus();
     }
   });
