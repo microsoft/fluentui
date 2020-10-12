@@ -84,11 +84,12 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
           background: 'transparent',
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
-          hovered: {
-            background: 'transparent',
-            contentColor: palette?.black,
-            iconColor: palette?.themeDarker,
-          },
+        },
+
+        checkedHovered: {
+          background: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
         },
       },
     };
