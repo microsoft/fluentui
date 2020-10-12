@@ -1,7 +1,6 @@
 import { makeVariantClasses } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
-import { useToggleButton } from './useToggleButton';
 
 export const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState>({
   name: 'ToggleButton',
