@@ -114,42 +114,48 @@ storiesOf('CompoundButton Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <CompoundButton fluid icon="X">
+    <CompoundButton fluid icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Primary', () => (
-    <CompoundButton fluid primary icon="X">
+    <CompoundButton fluid primary icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Disabled', () => (
-    <CompoundButton fluid disabled icon="X">
+    <CompoundButton fluid disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Primary Disabled', () => (
-    <CompoundButton fluid primary disabled icon="X">
+    <CompoundButton fluid primary disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Ghost', () => (
-    <CompoundButton fluid ghost icon="X">
+    <CompoundButton fluid ghost icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <CompoundButton fluid disabled ghost icon="X">
+    <CompoundButton fluid disabled ghost icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Transparent', () => (
-    <CompoundButton fluid transparent icon="X">
+    <CompoundButton fluid transparent icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <CompoundButton fluid disabled transparent icon="X">
+    <CompoundButton
+      fluid
+      disabled
+      transparent
+      icon="X"
+      secondaryContent="This is some secondary text"
+    >
       Hello, world
     </CompoundButton>
   ));
