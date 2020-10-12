@@ -19,6 +19,45 @@ const Usage = () => (
       description="You can add a custom message as the list header."
       examplePath="components/Dropdown/Usage/DropdownExampleHeaderMessage"
     />
+    <ComponentExample
+      title="Unmount memory leak demo"
+      description={
+        <>
+          <p>Repro steps and observations</p>
+          <p>Fiber nodes increase</p>
+          <ol>
+            <li>Open maximized example</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Click on "Mount/Unmount" to show Dropdown</li>
+            <li>Click on "Mount/Unmount" to hide Dropdown</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Observe increase in FiberNodes</li>
+          </ol>
+          <p>Fiber nodes and detached elements/listeners increase</p>
+          <ol>
+            <li>Open maximized example</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Click on "Mount/Unmount" to show Dropdown</li>
+            <li>Click on Dropdown to show elements</li>
+            <li>Click on "Mount/Unmount" to hide Dropdown</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Observe increase in FiberNodes and increase in detached elements</li>
+          </ol>
+          <p>Fiber nodes, but no detached elements/listeners increase</p>
+          <ol>
+            <li>Open maximized example</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Click on "Mount/Unmount" to show Dropdown</li>
+            <li>Click on Dropdown to show elements</li>
+            <li>Click on Dropdown element to select it</li>
+            <li>Click on "Mount/Unmount" to hide Dropdown</li>
+            <li>Take heap snapshot (multiple times if need, until it stabilizes)</li>
+            <li>Observe increase in FiberNodes, but no increase in detached elements</li>
+          </ol>
+        </>
+      }
+      examplePath="components/Dropdown/Usage/DropdownExampleLeakDemo"
+    />
   </ExampleSection>
 );
 
