@@ -401,6 +401,9 @@ const ReRenderStickyTree = ({
           itemData,
           height,
           itemCount: renderedItems.length,
+          style: {
+            overflowX: 'hidden',
+          },
         }}
       >
         {ItemWrapper}
