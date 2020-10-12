@@ -187,7 +187,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -196,14 +196,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -321,7 +320,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -330,14 +329,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -455,7 +453,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -464,14 +462,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -589,7 +586,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -598,14 +595,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -723,7 +719,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -732,14 +728,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -857,7 +852,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -866,14 +861,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -991,7 +985,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1000,14 +994,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }
@@ -1125,7 +1118,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      position: absolute;
+                      right: 0px;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1134,14 +1127,13 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     }
                     &:after {
                       border-radius: 50%;
-                      box-sizing: border-box;
                       content: "";
                       height: 0px;
                       left: 10px;
                       position: absolute;
                       right: 0px;
                       transition-duration: 200ms;
-                      transition-property: border-width;
+                      transition-property: width, height;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 0px;
                     }

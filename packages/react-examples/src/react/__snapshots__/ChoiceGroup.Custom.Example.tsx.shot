@@ -160,7 +160,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     font-weight: normal;
                     height: 20px;
                     left: 0px;
-                    position: absolute;
+                    right: 0px;
                     top: 0px;
                     transition-duration: 200ms;
                     transition-property: border-color;
@@ -169,14 +169,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   }
                   &:after {
                     border-radius: 50%;
-                    box-sizing: border-box;
                     content: "";
                     height: 0px;
                     left: 10px;
                     position: absolute;
                     right: 0px;
                     transition-duration: 200ms;
-                    transition-property: border-width;
+                    transition-property: width, height;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 0px;
                   }
@@ -462,7 +461,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   font-weight: normal;
                   height: 20px;
                   left: 0px;
-                  position: absolute;
+                  right: 0px;
                   top: 0px;
                   transition-duration: 200ms;
                   transition-property: border-color;
@@ -477,11 +476,8 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   forced-color-adjust: none;
                 }
                 &:after {
-                  border-color: #0078d4;
+                  background-color: #0078d4;
                   border-radius: 50%;
-                  border-style: solid;
-                  border-width: 5px;
-                  box-sizing: border-box;
                   content: "";
                   height: 10px;
                   left: 5px;
@@ -489,7 +485,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   right: 0px;
                   top: 5px;
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: width, height;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 10px;
                 }
@@ -585,7 +581,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   font-weight: normal;
                   height: 20px;
                   left: 0px;
-                  position: absolute;
+                  right: 0px;
                   top: 0px;
                   transition-duration: 200ms;
                   transition-property: border-color;
@@ -601,14 +597,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 }
                 &:after {
                   border-radius: 50%;
-                  box-sizing: border-box;
                   content: "";
                   height: 0px;
                   left: 10px;
                   position: absolute;
                   right: 0px;
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: width, height;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 0px;
                 }
@@ -735,7 +730,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   font-weight: normal;
                   height: 20px;
                   left: 0px;
-                  position: absolute;
+                  right: 0px;
                   top: 0px;
                   transition-duration: 200ms;
                   transition-property: border-color;
@@ -744,14 +739,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 }
                 &:after {
                   border-radius: 50%;
-                  box-sizing: border-box;
                   content: "";
                   height: 0px;
                   left: 10px;
                   position: absolute;
                   right: 0px;
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: width, height;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 0px;
                 }
