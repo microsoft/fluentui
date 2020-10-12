@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "Grouped vertical bar chart refactor",
+  "comment": "Grouped vertical bar chart refactor added minor features",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-12T11:55:45.539Z"
 }
