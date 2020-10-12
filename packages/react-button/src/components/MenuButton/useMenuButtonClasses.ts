@@ -1,5 +1,6 @@
 import { makeVariantClasses } from '@fluentui/react-theme-provider';
 import { useButtonClasses } from '../Button/useButtonClasses';
+import { MenuButtonState } from './MenuButton.types';
 
 const GlobalClassNames = {
   root: 'ms-Button-root',
@@ -9,9 +10,8 @@ const GlobalClassNames = {
   _expanded: 'ms-Button--expanded',
 };
 
-export const useMenuButtonClasses = makeVariantClasses({
+const useMenuButtonBaseClasses = makeVariantClasses({
   name: 'MenuButton',
-  extends: useButtonClasses,
   styles: {
     root: [
       GlobalClassNames.root,
@@ -58,3 +58,8 @@ export const useMenuButtonClasses = makeVariantClasses({
     },
   },
 });
+
+export const useMenuButtonClasses = (state: MenuButtonState) => {
+  useButtonClasses(state);
+  useMenuButtonBaseClasses(state);
+};

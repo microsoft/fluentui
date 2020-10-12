@@ -1,10 +1,10 @@
 import { makeVariantClasses } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
+import { useToggleButton } from './useToggleButton';
 
-export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
+export const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState>({
   name: 'ToggleButton',
-  extends: useButtonClasses,
 
   styles: {
     // When checked is applied, apply the right tokens to the right css properties.
@@ -56,3 +56,8 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     },
   },
 });
+
+export const useToggleButtonClasses = (state: ToggleButtonState) => {
+  useButtonClasses(state);
+  useToggleButtonBaseClasses(state);
+};

@@ -8,9 +8,8 @@ const GlobalClassNames = {
   secondaryContent: 'ms-CompoundButton-secondaryContent',
 };
 
-export const useCompoundButtonClasses = makeVariantClasses<CompoundButtonState>({
+const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState>({
   name: 'CompoundButton',
-  extends: useButtonClasses,
   styles: {
     root: [
       GlobalClassNames.root,
@@ -113,3 +112,8 @@ export const useCompoundButtonClasses = makeVariantClasses<CompoundButtonState>(
     };
   },
 });
+
+export const useCompoundButtonClasses = (state: CompoundButtonState) => {
+  useButtonClasses(state);
+  useCompoundButtonBaseClasses(state);
+};

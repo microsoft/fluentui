@@ -53,13 +53,12 @@ export function makeStyles<TStyleSet extends {
 };
 
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => VariantClassHook;
+export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
 
 // @public
 export type MakeVariantClassesOptions = {
     name?: string;
     prefix?: string;
-    extends?: VariantClassHook;
     styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
     variants?: Variants | ((theme: Theme) => Variants);
 };
@@ -159,11 +158,6 @@ export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;
-
-// @public (undocumented)
-export type VariantClassHook = ReturnType<typeof makeClasses> & {
-    _options: MakeVariantClassesOptions;
-};
 
 // @public (undocumented)
 export const withThemeProvider: <TProps>(Component: React.FunctionComponent<TProps>) => React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps> & React.RefAttributes<HTMLButtonElement>>;
