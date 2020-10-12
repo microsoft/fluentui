@@ -10,6 +10,8 @@ const GlobalClassNames = {
 
 const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState>({
   name: 'CompoundButton',
+  prefix: '--button',
+
   styles: {
     root: [
       GlobalClassNames.root,

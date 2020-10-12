@@ -12,6 +12,8 @@ const GlobalClassNames = {
 
 const useMenuButtonBaseClasses = makeVariantClasses({
   name: 'MenuButton',
+  prefix: '--button',
+
   styles: {
     root: [
       GlobalClassNames.root,

@@ -5,6 +5,7 @@ import { useToggleButton } from './useToggleButton';
 
 export const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState>({
   name: 'ToggleButton',
+  prefix: '--button',
 
   styles: {
     // When checked is applied, apply the right tokens to the right css properties.
