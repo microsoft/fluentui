@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Grouped vertical bar chart refactor",
+  "packageName": "@fluentui/react-examples",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T11:55:48.929Z"
+}

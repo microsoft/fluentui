@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Grouped vertical bar chart refactor",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T11:55:45.539Z"
+}

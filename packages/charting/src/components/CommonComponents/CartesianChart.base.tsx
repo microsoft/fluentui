@@ -118,7 +118,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
       tickPadding: this.props.tickPadding,
-      xAxisPadding: this.props.xAxisTickPadding,
+      xAxisPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
