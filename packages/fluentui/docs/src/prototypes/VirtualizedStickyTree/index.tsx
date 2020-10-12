@@ -36,9 +36,9 @@ export default () => (
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                background: 'aliceblue',
+                background: teamsTheme.siteVariables.colorScheme.default.background,
                 ...(p.level === 1 && {
-                  background: 'orange',
+                  background: teamsTheme.siteVariables.colorScheme.yellow.background,
                 }),
               }),
             },
@@ -50,7 +50,6 @@ export default () => (
             display: 'grid',
             gridGap: '20px',
             gridTemplateColumns: '1fr 1fr',
-            height: '100vh',
           }}
         >
           <div>

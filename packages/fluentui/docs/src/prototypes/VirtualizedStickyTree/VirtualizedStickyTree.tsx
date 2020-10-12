@@ -6,6 +6,7 @@ import {
   Tree,
   TreeItemProps,
   treeTitleClassName,
+  teamsTheme,
 } from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
@@ -72,7 +73,7 @@ const InnerElementType = ({ children, style }) => {
           style: {
             position: 'sticky',
             height: stickyItemSize,
-            zIndex: 2,
+            zIndex: teamsTheme.siteVariables.zIndexes.overlay,
             top: index * stickyItemSize,
           },
           onTitleClick: onClickSticky,
@@ -87,7 +88,7 @@ const InnerElementType = ({ children, style }) => {
           style: {
             position: 'sticky',
             height: stickyItemSize,
-            zIndex: 111,
+            zIndex: teamsTheme.siteVariables.zIndexes.overlayPriority,
             // stick items to the container bottom, with the smaller-indexed items stacked on bigger-indexed items
             top: height - (arr.length - index) * stickyItemSize,
           },
