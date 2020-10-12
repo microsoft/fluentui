@@ -30,6 +30,7 @@
     "react": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/theme": "^1.4.0",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/set-version": "^7.0.23",
     "office-ui-fabric-react": "^7.146.1",
