@@ -6,7 +6,7 @@ import { CompoundButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
 storiesOf('CompoundButton Next', module)
   .addDecorator(FabricDecorator)
@@ -75,11 +75,6 @@ storiesOf('CompoundButton Next', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Fluid', () => (
-    <CompoundButton secondaryContent="This is some secondary text" fluid icon="X">
-      Hello, world
-    </CompoundButton>
-  ))
   .addStory('Icon only', () => (
     <CompoundButton secondaryContent="This is some secondary text" iconOnly icon="X">
       Hello, world
@@ -91,6 +86,72 @@ storiesOf('CompoundButton Next', module)
       icon={<AddIcon />}
       tokens={{ iconSize: '30px' }}
     />
+  ));
+
+storiesOf('CompoundButton Next - Fluid', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByClassName('ms-CompoundButton')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <CompoundButton fluid icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Primary', () => (
+    <CompoundButton fluid primary icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Disabled', () => (
+    <CompoundButton fluid disabled icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <CompoundButton fluid primary disabled icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Ghost', () => (
+    <CompoundButton fluid ghost icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <CompoundButton fluid disabled ghost icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Transparent', () => (
+    <CompoundButton fluid transparent icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <CompoundButton fluid disabled transparent icon="X">
+      Hello, world
+    </CompoundButton>
   ));
 
 storiesOf('CompoundButton Next - Teams Theme', module)
