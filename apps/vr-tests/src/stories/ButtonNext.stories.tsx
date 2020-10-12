@@ -7,7 +7,6 @@ import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
-import '@fluentui/ie11-polyfills';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
@@ -15,6 +14,9 @@ storiesOf('Button Next', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
+        .executeScript(
+          'const script=document.createElement(\'script\');script.src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js";document.head.appendChild(script)',
+        )
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",

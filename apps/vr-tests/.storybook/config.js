@@ -2,7 +2,6 @@
 import * as storybook from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-import '@fluentui/ie11-polyfills';
 
 setOptions({
   name: 'Fabric',
