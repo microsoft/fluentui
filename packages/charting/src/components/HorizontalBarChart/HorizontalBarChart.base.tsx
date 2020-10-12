@@ -7,6 +7,7 @@ import {
   IHorizontalBarChartStyleProps,
   IHorizontalBarChartStyles,
   IChartDataPoint,
+  IRefArrayData,
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
@@ -14,14 +15,8 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
-export interface IRefArrayData {
-  legendText?: string;
-  refElement?: SVGGElement;
-}
-
 export interface IHorizontalBarChartState {
   isCalloutVisible: boolean;
-  refArray: IRefArrayData[];
   refSelected: SVGGElement | null | undefined;
   color: string;
   hoverValue: string | number | Date | null;
@@ -29,6 +24,7 @@ export interface IHorizontalBarChartState {
   legend: string | null;
   xCalloutValue?: string;
   yCalloutValue?: string;
+  barCalloutProps?: IChartDataPoint;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -36,6 +32,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
   private _uniqLineText: string;
   private _calloutId: string;
+  private _refArray: IRefArrayData[];
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -44,13 +41,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       hoverValue: '',
       lineColor: '',
       legend: '',
-      refArray: [],
       refSelected: null,
       // eslint-disable-next-line react/no-unused-state
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
     };
+    this._refArray = [];
     this._uniqLineText =
       '_HorizontalLine_' +
       Math.random()
@@ -107,20 +104,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                         points!
                           .chartData![0].horizontalBarChartdata!.x.toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                        points!.chartData![0].color,
-                        points!.chartData![0].legend,
-                        points!.chartData![0].xAxisCalloutData!,
-                        points!.chartData![0].yAxisCalloutData!,
+                        points!.chartData![0],
                       )}
                       onFocus={this._hoverOn.bind(
                         this,
                         points!
                           .chartData![0].horizontalBarChartdata!.x.toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                        points!.chartData![0].color,
-                        points!.chartData![0].legend,
-                        points!.chartData![0].xAxisCalloutData!,
-                        points!.chartData![0].yAxisCalloutData!,
+                        points!.chartData![0],
                       )}
                       aria-labelledby={this._calloutId}
                       data-is-focusable={true}
@@ -142,12 +133,17 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.rightTopEdge}
             id={this._calloutId}
+            {...this.props.calloutProps!}
           >
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
-              color={this.state.lineColor}
-            />
+            {this.props.onRenderCalloutPerHorizonalBar ? (
+              this.props.onRenderCalloutPerHorizonalBar(this.state.barCalloutProps)
+            ) : (
+              <ChartHoverCard
+                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
+                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
+                color={this.state.lineColor}
+              />
+            )}
           </Callout>
         </div>
       </FocusZone>
@@ -155,30 +151,24 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
-    this.state.refArray.push({ legendText: legendTitle, refElement: element });
+    this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _hoverOn(
-    hoverValue: string | number | Date | null,
-    lineColor: string,
-    legend: string,
-    xAxisCalloutData: string,
-    yAxisCalloutData: string,
-  ): void {
-    if (!this.state.isCalloutVisible || this.state.legend !== legend) {
-      const refArray = this.state.refArray;
+  private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
+    if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
       const currentHoveredElement = find(
-        refArray,
-        (currentElement: IRefArrayData) => currentElement.legendText === legend,
+        this._refArray,
+        (currentElement: IRefArrayData) => currentElement.index === point.legend!,
       );
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
-        lineColor: lineColor,
-        legend: legend,
+        lineColor: point.color!,
+        legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
-        xCalloutValue: xAxisCalloutData,
-        yCalloutValue: yAxisCalloutData,
+        xCalloutValue: point.xAxisCalloutData!,
+        yCalloutValue: point.yAxisCalloutData!,
+        barCalloutProps: point,
       });
     }
   }
@@ -196,12 +186,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _adjustProps = (): void => {
-    const { theme, className, styles, width, barHeight } = this.props;
-    this._barHeight = barHeight || 8;
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: width,
-      className,
+    this._barHeight = this.props.barHeight || 8;
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      width: this.props.width,
+      className: this.props.className,
       barHeight: this._barHeight,
       color: this.state.lineColor,
     });

@@ -25,6 +25,7 @@ interface IDonutChartState {
   yCalloutValue?: string;
   focusedArcId?: string;
   selectedLegend: string;
+  dataPointCalloutProps?: IChartDataPoint;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -138,12 +139,17 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
+          {...this.props.calloutProps!}
         >
-          <ChartHoverCard
-            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
-            color={this.state.color}
-          />
+          {this.props.onRenderCalloutPerDataPoint ? (
+            this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
+          ) : (
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+              color={this.state.color}
+            />
+          )}
         </Callout>
         <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
@@ -233,6 +239,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
+      dataPointCalloutProps: data,
     });
   };
 
@@ -247,6 +254,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
       activeLegend: data.legend,
+      dataPointCalloutProps: data,
     });
   };
   private _onBlur = (): void => {

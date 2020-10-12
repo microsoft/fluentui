@@ -1,6 +1,7 @@
-import { IChartProps } from './index';
+import { IChartProps, IChartDataPoint } from './index';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { IRenderFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
@@ -85,6 +86,16 @@ export interface IMultiStackedBarChartProps {
    * props for the legends in the chart
    */
   legendProps?: Partial<ILegendsProps>;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IMultiStackedBarChartStyleProps {
