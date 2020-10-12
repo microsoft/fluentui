@@ -100,13 +100,11 @@ const InnerElementType = ({ children, style }) => {
   );
 };
 
-const calcRenderedHeight = (renderedItems: React.ReactElement[], stickyItemSize: number, itemSize: number) => {
-  let renderedHeight = 0;
-  renderedItems.forEach(item => {
-    renderedHeight = renderedHeight + (item.props.level === 1 ? stickyItemSize : itemSize);
-  });
-  return renderedHeight;
-};
+const calcRenderedHeight = (renderedItems: React.ReactElement[], stickyItemSize: number, itemSize: number) =>
+  renderedItems.reduce<number>(
+    (renderedHeight, item) => renderedHeight + (item.props.level === 1 ? stickyItemSize : itemSize),
+    0,
+  );
 
 interface ReRenderStickyTreeProps {
   renderedItems: React.ReactElement<TreeItemProps>[];
