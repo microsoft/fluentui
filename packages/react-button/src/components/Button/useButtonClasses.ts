@@ -326,6 +326,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         background: 'transparent',
         borderColor: 'transparent',
         contentColor: palette?.neutralPrimary,
+        fontWeight: 'normal',
         iconColor: palette?.themeDarkAlt,
 
         disabled: {

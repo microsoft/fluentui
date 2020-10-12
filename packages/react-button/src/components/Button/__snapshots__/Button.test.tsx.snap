@@ -16,8 +16,8 @@ exports[`Button renders a default state 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
-        --color-brand-checked-hovered-background: #005a9e;
-        --color-brand-checked-hovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-background: #005a9e;
+        --color-brand-checkedHovered-contentColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -247,8 +247,8 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
-        --color-brand-checked-hovered-background: #005a9e;
-        --color-brand-checked-hovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-background: #005a9e;
+        --color-brand-checkedHovered-contentColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);

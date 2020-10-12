@@ -15,18 +15,18 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
       },
 
       ':hover': {
-        background: 'var(--button-checked-hovered-background)',
-        color: 'var(--button-checked-hovered-contentColor)',
+        background: 'var(--button-checkedHovered-background)',
+        color: 'var(--button-checkedHovered-contentColor)',
         '.ms-Button-icon': {
-          color: 'var(--button-checked-hovered-iconColor)',
+          color: 'var(--button-checkedHovered-iconColor)',
         },
       },
 
       ':active': {
-        background: 'var(--button-checked-pressed-background, var(--button-checked-hovered-background))',
-        color: 'var(--button-checked-pressed-contentColor, var(--button-checked-hovered-contentColor))',
+        background: 'var(--button-checkedPressed-background, var(--button-checkedHovered-background))',
+        color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
         '.ms-Button-icon': {
-          color: 'var(--button-checked-pressed-iconColor, var(--button-checked-hovered-iconColor))',
+          color: 'var(--button-checkedPressed-iconColor, var(--button-checkedHovered-iconColor))',
         },
       },
     },
@@ -40,11 +40,11 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         checked: {
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextChecked,
+        },
 
-          hovered: {
-            background: semanticColors?.buttonBackgroundPressed,
-            contentColor: semanticColors?.buttonTextCheckedHovered,
-          },
+        checkedHovered: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextCheckedHovered,
         },
       },
 
@@ -52,28 +52,30 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         checked: {
           background: 'var(--color-brand-checked-background)',
           contentColor: 'var(--color-brand-checked-contentColor)',
-          hovered: {
-            background: 'var(--color-brand-checked-hovered-background)',
-            contentColor: 'var(--color-brand-checked-hovered-contentColor)',
-          },
-          pressed: {
-            background: 'var(--color-brand-checked-pressed-background)',
-            contentColor: 'var(--color-brand-checked-pressed-contentColor)',
-          },
+        },
+
+        checkedHovered: {
+          background: 'var(--color-brand-checkedHovered-background)',
+          contentColor: 'var(--color-brand-checkedHovered-contentColor)',
+        },
+
+        checkedPressed: {
+          background: 'var(--color-brand-checkedPressed-background)',
+          contentColor: 'var(--color-brand-checkedPressed-contentColor)',
         },
       },
 
       ghost: {
         checked: {
           background: palette?.neutralLight,
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
+          contentColor: palette?.neutralDark,
+          iconColor: palette?.themeDark,
+        },
 
-          hovered: {
-            background: palette?.neutralQuaternaryAlt,
-            contentColor: palette?.themePrimary,
-            iconColor: palette?.themePrimary,
-          },
+        checkedHovered: {
+          background: palette?.neutralQuaternaryAlt,
+          contentColor: palette?.neutralDark,
+          iconColor: palette?.themeDark,
         },
       },
 
