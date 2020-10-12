@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { safeMount } from '@uifabric/test-utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { PlainCardBase } from './PlainCard/PlainCard.base';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
@@ -14,8 +13,6 @@ import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-
-const ReactDOM = require('react-dom');
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
@@ -37,41 +34,45 @@ const PlainCardProps: IPlainCardProps = {
 };
 
 describe('HoverCard', () => {
-  const createPortal = ReactDOM.createPortal;
-
-  beforeEach(() => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-  });
-
-  afterEach(() => {
-    ReactDOM.createPortal = createPortal;
-  });
-
   it('renders target wrapped by HoverCard correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
         __events__: {},
       };
     };
-
     const component = renderer.create(<HoverCardBase>Content</HoverCardBase>, { createNodeMock });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ExpandingCard correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(<ExpandingCardBase {...expandingCardProps} trapFocus={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   it('renders PlainCard correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(<PlainCardBase {...PlainCardProps} trapFocus={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   isConformant({
@@ -132,7 +133,7 @@ describe('HoverCard', () => {
       cardHidden = true;
     };
 
-    safeMount(
+    const component = mount(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         onCardVisible={onCardVisible}
@@ -141,27 +142,25 @@ describe('HoverCard', () => {
       >
         <div>Child</div>
       </HoverCardBase>,
-      component => {
-        jest.useFakeTimers();
-
-        expect(hoverCard).toBeDefined();
-
-        // firing the onCardVisible callback after the component is updated.
-        component.setState({ isHoverCardVisible: true });
-        expect(cardVisible).toEqual(true);
-
-        // firing the onCardHide callback after the component is updated.
-        component.setState({ isHoverCardVisible: false });
-        expect(cardHidden).toEqual(true);
-
-        // firing the onCardHide callback after the component is dismissed directly.
-        component.setState({ isHoverCardVisible: true });
-        cardHidden = false;
-        hoverCard.dismiss();
-        expect(cardHidden).toEqual(true);
-
-        component.unmount();
-      },
     );
+    jest.useFakeTimers();
+
+    expect(hoverCard).toBeDefined();
+
+    // firing the onCardVisible callback after the component is updated.
+    component.setState({ isHoverCardVisible: true });
+    expect(cardVisible).toEqual(true);
+
+    // firing the onCardHide callback after the component is updated.
+    component.setState({ isHoverCardVisible: false });
+    expect(cardHidden).toEqual(true);
+
+    // firing the onCardHide callback after the component is dismissed directly.
+    component.setState({ isHoverCardVisible: true });
+    cardHidden = false;
+    hoverCard.dismiss();
+    expect(cardHidden).toEqual(true);
+
+    component.unmount();
   });
 });

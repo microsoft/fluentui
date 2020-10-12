@@ -984,9 +984,8 @@ describe('Button', () => {
         const button = render(element);
 
         expect(button).toBeDefined();
-        ReactTestUtils.act(() => {
-          ReactTestUtils.Simulate.click(button);
-        });
+        ReactTestUtils.Simulate.click(button);
+
         // get the menu id from the button's aria attribute
         const menuId = button.getAttribute('aria-owns');
         expect(menuId).toBeDefined();
@@ -1036,7 +1035,6 @@ describe('Button', () => {
         expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
         expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
-
       it('Click on button opens the menu, escape press dismisses menu', () => {
         const callbackMock = jest.fn();
         const menuProps = { items: [{ key: 'item', name: 'Item' }], onDismiss: callbackMock };
@@ -1057,13 +1055,11 @@ describe('Button', () => {
         const menuId = button.getAttribute('aria-owns');
         expect(menuId).toBeDefined();
 
-        // TODO: Find a way to allow Button to safely use createPortal allowing contextualMenuElement to be rendered.
-        //
-        // const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
-        // expect(contextualMenuElement).not.toBeNull();
+        const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
+        expect(contextualMenuElement).not.toBeNull();
 
-        // ReactTestUtils.Simulate.keyDown(contextualMenuElement!, { which: KeyCodes.escape });
-        // expect(callbackMock.mock.calls.length).toBe(1);
+        ReactTestUtils.Simulate.keyDown(contextualMenuElement!, { which: KeyCodes.escape });
+        expect(callbackMock.mock.calls.length).toBe(1);
 
         // Expect that the menu doesn't exist any more since it's been dismissed
         const dismissed = button.ownerDocument!.getElementById(menuId as string);

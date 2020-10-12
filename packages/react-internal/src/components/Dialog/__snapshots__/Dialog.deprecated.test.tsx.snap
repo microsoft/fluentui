@@ -316,17 +316,1070 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
 exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
 <span
   className="ms-layer"
-/>
+>
+  <div
+    className=
+        ms-Fabric
+        ms-Layer-content
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          visibility: visible;
+        }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onDrag={[Function]}
+    onDragEnd={[Function]}
+    onDragEnter={[Function]}
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onFocus={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      aria-describedby="Dialog2-subText"
+      aria-labelledby="Dialog2-title"
+      aria-modal={true}
+      onKeyDown={[Function]}
+      role="dialog"
+      style={
+        Object {
+          "outline": "none",
+          "overflowY": undefined,
+        }
+      }
+    >
+      <div
+        className=
+            ms-Modal
+            is-open
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              background-color: transparent;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 100%;
+              justify-content: center;
+              opacity: 1;
+              pointer-events: auto;
+              position: fixed;
+              transition: opacity 0.267s;
+              width: 100%;
+            }
+        role="document"
+      >
+        <div
+          className=
+              ms-Overlay
+              ms-Overlay--dark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: rgba(0,0,0,.4);
+                bottom: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border: 1px solid WindowText;
+                opacity: 0;
+              }
+        />
+        <div
+          className=
+              ms-Dialog-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                box-sizing: border-box;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
+                outline: 3px solid transparent;
+                overflow-y: auto;
+                position: relative;
+                text-align: left;
+              }
+          data-id="Modal3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onFocusCapture={[Function]}
+        >
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+          <div
+            className=
+                ms-Modal-scrollableContent
+                {
+                  flex-grow: 1;
+                  max-height: 100vh;
+                  overflow-y: auto;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
+                }
+            data-is-scrollable={true}
+          >
+            <div
+              className=
+
+                  {
+                    flex-grow: 1;
+                    overflow-y: hidden;
+                  }
+            >
+              <div
+                className=
+                    ms-Dialog-header
+                    {
+                      box-sizing: border-box;
+                      position: relative;
+                      width: 100%;
+                    }
+              >
+                <div
+                  aria-level={1}
+                  className=
+                      ms-Dialog-title
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: normal;
+                        margin-bottom: 0;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-top: 0;
+                        min-height: 20px;
+                        padding-bottom: 20px;
+                        padding-left: 24px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 16px;
+                        padding-left: 16px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                  id="Dialog2-title"
+                  role="heading"
+                >
+                  Sample title
+                </div>
+                <div
+                  className=
+
+                      {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 15px;
+                        padding-top: 15px;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                      }
+                      & > * {
+                        flex: 0 0 auto;
+                      }
+                      & .ms-Dialog-button {
+                        color: #323130;
+                      }
+                      & .ms-Dialog-button:hover {
+                        border-radius: 2px;
+                        color: #201f1e;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 8px;
+                        padding-top: 15px;
+                      }
+                />
+              </div>
+              <div
+                className=
+                    ms-Dialog-inner
+                    {
+                      padding-bottom: 24px;
+                      padding-left: 24px;
+                      padding-right: 24px;
+                      padding-top: 0;
+                    }
+                    @media (min-width: 320px) and (max-width: 479px){& {
+                      padding-bottom: 16px;
+                      padding-left: 16px;
+                      padding-right: 16px;
+                      padding-top: 0;
+                    }
+              >
+                <div
+                  className=
+                      ms-Dialog-content
+                      {
+                        position: relative;
+                        width: 100%;
+                      }
+                >
+                  <p
+                    className=
+                        ms-Dialog-subText
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          line-height: 1.5;
+                          margin-bottom: 24px;
+                          margin-left: 0;
+                          margin-right: 0;
+                          margin-top: 0;
+                          word-wrap: break-word;
+                        }
+                    id="Dialog2-subText"
+                  >
+                    Sample subtext
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</span>
 `;
 
 exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] = `
 <span
   className="ms-layer"
-/>
+>
+  <div
+    className=
+        ms-Fabric
+        ms-Layer-content
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          visibility: visible;
+        }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onDrag={[Function]}
+    onDragEnd={[Function]}
+    onDragEnter={[Function]}
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onFocus={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      aria-describedby="Dialog4-subText"
+      aria-labelledby="Dialog4-title"
+      aria-modal={true}
+      onKeyDown={[Function]}
+      role="alertdialog"
+      style={
+        Object {
+          "outline": "none",
+          "overflowY": undefined,
+        }
+      }
+    >
+      <div
+        className=
+            ms-Modal
+            is-open
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              background-color: transparent;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 100%;
+              justify-content: center;
+              opacity: 1;
+              pointer-events: auto;
+              position: fixed;
+              transition: opacity 0.267s;
+              width: 100%;
+            }
+        role="document"
+      >
+        <div
+          className=
+              ms-Overlay
+              ms-Overlay--dark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: rgba(0,0,0,.4);
+                bottom: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border: 1px solid WindowText;
+                opacity: 0;
+              }
+        />
+        <div
+          className=
+              ms-Dialog-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                box-sizing: border-box;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
+                outline: 3px solid transparent;
+                overflow-y: auto;
+                position: relative;
+                text-align: left;
+              }
+          data-id="Modal5"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onFocusCapture={[Function]}
+        >
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+          <div
+            className=
+                ms-Modal-scrollableContent
+                {
+                  flex-grow: 1;
+                  max-height: 100vh;
+                  overflow-y: auto;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
+                }
+            data-is-scrollable={true}
+          >
+            <div
+              className=
+
+                  {
+                    flex-grow: 1;
+                    overflow-y: hidden;
+                  }
+            >
+              <div
+                className=
+                    ms-Dialog-header
+                    {
+                      box-sizing: border-box;
+                      position: relative;
+                      width: 100%;
+                    }
+              >
+                <div
+                  aria-level={1}
+                  className=
+                      ms-Dialog-title
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: normal;
+                        margin-bottom: 0;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-top: 0;
+                        min-height: 20px;
+                        padding-bottom: 20px;
+                        padding-left: 24px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 16px;
+                        padding-left: 16px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                  id="Dialog4-title"
+                  role="heading"
+                >
+                  Sample title
+                </div>
+                <div
+                  className=
+
+                      {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 15px;
+                        padding-top: 15px;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                      }
+                      & > * {
+                        flex: 0 0 auto;
+                      }
+                      & .ms-Dialog-button {
+                        color: #323130;
+                      }
+                      & .ms-Dialog-button:hover {
+                        border-radius: 2px;
+                        color: #201f1e;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 8px;
+                        padding-top: 15px;
+                      }
+                >
+                  <button
+                    aria-label="Close"
+                    className=
+                        ms-Button
+                        ms-Button--icon
+                        ms-Dialog-button
+                        ms-Dialog-button--close
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-radius: 2px;
+                          border: none;
+                          box-sizing: border-box;
+                          color: #0078d4;
+                          cursor: pointer;
+                          display: inline-block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: 32px;
+                          outline: transparent;
+                          padding-bottom: 0;
+                          padding-left: 4px;
+                          padding-right: 4px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: center;
+                          text-decoration: none;
+                          user-select: none;
+                          width: 32px;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 2px;
+                          content: "";
+                          left: 2px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 2px;
+                          top: 2px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        &:hover {
+                          background-color: #f3f2f1;
+                          color: #106ebe;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:active {
+                          background-color: #edebe9;
+                          color: #005a9e;
+                        }
+                    data-is-focusable={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
+                    title="Close"
+                    type="button"
+                  >
+                    <span
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: center;
+                          }
+                      data-automationid="splitbuttonprimary"
+                    >
+                      <i
+                        aria-hidden={true}
+                        className=
+                            ms-Icon
+                            ms-Button-icon
+                            {
+                              display: inline-block;
+                            }
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: "FabricMDL2Icons";
+                              font-style: normal;
+                              font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              flex-shrink: 0;
+                              font-size: 16px;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              text-align: center;
+                            }
+                        data-icon-name="Cancel"
+                        role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
+                      >
+                        
+                      </i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                className=
+                    ms-Dialog-inner
+                    {
+                      padding-bottom: 24px;
+                      padding-left: 24px;
+                      padding-right: 24px;
+                      padding-top: 0;
+                    }
+                    @media (min-width: 320px) and (max-width: 479px){& {
+                      padding-bottom: 16px;
+                      padding-left: 16px;
+                      padding-right: 16px;
+                      padding-top: 0;
+                    }
+              >
+                <div
+                  className=
+                      ms-Dialog-content
+                      {
+                        position: relative;
+                        width: 100%;
+                      }
+                >
+                  <p
+                    className=
+                        ms-Dialog-subText
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          line-height: 1.5;
+                          margin-bottom: 24px;
+                          margin-left: 0;
+                          margin-right: 0;
+                          margin-top: 0;
+                          word-wrap: break-word;
+                        }
+                    id="Dialog4-subText"
+                  >
+                    Sample subtext
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</span>
 `;
 
 exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1`] = `
 <span
   className="ms-layer"
-/>
+>
+  <div
+    className=
+        ms-Fabric
+        ms-Layer-content
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          visibility: visible;
+        }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onDrag={[Function]}
+    onDragEnd={[Function]}
+    onDragEnter={[Function]}
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onFocus={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      aria-describedby="Dialog9-subText"
+      aria-labelledby="Dialog9-title"
+      aria-modal={true}
+      onKeyDown={[Function]}
+      role="dialog"
+      style={
+        Object {
+          "outline": "none",
+          "overflowY": undefined,
+        }
+      }
+    >
+      <div
+        className=
+            ms-Modal
+            is-open
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              background-color: transparent;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 100%;
+              justify-content: center;
+              opacity: 1;
+              pointer-events: auto;
+              position: fixed;
+              transition: opacity 0.267s;
+              width: 100%;
+            }
+        role="document"
+      >
+        <div
+          className=
+              ms-Overlay
+              ms-Overlay--dark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: rgba(0,0,0,.4);
+                bottom: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border: 1px solid WindowText;
+                opacity: 0;
+              }
+        />
+        <div
+          className=
+              ms-Dialog-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                box-sizing: border-box;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
+                outline: 3px solid transparent;
+                overflow-y: auto;
+                position: relative;
+                text-align: left;
+              }
+          data-id="Modal10"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onFocusCapture={[Function]}
+        >
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+          <div
+            className=
+                ms-Modal-scrollableContent
+                {
+                  flex-grow: 1;
+                  max-height: 100vh;
+                  overflow-y: auto;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
+                }
+            data-is-scrollable={true}
+          >
+            <div
+              className=
+
+                  {
+                    flex-grow: 1;
+                    overflow-y: hidden;
+                  }
+            >
+              <div
+                className=
+                    ms-Dialog-header
+                    {
+                      box-sizing: border-box;
+                      position: relative;
+                      width: 100%;
+                    }
+              >
+                <div
+                  aria-level={1}
+                  className=
+                      ms-Dialog-title
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: normal;
+                        margin-bottom: 0;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-top: 0;
+                        min-height: 20px;
+                        padding-bottom: 20px;
+                        padding-left: 24px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 16px;
+                        padding-left: 16px;
+                        padding-right: 46px;
+                        padding-top: 16px;
+                      }
+                  id="Dialog9-title"
+                  role="heading"
+                >
+                  Sample title
+                </div>
+                <div
+                  className=
+
+                      {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 15px;
+                        padding-top: 15px;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                      }
+                      & > * {
+                        flex: 0 0 auto;
+                      }
+                      & .ms-Dialog-button {
+                        color: #323130;
+                      }
+                      & .ms-Dialog-button:hover {
+                        border-radius: 2px;
+                        color: #201f1e;
+                      }
+                      @media (min-width: 320px) and (max-width: 479px){& {
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 8px;
+                        padding-top: 15px;
+                      }
+                />
+              </div>
+              <div
+                className=
+                    ms-Dialog-inner
+                    {
+                      padding-bottom: 24px;
+                      padding-left: 24px;
+                      padding-right: 24px;
+                      padding-top: 0;
+                    }
+                    @media (min-width: 320px) and (max-width: 479px){& {
+                      padding-bottom: 16px;
+                      padding-left: 16px;
+                      padding-right: 16px;
+                      padding-top: 0;
+                    }
+              >
+                <div
+                  className=
+                      ms-Dialog-content
+                      {
+                        position: relative;
+                        width: 100%;
+                      }
+                >
+                  <p
+                    className=
+                        ms-Dialog-subText
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          line-height: 1.5;
+                          margin-bottom: 24px;
+                          margin-left: 0;
+                          margin-right: 0;
+                          margin-top: 0;
+                          word-wrap: break-word;
+                        }
+                    id="Dialog9-subText"
+                  >
+                    Sample subtext
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</span>
 `;

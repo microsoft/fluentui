@@ -89,7 +89,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       onLayerDidMount?.();
     };
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
       // During the initial render and any hostId updates:
       //
       // Check if the user provided a hostId prop and register the layer with the ID.
@@ -204,7 +204,7 @@ function useDebugWarnings(props: ILayerProps) {
 const useUnmount = (unmountFunction: () => void) => {
   const unmountRef = React.useRef(unmountFunction);
   unmountRef.current = unmountFunction;
-  React.useEffect(
+  React.useLayoutEffect(
     () => () => {
       if (unmountRef.current) {
         unmountRef.current();
