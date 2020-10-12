@@ -115,7 +115,7 @@ interface ItemDataType {
   renderedItems: React.ReactElement<TreeItemProps>[];
   isNonSticky: (item: React.ReactElement<TreeItemProps>) => boolean;
   onClick: (event: React.SyntheticEvent<HTMLElement>, itemProps: TreeItemProps) => void;
-  handleOnFocus: (e: React.SyntheticEvent<HTMLElement>) => void;
+  handleOnFocus: (event: React.SyntheticEvent<HTMLElement>) => void;
   handleFocusParent: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
   handleFocusFirstChild: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
   handleOnSiblingsExpand: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => void;
