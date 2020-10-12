@@ -2,6 +2,29 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider. Set correct dir on root element based on rtl value in theme.",
+            "author": "xgao@microsoft.com",
+            "commit": "40edbe0aa78c0d1a56a3609318431fb4ceb4abe5",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix getTokens to only override with user provided tokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "5b99c2fc197a3e06f50a8529b4b1990edcc516c6",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@fluentui/react-theme-provider_v0.14.4",
       "version": "0.14.4",

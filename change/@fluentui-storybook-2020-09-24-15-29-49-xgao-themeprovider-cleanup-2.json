@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Move v8 theme instances from react-theme-provider.",
-  "packageName": "@fluentui/storybook",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-24T22:29:49.280Z"
-}

@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.146.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.0)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.145.0..office-ui-fabric-react_v7.146.0)
+
+### Minor changes
+
+- SearchBox: role=search on root div is now opt in; if you want it, you must provide it as a role prop. ([PR #15450](https://github.com/microsoft/fluentui/pull/15450) by dzearing@hotmail.com)
+- SearchBox: role now applies correctly on the root and is no longer hardcoded to "search". ([PR #15457](https://github.com/microsoft/fluentui/pull/15457) by dzearing@hotmail.com)
 
 ## [7.145.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.145.0)
 

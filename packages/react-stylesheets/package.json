@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-stylesheets",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React helpers for registering stylesheets contextually.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

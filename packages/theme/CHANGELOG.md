@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.4.0)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.3.0..@fluentui/theme_v1.4.0)
+
+### Minor changes
+
+- Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes. ([PR #15452](https://github.com/microsoft/fluentui/pull/15452) by xgao@microsoft.com)
 
 ## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.3.0)
 

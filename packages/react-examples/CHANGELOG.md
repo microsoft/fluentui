@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.3)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.1..@fluentui/react-examples_v0.6.3)
+
+### Patches
+
+- Update react-button story theme example. ([PR #15452](https://github.com/microsoft/fluentui/pull/15452) by xgao@microsoft.com)
+- Updating example snapshots. ([PR #15450](https://github.com/microsoft/fluentui/pull/15450) by dzearing@hotmail.com)
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.1)
 

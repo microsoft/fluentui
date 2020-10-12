@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "office-ui-fabric-react_v7.146.0",
+      "version": "7.146.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SearchBox: role=search on root div is now opt in; if you want it, you must provide it as a role prop.",
+            "author": "dzearing@hotmail.com",
+            "commit": "23ec52b64876ce29bbfdfbc872b82e22c8ca03af",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "SearchBox: role now applies correctly on the root and is no longer hardcoded to \"search\".",
+            "author": "dzearing@hotmail.com",
+            "commit": "2fc9ce711304585a7fa8c842d09cb4207cb5c2d3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Oct 2020 12:24:30 GMT",
       "tag": "office-ui-fabric-react_v7.145.0",
       "version": "7.145.0",

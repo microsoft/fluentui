@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix getTokens to only override with user provided tokens.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-30T22:12:12.026Z"
-}

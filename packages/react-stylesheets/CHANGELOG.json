@@ -2,6 +2,21 @@
   "name": "@fluentui/react-stylesheets",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/react-stylesheets_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix error when target is undefined (in case of SSR).",
+            "author": "xgao@microsoft.com",
+            "commit": "40edbe0aa78c0d1a56a3609318431fb4ceb4abe5",
+            "package": "@fluentui/react-stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/react-stylesheets_v0.2.2",
       "version": "0.2.2",
