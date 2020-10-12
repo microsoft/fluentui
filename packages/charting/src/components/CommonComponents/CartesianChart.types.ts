@@ -387,10 +387,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * it's padding between bar's or lines in the graph
    */
   xAxisPadding?: number;
+
   /**
    * it's padding between bar's or lines in the graph
    */
   yAxisPadding?: number;
+
   children(props: IChildProps): React.ReactNode;
 
   /**

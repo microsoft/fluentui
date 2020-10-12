@@ -37,7 +37,7 @@ export enum YAxisType {
 }
 
 export interface IWrapLabelProps {
-  node: SVGGElement | null;
+  node: SVGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
@@ -373,6 +373,15 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
   }
 }
 
+/**
+ * This method used for wrapping of x axis lables (tick values).
+ * It breaks down given text value by space separated and calculates the total height needed to display all the words.
+ * That value = removal value. This value needs to be remove from total svg height, svg will shrink and
+ * total text will be displayed.
+ * @export
+ * @param {IWrapLabelProps} wrapLabelProps
+ * @returns
+ */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
   if (node === null) {
@@ -456,6 +465,9 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   return removeVal > 0 ? removeVal : 0;
 }
 
+/**
+ * This method displays a tooltip to the x axis lables(tick values).
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
@@ -465,7 +477,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
     .attr('class', tooltipCls)
     .style('opacity', 0);
   const tickObject = xAxis!.selectAll('.tick')._groups[0];
-  const tickObjectLength = Object.keys(tickObject).length;
+  const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -572,7 +584,7 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
- * Calculates Range values to the Vertical stacked bar chart for string axis
+ * Calculates Range values to the Vertical stacked bar chart and grouped verticla bar chart for string axis
  * For String axis, we need to give domain values (Not start and end array values)
  * So sending 0 as domain values. Domain will be handled at creation of string axis
  *
@@ -582,9 +594,15 @@ export function domainRangeOfNumericForAreaChart(
  * @param {boolean} isRTL
  * @returns {IDomainNRange}
  */
-export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
+export function domainRangeOfXString(
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  chartType: ChartTypes,
+): IDomainNRange {
   const rMin = margins.left!;
-  const rMax = width - margins.right! - (isRTL ? additionalMarginRight : 0);
+  let rMax = width - margins.right!;
+  rMax = rMax - (chartType === ChartTypes.VerticalStackedBarChart && isRTL ? additionalMarginRight : 0);
 
   return isRTL
     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
@@ -732,7 +750,8 @@ export function getDomainNRangeValues(
   } else {
     switch (chartType) {
       case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfStrForVSBC(margins, width, isRTL);
+      case ChartTypes.GroupedVerticalBarChart:
+        domainNRangeValue = domainRangeOfXString(margins, width, isRTL, chartType);
         break;
       case ChartTypes.VerticalBarChart:
         domainNRangeValue = domainRangeOfStrVertical(margins, width, isRTL);

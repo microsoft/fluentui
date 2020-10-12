@@ -1,13 +1,40 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart } from '@uifabric/charting';
+import {
+  ChartHoverCard,
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  IGVBarChartSeriesPoint,
+} from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+interface IGroupedBarChartState {
+  width: number;
+  height: number;
+}
 
-export class GroupedVerticalBarChartBasic2Example extends React.Component<Readonly<{}>, {}> {
-  public render(): React.ReactNode {
+export class GroupedVerticalBarChartBasic2Example extends React.Component<{}, IGroupedBarChartState> {
+  constructor(props: IGroupedVerticalBarChartProps) {
+    super(props);
+    this.state = {
+      width: 700,
+      height: 400,
+    };
+  }
+
+  public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const data = [
       {
-        name: 'thirdGraph third Graphthir  dGraphthir dGraphthird Graphthird Graphthird Graphthird Graphthird Graph',
+        name: 'LongLong text here It should Display all',
         series: [
           {
             key: 'series1',
@@ -28,7 +55,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
         ],
       },
       {
-        name: 'Ju St',
+        name: 'Just Checking',
         series: [
           {
             key: 'series1',
@@ -71,7 +98,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
         ],
       },
       {
-        name: 'kowsar shaik',
+        name: 'Hello World!!!',
         series: [
           {
             key: 'series1',
@@ -93,19 +120,35 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<Readon
       },
     ];
 
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
-
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <div className={rootStyle}>
-        <GroupedVerticalBarChart
-          data={data}
-          height={400}
-          width={650}
-          showYAxisGridLines
-          showXAxisLablesTooltip
-          noOfCharsToTruncate={6}
-        />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <GroupedVerticalBarChart
+            data={data}
+            height={this.state.height}
+            width={this.state.width}
+            showYAxisGridLines
+            showXAxisLablesTooltip
+            noOfCharsToTruncate={6}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCalloutPerDataPoint={(props: IGVBarChartSeriesPoint) =>
+              props ? (
+                <ChartHoverCard
+                  XValue={props.xAxisCalloutData}
+                  Legend={'Custom legend'}
+                  YValue={`${props.data} h`}
+                  color={'red'}
+                />
+              ) : null
+            }
+          />
+        </div>
+      </>
     );
   }
 }

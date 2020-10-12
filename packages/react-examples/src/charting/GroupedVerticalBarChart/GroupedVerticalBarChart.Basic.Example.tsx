@@ -1,10 +1,32 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart } from '@uifabric/charting';
+import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+interface IGroupedBarChartState {
+  width: number;
+  height: number;
+}
 
-export class GroupedVerticalBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
-  public render(): React.ReactNode {
+export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
+  constructor(props: IGroupedVerticalBarChartProps) {
+    super(props);
+    this.state = {
+      width: 700,
+      height: 400,
+    };
+  }
+
+  public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const data = [
       {
         name: 'LongLong text here It should Display all',
@@ -93,12 +115,23 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
       },
     ];
 
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
-
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <div className={rootStyle}>
-        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines wrapXAxisLables />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <GroupedVerticalBarChart
+            data={data}
+            height={this.state.height}
+            width={this.state.width}
+            showYAxisGridLines
+            wrapXAxisLables
+          />
+        </div>
+      </>
     );
   }
 }

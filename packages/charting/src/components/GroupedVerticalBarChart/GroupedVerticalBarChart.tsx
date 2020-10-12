@@ -4,7 +4,7 @@ import {
   IGroupedVerticalBarChartProps,
   IGroupedVerticalBarChartStyleProps,
   IGroupedVerticalBarChartStyles,
-} from './GroupedVerticalBarChart.types';
+} from '../../index';
 import { GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
 import { getStyles } from './GroupedVerticalBarChart.styles';
 
