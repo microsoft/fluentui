@@ -82,6 +82,9 @@ export type ButtonProps = ComponentProps &
     /** A button can blend into its background to become less emphasized. */
     ghost?: boolean;
 
+    /** A button can have no background styling and just be emphasized through its content styling. */
+    transparent?: boolean;
+
     /** A button can be sized. */
     size?: SizeValue;
 

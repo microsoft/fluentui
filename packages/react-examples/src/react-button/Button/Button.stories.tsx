@@ -38,6 +38,12 @@ const ButtonExamples = (props: ButtonProps) => (
     <Button {...props} ghost disabled icon="X">
       Hello, world
     </Button>
+    <Button {...props} transparent icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} transparent disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
 

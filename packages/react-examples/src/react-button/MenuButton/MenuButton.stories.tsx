@@ -40,6 +40,12 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
     <MenuButton {...props} icon="O" ghost disabled menu={Menu}>
       Hello, world
     </MenuButton>
+    <MenuButton {...props} icon="O" transparent menu={Menu}>
+      Hello, world
+    </MenuButton>
+    <MenuButton {...props} icon="O" transparent disabled menu={Menu}>
+      Hello, world
+    </MenuButton>
   </div>
 );
 

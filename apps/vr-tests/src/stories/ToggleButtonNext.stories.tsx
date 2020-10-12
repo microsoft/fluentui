@@ -6,7 +6,7 @@ import { ToggleButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
 storiesOf('ToggleButton Next', module)
   .addDecorator(FabricDecorator)
@@ -61,11 +61,6 @@ storiesOf('ToggleButton Next', module)
       Hello, world
     </ToggleButton>
   ))
-  .addStory('Fluid', () => (
-    <ToggleButton fluid icon="X">
-      Hello, world
-    </ToggleButton>
-  ))
   .addStory('Icon only', () => (
     <ToggleButton iconOnly icon="X">
       Hello, world
@@ -73,6 +68,72 @@ storiesOf('ToggleButton Next', module)
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
     <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+  ));
+
+storiesOf('ToggleButton Next - Fluid', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <ToggleButton fluid icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary', () => (
+    <ToggleButton fluid primary icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Disabled', () => (
+    <ToggleButton fluid disabled icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <ToggleButton fluid primary disabled icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Ghost', () => (
+    <ToggleButton fluid ghost icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <ToggleButton fluid disabled ghost icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent', () => (
+    <ToggleButton fluid transparent icon="X">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <ToggleButton fluid disabled transparent icon="X">
+      Hello, world
+    </ToggleButton>
   ));
 
 storiesOf('ToggleButton Next - Teams Theme', module)

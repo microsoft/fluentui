@@ -7,7 +7,7 @@ import { AddIcon } from '@fluentui/react-icons';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
 storiesOf('SplitButton Next', module)
   .addDecorator(FabricDecorator)
@@ -62,11 +62,6 @@ storiesOf('SplitButton Next', module)
       Hello, world
     </SplitButton>
   ))
-  .addStory('Fluid', () => (
-    <SplitButton fluid icon="X">
-      Hello, world
-    </SplitButton>
-  ))
   .addStory('Icon only', () => (
     <SplitButton iconOnly icon="X">
       Hello, world
@@ -79,6 +74,72 @@ storiesOf('SplitButton Next', module)
     <ThemeProvider theme={{ tokens: { button: { dividerLength: '30px' } } }}>
       <SplitButton>Hello, world</SplitButton>
     </ThemeProvider>
+  ));
+
+storiesOf('SplitButton Next - Fluid', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(withThemeProvider)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <SplitButton fluid icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary', () => (
+    <SplitButton fluid primary icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Disabled', () => (
+    <SplitButton fluid disabled icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <SplitButton fluid primary disabled icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Ghost', () => (
+    <SplitButton fluid ghost icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Ghost Disabled', () => (
+    <SplitButton fluid disabled ghost icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Transparent', () => (
+    <SplitButton fluid transparent icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <SplitButton fluid disabled transparent icon="X">
+      Hello, world
+    </SplitButton>
   ));
 
 storiesOf('SplitButton Next - Teams Theme', module)

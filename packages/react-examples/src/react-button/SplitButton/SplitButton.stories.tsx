@@ -36,6 +36,12 @@ const SplitButtonExamples = (props: SplitButtonProps) => (
     <SplitButton {...props} ghost disabled menu={menuProps}>
       Hello, world
     </SplitButton>
+    <SplitButton {...props} transparent menu={menuProps}>
+      Hello, world
+    </SplitButton>
+    <SplitButton {...props} transparent disabled menu={menuProps}>
+      Hello, world
+    </SplitButton>
   </div>
 );
 

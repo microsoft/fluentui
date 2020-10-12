@@ -29,6 +29,7 @@ export const useSplitButton = (
     fluid,
     menu,
     size,
+    transparent,
     ...userProps
   } = resolveShorthandProps(props, splitButtonShorthandProps);
 
@@ -45,6 +46,7 @@ export const useSplitButton = (
       fluid,
       size,
       primary,
+      transparent,
       'aria-disabled': disabledOrLoading,
 
       button: {
@@ -56,6 +58,7 @@ export const useSplitButton = (
         disabled: disabledOrLoading,
         loading,
         size,
+        transparent,
         ...userProps,
       },
 
@@ -68,6 +71,7 @@ export const useSplitButton = (
         size,
         disabled: disabledOrLoading,
         loading,
+        transparent,
         menu: {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ...(menu as any),

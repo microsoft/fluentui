@@ -23,6 +23,12 @@ const ToggleButtonExamples = (props: ToggleButtonProps) => (
     <ToggleButton {...props} ghost disabled icon="X">
       Hello, world
     </ToggleButton>
+    <ToggleButton {...props} transparent icon="X">
+      Hello, world
+    </ToggleButton>
+    <ToggleButton {...props} transparent disabled icon="X">
+      Hello, world
+    </ToggleButton>
   </div>
 );
 
