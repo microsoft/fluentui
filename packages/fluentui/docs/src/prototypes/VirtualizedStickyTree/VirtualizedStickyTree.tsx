@@ -82,6 +82,7 @@ const InnerElementType = ({ children, style }) => {
             position: 'sticky',
             height: stickyItemSize,
             zIndex: 111,
+            // stick items to the container bottom, with the smaller-indexed items stacked on bigger-indexed items
             top: height - (arr.length - index) * stickyItemSize,
           },
           onTitleClick: onClickSticky,
