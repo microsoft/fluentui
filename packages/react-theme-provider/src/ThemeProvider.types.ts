@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { StyleRenderer } from './styleRenderers/types';
 import { Theme, PartialTheme } from './types';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { ICustomizerContext } from '@uifabric/utilities';
+
 /**
+ * {@docCategory ThemeProvider}
  * Props for the ThemeProvider component.
  */
-export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * A component that should be used as the root element of the ThemeProvider component.
+   */
+  as?: React.ElementType;
+
   /**
    * Optional ref to the root element.
    */
@@ -39,8 +45,10 @@ export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes
 /**
  * State for the ThemeProvider component.
  */
-export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
+export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
   theme: Theme;
+
+  ref: React.RefObject<HTMLElement>;
 
   customizerContext: ICustomizerContext;
 };

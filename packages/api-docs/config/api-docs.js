@@ -19,6 +19,7 @@ module.exports = {
     path.resolve(__dirname, '../../react-link/dist/react-link.api.json'),
     path.resolve(__dirname, '../../react-slider/dist/react-slider.api.json'),
     path.resolve(__dirname, '../../react-tabs/dist/react-tabs.api.json'),
+    path.resolve(__dirname, '../../react-theme-provider/dist/react-theme-provider.api.json'),
     path.resolve(__dirname, '../../react-toggle/dist/react-toggle.api.json'),
     path.resolve(__dirname, '../../react/dist/react.api.json'),
     path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
