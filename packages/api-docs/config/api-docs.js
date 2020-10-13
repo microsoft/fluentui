@@ -7,6 +7,7 @@ const apiDocs = require('../lib/index');
 
 /** @type {apiDocs.IPageJsonOptions} */
 module.exports = {
+  // NOTE: when adding new package to this list, also add package dep in package.json.
   apiJsonPaths: [
     path.resolve(__dirname, '../../styling/dist/styling.api.json'),
     path.resolve(__dirname, '../../theme/dist/theme.api.json'),
