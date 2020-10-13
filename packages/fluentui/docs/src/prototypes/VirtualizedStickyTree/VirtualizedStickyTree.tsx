@@ -169,14 +169,9 @@ const ReRenderStickyTree = ({
     const toFocusIndex = renderedItems.findIndex(item => item.props.id === itemIdTobeFocused);
     const toFocusItem = renderedItems[toFocusIndex];
     const toFocus = (toFocusItem?.props.contentRef as any)?.current;
-    if (toFocus) {
-      if (toFocusItem.props.level !== 1) ref.current.scrollToItem(toFocusIndex, 'center');
-      toFocus.focus();
-    } else if (toFocusItem.props.level !== 1) {
-      // item to focus not rendered
-      ref.current.scrollToItem(toFocusIndex, 'center'); // scroll to item
-      forceUpdate(); // force re-render then try to set focus
-    }
+    ref.current.scrollToItem(toFocusIndex, 'center'); // scroll to item
+    if (toFocus) toFocus.focus();
+    else forceUpdate(); // item to focus not rendered, force re-render then try to set focus
   });
 
   // returns true when an item is not sticky header
