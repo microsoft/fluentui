@@ -238,6 +238,15 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
   });
+  const handleOnClickOnTreeItemOnly = (e: React.MouseEvent) => {
+    // onClick listener for mouse click on treeItem DOM only,
+    // which could be triggered by VO+space on selectable tree parent node
+    e.preventDefault();
+    e.stopPropagation();
+    if ((selectable || selectableParent) && e.target === e.currentTarget) {
+      handleTitleClick(e);
+    }
+  };
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
@@ -250,6 +259,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
+      onClick={handleOnClickOnTreeItemOnly} // this onClick does not listen to bubbled up event from treeTitle
     >
       {childrenExist(children)
         ? children
