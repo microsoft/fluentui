@@ -3492,13 +3492,17 @@ export interface ILayer {
 }
 
 // @public (undocumented)
-export type ILayerBaseState = {
-    hostId?: string;
-    layerElement?: HTMLElement;
-};
+export interface ILayerHost {
+}
 
 // @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
@@ -6053,33 +6057,10 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
-export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
-    constructor(props: ILayerProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ILayerProps;
-    // (undocumented)
-    render(): React.ReactNode;
-    }
+export const LayerBase: React.FunctionComponent<ILayerProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class LayerHost extends React.Component<ILayerHostProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(): boolean;
-}
+export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
