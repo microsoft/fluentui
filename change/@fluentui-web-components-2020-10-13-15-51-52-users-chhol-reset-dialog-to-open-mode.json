@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "operate dialog in open mode to ensure accessible focus behavior is supported",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-13T22:51:52.037Z"
+}
