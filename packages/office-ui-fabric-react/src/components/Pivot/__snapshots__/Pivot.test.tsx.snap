@@ -10,7 +10,6 @@ exports[`Pivot renders Pivot correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <ul
       className="ms-Pivot"
