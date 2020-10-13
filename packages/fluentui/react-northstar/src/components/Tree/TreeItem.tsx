@@ -243,7 +243,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     // which could be triggered by VO+space on selectable tree parent node
     e.preventDefault();
     e.stopPropagation();
-    if ((selectable || selectableParent) && e.target === e.currentTarget) {
+    if (e.target === e.currentTarget) {
       handleTitleClick(e);
     }
   };
