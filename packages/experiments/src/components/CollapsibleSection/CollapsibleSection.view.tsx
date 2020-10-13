@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@uifabric/foundation';
 
 import {
   ICollapsibleSectionComponent,

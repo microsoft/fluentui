@@ -171,17 +171,6 @@ const componentPackageMap: { [componentName: string]: string } = {
  *    harder to catch.
  */
 describe('Component File Conformance', () => {
-  beforeAll(() => {
-    // Mock Layer since otherwise components that use Layer will have empty JSON representations
-    jest.mock('./Layer', () => {
-      return {
-        Layer: jest.fn().mockImplementation(props => {
-          return props.children;
-        }),
-      };
-    });
-  });
-
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/*.ts*')).filter((file: string) => {
     const componentName = path.basename(path.dirname(file));
     const fileName = path.basename(file);

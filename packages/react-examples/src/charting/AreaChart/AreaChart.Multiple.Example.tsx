@@ -178,7 +178,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
     ];
 
     const chartData = {
-      chartTtitle: 'Area chart multiple example',
+      chartTitle: 'Area chart multiple example',
       lineChartData: chartPoints,
     };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
@@ -197,11 +197,6 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
             legendProps={{
-              overflowProps: {
-                focusZoneProps: {
-                  'aria-label': 'Legends container',
-                },
-              },
               allowFocusOnLegends: true,
             }}
           />

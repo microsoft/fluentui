@@ -3,7 +3,7 @@
 exports[`example transform can return component 1`] = `
 Object {
   "output": "(function(React) {
-const { Label, Fabric, initializeIcons } = window.Fabric;
+const { Label, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -25,7 +25,7 @@ return LabelBasicExampleWrapper;
 exports[`example transform can return component with transpiled example 1`] = `
 Object {
   "output": "(function(React) {
-const { Label, Fabric, initializeIcons } = window.Fabric;
+const { Label, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -43,7 +43,7 @@ return LabelBasicExampleWrapper;
 
 exports[`example transform handles examples with class components 1`] = `
 Object {
-  "output": "const { SpinButton, Fabric, initializeIcons } = window.Fabric;
+  "output": "const { SpinButton, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -89,11 +89,8 @@ ReactDOM.render(<FooExample />, document.getElementById('fake'))",
 
 exports[`example transform handles examples with custom supportedPackages and Fabric 1`] = `
 Object {
-  "output": "const { Stack, Fabric, initializeIcons } = window.Fabric;
+  "output": "const { Stack } = window.Fabric;
 const { FooLabel } = window.Foo;
-
-// Initialize icons in case this example uses them
-initializeIcons();
 
 const FooExample = () => {
   return (
@@ -102,15 +99,13 @@ const FooExample = () => {
     </Stack>
   );
 };
-
-const FooExampleWrapper = () => <Fabric><FooExample /></Fabric>;
-ReactDOM.render(<FooExampleWrapper />, document.getElementById('fake'))",
+ReactDOM.render(<FooExample />, document.getElementById('fake'))",
 }
 `;
 
 exports[`example transform handles examples with function components 1`] = `
 Object {
-  "output": "const { Label, Fabric, initializeIcons } = window.Fabric;
+  "output": "const { Label, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -130,7 +125,7 @@ ReactDOM.render(<LabelBasicExampleWrapper />, document.getElementById('fake'))",
 
 exports[`example transform handles transpiled examples with class components 1`] = `
 Object {
-  "output": "const { SpinButton, Fabric, initializeIcons } = window.Fabric;
+  "output": "const { SpinButton, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -170,7 +165,7 @@ ReactDOM.render(<SpinButtonBasicExampleWrapper />, document.getElementById('fake
 
 exports[`example transform handles transpiled examples with function components 1`] = `
 Object {
-  "output": "const { Label, Fabric, initializeIcons } = window.Fabric;
+  "output": "const { Label, Fabric, initializeIcons } = window.FluentUIReact;
 
 // Initialize icons in case this example uses them
 initializeIcons();

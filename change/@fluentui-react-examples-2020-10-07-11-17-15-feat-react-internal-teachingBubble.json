@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing react-next TeachingBubble examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T18:16:43.282Z"
+}

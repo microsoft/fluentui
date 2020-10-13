@@ -81,7 +81,7 @@ export const CalloutFocusTrapExample: React.FunctionComponent = () => {
             <div className={styles.inner}>
               <div>
                 <Text className={styles.subtext}>
-                  Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
+                  Content is wrapped in a FocusTrapZone so that user cannot accidentally tab out of this callout.
                 </Text>
               </div>
             </div>

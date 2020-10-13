@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving react-next SearchBox to react-internal.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T17:42:27.231Z"
+}

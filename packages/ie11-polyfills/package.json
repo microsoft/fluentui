@@ -9,7 +9,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
     "ie11-custom-properties": "4.1.0"
   },
   "license": "MIT"
