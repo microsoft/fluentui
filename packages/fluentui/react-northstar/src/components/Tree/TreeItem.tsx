@@ -62,6 +62,14 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Called when a tree title is clicked. */
   onTitleClick?: ComponentEventHandler<TreeItemProps>;
 
+  /**
+   * Called on click.
+   *
+   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+   * @param {object} data - All props.
+   */
+  onClick?: ComponentEventHandler<TreeItemProps>;
+
   /** Called when the item's siblings are about to be expanded. */
   onSiblingsExpand?: ComponentEventHandler<TreeItemProps>;
 
@@ -238,7 +246,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
   });
-  const handleOnClickOnTreeItemOnly = (e: React.MouseEvent) => {
+  const handleClick = (e: React.SyntheticEvent) => {
+    handleOnClickOnTreeItemOnly(e);
+    _.invoke(props, 'onClick', e, props);
+  };
+
+  const handleOnClickOnTreeItemOnly = (e: React.SyntheticEvent) => {
     // onClick listener for mouse click on treeItem DOM only,
     // which could be triggered by VO+space on selectable tree parent node
     e.preventDefault();
@@ -256,10 +269,10 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         className: classes.root,
         id,
         selected,
+        onClick: handleClick,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
-      onClick={handleOnClickOnTreeItemOnly} // this onClick does not listen to bubbled up event from treeTitle
     >
       {childrenExist(children)
         ? children
