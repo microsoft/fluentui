@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Autofill } from '@fluentui/react/lib/Autofill';
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
