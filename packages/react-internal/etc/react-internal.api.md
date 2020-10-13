@@ -4805,9 +4805,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
 }
 
 // @public (undocumented)
-export interface ISelectableOption {
+export interface ISelectableOption<T = any> {
     ariaLabel?: string;
-    data?: any;
+    data?: T;
     disabled?: boolean;
     hidden?: boolean;
     id?: string;

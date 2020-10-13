@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added generic type for ISelectableOption interface",
+  "packageName": "@fluentui/react-internal",
+  "email": "ashwin.gokhale98@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-13T03:18:58.453Z"
+}
