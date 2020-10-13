@@ -50,7 +50,7 @@ const Button = React.forwardRef((props, ref) => {
   useButtonClasses(state);
 
   // Return the rendered result.
-  return render(state);
+  return renderButton(state);
 });
 ```
 
