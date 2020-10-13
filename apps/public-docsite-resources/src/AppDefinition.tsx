@@ -83,12 +83,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox',
         },
         {
-          component: require<any>('./components/pages/ThemeProviderPage').ThemeProviderPage,
-          key: 'ThemeProvider',
-          name: 'ThemeProvider',
-          url: '#/examples/themeprovider',
-        },
-        {
           component: require<any>('./components/pages/ChoiceGroupPage').ChoiceGroupPage,
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
@@ -527,6 +521,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#/examples/themes',
+        },
+        {
+          component: require<any>('./components/pages/ThemeProviderPage').ThemeProviderPage,
+          key: 'ThemeProvider',
+          name: 'ThemeProvider',
+          url: '#/examples/themeprovider',
         },
         {
           component: require<any>('./components/pages/ColorsPage').ColorsPage,
