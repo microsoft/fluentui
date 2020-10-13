@@ -1,4 +1,4 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 
 const GlobalClassNames = {
   root: 'ms-Button-root',
@@ -50,10 +50,18 @@ export const useMenuButtonClasses = makeVariantClasses({
     _disabled: [GlobalClassNames._disabled],
   },
 
-  variants: {
-    root: {
-      menuIconSize: '12px',
-      menuIconColor: 'var(--body-menuIconColor)',
-    },
+  variants: (theme: Theme) => {
+    const { palette } = theme;
+
+    return {
+      root: {
+        menuIconSize: '12px',
+        menuIconColor: 'var(--body-menuIconColor)',
+      },
+
+      transparent: {
+        menuIconColor: palette?.neutralSecondary,
+      },
+    };
   },
 });

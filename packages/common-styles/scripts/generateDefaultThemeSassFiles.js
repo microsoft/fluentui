@@ -17,7 +17,7 @@ function writeFile(lines, outputFilename) {
     ...lines,
   ].join('\n');
 
-  const srcRoots = ['./src', '../react-internal/src', '../example-app-base/src', '../../apps/fabric-website/src'];
+  const srcRoots = ['./src', '../react-internal/src', '../example-app-base/src', '../../apps/public-docsite/src'];
   for (const srcRoot of srcRoots) {
     fs.writeFileSync(path.join(srcRoot, outputFilename), output);
   }

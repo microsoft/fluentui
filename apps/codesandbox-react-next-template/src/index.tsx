@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DefaultCustomizations } from '@uifabric/theme-samples';
+import { DefaultCustomizations } from '@fluentui/theme-samples';
 import {
   initializeIcons,
   Checkbox,

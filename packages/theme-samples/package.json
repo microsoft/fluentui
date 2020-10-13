@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/theme-samples",
+  "name": "@fluentui/theme-samples",
   "version": "7.1.21",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",

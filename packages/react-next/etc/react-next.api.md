@@ -39,6 +39,7 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
+import { ILayerProps } from '@fluentui/react/lib/Layer';
 import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
@@ -788,48 +789,6 @@ export { IGenericItem }
 export { IInputProps }
 
 // @public (undocumented)
-export interface ILayer {
-}
-
-// @public (undocumented)
-export interface ILayerHost {
-}
-
-// @public (undocumented)
-export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
-    componentRef?: IRefObject<ILayerHost>;
-    id?: string;
-}
-
-// @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: IRefObject<ILayer>;
-    eventBubblingEnabled?: boolean;
-    hostId?: string;
-    insertFirst?: boolean;
-    onLayerDidMount?: () => void;
-    // @deprecated
-    onLayerMounted?: () => void;
-    onLayerWillUnmount?: () => void;
-    styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyleProps {
-    className?: string;
-    isNotHost?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ILayerStyles {
-    content?: IStyle;
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface IModal {
     focus: () => void;
 }
@@ -893,45 +852,6 @@ export interface IOnRenderComboBoxLabelProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSet {
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-}
-
-// @public (undocumented)
-export interface IOverflowSetItemProps {
-    [propertyName: string]: any;
-    key: string;
-    keytipProps?: IKeytipProps;
-}
-
-// @public (undocumented)
-export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
-    className?: string;
-    componentRef?: IRefObject<IOverflowSet>;
-    items?: IOverflowSetItemProps[];
-    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
-    keytipSequences?: string[];
-    onRenderItem: (item: IOverflowSetItemProps) => any;
-    onRenderOverflowButton: IRenderFunction<any[]>;
-    overflowItems?: IOverflowSetItemProps[];
-    overflowSide?: 'start' | 'end';
-    role?: string;
-    styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
-    vertical?: boolean;
-}
-
-// @public
-export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
-
-// @public (undocumented)
-export interface IOverflowSetStyles {
-    item?: IStyle;
-    overflowButton?: IStyle;
-    root?: IStyle;
-}
-
-// @public (undocumented)
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
 }
 
@@ -962,23 +882,6 @@ export { IPickerAriaIds }
 export { IPickerItem }
 
 export { IPickerItemProps }
-
-// @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    role?: string;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-}
 
 export { ISuggestionItemProps }
 
@@ -1084,15 +987,6 @@ export { ITagItemSuggestionStyles }
 
 export { ITagPickerProps }
 
-// @public (undocumented)
-export const Layer: React.FunctionComponent<ILayerProps>;
-
-// @public (undocumented)
-export const LayerBase: React.FunctionComponent<ILayerProps>;
-
-// @public (undocumented)
-export const LayerHost: React.FunctionComponent<ILayerHostProps>;
-
 export { ListPeoplePicker }
 
 export { ListPeoplePickerBase }
@@ -1125,12 +1019,6 @@ export { NormalPeoplePicker }
 
 export { NormalPeoplePickerBase }
 
-// @public (undocumented)
-export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
-
-// @public (undocumented)
-export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
-
 export { PeoplePickerItem }
 
 export { PeoplePickerItemBase }
@@ -1138,9 +1026,6 @@ export { PeoplePickerItemBase }
 export { PeoplePickerItemSuggestion }
 
 export { PeoplePickerItemSuggestionBase }
-
-// @public
-export const Popup: React.FunctionComponent<IPopupProps>;
 
 export { ResponsiveMode }
 
@@ -1347,12 +1232,15 @@ export * from "@fluentui/react/lib/KeytipData";
 export * from "@fluentui/react/lib/KeytipLayer";
 export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
+export * from "@fluentui/react/lib/Layer";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
 export * from "@fluentui/react/lib/MessageBar";
 export * from "@fluentui/react/lib/Nav";
+export * from "@fluentui/react/lib/OverflowSet";
 export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
+export * from "@fluentui/react/lib/Popup";
 export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
 export * from "@fluentui/react/lib/ProgressIndicator";
