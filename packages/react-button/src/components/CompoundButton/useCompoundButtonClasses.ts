@@ -121,6 +121,10 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         },
       },
 
+      fluid: {
+        maxWidth: '100%',
+      },
+
       iconOnly: {
         minHeight: 'var(--button-size-regular)',
         width: 'var(--button-minHeight)',
@@ -172,6 +176,12 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
           disabled: {
             secondaryContentColor: 'GrayText',
           },
+        },
+      },
+
+      transparent: {
+        hovered: {
+          secondaryContentColor: palette?.themePrimary,
         },
       },
     };

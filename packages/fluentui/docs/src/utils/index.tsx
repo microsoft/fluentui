@@ -1,5 +1,5 @@
 export { default as componentInfoContext } from './componentInfoContext';
-export { exampleKebabNameToFilename } from './exampleKebabNameToFilename';
+export { exampleKebabNameToFilename, exampleKebabNameToDisplayName } from './exampleKebabNameToFilename';
 export { default as examplePathToHash } from './examplePathToHash';
 export { default as getComponentGroup } from './getComponentGroup';
 export { default as getComponentPathname } from './getComponentPathname';

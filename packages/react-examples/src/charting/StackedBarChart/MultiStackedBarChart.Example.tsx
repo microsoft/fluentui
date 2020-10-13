@@ -122,7 +122,6 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       width={600}
       href={'https://developer.microsoft.com/en-us/'}
       focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
-      legendsOverflowProps={{ focusZoneProps: { 'aria-label': 'legends Container' } }}
       legendsOverflowText={'OverFlow Items'}
     />
   );

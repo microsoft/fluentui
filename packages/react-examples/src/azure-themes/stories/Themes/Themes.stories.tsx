@@ -18,7 +18,7 @@ import {
   AzureCustomizationsDark,
   AzureCustomizationsHighContrastLight,
   AzureCustomizationsHighContrastDark,
-} from '@uifabric/azure-themes';
+} from '@fluentui/azure-themes';
 import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';

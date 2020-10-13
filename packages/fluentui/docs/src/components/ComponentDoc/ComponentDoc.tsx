@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
 import { tabListBehavior, Header, Dropdown, Text, Flex, Menu } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
@@ -140,6 +141,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
     const PAGE_PADDING = '20px';
     return (
       <div>
+        <DocumentTitle title={`Fluent UI - ${info.displayName}`} />
         <div
           id="docs-sticky-header"
           style={{

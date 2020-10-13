@@ -1,24 +1,13 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
-import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { useBoolean } from '@uifabric/react-hooks';
 
-const options = [
-  {
-    key: 'A',
-    text: 'Option A',
-  },
-  {
-    key: 'B',
-    text: 'Option B',
-    checked: true,
-  },
-  {
-    key: 'C',
-    text: 'Option C',
-    disabled: true,
-  },
+const options: IChoiceGroupOption[] = [
+  { key: 'A', text: 'Option A' },
+  { key: 'B', text: 'Option B' },
+  { key: 'C', text: 'Option C', disabled: true },
 ];
 const modelProps = {
   isBlocking: false,
@@ -42,7 +31,7 @@ export const DialogLargeHeaderExample: React.FunctionComponent = () => {
         dialogContentProps={dialogContentProps}
         modalProps={modelProps}
       >
-        <ChoiceGroup options={options} />
+        <ChoiceGroup defaultSelectedKey="B" options={options} />
         <DialogFooter>
           <PrimaryButton onClick={toggleHideDialog} text="Save" />
           <DefaultButton onClick={toggleHideDialog} text="Cancel" />

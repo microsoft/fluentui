@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Move Fabric from react-next to react-internal",
+  "packageName": "@fluentui/react-internal",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T21:50:09.969Z"
+}

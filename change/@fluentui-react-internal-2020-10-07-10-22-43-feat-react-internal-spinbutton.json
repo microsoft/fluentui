@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving react-next SpinButton to react-internal.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T17:22:32.977Z"
+}

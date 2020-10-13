@@ -1,5 +1,5 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 
 export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
@@ -11,6 +11,9 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     _checked: {
       background: 'var(--button-checked-background)',
       color: 'var(--button-checked-contentColor)',
+      '.ms-Button-icon': {
+        color: 'var(--button-checked-iconColor)',
+      },
 
       [EdgeChromiumHighContrastSelector]: {
         background: 'var(--button-highContrast-checked-background)',
@@ -21,29 +24,35 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
       },
 
       ':hover': {
-        background: 'var(--button-checked-hovered-background)',
-        color: 'var(--button-checked-hovered-contentColor)',
+        background: 'var(--button-checkedHovered-background)',
+        color: 'var(--button-checkedHovered-contentColor)',
+        '.ms-Button-icon': {
+          color: 'var(--button-checkedHovered-iconColor)',
+        },
 
         [EdgeChromiumHighContrastSelector]: {
           background:
-            'var(--button-highContrast-checked-hovered-background, var(--button-highContrast-checked-background))',
+            'var(--button-highContrast-checkedHovered-background, var(--button-highContrast-checked-background))',
           color:
-            'var(--button-highContrast-checked--hovered-contentColor, var(--button-highContrast-checked-contentColor))',
+            'var(--button-highContrast-checkedHovered-contentColor, var(--button-highContrast-checked-contentColor))',
           '.ms-Button-icon': {
             color:
-              'var(--button-highContrast-checked-hovered-iconColor, var(--button-highContrast-checked-contentColor))',
+              'var(--button-highContrast-checkedHovered-iconColor, var(--button-highContrast-checked-contentColor))',
           },
         },
       },
 
       ':active': {
-        background: 'var(--button-checked-pressed-background, var(--button-checked-hovered-background))',
-        color: 'var(--button-checked-pressed-contentColor, var(--button-checked-hovered-contentColor))',
+        background: 'var(--button-checkedPressed-background, var(--button-checkedHovered-background))',
+        color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
+        '.ms-Button-icon': {
+          color: 'var(--button-checkedPressed-iconColor, var(--button-checkedHovered-iconColor))',
+        },
 
         [EdgeChromiumHighContrastSelector]: {
           background:
-            'var(--button-highContrast-checked-pressed-background, ' +
-            'var(--button-highContrast-checked-hovered-background, ' +
+            'var(--button-highContrast-checkedPressed-background, ' +
+            'var(--button-highContrast-checkedHovered-background, ' +
             'var(--button-highContrast-checked-background)))',
           color:
             'var(--button-highContrast-checked--pressed-contentColor, ' +
@@ -51,8 +60,8 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
             'var(--button-highContrast-checked-contentColor)))',
           '.ms-Button-icon': {
             color:
-              'var(--button-highContrast-checked-pressed-iconColor, ' +
-              'var(--button-highContrast-checked-hovered-iconColor, ' +
+              'var(--button-highContrast-checkedPressed-iconColor, ' +
+              'var(--button-highContrast-checkedHovered-iconColor, ' +
               '--button-highContrast-checked-contentColor)))',
           },
         },
@@ -60,55 +69,82 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     },
   },
 
-  variants: {
-    root: {
-      highContrast: {
+  variants: (theme: Theme) => {
+    const { palette, semanticColors } = theme;
+
+    return {
+      root: {
         checked: {
-          background: 'Window',
-          contentColor: 'Highlight',
-          iconColor: 'Highlight',
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextChecked,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextCheckedHovered,
+        },
+
+        highContrast: {
+          checked: {
+            background: 'Window',
+            contentColor: 'Highlight',
+            iconColor: 'Highlight',
+          },
         },
       },
-    },
 
-    primary: {
-      checked: {
-        background: 'var(--color-brand-checked-background)',
-        contentColor: 'var(--color-brand-checked-contentColor)',
+      primary: {
+        checked: {
+          background: 'var(--color-brand-checked-background)',
+          contentColor: 'var(--color-brand-checked-contentColor)',
+        },
 
-        hovered: {
+        checkedHovered: {
           background: 'var(--color-brand-checkedHovered-background)',
           contentColor: 'var(--color-brand-checkedHovered-contentColor)',
         },
 
-        pressed: {
+        checkedPressed: {
           background: 'var(--color-brand-checkedPressed-background)',
           contentColor: 'var(--color-brand-checkedPressed-contentColor)',
         },
-      },
 
-      highContrast: {
-        checked: {
-          background: 'Highlight',
-          contentColor: 'Window',
-          iconColor: 'Window',
+        highContrast: {
+          checked: {
+            background: 'Highlight',
+            contentColor: 'Window',
+            iconColor: 'Window',
+          },
         },
       },
-    },
 
-    ghost: {
-      checked: {
-        background: 'var(--ghost-checked-background)',
-        contentColor: 'var(--ghost-checked-contentColor)',
+      ghost: {
+        checked: {
+          background: palette?.neutralLight,
+          contentColor: palette?.neutralDark,
+          iconColor: palette?.themeDark,
+        },
+
+        checkedHovered: {
+          background: palette?.neutralQuaternaryAlt,
+          contentColor: palette?.neutralDark,
+          iconColor: palette?.themeDark,
+        },
       },
-      checkedHovered: {
-        background: 'var(--ghost-checkedHovered-background)',
-        contentColor: 'var(--ghost-checkedHovered-contentColor)',
+
+      transparent: {
+        checked: {
+          background: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        checkedHovered: {
+          background: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
       },
-      checkedPressed: {
-        background: 'var(--ghost-checkedPressed-background)',
-        contentColor: 'var(--ghost-checkedPressed-contentColor)',
-      },
-    },
+    };
   },
 });

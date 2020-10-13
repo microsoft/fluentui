@@ -67,13 +67,16 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
 /**
  * Build webpack entries based on top level imports available in a package.
  *
- * @param {*} includeStats - Stats are generated and used by the size auditor report
+ * @param {boolean} [includeStats] - Stats are generated and used by the size auditor report
  * to check more details on what caused the bundle size change. Due to stats generation being slow,
  * and therefore slowing down CI significantly, setting this to true to avoid stats generation.
  * If bundle size is changed unexpectedly, developers can drill down deeper on the problem by
  * locally running bundle tests.
+ * @param {boolean} [onlyOwnComponents] - If true, only run the tests for an entry point file if it
+ * has a corresponding folder under `lib/components`. This eliminates duplicate bundle size tests
+ * for components which are just re-exported.
  */
-function buildEntries(packageName, entries = {}, includeStats = true) {
+function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnComponents = false) {
   let packagePath = '';
 
   try {
@@ -85,10 +88,15 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
   }
 
   fs.readdirSync(packagePath).forEach(itemName => {
-    const isJavascriptFile = itemName.match(/.js$/);
-    const isAllowedFile = !TopLevelEntryFileExclusions.includes(itemName);
+    const isAllowedFile =
+      // is JS
+      itemName.match(/.js$/) &&
+      // not excluded
+      !TopLevelEntryFileExclusions.includes(itemName) &&
+      // if requested, has component implementation within this package (not re-export)
+      (!onlyOwnComponents || fs.existsSync(path.join(packagePath, 'components', itemName.replace('.js', ''))));
 
-    if (isJavascriptFile && isAllowedFile) {
+    if (isAllowedFile) {
       const entryName = itemName.replace(/.js$/, '');
 
       // Replace commonjs paths with lib paths.

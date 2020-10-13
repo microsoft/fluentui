@@ -674,6 +674,21 @@ definitions.push({
   },
 });
 
+// Triggers 'focusParent' action with 'ArrowLeft' on 'root', when has no subtree.
+definitions.push({
+  regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when has no subtree\./g,
+  testMethod: (parameters: TestMethod) => {
+    const [action, key, elementToPerformAction] = [...parameters.props];
+    const propertyNoSubtree = {
+      hasItems: false,
+      hasSubtree: false,
+    };
+    const expectedKeyNumberVertical = parameters.behavior(propertyNoSubtree).keyActions[elementToPerformAction][action]
+      .keyCombinations[0].keyCode;
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
+  },
+});
+
 // Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
 definitions.push({
   regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when has a closed subtree\./g,

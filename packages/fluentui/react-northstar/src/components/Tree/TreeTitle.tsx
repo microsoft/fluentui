@@ -132,6 +132,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         handleClick(e);
       },
       focusParent: e => {
+        // allow bubbling up to parent treeItem
         onFocusParent(props.parent);
       },
       performSelection: e => {

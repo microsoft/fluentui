@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image, ImageFit } from '@fluentui/react';
-import { createComponent } from '../../../Foundation';
+import { createComponent } from '@uifabric/foundation';
 import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
 import { IPersonaCoinComponent } from '../PersonaCoin.types';
 import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';

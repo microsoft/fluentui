@@ -61,6 +61,33 @@ describe('TreeItemBehavior', () => {
       expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(1);
       expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(keyboardKey.Enter);
     });
+
+    test(`arrow left navigation, should collapse when tree expanded`, () => {
+      const expectedResult = treeItemBehavior({ expanded: true, hasSubtree: true });
+      expect(expectedResult.keyActions.root.collapse.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.collapse.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowLeft);
+    });
+    test(`arrow left navigation, should focus on parent when tree is not expanded`, () => {
+      const expectedResult = treeItemBehavior({ expanded: false, hasSubtree: true });
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowLeft);
+    });
+    test(`arrow left navigation, should focus on parent when treeItem has no subtree`, () => {
+      const expectedResult = treeItemBehavior({ hasSubtree: false });
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowLeft);
+    });
+
+    test(`arrow right navigation, should expand when tree collapsed`, () => {
+      const expectedResult = treeItemBehavior({ expanded: false, hasSubtree: true });
+      expect(expectedResult.keyActions.root.expand.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.expand.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowRight);
+    });
+    test(`arrow right navigation, should focus on frist child when tree expanded`, () => {
+      const expectedResult = treeItemBehavior({ expanded: true, hasSubtree: true });
+      expect(expectedResult.keyActions.root.focusFirstChild.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.focusFirstChild.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowRight);
+    });
   });
 
   describe('aria-checked', () => {
