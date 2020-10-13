@@ -1,21 +1,17 @@
 import * as React from 'react';
 
-import { IPersonaProps } from '@fluentui/react-next/lib/Persona';
-import { ExtendedPeoplePicker } from '@fluentui/react-next/lib/ExtendedPicker';
-import { PrimaryButton } from '@fluentui/react-next/lib/compat/Button';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { ExtendedPeoplePicker } from '@fluentui/react/lib/ExtendedPicker';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import {
   SuggestionsStore,
   FloatingPeoplePicker,
   IBaseFloatingPickerProps,
   IBaseFloatingPickerSuggestionProps,
-} from '@fluentui/react-next/lib/FloatingPicker';
-import {
-  ISelectedPeopleProps,
-  SelectedPeopleList,
-  IExtendedPersonaProps,
-} from '@fluentui/react-next/lib/SelectedItemsList';
-import { IFocusZoneProps, FocusZoneTabbableElements } from '@fluentui/react-next/lib/FocusZone';
-import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from '@fluentui/react-next/lib/Styling';
+} from '@fluentui/react/lib/FloatingPicker';
+import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
+import { IFocusZoneProps, FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
+import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
 
 export interface IPeoplePickerExampleState {
