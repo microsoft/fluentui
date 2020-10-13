@@ -80,9 +80,7 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
             // either a selectable leaf, or an expanded selectable parent
             // `props.expanded !== false` should be removed when selectable parent node can be selected when collapsed
             performClick: {
-              keyCombinations: props.hasSubtree
-                ? [{ keyCode: keyboardKey.Enter }]
-                : [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+              keyCombinations: props.hasSubtree ? [{ keyCode: keyboardKey.Enter }] : [{ keyCode: SpacebarKey }],
             },
             performSelection: {
               keyCombinations: [{ keyCode: SpacebarKey }],
