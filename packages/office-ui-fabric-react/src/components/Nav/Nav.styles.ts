@@ -71,8 +71,7 @@ export const getStyles = (
       {
         display: 'block',
         position: 'relative',
-        color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        color: semanticColors.bodyText
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected'
@@ -95,13 +94,13 @@ export const getStyles = (
         paddingRight: rightPadding,
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
+            backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           },
         },
       },
       isSelected && {
-        color: palette.themePrimary,
+        color: semanticColors.bodyTextChecked,
         backgroundColor: palette.neutralLighter,
         selectors: {
           '&:after': {
@@ -143,11 +142,11 @@ export const getStyles = (
           },
           '&:hover': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           },
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           },
         }
       },
@@ -174,7 +173,7 @@ export const getStyles = (
       ],
       isSelected && {
         color: palette.themePrimary,
-        backgroundColor: palette.neutralLighterAlt,
+        backgroundColor: semanticColors.bodyBackgroundChecked,
         selectors: {
           '&:after': {
             borderLeft: `2px solid ${palette.themePrimary}`,
