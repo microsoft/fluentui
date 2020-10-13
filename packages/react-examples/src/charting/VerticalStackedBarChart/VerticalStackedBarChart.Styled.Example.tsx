@@ -37,7 +37,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
+      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
@@ -116,9 +116,10 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
             margins={{
-              bottom: 40,
-              left: 45,
-              right: 30,
+              bottom: 0,
+              top: 0,
+              left: 0,
+              right: 0,
             }}
             legendProps={{
               allowFocusOnLegends: true,
@@ -128,7 +129,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind @typescript-eslint/no-explicit-any
+            // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-explicit-any
             onRenderCalloutPerDataPoint={(props: any) =>
               props ? (
                 <ChartHoverCard
