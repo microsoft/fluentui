@@ -1,11 +1,26 @@
-import {
-  IComboBoxStyles,
-  IComboBoxOptionStyles,
-  IComboBoxClassNames,
-  IComboBoxOptionClassNames,
-} from './ComboBox.types';
+import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
+
+export interface IComboBoxClassNames {
+  container: string;
+  label: string;
+  root: string;
+  input: string;
+  errorMessage: string;
+  callout: string;
+  optionsContainer: string;
+  header: string;
+  divider: string;
+  optionsContainerWrapper: string;
+  screenReaderText: string;
+}
+
+export interface IComboBoxOptionClassNames {
+  optionText: string;
+  root: string;
+  optionTextWrapper: string;
+}
 
 export const getClassNames = memoizeFunction(
   (

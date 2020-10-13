@@ -4,6 +4,7 @@
 
 ```ts
 
+import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
 import { IButtonProps } from '@fluentui/react-internal/lib/Button';
@@ -46,7 +47,6 @@ import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react-internal/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { ScrollToMode } from '@fluentui/react-internal/lib/List';
-import { SelectableOptionMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { SelectionMode } from '@fluentui/react-internal/lib/Selection';
 
 // @public (undocumented)
@@ -95,27 +95,7 @@ export enum ColumnDragEndLocation {
 }
 
 // @public (undocumented)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IComboBoxProps;
-    dismissMenu: () => void;
-    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
-    // (undocumented)
-    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
-}
+export const ComboBox: React.FunctionComponent<IComboBoxProps>;
 
 // @public (undocumented)
 export enum ConstrainMode {
@@ -318,6 +298,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
 }
+
+export { DropdownMenuItemType }
 
 // @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
@@ -553,45 +535,9 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
-export interface IComboBoxClassNames {
-    // (undocumented)
-    callout: string;
-    // (undocumented)
-    container: string;
-    // (undocumented)
-    divider: string;
-    // (undocumented)
-    errorMessage: string;
-    // (undocumented)
-    header: string;
-    // (undocumented)
-    input: string;
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    optionsContainer: string;
-    // (undocumented)
-    optionsContainerWrapper: string;
-    // (undocumented)
-    root: string;
-    // (undocumented)
-    screenReaderText: string;
-}
-
-// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxOptionClassNames {
-    // (undocumented)
-    optionText: string;
-    // (undocumented)
-    optionTextWrapper: string;
-    // (undocumented)
-    root: string;
 }
 
 // @public (undocumented)
@@ -601,7 +547,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
@@ -612,6 +558,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
+    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
@@ -640,14 +587,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
-    currentOptions: IComboBoxOption[];
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
     focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
-    selectedIndices?: number[];
-    suggestedDisplayValue?: string;
 }
 
 // @public (undocumented)
@@ -1936,10 +1880,6 @@ export { IViewport }
 export { IWithViewportProps }
 
 export { ResponsiveMode }
-
-export { SelectableOptionMenuItemType as DropdownMenuItemType }
-
-export { SelectableOptionMenuItemType }
 
 // @public (undocumented)
 export enum SelectAllVisibility {

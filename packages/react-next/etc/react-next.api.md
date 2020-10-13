@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Autofill } from '@fluentui/react/lib/Autofill';
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
@@ -14,7 +15,6 @@ import { createGenericItem } from '@fluentui/react/lib/Pickers';
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
-import { IAutofillProps as IAutofillProps_2 } from '@fluentui/react-internal/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBasePicker } from '@fluentui/react/lib/Pickers';
 import { IBasePickerProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerState } from '@fluentui/react/lib/Pickers';
@@ -24,7 +24,6 @@ import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IButton } from '@fluentui/react/lib/Button';
-import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -85,7 +84,6 @@ import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { IVerticalDividerClassNames } from '@fluentui/react-internal/lib/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { KeyCodes } from '@fluentui/react/lib/Utilities';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
@@ -111,39 +109,6 @@ import { TagPicker } from '@fluentui/react/lib/Pickers';
 import { TagPickerBase } from '@fluentui/react/lib/Pickers';
 import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from '@fluentui/react/lib/Pickers';
-
-// @public (undocumented)
-export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
-    constructor(props: IAutofillProps);
-    // (undocumented)
-    clear(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    readonly cursorLocation: number | null;
-    // (undocumented)
-    static defaultProps: {
-        enableAutofillOnKeyPress: number[];
-    };
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
-    // (undocumented)
-    readonly inputElement: HTMLInputElement | null;
-    // (undocumented)
-    readonly isValueSelected: boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    readonly value: string;
-}
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -287,9 +252,6 @@ export const Callout: React.FunctionComponent<ICalloutProps>;
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
-// @public (undocumented)
-export const ComboBox: React.FunctionComponent<IComboBoxProps>;
-
 export { CompactPeoplePicker }
 
 export { CompactPeoplePickerBase }
@@ -384,38 +346,6 @@ export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
-// @public (undocumented)
-export interface IAutofill {
-    clear(): void;
-    cursorLocation: number | null;
-    focus(): void;
-    inputElement: HTMLInputElement | null;
-    isValueSelected: boolean;
-    selectionEnd: number | null;
-    selectionStart: number | null;
-    value: string;
-}
-
-// @public (undocumented)
-export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
-    componentRef?: IRefObject<IAutofill>;
-    defaultVisibleValue?: string;
-    enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string | void;
-    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
-    preventValueSelection?: boolean;
-    shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
-    suggestedDisplayValue?: string;
-    // @deprecated
-    updateValueInWillReceiveProps?: () => string | null;
-}
-
-// @public (undocumented)
-export interface IAutofillState {
-    // (undocumented)
-    inputValue: string;
-}
 
 // @public (undocumented)
 export interface IBaseExtendedPicker<T> {
@@ -593,96 +523,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IComboBox {
-    dismissMenu: () => void;
-    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
-    readonly selectedOptions: IComboBoxOption[];
-}
-
-// @public (undocumented)
-export interface IComboBoxOption extends ISelectableOption {
-    styles?: Partial<IComboBoxOptionStyles>;
-    useAriaLabelAsText?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxOptionStyles extends IButtonStyles {
-    optionText: IStyle;
-    optionTextWrapper: IStyle;
-}
-
-// @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
-    allowFreeform?: boolean;
-    ariaDescribedBy?: string;
-    autoComplete?: 'on' | 'off';
-    autofill?: IAutofillProps_2;
-    buttonIconProps?: IIconProps;
-    caretDownButtonStyles?: Partial<IButtonStyles>;
-    comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
-    componentRef?: IRefObject<IComboBox>;
-    dropdownMaxWidth?: number;
-    dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
-    getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
-    iconButtonProps?: IButtonProps;
-    isButtonAriaHidden?: boolean;
-    keytipProps?: IKeytipProps;
-    multiSelectDelimiter?: string;
-    onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-    onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
-    onMenuDismiss?: () => void;
-    onMenuDismissed?: () => void;
-    onMenuOpen?: () => void;
-    onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
-    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
-    onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
-    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
-    onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
-    onScrollToItem?: (itemIndex: number) => void;
-    options: IComboBoxOption[];
-    persistMenu?: boolean;
-    scrollSelectedToTop?: boolean;
-    shouldRestoreFocus?: boolean;
-    styles?: Partial<IComboBoxStyles>;
-    text?: string;
-    theme?: ITheme;
-    useComboBoxAsMenuWidth?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxState {
-    currentPendingValue?: string;
-    currentPendingValueValidIndex: number;
-    currentPendingValueValidIndexOnHover: number;
-    focusState?: 'none' | 'focused' | 'focusing';
-    isOpen?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxStyles {
-    callout: IStyle;
-    container: IStyle;
-    divider: IStyle;
-    errorMessage: IStyle;
-    header: IStyle;
-    input: IStyle;
-    inputDisabled: IStyle;
-    label: IStyle;
-    labelDisabled: IStyle;
-    optionsContainer: IStyle;
-    optionsContainerWrapper: IStyle;
-    root: IStyle;
-    rootDisabled: IStyle;
-    rootDisallowFreeForm: IStyle;
-    rootError: IStyle;
-    rootFocused: IStyle;
-    rootHovered: IStyle;
-    rootPressed: IStyle;
-    screenReaderText: IStyle;
 }
 
 // @public (undocumented)
@@ -1047,12 +887,6 @@ export interface IMenuItemStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IOnRenderComboBoxLabelProps {
-    multiselectAccessibleText?: string;
-    props: IComboBoxProps;
-}
-
-// @public (undocumented)
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
 }
 
@@ -1353,22 +1187,6 @@ export { Target }
 
 export { ValidationState }
 
-// @public (undocumented)
-export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    dismissMenu(): void;
-    // (undocumented)
-    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
-    // (undocumented)
-    protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
-    // (undocumented)
-    protected _onScrollToItem: (itemIndex: number) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-}
-
 
 export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-button/lib/MenuButton";
@@ -1384,12 +1202,14 @@ export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
+export * from "@fluentui/react/lib/Autofill";
 export * from "@fluentui/react/lib/Breadcrumb";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";
 export * from "@fluentui/react/lib/Color";
 export * from "@fluentui/react/lib/ColorPicker";
+export * from "@fluentui/react/lib/ComboBox";
 export * from "@fluentui/react/lib/CommandBar";
 export * from "@fluentui/react/lib/DetailsList";
 export * from "@fluentui/react/lib/Dialog";
