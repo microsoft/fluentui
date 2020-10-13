@@ -111,6 +111,11 @@ const calcRenderedHeight = (renderedItems: React.ReactElement[], stickyItemSize:
     0,
   );
 
+const useForceUpdate = () => {
+  const [, setValue] = React.useState(false);
+  return () => setValue(value => !value);
+};
+
 interface ReRenderStickyTreeProps {
   renderedItems: React.ReactElement<TreeItemProps>[];
   stickyItemSize: number;
@@ -155,6 +160,8 @@ const ReRenderStickyTree = ({
     setItemIdTobeFocused(newItemIdTobeFocused);
   }, []);
 
+  const forceUpdate = useForceUpdate();
+
   React.useEffect(() => {
     // retain focus after sticky items gotten clicked and triggers DOM updates
     if (!itemIdTobeFocused) return;
@@ -165,6 +172,10 @@ const ReRenderStickyTree = ({
     if (toFocus) {
       if (toFocusItem.props.level !== 1) ref.current.scrollToItem(toFocusIndex, 'center');
       toFocus.focus();
+    } else if (toFocusItem.props.level !== 1) {
+      // item to focus not rendered
+      ref.current.scrollToItem(toFocusIndex, 'center'); // scroll to item
+      forceUpdate(); // force re-render then try to set focus
     }
   });
 
@@ -284,11 +295,10 @@ const ReRenderStickyTree = ({
         (item.props.contentRef as any).current.focus();
       } else {
         // item is not rendered
-        ref.current.scrollToItem(itemIndex, 'center');
         passItemIdTobeFocused(idTobeFocused);
       }
     },
-    [renderedItems, passItemIdTobeFocused, ref],
+    [renderedItems, passItemIdTobeFocused],
   );
 
   const handleFocusParent = React.useCallback(
