@@ -229,7 +229,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       backgroundColor: disabled ? dotDisabledColor : dotCheckedColor,
       selectors: {
         [HighContrastSelector]: {
-          borderColor: 'Highlight',
+          backgroundColor: 'Highlight',
         },
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
