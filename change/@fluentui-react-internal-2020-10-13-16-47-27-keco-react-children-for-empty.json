@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Avoid React.Children traversal for early return cases",
+  "packageName": "@fluentui/react-internal",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-13T23:47:26.980Z"
+}
