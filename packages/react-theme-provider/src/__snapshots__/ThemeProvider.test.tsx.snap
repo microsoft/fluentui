@@ -16,8 +16,10 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -98,8 +100,10 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -173,8 +177,10 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -248,8 +254,10 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -333,8 +341,10 @@ exports[`ThemeProvider renders a div 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -417,8 +427,10 @@ exports[`ThemeProvider renders a div with styling 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -501,8 +513,10 @@ exports[`ThemeProvider renders nested themes 1`] = `
         --color-brand-borderColor: transparent;
         --color-brand-checked-background: #005a9e;
         --color-brand-checked-contentColor: #ffffff;
+        --color-brand-checked-iconColor: #ffffff;
         --color-brand-checkedHovered-background: #005a9e;
         --color-brand-checkedHovered-contentColor: #ffffff;
+        --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
         --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
@@ -583,8 +597,10 @@ exports[`ThemeProvider renders nested themes 1`] = `
           --color-brand-borderColor: transparent;
           --color-brand-checked-background: #005a9e;
           --color-brand-checked-contentColor: #ffffff;
+          --color-brand-checked-iconColor: #ffffff;
           --color-brand-checkedHovered-background: #005a9e;
           --color-brand-checkedHovered-contentColor: #ffffff;
+          --color-brand-checkedHovered-iconColor: #ffffff;
           --color-brand-contentColor: #ffffff;
           --color-brand-disabled-background: #f3f2f1;
           --color-brand-disabled-borderColor: var(--color-brand-disabled-background);

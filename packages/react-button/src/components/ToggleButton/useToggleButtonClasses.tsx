@@ -1,3 +1,4 @@
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 
@@ -14,11 +15,29 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         color: 'var(--button-checked-iconColor)',
       },
 
+      [EdgeChromiumHighContrastSelector]: {
+        background: 'var(--button-highContrast-checked-background)',
+        color: 'var(--button-highContrast-checked-contentColor)',
+        '.ms-Button-icon': {
+          color: 'var(--button-highContrast-checked-iconColor)',
+        },
+      },
+
       ':hover': {
         background: 'var(--button-checkedHovered-background)',
         color: 'var(--button-checkedHovered-contentColor)',
         '.ms-Button-icon': {
           color: 'var(--button-checkedHovered-iconColor)',
+        },
+
+        [EdgeChromiumHighContrastSelector]: {
+          background:
+            'var(--button-highContrast-checkedHovered-background, var(--button-highContrast-checked-background))',
+          color:
+            'var(--button-highContrast-checkedHovered-contentColor, var(--button-highContrast-checked-contentColor))',
+          '.ms-Button-icon': {
+            color: 'var(--button-highContrast-checkedHovered-iconColor, var(--button-highContrast-checked-iconColor))',
+          },
         },
       },
 
@@ -27,6 +46,23 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
         '.ms-Button-icon': {
           color: 'var(--button-checkedPressed-iconColor, var(--button-checkedHovered-iconColor))',
+        },
+
+        [EdgeChromiumHighContrastSelector]: {
+          background:
+            'var(--button-highContrast-checkedPressed-background, ' +
+            'var(--button-highContrast-checkedHovered-background, ' +
+            'var(--button-highContrast-checked-background)))',
+          color:
+            'var(--button-highContrast-checked--pressed-contentColor, ' +
+            'var(--button-highContrast-checked--hovered-contentColor, ' +
+            'var(--button-highContrast-checked-contentColor)))',
+          '.ms-Button-icon': {
+            color:
+              'var(--button-highContrast-checkedPressed-iconColor, ' +
+              'var(--button-highContrast-checkedHovered-iconColor, ' +
+              '--button-highContrast-checked-iconColor)))',
+          },
         },
       },
     },
@@ -46,6 +82,14 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextCheckedHovered,
         },
+
+        highContrast: {
+          checked: {
+            background: 'Window',
+            contentColor: 'Highlight',
+            iconColor: 'Highlight',
+          },
+        },
       },
 
       primary: {
@@ -62,6 +106,14 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
         checkedPressed: {
           background: 'var(--color-brand-checkedPressed-background)',
           contentColor: 'var(--color-brand-checkedPressed-contentColor)',
+        },
+
+        highContrast: {
+          checked: {
+            background: 'Highlight',
+            contentColor: 'Window',
+            iconColor: 'Window',
+          },
         },
       },
 
