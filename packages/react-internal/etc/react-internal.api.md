@@ -600,25 +600,10 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-    constructor(props: IContextualMenuProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IContextualMenuProps;
-    // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
-    }
+export const ContextualMenuBase: {
+    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
+    displayName: string;
+};
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -959,9 +944,6 @@ export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
 };
-
-// @public (undocumented)
-export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
 
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {
@@ -2430,7 +2412,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
@@ -2475,11 +2457,6 @@ export interface IContextualMenuState {
     // (undocumented)
     contextualMenuTarget?: Element;
     // (undocumented)
-    dismissedMenuItemKey?: string;
-    expandedByMouseClick?: boolean;
-    // (undocumented)
-    expandedMenuItemKey?: string;
-    // (undocumented)
     positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
@@ -2487,8 +2464,6 @@ export interface IContextualMenuState {
     submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
-    // (undocumented)
-    submenuTarget?: Element;
 }
 
 // @public (undocumented)
