@@ -111,7 +111,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                 text-align: left;
                 z-index: 1000000;
               }
-          data-id="Modal2"
+          data-id="Modal5"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
@@ -303,7 +303,7 @@ exports[`Modal renders Modal correctly 1`] = `
                 position: relative;
                 text-align: left;
               }
-          data-id="Modal0"
+          data-id="Modal1"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
@@ -464,7 +464,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                 text-align: left;
                 z-index: 1000000;
               }
-          data-id="Modal1"
+          data-id="Modal3"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}

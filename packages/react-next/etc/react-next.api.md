@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Autofill } from '@fluentui/react/lib/Autofill';
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
@@ -14,7 +15,6 @@ import { createGenericItem } from '@fluentui/react/lib/Pickers';
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
-import { IAutofillProps as IAutofillProps_2 } from '@fluentui/react-internal/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBasePicker } from '@fluentui/react/lib/Pickers';
 import { IBasePickerProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerState } from '@fluentui/react/lib/Pickers';
@@ -23,7 +23,6 @@ import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IButton } from '@fluentui/react/lib/Button';
-import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
@@ -32,6 +31,7 @@ import { IContextualMenuProps } from '@fluentui/react-internal/lib/ContextualMen
 import { IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
+import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IIconProps } from '@fluentui/react/lib/Icon';
@@ -40,7 +40,6 @@ import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
 import { ILayerProps } from '@fluentui/react/lib/Layer';
-import { IOverlayProps } from '@fluentui/react/lib/Overlay';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
 import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
@@ -84,7 +83,6 @@ import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { KeyCodes } from '@fluentui/react/lib/Utilities';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
@@ -110,39 +108,6 @@ import { TagPicker } from '@fluentui/react/lib/Pickers';
 import { TagPickerBase } from '@fluentui/react/lib/Pickers';
 import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from '@fluentui/react/lib/Pickers';
-
-// @public (undocumented)
-export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
-    constructor(props: IAutofillProps);
-    // (undocumented)
-    clear(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    readonly cursorLocation: number | null;
-    // (undocumented)
-    static defaultProps: {
-        enableAutofillOnKeyPress: number[];
-    };
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
-    // (undocumented)
-    readonly inputElement: HTMLInputElement | null;
-    // (undocumented)
-    readonly isValueSelected: boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    readonly value: string;
-}
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -283,9 +248,6 @@ export { BasePickerListBelow }
 // @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
-// @public (undocumented)
-export const ComboBox: React.FunctionComponent<IComboBoxProps>;
-
 export { CompactPeoplePicker }
 
 export { CompactPeoplePickerBase }
@@ -319,355 +281,6 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
-
-// @public (undocumented)
-export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
-    focusStack: string[];
-};
-
-// @public (undocumented)
-export interface IAccessiblePopupProps {
-    closeButtonAriaLabel?: string;
-    elementToFocusOnDismiss?: HTMLElement;
-    firstFocusableSelector?: string | (() => string);
-    forceFocusInsideTrap?: boolean;
-    ignoreExternalFocusing?: boolean;
-    isClickableOutsideFocusTrap?: boolean;
-}
-
-// @public (undocumented)
-export interface IAutofill {
-    clear(): void;
-    cursorLocation: number | null;
-    focus(): void;
-    inputElement: HTMLInputElement | null;
-    isValueSelected: boolean;
-    selectionEnd: number | null;
-    selectionStart: number | null;
-    value: string;
-}
-
-// @public (undocumented)
-export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
-    componentRef?: IRefObject<IAutofill>;
-    defaultVisibleValue?: string;
-    enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string | void;
-    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
-    preventValueSelection?: boolean;
-    shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
-    suggestedDisplayValue?: string;
-    // @deprecated
-    updateValueInWillReceiveProps?: () => string | null;
-}
-
-// @public (undocumented)
-export interface IAutofillState {
-    // (undocumented)
-    inputValue: string;
-}
-
-// @public (undocumented)
-export interface IBaseExtendedPicker<T> {
-    focus: () => void;
-    forceResolve?: () => void;
-    items: T[] | undefined;
-}
-
-// @public (undocumented)
-export interface IBaseExtendedPickerProps<T> {
-    className?: string;
-    componentRef?: IRefObject<IBaseExtendedPicker<T>>;
-    currentRenderedQueryString?: string;
-    defaultSelectedItems?: T[];
-    disabled?: boolean;
-    floatingPickerProps: IBaseFloatingPickerProps<T>;
-    focusZoneProps?: IFocusZoneProps;
-    headerComponent?: JSX.Element;
-    inputProps?: IInputProps;
-    itemLimit?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
-    onChange?: (items?: T[]) => void;
-    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
-    onItemAdded?: (addedItem: T) => void;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
-    onItemsRemoved?: (removedItems: T[]) => void;
-    onPaste?: (pastedText: string) => T[];
-    onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
-    onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
-    selectedItems?: T[];
-    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
-    suggestionItems?: T[];
-}
-
-// @public (undocumented)
-export interface IBaseExtendedPickerState<T> {
-    // (undocumented)
-    queryString: string | null;
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPicker {
-    hidePicker: () => void;
-    inputText: string;
-    isSuggestionsShown: boolean;
-    onQueryStringChanged: (input: string) => void;
-    showPicker: (updateValue?: boolean) => void;
-    suggestions: any[];
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
-    calloutWidth?: number;
-    className?: string;
-    // (undocumented)
-    componentRef?: IRefObject<IBaseFloatingPicker>;
-    createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
-    getTextFromItem?: (item: T, currentValue?: string) => string;
-    inputElement?: HTMLInputElement | null;
-    onChange?: (item: T) => void;
-    onInputChanged?: (filter: string) => void;
-    onRemoveSuggestion?: (item: T) => void;
-    onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
-    onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-    onSuggestionsHidden?: () => void;
-    onSuggestionsShown?: () => void;
-    onValidateInput?: (input: string) => boolean;
-    onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-    pickerCalloutProps?: ICalloutProps;
-    pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
-    resolveDelay?: number;
-    searchingText?: ((props: {
-        input: string;
-    }) => string) | string;
-    selectedItems?: T[];
-    showForceResolve?: () => boolean;
-    suggestionItems?: T[];
-    suggestionsStore: SuggestionsStore<T>;
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPickerState {
-    // (undocumented)
-    didBind: boolean;
-    // (undocumented)
-    queryString: string;
-    // (undocumented)
-    suggestionsVisible?: boolean;
-}
-
-// @public
-export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<any>, 'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'>;
-
-export { IBasePicker }
-
-export { IBasePickerProps }
-
-export { IBasePickerState }
-
-export { IBasePickerStyleProps }
-
-export { IBasePickerStyles }
-
-export { IBasePickerSuggestionsProps }
-
-// @public (undocumented)
-export interface ICalloutContentStyleProps {
-    backgroundColor?: string;
-    beakWidth?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    overflowYHidden?: boolean;
-    positions?: ICalloutPositionedInfo;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ICalloutContentStyles {
-    beak: IStyle;
-    beakCurtain: IStyle;
-    calloutMain: IStyle;
-    container: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    alignTargetEdge?: boolean;
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    backgroundColor?: string;
-    beakWidth?: number;
-    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
-    calloutMaxHeight?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    coverTarget?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
-    directionalHint?: DirectionalHint;
-    directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint;
-    doNotLayer?: boolean;
-    finalHeight?: number;
-    gapSpace?: number;
-    hidden?: boolean;
-    hideOverflow?: boolean;
-    isBeakVisible?: boolean;
-    layerProps?: ILayerProps;
-    minPagePadding?: number;
-    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-    onLayerMounted?: () => void;
-    onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    onScroll?: () => void;
-    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
-    // @deprecated
-    preventDismissOnLostFocus?: boolean;
-    // @deprecated
-    preventDismissOnResize?: boolean;
-    // @deprecated
-    preventDismissOnScroll?: boolean;
-    role?: string;
-    setInitialFocus?: boolean;
-    shouldDismissOnWindowFocus?: boolean;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-    shouldUpdateWhenHidden?: boolean;
-    style?: React.CSSProperties;
-    styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Target;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IComboBox {
-    dismissMenu: () => void;
-    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
-    readonly selectedOptions: IComboBoxOption[];
-}
-
-// @public (undocumented)
-export interface IComboBoxOption extends ISelectableOption {
-    styles?: Partial<IComboBoxOptionStyles>;
-    useAriaLabelAsText?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxOptionStyles extends IButtonStyles {
-    optionText: IStyle;
-    optionTextWrapper: IStyle;
-}
-
-// @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
-    allowFreeform?: boolean;
-    ariaDescribedBy?: string;
-    autoComplete?: 'on' | 'off';
-    autofill?: IAutofillProps_2;
-    buttonIconProps?: IIconProps;
-    caretDownButtonStyles?: Partial<IButtonStyles>;
-    comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
-    componentRef?: IRefObject<IComboBox>;
-    dropdownMaxWidth?: number;
-    dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
-    getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
-    iconButtonProps?: IButtonProps;
-    isButtonAriaHidden?: boolean;
-    keytipProps?: IKeytipProps;
-    multiSelectDelimiter?: string;
-    onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-    onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
-    onMenuDismiss?: () => void;
-    onMenuDismissed?: () => void;
-    onMenuOpen?: () => void;
-    onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
-    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
-    onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
-    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
-    onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
-    onScrollToItem?: (itemIndex: number) => void;
-    options: IComboBoxOption[];
-    persistMenu?: boolean;
-    scrollSelectedToTop?: boolean;
-    shouldRestoreFocus?: boolean;
-    styles?: Partial<IComboBoxStyles>;
-    text?: string;
-    theme?: ITheme;
-    useComboBoxAsMenuWidth?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxState {
-    currentPendingValue?: string;
-    currentPendingValueValidIndex: number;
-    currentPendingValueValidIndexOnHover: number;
-    focusState?: 'none' | 'focused' | 'focusing';
-    isOpen?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxStyles {
-    callout: IStyle;
-    container: IStyle;
-    divider: IStyle;
-    errorMessage: IStyle;
-    header: IStyle;
-    input: IStyle;
-    inputDisabled: IStyle;
-    label: IStyle;
-    labelDisabled: IStyle;
-    optionsContainer: IStyle;
-    optionsContainerWrapper: IStyle;
-    root: IStyle;
-    rootDisabled: IStyle;
-    rootDisallowFreeForm: IStyle;
-    rootError: IStyle;
-    rootFocused: IStyle;
-    rootHovered: IStyle;
-    rootPressed: IStyle;
-    screenReaderText: IStyle;
-}
-
-// @public (undocumented)
-export interface IDialogState {
-    // (undocumented)
-    hasBeenOpened?: boolean;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isInKeyboardMoveMode?: boolean;
-    // (undocumented)
-    isModalMenuOpen?: boolean;
-    // (undocumented)
-    isOpen?: boolean;
-    // (undocumented)
-    isVisible?: boolean;
-    // (undocumented)
-    isVisibleClose?: boolean;
-    // (undocumented)
-    modalRectangleTop?: number;
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
-}
-
-// @public (undocumented)
-export interface IDragOptions {
-    closeMenuItemText: string;
-    dragHandleSelector?: string;
-    keyboardMoveIconProps?: IIconProps;
-    menu: React.FunctionComponent<IContextualMenuProps>;
-    moveMenuItemText: string;
-}
 
 // @public (undocumented)
 export interface IDropdown {
@@ -765,91 +378,9 @@ export interface IFocusTrapCalloutProps extends ICalloutProps {
     focusTrapProps?: IFocusTrapZoneProps;
 }
 
-// @public (undocumented)
-export interface IFocusTrapZone {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    ariaLabelledBy?: string;
-    componentRef?: IRefObject<IFocusTrapZone>;
-    disabled?: boolean;
-    disableFirstFocus?: boolean;
-    elementToFocusOnDismiss?: HTMLElement;
-    firstFocusableSelector?: string | (() => string);
-    focusPreviouslyFocusedInnerElement?: boolean;
-    forceFocusInsideTrap?: boolean;
-    ignoreExternalFocusing?: boolean;
-    isClickableOutsideFocusTrap?: boolean;
-}
-
 export { IGenericItem }
 
 export { IInputProps }
-
-// @public (undocumented)
-export interface IModal {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
-    allowTouchBodyScroll?: boolean;
-    className?: string;
-    componentRef?: IRefObject<IModal>;
-    containerClassName?: string;
-    dragOptions?: IDragOptions;
-    enableAriaHiddenSiblings?: boolean;
-    isBlocking?: boolean;
-    isDarkOverlay?: boolean;
-    isModeless?: boolean;
-    isOpen?: boolean;
-    layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-    onDismissed?: () => any;
-    // @deprecated
-    onLayerDidMount?: () => void;
-    overlay?: IOverlayProps;
-    scrollableContentClassName?: string;
-    styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
-    subtitleAriaId?: string;
-    theme?: ITheme;
-    titleAriaId?: string;
-    topOffsetFixed?: boolean;
-}
-
-// @public (undocumented)
-export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
-    isOpen?: boolean;
-    isVisible?: boolean;
-    hasBeenOpened?: boolean;
-    modalRectangleTop?: number;
-    layerClassName?: string;
-    isDefaultDragHandle?: boolean;
-};
-
-// @public (undocumented)
-export interface IModalStyles {
-    // (undocumented)
-    keyboardMoveIcon: IStyle;
-    // (undocumented)
-    keyboardMoveIconContainer: IStyle;
-    // (undocumented)
-    layer: IStyle;
-    // (undocumented)
-    main: IStyle;
-    // (undocumented)
-    root: IStyle;
-    // (undocumented)
-    scrollableContent: IStyle;
-}
-
-// @public (undocumented)
-export interface IOnRenderComboBoxLabelProps {
-    multiselectAccessibleText?: string;
-    props: IComboBoxProps;
-}
 
 // @public (undocumented)
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
@@ -992,28 +523,6 @@ export { ListPeoplePicker }
 export { ListPeoplePickerBase }
 
 export { MemberListPeoplePicker }
-
-// @public (undocumented)
-export const Modal: React.FunctionComponent<IModalProps>;
-
-// @public (undocumented)
-export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
-    constructor(props: IModalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IModalProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
-}
 
 export { NormalPeoplePicker }
 
@@ -1174,22 +683,6 @@ export { Target }
 
 export { ValidationState }
 
-// @public (undocumented)
-export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    dismissMenu(): void;
-    // (undocumented)
-    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
-    // (undocumented)
-    protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
-    // (undocumented)
-    protected _onScrollToItem: (itemIndex: number) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-}
-
 
 export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-button/lib/MenuButton";
@@ -1206,12 +699,14 @@ export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
+export * from "@fluentui/react/lib/Autofill";
 export * from "@fluentui/react/lib/Breadcrumb";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";
 export * from "@fluentui/react/lib/Color";
 export * from "@fluentui/react/lib/ColorPicker";
+export * from "@fluentui/react/lib/ComboBox";
 export * from "@fluentui/react/lib/CommandBar";
 export * from "@fluentui/react/lib/DetailsList";
 export * from "@fluentui/react/lib/Dialog";
@@ -1220,6 +715,7 @@ export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
 export * from "@fluentui/react/lib/Fabric";
 export * from "@fluentui/react/lib/Facepile";
+export * from "@fluentui/react/lib/FocusTrapZone";
 export * from "@fluentui/react/lib/FocusZone";
 export * from "@fluentui/react/lib/Grid";
 export * from "@fluentui/react/lib/GroupedList";
@@ -1236,6 +732,7 @@ export * from "@fluentui/react/lib/Layer";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
 export * from "@fluentui/react/lib/MessageBar";
+export * from "@fluentui/react/lib/Modal";
 export * from "@fluentui/react/lib/Nav";
 export * from "@fluentui/react/lib/OverflowSet";
 export * from "@fluentui/react/lib/Overlay";

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving FocusTrapZone and Modal from react-next to react-internal.",
+  "packageName": "@fluentui/react-internal",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T20:16:19.728Z"
+}

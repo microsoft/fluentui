@@ -18,24 +18,20 @@ export const buttonBehaviorDefinition: Rule[] = [
     .description(`if element is native 'button'.`),
   BehaviorRule.root()
     .forProps({ disabled: true })
-    .hasAttribute('disabled')
-    .description(`based on 'disabled' prop when element is native 'button'.`),
+    .hasAttribute('disabled'),
   BehaviorRule.root()
     .forProps({ disabled: true, as: 'div' })
     .doesNotHaveAttribute('disabled')
     .description(`if element is NOT native 'button'.`),
   BehaviorRule.root()
     .forProps({ disabled: true, loading: true })
-    .doesNotHaveAttribute('disabled')
-    .description(`if element is loading.`),
+    .doesNotHaveAttribute('disabled'),
   BehaviorRule.root()
     .forProps({ disabled: true })
-    .hasAttribute('aria-disabled', 'true')
-    .description(`if property 'disabled' is 'true'.`),
+    .hasAttribute('aria-disabled', 'true'),
   BehaviorRule.root()
     .forProps({ loading: true })
-    .hasAttribute('aria-disabled', 'true')
-    .description(`if property 'aria-disabled' is 'true'.`),
+    .hasAttribute('aria-disabled', 'true'),
   BehaviorRule.root()
     .forProps({ as: 'div' })
     .pressSpaceKey()

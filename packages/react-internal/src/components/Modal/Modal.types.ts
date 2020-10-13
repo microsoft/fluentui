@@ -12,7 +12,7 @@ import { IOverlayProps } from '../../Overlay';
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initiated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 
@@ -87,11 +87,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismissed?: () => any;
 
   /**
