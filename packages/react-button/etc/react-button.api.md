@@ -284,7 +284,7 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => Record<string, any>;
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonBaseClasses: (state: ToggleButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;

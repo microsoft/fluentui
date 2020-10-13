@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useButton } from '../Button/useButton';
-import { ToggleButtonProps } from './ToggleButton.types';
+import { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 import { useChecked } from './useChecked';
 
 export const useToggleButton = (
@@ -12,5 +12,5 @@ export const useToggleButton = (
 
   useChecked(state as ToggleButtonProps);
 
-  return state;
+  return state as ToggleButtonState;
 };
