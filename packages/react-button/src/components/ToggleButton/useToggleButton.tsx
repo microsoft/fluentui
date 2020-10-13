@@ -8,9 +8,9 @@ export const useToggleButton = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: ToggleButtonProps,
 ) => {
-  const buttonDefinition = useButton(props, ref, defaultProps);
+  const state = useButton(props, ref, defaultProps);
 
-  useChecked(buttonDefinition.state as ToggleButtonProps);
+  useChecked(state as ToggleButtonProps);
 
-  return buttonDefinition;
+  return state;
 };

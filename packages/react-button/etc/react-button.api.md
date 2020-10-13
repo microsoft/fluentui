@@ -205,6 +205,9 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens;
 
+// @public
+export const renderToggleButton: (state: ButtonState) => JSX.Element;
+
 // @public (undocumented)
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
