@@ -110,17 +110,19 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <span>
@@ -237,17 +239,19 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <span
@@ -366,17 +370,19 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <div
@@ -504,17 +510,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <span
@@ -656,17 +664,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <span
@@ -806,19 +816,18 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
-              border-color: #0078d4;
-              border-radius: 50%;
-              border-style: solid;
-              border-width: 5px;
+              algin-items: center;
+              background-color: #0078d4;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
               height: 10px;
               left: 5px;
               position: absolute;
-              right: 0px;
               top: 5px;
+              transform: scale(1);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
@@ -924,17 +933,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
@@ -1044,19 +1055,18 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
-              border-color: #c8c6c4;
-              border-radius: 50%;
-              border-style: solid;
-              border-width: 5px;
+              algin-items: center;
+              background-color: #c8c6c4;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
               height: 10px;
               left: 5px;
               position: absolute;
-              right: 0px;
               top: 5px;
+              transform: scale(1);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
@@ -1204,17 +1214,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <div
@@ -1429,17 +1441,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
       >
         <div
@@ -1647,10 +1661,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
-              border-color: #0078d4;
-              border-radius: 50%;
-              border-style: solid;
-              border-width: 5px;
+              algin-items: center;
+              background-color: #0078d4;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
               height: 10px;
@@ -1658,8 +1671,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               position: absolute;
               right: 8px;
               top: 8px;
+              transform: scale(1);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
@@ -1848,17 +1862,19 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
-              border-radius: 50%;
+              algin-items: center;
+              border-radius: 10px;
               box-sizing: border-box;
               content: "";
-              height: 0px;
-              left: 10px;
+              height: 10px;
+              left: 5px;
               position: absolute;
-              right: 0px;
+              top: 5px;
+              transform: scale(0);
               transition-duration: 200ms;
-              transition-property: border-width;
+              transition-property: transform;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
+              width: 10px;
             }
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;

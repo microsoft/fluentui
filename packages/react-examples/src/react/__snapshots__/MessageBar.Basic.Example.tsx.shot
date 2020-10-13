@@ -187,7 +187,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -195,16 +195,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-default"
               >
@@ -320,7 +323,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -328,16 +331,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-error"
               >
@@ -453,7 +459,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -461,16 +467,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-blocked"
               >
@@ -586,7 +595,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -594,16 +603,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-severe"
               >
@@ -719,7 +731,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -727,16 +739,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-success"
               >
@@ -852,7 +867,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -860,16 +875,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-warning"
               >
@@ -985,7 +1003,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -993,16 +1011,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-warning2"
               >
@@ -1118,7 +1139,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1126,16 +1147,19 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup0-all"
               >

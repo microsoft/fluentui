@@ -134,17 +134,19 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-1"
           >
@@ -269,17 +271,19 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-2"
           >
@@ -404,17 +408,19 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-3"
           >
@@ -600,17 +606,19 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-1"
           >
@@ -735,17 +743,19 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-2"
           >
@@ -870,17 +880,19 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
                   width: 20px;
                 }
                 &:after {
-                  border-radius: 50%;
+                  algin-items: center;
+                  border-radius: 10px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: 5px;
                   position: absolute;
-                  right: 0px;
+                  top: 5px;
+                  transform: scale(0);
                   transition-duration: 200ms;
-                  transition-property: border-width;
+                  transition-property: transform;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
                 }
             htmlFor="ChoiceGroup0-3"
           >

@@ -1516,7 +1516,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1531,16 +1531,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       forced-color-adjust: none;
                     }
                     &:after {
+                      algin-items: center;
                       background-color: #0078d4;
-                      border-radius: 50%;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
                       height: 10px;
                       left: 5px;
                       position: absolute;
-                      right: 0px;
                       top: 5px;
+                      transform: scale(1);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 10px;
                     }
@@ -1664,7 +1666,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1672,16 +1674,19 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup17-transparency"
               >
@@ -1797,7 +1802,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       font-weight: normal;
                       height: 20px;
                       left: 0px;
-                      right: 0px;
+                      position: absolute;
                       top: 0px;
                       transition-duration: 200ms;
                       transition-property: border-color;
@@ -1805,16 +1810,19 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 20px;
                     }
                     &:after {
-                      border-radius: 50%;
+                      algin-items: center;
+                      border-radius: 10px;
+                      box-sizing: border-box;
                       content: "";
-                      height: 0px;
-                      left: 10px;
+                      height: 10px;
+                      left: 5px;
                       position: absolute;
-                      right: 0px;
+                      top: 5px;
+                      transform: scale(0);
                       transition-duration: 200ms;
-                      transition-property: width, height;
+                      transition-property: transform;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                      width: 0px;
+                      width: 10px;
                     }
                 htmlFor="ChoiceGroup17-none"
               >
