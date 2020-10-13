@@ -4,11 +4,9 @@
 
 ```ts
 
-import { Autofill } from '@fluentui/react/lib/Autofill';
 import { BasePeoplePicker } from '@fluentui/react/lib/Pickers';
 import { BasePicker } from '@fluentui/react/lib/Pickers';
 import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
-import { BaseSelectedItemsList } from '@fluentui/react/lib/SelectedItemsList';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
@@ -21,16 +19,12 @@ import { IBasePickerState } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
-import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsList';
-import { IButton } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
-import { IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
 import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
-import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
@@ -48,12 +42,10 @@ import { IPeoplePickerItemSuggestionProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
-import { IPersonaProps } from '@fluentui/react-internal/lib/Persona';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
 import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
@@ -91,7 +83,6 @@ import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
 import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { Selection } from '@fluentui/react/lib/Selection';
 import { SuggestionActionType } from '@fluentui/react/lib/Pickers';
 import { Suggestions } from '@fluentui/react/lib/Pickers';
 import { SuggestionsController } from '@fluentui/react/lib/Pickers';
@@ -104,136 +95,6 @@ import { TagPicker } from '@fluentui/react/lib/Pickers';
 import { TagPickerBase } from '@fluentui/react/lib/Pickers';
 import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from '@fluentui/react/lib/Pickers';
-
-// @public (undocumented)
-export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
-}
-
-// @public (undocumented)
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
-    constructor(basePickerProps: P);
-    // (undocumented)
-    protected canAddItems(): boolean;
-    // (undocumented)
-    clearInput(): void;
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
-    // (undocumented)
-    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    readonly highlightedItems: T[];
-    // (undocumented)
-    protected input: React.RefObject<Autofill>;
-    // (undocumented)
-    readonly inputElement: HTMLInputElement | null;
-    // (undocumented)
-    readonly items: any;
-    // (undocumented)
-    protected onBackspace: (ev: React.KeyboardEvent<HTMLElement>) => void;
-    // (undocumented)
-    protected onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
-    // (undocumented)
-    protected onInputChange: (value: string, composing?: boolean | undefined) => void;
-    // (undocumented)
-    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
-    // (undocumented)
-    protected onInputFocus: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
-    // (undocumented)
-    protected onPaste: (ev: React.ClipboardEvent<HTMLInputElement | Autofill>) => void;
-    // (undocumented)
-    protected _onSelectedItemsChanged: () => void;
-    // (undocumented)
-    protected onSelectionChange: () => void;
-    // (undocumented)
-    protected _onSuggestionSelected: (item: T) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    protected renderFloatingPicker(): JSX.Element;
-    // (undocumented)
-    protected renderSelectedItemsList(): JSX.Element;
-    // (undocumented)
-    protected root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
-    // (undocumented)
-    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
-    // (undocumented)
-    protected selection: Selection;
-}
-
-// @public (undocumented)
-export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {
-}
-
-// @public (undocumented)
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
-    constructor(basePickerProps: P);
-    // (undocumented)
-    completeSuggestion: () => void;
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    protected currentPromise: PromiseLike<T[]>;
-    // (undocumented)
-    readonly currentSelectedSuggestionIndex: number;
-    // (undocumented)
-    forceResolveSuggestion(): void;
-    // (undocumented)
-    hidePicker: () => void;
-    // (undocumented)
-    readonly inputText: string;
-    // (undocumented)
-    protected isComponentMounted: boolean;
-    // (undocumented)
-    readonly isSuggestionsShown: boolean;
-    // (undocumented)
-    protected onChange(item: T): void;
-    // (undocumented)
-    protected onKeyDown: (ev: MouseEvent) => void;
-    // (undocumented)
-    onQueryStringChanged: (queryString: string) => void;
-    // (undocumented)
-    protected onSelectionChange(): void;
-    // (undocumented)
-    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
-    // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
-    // (undocumented)
-    protected root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    showPicker: (updateValue?: boolean) => void;
-    // (undocumented)
-    readonly suggestions: any[];
-    // (undocumented)
-    protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
-    // (undocumented)
-    protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
-    // (undocumented)
-    protected suggestionStore: SuggestionsStore<T>;
-    // (undocumented)
-    updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
-    // (undocumented)
-    protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void;
-    // (undocumented)
-    protected updateSuggestionWithZeroState(): void;
-    // (undocumented)
-    protected updateValue(updatedValue: string): void;
-}
 
 export { BasePeoplePicker }
 
@@ -251,9 +112,6 @@ export { CompactPeoplePickerBase }
 export { createGenericItem }
 
 // @public (undocumented)
-export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
-
-// @public (undocumented)
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
@@ -261,114 +119,12 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps>;
 
 export { DropdownMenuItemType }
 
-// @public (undocumented)
-export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
-}
-
 export { FabricAutofill }
 
 export { FabricAutofillProps }
 
-// @public (undocumented)
-export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
-    // (undocumented)
-    static defaultProps: any;
-}
-
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
-
-// @public (undocumented)
-export interface IBaseExtendedPicker<T> {
-    focus: () => void;
-    forceResolve?: () => void;
-    items: T[] | undefined;
-}
-
-// @public (undocumented)
-export interface IBaseExtendedPickerProps<T> {
-    className?: string;
-    componentRef?: IRefObject<IBaseExtendedPicker<T>>;
-    currentRenderedQueryString?: string;
-    defaultSelectedItems?: T[];
-    disabled?: boolean;
-    floatingPickerProps: IBaseFloatingPickerProps<T>;
-    focusZoneProps?: IFocusZoneProps;
-    headerComponent?: JSX.Element;
-    inputProps?: IInputProps;
-    itemLimit?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
-    onChange?: (items?: T[]) => void;
-    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
-    onItemAdded?: (addedItem: T) => void;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
-    onItemsRemoved?: (removedItems: T[]) => void;
-    onPaste?: (pastedText: string) => T[];
-    onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
-    onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
-    selectedItems?: T[];
-    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
-    suggestionItems?: T[];
-}
-
-// @public (undocumented)
-export interface IBaseExtendedPickerState<T> {
-    // (undocumented)
-    queryString: string | null;
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPicker {
-    hidePicker: () => void;
-    inputText: string;
-    isSuggestionsShown: boolean;
-    onQueryStringChanged: (input: string) => void;
-    showPicker: (updateValue?: boolean) => void;
-    suggestions: any[];
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
-    calloutWidth?: number;
-    className?: string;
-    // (undocumented)
-    componentRef?: IRefObject<IBaseFloatingPicker>;
-    createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
-    getTextFromItem?: (item: T, currentValue?: string) => string;
-    inputElement?: HTMLInputElement | null;
-    onChange?: (item: T) => void;
-    onInputChanged?: (filter: string) => void;
-    onRemoveSuggestion?: (item: T) => void;
-    onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
-    onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-    onSuggestionsHidden?: () => void;
-    onSuggestionsShown?: () => void;
-    onValidateInput?: (input: string) => boolean;
-    onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-    pickerCalloutProps?: ICalloutProps;
-    pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
-    resolveDelay?: number;
-    searchingText?: ((props: {
-        input: string;
-    }) => string) | string;
-    selectedItems?: T[];
-    showForceResolve?: () => boolean;
-    suggestionItems?: T[];
-    suggestionsStore: SuggestionsStore<T>;
-}
-
-// @public (undocumented)
-export interface IBaseFloatingPickerState {
-    // (undocumented)
-    didBind: boolean;
-    // (undocumented)
-    queryString: string;
-    // (undocumented)
-    suggestionsVisible?: boolean;
-}
-
-// @public
-export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<any>, 'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'>;
 
 export { IBasePicker }
 
@@ -540,10 +296,6 @@ export interface IDropdownSubComponentStyles {
     panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
 }
 
-// @public (undocumented)
-export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
-}
-
 export { IFabricAutofill }
 
 export { IFabricAutofillState }
@@ -556,14 +308,6 @@ export interface IFocusTrapCalloutProps extends ICalloutProps {
 export { IGenericItem }
 
 export { IInputProps }
-
-// @public (undocumented)
-export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
-}
-
-// @public (undocumented)
-export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
-}
 
 export { IPeoplePickerItemSelectedProps }
 
@@ -594,72 +338,6 @@ export { ISuggestionItemProps }
 export { ISuggestionModel }
 
 export { ISuggestions }
-
-// @public (undocumented)
-export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
-    className?: string;
-    completeSuggestion: () => void;
-    footerItemsProps?: ISuggestionsHeaderFooterProps[];
-    headerItemsProps?: ISuggestionsHeaderFooterProps[];
-    shouldSelectFirstItem?: () => boolean;
-    suggestionsFooterContainerAriaLabel?: string;
-    suggestionsHeaderContainerAriaLabel?: string;
-}
-
-// @public (undocumented)
-export interface ISuggestionsControlState<T> {
-    // (undocumented)
-    selectedFooterIndex: number;
-    // (undocumented)
-    selectedHeaderIndex: number;
-    // (undocumented)
-    suggestions: ISuggestionModel<T>[];
-}
-
-// @public (undocumented)
-export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
-    componentRef?: IRefObject<{}>;
-    onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
-    onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
-    onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
-    resultsMaximumNumber?: number;
-    shouldLoopSelection: boolean;
-    showRemoveButtons?: boolean;
-    suggestions: ISuggestionModel<T>[];
-    suggestionsAvailableAlertText?: string;
-    suggestionsContainerAriaLabel?: string;
-    suggestionsItemClassName?: string;
-}
-
-// @public (undocumented)
-export interface ISuggestionsHeaderFooterItemProps {
-    // (undocumented)
-    className: string | undefined;
-    // (undocumented)
-    componentRef?: IRefObject<{}>;
-    // (undocumented)
-    id: string;
-    // (undocumented)
-    isSelected: boolean;
-    // (undocumented)
-    onExecute?: () => void;
-    // (undocumented)
-    renderItem: () => JSX.Element;
-}
-
-// @public (undocumented)
-export interface ISuggestionsHeaderFooterProps {
-    // (undocumented)
-    ariaLabel?: string;
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    onExecute?: () => void;
-    // (undocumented)
-    renderItem: () => JSX.Element;
-    // (undocumented)
-    shouldShow: () => boolean;
-}
 
 export { ISuggestionsItem }
 
@@ -715,132 +393,11 @@ export { ResponsiveMode }
 
 export { SuggestionActionType }
 
-// @public (undocumented)
-export enum SuggestionItemType {
-    // (undocumented)
-    footer = 2,
-    // (undocumented)
-    header = 0,
-    // (undocumented)
-    suggestion = 1
-}
-
 export { Suggestions }
-
-// @public
-export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
-    constructor(suggestionsProps: ISuggestionsControlProps<T>);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    readonly currentSuggestion: ISuggestionModel<T> | undefined;
-    // (undocumented)
-    readonly currentSuggestionIndex: number;
-    // (undocumented)
-    executeSelectedAction(): void;
-    // (undocumented)
-    protected _forceResolveButton: IButton;
-    handleKeyDown(keyCode: number): boolean;
-    // (undocumented)
-    hasSelection(): boolean;
-    // (undocumented)
-    hasSuggestionSelected(): boolean;
-    // (undocumented)
-    removeSuggestion(index?: number): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    protected renderFooterItems(): JSX.Element | null;
-    // (undocumented)
-    protected renderHeaderItems(): JSX.Element | null;
-    // (undocumented)
-    protected _renderSuggestions(): JSX.Element;
-    protected resetSelectedItem(): void;
-    // (undocumented)
-    scrollSelected(): void;
-    // (undocumented)
-    protected _searchForMoreButton: IButton;
-    // (undocumented)
-    readonly selectedElement: HTMLDivElement | undefined;
-    // (undocumented)
-    protected _selectedElement: React.RefObject<HTMLDivElement>;
-    protected selectFirstItem(): void;
-    protected selectLastItem(): void;
-    protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
-    protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
-    // (undocumented)
-    protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    }
 
 export { SuggestionsController }
 
-// @public
-export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
-    constructor(suggestionsProps: ISuggestionsCoreProps<T>);
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    currentIndex: number;
-    // (undocumented)
-    currentSuggestion: ISuggestionModel<T> | undefined;
-    // (undocumented)
-    deselectAllSuggestions(): void;
-    // (undocumented)
-    getCurrentItem(): ISuggestionModel<T>;
-    // (undocumented)
-    getSuggestionAtIndex(index: number): ISuggestionModel<T>;
-    // (undocumented)
-    hasSuggestionSelected(): boolean;
-    nextSuggestion(): boolean;
-    previousSuggestion(): boolean;
-    // (undocumented)
-    removeSuggestion(index: number): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    scrollSelected(): void;
-    // (undocumented)
-    readonly selectedElement: HTMLDivElement | undefined;
-    // (undocumented)
-    protected _selectedElement: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    setSelectedSuggestion(index: number): void;
-    }
-
-// @public (undocumented)
-export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHeaderFooterItemProps, {}> {
-    constructor(props: ISuggestionsHeaderFooterItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 export { SuggestionsItem }
-
-// @public (undocumented)
-export class SuggestionsStore<T> {
-    constructor(options?: SuggestionsStoreOptions<T>);
-    // (undocumented)
-    convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
-    // (undocumented)
-    getSuggestionAtIndex(index: number): ISuggestionModel<T>;
-    // (undocumented)
-    getSuggestions(): ISuggestionModel<T>[];
-    // (undocumented)
-    removeSuggestion(index: number): void;
-    // (undocumented)
-    suggestions: ISuggestionModel<T>[];
-    // (undocumented)
-    updateSuggestions(newSuggestions: T[]): void;
-}
-
-// @public (undocumented)
-export type SuggestionsStoreOptions<T> = {
-    getAriaLabel?: (item: T) => string;
-};
 
 export { TagItem }
 
@@ -888,8 +445,10 @@ export * from "@fluentui/react/lib/Dialog";
 export * from "@fluentui/react/lib/Divider";
 export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
+export * from "@fluentui/react/lib/ExtendedPicker";
 export * from "@fluentui/react/lib/Fabric";
 export * from "@fluentui/react/lib/Facepile";
+export * from "@fluentui/react/lib/FloatingPicker";
 export * from "@fluentui/react/lib/FocusTrapZone";
 export * from "@fluentui/react/lib/FocusZone";
 export * from "@fluentui/react/lib/Grid";
