@@ -15,7 +15,22 @@ With these building blocks, you can compose or recompose the component in numero
 
 ### Simple example
 
-A render function:
+A hook which can produce mutable state of the component (defining accessibility and behaviors):
+
+```jsx
+const useButton = (userProps, ref, defaultProps) => {
+  const state = _.merge({}, defaultProps, userProps);
+
+  // Apply button behaviors.
+  if (state.as !== 'button' && state.as !== 'a') {
+    state.tabIndex = 0;
+  }
+
+  return state;
+};
+```
+
+And a render function which can consume the state and render jsx:
 
 ```jsx
 const renderButton = state => {
@@ -23,43 +38,18 @@ const renderButton = state => {
 };
 ```
 
-A hook which can manipulate the state (defining accessibility and behaviors):
-
-```jsx
-const useButtonState = state => {
-  // If the button is rendered as something besides a button or anchor, make it focusable.
-  if (state.as !== 'button' && state.as !== 'a') {
-    state.tabIndex = 0;
-  }
-};
-```
-
-A factory function sets up the state and render function:
-
-```jsx
-const useButton = (userProps, ref, defaultProps) => {
-  const state = _.merge({}, defaultProps, userProps);
-
-  // Apply button behaviors.
-  useButtonState(state);
-
-  return { state, render: renderButton };
-};
-```
-
 A button can now be easily scaffolded, along with your choice of styling systems:
 
 ```jsx
-import * as styles from './Button.scss';
-
-const useStyles = makeStyles(styles);
+import { renderButton, useButton, useButtonClasses } from '@fluentui/react-button';
 
 const Button = React.forwardRef((props, ref) => {
-  const { state, render } = useButton(props, ref);
+  const state = useButton(props, ref);
 
   // Inject classNames as needed.
-  useStyles(state);
+  useButtonClasses(state);
 
+  // Return the rendered result.
   return render(state);
 });
 ```
