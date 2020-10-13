@@ -6,7 +6,7 @@ import { StackItemStyles as styles } from './StackItem.styles';
 
 const StackItemView: IStackItemComponent['view'] = props => {
   const { children } = props;
-  if (React.Children.count(children) < 1) {
+  if (!children) {
     return null;
   }
 
