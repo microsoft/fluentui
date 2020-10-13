@@ -14,9 +14,6 @@ storiesOf('Button Next', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .executeScript(
-          'const script=document.createElement(\'script\');script.src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js";document.head.appendChild(script);',
-        )
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
