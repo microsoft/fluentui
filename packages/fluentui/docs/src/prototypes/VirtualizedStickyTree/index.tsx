@@ -2,7 +2,7 @@ import * as React from 'react';
 import VirtualizedStickyTree from './VirtualizedStickyTree';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import { AutoSizer } from 'react-virtualized';
-import { mergeThemes, Provider, pxToRem, teamsTheme } from '@fluentui/react-northstar';
+import { mergeThemes, Provider, pxToRem, teamsTheme, treeAsListBehavior } from '@fluentui/react-northstar';
 import getItems from './itemsGenerator';
 
 // generate items that suits the use case of teams channels next to chat window
@@ -20,31 +20,31 @@ const getTeamsMeetingItems = (() => {
 })();
 
 export default () => (
-  <PrototypeSection title="Virtualized StickyTree">
-    <ComponentPrototype
-      title="Virtualized Tree with sticky header"
-      description="Tree with its content virtualized, and 1st level header sticky"
-    >
-      <Provider
-        theme={mergeThemes(teamsTheme, {
-          componentStyles: {
-            TreeItem: {
-              root: ({ props: p }) => ({
-                width: '100%',
-                // borderBottom: '1px solid grey',
-                // boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                background: teamsTheme.siteVariables.colorScheme.default.background,
-                ...(p.level === 1 && {
-                  background: teamsTheme.siteVariables.colorScheme.yellow.background,
-                }),
-                paddingRight: pxToRem(16),
-              }),
-            },
-          },
-        })}
+  <Provider
+    theme={mergeThemes(teamsTheme, {
+      componentStyles: {
+        TreeItem: {
+          root: ({ props: p }) => ({
+            width: '100%',
+            // borderBottom: '1px solid grey',
+            // boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            background: teamsTheme.siteVariables.colorScheme.default.background,
+            ...(p.level === 1 && {
+              background: teamsTheme.siteVariables.colorScheme.yellow.background,
+            }),
+            paddingRight: pxToRem(16),
+          }),
+        },
+      },
+    })}
+  >
+    <PrototypeSection title="Virtualized StickyTree">
+      <ComponentPrototype
+        title="Virtualized Tree with sticky header"
+        description="Tree with its content virtualized, and 1st level header sticky"
       >
         <div
           style={{
@@ -77,7 +77,22 @@ export default () => (
             />
           </div>
         </div>
-      </Provider>
-    </ComponentPrototype>
-  </PrototypeSection>
+      </ComponentPrototype>
+
+      <ComponentPrototype
+        title="Virtualized Tree with sticky header and treeAsList behavior"
+        description="Tree with its content virtualized, 1st level header sticky, and role as list. This type of behavior is recommended for MacOS."
+      >
+        <VirtualizedStickyTree
+          stickyItemSize={25}
+          itemSize={40}
+          height={500}
+          width={300}
+          items={getTeamsChannelItems}
+          aria-label="Tree with list accessibility roles"
+          accessibility={treeAsListBehavior}
+        />
+      </ComponentPrototype>
+    </PrototypeSection>
+  </Provider>
 );

@@ -7,6 +7,9 @@ import {
   TreeItemProps,
   treeTitleClassName,
   teamsTheme,
+  Accessibility,
+  TreeBehaviorProps,
+  AccessibilityAttributes,
 } from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
@@ -423,6 +426,10 @@ export interface StickyTreeProps {
   width: number;
   items: ObjectShorthandCollection<TreeItemProps>;
   displayChildrenNum?: boolean;
+
+  /** Accessibility behavior for tree */
+  accessibility?: Accessibility<TreeBehaviorProps>;
+  'aria-label'?: AccessibilityAttributes['aria-label'];
 }
 
 const VirtualizedStickyTree = (props: StickyTreeProps) => {
@@ -457,6 +464,8 @@ const VirtualizedStickyTree = (props: StickyTreeProps) => {
 
   return (
     <Tree
+      accessibility={props.accessibility}
+      aria-label={props['aria-label']}
       items={items}
       activeItemIds={activeItemIds}
       renderItemTitle={StickyTreeTitle}
