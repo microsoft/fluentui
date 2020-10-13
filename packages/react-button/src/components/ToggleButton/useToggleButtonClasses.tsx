@@ -36,8 +36,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
           color:
             'var(--button-highContrast-checkedHovered-contentColor, var(--button-highContrast-checked-contentColor))',
           '.ms-Button-icon': {
-            color:
-              'var(--button-highContrast-checkedHovered-iconColor, var(--button-highContrast-checked-contentColor))',
+            color: 'var(--button-highContrast-checkedHovered-iconColor, var(--button-highContrast-checked-iconColor))',
           },
         },
       },
