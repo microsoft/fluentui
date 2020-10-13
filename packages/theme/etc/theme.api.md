@@ -16,12 +16,12 @@ export const AnimationVariables: IAnimationVariables;
 
 // @public
 export type ColorTokens = ColorTokenSet & {
-    hovered?: ColorTokens;
-    pressed?: ColorTokens;
-    disabled?: ColorTokens;
-    checked?: ColorTokens;
-    checkedHovered?: ColorTokens;
-    checkedPressed?: ColorTokens;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    checked?: ColorTokenSet;
+    checkedHovered?: ColorTokenSet;
+    checkedPressed?: ColorTokenSet;
 };
 
 // @public

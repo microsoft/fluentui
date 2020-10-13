@@ -45,6 +45,7 @@ export const useSplitButtonClasses = makeVariantClasses({
           '--button-borderLeftWidth': 0,
           '--button-borderTopLeftRadius': 0,
           '--button-borderBottomLeftRadius': 0,
+          '--button-iconColor': 'var(--button-menuIconColor)',
           '--button-iconSize': 'var(--button-splitMenuIconSize)',
         },
       },
@@ -96,6 +97,7 @@ export const useSplitButtonClasses = makeVariantClasses({
         disabled: {
           dividerColor: semanticColors.disabledText,
         },
+        menuIconColor: 'var(--body-menuIconColor)',
         menuIconSize: '12px',
       },
 
@@ -106,6 +108,11 @@ export const useSplitButtonClasses = makeVariantClasses({
           dividerColor: semanticColors.disabledText,
         },
       },
+
+      transparent: {
+        menuIconColor: palette.neutralSecondary,
+      },
+
       ...ButtonSizeVariants,
     };
   },
