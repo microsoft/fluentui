@@ -8,7 +8,7 @@ export const WordTheme: Theme = createTheme({
     themeSecondary: '#366ec2',
   },
   semanticColors: {
-    buttonBackground: 'white',
+    buttonBackground: '#FFF',
     buttonBackgroundHovered: 'rgb(240, 240, 240)',
     buttonBackgroundPressed: 'rgb(240, 240, 240)',
     buttonText: 'rgb(43, 87, 154)',
