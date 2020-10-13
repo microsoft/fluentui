@@ -18,6 +18,7 @@ export interface TestDefinition {
 }
 
 const skipSpecChecksForFiles = [
+  'popupBehavior.ts', // tests are written new way in popupBehaviorDefinition.ts
   'buttonBehavior.ts', // tests are written new way in buttonBehaviorDefinition.ts
   'buttonGroupBehavior.ts', // tests are written new way in buttonGroupBehaviorDefinition.ts
   'toggleButtonBehavior.ts', // tests are written new way in toggleButtonBehaviorDefinition.ts
