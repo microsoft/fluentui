@@ -1,16 +1,12 @@
 import * as React from 'react';
-import { Button as BaseButton } from './Button';
+import { Button } from './Button';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { withThemeProvider } from '@fluentui/react-theme-provider';
-
-/** Use a ThemeProvider wrapper around the component to ensure styles show up in snapshots. */
-const Button = withThemeProvider(BaseButton);
 
 describe('Button (isConformant)', () =>
   isConformant({
-    Component: BaseButton,
+    Component: Button,
     displayName: 'Button',
   }));
 
