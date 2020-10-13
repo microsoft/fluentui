@@ -9,3 +9,5 @@ export * from './isVirtualElement';
 export * from './portalContainsElement';
 export * from './setPortalAttribute';
 export * from './setVirtualParent';
+
+import './version';

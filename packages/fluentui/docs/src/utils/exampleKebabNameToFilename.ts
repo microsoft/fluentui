@@ -13,3 +13,11 @@ export const exampleKebabNameToFilename = (exampleKebabName: string) => {
     .replace(/Perf$/, '.perf')
     .replace(/Bsize$/, '.bsize')}.tsx`;
 };
+
+/**
+ * Converts kebab-cased-example-name to readable name.
+ */
+export const exampleKebabNameToDisplayName = (exampleKebabName: string) => {
+  // button-example           => Button Example
+  return _.startCase(exampleKebabName);
+};
