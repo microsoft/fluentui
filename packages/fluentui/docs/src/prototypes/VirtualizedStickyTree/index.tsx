@@ -2,7 +2,7 @@ import * as React from 'react';
 import VirtualizedStickyTree from './VirtualizedStickyTree';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import { AutoSizer } from 'react-virtualized';
-import { mergeThemes, Provider, teamsTheme } from '@fluentui/react-northstar';
+import { mergeThemes, Provider, pxToRem, teamsTheme } from '@fluentui/react-northstar';
 import getItems from './itemsGenerator';
 
 // generate items that suits the use case of teams channels next to chat window
@@ -10,7 +10,7 @@ const getTeamsChannelItems = (() => getItems(3, 30, 2))();
 
 // generate items that suits the use case of attendees in a teams meeting
 const getTeamsMeetingItems = (() => {
-  const items = getItems(5, 20, 1);
+  const items = getItems(3, 20, 1);
   items.forEach(item => {
     if (item.items) {
       item.title = `${item.title} (${item.items.length})`;
@@ -40,6 +40,7 @@ export default () => (
                 ...(p.level === 1 && {
                   background: teamsTheme.siteVariables.colorScheme.yellow.background,
                 }),
+                paddingRight: pxToRem(16),
               }),
             },
           },
@@ -56,7 +57,7 @@ export default () => (
             <AutoSizer>
               {({ height, width }) => (
                 <VirtualizedStickyTree
-                  stickyItemSize={20}
+                  stickyItemSize={25}
                   itemSize={40}
                   height={height}
                   width={width}
@@ -67,7 +68,7 @@ export default () => (
           </div>
           <div>
             <VirtualizedStickyTree
-              stickyItemSize={20}
+              stickyItemSize={25}
               itemSize={30}
               height={500}
               width={200}
