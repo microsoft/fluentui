@@ -46,6 +46,13 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   className?: string;
 
   /**
+   * Aria role assigned to the documentCard (Eg. button, link).
+   * Use this to override the default assignment.
+   * @defaultvalue When `onClick` is provided, default role will be 'button'. When `onClickHref` is provided, default role will be 'link'.
+   */
+  role?: string;
+
+  /**
    * Hex color value of the line below the card, which should correspond to the document type.
    * This should only be supplied when using the 'compact' card layout.
    *
