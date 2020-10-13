@@ -257,7 +257,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     e.preventDefault();
     e.stopPropagation();
     if (e.target === e.currentTarget) {
-      handleTitleClick(e);
+      handleSelection(e);
     }
   };
 
