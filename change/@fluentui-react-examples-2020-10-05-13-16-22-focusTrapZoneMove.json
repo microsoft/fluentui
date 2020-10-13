@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing Modal and FocusTrapZone react-next examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T20:16:11.718Z"
+}

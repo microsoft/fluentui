@@ -7,12 +7,21 @@ import { PanelBase } from './Panel.base';
 import { IPanel } from './Panel.types';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
+import { resetIds } from '../../Utilities';
 
 let div: HTMLElement;
 
 const ReactDOM = require('react-dom');
 
 describe('Panel', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   afterEach(() => {
     jest.useRealTimers();
   });
