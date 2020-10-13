@@ -2,7 +2,6 @@ import * as React from 'react';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
-import { renderMenuButton } from './renderMenuButton';
 
 export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
 
@@ -29,8 +28,5 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
 
   useMenuButtonState(state);
 
-  return {
-    state,
-    render: renderMenuButton,
-  };
+  return state;
 };
