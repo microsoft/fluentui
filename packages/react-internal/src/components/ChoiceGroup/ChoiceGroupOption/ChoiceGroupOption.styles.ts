@@ -170,9 +170,9 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       width: choiceFieldSize,
       height: choiceFieldSize,
       fontWeight: 'normal',
+      position: 'absolute',
       top: 0,
       left: 0,
-      right: 0,
       boxSizing: 'border-box',
       transitionProperty: 'border-color',
       transitionDuration: choiceFieldTransitionDuration,
@@ -209,23 +209,23 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
 
   const dotAreaProperties: IStyle = [
     {
-      position: 'absolute',
       content: '""',
-      left: choiceFieldSize / 2,
-      right: 0,
-      borderRadius: '50%',
-      width: 0,
-      height: 0,
-
-      transitionProperty: 'width, height',
-      transitionDuration: choiceFieldTransitionDuration,
-      transitionTimingFunction: choiceFieldTransitionTiming,
-    },
-    checked && {
+      position: 'absolute',
       left: 5,
       top: 5,
+      borderRadius: '10px',
       width: 10,
       height: 10,
+      transform: 'scale(0)',
+      alginItems: 'center',
+      transitionProperty: 'transform',
+      transitionDuration: choiceFieldTransitionDuration,
+      transitionTimingFunction: choiceFieldTransitionTiming,
+      boxSizing: 'border-box',
+    },
+    checked && {
+      transform: 'scale(1)',
+
       backgroundColor: disabled ? dotDisabledColor : dotCheckedColor,
       selectors: {
         [HighContrastSelector]: {
