@@ -23,18 +23,15 @@ import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { IBaseSelectedItemsListProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IButton } from '@fluentui/react/lib/Button';
-import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
-import { IContextualMenuProps } from '@fluentui/react-internal/lib/ContextualMenu';
 import { IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
 import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { IFocusZoneProps } from '@fluentui/react/lib/FocusZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
-import { IIconProps } from '@fluentui/react/lib/Icon';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
@@ -82,7 +79,6 @@ import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
 import { ITheme } from '@fluentui/react/lib/Styling';
-import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
@@ -281,6 +277,185 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 
 // @public
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
+
+// @public (undocumented)
+export interface IBaseExtendedPicker<T> {
+    focus: () => void;
+    forceResolve?: () => void;
+    items: T[] | undefined;
+}
+
+// @public (undocumented)
+export interface IBaseExtendedPickerProps<T> {
+    className?: string;
+    componentRef?: IRefObject<IBaseExtendedPicker<T>>;
+    currentRenderedQueryString?: string;
+    defaultSelectedItems?: T[];
+    disabled?: boolean;
+    floatingPickerProps: IBaseFloatingPickerProps<T>;
+    focusZoneProps?: IFocusZoneProps;
+    headerComponent?: JSX.Element;
+    inputProps?: IInputProps;
+    itemLimit?: number;
+    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
+    onChange?: (items?: T[]) => void;
+    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
+    onItemAdded?: (addedItem: T) => void;
+    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+    onItemsRemoved?: (removedItems: T[]) => void;
+    onPaste?: (pastedText: string) => T[];
+    onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
+    onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
+    selectedItems?: T[];
+    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    suggestionItems?: T[];
+}
+
+// @public (undocumented)
+export interface IBaseExtendedPickerState<T> {
+    // (undocumented)
+    queryString: string | null;
+}
+
+// @public (undocumented)
+export interface IBaseFloatingPicker {
+    hidePicker: () => void;
+    inputText: string;
+    isSuggestionsShown: boolean;
+    onQueryStringChanged: (input: string) => void;
+    showPicker: (updateValue?: boolean) => void;
+    suggestions: any[];
+}
+
+// @public (undocumented)
+export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
+    calloutWidth?: number;
+    className?: string;
+    // (undocumented)
+    componentRef?: IRefObject<IBaseFloatingPicker>;
+    createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
+    getTextFromItem?: (item: T, currentValue?: string) => string;
+    inputElement?: HTMLInputElement | null;
+    onChange?: (item: T) => void;
+    onInputChanged?: (filter: string) => void;
+    onRemoveSuggestion?: (item: T) => void;
+    onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
+    onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+    onSuggestionsHidden?: () => void;
+    onSuggestionsShown?: () => void;
+    onValidateInput?: (input: string) => boolean;
+    onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+    pickerCalloutProps?: ICalloutProps;
+    pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+    resolveDelay?: number;
+    searchingText?: ((props: {
+        input: string;
+    }) => string) | string;
+    selectedItems?: T[];
+    showForceResolve?: () => boolean;
+    suggestionItems?: T[];
+    suggestionsStore: SuggestionsStore<T>;
+}
+
+// @public (undocumented)
+export interface IBaseFloatingPickerState {
+    // (undocumented)
+    didBind: boolean;
+    // (undocumented)
+    queryString: string;
+    // (undocumented)
+    suggestionsVisible?: boolean;
+}
+
+// @public
+export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<any>, 'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'>;
+
+export { IBasePicker }
+
+export { IBasePickerProps }
+
+export { IBasePickerState }
+
+export { IBasePickerStyleProps }
+
+export { IBasePickerStyles }
+
+export { IBasePickerSuggestionsProps }
+
+// @public (undocumented)
+export interface ICalloutContentStyleProps {
+    backgroundColor?: string;
+    beakWidth?: number;
+    calloutMaxWidth?: number;
+    calloutWidth?: number;
+    className?: string;
+    overflowYHidden?: boolean;
+    positions?: ICalloutPositionedInfo;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICalloutContentStyles {
+    beak: IStyle;
+    beakCurtain: IStyle;
+    calloutMain: IStyle;
+    container: IStyle;
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+    alignTargetEdge?: boolean;
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    backgroundColor?: string;
+    beakWidth?: number;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
+    calloutMaxHeight?: number;
+    calloutMaxWidth?: number;
+    calloutWidth?: number;
+    className?: string;
+    coverTarget?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
+    directionalHint?: DirectionalHint;
+    directionalHintFixed?: boolean;
+    directionalHintForRTL?: DirectionalHint;
+    doNotLayer?: boolean;
+    finalHeight?: number;
+    gapSpace?: number;
+    hidden?: boolean;
+    hideOverflow?: boolean;
+    isBeakVisible?: boolean;
+    layerProps?: ILayerProps;
+    minPagePadding?: number;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+    onLayerMounted?: () => void;
+    onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+        documentContainsFocus: boolean;
+    }) => void;
+    onScroll?: () => void;
+    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
+    // @deprecated
+    preventDismissOnLostFocus?: boolean;
+    // @deprecated
+    preventDismissOnResize?: boolean;
+    // @deprecated
+    preventDismissOnScroll?: boolean;
+    role?: string;
+    setInitialFocus?: boolean;
+    shouldDismissOnWindowFocus?: boolean;
+    // @deprecated
+    shouldRestoreFocus?: boolean;
+    shouldUpdateWhenHidden?: boolean;
+    style?: React.CSSProperties;
+    styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+    target?: Target;
+    theme?: ITheme;
+}
 
 // @public (undocumented)
 export interface IDropdown {
