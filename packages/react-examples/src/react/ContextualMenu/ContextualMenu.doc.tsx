@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 import { ContextualMenuBasicExample } from './ContextualMenu.Basic.Example';
 import { ContextualMenuDefaultExample } from './ContextualMenu.Default.Example';
