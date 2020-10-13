@@ -408,14 +408,28 @@ export const Popup: React.FC<PopupProps> &
               {popupContent}
             </Ref>
 
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="contextmenu" capture />
-            <EventListener listener={handleDocumentKeyDown(getRefs)} target={context.target} type="keydown" capture />
-
-            {isOpenedByRightClick && (
+            {context.target && (
               <>
-                <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="contextmenu"
+                  capture
+                />
+                <EventListener
+                  listener={handleDocumentKeyDown(getRefs)}
+                  target={context.target}
+                  type="keydown"
+                  capture
+                />
+
+                {isOpenedByRightClick && (
+                  <>
+                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                  </>
+                )}
               </>
             )}
           </>
@@ -470,13 +484,13 @@ export const Popup: React.FC<PopupProps> &
    * Can be either trigger DOM element itself or the element inside it.
    */
   const updateTriggerFocusableRef = () => {
-    const activeDocument: HTMLDocument = context.target;
-    const activeElement = activeDocument.activeElement;
-
-    triggerFocusableRef.current =
-      triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
-        ? (activeElement as HTMLElement)
-        : triggerRef.current;
+    const activeElement = context.target?.activeElement;
+    if (activeElement) {
+      triggerFocusableRef.current =
+        triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
+          ? (activeElement as HTMLElement)
+          : triggerRef.current;
+    }
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
