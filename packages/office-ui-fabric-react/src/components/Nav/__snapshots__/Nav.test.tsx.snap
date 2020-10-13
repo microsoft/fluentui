@@ -66,7 +66,6 @@ exports[`Nav renders Nav correctly 1`] = `
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #333333;
                     display: block;
                     position: relative;
@@ -136,7 +135,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: -2px;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
+                      background-color: #f4f4f4;
                       color: #333333;
                     }
                     &:hover {
