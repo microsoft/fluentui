@@ -94,7 +94,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <table
                 aria-activedescendant="DatePickerDay-active9"
@@ -961,7 +960,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-DatePicker-optionGrid"
