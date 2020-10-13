@@ -1,5 +1,11 @@
-import { IPartialTheme, ITheme } from './ITheme';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IPalette } from './IPalette';
+import { IFontStyles } from './IFontStyles';
+import { ISemanticColors } from './ISemanticColors';
+import { ISpacing } from './ISpacing';
+import { IEffects } from './IEffects';
+import { IScheme, ISchemeNames } from './IScheme';
 
 /**
  * A ramp of size values.
@@ -79,36 +85,108 @@ export interface Tokens {
   [key: string]: TokenSetType;
 }
 
+/**
+ * A set of style configurations for variants of a component (e.g. primary is a variant for the Button component).
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare type Variants = Record<string, any>;
+export type Variants = Record<string, any>;
 
+/**
+ * {@docCategory Theme}
+ * Component-level styles and variants.
+ */
 export interface ComponentStyles {
-  [componentName: string]: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    styles?: IStyleFunctionOrObject<any, any>;
-    variants?: Variants;
-  };
+  /**
+   * styles prop for a component.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  styles?: IStyleFunctionOrObject<any, any>;
+
+  /**
+   * The variants property is still in an experimental phase. This is only applied by `ThemeProvider`.
+   */
+  variants?: Variants;
 }
 
 /**
+ * {@docCategory Theme}
+ * Component-level styles and token set.
+ */
+export type ComponentsStyles = {
+  [componentName: string]: ComponentStyles;
+};
+
+/**
+ * {@docCategory Theme}
  * A prepared (fully expanded) theme object.
  */
-export interface Theme extends ITheme {
-  components?: ComponentStyles;
+export interface Theme extends IScheme {
+  /**
+   * Component-level styles and token set.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
+  components?: ComponentsStyles;
+
+  /**
+   * CSS stylesheets to be registered.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
   stylesheets?: string[];
+
+  /**
+   * @internal
+   * Id of the theme. This is for internal use only.
+   */
   id?: string;
 
-  /** @internal
-   * This is currently only for internal use and not production-ready.
+  /**
+   * @internal
+   * Global tokens. This is for internal use only and is not production-ready.
    * */
   tokens?: RecursivePartial<Tokens>;
+
+  /**
+   * @internal
+   * The schemes property is still in an experimental phase. The intent is to have it work
+   * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
+   * Alternative themes that can be referred to by name.
+   */
+  schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
 /**
- * A partial theme object.
+ * {@docCategory Theme}
+ * A partial theme.
  */
-export interface PartialTheme extends IPartialTheme {
-  components?: ComponentStyles;
-  tokens?: RecursivePartial<Tokens>;
+export interface PartialTheme {
+  components?: ComponentsStyles;
   stylesheets?: string[];
+
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  rtl?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  /**
+   * @internal
+   * Global tokens. This is experimental and not production-ready.
+   * */
+  tokens?: RecursivePartial<Tokens>;
+
+  /**
+   * @internal
+   * The schemes property is still in an experimental phase. The intent is to have it work
+   * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
+   * Alternative themes that can be referred to by name.
+   */
+  schemes?: { [P in ISchemeNames]?: IScheme };
 }
