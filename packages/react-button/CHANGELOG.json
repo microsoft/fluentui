@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@fluentui/react-button_v0.16.0",
+      "version": "0.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating classes hooks derived from Button to actually derive from Button.",
+            "author": "dzearing@hotmail.com",
+            "commit": "c92c7c4caa7b3f97fc1b7198ec603bd6317ac851",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@fluentui/react-button_v0.15.0",
       "version": "0.15.0",

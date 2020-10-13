@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.16.0)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.15.0..@fluentui/react-theme-provider_v0.16.0)
+
+### Minor changes
+
+- Changing useStyleRenderer to default to merge-styles so that things actually happen. ([PR #15433](https://github.com/microsoft/fluentui/pull/15433) by dzearing@hotmail.com)
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.15.0)
 

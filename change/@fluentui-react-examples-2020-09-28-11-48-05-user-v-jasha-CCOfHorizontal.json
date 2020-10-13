@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-28T06:18:05.803Z"
-}

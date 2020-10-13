@@ -2,6 +2,21 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@uifabric/foundation_v7.9.12",
+      "version": "7.9.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "withSlots: avoid calling traverseAllChildren twice",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "48eec32af2e31947e90b3324f81e2d8a3dbc003d",
+            "package": "@uifabric/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/foundation_v7.9.8",
       "version": "7.9.8",

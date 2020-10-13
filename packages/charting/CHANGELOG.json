@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@uifabric/charting_v4.7.0",
+      "version": "4.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f6bf52d3b48a457ad9e1b668242e7c1ca09636e3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Oct 2020 18:03:19 GMT",
       "tag": "@uifabric/charting_v4.6.1",
       "version": "4.6.1",

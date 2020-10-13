@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.4)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.3..@fluentui/react-examples_v0.6.4)
+
+### Patches
+
+- Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
 
 ## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.3)
 

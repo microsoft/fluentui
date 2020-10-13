@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@fluentui/react-examples_v0.6.4",
+      "version": "0.6.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f6bf52d3b48a457ad9e1b668242e7c1ca09636e3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Oct 2020 12:30:13 GMT",
       "tag": "@fluentui/react-examples_v0.6.3",
       "version": "0.6.3",

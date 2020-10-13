@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 09 Oct 2020 18:03:19 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.0)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.6.1..@uifabric/charting_v4.7.0)
+
+### Minor changes
+
+- Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
 
 ## [4.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.1)
 

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating classes hooks derived from Button to actually derive from Button.",
-  "packageName": "@fluentui/react-button",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-12T20:18:29.890Z"
-}
