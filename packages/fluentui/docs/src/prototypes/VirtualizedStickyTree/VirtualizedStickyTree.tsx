@@ -60,6 +60,22 @@ const InnerElementType = ({ children, style }) => {
     renderedItems.findIndex((item: React.ReactElement<TreeItemProps>) => item.props.id === id),
   );
 
+  const getStickyStyle = (itemIndex: number, stickyTop = true, itemSum?: number) => {
+    // Sticky items are sticked next to container's top or bottom edge, with the smaller-indexed items stacked on bigger-indexed items
+    return {
+      position: 'sticky',
+      height: stickyItemSize,
+      zIndex: stickyTop ? teamsTheme.siteVariables.zIndexes.overlay : teamsTheme.siteVariables.zIndexes.overlayPriority,
+      top: stickyTop ? itemIndex * stickyItemSize : height - (itemSum - itemIndex) * stickyItemSize,
+    };
+  };
+
+  const stickyItemActionHandlers = {
+    onTitleClick: onClickSticky,
+    onFocusParent: data.handleFocusParent,
+    onFocusFirstChild: data.handleFocusFirstChild,
+  };
+
   return (
     <div
       style={{
@@ -70,31 +86,16 @@ const InnerElementType = ({ children, style }) => {
       {stickyTopItemsIndex.map((index: number) => {
         const item = renderedItems[index];
         return React.cloneElement(item, {
-          style: {
-            position: 'sticky',
-            height: stickyItemSize,
-            zIndex: teamsTheme.siteVariables.zIndexes.overlay,
-            top: index * stickyItemSize,
-          },
-          onTitleClick: onClickSticky,
-          onFocusParent: data.handleFocusParent,
-          onFocusFirstChild: data.handleFocusFirstChild,
+          style: getStickyStyle(index),
+          ...stickyItemActionHandlers,
         });
       })}
       {children}
       {stickyBottomItemsIndex.map((itemIndex: number, index: number, arr: number[]) => {
         const item = renderedItems[itemIndex];
         return React.cloneElement(item, {
-          style: {
-            position: 'sticky',
-            height: stickyItemSize,
-            zIndex: teamsTheme.siteVariables.zIndexes.overlayPriority,
-            // stick items to the container bottom, with the smaller-indexed items stacked on bigger-indexed items
-            top: height - (arr.length - index) * stickyItemSize,
-          },
-          onTitleClick: onClickSticky,
-          onFocusParent: data.handleFocusParent,
-          onFocusFirstChild: data.handleFocusFirstChild,
+          style: getStickyStyle(index, false, arr.length),
+          ...stickyItemActionHandlers,
         });
       })}
     </div>
