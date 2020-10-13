@@ -245,6 +245,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             className={ css('ms-Panel-closeButton ms-PanelAction-close') }
             onClick={ this._onPanelClick }
             ariaLabel={ closeButtonAriaLabel }
+            title={ closeButtonAriaLabel }
             data-is-visible={ true }
             iconProps={ { iconName: 'Cancel' } }
           />
