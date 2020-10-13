@@ -11,7 +11,7 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   output: {
     libraryTarget: 'var',
-    library: 'FabricAzureThemes',
+    library: 'FluentUIAzureThemes',
   },
 
   externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],

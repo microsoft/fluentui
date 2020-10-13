@@ -197,11 +197,6 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
             legendProps={{
-              overflowProps: {
-                focusZoneProps: {
-                  'aria-label': 'Legends container',
-                },
-              },
               allowFocusOnLegends: true,
             }}
           />

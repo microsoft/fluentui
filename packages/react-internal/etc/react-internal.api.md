@@ -3484,13 +3484,17 @@ export interface ILayer {
 }
 
 // @public (undocumented)
-export type ILayerBaseState = {
-    hostId?: string;
-    layerElement?: HTMLElement;
-};
+export interface ILayerHost {
+}
 
 // @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
@@ -3920,13 +3924,9 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
-    // @deprecated
-    doNotContainWithinFocusZone?: boolean;
-    // @deprecated
-    focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -4018,7 +4018,7 @@ export interface IPageSpecification {
 
 // @public (undocumented)
 export interface IPanel {
-    dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+    dismiss: (ev?: React.KeyboardEvent<HTMLElement> | KeyboardEvent) => void;
     open: () => void;
 }
 
@@ -4057,7 +4057,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     isLightDismiss?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
     onOpen?: () => void;
@@ -4372,12 +4372,12 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 export { IPoint }
 
 // @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<Popup> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
@@ -4386,12 +4386,6 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
-}
-
-// @public (undocumented)
-export interface IPopupState {
-    // (undocumented)
-    needsVerticalScrollBar?: boolean;
 }
 
 // @public
@@ -6055,33 +6049,10 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
-export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
-    constructor(props: ILayerProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ILayerProps;
-    // (undocumented)
-    render(): React.ReactNode;
-    }
+export const LayerBase: React.FunctionComponent<ILayerProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class LayerHost extends React.Component<ILayerHostProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(): boolean;
-}
+export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
@@ -6270,21 +6241,7 @@ export enum OverflowButtonType {
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
-    constructor(props: IOverflowSetProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
 export const Overlay: React.FunctionComponent<IOverlayProps>;
@@ -6504,23 +6461,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
 export { Point }
 
 // @public
-export class Popup extends React.Component<IPopupProps, IPopupState> {
-    constructor(props: IPopupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IPopupProps;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    _root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    }
+export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
 export enum Position {
