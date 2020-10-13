@@ -40,6 +40,7 @@ import { IInputProps } from '@fluentui/react/lib/Pickers';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react/lib/Label';
 import { ILabelStyles } from '@fluentui/react/lib/Label';
+import { ILayerProps } from '@fluentui/react/lib/Layer';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IPanelStyles } from '@fluentui/react/lib/Panel';
 import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
