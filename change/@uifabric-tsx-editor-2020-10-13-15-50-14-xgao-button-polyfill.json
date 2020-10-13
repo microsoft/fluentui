@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove usage of includes (not supported by IE11).",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-13T22:50:14.620Z"
+}
