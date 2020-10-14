@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "add styling to prevent flicker",
+  "comment": "change reuse style node to false",
   "packageName": "@uifabric/merge-styles",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
