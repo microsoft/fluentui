@@ -26,7 +26,8 @@ import { CardStyles as styles } from './card.styles';
     mode: 'closed',
   },
 })
-export class FluentCard extends DesignSystemProvider {
+export class FluentCard extends DesignSystemProvider
+  implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
   /**
    * Background color for the banner component. Sets context for the design system.
    * @public
