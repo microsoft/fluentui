@@ -76,7 +76,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         width: 'var(--button-width)',
         maxWidth: 'var(--button-maxWidth)',
         minWidth: 'var(--button-minWidth)',
-        height: 'var(--button-height)',
+        height: 'var(--button-height,var(--button-minHeight))',
         minHeight: 'var(--button-minHeight)',
 
         paddingLeft: 'var(--button-paddingLeft)',
@@ -92,6 +92,10 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         fontWeight: 'var(--button-fontWeight)',
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
+
+        span: {
+          position: 'relative',
+        },
 
         ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
           content: '""',
