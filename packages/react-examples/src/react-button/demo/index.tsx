@@ -3,6 +3,11 @@ import * as path from 'path';
 import { createApp, Markdown, examplesOf } from '@uifabric/example-app-base';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import '@fluentui/ie11-polyfills';
+import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
+
+Stylesheet.getInstance().setConfig({
+  injectionMode: InjectionMode.appendChild,
+});
 
 const req = require.context('../', true, /\.stories\.tsx$/, 'sync');
 
