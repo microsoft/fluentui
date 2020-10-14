@@ -1,1 +1,1 @@
-export * from './components/Dropdown/index';
+export * from '@fluentui/react/lib/Dropdown';
