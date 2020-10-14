@@ -70,7 +70,7 @@ storiesOf('ToggleButton Next', module)
     <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
-storiesOf('ToggleButton Next - Fluid', module)
+storiesOf('ToggleButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -96,42 +96,42 @@ storiesOf('ToggleButton Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <ToggleButton fluid icon="X">
+    <ToggleButton block icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <ToggleButton fluid primary icon="X">
+    <ToggleButton block primary icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <ToggleButton fluid disabled icon="X">
+    <ToggleButton block disabled icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <ToggleButton fluid primary disabled icon="X">
+    <ToggleButton block primary disabled icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Ghost', () => (
-    <ToggleButton fluid ghost icon="X">
+    <ToggleButton block ghost icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <ToggleButton fluid disabled ghost icon="X">
+    <ToggleButton block disabled ghost icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Transparent', () => (
-    <ToggleButton fluid transparent icon="X">
+    <ToggleButton block transparent icon="X">
       Hello, world
     </ToggleButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <ToggleButton fluid disabled transparent icon="X">
+    <ToggleButton block disabled transparent icon="X">
       Hello, world
     </ToggleButton>
   ));

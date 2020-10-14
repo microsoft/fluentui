@@ -328,7 +328,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         borderRadius: '50000px',
       },
 
-      fluid: {
+      block: {
         width: '100%',
         maxWidth: 'none',
       },

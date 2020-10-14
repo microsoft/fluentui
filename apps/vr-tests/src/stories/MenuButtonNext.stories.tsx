@@ -70,7 +70,7 @@ storiesOf('MenuButton Next', module)
     <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
-storiesOf('MenuButton Next - Fluid', module)
+storiesOf('MenuButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -96,42 +96,42 @@ storiesOf('MenuButton Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <MenuButton fluid icon="X">
+    <MenuButton block icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Primary', () => (
-    <MenuButton fluid primary icon="X">
+    <MenuButton block primary icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Disabled', () => (
-    <MenuButton fluid disabled icon="X">
+    <MenuButton block disabled icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Primary Disabled', () => (
-    <MenuButton fluid primary disabled icon="X">
+    <MenuButton block primary disabled icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Ghost', () => (
-    <MenuButton fluid ghost icon="X">
+    <MenuButton block ghost icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <MenuButton fluid disabled ghost icon="X">
+    <MenuButton block disabled ghost icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Transparent', () => (
-    <MenuButton fluid transparent icon="X">
+    <MenuButton block transparent icon="X">
       Hello, world
     </MenuButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <MenuButton fluid disabled transparent icon="X">
+    <MenuButton block disabled transparent icon="X">
       Hello, world
     </MenuButton>
   ));
@@ -189,8 +189,8 @@ storiesOf('MenuButton Next - Teams Theme', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Fluid', () => (
-    <MenuButton fluid icon="X">
+  .addStory('Block', () => (
+    <MenuButton block icon="X">
       Hello, world
     </MenuButton>
   ))

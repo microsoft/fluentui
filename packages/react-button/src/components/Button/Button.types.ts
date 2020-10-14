@@ -42,7 +42,7 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /** A button can fill the width of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -146,5 +146,5 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
   primary?: TTokens;
   iconOnly?: TTokens;
   circular?: TTokens;
-  fluid?: TTokens;
+  block?: TTokens;
 };
