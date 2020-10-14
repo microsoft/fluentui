@@ -39,7 +39,6 @@ import { IStyleFunctionOrObject } from '@fluentui/react-internal/lib/Utilities';
 import { ITheme } from '@fluentui/react-internal/lib/Styling';
 import { ITooltipHostProps } from '@fluentui/react-internal/lib/Tooltip';
 import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
-import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IWithViewportProps } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
 import { Omit } from '@fluentui/react-internal/lib/Utilities';
 import { PersonaInitialsColor } from '@fluentui/react-internal/lib/Persona';
@@ -278,26 +277,7 @@ export enum DocumentCardType {
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
-export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
-    constructor(props: IDropdownProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: {
-        options: any[];
-    };
-    // (undocumented)
-    focus(shouldOpenOnFocus?: boolean): void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IDropdownOption[];
-    // (undocumented)
-    setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
-}
+export const DropdownBase: React.FunctionComponent<IDropdownProps>;
 
 export { DropdownMenuItemType }
 
@@ -1473,10 +1453,6 @@ export interface IDropdown {
     readonly selectedOptions: IDropdownOption[];
 }
 
-// @public
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
-}
-
 // @public (undocumented)
 export interface IDropdownOption extends ISelectableOption {
     // @deprecated
@@ -1484,7 +1460,7 @@ export interface IDropdownOption extends ISelectableOption {
 }
 
 // @public (undocumented)
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number;
     // @deprecated
@@ -1508,17 +1484,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     selectedKeys?: string[] | number[] | null;
     styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IDropdownState {
-    // (undocumented)
-    calloutRenderEdge?: RectangleEdge;
-    hasFocus: boolean;
-    // (undocumented)
-    isOpen: boolean;
-    // (undocumented)
-    selectedIndices: number[];
 }
 
 // @public
