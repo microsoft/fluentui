@@ -65,7 +65,7 @@
     border-bottom-left-radius: var(--button-borderRadius);
   }
 
-  ._fluid & {
+  ._block & {
     flex-grow: 1;
     justify-content: flex-end;
   }

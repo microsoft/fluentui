@@ -111,8 +111,8 @@ This ensures that `Button` components work not just with Fluent UI icons, but wi
 These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
 | Modifier | Description |
 | ---------- | --------------------------------------------------------------------------------------- |
+| `block` | Stretches the button to the container width. |
 | `circular` | Make the button rounded on the edges (pill button.) |
-| `fluid` | Stretches the button to the container width. |
 | `iconOnly` | Makes the width match the height. Can be combined with circular to make circle buttons. |
 | `ghost` | Makes the button inherit the background color. |
 | `primary` | Uses the brand color to indicate the button is a primary action. |

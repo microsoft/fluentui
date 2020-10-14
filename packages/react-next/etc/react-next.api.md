@@ -10,7 +10,6 @@ import { BasePickerListBelow } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { CompactPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { createGenericItem } from '@fluentui/react/lib/Pickers';
-import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react/lib/SelectableOption';
 import { Autofill as FabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillProps as FabricAutofillProps } from '@fluentui/react/lib/Pickers';
 import { IBasePicker } from '@fluentui/react/lib/Pickers';
@@ -19,20 +18,10 @@ import { IBasePickerState } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
-import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
-import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
-import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
-import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
-import { IKeytipProps } from '@fluentui/react/lib/Keytip';
-import { ILabelStyleProps } from '@fluentui/react/lib/Label';
-import { ILabelStyles } from '@fluentui/react/lib/Label';
-import { ILayerProps } from '@fluentui/react/lib/Layer';
-import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
-import { IPanelStyles } from '@fluentui/react/lib/Panel';
 import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSelectedStyleProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSelectedStyles } from '@fluentui/react/lib/Pickers';
@@ -45,12 +34,6 @@ import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRectangle } from '@fluentui/react/lib/Utilities';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { ISelectableDroppableTextProps } from '@fluentui/react/lib/SelectableOption';
-import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
-import { IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
 import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { ISuggestions } from '@fluentui/react/lib/Pickers';
@@ -70,7 +53,6 @@ import { ITagItemSuggestionProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
-import { ITheme } from '@fluentui/react/lib/Styling';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
@@ -80,9 +62,6 @@ import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
-import * as React from 'react';
-import { RectangleEdge } from '@fluentui/react/lib/Positioning';
-import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { SuggestionActionType } from '@fluentui/react/lib/Pickers';
 import { Suggestions } from '@fluentui/react/lib/Pickers';
 import { SuggestionsController } from '@fluentui/react/lib/Pickers';
@@ -93,7 +72,6 @@ import { TagItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { TagItemSuggestionBase } from '@fluentui/react/lib/Pickers';
 import { TagPicker } from '@fluentui/react/lib/Pickers';
 import { TagPickerBase } from '@fluentui/react/lib/Pickers';
-import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from '@fluentui/react/lib/Pickers';
 
 export { BasePeoplePicker }
@@ -102,29 +80,15 @@ export { BasePicker }
 
 export { BasePickerListBelow }
 
-// @public (undocumented)
-export const Callout: React.FunctionComponent<ICalloutProps>;
-
 export { CompactPeoplePicker }
 
 export { CompactPeoplePickerBase }
 
 export { createGenericItem }
 
-// @public (undocumented)
-export const Dropdown: React.FunctionComponent<IDropdownProps>;
-
-// @public (undocumented)
-export const DropdownBase: React.FunctionComponent<IDropdownProps>;
-
-export { DropdownMenuItemType }
-
 export { FabricAutofill }
 
 export { FabricAutofillProps }
-
-// @public
-export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 export { IBasePicker }
 
@@ -138,172 +102,9 @@ export { IBasePickerStyles }
 
 export { IBasePickerSuggestionsProps }
 
-// @public (undocumented)
-export interface ICalloutContentStyleProps {
-    backgroundColor?: string;
-    beakWidth?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    overflowYHidden?: boolean;
-    positions?: ICalloutPositionedInfo;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ICalloutContentStyles {
-    beak: IStyle;
-    beakCurtain: IStyle;
-    calloutMain: IStyle;
-    container: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    alignTargetEdge?: boolean;
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    backgroundColor?: string;
-    beakWidth?: number;
-    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
-    calloutMaxHeight?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    coverTarget?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
-    directionalHint?: DirectionalHint;
-    directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint;
-    doNotLayer?: boolean;
-    finalHeight?: number;
-    gapSpace?: number;
-    hidden?: boolean;
-    hideOverflow?: boolean;
-    isBeakVisible?: boolean;
-    layerProps?: ILayerProps;
-    minPagePadding?: number;
-    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-    onLayerMounted?: () => void;
-    onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    onScroll?: () => void;
-    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
-    // @deprecated
-    preventDismissOnLostFocus?: boolean;
-    // @deprecated
-    preventDismissOnResize?: boolean;
-    // @deprecated
-    preventDismissOnScroll?: boolean;
-    role?: string;
-    setInitialFocus?: boolean;
-    shouldDismissOnWindowFocus?: boolean;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-    shouldUpdateWhenHidden?: boolean;
-    style?: React.CSSProperties;
-    styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Target;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IDropdown {
-    // (undocumented)
-    focus: (shouldOpenOnFocus?: boolean) => void;
-    readonly selectedOptions: IDropdownOption[];
-}
-
-// @public (undocumented)
-export interface IDropdownOption extends ISelectableOption {
-    // @deprecated
-    isSelected?: boolean;
-}
-
-// @public (undocumented)
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
-    // @deprecated
-    isDisabled?: boolean;
-    keytipProps?: IKeytipProps;
-    multiSelectDelimiter?: string;
-    notifyOnReselect?: boolean;
-    onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (option: IDropdownOption, index?: number) => void;
-    onRenderCaretDown?: IRenderFunction<IDropdownProps>;
-    onRenderLabel?: IRenderFunction<IDropdownProps>;
-    // @deprecated
-    onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
-    onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
-    onRenderTitle?: IRenderFunction<IDropdownOption[]>;
-    options: IDropdownOption[];
-    // @deprecated
-    placeHolder?: string;
-    responsiveMode?: ResponsiveMode;
-    selectedKeys?: string[] | number[] | null;
-    styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
-    theme?: ITheme;
-}
-
-// @public
-export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
-    hasError: boolean;
-    hasLabel: boolean;
-    isOpen: boolean;
-    isRenderingPlaceholder: boolean;
-    panelClassName?: string;
-    calloutClassName?: string;
-    calloutRenderEdge?: RectangleEdge;
-};
-
-// @public
-export interface IDropdownStyles {
-    callout: IStyle;
-    caretDown: IStyle;
-    caretDownWrapper: IStyle;
-    dropdown: IStyle;
-    dropdownDivider: IStyle;
-    dropdownItem: IStyle;
-    dropdownItemDisabled: IStyle;
-    dropdownItemHeader: IStyle;
-    dropdownItemHidden: IStyle;
-    dropdownItems: IStyle;
-    dropdownItemSelected: IStyle;
-    dropdownItemSelectedAndDisabled: IStyle;
-    dropdownItemsWrapper: IStyle;
-    dropdownOptionText: IStyle;
-    errorMessage: IStyle;
-    label: IStyle;
-    // @deprecated
-    panel: IStyle;
-    root: IStyle;
-    subComponentStyles: IDropdownSubComponentStyles;
-    title: IStyle;
-}
-
-// @public (undocumented)
-export interface IDropdownSubComponentStyles {
-    label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
-    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
-    panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
-}
-
 export { IFabricAutofill }
 
 export { IFabricAutofillState }
-
-// @public (undocumented)
-export interface IFocusTrapCalloutProps extends ICalloutProps {
-    focusTrapProps?: IFocusTrapZoneProps;
-}
 
 export { IGenericItem }
 
@@ -389,8 +190,6 @@ export { PeoplePickerItemSuggestion }
 
 export { PeoplePickerItemSuggestionBase }
 
-export { ResponsiveMode }
-
 export { SuggestionActionType }
 
 export { Suggestions }
@@ -410,8 +209,6 @@ export { TagItemSuggestionBase }
 export { TagPicker }
 
 export { TagPickerBase }
-
-export { Target }
 
 export { ValidationState }
 
@@ -433,6 +230,7 @@ export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Autofill";
 export * from "@fluentui/react/lib/Breadcrumb";
+export * from "@fluentui/react/lib/Callout";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";
@@ -445,6 +243,7 @@ export * from "@fluentui/react/lib/Dialog";
 export * from "@fluentui/react/lib/Divider";
 export * from "@fluentui/react/lib/DocumentCard";
 export * from "@fluentui/react/lib/DragDrop";
+export * from "@fluentui/react/lib/Dropdown";
 export * from "@fluentui/react/lib/ExtendedPicker";
 export * from "@fluentui/react/lib/Fabric";
 export * from "@fluentui/react/lib/Facepile";

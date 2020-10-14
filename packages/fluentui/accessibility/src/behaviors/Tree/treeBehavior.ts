@@ -11,6 +11,7 @@ import { treeItemBehavior } from './treeItemBehavior';
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Provides arrow key navigation in vertical direction.
  * Triggers 'expandSiblings' action with '*' on 'root'.
+ * Adds attribute 'aria-multiselectable=true' to 'root' slot if 'selectable' property is true. Does not set the attribute otherwise.
  */
 export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   return {
@@ -19,6 +20,9 @@ export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
         role: 'tree',
         'aria-labelledby': props['aria-labelledby'],
         tabIndex: -1,
+        ...(props.selectable && {
+          'aria-multiselectable': true,
+        }),
       },
     },
     keyActions: {
@@ -39,4 +43,7 @@ export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   };
 };
 
-export type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
+export type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'> & {
+  /** Whether or not tree items are selectable. */
+  selectable?: boolean;
+};

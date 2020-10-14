@@ -123,6 +123,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Separator: {},
     Stack: {},
     Text: {},
+    ThemeProvider: {},
     Themes: {},
   },
   Experimental: {
@@ -290,81 +291,3 @@ export const controlsPagesWeb: INavPage[] = [
   },
   ...generateCategories(),
 ];
-
-// Old list
-// const categories: { [name: string]: string[] } = {
-//   'Basic Inputs': [
-//     'Button',
-//     'Checkbox',
-//     'ChoiceGroup',
-//     'ComboBox',
-//     'ContextualMenu',
-//     'Dropdown',
-//     'Label',
-//     'Link',
-//     'Rating',
-//     'Slider',
-//     'SpinButton',
-//     'TextField',
-//     'Toggle'
-//   ],
-//   Navigation: [
-//     'Breadcrumb',
-//     'CommandBar',
-//     'Nav',
-//     'OverflowSet',
-//     'Pivot',
-//     'SearchBox'
-//   ],
-//   Layout: [
-//     'Stack'
-//   ],
-//   Content: [
-//     'ActivityItem',
-//     'Calendar',
-//     'DetailsList',
-//     'Facepile',
-//     'GroupedList',
-//     'Icon',
-//     'Image',
-//     'List',
-//     'Persona',
-//     'Separator'
-//   ],
-//   Pickers: [
-//     'Pickers',
-//     'ColorPicker',
-//     'DatePicker',
-//     'PeoplePicker',
-//     'SwatchColorPicker'
-//   ],
-//   'Progress & Validation': [
-//     'MessageBar',
-//     'ProgressIndicator',
-//     'Shimmer',
-//     'Spinner'
-//   ],
-//   Surfaces: [
-//     'Callout',
-//     'Dialog',
-//     'DocumentCard',
-//     'HoverCard',
-//     'Layer',
-//     'Modal',
-//     'Overlay',
-//     'Panel',
-//     'ScrollablePane',
-//     'TeachingBubble',
-//     'Tooltip',
-//     'Coachmark'
-//   ],
-//   Utilities: [
-//     'FocusTrapZone',
-//     'FocusZone',
-//     'MarqueeSelection',
-//     'ResizeGroup',
-//     'Selection',
-//     'Text',
-//     'Themes'
-//   ]
-// };

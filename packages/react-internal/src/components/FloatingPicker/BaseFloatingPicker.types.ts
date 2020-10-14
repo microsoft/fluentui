@@ -4,7 +4,6 @@ import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 import { ICalloutProps } from '../Callout/Callout.types';
-/* eslint-disable */
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */

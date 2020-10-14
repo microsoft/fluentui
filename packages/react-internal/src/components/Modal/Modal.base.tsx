@@ -17,7 +17,7 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '../Callout/index';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../Icon/index';
 import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
