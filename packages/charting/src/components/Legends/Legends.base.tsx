@@ -298,7 +298,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           {...(allowFocusOnLegends && {
             'aria-expanded': this.state.isHoverCardVisible,
@@ -378,7 +377,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
         key={index}
         className={classNames.legend}
-        /* eslint-disable react/jsx-no-bind */
         onClick={onClickHandler}
         onMouseOver={onHoverHandler}
         onMouseOut={onMouseOut}
