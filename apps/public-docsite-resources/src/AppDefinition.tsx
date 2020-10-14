@@ -523,6 +523,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/themes',
         },
         {
+          component: require<any>('./components/pages/ThemeProviderPage').ThemeProviderPage,
+          key: 'ThemeProvider',
+          name: 'ThemeProvider',
+          url: '#/examples/themeprovider',
+        },
+        {
           component: require<any>('./components/pages/ColorsPage').ColorsPage,
           key: 'Colors',
           name: 'Colors',
