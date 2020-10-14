@@ -7,7 +7,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
   constructor(props: IVerticalBarChartProps) {
     super(props);
     this.state = {
-      isChecked: false,
+      isChecked: true,
     };
   }
 
