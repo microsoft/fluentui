@@ -57,7 +57,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="group"
+          role="none"
         >
           <div
             className=

@@ -58,7 +58,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="group"
+            role="none"
           >
             <div
               className=
