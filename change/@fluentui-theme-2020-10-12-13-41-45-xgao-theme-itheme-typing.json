@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings.",
-  "packageName": "@fluentui/theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-12T20:41:45.515Z"
-}

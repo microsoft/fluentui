@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.5.0)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.4.0..@fluentui/theme_v1.5.0)
+
+### Minor changes
+
+- Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings. ([PR #15480](https://github.com/microsoft/fluentui/pull/15480) by xgao@microsoft.com)
 
 ## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.4.0)
 

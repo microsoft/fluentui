@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Wed, 14 Oct 2020 12:26:59 GMT",
+      "tag": "@fluentui/react-compose_v0.19.6",
+      "version": "0.19.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating the README example in compose/next.",
+            "author": "dzearing@hotmail.com",
+            "commit": "2cc0e34c4c059e43a4f2cab096aea268388cae99",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-compose_v0.19.1",
       "version": "0.19.1",

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating button hooks to return state only; render function should be imported separately.",
-  "packageName": "@fluentui/react-button",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-13T01:23:22.018Z"
-}

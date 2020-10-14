@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-flex",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Flexbox abstraction that provides a component to align and distribute its children.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,12 +35,12 @@
   },
   "dependencies": {
     "@fluentui/react-bindings": "^0.51.0",
-    "@fluentui/react-button": "^0.16.0",
-    "@fluentui/react-compose": "^0.19.5",
-    "@fluentui/react-theme-provider": "^0.16.0",
-    "@fluentui/theme": "^1.4.0",
+    "@fluentui/react-button": "^0.17.0",
+    "@fluentui/react-compose": "^0.19.6",
+    "@fluentui/react-theme-provider": "^0.16.1",
+    "@fluentui/theme": "^1.5.0",
     "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.146.1",
+    "office-ui-fabric-react": "^7.146.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

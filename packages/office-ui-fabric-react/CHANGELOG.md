@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.146.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.2)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.146.0..office-ui-fabric-react_v7.146.2)
+
+### Patches
+
+- Update office-ui-fabric-react.api.md due to ITheme typing change. ([PR #15480](https://github.com/microsoft/fluentui/pull/15480) by xgao@microsoft.com)
 
 ## [7.146.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.0)
 

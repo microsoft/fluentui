@@ -1,8 +1,17 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.27](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.3.27)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/mdl2-theme_v0.3.16..@uifabric/mdl2-theme_v0.3.27)
+
+### Patches
+
+- Update Theme instances to contain components/scopedSettings ([PR #15482](https://github.com/microsoft/fluentui/pull/15482) by xgao@microsoft.com)
 
 ## [0.3.16](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.3.16)
 

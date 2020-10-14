@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Wed, 14 Oct 2020 12:26:59 GMT",
+      "tag": "@fluentui/theme_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings.",
+            "author": "xgao@microsoft.com",
+            "commit": "6b5adf5ff536e71ba2dc40ee0b209552fe4c7893",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Oct 2020 12:30:13 GMT",
       "tag": "@fluentui/theme_v1.4.0",
       "version": "1.4.0",
