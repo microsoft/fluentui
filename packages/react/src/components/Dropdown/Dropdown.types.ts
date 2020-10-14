@@ -141,7 +141,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownOption extends ISelectableOption {
+export interface IDropdownOption<T = any> extends ISelectableOption<T> {
   /**
    * Deprecated at v.65.1, use `selected` instead.
    * @deprecated Use `selected` instead.

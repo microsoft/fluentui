@@ -1534,7 +1534,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 }
 
 // @public (undocumented)
-export interface IDropdownOption extends ISelectableOption {
+export interface IDropdownOption<T = any> extends ISelectableOption<T> {
     // @deprecated
     isSelected?: boolean;
 }
