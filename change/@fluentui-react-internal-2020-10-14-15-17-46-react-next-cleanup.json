@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Re-export FocusZone directly from react-focus",
+  "packageName": "@fluentui/react-internal",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T22:17:23.930Z"
+}
