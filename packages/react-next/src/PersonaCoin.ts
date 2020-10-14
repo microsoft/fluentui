@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-internal/lib/PersonaCoin';
+export * from '@fluentui/react/lib/PersonaCoin';
