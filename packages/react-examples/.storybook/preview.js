@@ -45,22 +45,45 @@ initializeIcons();
 
 configure(loadStories, module);
 
+/**
+ * @typedef {{
+ *   default: { title: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string };
+ * }} Story
+ * @typedef {{ [exportName: string]: React.ComponentType }} ComponentModule
+ */
 function loadStories() {
+  /** @type {Map<string, Story>} */
   const stories = new Map();
 
-  // This will be updated by preview-loader with the actual current package name
-  const req = require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/);
+  /** @type {__WebpackModuleApi.RequireContext[]} */
+  const contexts = [
+    // This will be updated by preview-loader with the actual current package name
+    require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
+  ];
 
-  req.keys().forEach(key => {
-    generateStoriesFromExamples({ key, stories, req });
-  });
+  // @ts-ignore
+  if ('PACKAGE_NAME' === '@fluentui/react') {
+    // For the @fluentui/react storybook, also show the examples of re-exported component packages.
+    // preview-loader will replace REACT_ DEPS with the actual list.
+    // Note that the regex intentionally goes only one directory below the package name
+    // (the first `\w+`, which will be the component name) to avoid picking up "next" examples
+    // which are under src/pkg-name/ComponentName/next/ComponentName.
+    contexts.push(require.context('../src', true, /(REACT_DEPS)\/\w+\/[\w.]+\.(Example|stories)\.tsx$/));
+  }
+
+  for (const req of contexts) {
+    req.keys().forEach(key => {
+      generateStoriesFromExamples({ key, stories, req });
+    });
+  }
 
   // convert stories Set to array
-  return [...stories.values()];
+  return [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
 }
 
 /**
- * @param {{ key: string, stories: Map, req: (key: string) => any }} options
+ * @param {{ key: string, stories: Map<string, Story>, req: (key: string) => ComponentModule }} options
  */
 function generateStoriesFromExamples({ key, stories, req }) {
   const nameMatcher = /\.\/([^/]+)\//;
@@ -97,7 +120,7 @@ function generateStoriesFromExamples({ key, stories, req }) {
         story[subStoryName] = () => React.createElement(ExampleComponent);
       } else {
         // function component
-        story[subStoryName] = ExampleComponent;
+        story[subStoryName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
       }
     }
   }
