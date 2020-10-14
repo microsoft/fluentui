@@ -25,7 +25,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     target?: string;
     circular?: boolean;
     disabled?: boolean;
-    fluid?: boolean;
+    block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
@@ -120,7 +120,7 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
     primary?: TTokens;
     iconOnly?: TTokens;
     circular?: TTokens;
-    fluid?: TTokens;
+    block?: TTokens;
 };
 
 // @public (undocumented)

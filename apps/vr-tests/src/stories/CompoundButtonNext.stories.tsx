@@ -88,7 +88,7 @@ storiesOf('CompoundButton Next', module)
     />
   ));
 
-storiesOf('CompoundButton Next - Fluid', module)
+storiesOf('CompoundButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -114,43 +114,43 @@ storiesOf('CompoundButton Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <CompoundButton fluid icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Primary', () => (
-    <CompoundButton fluid primary icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block primary icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Disabled', () => (
-    <CompoundButton fluid disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Primary Disabled', () => (
-    <CompoundButton fluid primary disabled icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block primary disabled icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Ghost', () => (
-    <CompoundButton fluid ghost icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block ghost icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <CompoundButton fluid disabled ghost icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block disabled ghost icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Transparent', () => (
-    <CompoundButton fluid transparent icon="X" secondaryContent="This is some secondary text">
+    <CompoundButton block transparent icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
   .addStory('Transparent Disabled', () => (
     <CompoundButton
-      fluid
+      block
       disabled
       transparent
       icon="X"
@@ -227,8 +227,8 @@ storiesOf('CompoundButton Next - Teams Theme', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Fluid', () => (
-    <CompoundButton secondaryContent="This is some secondary text" fluid icon="X">
+  .addStory('Block', () => (
+    <CompoundButton secondaryContent="This is some secondary text" block icon="X">
       Hello, world
     </CompoundButton>
   ))
