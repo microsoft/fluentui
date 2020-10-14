@@ -187,6 +187,48 @@ const Example = React.forwardRef(function Example(props: {}, forwardedRef: React
 });
 ```
 
+## useMount
+
+```ts
+const useMount: (callback: () => void) => void;
+```
+
+Hook that asynchronously fires a callback before mount.
+
+```tsx
+import { useMount } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  useMount(() => {
+    console.log('Example');
+   })
+
+  return <div />;
+};
+});
+```
+
+## useMountSync
+
+```ts
+const useMountSync: (callback: () => void) => void;
+```
+
+Hook that synchronously fires a callback before mount. This should only be used if useMount causes problems as it will
+trigger debug warnings in server-rendered scenarios.
+
+```tsx
+import { useMountSync } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  useMountSync(() => {
+    console.log('Example');
+  });
+
+  return <div />;
+};
+```
+
 ## useOnEvent
 
 ```ts
@@ -312,6 +354,26 @@ function useTarget<TElement extends HTMLElement = HTMLElement>(
 ```
 
 Hook which queries the document for the element indicated by a CSS query string (if provided), or returns the element/event/point provided. Also attempts to determine the Window object for the provided target.
+
+## useUnmount
+
+```ts
+const useUnmount: (callback: () => void) => void;
+```
+
+Hook that synchronously fires a callback during unmount.
+
+```tsx
+import { useUnmount } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  useUnmount(() => {
+    console.log('Example');
+  });
+
+  return <div />;
+};
+```
 
 ## useWarnings
 
