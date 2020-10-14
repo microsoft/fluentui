@@ -20,7 +20,7 @@ const CommandBarLazyExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',
   componentName: 'CommandBar',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/CommandBar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/CommandBar',
   examples: [
     {
       title: 'CommandBar with overflowing menu items',

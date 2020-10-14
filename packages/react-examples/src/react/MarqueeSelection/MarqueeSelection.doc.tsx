@@ -8,7 +8,8 @@ const MarqueeSelectionBasicExampleCode = require('!raw-loader!@fluentui/react-ex
 export const MarqueeSelectionPageProps: IDocPageProps = {
   title: 'MarqueeSelection',
   componentName: 'MarqueeSelection',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/MarqueeSelection',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/MarqueeSelection',
   examples: [
     {
       title: 'Basic Selection Example',

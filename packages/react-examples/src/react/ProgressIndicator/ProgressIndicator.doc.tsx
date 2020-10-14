@@ -10,7 +10,8 @@ const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!@fluentui
 export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',
   componentName: 'ProgressIndicator',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ProgressIndicator',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ProgressIndicator',
   examples: [
     {
       title: 'Default ProgressIndicator',

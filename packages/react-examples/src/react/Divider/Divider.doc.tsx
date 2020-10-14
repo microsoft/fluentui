@@ -11,7 +11,7 @@ const VerticalDividerCustomExampleCode = require('!raw-loader!@fluentui/react-ex
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
   componentName: 'Divider',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Divider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Divider',
   examples: [
     {
       title: 'Vertical Divider',

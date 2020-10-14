@@ -7,7 +7,7 @@ const ColorPickerBasicExampleCode = require('!raw-loader!@fluentui/react-example
 export const ColorPickerPageProps: IDocPageProps = {
   title: 'ColorPicker',
   componentName: 'ColorPicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ColorPicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ColorPicker',
   examples: [
     {
       title: 'Default ColorPicker',

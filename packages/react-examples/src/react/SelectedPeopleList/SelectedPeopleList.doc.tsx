@@ -11,7 +11,8 @@ const SelectedPeopleListControlledExampleCode = require('!raw-loader!@fluentui/r
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',
   componentName: 'SelectedPeopleList',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SelectedPeopleList',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SelectedPeopleList',
   examples: [
     {
       title: 'Selected People List (uncontrolled)',

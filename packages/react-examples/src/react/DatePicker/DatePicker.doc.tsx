@@ -19,7 +19,7 @@ const DatePickerBoundedExampleCode = require('!raw-loader!@fluentui/react-exampl
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
   componentName: 'DatePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/DatePicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/DatePicker',
   examples: [
     {
       title: 'Default DatePicker',

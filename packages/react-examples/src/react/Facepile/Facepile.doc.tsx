@@ -11,7 +11,7 @@ const FacepileOverflowExampleCode = require('!raw-loader!@fluentui/react-example
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
   componentName: 'Facepile',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Facepile',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Facepile',
   examples: [
     {
       title: 'Facepile with size, presence, and fade in options',

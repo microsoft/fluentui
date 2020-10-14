@@ -20,7 +20,7 @@ const SpinButtonCustomStyledExampleCode = require('!raw-loader!@fluentui/react-e
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
   componentName: 'SpinButton',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SpinButton',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SpinButton',
   examples: [
     {
       title: 'Basic SpinButton',

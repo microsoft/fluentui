@@ -16,7 +16,7 @@ const HoverCardEventListenerTargetExampleCode = require('!raw-loader!@fluentui/r
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
   componentName: 'HoverCard',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/HoverCard',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/HoverCard',
   examples: [
     {
       title: 'Expanding HoverCard wrapping an element',

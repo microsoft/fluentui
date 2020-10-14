@@ -16,7 +16,7 @@ const DialogModelessExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Dialog',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Dialog',
   examples: [
     {
       title: 'Default Dialog',

@@ -37,7 +37,8 @@ const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/react-exa
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
   componentName: 'ContextualMenu',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ContextualMenu',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ContextualMenu',
   examples: [
     {
       title: 'Basic ContextualMenu',
