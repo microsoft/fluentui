@@ -1,7 +1,8 @@
-import { createTheme, ITheme, FontWeights } from '@uifabric/styling';
+import { createTheme, Theme, FontWeights } from '@fluentui/react';
+import { MDL2Styles } from './MDL2Styles';
 import { FontSizes } from './MDL2Type';
 
-export const MDL2Theme: ITheme = createTheme({
+export const MDL2Theme: Theme = createTheme({
   palette: {
     neutralDark: '#212121',
     neutralPrimary: '#333333',
@@ -79,6 +80,7 @@ export const MDL2Theme: ITheme = createTheme({
       fontWeight: FontWeights.light,
     },
   },
+  components: MDL2Styles,
 });
 
 export default MDL2Theme;

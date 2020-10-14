@@ -1,4 +1,4 @@
-import { FontWeights } from '@uifabric/styling';
+import { FontWeights } from '@fluentui/react';
 
 export const LabelStyles = {
   root: {
