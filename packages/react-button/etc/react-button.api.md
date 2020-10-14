@@ -213,6 +213,22 @@ export type MenuButtonTokens = ButtonTokens & {
 export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
 // @public
+const renderButton: (state: ButtonState) => JSX.Element;
+
+export { renderButton }
+
+export { renderButton as renderToggleButton }
+
+// @public
+export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
+
+// @public
+export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
+
+// @public
+export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
+
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -260,10 +276,7 @@ export type ToggleButtonTokens = ButtonTokens;
 export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 
 // @public
-export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: import("./Button.types").ButtonState) => JSX.Element;
-};
+export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public (undocumented)
 export const useButtonClasses: (state: ButtonState, options?: import("@fluentui/react-theme-provider").UseStylesOptions | undefined) => void;
@@ -275,10 +288,7 @@ export const useButtonState: (draftState: ButtonState) => void;
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
 
 // @public
-export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
-};
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
 export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
@@ -287,10 +297,7 @@ export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
 
 // @public
-export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => {
-    state: MenuButtonState;
-    render: (state: MenuButtonState) => JSX.Element;
-};
+export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
 
 // @public (undocumented)
 export const useMenuButtonClasses: (state: MenuButtonState) => void;
@@ -299,19 +306,13 @@ export const useMenuButtonClasses: (state: MenuButtonState) => void;
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public
-export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {
-    state: SplitButtonState;
-    render: (state: SplitButtonState) => JSX.Element;
-};
+export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
 
 // @public (undocumented)
 export const useSplitButtonClasses: (state: SplitButtonState, options?: import("@fluentui/react-theme-provider").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: import("../Button").ButtonState) => JSX.Element;
-};
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonClasses: (state: ToggleButtonState) => void;
