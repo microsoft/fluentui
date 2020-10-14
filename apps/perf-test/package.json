@@ -13,25 +13,22 @@
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev"
   },
-  "devDependencies": {
+  "dependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/react": "^7.142.0",
+    "@fluentui/react-avatar": "^0.6.5",
+    "@fluentui/react-button": "^0.14.3",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@types/webpack-node-externals": "1.6.3",
     "@uifabric/build": "^7.0.0",
-    "flamegrill": "0.2.0",
-    "lodash": "^4.17.15"
-  },
-  "dependencies": {
-    "@fluentui/react": "^7.142.0",
-    "@fluentui/react-avatar": "^0.6.5",
-    "@fluentui/react-button": "^0.14.3",
-    "@fluentui/react-next": "^8.0.0-alpha.118",
-    "@uifabric/set-version": "^7.0.23",
     "@uifabric/example-app-base": "^7.15.18",
     "@uifabric/experiments": "^7.33.1",
-    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.23",
+    "flamegrill": "0.2.0",
+    "lodash": "^4.17.15",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

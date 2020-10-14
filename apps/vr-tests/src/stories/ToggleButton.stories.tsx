@@ -1,4 +1,3 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -8,7 +7,7 @@ import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
-storiesOf('ToggleButton Next', module)
+storiesOf('ToggleButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (

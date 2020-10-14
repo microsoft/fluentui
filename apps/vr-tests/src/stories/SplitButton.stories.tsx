@@ -1,14 +1,14 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { MenuButton } from '@fluentui/react-button';
+import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
+import { ThemeProvider } from '@fluentui/react';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 
-storiesOf('MenuButton Next', module)
+storiesOf('SplitButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -32,45 +32,50 @@ storiesOf('MenuButton Next', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>)
-  .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
-  .addStory('Disabled', () => <MenuButton disabled>Hello, world</MenuButton>)
+  .addStory('Default', () => <SplitButton>Hello, world</SplitButton>)
+  .addStory('Primary', () => <SplitButton primary>Hello, world</SplitButton>)
+  .addStory('Disabled', () => <SplitButton disabled>Hello, world</SplitButton>)
   .addStory('Primary Disabled', () => (
-    <MenuButton primary disabled>
+    <SplitButton primary disabled>
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
-  .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('With icon before content', () => <SplitButton icon="X">Hello, world</SplitButton>)
   .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
+    <SplitButton icon="X" iconPosition="after">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Circular', () => (
-    <MenuButton circular icon="X">
+    <SplitButton circular icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Size largest', () => (
-    <MenuButton icon="X" size="largest">
+    <SplitButton icon="X" size="largest">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Inverted', () => (
-    <MenuButton inverted icon="X">
+    <SplitButton inverted icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Icon only', () => (
-    <MenuButton iconOnly icon="X">
+    <SplitButton iconOnly icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+  ))
+  .addStory('Customized divider styles', () => (
+    <ThemeProvider theme={{ tokens: { button: { dividerLength: '30px' } } }}>
+      <SplitButton>Hello, world</SplitButton>
+    </ThemeProvider>
   ));
 
-storiesOf('MenuButton Next - Block', module)
+storiesOf('SplitButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -80,7 +85,7 @@ storiesOf('MenuButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByClassName('ms-Button-root')[0].focus()")
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
@@ -96,47 +101,47 @@ storiesOf('MenuButton Next - Block', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <MenuButton block icon="X">
+    <SplitButton block icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <MenuButton block primary icon="X">
+    <SplitButton block primary icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <MenuButton block disabled icon="X">
+    <SplitButton block disabled icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <MenuButton block primary disabled icon="X">
+    <SplitButton block primary disabled icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Ghost', () => (
-    <MenuButton block ghost icon="X">
+    <SplitButton block ghost icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <MenuButton block disabled ghost icon="X">
+    <SplitButton block disabled ghost icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Transparent', () => (
-    <MenuButton block transparent icon="X">
+    <SplitButton block transparent icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <MenuButton block disabled transparent icon="X">
+    <SplitButton block disabled transparent icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ));
 
-storiesOf('MenuButton Next - Teams Theme', module)
+storiesOf('SplitButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
@@ -160,45 +165,45 @@ storiesOf('MenuButton Next - Teams Theme', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>)
-  .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
-  .addStory('Disabled', () => <MenuButton disabled>Hello, world</MenuButton>)
+  .addStory('Default', () => <SplitButton>Hello, world</SplitButton>)
+  .addStory('Primary', () => <SplitButton primary>Hello, world</SplitButton>)
+  .addStory('Disabled', () => <SplitButton disabled>Hello, world</SplitButton>)
   .addStory('Primary Disabled', () => (
-    <MenuButton primary disabled>
+    <SplitButton primary disabled>
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
-  .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('With icon before content', () => <SplitButton icon="X">Hello, world</SplitButton>)
   .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
+    <SplitButton icon="X" iconPosition="after">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Circular', () => (
-    <MenuButton circular icon="X">
+    <SplitButton circular icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Size largest', () => (
-    <MenuButton icon="X" size="largest">
+    <SplitButton icon="X" size="largest">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Inverted', () => (
-    <MenuButton inverted icon="X">
+    <SplitButton inverted icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Block', () => (
-    <MenuButton block icon="X">
+    <SplitButton block icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('Icon only', () => (
-    <MenuButton iconOnly icon="X">
+    <SplitButton iconOnly icon="X">
       Hello, world
-    </MenuButton>
+    </SplitButton>
   ))
   .addStory('With styled icon from react-icons via tokens', () => (
-    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+    <SplitButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
