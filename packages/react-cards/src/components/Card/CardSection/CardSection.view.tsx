@@ -5,7 +5,8 @@ import { ICardSectionComponent, ICardSectionProps, ICardSectionSlots } from './C
 
 export const CardSectionView: ICardSectionComponent['view'] = props => {
   const { children, ...rest } = props;
-  if (children === undefined) {
+  // eslint-disable-next-line eqeqeq
+  if (children == null) {
     return null;
   }
 

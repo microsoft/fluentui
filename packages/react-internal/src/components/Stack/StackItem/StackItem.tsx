@@ -6,7 +6,8 @@ import { StackItemStyles as styles } from './StackItem.styles';
 
 const StackItemView: IStackItemComponent['view'] = props => {
   const { children } = props;
-  if (children === undefined) {
+  // eslint-disable-next-line eqeqeq
+  if (children == null) {
     return null;
   }
 
