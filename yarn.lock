@@ -2395,18 +2395,18 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.19.0.tgz#f5abbe9facba7488f1df68ce4400caa10358c1b0"
-  integrity sha512-YGVYvENaQBURZXSuHAoO0d3tbOz9HtmUHYJsA75Dszrq6UVaV/EAIDeFe8isqTkTIz/4HyzldFfsjVrvmWYljA==
+"@microsoft/fast-element@^0.19.1":
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.19.1.tgz#7b7cddc844168eb168f75e41ea63d23d942667cb"
+  integrity sha512-qfEqj4s7E3B0qsNRoiQyKF682fdpEbCINV/GS6tE/ZOFC/B0CKpcZjk3mWyw8XAfsLA50E4YuR9Hn8SuMc2sFg==
 
-"@microsoft/fast-foundation@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.8.0.tgz#8bf1f0ec461557add1f7c89bc04cbcfa11e47a1c"
-  integrity sha512-Q3gthzOXUjNyMo60JgXk2N7mPz0wSK/6Q0eljgIA1YVsZjsJVnhm22ipWkPpSNqXpoa1y7gGn4ky98BeXzYcVw==
+"@microsoft/fast-foundation@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.8.1.tgz#9123a0f0dc0420ccff9554789b16f844ca0e9c8d"
+  integrity sha512-eWgp/RsSwCsJHfE/ljS0eTFLlnK0xCaJkjRIzjZN1cdBMDP7EJ+3XfxLsJBQ8tPLKlTjDfIrgnCGfO4GVe6Ggg==
   dependencies:
-    "@microsoft/fast-element" "^0.19.0"
-    "@microsoft/fast-web-utilities" "^4.6.0"
+    "@microsoft/fast-element" "^0.19.1"
+    "@microsoft/fast-web-utilities" "^4.6.1"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
     tslib "^1.13.0"
@@ -2434,6 +2434,13 @@
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.6.0.tgz#b81dcbac1ed0ae9cbb0d759d599df6ce8f187fae"
   integrity sha512-VB1YwsN8OM9usmaBZVCg8fBxyhAIYTP2Dtu2IL0N2dO37Pu84I0hLXhacRps6BbZXGDMz3LQIg8xF893hqwVuw==
+  dependencies:
+    exenv-es6 "^1.0.0"
+
+"@microsoft/fast-web-utilities@^4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.6.1.tgz#91c39bbd8499009c9e569d1aa309da17efcf9297"
+  integrity sha512-EL1v1xmQlQs5qwPM6gzwQXUgIHtRgKXmHajQJmsUvS0rm8rCu3kvp1eEq3okXuKjPjzToFusOgVapzi5ibjpbA==
   dependencies:
     exenv-es6 "^1.0.0"
 

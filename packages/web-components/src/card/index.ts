@@ -1,8 +1,12 @@
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { designSystemProperty, designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
+import {
+  designSystemProperty,
+  DesignSystemProvider,
+  designSystemProvider,
+  CardTemplate as template,
+} from '@microsoft/fast-foundation';
 import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import { CardStyles as styles } from './card.styles';
 
 /**
@@ -22,7 +26,7 @@ import { CardStyles as styles } from './card.styles';
     mode: 'closed',
   },
 })
-export class FluentCard extends FluentDesignSystemProvider
+export class FluentCard extends DesignSystemProvider
   implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
   /**
    * Background color for the banner component. Sets context for the design system.
@@ -35,13 +39,6 @@ export class FluentCard extends FluentDesignSystemProvider
     default: '#FFFFFF',
   })
   public backgroundColor: string;
-  protected backgroundColorChanged(): void {
-    const parsedColor = parseColorHexRGB(this.backgroundColor);
-
-    if (parsedColor !== null) {
-      this.neutralPalette = createColorPalette(parsedColor);
-    }
-  }
 
   /**
    * Background color for the banner component. Sets context for the design system.
@@ -53,12 +50,16 @@ export class FluentCard extends FluentDesignSystemProvider
     attribute: 'card-background-color',
   })
   public cardBackgroundColor: string;
-  private cardBackgroundColorChanged(): void {
-    const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
+  private cardBackgroundColorChanged(prev: string | void, next: string | void): void {
+    if (next) {
+      const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
 
-    if (parsedColor !== null) {
-      this.neutralPalette = createColorPalette(parsedColor);
-      this.backgroundColor = this.cardBackgroundColor;
+      if (parsedColor !== null) {
+        this.neutralPalette = createColorPalette(parsedColor);
+        this.backgroundColor = this.cardBackgroundColor;
+      }
+    } else if (this.provider && this.provider.designSystem) {
+      this.handleChange(this.provider.designSystem as DesignSystem, 'backgroundColor');
     }
   }
 
@@ -84,9 +85,9 @@ export class FluentCard extends FluentDesignSystemProvider
 
   connectedCallback(): void {
     super.connectedCallback();
-    const designSystemNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
-    designSystemNotifier.subscribe(this, 'backgroundColor');
-    designSystemNotifier.subscribe(this, 'neutralPalette');
+    const parentDSNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
+    parentDSNotifier.subscribe(this, 'backgroundColor');
+    parentDSNotifier.subscribe(this, 'neutralPalette');
     this.handleChange(this.provider?.designSystem as DesignSystem, 'backgroundColor');
   }
 }
