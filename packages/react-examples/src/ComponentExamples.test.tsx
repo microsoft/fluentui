@@ -118,7 +118,7 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = ['react', 'react-cards', 'react-focus', 'react-next'];
+const includedPackages = ['react', 'react-cards', 'react-focus'];
 
 declare const global: any;
 
@@ -146,9 +146,7 @@ describe('Component Examples', () => {
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
-  const examplePaths: string[] = glob.sync(
-    path.resolve(process.cwd(), `src/{${includedPackages.join(',')}}/**/*.Example.tsx`),
-  );
+  const examplePaths: string[] = glob.sync(path.resolve(process.cwd(), `src/react/**/*.Example.tsx`));
   const createPortal = ReactDOM.createPortal;
 
   beforeAll(() => {
