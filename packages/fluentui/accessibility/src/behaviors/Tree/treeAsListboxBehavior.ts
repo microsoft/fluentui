@@ -1,6 +1,4 @@
-import * as _ from 'lodash';
-
-import { Accessibility } from '../../types';
+import { Accessibility, AriaRole } from '../../types';
 import { treeBehavior, TreeBehaviorProps } from './treeBehavior';
 import { treeItemAsOptionBehavior } from './treeItemAsOptionBehavior';
 import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
@@ -12,17 +10,20 @@ import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
  */
 export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = props => {
   const behavior = treeBehavior(props);
-  const definition = _.merge(behavior, {
+  const definition = {
     attributes: {
       root: {
-        role: 'listbox',
+        ...behavior.attributes.root,
+        role: 'listbox' as AriaRole,
       },
     },
+    keyActions: behavior.keyActions,
+    focusZone: behavior.focusZone,
     childBehaviors: {
       item: treeItemAsOptionBehavior,
       title: treeTitleAsOptionBehavior,
     },
-  });
+  };
 
   if (process.env.NODE_ENV !== 'production') {
     definition.attributes.root['data-aa-class'] = 'TreeListbox';
