@@ -128,6 +128,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   /**
    * This prop will get set by ContextualMenu and can be called to open this item's subMenu, if present.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   openSubMenu?: (item: any, target: HTMLElement) => void;
 
   /**
@@ -139,5 +140,6 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
    * This prop will get set by ContextualMenu and can be called to close the menu this item belongs to.
    * If dismissAll is true, all menus will be closed.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dismissMenu?: (ev?: any, dismissAll?: boolean) => void;
 }

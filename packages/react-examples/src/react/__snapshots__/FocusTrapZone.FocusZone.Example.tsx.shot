@@ -83,8 +83,8 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Toggle0"
-        id="Toggle0-label"
+        htmlFor="Toggle1"
+        id="Toggle1-label"
       >
         Use trap zone
       </label>
@@ -98,7 +98,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle0-label Toggle0-stateText"
+          aria-labelledby="Toggle1-label Toggle1-stateText"
           checked={false}
           className=
               ms-Toggle-background
@@ -149,7 +149,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               }
           data-is-focusable={true}
           data-ktp-target={true}
-          id="Toggle0"
+          id="Toggle1"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"
@@ -209,8 +209,8 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 padding-top: 0;
                 user-select: none;
               }
-          htmlFor="Toggle0"
-          id="Toggle0-stateText"
+          htmlFor="Toggle1"
+          id="Toggle1-stateText"
         >
           Off
         </label>
@@ -222,7 +222,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone1"
+      data-focuszone-id="FocusZone2"
       data-is-visible={true}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -362,7 +362,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__2"
+                id="id__3"
               >
                 FZ1
               </span>
@@ -477,7 +477,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__5"
+                id="id__6"
               >
                 FZ1
               </span>
@@ -592,7 +592,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__8"
+                id="id__9"
               >
                 FZ1
               </span>
@@ -709,7 +709,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__11"
+            id="id__12"
           >
             No FZ
           </span>
@@ -722,7 +722,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone14"
+      data-focuszone-id="FocusZone15"
       data-is-visible={true}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -862,7 +862,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__15"
+                id="id__16"
               >
                 FZ2
               </span>
@@ -977,7 +977,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__18"
+                id="id__19"
               >
                 FZ2
               </span>
@@ -1092,7 +1092,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                       margin-right: 4px;
                       margin-top: 0;
                     }
-                id="id__21"
+                id="id__22"
               >
                 FZ2
               </span>

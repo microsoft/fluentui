@@ -62,7 +62,11 @@ export class SlotRule implements Rule {
 
   public stringify = () => {
     return [
-      this.data.expectAttribute !== undefined && this.data.expectAttribute ? 'Adds' : 'Does not add attribute',
+      this.data.expectAttribute !== undefined
+        ? this.data.expectAttribute
+          ? 'Adds'
+          : 'Does not add attribute'
+        : undefined,
       this.data.expectAttribute !== undefined &&
         this._expectedAttributeAndValueFormat(
           this.data.expectAttribute,
@@ -72,7 +76,7 @@ export class SlotRule implements Rule {
       this.data.checkSpaceKeyPressed && `Triggers 'performClick' action with 'Space'`,
       this.data.checkEnterKeyPressed && `Triggers 'performClick' action with 'Enter'`,
       this.data.name && this.data.name !== 'root' && `to slot ${this.data.name}`,
-      this.data.description ? this.data.description : this.data.props && `for props ${this._stringifyProps()}`,
+      this.data.description ? this.data.description : this.data.props && `if ${this._stringifyProps()}.`,
     ]
       .filter(Boolean)
       .join(' ');
@@ -83,7 +87,17 @@ export class SlotRule implements Rule {
       return '';
     }
 
-    return this.data.props.map(prop => JSON.stringify(prop)).join(' or ');
+    return this.data.props
+      .map(prop => {
+        const propNames = Object.keys(prop);
+        return propNames
+          .map(propName => {
+            const propValue = prop[propName];
+            return `prop '${propName}' is '${propValue}'`;
+          })
+          .join(' and ');
+      })
+      .join(' or ');
   };
 
   private _expectedAttributeAndValueFormat = (

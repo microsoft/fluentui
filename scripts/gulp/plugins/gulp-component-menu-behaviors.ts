@@ -66,9 +66,11 @@ export default () => {
         const definitionName = `${variationName}Definition`;
 
         const definition = behaviorDefinitions[definitionName];
-        const descriptionFromDefinition = definition.map(definition => {
-          return definition.stringify();
-        });
+        const descriptionFromDefinition = definition
+          .map(definition => {
+            return definition.getData().hidden ? undefined : definition.stringify();
+          })
+          .filter(Boolean);
 
         variation.description = descriptionFromDefinition.join('\r\n');
         result.push({

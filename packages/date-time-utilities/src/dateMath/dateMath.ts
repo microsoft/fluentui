@@ -167,7 +167,7 @@ export function getDateRangeArray(
   workWeekDays?: DayOfWeek[],
   daysToSelectInDayView: number = 1,
 ): Date[] {
-  const datesArray = new Array<Date>();
+  const datesArray: Date[] = [];
   let startDate: Date;
   let endDate = null;
 
@@ -333,6 +333,7 @@ function getDatePart(date: Date): Date {
  */
 export function getDatePartHashValue(date: Date): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
+  // eslint-disable-next-line no-bitwise
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
 }
 

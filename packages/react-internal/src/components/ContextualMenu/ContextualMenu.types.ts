@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from '../Icon/Icon.types';
+import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+// Might need to be changed to compat button
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import {
   IContextualMenuItemProps,
@@ -18,6 +18,8 @@ import {
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 import { Target } from '@uifabric/react-hooks';
+
+export { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
  * {@docCategory ContextualMenu}
@@ -388,6 +390,7 @@ export interface IContextualMenuItem {
   /**
    * Any custom data the developer wishes to associate with the menu item.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
 
   /**
@@ -497,6 +500,7 @@ export interface IContextualMenuItem {
    * @param dismissMenu - Function to dismiss the menu. Can be used to ensure that a custom menu
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
@@ -537,6 +541,7 @@ export interface IContextualMenuItem {
   /**
    * Any additional properties to use when custom rendering menu items.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propertyName: string]: any;
 
   /**
@@ -555,6 +560,7 @@ export interface IContextualMenuItem {
 /**
  * {@docCategory ContextualMenu}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The items to include inside the section.
@@ -668,8 +674,10 @@ export interface IContextualMenuStyles {
  */
 export interface IContextualMenuSubComponentStyles {
   /** Styles for the callout that hosts the ContextualMenu options. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 
   /** Styles for each menu item. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }

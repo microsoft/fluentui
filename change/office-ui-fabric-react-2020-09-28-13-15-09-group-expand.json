@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Ensure GroupedList version is invalidated when parent list is invalidated",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-28T20:15:08.995Z"
-}

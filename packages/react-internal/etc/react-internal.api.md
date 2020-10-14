@@ -90,6 +90,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     focus(): void;
     // (undocumented)
+    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
+    // (undocumented)
     readonly inputElement: HTMLInputElement | null;
     // (undocumented)
     readonly isValueSelected: boolean;
@@ -100,13 +102,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     readonly selectionStart: number | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
-    // (undocumented)
     readonly value: string;
-    }
-
-// @public @deprecated (undocumented)
-export class BaseAutoFill extends Autofill {
 }
 
 // @public (undocumented)
@@ -146,7 +142,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -186,11 +182,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -252,8 +246,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
@@ -603,25 +595,10 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-    constructor(props: IContextualMenuProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IContextualMenuProps;
-    // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
-    }
+export const ContextualMenuBase: {
+    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
+    displayName: string;
+};
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -914,21 +891,9 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
-    constructor(props: IFocusTrapZoneProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
-    }
+export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
+    focusStack: string[];
+};
 
 // @public
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
@@ -974,9 +939,6 @@ export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
 };
-
-// @public (undocumented)
-export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
 
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {
@@ -1141,26 +1103,19 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string;
+    onInputChange?: (value: string, composing: boolean) => string | void;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
+    // @deprecated
     updateValueInWillReceiveProps?: () => string | null;
 }
 
 // @public (undocumented)
 export interface IAutofillState {
     // (undocumented)
-    displayValue?: string;
-}
-
-// @public @deprecated
-export interface IBaseAutoFill extends IAutofill {
-}
-
-// @public @deprecated
-export interface IBaseAutoFillProps extends IAutofillProps {
+    inputValue: string;
 }
 
 // @public (undocumented)
@@ -1214,10 +1169,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)
@@ -2500,11 +2451,6 @@ export interface IContextualMenuState {
     // (undocumented)
     contextualMenuTarget?: Element;
     // (undocumented)
-    dismissedMenuItemKey?: string;
-    expandedByMouseClick?: boolean;
-    // (undocumented)
-    expandedMenuItemKey?: string;
-    // (undocumented)
     positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
@@ -2512,8 +2458,6 @@ export interface IContextualMenuState {
     submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
-    // (undocumented)
-    submenuTarget?: Element;
 }
 
 // @public (undocumented)
@@ -3123,7 +3067,7 @@ export interface IFocusTrapZone {
 }
 
 // @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
@@ -3486,13 +3430,17 @@ export interface ILayer {
 }
 
 // @public (undocumented)
-export type ILayerBaseState = {
-    hostId?: string;
-    layerElement?: HTMLElement;
-};
+export interface ILayerHost {
+}
 
 // @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
@@ -3922,13 +3870,9 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
-    // @deprecated
-    doNotContainWithinFocusZone?: boolean;
-    // @deprecated
-    focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -4020,7 +3964,7 @@ export interface IPageSpecification {
 
 // @public (undocumented)
 export interface IPanel {
-    dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+    dismiss: (ev?: React.KeyboardEvent<HTMLElement> | KeyboardEvent) => void;
     open: () => void;
 }
 
@@ -4059,7 +4003,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     isLightDismiss?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
     onOpen?: () => void;
@@ -4374,12 +4318,12 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 export { IPoint }
 
 // @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<Popup> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (options: {
         originalElement?: HTMLElement | Window;
         containsFocus: boolean;
@@ -4388,12 +4332,6 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
-}
-
-// @public (undocumented)
-export interface IPopupState {
-    // (undocumented)
-    needsVerticalScrollBar?: boolean;
 }
 
 // @public
@@ -6057,33 +5995,10 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
-export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
-    constructor(props: ILayerProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ILayerProps;
-    // (undocumented)
-    render(): React.ReactNode;
-    }
+export const LayerBase: React.FunctionComponent<ILayerProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class LayerHost extends React.Component<ILayerHostProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(): boolean;
-}
+export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
@@ -6272,21 +6187,7 @@ export enum OverflowButtonType {
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
-    constructor(props: IOverflowSetProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
 export const Overlay: React.FunctionComponent<IOverlayProps>;
@@ -6506,23 +6407,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
 export { Point }
 
 // @public
-export class Popup extends React.Component<IPopupProps, IPopupState> {
-    constructor(props: IPopupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IPopupProps;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    _root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    }
+export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
 export enum Position {
@@ -7025,7 +6910,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -7066,9 +6951,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 // @public (undocumented)
 export class SuggestionsController<T> {

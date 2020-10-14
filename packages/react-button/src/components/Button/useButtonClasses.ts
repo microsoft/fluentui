@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ButtonState } from './Button.types';
 
 const GlobalClassNames = {
@@ -108,10 +109,27 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderBottomRightRadius: 'var(--button-borderBottomRightRadius, var(--button-borderRadius))',
           boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInnerColor, white) inset',
           zIndex: 1,
+
+          [EdgeChromiumHighContrastSelector]: {
+            borderColor: 'var(--button-highContrast-focusColor)',
+            boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
+          },
         },
 
         ['& > *:not(:first-child)']: {
           marginLeft: 'var(--button-contentGap)',
+        },
+
+        [EdgeChromiumHighContrastSelector]: {
+          forcedColorAdjust: 'var(--button-forcedColorAdjust)',
+
+          background: 'var(--button-highContrast-background)',
+          borderColor: 'var(--button-highContrast-borderColor)',
+          color: 'var(--button-highContrast-contentColor)',
+
+          [`.${GlobalClassNames.icon}`]: {
+            color: 'var(--button-highContrast-iconColor)',
+          },
         },
 
         '&:hover': {
@@ -120,8 +138,17 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderColor: 'var(--button-hovered-borderColor, var(--button-borderColor))',
           boxShadow: 'var(--button-hovered-boxShadow, var(--button-boxShadow))',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-hovered-iconColor, var(--button-iconColor))',
+          },
+
+          [EdgeChromiumHighContrastSelector]: {
+            background: 'var(--button-highContrast-hovered-background, var(--button-highContrast-background))',
+            borderColor: 'var(--button-highContrast-hovered-borderColor, var(--button-highContrast-borderColor))',
+            color: 'var(--button-highContrast-hovered-contentColor, var(--button-highContrast-contentColor))',
+            [`.${GlobalClassNames.icon}`]: {
+              color: 'var(--button-highContrast-hovered-iconColor, --button-highContrast-iconColor)',
+            },
           },
         },
 
@@ -135,8 +162,29 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           transform: 'var(--button-pressed-transform)',
           transition: 'var(--button-pressed-transition)',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-pressed-iconColor, var(--button-iconColor))',
+          },
+
+          [EdgeChromiumHighContrastSelector]: {
+            background:
+              'var(--button-highContrast-pressed-background, ' +
+              'var(--button-highContrast-hovered-background, ' +
+              'var(--button-highContrast-background)))',
+            borderColor:
+              'var(--button-highContrast-pressed-borderColor, ' +
+              'var(--button-highContrast-hovered-borderColor, ' +
+              'var(--button-highContrast-borderColor)))',
+            color:
+              'var(--button-highContrast-pressed-contentColor, ' +
+              'var(--button-highContrast-hovered-contentColor, ' +
+              'var(--button-highContarst-contentColor)))',
+            [`.${GlobalClassNames.icon}`]: {
+              color:
+                'var(--button-highContrast-pressed-iconColor, ' +
+                'var(--button-highContrast-hovered-iconColor, ' +
+                'var(--button-highContrast-iconColor)))',
+            },
           },
         },
 
@@ -148,8 +196,17 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderColor: 'var(--button-disabled-borderColor)',
           boxShadow: 'var(--button-disabled-boxShadow)',
 
-          '.ms-Button-icon': {
+          [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-disabled-iconColor)',
+          },
+
+          [EdgeChromiumHighContrastSelector]: {
+            background: 'var(--button-highContrast-disabled-background, var(--button-highContrast-background))',
+            borderColor: 'var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor))',
+            color: 'var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor))',
+            [`.${GlobalClassNames.icon}`]: {
+              color: 'var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor)',
+            },
           },
         },
       },
@@ -234,21 +291,36 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-
         disabled: {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
           secondaryContentColor: semanticColors?.buttonTextDisabled,
+        },
+
+        highContrast: {
+          borderColor: 'WindowText',
+          contentColor: 'WindowText',
+          iconColor: 'WindowText',
+
+          hovered: {
+            borderColor: 'Highlight',
+            contentColor: 'Highlight',
+            iconColor: 'Highlight',
+          },
+
+          pressed: {
+            borderColor: 'Highlight',
+            contentColor: 'WindowText',
+            iconColor: 'WindowText',
+          },
+
+          disabled: {
+            background: 'Window',
+            borderColor: 'GrayText',
+            contentColor: 'GrayText',
+            iconColor: 'GrayText',
+          },
         },
       },
 
@@ -275,6 +347,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         borderColor: 'var(--color-brand-borderColor)',
         contentColor: 'var(--color-brand-contentColor)',
         iconColor: 'inherit',
+        forcedColorAdjust: 'none',
 
         hovered: {
           background: 'var(--color-brand-hovered-background)',
@@ -287,6 +360,36 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           borderColor: 'var(--color-brand-pressed-borderColor)',
           contentColor: 'var(--color-brand-pressed-contentColor)',
         },
+
+        highContrast: {
+          background: 'WindowText',
+          borderColor: 'WindowText',
+          contentColor: 'Window',
+          focusColor: 'WindowText',
+          focusInnerColor: 'Window',
+          iconColor: 'Window',
+
+          hovered: {
+            background: 'Highlight',
+            borderColor: 'Highlight',
+            contentColor: 'Window',
+            iconColor: 'Window',
+          },
+
+          pressed: {
+            background: 'WindowText',
+            borderColor: 'WindowText',
+            contentColor: 'Window',
+            iconColor: 'Window',
+          },
+
+          disabled: {
+            background: 'Window',
+            borderColor: 'GrayText',
+            contentColor: 'GrayText',
+            iconColor: 'GrayText',
+          },
+        },
       },
 
       // TODO: no references to palette.
@@ -298,18 +401,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         iconColor: palette?.themeDarkAlt,
         menuIconColor: palette?.neutralSecondary,
         secondaryContentColor: palette?.neutralPrimary,
-
-        checked: {
-          background: palette?.neutralLight,
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-        },
-
-        checkedHovered: {
-          background: palette?.neutralQuaternaryAlt,
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-        },
+        forcedColorAdjust: 'none',
 
         disabled: {
           background: semanticColors?.disabledBackground,
@@ -341,7 +433,64 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
           iconColor: palette?.themeDarker,
           secondaryContentColor: palette?.black,
         },
+
+        highContrast: {
+          background: 'Window',
+          borderColor: 'transparent',
+          contentColor: 'WindowText',
+          iconColor: 'WindowText',
+
+          hovered: {
+            background: 'Window',
+            borderColor: 'transparent',
+            contentColor: 'Highlight',
+            iconColor: 'Highlight',
+          },
+
+          pressed: {
+            background: 'Window',
+            borderColor: 'transparent',
+            contentColor: 'Highlight',
+            iconColor: 'Highlight',
+          },
+
+          disabled: {
+            background: 'Window',
+            borderColor: 'transparent',
+            contentColor: 'GrayText',
+            iconColor: 'GrayText',
+          },
+        },
       },
+
+      // TODO: no references to palette.
+      transparent: {
+        background: 'transparent',
+        borderColor: 'transparent',
+        contentColor: palette?.neutralPrimary,
+        fontWeight: 'normal',
+        iconColor: palette?.themeDarkAlt,
+
+        disabled: {
+          background: 'transparent',
+          borderColor: 'transparent',
+          contentColor: palette.neutralTertiary,
+          iconColor: 'inherit',
+        },
+
+        hovered: {
+          background: 'transparent',
+          contentColor: palette?.themePrimary,
+          iconColor: palette?.themePrimary,
+        },
+
+        pressed: {
+          background: 'transparent',
+          contentColor: palette?.black,
+          iconColor: palette?.themeDarker,
+        },
+      },
+
       ...ButtonSizeVariants,
     };
   },

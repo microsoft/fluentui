@@ -3,6 +3,8 @@ import { initializeComponentRef, css } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
+
+/* eslint-disable */
 const styles: any = stylesImport;
 
 /**

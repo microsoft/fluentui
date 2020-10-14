@@ -28,16 +28,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-const themeWithStylesheets: PartialTheme = {
-  stylesheets: ['.foo { font-family: var(--body-customFont); }'],
-  tokens: {
-    body: {
-      customFont: 'Courier New',
-    },
-  },
-};
-
-export const NestedTheming = () => {
+export const ApplyThemeToBody = () => {
   const [isLight, setIsLight] = React.useState(true);
 
   return (
@@ -50,12 +41,6 @@ export const NestedTheming = () => {
     </ThemeProvider>
   );
 };
-
-export const TestStylesheets = () => (
-  <ThemeProvider className="foo" theme={themeWithStylesheets}>
-    <span>I am courier new.</span>
-  </ThemeProvider>
-);
 
 const ThemedContentFC = () => {
   const theme = useTheme();
@@ -78,7 +63,7 @@ class ThemedContent extends React.Component<{}> {
 }
 
 export const AccessTheme = () => (
-  <ThemeProvider className="foo" theme={themeWithStylesheets}>
+  <ThemeProvider>
     <ThemedContent />
     <ThemedContentFC />
     <div>See console log</div>

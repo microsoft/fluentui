@@ -5,7 +5,6 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { ICustomizerContext } from '@uifabric/utilities';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IKeyframes } from '@uifabric/merge-styles';
@@ -107,19 +106,21 @@ export { Theme }
 export const ThemeContext: React.Context<Theme | undefined>;
 
 // @public
-export const ThemeProvider: React.ForwardRefExoticComponent<Pick<ThemeProviderProps, string | number> & React.RefAttributes<HTMLDivElement>>;
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
 
 // @public
-export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
     applyTo?: 'element' | 'body' | 'none';
+    as?: React.ElementType;
     ref?: React.Ref<HTMLElement>;
     renderer?: StyleRenderer;
     theme?: PartialTheme | Theme;
 }
 
 // @public
-export type ThemeProviderState = Omit<ThemeProviderProps, 'theme'> & {
+export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
     theme: Theme;
+    ref: React.RefObject<HTMLElement>;
     customizerContext: ICustomizerContext;
 };
 
