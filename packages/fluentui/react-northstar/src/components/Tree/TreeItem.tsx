@@ -247,18 +247,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     },
   });
   const handleClick = (e: React.SyntheticEvent) => {
-    handleOnClickOnTreeItemOnly(e);
-    _.invoke(props, 'onClick', e, props);
-  };
-
-  const handleOnClickOnTreeItemOnly = (e: React.SyntheticEvent) => {
-    // onClick listener for mouse click on treeItem DOM only,
-    // which could be triggered by VO+space on selectable tree parent node
-    e.preventDefault();
-    e.stopPropagation();
     if (e.target === e.currentTarget) {
+      // onClick listener for mouse click on treeItem DOM only,
+      // which could be triggered by VO+space on selectable tree parent node
       handleSelection(e);
     }
+
+    _.invoke(props, 'onClick', e, props);
   };
 
   const ElementType = getElementType(props);
