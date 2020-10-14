@@ -25,7 +25,7 @@ export default function loader(source) {
 
   source = source.replace(/PACKAGE_NAME/g, packageName);
 
-  if (packageName === '@fluentui/react') {
+  if (packageName === 'react') {
     // Compare the list of direct deps of @fluentui/react with the list of packages with examples
     // to see which extra packages' examples should be used  (note: all names here are unscoped).
     const packagesWithExamples = fs.readdirSync(path.resolve(__dirname, '../src')).filter(p => !/\.tsx?$/.test(p));

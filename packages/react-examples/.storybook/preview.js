@@ -32,7 +32,7 @@ if (
 if (['react-next'].includes('PACKAGE_NAME')) {
   addDecorator(withKeytipLayer);
 }
-if (['@fluentui/react'].includes('PACKAGE_NAME')) {
+if (['react'].includes('PACKAGE_NAME')) {
   addDecorator(withCompatKeytipLayer);
 }
 addParameters({
@@ -63,7 +63,7 @@ function loadStories() {
   ];
 
   // @ts-ignore
-  if ('PACKAGE_NAME' === '@fluentui/react') {
+  if ('PACKAGE_NAME' === 'react') {
     // For the @fluentui/react storybook, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     // Note that the regex intentionally goes only one directory below the package name
@@ -74,25 +74,32 @@ function loadStories() {
 
   for (const req of contexts) {
     req.keys().forEach(key => {
-      generateStoriesFromExamples({ key, stories, req });
+      generateStoriesFromExamples(key, stories, req);
     });
   }
 
   // convert stories Set to array
-  return [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+  return sorted;
 }
 
 /**
- * @param {{ key: string, stories: Map<string, Story>, req: (key: string) => ComponentModule }} options
+ * @param {string} key - key for the module in require.context (the relative path to the module
+ * from the root path passed to require.context)
+ * @param {Map<string, Story>} stories
+ * @param {__WebpackModuleApi.RequireContext} req
  */
-function generateStoriesFromExamples({ key, stories, req }) {
-  const nameMatcher = /\.\/([^/]+)\//;
-  const matches = key.match(nameMatcher);
-  if (!matches) {
+function generateStoriesFromExamples(key, stories, req) {
+  // Depending on the starting point of the context, and the package layout, the key will be like one of these:
+  //   ./ComponentName/ComponentName.Something.Example.tsx
+  //   ./next/ComponentName/ComponentName.Something.Example.tsx
+  //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
+  const segments = key.split('/');
+  if (segments.length < 3) {
     return;
   }
 
-  const componentName = matches[1];
+  const componentName = segments.length === 3 ? segments[1] : `${segments[2]} (${segments[1]})`;
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
@@ -102,13 +109,13 @@ function generateStoriesFromExamples({ key, stories, req }) {
     });
   }
 
-  const storyName = key
-    .substr(key.lastIndexOf('/') + 1)
+  const storyName = segments
+    .slice(-1)[0]
     .replace('.tsx', '')
     .replace(/\./g, '_');
 
   const story = stories.get(componentName);
-  const exampleModule = req(key);
+  const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
 
   for (let moduleExport of Object.keys(exampleModule)) {
     const ExampleComponent = exampleModule[moduleExport];
