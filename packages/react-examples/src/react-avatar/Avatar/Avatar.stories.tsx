@@ -14,7 +14,7 @@ import {
   SkypeArrowIcon,
 } from '@fluentui/react-icons';
 import { StoryExample } from '../utils/StoryExample';
-import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react-next';
+import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
 const people = [
