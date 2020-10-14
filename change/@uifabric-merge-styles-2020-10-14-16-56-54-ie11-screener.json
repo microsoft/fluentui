@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add styling to prevent flicker",
+  "packageName": "@uifabric/merge-styles",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T23:56:37.887Z"
+}

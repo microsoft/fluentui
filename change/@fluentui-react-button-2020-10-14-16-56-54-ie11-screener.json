@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add styling to prevent flicker in ie11",
+  "packageName": "@fluentui/react-button",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T23:56:54.278Z"
+}
