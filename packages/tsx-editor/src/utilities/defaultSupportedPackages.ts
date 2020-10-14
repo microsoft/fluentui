@@ -34,7 +34,7 @@ if (typesContext) {
     // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
     const packageName = `${
-      ['react-focus', 'react'].includes(unscopedName) ? '@fluentui' : '@uifabric'
+      ['react-focus', 'react'].indexOf(unscopedName) > -1 ? '@fluentui' : '@uifabric'
     }/${unscopedName}`;
     const packageGroup =
       packageName === '@uifabric/example-data'

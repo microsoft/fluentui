@@ -90,6 +90,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     focus(): void;
     // (undocumented)
+    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
+    // (undocumented)
     readonly inputElement: HTMLInputElement | null;
     // (undocumented)
     readonly isValueSelected: boolean;
@@ -100,13 +102,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     readonly selectionStart: number | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
-    // (undocumented)
     readonly value: string;
-    }
-
-// @public @deprecated (undocumented)
-export class BaseAutoFill extends Autofill {
 }
 
 // @public (undocumented)
@@ -146,7 +142,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected readonly floatingPickerProps: IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -186,11 +182,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected readonly selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -252,8 +246,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
@@ -498,13 +490,8 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -608,25 +595,10 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-    constructor(props: IContextualMenuProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IContextualMenuProps;
-    // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
-    }
+export const ContextualMenuBase: {
+    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
+    displayName: string;
+};
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -919,21 +891,9 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
-    constructor(props: IFocusTrapZoneProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
-    }
+export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
+    focusStack: string[];
+};
 
 // @public
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
@@ -979,9 +939,6 @@ export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
 };
-
-// @public (undocumented)
-export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
 
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {
@@ -1146,26 +1103,19 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string;
+    onInputChange?: (value: string, composing: boolean) => string | void;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
+    // @deprecated
     updateValueInWillReceiveProps?: () => string | null;
 }
 
 // @public (undocumented)
 export interface IAutofillState {
     // (undocumented)
-    displayValue?: string;
-}
-
-// @public @deprecated
-export interface IBaseAutoFill extends IAutofill {
-}
-
-// @public @deprecated
-export interface IBaseAutoFillProps extends IAutofillProps {
+    inputValue: string;
 }
 
 // @public (undocumented)
@@ -1219,10 +1169,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)
@@ -1708,7 +1654,7 @@ export interface ICalloutPositionProps extends IPositionProps {
 }
 
 // @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -1724,7 +1670,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
-    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -1733,7 +1678,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     isBeakVisible?: boolean;
     layerProps?: ILayerProps;
     minPagePadding?: number;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
     onRestoreFocus?: (options: {
@@ -2461,7 +2406,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
@@ -2506,11 +2451,6 @@ export interface IContextualMenuState {
     // (undocumented)
     contextualMenuTarget?: Element;
     // (undocumented)
-    dismissedMenuItemKey?: string;
-    expandedByMouseClick?: boolean;
-    // (undocumented)
-    expandedMenuItemKey?: string;
-    // (undocumented)
     positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
@@ -2518,8 +2458,6 @@ export interface IContextualMenuState {
     submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
-    // (undocumented)
-    submenuTarget?: Element;
 }
 
 // @public (undocumented)
@@ -3129,7 +3067,7 @@ export interface IFocusTrapZone {
 }
 
 // @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
@@ -6972,7 +6910,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -7013,9 +6951,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 // @public (undocumented)
 export class SuggestionsController<T> {

@@ -18,6 +18,7 @@ export interface TestDefinition {
 }
 
 const skipSpecChecksForFiles = [
+  'popupBehavior.ts', // tests are written new way in popupBehaviorDefinition.ts
   'buttonBehavior.ts', // tests are written new way in buttonBehaviorDefinition.ts
   'buttonGroupBehavior.ts', // tests are written new way in buttonGroupBehaviorDefinition.ts
   'toggleButtonBehavior.ts', // tests are written new way in toggleButtonBehaviorDefinition.ts
@@ -28,6 +29,8 @@ const skipSpecChecksForFiles = [
   'sliderBehavior.ts', // tests are written in sliderBehavior-test.ts
   'treeItemAsListItemBehavior.ts', // tests are written in treeItemAsListItemBehavior-test.ts
   'treeTitleAsListItemTitleBehavior.ts', // tests are written in treeTitleAsListItemTitleBehavior-test.ts
+  'treeItemAsOptionBehavior.ts', // tests are written in treeItemAsOptionBehavior-test.ts
+  'treeTitleAsOptionBehavior.ts', // tests are written in treeTitleAsOptionBehavior-test.ts
   'gridRowBehavior.ts', // tests are written in gridRowBehavior-test.ts
 ];
 

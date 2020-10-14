@@ -1,15 +1,7 @@
 import * as React from 'react';
-import {
-  DefaultButton,
-  FocusTrapCallout,
-  Stack,
-  FocusZone,
-  PrimaryButton,
-  mergeStyleSets,
-  FontWeights,
-  Text,
-} from '@fluentui/react';
+import { FocusTrapCallout, Stack, FocusZone, mergeStyleSets, FontWeights, Text } from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 const styles = mergeStyleSets({
   buttonArea: {

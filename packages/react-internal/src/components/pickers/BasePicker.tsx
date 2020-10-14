@@ -11,8 +11,9 @@ import {
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Callout, DirectionalHint } from '../../Callout';
+import { Callout } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { Suggestions } from './Suggestions/Suggestions';
 import {
   ISuggestions,

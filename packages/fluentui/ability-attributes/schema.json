@@ -28,6 +28,18 @@
     "$isValidRadioGroup": {
       "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby|@aria-label])",
       "description": "RadioGroup inside form should have aria-labelledby attribute"
+    },
+    "$isValidTree": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='treeitem']) or boolean(./*[@role!='treeitem' and @role!='group' and @role!='none']))",
+      "description": "Children of tree should have role='treeitem' or role='group'"
+    },
+    "$isValidTreeList": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='listitem']) or boolean(./*[@role!='listitem' and @role!='group' and @role!='none']))",
+      "description": "Children of tree as list should have role='listitem' or role='group'"
+    },
+    "$isValidTreeListbox": {
+      "xpath": "not(boolean(./*[@role='none']/*[@role!='option']) or boolean(./*[@role!='option' and @role!='group' and @role!='none']))",
+      "description": "Children of tree as listbox should have role='option' or role='group'"
     }
   },
   "parameters": {
@@ -264,7 +276,7 @@
               "attribute": "true"
             },
             {
-              "parameter": true,
+              "parameter": false,
               "attribute": "false"
             }
           ]
@@ -334,6 +346,10 @@
             {
               "parameter": false,
               "attribute": [false, "false"]
+            },
+            {
+              "parameter": "mixed",
+              "attribute": "mixed"
             }
           ]
         },
@@ -347,9 +363,69 @@
             {
               "parameter": false,
               "attribute": false
+            },
+            {
+              "parameter": "mixed",
+              "attribute": "mixed"
             }
           ],
           "optional": true
+        }
+      ]
+    },
+    "$isCurrent": {
+      "name": "isCurrent",
+      "attributes": [
+        {
+          "name": "aria-current",
+          "value": [
+            {
+              "parameter": "page",
+              "attribute": "page"
+            },
+            {
+              "parameter": "step",
+              "attribute": "step"
+            },
+            {
+              "parameter": "location",
+              "attribute": "location"
+            },
+            {
+              "parameter": "date",
+              "attribute": "date"
+            },
+            {
+              "parameter": "time",
+              "attribute": "time"
+            },
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": false,
+              "attribute": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "$isMultiselectable": {
+      "name": "isMultiselectable",
+      "attributes": [
+        {
+          "name": "aria-multiselectable",
+          "value": [
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": false,
+              "attribute": "false"
+            }
+          ]
         }
       ]
     }
@@ -414,6 +490,95 @@
         }
       }
     },
+    "Tree": {
+      "constraints": [
+        {
+          "ref": "$isValidTree"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$isMultiselectable",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "tree"
+            }
+          ]
+        }
+      }
+    },
+    "TreeList": {
+      "constraints": [
+        {
+          "ref": "$isValidTreeList"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "list"
+            }
+          ]
+        }
+      }
+    },
+    "TreeListbox": {
+      "constraints": [
+        {
+          "ref": "$isValidTreeListbox"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "ref": "$isMultiselectable",
+          "optional": true
+        },
+        {
+          "ref": "$tabbable",
+          "optional": true
+        }
+      ],
+      "tags": {
+        "<div>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listbox"
+            }
+          ]
+        }
+      }
+    },
     "TreeItem": {
       "constraints": [
         {
@@ -429,7 +594,8 @@
           "rel": "@tabbable"
         },
         {
-          "ref": "$isExpanded"
+          "ref": "$isExpanded",
+          "overridable": "isExpanded"
         },
         {
           "ref": "$isSelected",
@@ -442,7 +608,12 @@
           "ref": "$posinset"
         },
         {
-          "ref": "$level"
+          "ref": "$level",
+          "overridable": "level"
+        },
+        {
+          "ref": "$checked-custom",
+          "optional": true
         }
       ],
       "tags": {
@@ -461,6 +632,50 @@
             },
             {
               "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeItemList": {
+      "inherits": "TreeItem",
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listitem",
+              "overrides": "role",
+              "overridable": "role"
+            }
+          ]
+        }
+      }
+    },
+    "TreeItemOption": {
+      "inherits": "TreeItem",
+      "parameters": [
+        {
+          "ref": "$label",
+          "optional": true
+        },
+        {
+          "overrides": "isExpanded",
+          "ref": null
+        },
+        {
+          "overrides": "level",
+          "ref": null
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "option",
+              "overrides": "role",
+              "overridable": "role"
             }
           ]
         }
@@ -491,7 +706,16 @@
           "ref": "$posinset"
         },
         {
-          "ref": "$level"
+          "ref": "$level",
+          "overridable": "level"
+        },
+        {
+          "ref": "$isCurrent",
+          "optional": true
+        },
+        {
+          "ref": "$checked-custom",
+          "optional": true
         }
       ],
       "tags": {
@@ -510,6 +734,42 @@
             },
             {
               "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitleList": {
+      "inherits": "TreeTitle",
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "listitem",
+              "overrides": "role",
+              "overridable": "role"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitleOption": {
+      "inherits": "TreeTitle",
+      "parameters": [
+        {
+          "overrides": "level",
+          "ref": null
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "attributes": [
+            {
+              "name": "role",
+              "value": "option",
+              "overrides": "role",
+              "overridable": "role"
             }
           ]
         }

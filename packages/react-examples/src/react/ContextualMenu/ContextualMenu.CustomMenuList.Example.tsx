@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { ISearchBoxStyles, SearchBox } from '@fluentui/react/lib/SearchBox';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';

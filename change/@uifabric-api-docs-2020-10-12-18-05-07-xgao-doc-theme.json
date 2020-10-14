@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add doc page for ThemeProvider.",
+  "packageName": "@uifabric/api-docs",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-13T01:04:39.782Z"
+}

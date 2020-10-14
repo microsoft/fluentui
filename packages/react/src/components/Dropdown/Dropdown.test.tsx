@@ -1,13 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownBase } from './Dropdown.base';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { isConformant } from '../../common/isConformant';
+import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -22,7 +25,7 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 ];
 
 describe('Dropdown', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
 
   beforeEach(() => {
@@ -42,9 +45,14 @@ describe('Dropdown', () => {
     document.body.innerHTML = '';
   });
 
+  isConformant({
+    Component: Dropdown,
+    displayName: 'Dropdown',
+  });
+
   describe('single-select', () => {
     it('Renders single-select Dropdown correctly', () => {
-      component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} />);
+      component = create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -100,6 +108,7 @@ describe('Dropdown', () => {
           ]}
         />,
       );
+
       const titleElement = wrapper.find('.ms-Dropdown-title');
 
       expect(titleElement.text()).toEqual('1');
@@ -140,14 +149,17 @@ describe('Dropdown', () => {
     });
 
     it('clears when the selectedKey is null', () => {
-      wrapper = mount(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      safeCreate(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('1');
 
-      expect(titleElement.text()).toEqual('1');
-
-      wrapper.setProps({ selectedKey: null });
-
-      expect(titleElement.text()).toEqual('');
+        renderer.act(() => {
+          container.update(<Dropdown selectedKey={null} options={DEFAULT_OPTIONS} />);
+        });
+        expect(dropdownOptionText.children?.[0]).toBe(undefined);
+      });
     });
 
     it('Can change items in uncontrolled case', () => {
@@ -220,19 +232,18 @@ describe('Dropdown', () => {
         { key: 0, text: 'item1' },
         { key: 1, text: 'item2' },
       ];
-      const selectedKey = 0;
-      const dropdown = React.createRef<IDropdown>();
 
-      wrapper = mount(<Dropdown componentRef={dropdown} options={options} />);
+      safeCreate(<Dropdown options={options} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe(undefined);
 
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
-
-      const newProps = { options, selectedKey };
-
-      wrapper.setProps(newProps);
-      wrapper.update();
-
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+        renderer.act(() => {
+          container.update(<Dropdown selectedKey={0} options={options} />);
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('item1');
+      });
     });
 
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
@@ -240,20 +251,18 @@ describe('Dropdown', () => {
         { key: 0, text: 'item1' },
         { key: 1, text: 'item2' },
       ];
-      let selectedKey = 0;
-      const dropdown = React.createRef<IDropdown>();
 
-      wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKey={selectedKey} />);
+      safeCreate(<Dropdown selectedKey={0} options={options} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('item1');
 
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
-
-      selectedKey = -1;
-      const newProps = { options, selectedKey };
-
-      wrapper.setProps(newProps);
-      wrapper.update();
-
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+        renderer.act(() => {
+          container.update(<Dropdown selectedKey={-1} options={options} />);
+        });
+        expect(dropdownOptionText.children?.[0]).toBe(undefined);
+      });
     });
 
     it('does not call onChange when the selected item is not different', () => {
@@ -315,7 +324,7 @@ describe('Dropdown', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div
+      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
       // being focused. Utilize JSDOM instead.
       ReactDOM.render(
         <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
@@ -334,10 +343,16 @@ describe('Dropdown', () => {
 
       const container = document.createElement('div');
       document.body.appendChild(container);
-      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      });
 
       expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
-      dropdown.current!.focus(true);
+
+      ReactTestUtils.act(() => {
+        dropdown.current!.focus(true);
+      });
       const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
       expect(firstDropdownItem).not.toBeNull();
       expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
@@ -443,7 +458,7 @@ describe('Dropdown', () => {
 
   describe('multi-select', () => {
     it('Renders multiselect Dropdown correctly', () => {
-      component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
+      component = create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -489,16 +504,18 @@ describe('Dropdown', () => {
         { key: 0, text: 'item1' },
         { key: 1, text: 'item2' },
       ];
-      const selectedKeys = [0, 1];
-      const dropdown = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown multiSelect componentRef={dropdown} options={options} />);
 
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+      safeCreate(<Dropdown multiSelect options={options} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe(undefined);
 
-      const newProps = { options, selectedKeys };
-      wrapper.setProps(newProps);
-      wrapper.update();
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual(selectedKeys);
+        renderer.act(() => {
+          container.update(<Dropdown multiSelect options={options} selectedKeys={[0, 1]} />);
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('item1, item2');
+      });
     });
 
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
@@ -506,20 +523,19 @@ describe('Dropdown', () => {
         { key: 0, text: 'item1' },
         { key: 1, text: 'item2' },
       ];
-      let selectedKeys = [0];
-      const dropdown = React.createRef<IDropdown>();
+      const selectedKeys = [0];
 
-      wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKeys={selectedKeys} multiSelect />);
+      safeCreate(<Dropdown multiSelect options={options} selectedKeys={selectedKeys} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('item1');
 
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual(selectedKeys);
-
-      selectedKeys = [-1];
-      const newProps = { options, selectedKeys };
-
-      wrapper.setProps(newProps);
-      wrapper.update();
-
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+        renderer.act(() => {
+          container.update(<Dropdown multiSelect options={options} selectedKeys={[-1]} />);
+        });
+        expect(dropdownOptionText.children?.[0]).toBe(undefined);
+      });
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {
@@ -778,17 +794,21 @@ describe('Dropdown', () => {
     }
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
-      wrapper = mount(<DropdownWithChangingProps multi={false} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
-
-      expect(dropdownOptionText.innerHTML).toBe('Option b');
+      safeCreate(<DropdownWithChangingProps multi={false} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('Option b');
+      });
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
-      wrapper = mount(<DropdownWithChangingProps multi={true} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
-
-      expect(dropdownOptionText.innerHTML).toBe('Option b, Option d');
+      safeCreate(<DropdownWithChangingProps multi={true} />, container => {
+        const dropdownOptionText = container.root.find(node => {
+          return node.props.className?.includes?.('ms-Dropdown-title');
+        });
+        expect(dropdownOptionText.children?.[0]).toBe('Option b, Option d');
+      });
     });
   });
 });

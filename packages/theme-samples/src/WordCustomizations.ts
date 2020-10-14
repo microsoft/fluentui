@@ -1,42 +1,27 @@
 import { createTheme, ICustomizations } from '@fluentui/react';
 import { addVariants } from '@uifabric/variants';
+import { Theme } from '@fluentui/react';
+
+export const WordTheme: Theme = createTheme({
+  palette: {
+    themePrimary: '#2b579a',
+    themeSecondary: '#366ec2',
+  },
+  semanticColors: {
+    buttonBackground: '#FFF',
+    buttonBackgroundHovered: 'rgb(240, 240, 240)',
+    buttonBackgroundPressed: 'rgb(240, 240, 240)',
+    buttonText: 'rgb(43, 87, 154)',
+    buttonBorder: 'rgb(237, 235, 233)',
+  },
+});
+
+addVariants(WordTheme);
 
 export const WordCustomizations: ICustomizations = {
   settings: {
-    theme: createTheme({
-      palette: {
-        themePrimary: '#2b579a',
-        themeSecondary: '#366ec2',
-      },
-      semanticColors: {
-        buttonBackground: 'white',
-        buttonBackgroundHovered: 'rgb(240, 240, 240)',
-        buttonBackgroundPressed: 'rgb(240, 240, 240)',
-        buttonText: 'rgb(43, 87, 154)',
-        buttonBorder: 'rgb(237, 235, 233)',
-      },
-    }),
+    theme: WordTheme,
   },
 
-  scopedSettings: {
-    Button: {
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      tokens: (props: any) => {
-        return [
-          {
-            borderWidth: 1,
-            textSize: 13.5,
-            textWeight: 600,
-            iconSize: 12,
-            contentPadding: '0px 6px',
-          },
-          !props.circular && {
-            minHeight: 26,
-          },
-        ];
-      },
-    },
-  },
+  scopedSettings: {},
 };
-
-addVariants(WordCustomizations.settings.theme);

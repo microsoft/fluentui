@@ -2,10 +2,18 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
-import { setWarningCallback } from '../../Utilities';
+import { resetIds, setWarningCallback } from '../../Utilities';
 import { DialogBase } from './Dialog.base';
 
 describe('Dialog deprecated props', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   beforeAll(() => {
     // Prevent warn deprecations from failing test
     setWarningCallback(() => {
