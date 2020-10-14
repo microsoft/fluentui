@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
-import { renderSplitButton } from './renderSplitButton';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { useExpanded } from '../MenuButton/useExpanded';
 
@@ -81,8 +80,5 @@ export const useSplitButton = (
 
   useExpanded(state);
 
-  return {
-    state,
-    render: renderSplitButton,
-  };
+  return state;
 };
