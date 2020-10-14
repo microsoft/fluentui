@@ -4,7 +4,6 @@ import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
-  IDataPoint,
   IVerticalBarChartDataPoint,
 } from '../../index';
 
@@ -12,7 +11,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IVerticalBarChartDataPoint[];
 
   /**
    * Define a custom callout renderer for a data point
@@ -28,6 +27,18 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Colors from which to select the color of each bar.
    */
   colors?: string[];
+
+  /**
+   * Legend text for the line datapoint in the chart
+   */
+  lineLegendText?: string;
+
+  /**
+   * color for the legend  of the line in the chart
+   * @default theme.yellow
+   */
+
+  lineLegendColor?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
