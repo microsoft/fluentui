@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove un-necessary palette generation",
-  "packageName": "@fluentui/web-components",
-  "email": "nicholasrice@users.noreply.github.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-14T18:01:46.084Z"
-}

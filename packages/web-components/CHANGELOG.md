@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 Oct 2020 18:03:19 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 20:26:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.3)
+
+Wed, 14 Oct 2020 20:26:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.2..@fluentui/web-components_v0.6.3)
+
+### Patches
+
+- operate dialog in open mode to ensure accessible focus behavior is supported ([PR #15502](https://github.com/microsoft/fluentui/pull/15502) by chhol@microsoft.com)
+- remove un-necessary palette generation ([PR #15509](https://github.com/microsoft/fluentui/pull/15509) by nicholasrice@users.noreply.github.com)
 
 ## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.2)
 
