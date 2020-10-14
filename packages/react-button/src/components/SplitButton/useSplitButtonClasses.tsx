@@ -73,7 +73,7 @@ export const useSplitButtonClasses = makeVariantClasses({
       },
     },
 
-    _fluid: {
+    _block: {
       width: '100%',
       maxWidth: '100%',
 

@@ -121,7 +121,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         },
       },
 
-      fluid: {
+      block: {
         maxWidth: '100%',
       },
 

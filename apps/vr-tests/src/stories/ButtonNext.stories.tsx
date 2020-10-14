@@ -351,7 +351,7 @@ storiesOf('Button Next - Icon only', module)
     </Button>
   ));
 
-storiesOf('Button Next - Fluid', module)
+storiesOf('Button Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -377,42 +377,42 @@ storiesOf('Button Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button fluid icon="X">
+    <Button block icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Primary', () => (
-    <Button fluid primary icon="X">
+    <Button block primary icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Disabled', () => (
-    <Button fluid disabled icon="X">
+    <Button block disabled icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Primary Disabled', () => (
-    <Button fluid primary disabled icon="X">
+    <Button block primary disabled icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Ghost', () => (
-    <Button fluid ghost icon="X">
+    <Button block ghost icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Ghost Disabled', () => (
-    <Button fluid disabled ghost icon="X">
+    <Button block disabled ghost icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Transparent', () => (
-    <Button fluid transparent icon="X">
+    <Button block transparent icon="X">
       Hello, world
     </Button>
   ))
   .addStory('Transparent Disabled', () => (
-    <Button fluid disabled transparent icon="X">
+    <Button block disabled transparent icon="X">
       Hello, world
     </Button>
   ));

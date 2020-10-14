@@ -76,7 +76,7 @@ storiesOf('SplitButton Next', module)
     </ThemeProvider>
   ));
 
-storiesOf('SplitButton Next - Fluid', module)
+storiesOf('SplitButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -102,42 +102,42 @@ storiesOf('SplitButton Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <SplitButton fluid icon="X">
+    <SplitButton block icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Primary', () => (
-    <SplitButton fluid primary icon="X">
+    <SplitButton block primary icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <SplitButton fluid disabled icon="X">
+    <SplitButton block disabled icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <SplitButton fluid primary disabled icon="X">
+    <SplitButton block primary disabled icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Ghost', () => (
-    <SplitButton fluid ghost icon="X">
+    <SplitButton block ghost icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Ghost Disabled', () => (
-    <SplitButton fluid disabled ghost icon="X">
+    <SplitButton block disabled ghost icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Transparent', () => (
-    <SplitButton fluid transparent icon="X">
+    <SplitButton block transparent icon="X">
       Hello, world
     </SplitButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <SplitButton fluid disabled transparent icon="X">
+    <SplitButton block disabled transparent icon="X">
       Hello, world
     </SplitButton>
   ));
@@ -195,8 +195,8 @@ storiesOf('SplitButton Next - Teams Theme', module)
       Hello, world
     </SplitButton>
   ))
-  .addStory('Fluid', () => (
-    <SplitButton fluid icon="X">
+  .addStory('Block', () => (
+    <SplitButton block icon="X">
       Hello, world
     </SplitButton>
   ))
