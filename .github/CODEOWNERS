@@ -84,91 +84,72 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Components
-packages/react/src/components/ActivityItem/ @xugao
-packages/react/src/components/Announced/ @natalieethell
+packages/react-internal/src/components/ActivityItem/ @xugao
+packages/react-internal/src/components/Announced/ @natalieethell
 packages/react/src/components/Breadcrumb/ @xugao
-packages/react/src/components/Button/ @khmakoto
-packages/react-next/src/components/Button/ @khmakoto
-packages/react/src/components/Calendar/ @lorejoh12 @pompomon
-packages/react/src/components/Callout/ @joschect
-packages/react/src/components/react-cards/Card/  @khmakoto
-packages/react/src/components/Check/ @dzearing @xugao
-packages/react/src/components/Checkbox/ @khmakoto @xugao
-packages/react-next/src/components/Checkbox/ @khmakoto @xugao
+packages/react-internal/src/components/Button/ @khmakoto
+packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
+packages/react-internal/src/components/Callout/ @joschect
+packages/react-cards @khmakoto
+packages/react-internal/src/components/Check/ @dzearing @xugao
 packages/react-checkbox/ @khmakoto @xugao
-packages/react/src/components/ChoiceGroup/ @ecraig12345
-packages/react/src/components/Coachmark/ @leddie24
-packages/react/src/components/ColorPicker/ @ecraig12345
+packages/react-internal/src/components/ChoiceGroup/ @ecraig12345
+packages/react-internal/src/components/Coachmark/ @leddie24
+packages/react-internal/src/components/ColorPicker/ @ecraig12345
 packages/react/src/components/ComboBox/ @joschect
-packages/react/src/components/CommandBar/ @micahgodbolt @joschect
-packages/react/src/components/ContextualMenu/ @joschect
-packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
+packages/react-internal/src/components/CommandBar/ @micahgodbolt @joschect
+packages/react-internal/src/components/ContextualMenu/ @joschect
+packages/react-internal/src/components/DatePicker/ @lorejoh12 @pompomon
 packages/react/src/components/DetailsList/ @dzearing
-packages/react/src/components/Dialog/ @joschect
+packages/react-internal/src/components/Dialog/ @joschect
 packages/react/src/components/DocumentCard/ @yiminwu
 packages/react/src/components/Dropdown/ @joschect
-packages/react/src/components/Fabric/ @dzearing
-packages/react-next/src/components/Fabric/ @dzearing
-packages/react/src/components/Facepile/ @markionium @mtennoe
-packages/react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
-packages/react/src/components/FocusTrapZone/ @khmakoto
-packages/react/src/components/FocusZone/ @khmakoto
+packages/react-internal/src/components/Fabric/ @dzearing
+packages/react-internal/src/components/Facepile/ @markionium @mtennoe
+packages/react-internal/src/components/FolderCover/ @ThomasMichon @bigbadcapers
+packages/react-internal/src/components/FocusTrapZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/react/src/components/GroupedList/  @aditima @dzearing
-packages/react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
-packages/react/src/components/Icon/ @dzearing @ecraig12345
-packages/react/src/components/Image/ @dzearing
-packages/react-next/src/components/Image/ @dzearing
-packages/react/src/components/Label/ @khmakoto
-packages/react/src/components/Layer/  @ThomasMichon
-packages/react/src/components/Link/ @khmakoto
-packages/react-next/src/components/Link/ @khmakoto
+packages/react-internal/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
+packages/react-internal/src/components/Icon/ @dzearing @ecraig12345
+packages/react-internal/src/components/Image/ @dzearing
+packages/react-internal/src/components/Label/ @khmakoto
+packages/react-internal/src/components/Layer/  @ThomasMichon
 packages/react-link/ @khmakoto
-packages/react/src/components/List/ @dzearing
-packages/react/src/components/MarqueeSelection/ @dzearing
-packages/react/src/components/MessageBar/ @ecraig12345
-packages/react/src/components/Modal/ @joschect
-packages/react/src/components/Nav/ @ecraig12345
-packages/react/src/components/OverflowSet/ @micahgodbolt
-packages/react-next/src/components/OverflowSet/ @micahgodbolt
-packages/react/src/components/Overlay/ @xugao
-packages/react/src/components/Pagination/ @caradong
-packages/react/src/components/Panel/ @xugao
-packages/react/src/components/Persona/ @markionium @mtennoe
-packages/react/src/components/PersonaCoin/ @mtennoe @markionium
-packages/react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/react/src/components/pickers/  @joschect
-packages/react/src/components/Pivot/ @behowell
-packages/react-next/src/components/Pivot/ @behowell
+packages/react-internal/src/components/List/ @dzearing
+packages/react-internal/src/components/MarqueeSelection/ @dzearing
+packages/react-internal/src/components/MessageBar/ @ecraig12345
+packages/react-internal/src/components/Modal/ @joschect
+packages/react-internal/src/components/Nav/ @ecraig12345
+packages/react-internal/src/components/OverflowSet/ @micahgodbolt
+packages/react-internal/src/components/Overlay/ @xugao
+packages/experiments/src/components/Pagination/ @caradong
+packages/react-internal/src/components/Panel/ @xugao
+packages/react-internal/src/components/Persona/ @markionium @mtennoe
+packages/react-internal/src/components/PersonaCoin/ @mtennoe @markionium
+packages/react-internal/src/components/Persona/PersonaConsts.tsx @mtennoe
+packages/react-internal/src/components/pickers/  @joschect
+packages/react-internal/src/components/Pivot/ @behowell
 packages/react-tabs/ @behowell
-packages/react/src/components/Popup/ @joschect
-packages/react-next/src/components/Popup/ @joschect
-packages/react/src/components/ProgressIndicator/ @xugao
-packages/react/src/components/Rating/ @jdhuntington
-packages/react/src/components/ResizeGroup/ @micahgodbolt
-packages/react-next/src/components/ResizeGroup/ @micahgodbolt
-packages/react/src/components/SearchBox/ @ecraig12345
-packages/react-next/src/components/SearchBox/ @ecraig12345
-packages/react/src/components/Separator/ @natalieethell
-packages/react/src/components/Shimmer/ @Vitalius1 @atneik
-packages/react/src/components/Signals/ @ThomasMichon
-packages/react/src/components/Slider/ @joschect
-packages/react-next/src/components/Slider/ @joschect
+packages/react-internal/src/components/Popup/ @joschect
+packages/react-internal/src/components/ProgressIndicator/ @xugao
+packages/react-internal/src/components/Rating/ @jdhuntington
+packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
+packages/react-internal/src/components/SearchBox/ @ecraig12345
+packages/react-internal/src/components/Separator/ @natalieethell
+packages/react-internal/src/components/Shimmer/ @Vitalius1 @atneik
+packages/react-internal/src/components/Signals/ @ThomasMichon
 packages/react-slider/ @joschect
-packages/react/src/components/SpinButton/ @khmakoto
-packages/react-next/src/components/SpinButton/ @khmakoto
-packages/react/src/components/Spinner/ @xugao
-packages/react/src/components/Stack/  @khmakoto
-packages/react/src/components/SwatchColorPicker/ @ecraig12345
-packages/react/src/components/TeachingBubble/ @micahgodbolt
-packages/react/src/components/Text/ @natalieethell
-packages/react/src/components/TextField/ @ecraig12345
-packages/react/src/components/Theme/ @dzearing
-packages/react/src/components/Tile/ @ThomasMichon
-packages/react/src/components/TileList/ @ThomasMichon
-packages/react/src/components/Toggle/ @xugao
-packages/react-next/src/components/Toggle/ @xugao
+packages/react-internal/src/components/SpinButton/ @khmakoto
+packages/react-internal/src/components/Spinner/ @xugao
+packages/react-internal/src/components/Stack/  @khmakoto
+packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
+packages/react-internal/src/components/TeachingBubble/ @micahgodbolt
+packages/react-internal/src/components/Text/ @natalieethell
+packages/react-internal/src/components/TextField/ @ecraig12345
+packages/react-internal/src/components/Theme/ @dzearing
+packages/experiments/src/components/Tile/ @ThomasMichon
+packages/experiments/src/components/TileList/ @ThomasMichon
 packages/react-toggle/ @xugao
-packages/react/src/components/Tooltip/ @micahgodbolt
+packages/react-internal/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto
-packages/react-spinbutton/ @dzearing @ecraig12345
