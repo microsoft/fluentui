@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "FloatingPickers: Move to react-internal",
+  "packageName": "@fluentui/react-next",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-10T03:23:40.787Z"
+}

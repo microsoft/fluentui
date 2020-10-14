@@ -5,6 +5,7 @@ import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault'
 import { IPersonaProps } from '../../../Persona';
 import './PeoplePicker.scss';
 import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
+/* eslint-disable */
 
 /**
  * {@docCategory FloatingPeoplePicker}
