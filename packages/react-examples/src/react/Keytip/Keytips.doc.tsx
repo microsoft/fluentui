@@ -16,7 +16,7 @@ const KeytipsDynamicCode = require('!raw-loader!@fluentui/react-examples/src/rea
 export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',
   componentName: 'Keytips',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Keytips',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Keytips',
   examples: [
     {
       title: 'Keytips on Buttons',
