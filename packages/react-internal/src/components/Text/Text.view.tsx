@@ -4,7 +4,7 @@ import { getNativeProps, htmlElementProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
 export const TextView: ITextComponent['view'] = props => {
-  if (!props.children) {
+  if (props.children === undefined) {
     return null;
   }
 

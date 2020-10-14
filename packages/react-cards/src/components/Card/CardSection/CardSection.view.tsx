@@ -5,7 +5,7 @@ import { ICardSectionComponent, ICardSectionProps, ICardSectionSlots } from './C
 
 export const CardSectionView: ICardSectionComponent['view'] = props => {
   const { children, ...rest } = props;
-  if (!children) {
+  if (children === undefined) {
     return null;
   }
 
