@@ -5,7 +5,7 @@ import { FocusZonePageProps } from '@fluentui/react-examples/lib/react-focus/Foc
 
 export const FocusZonePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react-focus/FocusZone.page.json')}
+    jsonDocs={require('@uifabric/api-docs/lib/pages/react/FocusZone.page.json')}
     {...{ ...FocusZonePageProps, ...props }}
   />
 );
