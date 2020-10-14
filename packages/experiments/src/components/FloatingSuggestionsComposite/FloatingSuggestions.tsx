@@ -33,7 +33,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     onKeyDown,
   } = props;
 
-  const hidePicker = (ev: React.MouseEvent): void => {
+  const hidePicker = (ev?: React.MouseEvent | Event | React.KeyboardEvent): void => {
     onFloatingSuggestionsDismiss ? onFloatingSuggestionsDismiss(ev) : null;
   };
 

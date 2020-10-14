@@ -18,13 +18,10 @@ import { IBasePickerState } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import { IBasePickerStyles } from '@fluentui/react/lib/Pickers';
 import { IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
-import { ICalloutPositionedInfo } from '@fluentui/react/lib/Positioning';
 import { IAutofill as IFabricAutofill } from '@fluentui/react/lib/Pickers';
 import { IAutofillState as IFabricAutofillState } from '@fluentui/react/lib/Pickers';
-import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { IGenericItem } from '@fluentui/react/lib/Pickers';
 import { IInputProps } from '@fluentui/react/lib/Pickers';
-import { ILayerProps } from '@fluentui/react/lib/Layer';
 import { IPeoplePickerItemSelectedProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSelectedStyleProps } from '@fluentui/react/lib/Pickers';
 import { IPeoplePickerItemSelectedStyles } from '@fluentui/react/lib/Pickers';
@@ -37,9 +34,6 @@ import { IPeoplePickerProps } from '@fluentui/react/lib/Pickers';
 import { IPickerAriaIds } from '@fluentui/react/lib/Pickers';
 import { IPickerItem } from '@fluentui/react/lib/Pickers';
 import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRectangle } from '@fluentui/react/lib/Utilities';
-import { IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
 import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { ISuggestions } from '@fluentui/react/lib/Pickers';
@@ -59,7 +53,6 @@ import { ITagItemSuggestionProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyleProps } from '@fluentui/react/lib/Pickers';
 import { ITagItemSuggestionStyles } from '@fluentui/react/lib/Pickers';
 import { ITagPickerProps } from '@fluentui/react/lib/Pickers';
-import { ITheme } from '@fluentui/react/lib/Styling';
 import { ListPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { ListPeoplePickerBase } from '@fluentui/react/lib/Pickers';
 import { MemberListPeoplePicker } from '@fluentui/react/lib/Pickers';
@@ -69,7 +62,6 @@ import { PeoplePickerItem } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemBase } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { PeoplePickerItemSuggestionBase } from '@fluentui/react/lib/Pickers';
-import * as React from 'react';
 import { SuggestionActionType } from '@fluentui/react/lib/Pickers';
 import { Suggestions } from '@fluentui/react/lib/Pickers';
 import { SuggestionsController } from '@fluentui/react/lib/Pickers';
@@ -80,7 +72,6 @@ import { TagItemSuggestion } from '@fluentui/react/lib/Pickers';
 import { TagItemSuggestionBase } from '@fluentui/react/lib/Pickers';
 import { TagPicker } from '@fluentui/react/lib/Pickers';
 import { TagPickerBase } from '@fluentui/react/lib/Pickers';
-import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from '@fluentui/react/lib/Pickers';
 
 export { BasePeoplePicker }
@@ -88,9 +79,6 @@ export { BasePeoplePicker }
 export { BasePicker }
 
 export { BasePickerListBelow }
-
-// @public (undocumented)
-export const Callout: React.FunctionComponent<ICalloutProps>;
 
 export { CompactPeoplePicker }
 
@@ -101,9 +89,6 @@ export { createGenericItem }
 export { FabricAutofill }
 
 export { FabricAutofillProps }
-
-// @public
-export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 export { IBasePicker }
 
@@ -117,89 +102,9 @@ export { IBasePickerStyles }
 
 export { IBasePickerSuggestionsProps }
 
-// @public (undocumented)
-export interface ICalloutContentStyleProps {
-    backgroundColor?: string;
-    beakWidth?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    overflowYHidden?: boolean;
-    positions?: ICalloutPositionedInfo;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ICalloutContentStyles {
-    beak: IStyle;
-    beakCurtain: IStyle;
-    calloutMain: IStyle;
-    container: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
-    alignTargetEdge?: boolean;
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    backgroundColor?: string;
-    beakWidth?: number;
-    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
-    calloutMaxHeight?: number;
-    calloutMaxWidth?: number;
-    calloutWidth?: number;
-    className?: string;
-    coverTarget?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
-    directionalHint?: DirectionalHint;
-    directionalHintFixed?: boolean;
-    directionalHintForRTL?: DirectionalHint;
-    doNotLayer?: boolean;
-    finalHeight?: number;
-    gapSpace?: number;
-    hidden?: boolean;
-    hideOverflow?: boolean;
-    isBeakVisible?: boolean;
-    layerProps?: ILayerProps;
-    minPagePadding?: number;
-    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-    onLayerMounted?: () => void;
-    onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
-    onScroll?: () => void;
-    preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
-    // @deprecated
-    preventDismissOnLostFocus?: boolean;
-    // @deprecated
-    preventDismissOnResize?: boolean;
-    // @deprecated
-    preventDismissOnScroll?: boolean;
-    role?: string;
-    setInitialFocus?: boolean;
-    shouldDismissOnWindowFocus?: boolean;
-    // @deprecated
-    shouldRestoreFocus?: boolean;
-    shouldUpdateWhenHidden?: boolean;
-    style?: React.CSSProperties;
-    styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Target;
-    theme?: ITheme;
-}
-
 export { IFabricAutofill }
 
 export { IFabricAutofillState }
-
-// @public (undocumented)
-export interface IFocusTrapCalloutProps extends ICalloutProps {
-    focusTrapProps?: IFocusTrapZoneProps;
-}
 
 export { IGenericItem }
 
@@ -305,8 +210,6 @@ export { TagPicker }
 
 export { TagPickerBase }
 
-export { Target }
-
 export { ValidationState }
 
 
@@ -327,6 +230,7 @@ export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Autofill";
 export * from "@fluentui/react/lib/Breadcrumb";
+export * from "@fluentui/react/lib/Callout";
 export * from "@fluentui/react/lib/Check";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";
