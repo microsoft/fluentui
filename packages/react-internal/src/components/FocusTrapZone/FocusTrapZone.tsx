@@ -193,6 +193,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   const onRootFocusCapture = React.useCallback(
     (ev: React.FocusEvent<HTMLDivElement>) => {
       onFocusCapture?.(ev);
+      internalState.hasFocus = true;
 
       if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
         // every time focus changes within the trap zone, remember the focused element so that
