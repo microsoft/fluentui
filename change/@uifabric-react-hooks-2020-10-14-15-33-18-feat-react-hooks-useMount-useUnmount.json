@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Implementing useUnmount, useMount, and useMountSync hooks within react-hooks package.",
+  "packageName": "@uifabric/react-hooks",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T22:33:18.413Z"
+}
