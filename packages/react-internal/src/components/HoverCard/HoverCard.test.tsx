@@ -79,6 +79,7 @@ describe('HoverCard', () => {
     Component: HoverCard,
     displayName: 'HoverCard',
     componentPath: path.join(__dirname, 'HoverCard.ts'),
+    targetComponent: HoverCardBase,
   });
 
   it('uses default documented properties', () => {

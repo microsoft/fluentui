@@ -8,7 +8,6 @@ describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {
     // It is necessary to use `mount` here so that mouse events can be properly simulated.
     const component = mount(<MarqueeSelection selection={new Selection()} />);
-
     // Simulate clicking and dragging in order to add styling to the snapshot.
     const top = window.document.body;
     const dragStart = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 0, clientY: 0 });
@@ -21,9 +20,19 @@ describe('MarqueeSelection', () => {
     expect(component.getDOMNode()).toMatchSnapshot();
   });
 
+  class SelectionStub extends Selection {
+    public numSetIndexSelectedCalls = 0;
+    public setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void {
+      this.numSetIndexSelectedCalls++;
+    }
+  }
+
+  const selection = new SelectionStub();
+
   isConformant({
     Component: MarqueeSelection,
     displayName: 'MarqueeSelection',
+    requiredProps: { selection: selection },
   });
 
   it('updates the selection when an item is selected', () => {

@@ -129,8 +129,8 @@ describe('TeachingBubble', () => {
     displayName: 'TeachingBubble',
     componentPath: path.join(__dirname, 'TeachingBubble.ts'),
     targetComponent: TeachingBubbleContent,
-    //Problem: Not applied to the root properly
-    // Solution: Ref should be applied TeachingBubbleContent and the wrapper div should be removed.
+    //Problem: Doesn't properly apply ref to the root.
+    // Solution: Ref should be applied to TeachingBubbleContent and the wrapper div should be removed.
     disabledTests: ['component-has-root-ref'],
   });
 
