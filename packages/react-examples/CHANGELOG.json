@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 15 Oct 2020 12:23:11 GMT",
+      "tag": "@fluentui/react-examples_v0.6.6",
+      "version": "0.6.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical stacked bar chart styled examples code updated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8828fdca589a3b4f9119798fb806163e29961a41",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Oct 2020 12:26:33 GMT",
       "tag": "@fluentui/react-examples_v0.6.4",
       "version": "0.6.4",

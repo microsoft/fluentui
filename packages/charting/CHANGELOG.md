@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Oct 2020 12:23:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.2)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.0..@uifabric/charting_v4.7.2)
+
+### Patches
+
+- Vertical stacked bar chart uncaught type error fixed. Minor edits to margins ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
 
 ## [4.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.0)
 

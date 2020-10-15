@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Oct 2020 12:23:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.6)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.4..@fluentui/react-examples_v0.6.6)
+
+### Patches
+
+- Vertical stacked bar chart styled examples code updated. ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
 
 ## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.4)
 
