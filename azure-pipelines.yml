@@ -6,6 +6,9 @@ trigger:
 
 variables:
   - group: fabric-variables
+  - template: .devops/templates/variables.yml
+    parameters:
+      pathPrefix: SourceVersion
 
 pool: 'Self Host Ubuntu'
 
@@ -124,10 +127,6 @@ jobs:
   - job: ScreenerFluent
     workspace:
       clean: all
-    variables:
-      - template: .devops/templates/variables.yml
-        parameters:
-          pathPrefix: SourceVersion
     steps:
       - template: .devops/templates/tools.yml
 

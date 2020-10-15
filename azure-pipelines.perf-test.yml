@@ -6,6 +6,9 @@ trigger: none
 
 variables:
   - group: fabric-variables
+  - template: .devops/templates/variables.yml
+    parameters:
+      pathPrefix: SourceVersion
 
 pool: 'Self Host Ubuntu'
 
@@ -14,7 +17,6 @@ workspace:
 
 steps:
   - template: .devops/templates/tools.yml
-  - template: .devops/templates/variables.yml
 
   - script: |
       npx midgard-yarn install
