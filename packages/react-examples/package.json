@@ -58,7 +58,6 @@
     "@fluentui/react-internal": "^7.142.0",
     "@fluentui/react-image": "^0.6.10",
     "@fluentui/react-link": "^0.4.4",
-    "@fluentui/react-next": "^8.0.0-alpha.118",
     "@fluentui/react-slider": "^0.3.9",
     "@fluentui/react-tabs": "^0.6.9",
     "@fluentui/react-text": "^0.1.0",
