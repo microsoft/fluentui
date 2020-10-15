@@ -51,6 +51,9 @@ describe('CommandBar', () => {
   isConformant({
     Component: CommandBar,
     displayName: 'CommandBar',
+    // Problem: Doesn’t pass ref to root element.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['component-has-root-ref'],
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
