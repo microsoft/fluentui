@@ -315,7 +315,7 @@ export interface IGroupDividerProps {
   onGroupHeaderClick?: (group: IGroup) => void;
 
   /** Callback for when KeyUp on  the group header is invoked. */
-  onGroupHeaderKeyUp?: (group: IGroup, ev: React.KeyboardEvent<HTMLElement>) => void;
+  onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group: IGroup) => void;
 
   /** Callback for when the group is expanded or collapsed. */
   onToggleCollapse?: (group: IGroup) => void;
