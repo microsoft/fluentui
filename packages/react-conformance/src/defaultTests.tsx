@@ -82,6 +82,50 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component handles ref */
+  'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`handles ref`, () => {
+      const { customMount = mount, Component, requiredProps, elementRefName = 'ref' } = testInfo;
+      const rootRef = React.createRef<HTMLDivElement>();
+      const mergedProps: Partial<{}> = {
+        ...requiredProps,
+        [elementRefName]: rootRef,
+      };
+
+      customMount(<Component {...mergedProps} />);
+
+      expect(rootRef.current).toBeDefined;
+    });
+  },
+
+  /** Component has ref applied to the root component DOM node */
+  'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`ref exists on root element`, () => {
+      const {
+        customMount = mount,
+        Component,
+        requiredProps,
+        helperComponents = [],
+        wrapperComponent,
+        elementRefName = 'ref',
+        targetComponent,
+      } = testInfo;
+
+      const rootRef = React.createRef<HTMLDivElement>();
+      const mergedProps: Partial<{}> = {
+        ...requiredProps,
+        [elementRefName]: rootRef,
+      };
+
+      const el = targetComponent
+        ? customMount(<Component {...mergedProps} />).find(targetComponent)
+        : customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+
+      expect(rootRef.current).toBe(component.getDOMNode());
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {
@@ -273,10 +317,10 @@ export const defaultTests: TestObject = {
     if (componentInfo.props.as) {
       it(`passes extra props to the component it is renders as`, () => {
         try {
-          const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo, asPropHandlesRef } = testInfo;
+          const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
 
-          if (passesUnhandledPropsTo) {
-            const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+          if (targetComponent) {
+            const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(targetComponent);
 
             expect(el.prop('data-extra-prop')).toBe('foo');
           } else {

@@ -39,7 +39,7 @@ export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
-  passesUnhandledPropsTo?: ComponentType<any>;
+  targetComponent?: ComponentType<any>;
   /** Child component that will receive ref. */
   forwardsRefTo?: string | false;
 }
@@ -65,7 +65,7 @@ export function isConformant(
     rendersPortal = false,
     wrapperComponent = null,
     autoControlledProps = [],
-    passesUnhandledPropsTo,
+    targetComponent,
     forwardsRefTo,
   } = options;
 
@@ -234,8 +234,8 @@ export function isConformant(
 
     if (!isClassComponent) {
       test('uses "useUnhandledProps" hook', () => {
-        const wrapper = passesUnhandledPropsTo
-          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
+        const wrapper = targetComponent
+          ? mount(<Component {...requiredProps} />).find(targetComponent)
           : mount(<Component {...requiredProps} />);
         const element = getComponent(wrapper);
 
@@ -269,8 +269,8 @@ export function isConformant(
 
     test("client's attributes override the ones provided by Fluent UI", () => {
       const wrapperProps = { ...requiredProps, [IS_FOCUSABLE_ATTRIBUTE]: false };
-      const wrapper = passesUnhandledPropsTo
-        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo)
+      const wrapper = targetComponent
+        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(targetComponent)
         : mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
       const element = getComponent(wrapper);
 

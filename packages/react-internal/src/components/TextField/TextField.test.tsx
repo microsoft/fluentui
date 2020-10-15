@@ -134,6 +134,9 @@ describe('TextField rendering values from props', () => {
     Component: TextField,
     displayName: 'TextField',
     componentPath: path.join(__dirname, 'TextField.ts'),
+    // Problem: Ref is not applied to root DOM node.
+    // Solution: N/A. by design
+    disabledTests: ['component-has-root-ref'],
   });
 
   it('can render a value', () => {
