@@ -2,10 +2,10 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from '@fluentui/react';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { ThemeProvider } from '@fluentui/react';
 import { Button } from '@fluentui/react-button';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)

@@ -16,7 +16,7 @@ const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/react-examples/
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SearchBox',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SearchBox',
   examples: [
     {
       title: 'Default SearchBox',
