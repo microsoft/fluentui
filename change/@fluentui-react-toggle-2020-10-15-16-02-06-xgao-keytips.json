@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Remove keytipProps from props.",
+  "packageName": "@fluentui/react-toggle",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-15T23:01:11.807Z"
+}
