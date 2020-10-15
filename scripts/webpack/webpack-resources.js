@@ -221,10 +221,8 @@ module.exports = {
         },
 
         plugins: [
-          // TODO: will investigate why this doesn't work on mac
-          // new WebpackNotifierPlugin(),
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
           ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
         ],
       },
