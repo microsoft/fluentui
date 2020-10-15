@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add custom KeyUp support for Group Header",
+  "packageName": "office-ui-fabric-react",
+  "email": "bcoard@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T20:11:10.321Z"
+}
