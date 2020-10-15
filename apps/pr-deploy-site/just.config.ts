@@ -23,7 +23,6 @@ const dependencies = [
   '@fluentui/react-checkbox',
   '@fluentui/react-image',
   '@fluentui/react-link',
-  '@fluentui/react-next',
   '@fluentui/react-slider',
   '@fluentui/react-tabs',
   '@fluentui/react-text',

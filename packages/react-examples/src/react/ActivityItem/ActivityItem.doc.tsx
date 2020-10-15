@@ -11,7 +11,7 @@ const ActivityItemCompactExampleCode = require('!raw-loader!@fluentui/react-exam
 export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ActivityItem',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ActivityItem',
   examples: [
     {
       title: 'Activity Items with Icons',

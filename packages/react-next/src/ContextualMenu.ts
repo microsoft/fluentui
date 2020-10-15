@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-internal/lib/ContextualMenu';
+export * from '@fluentui/react/lib/ContextualMenu';

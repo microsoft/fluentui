@@ -74,12 +74,6 @@ const siteInfo = [
     icon: 'Link',
     title: 'Link',
   },
-  {
-    package: '@fluentui/react-next',
-    link: './react-next/dist-storybook/index.html',
-    icon: 'DoubleChevronRight12',
-    title: 'Next',
-  },
   { package: '@uifabric/experiments', link: './experiments/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/index.html', icon: 'BarChart4', title: 'Charting' },
   { package: '@uifabric/date-time', link: './date-time/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
