@@ -1492,6 +1492,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             right: 0px;
             top: 0px;
           }
+      data-ktp-target={true}
       id="ComboBox6wrapper"
     >
       <input
@@ -1543,6 +1544,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: WindowText;
             }
         data-is-interactable={true}
+        data-ktp-execute-target={true}
         data-lpignore={true}
         id="ComboBox6-input"
         onBlur={[Function]}
