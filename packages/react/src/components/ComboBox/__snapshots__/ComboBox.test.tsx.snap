@@ -503,7 +503,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
   >
     <input
       aria-autocomplete="both"
-      aria-describedby="ktp-layer-id ktp-a"
+      aria-describedby="test-foo ktp-layer-id ktp-a"
       aria-expanded="false"
       autocapitalize="off"
       autocomplete="off"

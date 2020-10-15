@@ -69,11 +69,13 @@ describe('ComboBox', () => {
 
     const TestComponent: React.FunctionComponent = () => {
       const comboboxRef = useKeytipRef<HTMLDivElement>({ keytipProps });
-      return <ComboBox options={DEFAULT_OPTIONS} ref={comboboxRef} />;
+      return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={comboboxRef} />;
     };
 
     const wrapper = mount(<TestComponent />);
     expect(wrapper.getDOMNode()).toMatchSnapshot();
+
+    wrapper.unmount();
   });
 
   it(`renders`, () => {
