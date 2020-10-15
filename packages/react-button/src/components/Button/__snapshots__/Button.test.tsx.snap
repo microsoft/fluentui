@@ -163,7 +163,7 @@ exports[`Button renders a default state 1`] = `
           font-family: var(--button-fontFamily);
           font-size: var(--button-fontSize);
           font-weight: var(--button-fontWeight);
-          height: var(--button-height);
+          height: var(--button-height,var(--button-minHeight));
           justify-content: center;
           max-width: var(--button-maxWidth);
           min-height: var(--button-minHeight);
@@ -180,6 +180,9 @@ exports[`Button renders a default state 1`] = `
           vertical-align: middle;
           white-space: var(--button-whiteSpace);
           width: var(--button-width);
+        }
+        & span {
+          position: relative;
         }
         .ms-Fabric--isFocusVisible &:focus::after {
           border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
@@ -446,7 +449,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           font-family: var(--button-fontFamily);
           font-size: var(--button-fontSize);
           font-weight: var(--button-fontWeight);
-          height: var(--button-height);
+          height: var(--button-height,var(--button-minHeight));
           justify-content: center;
           max-width: var(--button-maxWidth);
           min-height: var(--button-minHeight);
@@ -463,6 +466,9 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           vertical-align: middle;
           white-space: var(--button-whiteSpace);
           width: var(--button-width);
+        }
+        & span {
+          position: relative;
         }
         .ms-Fabric--isFocusVisible &:focus::after {
           border-bottom-left-radius: var(--button-borderBottomLeftRadius, var(--button-borderRadius));
