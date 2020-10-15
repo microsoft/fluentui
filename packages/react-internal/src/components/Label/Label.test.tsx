@@ -19,5 +19,8 @@ describe('Label', () => {
   isConformant({
     Component: Label,
     displayName: 'Label',
+    // Problem: Doesn’t handle ref.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 });

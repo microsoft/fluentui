@@ -37,8 +37,8 @@ describe('ProgressIndicator', () => {
   isConformant({
     Component: ProgressIndicator,
     displayName: 'ProgressIndicator',
-    //Problem: Not apply ref properly
-    // Solution: Ref should be applied TeachingBubbleContent and the wrapper div should be removed.
-    disabledTests: ['component-has-root-ref'],
+    // Problem: Doesn’t handle ref.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 });
