@@ -47,9 +47,9 @@ const excludedComponents: string[] = [];
 const mockNodeComponents: string[] = [];
 
 /** Map from component name to alternative package name from which it should import a version file */
-const componentPackageMap: { [componentName: string]: string } = {
-  FocusZone: '@fluentui/react-focus',
-};
+// const componentPackageMap: { [componentName: string]: string } = {
+//   FocusZone: '@fluentui/react-focus',
+// };
 
 /**
  * Automatically consume and test any components that are exported
@@ -179,8 +179,8 @@ describe('Top Level Component File Conformance', () => {
     });
   });
 
+  // TODO: version import is not applied when importing from `lib/{Component}`. Fix and re-enable tests.
   // make sure that there is a version import in each corresponding top level component file
-  // TODO: fix version import and re-enable tests
   // topLevelComponentFiles.forEach(file => {
   //   const componentName = path.basename(file).split('.')[0];
   //   const packageName = componentPackageMap[componentName] || '@fluentui/react';
