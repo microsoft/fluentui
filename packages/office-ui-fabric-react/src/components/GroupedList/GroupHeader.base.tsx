@@ -191,12 +191,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       onGroupHeaderKeyUp(ev, group!);
     }
 
-    const shouldOpen = this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
-    const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
-    if (shouldClose || shouldOpen) {
-      this._toggleCollapse();
-      ev.stopPropagation();
-      ev.preventDefault();
+    if (!ev.defaultPrevented) {
+      const shouldOpen = this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
+      const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
+      if (shouldClose || shouldOpen) {
+        this._toggleCollapse();
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
     }
   };
 
