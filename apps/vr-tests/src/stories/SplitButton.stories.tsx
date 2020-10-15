@@ -6,7 +6,7 @@ import { AddIcon } from '@fluentui/react-icons';
 import { ThemeProvider } from '@fluentui/react';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('SplitButton', module)
   .addDecorator(FabricDecorator)

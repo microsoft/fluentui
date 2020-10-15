@@ -5,7 +5,7 @@ import { MenuButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
-import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('MenuButton', module)
   .addDecorator(FabricDecorator)

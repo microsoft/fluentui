@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth, FabricDecorator } from '../utilities';
+import { FabricDecoratorFixedWidth, FabricDecorator } from '../utilities/index';
 import {
   Fabric,
   SpinButton,

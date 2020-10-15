@@ -1,14 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { Pivot, PivotItem, IPivotItemProps, Label, Icon, Fabric } from '@fluentui/react';
+import { FabricDecorator } from '../utilities/index';
+import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
 
 storiesOf('Pivot', module)
-  .addDecorator(story => (
-    <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>{story()}</div>
-  ))
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -25,16 +22,16 @@ storiesOf('Pivot', module)
       {story()}
     </Screener>
   ))
-  .addStory('Basic', () => (
+  .addStory('Root', () => (
     <Pivot>
       <PivotItem headerText="My Files">
-        <Label>Pivot #1</Label>
+        <p>Pivot #1</p>
       </PivotItem>
       <PivotItem headerText="Recent">
-        <Label>Pivot #2</Label>
+        <p>Pivot #2</p>
       </PivotItem>
       <PivotItem headerText="Shared with me">
-        <Label>Pivot #3</Label>
+        <p>Pivot #3</p>
       </PivotItem>
     </Pivot>
   ))
@@ -44,16 +41,16 @@ storiesOf('Pivot', module)
     () => (
       <Pivot>
         <PivotItem headerText="My Files" itemCount={42} itemIcon="Emoji2">
-          <Label>Pivot #1</Label>
+          <p>Pivot #1</p>
         </PivotItem>
-        <PivotItem itemCount={23} itemIcon="Recent">
-          <Label>Pivot #2</Label>
+        <PivotItem itemCount="20+" itemIcon="Recent">
+          <p>Pivot #2</p>
         </PivotItem>
-        <PivotItem headerText="Placeholder" itemIcon="Globe">
-          <Label>Pivot #3</Label>
+        <PivotItem itemIcon="Globe">
+          <p>Pivot #3</p>
         </PivotItem>
         <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-          <Label>Pivot #4</Label>
+          <p>Pivot #4</p>
         </PivotItem>
         <PivotItem
           headerText="Customized Rendering"
@@ -61,22 +58,22 @@ storiesOf('Pivot', module)
           itemCount={10}
           onRenderItemLink={_customRenderer}
         >
-          <Label>Customized Rendering</Label>
+          <p>Customized Rendering</p>
         </PivotItem>
       </Pivot>
     ),
     { rtl: true },
   )
-  .addStory('Large links', () => (
+  .addStory('Large', () => (
     <Pivot linkSize="large">
       <PivotItem headerText="My Files">
-        <Label>Pivot #1</Label>
+        <p>Pivot #1</p>
       </PivotItem>
       <PivotItem headerText="Recent">
-        <Label>Pivot #2</Label>
+        <p>Pivot #2</p>
       </PivotItem>
       <PivotItem headerText="Shared with me">
-        <Label>Pivot #3</Label>
+        <p>Pivot #3</p>
       </PivotItem>
     </Pivot>
   ))
@@ -85,34 +82,34 @@ storiesOf('Pivot', module)
     () => (
       <Pivot linkFormat="tabs">
         <PivotItem headerText="Foo">
-          <Label>Pivot #1</Label>
+          <p>Pivot #1</p>
         </PivotItem>
         <PivotItem headerText="Bar">
-          <Label>Pivot #2</Label>
+          <p>Pivot #2</p>
         </PivotItem>
         <PivotItem headerText="Bas">
-          <Label>Pivot #3</Label>
+          <p>Pivot #3</p>
         </PivotItem>
         <PivotItem headerText="Biz">
-          <Label>Pivot #4</Label>
+          <p>Pivot #4</p>
         </PivotItem>
       </Pivot>
     ),
     { rtl: true },
   )
-  .addStory('Large tabs', () => (
+  .addStory('Tabs large', () => (
     <Pivot linkFormat="tabs" linkSize="large">
       <PivotItem headerText="Foo">
-        <Label>Pivot #1</Label>
+        <p>Pivot #1</p>
       </PivotItem>
       <PivotItem headerText="Bar">
-        <Label>Pivot #2</Label>
+        <p>Pivot #2</p>
       </PivotItem>
       <PivotItem headerText="Bas">
-        <Label>Pivot #3</Label>
+        <p>Pivot #3</p>
       </PivotItem>
       <PivotItem headerText="Biz">
-        <Label>Pivot #4</Label>
+        <p>Pivot #4</p>
       </PivotItem>
     </Pivot>
   ));
@@ -144,29 +141,29 @@ storiesOf('Pivot - Overflow', module)
       {story()}
     </Screener>
   ))
-  .addStory('Basic', () => (
+  .addStory('Root', () => (
     <Pivot overflowBehavior="menu">
       <PivotItem headerText="My Files">
-        <Label>Pivot #1</Label>
+        <p>Pivot #1</p>
       </PivotItem>
       <PivotItem itemCount={23} itemIcon="Recent">
-        <Label>Pivot #2</Label>
+        <p>Pivot #2</p>
       </PivotItem>
       <PivotItem headerText="Placeholder" itemIcon="Globe">
-        <Label>Pivot #3</Label>
+        <p>Pivot #3</p>
       </PivotItem>
       <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-        <Label>Pivot #4</Label>
+        <p>Pivot #4</p>
       </PivotItem>
       <PivotItem
         headerText="Custom Renderer"
         itemIcon="Airplane"
         onRenderItemLink={_customRenderer}
       >
-        <Label>Pivot #5</Label>
+        <p>Pivot #5</p>
       </PivotItem>
       <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-        <Label>Pivot #6</Label>
+        <p>Pivot #6</p>
       </PivotItem>
     </Pivot>
   ))
@@ -174,26 +171,26 @@ storiesOf('Pivot - Overflow', module)
     <Fabric dir="rtl">
       <Pivot overflowBehavior="menu" linkFormat="tabs">
         <PivotItem headerText="My Files">
-          <Label>Pivot #1</Label>
+          <p>Pivot #1</p>
         </PivotItem>
         <PivotItem itemCount={23} itemIcon="Recent">
-          <Label>Pivot #2</Label>
+          <p>Pivot #2</p>
         </PivotItem>
         <PivotItem headerText="Placeholder" itemIcon="Globe">
-          <Label>Pivot #3</Label>
+          <p>Pivot #3</p>
         </PivotItem>
         <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-          <Label>Pivot #4</Label>
+          <p>Pivot #4</p>
         </PivotItem>
         <PivotItem
           headerText="Custom Renderer"
           itemIcon="Airplane"
           onRenderItemLink={_customRenderer}
         >
-          <Label>Pivot #5</Label>
+          <p>Pivot #5</p>
         </PivotItem>
         <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-          <Label>Pivot #6</Label>
+          <p>Pivot #6</p>
         </PivotItem>
       </Pivot>
     </Fabric>

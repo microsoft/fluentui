@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall } from '../utilities/index';
 import {
   DefaultButton,
   ActionButton,

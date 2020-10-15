@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecoratorFullWidth } from '../utilities/index';
 import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
 
 const rootStyles = {

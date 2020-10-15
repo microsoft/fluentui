@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
+import { FabricDecoratorFixedWidth } from '../utilities/index';
 import { Fabric } from '@fluentui/react';
-import { Calendar } from '@uifabric/date-time/lib/components/Calendar';
+import { Calendar } from '@uifabric/date-time/lib/Calendar';
 
 const date = new Date(2010, 1, 12);
 storiesOf('Calendar', module)

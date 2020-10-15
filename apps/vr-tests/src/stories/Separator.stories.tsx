@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import { Separator, mergeStyles } from '@fluentui/react';
 
 const verticalStyles = mergeStyles({

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
+import { FabricDecoratorFixedWidth } from '../utilities/index';
 import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
