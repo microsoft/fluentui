@@ -132,7 +132,6 @@ exports[`Button renders a default state 1`] = `
           --button-pressed-contentColor: #201f1e;
           --button-pressed-secondaryContentColor: #201f1e;
           --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
           --button-size-large: 40px;
           --button-size-larger: 48px;
           --button-size-largest: 64px;
@@ -415,7 +414,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-pressed-contentColor: #201f1e;
           --button-pressed-secondaryContentColor: #201f1e;
           --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
           --button-size-large: 40px;
           --button-size-larger: 48px;
           --button-size-largest: 64px;
