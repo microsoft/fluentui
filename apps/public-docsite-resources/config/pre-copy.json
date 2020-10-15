@@ -1,6 +1,6 @@
 {
   "copyTo": {
-    "dist": [
+    "dist/demo": [
       "@uifabric/example-app-base/index.html",
       "react/umd/react.development.js",
       "react-dom/umd/react-dom.development.js"
