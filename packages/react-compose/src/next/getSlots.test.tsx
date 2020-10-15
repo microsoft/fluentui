@@ -82,7 +82,15 @@ describe('getSlots', () => {
   });
 
   it('returns a component slot with no children', () => {
-    expect(getSlots({ as: 'div', components: { icon: Foo } }, ['icon'])).toEqual({
+    expect(
+      getSlots(
+        {
+          as: 'div',
+          components: { icon: Foo },
+        },
+        ['icon'],
+      ),
+    ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: { root: {}, icon: {} },
     });

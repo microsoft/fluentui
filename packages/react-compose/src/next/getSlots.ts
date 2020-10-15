@@ -53,8 +53,12 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
         continue;
       }
 
-      slotProps[name] =
-        typeof Component === 'string' ? getNativeElementProps(Component, slotDefinition) : slotDefinition;
+      if (typeof Component === 'string') {
+        slotProps[name] = getNativeElementProps(Component, slotDefinition);
+        continue;
+      }
+
+      slotProps[name] = slotDefinition || {};
     }
   }
 
