@@ -101,28 +101,33 @@ export const defaultTests: TestObject = {
   /** Component has ref applied to the root component DOM node */
   'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`ref exists on root element`, () => {
-      const {
-        customMount = mount,
-        Component,
-        requiredProps,
-        helperComponents = [],
-        wrapperComponent,
-        elementRefName = 'ref',
-        targetComponent,
-      } = testInfo;
+      try {
+        const {
+          customMount = mount,
+          Component,
+          requiredProps,
+          helperComponents = [],
+          wrapperComponent,
+          elementRefName = 'ref',
+          targetComponent,
+        } = testInfo;
 
-      const rootRef = React.createRef<HTMLDivElement>();
-      const mergedProps: Partial<{}> = {
-        ...requiredProps,
-        [elementRefName]: rootRef,
-      };
+        const rootRef = React.createRef<HTMLDivElement>();
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [elementRefName]: rootRef,
+        };
 
-      const el = targetComponent
-        ? customMount(<Component {...mergedProps} />).find(targetComponent)
-        : customMount(<Component {...mergedProps} />);
-      const component = getComponent(el, helperComponents, wrapperComponent);
+        const el = targetComponent
+          ? customMount(<Component {...mergedProps} />).find(targetComponent)
+          : customMount(<Component {...mergedProps} />);
+        const component = getComponent(el, helperComponents, wrapperComponent);
 
-      expect(rootRef.current).toBe(component.getDOMNode());
+        expect(rootRef.current).toBe(component.getDOMNode());
+      } catch (e) {
+        console.log(testInfo.displayName);
+        throw new Error();
+      }
     });
   },
 
