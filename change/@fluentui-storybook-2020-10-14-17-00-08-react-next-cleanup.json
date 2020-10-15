@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove react-next references",
+  "packageName": "@fluentui/storybook",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-15T00:00:08.095Z"
+}
