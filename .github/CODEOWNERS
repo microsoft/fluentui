@@ -79,9 +79,20 @@ packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 
 ### Fabric
 # common/
+packages/common-styles/src/ @phkuo
 common/_semanticSlots.scss  @phkuo
 common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
+
+## Component packages
+packages/react-button/ @dzearing @khmakoto
+packages/react-cards/ @khmakoto
+packages/react-checkbox/ @khmakoto @xugao
+packages/react-focus/src/components/FocusZone/ @khmakoto
+packages/react-link/ @khmakoto
+packages/react-slider/ @joschect
+packages/react-tabs/ @behowell
+packages/react-toggle/ @xugao
 
 ## Components
 packages/react-internal/src/components/ActivityItem/ @xugao
@@ -90,9 +101,7 @@ packages/react/src/components/Breadcrumb/ @xugao
 packages/react-internal/src/components/Button/ @khmakoto
 packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react-internal/src/components/Callout/ @joschect
-packages/react-cards @khmakoto
 packages/react-internal/src/components/Check/ @dzearing @xugao
-packages/react-checkbox/ @khmakoto @xugao
 packages/react-internal/src/components/ChoiceGroup/ @ecraig12345
 packages/react-internal/src/components/Coachmark/ @leddie24
 packages/react-internal/src/components/ColorPicker/ @ecraig12345
@@ -108,14 +117,12 @@ packages/react-internal/src/components/Fabric/ @dzearing
 packages/react-internal/src/components/Facepile/ @markionium @mtennoe
 packages/react-internal/src/components/FolderCover/ @ThomasMichon @bigbadcapers
 packages/react-internal/src/components/FocusTrapZone/ @khmakoto
-packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/react/src/components/GroupedList/  @aditima @dzearing
 packages/react-internal/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
 packages/react-internal/src/components/Icon/ @dzearing @ecraig12345
 packages/react-internal/src/components/Image/ @dzearing
 packages/react-internal/src/components/Label/ @khmakoto
 packages/react-internal/src/components/Layer/  @ThomasMichon
-packages/react-link/ @khmakoto
 packages/react-internal/src/components/List/ @dzearing
 packages/react-internal/src/components/MarqueeSelection/ @dzearing
 packages/react-internal/src/components/MessageBar/ @ecraig12345
@@ -123,14 +130,12 @@ packages/react-internal/src/components/Modal/ @joschect
 packages/react-internal/src/components/Nav/ @ecraig12345
 packages/react-internal/src/components/OverflowSet/ @micahgodbolt
 packages/react-internal/src/components/Overlay/ @xugao
-packages/experiments/src/components/Pagination/ @caradong
 packages/react-internal/src/components/Panel/ @xugao
 packages/react-internal/src/components/Persona/ @markionium @mtennoe
 packages/react-internal/src/components/PersonaCoin/ @mtennoe @markionium
 packages/react-internal/src/components/Persona/PersonaConsts.tsx @mtennoe
 packages/react-internal/src/components/pickers/  @joschect
 packages/react-internal/src/components/Pivot/ @behowell
-packages/react-tabs/ @behowell
 packages/react-internal/src/components/Popup/ @joschect
 packages/react-internal/src/components/ProgressIndicator/ @xugao
 packages/react-internal/src/components/Rating/ @jdhuntington
@@ -138,8 +143,6 @@ packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
 packages/react-internal/src/components/SearchBox/ @ecraig12345
 packages/react-internal/src/components/Separator/ @natalieethell
 packages/react-internal/src/components/Shimmer/ @Vitalius1 @atneik
-packages/react-internal/src/components/Signals/ @ThomasMichon
-packages/react-slider/ @joschect
 packages/react-internal/src/components/SpinButton/ @khmakoto
 packages/react-internal/src/components/Spinner/ @xugao
 packages/react-internal/src/components/Stack/  @khmakoto
@@ -147,9 +150,11 @@ packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
 packages/react-internal/src/components/TeachingBubble/ @micahgodbolt
 packages/react-internal/src/components/Text/ @natalieethell
 packages/react-internal/src/components/TextField/ @ecraig12345
-packages/react-internal/src/components/Theme/ @dzearing
+packages/react-internal/src/components/Tooltip/ @micahgodbolt
+
+## Experiments
+packages/experiments/src/components/Pagination/ @caradong
+packages/experiments/src/components/Signals/ @ThomasMichon
 packages/experiments/src/components/Tile/ @ThomasMichon
 packages/experiments/src/components/TileList/ @ThomasMichon
-packages/react-toggle/ @xugao
-packages/react-internal/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

@@ -19,7 +19,6 @@ if (
     'react-checkbox',
     'react-image',
     'react-link',
-    'react-next',
     'react-slider',
     'react-tabs',
     'react-text',
@@ -29,10 +28,8 @@ if (
   addDecorator(withThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-next'].includes('PACKAGE_NAME')) {
-  addDecorator(withKeytipLayer);
-}
 if (['react'].includes('PACKAGE_NAME')) {
+  addDecorator(withKeytipLayer);
   addDecorator(withCompatKeytipLayer);
 }
 addParameters({

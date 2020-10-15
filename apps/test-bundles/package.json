@@ -16,7 +16,6 @@
     "@fluentui/react": "^7.142.0",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-compose": "^0.19.4",
-    "@fluentui/react-next": "^8.0.0-alpha.118",
     "@uifabric/build": "^7.0.0",
     "parallel-webpack": "^2.4.0",
     "webpack-bundle-analyzer": "^3.6.0"
