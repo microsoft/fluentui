@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Remove unused prop-types dependency",
+  "comment": "Remove unused prop-types dependency; don't publish demo app",
   "packageName": "@uifabric/charting",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
