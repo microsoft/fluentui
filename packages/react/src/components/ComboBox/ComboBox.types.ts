@@ -5,7 +5,6 @@ import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles, IButtonProps } from '../../compat/Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
-import { IKeytipProps } from '../../Keytip';
 import { IAutofillProps } from '../../Autofill';
 
 /**
@@ -231,11 +230,6 @@ export interface IComboBoxProps
    * Optional prop to add a string id that can be referenced inside the aria-describedby attribute.
    */
   ariaDescribedBy?: string;
-
-  /**
-   * Optional keytip for this ComboBox.
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Menu will not be created or destroyed when opened or closed, instead it

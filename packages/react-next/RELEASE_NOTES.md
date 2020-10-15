@@ -129,6 +129,29 @@ If you're using a removed `ISpinButtonStyles` prop, you can instead pass a style
 
 Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
 
+### Keytips
+
+Previously, `KeytipData` is built in different components which needs Keytips support. This adds extra bundle size to our components. In version 8, we removed `KeytipData` and `keytipProps` prop from `Link`, `Toggle`, `Checkbox`, `Comboxbox`, `Dropdown`, `SpinButton` and other non-compat `Button`s (the ones which are not exported from `lib/compat`).
+
+Here is an example on how to migrate from this change:
+Before:
+
+```jsx
+<Checkbox label="Checkbox" keytipProps={checkboxKeytips} />
+```
+
+After:
+
+```jsx
+import { useKeytipRef } from '@fluentui/react/lib/Keytips';
+
+const checkboxRef = useKeytipRef({ keytipProps: checkboxKeytips });
+
+<Checkbox label="Checkbox" ref={checkboxRef} />;
+```
+
+You can find more code examples on the public documentation site [here](https://developer.microsoft.com/en-us/fluentui#/controls/web/keytips).
+
 ### Component package moves and renames
 
 In addition to the rename of `office-ui-fabric-react` to `@fluentui/react`, most components have been moved to either a new **internal use only** package `@fluentui/react-internal`, or to individual component packages. This means **deep path imports will no longer work.** We've added root-level export files for most things that were intended to be part of the public API, but if anything is missing, please file an issue.
@@ -141,7 +164,6 @@ Note that directly importing from the `@fluentui/react-internal` package (the ro
 
 ### Others
 
-- `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
 - `FluentStyles` is removed from `experiments` package.
