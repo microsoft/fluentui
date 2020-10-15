@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /**
- * Hook that synchronously fires a callback during unmount.
+ * Hook which synchronously executes a callback when the component is about to unmount.
  *
  * @param callback - Function to call during unmount.
  */

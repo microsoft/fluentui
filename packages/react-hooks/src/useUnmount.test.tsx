@@ -4,19 +4,20 @@ import { useUnmount } from './useUnmount';
 
 describe('useUnmount', () => {
   it('fires a callback', () => {
-    let value = false;
+    const onUnmount = jest.fn();
 
     const TestComponent: React.FunctionComponent = () => {
       useUnmount(() => {
-        value = true;
+        onUnmount();
       });
 
       return <>Test Component</>;
     };
 
+    expect(onUnmount).toBeCalledTimes(0);
     const wrapper = mount(<TestComponent />);
-    expect(value).toBe(false);
+    expect(onUnmount).toBeCalledTimes(0);
     wrapper.unmount();
-    expect(value).toBe(true);
+    expect(onUnmount).toBeCalledTimes(1);
   });
 });

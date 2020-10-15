@@ -4,17 +4,20 @@ import { useMountSync } from './useMountSync';
 
 describe('useMountSync', () => {
   it('fires a callback', () => {
-    let value = false;
+    const onMount = jest.fn();
 
     const TestComponent: React.FunctionComponent = () => {
       useMountSync(() => {
-        value = true;
+        onMount();
       });
 
       return <>Test Component</>;
     };
 
-    mount(<TestComponent />);
-    expect(value).toBe(true);
+    expect(onMount).toBeCalledTimes(0);
+    const wrapper = mount(<TestComponent />);
+    expect(onMount).toBeCalledTimes(1);
+    wrapper.unmount();
+    expect(onMount).toBeCalledTimes(1);
   });
 });

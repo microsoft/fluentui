@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /**
- * Hook that asynchronously fires a callback before mount.
+ * Hook which asynchronously executes a callback once the component has been mounted.
  *
  * @param callback - Function to call before mount.
  */

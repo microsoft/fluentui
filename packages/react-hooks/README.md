@@ -193,7 +193,7 @@ const Example = React.forwardRef(function Example(props: {}, forwardedRef: React
 const useMount: (callback: () => void) => void;
 ```
 
-Hook that asynchronously fires a callback before mount.
+Hook which asynchronously executes a callback once the component has been mounted.
 
 ```tsx
 import { useMount } from '@uifabric/react-hooks';
@@ -214,8 +214,7 @@ const MyComponent = () => {
 const useMountSync: (callback: () => void) => void;
 ```
 
-Hook that synchronously fires a callback before mount. This should only be used if useMount causes problems as it will
-trigger debug warnings in server-rendered scenarios.
+Hook which synchronously execute a callback when the component has been mounted. Use `useMount` for most scenarios. You should only use the synchronous version in the rare case you need to perform an action after the component has been mounted and before the browser paints, such as measuring content and adjusting the result. Using this will trigger debug warnings in server-rendered scenarios.
 
 ```tsx
 import { useMountSync } from '@uifabric/react-hooks';
