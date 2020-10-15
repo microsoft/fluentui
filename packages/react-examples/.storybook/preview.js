@@ -29,9 +29,7 @@ if (
   addDecorator(withThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react'].includes('PACKAGE_NAME')) {
-  addDecorator(withKeytipLayer);
-}
+
 addParameters({
   a11y: {
     manual: true,
