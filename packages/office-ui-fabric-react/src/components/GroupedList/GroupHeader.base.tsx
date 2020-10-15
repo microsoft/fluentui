@@ -195,10 +195,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
     if (shouldClose || shouldOpen) {
       this._toggleCollapse();
+      ev.stopPropagation();
+      ev.preventDefault();
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
   };
 
   private _onToggleClick = (ev: React.MouseEvent<HTMLElement>): void => {
