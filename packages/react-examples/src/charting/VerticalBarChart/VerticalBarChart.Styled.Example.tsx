@@ -3,11 +3,16 @@ import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } 
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
-export class VerticalBarChartStyledExample extends React.Component<IVerticalBarChartProps, { isChecked: boolean }> {
+interface IVerticalBarChartState {
+  isChecked: boolean;
+  useSingleColor: boolean;
+}
+export class VerticalBarChartStyledExample extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
     this.state = {
       isChecked: true,
+      useSingleColor: true,
     };
   }
 
@@ -38,12 +43,19 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           checked={this.state.isChecked}
           onChange={this._onChange}
         />
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={this.state.useSingleColor}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
+        />
         <div style={{ width: '800px', height: '400px' }}>
           <VerticalBarChart
             data={points}
             width={800}
             height={400}
             barWidth={20}
+            useSingleColor={this.state.useSingleColor}
             yAxisTickCount={6}
             colors={customColors}
             hideLegend={true}
@@ -54,5 +66,8 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
   }
   private _onChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ isChecked: checked });
+  };
+  private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ useSingleColor: checked });
   };
 }

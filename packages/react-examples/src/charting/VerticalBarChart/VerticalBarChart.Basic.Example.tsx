@@ -3,11 +3,13 @@ import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } 
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 interface IVerticalChartState {
   width: number;
   height: number;
   isCalloutselected: boolean;
+  useSingleColor: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -22,6 +24,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       width: 650,
       height: 350,
       isCalloutselected: false,
+      useSingleColor: false,
     };
   }
 
@@ -42,6 +45,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
     } else {
       this.setState({ isCalloutselected: true });
     }
+  };
+  private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ useSingleColor: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -145,10 +151,17 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={this.state.useSingleColor}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
             data={points}
             width={this.state.width}
+            useSingleColor={this.state.useSingleColor}
             height={this.state.height}
             chartLabel={'Basic Chart with Numeric Axes'}
             lineLegendText={'just line'}

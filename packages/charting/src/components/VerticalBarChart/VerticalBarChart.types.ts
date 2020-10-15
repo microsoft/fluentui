@@ -41,6 +41,14 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   lineLegendColor?: string;
 
   /**
+   * This prop makes sure that all the bars are of same color.
+   * it will take the first color from the array of colors in
+   * prop `colors` or if  `colors` prop is not given then default color is  palette.blueLight
+   * @default false
+   */
+  useSingleColor?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;

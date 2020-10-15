@@ -39,6 +39,8 @@ export interface IVerticalBarChartState extends IBasestate {
   hoverXValue?: string | number | null;
 }
 
+type ColorScale = (_p?: number) => string;
+
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
@@ -240,13 +242,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return <>{content}</>;
   };
   private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSX.Element => {
+    const { useSingleColor = false } = this.props;
     return (
       <>
         <ChartHoverCard
           XValue={props.xAxisCalloutData || (props.x as string)}
           Legend={props.legend}
           YValue={props.yAxisCalloutData || props.y}
-          color={props.color || this._createColors()(props.y)}
+          color={!useSingleColor && props.color ? props.color : this._createColors()(props.y)}
         />
       </>
     );
@@ -278,8 +281,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         : this._createStringBars(containerHeight, containerWidth));
   };
 
-  private _createColors(): D3ScaleLinear<string, string> {
+  private _createColors(): D3ScaleLinear<string, string> | ColorScale {
     const increment = this._colors.length <= 1 ? 1 : 1 / (this._colors.length - 1);
+    const { useSingleColor = false } = this.props;
+    if (useSingleColor) {
+      return (_p?: number) => {
+        const { theme, colors } = this.props;
+        return colors && colors.length > 0 ? colors[0] : theme!.palette.blueLight;
+      };
+    }
     const domainValues = [];
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
@@ -298,7 +308,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     point: IVerticalBarChartDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
-    const { theme } = this.props;
+    const { theme, useSingleColor = false } = this.props;
     const { data, lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const selectedPoint = data!.filter((xDataPoint: IVerticalBarChartDataPoint) => xDataPoint.x === point.x);
     // there might be no y value of the line for the hovered bar. so we need to check this condition
@@ -316,7 +326,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     YValueHover.push({
       legend: selectedPoint[0].legend,
       y: selectedPoint[0].y,
-      color: selectedPoint[0].color || this._createColors()(selectedPoint[0].y),
+      color: !useSingleColor
+        ? selectedPoint[0].color
+          ? selectedPoint[0].color
+          : this._createColors()(selectedPoint[0].y)
+        : this._createColors()(1),
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
@@ -421,6 +435,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _createNumericBars(containerHeight: number, containerWidth: number): JSX.Element[] {
+    const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
@@ -450,7 +465,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
-          fill={point.color ? point.color : colorScale(point.y)}
+          fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
         />
       );
     });
@@ -524,12 +539,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   }
 
-  private _getLegendData(data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element {
-    const { theme } = this.props;
+  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
+    const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
-      const color: string = point.color!;
+      const color: string = !useSingleColor ? point.color! : this._createColors()(1);
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -574,5 +589,5 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     );
     return legends;
-  }
+  };
 }
