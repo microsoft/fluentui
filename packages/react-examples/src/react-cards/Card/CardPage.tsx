@@ -45,7 +45,6 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
             {require<string>('!raw-loader!@fluentui/react-examples/src/react-cards/Card/docs/CardOverview.md')}
           </Markdown>
         }
-        bestPractices={<div />}
         dos={
           <Markdown>
             {require<string>('!raw-loader!@fluentui/react-examples/src/react-cards/Card/docs/CardDos.md')}

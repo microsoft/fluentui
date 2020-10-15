@@ -77,22 +77,6 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
             sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Tile/Tile.types.ts')]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to display a list of picked people</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>Use them to display things that aren't people</li>
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

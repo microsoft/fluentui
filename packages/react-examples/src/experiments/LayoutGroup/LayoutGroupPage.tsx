@@ -12,7 +12,7 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
         componentName="LayoutGroup"
         exampleCards={
           <div>
-            <ExampleCard title="Folder Cover" isOptIn={true} code={LayoutGroupBasicExampleCode}>
+            <ExampleCard title="Layout Group" isOptIn={true} code={LayoutGroupBasicExampleCode}>
               <LayoutGroupBasicExample />
             </ExampleCard>
           </div>
@@ -23,22 +23,6 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
               require<string>('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/LayoutGroup.types.ts'),
             ]}
           />
-        }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to represent a folder which may contain visual content.</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>To represent the concept of a folder as opposed to an actual folder item.</li>
-            </ul>
-          </div>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

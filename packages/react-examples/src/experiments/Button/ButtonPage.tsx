@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  Markdown,
-  PropertiesTableSet,
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { KeytipLayer } from '@fluentui/react';
 
 import { ButtonExample } from './Button.Example';
@@ -78,22 +72,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
               >('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/SplitButton.types.tsx'),
             ]}
           />
-        }
-        overview={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Button/docs/ButtonOverview.md')}
-          </Markdown>
-        }
-        bestPractices={<div />}
-        dos={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Button/docs/ButtonDos.md')}
-          </Markdown>
-        }
-        donts={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Button/docs/ButtonDonts.md')}
-          </Markdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />
