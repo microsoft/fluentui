@@ -57,7 +57,7 @@ function checkForStorybookExistence() {
   );
 }
 
-export = function preset() {
+function preset() {
   basicPreset();
 
   task('no-op', () => {}).cached();
@@ -135,6 +135,7 @@ export = function preset() {
       condition('storybook:build', () => checkForStorybookExistence()),
     ),
   );
-};
+}
 
-module.exports.basic = basicPreset;
+preset.basic = basicPreset;
+export = preset;
