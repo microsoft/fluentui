@@ -68,7 +68,7 @@ describe('SelectedPeopleList', () => {
     expect(onItemsRemoved).toBeCalledTimes(1);
   });
 
-  it('group expansion as one of the items in the list', () => {
+  /*it('group expansion as one of the items in the list', () => {
     const _getExpandedGroupItems = (item: IPersonaProps): IPersonaProps[] => {
       switch (item.text) {
         case 'Group One':
@@ -104,7 +104,7 @@ describe('SelectedPeopleList', () => {
 
     // After expanding,there should be 4 items
     expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(4);
-  });
+  });*/
 
   it('edit render of the items in selected items list', () => {
     const SelectedItem = ItemWithContextMenu({
