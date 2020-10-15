@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Alert, Ref, Dropdown, DropdownProps } from '@fluentui/react-northstar';
-import { IAriaElement } from './../narration/NarrationComputer';
-import { DescendantsNarrationsComputer } from './../narration/DescendantsNarrationsComputer';
+import { NarrationComputer, IAriaElement } from './../narration/NarrationComputer';
 
-const computer = new DescendantsNarrationsComputer();
-let narrationPath = null;
-let narrationPaths = [];
-let narrationTexts = {};
+const computer = new NarrationComputer();
+let focusableElements = {};
+let elementsPaths = [];
+let selectedElementPath = null;
+let prevNarrationElement = null;
 const aomMissing = !(window as any).getComputedAccessibleNode;
 
 export type ReaderNarrationProps = {
@@ -16,73 +16,85 @@ export type ReaderNarrationProps = {
 
 export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
-  const [selectedNarrationPath, setSelectedNarrationPath] = React.useState(null);
+  const [narrationElement, setNarrationElement] = React.useState(null);
   const [narrationText, setNarrationText] = React.useState('');
-
-  // Computes and saves the narration paths and texts for the given parent element and its focusable descendants
-  const computeAndSave = React.useCallback(element => {
-    computer.compute(element, 'Win/JAWS').then(narrations => {
-      narrationPaths = [];
-      narrationTexts = {};
-      narrations.forEach(narration => {
-        // Begin forEach 1
-        const path = narration.path.join(' > ');
-        narrationPaths.push(path);
-        narrationTexts[path] = narration.text;
-      }); // End forEach 1
-
-      // If narration path has not been selected by user, preselect the first path and its associated narration as defaults
-      const text = narrationPath == null ? narrations[0]?.text || null : narrationTexts[narrationPath];
-      if (narrationPath == null && narrationPaths.length > 1) {
-        // Begin if 1
-        setSelectedNarrationPath(narrationPaths[0]);
-      } // End if 1
-
-      setCompleteText(text);
-    }); // End compute
-  }, []); // End computeAndSave
 
   // Sets the complete screen reader narration text to be displayed.
   const setCompleteText = text => {
     setNarrationText(text !== null ? `Narration: ${text}` : null);
   }; // End setCompleteText
 
-  // Handles the "focusin" event by computing and saving the narration paths and texts.
+  // Handles the element path dropdown change event by updating the current and previous narration elements.
+  const handleElementPathChange = (event: any, props: DropdownProps) => {
+    const path = props.value as string;
+    selectedElementPath = path;
+
+    prevNarrationElement = narrationElement;
+    setNarrationElement(focusableElements[path]);
+  }; // End handleElementPathChange
+
+  // Handles the "focusin" event by updating the current and previous narration elements.
   const handleFocusIn = React.useCallback(
     event => {
-      computeAndSave(event.target as IAriaElement);
+      prevNarrationElement = narrationElement;
+      setNarrationElement(event.target as IAriaElement);
     },
-    [computeAndSave],
+    [narrationElement],
   ); // End handleFocusIn
 
-  // Handles the narration path dropdown change event by saving the narration path.
-  const handleNarrationPathChange = (event: any, props: DropdownProps) => {
-    narrationPath = props.value as string;
-    setSelectedNarrationPath(narrationPath);
-    const text = narrationTexts[narrationPath];
-    setCompleteText(text);
-  }; // End handleNarrationPathChange
-
-  // Recomputes the narration paths and texts upon every render.
+  // Recomputes the narration text upon every render.
   React.useEffect(() => {
-    if (inUseMode || !ref.current || aomMissing) {
+    if (!ref.current || aomMissing) {
       return;
     }
 
-    // Compute and save the narration paths and texts for the selected component's parent element and its focusable descendants
-    const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
-    computeAndSave(element);
+    // The null value of the narration element means no focusable element has been found
+    if (narrationElement == null) {
+      // Begin if 1
+      setCompleteText(null);
+      return;
+    } // End if 1
+
+    // Compute and save the narration text for the current and previous elements
+    computer.getNarration(narrationElement, prevNarrationElement, 'Win/JAWS').then(text => {
+      setCompleteText(text);
+    }); // En getNarration
   }); // End useEffect
 
-  // Resets the narration path to its defaults if selector changes.
+  // Recomputes and saves the focusable elements and their  paths for the tree rooted at the  selector's element upon every selector change.
   React.useEffect(() => {
-    narrationPath = null;
-  }, [selector]); // End useEffect
+    if (!ref.current || aomMissing) {
+      return;
+    }
+    const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
+    computer.getFocusableElements(element).then(focusableElementsItems => {
+      focusableElements = {};
+      elementsPaths = [];
+      focusableElementsItems.forEach(focusableElementItem => {
+        // Begin forEach 1
+        const path = focusableElementItem.path.join(' > ');
+        focusableElements[path] = focusableElementItem.element;
+        elementsPaths.push(path);
+      }); // End forEach 1
 
-  // If in the use mode, sets up the "focusin" event listener.
+      prevNarrationElement = narrationElement;
+      if (elementsPaths.length >= 1) {
+        // Begin if 1
+        // Preselect the first element path and the corresponding narration element as defaults
+        selectedElementPath = elementsPaths[0];
+        setNarrationElement(focusableElementsItems[0].element);
+      } else {
+        // Else if 1
+        selectedElementPath = null;
+        setNarrationElement(null);
+      } // End if 1
+    }); // End getFocusableElements
+  }, [selector, narrationElement]); // End useEffect
+
+  // Sets up the "focusin" event listener if in the use mode.
   React.useEffect(() => {
     const alert = ref.current;
-    if (!inUseMode || !alert) {
+    if (!inUseMode || !alert || aomMissing) {
       return null;
     }
     alert.ownerDocument.addEventListener('focusin', handleFocusIn);
@@ -91,23 +103,21 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     }; // End return
   }, [inUseMode, handleFocusIn]); // End useEffect
 
-  if (selector == null && !inUseMode) {
-    return null;
-  }
   return (
     <>
-      {narrationPaths.length > 1 && (
+      {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
-          items={narrationPaths}
-          defaultValue={selectedNarrationPath}
-          value={selectedNarrationPath}
-          onChange={handleNarrationPathChange}
+          items={elementsPaths}
+          defaultValue={selectedElementPath}
+          value={selectedElementPath}
+          onChange={handleElementPathChange}
           getA11ySelectionMessage={{
             onAdd: item => `${item} has been selected.`,
           }}
-          placeholder="Select a descendant element"
+          placeholder="Select the narration element"
         />
       )}
+
       <Ref innerRef={ref}>
         <Alert
           warning
@@ -129,4 +139,4 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       </Ref>
     </>
   );
-};
+}; // End ReaderNarration

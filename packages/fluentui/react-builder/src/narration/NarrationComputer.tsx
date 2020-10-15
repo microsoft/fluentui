@@ -12,6 +12,11 @@ export interface IAriaElement extends HTMLElement {
   ariaActiveDescendantElement: HTMLElement | null;
 }
 
+export type FocusableElement = {
+  path: string[];
+  element: IAriaElement;
+};
+
 export class NarrationComputer {
   computedParts: Record<string, string> = {
     value: '',
@@ -23,8 +28,77 @@ export class NarrationComputer {
     usage: '',
   };
 
-  // Computes and returns the screen reader narration for the given element and platform.
-  async compute(element: Element, platform: string): Promise<string> {
+  // Traverses the DOM rooted at the given element to find all the focusable elements and returns them.
+  async getFocusableElements(element: IAriaElement): Promise<FocusableElement[]> {
+    // Prepare all the arrays
+    const activeDescendantsParents: IAriaElement[] = [];
+    const path: string[] = [];
+    const focusableElements: FocusableElement[] = [];
+
+    // Traverse down the DOM tree rooted at the element to first find the activeDescendants parent elements, and then all the focusable elements and their paths
+    this.findActiveDescendantsParents(element, activeDescendantsParents);
+    await this.traverse(element, path, focusableElements, activeDescendantsParents);
+
+    return focusableElements;
+  } // End getFocusableElements
+
+  // Recursively traverses the DOM tree rooted at the given element to find all the parents which have the ariaActiveDescendantElement property set, and saves the found elements to the given parents array.
+  findActiveDescendantsParents(element: IAriaElement, parents: IAriaElement[]) {
+    if (element.ariaActiveDescendantElement != null) {
+      // Begin if 1
+      parents.push(element);
+    } // End if 1
+    for (let i = 0; i < element.children.length; i++) {
+      // Begin for 1
+      const child = element.children[i] as IAriaElement;
+      this.findActiveDescendantsParents(child, parents);
+    } // End for 1
+  } // End findActiveDescendantsParents
+
+  // Recursively traverses the given element to find all the focusable elements and saves their paths along the way.
+  async traverse(
+    element: IAriaElement,
+    path: string[],
+    focusableElements: FocusableElement[],
+    activeDescendantsParents: IAriaElement[],
+  ) {
+    // Determine the path
+    const newPath = path.slice();
+    const node = await (window as any).getComputedAccessibleNode(element);
+
+    // Only add the item to the path if the role is not a generic container
+    if (node.role !== 'genericContainer') {
+      const item = node.name ? `${node.role} (${node.name})` : node.role;
+      newPath.push(item);
+    }
+
+    // If the element is focusable, stop the traversal and return
+    const isDirectlyFocusable =
+      (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement == null;
+    const isActiveDescendant = activeDescendantsParents.some(parent => {
+      // Begin some 1
+      return parent.tabIndex >= 0 && parent.ariaActiveDescendantElement === element;
+    }); // End some 1
+    if (isDirectlyFocusable || isActiveDescendant) {
+      // Begin if 1
+      const focusableElement: FocusableElement = {
+        path: newPath,
+        element,
+      };
+      focusableElements.push(focusableElement);
+      return;
+    } // End if 1
+
+    // Traverse down to all the children
+    for (let i = 0; i < element.children.length; i++) {
+      // Begin for 1
+      const child = element.children[i] as IAriaElement;
+      await this.traverse(child, newPath, focusableElements, activeDescendantsParents);
+    } // End for 1
+  } // End traverse
+
+  // Computes and returns the screen reader narration for the given element using the previous element and platform.
+  async getNarration(element: Element, prevElement: Element, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Retrieve the computed accessible node
@@ -41,7 +115,7 @@ export class NarrationComputer {
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
     const computedNarration = this.composeNarrationFromParts(definitionName, platform);
     return computedNarration;
-  } // End computeNarration
+  } // End getNarration
 
   // Returns the definition name based on the given element, platform and definition type.
   getDefinitionName(element: Element, platform: string, definitionType: string): string {
@@ -145,7 +219,7 @@ export class NarrationComputer {
     this.computedParts.value = node.valueText;
   } // End computeValue
 
-  // Actually, the computation of the position in set would be too difficult, so it just returns "[X of Y]" instead.
+  // Returns just "[X of Y]" because the real computation of the position in set would be too difficult.
   // We can set the position part for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
   computePosition() {
     this.computedParts.position = '[X of Y]';
