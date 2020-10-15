@@ -5,17 +5,11 @@ import { merge } from '@uifabric/utilities';
  * Get tokens from theme object.
  */
 export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens> {
-  const { fonts } = theme;
   const { palette, semanticColors } = theme;
 
   const preparedTokens = merge<RecursivePartial<Tokens>>(
     {
       color: {
-        body: {
-          background: semanticColors.bodyBackground,
-          contentColor: semanticColors.bodyText,
-        },
-
         // accent is currently only mapped for primary button to use.
         brand: {
           background: semanticColors.primaryButtonBackground,
@@ -67,14 +61,6 @@ export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): 
             contentColor: semanticColors.primaryButtonTextPressed,
           },
         },
-      },
-
-      body: {
-        fontFamily: fonts.medium.fontFamily,
-        fontWeight: fonts.medium.fontWeight,
-        fontSize: fonts.medium.fontSize,
-        mozOsxFontSmoothing: fonts.medium.MozOsxFontSmoothing,
-        webkitFontSmoothing: fonts.medium.WebkitFontSmoothing,
       },
     },
 

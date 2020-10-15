@@ -9,18 +9,19 @@ import { Theme } from './types';
 const useThemeProviderStyles = makeStyles((theme: Theme) => {
   const { tokens } = theme;
   const tokenStyles = tokensToStyleObject(tokens);
+  const { fonts, semanticColors } = theme;
 
   return {
     root: tokenStyles,
     body: [
       {
-        color: 'var(--color-body-contentColor)',
-        background: 'var(--color-body-background)',
-        fontFamily: 'var(--body-fontFamily)',
-        fontWeight: 'var(--body-fontWeight)',
-        fontSize: 'var(--body-fontSize)',
-        MozOsxFontSmoothing: 'var(--body-mozOsxFontSmoothing)',
-        WebkitFontSmoothing: 'var(--body-webkitFontSmoothing)',
+        color: tokens?.color?.body?.contentColor || semanticColors.bodyText,
+        background: tokens?.color?.body?.background || semanticColors.bodyBackground,
+        fontFamily: tokens?.body?.fontFamily || fonts.medium.fontFamily,
+        fontWeight: tokens?.body?.fontWeight || fonts.medium.fontWeight,
+        fontSize: tokens?.body?.fontSize || fonts.medium.fontSize,
+        MozOsxFontSmoothing: tokens?.body?.MozOsxFontSmoothing || fonts.medium.MozOsxFontSmoothing,
+        WebkitFontSmoothing: tokens?.body?.WebkitFontSmoothing || fonts.medium.WebkitFontSmoothing,
       },
     ],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
