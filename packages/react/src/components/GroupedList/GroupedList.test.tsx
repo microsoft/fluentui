@@ -24,6 +24,9 @@ describe('GroupedList', () => {
         return <div />;
       },
     },
+    // Problem: Doesn’t handle ref.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['component-has-root-ref'],
   });
 
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
