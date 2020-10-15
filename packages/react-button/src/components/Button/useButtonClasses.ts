@@ -276,25 +276,21 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonText,
         iconColor: 'inherit',
-        secondaryContentColor: palette?.neutralSecondary,
 
         hovered: {
           background: semanticColors?.buttonBackgroundHovered,
           contentColor: semanticColors?.buttonTextHovered,
-          secondaryContentColor: palette?.neutralDark,
         },
 
         pressed: {
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextPressed,
-          secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
         disabled: {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
 
         highContrast: {
@@ -398,14 +394,12 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         contentColor: palette?.neutralPrimary,
         fontWeight: 'normal',
         iconColor: palette?.themeDarkAlt,
-        secondaryContentColor: palette?.neutralPrimary,
         forcedColorAdjust: 'none',
 
         disabled: {
           background: semanticColors?.disabledBackground,
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
-          secondaryContentColor: palette?.neutralTertiary,
         },
 
         expanded: {
@@ -415,21 +409,18 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         focused: {
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
-          secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
           background: palette?.neutralLighter,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
-          secondaryContentColor: palette?.neutralPrimary,
         },
 
         pressed: {
           background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
-          secondaryContentColor: palette?.black,
         },
 
         highContrast: {

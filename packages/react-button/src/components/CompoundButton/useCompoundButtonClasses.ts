@@ -105,7 +105,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButton
         },
 
         disabled: {
-          secondaryContentColor: 'var(--button-disabled-contentColor)',
+          secondaryContentColor: semanticColors.buttonTextDisabled,
         },
 
         highContrast: {
@@ -166,6 +166,20 @@ export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButton
       },
 
       ghost: {
+        secondaryContentColor: palette.neutralPrimary,
+        disabled: {
+          secondaryContentColor: palette.neutralTertiary,
+        },
+        focused: {
+          secondaryContentColor: palette.neutralPrimary,
+        },
+        hovered: {
+          secondaryContentColor: palette.neutralPrimary,
+        },
+        pressed: {
+          secondaryContentColor: palette.black,
+        },
+
         highContrast: {
           secondaryContentColor: 'WindowText',
           hovered: {
