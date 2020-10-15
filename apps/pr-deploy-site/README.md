@@ -14,7 +14,7 @@ These steps cover the most common scenario, a component package with a storybook
    ```ts
    {
      package: '@fluentui/react-notbutton',
-     link: './react-notbutton/dist/storybook/index.html',
+     link: './react-notbutton/storybook/index.html',
      icon: /* icon name you chose above */,
      title: 'Not Button',
    }

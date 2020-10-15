@@ -227,15 +227,21 @@ module.exports = {
    * @returns {WebpackServeConfig}
    */
   createServeConfig(customConfig, outputFolder = 'dist/demo') {
+    const outputPath = path.join(process.cwd(), outputFolder);
     const config = merge(
       {
         devServer: {
           inline: true,
           port: 4322,
-          contentBase: path.join(process.cwd(), outputFolder),
+          contentBase: outputPath,
         },
 
         mode: 'development',
+
+        output: {
+          filename: `[name].js`,
+          path: outputPath,
+        },
 
         resolve: {
           extensions: ['.ts', '.tsx', '.js'],
