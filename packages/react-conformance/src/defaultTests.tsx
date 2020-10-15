@@ -85,16 +85,21 @@ export const defaultTests: TestObject = {
   /** Component handles ref */
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`handles ref`, () => {
-      const { customMount = mount, Component, requiredProps, elementRefName = 'ref' } = testInfo;
-      const rootRef = React.createRef<HTMLDivElement>();
-      const mergedProps: Partial<{}> = {
-        ...requiredProps,
-        [elementRefName]: rootRef,
-      };
+      try {
+        const { customMount = mount, Component, requiredProps, elementRefName = 'ref' } = testInfo;
+        const rootRef = React.createRef<HTMLDivElement>();
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [elementRefName]: rootRef,
+        };
 
-      customMount(<Component {...mergedProps} />);
+        customMount(<Component {...mergedProps} />);
 
-      expect(rootRef.current).toBeDefined;
+        expect(rootRef.current).toBeDefined;
+      } catch (e) {
+        defaultErrorMessages['component-handles-ref'](componentInfo, testInfo, e);
+        throw new Error('component-handles-ref');
+      }
     });
   },
 
@@ -125,8 +130,8 @@ export const defaultTests: TestObject = {
 
         expect(rootRef.current).toBe(component.getDOMNode());
       } catch (e) {
-        console.log(testInfo.displayName);
-        throw new Error();
+        defaultErrorMessages['component-has-root-ref'](componentInfo, testInfo, e);
+        throw new Error('component-has-root-ref');
       }
     });
   },

@@ -8,7 +8,6 @@ import { IPanel } from './Panel.types';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
-import { FocusTrapZone } from '../FocusTrapZone/index';
 
 let div: HTMLElement;
 
