@@ -152,6 +152,11 @@ const checkboxRef = useKeytipRef({ keytipProps: checkboxKeytips });
 
 You can find more code examples on the public documentation site [here](https://developer.microsoft.com/en-us/fluentui#/controls/web/keytips).
 
+#### Other call-outs
+
+- If the component is disabled and you don't want to enable keytips in that case, make sure you are passing `disabled: true` to `keytipProps`. It's possible you weren't setting `disabled` previously and still worked because the value was populated within the component which uses `KeytipData`.
+- If you have another `ref` that needs to be passed to a component apart from the `ref` returned by `useKeytipRef`, you can use `useMergedRefs` from `@fluentui/react-hooks` to merge multiple refs into one then pass it to the component.
+
 ### Component package moves and renames
 
 In addition to the rename of `office-ui-fabric-react` to `@fluentui/react`, most components have been moved to either a new **internal use only** package `@fluentui/react-internal`, or to individual component packages. This means **deep path imports will no longer work.** We've added root-level export files for most things that were intended to be part of the public API, but if anything is missing, please file an issue.
