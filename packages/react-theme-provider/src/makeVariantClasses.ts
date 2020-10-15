@@ -40,7 +40,7 @@ const processVariants = (variants: Variants | undefined, theme: Theme, name?: st
 /**
  * Options for makeVariantClasses.
  */
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
   /**
    * Name of the component to use for fetching variants from the theme.
    */
@@ -60,7 +60,7 @@ export type MakeVariantClassesOptions = {
    * Variants for the styles. A variant defines token values when a particular prop is present, or the
    * variant prop matches.
    */
-  variants?: Variants | ((theme: Theme) => Variants);
+  variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 /**
@@ -68,7 +68,9 @@ export type MakeVariantClassesOptions = {
  * token values mapped to modifiers on the component. A variant can also be referenced using
  * a variant string. Variants can be overridden through the theme of the component.
  */
-export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptions) => {
+export const makeVariantClasses = <TState = {}, TVariants = Variants>(
+  options: MakeVariantClassesOptions<TVariants>,
+) => {
   const { styles, variants, name, prefix } = options;
 
   // This function will only be called when styles have not been evaluated for this set for

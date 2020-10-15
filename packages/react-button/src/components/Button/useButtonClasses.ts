@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
-import { ButtonState } from './Button.types';
+import { ButtonState, ButtonVariants } from './Button.types';
 
 const GlobalClassNames = {
   root: 'ms-Button',
@@ -40,7 +40,7 @@ export const ButtonSizeVariants = {
   },
 };
 
-export const useButtonClasses = makeVariantClasses<ButtonState>({
+export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>({
   name: 'Button',
   prefix: '--button',
 
@@ -233,7 +233,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
     },
   },
 
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): ButtonVariants => {
     const { fonts, effects, palette, semanticColors } = theme;
 
     return {
@@ -268,7 +268,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         fontWeight: '600',
         fontSize: fonts?.medium?.fontSize,
         fontFamily: fonts?.medium?.fontFamily,
-        secondaryContentFontSize: fonts?.small.fontSize,
 
         // Color tokens
         focusColor: palette?.black,
@@ -399,7 +398,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         contentColor: palette?.neutralPrimary,
         fontWeight: 'normal',
         iconColor: palette?.themeDarkAlt,
-        menuIconColor: palette?.neutralSecondary,
         secondaryContentColor: palette?.neutralPrimary,
         forcedColorAdjust: 'none',
 

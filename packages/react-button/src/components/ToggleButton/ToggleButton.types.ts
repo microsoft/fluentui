@@ -1,4 +1,4 @@
-import { ButtonProps } from '../Button/Button.types';
+import { ButtonProps, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
 export interface ToggleButtonProps extends ButtonProps {
   /**
@@ -17,3 +17,7 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 export interface ToggleButtonState extends ToggleButtonProps {}
+
+export type ToggleButtonTokens = ButtonTokens;
+
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;

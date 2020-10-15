@@ -16,10 +16,10 @@ export interface CompoundButtonProps extends ButtonProps {
 export interface CompoundButtonState extends CompoundButtonProps {}
 
 export type CompoundButtonTokens = ButtonTokens & {
-  secondaryContentColor: string;
-  secondaryContentFontSize: string;
-  secondaryContentFontWeight: string;
-  secondaryContentGap: string;
+  secondaryContentColor?: string;
+  secondaryContentFontSize?: string | number;
+  secondaryContentFontWeight?: string;
+  secondaryContentGap?: string;
 };
 
 export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;

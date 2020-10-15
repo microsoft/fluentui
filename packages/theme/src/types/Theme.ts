@@ -26,6 +26,8 @@ export type ColorTokenSet = {
   focusColor?: string;
   focusInnerColor?: string;
   opacity?: string;
+
+  highContrast?: ColorTokens;
 };
 
 /**
@@ -49,17 +51,19 @@ export type ColorTokenSet = {
  * to "pressed".
  */
 export type ColorTokens = ColorTokenSet & {
-  hovered?: ColorTokenSet;
-  pressed?: ColorTokenSet;
-  disabled?: ColorTokenSet;
   checked?: ColorTokenSet;
   checkedHovered?: ColorTokenSet;
   checkedPressed?: ColorTokenSet;
+  disabled?: ColorTokenSet;
+  expanded?: ColorTokenSet;
+  focused?: ColorTokenSet;
+  hovered?: ColorTokenSet;
+  pressed?: ColorTokenSet;
 };
 
 export type FontTokens = Partial<{
   fontFamily: string;
-  fontSize: string;
+  fontSize: string | number;
   fontWeight: string;
 }>;
 

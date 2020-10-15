@@ -102,17 +102,17 @@ export interface ButtonState extends ButtonProps {
 export type ButtonTokens = ColorTokens &
   FontTokens & {
     /* sizing */
-    paddingLeft?: string;
-    paddingRight?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
+    paddingLeft?: string | number;
+    paddingRight?: string | number;
+    paddingTop?: string | number;
+    paddingBottom?: string | number;
     margin?: string;
     height?: string;
-    minWidth?: string;
-    maxWidth?: string;
+    minWidth?: string | number;
+    maxWidth?: string | number;
     minHeight?: string;
     contentGap?: string;
-    iconSize?: string;
+    iconSize?: string | number;
     borderRadius?: string;
     borderTopLeftRadius?: string;
     borderTopRightRadius?: string;
@@ -120,7 +120,9 @@ export type ButtonTokens = ColorTokens &
     borderBottomRightRadius?: string;
     borderWidth?: string;
     boxShadow?: string;
-    width?: string;
+    width?: string | number;
+
+    forcedColorAdjust?: string;
 
     transform?: string;
     transition?: string;
@@ -142,9 +144,11 @@ export type ButtonTokens = ColorTokens &
   };
 
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: TTokens;
-  primary?: TTokens;
-  iconOnly?: TTokens;
-  circular?: TTokens;
+  root?: TTokens;
   block?: TTokens;
+  circular?: TTokens;
+  iconOnly?: TTokens;
+  ghost?: TTokens;
+  primary?: TTokens;
+  transparent?: TTokens;
 };
