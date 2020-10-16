@@ -7,12 +7,12 @@ import {
   SelectedPeopleList,
   ISelectedPeopleList,
   SelectedPersona,
-  ISelectedItemProps,
+  //ISelectedItemProps,
   ItemWithContextMenu,
   TriggerOnContextMenu,
 } from '../index';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { groupOne } from '@uifabric/example-data';
+//import { IPersonaProps } from '@fluentui/react/lib/Persona';
+//import { groupOne } from '@uifabric/example-data';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
