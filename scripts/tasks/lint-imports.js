@@ -56,7 +56,7 @@ function lintImports() {
     '@uifabric/foundation': 'Foundation',
     '@uifabric/icons': 'Icons',
     '@uifabric/merge-styles': 'Styling',
-    '@uifabric/styling': 'Styling',
+    '@fluentui/style-utilities': 'Styling',
     '@uifabric/utilities': 'Utilities',
     '@fluentui/date-time-utilities': 'DateTimeUtilities',
   };

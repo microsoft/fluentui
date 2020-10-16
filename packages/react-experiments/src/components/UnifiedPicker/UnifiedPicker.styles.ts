@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme, IStyle } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme, IStyle } from '@fluentui/style-utilities';
 
 export interface IUnifiedPickerStyleProps {}
 

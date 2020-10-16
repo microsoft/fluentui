@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
 import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import { mergeStyleSets } from '@uifabric/styling';
+import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({
   wrapper: { height: 360 },
