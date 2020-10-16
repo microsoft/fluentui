@@ -6,7 +6,6 @@ import * as renderer from 'react-test-renderer';
 import { TagPicker } from './TagPicker';
 import { ITag } from './TagPicker.types';
 import { IBasePicker } from '../BasePicker.types';
-import { BasePicker } from '../BasePicker';
 import { resetIds } from '@uifabric/utilities';
 import { isConformant } from '../../../common/isConformant';
 

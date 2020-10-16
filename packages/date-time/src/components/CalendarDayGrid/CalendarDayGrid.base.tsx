@@ -248,7 +248,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
   return [getWeekCornerStyles, calculateRoundedStyles] as const;
 }
 
-export const CalendarDayGridBase = React.forwardRef<FocusZone, ICalendarDayGridProps>((props, forwardedRef) => {
+export const CalendarDayGridBase = React.forwardRef<HTMLElement, ICalendarDayGridProps>((props, forwardedRef) => {
   const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
 
   const activeDescendantId = useId();
