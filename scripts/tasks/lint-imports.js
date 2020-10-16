@@ -43,7 +43,7 @@ function lintImports() {
     '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
     '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
-    '@uifabric/charting/lib/types/IDataPoint',
+    '@fluentui/react-charting/lib/types/IDataPoint',
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',

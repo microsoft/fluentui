@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "Rename office-ui-fabric-react package and update references",
+  "comment": "Rename @uifabric/charting to @fluentui/react-charting",
   "packageName": "@fluentui/react-charting",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-09-30T20:42:58.704Z"
+  "date": "2020-10-16T21:49:35.629Z"
 }

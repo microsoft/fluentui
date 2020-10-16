@@ -4,7 +4,7 @@ import { IOptions as GlobOptions, sync as globSync } from 'glob';
 import inquirer from 'inquirer';
 import _ from 'lodash';
 import * as path from 'path';
-import * as replaceInFile from 'replace-in-file';
+import { sync as replaceInFileSync, ReplaceResult } from 'replace-in-file';
 import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'workspace-tools';
 
 const readConfig: (pth: string) => PackageInfo = require('./read-config').readConfig;
@@ -14,13 +14,26 @@ const { runPrettier, prettierExtensions } = require('./prettier/prettier-helpers
 const gitRoot = findGitRoot(process.cwd());
 const uifabric = '@uifabric';
 const fluentui = '@fluentui';
+/**
+ * Things that can come before a package name/path: string start, `/`, `!` (loader path),
+ * space, start of line
+ */
+const nameStartLookbehind = '(?<=[\'"`/! ]|^)';
+/**
+ * Things that can come after a package name: string end, `/`, space, `@` (certain URLs),
+ * end of line
+ */
+const nameEndLookahead = '(?=[\'"`/ @]|$)';
 
 const getPackagePath = (unscopedPackageName: string) => {
   const packagesPath = path.join(gitRoot, 'packages', unscopedPackageName);
   return fs.existsSync(packagesPath) ? packagesPath : path.join(gitRoot, 'apps', unscopedPackageName);
 };
+
 const getPackageJson = (unscopedPackageName: string) =>
   readConfig(path.join(getPackagePath(unscopedPackageName), 'package.json'));
+
+const getChangedFiles = (results: ReplaceResult[]) => results.filter(res => res.hasChanged).map(res => res.file);
 
 interface RenameInfo {
   /** Old unscoped name (under `@uifabric`) */
@@ -117,14 +130,14 @@ function updateDependents(renameInfo: RenameInfo): string[] {
     cwd: gitRoot,
   };
 
-  const depResults = replaceInFile.sync({
+  const depResults = replaceInFileSync({
     files: '{apps,packages,packages/fluentui}/*/package.json',
     from: new RegExp(`"${uifabric}/${oldUnscopedName}": "([~^<>= ]*)\\d+\\.\\d+\\.\\d+(-.*)?"`),
     to: `"${fluentui}/${newUnscopedName}": "$1${newVersion}"`,
     glob,
   });
 
-  const changedPackageJson = depResults.filter(res => res.hasChanged).map(res => res.file);
+  const changedPackageJson = getChangedFiles(depResults);
   console.log(`  ${changedPackageJson.join('\n  ')}`);
   return changedPackageJson;
 }
@@ -137,14 +150,14 @@ function updateReferences(renameInfo: RenameInfo): string[] {
   const { oldUnscopedName, newUnscopedName } = renameInfo;
 
   // Replace name references (@uifabric/utilities) AND path references (packages/utilities).
-  // To prevent replacing other package names which share substrings, only replace the name if it's:
-  // - Preceded by a string start or / or ! (loader path) or space or start of line
-  // - Followed by a string end or / or space or @ (certain URLs) or end of line
-  const nameRegex = new RegExp(`(?<=['"\`/! ]|^)(${uifabric}|apps|packages)/${oldUnscopedName}(?=['"\`/ @]|$)`);
+  // To prevent replacing other package names which share substrings, use a fancy regex.
+  const nameRegex = new RegExp(
+    `${nameStartLookbehind}(${uifabric}|apps|packages|react-examples/src)/${oldUnscopedName}${nameEndLookahead}`,
+  );
 
   let lastUpdatedFile = '';
 
-  const results = replaceInFile.sync({
+  const results = replaceInFileSync({
     files,
     from: new RegExp(nameRegex.source, 'gm'),
     to: (substr, ...args) => {
@@ -161,42 +174,54 @@ function updateReferences(renameInfo: RenameInfo): string[] {
     },
   });
 
-  return results.filter(res => res.hasChanged).map(res => res.file);
+  return getChangedFiles(results);
 }
 
 function updateConfigs(renameInfo: RenameInfo): string[] {
+  console.log('\nUpdating config files...');
+
   const { oldUnscopedName, newUnscopedName } = renameInfo;
+
+  const results: ReplaceResult[] = [];
+
+  const prDeploySite = path.join(gitRoot, 'apps/pr-deploy-site/pr-deploy-site.js');
+  results.push(
+    ...replaceInFileSync({
+      files: prDeploySite,
+      from: new RegExp(`\\./${oldUnscopedName}/`, 'g'),
+      to: `./${newUnscopedName}/`,
+    }),
+  );
 
   const newPackagePath = getPackagePath(newUnscopedName);
   const bundleFiles = globSync(path.join(newPackagePath, 'webpack*.js'));
 
-  if (!bundleFiles.length) {
-    return [];
+  if (bundleFiles.length) {
+    // Assorted special files which are known to reference bundle names
+    bundleFiles.push(
+      path.join(gitRoot, 'packages/example-app-base/src/components/CodepenComponent/CodepenComponent.tsx'),
+      path.join(gitRoot, 'packages/tsx-editor/src/transpiler/transpileHelpers.test.ts'),
+      path.join(gitRoot, 'packages/tsx-editor/src/utilities/defaultSupportedPackages.ts'),
+      path.join(gitRoot, 'packages/tsx-editor/src/transpiler/__snapshots__/exampleTransform.test.ts.snap'),
+    );
+
+    // Replace the bundle name and the library name in any webpack configs
+    // (these names aren't the same in all packages)
+    const oldBundleNameMaybe = 'Fabric' + _.upperFirst(_.camelCase(oldUnscopedName));
+    const newBundleName = 'FluentUI' + _.upperFirst(_.camelCase(newUnscopedName));
+
+    results.push(
+      ...replaceInFileSync({
+        files: bundleFiles,
+        from: new RegExp(`${oldBundleNameMaybe}|${oldUnscopedName}`, 'g'),
+        to: substr => {
+          return substr === oldBundleNameMaybe ? newBundleName : newUnscopedName;
+        },
+      }),
+    );
   }
 
-  console.log('\nUpdating bundle names...');
-
-  // Assorted special files which are known to reference bundle names
-  bundleFiles.push(
-    path.join(gitRoot, 'packages/example-app-base/src/components/CodepenComponent/CodepenComponent.tsx'),
-    path.join(gitRoot, 'packages/tsx-editor/src/transpiler/transpileHelpers.test.ts'),
-    path.join(gitRoot, 'packages/tsx-editor/src/utilities/defaultSupportedPackages.ts'),
-    path.join(gitRoot, 'packages/tsx-editor/src/transpiler/__snapshots__/exampleTransform.test.ts.snap'),
-  );
-
-  // Replace the bundle name and the library name in any webpack configs
-  // (these names aren't the same in all packages)
-  const oldBundleNameMaybe = 'Fabric' + _.upperFirst(_.camelCase(oldUnscopedName));
-  const newBundleName = 'FluentUI' + _.upperFirst(_.camelCase(newUnscopedName));
-
-  for (const configPath of bundleFiles) {
-    let content = fs.readFileSync(configPath, 'utf8');
-    content = content.replace(new RegExp(oldBundleNameMaybe, 'g'), newBundleName);
-    content = content.replace(new RegExp(oldUnscopedName, 'g'), newUnscopedName);
-    fs.writeFileSync(configPath, content);
-  }
-
-  return bundleFiles;
+  return [prDeploySite, ...bundleFiles];
 }
 
 async function runPrettierForFiles(modifiedFiles: string[]) {
@@ -238,7 +263,8 @@ Almost done!
 PLEASE VERIFY ALL THE CHANGES ARE CORRECT! (Easy way to view them all: \`git diff -U1\`)
 
 Other follow-up steps:
-- Run a search for the old scoped and unscoped package names in case of non-standard references
+- Run a search for the old scoped and unscoped package names in case of non-standard references.
+  This regex might help:   ${nameStartLookbehind}${renameInfo.oldUnscopedName}${nameEndLookahead}
 - You may need to run a build to ensure API files are properly updated
 `);
 }

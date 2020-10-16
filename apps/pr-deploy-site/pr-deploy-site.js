@@ -86,8 +86,8 @@ const siteInfo = [
     title: 'Experiments',
   },
   {
-    package: '@uifabric/charting',
-    link: './charting/demo/index.html',
+    package: '@fluentui/react-charting',
+    link: './react-charting/demo/index.html',
     icon: 'BarChart4',
     title: 'Charting',
   },

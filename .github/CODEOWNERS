@@ -57,7 +57,7 @@ perf-test/ @JasonGore @xugao
 Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
-packages/charting/ @Raghurk
+packages/react-charting/ @Raghurk
 packages/date-time @lorejoh12 @evlevy @pompomon
 packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
