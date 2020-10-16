@@ -1,6 +1,7 @@
 {
   "name": "@uifabric/api-docs",
   "version": "7.5.18",
+  "private": true,
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
