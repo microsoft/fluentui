@@ -19,7 +19,7 @@ import {
   createShimmerGroups,
   onRenderTilesListExampleRoot,
   onRenderTilesListExampleRow,
-} from '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers';
+} from '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers';
 import { ShimmerElementType, ShimmerElementsGroup } from '@fluentui/react/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;

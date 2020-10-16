@@ -22,7 +22,7 @@ import {
   Text,
 } from '@fluentui/react';
 
-import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider } from '@uifabric/foundation';
 

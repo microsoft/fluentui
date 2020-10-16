@@ -21,7 +21,7 @@ import {
 } from '@fluentui/react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
 
-import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider } from '@uifabric/foundation';
 

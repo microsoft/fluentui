@@ -31,7 +31,7 @@ const dependencies = [
   '@fluentui/react-toggle',
   '@fluentui/react-charting',
   '@uifabric/date-time',
-  '@uifabric/experiments',
+  '@fluentui/react-experiments',
   '@fluentui/public-docsite',
   '@fluentui/public-docsite-resources',
   '@fluentui/react',
