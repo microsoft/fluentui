@@ -2,8 +2,11 @@
   "name": "@fluentui/ie11-polyfills",
   "version": "0.1.2",
   "description": "Package to hold current and future ie11 polyfills",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "just-scripts build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

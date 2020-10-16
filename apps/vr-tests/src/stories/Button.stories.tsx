@@ -7,6 +7,8 @@ import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
+import '@fluentui/ie11-polyfills';
+
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
