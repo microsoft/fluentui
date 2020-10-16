@@ -284,7 +284,7 @@ export interface ILineDataInVerticalStackedBarChart {
   /**
    * Data to show in callout
    */
-  data: number;
+  data?: number;
   yAxisCalloutData?: string;
 }
 
