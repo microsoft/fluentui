@@ -1,98 +1,73 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
 import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { mergeStyleSets } from '@uifabric/styling';
 
-import * as styles from './Calendar.Example.scss';
+const styles = mergeStyleSets({
+  wrapper: { height: 360 },
+  dropdown: { width: 230 },
+});
 
-const initialDaysToSelectInDayView = 4;
+const dayOptions: IDropdownOption[] = [
+  { key: '1', text: '1' },
+  { key: '2', text: '2' },
+  { key: '3', text: '3' },
+  { key: '4', text: '4' },
+  { key: '5', text: '5' },
+  { key: '6', text: '6' },
+];
 
-export interface ICalendarInlineExampleState {
-  selectedDate?: Date;
-  selectedDateRange?: Date[];
-  daysToSelectInDayView?: number;
-}
+export const CalendarInlineMultidayDayViewExample: React.FunctionComponent = () => {
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
+  const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState(4);
 
-export class CalendarInlineMultidayDayViewExample extends React.Component<{}, ICalendarInlineExampleState> {
-  public constructor(props: {}) {
-    super(props);
+  const onSelectDate = React.useCallback((date: Date, dateRangeArray: Date[]): void => {
+    setSelectedDate(date);
+    setSelectedDateRange(dateRangeArray);
+  }, []);
 
-    this.state = {
-      selectedDate: new Date(),
-      selectedDateRange: undefined,
-      daysToSelectInDayView: initialDaysToSelectInDayView,
-    };
+  const onDaysToSelectInDayViewDropdownChange = React.useCallback(
+    (ev: React.FormEvent<HTMLElement>, option: IDropdownOption | undefined) => {
+      if (option) {
+        setDaysToSelectInDayView(Number(option.key));
+      }
+    },
+    [],
+  );
+
+  let dateRangeString = 'Not set';
+  if (selectedDateRange) {
+    const rangeStart = selectedDateRange[0];
+    const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
+    dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
   }
 
-  public render(): JSX.Element {
-    let dateRangeString: string | null = null;
-    if (this.state.selectedDateRange) {
-      const rangeStart = this.state.selectedDateRange[0];
-      const rangeEnd = this.state.selectedDateRange[this.state.selectedDateRange.length - 1];
-      dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
-    }
-
-    return (
-      <div className={styles.wrapper}>
-        <div>
-          Selected date(s):{' '}
-          <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
-        </div>
-        <div>
-          Selected dates:
-          <span> {!dateRangeString ? 'Not set' : dateRangeString}</span>
-        </div>
-        <Calendar
-          dateRangeType={DateRangeType.Day}
-          highlightCurrentMonth={false}
-          highlightSelectedMonth={true}
-          showGoToToday={true}
-          onSelectDate={this._onSelectDate}
-          value={this.state.selectedDate}
-          firstDayOfWeek={DayOfWeek.Sunday}
-          strings={defaultDayPickerStrings}
-          calendarDayProps={{
-            daysToSelectInDayView: this.state.daysToSelectInDayView,
-          }}
-        />
-        <div>
-          <Dropdown
-            className={styles.dropdown}
-            selectedKey={this.state.daysToSelectInDayView && this.state.daysToSelectInDayView}
-            label="Choose days to select"
-            options={[
-              { key: 1, text: '1' },
-              { key: 2, text: '2' },
-              { key: 3, text: '3' },
-              { key: 4, text: '4' },
-              { key: 5, text: '5' },
-              { key: 6, text: '6' },
-            ]}
-            onChange={this._onDaysToSelectInDayViewDropdownChange}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  private _onDaysToSelectInDayViewDropdownChange = (
-    ev: React.FormEvent<HTMLElement>,
-    option: IDropdownOption | undefined,
-  ): void => {
-    this.setState((prevState: ICalendarInlineExampleState) => {
-      return {
-        ...prevState,
-        daysToSelectInDayView: option && (option.key as number),
-      };
-    });
-  };
-
-  private _onSelectDate = (date: Date, dateRangeArray: Date[]): void => {
-    this.setState((prevState: ICalendarInlineExampleState) => {
-      return {
-        ...prevState,
-        selectedDate: date,
-        selectedDateRange: dateRangeArray,
-      };
-    });
-  };
-}
+  return (
+    <div className={styles.wrapper}>
+      <p>
+        This calendar uses <code>dateRangeType = Day</code> and <code>daysToSelectInView = 4</code>.
+      </p>
+      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected range: {dateRangeString}</div>
+      <Calendar
+        dateRangeType={DateRangeType.Day}
+        highlightCurrentMonth={false}
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        firstDayOfWeek={DayOfWeek.Sunday}
+        strings={defaultDayPickerStrings}
+        calendarDayProps={{ daysToSelectInDayView }}
+      />
+      <Dropdown
+        className={styles.dropdown}
+        selectedKey={String(daysToSelectInDayView)}
+        label="Choose days to select"
+        options={dayOptions}
+        onChange={onDaysToSelectInDayViewDropdownChange}
+      />
+    </div>
+  );
+};
