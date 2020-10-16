@@ -231,7 +231,7 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
     );
   }
 
-  return [...getChangedFiles(results)];
+  return getChangedFiles(results);
 }
 
 async function runPrettierForFiles(modifiedFiles: string[]) {

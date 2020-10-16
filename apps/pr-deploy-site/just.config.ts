@@ -29,7 +29,7 @@ const dependencies = [
   '@fluentui/react-tabs',
   '@fluentui/react-text',
   '@fluentui/react-toggle',
-  '@uifabric/charting',
+  '@fluentui/react-charting',
   '@uifabric/date-time',
   '@uifabric/experiments',
   '@fluentui/public-docsite',
