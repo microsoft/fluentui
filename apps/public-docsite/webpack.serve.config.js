@@ -27,5 +27,4 @@ module.exports = resources.createServeConfig(
       alias: getResolveAlias(),
     },
   }),
-  'dist',
 );
