@@ -1,8 +1,18 @@
 import * as React from 'react';
 
 import { MenuButton } from 'src/components/MenuButton/MenuButton';
+import { Box } from 'src/components/Box/Box';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from '../../../utils';
+
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  menuButtonBehaviorDefinitionTriggerSlotTabbable,
+  menuButtonBehaviorDefinitionMenuSlot,
+  menuButtonBehaviorDefinitionTriggerSlotNotTabbable,
+  menuButtonBehaviorDefinitionTriggerWithTabIndex,
+} from '@fluentui/a11y-testing';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
@@ -77,5 +87,61 @@ describe('MenuButton', () => {
         expect(menuButton.find('button').prop('aria-controls')).toEqual(menuId);
       });
     });
+  });
+});
+
+describe('MenuButtonBehavior', () => {
+  const menuToRender = { id: 'menu', items: ['1', '2', '3'] };
+  const triggerButton = <button id="trigger" />;
+
+  describe('trigger slot - tabbable - Button', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButton, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - tabbable - Box as button', () => {
+    const triggerWithoutTabIndex = <Box id="trigger" as="button" />;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - tabbable - Anchor', () => {
+    const triggerWithoutTabIndex = (
+      <a href="" id="trigger">
+        triggerLink
+      </a>
+    );
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - NO tabbabble - Anchor without href', () => {
+    const triggerAnchorWtihoutHref = <a id="trigger"> triggerLink </a>;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerAnchorWtihoutHref, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - NO tabbabble - Span', () => {
+    const triggerWithoutTabIndex = <span id="trigger"> text to trigger popup </span>;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - doesnt override tabIndex if exists', () => {
+    const triggerWithTabIndex = <button id="trigger" tabIndex={-1} />;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerWithTabIndex, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('menu slot', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButton, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionMenuSlot, testFacade);
+    expect(errors).toEqual([]);
   });
 });
