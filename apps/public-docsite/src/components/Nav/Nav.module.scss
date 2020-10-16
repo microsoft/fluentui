@@ -1,5 +1,4 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/common';
 
 $nav-group-header-height: 32px;
 
@@ -30,7 +29,7 @@ $nav-group-header-height: 32px;
     position: relative;
     padding: 8px;
     @include ms-padding-left($App-padding-md);
-    @include focus-outline(1px);
+    @include focus-outline-static();
 
     &:hover,
     &:active,
