@@ -263,7 +263,20 @@ export const defaultErrorMessages = {
   },
 
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
-    return;
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    console.log(
+      defaultErrorMessage(`component-has-root-ref`, displayName, `defined ref value.`) +
+        resolveErrorMessages([
+          `Check if you component has a ${resolveInfo('ref')}.`,
+          `If you component is a function component make sure that your are using ${resolveInfo('forwardRef')}.`,
+          `Check if your component uses an element ref and add ${resolveInfo(
+            `elementRefName: 'elementRef'`,
+          )} to isConformant in your test file.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
   },
 
   'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {

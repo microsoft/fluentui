@@ -17,7 +17,7 @@ describe('Spinner', () => {
     displayName: 'Spinner',
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    disabledTests: ['component-has-root-ref'],
   });
 
   it('uses default documented properties', () => {

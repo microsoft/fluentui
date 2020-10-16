@@ -33,7 +33,7 @@ describe('SpinButton', () => {
     displayName: 'SpinButton',
     // Problem: Doesn’t handle ref.
     // Solution: https://github.com/microsoft/fluentui/pull/15431
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    disabledTests: ['component-has-root-ref'],
   });
 
   it('renders correctly', () => {
