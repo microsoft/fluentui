@@ -18,7 +18,6 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 const dependencies = [
   '@fluentui/docs',
   '@fluentui/perf-test',
-  '@fluentui/react-toggle',
   '@uifabric/charting',
   '@uifabric/date-time',
   '@uifabric/experiments',
