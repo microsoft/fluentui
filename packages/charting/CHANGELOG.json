@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "@uifabric/charting_v4.7.3",
+      "version": "4.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Test cases for linechart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "4cbb293be7132da1614faf1334448f871959c46c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Oct 2020 12:23:11 GMT",
       "tag": "@uifabric/charting_v4.7.2",
       "version": "4.7.2",

@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.147.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.147.0)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.146.2..office-ui-fabric-react_v7.147.0)
+
+### Minor changes
+
+- Add custom KeyUp support for Group Header ([PR #15478](https://github.com/microsoft/fluentui/pull/15478) by bcoard@microsoft.com)
+
+### Patches
+
+- CommandBar: fix incorrect role (WCAG 1.3.1) ([PR #15511](https://github.com/microsoft/fluentui/pull/15511) by xgao@microsoft.com)
 
 ## [7.146.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.2)
 

@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "office-ui-fabric-react_v7.147.0",
+      "version": "7.147.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom KeyUp support for Group Header",
+            "author": "bcoard@microsoft.com",
+            "commit": "a729bb3a9b9ada2282a295fd311ba7389e67cf4c",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "CommandBar: fix incorrect role (WCAG 1.3.1)",
+            "author": "xgao@microsoft.com",
+            "commit": "37759e2abeee45e825f47181fd05ddefabb31502",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Oct 2020 12:26:59 GMT",
       "tag": "office-ui-fabric-react_v7.146.2",
       "version": "7.146.2",

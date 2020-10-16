@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 15 Oct 2020 12:23:11 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.3)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.2..@uifabric/charting_v4.7.3)
+
+### Patches
+
+- Charting: Test cases for linechart ([PR #15507](https://github.com/microsoft/fluentui/pull/15507) by v-gorraj@microsoft.com)
 
 ## [4.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.2)
 
