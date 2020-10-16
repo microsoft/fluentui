@@ -37,12 +37,6 @@ const siteInfo = [
     icon: 'Slider',
     title: 'Slider',
   },
-  {
-    package: '@fluentui/react-link',
-    link: './react-link/dist-storybook/index.html',
-    icon: 'Link',
-    title: 'Link',
-  },
   { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
   { package: '@uifabric/date-time', link: './date-time/dist/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
