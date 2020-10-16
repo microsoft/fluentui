@@ -7,6 +7,6 @@ describe('Separator', () => {
     displayName: 'Separator',
     // Problem: Doesn’t pass ref to root element.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

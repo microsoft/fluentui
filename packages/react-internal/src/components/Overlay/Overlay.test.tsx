@@ -5,8 +5,8 @@ describe('Overlay', () => {
   isConformant({
     Component: Overlay,
     displayName: 'Overlay',
-    // Problem: Doesn’t handle ref.
-    // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
+    disabledTests: ['component-has-root-ref'],
   });
 });

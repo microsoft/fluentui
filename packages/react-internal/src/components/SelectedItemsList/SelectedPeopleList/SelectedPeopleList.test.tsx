@@ -10,9 +10,9 @@ describe('SelectedPeopleList', () => {
     isConformant({
       Component: SelectedPeopleList,
       displayName: 'SelectedPeopleList',
-      // Problem: Ref isn’t passed.
-      // Solution: A ref should be added and passed onto the root.
-      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+      // Problem: Doesn’t apply ref to the root element.
+      // Solution: Ensure that the ref is applied to the root element.
+      disabledTests: ['has-top-level-file', 'component-has-root-ref'],
     });
 
     it('renders keyed personas when there is no context menu', () => {

@@ -56,9 +56,9 @@ describe('TagPicker', () => {
   isConformant({
     Component: TagPicker,
     displayName: 'TagPicker',
-    // Problem: Doesn’t handle ref.
-    // Solution: Add a ref to the root element.
-    disabledTests: ['has-top-level-file', 'component-has-root-ref', 'component-handles-ref'],
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
+    disabledTests: ['has-top-level-file', 'component-has-root-ref'],
   });
 
   it('can search for and select tags', () => {
