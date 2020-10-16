@@ -25,12 +25,6 @@ const siteInfo = [
     icon: 'ToggleLeft',
     title: 'Toggle',
   },
-  {
-    package: '@fluentui/react-tabs',
-    link: './react-tabs/dist-storybook/index.html',
-    icon: 'BrowserTab',
-    title: 'Tabs',
-  },
   { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
   { package: '@uifabric/date-time', link: './date-time/dist/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
