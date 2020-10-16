@@ -64,8 +64,8 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
-    // Problem: Doesn’t handle ref.
-    // Solution: Add a ref to the root element.
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
     disabledTests: ['component-has-root-ref'],
   });
 

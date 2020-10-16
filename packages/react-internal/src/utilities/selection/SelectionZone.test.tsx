@@ -110,8 +110,8 @@ describe('SelectionZone - disabled touch targets', () => {
     Component: SelectionZone,
     displayName: 'SelectionZone',
     requiredProps: { selection: new Selection() },
-    // Problem: Doesn’t pass ref to root element.
-    // Solution: Add a ref to the root element.
+    // Problem: Doesn’t pass ref to the root element.
+    // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref', 'has-top-level-file'],
   });
 

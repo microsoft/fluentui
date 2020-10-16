@@ -15,8 +15,8 @@ describe('Stack', () => {
     Component: Stack,
     displayName: 'Stack',
     useDefaultExport: true,
-    // Problem: Doesn't apply ref.
-    // Solution: Ref should be applied to the root.
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
     disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 

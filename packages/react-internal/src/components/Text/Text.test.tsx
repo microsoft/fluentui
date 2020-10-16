@@ -23,8 +23,8 @@ describe('Text', () => {
     displayName: 'Text',
     requiredProps: { children: 'content' },
     componentPath: path.join(__dirname, 'Text.ts'),
-    // Problem: Doesn't apply ref.
-    // Solution: Ref should be applied to the root.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
+    disabledTests: ['component-has-root-ref'],
   });
 });

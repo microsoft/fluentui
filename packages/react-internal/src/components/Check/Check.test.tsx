@@ -5,8 +5,8 @@ describe('Check', () => {
   isConformant({
     Component: Check,
     displayName: 'Check',
-    // Problem: Doesn’t pass ref to root element.
-    // Solution: Add a ref to the root element.
+    // Problem: Ref isn't passed.
+    // Solution: Ref should be added and passed onto the root.
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

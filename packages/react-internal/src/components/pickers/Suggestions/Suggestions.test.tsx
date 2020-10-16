@@ -113,7 +113,7 @@ describe('Suggestions', () => {
       onSuggestionClick: mockOnClick,
       suggestions: generateSimpleSuggestions(),
     },
-    // Problem: Ref doesn't match DOM node
+    // Problem: Ref is not applied to the root DOM node.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['has-top-level-file', 'component-has-root-ref'],
   });

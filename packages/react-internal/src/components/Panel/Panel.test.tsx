@@ -189,7 +189,7 @@ describe('Panel', () => {
     Component: Panel,
     displayName: 'Panel',
     componentPath: path.join(__dirname, 'Panel.ts'),
-    // Problem: Ref doesn't match DOM node and returns outermost wrapper
+    // Problem: Ref doesn't match DOM node.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref'],
   });
@@ -198,7 +198,6 @@ describe('Panel', () => {
     beforeEach(() => {
       div = document.createElement('div');
     });
-    //
     afterEach(() => {
       ReactDOM.unmountComponentAtNode(div);
     });

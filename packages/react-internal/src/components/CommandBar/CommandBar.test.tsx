@@ -51,8 +51,8 @@ describe('CommandBar', () => {
   isConformant({
     Component: CommandBar,
     displayName: 'CommandBar',
-    // Problem: Doesn’t pass ref to root element.
-    // Solution: Add a ref to the root element.
+    // Problem: Doesn’t apply ref to the root element.
+    // Solution: Ensure that the ref is applied to the root element.
     disabledTests: ['component-has-root-ref'],
   });
 
