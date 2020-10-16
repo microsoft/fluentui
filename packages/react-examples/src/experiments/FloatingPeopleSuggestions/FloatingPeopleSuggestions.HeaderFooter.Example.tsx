@@ -243,7 +243,6 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           flex: '1 1 auto',
           height: '34px',
           border: 'none',
-          flexGrow: '1',
           outline: 'none',
           padding: '0 6px 0px',
           margin: '1px',
