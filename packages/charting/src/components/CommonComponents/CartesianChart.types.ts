@@ -308,6 +308,7 @@ export interface IYValueHover {
   y?: number;
   color?: string;
   data?: string | number;
+  shouldDrawBorderBottom?: boolean;
 }
 
 export interface IChildProps {

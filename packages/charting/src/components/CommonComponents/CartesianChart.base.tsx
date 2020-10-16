@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet, IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import {
@@ -267,10 +267,26 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {calloutProps!.YValueHover &&
             calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
+              const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
                   key={`callout-content-${index}`}
-                  style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                  style={
+                    yValueHoverSubCountsExists
+                      ? {
+                          display: 'inline-block',
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                      : {
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                  }
                 >
                   {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
                 </div>
