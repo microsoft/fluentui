@@ -31,12 +31,6 @@ const siteInfo = [
     icon: 'BrowserTab',
     title: 'Tabs',
   },
-  {
-    package: '@fluentui/react-slider',
-    link: './react-slider/dist-storybook/index.html',
-    icon: 'Slider',
-    title: 'Slider',
-  },
   { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
   { package: '@uifabric/date-time', link: './date-time/dist/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
