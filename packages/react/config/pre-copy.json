@@ -2,14 +2,14 @@
   "copyTo": {
     "dist/sass": [
       "office-ui-fabric-core/dist/sass/**/*",
-      "@fluentui/react-internal/src/common/_highContrast.scss",
-      "@fluentui/react-internal/src/common/_i18n.scss",
-      "@fluentui/react-internal/src/common/_semanticSlots.scss",
-      "@fluentui/react-internal/src/common/_themeOverrides.scss",
-      "@fluentui/react-internal/src/common/_legacyThemePalette.scss",
-      "@fluentui/react-internal/src/common/_effects.scss",
-      "@fluentui/react-internal/src/common/_themeVariables.scss",
-      "@fluentui/react-internal/src/common/ThemingSass.scss"
+      "@fluentui/common-styles/src/common/_highContrast.scss",
+      "@fluentui/common-styles/src/common/_i18n.scss",
+      "@fluentui/common-styles/src/common/_semanticSlots.scss",
+      "@fluentui/common-styles/src/common/_themeOverrides.scss",
+      "@fluentui/common-styles/src/common/_legacyThemePalette.scss",
+      "@fluentui/common-styles/src/common/_effects.scss",
+      "@fluentui/common-styles/src/common/_themeVariables.scss",
+      "@fluentui/common-styles/src/common/ThemingSass.scss"
     ],
     "dist/css": ["office-ui-fabric-core/dist/css/**/*"]
   }

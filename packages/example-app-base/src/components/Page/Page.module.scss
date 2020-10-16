@@ -1,5 +1,4 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/common';
 
 $PageSubHeadMargin: 20px;
 $PageParagraphMargin: 1.2em;
@@ -162,7 +161,13 @@ $usageListPadding: 24px;
 }
 
 .hiddenContent {
-  @include hiddenContent();
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: 'hidden';
 }
 
 .subHeading,
