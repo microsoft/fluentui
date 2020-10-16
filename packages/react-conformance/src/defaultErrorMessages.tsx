@@ -266,6 +266,16 @@ export const defaultErrorMessages = {
     const { displayName } = testInfo;
     const { resolveInfo } = errorMessageColors;
 
+    // Message Description: Handles scenario where the ref doesn't match the DOM node.
+    //
+    // It appears that "displayName" doesn't have a ref that matches the components DOM node.
+    // It received a filename called "filename" instead of "displayName".
+    // To Resolve this issue:
+    // 1. Make sure that you are applying the ref to the root element in your component.
+    // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
+    //    your test file.
+    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
+    //    your test file.
     console.log(
       defaultErrorMessage(`component-has-root-ref`, displayName, `defined ref value.`) +
         resolveErrorMessages([
