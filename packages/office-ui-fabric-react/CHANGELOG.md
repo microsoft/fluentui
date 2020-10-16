@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 21:41:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.147.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.147.1)
+
+Fri, 16 Oct 2020 21:41:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.147.0..office-ui-fabric-react_v7.147.1)
+
+### Patches
+
+- Fix ITheme inferred typing error. ([PR #15560](https://github.com/microsoft/fluentui/pull/15560) by xgao@microsoft.com)
 
 ## [7.147.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.147.0)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix ITheme inferred typing error.",
-  "packageName": "@fluentui/theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-16T20:18:01.657Z"
-}

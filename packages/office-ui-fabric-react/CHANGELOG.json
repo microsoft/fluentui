@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 21:41:23 GMT",
+      "tag": "office-ui-fabric-react_v7.147.1",
+      "version": "7.147.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ITheme inferred typing error.",
+            "author": "xgao@microsoft.com",
+            "commit": "4f4ac72a0b0174352f3b0f48849c9aa33163915d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2020 12:25:26 GMT",
       "tag": "office-ui-fabric-react_v7.147.0",
       "version": "7.147.0",

@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 21:41:23 GMT",
+      "tag": "@uifabric/charting_v4.7.4",
+      "version": "4.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Area chart basic unit test cases - v1",
+            "author": "v-jasha@microsoft.com",
+            "commit": "252babaa1bbc6cf7f3ad38d8d78f9932712c1344",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Vertical bar cahrt test cases updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8d0a848a57344bc325c6a720dec44612b397381a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2020 12:25:26 GMT",
       "tag": "@uifabric/charting_v4.7.3",
       "version": "4.7.3",
