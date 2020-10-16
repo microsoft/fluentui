@@ -13,7 +13,7 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "lib": ["es6", "dom"],
-    "types": ["webpack-env", "webpack-node-externals"],
+    "types": ["webpack-env"],
     "skipLibCheck": true
   },
   "include": ["src"]
