@@ -5,8 +5,8 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 import { DonutChartBasicExample } from './DonutChart.Basic.Example';
 import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 
-const DonutChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/DonutChart/DonutChart.Basic.Example.tsx') as string;
-const DonutChartDynamicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/DonutChart/DonutChart.Dynamic.Example.tsx') as string;
+const DonutChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Basic.Example.tsx') as string;
+const DonutChartDynamicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Dynamic.Example.tsx') as string;
 
 export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,9 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!@fluentui/react-charting/src/components/DonutChart/DonutChart.types.ts'),
+            ]}
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}

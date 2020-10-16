@@ -5,9 +5,9 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 import { HorizontalBarChartBasicExample } from './HorizontalBarChart.Basic.Example';
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 
-const HorizontalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
+const HorizontalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
 
-const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
+const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -30,7 +30,7 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             sources={[
               require<
                 string
-              >('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts'),
+              >('!raw-loader!@fluentui/react-charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts'),
             ]}
           />
         }

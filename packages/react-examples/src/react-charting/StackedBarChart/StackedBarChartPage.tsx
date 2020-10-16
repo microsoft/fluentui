@@ -10,13 +10,13 @@ import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
 import { StackedBarChartBaseBarExample } from './StackedBarChart.BaseBar.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 
-const StackedBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;
-const StackedBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/StackedBarChart.Benchmark.Example.tsx') as string;
-const StackedBarChartMultipleExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/StackedBarChart.Multiple.Example.tsx') as string;
-const StackedBarChartDynamicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/StackedBarChart.Dynamic.Example.tsx') as string;
-const MultiStackedBarChartExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/MultiStackedBarChart.Example.tsx') as string;
-const StackedBarChartBaseBarExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/StackedBarChart.BaseBar.Example.tsx') as string;
-const MultiStackedBarChartWithPlaceholderExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/StackedBarChart/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
+const StackedBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;
+const StackedBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Benchmark.Example.tsx') as string;
+const StackedBarChartMultipleExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Multiple.Example.tsx') as string;
+const StackedBarChartDynamicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Dynamic.Example.tsx') as string;
+const MultiStackedBarChartExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/MultiStackedBarChart.Example.tsx') as string;
+const StackedBarChartBaseBarExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.BaseBar.Example.tsx') as string;
+const MultiStackedBarChartWithPlaceholderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/StackedBarChart/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -55,7 +55,9 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@uifabric/charting/src/components/StackedBarChart/StackedBarChart.types.ts'),
+              require<
+                string
+              >('!raw-loader!@fluentui/react-charting/src/components/StackedBarChart/StackedBarChart.types.ts'),
             ]}
           />
         }

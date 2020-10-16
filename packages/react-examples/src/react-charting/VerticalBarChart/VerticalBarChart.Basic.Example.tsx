@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
+import { VerticalBarChart, IVerticalBarChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {

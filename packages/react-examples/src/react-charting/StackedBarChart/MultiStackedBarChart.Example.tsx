@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@uifabric/charting';
+import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {

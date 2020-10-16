@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/charting",
+  "name": "@fluentui/react-charting",
   "version": "4.2.5",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",

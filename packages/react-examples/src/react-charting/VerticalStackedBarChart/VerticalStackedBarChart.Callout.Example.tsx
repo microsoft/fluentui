@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { VerticalStackedBarChart } from '@uifabric/charting';
-import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
+import { VerticalStackedBarChart } from '@fluentui/react-charting';
+import { IVSChartDataPoint, IVerticalStackedChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';

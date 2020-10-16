@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDataPoint, PieChart, IPieChartProps } from '@uifabric/charting';
+import { IDataPoint, PieChart, IPieChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 

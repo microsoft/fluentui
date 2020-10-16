@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart } from '@uifabric/charting';
+import { GroupedVerticalBarChart } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class GroupedVerticalBarChartStyledExample extends React.Component<Readonly<{}>, {}> {

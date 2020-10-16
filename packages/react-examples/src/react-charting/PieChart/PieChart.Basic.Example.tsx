@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PieChart, IPieChartProps } from '@uifabric/charting';
+import { PieChart, IPieChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class PieChartBasicExample extends React.Component<IPieChartProps, {}> {

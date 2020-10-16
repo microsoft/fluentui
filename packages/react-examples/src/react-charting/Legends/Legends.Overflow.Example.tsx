@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Legends } from '@uifabric/charting';
+import { Legends } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class LegendOverflowExample extends React.Component<{}, {}> {

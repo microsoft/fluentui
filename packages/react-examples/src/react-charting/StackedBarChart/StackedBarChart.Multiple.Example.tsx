@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StackedBarChart, IChartDataPoint, IChartProps } from '@uifabric/charting';
+import { StackedBarChart, IChartDataPoint, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class StackedBarChartMultipleExample extends React.Component<{}, {}> {

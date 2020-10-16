@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Legends, ILegend } from '@uifabric/charting';
+import { Legends, ILegend } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class LegendBasicExample extends React.Component<{}, {}> {

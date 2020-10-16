@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartProps, StackedBarChart, IStackedBarChartProps } from '@uifabric/charting';
+import { IChartProps, StackedBarChart, IStackedBarChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 

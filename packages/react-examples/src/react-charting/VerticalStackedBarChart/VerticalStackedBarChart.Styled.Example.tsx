@@ -5,7 +5,7 @@ import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
   IVerticalStackedBarChartProps,
-} from '@uifabric/charting';
+} from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 

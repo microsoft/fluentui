@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
+import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface ILineChartMultipleExampleState {

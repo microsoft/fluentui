@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting';
+import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {

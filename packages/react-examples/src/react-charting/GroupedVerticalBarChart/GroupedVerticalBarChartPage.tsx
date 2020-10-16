@@ -6,9 +6,9 @@ import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.B
 import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 
-const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
-const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
-const GroupedVerticalTruncatedExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
+const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
+const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
+const GroupedVerticalTruncatedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -34,7 +34,7 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
             sources={[
               require<
                 string
-              >('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
+              >('!raw-loader!@fluentui/react-charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
             ]}
           />
         }

@@ -7,10 +7,10 @@ import { LineChartStyledExample } from './LineChart.Styled.Example';
 import { LineChartMultipleExample } from './LineChart.Multiple.Example';
 import { LineChartEventsExample } from './LineChart.Events.Example';
 
-const LineChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/LineChart/LineChart.Basic.Example.tsx') as string;
-const LineChartStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/LineChart/LineChart.Styled.Example.tsx') as string;
-const MultipleLineChartExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/LineChart/LineChart.Multiple.Example.tsx') as string;
-const LineChartEventsExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/LineChart/LineChart.Events.Example.tsx') as string;
+const LineChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
+const LineChartStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const MultipleLineChartExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
+const LineChartEventsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Events.Example.tsx') as string;
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,7 +36,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/LineChart/LineChart.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!@fluentui/react-charting/src/components/LineChart/LineChart.types.ts'),
+            ]}
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}

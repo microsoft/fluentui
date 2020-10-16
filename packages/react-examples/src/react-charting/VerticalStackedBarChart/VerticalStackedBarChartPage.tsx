@@ -6,9 +6,9 @@ import { VerticalStackedBarChartBasicExample } from './VerticalStackedBarChart.B
 import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.Styled.Example';
 import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 
-const VerticalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
-const VerticalBarChartStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/VerticalStackedBarChart/VerticalStackedBarChart.Styled.Example.tsx') as string;
-const VerticalBarChartCalloutExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/VerticalStackedBarChart/VerticalStackedBarChart.Callout.Example.tsx') as string;
+const VerticalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
+const VerticalBarChartStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Styled.Example.tsx') as string;
+const VerticalBarChartCalloutExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Callout.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -34,7 +34,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             sources={[
               require<
                 string
-              >('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
+              >('!raw-loader!@fluentui/react-charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
             ]}
           />
         }

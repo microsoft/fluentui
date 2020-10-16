@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart, IChartProps } from '@uifabric/charting';
+import { HorizontalBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () => {
