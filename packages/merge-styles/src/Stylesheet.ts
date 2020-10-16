@@ -80,7 +80,7 @@ const STYLESHEET_SETTING = '__stylesheet__';
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
  * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
  */
-const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
+const REUSE_STYLE_NODE = false; // typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
 let _global: { [key: string]: any } = {};
 

@@ -2,6 +2,11 @@ import * as storybook from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 
+import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
+Stylesheet.getInstance().setConfig({
+  injectionMode: InjectionMode.appendChild,
+});
+
 setOptions({
   name: 'Fabric',
 });
