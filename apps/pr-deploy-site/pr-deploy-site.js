@@ -20,12 +20,6 @@ const siteInfo = [
     title: 'Website',
   },
   {
-    package: '@fluentui/react-image',
-    link: './react-image/dist-storybook/index.html',
-    icon: 'FileImage',
-    title: 'Image',
-  },
-  {
     package: '@fluentui/react-toggle',
     link: './react-toggle/dist-storybook/index.html',
     icon: 'ToggleLeft',
