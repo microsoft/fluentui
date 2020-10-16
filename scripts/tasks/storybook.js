@@ -41,10 +41,14 @@ function startStorybookTask(options) {
 function buildStorybookTask(options) {
   options = options || {};
   return async function() {
+    const localConfigDir = path.join(process.cwd(), '.storybook');
+
     await storybook({
       mode: 'static',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: path.join(process.cwd(), '.storybook'),
+      configDir: fs.existsSync(localConfigDir)
+        ? localConfigDir
+        : path.join(findGitRoot(), 'packages/react-examples/.storybook'),
       outputDir: path.join(process.cwd(), 'dist/storybook'),
       quiet: options.quiet || argv().quiet,
     });

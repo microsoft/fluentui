@@ -97,7 +97,6 @@ jobs:
         inputs:
           azureSubscription: $(azureSubscription)
           BlobPrefix: $(deployBasePath)
-          CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: fabricweb
