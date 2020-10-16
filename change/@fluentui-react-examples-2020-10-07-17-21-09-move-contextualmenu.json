@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ContextualMenu: Move to react-internal",
-  "packageName": "@fluentui/react-examples",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-08T00:20:56.351Z"
-}
