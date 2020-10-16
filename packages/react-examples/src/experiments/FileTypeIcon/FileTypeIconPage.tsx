@@ -17,8 +17,6 @@ export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {
             </ExampleCard>
           </div>
         }
-        overview={<div />}
-        bestPractices={<div />}
         dos={
           <div>
             <ul>

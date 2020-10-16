@@ -2,7 +2,7 @@
   "name": "vr-tests",
   "version": "7.0.0",
   "private": true,
-  "description": "Visual Regression Tests for Fluent UI React",
+  "description": "Visual regression tests for Fluent UI React",
   "scripts": {
     "build": "just-scripts build",
     "clean": "",
@@ -11,8 +11,7 @@
     "lint": "just-scripts lint",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
-    "start": "start-storybook --port 5555",
-    "test": "just-scripts test"
+    "start": "start-storybook --port 5555"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",

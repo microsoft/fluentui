@@ -40,7 +40,6 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        bestPractices={<div />}
         dos={
           <div>
             <ul>

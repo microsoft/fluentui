@@ -32,10 +32,6 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={<div />}
-        donts={<div />}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );
