@@ -18,7 +18,6 @@
     "office-ui-fabric-core": "^11.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/styling": "^7.16.9"
   }

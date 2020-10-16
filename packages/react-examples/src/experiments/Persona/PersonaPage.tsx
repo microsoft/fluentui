@@ -40,20 +40,9 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
             it supports rendering a vertical variation of the Persona component.
           </p>
           <p>
-            On a somewhat longer term this should replace the Persona component in the next major version. It'll aim to
-            reduce the DOM impact and in addition support stuff like slots etc for the "horizontal" persona as well.
+            This may replace the Persona component in a future major version. It'll aim to reduce the DOM impact and in
+            addition support stuff like slots etc for the "horizontal" persona as well.
           </p>
-        </div>
-      }
-      bestPractices={<div />}
-      dos={
-        <div>
-          <ul />
-        </div>
-      }
-      donts={
-        <div>
-          <ul />
         </div>
       }
       isHeaderVisible={props.isHeaderVisible}
