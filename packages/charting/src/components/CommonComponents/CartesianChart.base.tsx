@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProcessedStyleSet, IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import {
