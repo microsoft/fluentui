@@ -49,9 +49,6 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react-compose": "^0.19.6",
-    "@fluentui/react-theme-provider": "^0.16.2",
-    "@fluentui/theme": "^1.5.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/file-type-icons": "^7.6.14",

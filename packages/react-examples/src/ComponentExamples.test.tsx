@@ -118,7 +118,7 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = ['office-ui-fabric-react'];
+const includedPackages = ['office-ui-fabric-react', 'react-focus'];
 
 declare const global: any;
 
