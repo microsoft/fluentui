@@ -10,7 +10,7 @@
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
-    "build:min": "yarn build --to @fluentui/react-next --min",
+    "build:min": "yarn build --to @fluentui/react --min",
     "build:prod": "yarn build --production",
     "buildci": "yarn prelint && lage build test lint --verbose --grouped",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",

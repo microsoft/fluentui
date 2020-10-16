@@ -25,9 +25,15 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fluentui/react-next": "^8.0.0-alpha.130",
     "@fluentui/react-theme-provider": "^0.16.2",
     "@fluentui/theme": "^1.5.1",
+=======
+    "@fluentui/react": "^7.147.0",
+    "@fluentui/react-theme-provider": "^0.16.1",
+    "@fluentui/theme": "^1.5.0",
+>>>>>>> delete react-next, react-button, react-flex
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.5.31",

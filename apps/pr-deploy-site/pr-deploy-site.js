@@ -20,12 +20,6 @@ const siteInfo = [
     title: 'Website',
   },
   {
-    package: '@fluentui/react-button',
-    link: './react-button/dist-storybook/index.html',
-    icon: 'LikeSolid',
-    title: 'Button',
-  },
-  {
     package: '@fluentui/react-checkbox',
     link: './react-checkbox/dist-storybook/index.html',
     icon: 'CheckboxComposite',
@@ -60,12 +54,6 @@ const siteInfo = [
     link: './react-link/dist-storybook/index.html',
     icon: 'Link',
     title: 'Link',
-  },
-  {
-    package: '@fluentui/react-next',
-    link: './react-next/dist-storybook/index.html',
-    icon: 'DoubleChevronRight12',
-    title: 'Next',
   },
   { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
