@@ -70,7 +70,7 @@ const excludedExampleFiles: string[] = [
   // Most of these can probably be resolved by modifying the test or having some underlying function mocked,
   //  but are excluded for now to get base test coverage up immediately.
 
-  'Calendar.Inline.Example.tsx', // date mocking appears to trigger infinite loop
+  'Calendar.Button.Example.tsx', // component not open
   'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
@@ -83,6 +83,13 @@ const excludedExampleFiles: string[] = [
   'ScrollablePane.Default.Example.tsx',
   'ScrollablePane.DetailsList.Example.tsx',
   'SelectedPeopleList.Basic.Example.tsx',
+
+  // date mocking appears to trigger infinite loop
+  'Calendar.Inline.ContiguousWorkWeekDays.Example.tsx',
+  'Calendar.Inline.MonthSelection.Example.tsx',
+  'Calendar.Inline.MultidayDayView.Example.tsx',
+  'Calendar.Inline.NonContiguousWorkWeekDays.Example.tsx',
+  'Calendar.Inline.WeekSelection.Example.tsx',
 ];
 // Snapshots of these examples are worthless since the component isn't open by default
 const excludedComponents = [
