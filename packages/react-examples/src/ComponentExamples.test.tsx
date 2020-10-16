@@ -7,7 +7,7 @@ import * as path from 'path';
 
 import { resetIds } from '@fluentui/react/lib/Utilities';
 
-import * as DataUtil from '@uifabric/example-data';
+import * as ExampleData from '@uifabric/example-data';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');
@@ -118,7 +118,18 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = ['react', 'react-cards', 'react-focus'];
+const includedPackages = [
+  'react',
+  'react-button',
+  'react-cards',
+  'react-checkbox',
+  'date-time',
+  'react-focus',
+  'react-link',
+  'react-slider',
+  'react-tabs',
+  'react-toggle',
+];
 
 declare const global: any;
 
@@ -146,10 +157,13 @@ describe('Component Examples', () => {
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
-  const examplePaths: string[] = glob.sync(
-    path.resolve(process.cwd(), `src/{${includedPackages.join(',')}}/**/*.Example.tsx`),
-  );
-  const createPortal = ReactDOM.createPortal;
+  // Package name is set by scripts/tasks/jest.js based on --package or -p option
+  // (to run tests for a single package)
+  const packagesGlob = process.env.PACKAGE_NAME || `{${includedPackages.join(',')}}`;
+  // Get examples in the appropriate package(s), except "next" ones that may not be ready to test yet
+  const examplePaths = glob.sync(path.join(process.cwd(), `src/${packagesGlob}/!(next)/*.Example.tsx`));
+
+  const realCreatePortal = ReactDOM.createPortal;
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
@@ -177,7 +191,7 @@ describe('Component Examples', () => {
       }
     };
 
-    jest.spyOn(DataUtil, 'lorem').mockImplementation(() => {
+    jest.spyOn(ExampleData, 'lorem').mockImplementation(() => {
       return 'lorem text';
     });
     jest.spyOn(Math, 'random').mockImplementation(() => {
@@ -192,7 +206,7 @@ describe('Component Examples', () => {
   afterAll(() => {
     jest.restoreAllMocks();
 
-    ReactDOM.createPortal = createPortal;
+    ReactDOM.createPortal = realCreatePortal;
 
     global.Date = RealDate;
     global.Date.prototype.toLocaleString = realToLocaleString;
