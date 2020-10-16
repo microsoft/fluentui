@@ -72,13 +72,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
     const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
-    // The overflow menu starts empty and items[] is updated as the overflow items change
-    const overflowMenuProps: IContextualMenuProps = {
-      items: [],
-      doNotLayer: true,
-      alignTargetEdge: true,
-      directionalHint: DirectionalHint.bottomRightEdge,
-    };
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
@@ -227,6 +220,17 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link),
     );
 
+    // The overflow menu starts empty and items[] is updated as the overflow items change
+    const overflowMenuProps: IContextualMenuProps = React.useMemo(
+      () => ({
+        items: [],
+        doNotLayer: true,
+        alignTargetEdge: true,
+        directionalHint: DirectionalHint.bottomRightEdge,
+      }),
+      [],
+    );
+
     const { menuButtonRef: overflowMenuButtonRef } = useOverflow({
       onOverflowItemsChanged: (overflowIndex, elements) => {
         // Set data-is-overflowing on each item
@@ -253,7 +257,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {items}
           {overflowBehavior === 'menu' && (
             <CommandButton
-              className={classNames.link + ' ' + classNames.overflowMenuButton}
+              className={css(classNames.link, classNames.overflowMenuButton)}
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
