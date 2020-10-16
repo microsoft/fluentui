@@ -129,7 +129,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite-resources/dist
+      pathtoPublish: apps/public-docsite-resources/dist/demo
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'

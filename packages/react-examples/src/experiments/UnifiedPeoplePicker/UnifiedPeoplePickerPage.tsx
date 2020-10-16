@@ -38,22 +38,6 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use this component to pick people only</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>Use this component to pick anything other than people</li>
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );
