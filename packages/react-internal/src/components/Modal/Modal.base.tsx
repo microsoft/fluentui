@@ -18,7 +18,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
-import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout } from '@uifabric/react-hooks';
+import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useId } from '@uifabric/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -60,6 +60,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const modalResponsiveMode = useResponsiveMode(mergedRef);
+    const FocusTrapZoneId = useId();
     const [xCoordinate, setXCoordinate] = React.useState<number>(0);
     const [yCoordinate, setYCoordinate] = React.useState<number>(0);
     const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
@@ -326,6 +327,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const modalContent = (
       <FocusTrapZone
+        data-id={FocusTrapZoneId}
         componentRef={focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
