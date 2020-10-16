@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BadgeProps, BadgeState } from './Badge.types';
-import { getSlots, resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { getSlots, resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { useMergedRefs } from '@uifabric/react-hooks';
 
 export const badgeShorthandProps: (keyof BadgeProps)[] = ['icon'];
@@ -14,8 +14,6 @@ export const renderBadge = (state: BadgeState) => {
     </slots.root>
   );
 };
-
-const mergeProps = makeMergeProps({ deepMerge: badgeShorthandProps });
 
 export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps) => {
   const state = mergeProps(

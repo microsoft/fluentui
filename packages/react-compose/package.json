@@ -34,6 +34,7 @@
     "@uifabric/test-utilities": "^7.3.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
+    "prop-types": "^15.7.2",
     "react": "16.8.6"
   },
   "dependencies": {
@@ -41,7 +42,8 @@
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "react-is": "^16.6.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

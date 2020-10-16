@@ -1,10 +1,8 @@
-import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
+import { ThemeProviderProps } from './ThemeProvider.types';
 import * as React from 'react';
 import { renderThemeProvider as render } from './renderThemeProvider';
-import { makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { useThemeProviderState } from './useThemeProviderState';
-
-const mergeProps = makeMergeProps<ThemeProviderState>();
 
 /**
  * Returns the ThemeProvider render function and calculated state, given user input, ref, and

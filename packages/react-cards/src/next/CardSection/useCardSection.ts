@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { mergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { CardSectionProps, CardSectionState } from './CardSection.types';
 import { renderCardSection } from './renderCardSection';
-
-const mergeProps = makeMergeProps({ deepMerge: [] });
 
 /**
  * Given user props, returns state and render function for a CardSection.

@@ -1,5 +1,5 @@
-import { Accessibility /* , buttonBehavior */ } from '@fluentui/accessibility';
-import { makeMergeProps } from '@fluentui/react-compose/lib/next';
+import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import { mergeProps } from '@fluentui/react-compose/lib/next';
 import { ComponentWithAs, ShorthandConfig, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -21,8 +21,6 @@ import { ButtonContent, ButtonContentProps } from './ButtonContent';
 // TODO: had to use deep path because SASS was trying to be compiled as a side effect
 import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
 import { useButtonStyles } from './useButtonStyles';
-
-const mergeProps = makeMergeProps();
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -114,7 +112,7 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   //       detect user's input apart from component defaults
   mergeProps(state, {
     as: 'button',
-    // accessibility: buttonBehavior,
+    accessibility: buttonBehavior,
     size: 'medium',
     components: {
       loader: Loader,
@@ -127,27 +125,27 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   });
 
   // EXTRAS
-  const { content, /* disabled, */ size } = state;
+  const { content, disabled, size } = state;
   const { classes, styles: resolvedStyles } = useButtonStyles({ props: state, rtl: context.rtl });
 
   const overrides = {
     className: classes.root,
     styles: resolvedStyles.root,
 
-    // // TODO: test that this works as expected still, without merging these props
-    // //        - [ ] max call stack exceeded on click
-    // onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-    //   if (disabled) {
-    //     e.preventDefault();
-    //     return;
-    //   }
-    //
-    //   state?.onClick?.(e, props);
-    // },
-    //
-    // onFocus: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-    //   props?.onFocus?.(e, props);
-    // },
+    // TODO: test that this works as expected still, without merging these props
+    //        - [ ] max call stack exceeded on click
+    onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      state?.onClick?.(e, props);
+    },
+
+    onFocus: (e: React.SyntheticEvent<HTMLElement, Event>) => {
+      props?.onFocus?.(e, props);
+    },
 
     // TODO: this is ugly, don't require others to do this when authoring a new component
     //       this was added to prevent "defining" a slot with props when the user isn't using that slot in their props
@@ -170,24 +168,11 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
       // TODO: this is resolved as { children: 'Click here' }
       //       1. We can't spread this reliably, we need some resolve shorthand
       //       2. Why is this being resolved to an object, is that what we really want?
-      // ...content,
       // content: { children: 'test' }
-
-      // TODO: 3 weeks later... mutating is bad :P
-      //       mergeProps enters and infinite loop when a source key references a target key.
-      //       In our case, that is taking the original state.content and using it in the value of a new source:
-      //         `mergeProps(target, source)`
       ...content,
     },
   };
-
-  mergeProps(
-    state,
-    overrides,
-    // TODO: can't merge all user's props, yet, step through
-    // props
-    // { icon: props.icon },
-  );
+  mergeProps(state, overrides, props, { icon: props.icon });
 
   // TODO: verify all accessibility features are the same as they were
   // TODO: there is no way

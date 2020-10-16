@@ -1,15 +1,41 @@
 import * as React from 'react';
-import { makeMergeProps } from './makeMergeProps';
+import { mergeProps } from './mergeProps';
+import * as PropTypes from 'prop-types';
 
 describe('makeMergeProps', () => {
-  const mergeProps = makeMergeProps();
-
   it('gracefully handles undefined prop sets', () => {
     expect(() => mergeProps({}, undefined)).not.toThrow();
+    expect(mergeProps({}, undefined)).toEqual({});
   });
 
   it('concats `className` removing extra whitespace', () => {
     expect(mergeProps({ className: ' a ' }, { className: ' b  c ' })).toEqual({ className: 'a b c' });
+  });
+
+  it('replaces JSX values and does not merge', () => {
+    expect(mergeProps({}, { icon: <span data-one /> }, { icon: <span data-two /> })).toEqual({
+      icon: <span data-two />,
+    });
+  });
+
+  it('replaces ref object and does not merge', () => {
+    const ref: React.MutableRefObject<{ foo: boolean } | null> = React.createRef();
+    ref.current = { foo: true };
+
+    const ref2: React.MutableRefObject<{ bar: boolean } | null> = React.createRef();
+    ref2.current = { bar: true };
+
+    expect(mergeProps({ ref }, { ref: ref2 })).toEqual({
+      ref: {
+        current: { bar: true },
+      },
+    });
+  });
+
+  it('handles merging PropTypes', () => {
+    expect(mergeProps({}, { className: PropTypes.string })).toEqual({
+      className: PropTypes.string,
+    });
   });
 
   it('merges `style` by default', () => {
@@ -27,62 +53,43 @@ describe('makeMergeProps', () => {
     });
   });
 
-  it('does not deep merge by default', () => {
-    expect(mergeProps({}, { unexpected: { foo: 1 } }, { unexpected: { bar: 1 } })).toEqual({
-      unexpected: { bar: 1 },
+  describe('deep merging', () => {
+    it('adds new keys to target', () => {
+      expect(mergeProps({}, { deep: { newKey: true } })).toEqual({ deep: { newKey: true } });
+    });
+
+    it('can deep merge CSS in JS objects', () => {
+      expect(
+        mergeProps(
+          {},
+          {
+            styles: { color: 'red' },
+          },
+          {
+            styles: { ':hover': { color: 'blue' } },
+          },
+          {
+            styles: { ':hover': { background: 'white' } },
+          },
+        ),
+      ).toEqual({
+        styles: {
+          color: 'red',
+          ':hover': {
+            color: 'blue',
+            background: 'white',
+          },
+        },
+      });
     });
   });
 
-  it('can deep merge', () => {
-    const deepMergeProps = makeMergeProps({ deepMerge: ['a', 'b', 'f'] });
-    expect(
-      deepMergeProps(
-        {
-          a: {
-            b: {
-              c: 1,
-              d: 'test',
-              e: true,
-              className: 'hello',
-              style: { color: 'red' },
-            },
-          },
-        },
-        {
-          a: {
-            b: {
-              c: 0,
-              f: 'f',
-              className: 'world',
-              style: { background: 'black' },
-            },
-          },
-        },
-      ),
-    ).toEqual({
-      a: {
-        b: {
-          c: 0,
-          d: 'test',
-          e: true,
-          f: 'f',
-          className: 'hello world',
-          style: { color: 'red', background: 'black' },
-        },
-      },
-    });
-  });
-
-  it('replaces strings with strings', () => {
+  it('replaces string values', () => {
     expect(mergeProps({ str: 'a' }, { str: 'b' })).toEqual({ str: 'b' });
   });
 
-  it('replaces numbers with numbers', () => {
+  it('replaces number values', () => {
     expect(mergeProps({ num: 2 }, { num: 1 })).toEqual({ num: 1 });
-  });
-
-  it('replaces JSX values', () => {
-    expect(mergeProps({ as: <button /> }, { as: <div /> }, { as: <span /> })).toEqual({ as: <span /> });
   });
 
   it('replaces array values', () => {
@@ -176,37 +183,27 @@ describe('makeMergeProps', () => {
     expect(mergeProps({ a: 'a' }, { a: null })).toEqual({ a: null });
   });
 
-  describe('recursion', () => {
-    it('replaces string values by default', () => {
-      expect(mergeProps({ replace: 'one' }, { replace: 'two' })).toEqual({
-        replace: 'two',
-      });
+  it('deeply merges shorthand props', () => {
+    expect(
+      mergeProps(
+        {
+          icon: { size: 'small', className: 'a', style: { color: 'blue', lineHeight: 1 } },
+        },
+        {
+          icon: { size: 'large', className: 'b', style: { color: 'red', fontWeight: 'bold' } },
+        },
+      ),
+    ).toEqual({
+      icon: { size: 'large', className: 'a b', style: { color: 'red', lineHeight: 1, fontWeight: 'bold' } },
     });
+  });
 
-    it('deeply merges props in options.deepMerge', () => {
-      const mergeIconProps = makeMergeProps({ deepMerge: ['icon'] });
+  it('avoids infinite loops when source references target props', () => {
+    const target = { bar: {} };
+    const source = { bar: { foo: target.bar } };
 
-      expect(
-        mergeIconProps(
-          {
-            icon: { size: 'small', className: 'a', style: { color: 'blue', lineHeight: 1 } },
-          },
-          {
-            icon: { size: 'large', className: 'b', style: { color: 'red', fontWeight: 'bold' } },
-          },
-        ),
-      ).toEqual({
-        icon: { size: 'large', className: 'a b', style: { color: 'red', lineHeight: 1, fontWeight: 'bold' } },
-      });
-    });
+    mergeProps(target, source);
 
-    it('avoids infinite loops when source references target props', () => {
-      const target = { content: {} };
-      const source = { content: { content: target.content } };
-
-      mergeProps(target, source);
-
-      expect(true).toEqual(true);
-    });
+    expect(true).toEqual(true);
   });
 });
