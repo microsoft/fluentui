@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Calendar, DayOfWeek, DateRangeType, defaultDayPickerStrings } from '@uifabric/date-time';
 
-export const CalendarInlineOverlayedMonthExample: React.FunctionComponent = () => {
+export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = React.useCallback((date: Date, dateRangeArray: Date[]): void => {
