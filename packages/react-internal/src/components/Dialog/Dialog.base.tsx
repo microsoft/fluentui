@@ -159,7 +159,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
         onDismissed={mergedModalProps.onDismissed}
         responsiveMode={responsiveMode}
-        {...mergedModalProps}
         isDarkOverlay={mergedModalProps.isDarkOverlay}
         isBlocking={mergedModalProps.isBlocking}
         isOpen={isOpen !== undefined ? isOpen : !hidden}
@@ -168,6 +167,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
+        {...mergedModalProps}
       >
         <DialogContent
           subTextId={this._defaultSubTextId}

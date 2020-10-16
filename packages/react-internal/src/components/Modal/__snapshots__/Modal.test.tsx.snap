@@ -111,7 +111,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                 text-align: left;
                 z-index: 1000000;
               }
-          data-id="Modal5"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
@@ -137,6 +136,40 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
             }
             tabIndex={0}
           />
+          <div
+            className=
+
+                {
+                  display: flex;
+                  justify-content: center;
+                  padding-bottom: 3px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 3px;
+                  position: absolute;
+                  width: 100%;
+                }
+          >
+            <i
+              aria-hidden={true}
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons-1";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
+                    width: 24px;
+                  }
+              data-icon-name="move"
+            >
+              
+            </i>
+          </div>
           <div
             className=
                 ms-Modal-scrollableContent
@@ -303,7 +336,6 @@ exports[`Modal renders Modal correctly 1`] = `
                 position: relative;
                 text-align: left;
               }
-          data-id="Modal1"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
@@ -464,7 +496,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                 text-align: left;
                 z-index: 1000000;
               }
-          data-id="Modal3"
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}

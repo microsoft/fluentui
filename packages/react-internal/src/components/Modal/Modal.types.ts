@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
+import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IOverlayProps } from '../../Overlay';
-
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
@@ -35,11 +33,6 @@ export interface IDragOptions {
    * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
    */
   menu: React.FunctionComponent<IContextualMenuProps>;
-
-  /**
-   * Whether the draggable content should be prevented from going off-screen
-   */
-  keepInBounds?: boolean;
 }
 
 /**
@@ -55,7 +48,10 @@ export interface IModal {
 /**
  * {@docCategory Modal}
  */
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps
+  extends React.HTMLAttributes<HTMLElement>,
+    React.RefAttributes<HTMLDivElement>,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -87,15 +83,18 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismissed?: () => any;
 
+  /**
+   * The specified responsiveMode value for Modal to use.
+   * @defaultvalue ResponsiveMode.small
+   */
+  responsiveMode?: ResponsiveMode | undefined;
   /**
    * Defines an optional set of props to be passed through to Layer
    */
