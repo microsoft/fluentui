@@ -20,12 +20,6 @@ const siteInfo = [
     title: 'Website',
   },
   {
-    package: '@fluentui/react-checkbox',
-    link: './react-checkbox/dist-storybook/index.html',
-    icon: 'CheckboxComposite',
-    title: 'Checkbox',
-  },
-  {
     package: '@fluentui/react-image',
     link: './react-image/dist-storybook/index.html',
     icon: 'FileImage',
