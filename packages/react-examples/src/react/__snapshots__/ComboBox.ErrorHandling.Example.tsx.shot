@@ -101,6 +101,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
           &:focus:hover:after {
             border-color: #323130;
           }
+      data-ktp-target={true}
       id="ComboBox0wrapper"
     >
       <input
@@ -154,6 +155,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               color: WindowText;
             }
         data-is-interactable={true}
+        data-ktp-execute-target={true}
         data-lpignore={true}
         id="ComboBox0-input"
         onBlur={[Function]}
@@ -502,6 +504,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             right: 0px;
             top: 0px;
           }
+      data-ktp-target={true}
       id="ComboBox4wrapper"
     >
       <input
@@ -554,6 +557,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               color: WindowText;
             }
         data-is-interactable={true}
+        data-ktp-execute-target={true}
         data-lpignore={true}
         id="ComboBox4-input"
         onBlur={[Function]}
