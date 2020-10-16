@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Callout: Move to react-internal",
+  "packageName": "@uifabric/experiments",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-10T03:28:40.639Z"
+}

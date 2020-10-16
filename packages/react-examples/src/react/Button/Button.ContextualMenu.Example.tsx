@@ -10,7 +10,7 @@ export interface IButtonExampleProps {
 const menuProps: IContextualMenuProps = {
   // For example: disable dismiss if shift key is held down while dismissing
   onDismiss: ev => {
-    if (ev && ev.shiftKey) {
+    if (ev && 'shiftKey' in ev) {
       ev.preventDefault();
     }
   },

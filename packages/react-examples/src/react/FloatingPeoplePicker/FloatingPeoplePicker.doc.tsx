@@ -8,7 +8,8 @@ const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/reac
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
   componentName: 'FloatingPeoplePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/FloatingPeoplePicker',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/FloatingPeoplePicker',
   examples: [
     {
       title: 'Floating People Picker',

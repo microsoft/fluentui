@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding high contrast styling.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-01T00:22:33.478Z"
+}

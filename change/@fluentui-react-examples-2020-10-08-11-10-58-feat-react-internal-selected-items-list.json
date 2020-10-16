@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removing react-next SelectedItemsList examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-08T18:10:29.688Z"
-}

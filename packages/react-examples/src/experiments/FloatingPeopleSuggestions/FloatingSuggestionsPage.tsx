@@ -9,14 +9,14 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="FloatingSuggestions"
-        componentName="FloatingSuggestions"
+        title="FloatingPeopleSuggestions"
+        componentName="FloatingPeopleSuggestions"
         exampleCards={
           <div>
             <ExampleCard title="Basic" isOptIn={true} code={FloatingPeoplePickerSuggestionsExampleCode}>
               <FloatingPeopleSuggestionsExample />
             </ExampleCard>
-            <ExampleCard title="Basic" isOptIn={true} code={FloatingPeoplePickerSuggestionsCustomRenderCode}>
+            <ExampleCard title="Custom rendering" isOptIn={true} code={FloatingPeoplePickerSuggestionsCustomRenderCode}>
               <FloatingPeopleSuggestionsCustomRenderExample />
             </ExampleCard>
           </div>
@@ -27,22 +27,6 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
               require('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types.ts') as string,
             ]}
           />
-        }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to display a list of people suggestions</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>Use them to display things that aren't people suggestions</li>
-            </ul>
-          </div>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

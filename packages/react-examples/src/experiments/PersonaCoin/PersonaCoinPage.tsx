@@ -39,7 +39,6 @@ export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
           <p>In case you need to render just a PersonaCoin you can use this component directly.</p>
         </div>
       }
-      bestPractices={<div />}
       dos={
         <div>
           <ul>

@@ -51,23 +51,6 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Chiclet/Chiclet.types.ts')]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to represent an item in a card with relevant metadata.</li>
-            </ul>
-          </div>
-        }
-        donts={
-          // @todo: fill in description
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

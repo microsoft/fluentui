@@ -40,6 +40,12 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
     <MenuButton {...props} icon="O" ghost disabled menu={Menu}>
       Hello, world
     </MenuButton>
+    <MenuButton {...props} icon="O" transparent menu={Menu}>
+      Hello, world
+    </MenuButton>
+    <MenuButton {...props} icon="O" transparent disabled menu={Menu}>
+      Hello, world
+    </MenuButton>
   </div>
 );
 
@@ -51,9 +57,9 @@ export const MenuButtons = () => (
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
     <MenuButtonExamples circular />
 
-    <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
+    <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
     <div className={classes.vStack}>
-      <MenuButtonExamples fluid />
+      <MenuButtonExamples block />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>

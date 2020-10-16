@@ -15,8 +15,6 @@ export class StaticListPage extends React.Component<IComponentDemoPageProps, {}>
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
         dos={
           <div>
             <ul>
