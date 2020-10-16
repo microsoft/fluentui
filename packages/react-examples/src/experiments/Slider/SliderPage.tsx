@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  Markdown,
-  PropertiesTableSet,
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { SliderExample } from './Slider.Example';
 const SliderExampleCode = require('!raw-loader!@fluentui/react-examples/src/experiments/Slider/Slider.Example.tsx') as string;
@@ -33,22 +27,6 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Slider/Slider.types.ts')]}
           />
-        }
-        overview={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Slider/docs/SliderOverview.md')}
-          </Markdown>
-        }
-        bestPractices={<div />}
-        dos={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Slider/docs/SliderDos.md')}
-          </Markdown>
-        }
-        donts={
-          <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/experiments/Slider/docs/SliderDonts.md')}
-          </Markdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

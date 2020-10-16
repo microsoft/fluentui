@@ -71,7 +71,6 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
             </p>
           </div>
         }
-        bestPractices={<div />}
         dos={
           <div>
             <ul>

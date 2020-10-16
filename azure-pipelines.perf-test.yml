@@ -6,6 +6,9 @@ trigger: none
 
 variables:
   - group: fabric-variables
+  - template: .devops/templates/variables.yml
+    parameters:
+      pathPrefix: SourceVersion
 
 pool: 'Self Host Ubuntu'
 
@@ -24,8 +27,8 @@ steps:
       yarn lage build --to @fluentui/perf-test --to perf-test --verbose --no-cache --grouped
     displayName: build  @fluentui v0
     env:
-      BACKFILL_CACHE_PROVIDER: 'azure-blob'
-      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+      BACKFILL_CACHE_PROVIDER: $(backfillProvider)
+      BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test Baseline
@@ -52,7 +55,7 @@ steps:
     displayName: Upload Perf Test Result to PR deploy site (Fluent)
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: $(azureSubscription)
       storage: fabricweb
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
@@ -61,7 +64,7 @@ steps:
     displayName: Upload Perf Test Result to PR deploy site
     inputs:
       SourcePath: 'apps/perf-test/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: $(azureSubscription)
       storage: fabricweb
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'

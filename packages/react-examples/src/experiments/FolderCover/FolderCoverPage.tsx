@@ -29,7 +29,6 @@ export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}
             Initialize folder covers first using <code>initializeFolderCovers()</code>.
           </div>
         }
-        bestPractices={<div />}
         dos={
           <div>
             <ul>

@@ -68,23 +68,6 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to represent an item in a card with relevant metadata.</li>
-            </ul>
-          </div>
-        }
-        donts={
-          // @todo: fill in description
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

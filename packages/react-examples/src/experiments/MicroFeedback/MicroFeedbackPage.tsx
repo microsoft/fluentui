@@ -46,7 +46,6 @@ export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, 
             and report it.
           </div>
         }
-        bestPractices={<div />}
         dos={
           <div>
             <ul>
