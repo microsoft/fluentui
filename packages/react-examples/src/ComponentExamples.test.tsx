@@ -90,6 +90,9 @@ const excludedExampleFiles: string[] = [
   'Calendar.Inline.MultidayDayView.Example.tsx',
   'Calendar.Inline.NonContiguousWorkWeekDays.Example.tsx',
   'Calendar.Inline.WeekSelection.Example.tsx',
+  // snapshots turn out different depending on time zone
+  'Calendar.Inline.CustomDayCellRef.Example.tsx',
+  'Calendar.Inline.DateBoundaries.Example.tsx',
 ];
 // Snapshots of these examples are worthless since the component isn't open by default
 const excludedComponents = [
