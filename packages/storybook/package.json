@@ -31,7 +31,6 @@
     "@fluentui/theme": "^1.5.1",
 =======
     "@fluentui/react": "^7.147.0",
-    "@fluentui/react-theme-provider": "^0.16.1",
     "@fluentui/theme": "^1.5.0",
 >>>>>>> delete react-next, react-button, react-flex
     "@storybook/addon-knobs": "^5.3.8",
