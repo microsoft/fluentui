@@ -6,6 +6,7 @@ import {
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
+import { ISuggestionsHeaderFooterProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 
 export interface IFloatingSuggestionsListProps<T> {
   suggestionItems: IFloatingSuggestionItem<T>[];
@@ -27,6 +28,12 @@ export interface IFloatingSuggestionsListProps<T> {
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;
   pickerWidth?: string;
+  headerItemsProps?: ISuggestionsHeaderFooterProps[];
+  selectedHeaderIndex?: number;
+  suggestionsHeaderContainerAriaLabel?: string;
+  footerItemsProps?: ISuggestionsHeaderFooterProps[];
+  selectedFooterIndex?: number;
+  suggestionsFooterContainerAriaLabel?: string;
 }
 
 export interface IFloatingSuggestionsListStyleProps {}

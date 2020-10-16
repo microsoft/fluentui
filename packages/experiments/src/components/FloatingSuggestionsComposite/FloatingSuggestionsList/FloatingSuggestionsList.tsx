@@ -7,6 +7,7 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
+import { ISuggestionsHeaderFooterProps, SuggestionsHeaderFooterItem } from 'office-ui-fabric-react/lib/FloatingPicker';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
@@ -20,8 +21,44 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderHeader = (): JSX.Element | null => {
-    const { onRenderHeader, suggestionsHeaderText } = props;
+    const {
+      onRenderHeader,
+      suggestionsHeaderText,
+      headerItemsProps,
+      selectedHeaderIndex,
+      suggestionsHeaderContainerAriaLabel,
+    } = props;
 
+    if (headerItemsProps) {
+      return (
+        <div
+          className={css('ms-Suggestions-headerContainer', classNames.suggestionsContainer)}
+          id="suggestionHeader-list"
+          role="list"
+          aria-label={suggestionsHeaderContainerAriaLabel}
+        >
+          {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+            const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
+            return headerItemProps.shouldShow() ? (
+              <div
+                id={'sug-header' + index}
+                key={'sug-header' + index}
+                role="listitem"
+                aria-label={headerItemProps.ariaLabel}
+              >
+                <SuggestionsHeaderFooterItem
+                  id={'sug-header-item' + index}
+                  isSelected={isSelected}
+                  renderItem={headerItemProps.renderItem}
+                  onExecute={headerItemProps.onExecute}
+                  className={headerItemProps.className}
+                />
+              </div>
+            ) : null;
+          })}
+        </div>
+      );
+    }
     if (onRenderHeader) {
       return onRenderHeader(suggestionItems);
     }
@@ -29,7 +66,38 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   const renderFooter = (): JSX.Element | null => {
-    const { onRenderFooter } = props;
+    const { onRenderFooter, footerItemsProps, selectedFooterIndex, suggestionsFooterContainerAriaLabel } = props;
+
+    if (footerItemsProps) {
+      return (
+        <div
+          className={css('ms-Suggestions-footerContainer', classNames.suggestionsContainer)}
+          id="suggestionFooter-list"
+          role="list"
+          aria-label={suggestionsFooterContainerAriaLabel}
+        >
+          {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+            const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
+            return footerItemProps.shouldShow() ? (
+              <div
+                id={'sug-footer' + index}
+                key={'sug-footer' + index}
+                role="listitem"
+                aria-label={footerItemProps.ariaLabel}
+              >
+                <SuggestionsHeaderFooterItem
+                  id={'sug-footer-item' + index}
+                  isSelected={isSelected}
+                  renderItem={footerItemProps.renderItem}
+                  onExecute={footerItemProps.onExecute}
+                  className={footerItemProps.className}
+                />
+              </div>
+            ) : null;
+          })}
+        </div>
+      );
+    }
     if (onRenderFooter) {
       return onRenderFooter(suggestionItems);
     }
