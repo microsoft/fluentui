@@ -3,7 +3,6 @@ import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
   IFloatingPeopleSuggestionsProps,
-  IBaseFloatingPickerHeaderFooterProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
@@ -64,7 +63,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const ref = React.useRef<any>();
 
-  const suggestionProps: IBaseFloatingPickerHeaderFooterProps = useConst(() => {
+  const suggestionProps = useConst(() => {
     return {
       /*headerItemsProps: [
         {
