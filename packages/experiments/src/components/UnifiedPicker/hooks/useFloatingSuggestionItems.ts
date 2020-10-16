@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISuggestionsHeaderFooterProps } from '@uifabric/react/lib/FloatingPicker';
+import { ISuggestionsHeaderFooterProps } from '@fluentui/react/lib/FloatingPicker';
 
 export interface IUseFloatingSuggestionItems<T> {
   focusItemIndex: number;
