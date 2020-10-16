@@ -69,6 +69,8 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                   display: flex;
                   flex: 1 1 auto;
                 }
+            onDragOver={[Function]}
+            onDrop={[Function]}
             role="combobox"
           >
             <input
@@ -803,6 +805,8 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   display: flex;
                   flex: 1 1 auto;
                 }
+            onDragOver={[Function]}
+            onDrop={[Function]}
             role="combobox"
           >
             <input
