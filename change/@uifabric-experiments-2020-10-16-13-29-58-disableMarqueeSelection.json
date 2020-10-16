@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing undesirable MarqueeSelection from the UPP",
+  "packageName": "@uifabric/experiments",
+  "email": "sadelson@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T20:29:58.315Z"
+}
