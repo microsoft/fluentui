@@ -98,12 +98,6 @@ const siteInfo = [
     title: 'Date/Time',
   },
   {
-    package: 'todo-app',
-    link: './todo-app/index.html',
-    icon: 'CheckMark',
-    title: 'Todo Example',
-  },
-  {
     package: 'theming-designer',
     link: './theming-designer/index.html',
     icon: 'CheckMark',

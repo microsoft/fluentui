@@ -37,7 +37,6 @@ const dependencies = [
   '@fluentui/react',
   'perf-test',
   'theming-designer',
-  'todo-app',
 ];
 
 const allPackages = getAllPackageInfo();
