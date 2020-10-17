@@ -16,20 +16,3 @@ npm install --save @fluentui/style-utilities
 ```
 
 This gives you access to styling-related constants, utilities, and Fabric Core style classes through JavaScript.
-
-## Overriding the theme colors
-
-The default palette of colors matches the default Fluent UI (and Fabric Core) styling conventions. However, it is possible to override the color slots to match your product requirements:
-
-```tsx
-import {
-  loadTheme({
-    palette: {
-      themePrimary: 'red',
-      themeSecondary: 'blue'
-    }
-  });
-}
-```
-
-If you override theme settings, you need to do this before accessing theme colors. Otherwise you won't get a notification that the theme changed.
