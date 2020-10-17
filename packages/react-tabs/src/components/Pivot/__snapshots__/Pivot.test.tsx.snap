@@ -1739,6 +1739,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             ms-Button--command
             ms-Button--hasMenu
             ms-Pivot-link
+            ms-Pivot-overflowMenuButton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1760,10 +1761,12 @@ exports[`Pivot renders Pivot with overflow 1`] = `
               padding-left: 8px;
               padding-right: 8px;
               padding-top: 0;
-              position: relative;
+              position: absolute;
+              right: 0px;
               text-align: center;
               text-decoration: none;
               user-select: none;
+              visibility: hidden;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1838,6 +1841,10 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             }
             &[data-is-overflowing='true'] {
               display: none;
+            }
+            .ms-Pivot-link[data-is-overflowing='true'] ~ & {
+              position: relative;
+              visibility: visible;
             }
         data-is-focusable={true}
         onClick={[Function]}
