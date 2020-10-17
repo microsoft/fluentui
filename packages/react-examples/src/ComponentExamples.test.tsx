@@ -83,10 +83,8 @@ const excludedExampleFiles: string[] = [
   'ScrollablePane.DetailsList.Example.tsx',
   'SelectedPeopleList.Basic.Example.tsx',
 ];
-// Snapshots of these examples either are worthless since the component isn't open by default,
-// or have problems running in the test environment currently.
+// Snapshots of these examples are worthless since the component isn't open by default
 const excludedComponents = [
-  'Calendar', // date mocking causes infinite loops and/or values changing with computer time zone
   'Callout',
   'Coachmark',
   'ContextualMenu',
@@ -124,7 +122,10 @@ const includedPackages = [
   'react-button',
   'react-cards',
   'react-checkbox',
-  'date-time',
+  // TODO: Fix these issues then re-enable tests for date-time components:
+  // 1. Date mocking causes infinite loops for examples that involve generating date ranges
+  // 2. Snapshots are sometimes different between local build and CI due to different machine time zones
+  // 'date-time',
   'react-focus',
   'react-link',
   'react-slider',
