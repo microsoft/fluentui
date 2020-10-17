@@ -36,7 +36,7 @@ See https://github.com/microsoft/fluentui/wiki/Component-Design#build-many-small
 
 ### Intended package/s
 
-<!-- If this is a prototype component, start in @uifabric/experiments. If you feel that there is a new package required, please indicate the requested name here. -->
+<!-- If this is a prototype component, start in @fluentui/react-experiments. If you feel that there is a new package required, please indicate the requested name here. -->
 
 ## Component code
 

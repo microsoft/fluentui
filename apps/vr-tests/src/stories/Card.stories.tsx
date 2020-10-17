@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities/index';
-import { Button, IButtonStyles, IButtonTokens } from '@uifabric/experiments';
+import { Button, IButtonStyles, IButtonTokens } from '@fluentui/react-experiments';
 import {
   Card,
   ICardStyles,
