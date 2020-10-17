@@ -1,4 +1,4 @@
-import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/Button';
+import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/compat/Button';
 import { IsFocusVisibleClassName } from '@fluentui/react/lib/Utilities';
 
 export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {

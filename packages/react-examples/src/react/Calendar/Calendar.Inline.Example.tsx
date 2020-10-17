@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Calendar, DayOfWeek, DateRangeType } from '@fluentui/react/lib/Calendar';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
 
 export interface ICalendarInlineExampleProps {

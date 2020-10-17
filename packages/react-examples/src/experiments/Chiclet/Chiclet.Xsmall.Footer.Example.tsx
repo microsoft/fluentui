@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
-import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
+import { IButtonProps, IconButton } from '@fluentui/react/lib/compat/Button';
 import { Icon, IIconProps } from '@fluentui/react/lib/Icon';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles } from '@fluentui/react/lib/Styling';

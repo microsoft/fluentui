@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from '@fluentui/react';
+import { Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;

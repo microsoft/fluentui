@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Calendar, DayOfWeek } from '@fluentui/react/lib/Calendar';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';

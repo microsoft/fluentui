@@ -2,7 +2,8 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities/index';
-import { Dialog, DialogType, DialogFooter, PrimaryButton, DefaultButton } from '@fluentui/react';
+import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const footer = (
   <DialogFooter>

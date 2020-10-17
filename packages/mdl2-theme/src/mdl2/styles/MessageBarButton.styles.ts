@@ -1,4 +1,4 @@
-import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/Button';
+import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/compat/Button';
 
 export const MessageBarButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;

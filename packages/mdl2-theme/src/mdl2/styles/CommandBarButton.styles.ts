@@ -1,5 +1,5 @@
 import { getFocusStyle } from '@fluentui/react/lib/Styling';
-import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/Button';
+import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/compat/Button';
 
 export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;

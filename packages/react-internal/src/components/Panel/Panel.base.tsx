@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
