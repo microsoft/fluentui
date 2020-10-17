@@ -940,6 +940,9 @@ export const getMeasurementCache: () => {
     addMeasurementToCache: (data: any, measurement: number) => void;
 };
 
+// @public (undocumented)
+export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
+
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {
     getCachedMeasurement: (data: any) => number | undefined;
