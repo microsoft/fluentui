@@ -1,42 +1,21 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import './DatePicker.Examples.scss';
+import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
-export interface IDatePickerDisabledExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+const rootClass = mergeStyles({ maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } });
 
-export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDisabledExampleState> {
-  public constructor(props: {}) {
-    super(props);
+export const DatePickerDisabledExample: React.FunctionComponent = () => {
+  return (
+    <div className={rootClass}>
+      <DatePicker strings={defaultDayPickerStrings} placeholder="Select a date..." ariaLabel="Select a date" disabled />
 
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <DatePicker
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          disabled={true}
-        />
-
-        <DatePicker
-          label="Disabled (with label)"
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          disabled={true}
-        />
-      </div>
-    );
-  }
-}
+      <DatePicker
+        label="Disabled (with label)"
+        strings={defaultDayPickerStrings}
+        placeholder="Select a date..."
+        ariaLabel="Select a date"
+        disabled
+      />
+    </div>
+  );
+};

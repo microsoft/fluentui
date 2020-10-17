@@ -1,42 +1,31 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import './DatePicker.Examples.scss';
+import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
-export interface IDatePickerRequiredExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+const styles = mergeStyleSets({
+  root: { selectors: { '> *': { marginBottom: 15 } } },
+  control: { maxWidth: 300, marginBottom: 15 },
+});
 
-export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <p>Validation will happen when Date Picker loses focus.</p>
-        <DatePicker
-          label="Date required (with label)"
-          isRequired={true}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-        />
-        <DatePicker
-          isRequired={true}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          placeholder="Date required with no label..."
-          ariaLabel="Select a date"
-        />
-      </div>
-    );
-  }
-}
+export const DatePickerRequiredExample: React.FunctionComponent = () => {
+  return (
+    <div className={styles.root}>
+      <div>Validation will happen when the DatePicker loses focus.</div>
+      <DatePicker
+        isRequired
+        label="Date required (with label)"
+        strings={defaultDayPickerStrings}
+        placeholder="Select a date..."
+        ariaLabel="Select a date"
+        className={styles.control}
+      />
+      <DatePicker
+        isRequired
+        strings={defaultDayPickerStrings}
+        placeholder="Date required with no label..."
+        ariaLabel="Select a date"
+        className={styles.control}
+      />
+    </div>
+  );
+};
