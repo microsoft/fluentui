@@ -44,6 +44,7 @@
     "@uifabric/build": "^7.0.0",
     "@uifabric/date-time": "^7.17.28",
     "awesome-typescript-loader": "^3.2.3",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",
     "csstype": "^2.6.7",
     "file-loader": "^0.11.1",
