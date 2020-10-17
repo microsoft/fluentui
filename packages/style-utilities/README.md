@@ -24,7 +24,7 @@ The default palette of colors matches the default Fluent UI (and Fabric Core) st
 ```tsx
 import {
   loadTheme({
-    palette: {q
+    palette: {
       themePrimary: 'red',
       themeSecondary: 'blue'
     }
