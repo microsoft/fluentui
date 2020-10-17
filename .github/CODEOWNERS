@@ -153,8 +153,8 @@ packages/react-internal/src/components/TextField/ @ecraig12345
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
 
 ## Experiments
-packages/experiments/src/components/Pagination/ @caradong
-packages/experiments/src/components/Signals/ @ThomasMichon
-packages/experiments/src/components/Tile/ @ThomasMichon
-packages/experiments/src/components/TileList/ @ThomasMichon
-packages/experiments/src/components/Toggle/ @khmakoto
+packages/react-experiments/src/components/Pagination/ @caradong
+packages/react-experiments/src/components/Signals/ @ThomasMichon
+packages/react-experiments/src/components/Tile/ @ThomasMichon
+packages/react-experiments/src/components/TileList/ @ThomasMichon
+packages/react-experiments/src/components/Toggle/ @khmakoto

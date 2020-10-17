@@ -16,7 +16,7 @@ const AnnouncedQuickActionsExampleCode = require('!raw-loader!@fluentui/react-ex
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
   componentName: 'Announced',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/experiments/src/components/Announced',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Announced',
   overview: require('!raw-loader!@fluentui/react-examples/src/react/Announced/docs/AnnouncedOverview.md'),
   isHeaderVisible: false,
 };
