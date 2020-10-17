@@ -20,7 +20,7 @@ import {
   ReadOnlySignal,
   FollowedSignal,
   NotFollowedSignal,
-} from '@uifabric/experiments';
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
