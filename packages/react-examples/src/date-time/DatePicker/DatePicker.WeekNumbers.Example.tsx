@@ -1,77 +1,42 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Dropdown, IDropdownOption, mergeStyles } from '@fluentui/react';
 import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import './DatePicker.Examples.scss';
 
-export interface IDatePickerBasicExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+const days: IDropdownOption[] = [
+  { text: 'Sunday', key: DayOfWeek.Sunday },
+  { text: 'Monday', key: DayOfWeek.Monday },
+  { text: 'Tuesday', key: DayOfWeek.Tuesday },
+  { text: 'Wednesday', key: DayOfWeek.Wednesday },
+  { text: 'Thursday', key: DayOfWeek.Thursday },
+  { text: 'Friday', key: DayOfWeek.Friday },
+  { text: 'Saturday', key: DayOfWeek.Saturday },
+];
+const rootClass = mergeStyles({ maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } });
 
-export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePickerBasicExampleState> {
-  constructor(props: {}) {
-    super(props);
+export const DatePickerWeekNumbersExample: React.FunctionComponent = () => {
+  const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Monday,
-    };
-  }
+  const onDropdownChange = React.useCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
+    setFirstDayOfWeek((DayOfWeek as any)[option.key]);
+  }, []);
 
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <DatePicker
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          showWeekNumbers={true}
-          firstWeekOfYear={1}
-          showMonthPickerAsOverlay={true}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-        />
-        <Dropdown
-          label="Select the first day of the week"
-          options={[
-            {
-              text: 'Sunday',
-              key: DayOfWeek.Sunday,
-            },
-            {
-              text: 'Monday',
-              key: DayOfWeek.Monday,
-            },
-            {
-              text: 'Tuesday',
-              key: DayOfWeek.Tuesday,
-            },
-            {
-              text: 'Wednesday',
-              key: DayOfWeek.Wednesday,
-            },
-            {
-              text: 'Thursday',
-              key: DayOfWeek.Thursday,
-            },
-            {
-              text: 'Friday',
-              key: DayOfWeek.Friday,
-            },
-            {
-              text: 'Saturday',
-              key: DayOfWeek.Saturday,
-            },
-          ]}
-          selectedKey={firstDayOfWeek}
-          onChange={this._onDropdownChange}
-        />
-      </div>
-    );
-  }
-
-  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({
-      firstDayOfWeek: option.key as number,
-    });
-  };
-}
+  return (
+    <div className={rootClass}>
+      <DatePicker
+        firstDayOfWeek={firstDayOfWeek}
+        strings={defaultDayPickerStrings}
+        showWeekNumbers={true}
+        firstWeekOfYear={1}
+        showMonthPickerAsOverlay={true}
+        placeholder="Select a date..."
+        ariaLabel="Select a date"
+      />
+      <Dropdown
+        label="Select the first day of the week"
+        options={days}
+        selectedKey={firstDayOfWeek}
+        onChange={onDropdownChange}
+      />
+    </div>
+  );
+};
