@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix inferred type error related to ITheme.",
+  "packageName": "@fluentui/theme",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-17T01:39:16.806Z"
+}
