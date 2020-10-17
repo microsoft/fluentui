@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix check for ResizeObserver being defined, to avoid causing errors with the testing framework @testing-library/react",
+  "comment": "Fix defined check for ResizeObserver, which was causing errors in the testing framework @testing-library/react",
   "packageName": "@fluentui/react-tabs",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
