@@ -2,7 +2,7 @@
   "type": "patch",
   "comment": "Basic unit test cases to the stacked bar chart and Multistacked bar chart",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-18T05:53:47.408Z"
 }
