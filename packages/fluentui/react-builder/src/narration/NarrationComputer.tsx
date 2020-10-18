@@ -1,15 +1,23 @@
 /*
 TODO:
+* Narration of aria-label when entering an element without role.
+* "header" and "footer" elements should not constitute a landmark when inside sectioning roles, but they do. However, they do only when tabbed into, not when entered with VPC. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header """"
+* Test the case when the landmark or group is the element which receives the focus and has tabindex="0".""
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
 * Should we also consider the "disabled" state?
 */
 import { SRNC } from './SRNC-Definitions';
 import './SRNC-Rules-Win_JAWS';
+import './SRNC-LandmarksAndGroups-Win_JAWS';
 
 export interface IAriaElement extends HTMLElement {
+  ariaLabel: string | null;
+  ariaLabelledByElements: HTMLElement[] | null;
   ariaDescribedByElements: HTMLElement[] | null;
   ariaActiveDescendantElement: HTMLElement | null;
+  role: string | null;
+  type: string | null;
 }
 
 export type FocusableElement = {
@@ -19,6 +27,7 @@ export type FocusableElement = {
 
 export class NarrationComputer {
   computedParts: Record<string, string> = {
+    landmarksAndGroups: '',
     value: '',
     name: '',
     description: '',
@@ -37,7 +46,7 @@ export class NarrationComputer {
 
     // Traverse down the DOM tree rooted at the element to first find the activeDescendants parent elements, and then all the focusable elements and their paths
     this.findActiveDescendantsParents(element, activeDescendantsParents);
-    await this.traverse(element, path, focusableElements, activeDescendantsParents);
+    await this.findFocusableElements(element, path, focusableElements, activeDescendantsParents);
 
     return focusableElements;
   } // End getFocusableElements
@@ -56,7 +65,7 @@ export class NarrationComputer {
   } // End findActiveDescendantsParents
 
   // Recursively traverses the given element to find all the focusable elements and saves their paths along the way.
-  async traverse(
+  async findFocusableElements(
     element: IAriaElement,
     path: string[],
     focusableElements: FocusableElement[],
@@ -93,18 +102,118 @@ export class NarrationComputer {
     for (let i = 0; i < element.children.length; i++) {
       // Begin for 1
       const child = element.children[i] as IAriaElement;
-      await this.traverse(child, newPath, focusableElements, activeDescendantsParents);
+      await this.findFocusableElements(child, newPath, focusableElements, activeDescendantsParents);
     } // End for 1
-  } // End traverse
+  } // End findFocusableElements
+
+  // Returns ARIA landmarks and groups that would be entered and narrated when focus moves from the given previous element to the given element, for the given platform.
+  getEnteredLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, platform: string): string[] {
+    const landmarksAndGroups = [];
+    let elementParent = element.parentElement;
+    let prevElementParent = prevElement.parentElement;
+    let commonAncestor = null;
+
+    // Find the common ancestor of the previous and current element
+    while (elementParent !== prevElementParent) {
+      // Begin while 1
+      while (elementParent !== prevElementParent && prevElementParent !== prevElement.ownerDocument.body) {
+        // Begin while 2
+        // If the element is an ancestor of the previous element, return
+        if (prevElementParent === element) {
+          // Begin if 1
+          return landmarksAndGroups;
+        } // End if 1
+        prevElementParent = prevElementParent.parentElement;
+      } // End while 2
+      // If the previous element is an ancestor of the element, return
+      if (elementParent === prevElement) {
+        // Begin if 1
+        return landmarksAndGroups;
+      } // End if 1
+      prevElementParent = prevElement.parentElement;
+      elementParent = elementParent.parentElement;
+    } // End while 1
+    commonAncestor = elementParent;
+
+    // Find all the landmarks and groups between the element and the common ancestor, and compute and save their narration
+    let ariaParent = element.parentElement as IAriaElement;
+    while (ariaParent !== commonAncestor) {
+      // Begin while 1
+      let skipParent = false;
+
+      // The "footer" and "headr" elements don't constitute a landmark if they are a descendant of a sectioning element or role
+      if (['footer', 'header'].includes(ariaParent.tagName.toLowerCase())) {
+        // Begin if 1
+        const sectionElements = ['article', 'aside', 'main', 'nav', 'section'];
+        // const sectionRoles = ['article', 'complementary', 'main', 'navigation', 'region'];
+        const sectionRoles = [];
+        let ancestor = ariaParent.parentElement as IAriaElement;
+        while (ancestor !== element.ownerDocument.body) {
+          // Begin while 2
+          const isSectionElementAncestor = sectionElements.includes(ancestor.tagName.toLowerCase());
+          const isSectionRoleAncestor = sectionRoles.includes(ancestor.role);
+          if (isSectionElementAncestor || isSectionRoleAncestor) {
+            // Begin if 2
+            skipParent = true;
+            break;
+          } // End if 2
+          ancestor = ancestor.parentElement as IAriaElement;
+        } // End while 2
+      } // End if 1
+
+      if (!skipParent) {
+        // Begin if 1
+        const definitions = SRNC.landmarksAndGroups[platform];
+        const landmarkOrGroup = [];
+
+        // Test if the parent's role or tag name exists in the landmarks and groups definitions
+        let testName = `role=${ariaParent.role}`;
+        if (ariaParent.role && definitions[testName]) {
+          // Begin if 2
+          // A definition exists for the parent role
+          landmarkOrGroup.push(definitions[testName]);
+        } else {
+          // Else if 1
+          testName = ariaParent.tagName.toLowerCase();
+          if (definitions[testName]) {
+            // Begin if 3
+            // A definition exists for the parent tag name
+            landmarkOrGroup.push(definitions[testName]);
+          } // End if 3
+        } // End if 2
+
+        // If "aria-label" or "aria-labelledby" exists for the landmark or group parent, prepend its text to the narration
+        if (landmarkOrGroup.length === 1) {
+          // Begin if 2
+          const label =
+            ariaParent.ariaLabelledByElements
+              ?.map((labElement: HTMLElement) => {
+                return labElement.textContent;
+              })
+              .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) ||
+            ariaParent?.ariaLabel ||
+            null;
+          if (label != null) {
+            // Begin if 3
+            landmarkOrGroup.unshift(label);
+          } // End if 3
+        } // End if 2
+        landmarksAndGroups.unshift(landmarkOrGroup.join(' '));
+      } // End if 1
+      ariaParent = ariaParent.parentElement as IAriaElement;
+    } // End while 1
+    return landmarksAndGroups;
+  } // End getEnteredLandmarksAndGroups
 
   // Computes and returns the screen reader narration for the given element using the previous element and platform.
-  async getNarration(element: Element, prevElement: Element, platform: string): Promise<string> {
+  async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: string): Promise<string> {
     let definitionName = this.getDefinitionName(element, platform, 'stateRules');
 
     // Retrieve the computed accessible node
     const node = await (window as any).getComputedAccessibleNode(element);
 
     // Compute and store all the narration parts
+    this.computeLandmarksAndGroups(element, prevElement, platform);
     this.computeUsage(definitionName, element, platform);
     this.computeDescription(definitionName, element, platform);
     this.computeNameAndTitle(node, element);
@@ -118,7 +227,7 @@ export class NarrationComputer {
   } // End getNarration
 
   // Returns the definition name based on the given element, platform and definition type.
-  getDefinitionName(element: Element, platform: string, definitionType: string): string {
+  getDefinitionName(element: IAriaElement, platform: string, definitionType: string): string {
     // Determine the definitions source by the definition type
     const definitionTypes: Record<string, any> = {
       readingOrder: SRNC.readingOrder[platform],
@@ -128,23 +237,22 @@ export class NarrationComputer {
 
     // Determine the definition name
     let definitionName = '[default]';
-    const role = element.getAttribute('role');
-    let testName = `role=${role}`;
+    let testName = `role=${element.role}`;
     let definition = definitions[testName];
-    if (role && definition) {
+    if (element.role && definition) {
       // Begin if 1
-      // The definition name is determined by the "role" attribute and the definition exists
+      // A definition exists for the element role
       // Handle the situation when the definition is a reference to another definition
       definitionName = typeof definition === 'string' ? definition : testName;
     } else {
       // Else if 1
-      // The definition name is determined by the element's tag name
+      // A definition exists for the element tag name
       testName = element.tagName.toLowerCase();
 
       // In the case of the <input> element, the definition name is further determined by the element's "type" attribute
       if (testName === 'input') {
         // Begin if 2
-        testName += `:${element.getAttribute('type')}`;
+        testName += `:${element.type}`;
       } // End if 2
       definition = definitions[testName];
       if (definition) {
@@ -157,8 +265,17 @@ export class NarrationComputer {
     return definitionName;
   } // End getDefinitionName
 
+  // Computes and stores the landmarksAndGroups part of the narration for the given element, previous element and platform.
+  computeLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, platform: string) {
+    if (prevElement == null) {
+      return;
+    }
+    const landmarksAndGroups = this.getEnteredLandmarksAndGroups(element, prevElement, platform);
+    this.computedParts.landmarksAndGroups = landmarksAndGroups.join(SRNC.LANDMARKS_AND_GROUPS_SEPARATOR);
+  } // End computeLandmarksAndGroups
+
   // Computes and stores the usage part of the narration for the given definitionName, element and platform.
-  computeUsage(definitionName: string, element: Element, platform: string) {
+  computeUsage(definitionName: string, element: HTMLElement, platform: string) {
     this.computedParts.usage = '';
     const usages = SRNC.usageStrings[platform][definitionName];
     if (usages) {
@@ -181,7 +298,7 @@ export class NarrationComputer {
   } // End computeUsage
 
   // Computes and stores the accessible description part of the narration for the given definitionName, element and platform.
-  computeDescription(definitionName: string, element: Element, platform: string) {
+  computeDescription(definitionName: string, element: HTMLElement, platform: string) {
     // First, handle some special case conditions
     let value;
     if (definitionName === 'textarea') {
@@ -192,25 +309,24 @@ export class NarrationComputer {
       // Begin if 1
       this.computedParts.description = SRNC.stateStrings['Win/JAWS']['textarea']['[containsText]'];
     } else {
-      // else if 1
+      // Else if 1
       this.computedParts.description =
         (element as IAriaElement).ariaDescribedByElements
-          ?.map((descElement: Element) => {
+          ?.map((descElement: HTMLElement) => {
             return descElement.textContent;
           })
-          .join('') || '';
+          .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) || '';
     } // End if 1
   } // End computeDescription
 
   // Computes and stores the accessible name and title parts of the narration for the given element using the given computed node.
-  computeNameAndTitle(node: any, element: Element) {
+  computeNameAndTitle(node: any, element: HTMLElement) {
     this.computedParts.name = node.name;
 
     // If the title attribute is present, set its value as the description part of the narration if it was not computed as accessible name and if no accessible description was computed before
-    const title = element.getAttribute('title');
-    if (title && this.computedParts.name !== title && !this.computedParts.description) {
+    if (element.title && this.computedParts.name !== element.title && !this.computedParts.description) {
       // Begin if 1
-      this.computedParts.description = title;
+      this.computedParts.description = element.title;
     } // End if 1
   } // End computeNameAndTitle
 
@@ -226,7 +342,7 @@ export class NarrationComputer {
   } // End computePosition
 
   // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.
-  computeTypeAndState(node: any, definitionName: string, element: Element, platform: string) {
+  computeTypeAndState(node: any, definitionName: string, element: HTMLElement, platform: string) {
     // Set the default ttype and state for unknown roles and element types
     this.computedParts.type = `[${node.role}]`;
     this.computedParts.state = '';
@@ -286,7 +402,7 @@ export class NarrationComputer {
             // Handle the special case of the "checked" state name where we are looking for the DOM property value instead of the state attribute value
             stateValue = (element as HTMLInputElement).checked;
           } else {
-            // else if 2
+            // Else if 2
             // Get the state attribute value. If the attribute is not present, consider it as if it had "false" value
             stateValue = element.getAttribute(stateName) || 'false';
           } // End if 2
@@ -298,7 +414,7 @@ export class NarrationComputer {
             computedStateArr.push(partialState);
           } // End if 2
         }); // End forEach 1
-        this.computedParts.state = computedStateArr.join(SRNC.STATE_PART_SEPARATOR);
+        this.computedParts.state = computedStateArr.join(SRNC.STATES_SEPARATOR);
         break;
       } // End for 1
     } // End if 1
@@ -317,7 +433,7 @@ export class NarrationComputer {
         computedNarrationArr.push(partValue);
       } // End if 1
     } // End for 1
-    const computedNarration = computedNarrationArr.join(SRNC.PART_SEPARATOR);
+    const computedNarration = computedNarrationArr.join(SRNC.PARTS_SEPARATOR);
     return computedNarration;
   } // End composeNarrationFromParts
 } // End NarrationComputer

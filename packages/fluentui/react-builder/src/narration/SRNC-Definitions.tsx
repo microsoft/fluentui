@@ -1,6 +1,13 @@
 export const SRNC: Record<string, any> = {
-  PART_SEPARATOR: ' ',
-  STATE_PART_SEPARATOR: ' ',
+  PARTS_SEPARATOR: ' ',
+  LANDMARKS_AND_GROUPS_SEPARATOR: ' ',
+  STATES_SEPARATOR: ' ',
+  DESCBY_AND_LABBY_SEPARATOR: ' ',
+
+  // Landmarks and groups (definitions for each platform (definitions are stored in a separate file for each platform)
+  landmarksAndGroups: {
+    'Win/JAWS': {},
+  }, // End landmarksAndGroups
 
   // Element type strings for each platform
   typeStrings: {
@@ -176,7 +183,7 @@ export const SRNC: Record<string, any> = {
   // State attributes of which "false" value means the attribute is omitted
   falseMeansOmitted: ['aria-haspopup', 'aria-invalid', 'aria-required'], // End falseMeansOmitted
 
-  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions for each platform are stored in a separate file)
+  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions are stored in a separate file for each platform)
   stateRules: {
     'Win/JAWS': {},
   }, // End stateRules
@@ -184,12 +191,12 @@ export const SRNC: Record<string, any> = {
   // Computed narration parts reading order for each platform and definition name
   readingOrder: {
     'Win/JAWS': {
-      '[default]': ['name', 'type', 'state', 'description', 'usage'],
-      'input:text': ['name', 'type', 'state', 'value', 'description', 'usage'],
+      '[default]': ['landmarksAndGroups', 'name', 'type', 'state', 'description', 'usage'],
+      'input:text': ['landmarksAndGroups', 'name', 'type', 'state', 'value', 'description', 'usage'],
       'role=combobox': 'input:text',
-      'input:radio': ['name', 'type', 'state', 'position', 'description', 'usage'],
+      'input:radio': ['landmarksAndGroups', 'name', 'type', 'state', 'position', 'description', 'usage'],
       'role=radio': 'input:radio',
-      a: ['name', 'state', 'type', 'description', 'usage'],
+      a: ['landmarksAndGroups', 'name', 'state', 'type', 'description', 'usage'],
       'role=menuitem': 'input:radio',
       'role=menuitemcheckbox': 'input:radio',
       'role=menuitemradio': 'input:radio',
