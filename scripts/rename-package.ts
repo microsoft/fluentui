@@ -152,7 +152,7 @@ function updateReferences(renameInfo: RenameInfo): string[] {
   // Replace name references (@uifabric/utilities) AND path references (packages/utilities).
   // To prevent replacing other package names which share substrings, use a fancy regex.
   const nameRegex = new RegExp(
-    `${nameStartLookbehind}(${uifabric}|apps|packages|react-examples/src)/${oldUnscopedName}${nameEndLookahead}`,
+    `${nameStartLookbehind}(${uifabric}|apps|packages|react-examples/(src|lib))/${oldUnscopedName}${nameEndLookahead}`,
   );
 
   let lastUpdatedFile = '';
@@ -182,16 +182,26 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
 
   const { oldUnscopedName, newUnscopedName } = renameInfo;
 
-  const results: ReplaceResult[] = [];
+  // Rename API file if it exists
+  const oldApiFile = path.join(getPackagePath(newUnscopedName), 'dist', oldUnscopedName + '.api.md');
+  if (fs.existsSync(oldApiFile)) {
+    fs.renameSync(oldApiFile, path.join(getPackagePath(newUnscopedName), 'dist', newUnscopedName + '.api.md'));
+  }
 
-  const prDeploySite = path.join(gitRoot, 'apps/pr-deploy-site/pr-deploy-site.js');
-  results.push(
+  const results: ReplaceResult[] = [
+    // PR deploy site
     ...replaceInFileSync({
-      files: prDeploySite,
+      files: path.join(gitRoot, 'apps/pr-deploy-site/pr-deploy-site.js'),
       from: new RegExp(`\\./${oldUnscopedName}/`, 'g'),
       to: `./${newUnscopedName}/`,
     }),
-  );
+    // API docs config
+    ...replaceInFileSync({
+      files: path.join(gitRoot, 'packages/api-docs/config/api-docs.js'),
+      from: `../../${oldUnscopedName}/dist/${oldUnscopedName}`,
+      to: `../../${newUnscopedName}/dist/${newUnscopedName}`,
+    }),
+  ];
 
   const newPackagePath = getPackagePath(newUnscopedName);
   const bundleFiles = globSync(path.join(newPackagePath, 'webpack*.js'));
@@ -221,7 +231,7 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
     );
   }
 
-  return [prDeploySite, ...bundleFiles];
+  return getChangedFiles(results);
 }
 
 async function runPrettierForFiles(modifiedFiles: string[]) {

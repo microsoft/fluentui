@@ -42,13 +42,13 @@ function lintImports() {
     // TODO: Ideally these would eventually be removed.
     '@fluentui/react/lib/compat/Button',
     '@fluentui/react-internal/lib/compat/Button',
-    '@fluentui/react-examples/lib/experiments/TilesList/ExampleHelpers',
-    '@fluentui/react-examples/lib/experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
+    '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers',
+    '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
     '@fluentui/react-charting/lib/types/IDataPoint',
-    '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
+    '@fluentui/react-experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
-    '@uifabric/experiments/lib/common/TestImages',
+    '@fluentui/react-experiments/lib/common/TestImages',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@uifabric/foundation/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.

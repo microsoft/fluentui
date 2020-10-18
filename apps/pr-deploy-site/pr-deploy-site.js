@@ -80,8 +80,8 @@ const siteInfo = [
     title: 'Toggle',
   },
   {
-    package: '@uifabric/experiments',
-    link: './experiments/demo/index.html',
+    package: '@fluentui/react-experiments',
+    link: './react-experiments/demo/index.html',
     icon: 'TestBeaker',
     title: 'Experiments',
   },

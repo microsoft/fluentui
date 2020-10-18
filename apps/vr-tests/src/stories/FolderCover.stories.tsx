@@ -5,7 +5,7 @@ import {
   getFolderCoverLayout,
   renderFolderCoverWithLayout,
   SharedSignal,
-} from '@uifabric/experiments';
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';

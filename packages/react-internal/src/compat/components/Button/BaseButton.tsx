@@ -353,10 +353,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     if (menuProps && menuProps.doNotLayer) {
       return (
-        <span style={{ display: 'inline-block' }}>
+        <>
           {Content}
           {this._shouldRenderMenu() && onRenderMenu(menuProps, this._onRenderMenu)}
-        </span>
+        </>
       );
     }
 
