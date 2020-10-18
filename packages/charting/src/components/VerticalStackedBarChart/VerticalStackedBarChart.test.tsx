@@ -11,7 +11,6 @@ import {
   IVerticalStackedChartProps,
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
-// import { ICustomizedCalloutData } from '../../index';
 
 // Wrapper of the VerticalStackedBarChart to be tested.
 let wrapper:
@@ -143,14 +142,14 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should mount callout when hideTootip false ', () => {
     wrapper = mount(<VerticalStackedBarChart data={chartPoints} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM).toBeDefined();
+    const hideTooltipDom = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    expect(hideTooltipDom).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
     wrapper = mount(<VerticalStackedBarChart data={chartPoints} hideTooltip={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM.length).toBe(0);
+    const hideTooltipDom = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    expect(hideTooltipDom.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerStack ', () => {
