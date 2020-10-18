@@ -48,26 +48,6 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
-describe('HorizontalBarChart snapShot testing', () => {
-  it('renders HorizontalBarChart correctly', () => {
-    const component = renderer.create(<HorizontalBarChart data={chartPoints} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders hideRatio correctly', () => {
-    const component = renderer.create(<HorizontalBarChart data={chartPoints} hideRatio={[true, true]} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders hideTooltip correctly', () => {
-    const component = renderer.create(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
-
 describe('HorizontalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
