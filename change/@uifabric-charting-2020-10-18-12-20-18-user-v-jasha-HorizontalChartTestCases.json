@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Horizontal bar chart basic unit test cases and snapshot test cases",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-10-18T06:50:18.732Z"
+}
