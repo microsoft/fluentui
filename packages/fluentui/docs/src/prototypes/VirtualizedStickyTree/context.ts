@@ -7,5 +7,7 @@ export interface InnerElementContextType {
   stickyTopIds: string[];
   stickyBottomIds: string[];
   onClickSticky: (event: React.SyntheticEvent<HTMLElement>, itemProps: TreeItemProps) => void;
+  itemIdTobeFocused: string;
+  passItemIdTobeFocused: (newFocusId: string) => void;
 }
 export const InnerElementContext = React.createContext<InnerElementContextType>({} as InnerElementContextType);

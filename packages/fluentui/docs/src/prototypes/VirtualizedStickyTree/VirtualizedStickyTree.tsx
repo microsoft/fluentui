@@ -13,32 +13,51 @@ import {
 } from '@fluentui/react-northstar';
 import StickyTreeTitle from './StickyTreeTitle';
 import { InnerElementContext, InnerElementContextType } from './context';
+import { removeFocusFirstChild } from './virtualizedTreeItemBehavior';
 
+// type for react-window's 'context' for each item
+interface ItemDataType {
+  renderedItems: React.ReactElement<TreeItemProps>[];
+  isNonSticky: (item: React.ReactElement<TreeItemProps>) => boolean;
+  onClick: (event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => void;
+  makeVisibleOnFocus: (event: React.FocusEvent<HTMLElement>, itemProps: TreeItemProps) => void;
+  makeParentVisible: ComponentEventHandler<TreeItemProps>;
+  makeFirstChildVisible: ComponentEventHandler<TreeItemProps>;
+  retainFocusOnSiblingsExpand: ComponentEventHandler<TreeItemProps>;
+}
+
+/**
+ * ItemWrapper render only non-sticky items
+ */
 class ItemWrapper extends React.PureComponent<{
   index: number;
   isScrolling?: boolean;
   style: Object;
-  data: any;
+  data: ItemDataType;
 }> {
   render() {
     const { index, style, data } = this.props;
-    const item = data.renderedItems[index];
+    const {
+      renderedItems,
+      isNonSticky,
+      onClick,
+      makeVisibleOnFocus,
+      makeParentVisible,
+      retainFocusOnSiblingsExpand,
+    } = data;
+
+    const item = renderedItems[index];
+    const treeItemBehaviorHandler = {
+      onTitleClick: onClick,
+      onFocusParent: makeParentVisible,
+      onSiblingsExpand: retainFocusOnSiblingsExpand,
+    };
     if (item) {
-      return data.isNonSticky(item)
-        ? React.cloneElement(item, {
+      return isNonSticky(item)
+        ? React.cloneElement(item as React.ReactElement, {
             style,
-            onTitleClick: data.onClick,
-            onFocusParent: data.handleFocusParent,
-            onFocusFirstChild: data.handleFocusFirstChild,
-            onSiblingsExpand: (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
-              if (treeItemProps.level !== 1)
-                // don't care about onsibling Expand for sticky headers
-                data.handleOnSiblingsExpand(event, treeItemProps);
-            },
-            onFocus: (e: React.FocusEvent<HTMLElement>) => {
-              if (item.props.level === 1) return;
-              data.handleOnFocus(e);
-            },
+            ...treeItemBehaviorHandler,
+            onFocus: e => makeVisibleOnFocus(e, item.props),
           })
         : null;
     }
@@ -49,22 +68,43 @@ class ItemWrapper extends React.PureComponent<{
 
 const InnerElementType = ({ children, style }) => {
   const context = React.useContext(InnerElementContext);
-  const { height, stickyItemSize, stickyTopIds, stickyBottomIds, onClickSticky } = context;
+  const {
+    height,
+    stickyItemSize,
+    stickyTopIds,
+    stickyBottomIds,
+    onClickSticky,
+    itemIdTobeFocused,
+    passItemIdTobeFocused,
+  } = context;
+
+  // retain focus after items gotten clicked and triggers DOM updates
+  React.useEffect(() => {
+    if (!itemIdTobeFocused || !renderedItems) return;
+
+    const toFocusIndex = renderedItems.findIndex(item => item.props.id === itemIdTobeFocused);
+    if (toFocusIndex < 0) return;
+    const toFocus = (renderedItems[toFocusIndex].props.contentRef as any)?.current;
+
+    if (toFocus) {
+      toFocus.focus();
+      // passItemIdTobeFocused is not called for every focus event.
+      // therefore reset ItemIdTobeFocused to null to prevent focus being hold on the current ItemIdTobeFocused
+      passItemIdTobeFocused(null);
+    }
+  });
 
   if (!children?.length) return null;
 
-  const data = children[0].props?.data;
-  const { renderedItems } = data;
+  const data: ItemDataType = children[0].props.data;
+  const { renderedItems, makeParentVisible, makeFirstChildVisible } = data;
 
-  const stickyTopItemsIndex = stickyTopIds.map((id: string) =>
-    renderedItems.findIndex((item: React.ReactElement<TreeItemProps>) => item.props.id === id),
-  );
-  const stickyBottomItemsIndex = stickyBottomIds.map((id: string) =>
-    renderedItems.findIndex((item: React.ReactElement<TreeItemProps>) => item.props.id === id),
-  );
+  const stickyTopItemsIndex = stickyTopIds.map(id => renderedItems.findIndex(item => item.props.id === id));
+  const stickyBottomItemsIndex = stickyBottomIds.map(id => renderedItems.findIndex(item => item.props.id === id));
 
   const getStickyStyle = (itemIndex: number, stickyTop = true, itemSum?: number) => {
-    // Sticky items are sticked next to container's top or bottom edge, with the smaller-indexed items stacked on bigger-indexed items
+    // Sticky items are sticked next to container's top or bottom edge,
+    // with the smaller-indexed items stacked on bigger-indexed items
     return {
       position: 'sticky',
       height: stickyItemSize,
@@ -73,10 +113,9 @@ const InnerElementType = ({ children, style }) => {
     };
   };
 
-  const stickyItemActionHandlers = {
+  const treeItemBehaviorHandler = {
     onTitleClick: onClickSticky,
-    onFocusParent: data.handleFocusParent,
-    onFocusFirstChild: data.handleFocusFirstChild,
+    onFocusParent: makeParentVisible,
   };
 
   return (
@@ -88,17 +127,23 @@ const InnerElementType = ({ children, style }) => {
     >
       {stickyTopItemsIndex.map((index: number) => {
         const item = renderedItems[index];
-        return React.cloneElement(item, {
+        return React.cloneElement(item as React.ReactElement, {
           style: getStickyStyle(index),
-          ...stickyItemActionHandlers,
+          ...treeItemBehaviorHandler,
+          // override default treeItem behavior, in order to not execute treeItem's onFocusFirstChild logic
+          accessibility: removeFocusFirstChild(item.props.accessibility),
+          onKeyDown: e => {
+            if (e.key !== 'ArrowRight') return;
+            makeFirstChildVisible(e, item.props);
+          },
         });
       })}
       {children}
       {stickyBottomItemsIndex.map((itemIndex: number, index: number, arr: number[]) => {
         const item = renderedItems[itemIndex];
-        return React.cloneElement(item, {
+        return React.cloneElement(item as React.ReactElement, {
           style: getStickyStyle(index, false, arr.length),
-          ...stickyItemActionHandlers,
+          ...treeItemBehaviorHandler,
         });
       })}
     </div>
@@ -111,28 +156,13 @@ const calcRenderedHeight = (renderedItems: React.ReactElement[], stickyItemSize:
     0,
   );
 
-const useForceUpdate = () => {
-  const [, setValue] = React.useState(false);
-  return () => setValue(value => !value);
-};
-
 interface ReRenderStickyTreeProps {
   renderedItems: React.ReactElement<TreeItemProps>[];
   stickyItemSize: number;
   itemSize: number;
   height: number;
   toplvlItemsId: string[];
-  onActiveItemsIdChange: (idsToRemove?: string[], idsToAdd?: string[]) => void;
-}
-
-interface ItemDataType {
-  renderedItems: React.ReactElement<TreeItemProps>[];
-  isNonSticky: (item: React.ReactElement<TreeItemProps>) => boolean;
-  onClick: (event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => void;
-  handleOnFocus: (event: React.FocusEvent<HTMLElement>) => void;
-  handleFocusParent: ComponentEventHandler<TreeItemProps>;
-  handleFocusFirstChild: ComponentEventHandler<TreeItemProps>;
-  handleOnSiblingsExpand: ComponentEventHandler<TreeItemProps>;
+  passActiveItemsIdChange: (idsToRemove?: string[], idsToAdd?: string[]) => void;
 }
 
 const ReRenderStickyTree = ({
@@ -141,37 +171,33 @@ const ReRenderStickyTree = ({
   itemSize,
   height,
   toplvlItemsId,
-  onActiveItemsIdChange,
+  passActiveItemsIdChange,
 }: ReRenderStickyTreeProps) => {
+  const ref = React.useRef(null); // ref for entire list
+
   const [stickyTopIds, setStickyTopIds] = React.useState<string[]>([toplvlItemsId[0]]);
   const [stickyBottomIds, setStickyBottomIds] = React.useState<string[]>(toplvlItemsId.slice(1));
-
-  const passOnStickyTopIds = React.useCallback((newStickyTopIds: string[]) => {
-    setStickyTopIds([...newStickyTopIds]);
-  }, []);
-  const passOnStickyBottomIds = React.useCallback((newStickyBottomIds: string[]) => {
-    setStickyBottomIds([...newStickyBottomIds]);
-  }, []);
 
   // when navigate with keyboard, use `itemIdTobeFocused` to remember the focused item id,
   // then when DOM updates are finished, sticky tree knows which item to focus on
   const [itemIdTobeFocused, setItemIdTobeFocused] = React.useState<string>(null);
-  const passItemIdTobeFocused = React.useCallback((newItemIdTobeFocused: string) => {
-    setItemIdTobeFocused(newItemIdTobeFocused);
-  }, []);
+  const passItemIdTobeFocused = React.useCallback(newFocusId => setItemIdTobeFocused(newFocusId), []);
 
-  const forceUpdate = useForceUpdate();
-
-  React.useEffect(() => {
-    // retain focus after sticky items gotten clicked and triggers DOM updates
+  // retain focus after items gotten clicked and triggers DOM updates
+  React.useLayoutEffect(() => {
+    // useLayoutEffect because we need to scroll, which mutates the DOM within the virtualized window.
+    // scrollToItem calls `setState` on List component created by react-window.
+    // useLayoutEffect will cause an immediate re-render on react-window after `setState` in `scrollToItem` is called.
+    // while useEffect won't.
     if (!itemIdTobeFocused) return;
 
     const toFocusIndex = renderedItems.findIndex(item => item.props.id === itemIdTobeFocused);
-    const toFocusItem = renderedItems[toFocusIndex];
-    const toFocus = (toFocusItem?.props.contentRef as any)?.current;
-    ref.current.scrollToItem(toFocusIndex, 'center'); // scroll to item
-    if (toFocus) toFocus.focus();
-    else forceUpdate(); // item to focus not rendered, force re-render then try to set focus
+    if (toFocusIndex < 0) return;
+    const toFocus = (renderedItems[toFocusIndex].props.contentRef as any)?.current;
+
+    if (!toFocus) {
+      ref.current.scrollToItem(toFocusIndex, 'center'); // scroll to item
+    }
   });
 
   // returns true when an item is not sticky header
@@ -185,24 +211,26 @@ const ReRenderStickyTree = ({
     (_event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => {
       // when a sticky header (itemProps.level === 1) is clicked, there'll be re-render afterwards to pull up its right siblings.
       // Therefore call passItemIdTobeFocused to retain focus
-      if (itemProps.level === 1) passItemIdTobeFocused(itemProps.id);
-      else passItemIdTobeFocused(null);
+      if (itemProps.level === 1) setItemIdTobeFocused(itemProps.id);
+      else setItemIdTobeFocused(null);
 
       if (!itemProps.items || !itemProps.items.length) return; // item is not expandable, click will do nothing
 
       if (itemProps.level === 1) {
         // item is sticky parent, but not sticked
-        const toFocusItemIndex = toplvlItemsId.findIndex((id: string) => id === itemProps.id);
+        const toFocusItemIndex = toplvlItemsId.findIndex(id => id === itemProps.id);
 
         const newStickyTopIds = toplvlItemsId.slice(0, toFocusItemIndex + 1); // every left siblings till itself
         const newStickyBottomIds = toplvlItemsId.slice(toFocusItemIndex + 1); // every right siblings
 
-        onActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
-        passOnStickyTopIds(newStickyTopIds);
-        passOnStickyBottomIds(newStickyBottomIds);
+        ref.current.scrollTo(0);
+
+        passActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
+        setStickyTopIds(newStickyTopIds);
+        setStickyBottomIds(newStickyBottomIds);
       } else if (itemProps.expanded) {
         // item is not sticky parent, and expanded. therefore collapse it
-        onActiveItemsIdChange([itemProps.id]);
+        passActiveItemsIdChange([itemProps.id]);
       } else {
         // item is not sticky parent, and collapsed. therefore expand it
 
@@ -221,17 +249,17 @@ const ReRenderStickyTree = ({
 
         // stick all its sticky parent's right siblings to bottom
         const newStickyBottomIds = toplvlItemsId.slice(toplvlItemsId.findIndex(id => id === toplvlParentId) + 1);
-        passOnStickyBottomIds(newStickyBottomIds);
+        setStickyBottomIds(newStickyBottomIds);
 
-        onActiveItemsIdChange(newStickyBottomIds, [itemProps.id]);
+        passActiveItemsIdChange(newStickyBottomIds, [itemProps.id]);
       }
     },
-    [toplvlItemsId, onActiveItemsIdChange, passOnStickyTopIds, passOnStickyBottomIds, passItemIdTobeFocused],
+    [ref, toplvlItemsId, passActiveItemsIdChange, setStickyTopIds, setStickyBottomIds, setItemIdTobeFocused],
   );
 
   const onClickSticky = React.useCallback(
     (_event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => {
-      passItemIdTobeFocused(itemProps.id); // retain focus after re-render
+      setItemIdTobeFocused(itemProps.id); // retain focus after re-render
 
       if (itemProps.expanded) return; // it is already the main item stick to top, do nothing
 
@@ -241,96 +269,96 @@ const ReRenderStickyTree = ({
       const newStickyTopIds = toplvlItemsId.slice(0, toFocusItemIndex + 1); // every left siblings till itself
       const newStickyBottomIds = toplvlItemsId.slice(toFocusItemIndex + 1); // every right siblings
 
-      onActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
-      passOnStickyTopIds(newStickyTopIds);
-      passOnStickyBottomIds(newStickyBottomIds);
-    },
-    [toplvlItemsId, onActiveItemsIdChange, passOnStickyTopIds, passOnStickyBottomIds, passItemIdTobeFocused],
-  );
+      ref.current.scrollTo(0);
 
-  const ref = React.useRef(null); // ref for entire list
+      passActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
+      setStickyTopIds(newStickyTopIds);
+      setStickyBottomIds(newStickyBottomIds);
+    },
+    [ref, toplvlItemsId, passActiveItemsIdChange, setStickyTopIds, setStickyBottomIds, setItemIdTobeFocused],
+  );
 
   // When using keyboard, and navigate to non-sticky items, they could be hidden behind sticky headers.
   // Scroll to make the focused non-sticky items always visible
-  const handleOnFocus = React.useCallback(
-    (e: React.FocusEvent<HTMLElement>) => {
-      let itemRef = e.target as any;
-      if (itemRef.className.includes(treeTitleClassName)) itemRef = itemRef.parentNode; // when treeTitle focused, get its outer treeItem
+  const makeVisibleOnFocus = React.useCallback(
+    (e: React.FocusEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
+      if (treeItemProps.level === 1) return; // focused sticky items are always visible, so no need to deal with them
 
-      if (itemRef.style.position !== 'sticky') {
-        const scrolled = ref.current.state.scrollOffset;
+      let itemRef = e.target;
+      if (itemRef.className.includes(treeTitleClassName)) itemRef = itemRef.parentElement; // when treeTitle focused, get its outer treeItem
 
-        const hiddenHeightBottom =
-          itemRef.offsetTop + itemRef.offsetHeight - scrolled - (height - stickyBottomIds.length * stickyItemSize);
+      const scrolled = ref.current.state.scrollOffset;
 
-        const hiddenHeightTop = itemRef.offsetTop - scrolled - stickyTopIds.length * stickyItemSize;
+      const hiddenHeightBottom =
+        itemRef.offsetTop + itemRef.offsetHeight - scrolled - (height - stickyBottomIds.length * stickyItemSize);
+      const hiddenHeightTop = itemRef.offsetTop - scrolled - stickyTopIds.length * stickyItemSize;
 
-        if (hiddenHeightBottom > 0) {
-          // item is hidden behind sticky headers on the bottom
-          ref.current.scrollTo(scrolled + hiddenHeightBottom);
-        } else if (hiddenHeightTop < 0) {
-          // hidden behind sticky headers on the top
-          ref.current.scrollTo(scrolled + hiddenHeightTop);
-        }
+      if (hiddenHeightBottom > 0) {
+        // item is hidden behind sticky headers on the bottom
+        ref.current.scrollTo(scrolled + hiddenHeightBottom);
+      } else if (hiddenHeightTop < 0) {
+        // hidden behind sticky headers on the top
+        ref.current.scrollTo(scrolled + hiddenHeightTop);
       }
     },
     [ref, height, stickyTopIds, stickyBottomIds, stickyItemSize],
   );
 
   // when using keyboard, and navigate to a parent/child item using left/right arrow,
-  // scroll to make sure they are visible
+  // scroll to make sure they are rendered and visible
   const handleArrowKeyNavigation = React.useCallback(
     (idTobeFocused: string) => {
       if (!idTobeFocused) return;
 
       const itemIndex = renderedItems.findIndex(item => item.props.id === idTobeFocused);
       const item = renderedItems[itemIndex];
-      if ((item.props.contentRef as any)?.current) {
+      if ((item?.props.contentRef as any)?.current) {
         // item is already visible, just focus on it
         (item.props.contentRef as any).current.focus();
       } else {
         // item is not rendered
-        passItemIdTobeFocused(idTobeFocused);
+        ref.current.scrollToItem(itemIndex, 'center'); // scroll to item
+        setItemIdTobeFocused(idTobeFocused);
       }
     },
-    [renderedItems, passItemIdTobeFocused],
+    [renderedItems, setItemIdTobeFocused, ref],
   );
 
-  const handleFocusParent = React.useCallback(
-    (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
+  const makeParentVisible = React.useCallback(
+    (_event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
       const parentId = treeItemProps.parent;
       handleArrowKeyNavigation(parentId);
     },
     [handleArrowKeyNavigation],
   );
 
-  const handleFocusFirstChild = React.useCallback(
-    (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
-      const firstChildId = (treeItemProps.items?.[0] as TreeItemProps).id;
+  const makeFirstChildVisible = React.useCallback(
+    (_event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
+      const firstChildId = (treeItemProps.items?.[0] as any)?.id;
       handleArrowKeyNavigation(firstChildId);
     },
     [handleArrowKeyNavigation],
   );
 
-  const handleOnSiblingsExpand = React.useCallback(
-    (event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
+  const retainFocusOnSiblingsExpand = React.useCallback(
+    (_event: React.SyntheticEvent<HTMLElement>, treeItemProps: TreeItemProps) => {
+      if (treeItemProps.level === 1) return; // don't care about onsibling Expand for sticky headers
+
       const parentId = treeItemProps.parent;
       const parentItem = renderedItems.find(item => item.props.id === parentId);
       if (!parentItem || parentItem.props.level !== 1) return; // this action works only on level 2 tree nodes
 
-      const siblingsId = parentItem.props.items
-        .map((item: TreeItemProps) => item.id)
-        .filter(id => id !== treeItemProps.id);
+      const siblingsIds = parentItem.props.items.map(item => (item as any)?.id).filter(id => id !== treeItemProps.id);
 
       // stick all its sticky parent's right siblings to bottom
       const newStickyBottomIds = toplvlItemsId.slice(toplvlItemsId.findIndex(id => id === parentId) + 1);
-      passOnStickyBottomIds(newStickyBottomIds);
-      onActiveItemsIdChange(newStickyBottomIds, siblingsId);
+      setStickyBottomIds(newStickyBottomIds);
+      passActiveItemsIdChange(newStickyBottomIds, siblingsIds);
 
       // retain focus
-      passItemIdTobeFocused(treeItemProps.id);
+      setItemIdTobeFocused(treeItemProps.id);
     },
-    [renderedItems, onActiveItemsIdChange, passItemIdTobeFocused, passOnStickyBottomIds, toplvlItemsId],
+    [renderedItems, passActiveItemsIdChange, setItemIdTobeFocused, setStickyBottomIds, toplvlItemsId],
   );
 
   // data for each item rendered by react-window
@@ -338,29 +366,29 @@ const ReRenderStickyTree = ({
     renderedItems,
     isNonSticky,
     onClick,
-    handleOnFocus,
-    handleFocusParent,
-    handleFocusFirstChild,
-    handleOnSiblingsExpand,
+    makeVisibleOnFocus,
+    makeParentVisible,
+    makeFirstChildVisible,
+    retainFocusOnSiblingsExpand,
   });
   React.useEffect(() => {
     setItemData({
       renderedItems,
       isNonSticky,
       onClick,
-      handleOnFocus,
-      handleFocusParent,
-      handleFocusFirstChild,
-      handleOnSiblingsExpand,
+      makeVisibleOnFocus,
+      makeParentVisible,
+      makeFirstChildVisible,
+      retainFocusOnSiblingsExpand,
     });
   }, [
     renderedItems,
     isNonSticky,
     onClick,
-    handleOnFocus,
-    handleFocusParent,
-    handleFocusFirstChild,
-    handleOnSiblingsExpand,
+    makeVisibleOnFocus,
+    makeParentVisible,
+    makeFirstChildVisible,
+    retainFocusOnSiblingsExpand,
   ]);
 
   const [innerElementContextValue, setInnerElementContextValue] = React.useState<InnerElementContextType>({
@@ -369,6 +397,8 @@ const ReRenderStickyTree = ({
     stickyTopIds,
     stickyBottomIds,
     onClickSticky,
+    itemIdTobeFocused,
+    passItemIdTobeFocused,
   });
   React.useEffect(() => {
     setInnerElementContextValue({
@@ -377,8 +407,10 @@ const ReRenderStickyTree = ({
       stickyTopIds,
       stickyBottomIds,
       onClickSticky,
+      itemIdTobeFocused,
+      passItemIdTobeFocused,
     });
-  }, [height, stickyItemSize, stickyTopIds, stickyBottomIds, onClickSticky]);
+  }, [height, stickyItemSize, stickyTopIds, stickyBottomIds, onClickSticky, itemIdTobeFocused, passItemIdTobeFocused]);
 
   const renderedHeight = calcRenderedHeight(renderedItems, stickyItemSize, itemSize);
   React.useLayoutEffect(() => {
@@ -388,10 +420,10 @@ const ReRenderStickyTree = ({
     if (stickyBottomIds.length && renderedHeight < height) {
       // there's extra space in the container, pull up the next sticky header and expand it
       const toExpand = stickyBottomIds.shift();
-      onActiveItemsIdChange([], [toExpand]);
-      passOnStickyBottomIds(stickyBottomIds);
+      passActiveItemsIdChange([], [toExpand]);
+      setStickyBottomIds(stickyBottomIds);
     }
-  }, [renderedHeight, height, stickyBottomIds, onActiveItemsIdChange, passOnStickyBottomIds]);
+  }, [renderedHeight, height, stickyBottomIds, passActiveItemsIdChange, setStickyBottomIds]);
 
   const getItemSize = React.useCallback(
     (index: number) => (renderedItems[index]?.props?.level === 1 ? stickyItemSize : itemSize),
@@ -444,7 +476,7 @@ const VirtualizedStickyTree = (props: StickyTreeProps) => {
 
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([items[0].id]);
 
-  const onActiveItemsIdChange = React.useCallback((idsToRemove: string[] = [], idsToAdd: string[] = []) => {
+  const passActiveItemsIdChange = React.useCallback((idsToRemove: string[] = [], idsToAdd: string[] = []) => {
     setActiveItemIds(currActiveItemIds =>
       currActiveItemIds.filter(id => idsToRemove.findIndex(idToRemove => id === idToRemove) < 0).concat(idsToAdd),
     );
@@ -460,11 +492,11 @@ const VirtualizedStickyTree = (props: StickyTreeProps) => {
           height,
           width,
           toplvlItemsId,
-          onActiveItemsIdChange,
+          passActiveItemsIdChange,
         }}
       />
     ),
-    [stickyItemSize, itemSize, height, width, toplvlItemsId, onActiveItemsIdChange],
+    [stickyItemSize, itemSize, height, width, toplvlItemsId, passActiveItemsIdChange],
   );
 
   return (
