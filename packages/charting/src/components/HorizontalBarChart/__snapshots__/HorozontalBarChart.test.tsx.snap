@@ -1,0 +1,631 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HorizontalBarChart snapShot testing renders HorizontalBarChart correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone1"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            one
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            1,543
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_5jucm_0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#004b50"
+              height={8}
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            two
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            800
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout0"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_5jucm_1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#5c2d91"
+              height={8}
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <span
+      className="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing renders hideRatio correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone3"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            one
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            1,543
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout2"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_jyzgp_0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#004b50"
+              height={8}
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            two
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            800
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout2"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_jyzgp_1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#5c2d91"
+              height={8}
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <span
+      className="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone5"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            one
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            1,543
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout4"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_77an8h_0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#004b50"
+              height={8}
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div
+      className=
+
+          {
+            height: 32px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        className=
+
+            {
+              height: 32px;
+              margin-top: 5px;
+            }
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            two
+          </div>
+          <div
+            className=
+
+                {
+                  font-weight: 700;
+                }
+          >
+            800
+          </div>
+        </div>
+        <svg
+          className=
+
+              {
+                height: 8px;
+                margin-bottom: 11px;
+                width: 100%;
+              }
+        >
+          <g
+            aria-labelledby="callout4"
+            className=
+
+                {
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            data-is-focusable={true}
+            id="_HorizontalLine_77an8h_1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <rect
+              fill="#5c2d91"
+              height={8}
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              fill="#c8c6c4"
+              height={8}
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <span
+      className="ms-layer"
+    />
+  </div>
+</div>
+`;
