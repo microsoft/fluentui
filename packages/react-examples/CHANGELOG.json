@@ -2,6 +2,72 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.6.7",
+      "version": "0.6.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update CommandBar related snanpshots after aria role update.",
+            "author": "xgao@microsoft.com",
+            "commit": "37759e2abeee45e825f47181fd05ddefabb31502",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Oct 2020 12:23:11 GMT",
+      "tag": "@fluentui/react-examples_v0.6.6",
+      "version": "0.6.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical stacked bar chart styled examples code updated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8828fdca589a3b4f9119798fb806163e29961a41",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@fluentui/react-examples_v0.6.4",
+      "version": "0.6.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f6bf52d3b48a457ad9e1b668242e7c1ca09636e3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/react-examples_v0.6.3",
+      "version": "0.6.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update react-button story theme example.",
+            "author": "xgao@microsoft.com",
+            "commit": "5b99c2fc197a3e06f50a8529b4b1990edcc516c6",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Updating example snapshots.",
+            "author": "dzearing@hotmail.com",
+            "commit": "23ec52b64876ce29bbfdfbc872b82e22c8ca03af",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Oct 2020 12:23:45 GMT",
       "tag": "@fluentui/react-examples_v0.6.1",
       "version": "0.6.1",

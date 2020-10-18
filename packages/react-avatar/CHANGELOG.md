@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.7.0)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.6.4..@fluentui/react-avatar_v0.7.0)
+
+### Minor changes
+
+- Updating useStatus and useAvatar to return state only, exporting render functions separately. ([PR #15486](https://github.com/microsoft/fluentui/pull/15486) by dzearing@hotmail.com)
 
 ## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.6.4)
 

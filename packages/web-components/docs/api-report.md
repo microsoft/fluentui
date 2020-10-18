@@ -189,10 +189,8 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends FluentDesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
+export class FluentCard extends DesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
     backgroundColor: string;
-    // (undocumented)
-    protected backgroundColorChanged(): void;
     cardBackgroundColor: string;
     // (undocumented)
     connectedCallback(): void;

@@ -2,6 +2,80 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 21:41:23 GMT",
+      "tag": "office-ui-fabric-react_v7.147.1",
+      "version": "7.147.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ITheme inferred typing error.",
+            "author": "xgao@microsoft.com",
+            "commit": "4f4ac72a0b0174352f3b0f48849c9aa33163915d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "office-ui-fabric-react_v7.147.0",
+      "version": "7.147.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom KeyUp support for Group Header",
+            "author": "bcoard@microsoft.com",
+            "commit": "a729bb3a9b9ada2282a295fd311ba7389e67cf4c",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "CommandBar: fix incorrect role (WCAG 1.3.1)",
+            "author": "xgao@microsoft.com",
+            "commit": "37759e2abeee45e825f47181fd05ddefabb31502",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Oct 2020 12:26:59 GMT",
+      "tag": "office-ui-fabric-react_v7.146.2",
+      "version": "7.146.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update office-ui-fabric-react.api.md due to ITheme typing change.",
+            "author": "xgao@microsoft.com",
+            "commit": "6b5adf5ff536e71ba2dc40ee0b209552fe4c7893",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "office-ui-fabric-react_v7.146.0",
+      "version": "7.146.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SearchBox: role=search on root div is now opt in; if you want it, you must provide it as a role prop.",
+            "author": "dzearing@hotmail.com",
+            "commit": "23ec52b64876ce29bbfdfbc872b82e22c8ca03af",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "SearchBox: role now applies correctly on the root and is no longer hardcoded to \"search\".",
+            "author": "dzearing@hotmail.com",
+            "commit": "2fc9ce711304585a7fa8c842d09cb4207cb5c2d3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Oct 2020 12:24:30 GMT",
       "tag": "office-ui-fabric-react_v7.145.0",
       "version": "7.145.0",

@@ -17,7 +17,6 @@ import {
   createDateXAxis,
   createYAxis,
   createStringYAxis,
-  additionalMarginRight,
   IMargins,
   getMinMaxOfYAxis,
   XAxisTypes,
@@ -73,11 +72,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       isRemoveValCalculated: true,
     };
     this.idForGraph = getId('chart_');
+    /**
+     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
+     * So that, in RTL, left margins becomes right margins and viceversa.
+     * As graph needs to be drawn perfecty, these values consider as default values.
+     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
+     */
     this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 40,
+      top: this.props.margins?.top ?? 20,
+      bottom: this.props.margins?.bottom ?? 35,
+      right: this._isRtl ? this.props.margins?.left ?? 40 : this.props.margins?.right ?? 20,
+      left: this._isRtl ? this.props.margins?.right ?? 20 : this.props.margins?.left ?? 40,
     };
   }
 
@@ -227,7 +232,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
-              transform={`translate(0, ${svgDimensions.height - 35 - this.state._removalValueForTextTuncate!})`}
+              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -236,7 +241,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl ? svgDimensions.width - this.margins.right! - additionalMarginRight : 40
+                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
               }, 0)`}
               className={this._classNames.yAxis}
             />

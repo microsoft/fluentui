@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.7)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.6..@fluentui/react-examples_v0.6.7)
+
+### Patches
+
+- Update CommandBar related snanpshots after aria role update. ([PR #15511](https://github.com/microsoft/fluentui/pull/15511) by xgao@microsoft.com)
+
+## [0.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.6)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.4..@fluentui/react-examples_v0.6.6)
+
+### Patches
+
+- Vertical stacked bar chart styled examples code updated. ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
+
+## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.4)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.3..@fluentui/react-examples_v0.6.4)
+
+### Patches
+
+- Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
+
+## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.3)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.1..@fluentui/react-examples_v0.6.3)
+
+### Patches
+
+- Update react-button story theme example. ([PR #15452](https://github.com/microsoft/fluentui/pull/15452) by xgao@microsoft.com)
+- Updating example snapshots. ([PR #15450](https://github.com/microsoft/fluentui/pull/15450) by dzearing@hotmail.com)
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.1)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.6)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.1..@fluentui/react-compose_v0.19.6)
+
+### Patches
+
+- Updating the README example in compose/next. ([PR #15486](https://github.com/microsoft/fluentui/pull/15486) by dzearing@hotmail.com)
 
 ## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.0)
 

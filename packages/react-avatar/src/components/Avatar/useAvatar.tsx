@@ -1,25 +1,13 @@
 import * as React from 'react';
-import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { AvatarProps, defaultAvatarSize } from './Avatar.types';
 import { calcAvatarStyleProps } from './calcAvatarStyleProps';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
 import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons';
 
-const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
-
-export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots(state, avatarShorthandProps);
-
-  return (
-    <slots.root {...slotProps.root}>
-      <slots.label {...slotProps.label} />
-      <slots.image {...slotProps.image} />
-      <slots.badge {...slotProps.badge} />
-    </slots.root>
-  );
-};
+export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
 
@@ -63,5 +51,5 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     state.image = { as: nullRender };
   }
 
-  return { state, render: renderAvatar };
+  return state;
 };

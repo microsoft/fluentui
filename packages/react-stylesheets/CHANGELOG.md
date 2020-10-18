@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-stylesheets
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.3)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v0.2.2..@fluentui/react-stylesheets_v0.2.3)
+
+### Patches
+
+- Fix error when target is undefined (in case of SSR). ([PR #15449](https://github.com/microsoft/fluentui/pull/15449) by xgao@microsoft.com)
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.1.13)
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps } from './Button.types';
 import { useButtonState } from './useButtonState';
-import { renderButton } from './renderButton';
 
 /**
  * Consts listing which props are shorthand props.
@@ -33,5 +32,5 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
 
   useButtonState(state);
 
-  return { state, render: renderButton };
+  return state;
 };

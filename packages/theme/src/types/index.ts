@@ -5,5 +5,6 @@ export { ISemanticColors } from './ISemanticColors';
 export { ISemanticTextColors } from './ISemanticTextColors';
 export { ISpacing } from './ISpacing';
 export { IAnimationStyles, IAnimationVariables } from './IAnimationStyles';
-export { ITheme, IPartialTheme, IScheme, ISchemeNames } from './ITheme';
+export { IScheme, ISchemeNames } from './IScheme';
+export { ITheme, IPartialTheme } from './ITheme';
 export * from './Theme';

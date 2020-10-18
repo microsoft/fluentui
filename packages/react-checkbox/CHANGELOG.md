@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.17)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v0.3.14..@fluentui/react-checkbox_v0.3.17)
+
+### Patches
+
+- remove useGlobalClassNames usage from next. ([PR #15449](https://github.com/microsoft/fluentui/pull/15449) by xgao@microsoft.com)
 
 ## [0.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.14)
 

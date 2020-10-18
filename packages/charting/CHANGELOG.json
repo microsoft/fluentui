@@ -2,6 +2,72 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 21:41:23 GMT",
+      "tag": "@uifabric/charting_v4.7.4",
+      "version": "4.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Area chart basic unit test cases - v1",
+            "author": "v-jasha@microsoft.com",
+            "commit": "252babaa1bbc6cf7f3ad38d8d78f9932712c1344",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Vertical bar cahrt test cases updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8d0a848a57344bc325c6a720dec44612b397381a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "@uifabric/charting_v4.7.3",
+      "version": "4.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Test cases for linechart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "4cbb293be7132da1614faf1334448f871959c46c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Oct 2020 12:23:11 GMT",
+      "tag": "@uifabric/charting_v4.7.2",
+      "version": "4.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical stacked bar chart uncaught type error fixed. Minor edits to margins",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8828fdca589a3b4f9119798fb806163e29961a41",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Oct 2020 12:26:33 GMT",
+      "tag": "@uifabric/charting_v4.7.0",
+      "version": "4.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f6bf52d3b48a457ad9e1b668242e7c1ca09636e3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Oct 2020 18:03:19 GMT",
       "tag": "@uifabric/charting_v4.6.1",
       "version": "4.6.1",

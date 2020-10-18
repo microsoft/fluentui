@@ -15,9 +15,6 @@ import { DialogStyles as styles } from './dialog.styles';
   name: 'fluent-dialog',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
 })
 export class FluentDialog extends Dialog {}
 

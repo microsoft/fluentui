@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Mon, 12 Oct 2020 12:30:13 GMT",
+      "tag": "@fluentui/storybook_v0.5.10",
+      "version": "0.5.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move v8 theme instances from react-theme-provider.",
+            "author": "xgao@microsoft.com",
+            "commit": "40edbe0aa78c0d1a56a3609318431fb4ceb4abe5",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@fluentui/storybook_v0.5.7",
       "version": "0.5.7",

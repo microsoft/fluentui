@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 09 Oct 2020 12:23:45 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.29](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.29)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.26..@uifabric/azure-themes_v7.5.29)
+
+### Patches
+
+- Update Theme instances to contain components/scopedSettings. ([PR #15482](https://github.com/microsoft/fluentui/pull/15482) by xgao@microsoft.com)
 
 ## [7.5.26](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.26)
 

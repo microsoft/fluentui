@@ -6,7 +6,6 @@ import { menuButtonShorthandProps } from './useMenuButton';
 /**
  * Redefine the render function to add slots. Reuse the button structure but add
  * slots to children.
- * @param state
  */
 export const renderMenuButton = (state: MenuButtonState) => {
   const { slots, slotProps } = getSlots(state, menuButtonShorthandProps);

@@ -1,8 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 21:41:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.147.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.147.1)
+
+Fri, 16 Oct 2020 21:41:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.147.0..office-ui-fabric-react_v7.147.1)
+
+### Patches
+
+- Fix ITheme inferred typing error. ([PR #15560](https://github.com/microsoft/fluentui/pull/15560) by xgao@microsoft.com)
+
+## [7.147.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.147.0)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.146.2..office-ui-fabric-react_v7.147.0)
+
+### Minor changes
+
+- Add custom KeyUp support for Group Header ([PR #15478](https://github.com/microsoft/fluentui/pull/15478) by bcoard@microsoft.com)
+
+### Patches
+
+- CommandBar: fix incorrect role (WCAG 1.3.1) ([PR #15511](https://github.com/microsoft/fluentui/pull/15511) by xgao@microsoft.com)
+
+## [7.146.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.2)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.146.0..office-ui-fabric-react_v7.146.2)
+
+### Patches
+
+- Update office-ui-fabric-react.api.md due to ITheme typing change. ([PR #15480](https://github.com/microsoft/fluentui/pull/15480) by xgao@microsoft.com)
+
+## [7.146.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.146.0)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.145.0..office-ui-fabric-react_v7.146.0)
+
+### Minor changes
+
+- SearchBox: role=search on root div is now opt in; if you want it, you must provide it as a role prop. ([PR #15450](https://github.com/microsoft/fluentui/pull/15450) by dzearing@hotmail.com)
+- SearchBox: role now applies correctly on the root and is no longer hardcoded to "search". ([PR #15457](https://github.com/microsoft/fluentui/pull/15457) by dzearing@hotmail.com)
 
 ## [7.145.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.145.0)
 

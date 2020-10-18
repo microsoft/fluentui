@@ -6,11 +6,12 @@ import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useFocusRects, nullRender } from '@uifabric/utilities';
 import * as classes from './Avatar.scss';
 import { Badge } from '../Badge/Badge';
+import { renderAvatar } from './renderAvatar';
 
 const useAvatarClasses = makeClasses(classes);
 
 export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  const { state, render } = useAvatar(props, ref, {
+  const state = useAvatar(props, ref, {
     badge: { as: props.badge ? Badge : nullRender },
   });
 
@@ -19,7 +20,7 @@ export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLE
   useFocusRects(state.ref);
   useInlineTokens(state, '--avatar');
 
-  return render(state);
+  return renderAvatar(state);
 });
 
 Avatar.displayName = 'Avatar';

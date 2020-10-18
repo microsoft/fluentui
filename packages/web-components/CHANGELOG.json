@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 14 Oct 2020 20:26:08 GMT",
+      "tag": "@fluentui/web-components_v0.6.3",
+      "version": "0.6.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "operate dialog in open mode to ensure accessible focus behavior is supported",
+            "author": "chhol@microsoft.com",
+            "commit": "5babd0e822f182f8a33e096e615524651ae77968",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "remove un-necessary palette generation",
+            "author": "nicholasrice@users.noreply.github.com",
+            "commit": "74b0bd5b78126df06be1277f8466d03a991578a4",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Oct 2020 18:03:19 GMT",
       "tag": "@fluentui/web-components_v0.6.2",
       "version": "0.6.2",

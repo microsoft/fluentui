@@ -2,6 +2,21 @@
   "name": "@uifabric/mdl2-theme",
   "entries": [
     {
+      "date": "Wed, 14 Oct 2020 12:26:59 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.3.27",
+      "version": "0.3.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Theme instances to contain components/scopedSettings",
+            "author": "xgao@microsoft.com",
+            "commit": "3152c2a687f2ea6848de9efa24460b6588572d34",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/mdl2-theme_v0.3.16",
       "version": "0.3.16",

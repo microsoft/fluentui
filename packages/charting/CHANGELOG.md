@@ -1,8 +1,45 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 09 Oct 2020 18:03:19 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 21:41:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.4)
+
+Fri, 16 Oct 2020 21:41:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.3..@uifabric/charting_v4.7.4)
+
+### Patches
+
+- Area chart basic unit test cases - v1 ([PR #15520](https://github.com/microsoft/fluentui/pull/15520) by v-jasha@microsoft.com)
+- Charting: Vertical bar cahrt test cases updated ([PR #15523](https://github.com/microsoft/fluentui/pull/15523) by v-jasha@microsoft.com)
+
+## [4.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.3)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.2..@uifabric/charting_v4.7.3)
+
+### Patches
+
+- Charting: Test cases for linechart ([PR #15507](https://github.com/microsoft/fluentui/pull/15507) by v-gorraj@microsoft.com)
+
+## [4.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.2)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.0..@uifabric/charting_v4.7.2)
+
+### Patches
+
+- Vertical stacked bar chart uncaught type error fixed. Minor edits to margins ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
+
+## [4.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.0)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.6.1..@uifabric/charting_v4.7.0)
+
+### Minor changes
+
+- Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
 
 ## [4.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.1)
 

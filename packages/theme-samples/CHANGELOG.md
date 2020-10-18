@@ -1,8 +1,17 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.31](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.1.31)
+
+Wed, 14 Oct 2020 12:26:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.1.20..@uifabric/theme-samples_v7.1.31)
+
+### Patches
+
+- Update Theme instances to contain components/scopedSettings ([PR #15482](https://github.com/microsoft/fluentui/pull/15482) by xgao@microsoft.com)
 
 ## [7.0.126](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.126)
 

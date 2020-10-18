@@ -3,15 +3,14 @@ import { ChevronDownIcon } from '@fluentui/react-icons';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
-import { useButtonClasses } from '../Button/index';
 import { useMenuButtonClasses } from './useMenuButtonClasses';
+import { renderMenuButton } from './renderMenuButton';
 
 export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props, ref) => {
-  const { state, render } = useMenuButton(props, ref, {
+  const state = useMenuButton(props, ref, {
     menuIcon: { as: ChevronDownIcon },
   });
 
-  useButtonClasses(state);
   useMenuButtonClasses(state);
 
   // TODO remove any
@@ -23,7 +22,7 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useInlineTokens(state as any, '--button');
 
-  return render(state);
+  return renderMenuButton(state);
 });
 
 MenuButton.displayName = 'MenuButton';

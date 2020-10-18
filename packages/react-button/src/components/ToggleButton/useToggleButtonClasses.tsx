@@ -1,7 +1,8 @@
 import { makeVariantClasses } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
+import { useButtonClasses } from '../Button/useButtonClasses';
 
-export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
+export const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState>({
   name: 'ToggleButton',
   prefix: '--button',
 
@@ -55,3 +56,8 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     },
   },
 });
+
+export const useToggleButtonClasses = (state: ToggleButtonState) => {
+  useButtonClasses(state);
+  useToggleButtonBaseClasses(state);
+};
