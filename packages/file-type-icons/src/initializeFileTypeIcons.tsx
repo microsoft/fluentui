@@ -14,7 +14,8 @@ export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, opti
   });
 }
 
-// export function getFileTypeIconAsHTMLString(iconName: string, baseUrl: string = DEFAULT_BASE_URL): string | undefined {
+// export function getFileTypeIconAsHTMLString(iconName: string, baseUrl: string = DEFAULT_BASE_URL): string |
+// undefined {
 //   const regex = /(?<type>[a-z]+)(?<size>16|20|24|32|40|48|64|96)(_(?<pixelRatio>1.5|2|3|4)x)?_(?<suffix>png|svg)/;
 //   //
 //   const result = regex.exec(iconName);

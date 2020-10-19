@@ -2,19 +2,12 @@ import { DEFAULT_BASE_URL } from './initializeFileTypeIcons';
 import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSuffix,
-  FileTypeIconSize,
-  ImageFileType,
   DEFAULT_ICON_SIZE,
+  IFileTypeIconOptions,
 } from './getFileTypeIconProps';
-import { FileIconType } from './FileIconType';
 
 export function getFileTypeIconAsHTMLString(
-  options: {
-    extension?: string;
-    size?: FileTypeIconSize;
-    type?: FileIconType;
-    imageFileType?: ImageFileType;
-  },
+  options: IFileTypeIconOptions,
   baseUrl: string = DEFAULT_BASE_URL,
 ): string | undefined {
   const { extension, size = DEFAULT_ICON_SIZE, type, imageFileType } = options;

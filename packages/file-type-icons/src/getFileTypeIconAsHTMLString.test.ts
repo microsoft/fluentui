@@ -8,7 +8,7 @@ const getExpectedHTMLElement = (iconSize: FileTypeIconSize, suffix: string, expe
 };
 
 // Test suite 1
-describe('Return valid HTML element', () => {
+describe('returns valid HTML elements', () => {
   it('returns the correct img element for all valid icon sizes with default as svg', () => {
     ICON_SIZES.forEach((iconSize: number) => {
       const res = getFileTypeIconAsHTMLString({
@@ -71,12 +71,12 @@ describe('Returns genericfile for invalid inputs', () => {
     });
   });
 
-  it('returns genericfile with default size for empty extension and type', () => {
+  it('returns genericfile with default size for empty size, extension and type', () => {
     const res = getFileTypeIconAsHTMLString({});
     expect(res).toEqual(getExpectedHTMLElement(DEFAULT_ICON_SIZE, 'svg', 'genericfile'));
   });
 
-  it('returns genericfile with default size for empty extension and type with type as png', () => {
+  it('returns genericfile with default size for empty size, extension and type with type as png', () => {
     const res = getFileTypeIconAsHTMLString({ imageFileType: 'png' });
     expect(res).toEqual(getExpectedHTMLElement(DEFAULT_ICON_SIZE, 'png', 'genericfile'));
   });
