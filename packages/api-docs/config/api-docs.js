@@ -23,7 +23,6 @@ module.exports = {
     path.resolve(__dirname, '../../react-theme-provider/dist/react-theme-provider.api.json'),
     path.resolve(__dirname, '../../react-toggle/dist/react-toggle.api.json'),
     path.resolve(__dirname, '../../style-utilities/dist/style-utilities.api.json'),
-    path.resolve(__dirname, '../../styling/dist/styling.api.json'),
     path.resolve(__dirname, '../../theme/dist/theme.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
     // NOTE: when adding new package to this list, also add package dep in package.json.
