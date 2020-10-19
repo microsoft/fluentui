@@ -862,7 +862,7 @@ export const getMeasurementCache: () => {
 };
 
 // @public (undocumented)
-export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
+export const getMenuItemStyles: (theme: import("@fluentui/theme").Theme) => IMenuItemStyles;
 
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {

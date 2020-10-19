@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.types';
 import { getStyles } from './IconButton.styles';
 
 /**
- * {@docCategory Button}
+ * {@docCategory CompatButton}
  */
 @customizable('IconButton', ['theme', 'styles'], true)
 export class IconButton extends React.Component<IButtonProps, {}> {

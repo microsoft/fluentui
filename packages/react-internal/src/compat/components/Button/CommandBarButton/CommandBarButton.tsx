@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.types';
 import { getStyles } from './CommandBarButton.styles';
 
 /**
- * {@docCategory Button}
+ * {@docCategory CompatButton}
  */
 @customizable('CommandBarButton', ['theme', 'styles'], true)
 export class CommandBarButton extends React.Component<IButtonProps, {}> {

@@ -1,6 +1,6 @@
 import { ActionButton } from '../ActionButton/ActionButton';
 
 /**
- * {@docCategory Button}
+ * {@docCategory CompatButton}
  */
 export const CommandButton = ActionButton;
