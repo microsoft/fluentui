@@ -42,7 +42,6 @@
     "lodash": "^4.17.15",
     "chalk": "^2.1.0",
     "react-docgen-typescript": "^1.16.6",
-    "@uifabric/test-utilities": "^7.3.0",
     "react-is": "^16.6.3",
     "tslib": "^1.10.0"
   },

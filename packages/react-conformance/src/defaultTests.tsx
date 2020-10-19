@@ -3,7 +3,7 @@ import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
-import { safeMount } from '@uifabric/test-utilities';
+import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
 
 import * as React from 'react';
@@ -93,8 +93,8 @@ export const defaultTests: TestObject = {
           ...requiredProps,
           [elementRefName]: rootRef,
         };
-
-        safeMount(<Component {...mergedProps} />, () => {
+        act(() => {
+          mount(<Component {...mergedProps} />);
           expect(rootRef.current).toBeDefined();
           // Ref should resolve to an HTML element.
           expect(rootRef.current?.getAttribute).toBeDefined();
