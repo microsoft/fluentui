@@ -106,10 +106,14 @@ const FormValidationPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidation'),
 );
 
+// TODO verify that this doesn't break anything
+const runtimeBasenameOverride = window.__BASENAME__;
+const basenameOverride = runtimeBasenameOverride || __BASENAME__;
+
 const Routes = () => (
   <React.Suspense fallback="Loading...">
     {/* Remove trailing slash */}
-    <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
+    <BrowserRouter basename={basenameOverride === '/' ? basenameOverride : basenameOverride.slice(0, -1)}>
       <Switch>
         <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
         <Route exact path="/builder" component={Builder} />

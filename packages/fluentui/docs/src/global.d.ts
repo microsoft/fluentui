@@ -24,4 +24,6 @@ declare module '*.mdx' {
 declare interface Window {
   resetExternalLayout?: () => void;
   switchTheme?: (themeName: string) => void;
+  __RESOURCE_BASE_URL__?: string;
+  __BASENAME__?: string;
 }

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo-dev.png"
+    />
+    <title>Fluent UI</title>
+    <script>
+      // Redirect to HTTPs
+      // We need poor-mans client side redirects because we persist app router urls in localStorage
+      if (location.hostname === 'fluentsite.z22.web.core.windows.net' && location.protocol !== 'https:') {
+        location.href = location.href.replace('http:', 'https:');
+      }
+      // Apply gh-pages SPA redirect that was applied in 404.html
+      // ----------------------------------------
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+
+      var versions = {
+        babelStandalone: '7.10.4',
+      };
+    </script>
+    <style>
+      html {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/core-js-bundle/minified.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.1/anchor.min.js"></script>
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/combine/npm/prettier@1.19.1/standalone.min.js,npm/prettier@1.19.1/parser-babylon.min.js,npm/prettier@1.19.1/parser-html.min.js,npm/prettier@1.19.1/parser-typescript.min.js"
+    ></script>
+
+    <!-- Use unminified React when not in production so we get errors and warnings -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@hot-loader/react-dom@16.8.6/umd/react-dom.development.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom-server.browser.development.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-vis@1.11.7/dist/style.min.css" />
+
+    <style>
+      html,
+      body {
+        background: #f7f7f7;
+      }
+
+      /* AnchorsJS */
+
+      .anchorjs-link {
+        position: absolute;
+        transition: margin-left 0.25s, color 0.25s, opacity 0.25s;
+        margin-left: -0.2em;
+        color: #777;
+        opacity: 0;
+      }
+
+      h1:hover > .anchorjs-link:not(:hover),
+      h2:hover > .anchorjs-link:not(:hover),
+      h3:hover > .anchorjs-link:not(:hover),
+      h4:hover > .anchorjs-link:not(:hover),
+      h5:hover > .anchorjs-link:not(:hover),
+      h6:hover > .anchorjs-link:not(:hover) {
+        margin-left: 0em;
+        opacity: 0.5;
+      }
+
+      .anchorjs-link:hover {
+        margin-left: 0em;
+        color: cornflowerblue;
+        opacity: 1;
+      }
+
+      /* Doc site styles */
+
+      #introduction-page p {
+        font-size: 1.125em;
+        margin: 1.5em 0;
+      }
+
+      blockquote {
+        border-left: 4px solid #777;
+        padding-left: 0.5rem;
+        margin-left: 0;
+        opacity: 0.8;
+      }
+
+      pre {
+        margin: 0;
+      }
+
+      code:not([class*='language-']) {
+        font-size: 87.5%;
+        background-color: rgba(0, 0, 0, 0.04);
+        border-radius: 3px;
+        white-space: pre;
+        display: inline-block;
+      }
+
+      code:not([class*='language-'])::before {
+        letter-spacing: -0.2em;
+        content: '\00a0';
+      }
+
+      code:not([class*='language-'])::after {
+        letter-spacing: -0.2em;
+        content: '\00a0';
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #version-container {
+        position: sticky;
+        width: 100%;
+        height: 50px;
+      }
+
+      #version-select {
+        width: 10em;
+        position: absolute;
+        right: 5%;
+      }
+    </style>
+    <div id="version-container">
+      <select id="version-select" onChange="selectVersion()">
+        <option value="1">V1</option>
+        <option value="2">V2</option>
+        <option value="3">V3</option>
+        <option value="testversion">V4</option>
+      </select>
+
+      <script>
+        const storageUrl = 'https://fluentsite.z22.web.core.windows.net';
+
+        function getInitialChunks() {
+          const version = getCurrentVersion();
+          const manifestUrl = storageUrl + '/' + version + '/manifest.json';
+          console.log('MANIFEST', manifestUrl);
+          return fetch(manifestUrl)
+            .then(res => res.json())
+            .then(manifest =>
+              Object.keys(manifest).reduce((initChunks, filename) => {
+                if (manifest[filename].isInitial) {
+                  initChunks.push(filename);
+                }
+
+                return initChunks;
+              }, [])
+            );
+        }
+
+        (function loadScripts() {
+          let version = getCurrentVersion();
+          if (!version) selectVersion();
+          document.getElementById('version-select').value = version;
+
+          window.__BASENAME__ = '/' + version + '/';
+          window.__RESOURCE_BASE_URL__ = storageUrl + window.__BASENAME__;
+          getInitialChunks().then(files => {
+            files.forEach(file => {
+              let tag = document.createElement('script');
+              let path = window.__RESOURCE_BASE_URL__ + file;
+              tag.setAttribute('src', path);
+              tag.setAttribute('data-docsite', true);
+              document.body.appendChild(tag);
+            });
+          });
+        })();
+
+        function getCurrentVersion() {
+          return window.location.pathname.split('/')[1];
+        }
+
+        function selectVersion() {
+          var version = document.getElementById('version-select').value;
+          window.location.pathname = '/' + version;
+        }
+      </script>
+    </div>
+  </body>
+</html>

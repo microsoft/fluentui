@@ -1,6 +1,7 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { webpack as lernaAliases } from 'lerna-alias';
+import ManifestWebpackPlugin from 'webpack-manifest-plugin';
 import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -97,6 +98,13 @@ const webpackConfig: webpack.Configuration = {
         fluentUI: require('../package.json').version,
         reactVis: require('react-vis/package.json').version,
       },
+    }),
+    new ManifestWebpackPlugin({
+      generate: (initialManifest, files) =>
+        files.reduce(
+          (manifest, file) => ({ ...manifest, [file.name]: { fileName: file.path, isInitial: file.isInitial } }),
+          initialManifest,
+        ),
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&

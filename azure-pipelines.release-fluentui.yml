@@ -7,6 +7,8 @@ name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - name: northstarVersion
+    value: empty
 
 pool: 'Self Host Ubuntu'
 
@@ -23,6 +25,11 @@ steps:
     displayName: Authenticate git for pushes
 
   - script: |
+      ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+      echo `##vso[task.setvariable variable=northstarVersion]$ver`
+    displayName: Set N* version pipeline variable
+
+  - script: |
       npx midgard-yarn install
     displayName: yarn
 
@@ -34,14 +41,21 @@ steps:
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish docsite as pipeline artifact'
+    inputs:
+      PathtoPublish: 'packages/fluentui/docs/dist'
+      ArtifactName: 'docsite'
+
   - task: AzureUpload@2
     displayName: Upload docs site
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'
       azureSubscription: 'UI Fabric (private)'
-      storage: fluentsite
+      # TODO change to actual storage account when ready
+      storage: fluentsiteversiontest
       ContainerName: '$web'
-      BlobPrefix: ''
+      BlobPrefix: '$(northstarVersion)'
 # No NPM release in CI for now
 #  - script: |
 #      yarn test
