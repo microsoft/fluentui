@@ -1,5 +1,5 @@
 import { IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle } from './FloatingSuggestionsList.types';
-import { getGlobalClassNames, getTheme } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   root: 'ms-FloatingSuggestionsList',

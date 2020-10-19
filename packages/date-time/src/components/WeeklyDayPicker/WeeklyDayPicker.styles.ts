@@ -1,5 +1,5 @@
 import { IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
-import { normalize, FontSizes, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
+import { normalize, FontSizes, getFocusStyle, getGlobalClassNames } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const GlobalClassNames = {

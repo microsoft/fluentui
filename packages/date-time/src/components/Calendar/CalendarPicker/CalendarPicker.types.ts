@@ -1,4 +1,4 @@
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
 
 export interface ICalendarPickerStyleProps {

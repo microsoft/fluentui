@@ -8,7 +8,7 @@ import {
   PivotLinkFormatType,
   PivotBase,
 } from '../index';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
+import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
 import * as classes from './Pivot.scss';
 
 const GlobalClassNames = {

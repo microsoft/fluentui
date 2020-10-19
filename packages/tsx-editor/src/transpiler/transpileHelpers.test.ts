@@ -138,7 +138,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@uifabric/foundation': 'FluentUIReact',
       '@uifabric/icons': 'FluentUIReact',
       '@uifabric/merge-styles': 'FluentUIReact',
-      '@uifabric/styling': 'FluentUIReact',
+      '@fluentui/style-utilities': 'FluentUIReact',
       '@uifabric/utilities': 'FluentUIReact',
       '@uifabric/react-hooks': 'FabricReactHooks',
       '@uifabric/example-data': 'FabricExampleData',
