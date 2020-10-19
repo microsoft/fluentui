@@ -70,43 +70,12 @@ const items = [
             id: 'tree-item-212',
             title: 'Viserys',
           },
-          {
-            id: 'tree-item-213',
-            title: 'Daenerys',
-            selectable: false,
-          },
         ],
-      },
-    ],
-  },
-  {
-    id: '100',
-    title: 'House Skywalker',
-    items: [
-      {
-        id: '102',
-        title: 'Leia',
-      },
-      {
-        id: '103',
-        title: 'Luke',
-      },
-      {
-        id: '104',
-        title: 'Rey',
-        selectable: false,
       },
     ],
   },
 ];
 
-const TreeMultiselectExample = () => (
-  <Tree
-    defaultSelectedItemIds={['tree-item-122', 'tree-item-123']}
-    selectable
-    aria-label="Multi Select"
-    items={items}
-  />
-);
+const TreeMultiselectExample = () => <Tree selectable aria-label="default" items={items} />;
 
 export default TreeMultiselectExample;
