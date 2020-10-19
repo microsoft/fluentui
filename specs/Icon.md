@@ -472,7 +472,7 @@ Fabric uses global registration for its icons which needs a call to an initializ
 - [Wiki page](https://github.com/microsoft/fluentui/wiki/Using-icons)
 - [Icon font generation tool](https://uifabricicons.azurewebsites.net)
 - [Main `initializeIcons` function](https://github.com/microsoft/fluentui/blob/master/packages/icons/src/index.ts)
-- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/utilities/icons.ts)
+- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/utilities/icons.ts)
 - [Icon component](https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Icon)
 
 #### Stardust

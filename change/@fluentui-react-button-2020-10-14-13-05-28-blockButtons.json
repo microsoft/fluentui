@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Button: Renaming `fluid` prop to `block` so that it is inline with the most used terminology in the web.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T20:05:28.348Z"
+}

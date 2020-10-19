@@ -42,7 +42,7 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /** A button can fill the width of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -81,6 +81,9 @@ export type ButtonProps = ComponentProps &
 
     /** A button can blend into its background to become less emphasized. */
     ghost?: boolean;
+
+    /** A button can have no background styling and just be emphasized through its content styling. */
+    transparent?: boolean;
 
     /** A button can be sized. */
     size?: SizeValue;
@@ -143,5 +146,5 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
   primary?: TTokens;
   iconOnly?: TTokens;
   circular?: TTokens;
-  fluid?: TTokens;
+  block?: TTokens;
 };

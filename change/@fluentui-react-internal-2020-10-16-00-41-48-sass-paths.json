@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Stop publishing shared scss and css in react-internal",
+  "packageName": "@fluentui/react-internal",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T07:41:05.685Z"
+}

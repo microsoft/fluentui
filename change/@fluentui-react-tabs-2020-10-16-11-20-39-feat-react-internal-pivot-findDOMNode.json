@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Removing findDOMNode usage from Pivot within react-tabs.",
+  "packageName": "@fluentui/react-tabs",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T18:20:39.774Z"
+}

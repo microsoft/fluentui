@@ -6,10 +6,18 @@ import { Dialog } from './Dialog';
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
-import { setWarningCallback } from '@uifabric/utilities';
+import { resetIds, setWarningCallback } from '@uifabric/utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('Dialog', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   afterEach(() => {
     jest.useRealTimers();
   });

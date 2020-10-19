@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove unneeded storybook folder",
+  "packageName": "@fluentui/react-icons",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-10T06:14:39.392Z"
+}

@@ -2,7 +2,7 @@ import {
   createTheme,
   ICustomizations,
   IPalette,
-  ITheme,
+  Theme,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
 } from '@fluentui/react';
@@ -37,7 +37,15 @@ const DarkDefaultPalette: Partial<IPalette> = {
   redDark: '#F1707B',
 };
 
-export const DarkTheme: ITheme = createTheme({
+export const PersonaCoinStyles = (props: IPersonaCoinStyleProps): Partial<IPersonaCoinStyles> => {
+  return {
+    initials: {
+      color: props.showUnknownPersonaCoin ? DarkTheme.palette.redDark : DarkTheme.palette.black,
+    },
+  };
+};
+
+export const DarkTheme: Theme = createTheme({
   palette: DarkDefaultPalette,
   semanticColors: {
     buttonText: DarkDefaultPalette.black,
@@ -57,156 +65,151 @@ export const DarkTheme: ITheme = createTheme({
   isInverted: true,
 });
 
-export const PersonaCoinStyles = (props: IPersonaCoinStyleProps): Partial<IPersonaCoinStyles> => {
-  return {
-    initials: {
-      color: props.showUnknownPersonaCoin ? DarkTheme.palette.redDark : DarkTheme.palette.black,
+const componentStyles = {
+  Card: {
+    styles: {
+      root: {
+        background: DarkTheme.palette.neutralLighter,
+      },
     },
-  };
+  },
+  DatePicker: {
+    styles: DatePickerStyles,
+  },
+  DetailsList: {
+    styles: {
+      headerWrapper: {
+        selectors: {
+          '.ms-DetailsHeader': {
+            borderColor: DarkTheme.palette.neutralQuaternary,
+          },
+        },
+      },
+    },
+  },
+  ActionButton: {
+    styles: {
+      root: {
+        backgroundColor: DarkTheme.palette.white,
+      },
+      rootDisabled: {
+        backgroundColor: DarkTheme.palette.neutralLighter,
+      },
+      rootHovered: {
+        backgroundColor: DarkTheme.palette.neutralLight,
+      },
+      rootPressed: {
+        backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+      },
+    },
+  },
+  DetailsRow: {
+    styles: {
+      root: {
+        selectors: {
+          ':hover': {
+            background: DarkTheme.palette.neutralLighter,
+          },
+        },
+        borderColor: DarkTheme.palette.neutralQuaternaryAlt,
+      },
+    },
+  },
+  Modal: {
+    styles: {
+      main: {
+        backgroundColor: DarkTheme.palette.neutralLighter,
+      },
+    },
+  },
+  Overlay: {
+    styles: {
+      root: {
+        background: DarkTheme.palette.blackTranslucent40,
+      },
+    },
+  },
+  VerticalDivider: {
+    styles: {
+      divider: {
+        backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+      },
+      wrapper: {
+        Backgroundcolor: DarkTheme.palette.green,
+      },
+    },
+  },
+  DocumentCard: {
+    styles: {
+      root: {
+        border: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+        selectors: {
+          '.ms-DocumentCardPreview': {
+            borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+          },
+        },
+      },
+    },
+  },
+  DocumentCardPreview: {
+    styles: {
+      root: {
+        borderBottom: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+        borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+      },
+    },
+  },
+  Panel: {
+    styles: {
+      main: {
+        backgroundColor: DarkTheme.palette.neutralLighter,
+      },
+      closeButton: {
+        color: DarkTheme.palette.neutralSecondary,
+        selectors: {
+          ':hover': {
+            color: DarkTheme.palette.neutralPrimary,
+          },
+        },
+      },
+    },
+  },
+  PeoplePickerItem: {
+    styles: PeoplePickerItemStyles,
+  },
+  PersonaCoin: {
+    styles: PersonaCoinStyles,
+  },
+  Separator: {
+    styles: {
+      root: {
+        selectors: {
+          ':before': {
+            backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+          },
+          ':after': {
+            backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+          },
+        },
+      },
+    },
+  },
+  SpinButton: {
+    styles: {
+      inputTextSelected: {
+        color: DarkTheme.palette.black,
+        background: DarkTheme.palette.themePrimary,
+      },
+    },
+  },
 };
+
+DarkTheme.components = componentStyles;
+addVariants(DarkTheme);
 
 export const DarkCustomizations: ICustomizations = {
   settings: {
     theme: DarkTheme,
   },
-  scopedSettings: {
-    Card: {
-      styles: {
-        root: {
-          background: DarkTheme.palette.neutralLighter,
-        },
-      },
-    },
-    DatePicker: {
-      styles: DatePickerStyles,
-    },
-    DetailsList: {
-      styles: {
-        headerWrapper: {
-          selectors: {
-            '.ms-DetailsHeader': {
-              borderColor: DarkTheme.palette.neutralQuaternary,
-            },
-          },
-        },
-      },
-    },
-    ActionButton: {
-      styles: {
-        root: {
-          backgroundColor: DarkTheme.palette.white,
-        },
-        rootDisabled: {
-          backgroundColor: DarkTheme.palette.neutralLighter,
-        },
-        rootHovered: {
-          backgroundColor: DarkTheme.palette.neutralLight,
-        },
-        rootPressed: {
-          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
-        },
-      },
-    },
-    DetailsRow: {
-      styles: {
-        root: {
-          selectors: {
-            ':hover': {
-              background: DarkTheme.palette.neutralLighter,
-            },
-          },
-          borderColor: DarkTheme.palette.neutralQuaternaryAlt,
-        },
-      },
-    },
-    Modal: {
-      styles: {
-        main: {
-          backgroundColor: DarkTheme.palette.neutralLighter,
-        },
-      },
-    },
-    Overlay: {
-      styles: {
-        root: {
-          background: DarkTheme.palette.blackTranslucent40,
-        },
-      },
-    },
-    VerticalDivider: {
-      styles: {
-        divider: {
-          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
-        },
-        wrapper: {
-          Backgroundcolor: DarkTheme.palette.green,
-        },
-      },
-    },
-    DocumentCard: {
-      styles: {
-        root: {
-          border: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
-          selectors: {
-            '.ms-DocumentCardPreview': {
-              borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
-            },
-          },
-        },
-      },
-    },
-    DocumentCardPreview: {
-      styles: {
-        root: {
-          borderBottom: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
-          borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
-        },
-      },
-    },
-    Panel: {
-      styles: {
-        main: {
-          backgroundColor: DarkTheme.palette.neutralLighter,
-        },
-        closeButton: {
-          color: DarkTheme.palette.neutralSecondary,
-          selectors: {
-            ':hover': {
-              color: DarkTheme.palette.neutralPrimary,
-            },
-          },
-        },
-      },
-    },
-    PeoplePickerItem: {
-      styles: PeoplePickerItemStyles,
-    },
-    PersonaCoin: {
-      styles: PersonaCoinStyles,
-    },
-    Separator: {
-      styles: {
-        root: {
-          selectors: {
-            ':before': {
-              backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
-            },
-            ':after': {
-              backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
-            },
-          },
-        },
-      },
-    },
-    SpinButton: {
-      styles: {
-        inputTextSelected: {
-          color: DarkTheme.palette.black,
-          background: DarkTheme.palette.themePrimary,
-        },
-      },
-    },
-  },
+  scopedSettings: componentStyles,
 };
-
-addVariants(DarkCustomizations.settings.theme);

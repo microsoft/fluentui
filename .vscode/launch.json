@@ -89,7 +89,7 @@
       "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
       "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/styling",
+      "cwd": "${workspaceRoot}/packages/style-utilities",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {

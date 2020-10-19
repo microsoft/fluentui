@@ -1,53 +1,41 @@
+// @ts-check
 const resources = require('../../scripts/webpack/webpack-resources');
-const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'fluentui-react';
-const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
-function createConfig(config, onlyProduction) {
-  return resources.createConfig(
-    BUNDLE_NAME,
-    IS_PRODUCTION,
-    {
-      entry: {
-        [BUNDLE_NAME]: './lib/index.bundle.js',
-      },
-
-      externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-      },
-
-      resolve: {
-        alias: getResolveAlias(true /*useLib*/),
-      },
-
-      ...config,
-    },
+/**
+ * @param {object} param0
+ * @param {string | import("webpack").Output} param0.output - If a string, name for the output varible.
+ * If an object, full custom `output` config.
+ * @param {boolean} param0.onlyProduction
+ * @param {Partial<import("webpack").Configuration>} [param0.config]
+ */
+function createConfig({ output, onlyProduction, config }) {
+  return resources.createBundleConfig({
+    bundleName: BUNDLE_NAME,
+    output,
+    entry: './lib/index.bundle.js',
+    customConfig: config,
     onlyProduction,
-  );
+  });
 }
 
 module.exports = [
-  ...createConfig(
-    {
-      output: {
-        libraryTarget: 'var',
-        library: 'FluentUIReact',
-      },
-    },
-    false,
-  ),
-  ...createConfig(
-    {
+  ...createConfig({
+    output: 'FluentUIReact',
+    onlyProduction: false,
+  }),
+  ...createConfig({
+    config: {
+      // @ts-ignore
       plugins: [new ManifestServicePlugin()],
-      output: {
-        libraryTarget: 'umd',
-        library: 'FluentUIReact',
-        filename: `${BUNDLE_NAME}.umd.js`,
-      },
     },
-    true,
-  ),
+    output: {
+      libraryTarget: 'umd',
+      library: 'FluentUIReact',
+      filename: `${BUNDLE_NAME}.umd.js`,
+    },
+    onlyProduction: true,
+  }),
 ];

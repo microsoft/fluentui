@@ -27,7 +27,7 @@
       "label": "Typescript (experiments) watch",
       "type": "process",
       "command": "node",
-      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/experiments/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/react-experiments/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",

@@ -6,7 +6,7 @@ import {
   ICalendarIconStrings,
   AnimationDirection,
 } from '../Calendar/Calendar.types';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,

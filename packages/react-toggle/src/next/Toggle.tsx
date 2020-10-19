@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
 import { Label } from '@fluentui/react-internal/lib/Label';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
+import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
 import { css, memoizeFunction, styled } from '@uifabric/utilities';
 import { ToggleBase } from './ToggleBase';
 import { IToggleProps, IToggleStyleProps, IToggleStyles } from '../components/Toggle/Toggle.types';
