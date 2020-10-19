@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Default root variant should define a default height.",
+  "packageName": "@fluentui/react-button",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-19T17:32:52.014Z"
+}
