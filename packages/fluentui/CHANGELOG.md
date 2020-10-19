@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
 - Rename `indicatorBorderColorDefault` variable to `indicatorColorDefault` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
+- Remove `selectableParent` prop in favor of `selectable` in `TreeItem` and make `selectionIndicator` visible only on focus or hover @assuncaocharles ([#15133](https://github.com/microsoft/fluentui/pull/15133))
 
 ### Fixes
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
