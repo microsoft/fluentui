@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/jest-serializer-merge-styles",
+  "name": "@fluentui/jest-serializer-merge-styles",
   "version": "7.2.2",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",

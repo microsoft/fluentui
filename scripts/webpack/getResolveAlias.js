@@ -24,7 +24,7 @@ function getResolveAlias(useLib, cwd) {
     '@fluentui/api-docs',
     '@uifabric/build',
     '@fluentui/webpack-utilities',
-    '@uifabric/jest-serializer-merge-styles',
+    '@fluentui/jest-serializer-merge-styles',
   ];
 
   const packageJson = readConfig(path.join(cwd, 'package.json'));
