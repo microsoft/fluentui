@@ -342,7 +342,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onKeyDown={_onBackspace}
       onCopy={_onCopy}
     >
-      <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
+      <FocusZone
+        direction={FocusZoneDirection.bidirectional}
+        {...focusZoneProps}
+        /* TODO: create mouse drag selection capability */
+      >
         <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             {headerComponent}
