@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DayOfWeek, ICalendarProps } from '../../Calendar';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
+import { ICalendarProps, ICalendarFormatDateCallbacks, ICalendarStrings } from '../../Calendar';
+import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';

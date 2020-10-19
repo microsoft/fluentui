@@ -1,11 +1,11 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 import {
   ICalendarStrings,
-  DayOfWeek,
   ICalendarFormatDateCallbacks,
   ICalendarIconStrings,
   AnimationDirection,
 } from '../Calendar/Calendar.types';
+import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,

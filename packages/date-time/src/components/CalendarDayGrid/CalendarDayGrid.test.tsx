@@ -1,5 +1,6 @@
 import { CalendarDayGrid } from './CalendarDayGrid';
-import { defaultDayPickerStrings, DateRangeType, DayOfWeek, FirstWeekOfYear, ICalendarStrings } from '../Calendar';
+import { defaultDayPickerStrings, ICalendarStrings } from '../Calendar/index';
+import { DateRangeType, DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('CalendarDayGrid', () => {

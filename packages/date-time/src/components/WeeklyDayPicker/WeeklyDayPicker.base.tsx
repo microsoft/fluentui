@@ -19,7 +19,10 @@ import {
   addDays,
   addMonths,
   compareDates,
-} from '../../utilities/dateMath/DateMath';
+  FirstWeekOfYear,
+  DateRangeType,
+  DayOfWeek,
+} from '@fluentui/date-time-utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
