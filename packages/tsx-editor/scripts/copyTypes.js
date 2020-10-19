@@ -6,10 +6,10 @@ const { expandSourcePath } = require('@uifabric/build/tasks/copy');
 const fs = require('fs');
 const path = require('path');
 
-// Copy office-ui-fabric-react.d.ts and other .d.ts files it references to the dist folder,
+// Copy react.d.ts and other .d.ts files it references to the dist folder,
 // so we can more easily load them into the editor later.
 module.exports = function copyTypes() {
-  const packagesToResolve = ['office-ui-fabric-react', '@uifabric/react-hooks', '@uifabric/example-data'];
+  const packagesToResolve = ['@fluentui/react', '@uifabric/react-hooks', '@uifabric/example-data'];
   const resolvedPackages = [];
   const pathsToCopy = [];
 
@@ -24,7 +24,8 @@ module.exports = function copyTypes() {
       // copy this .d.ts
       pathsToCopy.push(dtsPath);
 
-      // add any other @uifabric or @fluentui packages it references for processing (ignore React imports and other imports)
+      // add any other @uifabric or @fluentui packages it references for processing
+      // (ignore React imports and other imports)
       const dtsContents = fs.readFileSync(dtsPath).toString();
       const importRegex = /(?:import|export) .*? from ['"](@(?:uifabric|fluentui)\/[\w-]+)/gm;
       let importMatch;

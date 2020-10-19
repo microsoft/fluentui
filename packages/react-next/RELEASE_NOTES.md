@@ -1,6 +1,6 @@
 # @fluentui/react version 8 release notes (draft)
 
-## Breaking changes
+## Breaking changes: specific components
 
 ### Button
 
@@ -21,13 +21,6 @@ If you would like to continue using the previous button components for now, upda
   - `shouldFocusOnMount`
   - `yearPickerHidden`
 
-### Checkbox
-
-- Removed `styles` prop.
-- Removed `checkmarkIconProps` prop.
-- Deprecated `onRenderLabel`.
-- Added `label`/`checkmark` slot props.
-
 ### ChoiceGroup
 
 - Moved `root` class to the actual root element by replacing `applicationRole`.
@@ -36,10 +29,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
-- Beak:
-  - Removed empty `IBeak` interface
-  - Removed `componentRef` prop
+- Removed deprecated `isBeaconAnimating` and `isMeasured` style props
 
 ### DatePicker
 
@@ -47,8 +37,8 @@ If you would like to continue using the previous button components for now, upda
 
 ### OverflowSet
 
+- Contents of the `OverflowSet` are no longer wrapped in a `FocusZone`.
 - Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
-- Removed uses of `FocusZone` from render and the public-api.
 
 ### Pivot
 
@@ -58,22 +48,48 @@ If you would like to continue using the previous button components for now, upda
   - Replaced `rootIsTabs` and `linkFormat`.
   - Removed deprecated prop `linkIsSelected`.
 
+### Popup
+
+- Updated signature of `onDismiss` to include the native `KeyboardEvent` as a possible type of the `ev` parameter: `onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any`
+
 ### Rating
 
+- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
 - Removed deprecated props `onChanged` (use `onChange`) and `ariaLabelId` (use `getAriaLabel`)
 - `IRatingProps` now extends `React.HTMLAttributes` rather than `React.AllHTMLAttributes` (using the old interface was incorrect because it included some props which don't actually apply to a `div`)
 - Passing `null` for `rating` is no longer supported. To determine whether the user has interacted with the rating yet, set `allowZeroStars: true` and check whether the rating is 0.
 - Added `IRating.rating` property for accessing the current rating value via `componentRef`. (Use this instead if you were previously accessing `state.rating`.)
-- The component now uses strict controlled behavior when the `rating` prop is provided. Use the new `defaultRating` prop to make the rating uncontrolled.
+- Corrected type of `IRatingProp.onChange`'s `event` parameter to reflect how it's used internally. It should be `React.FormEvent<HTMLElement>`, not `React.FocusEvent<HTMLElement>`.
 
 ### SpinButton
 
-- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with other components.
+- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring in line with other components. As a result, the following props have been removed (see below for migration tips):
+  - `arrowButtonsContainerDisabled`
+  - `inputDisabled`
+  - `inputTextSelected`
+  - `labelDisabled`
+  - `spinButtonWrapperDisabled`
+  - `spinButtonWrapperFocused`
+  - `spinButtonWrapperHovered`
+  - `spinButtonWrapperTopBottom`
 - Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components and improve cachability of internal styles.
+
+If you're using a removed `ISpinButtonStyles` prop, you can instead pass a style function which returns appropriate styles based on the current state of the component. For example, instead of setting `spinButtonWrapperFocused`, you can do this:
+
+```tsx
+<SpinButton styles={(props: ISpinButtonStyleProps) => {
+  const { isFocused, theme } = props;
+  return {
+    spinButtonWrapper: isFocused && {
+      outline: '5px solid ' + theme.palette.yellow,
+    },
+  };
+}}>
+```
 
 ### Shimmer
 
-- Removed unused `ComponentRef` prop from `Shimmer` types as it doesn't use any public methods.
+- Removed unused `componentRef` prop from `Shimmer` types as it doesn't use any public methods.
 
 ### SwatchColorPicker
 
@@ -84,8 +100,14 @@ If you would like to continue using the previous button components for now, upda
 
 ### TeachingBubble
 
-- Removed unused defaultProps from TeachingBubbleContent.
-- Removed rootElementRef from public api.
+- Removed unused `defaultProps` from TeachingBubbleContent.
+- Removed `rootElementRef` from public API.
+
+### TextField
+
+- Moved MaskedTextField-specific props `mask`, `maskChar`, and `maskCharData` from the general `ITextFieldProps` to a new `IMaskedTextFieldProps`.
+
+## Breaking changes: general
 
 ### Function component conversions
 
@@ -101,18 +123,42 @@ If you would like to continue using the previous button components for now, upda
   - If you need a former state property which is not included in the relevant `IComponentName` interface, please file an issue and we can consider adding it.
 - In your components which use the converted components, you may need to wrap certain test operations in `act` from `react-dom/test-utils`. [More details here.](https://reactjs.org/docs/test-utils.html#act)
 
+### ThemeProvider
+
+`ThemeProvider` is required to use if any button from `@fluentui/react/lib/Button` is used. We also deprecated `Fabric`, `Customizer` components in favor of using `ThemeProvider`.
+
+Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
+
+### Component package moves and renames
+
+In addition to the rename of `office-ui-fabric-react` to `@fluentui/react`, most components have been moved to either a new **internal use only** package `@fluentui/react-internal`, or to individual component packages. This means **deep path imports will no longer work.** We've added root-level export files for most things that were intended to be part of the public API, but if anything is missing, please file an issue.
+
+Note that directly importing from the `@fluentui/react-internal` package (the root or any file within it) is **not supported**, and the structure of this package may change at any time. Importing from individual component packages or `@fluentui/react` top-level files is fine.
+
+### Discontinued packages
+
+- Discontinue `@fluentui/fluent-theme` package in favor of `@fluentui/theme` package; removed from `master`.
+
 ### Others
 
-- `ThemeProvider` is required. (new)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
+- `FluentStyles` is removed from `experiments` package.
+- Removed various files which were originally in `office-ui-fabric-react` and not intended to be part of the public API:
+  - `office-ui-fabric-react/src/components/Theme/defaultTheme.ts` (use `@fluentui/theme`)
+  - `office-ui-fabric-react/src/customizations/TeamsTheme.ts` (use `@fluentui/theme-samples`)
+  - `office-ui-fabric-react/src/utilities/exampleData.ts` (use `@fluentui/example-data`)
 
 ## Minor changes
 
 ### Pivot
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
+
+### FocusTrapZone
+
+- `FocusTrapZone's` `FocusStack` now takes an ID instead of component object.
 
 ## New features
 

@@ -10,11 +10,13 @@ function lintFiles() {
   const gitRoot = findGitRoot();
 
   const exampleFiles = [
-    ...glob.sync('packages/!(examples)/!(fluentui|node_modules)/**/(docs|examples)/*', { cwd: gitRoot }),
-    ...glob.sync('packages/!(examples)/!(fluentui|node_modules)/**/*.doc.ts*', { cwd: gitRoot }),
+    ...glob.sync('packages/!(react-examples)/!(fluentui|node_modules)/**/(docs|examples)/*.{ts,tsx,scss,md}', {
+      cwd: gitRoot,
+    }),
+    ...glob.sync('packages/!(react-examples)/!(fluentui|node_modules)/**/*.doc.ts*', { cwd: gitRoot }),
   ];
   if (exampleFiles.length) {
-    console.error('\nPlease move the following files to the appropriate locations under packages/examples:');
+    console.error('\nPlease move the following files to the appropriate locations under packages/react-examples:');
     for (const file of exampleFiles) {
       console.error('  ' + file);
     }

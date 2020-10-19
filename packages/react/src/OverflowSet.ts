@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/OverflowSet';
+export * from '@fluentui/react-internal/lib/OverflowSet';

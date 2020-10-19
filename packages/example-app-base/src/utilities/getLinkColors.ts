@@ -1,4 +1,4 @@
-import { IRawStyle } from 'office-ui-fabric-react';
+import { IRawStyle } from '@fluentui/react';
 
 /**
  * Gets a style which should be specific enough to override the UHF link styles.

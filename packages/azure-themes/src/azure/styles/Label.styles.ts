@@ -1,4 +1,4 @@
-import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { ILabelStyleProps, ILabelStyles } from '@fluentui/react/lib/Label';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {

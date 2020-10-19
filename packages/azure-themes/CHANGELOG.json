@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/azure-themes_v7.5.17",
+      "version": "7.5.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Aug 2020 12:36:19 GMT",
       "tag": "@uifabric/azure-themes_v7.4.3",
       "version": "7.4.3",

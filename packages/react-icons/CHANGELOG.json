@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-icons_v0.3.5",
+      "version": "0.3.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adjusting storybook config so that it works with new changes.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@fluentui/react-icons_v0.1.36",
       "version": "0.1.36",

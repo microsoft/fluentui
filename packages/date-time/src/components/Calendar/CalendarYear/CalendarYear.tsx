@@ -1,5 +1,5 @@
 import { getStyles } from './CalendarYear.styles';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react-internal/lib/Utilities';
 import { CalendarYearBase } from './CalendarYear.base';
 
 /**

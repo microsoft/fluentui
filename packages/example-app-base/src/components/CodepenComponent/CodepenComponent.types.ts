@@ -1,6 +1,6 @@
-import { IComponentAs, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IComponentAs, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IButtonProps } from '@fluentui/react/lib/Button';
+import { ITheme } from '@fluentui/react/lib/Styling';
 
 export interface ICodepenProps {
   /** JS string to be passed into Codepen */

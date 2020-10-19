@@ -8,7 +8,7 @@ import {
   IProcessedStyleSet,
   classNamesFunction,
   styled,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import * as colorCheck from 'color-check';
 import {
   IColorPaletteProps,

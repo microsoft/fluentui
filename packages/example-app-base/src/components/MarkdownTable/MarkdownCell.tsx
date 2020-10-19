@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, styled } from 'office-ui-fabric-react';
+import { classNamesFunction, styled } from '@fluentui/react';
 import { IMarkdownTableCellProps, IMarkdownTableStyleProps, IMarkdownTableStyles } from './MarkdownTable.types';
 import { getStyles } from './MarkdownTable.styles';
 

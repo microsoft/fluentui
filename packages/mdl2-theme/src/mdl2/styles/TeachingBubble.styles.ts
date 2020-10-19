@@ -1,5 +1,5 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { FontWeights } from '@fluentui/react/lib/Styling';
+import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from '@fluentui/react/lib/TeachingBubble';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { hasCondensedHeadline, hasSmallHeadline, theme } = props;

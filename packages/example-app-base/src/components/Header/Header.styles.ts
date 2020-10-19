@@ -1,7 +1,7 @@
-import { IRawStyle, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IRawStyle, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IHeaderStyleProps, IHeaderStyles } from './Header.types';
-import { IIconStyles } from 'office-ui-fabric-react';
+import { IIconStyles } from '@fluentui/react';
 
 const globalClassNames = {
   root: 'Header',

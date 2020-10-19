@@ -1,5 +1,5 @@
-import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
+import { IButtonStyles, IButtonProps } from '@fluentui/react/lib/Button';
+import { IsFocusVisibleClassName } from '@fluentui/react/lib/Utilities';
 
 export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;

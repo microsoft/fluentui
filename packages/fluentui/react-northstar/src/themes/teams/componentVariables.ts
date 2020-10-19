@@ -18,6 +18,8 @@ export { buttonGroupVariables as ButtonGroup } from './components/Button/buttonG
 export { buttonContentVariables as ButtonContent } from './components/Button/buttonContentVariables';
 
 export { breadcrumbVariables as Breadcrumb } from './components/Breadcrumb/breadcrumbVariables';
+export { breadcrumbItemVariables as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemVariables';
+export { breadcrumbLinkVariables as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkVariables';
 export { breadcrumbDividerVariables as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerVariables';
 
 export { chatVariables as Chat } from './components/Chat/chatVariables';

@@ -18,7 +18,7 @@ import { initializeIcons as i15 } from './fabric-icons-15';
 import { initializeIcons as i16 } from './fabric-icons-16';
 import { initializeIcons as i17 } from './fabric-icons-17';
 
-import { IIconOptions } from '@uifabric/styling';
+import { IIconOptions } from '@fluentui/style-utilities';
 import { registerIconAliases } from './iconAliases';
 const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/icons/';
 

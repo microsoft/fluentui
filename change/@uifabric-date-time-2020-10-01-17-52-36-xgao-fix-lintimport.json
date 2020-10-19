@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix imports to reference physical files.",
+  "packageName": "@uifabric/date-time",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-02T00:52:25.751Z"
+}

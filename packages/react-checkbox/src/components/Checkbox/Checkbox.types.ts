@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IIconProps } from '@fluentui/react-internal/lib/Icon';
+import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 
 /**
  * Checkbox class interface.

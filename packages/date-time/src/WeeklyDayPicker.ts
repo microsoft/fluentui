@@ -1,1 +1,1 @@
-export * from './components/WeeklyDayPicker';
+export * from './components/WeeklyDayPicker/index';

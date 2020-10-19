@@ -1,22 +1,18 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons';
-import { ContextualMenu, useFocusRects } from 'office-ui-fabric-react';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
 import { useButtonClasses } from '../Button/index';
 import { useMenuButtonClasses } from './useMenuButtonClasses';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
 
 export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props, ref) => {
   const { state, render } = useMenuButton(props, ref, {
     menuIcon: { as: ChevronDownIcon },
-    menu: { as: ContextualMenu },
   });
 
   useButtonClasses(state);
   useMenuButtonClasses(state);
-
-  useFocusRects(state.ref);
 
   // TODO remove any
   /**

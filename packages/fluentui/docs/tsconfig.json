@@ -4,6 +4,7 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
+      "@fluentui/a11y-testing": ["packages/a11y-testing/src/index"],
       "@fluentui/dom-utilities": ["packages/dom-utilities/src"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
       "@fluentui/react-compose": ["packages/react-compose/src/index"],

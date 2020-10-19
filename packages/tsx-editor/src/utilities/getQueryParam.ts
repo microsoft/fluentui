@@ -1,4 +1,4 @@
-import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
+import { getWindow } from '@fluentui/react/lib/Utilities';
 
 /**
  * Gets a query parameter value

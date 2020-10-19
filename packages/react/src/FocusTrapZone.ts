@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/FocusTrapZone';
+export * from '@fluentui/react-internal/lib/FocusTrapZone';

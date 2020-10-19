@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, FocusZone, IconButton, Panel, PanelType, ScreenWidthMinUhfMobile, on } from 'office-ui-fabric-react';
+import { css, FocusZone, IconButton, Panel, PanelType, ScreenWidthMinUhfMobile, on } from '@fluentui/react';
 import { hasActiveChild, removeAnchorLink } from '../../utilities/index2';
 import { INavPage } from '../Nav/Nav.types';
 import { Badge } from '../Badge/index';

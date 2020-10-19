@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove same-package path aliases",
-  "packageName": "@fluentui/react-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-22T22:12:24.895Z"
-}

@@ -7,9 +7,9 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles,
 } from './CalendarYear.types';
-import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from 'office-ui-fabric-react/lib/Utilities';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '@fluentui/react-internal/lib/Utilities';
+import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
+import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
 import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
 

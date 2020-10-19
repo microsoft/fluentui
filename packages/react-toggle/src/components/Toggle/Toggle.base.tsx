@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react-internal/lib/Label';
 import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@uifabric/utilities';
 import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
-const COMPONENT_NAME = 'ToggleBase';
+const COMPONENT_NAME = 'Toggle';
 
 export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRef<HTMLElement, IToggleProps>(
   (props, forwardedRef) => {
@@ -148,7 +148,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
   },
 );
 
-ToggleBase.displayName = COMPONENT_NAME;
+ToggleBase.displayName = COMPONENT_NAME + 'Base';
 
 const useComponentRef = (
   props: IToggleProps,

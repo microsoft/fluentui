@@ -1,9 +1,9 @@
-import { AnimationVariables, IRawStyle, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { AnimationVariables, IRawStyle, getTheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
+import { IDropdownStyles } from '@fluentui/react/lib/Dropdown';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors } from '@fluentui/theme';
 
 const globalClassNames = {
   root: 'ExampleCard',

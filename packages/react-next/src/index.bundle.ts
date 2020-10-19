@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/index.bundle';
+export * from '@fluentui/react/lib/index.bundle';

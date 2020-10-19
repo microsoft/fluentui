@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as monaco from '@uifabric/monaco-editor';
 import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typescript.d';
-import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
+import { getWindow } from '@fluentui/react/lib/Utilities';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
 import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode, ITransformedExample } from '../interfaces/index';

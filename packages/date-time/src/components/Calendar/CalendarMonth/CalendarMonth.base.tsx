@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import {
   addYears,
   setMonth,
@@ -8,8 +8,8 @@ import {
   getMonthStart,
   getMonthEnd,
   compareDatePart,
-} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+} from '@fluentui/date-time-utilities';
+import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';

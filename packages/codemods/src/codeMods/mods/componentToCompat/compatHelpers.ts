@@ -17,7 +17,6 @@ export interface ComponentToCompat {
 
 export interface RawCompat {
   componentName: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   namedExports: string[];
 }
 
@@ -46,7 +45,6 @@ export function repathNamedImports(file: SourceFile, namedImportMap: { [key: str
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNamedExports(names: string[]) {
   return names.filter(key => key !== 'default');
 }

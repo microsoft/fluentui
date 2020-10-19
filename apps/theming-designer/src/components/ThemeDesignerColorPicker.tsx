@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { Text } from '@fluentui/react/lib/Text';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
+import { Callout } from '@fluentui/react/lib/Callout';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
+import { IColor, getColorFromString } from '@fluentui/react/lib/Color';
 
 const colorLabelClassName = mergeStyles({
   fontSize: 16,

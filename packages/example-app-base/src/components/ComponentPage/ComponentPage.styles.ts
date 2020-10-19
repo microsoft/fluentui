@@ -1,5 +1,5 @@
-import { ScreenWidthMinUhfMobile, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ScreenWidthMinUhfMobile, getTheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IComponentPageStyleProps, IComponentPageStyles } from './ComponentPage.types';
 
 const globalClassNames = {

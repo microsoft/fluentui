@@ -1,6 +1,6 @@
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { Depths } from '../AzureDepths';
-import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
+import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

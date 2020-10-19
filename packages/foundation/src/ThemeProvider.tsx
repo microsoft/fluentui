@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getThemedContext, ISchemeNames, ITheme } from '@uifabric/styling';
+import { getThemedContext, ISchemeNames, ITheme } from '@fluentui/style-utilities';
 import { Customizer, ICustomizerProps } from '@uifabric/utilities';
 
 export interface IThemeProviderProps {

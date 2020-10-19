@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.3.1..@fluentui/storybook_v0.5.0)
+
+### Minor changes
+
+- Adding withCompatKeytipLayer and withKeytipLayer storybook decorators. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.3.1)
 

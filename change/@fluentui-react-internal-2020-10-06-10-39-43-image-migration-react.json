@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "move Image component from react-next to react-internal",
+  "packageName": "@fluentui/react-internal",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T17:39:43.739Z"
+}

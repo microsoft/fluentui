@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "move persona to react-internal",
+  "packageName": "@fluentui/react-internal",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T19:18:27.554Z"
+}

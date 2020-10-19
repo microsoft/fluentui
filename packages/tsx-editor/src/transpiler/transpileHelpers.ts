@@ -1,4 +1,4 @@
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IBasicPackageGroup } from '../interfaces/index';
 // Don't reference anything importing Monaco in this file!
 

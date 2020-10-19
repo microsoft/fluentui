@@ -1,4 +1,4 @@
-import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { getDocument } from '@fluentui/react/lib/Utilities';
 
 /**
  * Get the current url of the loaded page. Returns empty string if server-side rendering (`document` is undefined).

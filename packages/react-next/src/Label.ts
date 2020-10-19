@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/Label';
+export * from '@fluentui/react/lib/Label';

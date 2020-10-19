@@ -3,7 +3,7 @@
 //
 
 import * as React from 'react';
-import { styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
+import { styled, classNamesFunction, IRawStyle } from '@fluentui/react';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles, ICodeSnippetProps } from './CodeSnippet';
 import { getStyles, baseCodeStyle } from './CodeSnippet.styles';
 

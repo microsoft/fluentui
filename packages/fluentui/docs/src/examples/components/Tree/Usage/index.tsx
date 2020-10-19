@@ -30,6 +30,11 @@ const Usage = () => (
       description="A multiselect Tree."
       examplePath="components/Tree/Usage/TreeMultiselectExample"
     />
+    <ComponentExample
+      title="Multi select As a List"
+      description="A multiselect Tree with list accessibility roles."
+      examplePath="components/Tree/Usage/TreeMultiselectAsListExample"
+    />
   </ExampleSection>
 );
 

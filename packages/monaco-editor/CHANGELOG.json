@@ -2,6 +2,21 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.18",
+      "version": "0.5.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "@uifabric/monaco-editor_v0.5.16",
       "version": "0.5.16",

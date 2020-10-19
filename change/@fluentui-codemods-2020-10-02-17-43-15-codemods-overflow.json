@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix memory overflow in codemods",
+  "packageName": "@fluentui/codemods",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-03T00:43:15.116Z"
+}

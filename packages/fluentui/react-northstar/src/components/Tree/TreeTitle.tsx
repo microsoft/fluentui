@@ -26,6 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { TreeContext } from './utils';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -72,6 +73,9 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** For selectable parents define if all nested children are checked */
   indeterminate?: boolean;
+
+  /** The id of the parent tree title, if any. */
+  parent?: string;
 }
 
 export type TreeTitleStylesProps = Pick<
@@ -94,7 +98,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-
+  const { onFocusParent } = React.useContext(TreeContext);
   const {
     accessibility,
     children,
@@ -125,6 +129,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         e.stopPropagation();
         handleClick(e);
       },
+      focusParent: e => {
+        // allow bubbling up to parent treeItem
+        onFocusParent(props.parent);
+      },
       performSelection: e => {
         e.preventDefault();
         e.stopPropagation();
@@ -141,6 +149,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     }),
     rtl: context.rtl,
   });
+
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: treeTitleClassName,
     mapPropsToStyles: () => ({
@@ -210,6 +219,7 @@ TreeTitle.propTypes = {
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,
+  parent: PropTypes.string,
 };
 TreeTitle.defaultProps = {
   as: 'a',

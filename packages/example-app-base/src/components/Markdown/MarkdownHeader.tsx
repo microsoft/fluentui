@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  styled,
-  IStyleFunction,
-} from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
+import { classNamesFunction, IStyleFunctionOrObject, styled, IStyleFunction } from '@fluentui/react/lib/Utilities';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { FontSizes, NeutralColors } from '@fluentui/theme';
 
 /**
  * The component props.

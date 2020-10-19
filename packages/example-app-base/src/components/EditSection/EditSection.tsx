@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IEditSectionProps, IEditSectionStyleProps, IEditSectionStyles } from './EditSection.types';
-import { IconButton, TooltipHost } from 'office-ui-fabric-react';
-import { IStyleFunction, classNamesFunction, styled, css } from 'office-ui-fabric-react/lib/Utilities';
+import { IconButton, TooltipHost } from '@fluentui/react';
+import { IStyleFunction, classNamesFunction, styled, css } from '@fluentui/react/lib/Utilities';
 
 const getStyles: IStyleFunction<IEditSectionStyleProps, IEditSectionStyles> = () => ({});
 

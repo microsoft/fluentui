@@ -1,1 +1,1 @@
-export * from './components/DatePicker';
+export * from './components/DatePicker/index';

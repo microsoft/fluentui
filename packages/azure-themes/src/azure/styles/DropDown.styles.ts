@@ -1,4 +1,4 @@
-import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownStyleProps, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
 

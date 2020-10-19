@@ -8,8 +8,8 @@ import {
   IRawStyle,
   keyframes,
   HighContrastSelector,
-} from '@uifabric/styling';
-import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+} from '@fluentui/style-utilities';
+import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 
 const GlobalClassNames = {

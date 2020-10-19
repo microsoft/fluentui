@@ -6,7 +6,7 @@ export const config: BeachballConfig = {
   groups: [
     {
       name: 'Fluent UI React',
-      include: ['packages/office-ui-fabric-react', 'packages/react'],
+      include: ['packages/react', 'packages/react'],
       disallowedChangeTypes: ['major'],
     },
   ],

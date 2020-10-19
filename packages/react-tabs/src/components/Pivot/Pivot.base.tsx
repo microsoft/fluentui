@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { useControllableValue, useId } from '@uifabric/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
 import {
@@ -11,7 +10,7 @@ import {
   Icon,
   IContextualMenuProps,
   IFocusZone,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react-internal';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
 
@@ -66,13 +65,18 @@ const isPivotItem = (item: React.ReactNode): item is PivotItem => {
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
   (props, ref) => {
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
-    const pivotId: string = useId('Pivot');
-    let linkCollection = getLinkItems(props, pivotId);
     const focusZoneRef = React.useRef<IFocusZone>(null);
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+    const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
+    const pivotId: string = useId('Pivot');
+
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
+
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
+
     let classNames: { [key in keyof IPivotStyles]: string };
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+
+    let linkCollection = getLinkItems(props, pivotId);
 
     React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({
       focus: () => {
@@ -217,12 +221,15 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     );
 
     // The overflow menu starts empty and items[] is updated as the overflow items change
-    const overflowMenuProps: IContextualMenuProps = {
-      items: [],
-      doNotLayer: true,
-      alignTargetEdge: true,
-      directionalHint: DirectionalHint.bottomRightEdge,
-    };
+    const overflowMenuProps: IContextualMenuProps = React.useMemo(
+      () => ({
+        items: [],
+        doNotLayer: true,
+        alignTargetEdge: true,
+        directionalHint: DirectionalHint.bottomRightEdge,
+      }),
+      [],
+    );
 
     const { menuButtonRef: overflowMenuButtonRef } = useOverflow({
       onOverflowItemsChanged: (overflowIndex, elements) => {
@@ -239,15 +246,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       pinnedIndex: renderedSelectedIndex,
     });
 
-    const overflowMenuButtonComponentRef = React.useRef<IButton>();
-    const setOverflowMenuButtonRef = React.useCallback(
-      (button: React.Component | null) => {
-        const node = ReactDOM.findDOMNode(button);
-        overflowMenuButtonRef(node instanceof HTMLElement ? node : null);
-      },
-      [overflowMenuButtonRef],
-    );
-
     return (
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
@@ -259,9 +257,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {items}
           {overflowBehavior === 'menu' && (
             <CommandButton
-              className={classNames.overflowMenuButton}
-              ref={setOverflowMenuButtonRef}
-              componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
+              className={css(classNames.link, classNames.overflowMenuButton)}
+              elementRef={overflowMenuButtonRef}
+              componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
             />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getRTL, classNamesFunction } from '@uifabric/utilities';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import {
   getDateRangeArray,
   getDayGrid,
@@ -11,7 +11,7 @@ import {
   compareDates,
 } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@uifabric/styling';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { usePrevious, useId } from '@uifabric/react-hooks';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';

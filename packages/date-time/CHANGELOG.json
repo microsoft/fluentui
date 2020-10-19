@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/date-time_v7.17.15",
+      "version": "7.17.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2020 00:46:56 GMT",
       "tag": "@uifabric/date-time_v7.17.14",
       "version": "7.17.14",

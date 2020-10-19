@@ -9,14 +9,13 @@ const { findGitRoot } = require('../monorepo/index');
 function lintFiles() {
   const gitRoot = findGitRoot();
 
-  const exampleFiles = glob.sync(
-    'packages/{office-ui-fabric-react,react-cards,react-focus,react-next}/src/components/__snapshots__/*',
-    { cwd: gitRoot },
-  );
+  const exampleFiles = glob.sync('packages/{react,react-cards,react-focus,react-next}/src/components/__snapshots__/*', {
+    cwd: gitRoot,
+  });
   if (exampleFiles.length) {
     console.error(
       '\nComponent example snapshot tests have moved. Please delete the following files and re-generate them ' +
-        +'by running `yarn update-snapshots` from within `packages/examples`:',
+        +'by running `yarn update-snapshots` from within `packages/react-examples`:',
     );
     for (const file of exampleFiles) {
       console.error('  ' + file);

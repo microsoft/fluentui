@@ -1,4 +1,4 @@
-import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { ITheme, IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 import { IPlatformPickerProps } from '../PlatformPicker/index';
 
 export interface IPlatformBarProps<TPlatforms extends string = string> extends IPlatformPickerProps {

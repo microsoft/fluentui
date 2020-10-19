@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Async,
-  css,
-  memoizeFunction,
-  Shimmer,
-  ShimmerElementType as ElementType,
-  mergeStyles,
-} from 'office-ui-fabric-react';
+import { Async, css, memoizeFunction, Shimmer, ShimmerElementType as ElementType, mergeStyles } from '@fluentui/react';
 import { Page, IPageSectionProps } from '../Page/index';
 import { ILoadingComponentProps } from './LoadingComponent.types';
 

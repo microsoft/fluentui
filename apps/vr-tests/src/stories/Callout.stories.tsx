@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { Callout, DirectionalHint, ICalloutProps } from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 
 const calloutContent = (
   <p className="ms-CalloutExample-subText" id="callout-description-1">

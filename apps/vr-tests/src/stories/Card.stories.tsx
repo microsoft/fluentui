@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities';
-import { Button, IButtonStyles, IButtonTokens } from '@uifabric/experiments';
+import { FabricDecoratorFullWidth } from '../utilities/index';
+import { Button, IButtonStyles, IButtonTokens } from '@fluentui/react-experiments';
 import {
   Card,
   ICardStyles,
@@ -24,7 +23,7 @@ import {
   Stack,
   Text,
   ITextStyles,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const cardClicked = (): void => {
   /** no-impl **/

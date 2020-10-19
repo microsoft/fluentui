@@ -9,7 +9,7 @@ import {
   ChoiceGroup,
   DefaultButton,
   PersonaCoin,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const ToggleStrings = {
   onText: 'On',
@@ -29,9 +29,10 @@ const TodoApp = () => {
       <Checkbox label="I am a Checkbox" disabled />
       <Checkbox label="I am a Checkbox" checked />
       <ChoiceGroup
+        defaultSelectedKey="2"
         options={[
           { key: '1', text: 'ChoiceGroup option 1' },
-          { key: '2', text: 'ChoiceGroup option 2', checked: true },
+          { key: '2', text: 'ChoiceGroup option 2' },
         ]}
       />
       <ProgressIndicator percentComplete={0.5} />

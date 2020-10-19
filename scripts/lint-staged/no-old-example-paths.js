@@ -3,7 +3,7 @@
 
 const files = process.argv.slice(2);
 
-console.error('\nPlease move the following files to the appropriate locations under packages/examples:');
+console.error('\nPlease move the following files to the appropriate locations under packages/react-examples:');
 for (const file of files) {
   console.error('  ' + file);
 }

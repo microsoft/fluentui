@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ITheme, FabricSlots, IThemeRules } from 'office-ui-fabric-react';
+import { ITheme, FabricSlots, IThemeRules } from '@fluentui/react';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { TitleText } from '../shared/Typography';
-import { Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Pivot, PivotItem } from '@fluentui/react';
 import { FabricPalette } from './FabricPalette';
 import { SemanticSlots } from './SemanticSlots';
-import { IColor } from 'office-ui-fabric-react/lib/Color';
+import { IColor } from '@fluentui/react/lib/Color';
 
 export interface IThemeSlotsProps {
   theme?: ITheme;

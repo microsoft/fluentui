@@ -1,4 +1,4 @@
-import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsColumnStyles, IDetailsColumnStyleProps } from '@fluentui/react/lib/DetailsList';
 
 export const DetailsColumnStyles = (props: IDetailsColumnStyleProps): Partial<IDetailsColumnStyles> => {
   const { theme } = props;

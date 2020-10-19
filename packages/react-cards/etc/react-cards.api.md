@@ -4,17 +4,17 @@
 
 ```ts
 
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentStyles } from '@uifabric/foundation';
 import { ISlotProp } from '@uifabric/foundation';
-import { IStackItemProps } from 'office-ui-fabric-react/lib/Stack';
-import { IStackItemSlots } from 'office-ui-fabric-react/lib/Stack';
-import { IStackItemTokens } from 'office-ui-fabric-react/lib/Stack';
-import { IStackProps } from 'office-ui-fabric-react/lib/Stack';
-import { IStackSlot } from 'office-ui-fabric-react/lib/Stack';
-import { IStackSlots } from 'office-ui-fabric-react/lib/Stack';
-import { IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { IStackItemProps } from '@fluentui/react/lib/Stack';
+import { IStackItemSlots } from '@fluentui/react/lib/Stack';
+import { IStackItemTokens } from '@fluentui/react/lib/Stack';
+import { IStackProps } from '@fluentui/react/lib/Stack';
+import { IStackSlot } from '@fluentui/react/lib/Stack';
+import { IStackSlots } from '@fluentui/react/lib/Stack';
+import { IStackTokens } from '@fluentui/react/lib/Stack';
 import { IStyleableComponentProps } from '@uifabric/foundation';
 import * as React from 'react';
 

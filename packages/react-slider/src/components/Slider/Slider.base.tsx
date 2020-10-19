@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusRects } from '@uifabric/utilities';
 import { ISliderProps } from './Slider.types';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '@fluentui/react-internal/lib/Label';
 import { useSlider } from './useSlider';
 import { useWarnings } from '@uifabric/react-hooks';
 

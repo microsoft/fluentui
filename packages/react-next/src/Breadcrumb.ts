@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Breadcrumb/index';
+export * from '@fluentui/react/lib/Breadcrumb';

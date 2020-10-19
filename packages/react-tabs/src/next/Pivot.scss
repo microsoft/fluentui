@@ -1,8 +1,8 @@
-@import '~@fluentui/common-styles/dist/sass/themeCssVariables';
-@import '~@fluentui/common-styles/dist/sass/constants';
-@import '~@fluentui/common-styles/dist/sass/highContrast';
-@import '~@fluentui/common-styles/dist/sass/focusBorder';
-@import '~@fluentui/common-styles/dist/sass/common';
+@import '~@fluentui/common-styles/src/themeCssVariables';
+@import '~@fluentui/common-styles/src/constants';
+@import '~@fluentui/common-styles/src/highContrast';
+@import '~@fluentui/common-styles/src/focusBorder';
+@import '~@fluentui/common-styles/src/common';
 
 .root {
   @include fonts-medium;
@@ -14,8 +14,7 @@
 
 // Shared styles for tab links and links in the overflow menu
 .link,
-.linkInMenu,
-.overflowMenuButton {
+.linkInMenu {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
   padding: 0 8px;
@@ -69,8 +68,7 @@
 }
 
 // Additional styles for Links NOT in the overflow menu
-.link,
-.overflowMenuButton {
+.link {
   text-align: center;
   display: inline-block;
   line-height: 44px;
@@ -186,9 +184,12 @@
 // The overflow menu button is hidden until there's at least one link in the overflow
 .overflowMenuButton {
   visibility: hidden;
+  position: absolute;
+  right: 0;
 }
-.link[data-is-overflowing='true'] ~ * .overflowMenuButton {
+.link[data-is-overflowing='true'] ~ .overflowMenuButton {
   visibility: visible;
+  position: relative;
 }
 
 .linkContent {

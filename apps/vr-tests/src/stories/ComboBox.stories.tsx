@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWidth } from '../utilities';
-import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from 'office-ui-fabric-react';
+import { FabricDecoratorTallFixedWidth } from '../utilities/index';
+import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
   { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },

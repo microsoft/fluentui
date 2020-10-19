@@ -6,3 +6,6 @@ export * from './spacing/index';
 export * from './motion/index';
 export * from './fonts/index';
 export * from './createTheme';
+export { FluentTheme } from './FluentTheme';
+
+import './version';

@@ -1,5 +1,5 @@
-import { IDialogContentStyleProps, IDialogContentStyles } from 'office-ui-fabric-react/lib/Dialog';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { IDialogContentStyleProps, IDialogContentStyles } from '@fluentui/react/lib/Dialog';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme, isMultiline, isLargeHeader } = props;

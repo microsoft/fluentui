@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Icon } from 'office-ui-fabric-react';
+import { css, Icon } from '@fluentui/react';
 import { IVideoProps } from './Video.types';
 import * as styles from './Video.module.scss';
 

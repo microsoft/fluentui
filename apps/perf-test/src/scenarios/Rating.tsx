@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rating } from 'office-ui-fabric-react';
+import { Rating } from '@fluentui/react';
 
 const Scenario = () => <Rating />;
 

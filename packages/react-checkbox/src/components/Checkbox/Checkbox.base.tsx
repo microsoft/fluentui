@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { useFocusRects, classNamesFunction } from '@uifabric/utilities';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react-internal/lib/Icon';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { registerIcons, IIconOptions } from '@uifabric/styling';
+import { registerIcons, IIconOptions } from '@fluentui/style-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
 
 const PNG_SUFFIX = '_png';

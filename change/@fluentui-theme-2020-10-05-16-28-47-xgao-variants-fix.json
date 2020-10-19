@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix ParitalTheme typing.",
+  "packageName": "@fluentui/theme",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-05T23:28:47.487Z"
+}

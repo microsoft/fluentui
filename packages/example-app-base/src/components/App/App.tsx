@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled, Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, css, styled, Customizer } from '@fluentui/react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getStyles } from './App.styles';
 import { Header } from '../Header/Header';
-import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { INavLink, Nav } from '@fluentui/react/lib/Nav';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import {
+  ResponsiveMode,
+  withResponsiveMode,
+} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { showOnlyExamples } from '../../utilities/showOnlyExamples';
 import { getQueryParam } from '../../utilities/index2';
 

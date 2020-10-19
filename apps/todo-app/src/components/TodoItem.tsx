@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { css } from '@fluentui/react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
 import * as stylesImport from './Todo.scss';

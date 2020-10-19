@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { FabricSlots, IThemeRules } from '@fluentui/react/lib/ThemeGenerator';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { Text } from 'office-ui-fabric-react';
-import { IColor } from 'office-ui-fabric-react/lib/Color';
+import { Text } from '@fluentui/react';
+import { IColor } from '@fluentui/react/lib/Color';
 import { FabricSlotWidget } from './FabricSlotWidget';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 export interface IFabricPaletteProps {
   themeRules?: IThemeRules;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ICustomizations } from 'office-ui-fabric-react';
+import { ICustomizations } from '@fluentui/react';
 
 export interface IExampleCardCustomizations {
   /**

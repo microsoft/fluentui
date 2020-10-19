@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/Dialog';
+export * from '@fluentui/react/lib/Dialog';

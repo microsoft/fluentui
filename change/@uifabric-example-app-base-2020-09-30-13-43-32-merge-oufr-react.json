@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Rename office-ui-fabric-react package and update references",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-09-30T20:43:04.271Z"
+}

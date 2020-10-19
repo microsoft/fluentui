@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps, IKeytipProps } from 'office-ui-fabric-react';
+import { IButtonProps, IKeytipProps } from '@fluentui/react-internal';
 import { IRefObject, IRenderFunction } from '@uifabric/utilities';
 
 /**

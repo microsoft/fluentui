@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove same-package path aliases",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-22T22:12:33.277Z"
-}

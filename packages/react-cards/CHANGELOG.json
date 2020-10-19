@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/react-cards_v0.113.2",
+      "version": "0.113.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@uifabric/react-cards_v0.113.0",
       "version": "0.113.0",

@@ -1,6 +1,6 @@
 import { CalendarDayGridBase } from './CalendarDayGrid.base';
 import { styles } from './CalendarDayGrid.styles';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react-internal/lib/Utilities';
 
 /**
  * CalendarDayGrid description

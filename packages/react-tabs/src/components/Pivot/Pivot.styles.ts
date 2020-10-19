@@ -6,7 +6,7 @@ import {
   IStyle,
   normalize,
   FontWeights,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const globalClassNames = {
@@ -198,19 +198,19 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       {
         [`&[data-is-overflowing='true']`]: {
           display: 'none',
-          selectors: {
-            [`~ * .${classNames.overflowMenuButton}`]: {
-              visibility: 'visible',
-            },
-          },
         },
       },
     ],
     overflowMenuButton: [
       classNames.overflowMenuButton,
-      ...getLinkStyles(props, classNames),
       {
         visibility: 'hidden',
+        position: 'absolute',
+        right: 0,
+        [`.${classNames.link}[data-is-overflowing='true'] ~ &`]: {
+          visibility: 'visible',
+          position: 'relative',
+        },
       },
     ],
     linkInMenu: [

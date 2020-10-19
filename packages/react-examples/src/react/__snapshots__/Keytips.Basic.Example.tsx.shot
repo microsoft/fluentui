@@ -1,0 +1,1225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content are shown.
+  </p>
+  <div
+    role="toolbar"
+  >
+    <div
+      className=
+          ms-FocusZone
+          ms-Pivot
+          &:focus {
+            outline: none;
+          }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            white-space: nowrap;
+          }
+      data-focuszone-id="FocusZone1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="tablist"
+    >
+      <button
+        aria-describedby="ktp-layer-id ktp-a"
+        aria-selected={true}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            is-selected
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+            &:before {
+              background-color: #0078d4;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            &[data-is-overflowing='true'] {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              background-color: Highlight;
+            }
+            &:hover::before {
+              left: 0px;
+              right: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: Highlight;
+            }
+        data-content="Pivot 1"
+        data-is-focusable={true}
+        data-ktp-execute-target="ktp-a"
+        data-ktp-target="ktp-a"
+        id="Pivot0-Tab0"
+        name="Pivot 1"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+                {
+                  flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
+          >
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Pivot 1
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        aria-describedby="ktp-layer-id ktp-b"
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            &[data-is-overflowing='true'] {
+              display: none;
+            }
+        data-content="Pivot 2"
+        data-is-focusable={true}
+        data-ktp-execute-target="ktp-b"
+        data-ktp-target="ktp-b"
+        id="Pivot0-Tab1"
+        name="Pivot 2"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+                {
+                  flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
+          >
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Pivot 2
+            </span>
+          </span>
+        </span>
+      </button>
+      <button
+        aria-describedby="ktp-layer-id ktp-c"
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #323130;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 44px;
+              line-height: 44px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 2px;
+              content: attr(data-content);
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: relative;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #605e5c;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            &[data-is-overflowing='true'] {
+              display: none;
+            }
+        data-content="Pivot 3"
+        data-is-focusable={true}
+        data-ktp-execute-target="ktp-c"
+        data-ktp-target="ktp-c"
+        id="Pivot0-Tab2"
+        name="Pivot 3"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+                {
+                  flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
+          >
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Pivot 3
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      aria-hidden={false}
+      aria-labelledby="Pivot0-Tab0"
+      className=
+
+          &[hidden] {
+            display: none;
+          }
+      hidden={false}
+      role="tabpanel"
+    >
+      <div
+        style={
+          Object {
+            "paddingTop": 20,
+            "width": 500,
+          }
+        }
+      >
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-top: 20px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 1;
+              }
+        >
+          <div
+            className=
+
+                {
+                  font-size: 14px;
+                  max-width: 200px;
+                  min-width: 86px;
+                  outline: none;
+                  width: 100%;
+                }
+          >
+            <div
+              className=
+
+                  {
+                    align-items: center;
+                    display: inline-flex;
+                    float: left;
+                    height: 32px;
+                    margin-right: 10px;
+                  }
+            >
+              <label
+                className=
+                    ms-Label
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 600;
+                      line-height: 20px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      overflow-wrap: break-word;
+                      padding-bottom: 5px;
+                      padding-left: 0;
+                      padding-right: 0;
+                      padding-top: 5px;
+                      pointer-events: none;
+                      word-wrap: break-word;
+                    }
+                htmlFor="input11"
+                id="Label12"
+              >
+                Spin Button
+              </label>
+            </div>
+            <div
+              className=
+
+                  {
+                    box-sizing: border-box;
+                    display: flex;
+                    height: 32px;
+                    min-width: 86px;
+                    position: relative;
+                  }
+                  &:after {
+                    border-color: #605e5c;
+                    border-radius: 2px;
+                    border-style: solid;
+                    border-width: 1px;
+                    bottom: 0px;
+                    content: '';
+                    left: 0px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
+                  &:hover:after {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover:after {
+                    border-color: Highlight;
+                  }
+              data-ktp-target="ktp-a-3"
+            >
+              <input
+                aria-describedby="ktp-layer-id ktp-a-3"
+                aria-disabled={false}
+                aria-labelledby="Label12"
+                aria-valuemax={100}
+                aria-valuemin={0}
+                aria-valuenow={0}
+                autoComplete="off"
+                className=
+                    ms-spinButton-input
+                    {
+                      background-color: #ffffff;
+                      border-radius: 2px 0 0 2px;
+                      border-style: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      cursor: text;
+                      display: block;
+                      flex: 1;
+                      font-family: inherit;
+                      font-size: 14px;
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 61px;
+                      outline: 0px;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 9px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      user-select: text;
+                      white-space: nowrap;
+                    }
+                    &::selection {
+                      background-color: #0078d4;
+                      color: #ffffff;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::selection {
+                      background-color: Highlight;
+                      border-color: Highlight;
+                      color: HighlightText;
+                    }
+                data-ktp-execute-target="ktp-a-3"
+                data-lpignore={true}
+                disabled={false}
+                id="input11"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                role="spinbutton"
+                type="text"
+                value="0"
+              />
+              <span
+                className=
+
+                    {
+                      cursor: default;
+                      display: block;
+                      height: 100%;
+                    }
+              >
+                <button
+                  className=
+                      ms-Button
+                      ms-Button--icon
+                      ms-UpButton
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: transparent;
+                        border-radius: 2px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #605e5c;
+                        cursor: default;
+                        display: block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 50%;
+                        outline: none;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
+                        width: 23px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 2px;
+                        content: "";
+                        left: 2px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 2px;
+                        top: 2px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      &.ms-DownButton {
+                        border-radius: 0 0 2px 0;
+                      }
+                      &.ms-UpButton {
+                        border-radius: 0 2px 0 0;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                        color: Highlight;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:active {
+                        background-color: Highlight;
+                        color: HighlightText;
+                      }
+                  data-is-focusable={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  tabIndex={-1}
+                  type="button"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons-2";
+                            font-style: normal;
+                            font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 8px;
+                            height: 16px;
+                            line-height: 16px;
+                            margin-bottom: 0px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            margin-top: 0px;
+                            text-align: center;
+                          }
+                      data-icon-name="ChevronUpSmall"
+                      role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                        }
+                      }
+                    >
+                      
+                    </i>
+                  </span>
+                </button>
+                <button
+                  className=
+                      ms-Button
+                      ms-Button--icon
+                      ms-DownButton
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: transparent;
+                        border-radius: 2px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #605e5c;
+                        cursor: default;
+                        display: block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 50%;
+                        outline: none;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
+                        width: 23px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 2px;
+                        content: "";
+                        left: 2px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 2px;
+                        top: 2px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      &.ms-DownButton {
+                        border-radius: 0 0 2px 0;
+                      }
+                      &.ms-UpButton {
+                        border-radius: 0 2px 0 0;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                        color: Highlight;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:active {
+                        background-color: Highlight;
+                        color: HighlightText;
+                      }
+                  data-is-focusable={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  tabIndex={-1}
+                  type="button"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons-3";
+                            font-style: normal;
+                            font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 8px;
+                            height: 16px;
+                            line-height: 16px;
+                            margin-bottom: 0px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            margin-top: 0px;
+                            text-align: center;
+                          }
+                      data-icon-name="ChevronDownSmall"
+                      role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                        }
+                      }
+                    >
+                      
+                    </i>
+                  </span>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div
+            className=
+                ms-Toggle
+                is-enabled
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-bottom: 8px;
+                }
+          >
+            <div
+              className=
+                  ms-Toggle-innerContainer
+                  {
+                    display: inline-flex;
+                    position: relative;
+                  }
+            >
+              <button
+                aria-checked={false}
+                aria-labelledby="Toggle19-stateText"
+                className=
+                    ms-Toggle-background
+                    {
+                      align-items: center;
+                      background: #ffffff;
+                      border-radius: 10px;
+                      border: 1px solid #605e5c;
+                      box-sizing: border-box;
+                      cursor: pointer;
+                      display: flex;
+                      font-size: 20px;
+                      height: 20px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 3px;
+                      padding-right: 3px;
+                      padding-top: 0;
+                      position: relative;
+                      transition: all 0.1s ease;
+                      width: 40px;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: -2px;
+                      content: "";
+                      left: -2px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: -2px;
+                      top: -2px;
+                      z-index: 1;
+                    }
+                    &:hover {
+                      border-color: #323130;
+                    }
+                    &:hover .ms-Toggle-thumb {
+                      background-color: #201f1e;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                      border-color: Highlight;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                    }
+                data-is-focusable={true}
+                data-ktp-target={true}
+                id="Toggle19"
+                onClick={[Function]}
+                role="switch"
+                type="button"
+              >
+                <span
+                  className=
+                      ms-Toggle-thumb
+                      {
+                        background-color: #605e5c;
+                        border-color: transparent;
+                        border-radius: 50%;
+                        border-style: solid;
+                        border-width: 6px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 12px;
+                        transition: all 0.1s ease;
+                        width: 12px;
+                      }
+                />
+              </button>
+              <label
+                className=
+                    ms-Label
+                    ms-Toggle-stateText
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 600;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      overflow-wrap: break-word;
+                      padding-bottom: 5px;
+                      padding-left: 0;
+                      padding-right: 0;
+                      padding-top: 5px;
+                      word-wrap: break-word;
+                    }
+                    && {
+                      font-weight: 400;
+                      margin-bottom: 0;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 0;
+                      padding-bottom: 0;
+                      padding-left: 0;
+                      padding-right: 0;
+                      padding-top: 0;
+                      user-select: none;
+                    }
+                htmlFor="Toggle19"
+                id="Toggle19-stateText"
+              >
+                No
+              </label>
+            </div>
+          </div>
+          <span>
+            Go to
+             
+            <a
+              className=
+                  ms-Link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #0078d4;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: inherit;
+                    font-weight: inherit;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
+                    border-bottom: none;
+                  }
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active {
+                    color: LinkText;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: LinkText;
+                  }
+                  &:active:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                    color: LinkText;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus {
+                    color: LinkText;
+                  }
+              href="http://www.bing.com"
+              onClick={[Function]}
+              target="_blank"
+            >
+              Bing
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

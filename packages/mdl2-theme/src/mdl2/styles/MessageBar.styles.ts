@@ -1,4 +1,4 @@
-import { IMessageBarStyles, IMessageBarStyleProps } from 'office-ui-fabric-react/lib/MessageBar';
+import { IMessageBarStyles, IMessageBarStyleProps } from '@fluentui/react/lib/MessageBar';
 
 export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessageBarStyles> => {
   return {

@@ -1,4 +1,4 @@
-import { ITheme, IStyleFunctionOrObject, IStyle } from 'office-ui-fabric-react';
+import { ITheme, IStyleFunctionOrObject, IStyle } from '@fluentui/react';
 
 export interface ISideRailProps {
   /**

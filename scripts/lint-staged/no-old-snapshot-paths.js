@@ -5,7 +5,7 @@ const files = process.argv.slice(2);
 
 console.error(
   '\nComponent example snapshot tests have moved. Please delete the following files and re-generate them ' +
-    +'by running `yarn update-snapshots` from within `packages/examples`:',
+    +'by running `yarn update-snapshots` from within `packages/react-examples`:',
 );
 for (const file of files) {
   console.error('  ' + file);

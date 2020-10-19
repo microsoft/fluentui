@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { mergeStyleSets } from 'office-ui-fabric-react';
+import { mergeStyleSets } from '@fluentui/react';
 import CustomScrollBars from 'react-custom-scrollbars';
 import { IScrollBarsProps } from './ScrollBars.types';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors } from '@fluentui/theme';
 
 const styles = mergeStyleSets({
   thumb: { background: NeutralColors.gray60 },

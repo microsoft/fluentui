@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { IPageHeaderProps, IPageHeaderStyleProps, IPageHeaderStyles } from './PageHeader.types';
-import {
-  css,
-  ScreenWidthMinUhfMobile,
-  FontWeights,
-  IStyleFunction,
-  classNamesFunction,
-  styled,
-} from 'office-ui-fabric-react';
-import { FontSizes } from '@uifabric/fluent-theme';
+import { css, ScreenWidthMinUhfMobile, FontWeights, IStyleFunction, classNamesFunction, styled } from '@fluentui/react';
+import { FontSizes } from '@fluentui/theme';
 import { appPaddingSm, appPaddingLg, pageHeaderFullHeight } from '../../styles/constants';
 
 const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {

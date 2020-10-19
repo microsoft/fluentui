@@ -1,0 +1,24 @@
+@import '~@fluentui/common-styles/src/common';
+
+.signalField {
+  &,
+  &.compact {
+    display: inline-flex;
+  }
+
+  &.wide {
+    display: flex;
+    vertical-align: top;
+  }
+
+  max-width: 100%;
+  flex-direction: row nowrap;
+}
+
+.signalFieldValue {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  @include text-align(left);
+  flex: 1 1 auto;
+}

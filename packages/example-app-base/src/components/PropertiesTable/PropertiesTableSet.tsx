@@ -7,7 +7,7 @@ import {
   IPropertiesTableSetStyles,
 } from './PropertiesTableSet.types';
 import { getStyles } from './PropertiesTableSet.styles';
-import { styled } from 'office-ui-fabric-react/lib/Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 
 const PropertiesTableSetBase: React.FunctionComponent<IPropertiesTableSetProps> = props => {
   const { componentName, componentPath, sources } = props;

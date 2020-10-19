@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles, getTheme } from '@fluentui/react/lib/Styling';
 import {
   DetailsList,
   DetailsRow,
@@ -8,12 +8,12 @@ import {
   DetailsListLayoutMode,
   IColumn,
   ColumnActionsMode,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
-import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
+} from '@fluentui/react/lib/DetailsList';
+import { Link } from '@fluentui/react/lib/Link';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Text, ITextStyles } from '@fluentui/react/lib/Text';
+import { ILinkToken } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { useConst } from '@uifabric/react-hooks';
 import {
   IApiInterfaceProperty,

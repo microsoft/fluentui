@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -10,7 +9,7 @@ import {
   NormalPeoplePicker,
   IPersonaProps,
   PersonaPresence,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { TestImages } from '@uifabric/example-data';
 
@@ -131,7 +130,8 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addStory('Normal disabled', () => (

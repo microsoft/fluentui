@@ -1,3 +1,3 @@
 export * from './AnimationDetail/index';
-export * from './AnimationDetailGrid';
-export * from './AnimationExample';
+export * from './AnimationDetailGrid/index';
+export * from './AnimationExample/index';

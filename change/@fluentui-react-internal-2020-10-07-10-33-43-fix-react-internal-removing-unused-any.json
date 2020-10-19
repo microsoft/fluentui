@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Removing unused eslint-disable-next-line no-explicit-any rules from TextField.test.tsx",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T17:33:42.991Z"
+}

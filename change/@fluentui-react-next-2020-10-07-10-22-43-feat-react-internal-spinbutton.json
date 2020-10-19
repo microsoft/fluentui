@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving react-next SpinButton to react-internal.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T17:22:43.410Z"
+}

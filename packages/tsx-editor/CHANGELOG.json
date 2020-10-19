@@ -2,6 +2,21 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/tsx-editor_v0.13.17",
+      "version": "0.13.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Aug 2020 07:58:00 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.131",
       "version": "0.11.131",

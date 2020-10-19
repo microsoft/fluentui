@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { getRTL, setRTL, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { getRTL, setRTL, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 import { IHeaderProps, IHeaderStyleProps, IHeaderStyles } from './Header.types';
 import { getStyles } from './Header.styles';

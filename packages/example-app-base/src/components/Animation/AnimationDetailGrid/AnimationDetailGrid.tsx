@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyleSets } from 'office-ui-fabric-react';
+import { mergeStyleSets } from '@fluentui/react';
 import { IAnimationDetailGridProps } from './AnimationDetailGrid.types';
 
 const styles = mergeStyleSets({

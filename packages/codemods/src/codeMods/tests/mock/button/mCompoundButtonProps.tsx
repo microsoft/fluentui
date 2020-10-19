@@ -1,4 +1,5 @@
 import * as React from 'react';
+// @ts-ignore
 import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
 
 export class RenderButton extends React.Component<LocalButtonProps> {

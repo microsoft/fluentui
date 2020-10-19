@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-data
 
-This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-data_v7.1.5)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-data_v7.1.4..@uifabric/example-data_v7.1.5)
+
+### Patches
+
+- Using getResolveAlias for webpack config. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-data_v7.1.0)
 

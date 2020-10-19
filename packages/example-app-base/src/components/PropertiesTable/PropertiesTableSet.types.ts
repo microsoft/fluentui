@@ -1,6 +1,6 @@
-import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDetailsListStyleProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IDetailsListStyleProps } from '@fluentui/react/lib/DetailsList';
 
 export interface IPropertiesTableSetProps {
   /**

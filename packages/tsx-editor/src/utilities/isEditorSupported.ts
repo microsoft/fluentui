@@ -1,4 +1,4 @@
-import { getWindow, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
+import { getWindow, isIE11 } from '@fluentui/react/lib/Utilities';
 import { isConfigAvailable } from '@uifabric/monaco-editor/lib/configureEnvironment';
 import { isExampleValid } from '../transpiler/exampleParser';
 import { getSetting } from './settings';

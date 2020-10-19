@@ -1,4 +1,4 @@
-import { IFacepileStyleProps, IFacepileStyles } from 'office-ui-fabric-react/lib/Facepile';
+import { IFacepileStyleProps, IFacepileStyles } from '@fluentui/react/lib/Facepile';
 
 export const FacepileStyles = (props: IFacepileStyleProps): Partial<IFacepileStyles> => {
   const { theme } = props;

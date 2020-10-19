@@ -1,6 +1,6 @@
 import { Props, TestFacade } from '../types';
-
-import { SlotRule, Rule } from '@fluentui/a11y-rules';
+import { Rule } from './../types';
+import { SlotRule } from './../rules/rules';
 
 export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void => {
   const slot = rule.getData();

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { ActionButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Text } from '@fluentui/react/lib/Text';
 import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';
 import {
   IApiReferencesTableProps,
@@ -9,7 +9,7 @@ import {
   IMethod,
   IApiReferencesTableSetProps,
 } from './ApiReferencesTableSet.types';
-import { ITableRowJson, IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ITableRowJson, IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
 import { getTokenResolver } from './tokenResolver';

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.3..@uifabric/azure-themes_v7.5.17)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
 

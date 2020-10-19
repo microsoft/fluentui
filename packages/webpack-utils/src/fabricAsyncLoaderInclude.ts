@@ -5,5 +5,5 @@
  * @param input Webpack loader include function provides the request as input
  */
 export = (input: string) =>
-  input.match(/office-ui-fabric-react[\\/]lib[\\/]components[\\/]ContextualMenu[\\/]ContextualMenu.js/) ||
-  input.match(/office-ui-fabric-react[\\/]lib[\\/]components[\\/]Callout[\\/]Callout.js/);
+  input.match(/@fluentui[\\/]react-internal[\\/]lib[\\/]components[\\/]ContextualMenu[\\/]ContextualMenu.js/) ||
+  input.match(/@fluentui[\\/]react-internal[\\/]lib[\\/]components[\\/]Callout[\\/]Callout.js/);

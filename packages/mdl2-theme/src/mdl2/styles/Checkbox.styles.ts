@@ -1,4 +1,4 @@
-import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxStyleProps, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme } = props;

@@ -2,6 +2,48 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/theme_v1.2.1",
+      "version": "1.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disable pointer-events during slide animations",
+            "author": "behowell@microsoft.com",
+            "commit": "730f0fc071f468fe6b3f552649b342f0131e3d25",
+            "package": "@fluentui/theme"
+          },
+          {
+            "comment": "Add FluentTheme and Depths exports.",
+            "author": "xgao@microsoft.com",
+            "commit": "369c7a1f7f9a4b6a8379eece7b4812e5e0675ebb",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/theme_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move AnimationStyles code from styling package to theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "7f1767d9469a917dcea9dbe3142c8fef3a36b8ad",
+            "package": "@fluentui/theme"
+          },
+          {
+            "comment": "Move createTheme from styling to theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "74e9fef29a1571489b8d46361dc503872d00d56d",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@fluentui/theme_v1.1.0",
       "version": "1.1.0",

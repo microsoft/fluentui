@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -15,7 +15,8 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "es2015.promise"],
+    "skipLibCheck": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global"]
   },
