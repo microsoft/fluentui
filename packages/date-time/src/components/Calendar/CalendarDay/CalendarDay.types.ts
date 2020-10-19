@@ -9,10 +9,16 @@ import {
 
 export { ICalendarDayGridStyles };
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDay {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
@@ -111,6 +117,9 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   allFocusable?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -135,6 +144,9 @@ export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
   showWeekNumbers?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayStyles extends Partial<ICalendarDayGridStyles> {
   /**
    * Style for the root element.

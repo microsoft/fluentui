@@ -313,7 +313,7 @@ export const CalendarBase = React.forwardRef(
       today = new Date(),
     } = props;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
-    const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
+    const overlaidWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     const classes = getClassNames(styles, {
       theme: theme!,
@@ -322,7 +322,8 @@ export const CalendarBase = React.forwardRef(
       isDayPickerVisible: isDayPickerVisible,
       monthPickerOnly: monthPickerOnly,
       showMonthPickerAsOverlay: showMonthPickerAsOverlay,
-      overlayedWithButton: overlayedWithButton,
+      overlaidWithButton: overlaidWithButton,
+      overlayedWithButton: overlaidWithButton,
       showGoToToday: showGoToToday,
       showWeekNumbers: showWeekNumbers,
     });

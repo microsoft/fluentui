@@ -8,10 +8,16 @@ import {
 import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonth {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   /**
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
@@ -124,6 +130,12 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthStyleProps extends ICalendarPickerStyleProps {}
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthStyles extends ICalendarPickerStyles {}

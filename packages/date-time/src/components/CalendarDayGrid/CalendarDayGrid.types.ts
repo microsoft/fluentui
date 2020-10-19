@@ -10,10 +10,16 @@ import {
 import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGrid {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICalendarDayGrid> {
   /**
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
@@ -185,6 +191,9 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -222,6 +231,9 @@ export interface ICalendarDayGridStyleProps {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridStyles {
   /**
    * The style for the root div

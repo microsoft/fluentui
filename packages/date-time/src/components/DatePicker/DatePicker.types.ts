@@ -194,13 +194,13 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   showGoToToday?: boolean;
 
   /**
-   * Determines if DatePicker has a border.
+   * Determines if the DatePicker has a border.
    * @defaultvalue false
    */
   borderless?: boolean;
 
   /**
-   * Optional Classname for datepicker root element .
+   * Optional CSS class for the DatePicker root element.
    */
   className?: string;
 
@@ -220,7 +220,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   maxDate?: Date;
 
   /**
-   * The initially highlighted date in the calendar picker
+   * The initially highlighted date.
    */
   initialPickerDate?: Date;
 

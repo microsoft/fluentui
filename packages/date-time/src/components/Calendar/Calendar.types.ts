@@ -6,11 +6,17 @@ import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fl
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendar {
   /** Sets focus to the selected date. */
   focus: () => void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
@@ -44,7 +50,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   className?: string;
 
   /**
-   * Callback issued when a date is selected
+   * Callback for when a date is selected
    * @param date - The date the user selected
    * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
    * for the component.
@@ -52,7 +58,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
-   * Callback issued when calendar is closed
+   * Callback for when calendar is closed
    */
   onDismiss?: () => void;
 
@@ -80,8 +86,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   * Defines when the first week of the year should start.
    * @defaultvalue FirstWeekOfYear.FirstDay
    */
   firstWeekOfYear?: FirstWeekOfYear;
@@ -152,8 +157,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showSixWeeksByDefault?: boolean;
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek.
-   * If dateRangeType is not WorkWeek this property does nothing.
+   * The days that are selectable when `dateRangeType` is `WorkWeek`.
+   * If `dateRangeType` is not `WorkWeek` this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
@@ -183,6 +188,9 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   allFocusable?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStrings extends IDateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
@@ -258,6 +266,9 @@ export interface ICalendarStrings extends IDateGridStrings {
   dayMarkedAriaLabel?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarIconStrings {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
@@ -278,6 +289,9 @@ export interface ICalendarIconStrings {
   closeIcon?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates
@@ -300,14 +314,17 @@ export interface ICalendarFormatDateCallbacks {
   formatYear: (date: Date) => string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStyleProps {
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme: ITheme;
 
   /**
-   * Accept custom classNames
+   * Custom CSS class for the calendar.
    */
   className?: string;
 
@@ -327,15 +344,19 @@ export interface ICalendarStyleProps {
   monthPickerOnly?: boolean;
 
   /**
-   * Whether the month picker is overlayed on the day picker
+   * Whether the month picker is overlaid on the day picker
    */
   showMonthPickerAsOverlay?: boolean;
 
   /**
-   * Whether the month and day picker are overlayed and the 'go to today' button
-   * is shown
+   * @deprecated Use `overlaidWithButton`
    */
   overlayedWithButton?: boolean;
+
+  /**
+   * Whether the month and day picker are overlaid and the 'go to today' button is shown
+   */
+  overlaidWithButton?: boolean;
 
   /**
    * Whether the go to today button is shown
@@ -348,6 +369,9 @@ export interface ICalendarStyleProps {
   showWeekNumbers?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStyles {
   /**
    * Style for the root element.
@@ -363,6 +387,9 @@ export interface ICalendarStyles {
   liveRegion: IStyle;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export enum AnimationDirection {
   /**
    * Grid will transition out and in horizontally

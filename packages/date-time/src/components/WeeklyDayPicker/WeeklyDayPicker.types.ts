@@ -13,10 +13,16 @@ import {
   ICalendarDayGridStyles,
 } from '../CalendarDayGrid/CalendarDayGrid.types';
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPicker {
   focus(): void;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
   /**
    * Optional callback to access the IWeeklyDayPicker interface. Use this instead of ref for accessing
@@ -118,6 +124,9 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   weeksToShow?: number;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStrings extends ICalendarStrings {
   /**
    * Aria-label for the "previous week" button in picker.
@@ -130,6 +139,9 @@ export interface IWeeklyDayPickerStrings extends ICalendarStrings {
   nextWeekAriaLabel?: string;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -142,6 +154,9 @@ export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> {
   /**
    * Style for the root element.
