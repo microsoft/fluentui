@@ -52,7 +52,7 @@
     "@fluentui/react-theme-provider": "^0.14.2",
     "@fluentui/theme": "^1.2.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/foundation": "^7.9.9",
+    "@fluentui/foundation-legacy": "^7.9.9",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",

@@ -63,7 +63,7 @@ packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation/ @dzearing @khmakoto
+packages/foundation-legacy/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 packages/merge-styles/ @dzearing
