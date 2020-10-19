@@ -1,4 +1,4 @@
-import { registerIconAlias } from '@uifabric/styling';
+import { registerIconAlias } from '@fluentui/style-utilities';
 
 export const registerIconAliases = () => {
   registerIconAlias('trash', 'delete');

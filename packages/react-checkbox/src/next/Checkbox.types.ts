@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
 import { ISvgIconProps } from '@fluentui/react-icons';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 

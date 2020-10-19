@@ -23,7 +23,6 @@
     "mocha": "^3.3.0",
     "raw-loader": "^0.5.1",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "webpack": "4.43.0"
   },

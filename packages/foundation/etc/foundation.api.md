@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ISchemeNames } from '@uifabric/styling';
-import { IStyle } from '@uifabric/styling';
-import { IStyleSet } from '@uifabric/styling';
-import { ITheme } from '@uifabric/styling';
+import { ISchemeNames } from '@fluentui/style-utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleSet } from '@fluentui/style-utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import { styled as legacyStyled } from '@uifabric/utilities';
 import * as React from 'react';
 

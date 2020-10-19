@@ -1,7 +1,7 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 import { HighContrastSelector } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
-import { hiddenContentStyle } from '@uifabric/styling';
+import { hiddenContentStyle } from '@fluentui/style-utilities';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
   const { className, theme, minSize } = props;
