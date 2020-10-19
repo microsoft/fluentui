@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "scrollable y",
+  "comment": "UnifiedPicker: Scrollable y floating suggestions",
   "packageName": "@fluentui/react-experiments",
   "email": "nebhatna@microsoft.com",
   "dependentChangeType": "patch",
