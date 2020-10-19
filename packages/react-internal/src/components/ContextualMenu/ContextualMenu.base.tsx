@@ -109,7 +109,7 @@ const _getMenuItemStylesFunction = memoizeFunction(
 );
 
 function useVisibility(props: IContextualMenuProps, targetWindow: Window | undefined) {
-  const { hidden = false, onMenuDismissed, onMenuOpened, onDismiss } = props;
+  const { hidden = false, onMenuDismissed, onMenuOpened } = props;
   const previousHidden = usePrevious(hidden);
 
   const onMenuOpenedRef = React.useRef(onMenuOpened);
@@ -128,8 +128,6 @@ function useVisibility(props: IContextualMenuProps, targetWindow: Window | undef
       onMenuOpenedRef.current?.(propsRef.current);
     }
   }, [hidden, previousHidden]);
-
-  useOnEvent(targetWindow, 'resize', ev => onDismiss?.(ev));
 
   // Issue onDismissedCallback on unmount
   React.useEffect(() => () => onMenuClosedRef.current?.(propsRef.current), []);
