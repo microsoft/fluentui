@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme, HighContrastSelector } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme, HighContrastSelector } from '@fluentui/style-utilities';
 import { IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles } from './FloatingSuggestionsItem.types';
 
 const GlobalClassNames = {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '@fluentui/style-utilities';
 import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,

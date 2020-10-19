@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme } from '@fluentui/style-utilities';
 import { IBaseFloatingSuggestionsStyles, IBaseFloatingSuggestionsStylesProps } from './FloatingSuggestions.types';
 
 const GlobalClassNames = {

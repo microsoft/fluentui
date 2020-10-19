@@ -16,11 +16,11 @@ import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IFontStyles } from '@uifabric/styling';
+import { IFontStyles } from '@fluentui/style-utilities';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
-import { IRawStyle } from '@uifabric/styling';
+import { IRawStyle } from '@fluentui/style-utilities';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderComponent } from '@uifabric/utilities';
@@ -29,11 +29,11 @@ import { ISelection } from '@uifabric/utilities';
 import { ISelectionOptions } from '@uifabric/utilities';
 import { ISlotProp } from '@uifabric/foundation';
 import { ISlottableProps } from '@uifabric/foundation';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '@fluentui/style-utilities';
 import { IStyleableComponentProps } from '@uifabric/foundation';
 import { IStyleFunction } from '@uifabric/utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import { KeyCodes } from '@uifabric/utilities';
 import { Point } from '@uifabric/utilities';
 import * as React from 'react';
@@ -7243,9 +7243,9 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 export * from "@fluentui/react-focus";
 export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
 export * from "@uifabric/icons";
-export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:

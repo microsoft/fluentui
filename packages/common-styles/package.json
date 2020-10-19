@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/styling": "^7.16.9"
+    "@fluentui/style-utilities": "^7.16.9"
   }
 }

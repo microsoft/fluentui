@@ -39,7 +39,7 @@
     "@uifabric/date-time": "^7.17.16",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-cards": "^0.113.3",
-    "@uifabric/styling": "^7.16.9",
+    "@fluentui/style-utilities": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",

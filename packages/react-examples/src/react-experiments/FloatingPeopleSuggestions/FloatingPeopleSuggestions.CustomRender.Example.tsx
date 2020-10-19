@@ -52,7 +52,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-import { getGlobalClassNames, getTheme, IStyle } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme, IStyle } from '@fluentui/style-utilities';
 
 interface ISuggestionItemExampleStylesProps {}
 interface ISuggestionItemExampleStyles {
