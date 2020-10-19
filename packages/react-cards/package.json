@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/react-cards",
+  "name": "@fluentui/react-cards",
   "version": "0.113.3",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",

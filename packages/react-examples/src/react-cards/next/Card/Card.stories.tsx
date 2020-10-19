@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards/lib/next/index';
+import { Card } from '@fluentui/react-cards/lib/next/index';
 import * as classes from './Card.stories.scss';
 
 function onClick() {

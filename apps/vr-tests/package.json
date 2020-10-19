@@ -31,7 +31,7 @@
     "@uifabric/date-time": "^7.17.16",
     "@uifabric/example-data": "^7.1.5",
     "@fluentui/react-experiments": "^7.33.1",
-    "@uifabric/react-cards": "^0.113.3",
+    "@fluentui/react-cards": "^0.113.3",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "awesome-typescript-loader": "^3.2.3",
