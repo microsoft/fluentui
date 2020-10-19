@@ -3,7 +3,7 @@ import {
   getFocusStyle,
   FontWeights,
   getEdgeChromiumNoHighContrastAdjustSelector,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;

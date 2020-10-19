@@ -77,8 +77,8 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
               pointer-events: none;
               word-wrap: break-word;
             }
-        htmlFor="input1"
-        id="Label0"
+        htmlFor="input0"
+        id="Label1"
       >
         Basic SpinButton
       </label>
@@ -115,7 +115,7 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
     >
       <input
         aria-disabled={false}
-        aria-labelledby="Label0"
+        aria-labelledby="Label1"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -161,7 +161,7 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
             }
         data-lpignore={true}
         disabled={false}
-        id="input1"
+        id="input0"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}

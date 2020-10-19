@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove unneeded dep on azure-themes",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-09T23:58:03.948Z"
+}

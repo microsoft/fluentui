@@ -2,102 +2,98 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IButtonGridCellProps } from './ButtonGridCell.types';
 import { CommandButton } from '../../Button';
+import { useId } from '@uifabric/react-hooks';
 
-export class ButtonGridCell<T, P extends IButtonGridCellProps<T>> extends React.Component<P, {}> {
-  public static defaultProps = {
-    disabled: false,
-  };
+export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => {
+  const defaultId = useId('gridCell');
+  const {
+    item,
+    id = defaultId,
+    className,
+    role,
+    selected,
+    disabled = false,
+    onRenderItem,
+    cellDisabledStyle,
+    cellIsSelectedStyle,
+    index,
+    label,
+    getClassNames,
+    onClick,
+    onHover,
+    onMouseMove,
+    onMouseLeave,
+    onMouseEnter,
+    onFocus,
+  } = props;
 
-  public render(): JSX.Element {
-    const {
-      item,
-      id,
-      className,
-      role,
-      selected,
-      disabled,
-      onRenderItem,
-      cellDisabledStyle,
-      cellIsSelectedStyle,
-      index,
-      label,
-      getClassNames,
-    } = this.props;
-
-    return (
-      <CommandButton
-        id={id}
-        data-index={index}
-        data-is-focusable={true}
-        disabled={disabled}
-        className={css(className, {
-          ['' + cellIsSelectedStyle]: selected,
-          ['' + cellDisabledStyle]: disabled,
-        })}
-        onClick={this._onClick}
-        onMouseEnter={this._onMouseEnter}
-        onMouseMove={this._onMouseMove}
-        onMouseLeave={this._onMouseLeave}
-        onFocus={this._onFocus}
-        role={role}
-        aria-selected={selected}
-        ariaLabel={label}
-        title={label}
-        getClassNames={getClassNames}
-      >
-        {onRenderItem(item)}
-      </CommandButton>
-    );
-  }
-
-  private _onClick = (): void => {
-    const { onClick, disabled, item } = this.props as P;
-
+  const handleClick = React.useCallback((): void => {
     if (onClick && !disabled) {
       onClick(item);
     }
-  };
+  }, [disabled, item, onClick]);
 
-  private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, item, onMouseEnter } = this.props as P;
+  const handleMouseEnter = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
 
-    const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
+      if (!didUpdateOnEnter && onHover && !disabled) {
+        onHover(item);
+      }
+    },
+    [disabled, item, onHover, onMouseEnter],
+  );
 
-    if (!didUpdateOnEnter && onHover && !disabled) {
-      onHover(item);
-    }
-  };
+  const handleMouseMove = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const didUpdateOnMove = onMouseMove && onMouseMove(ev);
 
-  private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, item, onMouseMove } = this.props as P;
+      if (!didUpdateOnMove && onHover && !disabled) {
+        onHover(item);
+      }
+    },
+    [disabled, item, onHover, onMouseMove],
+  );
 
-    const didUpdateOnMove = onMouseMove && onMouseMove(ev);
+  const handleMouseLeave = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
 
-    if (!didUpdateOnMove && onHover && !disabled) {
-      onHover(item);
-    }
-  };
+      if (!didUpdateOnLeave && onHover && !disabled) {
+        onHover();
+      }
+    },
+    [disabled, onHover, onMouseLeave],
+  );
 
-  private _onMouseLeave = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, onMouseLeave } = this.props as P;
-
-    const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
-
-    if (!didUpdateOnLeave && onHover && !disabled) {
-      onHover();
-    }
-  };
-
-  private _onFocus = (): void => {
-    const { onFocus, disabled, item } = this.props as P;
-
+  const handleFocus = React.useCallback((): void => {
     if (onFocus && !disabled) {
       onFocus(item);
     }
-  };
-}
+  }, [disabled, item, onFocus]);
 
-/**
- * @deprecated - use ButtonGridCell instead
- */
-export const GridCell = ButtonGridCell;
+  return (
+    <CommandButton
+      id={id}
+      data-index={index}
+      data-is-focusable
+      disabled={disabled}
+      className={css(className, {
+        ['' + cellIsSelectedStyle]: selected,
+        ['' + cellDisabledStyle]: disabled,
+      })}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      role={role}
+      aria-selected={selected}
+      ariaLabel={label}
+      title={label}
+      getClassNames={getClassNames}
+    >
+      {onRenderItem(item)}
+    </CommandButton>
+  );
+};

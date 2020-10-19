@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/common';
+@import '~@fluentui/common-styles/src/themeOverrides';
 
 $PageSubHeadMargin: 20px;
 $PageParagraphMargin: 1.2em;
@@ -54,10 +54,11 @@ $usageListPadding: 24px;
     margin-bottom: 20px;
 
     // Layer backgrounds so tables that scroll have shadows when the content overflows.
-    background: linear-gradient(to right, $ms-color-white, rgba($ms-color-white, 0)) left / 48px 100% local,
-      linear-gradient(to left, $ms-color-white, rgba($ms-color-white, 0)) right / 48px 100% local,
-      linear-gradient(to right, $ms-color-neutralLight, rgba($ms-color-neutralLight, 0)) left / 12px 100% scroll,
-      linear-gradient(to left, $ms-color-neutralLight, rgba($ms-color-neutralLight, 0)) right / 12px 100% scroll;
+    background: linear-gradient(to right, white, rgba(white, 0)) left / 48px 100% local,
+      linear-gradient(to left, white, rgba(white, 0)) right / 48px 100% local,
+      // This is $ms-color-neutralLight but the rgba() function wasn't handling the variable
+        linear-gradient(to right, #edebe9, rgba(#edebe9, 0)) left / 12px 100% scroll,
+      linear-gradient(to left, #edebe9, rgba(#edebe9, 0)) right / 12px 100% scroll;
     background-repeat: no-repeat;
   }
 
@@ -162,7 +163,13 @@ $usageListPadding: 24px;
 }
 
 .hiddenContent {
-  @include hiddenContent();
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: 'hidden';
 }
 
 .subHeading,

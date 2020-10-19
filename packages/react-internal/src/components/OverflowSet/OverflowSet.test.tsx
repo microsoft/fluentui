@@ -1,16 +1,17 @@
 import { shallow } from 'enzyme';
 import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
-
 import { CommandBarButton } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
-import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '../../utilities/keytips/index';
+import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '../../Keytips';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
@@ -37,7 +38,7 @@ describe('OverflowSet', () => {
     test('basicSnapshot', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
       );
       const tree = component.toJSON();
@@ -47,7 +48,7 @@ describe('OverflowSet', () => {
     test('snapshot with classname', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet className="foobar" onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
       );
       const tree = component.toJSON();
@@ -57,7 +58,7 @@ describe('OverflowSet', () => {
     test('snapshot with classname and vertical layout', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
+      const component = create(
         <OverflowSet
           className="foobar"
           vertical={true}
@@ -68,6 +69,12 @@ describe('OverflowSet', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+  });
+
+  isConformant({
+    Component: OverflowSet,
+    displayName: 'OverflowSet',
+    componentPath: path.join(__dirname, 'OverflowSet.ts'),
   });
 
   it('does not render overflow when there are no overflow items', () => {

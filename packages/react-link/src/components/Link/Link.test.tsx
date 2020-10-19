@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { create } from '@uifabric/utilities/lib/test';
 import { Customizer } from '@uifabric/utilities';
-import { createTheme } from '@uifabric/styling';
+import { createTheme } from '@fluentui/style-utilities';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
 

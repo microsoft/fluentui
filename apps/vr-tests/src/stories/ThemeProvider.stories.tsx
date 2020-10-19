@@ -2,10 +2,10 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from '@fluentui/react';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { ThemeProvider } from '@fluentui/react';
 import { Button } from '@fluentui/react-button';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)
@@ -37,8 +37,10 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized theme 1</PrimaryButton>
       <ThemeProvider
         theme={{
+          palette: {
+            themePrimary: '#FFF',
+          },
           semanticColors: {
-            primaryButtonBackground: '#FFF',
             primaryButtonText: '#000',
           },
         }}
@@ -69,6 +71,22 @@ storiesOf('ThemeProvider', module)
       }}
     >
       <Button>New Button customized with tokens</Button>
+
+      <ThemeProvider
+        theme={{
+          components: {
+            Button: {
+              variants: {
+                root: {
+                  background: 'green',
+                },
+              },
+            },
+          },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ))
   .addStory('Use compat theme on new button', () => (
@@ -78,6 +96,14 @@ storiesOf('ThemeProvider', module)
       }}
     >
       <Button>New Button customized with compat theme</Button>
+
+      <ThemeProvider
+        theme={{
+          semanticColors: { buttonBackground: 'green' },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ));
 

@@ -7,7 +7,7 @@ import { TestImages } from '@uifabric/example-data';
 
 export const PersonaBasicExample: React.FunctionComponent = () => {
   const [renderDetails, updateRenderDetails] = React.useState(true);
-  const onChange = (ev: any, checked: boolean | undefined) => {
+  const onChange = (ev: unknown, checked: boolean | undefined) => {
     updateRenderDetails(!!checked);
   };
 

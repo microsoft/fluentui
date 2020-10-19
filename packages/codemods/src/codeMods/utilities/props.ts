@@ -28,10 +28,7 @@ export function renameProp(
         const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
         if (enumInJsx.something) {
           if (transform) {
-            const res: Result<string, NoOp> = transform(enumInJsx.value, toRename, replacementName);
-            if (!res.ok) {
-              return Err({ reason: res.value.reason });
-            }
+            return transform(enumInJsx.value, toRename, replacementName);
           }
         }
       }
@@ -43,9 +40,7 @@ export function renameProp(
       } else {
         res = renamePropInSpread(val, toRename, replacementName, undefined, replacementValue);
       }
-      if (!res.ok) {
-        return Err({ reason: res.value.reason });
-      }
+      return res;
     }
   });
   return Ok('Successfully renamed the given props.');

@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving react-next Shimmer to react-internal package.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T17:01:53.966Z"
+}

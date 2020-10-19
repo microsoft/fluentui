@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Move v8 Rating changes to from react-next to react",
+  "packageName": "@fluentui/react-internal",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-07T05:53:51.080Z"
+}

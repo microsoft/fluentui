@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Shimmer/index';
+export * from '@fluentui/react/lib/Shimmer';

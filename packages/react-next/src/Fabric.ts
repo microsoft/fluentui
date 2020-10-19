@@ -1,2 +1,1 @@
-import './version';
-export * from './components/Fabric/index';
+export * from '@fluentui/react/lib/Fabric';

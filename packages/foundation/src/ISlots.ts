@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IComponentStyles } from './IComponent';
 
 /**

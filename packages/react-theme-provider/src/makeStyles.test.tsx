@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Customizer } from '@uifabric/utilities';
 import { createTheme } from '@fluentui/theme';
-import { loadTheme } from '@uifabric/styling';
+import { loadTheme } from '@fluentui/style-utilities';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { safeMount } from '@uifabric/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';

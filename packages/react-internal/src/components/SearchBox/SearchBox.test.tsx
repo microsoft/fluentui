@@ -1,14 +1,19 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
-import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
+import { isConformant } from '../../common/isConformant';
 
 describe('SearchBox', () => {
-  let component: renderer.ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
+  let component: ReactTestRenderer | undefined;
+  let wrapper: ReactWrapper<ISearchBoxProps> | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
@@ -21,8 +26,13 @@ describe('SearchBox', () => {
     }
   });
 
+  isConformant({
+    Component: SearchBox,
+    displayName: 'SearchBox',
+  });
+
   it('renders SearchBox correctly', () => {
-    component = renderer.create(<SearchBox />);
+    component = create(<SearchBox />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -51,7 +61,7 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox without animation correctly', () => {
-    component = renderer.create(<SearchBox disableAnimation={true} />);
+    component = create(<SearchBox disableAnimation={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -139,22 +149,26 @@ describe('SearchBox', () => {
     expect(wrapper.find('input').prop('value')).toBe('test');
   });
 
-  it('handles setting null value', () => {
-    // this is not allowed per typings, but users might do it anyway
-    wrapper = mount(<SearchBox value={null as any} />);
-    expect(wrapper.find('input').prop('value')).toBe('');
-  });
-
   it('handles updating value to empty string', () => {
     wrapper = mount(<SearchBox value="test" />);
     wrapper.setProps({ value: '' });
     expect(wrapper.find('input').prop('value')).toBe('');
   });
 
-  it('handles updating value to null', () => {
-    wrapper = mount(<SearchBox value="test" />);
+  it('handles setting null value', () => {
     // this is not allowed per typings, but users might do it anyway
-    wrapper.setProps({ value: null as any });
-    expect(wrapper.find('input').prop('value')).toBe('');
+    wrapper = mount(<SearchBox value={null as any} />);
+    expect(wrapper.find('input').prop('value')).toBe(`null`);
+  });
+
+  it('handles rendering 0', () => {
+    wrapper = mount(<SearchBox value={0 as any} />);
+    // this is not allowed per typings, but users might do it anyway
+    expect(
+      wrapper
+        .find('input')
+        .getDOMNode()
+        .getAttribute('value'),
+    ).toBe('0');
   });
 });

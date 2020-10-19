@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
 import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 

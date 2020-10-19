@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@uifabric/date-time';
-import { mergeStyleSets } from '@uifabric/styling';
+import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({
   wrapper: { height: 340 },

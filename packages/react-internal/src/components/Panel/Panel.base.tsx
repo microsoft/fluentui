@@ -283,7 +283,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this.setState({ visibility: PanelVisibilityState.animatingClosed });
   }
 
-  public dismiss = (ev?: React.SyntheticEvent<HTMLElement>): void => {
+  public dismiss = (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent): void => {
     if (this.props.onDismiss) {
       this.props.onDismiss(ev);
     }

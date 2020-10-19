@@ -1,2 +1,2 @@
 import './version';
-export * from './components/ContextualMenu/index';
+export * from '@fluentui/react/lib/ContextualMenu';

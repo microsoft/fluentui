@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, findIndex } from '@uifabric/utilities';
 import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@uifabric/styling';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayInfo } from './CalendarDayGrid.base';
 
 export interface ICalendarDayMonthHeaderRowProps extends ICalendarDayGridProps {

@@ -4,24 +4,26 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IButtonGrid {}
 
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IButtonGridProps
+  extends React.TableHTMLAttributes<HTMLTableElement>,
+    React.RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
   componentRef?: IRefObject<IButtonGrid>;
 
   /**
-   * Items to display in a ButtonGrid with the specified number of columns.
+   * Items to display in a ButtonGrid with the specified number of columns
    */
   items: any[];
 
   /**
-   * The number of columns.
+   * The number of columns
    */
   columnCount: number;
 
   /**
-   * Custom renderer for the individual items.
+   * Custom renderer for the individual items
    */
   onRenderItem: (item: any, index: number) => JSX.Element;
 
@@ -85,7 +87,7 @@ export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableEle
  */
 export interface IButtonGridStyleProps {
   /**
-   * Theme to apply to the ButtonGrid.
+   * Theme to apply to the ButtonGrid
    */
   theme: ITheme;
 }
@@ -109,23 +111,3 @@ export interface IButtonGridStyles {
    */
   focusedContainer?: IStyle;
 }
-
-/**
- * @deprecated - use IButtonGrid instead.
- */
-export interface IGrid extends IButtonGrid {}
-
-/**
- * @deprecated - use IButtonGridProps instead.
- */
-export interface IGridProps extends IButtonGridProps {}
-
-/**
- * @deprecated - use IButtonGridStyleProps instead.
- */
-export interface IGridStyleProps extends IButtonGridStyleProps {}
-
-/**
- * @deprecated - use IButtonGridStyles instead.
- */
-export interface IGridStyles extends IButtonGridStyles {}

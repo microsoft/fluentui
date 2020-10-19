@@ -1,5 +1,5 @@
 import { treeTitleBehavior } from '@fluentui/accessibility';
-import { SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 describe('TreeTitleBehavior', () => {
   describe('tabIndex', () => {
@@ -45,6 +45,12 @@ describe('TreeTitleBehavior', () => {
       const expectedResult = treeTitleBehavior({ selectable: true, hasSubtree: true });
       expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(1);
       expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(SpacebarKey);
+    });
+
+    test(`arrow left navigation, should focus on parent  `, () => {
+      const expectedResult = treeTitleBehavior({ hasSubtree: false });
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.focusParent.keyCombinations[0].keyCode).toEqual(keyboardKey.ArrowLeft);
     });
   });
 });

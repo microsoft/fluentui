@@ -1,2 +1,2 @@
 import './version';
-export * from './components/ResizeGroup/index';
+export * from '@fluentui/react/lib/ResizeGroup';
