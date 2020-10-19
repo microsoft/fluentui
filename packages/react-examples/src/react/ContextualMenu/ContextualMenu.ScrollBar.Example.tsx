@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DirectionalHint } from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () => {

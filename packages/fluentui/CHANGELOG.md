@@ -23,8 +23,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
 - Rename `indicatorBorderColorDefault` variable to `indicatorColorDefault` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
+- Remove `selectableParent` prop in favor of `selectable` in `TreeItem` and make `selectionIndicator` visible only on focus or hover @assuncaocharles ([#15133](https://github.com/microsoft/fluentui/pull/15133))
 
 ### Fixes
+- Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
+- Fix `Tree` to have prop `onFocusParent` triggered on `ArrowLeft` for leaf node @yuanboxue-amber ([#15442](https://github.com/microsoft/fluentui/pull/15442))
 - Use `aria-checked` for multi-select tree instead of `aria-selected` @yuanboxue-amber ([#15142](https://github.com/microsoft/fluentui/pull/15142))
 - Fix `Breadcrumb` to have the `div` wrapping all items obtain a11y attributes from `container` slot @yuanboxue-amber ([#15303](https://github.com/microsoft/fluentui/pull/15303))
 - Fix scrollbar color to have higher contrast ratio @yuanboxue-amber ([#15209](https://github.com/microsoft/fluentui/pull/15209))
@@ -43,6 +46,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `useAutoControlled` hook to suport functions updates @assuncaocharles ([#15137](https://github.com/microsoft/fluentui/pull/15137))
 - Fix `TreeTitle` arrow left navigation @assuncaocharles ([#15262](https://github.com/microsoft/fluentui/pull/15262))
 - Updated `ReactionsIcon` @TanelVari ([#15358](https://github.com/microsoft/fluentui/pull/15358))
+- Memoize context value in `Provider` to avoid rerenders @layershifter ([#15358](https://github.com/microsoft/fluentui/pull/15380))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Export @fluentui/theme and react-theme-provider. Remove Foundation exports.",
+  "packageName": "@fluentui/react-internal",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-03T00:03:45.900Z"
+}

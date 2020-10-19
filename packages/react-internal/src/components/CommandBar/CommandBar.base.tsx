@@ -128,7 +128,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         <OverflowSet
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
-          doNotContainWithinFocusZone={true}
           items={data.primaryItems}
           overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
           onRenderItem={this._onRenderItem}
@@ -139,7 +138,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         {data.farItems && data.farItems.length > 0 && (
           <OverflowSet
             className={css(this._classNames.secondarySet)}
-            doNotContainWithinFocusZone={true}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
             onRenderOverflowButton={nullRender}

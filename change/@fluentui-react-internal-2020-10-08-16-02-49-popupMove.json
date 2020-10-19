@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Popup: Replacing version in react-internal with version from react-next.",
+  "packageName": "@fluentui/react-internal",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-08T23:02:43.702Z"
+}

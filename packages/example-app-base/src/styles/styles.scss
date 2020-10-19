@@ -2,20 +2,17 @@
 //        that is imported (e.g. _base.scss) it will trigger a reload but doesn't
 //        actually build the .ts file, so the changes aren't visible.
 
-// Variables
-@import 'variables';
-
-// Mixins
-@import 'mixins';
+// Shared
+@import './common';
 
 // Reset all browser styling
-@import 'reset';
+@import './reset';
 
 // Fabric overrides
-@import 'overrides';
+@import './overrides';
 
 // Base styles
-@import 'base';
+@import './base';
 
 // Typography
-@import 'typography';
+@import './typography';

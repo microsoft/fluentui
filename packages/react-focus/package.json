@@ -49,7 +49,6 @@
     "@fluentui/keyboard-key": "^0.2.12",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
   },

@@ -47,10 +47,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/accessibility": "^0.51.0",
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-icons": "^0.3.5",
-    "@fluentui/react-stylesheets": "^0.2.2",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",

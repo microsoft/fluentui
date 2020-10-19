@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeCss } from '@uifabric/merge-styles';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { getRTL, memoizeFunction } from '@uifabric/utilities';
 import { assign } from './utilities';
 import { IFactoryOptions } from './IComponent';

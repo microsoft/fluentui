@@ -4,11 +4,11 @@ import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { mergeThemes, createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@uifabric/merge-styles';
 import { getTokens } from './getTokens';
 
-const lightTheme = mergeThemes({
+const lightTheme = {
   stylesheets: [],
   tokens: {
     color: {
@@ -18,9 +18,9 @@ const lightTheme = mergeThemes({
       },
     },
   },
-});
+};
 
-const darkTheme = mergeThemes({
+const darkTheme = {
   tokens: {
     color: {
       body: {
@@ -29,7 +29,7 @@ const darkTheme = mergeThemes({
       },
     },
   },
-});
+};
 
 describe('ThemeProvider', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -118,9 +118,10 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme: Theme = mergeThemes(createTheme({}), lightTheme);
-    expectedTheme.tokens = getTokens(expectedTheme);
+    const expectedTheme: Theme = createTheme(lightTheme);
+    expectedTheme.tokens = getTokens(expectedTheme, lightTheme.tokens);
     expectedTheme.id = '0-1';
+
     expect(resolvedTheme).toEqual(expectedTheme);
   });
 

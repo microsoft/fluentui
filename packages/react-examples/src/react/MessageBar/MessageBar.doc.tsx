@@ -9,7 +9,7 @@ const MessageBarBasicExampleCode = require('!raw-loader!@fluentui/react-examples
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
   componentName: 'MessageBar',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/MessageBar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/MessageBar',
   examples: [
     {
       title: 'Various MessageBar types',

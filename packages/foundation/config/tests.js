@@ -1,6 +1,6 @@
 /** Jest test setup file. */
 
-const { setIconOptions } = require('@uifabric/styling');
+const { setIconOptions } = require('@fluentui/style-utilities');
 const { configure } = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 

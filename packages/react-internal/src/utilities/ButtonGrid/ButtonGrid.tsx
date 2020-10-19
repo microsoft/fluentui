@@ -7,10 +7,7 @@ import { getStyles } from './ButtonGrid.styles';
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps> = styled<
   IButtonGridProps,
   IButtonGridStyleProps,
-  IButtonGridStyles
+  IButtonGridStyles,
+  HTMLElement
 >(ButtonGridBase, getStyles);
-
-/**
- * @deprecated - use ButtonGrid instead
- */
-export const Grid = ButtonGrid;
+ButtonGrid.displayName = 'ButtonGrid';

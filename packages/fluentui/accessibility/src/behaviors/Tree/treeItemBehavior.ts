@@ -20,6 +20,7 @@ import { treeTitleBehavior } from './treeTitleBehavior';
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  * Triggers 'expandSiblings' action with '*' on 'root'.
  * Triggers 'focusParent' action with 'ArrowLeft' on 'root', when has a closed subtree.
+ * Triggers 'focusParent' action with 'ArrowLeft' on 'root', when has no subtree.
  * Triggers 'collapse' action with 'ArrowLeft' on 'root', when has an opened subtree.
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusFirstChild' action with 'ArrowRight' on 'root', when has an opened subtree.
@@ -48,26 +49,29 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
         performClick: {
           keyCombinations: [{ keyCode: EnterKey }, { keyCode: SpacebarKey }],
         },
-        ...(isSubtreeExpanded(props) && {
-          collapse: {
-            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-          },
-          focusFirstChild: {
-            keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
-          },
-          focusParent: {
-            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-          },
-        }),
-        ...(!isSubtreeExpanded(props) &&
-          props.hasSubtree && {
-            expand: {
-              keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
-            },
-            focusParent: {
-              keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-            },
-          }),
+        ...(props.hasSubtree
+          ? props.expanded
+            ? {
+                collapse: {
+                  keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+                },
+                focusFirstChild: {
+                  keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+                },
+              }
+            : {
+                expand: {
+                  keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+                },
+                focusParent: {
+                  keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+                },
+              }
+          : {
+              focusParent: {
+                keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+              },
+            }),
         expandSiblings: {
           keyCombinations: [{ keyCode: keyboardKey['*'] }],
         },
@@ -104,10 +108,4 @@ export type TreeItemBehaviorProps = {
   selectable?: boolean;
   selected?: boolean;
   indeterminate?: boolean;
-};
-
-/** Checks if current tree item has a subtree and it is expanded */
-const isSubtreeExpanded = (props: TreeItemBehaviorProps): boolean => {
-  const { hasSubtree, expanded } = props;
-  return !!(hasSubtree && expanded);
 };

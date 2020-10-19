@@ -1,2 +1,0 @@
-- Do any DOM measurements inside your onReduce function as this will degrade performance
-- Provide too many different return values for onReduce, it will degrade performance

@@ -1,165 +1,169 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Utilities';
-import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
-import { ITeachingBubbleState } from './TeachingBubble.base';
+import { classNamesFunction, KeyCodes } from '../../Utilities';
+import {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubble,
+} from './TeachingBubble.types';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
-import { Image } from '../../Image';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
+import { Image } from '../../Image';
+import { useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
+import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
-export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-  public rootElement = React.createRef<HTMLDivElement>();
+const useComponentRef = (
+  componentRef: React.Ref<ITeachingBubble> | undefined,
+  rootElementRef: React.RefObject<HTMLDivElement>,
+) => {
+  React.useImperativeHandle(
+    componentRef,
+    () => ({
+      focus: () => rootElementRef.current?.focus(),
+    }),
+    [rootElementRef],
+  );
+};
 
-  constructor(props: ITeachingBubbleProps) {
-    super(props);
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef<
+  HTMLDivElement,
+  ITeachingBubbleProps
+>((props, forwardedRef) => {
+  const rootElementRef = React.useRef<HTMLDivElement>(null);
+  const documentRef = useDocument();
+  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
-    initializeComponentRef(this);
-    this.state = {};
-  }
+  const {
+    illustrationImage,
+    primaryButtonProps,
+    secondaryButtonProps,
+    headline,
+    hasCondensedHeadline,
+    // eslint-disable-next-line deprecation/deprecation
+    hasCloseButton = props.hasCloseIcon,
+    onDismiss,
+    closeButtonAriaLabel,
+    hasSmallHeadline,
+    isWide,
+    styles,
+    theme,
+    ariaDescribedBy,
+    ariaLabelledBy,
+    footerContent: customFooterContent,
+    focusTrapZoneProps,
+  } = props;
 
-  public componentDidMount(): void {
-    if (this.props.onDismiss) {
-      document.addEventListener('keydown', this._onKeyDown, false);
-    }
-  }
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    hasCondensedHeadline,
+    hasSmallHeadline,
+    hasCloseButton,
+    hasHeadline: !!headline,
+    isWide,
+    primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
+    secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
+  });
 
-  public componentWillUnmount(): void {
-    if (this.props.onDismiss) {
-      document.removeEventListener('keydown', this._onKeyDown);
-    }
-  }
+  const onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
+      if (onDismiss) {
+        // eslint-disable-next-line deprecation/deprecation
+        if (ev.which === KeyCodes.escape) {
+          onDismiss(ev);
+        }
+      }
+    },
+    [onDismiss],
+  );
 
-  public focus(): void {
-    if (this.rootElement.current) {
-      this.rootElement.current.focus();
-    }
-  }
+  useOnEvent(documentRef, 'keydown', onKeyDown as (ev: Event) => void);
 
-  public render(): JSX.Element {
-    const {
-      children,
-      illustrationImage,
-      primaryButtonProps,
-      secondaryButtonProps,
-      headline,
-      hasCondensedHeadline,
-      // eslint-disable-next-line deprecation/deprecation
-      hasCloseButton = this.props.hasCloseIcon,
-      onDismiss,
-      closeButtonAriaLabel,
-      hasSmallHeadline,
-      isWide,
-      styles,
-      theme,
-      ariaDescribedBy,
-      ariaLabelledBy,
-      footerContent: customFooterContent,
-      focusTrapZoneProps,
-    } = this.props;
+  let imageContent: JSX.Element | undefined;
+  let headerContent: JSX.Element | undefined;
+  let bodyContent: JSX.Element | undefined;
+  let footerContent: JSX.Element | undefined;
+  let closeButton: JSX.Element | undefined;
 
-    let imageContent;
-    let headerContent;
-    let bodyContent;
-    let footerContent;
-    let closeButton;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      hasCondensedHeadline,
-      hasSmallHeadline,
-      hasCloseButton,
-      hasHeadline: !!headline,
-      isWide,
-      primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
-      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
-    });
-
-    if (illustrationImage && illustrationImage.src) {
-      imageContent = (
-        <div className={classNames.imageContent}>
-          <Image {...(illustrationImage as any)} />
-        </div>
-      );
-    }
-
-    if (headline) {
-      const HeaderWrapperAs = typeof headline === 'string' ? 'p' : 'div';
-
-      headerContent = (
-        <div className={classNames.header}>
-          <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
-            {headline}
-          </HeaderWrapperAs>
-        </div>
-      );
-    }
-
-    if (children) {
-      const BodyContentWrapperAs = typeof children === 'string' ? 'p' : 'div';
-
-      bodyContent = (
-        <div className={classNames.body}>
-          <BodyContentWrapperAs className={classNames.subText} id={ariaDescribedBy}>
-            {children}
-          </BodyContentWrapperAs>
-        </div>
-      );
-    }
-
-    if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
-      footerContent = (
-        <Stack className={classNames.footer} horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
-          <Stack.Item align="center">{<span>{customFooterContent}</span>}</Stack.Item>
-          <Stack.Item>
-            {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
-            {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
-          </Stack.Item>
-        </Stack>
-      );
-    }
-
-    if (hasCloseButton) {
-      closeButton = (
-        <IconButton
-          className={classNames.closeButton}
-          iconProps={{ iconName: 'Cancel' }}
-          title={closeButtonAriaLabel}
-          ariaLabel={closeButtonAriaLabel}
-          onClick={onDismiss}
-        />
-      );
-    }
-
-    return (
-      <div
-        className={classNames.content}
-        ref={this.rootElement}
-        role={'dialog'}
-        tabIndex={-1}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
-        data-is-focusable={true}
-      >
-        {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
-          <div className={classNames.bodyContent}>
-            {headerContent}
-            {bodyContent}
-            {footerContent}
-            {closeButton}
-          </div>
-        </FocusTrapZone>
+  if (illustrationImage && illustrationImage.src) {
+    imageContent = (
+      <div className={classNames.imageContent}>
+        <Image {...(illustrationImage as any)} />
       </div>
     );
   }
 
-  private _onKeyDown = (e: any): void => {
-    if (this.props.onDismiss) {
-      if (e.which === KeyCodes.escape) {
-        this.props.onDismiss();
-      }
-    }
-  };
-}
+  if (headline) {
+    const HeaderWrapperAs = typeof headline === 'string' ? 'p' : 'div';
+
+    headerContent = (
+      <div className={classNames.header}>
+        <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
+          {headline}
+        </HeaderWrapperAs>
+      </div>
+    );
+  }
+
+  if (props.children) {
+    const BodyContentWrapperAs = typeof props.children === 'string' ? 'p' : 'div';
+
+    bodyContent = (
+      <div className={classNames.body}>
+        <BodyContentWrapperAs className={classNames.subText} id={ariaDescribedBy}>
+          {props.children}
+        </BodyContentWrapperAs>
+      </div>
+    );
+  }
+
+  if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
+    footerContent = (
+      <Stack className={classNames.footer} horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
+        <Stack.Item align="center">{<span>{customFooterContent}</span>}</Stack.Item>
+        <Stack.Item>
+          {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+          {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
+        </Stack.Item>
+      </Stack>
+    );
+  }
+
+  if (hasCloseButton) {
+    closeButton = (
+      <IconButton
+        className={classNames.closeButton}
+        iconProps={{ iconName: 'Cancel' }}
+        title={closeButtonAriaLabel}
+        ariaLabel={closeButtonAriaLabel}
+        onClick={onDismiss}
+      />
+    );
+  }
+
+  useComponentRef(props.componentRef, rootElementRef);
+
+  return (
+    <div
+      className={classNames.content}
+      ref={mergedRootRef}
+      role={'dialog'}
+      tabIndex={-1}
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
+      data-is-focusable
+    >
+      {imageContent}
+      <FocusTrapZone isClickableOutsideFocusTrap {...focusTrapZoneProps}>
+        <div className={classNames.bodyContent}>
+          {headerContent}
+          {bodyContent}
+          {footerContent}
+          {closeButton}
+        </div>
+      </FocusTrapZone>
+    </div>
+  );
+});

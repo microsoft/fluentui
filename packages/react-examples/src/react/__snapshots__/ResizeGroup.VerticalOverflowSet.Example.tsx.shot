@@ -29,21 +29,13 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
       <div
         aria-orientation="vertical"
         className=
-            ms-FocusZone
             ms-OverflowSet
-            &:focus {
-              outline: none;
-            }
             {
               display: flex;
               flex-direction: column;
               flex-wrap: nowrap;
               position: relative;
             }
-        data-focuszone-id="FocusZone0"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
         role="menubar"
       >
         <div
@@ -216,7 +208,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__1"
+                  id="id__0"
                 >
                   Item 0
                 </span>
@@ -394,7 +386,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__4"
+                  id="id__3"
                 >
                   Item 1
                 </span>
@@ -572,7 +564,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__7"
+                  id="id__6"
                 >
                   Item 2
                 </span>
@@ -750,7 +742,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__10"
+                  id="id__9"
                 >
                   Item 3
                 </span>
@@ -928,7 +920,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__13"
+                  id="id__12"
                 >
                   Item 4
                 </span>
@@ -1106,7 +1098,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__16"
+                  id="id__15"
                 >
                   Item 5
                 </span>
@@ -1284,7 +1276,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__19"
+                  id="id__18"
                 >
                   Item 6
                 </span>
@@ -1462,7 +1454,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__22"
+                  id="id__21"
                 >
                   Item 7
                 </span>
@@ -1640,7 +1632,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__25"
+                  id="id__24"
                 >
                   Item 8
                 </span>
@@ -1818,7 +1810,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__28"
+                  id="id__27"
                 >
                   Item 9
                 </span>
@@ -1996,7 +1988,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__31"
+                  id="id__30"
                 >
                   Item 10
                 </span>
@@ -2174,7 +2166,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__34"
+                  id="id__33"
                 >
                   Item 11
                 </span>
@@ -2352,7 +2344,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__37"
+                  id="id__36"
                 >
                   Item 12
                 </span>
@@ -2530,7 +2522,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__40"
+                  id="id__39"
                 >
                   Item 13
                 </span>
@@ -2708,7 +2700,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__43"
+                  id="id__42"
                 >
                   Item 14
                 </span>
@@ -2886,7 +2878,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__46"
+                  id="id__45"
                 >
                   Item 15
                 </span>
@@ -3064,7 +3056,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__49"
+                  id="id__48"
                 >
                   Item 16
                 </span>
@@ -3242,7 +3234,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__52"
+                  id="id__51"
                 >
                   Item 17
                 </span>
@@ -3420,7 +3412,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__55"
+                  id="id__54"
                 >
                   Item 18
                 </span>
@@ -3598,7 +3590,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__58"
+                  id="id__57"
                 >
                   Item 19
                 </span>

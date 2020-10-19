@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Fixing ColorTokens typings.",
+  "packageName": "@fluentui/theme",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-12T20:16:30.044Z"
+}

@@ -15,7 +15,7 @@ const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undef
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MonacoEnvironment?: any;
   MonacoConfig?: IMonacoConfig;
-  // TODO: remove once fabric-website homepage.htm is updated
+  // TODO: remove once public-docsite homepage.htm is updated
   appPath?: string;
   jsSuffix?: string;
 };
@@ -33,7 +33,7 @@ const labelMap: { [key: string]: string } = {
 function getMonacoConfig(): IMonacoConfig | undefined {
   return (
     globalObj.MonacoConfig ||
-    // TODO: remove once fabric-website homepage.htm is updated
+    // TODO: remove once public-docsite homepage.htm is updated
     // temporary back-compat hack
     (globalObj.MonacoEnvironment && globalObj.appPath && globalObj.jsSuffix
       ? {
@@ -45,7 +45,7 @@ function getMonacoConfig(): IMonacoConfig | undefined {
   );
 }
 
-// TODO: remove once fabric-website homepage.htm is updated
+// TODO: remove once public-docsite homepage.htm is updated
 let hasConfigured = false;
 
 /**

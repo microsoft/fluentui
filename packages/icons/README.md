@@ -19,7 +19,7 @@ initializeIcons();
 initializeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-This will make ALL icons in the collection available, but will download them on demand when referenced using the `@uifabric/styling` APIs `getIcon` or `getIconClassName`.
+This will make ALL icons in the collection available, but will download them on demand when referenced using the `@fluentui/style-utilities` APIs `getIcon` or `getIconClassName`.
 
 ## Usage in code
 
@@ -35,10 +35,10 @@ import { Icon } from '@fluentui/react/lib/Icon';
 
 ### `getIconClassName` API
 
-The styling package includes a `getIconClassName` API which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:
+The `@fluentui/style-utilities` package includes a `getIconClassName` API which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:
 
 ```ts
-import { getIconClassName } from '@uifabric/styling';
+import { getIconClassName } from '@fluentui/style-utilities';
 
 return `<i class="${getIconClassName('Snow')}" />`;
 ```

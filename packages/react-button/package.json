@@ -39,7 +39,6 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.15.18",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -56,6 +55,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
+    "@fluentui/style-utilities": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
   },

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from '../../../Pickers';
+import { ISuggestionModel, ISuggestionItemProps } from '../../../Pickers';
 import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
-import { ISuggestionItemProps } from '../../pickers/Suggestions/SuggestionsItem.types';
+/* eslint-disable */
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
@@ -35,7 +35,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
    */
   suggestionsContainerAriaLabel?: string;
   /**
-   * the classname of the suggestionitem.
+   * the classname of the suggestion item.
    */
   suggestionsItemClassName?: string;
   /**

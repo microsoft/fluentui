@@ -1,12 +1,14 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
 import { Async, initializeComponentRef, css, KeyCodes } from '../../Utilities';
-import { Callout, DirectionalHint } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { Callout } from '../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+
 const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
@@ -126,12 +128,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     this.isComponentMounted = false;
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
-    if (newProps.suggestionItems) {
-      this.updateSuggestions(newProps.suggestionItems);
-    }
-  }
-
   public completeSuggestion = (): void => {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
       this.onChange(this.suggestionsControl.current.currentSuggestion!.item);
@@ -157,6 +153,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   protected renderSuggestions(): JSX.Element | null {
     const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
+
+    if (this.props.suggestionItems) {
+      this.suggestionStore.updateSuggestions(this.props.suggestionItems!);
+    }
+
     return this.state.suggestionsVisible ? (
       <Callout
         className={styles.callout}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, CompoundButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { DefaultButton, CompoundButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';

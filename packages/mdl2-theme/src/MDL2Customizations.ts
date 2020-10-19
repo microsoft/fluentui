@@ -1,13 +1,14 @@
 import { MDL2Theme } from './mdl2/MDL2Theme';
-import { MDL2Styles } from './mdl2/MDL2Styles';
 import { ICustomizations } from '@fluentui/react';
 import { addVariants } from '@uifabric/variants';
 
+const { components: scopedSettings, ...theme } = MDL2Theme;
+
 export const MDL2Customizations: ICustomizations = {
   settings: {
-    theme: { ...MDL2Theme },
+    theme,
   },
-  scopedSettings: { ...MDL2Styles },
+  scopedSettings: { ...scopedSettings },
 };
 
 addVariants(MDL2Customizations.settings.theme);

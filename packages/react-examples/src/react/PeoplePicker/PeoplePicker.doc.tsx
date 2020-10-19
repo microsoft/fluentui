@@ -20,7 +20,7 @@ const PeoplePickerControlledExampleCode = require('!raw-loader!@fluentui/react-e
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
   componentName: 'PeoplePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/PeoplePicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/PeoplePicker',
   examples: [
     {
       title: 'Normal People Picker',

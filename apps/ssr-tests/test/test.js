@@ -26,7 +26,7 @@ initializeIcons('dist/', { disableWarnings: true });
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
-let AppDefinition = require('@uifabric/fabric-website-resources/lib/AppDefinition').AppDefinition;
+let AppDefinition = require('@fluentui/public-docsite-resources/lib/AppDefinition').AppDefinition;
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {

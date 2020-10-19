@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix imports in scss files to avoid requiring a build",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-16T07:40:47.962Z"
+}

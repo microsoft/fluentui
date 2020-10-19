@@ -1,15 +1,7 @@
-import { RectangleEdge } from '../../../utilities/positioning';
-import { IBaseProps, IRefObject } from '../../../Utilities';
+import * as React from 'react';
+import { RectangleEdge } from '../../../Positioning';
 
-export interface IBeak {}
-
-export interface IBeakProps extends IBaseProps<IBeak> {
-  /**
-   * All props for your component are to be defined here.
-   * @deprecated
-   */
-  componentRef?: IRefObject<IBeak>;
-
+export interface IBeakProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Beak width.
    * @defaultvalue 18

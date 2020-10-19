@@ -851,31 +851,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           }
       data-automationid="splitbuttonprimary"
     >
-      <span
-        className=
-            ms-Button-textContainer
-            {
-              display: block;
-              flex-grow: 1;
-            }
-      >
-        <span
-          className=
-              ms-Button-label
-              {
-                display: block;
-                font-weight: 600;
-                line-height: 100%;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-              }
-          id="id__3"
-        >
-          Click to change rating to 0
-        </span>
-      </span>
+      Click to change rating to 
+      0
     </span>
   </button>
 </div>
