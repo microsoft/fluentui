@@ -1,7 +1,6 @@
 import { spawnSync } from 'child_process';
 import * as fs from 'fs-extra';
 import { IOptions as GlobOptions, sync as globSync } from 'glob';
-import inquirer from 'inquirer';
 import _ from 'lodash';
 import * as path from 'path';
 import { sync as replaceInFileSync, ReplaceResult } from 'replace-in-file';
@@ -12,8 +11,6 @@ const writeConfig: (pth: string, newValue: any) => void = require('./write-confi
 const { runPrettier, prettierExtensions } = require('./prettier/prettier-helpers');
 
 const gitRoot = findGitRoot(process.cwd());
-const uifabric = '@uifabric';
-const fluentui = '@fluentui';
 /**
  * Things that can come before a package name/path: string start, `/`, `!` (loader path),
  * space, start of line
@@ -24,6 +21,9 @@ const nameStartLookbehind = '(?<=[\'"`/! ]|^)';
  * end of line
  */
 const nameEndLookahead = '(?=[\'"`/ @]|$)';
+
+const getPackageNameParts = (packageName: string): [string | undefined, string] =>
+  packageName[0] === '@' ? (packageName.split('/') as [string, string]) : [, packageName];
 
 const getPackagePath = (unscopedPackageName: string) => {
   const packagesPath = path.join(gitRoot, 'packages', unscopedPackageName);
@@ -36,55 +36,39 @@ const getPackageJson = (unscopedPackageName: string) =>
 const getChangedFiles = (results: ReplaceResult[]) => results.filter(res => res.hasChanged).map(res => res.file);
 
 interface RenameInfo {
-  /** Old unscoped name (under `@uifabric`) */
+  oldScope: string;
+  /** Old unscoped name */
   oldUnscopedName: string;
-  /** New unscoped name (under `@fluentui`) */
+  newScope: string;
+  /** New unscoped name */
   newUnscopedName: string;
   newVersion: string;
   packageJson: PackageInfo;
 }
 
-async function getPackageToRename(): Promise<RenameInfo> {
+function getPackageToRename(): RenameInfo {
   const [oldNameArg, newNameArg, versionArg] = process.argv.slice(2);
-  let packageJson = oldNameArg ? getPackageJson(oldNameArg) : undefined;
 
   if (oldNameArg) {
+    const [oldScope = '@uifabric', oldUnscopedName] = getPackageNameParts(oldNameArg);
+    const [newScope = '@fluentui', newUnscopedName] = getPackageNameParts(newNameArg || oldUnscopedName);
+    let packageJson = getPackageJson(oldUnscopedName);
     return {
-      oldUnscopedName: oldNameArg,
-      newUnscopedName: newNameArg || oldNameArg,
+      oldUnscopedName,
+      oldScope,
+      newUnscopedName,
+      newScope,
       packageJson,
       newVersion: versionArg || packageJson.version,
     };
+  } else {
+    console.log('Usage:\n  yarn rename-package <old-name> [<new-name> [<new-version>]]');
+    process.exit(1);
   }
-
-  const answers = await inquirer.prompt<Pick<RenameInfo, 'oldUnscopedName' | 'newUnscopedName' | 'newVersion'>>([
-    {
-      type: 'input',
-      name: 'oldUnscopedName',
-      message: 'Old @uifabric package name (no scope):',
-      validate: (input: string) => /^[a-z\d-]+$/.test(input) || 'Must enter a valid unscoped npm package name',
-    },
-    {
-      type: 'input',
-      name: 'newUnscopedName',
-      message: 'New @fluentui package name (no scope):',
-      validate: (input: string) => /^[a-z\d-]+$/.test(input) || 'Must enter a valid unscoped npm package name',
-    },
-    {
-      type: 'input',
-      name: 'newVersion',
-      message: answers => {
-        packageJson = getPackageJson(answers.oldUnscopedName);
-        return `New version if different (current version: ${packageJson.version})`;
-      },
-    },
-  ]);
-
-  return { ...answers, newVersion: answers.newVersion || packageJson.version, packageJson };
 }
 
 function updatePackage(renameInfo: RenameInfo): string[] {
-  const { oldUnscopedName, newUnscopedName, packageJson, newVersion } = renameInfo;
+  const { oldUnscopedName, oldScope, newUnscopedName, newScope, packageJson, newVersion } = renameInfo;
 
   const oldPath = getPackagePath(oldUnscopedName);
   // Replace just the last section so it lands under the correct one of /apps or /packages
@@ -104,10 +88,15 @@ function updatePackage(renameInfo: RenameInfo): string[] {
       fs.renameSync(oldExamplesPath, newExamplesPath);
     }
 
+    const apiFilePath = path.join(newPath, 'etc', `${oldUnscopedName}.api.md`);
+    if (fs.existsSync(apiFilePath)) {
+      fs.renameSync(apiFilePath, apiFilePath.replace(path.basename(apiFilePath), `${newUnscopedName}.api.md`));
+    }
+
     console.log('\nCommitting the file moves only');
     stageAndCommit(
       [oldPath, newPath, ...(newExamplesPath ? [oldExamplesPath, newExamplesPath] : [])],
-      `Rename ${uifabric}/${oldUnscopedName} to ${fluentui}/${newUnscopedName}`,
+      `Rename ${oldScope}/${oldUnscopedName} to ${newScope}/${newUnscopedName}`,
       gitRoot,
     );
   } else {
@@ -115,7 +104,7 @@ function updatePackage(renameInfo: RenameInfo): string[] {
   }
 
   console.log('\nUpdating name and version in package.json');
-  packageJson.name = `${fluentui}/${newUnscopedName}`;
+  packageJson.name = `${newScope}/${newUnscopedName}`;
   packageJson.version = newVersion;
   writeConfig(newPackageJsonPath, packageJson);
 
@@ -123,7 +112,7 @@ function updatePackage(renameInfo: RenameInfo): string[] {
 }
 
 function updateDependents(renameInfo: RenameInfo): string[] {
-  const { oldUnscopedName, newUnscopedName, newVersion } = renameInfo;
+  const { oldUnscopedName, oldScope, newUnscopedName, newScope, newVersion } = renameInfo;
   console.log('\nUpdating name and version in other package.json files');
 
   const glob: GlobOptions = {
@@ -132,8 +121,8 @@ function updateDependents(renameInfo: RenameInfo): string[] {
 
   const depResults = replaceInFileSync({
     files: '{apps,packages,packages/fluentui}/*/package.json',
-    from: new RegExp(`"${uifabric}/${oldUnscopedName}": "([~^<>= ]*)\\d+\\.\\d+\\.\\d+(-.*)?"`),
-    to: `"${fluentui}/${newUnscopedName}": "$1${newVersion}"`,
+    from: new RegExp(`"${oldScope}/${oldUnscopedName}": "([~^<>= ]*)\\d+\\.\\d+\\.\\d+(-.*)?"`),
+    to: `"${newScope}/${newUnscopedName}": "$1${newVersion}"`,
     glob,
   });
 
@@ -147,12 +136,12 @@ function updateReferences(renameInfo: RenameInfo): string[] {
 
   const files = listAllTrackedFiles([], gitRoot).filter(f => !/CHANGELOG/.test(f));
 
-  const { oldUnscopedName, newUnscopedName } = renameInfo;
+  const { oldUnscopedName, oldScope, newUnscopedName, newScope } = renameInfo;
 
   // Replace name references (@uifabric/utilities) AND path references (packages/utilities).
   // To prevent replacing other package names which share substrings, use a fancy regex.
   const nameRegex = new RegExp(
-    `${nameStartLookbehind}(${uifabric}|apps|packages|react-examples/(src|lib))/${oldUnscopedName}${nameEndLookahead}`,
+    `${nameStartLookbehind}(${oldScope}|apps|packages|react-examples/(src|lib))/${oldUnscopedName}${nameEndLookahead}`,
   );
 
   let lastUpdatedFile = '';
@@ -169,7 +158,7 @@ function updateReferences(renameInfo: RenameInfo): string[] {
 
       const match = nameRegex.exec(substr);
       // This is the scope or the packages or apps section of the path
-      const firstPart = match[1] === uifabric ? fluentui : match[1];
+      const firstPart = match[1] === oldScope ? newScope : match[1];
       return `${firstPart}/${newUnscopedName}`;
     },
   });
@@ -254,7 +243,7 @@ function runYarn() {
 }
 
 async function run() {
-  const renameInfo = await getPackageToRename();
+  const renameInfo = getPackageToRename();
 
   const modifiedFiles = [
     ...updatePackage(renameInfo),
