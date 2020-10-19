@@ -149,7 +149,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   } = props;
 
   const selectableParent = hasSubtree && selectable;
-
   const hasSubtreeItem = hasSubtree(props);
 
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
