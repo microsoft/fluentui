@@ -14,7 +14,7 @@ const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPe
 type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   isValid?: (item: TPersona) => boolean;
   canExpand?: (item: TPersona) => boolean;
-  getExpandedItems?: (item: TPersona) => TPersona[];
+  getExpandedItems?: (item: TPersona) => Promise<TPersona[]>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -111,7 +111,13 @@ const SelectedPersonaInner = React.memo(
         ev.stopPropagation();
         ev.preventDefault();
         if (onItemChange && getExpandedItems) {
-          onItemChange(getExpandedItems(item), index);
+          getExpandedItems(item)
+            .then(value => {
+              onItemChange(value, index);
+            })
+            .catch(error => {
+              // No op
+            });
         }
       },
       [onItemChange, getExpandedItems, item, index],
