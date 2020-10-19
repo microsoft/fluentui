@@ -18,6 +18,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
+import { getWindow, getDocument } from '@uifabric/utilities';
 import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useId } from '@uifabric/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
@@ -56,16 +57,6 @@ const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFoc
 
 export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<HTMLDivElement, IModalProps>(
   (props, ref) => {
-    const rootRef = React.useRef<HTMLDivElement>(null);
-    const focusTrapZone = React.useRef<IFocusTrapZone>(null);
-    const mergedRef = useMergedRefs(rootRef, ref);
-    const modalResponsiveMode = useResponsiveMode(mergedRef);
-    const FocusTrapZoneId = useId();
-    const [xCoordinate, setXCoordinate] = React.useState<number>(0);
-    const [yCoordinate, setYCoordinate] = React.useState<number>(0);
-    const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
-    const { setTimeout, clearTimeout } = useSetTimeout();
-
     const {
       className = '',
       children,
@@ -95,6 +86,31 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       onDismissed,
     } = props;
 
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const focusTrapZone = React.useRef<IFocusTrapZone>(null);
+    const mergedRef = useMergedRefs(rootRef, ref);
+
+    const modalResponsiveMode = useResponsiveMode(mergedRef);
+
+    const FocusTrapZoneId = useId();
+
+    const doc = getDocument();
+    const win = getWindow() as Window & { [key: string]: any };
+
+    const { setTimeout, clearTimeout } = useSetTimeout();
+
+    const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
+    const [hasBeenOpened, setHasBeenOpened] = React.useState(isOpen);
+    const [isVisible, setIsVisible] = React.useState(isOpen);
+    const [xCoordinate, setXCoordinate] = React.useState<number>(0);
+    const [yCoordinate, setYCoordinate] = React.useState<number>(0);
+    const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
+
+    const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
+    const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
+      isOpen,
+    );
+
     const internalState = useConst<IModalInternalState>(() => ({
       onModalCloseTimer: 0,
       allowTouchBodyScroll: false,
@@ -105,20 +121,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       events: new EventGroup({}),
     }));
 
-    const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
-
-    const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
-
-    const [hasBeenOpened, setHasBeenOpened] = React.useState(isOpen);
-
-    const [isVisible, setIsVisible] = React.useState(isOpen);
-
-    const [isInKeyboardMoveMode, { setFalse: setKeyboardMoveModeFalse, setTrue: setKeyboardMoveModeTrue }] = useBoolean(
-      isOpen,
-    );
-
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
-
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,
@@ -189,11 +192,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       setKeyboardMoveModeFalse();
 
       if (dragOptions && internalState.hasRegisteredKeyUp) {
-        internalState.events.off(window, 'keyup', handleKeyUp, true /* useCapture */);
+        internalState.events.off(win, 'keyup', handleKeyUp, true /* useCapture */);
       }
 
       onDismissed?.();
-    }, [dragOptions, handleKeyUp, internalState, onDismissed, setKeyboardMoveModeFalse, setModalMenuClose]);
+    }, [dragOptions, handleKeyUp, internalState, onDismissed, setKeyboardMoveModeFalse, setModalMenuClose, win]);
 
     const handleDragStart = React.useCallback((): void => {
       setModalMenuClose();
@@ -308,22 +311,22 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       internalState.lastSetYCoordinate = yCoordinate;
       setKeyboardMoveModeTrue();
       setModalMenuClose();
-      internalState.events.on(window, 'keydown', handleKeyDown, true /* useCapture */);
+      internalState.events.on(win, 'keydown', handleKeyDown, true /* useCapture */);
     };
 
     const handleExitKeyboardMoveMode = React.useCallback(() => {
       internalState.lastSetXCoordinate = 0;
       internalState.lastSetYCoordinate = 0;
       setKeyboardMoveModeFalse();
-      internalState.events.off(window, 'keydown', handleKeyDown, true /* useCapture */);
-    }, [handleKeyDown, internalState, setKeyboardMoveModeFalse]);
+      internalState.events.off(win, 'keydown', handleKeyDown, true /* useCapture */);
+    }, [handleKeyDown, internalState, setKeyboardMoveModeFalse, win]);
 
     const registerForKeyUp = React.useCallback((): void => {
       if (!internalState.hasRegisteredKeyUp) {
-        internalState.events.on(window, 'keyup', handleKeyUp, true /* useCapture */);
+        internalState.events.on(win, 'keyup', handleKeyUp, true /* useCapture */);
         internalState.hasRegisteredKeyUp = true;
       }
-    }, [handleKeyUp, internalState]);
+    }, [handleKeyUp, internalState, win]);
 
     const modalContent = (
       <FocusTrapZone
@@ -382,9 +385,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         setIsVisible(true);
 
         if (topOffsetFixed) {
-          const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+          const dialogMain = doc?.getElementsByClassName('ms-Dialog-main');
           let modalRectangle;
-          if (dialogMain.length > 0) {
+          if (dialogMain && dialogMain.length > 0) {
             modalRectangle = dialogMain[0].getBoundingClientRect();
             setModalRectangleTop(modalRectangle.top);
           }
