@@ -63,7 +63,7 @@ if (typesContext) {
     { packageName: '@uifabric/icons', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
-    { packageName: '@uifabric/styling', loadTypes },
+    { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes },
     { packageName: '@fluentui/date-time-utilities', loadTypes },
   );

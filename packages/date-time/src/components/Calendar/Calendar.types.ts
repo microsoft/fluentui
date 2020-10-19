@@ -1,5 +1,5 @@
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
 import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';

@@ -1,4 +1,4 @@
-import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
+import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { ToggleButtonState } from './ToggleButton.types';
 

@@ -1,2 +1,2 @@
 import './version';
-export * from '@uifabric/styling';
+export * from '@fluentui/style-utilities';

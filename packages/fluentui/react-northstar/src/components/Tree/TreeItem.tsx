@@ -110,7 +110,9 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   indeterminate?: boolean;
 }
 
-export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
+export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
+  selectable?: boolean;
+};
 export const treeItemClassName = 'ui-tree__item';
 
 /**
@@ -139,7 +141,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     variables,
     treeSize,
     selectionIndicator,
-    selectableParent,
     selected,
     selectable,
     indeterminate,
@@ -147,6 +148,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     parent,
   } = props;
 
+  const selectableParent = hasSubtree && selectable;
   const hasSubtreeItem = hasSubtree(props);
 
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
@@ -210,10 +212,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     }),
     rtl: context.rtl,
   });
+
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
     className: treeItemClassName,
     mapPropsToStyles: () => ({
       level,
+      selectable,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -232,14 +236,17 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onFocusFirstChild', e, props);
     onFocusFirstChild(props.id);
   };
+
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
     onFocusParent(parent);
   };
+
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
     onSiblingsExpand(e, props);
   };
+
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
     onClick: (e, titleProps) => {
       handleTitleClick(e);
@@ -283,9 +290,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
                 selected,
                 selectable,
                 parent,
-                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
                 ...(selectableParent && { indeterminate }),
-                selectableParent,
                 selectionIndicator,
               }),
             render: renderItemTitle,
@@ -326,9 +331,11 @@ TreeItem.propTypes = {
   selectableParent: PropTypes.bool,
   indeterminate: PropTypes.bool,
 };
+
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
 };
+
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
 
 TreeItem.create = createShorthandFactory({

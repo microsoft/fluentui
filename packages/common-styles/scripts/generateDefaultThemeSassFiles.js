@@ -4,7 +4,7 @@
  * used with the legacy version of loadTheme.
  */
 
-const { getTheme } = require('@uifabric/styling');
+const { getTheme } = require('@fluentui/style-utilities');
 const fs = require('fs');
 const path = require('path');
 
