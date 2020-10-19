@@ -128,4 +128,14 @@ describe('Pivot', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  it('renders Pivot with overflow', () => {
+    const component = create(
+      <Pivot overflowBehavior="menu">
+        <PivotItem headerText="Test 1" />
+        <PivotItem headerText="Test 2" />
+      </Pivot>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
