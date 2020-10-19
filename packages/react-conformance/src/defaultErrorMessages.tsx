@@ -270,14 +270,14 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't have a defined ref value.
     // To Resolve this issue:
-    // 1. Check if you component has a ref.
+    // 1. Check if your component has a ref.
     // 2. If you component is a function component make sure that your are using forwardRef.
     // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
     //    your test file.
     console.log(
       defaultErrorMessage(`component-has-root-ref`, displayName, `defined ref value.`) +
         resolveErrorMessages([
-          `Check if you component has a ${resolveInfo('ref')}.`,
+          `Check if your component has a ${resolveInfo('ref')}.`,
           `If you component is a function component make sure that your are using ${resolveInfo('forwardRef')}.`,
           `Check if your component uses an element ref and add ${resolveInfo(
             `elementRefName: 'elementRef'`,

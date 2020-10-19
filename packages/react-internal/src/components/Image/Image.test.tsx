@@ -27,7 +27,7 @@ describe('Image', () => {
   isConformant({
     Component: Image,
     displayName: 'Image',
-    //Problem: Not applied to the root properly
+    // Problem: Ref is applied but not on root element
     // Solution: Ref should be applied to the root.
     disabledTests: ['component-has-root-ref'],
   });

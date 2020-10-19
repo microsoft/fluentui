@@ -5,8 +5,8 @@ describe('Check', () => {
   isConformant({
     Component: Check,
     displayName: 'Check',
-    // Problem: Ref isn't passed.
-    // Solution: Ref should be added and passed onto the root.
+    // Problem: Is FunctionComponent but missing `forwardRef`
+    // Solution: add forwardRef and ref typing
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

@@ -31,8 +31,9 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
-    // Problem: Returns FunctionComponents can’t be given refs
-    // Solution: Missing a forwardRef:
+    // Priority: High
+    // Problem: Is FunctionComponent but missing `forwardRef`
+    // Solution: add forwardRef and ref typing
     disabledTests: ['component-has-root-ref'],
   });
 

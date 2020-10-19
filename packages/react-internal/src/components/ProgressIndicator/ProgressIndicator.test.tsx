@@ -37,8 +37,8 @@ describe('ProgressIndicator', () => {
   isConformant({
     Component: ProgressIndicator,
     displayName: 'ProgressIndicator',
-    // Problem: Doesn’t apply ref to the root element.
-    // Solution: Ensure that the ref is applied to the root element.
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
     disabledTests: ['component-has-root-ref'],
   });
 });
