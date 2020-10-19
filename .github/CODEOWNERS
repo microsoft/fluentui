@@ -69,9 +69,9 @@ packages/foundation/ @dzearing @khmakoto
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
-packages/styling/ @dzearing
-packages/styling/src/interfaces/ @phkuo
-packages/styling/src/styles/ @phkuo
+packages/style-utilities/ @dzearing
+packages/style-utilities/src/interfaces/ @phkuo
+packages/style-utilities/src/styles/ @phkuo
 packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect

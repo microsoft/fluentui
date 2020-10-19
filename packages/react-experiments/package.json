@@ -62,7 +62,7 @@
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.9",
+    "@fluentui/style-utilities": "^7.16.9",
     "@uifabric/utilities": "^7.32.3",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",

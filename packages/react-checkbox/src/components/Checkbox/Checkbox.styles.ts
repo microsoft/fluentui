@@ -4,7 +4,7 @@ import {
   getGlobalClassNames,
   getEdgeChromiumNoHighContrastAdjustSelector,
   IStyle,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const GlobalClassNames = {

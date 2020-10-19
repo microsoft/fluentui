@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '@uifabric/styling';
+import { ITheme, IStyle } from '@fluentui/style-utilities';
 
 export interface IFloatingSuggestionItemProps<T> {
   item: T;

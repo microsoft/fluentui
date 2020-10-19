@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton } from '@fluentui/react';
 import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
 import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import { mergeStyleSets } from '@uifabric/styling';
+import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({
   wrapper: { height: 360 },

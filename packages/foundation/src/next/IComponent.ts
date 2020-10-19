@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleSet } from '@uifabric/styling';
+import { IStyleSet } from '@fluentui/style-utilities';
 import { IComponentOptions as IOldComponentOptions } from '../IComponent';
 import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
 

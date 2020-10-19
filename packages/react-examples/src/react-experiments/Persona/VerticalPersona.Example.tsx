@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@fluentui/react-experiments/lib/common/TestImages';
-import { mergeStyles } from '@uifabric/styling';
+import { mergeStyles } from '@fluentui/style-utilities';
 import { Persona } from '@fluentui/react-experiments';
 
 const tokens = {

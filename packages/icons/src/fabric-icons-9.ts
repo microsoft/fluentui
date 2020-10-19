@@ -4,7 +4,7 @@ import {
   IIconOptions,
   IIconSubset,
   registerIcons
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 
 export function initializeIcons(
   baseUrl: string = '',
