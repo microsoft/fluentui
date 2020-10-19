@@ -61,7 +61,7 @@
 }
 
 // Apply content padding, based on device size
-@mixin contentPadding($paddingTop:0px, $paddingBottom:$contentPaddingBottom) {
+@mixin contentPadding($paddingTop: 0px, $paddingBottom: $contentPaddingBottom) {
   padding: $paddingTop $contentPadding-sm $paddingBottom $contentPadding-sm;
 
   @media screen and (min-width: $uhf-screen-min-mobile) {
