@@ -109,7 +109,7 @@ export class SlotRule implements Rule {
     expectedValue: PropValue,
   ) => {
     if (expectAttribute && this.data.overrideId) {
-      return `​​'ID reference' for '${expectedAttribute}' attribute`;
+      return `'ID reference' for '${expectedAttribute}' attribute`;
     } else if (expectAttribute) {
       return expectedValue ? `'${expectedAttribute}=${expectedValue}'` : `'${expectedAttribute}'`;
     } else {
