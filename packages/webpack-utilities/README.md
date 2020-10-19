@@ -6,11 +6,11 @@ This package contains utilities for optimizing the use of Fluent UI React ([form
 
 To use any of these Webpack utilities, you must install it into your project:
 
-`npm i -D @uifabric/webpack-utils`
+`npm i -D @fluentui/webpack-utilities`
 
 or
 
-`yarn add -D @uifabric/webpack-utils`
+`yarn add -D @fluentui/webpack-utilities`
 
 ## Fabric Async Loader
 
@@ -23,8 +23,8 @@ module.exports = {
     rules: [
       {
         test: /\.(jsx?|tsx?)$/,
-        include: require('@uifabric/webpack-utils/lib/fabricAsyncLoaderInclude'),
-        loader: '@uifabric/webpack-utils/lib/fabricAsyncLoader.js',
+        include: require('@fluentui/webpack-utilities/lib/fabricAsyncLoaderInclude'),
+        loader: '@fluentui/webpack-utilities/lib/fabricAsyncLoader.js',
         options: {
           ...
         }

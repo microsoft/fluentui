@@ -23,7 +23,7 @@ function getResolveAlias(useLib, cwd) {
     '@fluentui/eslint-plugin',
     '@fluentui/api-docs',
     '@uifabric/build',
-    '@uifabric/webpack-utils',
+    '@fluentui/webpack-utilities',
     '@uifabric/jest-serializer-merge-styles',
   ];
 

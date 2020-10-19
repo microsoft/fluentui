@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/webpack-utils",
+  "name": "@fluentui/webpack-utilities",
   "version": "7.0.25",
   "description": "Fluent UI React utilities for Webpack bundler.",
   "repository": {
