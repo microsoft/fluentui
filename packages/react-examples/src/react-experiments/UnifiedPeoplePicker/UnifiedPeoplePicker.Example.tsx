@@ -65,6 +65,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const suggestionProps = useConst(() => {
     return {
+      // uncomment below section to see any example of a selectable header item
       /*headerItemsProps: [
         {
           renderItem: () => {
@@ -86,6 +87,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
           shouldShow: () => {
             return peopleSuggestions.length > 0;
           },
+          // uncomment to see an example of multiple selectable footer items
           /*onExecute: () => {
             alert('Showing people suggestions executed');
           },*/
