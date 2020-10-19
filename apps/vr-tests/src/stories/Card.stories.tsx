@@ -11,7 +11,7 @@ import {
   ICardItemTokens,
   ICardSectionStyles,
   ICardSectionTokens,
-} from '@uifabric/react-cards';
+} from '@fluentui/react-cards';
 import {
   ActionButton,
   Fabric,
