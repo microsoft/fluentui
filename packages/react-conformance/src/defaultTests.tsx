@@ -129,9 +129,12 @@ export const defaultTests: TestObject = {
         const el = targetComponent
           ? customMount(<Component {...mergedProps} />).find(targetComponent)
           : customMount(<Component {...mergedProps} />);
-        const component = getComponent(el, helperComponents, wrapperComponent);
 
-        expect(rootRef.current).toBe(component.getDOMNode());
+        act(() => {
+          const component = getComponent(el, helperComponents, wrapperComponent);
+
+          expect(rootRef.current).toBe(component.getDOMNode());
+        });
       } catch (e) {
         defaultErrorMessages['component-has-root-ref'](componentInfo, testInfo, e);
         throw new Error('component-has-root-ref');
