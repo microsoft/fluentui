@@ -26,7 +26,7 @@ describe('GroupedList', () => {
     },
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {

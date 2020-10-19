@@ -53,6 +53,6 @@ describe('Icon', () => {
     displayName: 'Icon',
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

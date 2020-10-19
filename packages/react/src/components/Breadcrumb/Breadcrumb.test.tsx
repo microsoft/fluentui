@@ -95,7 +95,7 @@ describe('Breadcrumb', () => {
     displayName: 'Breadcrumb',
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('renders items with expected element type', () => {

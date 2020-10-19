@@ -102,7 +102,7 @@ describe('BasePicker', () => {
     displayName: 'BasePicker',
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref', 'has-top-level-file'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
   });
 
   it('can provide custom renderers', () => {

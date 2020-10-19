@@ -104,6 +104,6 @@ describe('PeoplePicker', () => {
     displayName: 'NormalPeoplePicker',
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['has-top-level-file', 'name-matches-filename', 'component-has-root-ref'],
+    disabledTests: ['has-top-level-file', 'name-matches-filename', 'component-has-root-ref', 'component-handles-ref'],
   });
 });

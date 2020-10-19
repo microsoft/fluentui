@@ -12,7 +12,7 @@ describe('SelectedPeopleList', () => {
       displayName: 'SelectedPeopleList',
       // Problem: Ref is not supported
       // Solution: Convert to FunctionComponent and support using forwardRef
-      disabledTests: ['has-top-level-file', 'component-has-root-ref'],
+      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
     });
 
     it('renders keyed personas when there is no context menu', () => {

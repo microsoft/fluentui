@@ -41,7 +41,7 @@ describe('List', () => {
     displayName: 'List',
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('can complete rendering', done => {

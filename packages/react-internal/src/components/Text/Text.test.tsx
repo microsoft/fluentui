@@ -25,6 +25,7 @@ describe('Text', () => {
     componentPath: path.join(__dirname, 'Text.ts'),
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref'],
+    asPropHandlesRef: true,
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

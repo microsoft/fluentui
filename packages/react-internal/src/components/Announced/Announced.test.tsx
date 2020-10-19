@@ -42,7 +42,7 @@ describe('Announced', () => {
     componentPath: path.join(__dirname, 'Announced.ts'),
     // Problem: Ref isn't passed.
     // Solution: Ref should be added and passed onto the root.
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('renders with default settings', () => {

@@ -25,7 +25,7 @@ describe('MarqueeSelection', () => {
     displayName: 'MarqueeSelection',
     // Problem: Ref doesn't match DOM node and returns outermost wrapper div.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('updates the selection when an item is selected', () => {

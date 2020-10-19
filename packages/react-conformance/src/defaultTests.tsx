@@ -95,9 +95,9 @@ export const defaultTests: TestObject = {
 
         customMount(<Component {...mergedProps} />);
 
-        // expect(rootRef.current).toBeDefined();
+        expect(rootRef.current).toBeDefined();
         // Ref should resolve to an HTML element.
-        // expect(rootRef.current?.getAttribute).toBeDefined();
+        expect(rootRef.current?.getAttribute).toBeDefined();
       } catch (e) {
         defaultErrorMessages['component-handles-ref'](componentInfo, testInfo, e);
         throw new Error('component-handles-ref');

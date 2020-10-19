@@ -7,6 +7,6 @@ describe('Overlay', () => {
     displayName: 'Overlay',
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 });

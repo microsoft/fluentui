@@ -275,7 +275,7 @@ export const defaultErrorMessages = {
     // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
     //    your test file.
     console.log(
-      defaultErrorMessage(`component-has-root-ref`, displayName, `defined ref value.`) +
+      defaultErrorMessage(`component-handles-ref`, displayName, `defined ref value.`) +
         resolveErrorMessages([
           `Check if your component has a ${resolveInfo('ref')}.`,
           `If you component is a function component make sure that your are using ${resolveInfo('forwardRef')}.`,
