@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { KeytipLayer } from 'office-ui-fabric-react/lib/Keytips';
 
-export const CompatKeytipLayerWrapper: React.FunctionComponent<{}> = props => {
+export const KeytipLayerWrapper: React.FunctionComponent<{}> = props => {
   return (
     <>
       <KeytipLayer content="Alt Windows" />
@@ -10,6 +10,6 @@ export const CompatKeytipLayerWrapper: React.FunctionComponent<{}> = props => {
   );
 };
 
-export const withCompatKeytipLayer = (storyFn: () => React.ReactNode) => {
-  return <CompatKeytipLayerWrapper>{storyFn()}</CompatKeytipLayerWrapper>;
+export const withKeytipLayer = (storyFn: () => React.ReactNode) => {
+  return <KeytipLayerWrapper>{storyFn()}</KeytipLayerWrapper>;
 };
