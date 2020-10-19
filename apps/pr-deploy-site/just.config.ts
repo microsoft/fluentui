@@ -16,8 +16,6 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 //
 // Dependencies are listed here and NOT in package.json because we do not want to allow for partial builds for scoping
 const dependencies = [
-  '@fluentui/docs',
-  '@fluentui/perf-test',
   '@uifabric/charting',
   '@uifabric/date-time',
   '@uifabric/experiments',
