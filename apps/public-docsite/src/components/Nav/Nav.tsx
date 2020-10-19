@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CollapsibleSection } from '@uifabric/experiments';
+import { CollapsibleSection } from '@fluentui/react-experiments';
 import {
   css,
   FocusZone,

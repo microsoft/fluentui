@@ -6,7 +6,7 @@ import {
   IStyle,
   normalize,
   FontWeights,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const globalClassNames = {

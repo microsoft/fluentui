@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ICalendarIconStrings, AnimationDirection } from '../Calendar.types';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 export interface ICalendarYear {

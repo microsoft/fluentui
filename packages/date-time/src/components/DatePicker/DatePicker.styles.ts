@@ -1,5 +1,5 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { IStyle, normalize, getGlobalClassNames, FontSizes } from '@uifabric/styling';
+import { IStyle, normalize, getGlobalClassNames, FontSizes } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   root: 'ms-DatePicker',

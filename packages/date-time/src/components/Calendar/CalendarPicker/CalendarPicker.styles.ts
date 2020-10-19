@@ -7,7 +7,7 @@ import {
   IRawStyle,
   AnimationStyles,
   HighContrastSelector,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {

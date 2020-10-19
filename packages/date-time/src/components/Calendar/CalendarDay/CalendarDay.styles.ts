@@ -1,5 +1,5 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles } from '@fluentui/style-utilities';
 
 export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
   const { className, theme, headerIsClickable, showWeekNumbers } = props;
