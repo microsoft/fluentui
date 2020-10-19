@@ -74,5 +74,4 @@
   "javascript.preferences.importModuleSpecifierEnding": "index",
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifierEnding": "index",
-  "git.ignoreLimitWarning": true
 }
