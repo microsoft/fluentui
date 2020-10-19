@@ -259,6 +259,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         paddingBottom: '0',
         margin: '0',
         width: 'auto',
+        height: 'var(--button-size-regular)',
         minWidth: '96px',
         maxWidth: '280px',
         minHeight: 'var(--button-size-regular)',
