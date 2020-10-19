@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/test-utilities",
+  "name": "@fluentui/test-utilities",
   "version": "7.3.0",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",

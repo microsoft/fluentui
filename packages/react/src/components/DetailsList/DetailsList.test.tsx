@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 
