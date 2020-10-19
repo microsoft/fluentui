@@ -51,6 +51,22 @@ const _suggestions = [
     isSelected: false,
     showRemoveButton: true,
   },
+  {
+    key: '6',
+    id: '6',
+    displayText: 'Suggestion 6',
+    item: people[5],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+  {
+    key: '7',
+    id: '7',
+    displayText: 'Suggestion 7',
+    item: people[6],
+    isSelected: false,
+    showRemoveButton: true,
+  },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
 export const UnifiedPeoplePickerExample = (): JSX.Element => {
