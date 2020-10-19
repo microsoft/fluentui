@@ -3,6 +3,7 @@ import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
+import { safeMount } from '@uifabric/test-utilities';
 import parseDocblock from './utils/parseDocblock';
 
 import * as React from 'react';
@@ -86,18 +87,18 @@ export const defaultTests: TestObject = {
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`handles ref`, () => {
       try {
-        const { customMount = mount, Component, requiredProps, elementRefName = 'ref' } = testInfo;
+        const { Component, requiredProps, elementRefName = 'ref' } = testInfo;
         const rootRef = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
           [elementRefName]: rootRef,
         };
 
-        customMount(<Component {...mergedProps} />);
-
-        expect(rootRef.current).toBeDefined();
-        // Ref should resolve to an HTML element.
-        expect(rootRef.current?.getAttribute).toBeDefined();
+        safeMount(<Component {...mergedProps} />, wrapper => {
+          expect(rootRef.current).toBeDefined();
+          // Ref should resolve to an HTML element.
+          expect(rootRef.current?.getAttribute).toBeDefined();
+        });
       } catch (e) {
         defaultErrorMessages['component-handles-ref'](componentInfo, testInfo, e);
         throw new Error('component-handles-ref');
