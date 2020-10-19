@@ -94,7 +94,7 @@ export const defaultTests: TestObject = {
           [elementRefName]: rootRef,
         };
 
-        safeMount(<Component {...mergedProps} />, wrapper => {
+        safeMount(<Component {...mergedProps} />, () => {
           expect(rootRef.current).toBeDefined();
           // Ref should resolve to an HTML element.
           expect(rootRef.current?.getAttribute).toBeDefined();
