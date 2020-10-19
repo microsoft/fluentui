@@ -95,7 +95,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const FocusTrapZoneId = useId();
 
     const doc = getDocument();
-    const win = getWindow() as Window & { [key: string]: any };
+    const win = getWindow();
 
     const { setTimeout, clearTimeout } = useSetTimeout();
 
