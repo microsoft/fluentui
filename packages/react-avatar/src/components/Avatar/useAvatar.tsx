@@ -5,7 +5,7 @@ import { calcAvatarStyleProps } from './calcAvatarStyleProps';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
-import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons';
+import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
 
 const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 

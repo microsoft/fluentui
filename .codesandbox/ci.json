@@ -3,7 +3,7 @@
   "packages": [
     "packages/react",
     "packages/react-button",
-    "packages/react-icons",
+    "packages/react-icons-mdl2",
     "packages/fluentui/react-bindings",
     "packages/fluentui/react-northstar"
   ],
