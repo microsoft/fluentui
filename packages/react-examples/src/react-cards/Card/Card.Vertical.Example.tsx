@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
+import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@fluentui/react-cards';
 import {
   ActionButton,
   FontWeights,

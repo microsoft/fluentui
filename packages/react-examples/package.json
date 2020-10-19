@@ -75,7 +75,7 @@
     "@uifabric/foundation": "^7.9.9",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/react-cards": "^0.113.3",
+    "@fluentui/react-cards": "^0.113.3",
     "@uifabric/react-hooks": "^7.13.5",
     "@fluentui/style-utilities": "^7.16.9",
     "@fluentui/theme-samples": "^7.1.21",
