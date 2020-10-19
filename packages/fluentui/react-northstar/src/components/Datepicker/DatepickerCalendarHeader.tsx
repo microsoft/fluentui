@@ -6,7 +6,7 @@ import {
   datepickerCalendarHeaderBehavior,
   DatepickerCalendarHeaderBehaviorProps,
 } from '@fluentui/accessibility';
-import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
+import { INorthstarCalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,
@@ -32,7 +32,7 @@ import { Text, TextProps } from '../Text/Text';
 export interface DatepickerCalendarHeaderProps
   extends UIComponentProps,
     ContentComponentProps,
-    Pick<ICalendarStrings, 'prevMonthAriaLabel' | 'nextMonthAriaLabel'> {
+    Pick<INorthstarCalendarStrings, 'prevMonthAriaLabel' | 'nextMonthAriaLabel'> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarHeaderBehaviorProps>;
 

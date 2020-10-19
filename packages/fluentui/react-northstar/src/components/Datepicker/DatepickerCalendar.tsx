@@ -7,7 +7,7 @@ import {
   getDayGrid,
   IDay,
   DEFAULT_CALENDAR_STRINGS,
-  ICalendarStrings,
+  INorthstarCalendarStrings,
   IDayGridOptions,
   IDateGridStrings,
   IRestrictedDatesOptions,
@@ -41,7 +41,10 @@ import { DatepickerCalendarCellButtonProps, DatepickerCalendarCellButton } from 
 import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { navigateToNewDate, contstraintNavigatedDate } from './navigateToNewDate';
 
-export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDayGridOptions> {
+export interface DatepickerCalendarProps
+  extends UIComponentProps,
+    Partial<INorthstarCalendarStrings>,
+    Partial<IDayGridOptions> {
   /** Calendar can have header. */
   header?: ShorthandValue<DatepickerCalendarHeaderProps>;
 

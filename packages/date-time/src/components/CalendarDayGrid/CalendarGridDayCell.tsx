@@ -6,8 +6,8 @@ import {
   compareDates,
   findAvailableDate,
   IAvailableDateOptions,
+  DateRangeType,
 } from '@fluentui/date-time-utilities';
-import { DateRangeType } from '../Calendar/Calendar.types';
 import { IDayInfo } from './CalendarDayGrid.base';
 import { ICalendarGridRowProps } from './CalendarGridRow';
 

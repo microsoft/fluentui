@@ -1,13 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
+import { ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles,
 } from '../../CalendarDayGrid/CalendarDayGrid.types';
-
-export { ICalendarDayGridStyles };
+import { ICalendarStrings } from '@fluentui/date-time-utilities';
 
 export interface ICalendarDay {
   focus(): void;

@@ -8,8 +8,8 @@ import {
   css,
   getPropsWithDefaults,
 } from '@uifabric/utilities';
-import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
-import { FirstWeekOfYear, getDatePartHashValue, compareDatePart } from '@fluentui/date-time-utilities';
+import { Calendar, ICalendar } from '../../Calendar';
+import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '@fluentui/react-internal/lib/Callout';
 import { TextField, ITextField } from '@fluentui/react-internal/lib/TextField';
 import { FocusTrapZone } from '@fluentui/react-internal/lib/FocusTrapZone';

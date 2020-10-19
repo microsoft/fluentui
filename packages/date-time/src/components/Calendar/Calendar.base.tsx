@@ -16,6 +16,7 @@ import {
   formatMonthYear,
   formatDay,
   formatYear,
+  DEFAULT_CALENDAR_STRINGS,
 } from '@fluentui/date-time-utilities';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
@@ -30,7 +31,6 @@ import {
   FocusRects,
   getPropsWithDefaults,
 } from '@uifabric/utilities';
-import { DayPickerStrings } from './defaults';
 import { useControllableValue } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
@@ -67,7 +67,7 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
   firstDayOfWeek: DayOfWeek.Sunday,
   dateRangeType: DateRangeType.Day,
   showGoToToday: true,
-  strings: DayPickerStrings,
+  strings: DEFAULT_CALENDAR_STRINGS,
   highlightCurrentMonth: false,
   highlightSelectedMonth: false,
   navigationIcons: defaultIconStrings,

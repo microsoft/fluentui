@@ -45,7 +45,7 @@ export interface IRestrictedDatesOptions {
   restrictedDates?: Date[];
 }
 
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
+export interface IDatePickerOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
@@ -91,7 +91,12 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   markedDays?: Date[];
 }
 
-export interface IDayGridOptions extends IDatepickerOptions {
+/**
+ * @deprecated Use IDatePickerOptions
+ */
+export type IDatepickerOptions = IDatePickerOptions;
+
+export interface IDayGridOptions extends IDatePickerOptions {
   /**
    * The currently selected date
    */

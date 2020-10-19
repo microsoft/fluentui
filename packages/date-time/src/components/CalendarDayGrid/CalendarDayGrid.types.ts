@@ -1,12 +1,6 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import {
-  ICalendarStrings,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  ICalendarFormatDateCallbacks,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
+import { ICalendarFormatDateCallbacks, AnimationDirection } from '../Calendar/Calendar.types';
+import { ICalendarStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 

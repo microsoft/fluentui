@@ -1,4 +1,4 @@
-import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
+import { IDateGridStrings, IDateFormatting, INorthstarCalendarStrings, ICalendarStrings } from './dateFormatting.types';
 import { formatDay } from './formatDay';
 import { formatYear } from './formatYear';
 import { formatMonthDayYear } from './formatMonthDayYear';
@@ -37,15 +37,12 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
 
     return null;
   },
-  ...DEFAULT_LOCALIZED_STRINGS,
 };
 
 export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
-  ...DEFAULT_DATE_FORMATTING,
+  ...DEFAULT_LOCALIZED_STRINGS,
 
   goToToday: 'Go to today',
-  openCalendarTitle: 'Open calendar',
-  inputPlaceholder: 'Select a date...',
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',
@@ -58,6 +55,15 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   todayDateFormatString: "Today's date {0}",
   monthPickerHeaderAriaLabel: '{0}, select to change the year',
   yearPickerHeaderAriaLabel: '{0}, select to change the month',
+  dayMarkedAriaLabel: 'marked',
+};
+
+export const DEFAULT_NORTHSTAR_CALENDAR_STRINGS: INorthstarCalendarStrings = {
+  ...DEFAULT_CALENDAR_STRINGS,
+  ...DEFAULT_DATE_FORMATTING,
+
+  openCalendarTitle: 'Open calendar',
+  inputPlaceholder: 'Select a date...',
   isRequiredErrorMessage: 'A date selection is required',
   invalidInputErrorMessage: 'Manually entered date is not in correct format.',
   isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',

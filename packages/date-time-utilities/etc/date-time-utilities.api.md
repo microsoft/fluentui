@@ -64,6 +64,9 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting;
 // @public (undocumented)
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings;
 
+// @public (undocumented)
+export const DEFAULT_NORTHSTAR_CALENDAR_STRINGS: INorthstarCalendarStrings;
+
 // @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
 
@@ -136,22 +139,14 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
-export interface ICalendarStrings extends IDateFormatting {
+export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
+    dayMarkedAriaLabel?: string;
     goToToday: string;
-    inputAriaLabel?: string;
-    inputBoundedFormatString?: string;
-    inputMaxBoundedFormatString?: string;
-    inputMinBoundedFormatString?: string;
-    inputPlaceholder: string;
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
     monthPickerHeaderAriaLabel?: string;
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
-    openCalendarTitle: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
@@ -162,7 +157,7 @@ export interface ICalendarStrings extends IDateFormatting {
 }
 
 // @public (undocumented)
-export interface IDateFormatting extends IDateGridStrings {
+export interface IDateFormatting {
     formatDay: (date: Date) => string;
     formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
     formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
@@ -179,7 +174,7 @@ export interface IDateGridStrings {
 }
 
 // @public (undocumented)
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
+export interface IDatePickerOptions extends IRestrictedDatesOptions {
     dateRangeType: DateRangeType;
     daysToSelectInDayView?: number;
     firstDayOfWeek: DayOfWeek;
@@ -189,6 +184,9 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
     today?: Date;
     workWeekDays?: DayOfWeek[];
 }
+
+// @public @deprecated (undocumented)
+export type IDatepickerOptions = IDatePickerOptions;
 
 // @public (undocumented)
 export interface IDay {
@@ -203,10 +201,23 @@ export interface IDay {
 }
 
 // @public (undocumented)
-export interface IDayGridOptions extends IDatepickerOptions {
+export interface IDayGridOptions extends IDatePickerOptions {
     navigatedDate: Date;
     selectedDate: Date;
     weeksToShow?: number;
+}
+
+// @public (undocumented)
+export interface INorthstarCalendarStrings extends IDateFormatting, ICalendarStrings {
+    inputAriaLabel?: string;
+    inputBoundedFormatString?: string;
+    inputMaxBoundedFormatString?: string;
+    inputMinBoundedFormatString?: string;
+    inputPlaceholder: string;
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+    openCalendarTitle: string;
 }
 
 // @public (undocumented)
@@ -261,6 +272,19 @@ export enum MonthOfYear {
 
 // @public
 export function setMonth(date: Date, month: number): Date;
+
+// @public (undocumented)
+export const TimeConstants: {
+    MillisecondsInOneDay: number;
+    MillisecondsIn1Sec: number;
+    MillisecondsIn1Min: number;
+    MillisecondsIn30Mins: number;
+    MillisecondsIn1Hour: number;
+    MinutesInOneDay: number;
+    MinutesInOneHour: number;
+    DaysInOneWeek: number;
+    MonthInOneYear: number;
+};
 
 
 // (No @packageDocumentation comment for this package)

@@ -5,7 +5,7 @@ import {
   FirstWeekOfYear,
   DEFAULT_CALENDAR_STRINGS,
   IDayGridOptions,
-  ICalendarStrings,
+  INorthstarCalendarStrings,
   IDatepickerOptions,
   IRestrictedDatesOptions,
 } from '@fluentui/date-time-utilities';
@@ -41,7 +41,10 @@ import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
-export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
+export interface DatepickerProps
+  extends UIComponentProps,
+    Partial<INorthstarCalendarStrings>,
+    Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -105,7 +108,10 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
-const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
+const formatRestrictedInput = (
+  restrictedOptions: IRestrictedDatesOptions,
+  localizationStrings: INorthstarCalendarStrings,
+) => {
   let formattedString = '';
   if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {
     formattedString = format(
@@ -150,7 +156,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   setStart();
   const inputRef = React.useRef<HTMLElement>();
 
-  const dateFormatting: ICalendarStrings = {
+  const dateFormatting: INorthstarCalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,
     formatMonthDayYear: props.formatMonthDayYear,

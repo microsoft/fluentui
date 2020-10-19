@@ -1,16 +1,13 @@
 import * as React from 'react';
 import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import {
-  DateRangeType,
-  DayOfWeek,
-  FirstWeekOfYear,
-  ICalendarFormatDateCallbacks,
-  ICalendarStrings,
-  ICalendarIconStrings,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
+  IWeeklyDayPickerProps,
+  IWeeklyDayPickerStyleProps,
+  IWeeklyDayPickerStyles,
+  IWeeklyDayPickerStrings,
+} from './WeeklyDayPicker.types';
+import { ICalendarFormatDateCallbacks, ICalendarIconStrings, AnimationDirection } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import {
@@ -19,12 +16,16 @@ import {
   addDays,
   addMonths,
   compareDates,
-} from '../../utilities/dateMath/DateMath';
+  FirstWeekOfYear,
+  DateRangeType,
+  DayOfWeek,
+  ICalendarStrings,
+} from '@fluentui/date-time-utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
 
-const DEFAULT_STRINGS = {
+const DEFAULT_STRINGS: IWeeklyDayPickerStrings = {
   months: [
     'January',
     'February',
