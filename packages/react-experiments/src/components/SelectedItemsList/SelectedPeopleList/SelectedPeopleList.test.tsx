@@ -7,12 +7,9 @@ import {
   SelectedPeopleList,
   ISelectedPeopleList,
   SelectedPersona,
-  ISelectedItemProps,
   ItemWithContextMenu,
   TriggerOnContextMenu,
 } from '../index';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { groupOne } from '@uifabric/example-data';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
@@ -66,44 +63,6 @@ describe('SelectedPeopleList', () => {
       .simulate('click');
 
     expect(onItemsRemoved).toBeCalledTimes(1);
-  });
-
-  it('group expansion as one of the items in the list', () => {
-    const _getExpandedGroupItems = (item: IPersonaProps): IPersonaProps[] => {
-      switch (item.text) {
-        case 'Group One':
-          return groupOne;
-        default:
-          return [];
-      }
-    };
-    const _canExpandItem = (item: IPersonaProps): boolean => {
-      return item.text !== undefined && item.text.indexOf('Group') !== -1;
-    };
-    const SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
-      <SelectedPersona canExpand={_canExpandItem} getExpandedItems={_getExpandedGroupItems} {...props} />
-    );
-
-    const onItemsRemoved = jest.fn();
-    const wrapper = mount(
-      <SelectedPeopleList
-        key="normal"
-        removeButtonAriaLabel="Remove"
-        selectedItems={[people[40]]}
-        onItemsRemoved={onItemsRemoved}
-        onRenderItem={SelectedItem}
-      />,
-    );
-
-    // Expanded group
-    expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(1);
-    wrapper
-      .find('button.ms-PickerItem-removeButton')
-      .at(0)
-      .simulate('click');
-
-    // After expanding,there should be 4 items
-    expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(4);
   });
 
   it('edit render of the items in selected items list', () => {
