@@ -5,7 +5,7 @@ import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../.
 import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
 
 import * as stylesImport from './SuggestionItemDefault.scss';
-const styles: any = stylesImport;
+const styles = stylesImport;
 
 /**
  * @deprecated Use the exported from the package level 'PeoplePickerItemSuggestion'. Will be removed in Fabric 7.0

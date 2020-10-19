@@ -11,7 +11,6 @@ import {
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
-/* eslint-disable */
 
 const styles: any = stylesImport;
 
