@@ -9,6 +9,7 @@ import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
+import { useConst } from '@uifabric/react-hooks';
 
 const _suggestions = [
   {
@@ -61,6 +62,48 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
   const ref = React.useRef<any>();
+
+  const suggestionProps = useConst(() => {
+    return {
+      /*headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            alert('People suggestions selected');
+          },
+        },
+      ],*/
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {peopleSuggestions.length} results</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          /*onExecute: () => {
+            alert('Showing people suggestions executed');
+          },*/
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
+          },
+        },
+      ],
+    };
+  });
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -194,6 +237,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     onFloatingSuggestionsDismiss: undefined,
     showSuggestionRemoveButton: true,
     pickerWidth: '300px',
+    pickerSuggestionsProps: suggestionProps,
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {

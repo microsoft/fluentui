@@ -3,12 +3,12 @@ import {
   IFloatingSuggestionItemProps,
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
-} from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
+} from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 import { Autofill } from '@fluentui/react';
-import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
+import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
 
 const _suggestions = [
   {
