@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving react-next OverflowSet to react-internal package.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-06T21:51:25.861Z"
+}

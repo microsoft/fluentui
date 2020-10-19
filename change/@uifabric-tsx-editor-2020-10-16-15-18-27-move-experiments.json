@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update reference to experiments in test",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-16T22:18:27.237Z"
+}

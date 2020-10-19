@@ -20,7 +20,7 @@ steps:
     displayName: 'Check targetNpmVersion is valid semver'
 
   - script: |
-      yarn
+      npx midgard-yarn install
     displayName: yarn
 
   - script: |

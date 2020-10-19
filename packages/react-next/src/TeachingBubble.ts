@@ -1,2 +1,2 @@
 import './version';
-export * from './components/TeachingBubble/index';
+export * from '@fluentui/react/lib/TeachingBubble';

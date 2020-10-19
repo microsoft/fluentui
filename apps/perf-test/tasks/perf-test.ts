@@ -1,106 +1,20 @@
-// @ts-check
-
-const fs = require('fs');
-const path = require('path');
-const flamegrill = require('flamegrill');
-const scenarioIterations = require('../src/scenarioIterations');
-const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
-const { argv } = require('@uifabric/build').just;
+import fs from 'fs';
+import path from 'path';
+import flamegrill, { CookResults, Scenarios, ScenarioConfig } from 'flamegrill';
+import scenarioIterations from '../src/scenarioIterations';
+import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
+import { just } from '@uifabric/build';
+const { argv } = just;
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
 
 // TODO: consolidate with newer version of fluent perf-test
 
-// Flamegrill Types
-/**
- * @typedef {{
- *   scenario: string;
- *   baseline?: string;
- * }} Scenario
- *
- * @typedef {{
- *   [scenarioName: string]: Scenario;
- * }} Scenarios
- *
- * @typedef {{
- *   outDir?: string;
- *   tempDir?: string;
- * }} ScenarioConfig
- *
- * @typedef {{
- *   Timestamp: number;
- *   Documents: number;
- *   Frames: number;
- *   JSEventListeners: number;
- *   Nodes: number;
- *   LayoutCount: number;
- *   RecalcStyleCount: number;
- *   LayoutDuration: number;
- *   RecalcStyleDuration: number;
- *   ScriptDuration: number;
- *   TaskDuration: number;
- *   JSHeapUsedSize: number;
- *   JSHeapTotalSize: number;
- * }} Metrics
- *
- * @typedef {{
- *   logFile: string;
- *   metrics: Metrics;
- *   baseline?: {
- *     logFile: string;
- *     metrics: Metrics;
- *   }
- * }} ScenarioProfile
- *
- * @typedef {{
- *   dataFile: string;
- *   flamegraphFile: string;
- * }} ProcessedOutput
- *
- * @typedef {{
- *   errorFile: string;
- * }} ProcessedError
- *
- * @typedef {{
- *   output?: ProcessedOutput;
- *   error?: ProcessedError;
- *   baseline?: {
- *     output?: ProcessedOutput;
- *     error?: ProcessedError;
- *   }
- * }} ProcessedScenario
- *
- * @typedef {{
- *   numTicks: number;
- * }} Analysis
- *
- * @typedef {{
- *   summary: string;
- *   isRegression: boolean;
- *   regressionFile?: string;
- * }} RegressionAnalysis
- *
- * @typedef {{
- *   numTicks: number;
- *   baseline?: Analysis;
- *   regression?: RegressionAnalysis;
- * }} ScenarioAnalysis
- *
- * @typedef {{
- *   profile: ScenarioProfile;
- *   processed: ProcessedScenario;
- *   analysis?: ScenarioAnalysis;
- * }} CookResult
- *
- * @typedef {{
- *   [scenarioName: string]: CookResult;
- * }} CookResults
- */
-
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
 
+/* eslint-disable @fluentui/max-len */
 // TODO:
 //  - Results Analysis
 //    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
@@ -207,7 +121,7 @@ const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
 module.exports = async function getPerfRegressions() {
-  const iterationsArgv = /** @type {number} */ argv().iterations;
+  const iterationsArgv: number = argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
   const scenariosAvailable = fs
@@ -215,7 +129,7 @@ module.exports = async function getPerfRegressions() {
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 
-  const scenariosArgv = /** @type {string} */ argv().scenarios;
+  const scenariosArgv: string = argv().scenarios;
   const scenariosArg = (scenariosArgv && scenariosArgv.split && scenariosArgv.split(',')) || [];
   scenariosArg.forEach(scenario => {
     if (!scenariosAvailable.includes(scenario)) {
@@ -225,8 +139,7 @@ module.exports = async function getPerfRegressions() {
 
   const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
-  /** @type {Scenarios} */
-  const scenarios = {};
+  const scenarios: Scenarios = {};
   const scenarioSettings = {};
   scenarioList.forEach(scenarioName => {
     if (!scenariosAvailable.includes(scenarioName)) {
@@ -268,8 +181,7 @@ module.exports = async function getPerfRegressions() {
     }
   }
 
-  /** @type {ScenarioConfig} */
-  const scenarioConfig = {
+  const scenarioConfig: ScenarioConfig = {
     outDir,
     tempDir,
     pageActions: async (page, options) => {
@@ -282,8 +194,7 @@ module.exports = async function getPerfRegressions() {
     },
   };
 
-  /** @type {CookResults} */
-  const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
+  const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
   let comment = createReport(scenarioSettings, scenarioResults);
 

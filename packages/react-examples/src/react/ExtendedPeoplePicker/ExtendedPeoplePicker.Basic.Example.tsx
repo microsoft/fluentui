@@ -186,10 +186,10 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
     showForceResolve: shouldShowForceResolve,
     onInputChanged: onInputChanged,
     onSuggestionsHidden: () => {
-      console.log('FLOATINGPICKER: hidden');
+      console.log('FloatingPicker: hidden');
     },
     onSuggestionsShown: () => {
-      console.log('FLOATINGPICKER: shown');
+      console.log('FloatingPicker: shown');
     },
   };
 

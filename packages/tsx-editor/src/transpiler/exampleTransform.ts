@@ -88,7 +88,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
   // Generate Fabric wrapper stuff for the component if appropriate
   let finalComponent = component;
-  if (identifiersByGlobal.Fabric) {
+  if (identifiersByGlobal.FluentUIReact) {
     // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
     // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
@@ -99,13 +99,13 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
       : `<Fabric><${component} /></Fabric>`;
     lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
 
-    if (identifiersByGlobal.Fabric.indexOf('Fabric') === -1) {
-      identifiersByGlobal.Fabric.push('Fabric');
+    if (identifiersByGlobal.FluentUIReact.indexOf('Fabric') === -1) {
+      identifiersByGlobal.FluentUIReact.push('Fabric');
     }
 
-    if (identifiersByGlobal.Fabric.indexOf('initializeIcons') === -1) {
+    if (identifiersByGlobal.FluentUIReact.indexOf('initializeIcons') === -1) {
       lines.unshift('// Initialize icons in case this example uses them', 'initializeIcons();', '');
-      identifiersByGlobal.Fabric.push('initializeIcons');
+      identifiersByGlobal.FluentUIReact.push('initializeIcons');
     }
   }
 

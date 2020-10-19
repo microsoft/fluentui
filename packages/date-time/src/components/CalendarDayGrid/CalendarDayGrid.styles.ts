@@ -8,7 +8,7 @@ import {
   IRawStyle,
   keyframes,
   HighContrastSelector,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 

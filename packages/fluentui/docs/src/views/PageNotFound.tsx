@@ -1,8 +1,10 @@
 import * as React from 'react';
+import DocumentTitle from 'react-document-title';
 import { Grid, Segment, Header } from '@fluentui/react-northstar';
 
 const PageNotFound = () => (
   <Grid>
+    <DocumentTitle title={`Fluent UI - 404`} />
     <div>
       <Header as="h1" align="center">
         :( 404

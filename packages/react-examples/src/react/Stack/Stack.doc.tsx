@@ -73,7 +73,7 @@ const HorizontalStackConfigureExampleCode = require('!raw-loader!@fluentui/react
 export const StackPageProps: IDocPageProps = {
   title: 'Stack',
   componentName: 'Stack',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Stack',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Stack',
   examples: [
     {
       title: 'Basic Vertical Stack',

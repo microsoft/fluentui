@@ -56,7 +56,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
 
   let selectedDates: Date[] = [];
 
-  if (!!selectedDate) {
+  if (selectedDate) {
     selectedDates = getDateRangeArray(
       selectedDate,
       selectedDateRangeType,

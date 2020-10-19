@@ -13,3 +13,4 @@ export const Modal: React.FunctionComponent<IModalProps> = styled<IModalProps, I
     fields: ['theme', 'styles', 'enableAriaHiddenSiblings'],
   },
 );
+Modal.displayName = 'Modal';

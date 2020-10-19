@@ -10,7 +10,7 @@ export interface IImage {}
 /**
  * {@docCategory Image}
  */
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
@@ -50,9 +50,9 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
   /**
    * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead and
-   * rerender the Image with a difference src.
+   * re-render the Image with a difference src.
    * @deprecated Use `onLoadingStateChange` instead and
-   * rerender the Image with a difference src.
+   * re-render the Image with a difference src.
    */
   errorSrc?: string;
 
@@ -156,9 +156,9 @@ export enum ImageLoadState {
 
   /**
    * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead
-   * and rerender the Image with a difference src.
+   * and re-render the Image with a difference src.
    * @deprecated Use `onLoadingStateChange` instead
-   * and rerender the Image with a difference src.
+   * and re-render the Image with a difference src.
    */
   errorLoaded = 3,
 }

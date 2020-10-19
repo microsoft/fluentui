@@ -1,7 +1,7 @@
 {
   "type": "minor",
   "comment": "Rename office-ui-fabric-react package and update references",
-  "packageName": "@uifabric/azure-themes",
+  "packageName": "@fluentui/azure-themes",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-09-30T20:42:57.618Z"

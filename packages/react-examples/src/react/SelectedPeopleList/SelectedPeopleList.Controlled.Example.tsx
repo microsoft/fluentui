@@ -20,7 +20,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 
 export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
-  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<any[]>([people[40]]);
+  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IExtendedPersonaProps[]>([people[40]]);
   const selectionList = React.useRef<SelectedPeopleList>(null);
 
   const onAddItemButtonClicked = (): void => {

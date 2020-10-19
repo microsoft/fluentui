@@ -1,0 +1,61 @@
+{
+  "name": "@fluentui/public-docsite-resources",
+  "version": "7.8.18",
+  "private": true,
+  "description": "Fluent UI React local demo app",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "*.global.*",
+    "*Examples.*",
+    "*Example.*"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.1",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6"
+  },
+  "dependencies": {
+    "@fluentui/react": "^7.142.0",
+    "@fluentui/react-examples": "^0.4.0",
+    "@fluentui/react-internal": "^7.142.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/api-docs": "^7.5.18",
+    "@fluentui/azure-themes": "^7.5.18",
+    "@uifabric/example-app-base": "^7.15.18",
+    "@uifabric/icons": "^7.5.8",
+    "@uifabric/mdl2-theme": "^0.3.17",
+    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/theme-samples": "^7.1.21",
+    "@uifabric/tsx-editor": "^0.13.18",
+    "office-ui-fabric-core": "^11.0.0",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
+  }
+}

@@ -344,4 +344,44 @@ describe('Provider', () => {
       expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
     });
   });
+
+  describe('context', () => {
+    it('should memoize passed context value', () => {
+      const onRender = jest.fn();
+      const Consumer: React.FC = () => {
+        useFluentContext();
+        onRender();
+
+        return null;
+      };
+
+      const wrapper = mount(
+        <Provider>
+          <Consumer />
+        </Provider>,
+      );
+      wrapper.setProps({});
+
+      expect(onRender).toHaveBeenCalledTimes(1);
+    });
+
+    it('should propagate props updates', () => {
+      const onRender = jest.fn();
+      const Consumer: React.FC = () => {
+        useFluentContext();
+        onRender();
+
+        return null;
+      };
+
+      const wrapper = mount(
+        <Provider>
+          <Consumer />
+        </Provider>,
+      );
+      wrapper.setProps({ theme: {} });
+
+      expect(onRender).toHaveBeenCalledTimes(2);
+    });
+  });
 });

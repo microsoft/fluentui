@@ -1,7 +1,7 @@
 import { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
-  globalName: 'Fabric',
+  globalName: 'FluentUIReact',
   // Theoretically we could use import() here, but that pulls things into bundles when using
   // commonjs modules due to the way import is transpiled for commonjs
   // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
@@ -34,7 +34,7 @@ if (typesContext) {
     // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
     const packageName = `${
-      ['react-focus', 'react'].includes(unscopedName) ? '@fluentui' : '@uifabric'
+      ['react-focus', 'react'].indexOf(unscopedName) > -1 ? '@fluentui' : '@uifabric'
     }/${unscopedName}`;
     const packageGroup =
       packageName === '@uifabric/example-data'
@@ -63,7 +63,7 @@ if (typesContext) {
     { packageName: '@uifabric/icons', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
-    { packageName: '@uifabric/styling', loadTypes },
+    { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes },
     { packageName: '@fluentui/date-time-utilities', loadTypes },
   );

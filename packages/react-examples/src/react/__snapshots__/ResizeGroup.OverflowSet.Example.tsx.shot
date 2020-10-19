@@ -25,21 +25,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         <div
           aria-orientation="horizontal"
           className=
-              ms-FocusZone
               ms-OverflowSet
-              &:focus {
-                outline: none;
-              }
               {
                 display: flex;
                 flex-wrap: nowrap;
                 height: 40px;
                 position: relative;
               }
-          data-focuszone-id="FocusZone0"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
           role="menubar"
         >
           <div
@@ -211,7 +203,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__1"
+                    id="id__0"
                   >
                     Item 0
                   </span>
@@ -388,7 +380,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__4"
+                    id="id__3"
                   >
                     Item 1
                   </span>
@@ -565,7 +557,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__7"
+                    id="id__6"
                   >
                     Item 2
                   </span>
@@ -742,7 +734,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__10"
+                    id="id__9"
                   >
                     Item 3
                   </span>
@@ -919,7 +911,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__13"
+                    id="id__12"
                   >
                     Item 4
                   </span>
@@ -1096,7 +1088,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__16"
+                    id="id__15"
                   >
                     Item 5
                   </span>
@@ -1273,7 +1265,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__19"
+                    id="id__18"
                   >
                     Item 6
                   </span>
@@ -1450,7 +1442,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__22"
+                    id="id__21"
                   >
                     Item 7
                   </span>
@@ -1627,7 +1619,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__25"
+                    id="id__24"
                   >
                     Item 8
                   </span>
@@ -1804,7 +1796,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__28"
+                    id="id__27"
                   >
                     Item 9
                   </span>
@@ -1981,7 +1973,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__31"
+                    id="id__30"
                   >
                     Item 10
                   </span>
@@ -2158,7 +2150,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__34"
+                    id="id__33"
                   >
                     Item 11
                   </span>
@@ -2335,7 +2327,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__37"
+                    id="id__36"
                   >
                     Item 12
                   </span>
@@ -2512,7 +2504,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__40"
+                    id="id__39"
                   >
                     Item 13
                   </span>
@@ -2689,7 +2681,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__43"
+                    id="id__42"
                   >
                     Item 14
                   </span>
@@ -2866,7 +2858,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__46"
+                    id="id__45"
                   >
                     Item 15
                   </span>
@@ -3043,7 +3035,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__49"
+                    id="id__48"
                   >
                     Item 16
                   </span>
@@ -3220,7 +3212,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__52"
+                    id="id__51"
                   >
                     Item 17
                   </span>
@@ -3397,7 +3389,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__55"
+                    id="id__54"
                   >
                     Item 18
                   </span>
@@ -3574,7 +3566,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__58"
+                    id="id__57"
                   >
                     Item 19
                   </span>
@@ -3631,10 +3623,139 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
+        htmlFor="Toggle60"
+        id="Toggle60-label"
+      >
+        Enable caching
+      </label>
+      <div
+        className=
+            ms-Toggle-innerContainer
+            {
+              display: inline-flex;
+              position: relative;
+            }
+      >
+        <button
+          aria-checked={false}
+          aria-labelledby="Toggle60-label"
+          checked={false}
+          className=
+              ms-Toggle-background
+              {
+                align-items: center;
+                background: #ffffff;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: flex;
+                font-size: 20px;
+                height: 20px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 3px;
+                padding-right: 3px;
+                padding-top: 0;
+                position: relative;
+                transition: all 0.1s ease;
+                width: 40px;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -2px;
+                content: "";
+                left: -2px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: -2px;
+                top: -2px;
+                z-index: 1;
+              }
+              &:hover {
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+          data-is-focusable={true}
+          data-ktp-target={true}
+          id="Toggle60"
+          onChange={[Function]}
+          onClick={[Function]}
+          role="switch"
+          type="button"
+        >
+          <span
+            className=
+                ms-Toggle-thumb
+                {
+                  background-color: #605e5c;
+                  border-color: transparent;
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-width: 6px;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 12px;
+                  transition: all 0.1s ease;
+                  width: 12px;
+                }
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Toggle
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+          }
+    >
+      <label
+        className=
+            ms-Label
+            ms-Toggle-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="Toggle61"
         id="Toggle61-label"
       >
-        Enable caching
+        Enable onGrowData
       </label>
       <div
         className=
@@ -3763,7 +3884,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         htmlFor="Toggle62"
         id="Toggle62-label"
       >
-        Enable onGrowData
+        Buttons checked
       </label>
       <div
         className=
@@ -3853,135 +3974,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     </div>
     <div
       className=
-          ms-Toggle
-          is-enabled
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 8px;
-          }
-    >
-      <label
-        className=
-            ms-Label
-            ms-Toggle-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        htmlFor="Toggle63"
-        id="Toggle63-label"
-      >
-        Buttons checked
-      </label>
-      <div
-        className=
-            ms-Toggle-innerContainer
-            {
-              display: inline-flex;
-              position: relative;
-            }
-      >
-        <button
-          aria-checked={false}
-          aria-labelledby="Toggle63-label"
-          checked={false}
-          className=
-              ms-Toggle-background
-              {
-                align-items: center;
-                background: #ffffff;
-                border-radius: 10px;
-                border: 1px solid #605e5c;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: flex;
-                font-size: 20px;
-                height: 20px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 3px;
-                padding-right: 3px;
-                padding-top: 0;
-                position: relative;
-                transition: all 0.1s ease;
-                width: 40px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -2px;
-                content: "";
-                left: -2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: -2px;
-                top: -2px;
-                z-index: 1;
-              }
-              &:hover {
-                border-color: #323130;
-              }
-              &:hover .ms-Toggle-thumb {
-                background-color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                border-color: Highlight;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-              }
-          data-is-focusable={true}
-          data-ktp-target={true}
-          id="Toggle63"
-          onChange={[Function]}
-          onClick={[Function]}
-          role="switch"
-          type="button"
-        >
-          <span
-            className=
-                ms-Toggle-thumb
-                {
-                  background-color: #605e5c;
-                  border-color: transparent;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 6px;
-                  box-sizing: border-box;
-                  display: block;
-                  height: 12px;
-                  transition: all 0.1s ease;
-                  width: 12px;
-                }
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className=
 
           {
             width: 180px;
@@ -4015,14 +4007,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          id="Dropdown64-label"
+          id="Dropdown63-label"
         >
           Number of items to render
         </label>
         <div
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown64-label Dropdown64-option"
+          aria-labelledby="Dropdown63-label Dropdown63-option"
           className=
               ms-Dropdown
               {
@@ -4110,7 +4102,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown64"
+          id="Dropdown63"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -4155,7 +4147,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown64-option"
+            id="Dropdown63-option"
             role="option"
           >
             20

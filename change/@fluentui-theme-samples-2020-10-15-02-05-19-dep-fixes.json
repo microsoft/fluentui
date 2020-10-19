@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Use webpack config helper and update npmignore",
+  "packageName": "@fluentui/theme-samples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-15T09:04:33.863Z"
+}

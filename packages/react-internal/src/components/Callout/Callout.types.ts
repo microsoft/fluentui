@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
-import { ICalloutPositionedInfo } from '../../utilities/positioning';
+import { ICalloutPositionedInfo } from '../../Positioning';
 import { ILayerProps } from '../../Layer';
 import { Target } from '@uifabric/react-hooks';
 
@@ -11,7 +11,7 @@ export { Target };
 /**
  * {@docCategory Callout}
  */
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
@@ -102,24 +102,18 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   preventDismissOnLostFocus?: boolean;
 
   /**
-   * If true then the callout will dismiss when the target element is clicked
-   * @defaultvalue false
-   */
-  dismissOnTargetClick?: boolean;
-
-  /**
-   * If true then the callout will dismiss when the window gets focus
-   * @defaultvalue false
-   */
-  shouldDismissOnWindowFocus?: boolean;
-
-  /**
    * If defined, then takes priority over preventDismissOnLostFocus, preventDismissOnResize,
    * and preventDismissOnScroll.
    * If it returns true, then callout will not dismiss for this event.
    * If not defined or returns false, callout can dismiss for this event.
    */
   preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
+
+  /**
+   * If true then the callout will dismiss when the window gets focus
+   * @defaultvalue false
+   */
+  shouldDismissOnWindowFocus?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
@@ -189,7 +183,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Callback when the Callout tries to close.
    */
-  onDismiss?: (ev?: any) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
   /**
    * If true do not render on a new layer. If false render on a new layer.

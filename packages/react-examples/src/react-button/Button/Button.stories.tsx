@@ -38,6 +38,12 @@ const ButtonExamples = (props: ButtonProps) => (
     <Button {...props} ghost disabled icon="X">
       Hello, world
     </Button>
+    <Button {...props} transparent icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} transparent disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
 
@@ -49,8 +55,8 @@ export const Buttons = () => (
     <Text>A button can appear round using the `circular` prop.</Text>
     <ButtonExamples circular />
 
-    <Text>A button can fill the width of its container using the `fluid` prop.</Text>
-    <ButtonExamples fluid />
+    <Text>A button can fill the width of its container using the `block` prop.</Text>
+    <ButtonExamples block />
 
     <Text>A button can contain only an icon using the `iconOnly` prop.</Text>
     <ButtonExamples iconOnly />
