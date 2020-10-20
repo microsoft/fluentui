@@ -72,7 +72,8 @@ export interface IsConformantOptions<TProps = {}> {
   asPropHandlesRef?: boolean;
   /**
    * An alternative name for the ref prop which resolves to
-   * the root element. (E.g. "elementRef") Defaults to 'ref'.
+   * the root element (e.g. `elementRef`).
+   * @defaultvalue 'ref'
    */
   elementRefName?: string;
   /**
