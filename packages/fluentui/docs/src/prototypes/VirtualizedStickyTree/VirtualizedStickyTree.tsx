@@ -261,17 +261,24 @@ const ReRenderStickyTree = ({
     (_event: React.MouseEvent<HTMLElement>, itemProps: TreeItemProps) => {
       setItemIdTobeFocused(itemProps.id); // retain focus after re-render
 
-      if (itemProps.expanded) return; // it is already the main item stick to top, do nothing
+      let toFocusItemIndex;
+      if (itemProps.expanded) {
+        // it is already the main item stick to top, collapse it and stick its right sibling, if any, on top
+        toFocusItemIndex = toplvlItemsId.findIndex(id => id === itemProps.id) + 1;
+      } else {
+        // expand it and stick it to top
+        toFocusItemIndex = toplvlItemsId.findIndex(id => id === itemProps.id);
+      }
 
-      // expand it and stick it to the last one on top
-      const toFocusItemIndex = toplvlItemsId.findIndex(id => id === itemProps.id);
-
-      const newStickyTopIds = toplvlItemsId.slice(0, toFocusItemIndex + 1); // every left siblings till itself
-      const newStickyBottomIds = toplvlItemsId.slice(toFocusItemIndex + 1); // every right siblings
+      const newStickyTopIds = toplvlItemsId.slice(0, toFocusItemIndex + 1);
+      const newStickyBottomIds = toplvlItemsId.slice(toFocusItemIndex + 1);
 
       ref.current.scrollTo(0);
 
-      passActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
+      passActiveItemsIdChange(
+        [...newStickyTopIds, ...newStickyBottomIds],
+        toFocusItemIndex < toplvlItemsId.length ? [toplvlItemsId[toFocusItemIndex]] : [],
+      );
       setStickyTopIds(newStickyTopIds);
       setStickyBottomIds(newStickyBottomIds);
     },
@@ -314,7 +321,10 @@ const ReRenderStickyTree = ({
       const item = renderedItems[itemIndex];
       if ((item?.props.contentRef as any)?.current) {
         // item is already visible, just focus on it
-        (item.props.contentRef as any).current.focus();
+        if (!item.props.items) {
+          // leaf node. focus on treeTitle
+          (item.props.contentRef as any).current.firstChild.focus();
+        } else (item.props.contentRef as any).current.focus();
       } else {
         // item is not rendered
         ref.current.scrollToItem(itemIndex, 'center'); // scroll to item
