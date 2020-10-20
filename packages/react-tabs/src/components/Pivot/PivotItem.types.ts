@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IButtonProps, IKeytipProps } from '@fluentui/react-internal';
+import { IKeytipProps } from '@fluentui/react-internal';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
 import { IRefObject, IRenderFunction } from '@uifabric/utilities';
 
 /**
