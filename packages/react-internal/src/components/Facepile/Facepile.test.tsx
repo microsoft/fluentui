@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';

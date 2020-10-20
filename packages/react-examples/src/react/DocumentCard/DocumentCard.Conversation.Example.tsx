@@ -10,7 +10,7 @@ import {
   IDocumentCardStyles,
 } from '@fluentui/react/lib/DocumentCard';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const conversationTileClass = mergeStyles({ height: 182 });
 

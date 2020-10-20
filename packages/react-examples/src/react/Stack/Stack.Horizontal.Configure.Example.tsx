@@ -14,7 +14,7 @@ import {
   TextField,
 } from '@fluentui/react';
 import { useBoolean } from '@uifabric/react-hooks';
-import { range } from '@uifabric/example-data';
+import { range } from '@fluentui/example-data';
 export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;

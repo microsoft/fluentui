@@ -22,7 +22,7 @@ import {
   buildColumns,
   IDetailsColumnProps,
 } from '@fluentui/react/lib/DetailsList';
-import { createListItems, isGroupable, IExampleItem } from '@uifabric/example-data';
+import { createListItems, isGroupable, IExampleItem } from '@fluentui/example-data';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 
