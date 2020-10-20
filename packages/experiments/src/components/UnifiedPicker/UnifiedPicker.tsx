@@ -235,11 +235,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
 
     // Handle delete of items via backspace
-    if (ev.which !== KeyCodes.backspace) {
-      return;
-    }
-
-    if (selectedItems.length) {
+    if (ev.which === KeyCodes.backspace && selectedItems.length) {
       if (
         focusedItemIndices.length === 0 &&
         input &&
