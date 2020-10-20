@@ -528,10 +528,7 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export const ContextualMenuBase: {
-    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
-    displayName: string;
-};
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps>;
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;

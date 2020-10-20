@@ -31,10 +31,7 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
-    // Priority: High
-    // Problem: Is FunctionComponent but missing `forwardRef`
-    // Solution: add forwardRef and ref typing
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    requiredProps: { items: { text: 'Later Today', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' } },
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {
