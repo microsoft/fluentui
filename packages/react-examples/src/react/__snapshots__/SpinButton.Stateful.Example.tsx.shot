@@ -90,6 +90,7 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
           }
+      data-ktp-target={true}
     >
       <input
         aria-disabled={false}
@@ -137,6 +138,7 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
               border-color: Highlight;
               color: HighlightText;
             }
+        data-ktp-execute-target={true}
         data-lpignore={true}
         disabled={false}
         id="input0"

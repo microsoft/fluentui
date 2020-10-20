@@ -3,7 +3,6 @@ import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from '../../Positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { ILabelStyleProps, ILabelStyles } from '../../Label';
@@ -126,11 +125,6 @@ export interface IDropdownProps
    * @deprecated Use `disabled` instead.
    */
   isDisabled?: boolean;
-
-  /**
-   * Optional keytip for this dropdown
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Theme provided by higher order component.
