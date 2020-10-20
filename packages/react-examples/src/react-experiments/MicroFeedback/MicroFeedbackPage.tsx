@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { MicroFeedbackExample } from './MicroFeedback.Example';
 import { MicroFeedbackCalloutExample } from './MicroFeedbackCallout.Example';

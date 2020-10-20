@@ -1,4 +1,4 @@
-import { createDemoApp } from '@uifabric/example-app-base';
+import { createDemoApp } from '@fluentui/react-docsite-components';
 import { configureEnvironment } from '@uifabric/tsx-editor';
 import { AppDefinition } from './AppDefinition';
 import { GettingStartedPage } from './GettingStartedPage';

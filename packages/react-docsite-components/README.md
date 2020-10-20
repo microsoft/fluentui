@@ -1,4 +1,4 @@
-# @uifabric/example-app-base
+# @fluentui/react-docsite-components
 
 Components and utilities used to build internal documentation sites and inner loops for various [Fluent UI React](https://developer.microsoft.com/en-us/fluentui) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) packages.
 
@@ -75,7 +75,7 @@ const MyExampleCode = require('!raw-loader!./MyExample.Example.tsx');
 
 ```ts
 import { editorSupportedPackages } from '<file path>';
-import { IExampleCardProps, IAppDefinition } from '@uifabric/example-app-base';
+import { IExampleCardProps, IAppDefinition } from '@fluentui/react-docsite-components';
 
 const exampleCardProps: IExampleCardProps = { editorSupportedPackages };
 

@@ -6,4 +6,4 @@ export { isEditorSupported } from './isEditorSupported';
 export { configureEnvironment, IMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
 
 // Intentionally not exporting the query param utilities, since those really ought to live in
-// example-app-base and are exported from there
+// react-docsite-components and are exported from there

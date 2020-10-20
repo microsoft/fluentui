@@ -1,4 +1,4 @@
-// Right now, only the Nav types live in example-app-base because the implementation depends on
-// CollapsibleSection from experiments, and having example-app-base depend on experiments would
+// Right now, only the Nav types live in react-docsite-components because the implementation depends on
+// CollapsibleSection from experiments, and having react-docsite-components depend on experiments would
 // cause a circular dependency.
 export * from './Nav.types';

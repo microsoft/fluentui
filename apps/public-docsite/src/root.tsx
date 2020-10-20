@@ -1,7 +1,7 @@
 import { registerIcons, on, KeyCodes, setRTL } from '@fluentui/react';
 import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
 import { createSite } from './utilities/createSite';
-import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';
+import * as platformPickerStyles from '@fluentui/react-docsite-components/lib/components/PlatformPicker/PlatformPicker.module.scss';
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';

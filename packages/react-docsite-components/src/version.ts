@@ -1,4 +1,4 @@
 // Do not modify this file; it is generated as part of publish.
 // The checked in version is a placeholder only and will not be updated.
 import { setVersion } from '@uifabric/set-version';
-setVersion('@uifabric/example-app-base', '0.0.0');
+setVersion('@fluentui/react-docsite-components', '0.0.0');

@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { SignalFieldBasicExample } from './SignalField.Basic.Example';
 const SignalFieldBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Signals/SignalField.Basic.Example.tsx') as string;

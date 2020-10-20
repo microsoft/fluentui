@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { SliderExample } from './Slider.Example';
 const SliderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slider/Slider.Example.tsx') as string;

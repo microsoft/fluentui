@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/example-app-base",
+  "name": "@fluentui/react-docsite-components",
   "version": "7.15.18",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
