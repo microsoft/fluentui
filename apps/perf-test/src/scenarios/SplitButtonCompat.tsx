@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const alertClicked = (): void => {
   console.log('Clicked');

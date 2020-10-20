@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
-import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
+import { ButtonGlobalClassNames } from '../../../../compat/components/Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {

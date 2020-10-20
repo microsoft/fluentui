@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DialogContentBase } from './DialogContent.base';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonProps } from '../../compat/Button';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';

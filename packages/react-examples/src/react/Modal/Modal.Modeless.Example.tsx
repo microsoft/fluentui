@@ -6,12 +6,11 @@ import {
   mergeStyleSets,
   FontWeights,
   IDragOptions,
-  DefaultButton,
   Toggle,
   ContextualMenu,
-  IconButton,
   IIconProps,
 } from '@fluentui/react';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
 
 const dragOptions: IDragOptions = {
   moveMenuItemText: 'Move',

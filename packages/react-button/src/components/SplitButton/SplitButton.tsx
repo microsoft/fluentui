@@ -7,6 +7,10 @@ import { useSplitButtonClasses } from './useSplitButtonClasses';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
 
+/**
+ * Define a styled SplitButton, using the `useSplitButton` hook.
+ * {@docCategory Button}
+ */
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const { state, render } = useSplitButton(props, ref, {
     button: { as: Button },
