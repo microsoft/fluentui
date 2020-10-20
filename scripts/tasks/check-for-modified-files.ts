@@ -1,8 +1,8 @@
-const { logger } = require('just-scripts');
+import { logger } from 'just-scripts';
+import { EOL } from 'os';
+import { execSync } from 'child_process';
 
-module.exports = function checkForModifiedFiles() {
-  const EOL = require('os').EOL;
-  const execSync = require('child_process').execSync;
+export function checkForModifiedFiles() {
   const notEmpty = value => value.trim() !== '';
 
   const gitStatusOutput = execSync('git status -s --untracked-files=no').toString('utf8');
@@ -18,4 +18,4 @@ module.exports = function checkForModifiedFiles() {
 
     throw new Error('change file is required');
   }
-};
+}

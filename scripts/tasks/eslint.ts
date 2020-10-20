@@ -1,10 +1,8 @@
-// @ts-check
+import { eslintTask } from 'just-scripts';
+import * as configHelpers from '@fluentui/eslint-plugin/src/utils/configHelpers';
+import * as path from 'path';
 
-const { eslintTask } = require('just-scripts');
-const configHelpers = require('@fluentui/eslint-plugin/src/utils/configHelpers');
-const path = require('path');
-
-exports.eslint = eslintTask({
+export const eslint = eslintTask({
   // TODO: also lint config files?
   files: [path.join(process.cwd(), 'src')],
   extensions: configHelpers.extensions.join(','),

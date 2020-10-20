@@ -1,14 +1,12 @@
-// @ts-check
-
-const { spawnSync } = require('child_process');
-const path = require('path');
-const fs = require('fs-extra');
-const glob = require('glob');
+import { spawnSync } from 'child_process';
+import * as path from 'path';
+import * as fs from 'fs-extra';
+import * as glob from 'glob';
+import { findGitRoot } from '../monorepo/index';
 
 const generateOnly = process.argv.includes('-g');
 const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin, 'bump'];
-const findGitRoot = require('../monorepo/findGitRoot');
 const gitRoot = findGitRoot();
 
 function run(args) {
@@ -51,7 +49,7 @@ function revertLocalChanges() {
  *
  * "generateOnly" mode takes existing versions and write them out to version files (do this when out of sync)
  */
-module.exports = function generateVersionFiles() {
+export function generateVersionFiles() {
   const gitRoot = findGitRoot();
 
   if (!generateOnly) {
@@ -104,4 +102,4 @@ ${setCurrentVersion}`;
       fs.writeFileSync(versionFile, updatedVersionContents[versionFile]);
     });
   }
-};
+}

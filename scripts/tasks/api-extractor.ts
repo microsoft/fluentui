@@ -1,8 +1,6 @@
-// @ts-check
-
-const glob = require('glob');
-const path = require('path');
-const { apiExtractorVerifyTask, apiExtractorUpdateTask, task, series } = require('just-scripts');
+import * as glob from 'glob';
+import * as path from 'path';
+import { apiExtractorVerifyTask, apiExtractorUpdateTask, task, series } from 'just-scripts';
 
 const apiExtractorConfigs = glob
   .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
@@ -11,7 +9,7 @@ const apiExtractorConfigs = glob
 // Whether to update automatically on build
 const localBuild = !process.env.TF_BUILD;
 
-function verifyApiExtractor() {
+export function verifyApiExtractor() {
   return apiExtractorConfigs.length
     ? series(
         ...apiExtractorConfigs.map(([configPath, configName]) => {
@@ -23,7 +21,7 @@ function verifyApiExtractor() {
     : 'no-op';
 }
 
-function updateApiExtractor() {
+export function updateApiExtractor() {
   return apiExtractorConfigs.length
     ? series(
         ...apiExtractorConfigs.map(([configPath, configName]) => {
@@ -34,5 +32,3 @@ function updateApiExtractor() {
       )
     : 'no-op';
 }
-
-module.exports = { verifyApiExtractor, updateApiExtractor };

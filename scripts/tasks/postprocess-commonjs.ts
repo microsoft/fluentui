@@ -1,7 +1,10 @@
-module.exports.postprocessCommonjsTask = function() {
-  const { mod } = require('riceburn');
-  const ts = require('typescript');
-  const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+import { getAllPackageInfo } from '../monorepo/index';
+
+export async function postprocessCommonjsTask() {
+  // Delay load these
+  const { mod } = await import('riceburn');
+  const ts = await import('typescript');
+
   const allPackages = Object.keys(getAllPackageInfo());
 
   mod('lib-commonjs/**/*.{ts,js}').asTypescript((node, modder) => {
@@ -36,4 +39,4 @@ module.exports.postprocessCommonjsTask = function() {
 
     return false;
   }
-};
+}

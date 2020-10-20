@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { argv, logger } = require('@uifabric/build').just;
+const { argv, logger } = require('@fluentui/scripts').just;
 
 /**
  * Task function for the Fluent UI website that generates a manifest for the non-UHF "internal" site

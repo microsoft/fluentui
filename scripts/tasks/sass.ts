@@ -1,12 +1,7 @@
-// @ts-check
-
-const path = require('path');
-const { sassTask } = require('just-scripts');
-const modules = require('postcss-modules')({
-  getJSON,
-  generateScopedName,
-});
-const CleanCSS = require('clean-css');
+import * as path from 'path';
+import { sassTask } from 'just-scripts';
+import postcssModules from 'postcss-modules';
+import * as CleanCSS from 'clean-css';
 
 const _fileNameToClassMap = {};
 
@@ -47,4 +42,12 @@ function getJSON(cssFileName, json) {
   _fileNameToClassMap[path.resolve(cssFileName)] = json;
 }
 
-exports.sass = sassTask(createTypeScriptModule, [modules]);
+export const sass = sassTask({
+  createSourceModule: createTypeScriptModule,
+  postcssPlugins: [
+    postcssModules({
+      getJSON,
+      generateScopedName,
+    }),
+  ],
+});

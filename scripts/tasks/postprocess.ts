@@ -1,14 +1,13 @@
-// @ts-check
-
-const defaultLibPaths = ['lib/**/*.d.ts', 'lib-commonjs/**/*.d.ts', 'lib-amd/**/*.d.ts'];
+export const defaultLibPaths = ['lib/**/*.d.ts', 'lib-commonjs/**/*.d.ts', 'lib-amd/**/*.d.ts'];
 
 /**
- * @param {string[]} [libPaths] Globs to .d.ts files which need postprocessing
+ * @param libPaths - Globs to .d.ts files which need postprocessing
  */
-function postprocessTask(libPaths = defaultLibPaths) {
-  return function() {
-    const ts = require('typescript');
-    const { mod } = require('riceburn');
+export function postprocessTask(libPaths: string[] = defaultLibPaths) {
+  return async function() {
+    // Delay load these
+    const { mod } = await import('riceburn');
+    const ts = await import('typescript');
 
     libPaths.forEach(path => {
       mod(path).asTypescript((node, modder) => {
@@ -73,5 +72,3 @@ function postprocessTask(libPaths = defaultLibPaths) {
     });
   };
 }
-
-module.exports = { defaultLibPaths, postprocessTask };

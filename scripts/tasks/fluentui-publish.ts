@@ -1,10 +1,10 @@
-const { argv, logger } = require('just-scripts');
-const { spawnSync } = require('child_process');
-const path = require('path');
+import { argv, logger } from 'just-scripts';
+import { spawnSync } from 'child_process';
+import * as path from 'path';
 
-const findGitRoot = require('../monorepo/findGitRoot');
+import { findGitRoot } from '../monorepo/index';
 
-module.exports.fluentuiLernaPublish = function(bumpType) {
+export function fluentuiLernaPublish(bumpType) {
   return function() {
     const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
     const lernaPublishArgs = [
@@ -26,7 +26,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     });
 
     if (result.status) {
-      throw new Error(result.error || `lerna publish failed with status ${result.status}`);
+      throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
     }
   };
-};
+}

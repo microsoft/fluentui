@@ -1,7 +1,5 @@
-// @ts-check
-
-const { jestTask, argv } = require('just-scripts');
-const path = require('path');
+import { jestTask, argv } from 'just-scripts';
+import * as path from 'path';
 
 const commonArgs = () => {
   return {
@@ -10,7 +8,7 @@ const commonArgs = () => {
   };
 };
 
-exports.jest = () =>
+export const jest = () =>
   jestTask({
     ...commonArgs(),
     env: {
@@ -20,13 +18,13 @@ exports.jest = () =>
     },
   });
 
-exports.jestDom = () =>
+export const jestDom = () =>
   jestTask({
     runInBand: true,
     config: path.join(process.cwd(), 'jest.dom.config.js'),
   });
 
-exports.jestWatch = () => {
+export const jestWatch = () => {
   return jestTask({
     ...commonArgs(),
     watch: true,

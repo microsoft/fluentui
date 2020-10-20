@@ -1,6 +1,6 @@
 import path from 'path';
-import '@uifabric/build/tasks/preset';
-import { series, task, argv } from '@uifabric/build';
+import '@fluentui/scripts/tasks/preset';
+import { series, task, argv } from '@fluentui/scripts';
 
 // TODO: FUR integration issues
 // - FUR build fails when it comes across these new packages inside of packages/

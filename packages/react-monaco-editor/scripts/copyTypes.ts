@@ -1,24 +1,22 @@
-// @ts-check
-
-const { just } = require('@uifabric/build');
-const { copyTask } = just;
-const { expandSourcePath } = require('@uifabric/build/tasks/copy');
-const fs = require('fs');
-const path = require('path');
+/* eslint-disable import/no-extraneous-dependencies */
+import { copyTask } from '@fluentui/scripts';
+import { expandSourcePath } from '@fluentui/scripts/tasks/copy';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // Copy react.d.ts and other .d.ts files it references to the dist folder,
 // so we can more easily load them into the editor later.
-module.exports = function copyTypes() {
+export function copyTypes() {
   const packagesToResolve = ['@fluentui/react', '@uifabric/react-hooks', '@uifabric/example-data'];
   const resolvedPackages = [];
   const pathsToCopy = [];
 
   while (packagesToResolve.length) {
-    const package = packagesToResolve.shift();
-    resolvedPackages.push(package);
+    const pkg = packagesToResolve.shift();
+    resolvedPackages.push(pkg);
 
-    const packageMatch = package.match(/^(@uifabric\/|@fluentui\/)?([\w-]+)/);
-    const dtsPath = expandSourcePath(`${package}/dist/${packageMatch[2]}.d.ts`);
+    const packageMatch = pkg.match(/^(@uifabric\/|@fluentui\/)?([\w-]+)/);
+    const dtsPath = expandSourcePath(`${pkg}/dist/${packageMatch[2]}.d.ts`);
 
     if (fs.existsSync(dtsPath)) {
       // copy this .d.ts
@@ -45,4 +43,4 @@ module.exports = function copyTypes() {
     // so doing require.context() on the root of dist causes an infinite loop in watch mode))
     dest: path.join(process.cwd(), 'dist/types'),
   });
-};
+}

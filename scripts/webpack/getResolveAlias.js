@@ -22,7 +22,7 @@ function getResolveAlias(useLib, cwd) {
   const excludedPackages = [
     '@fluentui/eslint-plugin',
     '@fluentui/api-docs',
-    '@uifabric/build',
+    '@fluentui/scripts',
     '@fluentui/webpack-utilities',
     '@fluentui/jest-serializer-merge-styles',
   ];

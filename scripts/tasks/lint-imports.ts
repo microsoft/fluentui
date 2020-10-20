@@ -1,33 +1,27 @@
-// @ts-check
+import { getAllPackageInfo, findGitRoot } from '../monorepo/index';
+import findConfig from '../find-config';
+import { readConfig } from '../read-config';
+import * as path from 'path';
+import * as fs from 'fs';
+import chalk from 'chalk';
 
-/**
- * @typedef {{
- *   count: number;
- *   matches: { [filePath: string]: { importPath: string; alternative?: string; }[] };
- * }} ImportErrorGroup
- *
- * @typedef {{
- *   pathAbsolute: ImportErrorGroup;
- *   pathNotFile: ImportErrorGroup;
- *   pathRelative: ImportErrorGroup;
- *   pathDeep: ImportErrorGroup;
- *   pathReExported: ImportErrorGroup;
- *   importStar: ImportErrorGroup;
- *   exportMulti: ImportErrorGroup;
- *   exportDefault: ImportErrorGroup;
- * }} ImportErrors
- */
+interface ImportErrorGroup {
+  count: number;
+  matches: { [filePath: string]: { importPath: string; alternative?: string }[] };
+}
 
-const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
-const findConfig = require('../find-config');
-const { readConfig } = require('../read-config');
+interface ImportErrors {
+  pathAbsolute: ImportErrorGroup;
+  pathNotFile: ImportErrorGroup;
+  pathRelative: ImportErrorGroup;
+  pathDeep: ImportErrorGroup;
+  pathReExported: ImportErrorGroup;
+  importStar: ImportErrorGroup;
+  exportMulti: ImportErrorGroup;
+  exportDefault: ImportErrorGroup;
+}
 
-function lintImports() {
-  const path = require('path');
-  const fs = require('fs');
-  const chalk = require('chalk').default;
-  const findGitRoot = require('../monorepo/findGitRoot');
-
+export function lintImports() {
   const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
@@ -72,8 +66,7 @@ function lintImports() {
 
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
-    /** @type {ImportErrors} */
-    const importErrors = {
+    const importErrors: ImportErrors = {
       pathAbsolute: { count: 0, matches: {} },
       pathNotFile: { count: 0, matches: {} },
       pathRelative: { count: 0, matches: {} },
@@ -100,15 +93,14 @@ function lintImports() {
   }
 
   /**
-   * Recurses through a given folder path and adds files to an array which
-   * match the extension pattern. Returns array.
+   * Recurses through a given folder path and adds files to an array which match the extension pattern.
    *
-   * @param {string} dir - starting folder path.
-   * @param {RegExp} extentionPattern - extension regex to match.
-   * @param {string[]} [fileList] - cumulative array of files
+   * @param dir - starting folder path.
+   * @param extentionPattern - extension regex to match.
+   * @param fileList - cumulative array of files
    * @returns array of matching files.
    */
-  function _getFiles(dir, extentionPattern, fileList) {
+  function _getFiles(dir: string, extentionPattern: RegExp, fileList?: string[]): string[] {
     fileList = fileList || [];
 
     const files = fs.readdirSync(dir);
@@ -128,12 +120,7 @@ function lintImports() {
     return fileList;
   }
 
-  /**
-   * @param {string} filePath
-   * @param {ImportErrors} importErrors
-   * @param {boolean} isExample
-   */
-  function _evaluateFile(filePath, importErrors, isExample) {
+  function _evaluateFile(filePath: string, importErrors: ImportErrors, isExample: boolean) {
     // !! be careful !! changing the regex can affect matched parts below.
     const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
 
@@ -175,20 +162,22 @@ function lintImports() {
   }
 
   /**
-   * @param {string} filePath
-   * @param {RegExpMatchArray} importMatch - Result of running `importStatementRegex` against a single import
+   * @param importMatch - Result of running `importStatementRegex` against a single import
    * (`[1]` will be the import path)
-   * @param {ImportErrors} importErrors
-   * @param {boolean} isExample
    */
-  function _evaluateImport(filePath, importMatch, importErrors, isExample) {
+  function _evaluateImport(
+    filePath: string,
+    importMatch: RegExpMatchArray,
+    importErrors: ImportErrors,
+    isExample?: boolean,
+  ) {
     const importPath = importMatch[2];
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
-    let fullImportPath;
+    let fullImportPath: string;
     let pathIsRelative = false;
     let pathIsDeep = false;
-    let pkgName;
+    let pkgName: string;
 
     if (importPath[0] === '.') {
       // import is a file path. is this a file?
@@ -267,11 +256,7 @@ function lintImports() {
     }
   }
 
-  /**
-   * @param {string} filePath
-   * @param {string} importPath
-   */
-  function _evaluateImportPath(filePath, importPath) {
+  function _evaluateImportPath(filePath: string, importPath: string) {
     const fullImportPath = path.resolve(filePath, importPath);
     const extensions = ['.ts', '.tsx', '.js', ''];
 
@@ -286,24 +271,14 @@ function lintImports() {
     return undefined;
   }
 
-  /**
-   * @param {ImportErrorGroup} errorGroup
-   * @param {string} relativePath
-   * @param {string} importPath
-   * @param {string} [alternative]
-   */
-  function _addError(errorGroup, relativePath, importPath, alternative) {
+  function _addError(errorGroup: ImportErrorGroup, relativePath: string, importPath: string, alternative?: string) {
     errorGroup.count++;
     errorGroup.matches[relativePath] = errorGroup.matches[relativePath] || [];
     errorGroup.matches[relativePath].push({ importPath, alternative });
   }
 
-  /**
-   * @param {ImportErrors} importErrors
-   */
-  function reportFilePathErrors(importErrors) {
-    /** @type {{ [k in keyof ImportErrors]: string }} */
-    const errorMessages = {
+  function reportFilePathErrors(importErrors: ImportErrors) {
+    const errorMessages: { [k in keyof ImportErrors]: string } = {
       pathAbsolute:
         'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
@@ -326,8 +301,7 @@ function lintImports() {
 
     let hasError = false;
     for (const groupName of Object.keys(importErrors)) {
-      /** @type {ImportErrorGroup} */
-      const errorGroup = importErrors[groupName];
+      const errorGroup: ImportErrorGroup = importErrors[groupName];
       if (errorGroup.count) {
         hasError = true;
         console.error(`${chalk.red('ERROR')}: ${errorGroup.count} ${errorMessages[groupName]}`);
@@ -346,8 +320,6 @@ function lintImports() {
     return hasError;
   }
 }
-
-module.exports = lintImports;
 
 // @ts-ignore
 if (require.main === module) {

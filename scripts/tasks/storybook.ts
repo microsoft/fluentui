@@ -1,12 +1,11 @@
-// @ts-check
-const { argv } = require('just-scripts');
-const fs = require('fs');
-const path = require('path');
-const findGitRoot = require('../monorepo/findGitRoot');
+import { argv } from 'just-scripts';
+import * as fs from 'fs';
+import * as path from 'path';
+import { findGitRoot } from '../monorepo/index';
 
-const storybook = require('@storybook/react/standalone');
+import * as storybook from '@storybook/react/standalone';
 
-function startStorybookTask(options) {
+export function startStorybookTask(options?: { port?: number; quiet?: boolean; ci?: boolean }) {
   options = options || {};
   // This shouldn't be necessary but is needed due to strange logic in
   // storybook lib/core/src/server/config/utils.js
@@ -34,11 +33,7 @@ function startStorybookTask(options) {
   };
 }
 
-/**
- * @param {object} [options]
- * @param {boolean} [options.quiet]
- */
-function buildStorybookTask(options) {
+export function buildStorybookTask(options?: { quiet?: boolean }) {
   options = options || {};
   return async function() {
     const localConfigDir = path.join(process.cwd(), '.storybook');
@@ -54,5 +49,3 @@ function buildStorybookTask(options) {
     });
   };
 }
-
-module.exports = { buildStorybookTask, startStorybookTask };

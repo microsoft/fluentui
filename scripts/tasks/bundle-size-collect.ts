@@ -1,15 +1,13 @@
-// @ts-check
+import * as fs from 'fs';
+import * as path from 'path';
 
-module.exports = function bundleSizeCollect() {
+export function bundleSizeCollect() {
   // This script collates bundle size information from
   // minified files in apps/test-bundles/dist and writes to
   // apps/test-bundles/dist/bundlesizes.json.
   // It is uploaded as an artifact by the build definition in
   // Azure Dev Ops and used to compare baseline and PR file size
   // information which gets reported by Size Auditor
-
-  const fs = require('fs');
-  const path = require('path');
 
   const distRoot = path.join(__dirname, '../../apps/test-bundles/dist');
   const sizes = {};
@@ -34,4 +32,4 @@ module.exports = function bundleSizeCollect() {
   function getComponentName(fileName) {
     return path.basename(fileName, '.min.js');
   }
-};
+}

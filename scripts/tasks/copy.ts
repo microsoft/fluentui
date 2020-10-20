@@ -1,10 +1,8 @@
-// @ts-check
+import * as fs from 'fs';
+import * as path from 'path';
+import { series, resolveCwd, copyTask } from 'just-scripts';
 
-const fs = require('fs');
-const path = require('path');
-const { series, resolveCwd, copyTask } = require('just-scripts');
-
-function expandSourcePath(pattern) {
+export function expandSourcePath(pattern) {
   if (!pattern) {
     return null;
   }
@@ -32,7 +30,7 @@ function expandSourcePath(pattern) {
   }
 }
 
-function copy() {
+export function copy() {
   let tasks = [];
   let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
@@ -47,15 +45,13 @@ function copy() {
       const sources = config.copyTo[destination];
       destination = path.resolve(process.cwd(), destination);
       tasks.push(
-        copyTask(
-          sources.map(src => expandSourcePath(src)),
-          destination,
-        ),
+        copyTask({
+          paths: sources.map(src => expandSourcePath(src)),
+          dest: destination,
+        }),
       );
     }
   }
 
   return series.apply(null, tasks);
 }
-
-module.exports = { expandSourcePath, copy };

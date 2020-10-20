@@ -1,7 +1,6 @@
-// @ts-check
+import * as path from 'path';
+import { tscTask, argv } from 'just-scripts';
 
-const path = require('path');
-const { tscTask, argv } = require('just-scripts');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 // Temporary hack: only use tsbuildinfo file for things under packages/fluentui
@@ -17,7 +16,7 @@ function getExtraTscParams(args) {
   };
 }
 
-module.exports.ts = {
+export const ts = {
   commonjs: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({

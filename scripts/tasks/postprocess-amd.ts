@@ -1,6 +1,7 @@
-module.exports.postprocessAmdTask = function() {
-  const { mod } = require('riceburn');
-  const ts = require('typescript');
+export async function postprocessAmdTask() {
+  // Delay load these
+  const { mod } = await import('riceburn');
+  const ts = await import('typescript');
 
   mod('lib-amd/**/*.js').asTypescript((node, modder) => {
     if (ts.isIfStatement(node)) {
@@ -9,4 +10,4 @@ module.exports.postprocessAmdTask = function() {
       }
     }
   });
-};
+}

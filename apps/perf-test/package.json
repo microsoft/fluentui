@@ -20,7 +20,7 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
+    "@fluentui/scripts": "^7.0.0",
     "@uifabric/set-version": "^7.0.23",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",
