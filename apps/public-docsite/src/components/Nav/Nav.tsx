@@ -1,17 +1,7 @@
 import * as React from 'react';
 import { CollapsibleSection } from '@fluentui/react-experiments';
-import {
-  css,
-  FocusZone,
-  IButtonStyles,
-  Icon,
-  IIconProps,
-  IconButton,
-  ISearchBoxStyles,
-  Link,
-  SearchBox,
-  getFocusStyle,
-} from '@fluentui/react';
+import { css, FocusZone, Icon, IIconProps, ISearchBoxStyles, Link, SearchBox, getFocusStyle } from '@fluentui/react';
+import { IButtonStyles, IconButton } from '@fluentui/react/lib/compat/Button';
 import { isPageActive, hasActiveChild, INavPage, INavProps, NavSortType } from '@uifabric/example-app-base/lib/index2';
 import { theme } from '@uifabric/example-app-base/lib/styles/theme';
 import * as styles from './Nav.module.scss';

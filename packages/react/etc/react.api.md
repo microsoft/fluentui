@@ -7,8 +7,8 @@
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
-import { IButtonProps } from '@fluentui/react-internal/lib/Button';
-import { IButtonStyles } from '@fluentui/react-internal/lib/Button';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react-internal/lib/compat/Button';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
@@ -1883,6 +1883,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
+export * from "@fluentui/react-button";
 export * from "@fluentui/react-checkbox/lib/Checkbox";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";

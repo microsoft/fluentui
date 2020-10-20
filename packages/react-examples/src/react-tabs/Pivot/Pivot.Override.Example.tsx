@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, Label } from '@fluentui/react';
+import { Label } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotOverrideExample = () => {

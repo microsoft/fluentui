@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IButtonGridCellProps } from './ButtonGridCell.types';
-import { CommandButton } from '../../Button';
+import { CommandButton } from '../../compat/Button';
 import { useId } from '@uifabric/react-hooks';
 
 export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => {

@@ -2,15 +2,14 @@ import * as React from 'react';
 import { useControllableValue, useId } from '@uifabric/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
 import {
-  CommandButton,
   DirectionalHint,
   FocusZone,
   FocusZoneDirection,
-  IButton,
   Icon,
   IContextualMenuProps,
   IFocusZone,
 } from '@fluentui/react-internal';
+import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
 
