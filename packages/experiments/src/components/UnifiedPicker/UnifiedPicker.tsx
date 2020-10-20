@@ -228,7 +228,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDragEnd: _onDragEnd,
   };
 
-  const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+  const _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    // Allow the caller to handle the key down
+    if (props.onKeyDown) {
+      props.onKeyDown(ev);
+    }
+
+    // Handle delete of items via backspace
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
@@ -391,7 +397,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     <div
       ref={rootRef}
       className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
-      onKeyDown={_onBackspace}
+      onKeyDown={_onKeyDown}
       onCopy={_onCopy}
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
