@@ -26,7 +26,14 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
           }
     >
       <div
-        className="ms-SelectionZone"
+        className=
+            ms-SelectionZone
+            ms-UnifiedPicker-selectionZone
+            ms-UnifiedPicker-selectionZone
+            {
+              display: flex;
+              flex: 1 1 auto;
+            }
         onClick={[Function]}
         onContextMenu={[Function]}
         onDoubleClick={[Function]}
@@ -151,7 +158,14 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
           }
     >
       <div
-        className="ms-SelectionZone"
+        className=
+            ms-SelectionZone
+            ms-UnifiedPicker-selectionZone
+            ms-UnifiedPicker-selectionZone
+            {
+              display: flex;
+              flex: 1 1 auto;
+            }
         onClick={[Function]}
         onContextMenu={[Function]}
         onDoubleClick={[Function]}
