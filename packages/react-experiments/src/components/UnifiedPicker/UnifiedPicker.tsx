@@ -5,7 +5,7 @@ import { DragDropHelper, IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps, IDragDropEvents } from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
-import { useQueryString, clearQueryString } from './hooks/useQueryString';
+import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
