@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IDropdownStyleProps } from '@fluentui/react/lib/Dropdown';
-import { IPackageGroup } from '@uifabric/tsx-editor';
+import { IPackageGroup } from '@fluentui/react-monaco-editor';
 
 export interface IExampleCardProps {
   /** Example title */
@@ -43,7 +43,7 @@ export interface IExampleCardProps {
   /**
    * Custom supported packages for the live code editor. Defaults to core Fabric packages plus
    * example-data. If you want to build off the default list of packages, it's exported from
-   * `@uifabric/tsx-editor/lib/utilities/defaultSupportedPackages`.
+   * `@fluentui/react-monaco-editor/lib/utilities/defaultSupportedPackages`.
    */
   editorSupportedPackages?: IPackageGroup[];
 }

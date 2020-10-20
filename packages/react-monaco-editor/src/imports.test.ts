@@ -29,9 +29,9 @@ Error importing index.ts in test! This probably means that either:
 1. You added a reference to a new package
     => Solution: add mapping for package in jest.config.js
 
-2. You added a root import of @uifabric/monaco-editor in a file which shouldn't reference Monaco.
+2. You added a root import of @fluentui/monaco-editor in a file which shouldn't reference Monaco.
     => Solution: If you need types from Monaco in a file referenced by index.ts, import from:
-          @uifabric/monaco-editor/esm/vs/editor/editor.api
+          @fluentui/monaco-editor/esm/vs/editor/editor.api
        For imports besides types, please restructure your code.
 
 Original error:

@@ -261,7 +261,7 @@ function _generatePage(
 }
 
 function _loadReferences(): INavPage[] {
-  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
+  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];

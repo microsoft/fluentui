@@ -1,5 +1,5 @@
 import { getWindow, isIE11 } from '@fluentui/react/lib/Utilities';
-import { isConfigAvailable } from '@uifabric/monaco-editor/lib/configureEnvironment';
+import { isConfigAvailable } from '@fluentui/monaco-editor/lib/configureEnvironment';
 import { isExampleValid } from '../transpiler/exampleParser';
 import { getSetting } from './settings';
 import { IBasicPackageGroup } from '../interfaces/packageGroup';

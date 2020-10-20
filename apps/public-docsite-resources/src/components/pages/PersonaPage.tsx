@@ -5,7 +5,7 @@ import { PersonaPageProps } from '@fluentui/react-examples/lib/react/Persona/Per
 
 export const PersonaPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Persona.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Persona.page.json')}
     {...{ ...PersonaPageProps, ...props }}
   />
 );

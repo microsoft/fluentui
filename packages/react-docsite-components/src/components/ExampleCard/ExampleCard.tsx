@@ -22,7 +22,7 @@ import {
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
+import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@fluentui/react-monaco-editor';
 import { getQueryParam } from '../../utilities/index2';
 
 export interface IExampleCardState {

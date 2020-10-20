@@ -2,9 +2,9 @@
 const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
-const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
+const { addMonacoWebpackConfig } = require('@fluentui/monaco-editor/scripts/addMonacoWebpackConfig');
 
-const BUNDLE_NAME = 'tsx-editor';
+const BUNDLE_NAME = 'react-monaco-editor';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(
@@ -17,7 +17,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'FabricTsxEditor',
+      library: 'FluentUIReactMonacoEditor',
     },
 
     externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
@@ -25,7 +25,7 @@ module.exports = resources.createConfig(
     resolve: {
       alias: {
         ...getResolveAlias(true),
-        '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
+        '@fluentui/react-monaco-editor/dist': path.join(__dirname, 'dist'),
       },
     },
   }),

@@ -72,7 +72,7 @@ packages/react-hooks/ @ecraig12345
 packages/style-utilities/ @dzearing
 packages/style-utilities/src/interfaces/ @phkuo
 packages/style-utilities/src/styles/ @phkuo
-packages/tsx-editor/ @ecraig12345
+packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd

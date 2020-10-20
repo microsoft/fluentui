@@ -3,7 +3,7 @@ const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
+const { addMonacoWebpackConfig } = require('@fluentui/monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'demo-app';
 
@@ -31,7 +31,7 @@ module.exports = resources.createServeConfig(
     resolve: {
       alias: {
         ...getResolveAlias(),
-        '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
+        '@fluentui/react-monaco-editor/dist': path.join(__dirname, 'dist'),
       },
     },
   }),

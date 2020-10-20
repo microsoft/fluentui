@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as monaco from '@uifabric/monaco-editor';
-import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@uifabric/monaco-editor/monaco-typescript.d';
+import * as monaco from '@fluentui/monaco-editor';
+import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@fluentui/monaco-editor/monaco-typescript.d';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { ITsxEditorProps } from './TsxEditor.types';
 import { transpileAndEval } from '../transpiler/transpile';

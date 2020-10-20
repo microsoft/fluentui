@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as monaco from '@uifabric/monaco-editor';
-import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typescript.d';
+import * as monaco from '@fluentui/monaco-editor';
+import { TypeScriptWorker, EmitOutput } from '@fluentui/monaco-editor/monaco-typescript.d';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';

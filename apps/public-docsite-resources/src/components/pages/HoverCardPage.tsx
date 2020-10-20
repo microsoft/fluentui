@@ -6,7 +6,7 @@ import { HoverCardPageProps } from '@fluentui/react-examples/lib/react/HoverCard
 export const HoverCardPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@uifabric/api-docs/lib/pages/react/HoverCard.page.json')}
+      jsonDocs={require('@fluentui/api-docs/lib/pages/react/HoverCard.page.json')}
       {...{ ...HoverCardPageProps, ...props }}
     />
   </LayerHost>

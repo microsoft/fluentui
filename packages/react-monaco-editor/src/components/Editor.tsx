@@ -1,4 +1,4 @@
-import * as monaco from '@uifabric/monaco-editor';
+import * as monaco from '@fluentui/monaco-editor';
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
 import { CODE_FONT_FAMILY, DEFAULT_WIDTH, DEFAULT_HEIGHT } from './consts';

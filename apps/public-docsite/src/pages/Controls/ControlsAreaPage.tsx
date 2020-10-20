@@ -6,7 +6,7 @@ import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@uifabric/api-docs/lib/pages/', true, /^(?!references).*/);
+const apiRequireContext = require.context('@fluentui/api-docs/lib/pages/', true, /^(?!references).*/);
 
 const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;

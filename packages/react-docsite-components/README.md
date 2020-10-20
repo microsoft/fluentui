@@ -8,7 +8,7 @@ Components and utilities used to build internal documentation sites and inner lo
 
 To set up the live code editor in the demo app for a package other than the `@fluentui/react` package itself:
 
-1. Follow the setup steps from the [`@uifabric/monaco-editor` readme](https://github.com/microsoft/fluentui/blob/master/packages/monaco-editor/README.md) (the helpers mentioned are also re-exported from `@uifabric/tsx-editor` for convenience).
+1. Follow the setup steps from the [`@fluentui/monaco-editor` readme](https://github.com/microsoft/fluentui/blob/master/packages/monaco-editor/README.md) (the helpers mentioned are also re-exported from `@fluentui/react-monaco-editor` for convenience).
 
 2. Set up a `.d.ts` rollup file for your package using API Extractor.
 
@@ -22,8 +22,8 @@ To set up the live code editor in the demo app for a package other than the `@fl
    - Each package's `.d.ts` rollup lives under `<package-folder>/dist/<unscoped-package-name>.d.ts`
 
 ```ts
-import { IPackageGroup } from '@uifabric/tsx-editor';
-import { defaultSupportedPackages } from '@uifabric/tsx-editor/lib/utilities/defaultSupportedPackages';
+import { IPackageGroup } from '@fluentui/react-monaco-editor';
+import { defaultSupportedPackages } from '@fluentui/react-monaco-editor/lib/utilities/defaultSupportedPackages';
 
 export const editorSupportedPackages: IPackageGroup[] = [
   ...defaultSupportedPackages,

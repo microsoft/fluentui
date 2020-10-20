@@ -23,7 +23,12 @@ let typesContext: __WebpackModuleApi.RequireContext | undefined;
 try {
   // Other packages' typings are copied into dist/types by a build step.
   // Load all of those typings dynamically (lazy-once puts them in a chunk together).
-  typesContext = require.context('!raw-loader!@uifabric/tsx-editor/dist/types', false, /.*\.d\.ts$/, 'lazy-once');
+  typesContext = require.context(
+    '!raw-loader!@fluentui/react-monaco-editor/dist/types',
+    false,
+    /.*\.d\.ts$/,
+    'lazy-once',
+  );
 } catch (ex) {
   // We're probably running in jest, which doesn't have webpack's require.context
 }
@@ -31,7 +36,7 @@ if (typesContext) {
   typesContext.keys().forEach(dtsPath => {
     // The api-extractor .d.ts rollups use the package's unscoped name (such as "utilities")
     // as the filename.
-    // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
+    // (example path: '!raw-loader!@fluentui/react-monaco-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
     const packageName = `${
       ['react-focus', 'react'].indexOf(unscopedName) > -1 ? '@fluentui' : '@uifabric'

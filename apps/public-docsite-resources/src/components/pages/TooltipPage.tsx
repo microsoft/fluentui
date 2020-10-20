@@ -7,7 +7,7 @@ import { TooltipPageProps } from '@fluentui/react-examples/lib/react/Tooltip/Too
 export const TooltipPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@uifabric/api-docs/lib/pages/react/Tooltip.page.json')}
+      jsonDocs={require('@fluentui/api-docs/lib/pages/react/Tooltip.page.json')}
       {...{ ...TooltipPageProps, ...props }}
     />
   </LayerHost>

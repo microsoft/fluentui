@@ -5,7 +5,7 @@ import { SpinnerPageProps } from '@fluentui/react-examples/lib/react/Spinner/Spi
 
 export const SpinnerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Spinner.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Spinner.page.json')}
     {...{ ...SpinnerPageProps, ...props }}
   />
 );
