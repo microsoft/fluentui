@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric, setBaseUrl } from '@fluentui/react';
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
 import {
   INavPage,
   ISiteDefinition,

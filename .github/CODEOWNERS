@@ -64,7 +64,7 @@ packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation-legacy/ @dzearing @khmakoto
-# packages/icons/
+# packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345

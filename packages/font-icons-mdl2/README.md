@@ -1,4 +1,4 @@
-# @uifabric/icons
+# @fluentui/font-icons-mdl2
 
 **Icons for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
@@ -7,10 +7,10 @@ Fluent UI React Icons includes a collection of 1100+ icons which you can use in 
 
 ## Getting started
 
-If you are using Fluent UI React components, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:
+If you are using Fluent UI React components, you can make all icons available by calling the `initializeIcons` function from the `@fluentui/font-icons-mdl2` package:
 
 ```tsx
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 
 // Register icons and pull the fonts from the default SharePoint cdn.
 initializeIcons();

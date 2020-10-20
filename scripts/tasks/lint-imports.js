@@ -56,7 +56,7 @@ function lintImports() {
   const allowedReexportedImports = ['@fluentui/foundation-legacy/lib/next/composed'];
   const reExportedPackages = {
     '@fluentui/foundation-legacy': 'Foundation',
-    '@uifabric/icons': 'Icons',
+    '@fluentui/font-icons-mdl2': 'Icons',
     '@uifabric/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',
     '@uifabric/utilities': 'Utilities',
