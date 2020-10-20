@@ -7245,7 +7245,7 @@ export * from "@fluentui/react-focus";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
-export * from "@uifabric/icons";
+export * from "@fluentui/font-icons-mdl2";
 export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
