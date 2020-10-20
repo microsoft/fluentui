@@ -131,7 +131,7 @@ Please see the [`@fluentui/react-theme-provider` package README](https://github.
 
 ### Keytips
 
-Previously, `KeytipData` is built in different components which needs Keytips support. This adds extra bundle size to our components. In version 8, we removed `KeytipData` and `keytipProps` prop from `Link`, `Toggle`, `Checkbox`, `Comboxbox`, `Dropdown`, `SpinButton` and other non-compat `Button`s (the ones which are not exported from `lib/compat`).
+Previously, `KeytipData` was built in different components which needed Keytip support. This added extra bundle size to our components. In version 8, we have removed `KeytipData` and `keytipProps` props from `Link`, `Toggle`, `Checkbox`, `ComboBox`, `Dropdown`, `SpinButton` and other non-compat `Button`s (the ones which are not exported from `lib/compat`).
 
 Here is an example on how to migrate from this change:
 Before:
