@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Rename @fluentui/react-icons to @fluentui/react-icons-mdl2",
+  "packageName": "@fluentui/react-button",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-19T23:54:54.151Z"
+}

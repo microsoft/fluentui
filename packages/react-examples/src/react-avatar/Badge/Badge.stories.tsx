@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-avatar';
-import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons';
+import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 
 export const BadgeExamples = () => (
