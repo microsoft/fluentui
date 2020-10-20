@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu, DefaultButton, IContextualMenuProps, IIconProps, PrimaryButton } from '@fluentui/react';
+import { ContextualMenu, IContextualMenuProps, IIconProps } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

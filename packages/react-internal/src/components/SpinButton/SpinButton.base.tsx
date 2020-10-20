@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps -- will come back and fix separately */
 import * as React from 'react';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {

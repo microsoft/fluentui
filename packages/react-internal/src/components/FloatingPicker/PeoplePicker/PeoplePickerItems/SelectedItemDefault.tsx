@@ -2,10 +2,9 @@ import * as React from 'react';
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
-import { IconButton } from '../../../../Button';
+import { IconButton } from '../../../../compat/Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (

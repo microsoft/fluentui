@@ -77,8 +77,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (keytipAttributes: any): JSX.Element => (
+        {(keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
@@ -183,7 +182,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     item: IContextualMenuItem,
     classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
     index: number,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     keytipAttributes: any,
   ) {
     const {

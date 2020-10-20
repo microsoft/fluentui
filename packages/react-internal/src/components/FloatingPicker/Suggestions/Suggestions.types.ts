@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ISuggestionModel, ISuggestionItemProps } from '../../../Pickers';
 import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
-/* eslint-disable */
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**

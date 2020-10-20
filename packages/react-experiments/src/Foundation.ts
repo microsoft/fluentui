@@ -1,1 +1,1 @@
-export * from '@uifabric/foundation';
+export * from '@fluentui/foundation-legacy';
