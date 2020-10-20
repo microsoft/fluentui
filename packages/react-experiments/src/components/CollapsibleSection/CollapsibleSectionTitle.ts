@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent } from '@uifabric/foundation';
+import { createComponent } from '@fluentui/foundation-legacy';
 import { CollapsibleSectionTitleView } from './CollapsibleSectionTitle.view';
 import { getStyles as styles } from './CollapsibleSectionTitle.styles';
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';

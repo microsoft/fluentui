@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandButton } from '@fluentui/react/lib/compat/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { ThemeProvider } from '@uifabric/foundation';
+import { ThemeProvider } from '@fluentui/foundation-legacy';
 import {
   styled,
   Customizer,

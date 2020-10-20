@@ -59,7 +59,7 @@ if (typesContext) {
     // TODO: this probably needs to be dynamically generated so it doesn't break every time we
     // add a new component package exported by @fluentui/react
     { packageName: '@fluentui/react', loadTypes },
-    { packageName: '@uifabric/foundation', loadTypes },
+    { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@uifabric/icons', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
