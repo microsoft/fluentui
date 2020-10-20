@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 import { VirtualizedListBasicExample } from './VirtualizedList.Basic.Example';
 import { VirtualizedListBasicExample2 } from './VirtualizedList.Basic2.Example';
 

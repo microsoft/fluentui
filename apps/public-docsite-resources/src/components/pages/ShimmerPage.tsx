@@ -5,7 +5,7 @@ import { ShimmerPageProps } from '@fluentui/react-examples/lib/react/Shimmer/Shi
 
 export const ShimmerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Shimmer.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Shimmer.page.json')}
     {...{ ...ShimmerPageProps, ...props }}
   />
 );

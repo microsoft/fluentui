@@ -7,7 +7,7 @@ import {
   Markdown,
   FeedbackList,
   IExampleCardProps,
-} from '@uifabric/example-app-base';
+} from '@fluentui/react-docsite-components';
 import * as React from 'react';
 
 export const DemoPage: React.FunctionComponent<IDemoPageProps> = demoPageProps => {

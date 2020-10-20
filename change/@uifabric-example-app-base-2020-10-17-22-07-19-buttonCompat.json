@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "Updating imports for Button component to import from the compat folder.",
-  "packageName": "@uifabric/example-app-base",
+  "packageName": "@fluentui/react-docsite-components",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
   "date": "2020-10-18T05:06:03.223Z"

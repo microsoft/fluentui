@@ -5,7 +5,7 @@ import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { CodepenComponent } from '@uifabric/example-app-base';
+import { CodepenComponent } from '@fluentui/react-docsite-components';
 
 export interface IHeaderProps {
   themeRules?: IThemeRules;

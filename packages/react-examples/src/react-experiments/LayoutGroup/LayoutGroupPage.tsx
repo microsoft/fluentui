@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { LayoutGroupBasicExample } from './LayoutGroup.Basic.Example';
 const LayoutGroupBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/LayoutGroup/LayoutGroup.Basic.Example.tsx') as string;

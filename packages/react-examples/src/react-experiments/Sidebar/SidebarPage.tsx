@@ -5,7 +5,7 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet,
   IExampleCardStyles,
-} from '@uifabric/example-app-base';
+} from '@fluentui/react-docsite-components';
 import { SidebarBasicExample } from './Sidebar.Basic.Example';
 import { SidebarCollapsibleExample } from './Sidebar.Collapsed.Example';
 

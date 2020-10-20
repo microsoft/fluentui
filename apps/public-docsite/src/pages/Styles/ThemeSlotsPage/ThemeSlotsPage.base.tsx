@@ -7,7 +7,7 @@ import {
   MarkdownHeader,
   ColorPalette,
   IColorSwatch,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
 import { IThemeSlotsPageProps, IThemeSlotsPageStyles, IThemeSlotsPageStyleProps } from './ThemeSlotsPage.types';

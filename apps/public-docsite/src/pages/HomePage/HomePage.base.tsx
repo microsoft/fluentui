@@ -16,7 +16,7 @@ import {
   IStackProps,
 } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/compat/Button';
-import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@fluentui/react-docsite-components/lib/index2';
 import {
   androidLogoColor,
   appleLogoColor,
