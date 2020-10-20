@@ -198,10 +198,10 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
   if (bundleFiles.length) {
     // Assorted special files which are known to reference bundle names
     bundleFiles.push(
-      path.join(gitRoot, 'packages/example-app-base/src/components/CodepenComponent/CodepenComponent.tsx'),
-      path.join(gitRoot, 'packages/tsx-editor/src/transpiler/transpileHelpers.test.ts'),
-      path.join(gitRoot, 'packages/tsx-editor/src/utilities/defaultSupportedPackages.ts'),
-      path.join(gitRoot, 'packages/tsx-editor/src/transpiler/__snapshots__/exampleTransform.test.ts.snap'),
+      path.join(gitRoot, 'packages/react-docsite-components/src/components/CodepenComponent/CodepenComponent.tsx'),
+      path.join(gitRoot, 'packages/react-monaco-editor/src/transpiler/transpileHelpers.test.ts'),
+      path.join(gitRoot, 'packages/react-monaco-editor/src/utilities/defaultSupportedPackages.ts'),
+      path.join(gitRoot, 'packages/react-monaco-editor/src/transpiler/__snapshots__/exampleTransform.test.ts.snap'),
     );
 
     // Replace the bundle name and the library name in any webpack configs

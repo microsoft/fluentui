@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@fluentui/react-docsite-components';
 
 import { SlotsExample } from './Slots.Example';
 import { SlotsAsyncExample } from './Slots.Async.Example';

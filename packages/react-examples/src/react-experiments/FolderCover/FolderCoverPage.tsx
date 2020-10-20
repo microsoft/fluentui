@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { FolderCoverBasicExample } from './FolderCover.Basic.Example';
 const FolderCoverBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/FolderCover/FolderCover.Basic.Example.tsx') as string;

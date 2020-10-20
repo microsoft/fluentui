@@ -5,7 +5,7 @@ import { DropdownPageProps } from '@fluentui/react-examples/lib/react/Dropdown/D
 
 export const DropdownPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Dropdown.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Dropdown.page.json')}
     {...{ ...DropdownPageProps, ...props }}
   />
 );

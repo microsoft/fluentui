@@ -5,7 +5,7 @@ import { CheckboxPageProps } from '@fluentui/react-examples/lib/react-checkbox/C
 
 export const CheckboxPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Checkbox.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Checkbox.page.json')}
     {...{ ...CheckboxPageProps, ...props }}
   />
 );

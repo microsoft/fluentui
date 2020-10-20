@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.Basic.Example';
 import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';

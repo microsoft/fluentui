@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "Don't publish demo app",
-  "packageName": "@uifabric/tsx-editor",
+  "packageName": "@fluentui/react-monaco-editor",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-15T09:05:05.327Z"

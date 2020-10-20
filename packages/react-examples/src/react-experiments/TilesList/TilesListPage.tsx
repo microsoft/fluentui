@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react/lib/Link';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { TilesListBasicExample } from './TilesList.Basic.Example';
 const TilesListBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Basic.Example.tsx') as string;

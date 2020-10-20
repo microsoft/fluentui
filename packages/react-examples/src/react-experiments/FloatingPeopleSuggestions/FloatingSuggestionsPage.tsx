@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 import { FloatingPeopleSuggestionsExample } from './FloatingPeopleSuggestions.Example';
 const FloatingPeoplePickerSuggestionsExampleCode = require('!raw-loader!./FloatingPeopleSuggestions.Example') as string;
 import { FloatingPeopleSuggestionsCustomRenderExample } from './FloatingPeopleSuggestions.CustomRender.Example';
