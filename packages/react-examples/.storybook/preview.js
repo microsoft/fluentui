@@ -1,6 +1,6 @@
 // @ts-check
 import * as React from 'react';
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';

@@ -60,7 +60,7 @@ if (typesContext) {
     // add a new component package exported by @fluentui/react
     { packageName: '@fluentui/react', loadTypes },
     { packageName: '@fluentui/foundation-legacy', loadTypes },
-    { packageName: '@uifabric/icons', loadTypes },
+    { packageName: '@fluentui/font-icons-mdl2', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },

@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
-  "packageName": "@uifabric/icons",
+  "packageName": "@fluentui/font-icons-mdl2",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-16T22:41:15.800Z"

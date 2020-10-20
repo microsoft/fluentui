@@ -51,7 +51,7 @@
     "@fluentui/react-experiments": "^7.33.1",
     "@fluentui/public-docsite-resources": "^7.8.18",
     "@uifabric/file-type-icons": "^7.6.9",
-    "@uifabric/icons": "^7.5.8",
+    "@fluentui/font-icons-mdl2": "^7.5.8",
     "@uifabric/set-version": "^7.0.23",
     "@fluentui/theme-samples": "^7.1.21",
     "json-loader": "^0.5.7",

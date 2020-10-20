@@ -61,7 +61,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.9.0",
     "@fluentui/foundation-legacy": "^7.9.9",
-    "@uifabric/icons": "^7.5.8",
+    "@fluentui/font-icons-mdl2": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
