@@ -30,7 +30,7 @@ const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 
 // When displaying gaps between bars, the max height of the gap is given in the
 // props. The actual gap is calculated with this multiplier, with a minimum gap
-// of 1 pixel.
+// of 1 pixel. (If these values are changed, update the comment for barGapMax.)
 const barGapMultiplier = 0.2;
 const barGapMin = 1;
 
@@ -377,7 +377,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       const nonZeroBars = singleChartData.chartData.filter(point => point.data > 0);
 
       // When displaying gaps between the bars, the height of each bar is
-      // adjusted so that the total of all bars remains correct
+      // adjusted so that the total of all bars is not changed by the gaps
       const totalData = nonZeroBars.reduce((iter, value) => iter + value.data, 0);
       const totalHeight = yBarScale(totalData);
       const spaces = barGapMax && nonZeroBars.length - 1;

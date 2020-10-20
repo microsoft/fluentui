@@ -7,13 +7,19 @@ import {
   IVerticalStackedBarChartProps,
 } from '@uifabric/charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
-import { DirectionalHint } from 'office-ui-fabric-react';
+import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from 'office-ui-fabric-react';
+
+const options: IChoiceGroupOption[] = [
+  { key: 'singleCallout', text: 'Single callout' },
+  { key: 'MultiCallout', text: 'Stack callout' },
+];
 
 interface IVerticalStackedBarState {
   width: number;
   height: number;
   barGapMax: number;
   barCornerRadius: number;
+  selectedCallout: string;
 }
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -24,6 +30,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       height: 350,
       barGapMax: 2,
       barCornerRadius: 2,
+      selectedCallout: 'MultiCallout',
     };
   }
   public render(): JSX.Element {
@@ -130,6 +137,12 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={10}
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
+          <ChoiceGroup
+            options={options}
+            defaultSelectedKey="MultiCallout"
+            onChange={(_ev, option) => this.setState({ selectedCallout: option.key })}
+            label="Pick one"
+          />
         </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
@@ -142,6 +155,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             styles={customStyles}
             yMaxValue={120}
             yMinValue={10}
+            isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             calloutProps={{
               directionalHint: DirectionalHint.topCenter,
             }}
