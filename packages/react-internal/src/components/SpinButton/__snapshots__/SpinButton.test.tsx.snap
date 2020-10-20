@@ -83,6 +83,7 @@ exports[`SpinButton renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
   >
     <input
       aria-disabled={false}
@@ -130,6 +131,7 @@ exports[`SpinButton renders correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
       id="input0"
@@ -520,6 +522,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
     data-test="test"
   >
     <input
@@ -569,6 +572,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
       id="input0"

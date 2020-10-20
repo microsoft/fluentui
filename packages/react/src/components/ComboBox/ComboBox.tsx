@@ -25,7 +25,6 @@ import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
-import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
@@ -390,7 +389,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       allowFreeform,
       styles: customStyles,
       theme,
-      keytipProps,
       persistMenu,
       multiSelect,
       hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
@@ -434,15 +432,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           !!hasErrorMessage,
         );
 
-    const comboBoxWrapper = keytipProps ? (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(keytipAttributes: any): JSX.Element =>
-          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)
-        }
-      </KeytipData>
-    ) : (
-      this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId)
-    );
+    const comboBoxWrapper = this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId);
 
     return (
       <div {...divProps} ref={this.props.hoisted.mergedRootRef} className={this._classNames.container}>
@@ -536,7 +526,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
-    keytipAttributes: any = {},
   ): JSX.Element => {
     const {
       label,
@@ -569,13 +558,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     return (
       <div
-        data-ktp-target={keytipAttributes['data-ktp-target']}
+        data-ktp-target={true}
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
       >
         <Autofill
-          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          data-ktp-execute-target={true}
           data-is-interactable={!disabled}
           componentRef={this._autofill}
           id={this._id + '-input'}
@@ -595,9 +584,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-labelledby={label && this._id + '-label'}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
-            errorMessage !== undefined
-              ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
-              : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+            errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
           }
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}

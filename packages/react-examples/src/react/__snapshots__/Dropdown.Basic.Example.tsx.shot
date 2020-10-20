@@ -146,6 +146,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: #a4262c;
           }
       data-is-focusable={true}
+      data-ktp-target={true}
       id="Dropdown0"
       onBlur={[Function]}
       onClick={[Function]}
@@ -339,6 +340,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: #a4262c;
           }
       data-is-focusable={false}
+      data-ktp-target={true}
       id="Dropdown1"
       onBlur={[Function]}
       onClick={[Function]}
@@ -562,6 +564,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: #a4262c;
           }
       data-is-focusable={true}
+      data-ktp-target={true}
       id="Dropdown2"
       onBlur={[Function]}
       onClick={[Function]}

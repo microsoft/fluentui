@@ -18,7 +18,6 @@ import { IDragDropHelper } from '@fluentui/react-internal/lib/DragDrop';
 import { IDragDropOptions } from '@fluentui/react-internal/lib/DragDrop';
 import { IFocusZoneProps } from '@fluentui/react-internal/lib/FocusZone';
 import { IIconProps } from '@fluentui/react-internal/lib/Icon';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react-internal/lib/Label';
 import { ILabelStyles } from '@fluentui/react-internal/lib/Label';
 import { ILinkProps } from '@fluentui/react-link/lib/Link';
@@ -542,7 +541,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -1465,7 +1463,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     dropdownWidth?: number;
     // @deprecated
     isDisabled?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
