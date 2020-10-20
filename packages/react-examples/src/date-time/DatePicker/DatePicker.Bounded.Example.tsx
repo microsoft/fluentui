@@ -1,50 +1,43 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings, defaultDayPickerStrings } from '@uifabric/date-time';
-import { addMonths, addYears } from '@fluentui/date-time-utilities';
-import './DatePicker.Examples.scss';
+import {
+  DatePicker,
+  IDatePickerStrings,
+  defaultDayPickerStrings,
+  addMonths,
+  addYears,
+  IDatePickerStyles,
+} from '@uifabric/date-time';
+import { useConst } from '@uifabric/react-hooks';
 
-const today: Date = new Date(Date.now());
-const minDate: Date = addMonths(today, -1);
-const maxDate: Date = addYears(today, 1);
-const description = `When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow
-out-of-bounds dates to be picked or entered. In this example, the allowed dates are
-${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
+const datePickerStyles: Partial<IDatePickerStyles> = { root: { maxWidth: 300, marginTop: 15 } };
 
-const DayPickerStrings: IDatePickerStrings = {
-  ...defaultDayPickerStrings,
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`,
-};
+export const DatePickerBoundedExample: React.FunctionComponent = () => {
+  const today = useConst(new Date(Date.now()));
+  const minDate = useConst(addMonths(today, -1));
+  const maxDate = useConst(addYears(today, 1));
 
-export interface IDatePickerRequiredExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+  const dayPickerStrings: IDatePickerStrings = useConst(() => ({
+    ...defaultDayPickerStrings,
+    // eslint-disable-next-line @fluentui/max-len
+    isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()} and ${maxDate.toLocaleDateString()}`,
+  }));
 
-export class DatePickerBoundedExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <p>{description}</p>
-        <DatePicker
-          isRequired={false}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          minDate={minDate}
-          maxDate={maxDate}
-          allowTextInput={true}
-        />
+  return (
+    <div>
+      <div>
+        When date boundaries are set (via <code>minDate</code> and <code>maxDate</code> props) the DatePicker will not
+        allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are{' '}
+        {minDate.toLocaleDateString()} to {maxDate.toLocaleDateString()}.
       </div>
-    );
-  }
-}
+      <DatePicker
+        styles={datePickerStyles}
+        strings={dayPickerStrings}
+        placeholder="Select a date..."
+        ariaLabel="Select a date"
+        minDate={minDate}
+        maxDate={maxDate}
+        allowTextInput
+      />
+    </div>
+  );
+};

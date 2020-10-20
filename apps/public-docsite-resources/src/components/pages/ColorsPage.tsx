@@ -15,7 +15,7 @@ import {
   IThemeRules,
 } from '@fluentui/react/lib/ThemeGenerator';
 
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 
@@ -118,7 +118,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/style-utilities';
 
     return (
       <div className="ms-themer">

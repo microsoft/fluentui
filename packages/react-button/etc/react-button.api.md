@@ -185,7 +185,7 @@ export type ExpandedState = {
     };
 };
 
-// @public (undocumented)
+// @public
 export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -215,7 +215,7 @@ export type MenuButtonTokens = ButtonTokens & {
 // @public (undocumented)
 export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
-// @public (undocumented)
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, css, memoizeFunction } from '@uifabric/utilities';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
+import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
 import { ISliderProps, ISliderStyleProps, ISliderStyles, SliderBase } from '../Slider';
 import * as classes from './Slider.scss';
 

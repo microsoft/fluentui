@@ -1211,16 +1211,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     color: LinkText;
                   }
               href="http://www.bing.com"
-              keytipProps={
-                Object {
-                  "content": "2",
-                  "keySequences": Array [
-                    "a",
-                    "2",
-                  ],
-                  "onExecute": [Function],
-                }
-              }
               onClick={[Function]}
               target="_blank"
             >

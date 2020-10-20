@@ -1,5 +1,5 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
-import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
+import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonSizeVariants } from '../Button/index';
 import { SplitButtonState, SplitButtonVariants } from './SplitButton.types';
 

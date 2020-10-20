@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link, DefaultButton, mergeStyles } from '@fluentui/react';
+import { Link, mergeStyles } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import {
   trackEvent,
   EventNames,

@@ -240,53 +240,59 @@ describe('ComboBox', () => {
   });
 
   it('Can change items in uncontrolled case', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />, container => {
-      const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(buttonElement);
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container => {
+      // open combobox
+      const buttonElement = container.root.findByType('button');
+      buttonElement.props.onClick();
+
+      const input = container.root.findByType('input');
+      expect(input.props.value).toBe('1');
+
+      // select second option
+      const dropdownOption = container.root.findAllByType('button')[2];
+      renderer.act(() => {
+        dropdownOption.props.onClick({ persist: jest.fn() });
       });
 
-      const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(secondItemElement);
-      });
-
-      const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
-      expect(inputElement.value).toEqual('2');
+      // check item is selected
+      expect(input.props.value).toBe('2');
     });
   });
 
   it('Does not automatically change items in controlled case', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} ref={ref} />, container => {
-      const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(buttonElement);
+    safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
+      // open combobox
+      const buttonElement = container.root.findByType('button');
+      buttonElement.props.onClick();
+
+      const input = container.root.findByType('input');
+      expect(input.props.value).toBe('1');
+
+      // select second option
+      const dropdownOption = container.root.findAllByType('button')[2];
+      renderer.act(() => {
+        dropdownOption.props.onClick({ persist: jest.fn() });
       });
 
-      const secondItemElement = ref.current?.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(secondItemElement);
-      });
-
-      const inputElement = ref.current?.querySelector('.ms-ComboBox input') as HTMLInputElement;
-      expect(inputElement.value).toEqual('1');
+      // check item is not selected since combobox is controlled
+      expect(input.props.value).toBe('1');
     });
   });
 
   it('Multiselect does not mutate props', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect ref={ref} />, container => {
-      const buttonElement = ref.current?.querySelector('.ms-ComboBox button')!;
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(buttonElement);
-      });
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} multiSelect />, container => {
+      // open combobox
+      const buttonElement = container.root.findByType('button');
+      buttonElement.props.onClick();
 
-      const buttons = ref.current?.querySelectorAll('.ms-ComboBox-option > input');
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.change(buttons![1]);
+      // select second option
+      const dropdownOption = container.root.findAllByType('input')![2];
+      expect(dropdownOption.props.checked).toBeFalsy(); // ensure it's not already selected
+
+      renderer.act(() => {
+        dropdownOption.props.onChange({ target: { value: true }, persist: jest.fn() });
       });
+      expect(dropdownOption.props.checked).toBeTruthy(); // ensure it's now selected
 
       expect(!!DEFAULT_OPTIONS[1].selected).toEqual(false);
     });

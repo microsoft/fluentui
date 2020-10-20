@@ -31,8 +31,8 @@ describe('_getPackageName', () => {
   });
 
   it('works with scoped package name', () => {
-    expect(_getPackageName('@uifabric/experiments')).toBe('@uifabric/experiments');
-    expect(_getPackageName('@uifabric/experiments/lib/foo')).toBe('@uifabric/experiments');
+    expect(_getPackageName('@fluentui/react-experiments')).toBe('@fluentui/react-experiments');
+    expect(_getPackageName('@fluentui/react-experiments/lib/foo')).toBe('@fluentui/react-experiments');
     expect(_getPackageName('@a-b/c-d')).toBe('@a-b/c-d');
     expect(_getPackageName('@a-b/c-d/lib/foo')).toBe('@a-b/c-d');
   });

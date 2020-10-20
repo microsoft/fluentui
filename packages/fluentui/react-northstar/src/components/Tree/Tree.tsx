@@ -312,9 +312,9 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         expandItems(e, treeItemProps);
       }
 
-      if (treeItemProps.selectable) {
+      if (selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        if (treeItemHasSubtree && !treeItemProps.selectable) {
           return;
         }
 
@@ -326,7 +326,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         setSelectedItemIds(e, currSelectedItemIds => processItemsForSelection(treeItemProps, currSelectedItemIds));
       }
     },
-    [expandItems, setSelectedItemIds],
+    [expandItems, selectable, setSelectedItemIds],
   );
 
   const onFocusFirstChild = React.useCallback(
@@ -383,7 +383,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
-    if (!item.selectableParent || !item.items) {
+    if (!selectable || !hasSubtree(item)) {
       return false;
     }
 
@@ -396,7 +396,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   };
 
   const isSelectedItem = (item: TreeItemProps): boolean => {
-    if (item.selectableParent && item.items) {
+    if (selectable && hasSubtree(item)) {
       return isAllGroupChecked(item.items as TreeItemProps[], selectedItemIds);
     }
 
@@ -434,7 +434,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
               expanded: isSubtreeExpanded,
               selected: isSelectedItem(item),
               selectable,
-              ...(isSubtree && !item.selectableParent && { selectable: false }),
               renderItemTitle,
               id,
               key: id,

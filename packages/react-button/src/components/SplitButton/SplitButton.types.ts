@@ -3,6 +3,9 @@ import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps, ButtonVariants } from '../Button/Button.types';
 import { MenuButtonProps, MenuButtonState, MenuButtonTokens } from '../MenuButton/MenuButton.types';
 
+/**
+ * {@docCategory Button}
+ */
 export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
   /**
    * Button to perform primary action in SplitButton.
@@ -20,13 +23,22 @@ export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
   menuButton?: ShorthandProps;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
   menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type SplitButtonTokens = MenuButtonTokens & {
   dividerColor?: string;
   dividerThickness?: string | number;
 };
 
+/**
+ * {@docCategory Button}
+ */
 export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;

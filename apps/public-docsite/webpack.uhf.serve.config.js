@@ -20,20 +20,23 @@ const devServer = {
   port: 4324,
 };
 
-module.exports = resources.createServeConfig({
-  entry: './src/root.tsx',
-  output: {
-    filename: entryPointFilename + '.js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
-    chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`,
+module.exports = resources.createServeConfig(
+  {
+    entry: './src/root.tsx',
+    output: {
+      filename: entryPointFilename + '.js',
+      path: path.join(__dirname, 'dist'),
+      publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
+      chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`,
+    },
+
+    devServer: devServer,
+
+    resolve: {
+      alias: getResolveAlias(true /*useLib*/),
+    },
+
+    plugins: [new WriteFilePlugin()],
   },
-
-  devServer: devServer,
-
-  resolve: {
-    alias: getResolveAlias(true /*useLib*/),
-  },
-
-  plugins: [new WriteFilePlugin()],
-});
+  'dist',
+);

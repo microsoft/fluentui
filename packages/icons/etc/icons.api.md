@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IIconOptions } from '@uifabric/styling';
+import { IIconOptions } from '@fluentui/style-utilities';
 
 // @public @deprecated (undocumented)
 export const enum IconNames {

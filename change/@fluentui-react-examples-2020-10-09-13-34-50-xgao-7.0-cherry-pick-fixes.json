@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update react-button story theme example.",
-  "packageName": "@fluentui/react-examples",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-09T20:34:50.162Z"
-}

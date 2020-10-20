@@ -10,14 +10,13 @@ import { FocusZoneHorizontalMenuExample } from './FocusZone.HorizontalMenu.Examp
 const FocusZonePhotosExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.Photos.Example.tsx') as string;
 const FocusZoneListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.List.Example.tsx') as string;
 const FocusZoneDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneTabbableCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.Tabbable.Example.tsx') as string;
-
+const FocusZoneTabbableExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.Tabbable.Example.tsx') as string;
 const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-focus/FocusZone/FocusZone.HorizontalMenu.Example.tsx') as string;
 
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
   componentName: 'FocusZone',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-examples/src/react-focus/FocusZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-focus/src/components/FocusZone',
   examples: [
     {
       title: 'Non-uniform photos within bidirectional FocusZone',
@@ -36,7 +35,7 @@ export const FocusZonePageProps: IDocPageProps = {
     },
     {
       title: 'Tabbable FocusZone',
-      code: FocusZoneTabbableCode,
+      code: FocusZoneTabbableExampleCode,
       view: <FocusZoneTabbableExample />,
     },
     {

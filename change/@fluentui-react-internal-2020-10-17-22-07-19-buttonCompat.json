@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moves Button export to compat folder.",
+  "packageName": "@fluentui/react-internal",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-18T05:06:49.348Z"
+}

@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { DatePickerPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/DatePicker/DatePicker.doc';
+import { DatePickerPageProps as ExternalProps } from '@fluentui/react-examples/lib/date-time/DatePicker/DatePicker.doc';
 
 const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/DatePickerRelated.md') as string;
 const componentUrl =

@@ -3,7 +3,7 @@ import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
-import { CommandBarButton } from '../../Button';
+import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';

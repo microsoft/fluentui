@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IconButton, IIconProps, initializeIcons } from '@fluentui/react';
+import { IIconProps, initializeIcons } from '@fluentui/react';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
+import { IconButton } from '@fluentui/react/lib/compat/Button';
 import { useId } from '@uifabric/react-hooks';
 
 export interface IButtonExampleProps {

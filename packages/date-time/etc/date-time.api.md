@@ -12,12 +12,12 @@ import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
 import { IDateGridStrings } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
-import { IProcessedStyleSet } from '@uifabric/styling';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ITextFieldProps } from '@fluentui/react-internal/lib/TextField';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
