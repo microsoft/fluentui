@@ -57,6 +57,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     onEscape,
     onSearch,
     iconProps,
+    role,
   } = props;
 
   const classNames = getClassNames(styles!, {
@@ -75,6 +76,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     'onFocus',
     'onBlur',
     'value',
+    'role',
   ]);
 
   const onClear = React.useCallback(
@@ -155,7 +157,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
+    <div role={role} ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
       <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
