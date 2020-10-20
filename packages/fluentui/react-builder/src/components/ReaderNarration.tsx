@@ -60,13 +60,22 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           focusableElements[path] = focusableElementItem.element;
           elementsPaths.push(path);
         }); // End forEach 1
-
         prevNarrationElement = narrationElement;
         if (elementsPaths.length >= 1) {
           // Begin if 2
-          // Preselect the first element path and the corresponding narration element as defaults
-          selectedElementPath = elementsPaths[0];
-          setNarrationElement(focusableElementsItems[0].element);
+          // Preselect the path and the narration element to the first focusable element with tabindex >= 0
+          let preselectedElementItem = focusableElementsItems[0];
+          focusableElementsItems.some(focusableElementItem => {
+            // Begin some 1
+            if (focusableElementItem.element.tabIndex >= 0) {
+              // Begin if 3
+              preselectedElementItem = focusableElementItem;
+              return true;
+            } // End if 3
+            return false;
+          }); // End some 1
+          selectedElementPath = preselectedElementItem.path;
+          setNarrationElement(preselectedElementItem.element);
         } else {
           // Else if 2
           selectedElementPath = null;

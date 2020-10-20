@@ -81,7 +81,7 @@ export class NarrationComputer {
       newPath.push(item);
     }
 
-    // If the element is focusable, stop the traversal and return
+    // If the element is focusable, save it together with its path
     const isDirectlyFocusable =
       (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement == null;
     const isActiveDescendant = activeDescendantsParents.some(parent => {
@@ -95,7 +95,7 @@ export class NarrationComputer {
         element,
       };
       focusableElements.push(focusableElement);
-      return;
+      // return;
     } // End if 1
 
     // Traverse down to all the children
