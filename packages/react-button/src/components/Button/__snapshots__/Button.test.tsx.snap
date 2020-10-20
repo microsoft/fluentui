@@ -73,13 +73,13 @@ exports[`Button renders a default state 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   <button
@@ -356,13 +356,13 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   <a
