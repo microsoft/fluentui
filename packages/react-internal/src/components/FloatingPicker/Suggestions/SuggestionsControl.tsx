@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, KeyCodes, initializeComponentRef } from '../../../Utilities';
-import { IButton } from '../../../Button';
+import { IButton } from '../../../compat/Button';
 import { ISuggestionModel } from '../../../Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,

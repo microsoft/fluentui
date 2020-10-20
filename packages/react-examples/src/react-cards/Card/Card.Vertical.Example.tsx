@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@fluentui/react-cards';
 import {
-  ActionButton,
   FontWeights,
-  IButtonStyles,
   Icon,
   IIconStyles,
   Image,
@@ -13,6 +11,7 @@ import {
   Text,
   ITextStyles,
 } from '@fluentui/react';
+import { ActionButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 
 const alertClicked = (): void => {
   alert('Clicked');

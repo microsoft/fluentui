@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
 import { useBoolean } from '@uifabric/react-hooks';
 

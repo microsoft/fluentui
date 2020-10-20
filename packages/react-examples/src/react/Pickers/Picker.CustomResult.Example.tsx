@@ -23,7 +23,7 @@ import {
   IInputProps,
   IBasePickerSuggestionsProps,
 } from '@fluentui/react/lib/Pickers';
-import { IButtonProps } from '@fluentui/react/lib/Button';
+import { IButtonProps } from '@fluentui/react/lib/compat/Button';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 

@@ -12,8 +12,8 @@ import { Ok } from '../../helpers/result';
 
 describe('modRunner tests', () => {
   it('gets the appropriate path to mods based on current dir', () => {
-    const modPath = getModsRootPath();
-    expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
+    const modPath = getModsRootPath().replace(/\\/g, '/');
+    expect(modPath).toEqual(`${process.cwd().replace(/\\/g, '/')}/src/modRunner/../codeMods/mods`);
   });
 
   it('returns the right paths to run for mods', () => {
