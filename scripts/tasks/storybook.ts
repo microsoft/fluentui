@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { findGitRoot } from '../monorepo/index';
 
-import * as storybook from '@storybook/react/standalone';
+import storybook from '@storybook/react/standalone';
 
 export function startStorybookTask(options?: { port?: number; quiet?: boolean; ci?: boolean }) {
   options = options || {};

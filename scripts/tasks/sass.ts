@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { sassTask } from 'just-scripts';
 import postcssModules from 'postcss-modules';
-import * as CleanCSS from 'clean-css';
+import CleanCSS from 'clean-css';
 
 const _fileNameToClassMap = {};
 

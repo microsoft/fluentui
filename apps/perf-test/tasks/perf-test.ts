@@ -3,8 +3,7 @@ import path from 'path';
 import flamegrill, { CookResults, Scenarios, ScenarioConfig } from 'flamegrill';
 import scenarioIterations from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
-import { just } from '@fluentui/scripts';
-const { argv } = just;
+import { argv } from '@fluentui/scripts';
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
 
