@@ -13,7 +13,7 @@ import {
   IDragDropEvents,
 } from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
-import { useQueryString } from './hooks/useQueryString';
+import { useQueryString, clearQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
@@ -26,7 +26,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const rootRef = React.createRef<HTMLDivElement>();
   const input = React.useRef<Autofill>(null);
-  const { setQueryString } = useQueryString('');
+  const { setQueryString, clearQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
@@ -270,12 +270,25 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
     }
   };
-  const _onInputChange = (value: string, composing?: boolean) => {
+  const _onInputChange = (value: string, composing?: boolean, resultItemsList?: T[]) => {
     if (!composing) {
       // update query string
       setQueryString(value);
       !isSuggestionsShown ? showPicker(true) : null;
-      onInputChange ? onInputChange(value) : null;
+      if (!resultItemsList) {
+        resultItemsList = [];
+      }
+      if (onInputChange) {
+        onInputChange(value, composing, resultItemsList);
+        clearQueryString();
+        if (resultItemsList && resultItemsList.length > 0) {
+          addItems(resultItemsList);
+          showPicker(false);
+          if (input.current) {
+            input.current._updateValue('', composing);
+          }
+        }
+      }
     }
   };
   const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {

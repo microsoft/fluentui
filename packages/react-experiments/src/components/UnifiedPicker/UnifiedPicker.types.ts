@@ -81,7 +81,7 @@ export interface IUnifiedPickerProps<T> {
   /**
    * On input value change
    */
-  onInputChange?: (filter: string) => void;
+  onInputChange?: (filter: string, composing?: boolean, resultItemsList?: T[]) => void;
 
   /**
    * Drag drop events callback interface
