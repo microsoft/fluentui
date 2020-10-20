@@ -80,7 +80,7 @@
     "@fluentui/style-utilities": "^7.16.9",
     "@fluentui/theme-samples": "^7.1.21",
     "@uifabric/utilities": "^7.32.3",
-    "@uifabric/variants": "^7.2.21",
+    "@fluentui/scheme-utilities": "^7.2.21",
     "d3-format": "^1.4.4",
     "tslib": "^1.10.0"
   },

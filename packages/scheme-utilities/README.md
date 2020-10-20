@@ -1,4 +1,4 @@
-# @uifabric/variants
+# @fluentui/scheme-utilities
 
 **Theme variant generator for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
@@ -7,16 +7,21 @@ Variants are [themes](https://github.com/microsoft/fluentui/wiki/Theming) genera
 
 Example of normal, soft, and strong variants:
 
-![example of variants](https://github.com/microsoft/fluentui/blob/master/packages/variants/example.png)
+![example of variants](https://github.com/microsoft/fluentui/blob/master/packages/scheme-utilities/example.png)
 
-This project provides helper functions to create variants of a given theme, which can be used with the [Customizer](https://github.com/microsoft/fluentui/blob/master/packages/utilities/src/Customizer.tsx) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/interfaces/ITheme.ts) and returns an [ITheme](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/interfaces/ITheme.ts).
+This project provides helper functions to create variants of a given theme, which can be used with the [ThemeProvider](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/src/ThemeProvider.tsx) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/interfaces/ITheme.ts) and returns an [ITheme](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/interfaces/ITheme.ts).
 
-The following example uses [getTheme()](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/styles/theme.ts) to grab the current global theme, then creates a strong variant of the that theme, and applies that strong variant to the components wrapped by Customizer.
+The following example creates a strong variant of a given theme, and applies that strong variant to the components wrapped by `ThemeProvider`.
 
-```
-<Customizer settings={ { theme: getStrongVariant(getTheme()) } }>
+```jsx
+import { FluentTheme } from '@fluentui/theme';
+import { getStrongVariant } from '@fluentui/theme-schemes';
+
+const strongTheme = getStrongVariant(FluentTheme);
+
+<ThemeProvider theme={strongTheme}>
   <components... />
-</Customizer>
+</ThemeProvider>
 ```
 
 The available variants are:

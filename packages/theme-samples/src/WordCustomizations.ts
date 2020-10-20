@@ -1,5 +1,5 @@
 import { createTheme, ICustomizations } from '@fluentui/react';
-import { addVariants } from '@uifabric/variants';
+import { addVariants } from '@fluentui/scheme-utilities';
 import { Theme } from '@fluentui/react';
 
 export const WordTheme: Theme = createTheme({

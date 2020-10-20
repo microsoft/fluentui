@@ -18,7 +18,7 @@ import {
   Text,
 } from '@fluentui/react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
-import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
+import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@fluentui/scheme-utilities';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 

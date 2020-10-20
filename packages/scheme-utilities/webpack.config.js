@@ -1,6 +1,6 @@
 const resources = require('../../scripts/webpack/webpack-resources');
 
-const BUNDLE_NAME = 'variants';
+const BUNDLE_NAME = 'scheme-utilities';
 
 module.exports = resources.createConfig(BUNDLE_NAME, true, {
   entry: {

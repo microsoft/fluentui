@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/variants",
+  "name": "@fluentui/scheme-utilities",
   "version": "7.2.21",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
