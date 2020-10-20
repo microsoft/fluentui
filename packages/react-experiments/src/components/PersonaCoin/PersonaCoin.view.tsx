@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '@uifabric/foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { PersonaPresence } from '../../utilities/factoryComponents';
 import { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';

@@ -9,7 +9,7 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds, KeyCodes } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { PrimaryButton } from '../../Button';
+import { PrimaryButton } from '../../compat/Button';
 
 describe('DatePicker', () => {
   const DayPickerStrings: IDatePickerStrings = {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactIcons from '@fluentui/react-icons';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classes = mergeStyleSets({

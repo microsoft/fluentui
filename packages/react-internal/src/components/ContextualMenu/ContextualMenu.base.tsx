@@ -57,7 +57,6 @@ const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemSt
 export interface IContextualMenuState {
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   positions?: any;
   slideDirectionalClassName?: string;
   subMenuId?: string;
@@ -276,7 +275,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     this._isScrollIdle = true;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
@@ -1066,7 +1064,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }, NavigationIdleDelay);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -1075,7 +1072,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     this._updateFocusOnMouseEvent(item, ev, target);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
     const { shouldUpdateFocusOnMouseEvent, gotMouseMove, targetWindow } = this.props.hoisted;
@@ -1102,7 +1098,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     return !this._isScrollIdle || !this.props.hoisted.gotMouseMove.current;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     const { expandedMenuItemKey, hostElement } = this.props.hoisted;
 
@@ -1124,10 +1119,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((hostElement.current as any).setActive) {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (hostElement.current as any).setActive();
       } catch (e) {
         /* no-op */
@@ -1255,7 +1248,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
     const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
 
@@ -1333,7 +1325,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    * from calling setState() after unmount. Do NOT copy this pattern in synchronous
    * code.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);

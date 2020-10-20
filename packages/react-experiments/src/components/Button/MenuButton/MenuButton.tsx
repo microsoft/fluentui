@@ -1,6 +1,6 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
 import { useMenuButtonState as state } from './MenuButton.state';
 import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuButton.styles';
 import { IMenuButtonProps } from './MenuButton.types';

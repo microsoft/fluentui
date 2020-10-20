@@ -40,6 +40,8 @@ function lintImports() {
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
+    '@fluentui/react/lib/compat/Button',
+    '@fluentui/react-internal/lib/compat/Button',
     '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers',
     '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
@@ -48,12 +50,12 @@ function lintImports() {
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@fluentui/react-experiments/lib/common/TestImages',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
-    '@uifabric/foundation/lib/next/composed',
+    '@fluentui/foundation-legacy/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.
   ];
-  const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
+  const allowedReexportedImports = ['@fluentui/foundation-legacy/lib/next/composed'];
   const reExportedPackages = {
-    '@uifabric/foundation': 'Foundation',
+    '@fluentui/foundation-legacy': 'Foundation',
     '@fluentui/font-icons-mdl2': 'Icons',
     '@uifabric/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',

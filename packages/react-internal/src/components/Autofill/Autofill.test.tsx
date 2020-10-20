@@ -174,8 +174,6 @@ describe('Autofill', () => {
       target: autofill.inputElement!,
       nativeEvent: {
         isComposing: true,
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
     });
 
@@ -185,7 +183,6 @@ describe('Autofill', () => {
       target: autofill.inputElement!,
       nativeEvent: {
         isComposing: true,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
     });
     jest.runOnlyPendingTimers();
@@ -195,7 +192,6 @@ describe('Autofill', () => {
       which: KeyCodes.m,
       nativeEvent: {
         isComposing: true,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
     });
     autofill.inputElement!.value = '🆘m';
@@ -203,7 +199,6 @@ describe('Autofill', () => {
       target: autofill.inputElement!,
       nativeEvent: {
         isComposing: true,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
     });
 
@@ -213,7 +208,6 @@ describe('Autofill', () => {
       target: autofill.inputElement!,
       nativeEvent: {
         isComposing: false,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
     });
     jest.runOnlyPendingTimers();

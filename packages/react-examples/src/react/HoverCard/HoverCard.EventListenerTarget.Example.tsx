@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-  HoverCard,
-  IPlainCardProps,
-  HoverCardType,
-  DirectionalHint,
-  Fabric,
-  mergeStyleSets,
-  IconButton,
-} from '@fluentui/react';
+import { HoverCard, IPlainCardProps, HoverCardType, DirectionalHint, Fabric, mergeStyleSets } from '@fluentui/react';
+import { IconButton } from '@fluentui/react/lib/compat/Button';
 
 const classNames = mergeStyleSets({
   plainCard: {

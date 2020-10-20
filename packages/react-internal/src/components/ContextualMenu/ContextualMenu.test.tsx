@@ -9,7 +9,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from '../../Button';
+import { DefaultButton, IButton } from '../../compat/Button';
 import { IRenderFunction, resetIds } from '@uifabric/utilities';
 import { isConformant } from '../../common/isConformant';
 
@@ -437,7 +437,6 @@ describe('ContextualMenu', () => {
   it('closes all menus on alt only', () => {
     let menuDismissed = false;
     let dismissedAll = false;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;
       dismissedAll = !!dismissAll;
@@ -1199,7 +1198,6 @@ describe('ContextualMenu', () => {
   describe('IContextualMenuRenderItem function tests', () => {
     const contextualItem = React.createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;
     };

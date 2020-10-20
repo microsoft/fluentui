@@ -1,9 +1,9 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { Button, IButtonComponent, IButtonProps, IButtonStyles, IButtonTokens } from '@fluentui/react-experiments';
-import { withSlots } from '@uifabric/foundation';
+import { withSlots } from '@fluentui/foundation-legacy';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
 import { buttonProperties, getNativeProps } from '@uifabric/utilities';
 import { Spinner, Stack, IStackProps } from '@fluentui/react';
 

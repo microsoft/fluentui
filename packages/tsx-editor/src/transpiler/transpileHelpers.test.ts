@@ -135,7 +135,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/react': 'FluentUIReact',
       '@fluentui/date-time-utilities': 'FluentUIReact',
       '@fluentui/react-focus': 'FluentUIReact',
-      '@uifabric/foundation': 'FluentUIReact',
+      '@fluentui/foundation-legacy': 'FluentUIReact',
       '@fluentui/font-icons-mdl2': 'FluentUIReact',
       '@uifabric/merge-styles': 'FluentUIReact',
       '@fluentui/style-utilities': 'FluentUIReact',
