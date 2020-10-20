@@ -105,13 +105,13 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   // Sets up the "focusin" event listener if in the use mode.
   React.useEffect(() => {
-    const alert = ref.current;
-    if (!inUseMode || !alert || aomMissing) {
+    const alertElement = ref.current;
+    if (!inUseMode || !alertElement || aomMissing) {
       return undefined;
     }
-    alert.ownerDocument.addEventListener('focusin', handleFocusIn);
+    alertElement.ownerDocument.addEventListener('focusin', handleFocusIn);
     return () => {
-      alert.ownerDocument.removeEventListener('focusin', handleFocusIn);
+      alertElement.ownerDocument.removeEventListener('focusin', handleFocusIn);
     }; // End return
   }, [inUseMode, handleFocusIn]); // End useEffect
 
