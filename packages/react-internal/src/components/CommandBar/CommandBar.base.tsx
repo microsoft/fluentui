@@ -126,6 +126,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       >
         {/*Primary Items*/}
         <OverflowSet
+          role="none"
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           items={data.primaryItems}
@@ -137,6 +138,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         {/*Secondary Items*/}
         {data.farItems && data.farItems.length > 0 && (
           <OverflowSet
+            role="none"
             className={css(this._classNames.secondarySet)}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
