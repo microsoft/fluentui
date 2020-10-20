@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This is the title of the webpage!</title>
+  </head>
+  <body>
+    <script>
+      fluentuiDocsiteVersions = ['0.51.0', '0.47.0'];
+      sessionStorage.fluentuiDocsiteVersions = JSON.stringify(fluentuiDocsiteVersions);
+
+      const selectedVersion = window.location.pathname.split('/')[1];
+      if (fluentuiDocsiteVersions.indexOf(selectedVersion) > -1) {
+        window.location.pathname = '/' + selectedVersion;
+      }
+
+      // no version in path, use the latest version
+      window.location.pathname = '/' + fluentuiDocsiteVersions[0];
+    </script>
+  </body>
+</html>
