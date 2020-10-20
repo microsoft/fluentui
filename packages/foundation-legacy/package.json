@@ -1,7 +1,7 @@
 {
-  "name": "@uifabric/foundation",
+  "name": "@fluentui/foundation-legacy",
   "version": "7.9.9",
-  "description": "Foundation library for building Fabric components.",
+  "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",

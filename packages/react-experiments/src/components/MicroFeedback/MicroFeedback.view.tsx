@@ -3,7 +3,7 @@ import { Callout, FocusZone, FocusZoneDirection, List, Stack, Text } from '@flue
 import { IconButton } from '@fluentui/react/lib/compat/Button';
 import { Button } from '../Button/Button';
 import { IButtonTokens } from '../Button/Button.types';
-import { withSlots, getSlots } from '@uifabric/foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 
 import {
   IMicroFeedbackComponent,

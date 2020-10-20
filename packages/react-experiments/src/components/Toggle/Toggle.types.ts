@@ -6,7 +6,7 @@ import {
   IHTMLSlot,
   ISlottableProps,
   IStyleableComponentProps,
-} from '@uifabric/foundation';
+} from '@fluentui/foundation-legacy';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';

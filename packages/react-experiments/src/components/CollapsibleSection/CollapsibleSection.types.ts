@@ -5,7 +5,7 @@ import {
   IHTMLSlot,
   ISlottableProps,
   IStyleableComponentProps,
-} from '@uifabric/foundation';
+} from '@fluentui/foundation-legacy';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 

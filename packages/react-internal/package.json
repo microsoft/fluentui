@@ -60,7 +60,7 @@
     "@fluentui/theme": "^1.2.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.9.0",
-    "@uifabric/foundation": "^7.9.9",
+    "@fluentui/foundation-legacy": "^7.9.9",
     "@uifabric/icons": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-hooks": "^7.13.5",

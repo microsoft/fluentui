@@ -50,12 +50,12 @@ function lintImports() {
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@fluentui/react-experiments/lib/common/TestImages',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
-    '@uifabric/foundation/lib/next/composed',
+    '@fluentui/foundation-legacy/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.
   ];
-  const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
+  const allowedReexportedImports = ['@fluentui/foundation-legacy/lib/next/composed'];
   const reExportedPackages = {
-    '@uifabric/foundation': 'Foundation',
+    '@fluentui/foundation-legacy': 'Foundation',
     '@uifabric/icons': 'Icons',
     '@uifabric/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',

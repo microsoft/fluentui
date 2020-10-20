@@ -19,7 +19,7 @@ import { Samples } from './Samples/index';
 import { Stack, IStackProps } from '@fluentui/react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
 import { Text } from '@fluentui/react';
-import { ThemeProvider } from '@uifabric/foundation';
+import { ThemeProvider } from '@fluentui/foundation-legacy';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 
 export interface IThemingDesignerState {
