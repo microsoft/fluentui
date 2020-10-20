@@ -5,7 +5,7 @@ import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 /**
- * @deprecated This component is deprecated as of `fluentui/react` version 8. Use `ThemeProvider` instead.
+ * @deprecated This component is deprecated as of `@fluentui/react` version 8. Use `ThemeProvider` instead.
  */
 export const Fabric: React.FunctionComponent<IFabricProps> = styled<IFabricProps, IFabricStyleProps, IFabricStyles>(
   FabricBase,
