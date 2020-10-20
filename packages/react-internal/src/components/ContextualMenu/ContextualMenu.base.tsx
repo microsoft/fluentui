@@ -345,7 +345,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement },
     } = this.props;
 
     this._classNames = getMenuClassNames
