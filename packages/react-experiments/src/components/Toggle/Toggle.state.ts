@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getControlledDerivedProps, useControlledState } from '@uifabric/foundation';
+import { getControlledDerivedProps, useControlledState } from '@fluentui/foundation-legacy';
 import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
 export const useToggleState: IToggleComponent['state'] = props => {

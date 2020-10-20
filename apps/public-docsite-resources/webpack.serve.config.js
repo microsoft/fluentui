@@ -1,6 +1,6 @@
 const getResolveAlias = require('@uifabric/build/webpack/getResolveAlias');
 const resources = require('@uifabric/build/webpack/webpack-resources');
-const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
+const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'demo-app';
 

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove undesired MarqueeSelection in UPP",
+  "packageName": "@fluentui/react-experiments",
+  "email": "sadelson@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-19T17:49:42.120Z"
+}

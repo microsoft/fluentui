@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
+import { INavPage, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
 import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { Omit } from '@fluentui/react/lib/Utilities';
@@ -261,7 +261,7 @@ function _generatePage(
 }
 
 function _loadReferences(): INavPage[] {
-  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
+  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];

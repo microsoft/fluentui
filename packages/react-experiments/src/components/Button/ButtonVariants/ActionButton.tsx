@@ -1,7 +1,7 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
-import { IComponentStyles, IStylesFunction } from '@uifabric/foundation';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
+import { IComponentStyles, IStylesFunction } from '@fluentui/foundation-legacy';
 import { FontWeights } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles } from '../Button.styles';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStackSlot, IStackTokens } from '@fluentui/react/lib/Stack';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
+import { IComponent, IComponentStyles, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 
 /**
  * {@docCategory Card}

@@ -5,7 +5,7 @@ import { PickersPageProps } from '@fluentui/react-examples/lib/react/Pickers/Pic
 
 export const PickersPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Pickers.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Pickers.page.json')}
     {...{ ...PickersPageProps, ...props }}
   />
 );

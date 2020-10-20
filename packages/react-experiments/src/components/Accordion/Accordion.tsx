@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { createComponent, withSlots, getSlots } from '@uifabric/foundation';
+import { createComponent, withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleSection';
 import { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
 import { styles } from './Accordion.styles';

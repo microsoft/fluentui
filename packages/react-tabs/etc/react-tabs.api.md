@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IButtonProps } from '@fluentui/react-internal';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
 import { IKeytipProps } from '@fluentui/react-internal';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderFunction } from '@uifabric/utilities';

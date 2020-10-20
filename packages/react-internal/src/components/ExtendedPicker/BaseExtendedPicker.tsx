@@ -9,7 +9,6 @@ import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../Select
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -37,7 +36,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get items(): any {
     return this.props.selectedItems ?? this.selectedItemsList.current?.items ?? this.props.defaultSelectedItems ?? null;
   }
@@ -240,8 +238,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
       const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this.props.onItemSelected as any)(item)
+        ? (this.props.onItemSelected as any)(item)
         : item;
 
       if (processedItem === null) {

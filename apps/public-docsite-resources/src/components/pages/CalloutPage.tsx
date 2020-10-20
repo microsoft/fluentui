@@ -5,7 +5,7 @@ import { CalloutPageProps } from '@fluentui/react-examples/lib/react/Callout/Cal
 
 export const CalloutPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Callout.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Callout.page.json')}
     {...{ ...CalloutPageProps, ...props }}
   />
 );

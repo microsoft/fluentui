@@ -1,4 +1,4 @@
-import { IColorPaletteTheme } from '@uifabric/example-app-base/lib/index2';
+import { IColorPaletteTheme } from '@fluentui/react-docsite-components/lib/index2';
 
 export const SharePointThemes: IColorPaletteTheme[] = [
   {

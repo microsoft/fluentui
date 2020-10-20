@@ -21,10 +21,10 @@ import {
   removeAnchorLink,
   SiteMessageBar,
   getQueryParam,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
-import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
+import { AppCustomizationsContext, extractAnchorLink } from '@fluentui/react-docsite-components/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 

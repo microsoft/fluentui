@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, KeyCodes, initializeComponentRef } from '../../../Utilities';
-import { IButton } from '../../../Button';
+import { IButton } from '../../../compat/Button';
 import { ISuggestionModel } from '../../../Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
@@ -11,7 +11,6 @@ import {
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
-/* eslint-disable */
 
 const styles: any = stylesImport;
 

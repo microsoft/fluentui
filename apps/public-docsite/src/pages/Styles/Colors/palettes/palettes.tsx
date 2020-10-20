@@ -1,4 +1,4 @@
-import { IColorSwatch, IColorPaletteTheme } from '@uifabric/example-app-base/lib/index2';
+import { IColorSwatch, IColorPaletteTheme } from '@fluentui/react-docsite-components/lib/index2';
 
 export const AppColorSwatches: IColorSwatch[] = [
   {

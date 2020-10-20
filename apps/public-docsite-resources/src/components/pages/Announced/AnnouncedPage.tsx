@@ -5,7 +5,7 @@ import { DemoPage } from '../../DemoPage';
 export const AnnouncedPage = (props: { isHeaderVisible: boolean }) => (
   <div>
     <DemoPage
-      jsonDocs={require('@uifabric/api-docs/lib/pages/react/Announced.page.json')}
+      jsonDocs={require('@fluentui/api-docs/lib/pages/react/Announced.page.json')}
       {...{ ...AnnouncedPageProps, ...props }}
     />
   </div>

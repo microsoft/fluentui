@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { Text, KeytipData } from '@fluentui/react';
-import { withSlots } from '@uifabric/foundation';
+import { withSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { FontIcon } from '../../utilities/factoryComponents';
 

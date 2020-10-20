@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { SelectedPeopleListBasicExample } from './SelectedPeopleList.Basic.Example';
 const SelectedPeopleListBasicExampleCode = require('!raw-loader!./SelectedPeopleList.Basic.Example') as string;

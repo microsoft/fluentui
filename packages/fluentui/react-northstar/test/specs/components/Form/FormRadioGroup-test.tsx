@@ -8,6 +8,6 @@ describe('FormRadioGroup', () => {
     constructorName: 'FormRadioGroup',
     // TODO: point to correct once RadioGroup will be using compose
     forwardsRefTo: false,
-    passesUnhandledPropsTo: RadioGroup,
+    targetComponent: RadioGroup,
   });
 });

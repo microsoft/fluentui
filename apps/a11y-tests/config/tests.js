@@ -3,7 +3,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 
 // Initialize icons
-const { initializeIcons } = require('@uifabric/icons');
+const { initializeIcons } = require('@fluentui/font-icons-mdl2');
 initializeIcons();
 
 // Create `dist/reports` folder to save SARIF reports

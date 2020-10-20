@@ -5,7 +5,7 @@ import { SwatchColorPickerPageProps } from '@fluentui/react-examples/lib/react/S
 
 export const SwatchColorPickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/SwatchColorPicker.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/SwatchColorPicker.page.json')}
     {...{ ...SwatchColorPickerPageProps, ...props }}
   />
 );

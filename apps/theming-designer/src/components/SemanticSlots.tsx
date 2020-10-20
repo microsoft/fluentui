@@ -4,7 +4,7 @@ import { Stack } from '@fluentui/react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
-import { getVariant, VariantThemeType } from '@uifabric/variants';
+import { getVariant, VariantThemeType } from '@fluentui/scheme-utilities';
 
 export interface ISemanticSlotsProps {
   theme?: ITheme;

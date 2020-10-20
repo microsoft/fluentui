@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Update npmignore",
-  "packageName": "@uifabric/variants",
+  "packageName": "@fluentui/scheme-utilities",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-15T09:05:17.149Z"
