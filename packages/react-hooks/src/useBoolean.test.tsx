@@ -1,8 +1,8 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
-import { useBoolean, IUseBooleanCallbacks } from './useBoolean';
 import { validateHookValueNotChanged } from './testUtilities';
+import { IUseBooleanCallbacks, useBoolean } from './useBoolean';
 
 describe('useBoolean', () => {
   it('respects initial value', () => {
@@ -64,6 +64,10 @@ describe('useBoolean', () => {
 
     // Toggle again
     act(() => callbacks.toggle());
+    expect(value!).toBe(true);
+
+    // Toggle by argument
+    act(() => callbacks.toggle(true));
     expect(value!).toBe(true);
   });
 });

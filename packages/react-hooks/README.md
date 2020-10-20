@@ -26,7 +26,7 @@ function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
 interface IUseBooleanCallbacks {
   setTrue: () => void;
   setFalse: () => void;
-  toggle: () => void;
+  toggle: (value?: boolean) => void;
 }
 ```
 
