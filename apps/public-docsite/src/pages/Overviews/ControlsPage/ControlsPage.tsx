@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { css, Link } from '@fluentui/react';
-import { Page, PlatformContext, INavPage, IPageSectionProps, IPageProps } from '@uifabric/example-app-base/lib/index2';
-import * as PageStyles from '@uifabric/example-app-base/lib/components/Page/Page.module.scss';
+import {
+  Page,
+  PlatformContext,
+  INavPage,
+  IPageSectionProps,
+  IPageProps,
+} from '@fluentui/react-docsite-components/lib/index2';
+import * as PageStyles from '@fluentui/react-docsite-components/lib/components/Page/Page.module.scss';
 import { SiteDefinition } from '../../../SiteDefinition/index';
 import { getSubTitle } from '../../../utilities/index';
 import { ControlsPageProps } from './ControlsPage.doc';

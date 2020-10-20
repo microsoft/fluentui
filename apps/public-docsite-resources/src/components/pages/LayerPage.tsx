@@ -4,7 +4,7 @@ import { LayerPageProps } from '@fluentui/react-examples/lib/react/Layer/Layer.d
 
 export const LayerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Layer.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Layer.page.json')}
     {...{ ...LayerPageProps, ...props }}
   />
 );

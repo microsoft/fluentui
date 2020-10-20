@@ -23,7 +23,7 @@
   "dependencies": {
     "@fluentui/react": "^7.142.0",
     "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/example-app-base": "^7.15.18",
+    "@fluentui/react-docsite-components": "^7.15.18",
     "@fluentui/foundation-legacy": "^7.9.9",
     "@fluentui/scheme-utilities": "^7.2.21",
     "@uifabric/set-version": "^7.0.23",

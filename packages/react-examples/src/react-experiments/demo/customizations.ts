@@ -1,4 +1,4 @@
-import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
+import { IExampleCardCustomizations, IAppCustomizations } from '@fluentui/react-docsite-components';
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '@fluentui/azure-themes';
 import { DefaultCustomizations, TeamsCustomizations, WordCustomizations } from '@fluentui/theme-samples';
 

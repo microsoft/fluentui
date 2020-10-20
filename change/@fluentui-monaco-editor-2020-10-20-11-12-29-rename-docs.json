@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Rename @uifabric/monaco-editor to @fluentui/monaco-editor",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-20T18:12:03.837Z"
+}

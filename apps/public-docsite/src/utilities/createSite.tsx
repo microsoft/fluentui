@@ -1,4 +1,4 @@
-// TODO: move to example-app-base once Site moves
+// TODO: move to react-docsite-components once Site moves
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -9,8 +9,8 @@ import {
   ISiteDefinition,
   currentFabricBreakpoint,
   handleRedirects,
-} from '@uifabric/example-app-base/lib/index2';
-import { Route, Router } from '@uifabric/example-app-base';
+} from '@fluentui/react-docsite-components/lib/index2';
+import { Route, Router } from '@fluentui/react-docsite-components';
 import { Site } from '../components/Site/index';
 import { hasUHF, isLocal } from './location';
 

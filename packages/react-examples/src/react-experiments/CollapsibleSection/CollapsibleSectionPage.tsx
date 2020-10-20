@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { CollapsibleSectionAccordionExample } from './CollapsibleSection.Accordion.Example';
 const CollapsibleSectioAccordionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/CollapsibleSection/CollapsibleSection.Accordion.Example.tsx') as string;
