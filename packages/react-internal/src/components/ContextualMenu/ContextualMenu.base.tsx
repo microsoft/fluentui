@@ -192,7 +192,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   HTMLDivElement,
   IContextualMenuProps
 >((propsWithoutDefaults, forwardedRef) => {
-  const { ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
@@ -345,7 +345,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, hostElement, onMenuFocusCapture },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture },
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -439,12 +439,12 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           directionalHintFixed={directionalHintFixed}
           alignTargetEdge={alignTargetEdge}
           hidden={this.props.hidden}
+          ref={hostElement}
         >
           <div
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            ref={hostElement}
             id={id}
             className={this._classNames.container}
             tabIndex={shouldFocusOnContainer ? 0 : -1}
