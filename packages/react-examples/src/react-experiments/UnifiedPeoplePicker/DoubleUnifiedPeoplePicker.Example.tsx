@@ -169,8 +169,6 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _onInputChange = (filterText: string, composing?: boolean, resultItemsList?: IPersonaProps[]): void => {
     const allPeople = people;
 
-    const lastCharIndex = filterText.length - 1;
-    const lastChar = filterText[lastCharIndex];
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
@@ -179,6 +177,8 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     const updatedItems: IPersonaProps[] = [];
     const currentItems: IPersonaProps[] = [...peopleSelectedItems];
 
+    const lastCharIndex = filterText.length - 1;
+    const lastChar = filterText[lastCharIndex];
     for (let i = 0; i < currentItems.length; i++) {
       const item = currentItems[i];
       updatedItems.push(item);
