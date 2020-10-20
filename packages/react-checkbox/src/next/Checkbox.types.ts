@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { ISvgIconProps } from '@fluentui/react-icons';
+import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
 

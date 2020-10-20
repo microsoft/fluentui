@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactIcons from '@fluentui/react-icons';
+import * as ReactIcons from '@fluentui/react-icons-mdl2';
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 

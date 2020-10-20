@@ -19,7 +19,7 @@
     "@fluentui/font-icons-mdl2": "^7.5.8",
     "@fluentui/react": "^7.142.0",
     "@fluentui/react-button": "^0.14.3",
-    "@fluentui/react-icons": "^0.3.5",
+    "@fluentui/react-icons-mdl2": "^0.3.5",
     "@fluentui/storybook": "^0.5.1",
     "@storybook/addon-options": "^5.3.8",
     "@storybook/addons": "^5.3.8",
