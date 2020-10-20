@@ -114,7 +114,7 @@ export class NarrationComputer {
     let commonAncestor = null;
 
     // Find the common ancestor of the previous and current element
-    while (elementParent !== prevElementParent) {
+    while (elementParent !== prevElementParent && elementParent !== element.ownerDocument.body) {
       // Begin while 1
       while (elementParent !== prevElementParent && prevElementParent !== prevElement.ownerDocument.body) {
         // Begin while 2
@@ -175,7 +175,7 @@ export class NarrationComputer {
         } else {
           // Else if 1
           testName = ariaParent.tagName.toLowerCase();
-          if (definitions[testName]) {
+          if (definitions[testName] && !ariaParent.role) {
             // Begin if 3
             // A definition exists for the parent tag name
             landmarkOrGroup.push(definitions[testName]);
@@ -268,6 +268,7 @@ export class NarrationComputer {
   // Computes and stores the landmarksAndGroups part of the narration for the given element, previous element and platform.
   computeLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, platform: string) {
     if (prevElement == null) {
+      this.computedParts.landmarksAndGroups = '';
       return;
     }
     const landmarksAndGroups = this.getEnteredLandmarksAndGroups(element, prevElement, platform);
