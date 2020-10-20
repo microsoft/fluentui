@@ -1,5 +1,5 @@
 import { DefaultCustomizations, DarkCustomizations } from '@fluentui/theme-samples';
-import { IAppCustomizations, IExampleCardCustomizations } from '@uifabric/example-app-base';
+import { IAppCustomizations, IExampleCardCustomizations } from '@fluentui/react-docsite-components';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },

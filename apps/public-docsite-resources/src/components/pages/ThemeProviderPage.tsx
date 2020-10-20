@@ -5,7 +5,7 @@ import { ThemeProviderPageProps } from '@fluentui/react-examples/lib/react-theme
 
 export const ThemeProviderPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/references/ThemeProvider.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/references/ThemeProvider.page.json')}
     {...{ ...ThemeProviderPageProps, ...props }}
   />
 );

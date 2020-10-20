@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
-  "packageName": "@uifabric/tsx-editor",
+  "packageName": "@fluentui/react-monaco-editor",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-19T21:55:55.006Z"

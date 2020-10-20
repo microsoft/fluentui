@@ -7,7 +7,7 @@ import {
   ITableRowProps,
   ITableColumnProps,
   MarkdownCode,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { TypographyPageProps, sizeUsage, weightUsage } from './TypographyPage.doc';
 import * as styles from './TypographyPage.module.scss';

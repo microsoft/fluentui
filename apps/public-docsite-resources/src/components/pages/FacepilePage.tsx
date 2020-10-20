@@ -5,7 +5,7 @@ import { FacepilePageProps } from '@fluentui/react-examples/lib/react/Facepile/F
 
 export const FacepilePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Facepile.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Facepile.page.json')}
     {...{ ...FacepilePageProps, ...props }}
   />
 );

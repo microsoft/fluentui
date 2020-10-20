@@ -9,7 +9,7 @@ import {
   Page,
   IPageProps,
   IPageSectionProps,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight, mediaQuery } from '../../styles/constants';
 

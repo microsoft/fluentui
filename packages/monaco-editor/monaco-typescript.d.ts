@@ -5,7 +5,7 @@
 
 // merged imports from all files
 import * as ts from 'typescript';
-import * as monaco from '@uifabric/monaco-editor';
+import * as monaco from '@fluentui/monaco-editor';
 import CancellationToken = monaco.CancellationToken;
 import IDisposable = monaco.IDisposable;
 import IEvent = monaco.IEvent;

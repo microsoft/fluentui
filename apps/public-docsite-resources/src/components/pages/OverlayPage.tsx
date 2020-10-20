@@ -5,7 +5,7 @@ import { OverlayPageProps } from '@fluentui/react-examples/lib/react/Overlay/Ove
 
 export const OverlayPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Overlay.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Overlay.page.json')}
     {...{ ...OverlayPageProps, ...props }}
   />
 );
