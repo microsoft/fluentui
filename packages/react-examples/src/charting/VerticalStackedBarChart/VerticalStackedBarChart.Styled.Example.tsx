@@ -12,6 +12,8 @@ import { DirectionalHint } from 'office-ui-fabric-react';
 interface IVerticalStackedBarState {
   width: number;
   height: number;
+  barGapMax: number;
+  barCornerRadius: number;
 }
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -20,18 +22,13 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     this.state = {
       width: 650,
       height: 350,
+      barGapMax: 2,
+      barCornerRadius: 2,
     };
   }
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
-
-  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ width: parseInt(e.target.value, 10) });
-  };
-  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ height: parseInt(e.target.value, 10) });
-  };
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
@@ -94,15 +91,50 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div>
+          <label>Width:</label>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
+          <input
+            type="range"
+            value={this.state.width}
+            min={200}
+            max={1000}
+            onChange={e => this.setState({ width: +e.target.value })}
+          />
+          <label>Height:</label>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
+          <input
+            type="range"
+            value={this.state.height}
+            min={200}
+            max={1000}
+            onChange={e => this.setState({ height: +e.target.value })}
+          />
+        </div>
+        <div>
+          <label>BarGapMax:</label>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
+          <input
+            type="range"
+            value={this.state.barGapMax}
+            min={0}
+            max={10}
+            onChange={e => this.setState({ barGapMax: +e.target.value })}
+          />
+          <label>BarCornerRadius:</label>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
+          <input
+            type="range"
+            value={this.state.barCornerRadius}
+            min={0}
+            max={10}
+            onChange={e => this.setState({ barCornerRadius: +e.target.value })}
+          />
+        </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
             data={data}
-            height={this.state.height}
-            width={this.state.width}
+            {...this.state}
             yAxisTickCount={10}
             // Just test link
             href={'www.google.com'}
@@ -116,7 +148,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
             margins={{
-              bottom: 0,
+              bottom: 1,
               top: 0,
               left: 0,
               right: 0,

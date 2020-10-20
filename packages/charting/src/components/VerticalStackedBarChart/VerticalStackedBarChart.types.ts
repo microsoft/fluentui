@@ -21,6 +21,18 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   barWidth?: number;
 
   /**
+   * Gap (max) between bars in a stack.
+   * @default 0
+   */
+  barGapMax?: number;
+
+  /**
+   * Corner radius of the bars
+   * @default 0
+   */
+  barCornerRadius?: number;
+
+  /**
    * Colors from which to select the color of each bar.
    * @deprecated Not using this prop. DIrectly taking color from given data.
    */
