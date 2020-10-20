@@ -128,6 +128,10 @@ describe('TeachingBubble', () => {
     Component: TeachingBubble,
     displayName: 'TeachingBubble',
     componentPath: path.join(__dirname, 'TeachingBubble.ts'),
+    targetComponent: TeachingBubbleContent,
+    // Problem: Ref is applied but not on root element
+    // Solution: Ref should be applied to TeachingBubbleContent and the wrapper div should be removed.
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('merges callout classNames', () => {

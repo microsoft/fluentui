@@ -51,6 +51,9 @@ describe('CommandBar', () => {
   isConformant({
     Component: CommandBar,
     displayName: 'CommandBar',
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
