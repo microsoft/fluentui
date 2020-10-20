@@ -50,7 +50,7 @@
     "@fluentui/theme": "^1.2.1",
     "@fluentui/react-window-provider": "^0.3.3",
     "@uifabric/react-hooks": "^7.13.5",
-    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/set-version": "^7.0.23",
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/utilities": "^7.32.3",
     "classnames": "^2.2.6",

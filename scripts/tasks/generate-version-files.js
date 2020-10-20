@@ -71,7 +71,7 @@ module.exports = function generateVersionFiles() {
     if (
       !fs.existsSync(path.dirname(versionFile)) ||
       packageJsonPath.includes('set-version') ||
-      !dependencies['@uifabric/set-version']
+      !dependencies['@fluentui/set-version']
     ) {
       return;
     }
@@ -86,7 +86,7 @@ module.exports = function generateVersionFiles() {
     if (shouldGenerate) {
       updatedVersionContents[versionFile] = `// Do not modify this file; it is generated as part of publish.
 // The checked in version is a placeholder only and will not be updated.
-import { setVersion } from '@uifabric/set-version';
+import { setVersion } from '@fluentui/set-version';
 ${setCurrentVersion}`;
     }
   });
