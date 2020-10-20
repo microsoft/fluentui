@@ -436,9 +436,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     const comboBoxWrapper = keytipProps ? (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (keytipAttributes: any): JSX.Element =>
-          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)}
+        {(keytipAttributes: any): JSX.Element =>
+          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)
+        }
       </KeytipData>
     ) : (
       this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId)
@@ -536,7 +536,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     keytipAttributes: any = {},
   ): JSX.Element => {
     const {
@@ -996,7 +995,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _setSelectedIndex(
     index: number,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     submitPendingValueEvent: React.SyntheticEvent<any>,
     searchDirection: SearchDirection = SearchDirection.none,
   ): void {
@@ -1169,7 +1167,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Submit a pending value if there is one
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _submitPendingValue(submitPendingValueEvent: React.SyntheticEvent<any>): void {
     const {
       onChange,
@@ -1628,11 +1625,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemClick(item: IComboBoxOption): (ev: React.MouseEvent<any>) => void {
     const { onItemClick } = this.props;
     const { index } = item;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (ev: React.MouseEvent<any>): void => {
       onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);
