@@ -84,6 +84,11 @@ export interface IUnifiedPickerProps<T> {
   onInputChange?: (filter: string) => void;
 
   /**
+   * Callback for when a key is pressed
+   */
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLDivElement>) => void;
+
+  /**
    * Drag drop events callback interface
    */
   dragDropEvents?: IDragDropEvents;
