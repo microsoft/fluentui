@@ -27,7 +27,7 @@
     "@fluentui/foundation-legacy": "^7.9.9",
     "@fluentui/scheme-utilities": "^7.2.21",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/icons": "^7.5.8",
+    "@fluentui/font-icons-mdl2": "^7.5.8",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

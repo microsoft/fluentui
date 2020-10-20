@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/icons",
+  "name": "@fluentui/font-icons-mdl2",
   "version": "7.5.8",
   "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",

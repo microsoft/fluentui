@@ -70,7 +70,7 @@
     "@fluentui/react-theme-provider": "^0.14.2",
     "@fluentui/react-window-provider": "^0.3.3",
     "@uifabric/date-time": "^7.17.16",
-    "@uifabric/icons": "^7.5.8",
+    "@fluentui/font-icons-mdl2": "^7.5.8",
     "@uifabric/react-hooks": "^7.13.5",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",

@@ -10,7 +10,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
 const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
-const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
+const fabricReactIcons = require('@fluentui/font-icons-mdl2/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 

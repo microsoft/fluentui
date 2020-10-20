@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/core": "^7.10.4",
     "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/font-icons-mdl2": "^7.5.8",
     "@fluentui/react": "^7.142.0",
     "@fluentui/react-button": "^0.14.3",
     "@fluentui/react-icons": "^0.3.5",
