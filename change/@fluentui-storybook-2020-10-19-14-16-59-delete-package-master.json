@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove usage of mdl2-theme.",
+  "packageName": "@fluentui/storybook",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-19T21:16:59.549Z"
+}

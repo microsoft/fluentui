@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
+import { FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import { useBoolean } from '@uifabric/react-hooks';
 

@@ -3,6 +3,7 @@ import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
 
 import * as React from 'react';
@@ -78,6 +79,65 @@ export const defaultTests: TestObject = {
       } catch (e) {
         defaultErrorMessages['component-has-displayname'](componentInfo, testInfo, e);
         throw new Error('component-has-displayname');
+      }
+    });
+  },
+
+  /** Component handles ref */
+  'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`handles ref`, () => {
+      try {
+        const { Component, requiredProps, elementRefName = 'ref' } = testInfo;
+        const rootRef = React.createRef<HTMLDivElement>();
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [elementRefName]: rootRef,
+        };
+        act(() => {
+          mount(<Component {...mergedProps} />);
+          expect(rootRef.current).toBeDefined();
+          // Ref should resolve to an HTML element.
+          expect(rootRef.current?.getAttribute).toBeDefined();
+        });
+      } catch (e) {
+        defaultErrorMessages['component-handles-ref'](componentInfo, testInfo, e);
+        throw new Error('component-handles-ref');
+      }
+    });
+  },
+
+  /** Component has ref applied to the root component DOM node */
+  'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`ref exists on root element`, () => {
+      try {
+        const {
+          customMount = mount,
+          Component,
+          requiredProps,
+          helperComponents = [],
+          wrapperComponent,
+          elementRefName = 'ref',
+          targetComponent,
+        } = testInfo;
+
+        const rootRef = React.createRef<HTMLDivElement>();
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [elementRefName]: rootRef,
+        };
+
+        const el = targetComponent
+          ? customMount(<Component {...mergedProps} />).find(targetComponent)
+          : customMount(<Component {...mergedProps} />);
+
+        act(() => {
+          const component = getComponent(el, helperComponents, wrapperComponent);
+
+          expect(rootRef.current).toBe(component.getDOMNode());
+        });
+      } catch (e) {
+        defaultErrorMessages['component-has-root-ref'](componentInfo, testInfo, e);
+        throw new Error('component-has-root-ref');
       }
     });
   },
@@ -273,10 +333,10 @@ export const defaultTests: TestObject = {
     if (componentInfo.props.as) {
       it(`passes extra props to the component it is renders as`, () => {
         try {
-          const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo, asPropHandlesRef } = testInfo;
+          const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
 
-          if (passesUnhandledPropsTo) {
-            const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+          if (targetComponent) {
+            const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(targetComponent);
 
             expect(el.prop('data-extra-prop')).toBe('foo');
           } else {

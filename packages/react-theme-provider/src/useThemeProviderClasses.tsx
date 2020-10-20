@@ -14,13 +14,13 @@ const useThemeProviderStyles = makeStyles((theme: Theme) => {
     root: tokenStyles,
     body: [
       {
-        color: 'var(--color-body-contentColor)',
-        background: 'var(--color-body-background)',
-        fontFamily: 'var(--body-fontFamily)',
-        fontWeight: 'var(--body-fontWeight)',
-        fontSize: 'var(--body-fontSize)',
-        MozOsxFontSmoothing: 'var(--body-mozOsxFontSmoothing)',
-        WebkitFontSmoothing: 'var(--body-webkitFontSmoothing)',
+        color: tokens?.color?.body?.contentColor,
+        background: tokens?.color?.body?.background,
+        fontFamily: tokens?.body?.fontFamily,
+        fontWeight: tokens?.body?.fontWeight,
+        fontSize: tokens?.body?.fontSize,
+        MozOsxFontSmoothing: tokens?.body?.mozOsxFontSmoothing,
+        WebkitFontSmoothing: tokens?.body?.webkitFontSmoothing,
       },
     ],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

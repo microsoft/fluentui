@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
+  "packageName": "@fluentui/react-cards",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-19T21:55:51.947Z"
+}

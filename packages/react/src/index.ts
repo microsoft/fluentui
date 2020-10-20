@@ -1,4 +1,5 @@
 import './version';
+export * from '@fluentui/react-button';
 export * from '@fluentui/react-internal';
 export * from './Breadcrumb';
 export * from './Checkbox';

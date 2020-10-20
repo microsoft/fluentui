@@ -3,7 +3,7 @@ import { CollapsibleSectionView } from './CollapsibleSection.view';
 import { useCollapsibleSectionState } from './CollapsibleSection.state';
 import { collapsibleSectionStyles } from './CollapsibleSection.styles';
 import { ICollapsibleSectionProps } from './CollapsibleSection.types';
-import { createComponent } from '@uifabric/foundation';
+import { createComponent } from '@fluentui/foundation-legacy';
 
 export const CollapsibleSection: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(
   CollapsibleSectionView,

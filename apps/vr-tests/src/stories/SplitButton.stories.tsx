@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-button';
-import { AddIcon } from '@fluentui/react-icons';
+import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { ThemeProvider } from '@fluentui/react';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
