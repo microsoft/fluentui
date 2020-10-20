@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+  "packageName": "@uifabric/set-version",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "minor",
+  "date": "2020-10-20T16:58:14.038Z"
+}
