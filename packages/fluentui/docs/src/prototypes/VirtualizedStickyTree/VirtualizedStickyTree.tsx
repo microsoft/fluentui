@@ -216,27 +216,15 @@ const ReRenderStickyTree = ({
 
       if (!itemProps.items || !itemProps.items.length) return; // item is not expandable, click will do nothing
 
-      if (itemProps.level === 1) {
-        // item is sticky parent, but not sticked
-        const toFocusItemIndex = toplvlItemsId.findIndex(id => id === itemProps.id);
-
-        const newStickyTopIds = toplvlItemsId.slice(0, toFocusItemIndex + 1); // every left siblings till itself
-        const newStickyBottomIds = toplvlItemsId.slice(toFocusItemIndex + 1); // every right siblings
-
-        ref.current.scrollTo(0);
-
-        passActiveItemsIdChange([...newStickyTopIds, ...newStickyBottomIds], [itemProps.id]);
-        setStickyTopIds(newStickyTopIds);
-        setStickyBottomIds(newStickyBottomIds);
-      } else if (itemProps.expanded) {
-        // item is not sticky parent, and expanded. therefore collapse it
+      if (itemProps.expanded) {
+        // item is expanded. therefore collapse it
         passActiveItemsIdChange([itemProps.id]);
       } else {
-        // item is not sticky parent, and collapsed. therefore expand it
+        // item is collapsed. therefore expand it
 
         // find the sticky parent of this item
         // IMPORTANT: this is why sticky tree supports only 2/3 levels
-        const toplvlParentId = itemProps.parent;
+        let toplvlParentId = itemProps.parent;
         // here's the logic for finding sticky parent, if we want to support more levels:
         // let parentItem = item;
         // while (parentItem?.props?.parent) {
@@ -247,14 +235,19 @@ const ReRenderStickyTree = ({
         // }
         // const toplvlParentId = parentItem.props.id;
 
+        if (toplvlParentId == null) {
+          // item is sticky parent, therefore find its left sibling that is sticking to top
+          toplvlParentId = toplvlItemsId[toplvlItemsId.findIndex(id => id === itemProps.id) - 1];
+        }
+
         // stick all its sticky parent's right siblings to bottom
         const newStickyBottomIds = toplvlItemsId.slice(toplvlItemsId.findIndex(id => id === toplvlParentId) + 1);
         setStickyBottomIds(newStickyBottomIds);
 
-        passActiveItemsIdChange(newStickyBottomIds, [itemProps.id]);
+        passActiveItemsIdChange(newStickyBottomIds, itemProps.level === 1 ? [] : [itemProps.id]);
       }
     },
-    [ref, toplvlItemsId, passActiveItemsIdChange, setStickyTopIds, setStickyBottomIds, setItemIdTobeFocused],
+    [toplvlItemsId, passActiveItemsIdChange, setStickyBottomIds, setItemIdTobeFocused],
   );
 
   const onClickSticky = React.useCallback(
