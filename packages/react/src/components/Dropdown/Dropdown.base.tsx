@@ -367,8 +367,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <div className={this._classNames.root} ref={this.props.hoisted.rootRef}>
         {onRenderLabel(this.props, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (keytipAttributes: any): JSX.Element => (
+          {(keytipAttributes: any): JSX.Element => (
             <div
               {...keytipAttributes}
               data-is-focusable={!disabled}
@@ -513,7 +512,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return this.props.placeholder || this.props.placeHolder;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _copyArray(array: any[]): any[] {
     const newArray = [];
     for (const element of array) {
@@ -911,7 +909,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }, this._scrollIdleDelay);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -921,7 +918,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     targetElement.focus();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
@@ -933,7 +929,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     targetElement.focus();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -945,10 +940,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
      * sets the page focus but does not scroll the parent element.
      */
     if (this._host.current) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((this._host.current as any).setActive) {
         try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._host.current as any).setActive();
         } catch (e) {
           /* no-op */
