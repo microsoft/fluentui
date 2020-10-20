@@ -4,10 +4,15 @@ export const SRNC: Record<string, any> = {
   STATES_SEPARATOR: ' ',
   DESCBY_AND_LABBY_SEPARATOR: ' ',
 
-  // Landmarks and groups (definitions for each platform (definitions are stored in a separate file for each platform)
+  // Landmarks and groups (definitions (definitions are stored in a separate file per each platform)
   landmarksAndGroups: {
     'Win/JAWS': {},
   }, // End landmarksAndGroups
+
+  // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
+  narrateWhenLabelled: {
+    'Win/JAWS': ['role=radiogroup'],
+  },
 
   // Element type strings for each platform
   typeStrings: {
@@ -183,7 +188,7 @@ export const SRNC: Record<string, any> = {
   // State attributes of which "false" value means the attribute is omitted
   falseMeansOmitted: ['aria-haspopup', 'aria-invalid', 'aria-required'], // End falseMeansOmitted
 
-  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions are stored in a separate file for each platform)
+  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions are stored in a separate file per each platform)
   stateRules: {
     'Win/JAWS': {},
   }, // End stateRules

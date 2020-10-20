@@ -168,23 +168,15 @@ export class NarrationComputer {
 
         // Test if the parent's role or tag name exists in the landmarks and groups definitions
         let testName = `role=${ariaParent.role}`;
-        if (ariaParent.role && definitions[testName]) {
+        let definition = ariaParent.role ? definitions[testName] : null;
+        if (!definition && !ariaParent.role) {
           // Begin if 2
-          // A definition exists for the parent role
-          landmarkOrGroup.push(definitions[testName]);
-        } else {
-          // Else if 1
           testName = ariaParent.tagName.toLowerCase();
-          if (definitions[testName] && !ariaParent.role) {
-            // Begin if 3
-            // A definition exists for the parent tag name
-            landmarkOrGroup.push(definitions[testName]);
-          } // End if 3
+          definition = definitions[testName];
         } // End if 2
-
-        // If "aria-label" or "aria-labelledby" exists for the landmark or group parent, prepend its text to the narration
-        if (landmarkOrGroup.length === 1) {
+        if (definition && !SRNC.narrateWhenLabelled[platform].includes(testName)) {
           // Begin if 2
+          landmarkOrGroup.push(definition);
           const label =
             ariaParent.ariaLabelledByElements
               ?.map((labElement: HTMLElement) => {
@@ -193,6 +185,8 @@ export class NarrationComputer {
               .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) ||
             ariaParent?.ariaLabel ||
             null;
+
+          // If "aria-label" or "aria-labelledby" exists for the landmark or group parent, prepend its text to the narration
           if (label != null) {
             // Begin if 3
             landmarkOrGroup.unshift(label);
