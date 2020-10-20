@@ -32,8 +32,8 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
+      { legend: 'Metadata1', data: 2, color: DefaultPalette.accent },
+      { legend: 'Metadata2', data: 1, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
@@ -73,7 +73,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       return {
         xAxis: {
           selectors: {
-            text: { fill: 'black', fontSize: '8px' },
+            text: { fill: 'black', fontSize: '10px' },
           },
         },
         chart: {
@@ -148,9 +148,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
             margins={{
-              bottom: 1,
-              top: 0,
-              left: 0,
+              bottom: 35,
+              top: 10,
+              left: 35,
               right: 0,
             }}
             legendProps={{
