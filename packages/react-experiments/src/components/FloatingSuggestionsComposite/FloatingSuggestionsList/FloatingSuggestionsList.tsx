@@ -7,8 +7,8 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
-import { SuggestionsHeaderFooterItem } from '@fluentui/react/lib/FloatingPicker';
 import { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import { FloatingSuggestionsHeaderFooterItem } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
@@ -47,7 +47,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
                 role="listitem"
                 aria-label={headerItemProps.ariaLabel}
               >
-                <SuggestionsHeaderFooterItem
+                <FloatingSuggestionsHeaderFooterItem
                   id={'sug-header-item' + index}
                   isSelected={isSelected}
                   renderItem={headerItemProps.renderItem}
@@ -87,7 +87,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
                 role="listitem"
                 aria-label={footerItemProps.ariaLabel}
               >
-                <SuggestionsHeaderFooterItem
+                <FloatingSuggestionsHeaderFooterItem
                   id={'sug-footer-item' + index}
                   isSelected={isSelected}
                   renderItem={footerItemProps.renderItem}
