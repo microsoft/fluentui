@@ -386,10 +386,10 @@ Resolving the class names on every render can be an unwanted expense especially 
 
 1. For your `getClassNames` function, flatten all input parameters into simple immutable values. This helps the `memoizeFunction` utility to cache the results based on the input.
 
-2. Use the `memoizeFunction` function from the `@uifabric/utilities` package to cache the results, given a unique combination of inputs. Example:
+2. Use the `memoizeFunction` function from the `@fluentui/utilities` package to cache the results, given a unique combination of inputs. Example:
 
 ```tsx
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from '@fluentui/utilities';
 
 export const getClassNames = memoizeFunction((isToggled: boolean) => {
   return mergeStyleSets({

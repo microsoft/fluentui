@@ -4,7 +4,7 @@ import { Button, IButtonComponent, IButtonProps, IButtonStyles, IButtonTokens } 
 import { withSlots } from '@fluentui/foundation-legacy';
 // Temporary import file to experiment with next version of foundation.
 import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
-import { buttonProperties, getNativeProps } from '@uifabric/utilities';
+import { buttonProperties, getNativeProps } from '@fluentui/utilities';
 import { Spinner, Stack, IStackProps } from '@fluentui/react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };

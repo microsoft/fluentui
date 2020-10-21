@@ -1,4 +1,4 @@
-import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';

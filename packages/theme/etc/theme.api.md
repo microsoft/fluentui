@@ -6,7 +6,7 @@
 
 import { IFontWeight } from '@uifabric/merge-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;

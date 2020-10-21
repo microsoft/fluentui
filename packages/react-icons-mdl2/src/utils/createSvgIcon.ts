@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, getNativeProps, htmlElementProperties } from '@uifabric/utilities';
+import { css, getNativeProps, htmlElementProperties } from '@fluentui/utilities';
 import * as classes from './SvgIcon.scss';
 import { ISvgIconProps } from './SvgIcon.types';
 import { SvgIconCreateFnParams } from './types';

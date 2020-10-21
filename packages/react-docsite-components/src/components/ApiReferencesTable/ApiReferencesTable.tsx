@@ -14,7 +14,7 @@ import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text, ITextStyles } from '@fluentui/react/lib/Text';
 import { ILinkToken } from '@fluentui/react-internal/lib/common/DocPage.types';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 import {
   IApiInterfaceProperty,
   IApiEnumProperty,

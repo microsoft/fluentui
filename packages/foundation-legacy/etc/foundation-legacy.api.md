@@ -8,7 +8,7 @@ import { ISchemeNames } from '@fluentui/style-utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleSet } from '@fluentui/style-utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import { styled as legacyStyled } from '@uifabric/utilities';
+import { styled as legacyStyled } from '@fluentui/utilities';
 import * as React from 'react';
 
 // @public

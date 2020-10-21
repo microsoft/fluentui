@@ -8,7 +8,7 @@ import {
   mergeStyleSets,
 } from '@fluentui/react';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const classNames = mergeStyleSets({
   dropdownContainer: {

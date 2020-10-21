@@ -7,7 +7,7 @@ import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPe
 import { ITheme, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { IconButton } from '@fluentui/react/lib/compat/Button';
 import { IDragDropOptions } from '@fluentui/react/lib/DragDrop';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 

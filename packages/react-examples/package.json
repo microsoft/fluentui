@@ -76,10 +76,10 @@
     "@fluentui/font-icons-mdl2": "^7.5.8",
     "@uifabric/merge-styles": "^7.19.1",
     "@fluentui/react-cards": "^0.113.3",
-    "@uifabric/react-hooks": "^7.13.5",
+    "@fluentui/react-hooks": "^7.13.5",
     "@fluentui/style-utilities": "^7.16.9",
     "@fluentui/theme-samples": "^7.1.21",
-    "@uifabric/utilities": "^7.32.3",
+    "@fluentui/utilities": "^7.32.3",
     "@fluentui/scheme-utilities": "^7.2.21",
     "d3-format": "^1.4.4",
     "tslib": "^1.10.0"

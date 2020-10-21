@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@uifabric/test-utilities';
-import { KeyCodes } from '@uifabric/utilities';
+import { KeyCodes } from '@fluentui/utilities';
 import { IDragDropEvents } from '../../DragDrop';
 import { IGroup } from '../../GroupedList';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';

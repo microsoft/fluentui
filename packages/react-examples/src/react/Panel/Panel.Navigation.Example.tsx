@@ -3,7 +3,7 @@ import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Panel, IPanelProps } from '@fluentui/react/lib/Panel';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { SearchBox } from '@fluentui/react/lib/SearchBox';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const explanation =
   'This panel has custom content in the navigation region (the part at the top which normally ' +

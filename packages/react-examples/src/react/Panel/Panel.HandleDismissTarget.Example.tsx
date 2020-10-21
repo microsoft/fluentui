@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const explanation =
   'This example demonstrates detecting whether a panel was dismissed using the close button ' +

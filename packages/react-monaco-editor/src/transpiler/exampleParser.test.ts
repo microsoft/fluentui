@@ -383,7 +383,7 @@ export class Foo extends React.Component {}
   it('detects side effect imports', () => {
     const example = `
 import * as React from 'react';
-import '@uifabric/utilities';
+import '@fluentui/utilities';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
@@ -394,7 +394,7 @@ export class Foo extends React.Component {}
   it('detects import star', () => {
     const example = `
 import * as React from 'react';
-import * as Utilities from '@uifabric/utilities';
+import * as Utilities from '@fluentui/utilities';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
@@ -436,7 +436,7 @@ export class Foo extends React.Component {}
       'Importing from more than two levels below the package root is not supported by the editor.',
     );
 
-    example = example.replace('@fluentui/react/lib/utilities/baz', '@uifabric/utilities/lib/bar/baz');
+    example = example.replace('@fluentui/react/lib/utilities/baz', '@fluentui/utilities/lib/bar/baz');
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
       'Importing from more than two levels below the package root is not supported by the editor.',
     );

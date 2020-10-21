@@ -7,7 +7,7 @@ import {
   ITilesListRowProps,
 } from '@fluentui/react-experiments/lib/TilesList';
 import { lorem } from '@uifabric/example-data';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 
 type IAspectRatioByProbability = { [probability: string]: number };
 

@@ -5,7 +5,7 @@ import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Callout } from '@fluentui/react-internal/lib/Callout';
 import { safeCreate } from '@uifabric/test-utilities';
 import { TextField } from '@fluentui/react-internal/lib/TextField';

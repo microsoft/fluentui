@@ -4,7 +4,7 @@ import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/compat/Button'
 import { hiddenContentStyle, mergeStyles } from '@fluentui/react/lib/Styling';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { ContextualMenu } from '@fluentui/react/lib/ContextualMenu';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 
 const dialogStyles = { main: { maxWidth: 450 } };
 const dragOptions = {

@@ -5,7 +5,7 @@ import { OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet
 import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { mergeStyleSets } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const styles = mergeStyleSets({

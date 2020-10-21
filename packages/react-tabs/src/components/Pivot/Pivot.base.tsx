@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useControllableValue, useId } from '@uifabric/react-hooks';
-import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
+import { useControllableValue, useId } from '@fluentui/react-hooks';
+import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
 import {
   DirectionalHint,
   FocusZone,

@@ -17,7 +17,7 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 

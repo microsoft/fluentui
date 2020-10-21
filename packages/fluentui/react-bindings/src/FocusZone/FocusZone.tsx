@@ -19,7 +19,7 @@ import {
   getWindow,
   raiseClick,
   shouldWrapFocus,
-} from '@uifabric/utilities';
+} from '@fluentui/utilities';
 
 import { getElementType } from '../utils/getElementType';
 import { getUnhandledProps } from '../utils/getUnhandledProps';

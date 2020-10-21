@@ -1,2 +1,2 @@
 import './version';
-export * from '@uifabric/utilities';
+export * from '@fluentui/utilities';

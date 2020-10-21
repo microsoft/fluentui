@@ -139,8 +139,8 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/font-icons-mdl2': 'FluentUIReact',
       '@uifabric/merge-styles': 'FluentUIReact',
       '@fluentui/style-utilities': 'FluentUIReact',
-      '@uifabric/utilities': 'FluentUIReact',
-      '@uifabric/react-hooks': 'FabricReactHooks',
+      '@fluentui/utilities': 'FluentUIReact',
+      '@fluentui/react-hooks': 'FluentUIReactHooks',
       '@uifabric/example-data': 'FabricExampleData',
     });
   });
