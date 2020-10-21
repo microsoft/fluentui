@@ -2,6 +2,21 @@
   "name": "@fluentui/react-flex",
   "entries": [
     {
+      "date": "Wed, 21 Oct 2020 12:32:12 GMT",
+      "tag": "@fluentui/react-flex_v0.1.15",
+      "version": "0.1.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove incorrect dependency on react-bindings",
+            "author": "elcraig@microsoft.com",
+            "commit": "03eece78b4583e0c34e42b159a954a8f64748be3",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@fluentui/react-flex_v0.1.7",
       "version": "0.1.7",

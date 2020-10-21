@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.6.7",
+      "version": "0.6.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update CommandBar related snanpshots after aria role update.",
+            "author": "xgao@microsoft.com",
+            "commit": "37759e2abeee45e825f47181fd05ddefabb31502",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Oct 2020 12:23:11 GMT",
       "tag": "@fluentui/react-examples_v0.6.6",
       "version": "0.6.6",

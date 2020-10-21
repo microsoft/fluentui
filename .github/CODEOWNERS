@@ -17,10 +17,6 @@
 
 #### Core build stuff
 scripts/ @dzearing @ecraig12345 @xugao
-scripts/babel/ @layershifter @miroslavstastny
-scripts/gulp/ @layershifter @miroslavstastny
-scripts/webpack/ @layershifter @miroslavstastny
-scripts/webpack/ @layershifter @miroslavstastny
 package.json @ecraig12345 @dzearing @xugao
 prettier.config.js @ecraig12345
 webpack.config.js @ecraig12345
@@ -34,11 +30,6 @@ azure-pipelines* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan
-
-#### Fluent UI N*
-packages/a11y-rules/ @kolaps33 @jurokapsiar
-packages/a11y-testing/ @kolaps33 @jurokapsiar
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
