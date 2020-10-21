@@ -6,7 +6,7 @@ import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from
 import { mergeStyles, DefaultPalette } from '@fluentui/react/lib/Styling';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { useBoolean } from '@uifabric/react-hooks';
-import { range } from '@uifabric/example-data';
+import { range } from '@fluentui/example-data';
 export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;

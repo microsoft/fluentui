@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Facepile, OverflowButtonType } from '@fluentui/react/lib/Facepile';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Slider } from '@fluentui/react/lib/Slider';
-import { facepilePersonas } from '@uifabric/example-data';
+import { facepilePersonas } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const styles = mergeStyleSets({

@@ -3,7 +3,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { List } from '@fluentui/react/lib/List';
 import { Image, ImageFit } from '@fluentui/react/lib/Image';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();

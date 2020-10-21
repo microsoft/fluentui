@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon, Link } from '@fluentui/react';
-import { getFileTypeIconProps } from '@uifabric/file-type-icons';
+import { getFileTypeIconProps } from '@fluentui/file-type-icons';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FileTypeIconsPageProps } from './FileTypeIconsPage.doc';

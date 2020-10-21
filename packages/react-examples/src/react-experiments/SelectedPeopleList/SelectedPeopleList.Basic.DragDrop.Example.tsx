@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersona } from '@fluentui/react/lib/Persona';
-import { people } from '@uifabric/example-data';
+import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
 import { getTheme } from '@fluentui/react/lib/Styling';

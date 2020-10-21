@@ -3,7 +3,7 @@ import { ICommandBarItemProps, CommandBar } from '@fluentui/react/lib/CommandBar
 import { Check } from '@fluentui/react/lib/Check';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
-import { IExampleItem, createListItems } from '@uifabric/example-data';
+import { IExampleItem, createListItems } from '@fluentui/example-data';
 import { IRawStyle, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useConst, useForceUpdate } from '@uifabric/react-hooks';
 

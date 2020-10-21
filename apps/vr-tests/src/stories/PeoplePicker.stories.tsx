@@ -11,7 +11,7 @@ import {
   PersonaPresence,
 } from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const overflowPersona: IPersonaProps & { key: string | number } = {
   key: 2,
