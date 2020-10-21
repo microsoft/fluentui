@@ -8,7 +8,7 @@ import {
   FocusZone,
   SelectionZone,
   Autofill,
-in  IInputProps,
+  IInputProps,
   IDragDropEvents,
 } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
