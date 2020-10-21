@@ -85,7 +85,6 @@ describe('Calendar', () => {
         renderedComponent,
         'ms-DatePicker-monthAndYear',
       );
-      expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + year.toString());
     });
 
@@ -118,7 +117,6 @@ describe('Calendar', () => {
 
     it('Verify go to today', () => {
       const goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
-      expect(goToToday).toBeDefined();
       expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
     });
   });
@@ -156,7 +154,6 @@ describe('Calendar', () => {
         renderedComponent,
         'ms-DatePicker-monthAndYear',
       );
-      expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
     });
 
@@ -182,7 +179,6 @@ describe('Calendar', () => {
         renderedComponent,
         'ms-DatePicker-monthPicker',
       ) as HTMLElement;
-      expect(monthPicker).toBeDefined();
       expect(monthPicker.style.display).not.toEqual('none');
     });
 
@@ -191,7 +187,6 @@ describe('Calendar', () => {
         renderedComponent,
         'ms-DatePicker-currentYear',
       );
-      expect(currentYear).toBeDefined();
       expect(currentYear.textContent).toEqual(defaultDate.getFullYear().toString());
     });
 
@@ -205,7 +200,6 @@ describe('Calendar', () => {
 
     it('Verify go to today', () => {
       const goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
-      expect(goToToday).toBeDefined();
       expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
     });
 
@@ -232,11 +226,9 @@ describe('Calendar', () => {
 
     it('Verify class name', () => {
       const calendarRoot = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'CalendarTestClass');
-      expect(calendarRoot).toBeDefined();
-      expect(calendarRoot.length).toEqual(1);
+      expect(calendarRoot).toHaveLength(1);
       const root = calendarRoot[0];
-      expect(root.classList).toBeDefined();
-      expect(root.classList.length).toEqual(2);
+      expect(root.classList).toHaveLength(2);
       expect(root.classList[0]).toEqual('ms-DatePicker');
       expect(root.classList[1]).toEqual('CalendarTestClass');
     });

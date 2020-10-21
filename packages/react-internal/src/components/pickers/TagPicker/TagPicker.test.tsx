@@ -78,7 +78,7 @@ describe('TagPicker', () => {
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
-    expect(suggestions).toBeDefined();
+    expect(suggestions).toBeTruthy();
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
     expect(suggestionOptions.length).toEqual(2);

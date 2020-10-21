@@ -73,11 +73,11 @@ describe('ContextualMenu', () => {
     const header = document.querySelector('.headerFoo') as HTMLElement;
     const title = document.querySelector('.titleFoo') as HTMLElement;
 
-    expect(container).toBeDefined();
-    expect(rootEl).toBeDefined();
-    expect(list).toBeDefined();
-    expect(header).toBeDefined();
-    expect(title).toBeDefined();
+    expect(container).toBeTruthy();
+    expect(rootEl).toBeTruthy();
+    expect(list).toBeTruthy();
+    expect(header).toBeTruthy();
+    expect(title).toBeTruthy();
   });
 
   it('applies in-line style property if present on ContextualMenuItem', () => {
@@ -260,7 +260,7 @@ describe('ContextualMenu', () => {
       ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
     });
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 });
 
@@ -291,7 +291,7 @@ describe('getItemClassNames', () => {
       iconClassName,
     );
 
-    expect(itemClassNames).toBeDefined();
+    expect(itemClassNames).toBeTruthy();
   });
 
   it('applies custom classNames to style slots', () => {

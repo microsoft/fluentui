@@ -79,7 +79,7 @@ describe('Image', () => {
       component.find('img').simulate('load');
     });
 
-    expect(component.getDOMNode().querySelector('.ms-Image-image--portrait')).toBeDefined();
+    expect(component.getDOMNode().querySelector('.ms-Image-image--portrait')).toBeTruthy();
   });
 
   it('can cover a portrait (tall) parent element with a square image', () => {
@@ -96,7 +96,7 @@ describe('Image', () => {
     act(() => {
       component.find('img').simulate('load');
     });
-    expect(component.getDOMNode().querySelector('.ms-Image-image--landscape')).toBeDefined();
+    expect(component.getDOMNode().querySelector('.ms-Image-image--landscape')).toBeTruthy();
   });
 
   it('renders ImageFit.centerContain correctly', () => {

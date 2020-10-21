@@ -90,7 +90,7 @@ describe('DatePicker', () => {
         .find('[aria-owns]')
         .getDOMNode()
         .getAttribute('aria-owns'),
-    ).toBeDefined();
+    ).toBeTruthy();
 
     datePicker.setState({ isDatePickerShown: false });
   });
@@ -122,7 +122,7 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
     const textField = datePicker.find('input');
 
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
 
     textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
     textField.simulate('change', { target: { value: '' } }).simulate('blur');
@@ -135,7 +135,7 @@ describe('DatePicker', () => {
   it('clears error message when required input has date text and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
     expect(datePicker.state('errorMessage')).toBeUndefined();
 
     textField.simulate('click').simulate('click'); // open the datepicker then dismiss
@@ -149,7 +149,7 @@ describe('DatePicker', () => {
   it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
     expect(datePicker.state('errorMessage')).toBeUndefined();
 
     textField.simulate('click').simulate('click'); // open the datepicker then dismiss
@@ -180,7 +180,7 @@ describe('DatePicker', () => {
 
     const textField = datePicker.find('input');
 
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
 
     // open the datepicker
     textField.simulate('click').simulate('click');
@@ -196,7 +196,7 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase allowTextInput={true} textField={{ onChange: onChange }} />);
     const textField = datePicker.find('input');
 
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
 
     textField.simulate('change', { target: { value: 'Jan 1 2020' } }).simulate('blur');
     textField.simulate('change', { target: { value: '' } }).simulate('blur');

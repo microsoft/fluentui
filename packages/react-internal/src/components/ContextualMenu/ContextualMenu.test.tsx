@@ -314,7 +314,7 @@ describe('ContextualMenu', () => {
       ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
     });
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('opens a submenu item on click', () => {
@@ -344,7 +344,7 @@ describe('ContextualMenu', () => {
       ReactTestUtils.Simulate.click(menuItem);
     });
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('opens a submenu item on alt+Down', () => {
@@ -372,7 +372,7 @@ describe('ContextualMenu', () => {
       ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.down, altKey: true });
     });
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('closes a submenu item on alt+up', () => {
@@ -525,7 +525,7 @@ describe('ContextualMenu', () => {
     menuList = document.querySelectorAll('ul.ms-ContextualMenu-list');
     expect(menuList.length).toEqual(2);
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('opens a splitbutton submenu item on touch start', () => {
@@ -909,7 +909,7 @@ describe('ContextualMenu', () => {
     });
 
     const callout = document.querySelector('.ms-Callout') as HTMLElement;
-    expect(callout).toBeDefined();
+    expect(callout).toBeTruthy();
     expect(callout.classList.contains('ms-ContextualMenu-Callout')).toBeTruthy();
     expect(callout.classList.contains('foo')).toBeTruthy();
   });
@@ -1467,11 +1467,11 @@ describe('ContextualMenu', () => {
     const header = document.querySelector('.ms-ContextualMenu-header') as HTMLElement;
     const title = document.querySelector('.ms-ContextualMenu-title') as HTMLElement;
 
-    expect(container).toBeDefined();
-    expect(rootEl).toBeDefined();
-    expect(list).toBeDefined();
-    expect(header).toBeDefined();
-    expect(title).toBeDefined();
+    expect(container).toBeTruthy();
+    expect(rootEl).toBeTruthy();
+    expect(list).toBeTruthy();
+    expect(header).toBeTruthy();
+    expect(title).toBeTruthy();
   });
 
   it('applies styles per ContextualMenuItem if provided', () => {

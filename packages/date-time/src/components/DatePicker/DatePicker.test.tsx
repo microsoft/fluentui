@@ -97,7 +97,7 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
     const textField = datePicker.find('input');
 
-    expect(textField).toBeDefined();
+    expect(textField).toHaveLength(1);
 
     textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
     textField.simulate('change', { target: { value: '' } }).simulate('blur');

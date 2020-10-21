@@ -41,7 +41,7 @@ describe('SelectedItemsList', () => {
           ]}
         />,
       );
-      expect(wrapper).toBeDefined();
+      expect(wrapper.exists()).toBeTruthy();
       expect(wrapper.find('div').length).toEqual(3);
       expect(
         wrapper
@@ -75,7 +75,7 @@ describe('SelectedItemsList', () => {
         onItemsRemoved={removeItems}
       />,
     );
-    expect(wrapper).toBeDefined();
+    expect(wrapper.exists()).toBeTruthy();
     expect(wrapper.find('div').length).toEqual(3);
     expect(
       wrapper
@@ -102,7 +102,7 @@ describe('SelectedItemsList', () => {
         ]}
       />,
     );
-    expect(wrapper).toBeDefined();
+    expect(wrapper.exists()).toBeTruthy();
     expect(wrapper.find('div').length).toEqual(3);
     expect(
       wrapper

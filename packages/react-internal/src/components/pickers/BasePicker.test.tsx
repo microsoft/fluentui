@@ -126,7 +126,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(2);
@@ -171,7 +171,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(0);
@@ -222,7 +222,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const forceButton = document.querySelectorAll('[data-automationid=sug-forceResolve]');
     expect(forceButton.length).toEqual(1);
@@ -330,7 +330,7 @@ describe('BasePicker', () => {
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(15);
@@ -403,6 +403,7 @@ describe('BasePicker', () => {
   });
 
   it('Opens menu when input refocused after search has happened', () => {
+    expect(getSuggestions(document)).toBeFalsy();
     jest.useFakeTimers();
     document.body.appendChild(root);
 
@@ -509,7 +510,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const moreButton = document.querySelector('[data-automationid=sug-searchForMore]') as HTMLElement;
     expect(moreButton).toBeTruthy();
