@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react/lib/DocumentCard';
 import { IIconProps } from '@fluentui/react/lib/Icon';
 import { ImageFit } from '@fluentui/react/lib/Image';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },

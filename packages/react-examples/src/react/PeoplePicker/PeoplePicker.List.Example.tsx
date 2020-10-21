@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { IBasePickerSuggestionsProps, ListPeoplePicker, ValidationState } from '@fluentui/react/lib/Pickers';
-import { people, mru } from '@uifabric/example-data';
+import { people, mru } from '@fluentui/example-data';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',

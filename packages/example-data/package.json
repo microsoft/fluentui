@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/example-data",
+  "name": "@fluentui/example-data",
   "version": "7.1.5",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
