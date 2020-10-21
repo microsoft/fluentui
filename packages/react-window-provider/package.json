@@ -30,12 +30,10 @@
     "@fluentui/eslint-plugin": "^0.54.1",
     "@uifabric/test-utilities": "^7.3.0",
     "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6"
+    "react-app-polyfill": "~1.0.1"
   },
   "dependencies": {
     "@fluentui/set-version": "^7.0.23",
@@ -43,8 +41,6 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "react": ">=16.8.0 <17.0.0"
   }
 }
