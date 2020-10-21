@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';

@@ -4,7 +4,7 @@ import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { CodepenComponent } from '@fluentui/react-docsite-components';
 
 export interface IHeaderProps {

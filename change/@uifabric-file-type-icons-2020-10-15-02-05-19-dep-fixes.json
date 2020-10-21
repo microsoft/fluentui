@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Update npmignore",
-  "packageName": "@uifabric/file-type-icons",
+  "packageName": "@fluentui/file-type-icons",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-15T08:59:12.660Z"

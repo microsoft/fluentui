@@ -12,7 +12,7 @@ import {
 import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IFocusZoneProps, FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
+import { people, mru, groupOne, groupTwo } from '@fluentui/example-data';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];

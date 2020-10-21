@@ -37,6 +37,12 @@ describe('SearchBox', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders SearchBox role on the container div', () => {
+    wrapper = mount(<SearchBox role="search" />);
+
+    expect(wrapper.getDOMNode().getAttribute('role')).toEqual('search');
+  });
+
   it('can execute an onClick on clear button', () => {
     let clickExecuted = false;
     wrapper = mount(

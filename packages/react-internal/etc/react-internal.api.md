@@ -12,8 +12,8 @@ import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@fluentui/foundation-legacy';
 import { IComponentAs } from '@uifabric/utilities';
 import { IComponentStyles } from '@fluentui/foundation-legacy';
-import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
@@ -1491,7 +1491,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 }
 
 // @public (undocumented)
-export interface ICheckProps {
+export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
@@ -4461,6 +4461,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     onEscape?: (ev?: any) => void;
     onSearch?: (newValue: any) => void;
     placeholder?: string;
+    role?: string;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;

@@ -1,7 +1,7 @@
 import { createDemoApp } from '@fluentui/react-docsite-components';
 import { AppDefinition } from './AppDefinition';
 import { GettingStartedPage } from './GettingStartedPage';
-import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { initializeFileTypeIcons } from '@fluentui/file-type-icons';
 import { initializeFolderCovers } from '@fluentui/react-experiments';
 
 initializeFileTypeIcons();

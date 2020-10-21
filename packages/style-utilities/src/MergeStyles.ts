@@ -15,4 +15,4 @@ export {
   keyframes,
   mergeStyleSets,
   mergeStyles,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';

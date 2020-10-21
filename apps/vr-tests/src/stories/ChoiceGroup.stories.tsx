@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const options: IChoiceGroupOption[] = [
   { key: 'A', text: 'Selected' },
