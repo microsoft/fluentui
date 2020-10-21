@@ -140,7 +140,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
           <ChoiceGroup
             options={options}
             defaultSelectedKey="MultiCallout"
-            onChange={(_ev, option) => this.setState({ selectedCallout: option.key })}
+            onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
         </div>
