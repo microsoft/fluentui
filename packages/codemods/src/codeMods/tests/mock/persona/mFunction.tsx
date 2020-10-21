@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import * as React from 'react';
 
 // @ts-ignore

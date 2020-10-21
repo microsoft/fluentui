@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 // @ts-ignore
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
