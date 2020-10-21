@@ -9,7 +9,7 @@ import {
 } from '@fluentui/foundation-legacy';
 import { IKeytipProps } from '@fluentui/react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IRawStyleBase } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleTokens, IToggleStyles, IToggleViewProps>;

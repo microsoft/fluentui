@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { concatStyleSets, IStyleSet, ITheme } from '@fluentui/style-utilities';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { createFactory, getSlots } from '../slots';

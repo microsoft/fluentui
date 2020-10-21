@@ -8,7 +8,7 @@ export default [
   '@emotion/serialize@0.11.15',
   '@emotion/unitless@0.7.5',
   '@emotion/utils@0.11.3',
-  '@uifabric/merge-styles@7.19.1',
+  '@fluentui/merge-styles@7.19.1',
   '@fluentui/set-version@7.0.23',
   '@uifabric/utilities@7.32.3',
   'classnames@2.2.6',

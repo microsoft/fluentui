@@ -14,7 +14,7 @@ import { getColorFromString, IColor } from '@fluentui/react/lib/Color';
 import { Header } from './Header';
 import { IconButton } from '@fluentui/react/lib/compat/Button';
 import { isDark } from '@fluentui/react/lib/Color';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { Samples } from './Samples/index';
 import { Stack, IStackProps } from '@fluentui/react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';

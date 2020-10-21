@@ -1,4 +1,4 @@
-import { fontFace, IFontWeight } from '@uifabric/merge-styles';
+import { fontFace, IFontWeight } from '@fluentui/merge-styles';
 import { FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './FluentFonts';
 import { createFontStyles } from './createFontStyles';
 import { getLanguage, getWindow } from '@uifabric/utilities';

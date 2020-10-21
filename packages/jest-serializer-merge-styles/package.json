@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^7.0.23",
-    "@uifabric/merge-styles": "^7.19.1"
+    "@fluentui/merge-styles": "^7.19.1"
   }
 }

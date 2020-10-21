@@ -66,7 +66,7 @@ if (typesContext) {
     { packageName: '@fluentui/react', loadTypes },
     { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/font-icons-mdl2', loadTypes },
-    { packageName: '@uifabric/merge-styles', loadTypes },
+    { packageName: '@fluentui/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes },

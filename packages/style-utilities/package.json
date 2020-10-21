@@ -35,7 +35,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/theme": "^1.2.1",
-    "@uifabric/merge-styles": "^7.19.1",
+    "@fluentui/merge-styles": "^7.19.1",
     "@fluentui/set-version": "^7.0.23",
     "@uifabric/utilities": "^7.32.3",
     "tslib": "^1.10.0"
