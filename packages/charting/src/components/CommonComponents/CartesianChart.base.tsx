@@ -32,13 +32,14 @@ export interface ICartesianChartState {
   _width: number;
   _height: number;
   /* To update this values using setState in render method.
-   * To avoud multiple re renders, Only first time setting the value.
+   * To avoid multiple re renders, Only first time setting the value.
    */
   isRemoveValCalculated?: boolean;
   /* Used for when WrapXAxisLabels props appeared.
    * To display the total word (space separated words), Need to have more space than usual.
    * This height will get total height need to disaply total word.
    * These value need to be removed from actual svg height/graph height.
+   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
    */
   _removalValueForTextTuncate?: number;
 }
@@ -122,8 +123,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding,
-      xAxisPadding: this.props.xAxisPadding,
+      tickPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
@@ -151,16 +151,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        xScale = createNumericXAxis(XAxisParams);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        xScale = createNumericXAxis(XAxisParams);
     }
 
     if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
@@ -232,7 +232,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
-              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
+              // To add wrap of x axis lables feature, need to remove word height from svg height.
+              transform={`translate(0, ${svgDimensions.height -
+                this.margins.bottom! -
+                this.state._removalValueForTextTuncate!})`}
               className={this._classNames.xAxis}
             />
             <g

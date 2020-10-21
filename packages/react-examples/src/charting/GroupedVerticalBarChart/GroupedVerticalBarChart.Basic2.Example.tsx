@@ -34,7 +34,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<{}, IG
   private _basicExample(): JSX.Element {
     const data = [
       {
-        name: 'LongLong text here It should Display all',
+        name: 'MetaData1 here multi lines text',
         series: [
           {
             key: 'series1',
@@ -55,7 +55,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<{}, IG
         ],
       },
       {
-        name: 'Just Checking',
+        name: 'Meta Data',
         series: [
           {
             key: 'series1',
@@ -77,7 +77,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<{}, IG
       },
 
       {
-        name: 'SecondONe IamALLL ',
+        name: 'Complete meta data ',
         series: [
           {
             key: 'series1',
@@ -110,7 +110,7 @@ export class GroupedVerticalBarChartBasic2Example extends React.Component<{}, IG
           },
           {
             key: 'series2',
-            data: 3000,
+            data: 0,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',

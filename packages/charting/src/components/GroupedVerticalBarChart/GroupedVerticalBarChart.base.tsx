@@ -143,9 +143,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         xAxisPadding={this.props.xAxisTickPadding || 5}
-        isCalloutForStack={false}
         maxOfYVal={this._yMax}
-        focusZoneDirection={FocusZoneDirection.horizontal}
+        svgFocusZoneProps={{
+          direction: FocusZoneDirection.horizontal,
+        }}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
@@ -281,28 +282,30 @@ export class GroupedVerticalBarChartBase extends React.Component<
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      singleGroup.push(
-        <rect
-          className={this._classNames.opacityChangeOnHover}
-          key={`${singleSet.indexNum}-${index}`}
-          height={Math.max(yBarScale(pointData.data), 0)}
-          width={widthOfBar}
-          x={xScale1(datasetKey)!}
-          y={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
-          data-is-focusable={true}
-          opacity={this._getOpacity(pointData.legend)}
-          ref={(e: SVGRectElement | null) => {
-            this._refCallback(e!, pointData.legend, refIndexNumber);
-          }}
-          fill={pointData.color}
-          onMouseOver={this._onBarHover.bind(this, pointData)}
-          onMouseMove={this._onBarHover.bind(this, pointData)}
-          onMouseOut={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
-          onBlur={this._onBarLeave}
-          onClick={this._redirectToUrl.bind(this, this.props.href!)}
-        />,
-      );
+      // Not rendaring data with 0.
+      pointData.data &&
+        singleGroup.push(
+          <rect
+            className={this._classNames.opacityChangeOnHover}
+            key={`${singleSet.indexNum}-${index}`}
+            height={Math.max(yBarScale(pointData.data), 0)}
+            width={widthOfBar}
+            x={xScale1(datasetKey)!}
+            y={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
+            data-is-focusable={true}
+            opacity={this._getOpacity(pointData.legend)}
+            ref={(e: SVGRectElement | null) => {
+              this._refCallback(e!, pointData.legend, refIndexNumber);
+            }}
+            fill={pointData.color}
+            onMouseOver={this._onBarHover.bind(this, pointData)}
+            onMouseMove={this._onBarHover.bind(this, pointData)}
+            onMouseOut={this._onBarLeave}
+            onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
+            onBlur={this._onBarLeave}
+            onClick={this._redirectToUrl.bind(this, this.props.href!)}
+          />,
+        );
     });
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {

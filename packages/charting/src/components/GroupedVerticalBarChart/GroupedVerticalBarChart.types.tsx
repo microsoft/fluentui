@@ -74,6 +74,4 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
-
-  // tooltip: IStyle;
 }
