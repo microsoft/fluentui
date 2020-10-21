@@ -732,7 +732,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
