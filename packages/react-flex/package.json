@@ -37,7 +37,7 @@
     "@fluentui/react-compose": "^0.19.4",
     "@fluentui/react-theme-provider": "^0.14.2",
     "@fluentui/theme": "^1.2.1",
-    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/set-version": "^7.0.23",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
