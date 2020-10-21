@@ -8,7 +8,7 @@ export interface IUseBooleanCallbacks {
   /** Set the value to false. Always has the same identity. */
   setFalse: () => void;
   /** Toggle the value. Always has the same identity. */
-  toggle: (value?: boolean) => void;
+  toggle: () => void;
 }
 
 /**
@@ -27,8 +27,8 @@ export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallback
   const setFalse = useConst(() => () => {
     setValue(false);
   });
-  const toggle = useConst(() => (valueToBeSet?: boolean) => {
-    setValue(currentValue => (valueToBeSet === undefined ? !currentValue : valueToBeSet));
+  const toggle = useConst(() => () => {
+    setValue(currentValue => !currentValue);
   });
 
   return [value, { setTrue, setFalse, toggle }];
