@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/merge-styles",
+  "name": "@fluentui/merge-styles",
   "version": "7.19.1",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",

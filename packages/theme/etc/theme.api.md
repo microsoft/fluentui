@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 // @public

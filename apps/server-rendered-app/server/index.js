@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const { renderStatic } = require('@uifabric/merge-styles/lib-commonjs/server');
+const { renderStatic } = require('@fluentui/merge-styles/lib-commonjs/server');
 const { configureLoadStyles } = require('@microsoft/load-themed-styles');
 const { initializeIcons } = require('@fluentui/font-icons-mdl2');
 

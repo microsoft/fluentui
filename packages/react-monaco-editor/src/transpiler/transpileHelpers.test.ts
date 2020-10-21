@@ -137,7 +137,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/react-focus': 'FluentUIReact',
       '@fluentui/foundation-legacy': 'FluentUIReact',
       '@fluentui/font-icons-mdl2': 'FluentUIReact',
-      '@uifabric/merge-styles': 'FluentUIReact',
+      '@fluentui/merge-styles': 'FluentUIReact',
       '@fluentui/style-utilities': 'FluentUIReact',
       '@uifabric/utilities': 'FluentUIReact',
       '@uifabric/react-hooks': 'FabricReactHooks',

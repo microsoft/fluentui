@@ -57,7 +57,7 @@ function lintImports() {
   const reExportedPackages = {
     '@fluentui/foundation-legacy': 'Foundation',
     '@fluentui/font-icons-mdl2': 'Icons',
-    '@uifabric/merge-styles': 'Styling',
+    '@fluentui/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',
     '@uifabric/utilities': 'Utilities',
     '@fluentui/date-time-utilities': 'DateTimeUtilities',
