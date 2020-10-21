@@ -87,14 +87,18 @@ export const defaultTests: TestObject = {
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`handles ref`, () => {
       try {
-        const { Component, requiredProps, elementRefName = 'ref' } = testInfo;
+        const { Component, requiredProps, elementRefName = 'ref', targetComponent, customMount = mount } = testInfo;
         const rootRef = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
           [elementRefName]: rootRef,
         };
+
         act(() => {
-          mount(<Component {...mergedProps} />);
+          targetComponent
+            ? customMount(<Component {...mergedProps} />).find(targetComponent)
+            : customMount(<Component {...mergedProps} />);
+
           expect(rootRef.current).toBeDefined();
           // Ref should resolve to an HTML element.
           expect(rootRef.current?.getAttribute).toBeDefined();

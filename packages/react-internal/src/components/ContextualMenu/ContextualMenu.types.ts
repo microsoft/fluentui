@@ -39,7 +39,10 @@ export interface IContextualMenu {}
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps
+  extends IBaseProps<IContextualMenu>,
+    React.RefAttributes<HTMLDivElement>,
+    IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
