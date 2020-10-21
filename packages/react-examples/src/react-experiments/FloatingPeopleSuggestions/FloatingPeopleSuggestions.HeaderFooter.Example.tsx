@@ -210,7 +210,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
     }
   };
 
-  const _renderExtendedPicker = () => {
+  const _renderFloatingSuggestions = () => {
     return (
       <>
         <FloatingPeopleSuggestions
@@ -250,7 +250,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
         // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={_onInputKeyDown}
       />
-      {_renderExtendedPicker()}
+      {_renderFloatingSuggestions()}
     </div>
   );
 };
