@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/digest",
-  "version": "0.47.10",
+  "version": "0.47.12",
   "private": true,
   "main": "lib/digest.js",
   "module": "lib/digest.js",
