@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Properly log and propagate async exceptions from tests",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-21T23:14:51.914Z"
+}
