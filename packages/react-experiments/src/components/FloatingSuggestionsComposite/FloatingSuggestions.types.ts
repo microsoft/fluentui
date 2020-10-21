@@ -7,7 +7,7 @@ import {
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
-import { ISuggestionsControlProps } from '../FloatingSuggestions/Suggestions/Suggestions.types';
+import { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 /**
  * FloatingSuggestions component props
@@ -150,13 +150,24 @@ export interface IBaseFloatingSuggestionsProps<T> {
   selectedFooterIndex?: number;
 }
 
-export type IBaseFloatingPickerHeaderFooterProps = Pick<
-  ISuggestionsControlProps<any>,
-  | 'suggestionsHeaderContainerAriaLabel'
-  | 'headerItemsProps'
-  | 'footerItemsProps'
-  | 'suggestionsFooterContainerAriaLabel'
->;
+export interface IBaseFloatingPickerHeaderFooterProps {
+  /**
+   * An ARIA label for the container that is the parent of the suggestions header items.
+   */
+  suggestionsHeaderContainerAriaLabel?: string;
+  /**
+   * An ARIA label for the container that is the parent of the suggestions footer items.
+   */
+  suggestionsFooterContainerAriaLabel?: string;
+  /**
+   * The header items props
+   */
+  headerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
+  /**
+   * The footer items props
+   */
+  footerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
+}
 
 /**
  * FLoatingSuggestions style props

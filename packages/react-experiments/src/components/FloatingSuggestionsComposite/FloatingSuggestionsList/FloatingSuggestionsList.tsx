@@ -7,7 +7,8 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
-import { ISuggestionsHeaderFooterProps, SuggestionsHeaderFooterItem } from '@fluentui/react/lib/FloatingPicker';
+import { SuggestionsHeaderFooterItem } from '@fluentui/react/lib/FloatingPicker';
+import { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
@@ -37,7 +38,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
           role="list"
           aria-label={suggestionsHeaderContainerAriaLabel}
         >
-          {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+          {headerItemsProps.map((headerItemProps: IFloatingSuggestionsHeaderFooterProps, index: number) => {
             const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
             return headerItemProps.shouldShow() ? (
               <div
@@ -77,7 +78,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
           role="list"
           aria-label={suggestionsFooterContainerAriaLabel}
         >
-          {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+          {footerItemsProps.map((footerItemProps: IFloatingSuggestionsHeaderFooterProps, index: number) => {
             const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
             return footerItemProps.shouldShow() ? (
               <div
