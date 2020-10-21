@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "GroupedList: Fixing issue where paging new data into existing groups did not trigger re-render.",
+  "packageName": "@fluentui/react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-21T00:20:30.668Z"
+}
