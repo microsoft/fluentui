@@ -69,7 +69,7 @@
     "@fluentui/react-charting": "^4.2.5",
     "@uifabric/date-time": "^7.17.16",
     "@fluentui/react-docsite-components": "^7.15.18",
-    "@uifabric/example-data": "^7.1.5",
+    "@fluentui/example-data": "^7.1.5",
     "@fluentui/react-experiments": "^7.33.1",
     "@uifabric/file-type-icons": "^7.6.9",
     "@fluentui/foundation-legacy": "^7.9.9",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HoverCard, IExpandingCardProps } from '@fluentui/react/lib/HoverCard';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { create } from 'react-test-renderer';
 
-import { people } from '@uifabric/example-data';
+import { people } from '@fluentui/example-data';
 import { mount } from 'enzyme';
 import {
   SelectedPeopleList,

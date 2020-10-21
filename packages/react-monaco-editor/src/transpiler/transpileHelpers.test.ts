@@ -141,7 +141,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/style-utilities': 'FluentUIReact',
       '@uifabric/utilities': 'FluentUIReact',
       '@uifabric/react-hooks': 'FabricReactHooks',
-      '@uifabric/example-data': 'FabricExampleData',
+      '@fluentui/example-data': 'FluentUIExampleData',
     });
   });
 

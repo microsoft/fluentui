@@ -30,7 +30,7 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/date-time": "^7.17.16",
-    "@uifabric/example-data": "^7.1.5",
+    "@fluentui/example-data": "^7.1.5",
     "@fluentui/react-experiments": "^7.33.1",
     "@fluentui/react-cards": "^0.113.3",
     "@uifabric/react-hooks": "^7.13.5",

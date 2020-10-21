@@ -6,7 +6,7 @@ import { Image, ImageFit } from '@fluentui/react/lib/Image';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { List } from '@fluentui/react/lib/List';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();

@@ -4,7 +4,7 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Facepile, IFacepilePersona } from '@fluentui/react/lib/Facepile';
 import { PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Slider } from '@fluentui/react/lib/Slider';
-import { facepilePersonas } from '@uifabric/example-data';
+import { facepilePersonas } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 

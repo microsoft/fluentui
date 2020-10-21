@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Facepile, OverflowButtonType } from '@fluentui/react/lib/Facepile';
-import { facepilePersonas } from '@uifabric/example-data';
+import { facepilePersonas } from '@fluentui/example-data';
 
 const overflowButtonProps = {
   ariaLabel: 'More users',
