@@ -26,11 +26,8 @@ export default () => (
         TreeItem: {
           root: ({ props: p }) => ({
             width: '100%',
-            // borderBottom: '1px solid grey',
-            // boxSizing: 'border-box',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            alignItems: 'center',
             background: teamsTheme.siteVariables.colorScheme.default.background,
             ...(p.level === 1 && {
               background: teamsTheme.siteVariables.colorScheme.yellow.background,
@@ -71,7 +68,7 @@ export default () => (
               stickyItemSize={25}
               itemSize={30}
               height={500}
-              width={200}
+              width={250}
               items={getTeamsMeetingItems}
               displayChildrenNum={true}
             />
