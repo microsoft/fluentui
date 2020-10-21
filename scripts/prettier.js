@@ -17,11 +17,7 @@ async function runPrettierForAll() {
     // Run on groups of files so that the operations can run in parallel
     const root = findGitRoot();
     await queue.add(() => runPrettierForFolder(root, true, true));
-    await queue.addAll(
-      ['apps', 'packages/!(fluentui)', 'packages/fluentui', '{.*,scripts,typings}'].map(name => () =>
-        runPrettierForFolder(name),
-      ),
-    );
+    await queue.addAll(['apps', 'packages', '{.*,scripts,typings}'].map(name => () => runPrettierForFolder(name)));
   } else {
     const prettierIntroductionCommit = 'HEAD~1';
     const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;

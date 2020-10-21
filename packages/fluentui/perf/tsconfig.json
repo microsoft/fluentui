@@ -1,8 +1,0 @@
-{
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
-  "compilerOptions": {
-    "module": "esnext",
-    "types": ["node", "webpack-env"]
-  },
-  "include": ["./src"]
-}

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update package.json",
+  "packageName": "@uifabric/api-docs",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-17T03:37:35.237Z"
+}
