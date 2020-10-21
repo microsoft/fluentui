@@ -6,9 +6,9 @@ import {
   IComboBoxOption,
   IComboBoxProps,
   mergeStyles,
-  PrimaryButton,
   SelectableOptionMenuItemType,
-} from '@fluentui/react/lib/index';
+} from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },

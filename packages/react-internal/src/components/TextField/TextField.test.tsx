@@ -134,6 +134,7 @@ describe('TextField rendering values from props', () => {
     Component: TextField,
     displayName: 'TextField',
     componentPath: path.join(__dirname, 'TextField.ts'),
+    elementRefName: 'elementRef',
   });
 
   it('can render a value', () => {

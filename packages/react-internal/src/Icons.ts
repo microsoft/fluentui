@@ -1,1 +1,1 @@
-export * from '@uifabric/icons';
+export * from '@fluentui/font-icons-mdl2';

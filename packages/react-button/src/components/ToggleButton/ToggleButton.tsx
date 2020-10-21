@@ -6,7 +6,8 @@ import { useButtonClasses } from '../Button/useButtonClasses';
 import { useToggleButtonClasses } from './useToggleButtonClasses';
 
 /**
- * Define a styled Button, using the `createButton` factory.
+ * Define a styled ToggleButton, using the `useToggleButton` hook.
+ * {@docCategory Button}
  */
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const { render, state } = useToggleButton(props, ref);

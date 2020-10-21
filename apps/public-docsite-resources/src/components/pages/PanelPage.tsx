@@ -5,7 +5,7 @@ import { PanelPageProps } from '@fluentui/react-examples/lib/react/Panel/Panel.d
 
 export const PanelPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Panel.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Panel.page.json')}
     {...{ ...PanelPageProps, ...props }}
   />
 );

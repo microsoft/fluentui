@@ -18,7 +18,7 @@ export const observeResize = (
   target: Element | Element[],
   onResize: (entries: readonly ResizeObserverEntry[] | undefined) => void,
 ): (() => void) => {
-  if (ResizeObserver) {
+  if (typeof ResizeObserver !== 'undefined') {
     const observer = new ResizeObserver(onResize);
 
     if (Array.isArray(target)) {

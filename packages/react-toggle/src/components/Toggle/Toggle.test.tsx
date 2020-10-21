@@ -54,7 +54,7 @@ describe('Toggle', () => {
   isConformant({
     Component: Toggle,
     displayName: 'Toggle',
-    passesUnhandledPropsTo: Toggle,
+    targetComponent: Toggle,
   });
 
   it('renders aria-label', () => {

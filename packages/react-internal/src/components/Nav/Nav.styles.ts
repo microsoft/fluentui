@@ -1,5 +1,5 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '../../compat/Button';
 import {
   AnimationClassNames,
   getFocusStyle,

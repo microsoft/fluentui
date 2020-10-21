@@ -5,7 +5,7 @@ import { ModalPageProps } from '@fluentui/react-examples/lib/react/Modal/Modal.d
 
 export const ModalPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Modal.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Modal.page.json')}
     {...{ ...ModalPageProps, ...props }}
   />
 );

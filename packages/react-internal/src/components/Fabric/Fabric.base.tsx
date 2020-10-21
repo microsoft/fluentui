@@ -10,7 +10,7 @@ import {
   useFocusRects,
 } from '../../Utilities';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
-import { IProcessedStyleSet } from '@uifabric/merge-styles';
+import { IProcessedStyleSet } from '@fluentui/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
 import { useMergedRefs } from '@uifabric/react-hooks';
 

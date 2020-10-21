@@ -57,22 +57,22 @@ perf-test/ @JasonGore @xugao
 Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
-packages/charting/ @Raghurk
+packages/react-charting/ @Raghurk
 packages/date-time @lorejoh12 @evlevy @pompomon
 packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
-packages/example-app-base/ @ecraig12345
+packages/react-docsite-components/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation/ @dzearing @khmakoto
-# packages/icons/
+packages/foundation-legacy/ @dzearing @khmakoto
+# packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
-packages/styling/ @dzearing
-packages/styling/src/interfaces/ @phkuo
-packages/styling/src/styles/ @phkuo
-packages/tsx-editor/ @ecraig12345
+packages/style-utilities/ @dzearing
+packages/style-utilities/src/interfaces/ @phkuo
+packages/style-utilities/src/styles/ @phkuo
+packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
@@ -153,8 +153,8 @@ packages/react-internal/src/components/TextField/ @ecraig12345
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
 
 ## Experiments
-packages/experiments/src/components/Pagination/ @caradong
-packages/experiments/src/components/Signals/ @ThomasMichon
-packages/experiments/src/components/Tile/ @ThomasMichon
-packages/experiments/src/components/TileList/ @ThomasMichon
-packages/experiments/src/components/Toggle/ @khmakoto
+packages/react-experiments/src/components/Pagination/ @caradong
+packages/react-experiments/src/components/Signals/ @ThomasMichon
+packages/react-experiments/src/components/Tile/ @ThomasMichon
+packages/react-experiments/src/components/TileList/ @ThomasMichon
+packages/react-experiments/src/components/Toggle/ @khmakoto

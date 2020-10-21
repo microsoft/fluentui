@@ -3,7 +3,7 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Slider } from '@fluentui/react/lib/Slider';
 import { Stack, IStackProps, IStackStyles, IStackTokens } from '@fluentui/react/lib/Stack';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { range } from '@uifabric/example-data';
+import { range } from '@fluentui/example-data';
 
 export type Overflow = 'visible' | 'auto' | 'hidden';
 

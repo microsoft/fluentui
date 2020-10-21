@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Icon } from './index';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { isConformant } from '../../common/isConformant';
 
 describe('Icon', () => {
@@ -51,5 +51,8 @@ describe('Icon', () => {
   isConformant({
     Component: Icon,
     displayName: 'Icon',
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 });

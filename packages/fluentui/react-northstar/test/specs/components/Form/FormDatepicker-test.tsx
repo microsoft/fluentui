@@ -7,6 +7,6 @@ describe('FormDatepicker', () => {
     testPath: __filename,
     constructorName: 'FormDatepicker',
     forwardsRefTo: false,
-    passesUnhandledPropsTo: Datepicker,
+    targetComponent: Datepicker,
   });
 });

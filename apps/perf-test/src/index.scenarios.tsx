@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import * as qs from 'querystring';
 
 const scenarios = require('./scenarios/scenarioList');

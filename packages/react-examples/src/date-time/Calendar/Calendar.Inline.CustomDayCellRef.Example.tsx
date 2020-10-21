@@ -1,69 +1,39 @@
 import * as React from 'react';
-import {
-  Calendar,
-  ICalendarDayGridStyles,
-  DateRangeType,
-  DayOfWeek,
-  defaultDayPickerStrings,
-} from '@uifabric/date-time';
-import { IProcessedStyleSet } from '@uifabric/styling';
+import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings, ICalendarDayProps } from '@uifabric/date-time';
 
-import * as styles from './Calendar.Example.scss';
+const calendarDayProps: Partial<ICalendarDayProps> = {
+  customDayCellRef: (element, date, classNames) => {
+    if (element) {
+      element.title = 'custom title from customDayCellRef: ' + date.toString();
+      if (date.getDay() === 0 || date.getDay() === 6) {
+        classNames.dayOutsideBounds && element.classList.add(classNames.dayOutsideBounds);
+        (element.children[0] as HTMLButtonElement).disabled = true;
+      }
+    }
+  },
+};
 
-export interface ICalendarInlineExampleState {
-  selectedDate?: Date;
-}
+export const CalendarInlineCustomDayCellRefExample: React.FunctionComponent = () => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
-export class CalendarInlineCustomDayCellRefExample extends React.Component<{}, ICalendarInlineExampleState> {
-  public constructor(props: {}) {
-    super(props);
+  const onSelectDate = React.useCallback((date: Date, dateRangeArray: Date[]): void => {
+    setSelectedDate(date);
+  }, []);
 
-    this.state = {
-      selectedDate: new Date(),
-    };
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className={styles.wrapper}>
-        <div>
-          Selected date(s):{' '}
-          <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
-        </div>
-        <Calendar
-          dateRangeType={DateRangeType.Day}
-          highlightCurrentMonth={false}
-          highlightSelectedMonth={true}
-          showGoToToday={true}
-          calendarDayProps={{
-            customDayCellRef: (
-              element: HTMLElement,
-              date: Date,
-              classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
-            ) => {
-              if (element) {
-                element.title = 'custom title from customDayCellRef: ' + date.toString();
-                if (date.getDay() === 0 || date.getDay() === 6) {
-                  classNames.dayOutsideBounds && element.classList.add(classNames.dayOutsideBounds);
-                  (element.children[0] as HTMLButtonElement).disabled = true;
-                }
-              }
-            },
-          }}
-          onSelectDate={this._onSelectDate}
-          value={this.state.selectedDate}
-          firstDayOfWeek={DayOfWeek.Sunday}
-          strings={defaultDayPickerStrings}
-        />
-      </div>
-    );
-  }
-
-  private _onSelectDate = (date: Date): void => {
-    this.setState((prevState: ICalendarInlineExampleState) => {
-      return {
-        selectedDate: date,
-      };
-    });
-  };
-}
+  return (
+    <div style={{ height: 'auto' }}>
+      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <Calendar
+        dateRangeType={DateRangeType.Day}
+        highlightCurrentMonth={false}
+        highlightSelectedMonth
+        showGoToToday
+        calendarDayProps={calendarDayProps}
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        firstDayOfWeek={DayOfWeek.Sunday}
+        strings={defaultDayPickerStrings}
+      />
+    </div>
+  );
+};

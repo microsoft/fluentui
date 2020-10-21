@@ -103,13 +103,10 @@ describe('FocusTrapZone', () => {
   // update based on focus events due to limitations of ReactDOM. Use lastFocusedElement to detect focus
   // change events.
   let lastFocusedElement: HTMLElement | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let addEventListener: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let componentEventListeners: any = {};
   const ftzClassname = 'ftzTestClassname';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
-import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
+import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonState } from './Button.types';
 
 const GlobalClassNames = {

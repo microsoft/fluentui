@@ -3,13 +3,20 @@
 const { jestTask, argv } = require('just-scripts');
 const path = require('path');
 
+const commonArgs = () => {
+  return {
+    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && { runInBand: true }),
+    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+  };
+};
+
 exports.jest = () =>
   jestTask({
-    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE) && { runInBand: true }),
-    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+    ...commonArgs(),
     env: {
       ...process.env,
       NODE_ENV: 'test',
+      PACKAGE_NAME: argv().package,
     },
   });
 
@@ -20,11 +27,13 @@ exports.jestDom = () =>
   });
 
 exports.jestWatch = () => {
-  const args = argv();
   return jestTask({
-    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE) && { runInBand: true }),
-    ...(args.u || args.updateSnapshot ? { updateSnapshot: true } : undefined),
+    ...commonArgs(),
     watch: true,
-    _: ['-i', ...(args._ || []).filter(arg => arg !== 'jest-watch')],
+    _: ['-i', ...(argv()._ || []).filter(arg => arg !== 'jest-watch')],
+    env: {
+      ...process.env,
+      PACKAGE_NAME: argv().package,
+    },
   });
 };

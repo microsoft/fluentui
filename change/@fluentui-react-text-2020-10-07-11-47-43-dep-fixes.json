@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove unused storybook dependency",
+  "packageName": "@fluentui/react-text",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-07T18:47:43.901Z"
+}

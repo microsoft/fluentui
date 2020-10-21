@@ -1,7 +1,6 @@
 export * from './ActivityItem';
 export * from './Autofill';
 export * from './Announced';
-export * from './Button';
 export * from './ButtonGrid';
 export * from './Calendar';
 export * from './Callout';

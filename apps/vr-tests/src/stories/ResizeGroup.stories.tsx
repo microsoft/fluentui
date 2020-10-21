@@ -2,7 +2,8 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
-import { ResizeGroup, OverflowSet, DefaultButton } from '@fluentui/react';
+import { ResizeGroup, OverflowSet } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const list = {
   primary: [
