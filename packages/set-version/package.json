@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/set-version",
+  "name": "@fluentui/set-version",
   "version": "7.0.23",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",

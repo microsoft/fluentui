@@ -34,7 +34,7 @@
     "@fluentui/react-experiments": "^7.33.1",
     "@fluentui/react-cards": "^0.113.3",
     "@uifabric/react-hooks": "^7.13.5",
-    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/set-version": "^7.0.23",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",

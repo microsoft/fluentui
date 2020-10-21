@@ -48,7 +48,7 @@
     "@uifabric/example-data": "^7.1.5",
     "@fluentui/foundation-legacy": "^7.9.9",
     "@uifabric/react-hooks": "^7.13.5",
-    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/set-version": "^7.0.23",
     "@fluentui/react-monaco-editor": "^0.13.18",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",

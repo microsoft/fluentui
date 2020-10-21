@@ -50,7 +50,7 @@
     "@fluentui/react-theme-provider": "^0.14.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/react-hooks": "^7.13.5",
-    "@uifabric/set-version": "^7.0.23",
+    "@fluentui/set-version": "^7.0.23",
     "object-fit-images": "^3.2.4",
     "tslib": "^1.10.0"
   },
