@@ -1671,6 +1671,8 @@ export interface IGroupedListState {
     // (undocumented)
     groups?: IGroup[];
     // (undocumented)
+    items?: IGroupedListProps['items'];
+    // (undocumented)
     listProps?: IGroupedListProps['listProps'];
     // (undocumented)
     selectionMode?: IGroupedListProps['selectionMode'];
