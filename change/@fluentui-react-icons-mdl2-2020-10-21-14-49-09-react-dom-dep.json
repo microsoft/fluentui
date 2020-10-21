@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove react-dom from peerDependencies",
   "packageName": "@fluentui/react-icons-mdl2",
   "email": "elcraig@microsoft.com",

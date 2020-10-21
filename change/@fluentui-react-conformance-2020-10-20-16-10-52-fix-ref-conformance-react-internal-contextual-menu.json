@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Adding support to targetComponent in component-handles-ref defaultTest.",
   "packageName": "@fluentui/react-conformance",
   "email": "czearing@outlook.com",
