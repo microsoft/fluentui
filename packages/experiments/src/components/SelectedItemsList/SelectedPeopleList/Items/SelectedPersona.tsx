@@ -122,7 +122,7 @@ const SelectedPersonaInner = React.memo(
               onItemChange(value, index);
             })
             .catch(error => {
-              console.error('getExpandedItems call failed');
+              // No op
             });
         }
       },
