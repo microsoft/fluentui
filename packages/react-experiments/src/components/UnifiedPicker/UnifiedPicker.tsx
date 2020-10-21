@@ -66,6 +66,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
+  const defaultDragDropEnabled = React.useMemo(
+    () => (props.defaultDragDropEnabled !== undefined ? props.defaultDragDropEnabled : true),
+    [props.defaultDragDropEnabled],
+  );
+
+  const autofillDragDropEnabled = React.useMemo(
+    () => (props.autofillDragDropEnabled !== undefined ? props.autofillDragDropEnabled : defaultDragDropEnabled),
+    [props.autofillDragDropEnabled, defaultDragDropEnabled],
+  );
+
   React.useImperativeHandle(props.componentRef, () => ({
     clearInput: () => {
       if (input.current) {
@@ -105,16 +115,49 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     insertIndex = -1;
   };
 
-  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
-    return !focusedItemIndices.includes(dropContext!.index);
+  const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
+    if (autofillDragDropEnabled) {
+      event?.preventDefault();
+    }
   };
 
-  const _onDrop = (item?: any, event?: DragEvent): void => {
-    insertIndex = selectedItems.indexOf(item);
+  const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
+    event?.preventDefault();
+    if (props.onDropAutoFill) {
+      props.onDropAutoFill(event);
+    } else {
+      insertIndex = selectedItems.length;
+      _onDropInner(event?.dataTransfer);
+    }
+  };
+
+  const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
+    return defaultDragDropEnabled && !focusedItemIndices.includes(dropContext!.index);
+  };
+
+  const _onDropList = (item?: any, event?: DragEvent): void => {
+    /* indexOf compares using strict equality
+       if the item is something where properties can change frequently, then the
+       itemsAreEqual prop should be overloaded
+       Otherwise it's possible for the indexOf check to fail and return -1 */
+    if (props.selectedItemsListProps.itemsAreEqual) {
+      insertIndex = selectedItems.findIndex(currentItem =>
+        props.selectedItemsListProps.itemsAreEqual
+          ? props.selectedItemsListProps.itemsAreEqual(currentItem, item)
+          : false,
+      );
+    } else {
+      insertIndex = selectedItems.indexOf(item);
+    }
+
+    event?.preventDefault();
+    _onDropInner(event?.dataTransfer !== null ? event?.dataTransfer : undefined);
+  };
+
+  const _onDropInner = (dataTransfer?: DataTransfer): void => {
     let isDropHandled = false;
-    if (event?.dataTransfer) {
-      event.preventDefault();
-      const data = event.dataTransfer.items;
+    if (dataTransfer) {
+      const data = dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
           isDropHandled = true;
@@ -168,10 +211,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const defaultDragDropEvents: IDragDropEvents = {
     canDrop: _canDrop,
-    canDrag: () => true,
+    canDrag: () => defaultDragDropEnabled,
     onDragEnter: _onDragEnter,
     onDragLeave: () => undefined,
-    onDrop: _onDrop,
+    onDrop: _onDropList,
     onDragStart: _onDragStart,
     onDragEnd: _onDragEnd,
   };
@@ -360,6 +403,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                 aria-haspopup="listbox"
                 role="combobox"
                 className={css('ms-BasePicker-div', classNames.pickerDiv)}
+                onDrop={_onDropAutoFill}
+                onDragOver={_onDragOverAutofill}
               >
                 <Autofill
                   {...(inputProps as IInputProps)}
