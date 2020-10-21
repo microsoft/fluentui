@@ -17,7 +17,7 @@ export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends 
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
     setTrue: () => void;
-    toggle: (value?: boolean) => void;
+    toggle: () => void;
 }
 
 // @public (undocumented)
