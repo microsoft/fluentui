@@ -15,7 +15,7 @@ function customError(type, ...args) {
   }
 
   let processedArgs = args;
-  // console.log messages can include subsitution tokens such as %s (React uses this).
+  // console.log messages can include substitution tokens such as %s (React uses this).
   // Attempt a very naive replacement of those tokens when throwing the error.
   if (args.length > 1 && typeof args[0] === 'string' && /%[dfioOs]/.test(args[0])) {
     let unprocessedArgs = args.slice(1);
