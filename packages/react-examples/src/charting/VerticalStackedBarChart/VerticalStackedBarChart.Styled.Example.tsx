@@ -100,7 +100,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       <>
         <div>
           <label>Width:</label>
-          {/* eslint-disable-next-line react/jsx-no-bind */}
           <input
             type="range"
             value={this.state.width}
@@ -109,7 +108,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             onChange={e => this.setState({ width: +e.target.value })}
           />
           <label>Height:</label>
-          {/* eslint-disable-next-line react/jsx-no-bind */}
           <input
             type="range"
             value={this.state.height}
@@ -120,7 +118,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
         </div>
         <div>
           <label>BarGapMax:</label>
-          {/* eslint-disable-next-line react/jsx-no-bind */}
           <input
             type="range"
             value={this.state.barGapMax}
@@ -129,7 +126,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
           <label>BarCornerRadius:</label>
-          {/* eslint-disable-next-line react/jsx-no-bind */}
           <input
             type="range"
             value={this.state.barCornerRadius}
@@ -140,6 +136,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
           <ChoiceGroup
             options={options}
             defaultSelectedKey="MultiCallout"
+            // eslint-disable-next-line react/jsx-no-bind
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
@@ -175,8 +172,8 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-explicit-any
-            onRenderCalloutPerDataPoint={(props: any) =>
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCalloutPerDataPoint={props =>
               props ? (
                 <ChartHoverCard
                   XValue={props.xAxisCalloutData}
