@@ -99,6 +99,7 @@
     "tslib": "^1.13.0"
   },
   "beachball": {
+    "tag": "latest",
     "disallowedChangeTypes": [
       "major"
     ]

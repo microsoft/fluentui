@@ -2,6 +2,7 @@
   "name": "@fluentui/react-next",
   "version": "9.0.0-alpha",
   "beachball": {
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "patch",
       "minor",
