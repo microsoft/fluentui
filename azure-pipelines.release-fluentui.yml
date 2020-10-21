@@ -39,7 +39,7 @@ steps:
     displayName: Authenticate git for pushes
 
   - script: |
-      npx midgard-yarn install
+      yarn install
     displayName: yarn
 
   - script: |
