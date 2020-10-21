@@ -9,7 +9,7 @@
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/code-sandbox": "^0.51.0",
     "@fluentui/docs-components": "^0.51.0",
-    "@fluentui/keyboard-key": "^1.0.0-beta",
+    "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-builder": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",

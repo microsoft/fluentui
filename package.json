@@ -78,7 +78,7 @@
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^5.6.7"
+    "syncpack": "^5.6.10"
   },
   "license": "MIT",
   "workspaces": {
@@ -129,6 +129,24 @@
           "tslib",
           "typescript",
           "webpack"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/accessibility",
+          "@fluentui/docs",
+          "@fluentui/react-bindings",
+          "@fluentui/react-northstar",
+          "@fluentui/perf-test",
+          "@fluentui/e2e"
+        ],
+        "dependencies": [
+          "@uifabric/utilities",
+          "@fluentui/keyboard-key",
+          "@fluentui/dom-utilities",
+          "@fluentui/date-time-utilities",
+          "@fluentui/react-compose",
+          "@fluentui/react"
         ]
       }
     ]

@@ -4,7 +4,7 @@
   "version": "0.51.0",
   "private": true,
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta"
+    "@fluentui/react": "^7.142.0"
   },
   "scripts": {
     "build": "just-scripts build",

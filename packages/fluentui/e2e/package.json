@@ -6,7 +6,7 @@
   "dependencies": {
     "@uifabric/build": "^1.0.0",
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/react": "^8.0.0-beta",
+    "@fluentui/react": "^7.142.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@types/node": "^10.3.2",

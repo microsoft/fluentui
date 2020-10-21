@@ -26,7 +26,6 @@
     "build": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "test": "echo \"!!!IMPORTANT!!! Projects test is temporarily disabled before version 8 beta release. DO NOT publish react-northstar. \"",
-    "test-temp": "node -r @uifabric/build/babel/register src/index.ts"
+    "test": "node -r @uifabric/build/babel/register src/index.ts"
   }
 }
