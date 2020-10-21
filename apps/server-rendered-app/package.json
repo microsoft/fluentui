@@ -1,7 +1,7 @@
 {
   "name": "server-rendered-app",
   "description": "Sample server-rendered todo app using @fluentui/react.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "sideEffects": [
     "lib/version.js"
@@ -17,20 +17,20 @@
     "start": "node ./server/index.js"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "express": "^4.15.4",
     "compression": "^1.7.2",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/font-icons-mdl2": "^7.5.8",
-    "@fluentui/merge-styles": "^7.19.1",
-    "@fluentui/set-version": "^7.0.23",
-    "@fluentui/react": "^7.142.0",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta",
+    "@fluentui/merge-styles": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta",
+    "@fluentui/react": "^8.0.0-beta",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

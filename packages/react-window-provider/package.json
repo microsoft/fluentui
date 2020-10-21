@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-window-provider",
-  "version": "0.3.3",
+  "version": "2.0.0-beta",
   "description": "Utilities for providing and consuming the window/document objects even across portal/iframe/child-window boundaries.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,16 +27,16 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@uifabric/test-utilities": "^7.3.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@uifabric/test-utilities": "^8.0.0-beta",
     "@types/react": "16.8.25",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1"
   },
   "dependencies": {
-    "@fluentui/set-version": "^7.0.23",
+    "@fluentui/set-version": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -11,5 +11,10 @@
   "devDependencies": {
     "ie11-custom-properties": "4.1.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  }
 }
