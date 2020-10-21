@@ -10,10 +10,12 @@ export const SRNC: Record<string, any> = {
   }, // End landmarksAndGroups
 
   // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
-  narrateWhenLabelled: {
+  narrateOnlyWhenLabelled: {
     'Win/JAWS': ['role=radiogroup'],
   },
 
+  // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
+  narrateLabelIfNoRole: ['Win/JAWS'],
   // Element type strings for each platform
   typeStrings: {
     'Win/JAWS': {

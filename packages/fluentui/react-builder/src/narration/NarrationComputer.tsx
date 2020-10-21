@@ -175,23 +175,29 @@ export class NarrationComputer {
           testName = ariaParent.tagName.toLowerCase();
           definition = definitions[testName];
         } // End if 2
-        if (definition && !SRNC.narrateWhenLabelled[platform].includes(testName)) {
+
+        // If the "aria-label" or "aria-labelledby" attribute exists together with a landmark or group element or role, or if it is the "narrateLabelIfNoRole" exception, add its value to the narration
+        if (definition || SRNC.narrateLabelIfNoRole.includes(platform)) {
           // Begin if 2
-          landmarkOrGroup.push(definition);
           const label =
             ariaParent.ariaLabelledByElements
               ?.map((labElement: HTMLElement) => {
                 return labElement.textContent;
               })
               .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) ||
-            ariaParent?.ariaLabel ||
+            ariaParent.ariaLabel ||
             null;
 
-          // If "aria-label" or "aria-labelledby" exists for the landmark or group parent, prepend its text to the narration
-          if (label != null) {
+          if (label) {
             // Begin if 3
-            landmarkOrGroup.unshift(label);
+            landmarkOrGroup.push(label);
           } // End if 3
+        } // End if 2
+
+        // If the definition exists and it is not an exception that the landmark or group element or role also must have the "aria-label" or "aria-labelledby" attribute to be narrated, add the definition to the narration"""
+        if (definition && !SRNC.narrateOnlyWhenLabelled[platform].includes(testName)) {
+          // Begin if 2
+          landmarkOrGroup.push(definition);
         } // End if 2
         landmarksAndGroups.unshift(landmarkOrGroup.join(' '));
       } // End if 1
