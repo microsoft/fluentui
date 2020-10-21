@@ -5,6 +5,8 @@ import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
 
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
+
+import { CalloutContent } from '../Callout/CalloutContent';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
@@ -31,10 +33,17 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
-    // Priority: High
-    // Problem: Is FunctionComponent but missing `forwardRef`
-    // Solution: add forwardRef and ref typing
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    targetComponent: CalloutContent,
+    requiredProps: {
+      hidden: false,
+      items: [{ text: 'test', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }],
+    },
+    // TODO: ContextualMenu handles ref but doesn't pass:
+    // expect(rootRef.current?.getAttribute).toBeDefined();
+    //
+    // This test failure likely stems from Callout as it experiences the same error. The failing test should be
+    // further investigated and re-enabled in a future pull request.
+    disabledTests: ['component-handles-ref'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {
