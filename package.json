@@ -1,6 +1,6 @@
 {
   "name": "fluent-ui-react-repo",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
   "repository": {
@@ -35,6 +35,7 @@
     "lint:log:lerna": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
+    "bump:beachball": "beachball bump --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
