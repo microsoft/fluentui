@@ -23,13 +23,13 @@ steps:
   - script: |
       ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
       basePath="/$ver/"
-      echo `##vso[task.setvariable variable=deployBasePath]$basePath`
+      echo '##vso[task.setvariable variable=deployBasePath]$basePath'
     displayName: Set base path variable based on N* version
 
   - script: |
       ver=`node -p "require('./packages/fluentui/docs/package.json').version"`
       ver="/$ver/"
-      echo `##vso[task.setvariable variable=docsiteVersion]$ver`
+      echo '##vso[task.setvariable variable=docsiteVersion]$ver'
     displayName: Set docsite version variable
 
   - script: |
