@@ -31,48 +31,37 @@ steps:
     displayName: Set base path and version variables for job
 
   - script: |
-      echo $(deployBasePath)
-      echo $(docsiteVersion)
-    displayName: Log pipeline variables
-
-  - script: |
       git config user.name "Fluent UI Build"
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
-    enabled: false
 
   - script: |
       yarn install
     displayName: yarn
-    enabled: false
 
   - script: |
       PRODUCTION=true yarn build
     displayName: yarn build
-    enabled: false
 
   - script: |
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
-    enabled: false
 
   - task: PublishBuildArtifacts@1
-    enabled: false
     displayName: 'Publish docsite as pipeline artifact'
     inputs:
       PathtoPublish: 'packages/fluentui/docs/dist'
-      ArtifactName: 'docsite_v$(variables.docsiteVersion)'
+      ArtifactName: 'docsite_v$(docsiteVersion)'
 
   - task: AzureUpload@2
-    enabled: false
     displayName: Upload docs site
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'
       azureSubscription: 'UI Fabric (private)'
       storage: fluentsiteversiontest
       ContainerName: '$web'
-      BlobPrefix: '$(deployBasePath)'
+      BlobPrefix: $(deployBasePath)
       # uncomment to deploy to prod
       # storage: fluentsite
       # BlobPrefix: ''
