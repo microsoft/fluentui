@@ -1,6 +1,7 @@
 import path from 'path';
-import '@fluentui/scripts/tasks/preset';
-import { series, task, argv } from '@fluentui/scripts';
+import { preset, series, task, argv } from '@fluentui/scripts';
+
+preset();
 
 // TODO: FUR integration issues
 // - FUR build fails when it comes across these new packages inside of packages/
