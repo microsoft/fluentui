@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename @uifabric/set-version to @fluentui/set-version",
   "packageName": "@fluentui/react-docsite-components",
   "email": "ololubek@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Adding component-handles-ref and component-has-root-ref tests within react-conformance.",
   "packageName": "@fluentui/react-conformance",
   "email": "czearing@outlook.com",

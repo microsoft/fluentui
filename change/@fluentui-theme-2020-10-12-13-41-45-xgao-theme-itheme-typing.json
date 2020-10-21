@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings.",
   "packageName": "@fluentui/theme",
   "email": "xgao@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove react-next references",
   "packageName": "@fluentui/storybook",
   "email": "elcraig@microsoft.com",

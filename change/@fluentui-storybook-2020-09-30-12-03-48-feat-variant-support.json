@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Updating theme used in stories",
   "packageName": "@fluentui/storybook",
   "email": "dzearing@hotmail.com",

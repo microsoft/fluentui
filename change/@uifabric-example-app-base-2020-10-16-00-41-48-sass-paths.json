@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Remove duplicate shared scss files from src/common (use the ones from `@fluentui/common-styles` instead)",
   "packageName": "@fluentui/react-docsite-components",
   "email": "elcraig@microsoft.com",

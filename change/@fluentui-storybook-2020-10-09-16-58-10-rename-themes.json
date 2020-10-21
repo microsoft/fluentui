@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename theme packages",
   "packageName": "@fluentui/storybook",
   "email": "elcraig@microsoft.com",

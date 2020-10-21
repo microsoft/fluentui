@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename @uifabric/file-type-icons to @fluentui/file-type-icons",
   "packageName": "@fluentui/file-type-icons",
   "email": "ololubek@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Updating SpinButton.styles to a StyleFunction.",
   "packageName": "@fluentui/azure-themes",
   "email": "czearing@outlook.com",

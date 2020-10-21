@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Move v8 theme instances from react-theme-provider.",
   "packageName": "@fluentui/storybook",
   "email": "xgao@microsoft.com",

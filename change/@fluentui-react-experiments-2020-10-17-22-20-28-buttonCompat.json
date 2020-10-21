@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Updating imports for Button component to import from the compat folder.",
   "packageName": "@fluentui/react-experiments",
   "email": "humbertomakotomorimoto@gmail.com",

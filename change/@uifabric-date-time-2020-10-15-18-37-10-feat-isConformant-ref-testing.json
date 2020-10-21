@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Implementing ref conformance tests and updating CalendarDayGrid's FocusZone ref to an elementRef.",
   "packageName": "@uifabric/date-time",
   "email": "czearing@outlook.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove usage of mdl2-theme.",
   "packageName": "@fluentui/storybook",
   "email": "xgao@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/icons to @fluentui/font-icons-mdl2",
   "packageName": "@fluentui/react-experiments",
   "email": "ololubek@microsoft.com",

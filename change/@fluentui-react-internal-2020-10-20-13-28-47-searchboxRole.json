@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "SearchBox: Making role on root div opt in.",
   "packageName": "@fluentui/react-internal",
   "email": "humbertomakotomorimoto@gmail.com",

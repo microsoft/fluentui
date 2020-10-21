@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Implementing defaultErrorMessages file within isConformant to provide more spcific error messages.",
   "packageName": "@fluentui/react-conformance",
   "email": "czearing@outlook.com",

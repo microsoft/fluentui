@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove redundant withCompatKeytipLayer.",
   "packageName": "@fluentui/storybook",
   "email": "xgao@microsoft.com",
