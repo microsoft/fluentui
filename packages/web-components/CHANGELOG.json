@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 21 Oct 2020 12:32:12 GMT",
+      "tag": "@fluentui/web-components_v0.6.3",
+      "version": "0.6.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix yarn test --production.",
+            "author": "xgao@microsoft.com",
+            "commit": "35627bb3ecb15110c1c0b36b74bdb0735039d26c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Oct 2020 20:26:08 GMT",
       "tag": "@fluentui/web-components_v0.6.3",
       "version": "0.6.3",

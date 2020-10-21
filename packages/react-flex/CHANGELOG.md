@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Oct 2020 12:32:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.1.15)
+
+Wed, 21 Oct 2020 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.1.7..@fluentui/react-flex_v0.1.15)
+
+### Patches
+
+- Remove incorrect dependency on react-bindings ([PR #15574](https://github.com/microsoft/fluentui/pull/15574) by elcraig@microsoft.com)
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.1.7)
 
