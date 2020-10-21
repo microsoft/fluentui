@@ -4,7 +4,7 @@ import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { useBoolean, useConst } from '@fluentui/react-hooks';
-import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 
 const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
 const groupCount = 3;

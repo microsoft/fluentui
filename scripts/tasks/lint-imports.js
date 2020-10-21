@@ -47,7 +47,7 @@ function lintImports() {
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
     '@fluentui/react-charting/lib/types/IDataPoint',
     '@fluentui/react-experiments/lib/utilities/scrolling/ScrollContainer',
-    // Once the components using this data are promoted, the data should go into @uifabric/example-data
+    // Once the components using this data are promoted, the data should go into @fluentui/example-data
     '@fluentui/react-experiments/lib/common/TestImages',
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@fluentui/foundation-legacy/lib/next/composed',
@@ -57,7 +57,7 @@ function lintImports() {
   const reExportedPackages = {
     '@fluentui/foundation-legacy': 'Foundation',
     '@fluentui/font-icons-mdl2': 'Icons',
-    '@uifabric/merge-styles': 'Styling',
+    '@fluentui/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',
     '@fluentui/utilities': 'Utilities',
     '@fluentui/date-time-utilities': 'DateTimeUtilities',

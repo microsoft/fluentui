@@ -467,7 +467,7 @@ export class Foo extends React.Component {}
     const example = `
 import * as React from 'react';
 import { Bar } from '@fluentui/react/lib/Bar';
-import { createListItems } from '@uifabric/example-data';
+import { createListItems } from '@fluentui/example-data';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toEqual({
@@ -482,9 +482,9 @@ export class Foo extends React.Component {}
           identifiers: [{ name: 'Bar' }],
         },
         {
-          text: "import { createListItems } from '@uifabric/example-data';",
-          path: '@uifabric/example-data',
-          packageName: '@uifabric/example-data',
+          text: "import { createListItems } from '@fluentui/example-data';",
+          path: '@fluentui/example-data',
+          packageName: '@fluentui/example-data',
           identifiers: [{ name: 'createListItems' }],
         },
       ],

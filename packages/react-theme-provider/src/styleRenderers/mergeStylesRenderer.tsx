@@ -6,7 +6,7 @@ import {
   mergeCssSets,
   fontFace as mergeFontFace,
   keyframes as mergeKeyframes,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';
 
 let _seed = 0;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const options: IChoiceGroupOption[] = [
   {

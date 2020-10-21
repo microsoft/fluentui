@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { Fabric } from '../../Fabric';
 import { isConformant } from '../../common/isConformant';
 import { Stack } from './Stack';

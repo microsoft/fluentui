@@ -1,5 +1,549 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DetailsList handles paged updates to items within groups 1`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={7}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone116"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection117"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A1
+                                </div>
+                                <div>
+                                  B1
+                                </div>
+                                <div>
+                                  C1
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                Placeholder
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection118"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A3
+                                </div>
+                                <div>
+                                  B3
+                                </div>
+                                <div>
+                                  C3
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                Placeholder
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList handles paged updates to items within groups 2`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    className=
+        ms-DetailsList
+        is-fixed
+        is-horizontalConstrained
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={5}
+      aria-readonly="true"
+      aria-rowcount={7}
+      role="grid"
+    >
+      <div
+        className="ms-DetailsList-headerWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div>
+          <div>
+            f1
+          </div>
+          <div>
+            f2
+          </div>
+          <div>
+            f3
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DetailsList-contentWrapper"
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className=
+                ms-FocusZone
+                ms-GroupedList
+                &:focus {
+                  outline: none;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                }
+                & .ms-List-cell {
+                  min-height: 38px;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-automationid="GroupedList"
+            data-focuszone-id="FocusZone116"
+            data-is-scrollable="false"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 1
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection117"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={0}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A1
+                                </div>
+                                <div>
+                                  B1
+                                </div>
+                                <div>
+                                  C1
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={1}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A2
+                                </div>
+                                <div>
+                                  B2
+                                </div>
+                                <div>
+                                  C2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div>
+                        two 2
+                      </div>
+                      <div
+                        className="ms-List"
+                        id="GroupedListSection118"
+                        role="presentation"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A3
+                                </div>
+                                <div>
+                                  B3
+                                </div>
+                                <div>
+                                  C3
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div>
+                                <div>
+                                  A4
+                                </div>
+                                <div>
+                                  B4
+                                </div>
+                                <div>
+                                  C4
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DetailsList handles updates to items and groups 1`] = `
 <div
   className="ms-Viewport"
@@ -522,13 +1066,13 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                             >
                               <div>
                                 <div>
-                                  A1
+                                  D1
                                 </div>
                                 <div>
-                                  B1
+                                  E1
                                 </div>
                                 <div>
-                                  C1
+                                  F1
                                 </div>
                               </div>
                             </div>
@@ -582,13 +1126,13 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                             >
                               <div>
                                 <div>
-                                  A2
+                                  D2
                                 </div>
                                 <div>
-                                  B2
+                                  E2
                                 </div>
                                 <div>
-                                  C2
+                                  F2
                                 </div>
                               </div>
                             </div>
@@ -642,13 +1186,13 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                             >
                               <div>
                                 <div>
-                                  A3
+                                  D3
                                 </div>
                                 <div>
-                                  B3
+                                  E3
                                 </div>
                                 <div>
-                                  C3
+                                  F3
                                 </div>
                               </div>
                             </div>
@@ -702,13 +1246,13 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                             >
                               <div>
                                 <div>
-                                  A4
+                                  D4
                                 </div>
                                 <div>
-                                  B4
+                                  E4
                                 </div>
                                 <div>
-                                  C4
+                                  F4
                                 </div>
                               </div>
                             </div>

@@ -69,7 +69,7 @@ export * from './styled';
 export * from './warn';
 export * from './ie11Detector';
 export * from './getPropsWithDefaults';
-export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
+export { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
 export { createMergedRef } from './createMergedRef';

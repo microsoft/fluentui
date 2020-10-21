@@ -137,11 +137,11 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/react-focus': 'FluentUIReact',
       '@fluentui/foundation-legacy': 'FluentUIReact',
       '@fluentui/font-icons-mdl2': 'FluentUIReact',
-      '@uifabric/merge-styles': 'FluentUIReact',
+      '@fluentui/merge-styles': 'FluentUIReact',
       '@fluentui/style-utilities': 'FluentUIReact',
       '@fluentui/utilities': 'FluentUIReact',
       '@fluentui/react-hooks': 'FluentUIReactHooks',
-      '@uifabric/example-data': 'FabricExampleData',
+      '@fluentui/example-data': 'FluentUIExampleData',
     });
   });
 

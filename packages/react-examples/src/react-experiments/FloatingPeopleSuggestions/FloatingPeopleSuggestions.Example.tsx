@@ -5,7 +5,7 @@ import {
   IFloatingSuggestionItem,
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { mru } from '@uifabric/example-data';
+import { mru } from '@fluentui/example-data';
 
 const _suggestions = [
   {

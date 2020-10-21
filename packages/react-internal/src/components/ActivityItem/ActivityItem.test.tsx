@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
 import { IPersonaSharedProps } from '../../Persona';
