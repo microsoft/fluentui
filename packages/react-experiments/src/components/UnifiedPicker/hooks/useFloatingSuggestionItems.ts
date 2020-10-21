@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IFloatingSuggestionsHeaderFooterProps } from '@fluentui/react-experiments/lib/FloatingSuggestionsComposite/';
+import { IFloatingSuggestionsHeaderFooterProps } from '../../FloatingSuggestionsComposite/FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 export interface IUseFloatingSuggestionItems<T> {
   focusItemIndex: number;
