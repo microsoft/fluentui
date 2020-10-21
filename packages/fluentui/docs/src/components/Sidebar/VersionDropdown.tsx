@@ -5,7 +5,6 @@ const pkg = require('@fluentui/react-northstar/package.json');
 
 export function VersionDropdown(props: { width: number }) {
   const currentVersion = pkg.version;
-  window.sessionStorage.fluentuiDocsiteVersions = JSON.stringify(['0.51.0', '0.47.0']);
 
   if (
     !window.sessionStorage.fluentuiDocsiteVersions ||
