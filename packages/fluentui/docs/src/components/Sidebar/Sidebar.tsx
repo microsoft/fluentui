@@ -15,6 +15,7 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
+import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
 import keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
@@ -521,6 +522,7 @@ class Sidebar extends React.Component<any, any> {
           >
             Fluent <span style={gradientTextStyles}>UI</span>
           </Text>
+          <VersionDropdown width={this.props.width} />
           <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
             {(active, onClick) => (
               <Box
