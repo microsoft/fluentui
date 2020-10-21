@@ -47,7 +47,9 @@ describe('PeoplePicker', () => {
     input.value = 'Valentyna';
 
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeTruthy();
