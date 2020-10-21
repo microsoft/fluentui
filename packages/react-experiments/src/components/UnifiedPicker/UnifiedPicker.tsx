@@ -122,11 +122,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
+    event?.preventDefault();
     if (props.onDropAutoFill) {
       props.onDropAutoFill(event);
     } else {
       insertIndex = selectedItems.length;
-      event?.preventDefault();
       _onDropInner(event?.dataTransfer);
     }
   };
