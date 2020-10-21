@@ -1,8 +1,6 @@
 /*
 TODO:
 * Narration of aria-label when entering an element without role.
-* "header" and "footer" elements should not constitute a landmark when inside sectioning roles, but they do. However, they do only when tabbed into, not when entered with VPC. See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header """"
-* Test the case when the landmark or group is the element which receives the focus and has tabindex="0".""
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
 * Should we also consider the "disabled" state?
@@ -144,6 +142,9 @@ export class NarrationComputer {
       // The "footer" and "headr" elements don't constitute a landmark if they are a descendant of a sectioning element or role
       if (['footer', 'header'].includes(ariaParent.tagName.toLowerCase())) {
         // Begin if 1
+        // Note: According to MDN, the <header>" and "<footer>" elements should not create a landmark when they are descendants  of sectioning roles (e.g. article or main), but using both JAWS and NVDA they actually do. However, they do only when tabbed into, not when entered with virtual cursor.
+        // Therefore, in this code, we don't follow MDN, but follow how JAWS and NVDA actually behave.
+        // See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
         const sectionElements = ['article', 'aside', 'main', 'nav', 'section'];
         // const sectionRoles = ['article', 'complementary', 'main', 'navigation', 'region'];
         const sectionRoles = [];

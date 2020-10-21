@@ -12,7 +12,7 @@ SRNC.landmarksAndGroups['Win/JAWS'] = {
   'role=banner': 'Banner Region',
   'role=complementary': 'Complementary Region',
   'role=contentinfo': 'Content Info Region',
-  'role=form': '',
+  'role=form': 'Form Region',
   'role=main': 'Main Region',
   'role=navigation': 'Navigation Region',
   'role=region': 'Region',
@@ -28,10 +28,10 @@ SRNC.landmarksAndGroups['Win/JAWS'] = {
   'role=list': 'list of X items',
 
   // Group and composite roles
-  'role=grid': '',
+  'role=grid': 'Grid',
   'role=listbox': 'List box',
-  'role=menu': '',
+  'role=menu': 'menu',
   'role=radiogroup': 'group',
-  'role=toolbar': '',
+  'role=toolbar': 'Tool bar',
   'role=tree': 'Tree view',
 };
