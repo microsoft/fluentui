@@ -5,7 +5,7 @@ import * as renderer from 'react-test-renderer';
 
 import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@uifabric/utilities';
-import { people } from '@uifabric/example-data';
+import { people } from '@fluentui/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../../Persona/Persona.types';
 import { isConformant } from '../../../common/isConformant';

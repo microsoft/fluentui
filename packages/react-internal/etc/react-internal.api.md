@@ -1491,7 +1491,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 }
 
 // @public (undocumented)
-export interface ICheckProps {
+export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;

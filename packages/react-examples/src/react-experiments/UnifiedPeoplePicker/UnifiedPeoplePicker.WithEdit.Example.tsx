@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@fluentui/react-experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
-import { mru, people } from '@uifabric/example-data';
+import { mru, people } from '@fluentui/example-data';
 import {
   ISelectedPeopleListProps,
   SelectedPersona,

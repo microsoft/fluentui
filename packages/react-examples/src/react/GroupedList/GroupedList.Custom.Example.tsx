@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from '@fluentui/react/lib/GroupedList';
 import { Link } from '@fluentui/react/lib/Link';
-import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets, IRawStyle } from '@fluentui/react/lib/Styling';
 
 const theme = getTheme();
