@@ -15,6 +15,9 @@ import { RadioStyles as styles } from './radio.styles';
   name: 'fluent-radio',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentRadio extends Radio {}
 
