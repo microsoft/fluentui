@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@uifabric/merge-styles';
+import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@fluentui/merge-styles';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {

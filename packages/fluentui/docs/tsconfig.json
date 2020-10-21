@@ -8,7 +8,7 @@
       "@fluentui/dom-utilities": ["packages/dom-utilities/src"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
       "@fluentui/react-compose": ["packages/react-compose/src/index"],
-      "@uifabric/merge-styles": ["packages/merge-styles/src"],
+      "@fluentui/merge-styles": ["packages/merge-styles/src"],
       "@fluentui/set-version": ["packages/set-version/src"],
       "@uifabric/utilities": ["packages/utilities/src"],
       "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"],

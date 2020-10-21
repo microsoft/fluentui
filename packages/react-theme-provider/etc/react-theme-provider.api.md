@@ -6,12 +6,12 @@
 
 import { ColorTokenSet } from '@fluentui/theme';
 import { ICustomizerContext } from '@uifabric/utilities';
-import { IFontFace } from '@uifabric/merge-styles';
-import { IKeyframes } from '@uifabric/merge-styles';
-import { IRawFontStyle } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { IFontFace } from '@fluentui/merge-styles';
+import { IKeyframes } from '@fluentui/merge-styles';
+import { IRawFontStyle } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';

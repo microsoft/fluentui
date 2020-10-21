@@ -6,7 +6,7 @@ import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { IDragDropEvents, Selection } from '@fluentui/react';
 
 export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {
