@@ -32,6 +32,7 @@ SRNC.landmarksAndGroups['Win/JAWS'] = {
   'role=listbox': 'List box',
   'role=menu': 'menu',
   'role=radiogroup': 'group',
+  'role=tablist': 'Tab',
   'role=toolbar': 'Tool bar',
   'role=tree': 'Tree view',
 };
