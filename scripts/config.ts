@@ -14,6 +14,10 @@ let __BASENAME__ = process.env.PR_DEPLOY
     `/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/react-northstar/`
   : '/';
 
+if (process.env.OFFICIALRELEASE) {
+  __BASENAME__ = `/${process.env.DEPLOYBASEPATH}/`;
+}
+
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
 const envConfig = {

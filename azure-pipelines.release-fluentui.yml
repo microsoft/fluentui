@@ -24,10 +24,9 @@ steps:
 
   - script: |
       ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
-      basePath="/$ver/"
-      echo "##vso[task.setvariable variable=deployBasePath]$basePath"
+      echo "##vso[task.setvariable variable=deployBasePath]$ver"
       echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-      echo "Docsite base path published to $basePath for version $ver"
+      echo "Docsite base path published to for version $ver"
     displayName: Set base path and version variables for job
 
   - script: |
@@ -61,7 +60,7 @@ steps:
       azureSubscription: 'UI Fabric (private)'
       storage: fluentsiteversiontest
       ContainerName: '$web'
-      BlobPrefix: $(deployBasePath)
+      BlobPrefix: '$(deployBasePath)'
       # uncomment to deploy to prod
       # storage: fluentsite
       # BlobPrefix: ''
