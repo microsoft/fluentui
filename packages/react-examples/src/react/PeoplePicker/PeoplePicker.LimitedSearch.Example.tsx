@@ -3,7 +3,7 @@ import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { CompactPeoplePicker, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { assign } from '@fluentui/react/lib/Utilities';
-import { people, mru } from '@uifabric/example-data';
+import { people, mru } from '@fluentui/example-data';
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   mostRecentlyUsedHeaderText: 'Suggested Contacts',

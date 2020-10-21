@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -42,7 +45,7 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /** A button can fill the width of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -82,6 +85,9 @@ export type ButtonProps = ComponentProps &
     /** A button can blend into its background to become less emphasized. */
     ghost?: boolean;
 
+    /** A button can have no background styling and just be emphasized through its content styling. */
+    transparent?: boolean;
+
     /** A button can be sized. */
     size?: SizeValue;
 
@@ -92,10 +98,16 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokens>;
   };
 
+/**
+ * {@docCategory Button}
+ */
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
     /* sizing */
@@ -138,10 +150,13 @@ export type ButtonTokens = ColorTokens &
     };
   };
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariants<TTokens = ButtonTokens> = {
   base?: TTokens;
   primary?: TTokens;
   iconOnly?: TTokens;
   circular?: TTokens;
-  fluid?: TTokens;
+  block?: TTokens;
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { Fabric } from '../../Fabric';
 import { isConformant } from '../../common/isConformant';
 import { Stack } from './Stack';
@@ -15,6 +15,9 @@ describe('Stack', () => {
     Component: Stack,
     displayName: 'Stack',
     useDefaultExport: true,
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('can handle having no children in vertical Stack', () => {

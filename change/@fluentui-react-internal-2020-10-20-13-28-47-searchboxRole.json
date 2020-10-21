@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: Making role on root div opt in.",
+  "packageName": "@fluentui/react-internal",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-20T20:28:47.909Z"
+}

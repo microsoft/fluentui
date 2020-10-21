@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { List, ScrollToMode, IList } from '@fluentui/react/lib/List';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { mergeStyleSets, getTheme, normalize } from '@fluentui/react/lib/Styling';
 import { useConst } from '@uifabric/react-hooks';
 

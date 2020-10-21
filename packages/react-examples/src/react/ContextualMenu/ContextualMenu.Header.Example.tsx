@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { ContextualMenuItemType, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
 import { useConst } from '@uifabric/react-hooks';
 

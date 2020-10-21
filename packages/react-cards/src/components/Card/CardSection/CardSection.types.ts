@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@uifabric/foundation';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import { IStackProps, IStackSlots, IStackTokens } from '@fluentui/react/lib/Stack';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
 

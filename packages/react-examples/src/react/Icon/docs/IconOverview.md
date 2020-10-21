@@ -2,4 +2,4 @@ In a user interface, an icon is an image that represents an application, a capab
 
 For a list of icons, visit our [icon documentation](#/styles/web/icons).
 
-Note that icons are not bundled by default and typically must be loaded by calling `initializeIcons` from the `@uifabric/icons` package at the root of your application. See the [icon documentation](#/styles/web/icons#fabric-react) for more details.
+Note that icons are not bundled by default and typically must be loaded by calling `initializeIcons` from `@fluentui/react/lib/Icons` at the root of your application. See the [icon documentation](#/styles/web/icons#fabric-react) for more details.

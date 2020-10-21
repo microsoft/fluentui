@@ -9,7 +9,7 @@ import {
   IStyleFunction,
   IStyleFunctionOrObject,
   mergeStyles,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';

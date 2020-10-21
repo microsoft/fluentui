@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Implementing ref conformance tests and updating CalendarDayGrid's FocusZone ref to an elementRef.",
+  "packageName": "@uifabric/date-time",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T01:35:21.616Z"
+}

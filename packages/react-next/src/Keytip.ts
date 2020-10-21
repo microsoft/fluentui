@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Keytip/index';
+export * from '@fluentui/react/lib/Keytip';

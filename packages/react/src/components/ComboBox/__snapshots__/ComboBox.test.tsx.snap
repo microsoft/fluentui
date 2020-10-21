@@ -132,6 +132,7 @@ exports[`ComboBox Renders correctly 1`] = `
           right: 0px;
           top: 0px;
         }
+    data-ktp-target={true}
     id="ComboBox0wrapper"
   >
     <input
@@ -183,6 +184,7 @@ exports[`ComboBox Renders correctly 1`] = `
             color: WindowText;
           }
       data-is-interactable={true}
+      data-ktp-execute-target={true}
       data-lpignore={true}
       id="ComboBox0-input"
       onBlur={[Function]}
@@ -366,10 +368,10 @@ exports[`ComboBox Renders correctly 1`] = `
 
 exports[`ComboBox renders with a Keytip correctly 1`] = `
 <div
-  className="ms-ComboBox-container "
+  class="ms-ComboBox-container "
 >
   <div
-    className=
+    class=
         ms-ComboBox
         {
           -moz-osx-font-smoothing: grayscale;
@@ -501,11 +503,11 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
   >
     <input
       aria-autocomplete="both"
-      aria-describedby="ktp-layer-id ktp-a"
-      aria-expanded={false}
-      autoCapitalize="off"
-      autoComplete="off"
-      className=
+      aria-describedby="test-foo ktp-layer-id ktp-a"
+      aria-expanded="false"
+      autocapitalize="off"
+      autocomplete="off"
+      class=
           ms-ComboBox-Input
           {
             background-color: #ffffff;
@@ -548,30 +550,19 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             background-color: Window;
             color: WindowText;
           }
-      data-is-interactable={true}
+      data-is-interactable="true"
       data-ktp-execute-target="ktp-a"
-      data-lpignore={true}
+      data-lpignore="true"
       id="ComboBox4-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onCompositionEnd={[Function]}
-      onCompositionStart={[Function]}
-      onCompositionUpdate={[Function]}
-      onFocus={[Function]}
-      onInput={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onTouchStart={[Function]}
-      readOnly={true}
+      readonly=""
       role="combobox"
-      spellCheck={false}
+      spellcheck="false"
       type="text"
       value=""
     />
     <button
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-Button
           ms-Button--icon
           ms-ComboBox-CaretDown-button
@@ -655,20 +646,13 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
-      data-is-focusable={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="false"
       role="presentation"
-      tabIndex={-1}
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -680,8 +664,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Icon
               ms-Button-icon
               {
@@ -708,11 +692,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               }
           data-icon-name="ChevronDown"
           role="presentation"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons\\"",
-            }
-          }
+          style="font-family: \\"FabricMDL2Icons\\";"
         >
           
         </i>
@@ -722,11 +702,9 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
   <div
     aria-atomic="true"
     aria-live="polite"
-    className=""
+    class=""
     id="ComboBox4-error"
     role="region"
-  >
-    
-  </div>
+  />
 </div>
 `;

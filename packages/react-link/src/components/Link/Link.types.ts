@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 
 /**
  * {@docCategory Link}
@@ -77,13 +76,6 @@ export interface ILinkProps
    * A component type or primitive that is rendered as the type of the root element.
    */
   as?: React.ElementType;
-
-  /**
-   * Optional keytip.
-   *
-   * @deprecated This no longer works. Use `useKeytipData` hook instead.
-   */
-  keytipProps?: IKeytipProps;
 }
 
 /**

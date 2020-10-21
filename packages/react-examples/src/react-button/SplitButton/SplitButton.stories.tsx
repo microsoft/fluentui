@@ -36,6 +36,12 @@ const SplitButtonExamples = (props: SplitButtonProps) => (
     <SplitButton {...props} ghost disabled menu={menuProps}>
       Hello, world
     </SplitButton>
+    <SplitButton {...props} transparent menu={menuProps}>
+      Hello, world
+    </SplitButton>
+    <SplitButton {...props} transparent disabled menu={menuProps}>
+      Hello, world
+    </SplitButton>
   </div>
 );
 
@@ -47,8 +53,8 @@ export const SplitButtons = () => (
     <Text variant="xLarge">A split button can appear round using the `circular` prop.</Text>
     <SplitButtonExamples circular />
 
-    <Text variant="xLarge">A split button can fill the width of its container using the `fluid` prop.</Text>
-    <SplitButtonExamples fluid />
+    <Text variant="xLarge">A split button can fill the width of its container using the `block` prop.</Text>
+    <SplitButtonExamples block />
 
     <Text variant="xLarge">A split button can contain only an icon using the `iconOnly` prop.</Text>
     <SplitButtonExamples iconOnly icon="X" />

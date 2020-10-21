@@ -1,72 +1,63 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
-import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import './DatePicker.Examples.scss';
+import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
-export interface IDatePickerFormatExampleState {
-  firstDayOfWeek?: DayOfWeek;
-  value?: Date | null;
-}
+const styles = mergeStyleSets({
+  root: { selectors: { '> *': { marginBottom: 15 } } },
+  control: { maxWidth: 300, marginBottom: 15 },
+});
 
-export class DatePickerFormatExample extends React.Component<{}, IDatePickerFormatExampleState> {
-  public constructor(props: {}) {
-    super(props);
+const onFormatDate = (date: Date): string => {
+  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+};
 
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-      value: null,
-    };
-  }
+export const DatePickerFormatExample: React.FunctionComponent = () => {
+  const [value, setValue] = React.useState<Date | undefined>();
 
-  public render(): JSX.Element {
-    const { firstDayOfWeek, value } = this.state;
-    const desc = 'This field is required. One of the support input formats is year dash month dash day.';
-    return (
-      <div className="docs-DatePickerExample">
-        <p>
-          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the
-          control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In
-          this example, we are formatting and parsing dates as dd/MM/yy.
-        </p>
-        <DatePicker
-          label="Start date"
-          isRequired={false}
-          allowTextInput={true}
-          ariaLabel={desc}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={defaultDayPickerStrings}
-          value={value!}
-          onSelectDate={this._onSelectDate}
-          formatDate={this._onFormatDate}
-          parseDateFromString={this._onParseDateFromString}
-        />
-        <DefaultButton onClick={this._onClick} text="Clear" />
-        <div>{(this.state.value || '').toString()}</div>
+  const onClick = React.useCallback((): void => {
+    setValue(undefined);
+  }, []);
+
+  const onParseDateFromString = React.useCallback(
+    (newValue: string): Date => {
+      const previousValue = value || new Date();
+      const newValueParts = (newValue || '').trim().split('/');
+      const day =
+        newValueParts.length > 0 ? Math.max(1, Math.min(31, parseInt(newValueParts[0], 10))) : previousValue.getDate();
+      const month =
+        newValueParts.length > 1
+          ? Math.max(1, Math.min(12, parseInt(newValueParts[1], 10))) - 1
+          : previousValue.getMonth();
+      let year = newValueParts.length > 2 ? parseInt(newValueParts[2], 10) : previousValue.getFullYear();
+      if (year < 100) {
+        year += previousValue.getFullYear() - (previousValue.getFullYear() % 100);
+      }
+      return new Date(year, month, day);
+    },
+    [value],
+  );
+
+  return (
+    <div className={styles.root}>
+      <div>
+        Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control
+        will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In this
+        example, we are formatting and parsing dates as dd/MM/yy.
       </div>
-    );
-  }
-
-  private _onSelectDate = (date: Date | null | undefined): void => {
-    this.setState({ value: date });
-  };
-
-  private _onClick = (): void => {
-    this.setState({ value: null });
-  };
-
-  private _onFormatDate = (date: Date): string => {
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
-  };
-
-  private _onParseDateFromString = (value: string): Date => {
-    const date = this.state.value || new Date();
-    const values = (value || '').trim().split('/');
-    const day = values.length > 0 ? Math.max(1, Math.min(31, parseInt(values[0], 10))) : date.getDate();
-    const month = values.length > 1 ? Math.max(1, Math.min(12, parseInt(values[1], 10))) - 1 : date.getMonth();
-    let year = values.length > 2 ? parseInt(values[2], 10) : date.getFullYear();
-    if (year < 100) {
-      year += date.getFullYear() - (date.getFullYear() % 100);
-    }
-    return new Date(year, month, day);
-  };
-}
+      <DatePicker
+        label="Start date"
+        allowTextInput
+        ariaLabel="Select a date. Input format is day slash month slash year."
+        strings={defaultDayPickerStrings}
+        value={value as Date | undefined}
+        onSelectDate={setValue as (date: Date | null | undefined) => void}
+        formatDate={onFormatDate}
+        parseDateFromString={onParseDateFromString}
+        className={styles.control}
+      />
+      <DefaultButton onClick={onClick} text="Clear" />
+      <div>Selected date: {(value || '').toString()}</div>
+    </div>
+  );
+};

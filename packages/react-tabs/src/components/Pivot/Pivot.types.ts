@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { PivotItem } from './PivotItem';
 

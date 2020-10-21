@@ -83,6 +83,7 @@ describe('FocusZone', () => {
       'has-top-level-file',
     ],
     asPropHandlesRef: true,
+    elementRefName: 'elementRef',
   });
 
   it('can use arrows vertically', () => {

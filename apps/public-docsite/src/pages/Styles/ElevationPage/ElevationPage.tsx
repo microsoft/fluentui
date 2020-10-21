@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '@fluentui/react';
-import { Markdown, Table, IPageSectionProps, MarkdownCode } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, Table, IPageSectionProps, MarkdownCode } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ElevationPageProps, depthUsage } from './ElevationPage.doc';
 import * as styles from './ElevationPage.module.scss';

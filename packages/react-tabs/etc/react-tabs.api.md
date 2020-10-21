@@ -4,13 +4,13 @@
 
 ```ts
 
-import { IButtonProps } from '@fluentui/react-internal';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
 import { IKeytipProps } from '@fluentui/react-internal';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderFunction } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)

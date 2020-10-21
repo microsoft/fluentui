@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, getSlots } from '@uifabric/foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { ICardSectionComponent, ICardSectionProps, ICardSectionSlots } from './CardSection.types';
 

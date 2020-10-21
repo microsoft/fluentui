@@ -1,7 +1,7 @@
 {
   "copyTo": {
-    "dist": [
-      "@uifabric/example-app-base/index.html",
+    "dist/demo": [
+      "@fluentui/react-docsite-components/index.html",
       "react/umd/react.development.js",
       "react-dom/umd/react-dom.development.js"
     ]

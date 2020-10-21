@@ -10,7 +10,7 @@ import {
   KeyCodes,
   mergeStyleSets,
 } from '@fluentui/react';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useBoolean, useConst } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({

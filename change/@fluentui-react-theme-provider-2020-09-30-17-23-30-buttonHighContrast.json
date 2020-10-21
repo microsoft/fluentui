@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding checked iconColor tokens.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-01T00:23:30.397Z"
+}

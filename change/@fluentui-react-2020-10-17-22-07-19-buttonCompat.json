@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Changing Button exports from the one in @fluentui/react-internal to the one in @fluentui/react-button.",
+  "packageName": "@fluentui/react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-18T05:07:19.462Z"
+}

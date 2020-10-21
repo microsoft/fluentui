@@ -5,7 +5,7 @@ import { DemoPage } from '../DemoPage';
 
 export const CardPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react-cards/Card.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react-cards/Card.page.json')}
     {...{ ...CardPageProps, ...props }}
   />
 );

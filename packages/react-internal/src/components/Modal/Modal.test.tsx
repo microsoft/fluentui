@@ -1,10 +1,20 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-
 import { Modal } from './Modal';
 import { ContextualMenu } from '../../ContextualMenu';
+import * as path from 'path';
+import { isConformant } from '../../common/isConformant';
+import { safeCreate } from '@uifabric/test-utilities';
 
 describe('Modal', () => {
+  isConformant({
+    Component: Modal,
+    displayName: 'Modal',
+    requiredProps: { isOpen: true },
+    componentPath: path.join(__dirname, 'Modal.ts'),
+    //Problem: Doesn’t currently handle a ref.
+    // Solution: Add a ref.
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+  });
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -12,23 +22,24 @@ describe('Modal', () => {
       return element;
     });
 
-    const component = renderer.create(
+    safeCreate(
       <Modal isOpen={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
       </Modal>,
+      component => {
+        expect(component.toJSON()).toMatchSnapshot();
+        ReactDOM.createPortal.mockClear();
+      },
     );
-    expect(component.toJSON()).toMatchSnapshot();
-
-    ReactDOM.createPortal.mockClear();
   });
+
   it('renders Modeless Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
-
-    const component = renderer.create(
+    safeCreate(
       <Modal
         isOpen={true}
         isModeless={true}
@@ -37,11 +48,13 @@ describe('Modal', () => {
       >
         Test Content
       </Modal>,
+      component => {
+        expect(component!.toJSON()).toMatchSnapshot();
+        ReactDOM.createPortal.mockClear();
+      },
     );
-    expect(component.toJSON()).toMatchSnapshot();
-
-    ReactDOM.createPortal.mockClear();
   });
+
   it('renders Draggable Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -49,7 +62,7 @@ describe('Modal', () => {
       return element;
     });
 
-    const component = renderer.create(
+    safeCreate(
       <Modal
         isOpen={true}
         isModeless={true}
@@ -63,9 +76,10 @@ describe('Modal', () => {
       >
         Test Content
       </Modal>,
+      component => {
+        expect(component!.toJSON()).toMatchSnapshot();
+        ReactDOM.createPortal.mockClear();
+      },
     );
-    expect(component.toJSON()).toMatchSnapshot();
-
-    ReactDOM.createPortal.mockClear();
   });
 });

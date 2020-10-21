@@ -5,7 +5,7 @@ import { PivotPageProps } from '@fluentui/react-examples/lib/react-tabs/Pivot/Pi
 
 export const PivotPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Pivot.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Pivot.page.json')}
     {...{ ...PivotPageProps, ...props }}
   />
 );
