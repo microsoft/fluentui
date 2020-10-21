@@ -95,12 +95,12 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
     // If eval-ing the code, the component can't use JSX format
     const wrapperCode = returnFunction
-      ? `React.createElement(Fabric, null, React.createElement(${component}, null))`
-      : `<Fabric><${component} /></Fabric>`;
+      ? `React.createElement(ThemeProvider, null, React.createElement(${component}, null))`
+      : `<ThemeProvider><${component} /></ThemeProvider>`;
     lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
 
-    if (identifiersByGlobal.FluentUIReact.indexOf('Fabric') === -1) {
-      identifiersByGlobal.FluentUIReact.push('Fabric');
+    if (identifiersByGlobal.FluentUIReact.indexOf('ThemeProvider') === -1) {
+      identifiersByGlobal.FluentUIReact.push('ThemeProvider');
     }
 
     if (identifiersByGlobal.FluentUIReact.indexOf('initializeIcons') === -1) {
