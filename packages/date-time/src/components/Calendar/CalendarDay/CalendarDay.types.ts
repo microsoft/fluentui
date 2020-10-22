@@ -64,7 +64,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   onDismiss?: () => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
   navigationIcons: ICalendarIconStrings;
 
@@ -78,6 +78,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
    * @defaultvalue false
    */
   showWeekNumbers?: boolean;
+
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */

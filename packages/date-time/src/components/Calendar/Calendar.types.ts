@@ -68,7 +68,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   value?: Date;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -126,7 +126,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   strings?: ICalendarStrings;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
   navigationIcons?: ICalendarIconStrings;
 

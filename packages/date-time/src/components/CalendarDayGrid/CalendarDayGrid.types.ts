@@ -22,7 +22,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   componentRef?: IRefObject<ICalendarDayGrid>;
 
   /**
-   * Customized styles for the calendar day component
+   * Customized styles for the component.
    */
   styles?: IStyleFunctionOrObject<ICalendarDayGridStyleProps, ICalendarDayGridStyles>;
 
@@ -37,7 +37,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   className?: string;
 
   /**
-   * Localized strings to use in the Calendar
+   * Localized strings to use in the CalendarDayGrid
    */
   strings: ICalendarStrings;
 
@@ -99,7 +99,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   daysToSelectInDayView?: number;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 

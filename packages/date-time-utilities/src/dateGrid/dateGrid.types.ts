@@ -76,7 +76,7 @@ export interface IDatePickerOptions extends IRestrictedDatesOptions {
   daysToSelectInDayView?: number;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 

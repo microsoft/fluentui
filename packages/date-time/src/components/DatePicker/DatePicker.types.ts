@@ -130,7 +130,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   placeholder?: string;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 

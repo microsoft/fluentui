@@ -31,7 +31,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   componentRef?: IRefObject<IWeeklyDayPicker>;
 
   /**
-   * Customized styles for the calendar day component
+   * Customized styles for the component.
    */
   styles?: IStyleFunctionOrObject<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
 
@@ -41,17 +41,17 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   theme?: ITheme;
 
   /**
-   * Additional CSS class(es) to apply to the CalendarDay.
+   * Additional CSS class(es) to apply to the WeeklyDayPicker.
    */
   className?: string;
 
   /**
-   * Localized strings to use in the Calendar
+   * Localized strings to use in the WeeklyDayPicker
    */
   strings: IWeeklyDayPickerStrings;
 
   /**
-   * Customize navigation icons. Only uses previous and next icons
+   * Customize navigation icons.
    */
   navigationIcons?: ICalendarIconStrings;
 
@@ -63,8 +63,6 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
-   * for the component.
    */
   onSelectDate?: (date: Date) => void;
 
@@ -81,7 +79,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 

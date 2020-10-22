@@ -66,12 +66,12 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
   navigationIcons?: ICalendarIconStrings;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
