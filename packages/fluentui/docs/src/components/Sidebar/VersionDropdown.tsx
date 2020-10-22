@@ -14,7 +14,17 @@ export function VersionDropdown(props: { width: number }) {
   }
 
   const items = [...JSON.parse(window.sessionStorage.fluentuiDocsiteVersions)];
-  const onChange = (_, data: DropdownProps) => (window.location.pathname = `/${data.value}`);
+
+  // We make assumptions about routing
+  // https://<domain>/<version> should be the basename for each docsite in a multi version scenario
+  const onChange = (_, data: DropdownProps) => {
+    if (window.location.pathname.split('/')[1] === currentVersion) {
+      const newPath = window.location.pathname.replace(currentVersion, data.value as string);
+      window.location.pathname = newPath;
+    } else {
+      window.location.pathname = `/${data.value}`;
+    }
+  };
 
   return (
     <Dropdown
