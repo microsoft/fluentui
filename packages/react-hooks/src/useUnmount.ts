@@ -8,7 +8,7 @@ import * as React from 'react';
 export const useUnmount = (callback: () => void) => {
   const unmountRef = React.useRef(callback);
   unmountRef.current = callback;
-  React.useLayoutEffect(
+  React.useEffect(
     () => () => {
       unmountRef.current?.();
     },
