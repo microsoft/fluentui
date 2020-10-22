@@ -63,14 +63,14 @@ if (typesContext) {
   fabricGroup.packages.push(
     // TODO: this probably needs to be dynamically generated so it doesn't break every time we
     // add a new component package exported by @fluentui/react
-    { packageName: '@fluentui/react', loadTypes },
-    { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/font-icons-mdl2', loadTypes },
+    { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/merge-styles', loadTypes },
+    { packageName: '@fluentui/react', loadTypes },
+    { packageName: '@fluentui/react-date-time-utilities', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },
-    { packageName: '@fluentui/date-time-utilities', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });

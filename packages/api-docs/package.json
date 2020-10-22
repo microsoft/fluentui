@@ -21,14 +21,17 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/fs-extra": "^8.0.1",
-    "@types/node": "^10.3.2",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@types/node": "^10.3.2"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.0-beta",
+    "@fluentui/merge-styles": "^8.0.0-beta",
     "@fluentui/react": "^8.0.0-beta",
     "@fluentui/react-button": "^1.0.0-beta",
+    "@fluentui/react-cards": "^1.0.0-beta",
     "@fluentui/react-checkbox": "^1.0.0-beta",
+    "@fluentui/react-date-time": "^8.0.0-beta",
     "@fluentui/react-focus": "^8.0.0-beta",
     "@fluentui/react-internal": "^8.0.0-beta",
     "@fluentui/react-link": "^1.0.0-beta",
@@ -36,11 +39,8 @@
     "@fluentui/react-tabs": "^1.0.0-beta",
     "@fluentui/react-theme-provider": "^1.0.0-beta",
     "@fluentui/react-toggle": "^1.0.0-beta",
-    "@fluentui/theme": "^2.0.0-beta",
-    "@uifabric/date-time": "^8.0.0-beta",
-    "@fluentui/merge-styles": "^8.0.0-beta",
-    "@fluentui/react-cards": "^1.0.0-beta",
     "@fluentui/style-utilities": "^8.0.0-beta",
+    "@fluentui/theme": "^2.0.0-beta",
     "@fluentui/utilities": "^8.0.0-beta",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",

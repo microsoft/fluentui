@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
+import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react-date-time';
 
 const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
 

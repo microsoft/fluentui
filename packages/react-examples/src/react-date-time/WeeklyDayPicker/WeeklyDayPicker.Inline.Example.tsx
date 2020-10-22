@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@uifabric/date-time';
+import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@fluentui/react-date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';

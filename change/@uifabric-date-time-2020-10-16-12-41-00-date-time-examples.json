@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Remove legacy demo app webpack config",
-  "packageName": "@uifabric/date-time",
+  "packageName": "@fluentui/react-date-time",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-16T19:41:00.519Z"

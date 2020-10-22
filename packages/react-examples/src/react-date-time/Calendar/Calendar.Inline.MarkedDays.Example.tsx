@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, ICalendarDayProps } from '@uifabric/date-time';
+import { Calendar, ICalendarDayProps } from '@fluentui/react-date-time';
 import { addDays } from '@fluentui/date-time-utilities';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {

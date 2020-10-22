@@ -6,7 +6,7 @@ export * from '@fluentui/react-link';
 export * from '@fluentui/react-slider';
 export * from '@fluentui/react-tabs';
 export * from '@fluentui/react-toggle';
-export * from '@uifabric/date-time';
+export * from '@fluentui/react-date-time';
 export * from './Breadcrumb';
 export * from './ComboBox';
 export * from './DetailsList';

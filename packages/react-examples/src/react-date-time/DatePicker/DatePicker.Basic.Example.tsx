@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption, mergeStyles } from '@fluentui/react';
-import { DatePicker, DayOfWeek } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek } from '@fluentui/react-date-time';
 
 const days: IDropdownOption[] = [
   { text: 'Sunday', key: DayOfWeek.Sunday },

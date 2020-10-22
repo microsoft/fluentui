@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar } from '@uifabric/date-time';
+import { Calendar } from '@fluentui/react-date-time';
 
 export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();

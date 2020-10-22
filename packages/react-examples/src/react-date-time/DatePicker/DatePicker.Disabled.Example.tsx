@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker } from '@uifabric/date-time';
+import { DatePicker } from '@fluentui/react-date-time';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const rootClass = mergeStyles({ maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker } from '@uifabric/date-time';
+import { DatePicker } from '@fluentui/react-date-time';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 

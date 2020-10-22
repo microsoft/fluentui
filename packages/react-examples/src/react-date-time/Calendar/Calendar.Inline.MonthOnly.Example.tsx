@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType } from '@uifabric/date-time';
+import { Calendar, DateRangeType } from '@fluentui/react-date-time';
 
 export const CalendarInlineMonthOnlyExample: React.FunctionComponent = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
