@@ -138,7 +138,7 @@
           "@fluentui/react-northstar"
         ],
         "dependencies": [
-          "@uifabric/utilities",
+          "@fluentui/utilities",
           "@fluentui/dom-utilities",
           "@fluentui/date-time-utilities"
         ]
