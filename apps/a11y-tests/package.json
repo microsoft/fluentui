@@ -34,7 +34,7 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/sarif": "^2.1.1",
-    "@uifabric/build": "^1.0.0",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta"
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta",
+    "@fluentui/scripts": "^1.0.0"
   }
 }

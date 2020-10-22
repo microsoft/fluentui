@@ -29,7 +29,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "jest": "~24.9.0",

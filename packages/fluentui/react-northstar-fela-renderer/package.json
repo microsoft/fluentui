@@ -22,7 +22,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
     "typescript": "3.7.2"

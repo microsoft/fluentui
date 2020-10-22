@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Update package version for @fluentui/react version 8 beta release.",
-  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "packageName": "@fluentui/jest-serializer-merge-styles",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-20T19:06:00.040Z"

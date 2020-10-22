@@ -31,7 +31,7 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/node": "^10.3.2",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "@fluentui/react-monaco-editor": "^1.0.0-beta",
     "react-app-polyfill": "~1.0.1",
     "write-file-webpack-plugin": "^4.1.0"

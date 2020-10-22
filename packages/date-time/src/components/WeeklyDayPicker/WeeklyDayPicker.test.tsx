@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { WeeklyDayPicker } from './WeeklyDayPicker';
 import { resetIds } from '@fluentui/utilities';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { WeeklyDayPickerStrings } from './defaults';
 import { isConformant } from '../../common/isConformant';

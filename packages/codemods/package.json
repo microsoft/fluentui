@@ -26,7 +26,7 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.8.25",
     "@types/semver": "^5.5.0"
   },

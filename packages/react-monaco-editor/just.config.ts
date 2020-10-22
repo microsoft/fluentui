@@ -1,8 +1,5 @@
-// @ts-check
-
-const { preset, just } = require('@uifabric/build');
-const { task, series, parallel, argv, condition } = just;
-const copyTypes = require('./scripts/copyTypes');
+import { preset, task, series } from '@fluentui/scripts';
+import { copyTypes } from './scripts/copyTypes';
 
 preset();
 

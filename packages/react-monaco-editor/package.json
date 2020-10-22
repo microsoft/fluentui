@@ -30,7 +30,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-syntax-highlighter": "^10.2.1",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

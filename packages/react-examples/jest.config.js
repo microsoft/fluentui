@@ -1,4 +1,4 @@
-const { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
+const { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
 const path = require('path');
 
 const config = createConfig({

@@ -11,7 +11,7 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/react-is": "^16.7.1",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
     "react-is": "^16.6.3",

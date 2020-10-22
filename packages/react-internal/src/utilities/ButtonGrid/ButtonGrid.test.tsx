@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ButtonGrid } from './ButtonGrid';
 import { getStyles } from './ButtonGrid.styles';
 import { isConformant } from '../../common/isConformant';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 
 const DEFAULT_ITEMS: any[] = [
   { id: 'a', text: '0,0' },

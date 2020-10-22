@@ -7,7 +7,7 @@ import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
 import { Callout } from '@fluentui/react-internal/lib/Callout';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { TextField } from '@fluentui/react-internal/lib/TextField';
 import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';

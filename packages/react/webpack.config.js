@@ -1,6 +1,6 @@
 // @ts-check
 const resources = require('../../scripts/webpack/webpack-resources');
-const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
+const ManifestServicePlugin = require('@fluentui/webpack-utilities/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'fluentui-react';
 

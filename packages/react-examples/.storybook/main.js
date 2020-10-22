@@ -1,5 +1,5 @@
 // @ts-check
-import custom from '@uifabric/build/storybook/webpack.config';
+import custom from '@fluentui/scripts/storybook/webpack.config';
 import * as path from 'path';
 import * as webpack from 'webpack';
 

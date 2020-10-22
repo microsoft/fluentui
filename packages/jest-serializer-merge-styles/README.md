@@ -1,4 +1,4 @@
-# @uifabric/jest-serializer-merge-styles
+# @fluentui/jest-serializer-merge-styles
 
 Provides a Jest serializer for `@fluentui/merge-styles` which expands class names into css rules.
 

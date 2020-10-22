@@ -3,7 +3,7 @@ import { Customizer } from '@fluentui/utilities';
 import { createTheme } from '@fluentui/theme';
 import { loadTheme } from '@fluentui/style-utilities';
 import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { makeStyles } from './makeStyles';

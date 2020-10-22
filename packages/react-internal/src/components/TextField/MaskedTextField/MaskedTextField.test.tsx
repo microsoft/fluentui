@@ -4,7 +4,7 @@ import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
 import { act } from 'react-dom/test-utils';
 import { MaskedTextField } from './MaskedTextField';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../../common/isConformant';
 
 describe('MaskedTextField', () => {
