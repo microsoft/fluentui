@@ -61,42 +61,6 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
 >((props, ref) => {
   const focusZone = React.useRef<FocusZone>(null);
 
-  /**
-   * Remove the first rendered item past the overflow point and put it and the end the overflow set.
-   */
-  const reduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
-    const movedItem = renderedItems[data.props.overflowIndex!];
-
-    if (!movedItem) {
-      return undefined;
-    }
-
-    data.renderedItems = [...data.renderedItems];
-    data.renderedItems.splice(data.props.overflowIndex!, 1);
-
-    data.renderedOverflowItems = [...data.renderedOverflowItems, movedItem];
-
-    return { ...data };
-  };
-
-  /**
-   * Remove the last item of the overflow set and insert the item at the start of the rendered set past the overflow
-   * point.
-   */
-  const growData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
-    data.renderedOverflowItems = [...data.renderedOverflowItems];
-    const movedItem = renderedOverflowItems.pop();
-
-    if (!movedItem || data.renderedItems.length >= data.props.maxDisplayedItems!) {
-      return undefined;
-    }
-
-    data.renderedItems = [...data.renderedItems];
-    data.renderedItems.splice(data.props.overflowIndex!, 0, movedItem);
-
-    return { ...data };
-  };
-
   const {
     items = [],
     maxDisplayedItems = 999,
@@ -264,3 +228,39 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
   );
 });
 BreadcrumbBase.displayName = COMPONENT_NAME;
+
+/**
+ * Remove the first rendered item past the overflow point and put it and the end the overflow set.
+ */
+const reduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+  const movedItem = data.renderedItems[data.props.overflowIndex!];
+
+  if (!movedItem) {
+    return undefined;
+  }
+
+  data.renderedItems = [...data.renderedItems];
+  data.renderedItems.splice(data.props.overflowIndex!, 1);
+
+  data.renderedOverflowItems = [...data.renderedOverflowItems, movedItem];
+
+  return { ...data };
+};
+
+/**
+ * Remove the last item of the overflow set and insert the item at the start of the rendered set past the overflow
+ * point.
+ */
+const growData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+  data.renderedOverflowItems = [...data.renderedOverflowItems];
+  const movedItem = data.renderedOverflowItems.pop();
+
+  if (!movedItem || data.renderedItems.length >= data.props.maxDisplayedItems!) {
+    return undefined;
+  }
+
+  data.renderedItems = [...data.renderedItems];
+  data.renderedItems.splice(data.props.overflowIndex!, 0, movedItem);
+
+  return { ...data };
+};
