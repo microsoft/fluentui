@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
 import { resetIds } from '@fluentui/react/lib/Utilities';
 
-import * as ExampleData from '@uifabric/example-data';
-import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
+import * as ExampleData from '@fluentui/example-data';
+import * as mergeStylesSerializer from '@fluentui/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');
 

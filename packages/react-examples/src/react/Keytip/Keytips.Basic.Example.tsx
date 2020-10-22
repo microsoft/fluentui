@@ -8,7 +8,7 @@ import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
-import { useKeytipRef } from '@fluentui/react/lib/KeytipData';
+import { useKeytipRef } from '@fluentui/react/lib/Keytips';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -24,6 +24,9 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
   const checkboxRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.CheckboxKeytip });
   const linkRef = useKeytipRef<HTMLAnchorElement>({ keytipProps: keytipMap.LinkKeytip });
   const toggleRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.ToggleKeytip });
+  const spinButtonRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.SpinButtonKeytip });
+  const dropdownRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.DropdownKeytip });
+  const comboboxRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.ComboBoxKeytip });
 
   return (
     <div>
@@ -34,7 +37,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
       <Pivot>
         <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
           <Stack tokens={stackTokens}>
-            <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
+            <SpinButton ref={spinButtonRef} label="Spin Button" styles={spinButtonStyles} />
             <Toggle ref={toggleRef} onText="Yes" offText="No" />
             <span>
               Go to{' '}
@@ -48,12 +51,12 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
         <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
           <Stack tokens={stackTokens}>
             <Checkbox label="Checkbox" ref={checkboxRef} />
-            <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
+            <Dropdown ref={dropdownRef} label="Dropdown" options={sampleOptions} />
           </Stack>
         </PivotItem>
 
         <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={pivotItemStyle}>
-          <ComboBox label="Combo Box" keytipProps={keytipMap.ComboBoxKeytip} options={sampleOptions} />
+          <ComboBox ref={comboboxRef} label="Combo Box" options={sampleOptions} />
         </PivotItem>
       </Pivot>
     </div>

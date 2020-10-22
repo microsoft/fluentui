@@ -7,7 +7,7 @@ import {
   IDocumentCardTitleStyles,
 } from './DocumentCardTitle.types';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef } from '@uifabric/utilities';
+import { initializeComponentRef } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 

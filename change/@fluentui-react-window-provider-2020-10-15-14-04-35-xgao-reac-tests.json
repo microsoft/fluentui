@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix version.ts to have correct package name. ",
   "packageName": "@fluentui/react-window-provider",
   "email": "xgao@microsoft.com",

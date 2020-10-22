@@ -10,7 +10,7 @@ import {
   IFacepileProps,
 } from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const facepilePersonas = [
   {

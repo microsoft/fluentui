@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SignalField, SignalFieldMode, YouCheckedOutSignal, AwaitingApprovalSignal } from '@fluentui/react-experiments';
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 import { Checkbox } from '@fluentui/react';
 
 export interface ISignalFieldBasicExampleState {

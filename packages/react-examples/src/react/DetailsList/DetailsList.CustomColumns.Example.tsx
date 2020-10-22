@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { Link } from '@fluentui/react/lib/Link';
 import { Image, ImageFit } from '@fluentui/react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';

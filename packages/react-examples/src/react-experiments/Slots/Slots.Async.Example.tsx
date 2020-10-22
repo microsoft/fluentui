@@ -5,7 +5,7 @@ import {
   ICollapsibleSectionTitleStylesReturnType,
 } from '@fluentui/react-experiments';
 import { ITextProps, Label, Spinner } from '@fluentui/react';
-import { ISlotRender, IHTMLSlot } from '@uifabric/foundation';
+import { ISlotRender, IHTMLSlot } from '@fluentui/foundation-legacy';
 
 // Mock async data container component
 interface IAsyncDataProps {

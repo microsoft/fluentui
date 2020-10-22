@@ -1,17 +1,18 @@
 // @ts-check
 import * as React from 'react';
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withCompatKeytipLayer, withKeytipLayer, withStrictMode, withThemeProvider } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode, withThemeProvider } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withA11y());
 addDecorator(withKnobs({ escapeHTML: false }));
+addDecorator(withKeytipLayer);
 if (
   [
     'react-button',
@@ -28,10 +29,7 @@ if (
   addDecorator(withThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react'].includes('PACKAGE_NAME')) {
-  addDecorator(withKeytipLayer);
-  addDecorator(withCompatKeytipLayer);
-}
+
 addParameters({
   a11y: {
     manual: true,

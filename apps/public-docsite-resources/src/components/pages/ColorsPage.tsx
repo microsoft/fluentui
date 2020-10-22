@@ -3,7 +3,7 @@ import './ColorsPage.global.scss';
 
 import { Async } from '@fluentui/react/lib/Utilities';
 import { loadTheme } from '@fluentui/react/lib/Styling';
-import { CodepenComponent } from '@uifabric/example-app-base';
+import { CodepenComponent } from '@fluentui/react-docsite-components';
 import { IColor, getContrastRatio, isDark } from '@fluentui/react/lib/Color';
 
 import {
@@ -15,7 +15,7 @@ import {
   IThemeRules,
 } from '@fluentui/react/lib/ThemeGenerator';
 
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 

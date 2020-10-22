@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { ChicletBasicExample } from './Chiclet.Basic.Example';
 const ChicletBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Chiclet/Chiclet.Basic.Example.tsx') as string;

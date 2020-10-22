@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, omit } from '@uifabric/utilities';
+import { getNativeElementProps, omit } from '@fluentui/utilities';
 import { GenericDictionary } from './types';
 import { nullRender } from './nullRender';
 

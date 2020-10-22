@@ -4,11 +4,10 @@
 
 ```ts
 
-import { IComponentAs } from '@uifabric/utilities';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
+import { IComponentAs } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
@@ -27,8 +26,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
     label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;

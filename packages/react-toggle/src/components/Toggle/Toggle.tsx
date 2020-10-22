@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@uifabric/utilities';
+import { styled } from '@fluentui/utilities';
 import { ToggleBase } from './Toggle.base';
 import { getStyles } from './Toggle.styles';
 import { IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';

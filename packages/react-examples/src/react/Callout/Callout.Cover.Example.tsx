@@ -8,7 +8,7 @@ import {
   FontWeights,
   Text,
 } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const DIRECTION_OPTIONS = [

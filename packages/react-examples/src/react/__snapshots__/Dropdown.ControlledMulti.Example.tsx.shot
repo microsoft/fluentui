@@ -125,6 +125,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           border-color: #a4262c;
         }
     data-is-focusable={true}
+    data-ktp-target={true}
     id="Dropdown0"
     onBlur={[Function]}
     onChange={[Function]}

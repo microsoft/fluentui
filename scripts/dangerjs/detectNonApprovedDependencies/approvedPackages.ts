@@ -103,6 +103,7 @@ export default [
   'scheduler@0.13.6',
   'stylis@3.5.4',
   'stylis-plugin-rtl@1.0.0',
+  'tslib@1.10.0',
   'webpack@4.25.1',
 ];
 

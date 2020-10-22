@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Async, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
-import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@uifabric/react-hooks';
+import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
 
 const RESIZE_DELAY = 16;

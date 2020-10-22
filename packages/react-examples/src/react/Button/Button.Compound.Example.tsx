@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CompoundButton, Stack, IStackTokens } from '@fluentui/react';
+import { Stack, IStackTokens } from '@fluentui/react';
+import { CompoundButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

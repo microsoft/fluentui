@@ -1,7 +1,7 @@
 import Project from '@lerna/project';
 import PackageGraph from '@lerna/package-graph';
-import config from '@uifabric/build/config';
-import sh from '@uifabric/build/gulp/sh';
+import config from '@fluentui/scripts/config';
+import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 

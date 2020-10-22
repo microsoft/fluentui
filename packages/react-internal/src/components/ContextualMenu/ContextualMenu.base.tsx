@@ -47,7 +47,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
+import { useTarget, usePrevious, useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
@@ -57,7 +57,6 @@ const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemSt
 export interface IContextualMenuState {
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   positions?: any;
   slideDirectionalClassName?: string;
   subMenuId?: string;
@@ -189,10 +188,15 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
+  HTMLDivElement,
+  IContextualMenuProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
-  const hostElement = React.useRef<HTMLDivElement>(null);
+  const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+
   const [targetRef, targetWindow] = useTarget(hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
@@ -220,7 +224,7 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
       responsiveMode={responsiveMode}
     />
   );
-};
+});
 ContextualMenuBase.displayName = 'ContextualMenuBase';
 
 interface IContextualMenuInternalProps extends IContextualMenuProps {
@@ -276,7 +280,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     this._isScrollIdle = true;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
@@ -342,7 +345,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, hostElement, onMenuFocusCapture },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement },
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -436,12 +439,12 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           directionalHintFixed={directionalHintFixed}
           alignTargetEdge={alignTargetEdge}
           hidden={this.props.hidden}
+          ref={hostElement}
         >
           <div
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            ref={hostElement}
             id={id}
             className={this._classNames.container}
             tabIndex={shouldFocusOnContainer ? 0 : -1}
@@ -1066,7 +1069,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }, NavigationIdleDelay);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -1075,7 +1077,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     this._updateFocusOnMouseEvent(item, ev, target);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
     const { shouldUpdateFocusOnMouseEvent, gotMouseMove, targetWindow } = this.props.hoisted;
@@ -1102,7 +1103,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     return !this._isScrollIdle || !this.props.hoisted.gotMouseMove.current;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     const { expandedMenuItemKey, hostElement } = this.props.hoisted;
 
@@ -1124,10 +1124,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((hostElement.current as any).setActive) {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (hostElement.current as any).setActive();
       } catch (e) {
         /* no-op */
@@ -1255,7 +1253,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
     const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
 
@@ -1333,7 +1330,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    * from calling setState() after unmount. Do NOT copy this pattern in synchronous
    * code.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);

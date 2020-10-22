@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Update npmignore",
-  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "packageName": "@fluentui/jest-serializer-merge-styles",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-15T08:59:53.896Z"

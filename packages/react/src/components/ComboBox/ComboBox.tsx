@@ -25,12 +25,11 @@ import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
-import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 export interface IComboBoxState {
   /** The open state */
@@ -390,7 +389,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       allowFreeform,
       styles: customStyles,
       theme,
-      keytipProps,
       persistMenu,
       multiSelect,
       hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
@@ -434,15 +432,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           !!hasErrorMessage,
         );
 
-    const comboBoxWrapper = keytipProps ? (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (keytipAttributes: any): JSX.Element =>
-          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)}
-      </KeytipData>
-    ) : (
-      this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId)
-    );
+    const comboBoxWrapper = this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId);
 
     return (
       <div {...divProps} ref={this.props.hoisted.mergedRootRef} className={this._classNames.container}>
@@ -536,8 +526,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    keytipAttributes: any = {},
   ): JSX.Element => {
     const {
       label,
@@ -570,13 +558,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     return (
       <div
-        data-ktp-target={keytipAttributes['data-ktp-target']}
+        data-ktp-target={true}
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
       >
         <Autofill
-          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          data-ktp-execute-target={true}
           data-is-interactable={!disabled}
           componentRef={this._autofill}
           id={this._id + '-input'}
@@ -596,9 +584,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-labelledby={label && this._id + '-label'}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
-            errorMessage !== undefined
-              ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
-              : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+            errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
           }
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}
@@ -996,7 +982,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _setSelectedIndex(
     index: number,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     submitPendingValueEvent: React.SyntheticEvent<any>,
     searchDirection: SearchDirection = SearchDirection.none,
   ): void {
@@ -1169,7 +1154,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Submit a pending value if there is one
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _submitPendingValue(submitPendingValueEvent: React.SyntheticEvent<any>): void {
     const {
       onChange,
@@ -1628,11 +1612,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemClick(item: IComboBoxOption): (ev: React.MouseEvent<any>) => void {
     const { onItemClick } = this.props;
     const { index } = item;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (ev: React.MouseEvent<any>): void => {
       onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);

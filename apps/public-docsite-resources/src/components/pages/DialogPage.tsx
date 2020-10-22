@@ -4,7 +4,7 @@ import { DialogPageProps } from '@fluentui/react-examples/lib/react/Dialog/Dialo
 
 export const DialogPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Dialog.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Dialog.page.json')}
     {...{ ...DialogPageProps, ...props }}
   />
 );

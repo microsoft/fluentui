@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
   "packageName": "@fluentui/react-theme-provider",
   "email": "elcraig@microsoft.com",

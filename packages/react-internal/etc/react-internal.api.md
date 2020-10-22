@@ -6,50 +6,44 @@
 
 import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { EventGroup } from '@uifabric/utilities';
+import { EventGroup } from '@fluentui/utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { IBaseProps } from '@uifabric/utilities';
-import { IComponent } from '@uifabric/foundation';
-import { IComponentAs } from '@uifabric/utilities';
-import { IComponentStyles } from '@uifabric/foundation';
-import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IBaseProps } from '@fluentui/utilities';
+import { IComponent } from '@fluentui/foundation-legacy';
+import { IComponentAs } from '@fluentui/utilities';
+import { IComponentStyles } from '@fluentui/foundation-legacy';
+import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
-import { IHTMLSlot } from '@uifabric/foundation';
-import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
+import { IHTMLSlot } from '@fluentui/foundation-legacy';
+import { IObjectWithKey } from '@fluentui/utilities';
+import { IPoint } from '@fluentui/utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
-import { IRectangle } from '@uifabric/utilities';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderComponent } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
-import { ISelection } from '@uifabric/utilities';
-import { ISelectionOptions } from '@uifabric/utilities';
-import { ISlotProp } from '@uifabric/foundation';
-import { ISlottableProps } from '@uifabric/foundation';
+import { IRectangle } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderComponent } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
+import { ISelection } from '@fluentui/utilities';
+import { ISelectionOptions } from '@fluentui/utilities';
+import { ISlotProp } from '@fluentui/foundation-legacy';
+import { ISlottableProps } from '@fluentui/foundation-legacy';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleableComponentProps } from '@uifabric/foundation';
-import { IStyleFunction } from '@uifabric/utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import { IStyleFunction } from '@fluentui/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import { KeyCodes } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { KeyCodes } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { Rectangle } from '@uifabric/utilities';
-import { Selection } from '@uifabric/utilities';
-import { SELECTION_CHANGE } from '@uifabric/utilities';
-import { SelectionDirection } from '@uifabric/utilities';
-import { SelectionMode } from '@uifabric/utilities';
-import { Target } from '@uifabric/react-hooks';
-
-// @public (undocumented)
-export class ActionButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+import { Rectangle } from '@fluentui/utilities';
+import { Selection } from '@fluentui/utilities';
+import { SELECTION_CHANGE } from '@fluentui/utilities';
+import { SelectionDirection } from '@fluentui/utilities';
+import { SelectionMode } from '@fluentui/utilities';
+import { Target } from '@fluentui/react-hooks';
 
 // @public (undocumented)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
@@ -104,27 +98,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     readonly value: string;
 }
-
-// @public (undocumented)
-export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
-    constructor(props: IBaseButtonProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Partial<IBaseButtonProps>;
-    // (undocumented)
-    dismissMenu(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    openMenu(shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -444,36 +417,11 @@ export enum BaseSlots {
 // @public
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
 
-// @public @deprecated
-export class Button extends React.Component<IButtonProps, {}> {
-    constructor(props: IButtonProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 // @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
 export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
-
-// @public (undocumented)
-export enum ButtonType {
-    // (undocumented)
-    command = 4,
-    // (undocumented)
-    compound = 3,
-    // (undocumented)
-    default = 6,
-    // (undocumented)
-    hero = 2,
-    // (undocumented)
-    icon = 5,
-    // (undocumented)
-    normal = 0,
-    // (undocumented)
-    primary = 1
-}
 
 // @public (undocumented)
 export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
@@ -562,15 +510,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     }
 
 // @public (undocumented)
-export class CommandBarButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export const CommandButton: typeof ActionButton;
-
-// @public (undocumented)
 export const CompactPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
 // @public
@@ -582,12 +521,6 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
     };
 }
 
-// @public (undocumented)
-export class CompoundButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 // @public
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void;
 
@@ -595,10 +528,7 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export const ContextualMenuBase: {
-    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
-    displayName: string;
-};
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps>;
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -685,12 +615,6 @@ export { DayOfWeek }
 export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
-export class DefaultButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
 export const Dialog: React.FunctionComponent<IDialogProps>;
 
 // @public (undocumented)
@@ -767,12 +691,6 @@ export class DragDropHelper implements IDragDropHelper {
 }
 
 // @public (undocumented)
-export enum ElementType {
-    anchor = 1,
-    button = 0
-}
-
-// @public (undocumented)
 export const ExpandingCard: React.FunctionComponent<IExpandingCardProps>;
 
 // @public (undocumented)
@@ -811,7 +729,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
@@ -961,9 +879,6 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
-
-// @public (undocumented)
-export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1119,20 +1034,6 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 export interface IAutofillState {
     // (undocumented)
     inputValue: string;
-}
-
-// @public (undocumented)
-export interface IBaseButtonProps extends IButtonProps {
-    // (undocumented)
-    baseClassName?: string;
-    // (undocumented)
-    variantClassName?: string;
-}
-
-// @public (undocumented)
-export interface IBaseButtonState {
-    // (undocumented)
-    menuHidden: boolean;
 }
 
 // @public (undocumented)
@@ -1350,13 +1251,6 @@ export interface IBaseSelectedItemsListState<T> {
 }
 
 // @public (undocumented)
-export interface IButton {
-    dismissMenu: () => void;
-    focus: () => void;
-    openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
-}
-
-// @public (undocumented)
 export interface IButtonGrid {
 }
 
@@ -1416,122 +1310,6 @@ export interface IButtonGridStyles {
     focusedContainer?: IStyle;
     root: IStyle;
     tableCell: IStyle;
-}
-
-// @public (undocumented)
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
-    allowDisabledFocus?: boolean;
-    ariaDescription?: string;
-    ariaHidden?: boolean;
-    ariaLabel?: string;
-    // @deprecated
-    buttonType?: ButtonType;
-    checked?: boolean;
-    className?: string;
-    componentRef?: IRefObject<IButton>;
-    data?: any;
-    defaultRender?: any;
-    // @deprecated
-    description?: IStyle;
-    disabled?: boolean;
-    // @deprecated
-    elementRef?: React.Ref<HTMLElement>;
-    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
-    getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
-    href?: string;
-    iconProps?: IIconProps;
-    keytipProps?: IKeytipProps;
-    menuAs?: IComponentAs<IContextualMenuProps>;
-    menuIconProps?: IIconProps;
-    menuProps?: IContextualMenuProps;
-    menuTriggerKeyCode?: KeyCodes | null;
-    onAfterMenuDismiss?: () => void;
-    onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
-    onRenderAriaDescription?: IRenderFunction<IButtonProps>;
-    onRenderChildren?: IRenderFunction<IButtonProps>;
-    onRenderDescription?: IRenderFunction<IButtonProps>;
-    onRenderIcon?: IRenderFunction<IButtonProps>;
-    // @deprecated
-    onRenderMenu?: IRenderFunction<IContextualMenuProps>;
-    onRenderMenuIcon?: IRenderFunction<IButtonProps>;
-    onRenderText?: IRenderFunction<IButtonProps>;
-    persistMenu?: boolean;
-    primary?: boolean;
-    primaryActionButtonProps?: IButtonProps;
-    primaryDisabled?: boolean;
-    // @deprecated
-    renderPersistedMenuHiddenOnMount?: boolean;
-    // @deprecated
-    rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
-    secondaryText?: string;
-    split?: boolean;
-    splitButtonAriaLabel?: string;
-    splitButtonMenuProps?: IButtonProps;
-    styles?: IButtonStyles;
-    text?: string;
-    theme?: ITheme;
-    toggle?: boolean;
-    // @deprecated
-    toggled?: boolean;
-    uniqueId?: string | number;
-}
-
-// @public (undocumented)
-export interface IButtonStyles {
-    description?: IStyle;
-    descriptionChecked?: IStyle;
-    descriptionDisabled?: IStyle;
-    descriptionHovered?: IStyle;
-    descriptionPressed?: IStyle;
-    flexContainer?: IStyle;
-    icon?: IStyle;
-    iconChecked?: IStyle;
-    iconDisabled?: IStyle;
-    iconExpanded?: IStyle;
-    iconExpandedHovered?: IStyle;
-    iconHovered?: IStyle;
-    iconPressed?: IStyle;
-    label?: IStyle;
-    labelChecked?: IStyle;
-    labelDisabled?: IStyle;
-    labelHovered?: IStyle;
-    menuIcon?: IStyle;
-    menuIconChecked?: IStyle;
-    menuIconDisabled?: IStyle;
-    menuIconExpanded?: IStyle;
-    menuIconExpandedHovered?: IStyle;
-    menuIconHovered?: IStyle;
-    menuIconPressed?: IStyle;
-    root?: IStyle;
-    rootChecked?: IStyle;
-    rootCheckedDisabled?: IStyle;
-    rootCheckedHovered?: IStyle;
-    rootCheckedPressed?: IStyle;
-    rootDisabled?: IStyle;
-    rootExpanded?: IStyle;
-    rootExpandedHovered?: IStyle;
-    rootFocused?: IStyle;
-    rootHasMenu?: IStyle;
-    rootHovered?: IStyle;
-    rootPressed?: IStyle;
-    screenReaderText?: IStyle;
-    secondaryText?: IStyle;
-    splitButtonContainer?: IStyle;
-    splitButtonContainerChecked?: IStyle;
-    splitButtonContainerCheckedHovered?: IStyle;
-    splitButtonContainerDisabled?: IStyle;
-    splitButtonContainerFocused?: IStyle;
-    splitButtonContainerHovered?: IStyle;
-    splitButtonDivider?: IStyle;
-    splitButtonDividerDisabled?: IStyle;
-    splitButtonFlexContainer?: IStyle;
-    splitButtonMenuButton?: IStyle;
-    splitButtonMenuButtonChecked?: IStyle;
-    splitButtonMenuButtonDisabled?: IStyle;
-    splitButtonMenuButtonExpanded?: IStyle;
-    splitButtonMenuIcon?: IStyle;
-    splitButtonMenuIconDisabled?: IStyle;
-    textContainer?: IStyle;
 }
 
 // @public (undocumented)
@@ -1710,7 +1488,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 }
 
 // @public (undocumented)
-export interface ICheckProps {
+export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
@@ -2172,6 +1950,7 @@ export interface ICommandBarData {
 
 // @public
 export interface ICommandBarItemProps extends IContextualMenuItem {
+    // Warning: (ae-forgotten-export) The symbol "IButtonStyles" needs to be exported by the entry point index.d.ts
     buttonStyles?: IButtonStyles;
     cacheKey?: string;
     commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
@@ -2194,6 +1973,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     onGrowData?: (data: ICommandBarData) => ICommandBarData | undefined;
     onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
+    // Warning: (ae-forgotten-export) The symbol "IButtonProps" needs to be exported by the entry point index.d.ts
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
     shiftOnReduce?: boolean;
@@ -2225,12 +2005,6 @@ export const Icon: React.FunctionComponent<IIconProps>;
 // @public (undocumented)
 export class IconBase extends React.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export class IconButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
@@ -2382,7 +2156,7 @@ export interface IContextualMenuListProps {
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
@@ -3652,6 +3426,8 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
+    // Warning: (ae-forgotten-export) The symbol "BaseButton" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "Button" needs to be exported by the entry point index.d.ts
     onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
@@ -4682,6 +4458,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     onEscape?: (ev?: any) => void;
     onSearch?: (newValue: any) => void;
     placeholder?: string;
+    role?: string;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
@@ -5012,7 +4789,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -5111,20 +4888,6 @@ export interface ISpinnerStyles {
     label?: IStyle;
     root?: IStyle;
     screenReaderText?: IStyle;
-}
-
-// @public (undocumented)
-export interface ISplitButtonClassNames {
-    // (undocumented)
-    divider?: string;
-    // (undocumented)
-    flexContainer?: string;
-    // (undocumented)
-    icon?: string;
-    // (undocumented)
-    root?: string;
-    // (undocumented)
-    splitButtonContainer?: string;
 }
 
 // @public (undocumented)
@@ -6096,12 +5859,6 @@ export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
 export enum MessageBarType {
     blocked = 2,
     error = 1,
@@ -6445,12 +6202,6 @@ export const presenceBoolean: (presence: PersonaPresence) => {
     isDoNotDisturb: boolean;
     isOffline: boolean;
 };
-
-// @public (undocumented)
-export class PrimaryButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
 
 // @public
 export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>;
@@ -6890,6 +6641,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     focusBelowSuggestions(): void;
     // (undocumented)
     focusSearchForMoreButton(): void;
+    // Warning: (ae-forgotten-export) The symbol "IButton" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     protected _forceResolveButton: React.RefObject<IButton>;
     // (undocumented)
@@ -7241,12 +6994,12 @@ export enum ValidationState {
 export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 
+export * from "@fluentui/font-icons-mdl2";
 export * from "@fluentui/react-focus";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
-export * from "@uifabric/icons";
-export * from "@uifabric/utilities";
+export * from "@fluentui/utilities";
 
 // Warnings were encountered during analysis:
 //

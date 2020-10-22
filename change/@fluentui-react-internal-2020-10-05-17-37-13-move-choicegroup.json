@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Move ChoiceGroup v8 changes to react",
   "packageName": "@fluentui/react-internal",
   "email": "elcraig@microsoft.com",

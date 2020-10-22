@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown, ColorPalette, IPageSectionProps, IColorSwatch } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, ColorPalette, IPageSectionProps, IColorSwatch } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsPersonasPageProps } from './PersonasPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';

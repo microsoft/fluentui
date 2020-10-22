@@ -1,5 +1,5 @@
 import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
 
 describe('registerOnThemeChangeCallback', () => {

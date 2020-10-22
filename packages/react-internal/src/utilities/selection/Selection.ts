@@ -1,1 +1,1 @@
-export { ISelectionOptions, Selection } from '@uifabric/utilities';
+export { ISelectionOptions, Selection } from '@fluentui/utilities';

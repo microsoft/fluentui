@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { ReactWrapper, mount } from 'enzyme';
 
 import { SpinButton } from './SpinButton';
@@ -31,6 +31,9 @@ describe('SpinButton', () => {
   isConformant({
     Component: SpinButton,
     displayName: 'SpinButton',
+    // Problem: Doesn’t handle ref.
+    // Solution: https://github.com/microsoft/fluentui/pull/15431
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   it('renders correctly', () => {

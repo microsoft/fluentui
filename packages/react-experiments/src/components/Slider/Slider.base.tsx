@@ -13,7 +13,7 @@ import { classNamesFunction, getNativeProps, divProperties } from '../../Utiliti
 import { Label } from '@fluentui/react/lib/Label';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { Async, EventGroup, FocusRects } from '@uifabric/utilities';
+import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
 export interface ISliderState {
   value?: number;
   renderedValue?: number;

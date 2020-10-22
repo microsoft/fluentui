@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Stack, Link, ILinkStyleProps, ILinkStyles, PrimaryButton, ITheme, IStackProps } from '@fluentui/react';
+import { Stack, Link, ILinkStyleProps, ILinkStyles, ITheme, IStackProps } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { CodepenComponent } from '@uifabric/example-app-base';
+import { mergeStyles } from '@fluentui/merge-styles';
+import { CodepenComponent } from '@fluentui/react-docsite-components';
 
 export interface IHeaderProps {
   themeRules?: IThemeRules;
@@ -57,20 +58,18 @@ const codepenHeader = `const {
   Checkbox,
   DefaultButton,
   Fabric,
-  loadTheme,
   Pivot,
   PivotItem,
   PrimaryButton,
   Stack,
   Toggle,
+  ThemeProvider
 } = FluentUIReact;\n\n`;
 const codepenSamples = `\n\n
 
-loadTheme(myTheme);\n
-
 const Content = () => {
     return (
-      <Fabric applyThemeToBody>
+      <ThemeProvider applyTo='body' theme={myTheme}>
         <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
           <Pivot>
             <PivotItem headerText="Home" />
@@ -87,7 +86,7 @@ const Content = () => {
           <Checkbox label="Checkbox"/>
           <Checkbox checked label="Checkbox Checked" />
         </Stack>
-      </Fabric>
+      </ThemeProvider>
     );
 }
 ReactDOM.render(<Content />,document.getElementById('content'));`;

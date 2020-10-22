@@ -1,4 +1,4 @@
-# @uifabric/react-hooks
+# @fluentui/react-hooks
 
 **[Fluent UI React](https://developer.microsoft.com/en-us/fluentui) hooks**
 
@@ -39,7 +39,7 @@ Each callback will always have the same identity.
 ### Example
 
 ```jsx
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const [value, { setTrue: showDialog, setFalse: hideDialog, toggle: toggleDialogVisible }] = useBoolean(false);
@@ -68,7 +68,7 @@ If the value should ever change based on dependencies, use `React.useMemo` inste
 ### Example
 
 ```jsx
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const value = useConst(() => {
@@ -153,7 +153,7 @@ Useful for cases in which a component may be rendered multiple times on the same
 ### Example
 
 ```jsx
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const TextField = ({ labelText, defaultValue }) => {
   const id = useId('field');
@@ -198,7 +198,7 @@ function useOnEvent<TElement extends Element, TEvent extends Event>(
 ): void;
 ```
 
-Attach an event handler on mount and handle cleanup. The event handler is attached using `on()` from `@uifabric/utilities`.
+Attach an event handler on mount and handle cleanup. The event handler is attached using `on()` from `@fluentui/utilities`.
 
 ## usePrevious
 
@@ -225,7 +225,7 @@ The return value is a function that should be called to set the ref's value. The
 ### Example
 
 ```tsx
-import { useRefEffect } from '@uifabric/react-hooks';
+import { useRefEffect } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const myDivRef = useRefEffect<HTMLElement>(myDiv => {
@@ -258,7 +258,7 @@ The returned callbacks always have the same identity.
 ### Example
 
 ```jsx
-import { useSetInterval } from '@uifabric/react-hooks';
+import { useSetInterval } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const { setInterval, clearInterval } = useSetInterval();
@@ -287,7 +287,7 @@ The returned callbacks always have the same identity.
 ### Example
 
 ```jsx
-import { useSetTimeout } from '@uifabric/react-hooks';
+import { useSetTimeout } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const { setTimeout, clearTimeout } = useSetTimeout();

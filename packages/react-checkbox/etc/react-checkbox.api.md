@@ -5,11 +5,10 @@
 ```ts
 
 import { IIconProps } from '@fluentui/react-internal/lib/Icon';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
@@ -43,7 +42,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    keytipProps?: IKeytipProps;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;

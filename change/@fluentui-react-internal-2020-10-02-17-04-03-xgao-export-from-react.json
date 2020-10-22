@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Export @fluentui/theme and react-theme-provider. Remove Foundation exports.",
   "packageName": "@fluentui/react-internal",
   "email": "xgao@microsoft.com",
