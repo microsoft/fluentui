@@ -212,15 +212,15 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
       updatedItems.push(item);
     }
 
-    if (lastChar == ';' || lastChar == ',') {
+    if (lastChar === ';' || lastChar === ',') {
       const pastedText = splitPasteInputIntoRecipientStrings(filterText);
-      pastedText.forEach(function(itemText) {
+      pastedText.forEach(itemText => {
         let result;
         const extractedText = itemText.substring(0, lastCharIndex);
         // We need to do an exact match
 
         allPeople.forEach((item: IPersonaProps) => {
-          if (item.text?.toLowerCase() == extractedText.toLowerCase()) {
+          if (item.text?.toLowerCase() === extractedText.toLowerCase()) {
             result = item;
           }
         });
