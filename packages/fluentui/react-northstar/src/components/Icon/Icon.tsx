@@ -229,6 +229,15 @@ const iconPatchedShorthandFactory: ShorthandFactory<IconProps> = (value, options
   return iconOriginalShorthandFactory(value, options);
 };
 
+// The mappedShorthandProp in docs will not generate correctly
+// unless an explicit call to `createShorthandFactory`is present
+// Absence of this shorthand property in componentInfo will crash multiple docs pages
+Icon.create = createShorthandFactory({
+  Component: Icon,
+  mappedProp: 'name',
+  allowsJSX: false,
+});
+
 Icon.create = iconPatchedShorthandFactory;
 
 /**
