@@ -8,7 +8,7 @@ let focusableElements = {};
 let elementsPaths = [];
 let selectedElementPath = null;
 let prevNarrationElement = null;
-const aomMissing = window.hasOwnProperty('getComputedAccessibleNode');
+const aomMissing = !window.hasOwnProperty('getComputedAccessibleNode');
 
 export type ReaderNarrationProps = {
   selector: string;
