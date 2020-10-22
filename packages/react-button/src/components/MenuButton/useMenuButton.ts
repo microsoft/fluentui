@@ -9,7 +9,7 @@ export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
 /**
  * Redefine the component factory, reusing button factory.
  */
-export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps) => {
+export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement>) => {
   // Note: because menu button's template and slots are different, we can't reuse
   // those, but the useMenuButtonState hook can reuse useButtonState.
   const state = mergeProps(
@@ -21,7 +21,6 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       menuIcon: { as: 'span' },
       menu: { as: 'span' },
     },
-    defaultProps,
     resolveShorthandProps(props, menuButtonShorthandProps),
   ) as MenuButtonState;
 

@@ -8,6 +8,24 @@ const { isArray } = Array;
 const { keys } = Object;
 const isObject = (val: undefined | null | object): boolean => val !== null && typeof val === 'object' && !isArray(val);
 
+// // concat className
+// // merge style|(icon) (deep)
+// // other = replace
+//
+// const classNames = () => null;
+// const deepMerge = () => null;
+//
+// const newState = {
+//   ...state,
+//   className: classNames(state.className, props.className),
+//   styles: deepMerge(state.styles, props.styles),
+//   icon: {
+//     ...deepMerge(state.icon, props.icon),
+//     className: classNames(state.icon.className, props.icon.className),
+//   },
+//   content: deepMerge(state.content, props.content),
+// };
+
 /**
  * Helper which deep clones props, but respectively assigns JSX, object refs, and class names
  * appropriately.
@@ -27,24 +45,33 @@ export const mergeProps = <TState = GenericDictionary>(
     for (const key of keys(props)) {
       const val = props[key];
 
+      if (typeof val === 'function') {
+        console.log('function');
+        target[key] = val;
+        continue;
+      }
+
+      if (React.isValidElement(val)) {
+        console.log('jsx', val);
+        target[key] = val;
+        continue;
+      }
+
       // Heads Up!
       // We encounter className as a key of propTypes but it is a checker fn
       // Do not stringify function values, check that val is not a checker function.
       // TODO: We actually never can know which `className` keys are safe to merge.
       //       The key alone is not enough to know that it is an HTML className attribute that needs merged.
       //       It could be some config for example, at any level of the tree.
-      if (key === 'className' && typeof val !== 'function') {
+      if (key === 'className') {
+        console.log('className');
         target[key] = css(target[key], val);
-        continue;
-      }
-
-      if (React.isValidElement(val)) {
-        target[key] = val;
         continue;
       }
 
       // TODO: improve React Ref Object check here, can we use react-is?
       if (ReactIs.isForwardRef(val) || (isObject(val) && val.hasOwnProperty('current') && keys(val).length === 1)) {
+        console.log('ref');
         target[key] = val;
         continue;
       }
@@ -52,6 +79,7 @@ export const mergeProps = <TState = GenericDictionary>(
       // if (key === 'style' || (isObject(val) && deepMerge.includes(key))) {
       // 1: { foo: target.bar }
       if (isObject(val)) {
+        console.log('object');
         target[key] = target[key] || {};
 
         // TODO: this should preserve mutation of target but encounters infinite loop when doing so
@@ -62,6 +90,7 @@ export const mergeProps = <TState = GenericDictionary>(
         continue;
       }
 
+      console.log('unknown', typeof val);
       target[key] = val;
     }
   }

@@ -2,6 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
+report.*.json
 packages/fluentui/*/componentInfo
 packages/fluentui/docs/src/componentInfo
 packages/fluentui/docs/src/componentMenu.json

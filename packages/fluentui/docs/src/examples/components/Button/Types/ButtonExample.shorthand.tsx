@@ -7,7 +7,7 @@ const ButtonExample = () => (
     //   icon: null,
     // }}
     // icon={null}
-    content="Click Here"
+    content={{ children: 'Click Here' }}
   />
 );
 

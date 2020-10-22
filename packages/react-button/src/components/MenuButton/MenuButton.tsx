@@ -7,9 +7,8 @@ import { useButtonClasses } from '../Button/index';
 import { useMenuButtonClasses } from './useMenuButtonClasses';
 
 export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props, ref) => {
-  const { state, render } = useMenuButton(props, ref, {
-    menuIcon: { as: ChevronDownIcon },
-  });
+  const { state, render } = useMenuButton(props, ref);
+  state.menuIcon = { ...state.menuIcon, as: ChevronDownIcon };
 
   useButtonClasses(state);
   useMenuButtonClasses(state);

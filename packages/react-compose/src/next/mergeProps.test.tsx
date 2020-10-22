@@ -18,6 +18,12 @@ describe('makeMergeProps', () => {
     });
   });
 
+  it('adds new JSX values ', () => {
+    expect(mergeProps({}, { icon: <span data-one /> })).toEqual({
+      icon: <span data-one />,
+    });
+  });
+
   it('replaces ref object and does not merge', () => {
     const ref: React.MutableRefObject<{ foo: boolean } | null> = React.createRef();
     ref.current = { foo: true };

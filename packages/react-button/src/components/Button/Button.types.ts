@@ -94,6 +94,7 @@ export type ButtonProps = ComponentProps &
 
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
+  components: { [key: string]: string | React.ComponentType };
 }
 
 export type ButtonTokens = ColorTokens &

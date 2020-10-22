@@ -7,25 +7,33 @@ import { NullRender } from '../resolveSlotProps';
  * @param props - The incoming props
  * @param shorthandPropNames - An array of prop names to apply simplification to
  */
-export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]) => {
-  let newProps = props;
+export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]): TProps => {
+  if (shorthandPropNames.length === 0) {
+    return props;
+  }
 
-  if (shorthandPropNames && shorthandPropNames.length) {
-    newProps = {
-      ...props,
-    };
-    for (const propName of shorthandPropNames) {
-      const propValue = props[propName];
+  const newProps: TProps = { ...props };
 
-      if (propValue !== undefined && (typeof propValue !== 'object' || React.isValidElement(propValue))) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (newProps as any)[propName] = { children: propValue };
-      } else if (propValue === null) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (newProps as any).components = (newProps as any).components || {};
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (newProps as any).components[propName] = NullRender;
-      }
+  for (const propName of shorthandPropNames) {
+    const propValue = props[propName];
+
+    if (typeof propValue === 'undefined') {
+      continue;
+    }
+
+    if (propValue === null) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (newProps as any).components = (newProps as any).components || {};
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (newProps as any).components[propName] = NullRender;
+      continue;
+    }
+
+    if (typeof propValue !== 'object' || React.isValidElement(propValue)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (newProps[propName] as any) = newProps[propName] || {};
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (newProps[propName] as any).children = propValue;
     }
   }
 

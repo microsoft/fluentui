@@ -1,8 +1,9 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
-import { mergeProps } from '@fluentui/react-compose/lib/next';
-import { ComponentWithAs, ShorthandConfig, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentWithAs, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
+import * as cx from 'classnames';
+import * as _ from 'lodash';
 import * as React from 'react';
 import {
   createShorthandFactory,
@@ -15,7 +16,7 @@ import {
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
-import { ComponentEventHandler, ShorthandValue } from '../../types';
+import { ComponentEventHandler } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
 // TODO: had to use deep path because SASS was trying to be compiled as a side effect
@@ -24,7 +25,7 @@ import { useButtonStyles } from './useButtonStyles';
 
 export interface ButtonProps
   extends UIComponentProps,
-    ContentComponentProps<ShorthandValue<ButtonContentProps>>,
+    ContentComponentProps<ButtonContentProps>,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -39,7 +40,7 @@ export interface ButtonProps
   fluid?: boolean;
 
   /** A button can have an icon. */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: BoxProps;
 
   /** A button can contain only an icon. */
   iconOnly?: boolean;
@@ -51,7 +52,7 @@ export interface ButtonProps
   inverted?: boolean;
 
   /** Shorthand to customize a button's loader. */
-  loader?: ShorthandValue<LoaderProps>;
+  loader?: LoaderProps;
 
   /** A button can show a loading indicator. */
   loading?: boolean;
@@ -108,81 +109,81 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   // BASE
   const { state, render } = useButton(props, ref);
 
-  // TODO: use {} first arg to avoid mutations so we can compare defaults to final and
-  //       detect user's input apart from component defaults
-  mergeProps(state, {
+  // EXTRAS
+  const { classes, styles: resolvedStyles } = useButtonStyles({ props: state, rtl: context.rtl });
+
+  const newState = {
+    ...state,
+
+    // DEFAULTS
     as: 'button',
     accessibility: buttonBehavior,
     size: 'medium',
+
+    // OVERRIDES
     components: {
+      ...state.components,
       loader: Loader,
       content: ButtonContent,
       icon: Box,
     },
-    icon: {
-      children: <strong>:)</strong>,
-    },
-  });
-
-  // EXTRAS
-  const { content, disabled, size } = state;
-  const { classes, styles: resolvedStyles } = useButtonStyles({ props: state, rtl: context.rtl });
-
-  const overrides = {
-    className: classes.root,
-    styles: resolvedStyles.root,
+    style: { ...state.style, ...props.style },
+    styles: _.merge(state.styles, resolvedStyles.root, props.styles),
+    className: cx(state.className, classes.root, props.className),
 
     // TODO: test that this works as expected still, without merging these props
     //        - [ ] max call stack exceeded on click
     onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-      if (disabled) {
+      if (props.disabled) {
         e.preventDefault();
         return;
       }
 
-      state?.onClick?.(e, props);
+      state.onClick?.(e);
+      props.onClick?.(e, props);
     },
 
     onFocus: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-      props?.onFocus?.(e, props);
+      state.onFocus?.(e);
+      props.onFocus?.(e, props);
     },
 
     // TODO: this is ugly, don't require others to do this when authoring a new component
     //       this was added to prevent "defining" a slot with props when the user isn't using that slot in their props
-    ...(typeof props.icon === 'object' &&
-      props.icon !== null && {
-        icon: {
-          className: classes.icon,
-          styles: resolvedStyles.icon,
-        },
-      }),
+    icon: {
+      ...(state.icon as object),
+      ...props.icon,
+      style: { ...state.icon?.style, ...props.icon?.style },
+      styles: _.merge(state.icon?.styles, resolvedStyles.icon, props.icon?.styles),
+      className: cx(state.icon?.className, classes.icon, props.icon?.className),
+    },
 
     loader: {
-      className: classes.loader,
-      styles: resolvedStyles.loader,
+      ...(state.loader as object),
       role: undefined, // TODO: why is this `undefined`?
+      ...props.loader,
+      style: { ...state.loader?.style, ...props.loader?.style },
+      styles: _.merge(state.loader?.styles, resolvedStyles.loader, props.loader?.styles),
+      className: cx(state.icon?.className, classes.loader, props.icon?.className),
     },
 
     content: {
-      size,
-      // TODO: this is resolved as { children: 'Click here' }
-      //       1. We can't spread this reliably, we need some resolve shorthand
-      //       2. Why is this being resolved to an object, is that what we really want?
-      // content: { children: 'test' }
-      ...content,
+      ...(state.content as object),
+      ...props.content,
+      style: { ...state.content?.style, ...props.content?.style },
+      styles: _.merge(state.content?.styles, resolvedStyles.content, props.content?.styles),
+      className: _.merge(state.content?.className, classes.content, props.content?.className),
     },
   };
-  mergeProps(state, overrides, props, { icon: props.icon });
 
   // TODO: verify all accessibility features are the same as they were
   // TODO: there is no way
-  const result = render(state);
+  const result = render(newState);
   setEnd();
 
   return result;
 }) as unknown) as ComponentWithAs<'button', ButtonProps> & {
   create: ShorthandFactory<ButtonProps>;
-  shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
 };
@@ -212,10 +213,6 @@ Button.propTypes = {
 
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
-
-Button.shorthandConfig = {
-  mappedProp: 'content',
-};
 
 // TODO: plan deprecation and removal of .create() methods in favor of hooks approach
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
