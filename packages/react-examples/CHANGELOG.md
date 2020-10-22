@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Oct 2020 12:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.7.0)
+
+Thu, 22 Oct 2020 12:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.7..@fluentui/react-examples_v0.7.0)
+
+### Minor changes
+
+- [VerticalStackedBarChart] bar gaps and rounded corners ([PR #15606](https://github.com/microsoft/fluentui/pull/15606) by mibes@microsoft.com)
+
+### Patches
+
+- added some example code for new feature ([PR #15505](https://github.com/microsoft/fluentui/pull/15505) by v-sivsar@microsoft.com)
+- Convert SelectedPersona GetExpandedItems to async ([PR #15553](https://github.com/microsoft/fluentui/pull/15553) by elvonspa@microsoft.com)
 
 ## [0.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.7)
 

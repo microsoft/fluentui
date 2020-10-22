@@ -1,8 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Oct 2020 12:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.34.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.34.0)
+
+Thu, 22 Oct 2020 12:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.6..@uifabric/experiments_v7.34.0)
+
+### Minor changes
+
+- Convert SelectedPersona GetExpandedItems to async ([PR #15553](https://github.com/microsoft/fluentui/pull/15553) by elvonspa@microsoft.com)
+
+### Patches
+
+- Remove undesired MarqueeSelection in UnifiedPicker ([PR #15632](https://github.com/microsoft/fluentui/pull/15632) by sadelson@microsoft.com)
 
 ## [7.33.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.6)
 

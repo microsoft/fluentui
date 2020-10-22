@@ -1,8 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 16 Oct 2020 21:41:23 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Oct 2020 12:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.8.0)
+
+Thu, 22 Oct 2020 12:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.4..@uifabric/charting_v4.8.0)
+
+### Minor changes
+
+- [VerticalStackedBarChart] bar gaps and rounded corners ([PR #15606](https://github.com/microsoft/fluentui/pull/15606) by mibes@microsoft.com)
+
+### Patches
+
+- added line to the vertical bar chart ([PR #15505](https://github.com/microsoft/fluentui/pull/15505) by v-sivsar@microsoft.com)
 
 ## [4.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.4)
 

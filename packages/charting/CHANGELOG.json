@@ -2,6 +2,29 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2020 12:31:29 GMT",
+      "tag": "@uifabric/charting_v4.8.0",
+      "version": "4.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added line to the vertical bar chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "0239b7d97b4515ac0a6078da27e99f5f00e8b05d",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "[VerticalStackedBarChart] bar gaps and rounded corners",
+            "author": "mibes@microsoft.com",
+            "commit": "14ddc431c4faf73ba8f38dc7de27330dcaa054c8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2020 21:41:23 GMT",
       "tag": "@uifabric/charting_v4.7.4",
       "version": "4.7.4",
