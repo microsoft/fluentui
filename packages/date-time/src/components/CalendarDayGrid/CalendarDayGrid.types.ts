@@ -1,6 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarFormatDateCallbacks, AnimationDirection, ICalendarStrings } from '../Calendar/Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import { AnimationDirection } from '../Calendar/Calendar.types';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  IDateFormatting,
+} from '@fluentui/date-time-utilities';
 import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
@@ -112,7 +118,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: IDateFormatting;
 
   /**
    * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the

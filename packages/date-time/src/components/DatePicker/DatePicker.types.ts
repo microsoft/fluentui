@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ICalendarProps, ICalendarFormatDateCallbacks, ICalendarStrings } from '../../Calendar';
-import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
+import { ICalendarProps } from '../../Calendar';
+import { DayOfWeek, FirstWeekOfYear, ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
@@ -206,7 +206,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * The minimum allowable date.

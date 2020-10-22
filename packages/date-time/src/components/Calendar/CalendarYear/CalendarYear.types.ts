@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarIconStrings, AnimationDirection } from '../Calendar.types';
+import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -80,7 +80,7 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
   /**
    * Custom navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: ICalendarNavigationIcons;
 
   /**
    * Callback action when the header is selected

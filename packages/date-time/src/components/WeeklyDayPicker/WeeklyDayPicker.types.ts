@@ -1,11 +1,6 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import {
-  ICalendarStrings,
-  ICalendarFormatDateCallbacks,
-  ICalendarIconStrings,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
-import { DayOfWeek } from '@fluentui/date-time-utilities';
+import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar/Calendar.types';
+import { ICalendarStrings, DayOfWeek, IDateFormatting } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
@@ -53,7 +48,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   /**
    * Customize navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: IWeeklyDayPickerNavigationIcons;
 
   /**
    * The initially selected date. If not provided, defaults to today's date
@@ -86,7 +81,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -121,6 +116,11 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
    */
   weeksToShow?: number;
 }
+
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
+export type IWeeklyDayPickerNavigationIcons = Pick<ICalendarNavigationIcons, 'leftNavigation' | 'rightNavigation'>;
 
 /**
  * {@docCategory WeeklyDayPicker}

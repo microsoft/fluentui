@@ -121,7 +121,7 @@ describe('DatePicker', () => {
         input.props.onClick();
       });
 
-      expect(textfield.props.errorMessage).toBe(' ');
+      expect(textfield.props.errorMessage).toBe('Field is required');
 
       renderer.act(() => {
         input.props.onChange({ target: { value: 'Jan 1 2030' }, persist: jest.fn() });
@@ -150,7 +150,7 @@ describe('DatePicker', () => {
         input.props.onClick();
       });
 
-      expect(textfield.props.errorMessage).toBe(' ');
+      expect(textfield.props.errorMessage).toBe('Field is required');
 
       renderer.act(() => {
         input.props.onClick();

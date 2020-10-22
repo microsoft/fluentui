@@ -1,21 +1,13 @@
 import * as React from 'react';
-import {
-  ICalendarProps,
-  ICalendarIconStrings,
-  ICalendarFormatDateCallbacks,
-  ICalendarStyleProps,
-  ICalendarStyles,
-} from './Calendar.types';
+import { ICalendarProps, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 import {
   DayOfWeek,
   FirstWeekOfYear,
   DateRangeType,
   addMonths,
   addYears,
-  formatMonthDayYear,
-  formatMonthYear,
-  formatDay,
-  formatYear,
+  DEFAULT_CALENDAR_STRINGS,
+  DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
@@ -30,34 +22,18 @@ import {
   FocusRects,
   getPropsWithDefaults,
 } from '@fluentui/utilities';
-import { DayPickerStrings } from './defaults';
 import { useControllableValue } from '@fluentui/react-hooks';
+import { defaultCalendarNavigationIcons } from './defaults';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
-const leftArrow = 'Up';
-const rightArrow = 'Down';
-const closeIcon = 'CalculatorMultiply';
-export const defaultIconStrings: ICalendarIconStrings = {
-  leftNavigation: leftArrow,
-  rightNavigation: rightArrow,
-  closeIcon: closeIcon,
-};
-
-export const defaultWorkWeekDays: DayOfWeek[] = [
+const defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Monday,
   DayOfWeek.Tuesday,
   DayOfWeek.Wednesday,
   DayOfWeek.Thursday,
   DayOfWeek.Friday,
 ];
-
-export const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
-  formatMonthDayYear,
-  formatMonthYear,
-  formatDay,
-  formatYear,
-};
 
 const DEFAULT_PROPS: Partial<ICalendarProps> = {
   isMonthPickerVisible: true,
@@ -67,13 +43,13 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
   firstDayOfWeek: DayOfWeek.Sunday,
   dateRangeType: DateRangeType.Day,
   showGoToToday: true,
-  strings: DayPickerStrings,
+  strings: DEFAULT_CALENDAR_STRINGS,
   highlightCurrentMonth: false,
   highlightSelectedMonth: false,
-  navigationIcons: defaultIconStrings,
+  navigationIcons: defaultCalendarNavigationIcons,
   showWeekNumbers: false,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
-  dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+  dateTimeFormatter: DEFAULT_DATE_FORMATTING,
   showSixWeeksByDefault: false,
   workWeekDays: defaultWorkWeekDays,
   showCloseButton: false,

@@ -1,13 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
+import { ICalendarNavigationIcons } from '../Calendar.types';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles,
 } from '../../CalendarDayGrid/CalendarDayGrid.types';
-
-export { ICalendarDayGridStyles };
+import { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
 /**
  * {@docCategory Calendar}
@@ -66,7 +65,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   /**
    * Custom navigation icons.
    */
-  navigationIcons: ICalendarIconStrings;
+  navigationIcons: ICalendarNavigationIcons;
 
   /**
    * Callback function when the header is selected
@@ -82,7 +81,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: IDateFormatting;
 
   /**
    * Whether the calendar should show 6 weeks by default.
