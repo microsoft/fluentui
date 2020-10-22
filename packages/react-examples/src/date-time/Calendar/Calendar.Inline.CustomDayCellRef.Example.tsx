@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings, ICalendarDayProps } from '@uifabric/date-time';
+import { Calendar, ICalendarDayProps } from '@uifabric/date-time';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {
   customDayCellRef: (element, date, classNames) => {
@@ -24,15 +24,11 @@ export const CalendarInlineCustomDayCellRefExample: React.FunctionComponent = ()
     <div style={{ height: 'auto' }}>
       <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
       <Calendar
-        dateRangeType={DateRangeType.Day}
-        highlightCurrentMonth={false}
         highlightSelectedMonth
         showGoToToday
         calendarDayProps={calendarDayProps}
         onSelectDate={onSelectDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DatePicker } from '@uifabric/date-time';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
@@ -49,7 +49,6 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         label="Start date"
         allowTextInput
         ariaLabel="Select a date. Input format is day slash month slash year."
-        strings={defaultDayPickerStrings}
         value={value as Date | undefined}
         onSelectDate={setValue as (date: Date | null | undefined) => void}
         formatDate={onFormatDate}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DayOfWeek, DateRangeType, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar } from '@uifabric/date-time';
 
 export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -14,14 +14,10 @@ export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () =>
 
       <Calendar
         showMonthPickerAsOverlay
-        highlightCurrentMonth={false}
         highlightSelectedMonth
-        dateRangeType={DateRangeType.Day}
         showGoToToday={false}
         onSelectDate={onSelectDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
 
 const workWeekDays = [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday];
 
@@ -26,14 +26,12 @@ export const CalendarInlineNonContiguousWorkWeekDaysExample: React.FunctionCompo
 
       <Calendar
         dateRangeType={DateRangeType.WorkWeek}
-        highlightCurrentMonth={false}
+        workWeekDays={workWeekDays}
+        firstDayOfWeek={DayOfWeek.Monday}
         highlightSelectedMonth
         showGoToToday
-        workWeekDays={workWeekDays}
         onSelectDate={onSelectDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Monday}
-        strings={defaultDayPickerStrings}
       />
     </div>
   );
