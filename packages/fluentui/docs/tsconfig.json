@@ -10,7 +10,7 @@
       "@fluentui/react-compose": ["packages/react-compose/src/index"],
       "@fluentui/merge-styles": ["packages/merge-styles/src"],
       "@fluentui/set-version": ["packages/set-version/src"],
-      "@fluentui/utilities": ["packages/utilities/src"],
+      "@uifabric/utilities": ["packages/utilities/src"],
       "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]

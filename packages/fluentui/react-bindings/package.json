@@ -17,7 +17,7 @@
     "@fluentui/state": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
     "@quid/stylis-plugin-focus-visible": "^4.0.0",
-    "@fluentui/utilities": "^7.32.3",
+    "@uifabric/utilities": "^7.32.3",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
