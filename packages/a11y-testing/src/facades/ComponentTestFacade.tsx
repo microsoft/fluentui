@@ -9,6 +9,10 @@ export class ComponentTestFacade implements TestFacade {
   private renderedComponent: ReactWrapper<any, any>;
   private onClickExecuted: boolean;
 
+  private getElement(selector: string) {
+    return document.querySelector(`[data-slotid="${selector}"]`);
+  }
+
   constructor(private Component: React.FC, private props: Props = {}) {
     props.onClick = () => {
       this.onClickExecuted = true;
@@ -27,7 +31,7 @@ export class ComponentTestFacade implements TestFacade {
   }
 
   public slotExists(selector: string) {
-    return selector === 'root' || !!document.getElementById(selector);
+    return selector === 'root' || !!this.getElement(selector);
   }
 
   public attributeExists(selector: string, attributeName: string) {
@@ -35,7 +39,7 @@ export class ComponentTestFacade implements TestFacade {
       return this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null;
     }
 
-    const element = document.getElementById(selector);
+    const element = this.getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) !== undefined && element.getAttribute(attributeName) !== null;
     }
@@ -47,7 +51,7 @@ export class ComponentTestFacade implements TestFacade {
       return this.actual.getAttribute(attributeName) === value;
     }
 
-    const element = document.getElementById(selector);
+    const element = this.getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) === value;
     }
@@ -59,7 +63,7 @@ export class ComponentTestFacade implements TestFacade {
     if (selector === 'root') {
       return this.actual.getAttribute(attributeName) as PropValue;
     }
-    const element = document.getElementById(selector);
+    const element = this.getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) as PropValue;
     }
