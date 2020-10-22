@@ -72,6 +72,12 @@ export function useId(prefix?: string, providedId?: string): string;
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
+export const useMount: (callback: () => void) => void;
+
+// @public
+export const useMountSync: (callback: () => void) => void;
+
+// @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
 // @public
@@ -100,6 +106,9 @@ export type UseSetTimeoutReturnType = {
 
 // @public
 export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]>;
+
+// @public
+export const useUnmount: (callback: () => void) => void;
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;
