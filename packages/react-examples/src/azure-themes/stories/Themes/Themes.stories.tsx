@@ -1,17 +1,6 @@
 import * as React from 'react';
-import {
-  Customizer,
-  TextField,
-  Stack,
-  Fabric,
-  CompoundButton,
-  Checkbox,
-  SearchBox,
-  Link,
-  Label,
-  Text,
-} from '@fluentui/react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { Customizer, TextField, Stack, Fabric, Checkbox, SearchBox, Link, Label, Text } from '@fluentui/react';
+import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import {
   AzureCustomizationsLight,
   AzureCustomizationsDark,
