@@ -68,6 +68,7 @@
     "@fluentui/react-tabs": "^1.0.0-beta",
     "@fluentui/react-toggle": "^1.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/date-time": "^8.0.0-beta",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta",
     "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
