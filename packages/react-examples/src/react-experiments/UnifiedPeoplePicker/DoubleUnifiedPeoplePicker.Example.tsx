@@ -220,7 +220,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         // We need to do an exact match
 
         allPeople.forEach((item: IPersonaProps) => {
-          if (item.text.toLowerCase() == extractedText.toLowerCase()) {
+          if (item.text?.toLowerCase() == extractedText.toLowerCase()) {
             result = item;
           }
         });
