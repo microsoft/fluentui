@@ -30,14 +30,10 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
     "@types/node": "^10.3.2",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@fluentui/react-monaco-editor": "^0.13.18",
-    "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
@@ -54,13 +50,13 @@
     "@fluentui/font-icons-mdl2": "^7.5.8",
     "@fluentui/set-version": "^7.0.23",
     "@fluentui/theme-samples": "^7.1.21",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
     "json-loader": "^0.5.7",
     "office-ui-fabric-core": "^11.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "tslib": "^1.10.0",
     "whatwg-fetch": "2.0.4"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
   }
 }
