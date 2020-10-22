@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
-    "@fluentui/react-conformance": "^1.0.0-beta",
+    "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",

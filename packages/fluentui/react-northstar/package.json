@@ -33,7 +33,7 @@
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/eslint-plugin": "^1.0.0-beta",
-    "@fluentui/react-conformance": "^1.0.0-beta",
+    "@fluentui/react-conformance": "^1.0.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
