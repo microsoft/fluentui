@@ -1,5 +1,6 @@
 import { IModalStyleProps, IModalStyles } from './Modal.types';
 import { AnimationVariables, getGlobalClassNames, ZIndexes } from '../../Styling';
+import { useWindow } from '@fluentui/react-window-provider';
 
 export const animationDuration = AnimationVariables.durationValue2;
 
@@ -29,6 +30,9 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
   const { palette, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const win = useWindow();
 
   return {
     root: [
@@ -91,7 +95,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         maxHeight: '100vh',
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
-            maxHeight: window.innerHeight,
+            maxHeight: win?.innerHeight,
           },
         },
       },

@@ -99,7 +99,8 @@ export interface IModalProps
    * The specified responsiveMode value for Modal to use.
    * @defaultvalue ResponsiveMode.small
    */
-  responsiveMode?: ResponsiveMode | undefined;
+  responsiveMode?: ResponsiveMode;
+
   /**
    * Defines an optional set of props to be passed through to Layer
    */

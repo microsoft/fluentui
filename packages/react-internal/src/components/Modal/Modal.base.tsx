@@ -19,7 +19,15 @@ import { Icon } from '../../Icon';
 import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { useWindow, useDocument } from '@fluentui/react-window-provider';
-import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useId } from '@fluentui/react-hooks';
+import {
+  useBoolean,
+  useMergedRefs,
+  useWarnings,
+  useConst,
+  useSetTimeout,
+  useId,
+  useMount,
+} from '@fluentui/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -94,7 +102,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const modalResponsiveMode = useResponsiveMode(mergedRef);
 
-    const FocusTrapZoneId = useId();
+    const FocusTrapZoneId = useId('ModalFocusTrapZone');
 
     const doc = useDocument();
     const win = useWindow();
@@ -168,7 +176,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const registerInitialModalPosition = (): void => {
       if (dragOptions?.keepInBounds && !internalState.minClampedPosition && !internalState.maxClampedPosition) {
-        const dialogMain = document.querySelector(`[data-id=${FocusTrapZoneId}]`);
+        const dialogMain = doc?.querySelector(`[data-id=${FocusTrapZoneId}]`);
         if (dialogMain) {
           const modalRectangle = dialogMain.getBoundingClientRect();
           internalState.minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
@@ -442,10 +450,12 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isModalOpen or isOpen mutates.
     }, [isModalOpen, isOpen]);
 
-    if (isOpen && isVisible) {
-      registerForKeyUp();
-      registerInitialModalPosition();
-    }
+    useMount(() => {
+      if (isOpen && isVisible) {
+        registerForKeyUp();
+        registerInitialModalPosition();
+      }
+    });
 
     useComponentRef(props, focusTrapZone);
     useDebugWarnings(props);

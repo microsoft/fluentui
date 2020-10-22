@@ -3461,7 +3461,7 @@ export interface IModalProps extends React.HTMLAttributes<HTMLElement>, React.Re
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
-    responsiveMode?: ResponsiveMode | undefined;
+    responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
