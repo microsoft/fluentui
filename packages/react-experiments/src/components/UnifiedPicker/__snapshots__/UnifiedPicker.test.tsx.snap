@@ -170,8 +170,20 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
             }
       >
         <div
+          onFocus={[Function]}
           role="list"
         >
+          <input
+            data-is-focusable={false}
+            style={
+              Object {
+                "border": "none",
+                "height": "0px",
+                "outline": "none",
+                "width": "0px",
+              }
+            }
+          />
           <div>
              
             red
