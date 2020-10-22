@@ -1,8 +1,8 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "UnifiedPicker: Fixing input selection",
   "packageName": "@fluentui/react-experiments",
   "email": "nebhatna@microsoft.com",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "minor",
   "date": "2020-10-20T18:59:50.807Z"
 }
