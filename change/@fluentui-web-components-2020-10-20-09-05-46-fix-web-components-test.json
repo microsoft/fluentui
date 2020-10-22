@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix yarn test --production.",
-  "packageName": "@fluentui/web-components",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T16:05:46.628Z"
-}
