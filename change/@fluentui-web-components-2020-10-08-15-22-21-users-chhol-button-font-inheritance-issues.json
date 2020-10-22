@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ensure font properties are inherited to control and start/end content",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-08T22:22:21.243Z"
-}
