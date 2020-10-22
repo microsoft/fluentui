@@ -1532,7 +1532,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
         height: number;
     };
     imageSrc?: string;
-    key?: string;
+    key: string;
     labelId?: string;
     onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
     onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
@@ -1543,18 +1543,11 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
 
 // @public (undocumented)
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
-<<<<<<< HEAD
-    componentRef?: IRefObject<IChoiceGroupOption>;
-    focused?: boolean;
-    // (undocumented)
-    itemKey?: string;
-=======
     checked?: boolean;
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
     itemKey: string;
     key?: string;
->>>>>>> Move ChoiceGroup v8 changes to react
     name?: string;
     onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
     onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;

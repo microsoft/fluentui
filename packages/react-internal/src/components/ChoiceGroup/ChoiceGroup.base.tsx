@@ -18,8 +18,9 @@ const getOptionId = (option: IChoiceGroupOption, id: string): string => {
   return `${id}-${option.key}`;
 };
 
-const getCheckedOption = (options: IChoiceGroupOption[], keyChecked: string | number) =>
-  find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+const findOption = (options: IChoiceGroupOption[], key: string | number | undefined) => {
+  return key === undefined ? undefined : find(options, value => value.key === key);
+};
 
 const useComponentRef = (
   options: IChoiceGroupOption[],
@@ -31,10 +32,10 @@ const useComponentRef = (
     componentRef,
     () => ({
       get checkedOption() {
-        return getCheckedOption(options, keyChecked!);
+        return findOption(options, keyChecked);
       },
       focus() {
-        const optionToFocus = getCheckedOption(options, keyChecked!) || options.filter(option => !option.disabled)[0];
+        const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
         const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
 
         if (elementToFocus) {
@@ -108,10 +109,7 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
       setKeyChecked(option.itemKey);
 
       option.onChange?.(evt);
-      onChange?.(
-        evt,
-        find(options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
-      );
+      onChange?.(evt, findOption(options, option.itemKey));
     },
     [onChange, options, setKeyChecked],
   );

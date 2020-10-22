@@ -87,7 +87,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
   /**
    * A required key to uniquely identify the option.
    */
-  key?: string;
+  key: string;
 
   /**
    * The text string for the option.
