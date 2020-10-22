@@ -50,7 +50,10 @@ describe('ContextualMenu', () => {
   });
 
   it('includes the classNames on ContextualMenuItem(s)', () => {
-    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
+    const items: IContextualMenuItem[] = [
+      { text: 'Header', key: 'Header', itemType: ContextualMenuItemType.Header },
+      { name: 'Test 1', key: 'Test1' },
+    ];
 
     const getClassNames = () => {
       return {
@@ -64,7 +67,7 @@ describe('ContextualMenu', () => {
     };
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} getMenuClassNames={getClassNames} />,
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} title="Menu!" />,
     );
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
