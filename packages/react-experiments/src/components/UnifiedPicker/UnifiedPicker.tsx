@@ -276,6 +276,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         if (resultItemsList && resultItemsList.length > 0) {
           addItems(resultItemsList);
           showPicker(false);
+          // Clear the input
           if (input.current) {
             input.current.clear();
           }
