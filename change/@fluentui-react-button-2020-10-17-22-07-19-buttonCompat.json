@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Adds docCategory Button to all type files so that they are picked up by api-docs.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",

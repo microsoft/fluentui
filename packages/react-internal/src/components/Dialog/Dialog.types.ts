@@ -7,7 +7,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ICSSRule, ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 
 /**
  * {@docCategory Dialog}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITheme, IPalette, ISemanticColors } from '@fluentui/react/lib/Styling';
 import { Stack } from '@fluentui/react';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { getVariant, VariantThemeType } from '@fluentui/scheme-utilities';

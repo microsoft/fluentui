@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
+import { useFocusRects } from '@fluentui/utilities';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonClasses } from './useCompoundButtonClasses';

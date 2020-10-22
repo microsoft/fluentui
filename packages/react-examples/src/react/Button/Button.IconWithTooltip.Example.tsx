@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IIconProps, initializeIcons } from '@fluentui/react';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { IconButton } from '@fluentui/react/lib/compat/Button';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

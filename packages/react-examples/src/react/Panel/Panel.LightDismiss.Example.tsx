@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const explanation =
   'This panel uses "light dismiss" behavior: it can be closed by clicking or tapping ' +

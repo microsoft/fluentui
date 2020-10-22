@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, findIndex } from '@uifabric/utilities';
+import { css, findIndex } from '@fluentui/utilities';
 import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';

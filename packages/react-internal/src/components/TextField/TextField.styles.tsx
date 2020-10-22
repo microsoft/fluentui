@@ -11,7 +11,7 @@ import {
 } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 const globalClassNames = {
   root: 'ms-TextField',

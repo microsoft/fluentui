@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix imports to reference physical files.",
   "packageName": "@uifabric/date-time",
   "email": "xgao@microsoft.com",

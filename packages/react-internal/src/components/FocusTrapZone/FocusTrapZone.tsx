@@ -12,7 +12,7 @@ import {
   on,
 } from '../../Utilities';
 import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
-import { useId, useConst, useMergedRefs } from '@uifabric/react-hooks';
+import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
 import { useDocument } from '@fluentui/react-window-provider';
 
 interface IFocusTrapZoneInternalState {

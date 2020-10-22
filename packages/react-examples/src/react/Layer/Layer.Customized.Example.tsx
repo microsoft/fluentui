@@ -5,7 +5,7 @@ import { Panel } from '@fluentui/react/lib/Panel';
 import { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Customizer } from '@fluentui/react/lib/Utilities';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 
 export const LayerCustomizedExample: React.FunctionComponent = () => {
   const [isPanelOpen, { setTrue: showPanel, setFalse: dismissPanel }] = useBoolean(false);

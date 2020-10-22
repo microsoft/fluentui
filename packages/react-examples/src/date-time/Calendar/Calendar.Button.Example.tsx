@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export const CalendarButtonExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();

@@ -10,7 +10,7 @@ import {
 } from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'TeachingBubble';
 const defaultCalloutProps: ICalloutProps = {

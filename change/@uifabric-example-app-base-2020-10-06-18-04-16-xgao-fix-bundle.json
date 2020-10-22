@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix codepen after replacing office-ui-fabric-react with @fluentui/react.",
   "packageName": "@fluentui/react-docsite-components",
   "email": "xgao@microsoft.com",

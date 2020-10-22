@@ -1,4 +1,4 @@
-import { styled } from '@uifabric/utilities';
+import { styled } from '@fluentui/utilities';
 import { CalendarBase } from './Calendar.base';
 import { styles } from './Calendar.styles';
 

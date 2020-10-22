@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Move TextField \"next\" changes back to main package",
   "packageName": "@fluentui/react-internal",
   "email": "elcraig@microsoft.com",

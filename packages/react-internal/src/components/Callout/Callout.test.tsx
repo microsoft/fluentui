@@ -6,7 +6,7 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as Utilities from '../../Utilities';
 import * as positioning from '../../Positioning';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('Callout', () => {

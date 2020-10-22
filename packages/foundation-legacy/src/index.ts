@@ -6,6 +6,6 @@ export * from './slots';
 export * from './ThemeProvider';
 export * from './hooks/index';
 
-export { styled as legacyStyled } from '@uifabric/utilities';
+export { styled as legacyStyled } from '@fluentui/utilities';
 
 import './version';

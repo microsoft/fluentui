@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const calloutProps = { gapSpace: 0 };
 // The TooltipHost root uses display: inline by default.

@@ -8,7 +8,7 @@ import {
 import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
+import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@fluentui/react-hooks';
 import { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
 
 interface ISwatchColorPickerInternalState {

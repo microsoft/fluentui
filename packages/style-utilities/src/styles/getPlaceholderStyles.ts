@@ -1,4 +1,4 @@
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 
 /**
  * Generates placeholder style for each of the browsers supported by `@fluentui/react`.

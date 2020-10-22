@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "packageName": "@fluentui/react-button",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

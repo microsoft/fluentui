@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
-import { setWarningCallback, resetIds } from '@uifabric/utilities';
+import { create } from '@fluentui/utilities/lib/test';
+import { setWarningCallback, resetIds } from '@fluentui/utilities';
 
 import { Pivot, PivotItem } from './index';
 

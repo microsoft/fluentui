@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FabricSlots, IThemeRules } from '@fluentui/react/lib/ThemeGenerator';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { Text } from '@fluentui/react';
 import { IColor } from '@fluentui/react/lib/Color';
 import { FabricSlotWidget } from './FabricSlotWidget';

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Changing Button exports from the one in @fluentui/react-internal to the one in @fluentui/react-button.",
   "packageName": "@fluentui/react",
   "email": "humbertomakotomorimoto@gmail.com",

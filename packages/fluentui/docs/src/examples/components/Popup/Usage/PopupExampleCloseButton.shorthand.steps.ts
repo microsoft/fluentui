@@ -1,5 +1,5 @@
 import { dropdownSlotClassNames, buttonClassName } from '@fluentui/react-northstar';
-import { ScreenerTestsConfig } from '@uifabric/build/screener';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   toggleIndicator: `.${dropdownSlotClassNames.toggleIndicator}`,

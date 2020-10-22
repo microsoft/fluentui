@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Callout: move to react-internal",
   "packageName": "@fluentui/react-internal",
   "email": "joschect@microsoft.com",

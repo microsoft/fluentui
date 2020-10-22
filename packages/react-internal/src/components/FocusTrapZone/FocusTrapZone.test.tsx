@@ -4,7 +4,7 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 import { IFocusTrapZoneProps } from './FocusTrapZone.types';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 
 // rAF does not exist in node - let's mock it

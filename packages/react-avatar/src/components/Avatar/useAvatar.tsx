@@ -2,8 +2,8 @@ import * as React from 'react';
 import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
 import { calcAvatarStyleProps } from './calcAvatarStyleProps';
-import { useMergedRefs } from '@uifabric/react-hooks';
-import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import { getInitials as defaultGetInitials, nullRender } from '@fluentui/utilities';
 import { Image } from '../Image/index';
 import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
 

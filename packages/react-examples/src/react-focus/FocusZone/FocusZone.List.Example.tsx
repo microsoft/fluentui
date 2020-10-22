@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from '@fluentui/react/lib/Utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 import { TextField } from '@fluentui/react';
 import { Link } from '@fluentui/react/lib/Link';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
