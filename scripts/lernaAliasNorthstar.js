@@ -12,14 +12,14 @@ module.exports = {
     return aliases;
   },
   rollup: options => {
-    const aliases = lernaAlias.jest(options);
+    const aliases = lernaAlias.rollup(options);
     for (const pkg of excludedPackages) {
       delete aliases[pkg];
     }
     return aliases;
   },
   webpack: options => {
-    const aliases = lernaAlias.jest(options);
+    const aliases = lernaAlias.webpack(options);
     for (const pkg of excludedPackages) {
       delete aliases[`${pkg}$`];
     }
