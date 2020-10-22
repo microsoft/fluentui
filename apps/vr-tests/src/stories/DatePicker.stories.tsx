@@ -5,7 +5,9 @@ import { FabricDecoratorFixedWidth } from '../utilities/index';
 import { Fabric, IDatePickerProps, DatePicker } from '@fluentui/react';
 
 const customDayClass = 'test-dayCell';
+const daySelector = `td.${customDayClass}`;
 const customMonthClass = 'test-monthOption';
+const monthSelector = `.${customMonthClass}`;
 
 const date = new Date(2010, 1, 12);
 const commonProps: Partial<IDatePickerProps> = {
@@ -35,9 +37,9 @@ storiesOf('DatePicker', module)
         .click('.ms-DatePicker')
         .hover('.ms-DatePicker')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .hover('.' + customDayClass)
+        .hover(daySelector)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
-        .hover('.' + customMonthClass)
+        .hover(monthSelector)
         .snapshot('hover month', { cropTo: '.ms-Layer' })
         .end()}
     >
@@ -90,7 +92,7 @@ storiesOf('DatePicker - No Month Option', module)
         .click('.ms-DatePicker')
         .hover('.ms-DatePicker')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .hover('.' + customDayClass)
+        .hover(daySelector)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
         .end()}
     >
