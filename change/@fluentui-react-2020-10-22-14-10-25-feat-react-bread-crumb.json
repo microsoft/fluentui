@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating BreadCrumb to a function component within react package.",
+  "packageName": "@fluentui/react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T21:10:25.523Z"
+}
