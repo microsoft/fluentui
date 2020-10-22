@@ -2,19 +2,26 @@
 <html>
   <head>
     <title>Docsite shell to handle multi-version support</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=URL"></script>
   </head>
   <body>
     <script>
-      fluentuiDocsiteVersions = ['0.51.0', '0.47.0'];
+      fluentuiDocsiteVersions = ['0.51.2', '0.47.12'];
       sessionStorage.fluentuiDocsiteVersions = JSON.stringify(fluentuiDocsiteVersions);
 
-      const selectedVersion = window.location.pathname.split('/')[1];
-      if (fluentuiDocsiteVersions.indexOf(selectedVersion) > -1) {
-        window.location.pathname = '/' + selectedVersion;
+      // If this is a client side redirect, check if there is a correct version in the path
+      // Keep the redirect in session storage, the docsite will use this value later
+      if (sessionStorage.redirect) {
+        redirectVersion = new URL(sessionStorage.redirect).pathname.split('/')[1];
+        if (fluentuiDocsiteVersions.indexOf(redirectVersion) > -1) {
+          window.location.pathname = '/' + redirectVersion;
+        } else {
+          // no version in path, use the latest version
+          window.location.pathname = '/' + fluentuiDocsiteVersions[0];
+        }
       }
 
-      // no version in path, use the latest version
-      window.location.pathname = '/' + fluentuiDocsiteVersions[0];
+      debugger;
     </script>
   </body>
 </html>
