@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Moving react-next Layer into react-internal package.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

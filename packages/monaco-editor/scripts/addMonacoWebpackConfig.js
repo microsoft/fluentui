@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-// This script shouldn't depend on @uifabric/build since it's meant as a utility for other packages
+// This script shouldn't depend on @fluentui/scripts since it's meant as a utility for other packages
 // (potentially outside our repo)
 
 /**

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Add onKeyDown prop to UnifiedPicker",
   "packageName": "@fluentui/react-experiments",
   "email": "elvonspa@microsoft.com",

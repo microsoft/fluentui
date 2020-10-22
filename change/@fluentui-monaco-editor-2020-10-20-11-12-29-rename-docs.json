@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/monaco-editor to @fluentui/monaco-editor",
   "packageName": "@fluentui/monaco-editor",
   "email": "elcraig@microsoft.com",

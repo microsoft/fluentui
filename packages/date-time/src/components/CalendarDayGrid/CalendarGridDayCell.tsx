@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTLSafeKeyCode } from '@uifabric/utilities';
+import { KeyCodes, css, getRTLSafeKeyCode } from '@fluentui/utilities';
 import {
   addDays,
   addWeeks,

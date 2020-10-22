@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove unneeded dep on azure-themes",
   "packageName": "@fluentui/react-experiments",
   "email": "elcraig@microsoft.com",

@@ -3,7 +3,7 @@ import { Modal } from './Modal';
 import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 
 describe('Modal', () => {
   isConformant({

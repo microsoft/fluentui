@@ -11,7 +11,7 @@ import {
   mergeStyleSets,
 } from '@fluentui/react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
-import { useBoolean, useConst } from '@uifabric/react-hooks';
+import { useBoolean, useConst } from '@fluentui/react-hooks';
 
 const classNames = mergeStyleSets({
   compactCard: {

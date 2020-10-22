@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/example-app-base to @fluentui/react-docsite-components",
   "packageName": "@fluentui/react-docsite-components",
   "email": "elcraig@microsoft.com",

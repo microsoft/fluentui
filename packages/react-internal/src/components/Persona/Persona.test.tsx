@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';

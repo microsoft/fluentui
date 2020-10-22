@@ -4,7 +4,7 @@ import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
 import { ReactWrapper } from 'enzyme';
 import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
 import { ThemeContext } from './ThemeContext';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { Theme } from './types';
 
 describe('makeVariantClasses', () => {

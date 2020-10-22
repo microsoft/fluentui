@@ -3,8 +3,7 @@ import path from 'path';
 import flamegrill, { CookResults, Scenarios, ScenarioConfig } from 'flamegrill';
 import scenarioIterations from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
-import { just } from '@uifabric/build';
-const { argv } = just;
+import { argv } from '@fluentui/scripts';
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
 
@@ -120,7 +119,7 @@ const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
-module.exports = async function getPerfRegressions() {
+export async function getPerfRegressions() {
   const iterationsArgv: number = argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
@@ -211,7 +210,7 @@ module.exports = async function getPerfRegressions() {
 
   console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
-};
+}
 
 /**
  * Create test summary based on test results.

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 import { expectNodes, findNodes } from '../../common/testUtilities';
 

@@ -1,9 +1,9 @@
-const commonConfig = require('@uifabric/build/jest');
+const commonConfig = require('@fluentui/scripts/jest');
 
 module.exports = {
   ...commonConfig,
   moduleNameMapper: require('lerna-alias').jest({
-    directory: require('@uifabric/build/monorepo/findGitRoot')(),
+    directory: require('@fluentui/scripts/monorepo/findGitRoot')(),
   }),
   name: 'e2e',
   testRegex: '.*-test\\.tsx?$',

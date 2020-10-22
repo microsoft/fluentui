@@ -1,5 +1,5 @@
 import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain } from './IKeytipTransitionKey';
-import { KeyCodes } from '@uifabric/utilities';
+import { KeyCodes } from '@fluentui/utilities';
 
 describe('IKeytipTransitionKey', () => {
   describe('transitionKeysAreEqual', () => {

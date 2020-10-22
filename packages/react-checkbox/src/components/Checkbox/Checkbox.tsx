@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@uifabric/utilities';
+import { styled } from '@fluentui/utilities';
 import { CheckboxBase } from './Checkbox.base';
 import { getStyles } from './Checkbox.styles';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';

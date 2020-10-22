@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove unneeded dep on azure-themes",
   "packageName": "@fluentui/react-cards",
   "email": "elcraig@microsoft.com",

@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {

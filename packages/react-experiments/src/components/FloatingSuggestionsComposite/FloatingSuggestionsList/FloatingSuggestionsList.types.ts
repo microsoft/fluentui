@@ -4,7 +4,7 @@ import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
 
 export interface IFloatingSuggestionsListProps<T> {

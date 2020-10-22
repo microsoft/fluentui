@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getRTL, classNamesFunction } from '@uifabric/utilities';
+import { getRTL, classNamesFunction } from '@fluentui/utilities';
 import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import {
   getDateRangeArray,
@@ -13,7 +13,7 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { usePrevious, useId } from '@uifabric/react-hooks';
+import { usePrevious, useId } from '@fluentui/react-hooks';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
 

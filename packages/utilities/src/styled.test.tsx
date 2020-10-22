@@ -12,7 +12,7 @@ import {
 } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 
 interface ITestStyles {

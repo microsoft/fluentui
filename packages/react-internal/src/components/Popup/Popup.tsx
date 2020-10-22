@@ -8,7 +8,7 @@ import {
   getWindow,
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
-import { useMergedRefs, useAsync, useOnEvent } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();

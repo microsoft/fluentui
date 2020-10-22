@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Rename build-related packages",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-20T16:56:56.916Z"
+}

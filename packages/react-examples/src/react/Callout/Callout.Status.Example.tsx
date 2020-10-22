@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getTheme, FontWeights, mergeStyleSets, DelayedRender, Callout } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const theme = getTheme();

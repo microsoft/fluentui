@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
-import { resetIds, KeyCodes } from '@uifabric/utilities';
+import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {

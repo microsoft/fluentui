@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { create } from '@uifabric/utilities/lib/test';
-import { safeMount } from '@uifabric/test-utilities';
+import { create } from '@fluentui/utilities/lib/test';
+import { safeMount } from '@fluentui/test-utilities';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';

@@ -3,7 +3,7 @@ import { useAvatar } from './useAvatar';
 import { AvatarProps } from './Avatar.types';
 import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects, nullRender } from '@uifabric/utilities';
+import { useFocusRects, nullRender } from '@fluentui/utilities';
 import * as classes from './Avatar.scss';
 import { Badge } from '../Badge/Badge';
 

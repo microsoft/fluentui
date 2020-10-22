@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
+import { useId, useBoolean, useControllableValue } from '@fluentui/react-hooks';
 import {
   KeyCodes,
   css,
@@ -10,7 +10,7 @@ import {
   classNamesFunction,
   getNativeProps,
   divProperties,
-} from '@uifabric/utilities';
+} from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { setWarningCallback, setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 

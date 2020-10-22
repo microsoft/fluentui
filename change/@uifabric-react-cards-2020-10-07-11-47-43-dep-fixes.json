@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
   "packageName": "@fluentui/react-cards",
   "email": "elcraig@microsoft.com",

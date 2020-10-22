@@ -13,7 +13,7 @@ import {
   IStackProps,
   TextField,
 } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { range } from '@fluentui/example-data';
 export interface IExampleOptions {
   numItems: number;

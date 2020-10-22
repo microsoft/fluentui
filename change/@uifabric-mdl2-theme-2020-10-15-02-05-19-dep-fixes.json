@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Use webpack config helper and update npmignore",
-  "packageName": "@uifabric/mdl2-theme",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-15T09:00:02.568Z"
-}
