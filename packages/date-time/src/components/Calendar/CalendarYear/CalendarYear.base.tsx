@@ -10,8 +10,8 @@ import {
 import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '@fluentui/react-internal/lib/Utilities';
 import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
-import { ICalendarIconStrings } from '../Calendar.types';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
+import { defaultCalendarNavigationIcons } from '../defaults';
 
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 
@@ -22,13 +22,6 @@ const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
   nextRangeAriaLabel: undefined,
 };
-
-const DefaultNavigationIcons: ICalendarIconStrings = {
-  leftNavigation: 'Up',
-  rightNavigation: 'Down',
-  closeIcon: 'CalculatorMultiply',
-};
-
 interface ICalendarYearGrid {
   focus(): void;
 }
@@ -223,8 +216,8 @@ const CalendarYearNavArrow = React.forwardRef(
       styles,
       theme,
       className,
-      navigationIcons,
-      strings,
+      navigationIcons = defaultCalendarNavigationIcons,
+      strings = DefaultCalendarYearStrings,
       direction,
       onSelectPrev,
       onSelectNext,
@@ -239,10 +232,8 @@ const CalendarYearNavArrow = React.forwardRef(
       className: className,
     });
 
-    const iconStrings = navigationIcons || DefaultNavigationIcons;
-    const yearStrings = strings || DefaultCalendarYearStrings;
     const ariaLabel =
-      direction === CalendarYearNavDirection.Previous ? yearStrings.prevRangeAriaLabel : yearStrings.nextRangeAriaLabel;
+      direction === CalendarYearNavDirection.Previous ? strings.prevRangeAriaLabel : strings.nextRangeAriaLabel;
     const newRangeOffset = direction === CalendarYearNavDirection.Previous ? -CELL_COUNT : CELL_COUNT;
     const newRange = { fromYear: fromYear + newRangeOffset, toYear: toYear + newRangeOffset };
     const ariaLabelString = ariaLabel ? (typeof ariaLabel === 'string' ? ariaLabel : ariaLabel(newRange)) : undefined;
@@ -276,8 +267,8 @@ const CalendarYearNavArrow = React.forwardRef(
         <Icon
           iconName={
             (direction === CalendarYearNavDirection.Previous) !== getRTL()
-              ? iconStrings.rightNavigation
-              : iconStrings.leftNavigation
+              ? navigationIcons.rightNavigation
+              : navigationIcons.leftNavigation
           }
         />
       </button>
@@ -305,7 +296,16 @@ CalendarYearNav.displayName = 'CalendarYearNav';
 
 const CalendarYearTitle = React.forwardRef(
   (props: ICalendarYearHeaderProps, forwardedRef: React.Ref<HTMLButtonElement | HTMLDivElement>) => {
-    const { styles, theme, className, fromYear, toYear, strings, animateBackwards, animationDirection } = props;
+    const {
+      styles,
+      theme,
+      className,
+      fromYear,
+      toYear,
+      strings = DefaultCalendarYearStrings,
+      animateBackwards,
+      animationDirection,
+    } = props;
 
     const onHeaderSelect = () => {
       props.onHeaderSelect?.(true);
@@ -330,8 +330,8 @@ const CalendarYearTitle = React.forwardRef(
     });
 
     if (props.onHeaderSelect) {
-      const rangeAriaLabel = (strings || DefaultCalendarYearStrings).rangeAriaLabel;
-      const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
+      const rangeAriaLabel = strings.rangeAriaLabel;
+      const headerAriaLabelFormatString = strings.headerAriaLabelFormatString;
       const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? rangeAriaLabel

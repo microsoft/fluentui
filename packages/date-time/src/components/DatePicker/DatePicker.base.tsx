@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
+import { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import {
   KeyCodes,
   classNamesFunction,
@@ -8,43 +8,15 @@ import {
   css,
   getPropsWithDefaults,
 } from '@fluentui/utilities';
-import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
-import { FirstWeekOfYear, getDatePartHashValue, compareDatePart } from '@fluentui/date-time-utilities';
+import { Calendar, ICalendar } from '../../Calendar';
+import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '@fluentui/react-internal/lib/Callout';
 import { TextField, ITextField } from '@fluentui/react-internal/lib/TextField';
 import { FocusTrapZone } from '@fluentui/react-internal/lib/FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
+import { defaultDatePickerStrings } from './defaults';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
-
-const DEFAULT_STRINGS: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close date picker',
-  weekNumberFormatString: 'Week number {0}',
-};
 
 const DEFAULT_PROPS = {
   allowTextInput: false,
@@ -68,7 +40,7 @@ const DEFAULT_PROPS = {
   isRequired: false,
   isMonthPickerVisible: true,
   showMonthPickerAsOverlay: false,
-  strings: DEFAULT_STRINGS,
+  strings: defaultDatePickerStrings,
   highlightCurrentMonth: false,
   highlightSelectedMonth: false,
   borderless: false,
@@ -219,7 +191,7 @@ function useErrorMessage(
   return [isCalendarShown ? undefined : errorMessage, validateTextInput, setErrorMessage] as const;
 }
 
-export const DatePickerBase = React.forwardRef(
+export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.forwardRef(
   (propsWithoutDefaults: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 

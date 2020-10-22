@@ -4,10 +4,7 @@
 
 ```ts
 
-import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { EventGroup } from '@fluentui/utilities';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { IBaseProps } from '@fluentui/utilities';
 import { IComponent } from '@fluentui/foundation-legacy';
 import { IComponentAs } from '@fluentui/utilities';
@@ -424,21 +421,6 @@ export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
-export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
-    constructor(props: ICalendarProps);
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: ICalendarProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
-}
-
-// @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public
@@ -586,30 +568,6 @@ export const DATAKTP_EXECUTE_TARGET = "data-ktp-execute-target";
 
 // @public (undocumented)
 export const DATAKTP_TARGET = "data-ktp-target";
-
-// @public
-export const DatePicker: React.FunctionComponent<IDatePickerProps>;
-
-// @public (undocumented)
-export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
-    constructor(props: IDatePickerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
-    // (undocumented)
-    static defaultProps: IDatePickerProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    reset(): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
-    }
-
-export { DateRangeType }
-
-export { DayOfWeek }
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -796,8 +754,6 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     // (undocumented)
     render(): JSX.Element;
     }
-
-export { FirstWeekOfYear }
 
 // @public (undocumented)
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
@@ -1310,89 +1266,6 @@ export interface IButtonGridStyles {
     focusedContainer?: IStyle;
     root: IStyle;
     tableCell: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalendar {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface ICalendarFormatDateCallbacks {
-    formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatYear: (date: Date) => string;
-}
-
-// @public (undocumented)
-export interface ICalendarIconStrings {
-    closeIcon?: string;
-    leftNavigation?: string;
-    rightNavigation?: string;
-}
-
-// @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    autoNavigateOnSelection?: boolean;
-    className?: string;
-    componentRef?: IRefObject<ICalendar>;
-    dateRangeType?: DateRangeType;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
-    navigationIcons?: ICalendarIconStrings;
-    onDismiss?: () => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
-    restrictedDates?: Date[];
-    selectDateOnClick?: boolean;
-    // @deprecated
-    shouldFocusOnMount?: boolean;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showSixWeeksByDefault?: boolean;
-    showWeekNumbers?: boolean;
-    strings: ICalendarStrings | null;
-    today?: Date;
-    value?: Date;
-    workWeekDays?: DayOfWeek[];
-    yearPickerHidden?: boolean;
-}
-
-// @public (undocumented)
-export interface ICalendarState {
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    navigatedDayDate?: Date;
-    navigatedMonthDate?: Date;
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface ICalendarStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
-    monthPickerHeaderAriaLabel?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    nextYearRangeAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    prevYearRangeAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
-    weekNumberFormatString?: string;
-    yearPickerHeaderAriaLabel?: string;
 }
 
 // @public (undocumented)
@@ -2270,100 +2143,6 @@ export enum IconType {
     Image = 100001,
     // @deprecated
     image = 1
-}
-
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-}
-
-// @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    allowTextInput?: boolean;
-    ariaLabel?: string;
-    borderless?: boolean;
-    calendarAs?: IComponentAs<ICalendarProps>;
-    calendarProps?: ICalendarProps;
-    calloutProps?: ICalloutProps;
-    className?: string;
-    componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    disableAutoFocus?: boolean;
-    disabled?: boolean;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    formatDate?: (date?: Date) => string;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    initialPickerDate?: Date;
-    isMonthPickerVisible?: boolean;
-    isRequired?: boolean;
-    label?: string;
-    maxDate?: Date;
-    minDate?: Date;
-    onAfterMenuDismiss?: () => void;
-    onSelectDate?: (date: Date | null | undefined) => void;
-    parseDateFromString?: (dateStr: string) => Date | null;
-    pickerAriaLabel?: string;
-    placeholder?: string;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showWeekNumbers?: boolean;
-    strings?: IDatePickerStrings;
-    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
-    tabIndex?: number;
-    textField?: ITextFieldProps;
-    theme?: ITheme;
-    today?: Date;
-    underlined?: boolean;
-    value?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerState {
-    // (undocumented)
-    errorMessage?: string;
-    // (undocumented)
-    formattedDate?: string;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerStrings extends ICalendarStrings {
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-}
-
-// @public (undocumented)
-export interface IDatePickerStyleProps {
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    label?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IDatePickerStyles {
-    // (undocumented)
-    callout: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    root: IStyle;
-    // (undocumented)
-    textField: IStyle;
-    // (undocumented)
-    wrapper?: IStyle;
 }
 
 // @public (undocumented)

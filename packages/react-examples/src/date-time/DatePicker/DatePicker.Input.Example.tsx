@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
-import { DatePicker, defaultDayPickerStrings, IDatePicker } from '@uifabric/date-time';
+import { DatePicker, IDatePicker } from '@uifabric/date-time';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const styles = mergeStyleSets({
@@ -27,7 +27,6 @@ export const DatePickerInputExample: React.FunctionComponent = () => {
         label="Start date"
         allowTextInput
         ariaLabel="Select a date"
-        strings={defaultDayPickerStrings}
         value={value}
         onSelectDate={setValue as (date: Date | null | undefined) => void}
         componentRef={datePickerRef}

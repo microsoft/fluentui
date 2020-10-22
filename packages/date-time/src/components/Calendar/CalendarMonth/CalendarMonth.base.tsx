@@ -8,27 +8,28 @@ import {
   getMonthStart,
   getMonthEnd,
   compareDatePart,
+  DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
-import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
 import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@fluentui/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { usePrevious } from '@fluentui/react-hooks';
+import { defaultCalendarNavigationIcons } from '../defaults';
 
 const MONTHS_PER_ROW = 4;
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
-const DEFAULT_PROPS = {
+const DEFAULT_PROPS: Readonly<Partial<ICalendarMonthProps>> = {
   styles: getStyles,
   strings: undefined,
-  navigationIcons: defaultIconStrings,
-  dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+  navigationIcons: defaultCalendarNavigationIcons,
+  dateTimeFormatter: DEFAULT_DATE_FORMATTING,
   yearPickerHidden: false,
-} as const;
+};
 
 function useAnimateBackwards({ navigatedDate }: ICalendarMonthProps) {
   const currentYear = navigatedDate.getFullYear();

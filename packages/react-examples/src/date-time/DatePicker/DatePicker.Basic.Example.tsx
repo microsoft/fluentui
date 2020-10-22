@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption, mergeStyles } from '@fluentui/react';
-import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek } from '@uifabric/date-time';
 
 const days: IDropdownOption[] = [
   { text: 'Sunday', key: DayOfWeek.Sunday },
@@ -22,12 +22,7 @@ export const DatePickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <div className={rootClass}>
-      <DatePicker
-        firstDayOfWeek={firstDayOfWeek}
-        strings={defaultDayPickerStrings}
-        placeholder="Select a date..."
-        ariaLabel="Select a date"
-      />
+      <DatePicker firstDayOfWeek={firstDayOfWeek} placeholder="Select a date..." ariaLabel="Select a date" />
       <Dropdown
         label="Select the first day of the week"
         options={days}

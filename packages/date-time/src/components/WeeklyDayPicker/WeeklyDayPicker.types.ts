@@ -1,11 +1,6 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import {
-  ICalendarStrings,
-  DayOfWeek,
-  ICalendarFormatDateCallbacks,
-  ICalendarIconStrings,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
+import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar/Calendar.types';
+import { ICalendarStrings, DayOfWeek, IDateFormatting } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
@@ -13,10 +8,16 @@ import {
   ICalendarDayGridStyles,
 } from '../CalendarDayGrid/CalendarDayGrid.types';
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPicker {
   focus(): void;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
   /**
    * Optional callback to access the IWeeklyDayPicker interface. Use this instead of ref for accessing
@@ -25,7 +26,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   componentRef?: IRefObject<IWeeklyDayPicker>;
 
   /**
-   * Customized styles for the calendar day component
+   * Customized styles for the component.
    */
   styles?: IStyleFunctionOrObject<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
 
@@ -35,19 +36,19 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   theme?: ITheme;
 
   /**
-   * Additional CSS class(es) to apply to the CalendarDay.
+   * Additional CSS class(es) to apply to the WeeklyDayPicker.
    */
   className?: string;
 
   /**
-   * Localized strings to use in the Calendar
+   * Localized strings to use in the WeeklyDayPicker
    */
   strings: IWeeklyDayPickerStrings;
 
   /**
-   * Customize navigation icons. Only uses previous and next icons
+   * Customize navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: IWeeklyDayPickerNavigationIcons;
 
   /**
    * The initially selected date. If not provided, defaults to today's date
@@ -57,8 +58,6 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
-   * for the component.
    */
   onSelectDate?: (date: Date) => void;
 
@@ -75,14 +74,14 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -118,6 +117,14 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   weeksToShow?: number;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
+export type IWeeklyDayPickerNavigationIcons = Pick<ICalendarNavigationIcons, 'leftNavigation' | 'rightNavigation'>;
+
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStrings extends ICalendarStrings {
   /**
    * Aria-label for the "previous week" button in picker.
@@ -130,6 +137,9 @@ export interface IWeeklyDayPickerStrings extends ICalendarStrings {
   nextWeekAriaLabel?: string;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -142,6 +152,9 @@ export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory WeeklyDayPicker}
+ */
 export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> {
   /**
    * Style for the root element.

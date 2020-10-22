@@ -1,22 +1,34 @@
 import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarIconStrings, AnimationDirection } from '../Calendar.types';
+import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarYear {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarYearRange {
   fromYear: number;
   toYear: number;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarYearRangeToString {
   (range: ICalendarYearRange): string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarYearStrings {
   rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
@@ -24,6 +36,9 @@ export interface ICalendarYearStrings {
   headerAriaLabelFormatString?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
   /**
    * Optional callback to access the ICalendarYear interface. Use this instead of ref for accessing
@@ -58,14 +73,14 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
 
   /**
    * Callback action when a year is selected
-   * @param year The year the user selected
+   * @param year - The year the user selected
    */
   onSelectYear?: (year: number) => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: ICalendarNavigationIcons;
 
   /**
    * Callback action when the header is selected
@@ -101,13 +116,11 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
 
   /**
    * Custom renderer for the title
-   * @param props The header props
    */
   onRenderTitle?: (props: ICalendarYearHeaderProps) => React.ReactNode;
 
   /**
    * Custom renderer for the year
-   * @param year The year to render
    */
   onRenderYear?: (year: number) => React.ReactNode;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { addMonths, addYears, addDays } from '@fluentui/date-time-utilities';
-import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar } from '@uifabric/date-time';
 import { useConst } from '@fluentui/react-hooks';
 
 export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () => {
@@ -23,8 +23,6 @@ export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () =
       </div>
       <div>Disabled dates: {restrictedDates.map(d => d.toLocaleDateString()).join(', ')}</div>
       <Calendar
-        dateRangeType={DateRangeType.Day}
-        highlightCurrentMonth={false}
         highlightSelectedMonth
         showGoToToday={false}
         minDate={minDate}
@@ -32,8 +30,6 @@ export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () =
         restrictedDates={restrictedDates}
         onSelectDate={onSelectDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
       />
     </div>
   );

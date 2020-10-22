@@ -1886,13 +1886,14 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
 
 export * from "@fluentui/react-button";
-export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-checkbox";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
-export * from "@fluentui/react-link/lib/Link";
-export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-toggle/lib/Toggle";
+export * from "@fluentui/react-link";
+export * from "@fluentui/react-slider";
+export * from "@fluentui/react-tabs";
+export * from "@fluentui/react-toggle";
+export * from "@uifabric/date-time";
 
 // (No @packageDocumentation comment for this package)
 
