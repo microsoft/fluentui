@@ -33,7 +33,7 @@
     "code-style": "npm run prettier && npm run lint",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "yarn test-chrome:verbose && yarn doc:ci",
+    "test": "yarn doc:ci && yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-chrome": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage",
@@ -94,8 +94,8 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-components-styles-msft": "^4.29.0",
-    "@microsoft/fast-element": "^0.17.0",
-    "@microsoft/fast-foundation": "^1.7.0",
+    "@microsoft/fast-element": "^0.19.1",
+    "@microsoft/fast-foundation": "^1.8.1",
     "tslib": "^1.13.0"
   },
   "beachball": {
