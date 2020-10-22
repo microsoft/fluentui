@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Basic unit test cases for pie chart and heatmapshart",
+  "comment": "Basic unit test cases and snapshot test cases for pie chart and heatmapshart",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.om",
   "dependentChangeType": "patch",
   "date": "2020-10-22T05:39:23.721Z"
 }
