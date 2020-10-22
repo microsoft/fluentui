@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "export DesignSystem interface",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-30T06:07:40.839Z"
-}
