@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
-import { line as d3Line } from 'd3-shape';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import {
   classNamesFunction,
