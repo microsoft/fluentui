@@ -528,10 +528,7 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export const ContextualMenuBase: {
-    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
-    displayName: string;
-};
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps>;
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -732,7 +729,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
@@ -2159,7 +2156,7 @@ export interface IContextualMenuListProps {
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;

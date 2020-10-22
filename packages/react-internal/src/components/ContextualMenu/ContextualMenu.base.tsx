@@ -47,7 +47,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
+import { useTarget, usePrevious, useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
@@ -188,10 +188,15 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
+  HTMLDivElement,
+  IContextualMenuProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
-  const hostElement = React.useRef<HTMLDivElement>(null);
+  const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+
   const [targetRef, targetWindow] = useTarget(hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
@@ -219,7 +224,7 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
       responsiveMode={responsiveMode}
     />
   );
-};
+});
 ContextualMenuBase.displayName = 'ContextualMenuBase';
 
 interface IContextualMenuInternalProps extends IContextualMenuProps {
@@ -340,7 +345,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, hostElement, onMenuFocusCapture },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement },
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -434,12 +439,12 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           directionalHintFixed={directionalHintFixed}
           alignTargetEdge={alignTargetEdge}
           hidden={this.props.hidden}
+          ref={hostElement}
         >
           <div
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            ref={hostElement}
             id={id}
             className={this._classNames.container}
             tabIndex={shouldFocusOnContainer ? 0 : -1}
