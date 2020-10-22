@@ -49,10 +49,10 @@
     "@fluentui/react-stylesheets": "^1.0.0-beta",
     "@fluentui/theme": "^2.0.0-beta",
     "@fluentui/react-window-provider": "^2.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "@fluentui/merge-styles": "^8.0.0-beta",
-    "@uifabric/utilities": "^8.0.0-beta",
+    "@fluentui/utilities": "^8.0.0-beta",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },

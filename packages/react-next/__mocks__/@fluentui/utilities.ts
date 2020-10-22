@@ -1,5 +1,5 @@
-export * from '@uifabric/utilities';
-import { Async } from '@uifabric/utilities';
+export * from '@fluentui/utilities';
+import { Async } from '@fluentui/utilities';
 
 declare function setTimeout(cb: Function, delay: number): number;
 

@@ -5,7 +5,7 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
-import { ICustomizerContext } from '@uifabric/utilities';
+import { ICustomizerContext } from '@fluentui/utilities';
 import { IFontFace } from '@fluentui/merge-styles';
 import { IKeyframes } from '@fluentui/merge-styles';
 import { IRawFontStyle } from '@fluentui/merge-styles';

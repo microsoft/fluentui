@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/utilities",
+  "name": "@fluentui/utilities",
   "version": "8.0.0-beta",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",

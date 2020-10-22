@@ -4,7 +4,7 @@ import { List } from '@fluentui/react/lib/List';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;

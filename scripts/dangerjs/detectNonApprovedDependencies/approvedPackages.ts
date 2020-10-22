@@ -8,8 +8,8 @@ export default [
   '@emotion/serialize@0.11.15',
   '@emotion/unitless@0.7.5',
   '@emotion/utils@0.11.3',
-  '@fluentui/merge-styles@7.19.1',
-  '@fluentui/set-version@7.0.23',
+  '@uifabric/merge-styles@7.19.1',
+  '@uifabric/set-version@7.0.23',
   '@uifabric/utilities@7.32.3',
   'classnames@2.2.6',
   'compute-scroll-into-view@1.0.11',
@@ -103,6 +103,7 @@ export default [
   'scheduler@0.13.6',
   'stylis@3.5.4',
   'stylis-plugin-rtl@1.0.0',
+  'tslib@1.10.0',
   'webpack@4.25.1',
 ];
 

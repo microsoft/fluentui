@@ -3,7 +3,7 @@ import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { ContextualMenu } from '@fluentui/react/lib/ContextualMenu';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const modalPropsStyles = { main: { maxWidth: 450 } };
 const dragOptions = {

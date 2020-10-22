@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, memoizeFunction, css } from '@uifabric/utilities';
+import { styled, memoizeFunction, css } from '@fluentui/utilities';
 import {
   IPivotProps,
   IPivotStyleProps,

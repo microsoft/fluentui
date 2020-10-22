@@ -41,7 +41,7 @@
     "@fluentui/merge-styles": "^8.0.0-beta",
     "@fluentui/react-cards": "^1.0.0-beta",
     "@fluentui/style-utilities": "^8.0.0-beta",
-    "@uifabric/utilities": "^8.0.0-beta",
+    "@fluentui/utilities": "^8.0.0-beta",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0"

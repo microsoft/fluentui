@@ -13,10 +13,10 @@ import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@uifabric/utilities';
+import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@fluentui/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { usePrevious } from '@uifabric/react-hooks';
+import { usePrevious } from '@fluentui/react-hooks';
 
 const MONTHS_PER_ROW = 4;
 

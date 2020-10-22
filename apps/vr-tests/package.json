@@ -33,7 +33,7 @@
     "@fluentui/example-data": "^8.0.0-beta",
     "@fluentui/react-experiments": "^8.0.0-beta",
     "@fluentui/react-cards": "^1.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",

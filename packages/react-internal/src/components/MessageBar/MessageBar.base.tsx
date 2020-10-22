@@ -3,7 +3,7 @@ import { DelayedRender, classNamesFunction, getNativeProps, htmlElementPropertie
 import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 
 const ICON_MAP = {
   [MessageBarType.info]: 'Info',

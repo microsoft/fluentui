@@ -8,7 +8,7 @@ import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
 import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useBoolean, useSetInterval, useConst } from '@uifabric/react-hooks';
+import { useBoolean, useSetInterval, useConst } from '@fluentui/react-hooks';
 
 const PHOTO_COUNT = 40;
 

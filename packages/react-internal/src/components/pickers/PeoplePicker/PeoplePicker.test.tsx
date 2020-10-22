@@ -4,7 +4,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { IBasePicker } from '../BasePicker.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { people } from '@fluentui/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../../Persona/Persona.types';

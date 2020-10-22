@@ -3,7 +3,7 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button'
 import { Dialog, DialogFooter, DialogType, IDialogContentProps } from '@fluentui/react/lib/Dialog';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { IModalProps } from '@fluentui/react/lib/Modal';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export const LayerNestedLayersExample: React.FunctionComponent = () => {
   const [isDialogOpen, { setTrue: showDialog, setFalse: hideDialog }] = useBoolean(false);

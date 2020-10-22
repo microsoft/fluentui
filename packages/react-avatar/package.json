@@ -50,9 +50,9 @@
     "@fluentui/react-compose": "^0.19.6",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta",
     "@fluentui/react-theme-provider": "^1.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
-    "@uifabric/utilities": "^8.0.0-beta",
+    "@fluentui/utilities": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

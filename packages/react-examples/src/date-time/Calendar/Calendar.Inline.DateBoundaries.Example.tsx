@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addMonths, addYears, addDays } from '@fluentui/date-time-utilities';
 import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () => {
   const today = useConst(new Date());

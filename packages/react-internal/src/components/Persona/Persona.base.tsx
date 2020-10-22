@@ -16,7 +16,7 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { useWarnings, useMergedRefs } from '@uifabric/react-hooks';
+import { useWarnings, useMergedRefs } from '@fluentui/react-hooks';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();

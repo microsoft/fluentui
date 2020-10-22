@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { getSlots } from '@fluentui/react-compose/lib/next/index';
-import { CustomizerContext } from '@uifabric/utilities';
+import { CustomizerContext } from '@fluentui/utilities';
 import { ThemeContext } from './ThemeContext';
 import { StyleRendererContext } from './styleRenderers/useStyleRenderer';
 

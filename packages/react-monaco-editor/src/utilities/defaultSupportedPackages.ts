@@ -9,8 +9,8 @@ const fabricGroup: IPackageGroup = {
   packages: [],
 };
 const hooksGroup: IPackageGroup = {
-  globalName: 'FabricReactHooks',
-  loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/react-hooks'))),
+  globalName: 'FluentUIReactHooks',
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/react-hooks'))),
   packages: [],
 };
 const exampleDataGroup: IPackageGroup = {
@@ -44,7 +44,7 @@ if (typesContext) {
     const packageGroup =
       packageName === '@fluentui/example-data'
         ? exampleDataGroup
-        : packageName === '@uifabric/react-hooks'
+        : packageName === '@fluentui/react-hooks'
         ? hooksGroup
         : fabricGroup;
     packageGroup.packages.push({
@@ -69,10 +69,10 @@ if (typesContext) {
     { packageName: '@fluentui/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
-    { packageName: '@uifabric/utilities', loadTypes },
+    { packageName: '@fluentui/utilities', loadTypes },
     { packageName: '@fluentui/date-time-utilities', loadTypes },
   );
-  hooksGroup.packages.push({ packageName: '@uifabric/react-hooks', loadTypes });
+  hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
 }
 

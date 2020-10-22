@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { TooltipHost, TooltipDelay, DirectionalHint, ITooltipProps, ITooltipHostStyles } from '@fluentui/react';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const tooltipProps: ITooltipProps = {
   onRenderContent: () => (

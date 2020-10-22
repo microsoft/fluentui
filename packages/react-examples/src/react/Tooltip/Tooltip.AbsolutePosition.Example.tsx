@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { useId, useConst } from '@uifabric/react-hooks';
+import { useId, useConst } from '@fluentui/react-hooks';
 
 const rootStyles = { minHeight: 50 };
 const buttonStyles: Partial<IButtonStyles> = {

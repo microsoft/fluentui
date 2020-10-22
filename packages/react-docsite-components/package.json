@@ -47,7 +47,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.0.0-beta",
     "@fluentui/foundation-legacy": "^8.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "@fluentui/react-monaco-editor": "^1.0.0-beta",
     "color-check": "0.0.2",

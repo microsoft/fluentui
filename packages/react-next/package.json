@@ -72,9 +72,9 @@
     "@fluentui/react-window-provider": "^2.0.0-beta",
     "@uifabric/date-time": "^8.0.0-beta",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
-    "@uifabric/utilities": "^8.0.0-beta",
+    "@fluentui/utilities": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

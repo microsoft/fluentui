@@ -1,4 +1,4 @@
-import { GlobalSettings, warn } from '@uifabric/utilities';
+import { GlobalSettings, warn } from '@fluentui/utilities';
 import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
 
 export interface IIconSubset {

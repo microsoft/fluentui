@@ -5,7 +5,7 @@ import {
   IContextualMenuItemProps,
   IContextualMenuItemRenderFunctions,
 } from '@fluentui/react/lib/ContextualMenu';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({

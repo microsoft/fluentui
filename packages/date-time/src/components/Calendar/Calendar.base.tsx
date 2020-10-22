@@ -29,9 +29,9 @@ import {
   format,
   FocusRects,
   getPropsWithDefaults,
-} from '@uifabric/utilities';
+} from '@fluentui/utilities';
 import { DayPickerStrings } from './defaults';
-import { useControllableValue } from '@uifabric/react-hooks';
+import { useControllableValue } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 

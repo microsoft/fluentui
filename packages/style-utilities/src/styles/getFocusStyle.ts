@@ -1,7 +1,7 @@
 import { IRawStyle } from '@fluentui/merge-styles';
 import { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
+import { IsFocusVisibleClassName } from '@fluentui/utilities';
 import { ZIndexes } from './zIndexes';
 
 /**

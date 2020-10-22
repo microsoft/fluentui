@@ -6,7 +6,7 @@ import { PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Slider } from '@fluentui/react/lib/Slider';
 import { facepilePersonas } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const styles = mergeStyleSets({
   container: {

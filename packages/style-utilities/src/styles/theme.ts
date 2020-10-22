@@ -1,4 +1,4 @@
-import { Customizations, getWindow } from '@uifabric/utilities';
+import { Customizations, getWindow } from '@fluentui/utilities';
 import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { IRawStyle } from '@fluentui/merge-styles';

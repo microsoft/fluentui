@@ -41,7 +41,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.0.0-beta",
     "@fluentui/monaco-editor": "^1.0.0-beta",
-    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "raw-loader": "^0.5.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0",

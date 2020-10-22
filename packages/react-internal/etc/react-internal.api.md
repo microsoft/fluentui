@@ -6,11 +6,11 @@
 
 import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { EventGroup } from '@uifabric/utilities';
+import { EventGroup } from '@fluentui/utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { IBaseProps } from '@uifabric/utilities';
+import { IBaseProps } from '@fluentui/utilities';
 import { IComponent } from '@fluentui/foundation-legacy';
-import { IComponentAs } from '@uifabric/utilities';
+import { IComponentAs } from '@fluentui/utilities';
 import { IComponentStyles } from '@fluentui/foundation-legacy';
 import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
@@ -18,32 +18,32 @@ import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
 import { IHTMLSlot } from '@fluentui/foundation-legacy';
-import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
+import { IObjectWithKey } from '@fluentui/utilities';
+import { IPoint } from '@fluentui/utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
-import { IRectangle } from '@uifabric/utilities';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderComponent } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
-import { ISelection } from '@uifabric/utilities';
-import { ISelectionOptions } from '@uifabric/utilities';
+import { IRectangle } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderComponent } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
+import { ISelection } from '@fluentui/utilities';
+import { ISelectionOptions } from '@fluentui/utilities';
 import { ISlotProp } from '@fluentui/foundation-legacy';
 import { ISlottableProps } from '@fluentui/foundation-legacy';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
-import { IStyleFunction } from '@uifabric/utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunction } from '@fluentui/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import { KeyCodes } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { KeyCodes } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { Rectangle } from '@uifabric/utilities';
-import { Selection } from '@uifabric/utilities';
-import { SELECTION_CHANGE } from '@uifabric/utilities';
-import { SelectionDirection } from '@uifabric/utilities';
-import { SelectionMode } from '@uifabric/utilities';
-import { Target } from '@uifabric/react-hooks';
+import { Rectangle } from '@fluentui/utilities';
+import { Selection } from '@fluentui/utilities';
+import { SELECTION_CHANGE } from '@fluentui/utilities';
+import { SelectionDirection } from '@fluentui/utilities';
+import { SelectionMode } from '@fluentui/utilities';
+import { Target } from '@fluentui/react-hooks';
 
 // @public (undocumented)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
@@ -6999,7 +6999,7 @@ export * from "@fluentui/react-focus";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
-export * from "@uifabric/utilities";
+export * from "@fluentui/utilities";
 
 // Warnings were encountered during analysis:
 //
