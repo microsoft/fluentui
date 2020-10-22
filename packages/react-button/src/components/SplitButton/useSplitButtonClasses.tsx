@@ -30,9 +30,12 @@ export const useSplitButtonClasses = makeVariantClasses({
     button: [
       GlobalClassNames.button,
       {
-        '--button-borderRightWidth': 0,
-        '--button-borderTopRightRadius': 0,
-        '--button-borderBottomRightRadius': 0,
+        // Scope the override to a child component, increase specificity.
+        [`.${GlobalClassNames.root} &`]: {
+          borderRightWidth: '0',
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
+        },
       },
     ],
 
@@ -43,9 +46,11 @@ export const useSplitButtonClasses = makeVariantClasses({
         [`.${GlobalClassNames.root} &`]: {
           width: menuButtonWidth,
           minWidth: menuButtonWidth,
-          '--button-borderLeftWidth': 0,
-          '--button-borderTopLeftRadius': 0,
-          '--button-borderBottomLeftRadius': 0,
+          position: 'relative',
+          marginLeft: '-1px', // to avoid subpixel issues in ie11.
+          borderLeftWidth: '0',
+          borderTopLeftRadius: '0',
+          borderBottomLeftRadius: '0',
           '--button-iconColor': 'var(--button-menuIconColor)',
           '--button-iconSize': 'var(--button-splitMenuIconSize)',
         },
@@ -57,8 +62,8 @@ export const useSplitButtonClasses = makeVariantClasses({
       backgroundColor: 'var(--button-dividerColor)',
       position: 'absolute',
       right: menuButtonWidth,
-      top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
-      bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+      top: 8,
+      bottom: 8,
 
       [EdgeChromiumHighContrastSelector]: {
         backgroundColor: 'var(--button-highContrast-dividerColor)',

@@ -2,10 +2,11 @@
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
 import { IStyle } from '@uifabric/merge-styles';
-import { merge } from '@uifabric/utilities';
 import { StyleRenderer, useTheme, useStyleRenderer } from './index';
 import { useWindow } from '@fluentui/react-window-provider';
 import { replaceCSSVariables } from './replaceCSSVariables';
+
+// type VariantClassesHook = <TState>(state: TState) =>
 
 /**
  * Calls a function with the argument, or returns the given object.
@@ -23,6 +24,9 @@ export type MakeVariantClassesOptions = {
    * Name of the component to use for fetching variants from the theme.
    */
   name?: string;
+
+  /** */
+  extends?: Make;
 
   /**
    * Prefix for css variables within the variants.

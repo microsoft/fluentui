@@ -1,6 +1,10 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { CompoundButtonState } from './CompoundButton.types';
-import { useButtonClasses } from '../Button/useButtonClasses';
+import { ButtonStyles, ButtonVariants } from '../Button/useButtonClasses';
+import { ButtonVariants as ButtonVariantsType } from '../Button/Button.types';
+
+import { merge } from '@uifabric/utilities';
+import { concatStyleSets } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   root: 'ms-CompoundButton',
@@ -11,7 +15,7 @@ const GlobalClassNames = {
 export const useClasses = makeVariantClasses<CompoundButtonState>({
   name: 'CompoundButton',
   prefix: '--button',
-  styles: {
+  styles: concatStyleSets(ButtonStyles, {
     root: [
       GlobalClassNames.root,
       {
@@ -76,12 +80,12 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         },
       },
     ],
-  },
+  }),
 
   variants: (theme: Theme) => {
     const { palette, semanticColors } = theme;
 
-    return {
+    return merge<ButtonVariantsType>({}, ButtonVariants(theme), {
       root: {
         height: 'auto',
         maxWidth: '280px',
@@ -128,11 +132,11 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
       iconOnly: {
         minHeight: 'var(--button-size-regular)',
         width: 'var(--button-minHeight)',
-        minWidth: 0,
-        paddingBottom: 0,
-        paddingTop: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
+        minWidth: '0',
+        paddingBottom: '0',
+        paddingTop: '0',
+        paddingLeft: '0',
+        paddingRight: '0',
       },
 
       primary: {
@@ -184,11 +188,11 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
           secondaryContentColor: palette?.themePrimary,
         },
       },
-    };
+    });
   },
 });
 
 export const useCompoundButtonClasses = (state: CompoundButtonState) => {
-  useButtonClasses(state);
+  // useButtonClasses(state);
   useClasses(state);
 };

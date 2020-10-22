@@ -1,6 +1,6 @@
 import { IStyle } from '@uifabric/merge-styles';
 
-export const resolveCSSVariableValue = (value: string, variables: Record<string, string>) => {
+export const resolveSingleCSSVariable = (value: string, variables: Record<string, string>) => {
   let lastResult = value;
   let currentResult: string | undefined = value;
   let isVariableReference = false;
@@ -40,6 +40,23 @@ export const resolveCSSVariableValue = (value: string, variables: Record<string,
   }
 
   return currentResult || lastResult;
+};
+
+export const resolveCSSVariableValue = (value: string, variables: Record<string, string>) => {
+  const matches = value.match(/var\(/g);
+
+  if (matches) {
+    // Walk backwards through the matches.
+    for (let i = matches.length - 1; i >= 0; i--) {
+      // Isolate the replacement target.
+      let replacementTarget = value.substr(value.lastIndexOf(matches[i]));
+
+      replacementTarget = replacementTarget.substr(0, replacementTarget.indexOf(')') + 1);
+      value = value.replace(replacementTarget, resolveSingleCSSVariable(replacementTarget, variables));
+    }
+  }
+
+  return value;
 };
 
 export const replaceCSSVariables = (inputStyles: IStyle, variables: Record<string, string>, outputStyles?: IStyle) => {
