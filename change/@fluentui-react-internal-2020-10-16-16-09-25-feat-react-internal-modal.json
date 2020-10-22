@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Updating Modal to a function component within react-internal.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",
