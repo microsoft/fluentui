@@ -9,6 +9,7 @@ import { DirectionalHint } from '@fluentui/react-internal/lib/common/Directional
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import { useMount } from '@fluentui/react-hooks';
 import {
   IBreadcrumbProps,
   IBreadcrumbItem,
@@ -124,6 +125,10 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, ['className']);
 
+  const onBreadcrumbClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+    item.onClick?.(ev, item);
+  };
+
   const renderItem = (item: IBreadcrumbItem) => {
     if (item.onClick || item.href) {
       return (
@@ -133,7 +138,7 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
-          onClick={onBreadcrumbClicked.bind(this, item)}
+          onClick={ev => onBreadcrumbClicked(ev, item)}
           role={item.role}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...tooltipHostProps}>
@@ -234,18 +239,16 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
     );
   };
 
-  const onBreadcrumbClicked = (item: IBreadcrumbItem, ev: React.MouseEvent<HTMLElement>) => {
-    item.onClick?.(ev, item);
-  };
-
-  // Validate incoming props during the initial render.
-  if (
-    overflowIndex! < 0 ||
-    (maxDisplayedItems! > 1 && overflowIndex! > maxDisplayedItems! - 1) ||
-    (items.length > 0 && overflowIndex! > items.length - 1)
-  ) {
-    throw new Error('Breadcrumb: overflowIndex out of range');
-  }
+  useMount(() => {
+    // Validate incoming props during the initial render.
+    if (
+      overflowIndex! < 0 ||
+      (maxDisplayedItems! > 1 && overflowIndex! > maxDisplayedItems! - 1) ||
+      (items.length > 0 && overflowIndex! > items.length - 1)
+    ) {
+      throw new Error('Breadcrumb: overflowIndex out of range');
+    }
+  });
 
   useComponentRef(props, focusZone);
 

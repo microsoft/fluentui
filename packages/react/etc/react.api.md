@@ -51,14 +51,7 @@ import { SelectionMode } from '@fluentui/react-internal/lib/Selection';
 export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
-export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
-    constructor(props: IBreadcrumbProps);
-    // (undocumented)
-    static defaultProps: IBreadcrumbProps;
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
 export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
@@ -346,9 +339,6 @@ export interface IBreadcrumb {
     focus(): void;
 }
 
-// @public @deprecated (undocumented)
-export type IBreadCrumbData = IBreadcrumbData;
-
 // @public (undocumented)
 export interface IBreadcrumbData {
     // (undocumented)
@@ -371,7 +361,7 @@ export interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
