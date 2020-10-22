@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/test-utilities",
+  "name": "@fluentui/test-utilities",
   "version": "8.0.0-beta",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
@@ -32,13 +32,13 @@
     "@types/react": "16.8.25",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/jest-serializer-merge-styles": "^8.0.0-beta",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta"

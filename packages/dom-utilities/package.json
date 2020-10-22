@@ -28,7 +28,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/jest": "~24.9.0",
-    "@uifabric/build": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta",

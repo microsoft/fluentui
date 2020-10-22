@@ -23,7 +23,7 @@
     "@types/webpack-env": "1.15.1",
     "express": "^4.15.4",
     "compression": "^1.7.2",
-    "@uifabric/build": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

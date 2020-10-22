@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Rename @uifabric/jest-serializer-merge-styles to @fluentui/jest-serializer-merge-styles",
+  "comment": "Rename @fluentui/jest-serializer-merge-styles to @fluentui/jest-serializer-merge-styles",
   "packageName": "@fluentui/jest-serializer-merge-styles",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Rename @uifabric/webpack-utils to @fluentui/webpack-utilities",
+  "comment": "Rename @fluentui/webpack-utilities to @fluentui/webpack-utilities",
   "packageName": "@fluentui/webpack-utilities",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",

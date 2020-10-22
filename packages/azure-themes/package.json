@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
-    "@uifabric/build": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6"
   },
   "dependencies": {
