@@ -1,6 +1,5 @@
 /*
 TODO:
-* Narration of aria-label when entering an element without role.
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
 * Should we also consider the "disabled" state?
@@ -107,48 +106,28 @@ export class NarrationComputer {
   // Returns ARIA landmarks and groups that would be entered and narrated when focus moves from the given previous element to the given element, for the given platform.
   getEnteredLandmarksAndGroups(element: HTMLElement, prevElement: HTMLElement, platform: string): string[] {
     const landmarksAndGroups = [];
-    let elementParent = element.parentElement;
-    let prevElementParent = prevElement.parentElement;
-    let commonAncestor = null;
-
-    // Find the common ancestor of the previous and current element
-    while (elementParent !== prevElementParent && elementParent !== element.ownerDocument.body) {
-      // Begin while 1
-      while (elementParent !== prevElementParent && prevElementParent !== prevElement.ownerDocument.body) {
-        // Begin while 2
-        // If the element is an ancestor of the previous element, return
-        if (prevElementParent === element) {
-          // Begin if 1
-          return landmarksAndGroups;
-        } // End if 1
-        prevElementParent = prevElementParent.parentElement;
-      } // End while 2
-      // If the previous element is an ancestor of the element, return
-      if (elementParent === prevElement) {
-        // Begin if 1
-        return landmarksAndGroups;
-      } // End if 1
-      prevElementParent = prevElement.parentElement;
-      elementParent = elementParent.parentElement;
-    } // End while 1
-    commonAncestor = elementParent;
+    const commonAncestor = this.getCommonAncestor(element, prevElement);
+    if (!commonAncestor) {
+      // Begin if 1
+      return landmarksAndGroups;
+    } // End if 1
 
     // Find all the landmarks and groups between the element and the common ancestor, and compute and save their narration
-    let ariaParent = element.parentElement as IAriaElement;
-    while (ariaParent !== commonAncestor) {
+    let parent = element.parentElement as IAriaElement;
+    while (parent !== commonAncestor) {
       // Begin while 1
       let skipParent = false;
 
-      // The "footer" and "headr" elements don't constitute a landmark if they are a descendant of a sectioning element or role
-      if (['footer', 'header'].includes(ariaParent.tagName.toLowerCase())) {
+      // The "<footer>" and "<headr>" elements don't create a landmark if they are a descendant of a sectioning element or role
+      if (['footer', 'header'].includes(parent.tagName.toLowerCase())) {
         // Begin if 1
-        // Note: According to MDN, the <header>" and "<footer>" elements should not create a landmark when they are descendants  of sectioning roles (e.g. article or main), but using both JAWS and NVDA they actually do. However, they do only when tabbed into, not when entered with virtual cursor.
+        // Note: According to MDN, the <header>" and "<footer>" elements should not create a landmark if they are descendants  of sectioning roles (e.g. article or main), but using both JAWS and NVDA they actually do. However, they do only when tabbed into, not when entered with virtual cursor.
         // Therefore, in this code, we don't follow MDN, but follow how JAWS and NVDA actually behave.
         // See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
         const sectionElements = ['article', 'aside', 'main', 'nav', 'section'];
         // const sectionRoles = ['article', 'complementary', 'main', 'navigation', 'region'];
         const sectionRoles = [];
-        let ancestor = ariaParent.parentElement as IAriaElement;
+        let ancestor = parent.parentElement as IAriaElement;
         while (ancestor !== element.ownerDocument.body) {
           // Begin while 2
           const isSectionElementAncestor = sectionElements.includes(ancestor.tagName.toLowerCase());
@@ -168,11 +147,11 @@ export class NarrationComputer {
         const landmarkOrGroup = [];
 
         // Test if the parent's role or tag name exists in the landmarks and groups definitions
-        let testName = `role=${ariaParent.role}`;
-        let definition = ariaParent.role ? definitions[testName] : null;
-        if (!definition && !ariaParent.role) {
+        let testName = `role=${parent.role}`;
+        let definition = parent.role ? definitions[testName] : null;
+        if (!definition && !parent.role) {
           // Begin if 2
-          testName = ariaParent.tagName.toLowerCase();
+          testName = parent.tagName.toLowerCase();
           definition = definitions[testName];
         } // End if 2
 
@@ -180,12 +159,12 @@ export class NarrationComputer {
         if (definition || SRNC.narrateLabelIfNoRole.includes(platform)) {
           // Begin if 2
           const label =
-            ariaParent.ariaLabelledByElements
+            parent.ariaLabelledByElements
               ?.map((labElement: HTMLElement) => {
                 return labElement.textContent;
               })
               .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) ||
-            ariaParent.ariaLabel ||
+            parent.ariaLabel ||
             null;
 
           if (label) {
@@ -201,10 +180,35 @@ export class NarrationComputer {
         } // End if 2
         landmarksAndGroups.unshift(landmarkOrGroup.join(' '));
       } // End if 1
-      ariaParent = ariaParent.parentElement as IAriaElement;
+      parent = parent.parentElement as IAriaElement;
     } // End while 1
     return landmarksAndGroups;
   } // End getEnteredLandmarksAndGroups
+
+  getCommonAncestor(element1: HTMLElement, element2: HTMLElement): HTMLElement {
+    let parent1 = element1.parentElement;
+    let parent2 = element2.parentElement;
+    while (parent1 !== parent2 && parent1 !== element1.ownerDocument.body) {
+      // Begin while 1
+      while (parent1 !== parent2 && parent2 !== element2.ownerDocument.body) {
+        // Begin while 2
+        // If the element1 is an ancestor of the element2, return
+        if (parent2 === element1) {
+          // Begin if 1
+          return null;
+        } // End if 1
+        parent2 = parent2.parentElement;
+      } // End while 2
+      // If the element2 is an ancestor of the element1, return
+      if (parent1 === element2) {
+        // Begin if 1
+        return null;
+      } // End if 1
+      parent2 = element2.parentElement;
+      parent1 = parent1.parentElement;
+    } // End while 1
+    return parent1;
+  } // End getCommonAncestor
 
   // Computes and returns the screen reader narration for the given element using the previous element and platform.
   async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: string): Promise<string> {
