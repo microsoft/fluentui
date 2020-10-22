@@ -7,18 +7,11 @@
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-<<<<<<< HEAD
 import { IBaseProps } from '@fluentui/utilities';
-import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
-import { IComponentAs } from '@fluentui/utilities';
-import { IDateGridStrings } from '@fluentui/date-time-utilities';
-=======
-import { IBaseProps } from '@uifabric/utilities';
 import { ICalendarStrings } from '@fluentui/date-time-utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
-import { IComponentAs } from '@uifabric/utilities';
+import { IComponentAs } from '@fluentui/utilities';
 import { IDateFormatting } from '@fluentui/date-time-utilities';
->>>>>>> Reuse shared types and defaults; add missing exports; improve interface names
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IRefObject } from '@fluentui/utilities';
