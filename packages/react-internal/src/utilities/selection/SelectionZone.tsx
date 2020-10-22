@@ -187,7 +187,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
     return (
       <div
-        className={css('ms-SelectionZone', this.props.className ? this.props.className : '', {
+        className={css('ms-SelectionZone', this.props.className, {
           'ms-SelectionZone--modal': !!isModal,
         })}
         ref={this._root}
