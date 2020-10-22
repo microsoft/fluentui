@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/test-utilities",
-  "version": "7.3.0",
+  "version": "8.0.0-beta",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,23 +25,23 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
+    "@uifabric/jest-serializer-merge-styles": "^8.0.0-beta",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^7.0.23"
+    "@fluentui/set-version": "^8.0.0-beta"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

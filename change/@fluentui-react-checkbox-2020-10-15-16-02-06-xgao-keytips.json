@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Remove keytipProps from props.",
   "packageName": "@fluentui/react-checkbox",
   "email": "xgao@microsoft.com",

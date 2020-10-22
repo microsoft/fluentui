@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "CommandBar: Fixing incorrect aria role.",
   "packageName": "@fluentui/react-internal",
   "email": "humbertomakotomorimoto@gmail.com",

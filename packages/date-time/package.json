@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/date-time",
-  "version": "7.17.16",
+  "version": "8.0.0-beta",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,8 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/react-conformance": "^0.1.5",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -37,9 +37,9 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
-    "@uifabric/test-utilities": "^7.3.0",
+    "@uifabric/build": "^1.0.0",
+    "@uifabric/jest-serializer-merge-styles": "^8.0.0-beta",
+    "@uifabric/test-utilities": "^8.0.0-beta",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -48,13 +48,13 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^7.9.0",
-    "@fluentui/react-internal": "^7.142.0",
+    "@fluentui/date-time-utilities": "^8.0.0-beta",
+    "@fluentui/react-internal": "^8.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.13.5",
-    "@fluentui/set-version": "^7.0.23",
-    "@fluentui/style-utilities": "^7.16.9",
-    "@uifabric/utilities": "^7.32.3",
+    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta",
+    "@fluentui/style-utilities": "^8.0.0-beta",
+    "@uifabric/utilities": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "7.16.9",
+  "version": "8.0.0-beta",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,8 +27,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/react-conformance": "^0.1.5",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,8 +36,8 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
+    "@uifabric/build": "^1.0.0",
+    "@uifabric/jest-serializer-merge-styles": "^8.0.0-beta",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -47,9 +47,9 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/merge-styles": "^7.19.1",
-    "@fluentui/set-version": "^7.0.23",
-    "@uifabric/utilities": "^7.32.3",
+    "@fluentui/merge-styles": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta",
+    "@uifabric/utilities": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

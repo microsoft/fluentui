@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Adding a forwardRef to Check (ref-conformance)",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

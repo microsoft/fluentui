@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/date-time-utilities",
-  "version": "7.9.0",
+  "version": "8.0.0-beta",
   "description": "Date-time utilities",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,13 +24,13 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^7.0.23",
+    "@fluentui/set-version": "^8.0.0-beta",
     "tslib": "^1.10.0"
   }
 }

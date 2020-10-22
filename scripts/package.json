@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/build",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "private": true,
   "main": "./index.js",
   "bin": {
@@ -25,7 +25,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@babel/register": "^7.10.4",
     "@babel/standalone": "^7.10.4",
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@mdx-js/loader": "^1.5.5",
     "@microsoft/api-extractor": "7.7.1",
     "@microsoft/load-themed-styles": "^1.10.26",
@@ -66,7 +66,7 @@
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "^1.0.0-5",
     "babel-plugin-lodash": "^3.3.4",
-    "beachball": "^1.36.0",
+    "beachball": "^1.39.1",
     "chalk": "^2.1.0",
     "chrome-remote-interface": "^0.28.2",
     "circular-dependency-plugin": "^5.0.2",

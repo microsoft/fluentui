@@ -8,10 +8,10 @@
     "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/simulant": "^0.2.0",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
     "simulant": "^0.2.2",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "remove useGlobalClassNames usage from next.",
   "packageName": "@fluentui/react-checkbox",
   "email": "xgao@microsoft.com",

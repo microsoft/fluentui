@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/example-data",
-  "version": "7.1.5",
+  "version": "8.0.0-beta",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,8 +21,8 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"

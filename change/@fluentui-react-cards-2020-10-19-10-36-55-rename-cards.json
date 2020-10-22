@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/react-cards to @fluentui/react-cards",
   "packageName": "@fluentui/react-cards",
   "email": "elcraig@microsoft.com",

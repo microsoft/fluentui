@@ -10,10 +10,10 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "gulp": "^4.0.2",
     "lerna-alias": "^3.0.3-0",
     "typescript": "3.7.2"

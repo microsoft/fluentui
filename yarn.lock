@@ -1384,6 +1384,22 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/date-time-utilities@^7.9.0":
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/date-time-utilities/-/date-time-utilities-7.9.0.tgz#4c8570b3af8bc654963ecb034d0fd100010e7d6d"
+  integrity sha512-D8p5WWeonqRO1EgIvo7WSlX1rcm87r2VQd62zTJPQImx8rpwc77CRI+iAvfxyVHRZMdt4Qk6Jq99dUaudPWaZw==
+  dependencies:
+    "@uifabric/set-version" "^7.0.23"
+    tslib "^1.10.0"
+
+"@fluentui/dom-utilities@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
+  integrity sha512-w40gi8fzCpwa7U8cONiuu8rszPStkVOL/weDf5pCbYEb1gdaV7MDPSNkgM6IV0Kz+k017noDgK9Fv4ru1Dwz1g==
+  dependencies:
+    "@uifabric/set-version" "^7.0.23"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -4739,6 +4755,32 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@uifabric/merge-styles@^7.19.1":
+  version "7.19.1"
+  resolved "https://registry.yarnpkg.com/@uifabric/merge-styles/-/merge-styles-7.19.1.tgz#446b3da48ce9925d1649edd0fc232221974b00c9"
+  integrity sha512-yqUwmk62Kgu216QNPE9vOfS3h0kiSbTvoqM5QcZi+IzpqsBOlzZx3A9Er9UiDaqHRd5lsYF5pO/jeUULmBWF/A==
+  dependencies:
+    "@uifabric/set-version" "^7.0.23"
+    tslib "^1.10.0"
+
+"@uifabric/set-version@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@uifabric/set-version/-/set-version-7.0.23.tgz#bfe10b6ba17a2518704cca856bdba8adbc11ffb0"
+  integrity sha512-9E+YKtnH2kyMKnK9XZZsqyM8OCxEJIIfxtaThTlQpYOzrWAGJxQADFbZ7+Usi0U2xHnWNPFROjq+B9ocEzhqMA==
+  dependencies:
+    tslib "^1.10.0"
+
+"@uifabric/utilities@^7.32.3":
+  version "7.32.4"
+  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.32.4.tgz#6e784c29101742196da69d0b60e63cf193c10c71"
+  integrity sha512-IKZc03uyfTrgcCGSPAUWfFl9CyxzpSrxrYwAuO4NgDEySdOlkYBRwsRUh6UwWfM+sJdhg7Y3nupzNU3VSC/arg==
+  dependencies:
+    "@fluentui/dom-utilities" "^1.1.1"
+    "@uifabric/merge-styles" "^7.19.1"
+    "@uifabric/set-version" "^7.0.23"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -6405,10 +6447,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.36.0:
-  version "1.36.0"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.36.0.tgz#646bc89b1d212f896fc5f4ca55ad10f0cb85357a"
-  integrity sha512-l5qB/tJ+jZwwHtAQT2j3cAJ+iRifDIBUY6iDoGA4at/cyY5g1TDfp+A6MXushMZ/HWg+Xbh7+Ro9rjzEXjriJQ==
+beachball@^1.39.1:
+  version "1.39.1"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.39.1.tgz#f42008efffa0f31e58bc69130fae3fda068e52a8"
+  integrity sha512-+v7E358hbLdidvkzCy2hCeuJ/FiUMBhP3Wid2Pl3a4G/B8u+VtDgqop8kt+977PZwC7OVFA+Uw09QiI+BaNEiQ==
   dependencies:
     cosmiconfig "^6.0.0"
     execa "^4.0.3"
@@ -22716,10 +22758,10 @@ symbol@^0.2.1:
   resolved "https://registry.yarnpkg.com/symbol/-/symbol-0.2.3.tgz#3b9873b8a901e47c6efe21526a3ac372ef28bbc7"
   integrity sha1-O5hzuKkB5Hxu/iFSajrDcu8ou8c=
 
-syncpack@^5.6.7:
-  version "5.6.7"
-  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-5.6.7.tgz#4602460064dbfd92da7d2689b4b28a5b4d6a365b"
-  integrity sha512-6EGW6kURlABuHiBKaRj2uuMIvFKMnWv6ocBjvNyCpvCP+fe+AtDhcat6yGzavUpLrtE01ou5sHsqtbbsIIlpng==
+syncpack@^5.6.10:
+  version "5.6.10"
+  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-5.6.10.tgz#9abad3def4ee925c5f55ecfa04564f0f762b5d67"
+  integrity sha512-7YjOACc9syvQVZfNSIhgZoZ2foqzQJ/r8tUPDKdfRgnBYNkDbbcjzYz1XH35oOm2vAllNhZYK2R8N5sAITMbqA==
   dependencies:
     chalk "4.1.0"
     commander "6.1.0"

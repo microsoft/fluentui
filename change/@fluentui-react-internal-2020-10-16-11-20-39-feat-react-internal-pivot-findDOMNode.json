@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Changing BaseButton's wrapper span to a fragment.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

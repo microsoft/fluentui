@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Updating styling to use variants.",
   "packageName": "@fluentui/react-button",
   "email": "dzearing@hotmail.com",

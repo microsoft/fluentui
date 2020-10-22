@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Move v8 Rating changes to from react-next to react",
   "packageName": "@fluentui/react-internal",
   "email": "elcraig@microsoft.com",

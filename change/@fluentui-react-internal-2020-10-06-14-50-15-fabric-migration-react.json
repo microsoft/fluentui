@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Move Fabric from react-next to react-internal",
   "packageName": "@fluentui/react-internal",
   "email": "ololubek@microsoft.com",

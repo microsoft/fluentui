@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove react-dom from peerDependencies",
   "packageName": "@fluentui/react-focus",
   "email": "elcraig@microsoft.com",

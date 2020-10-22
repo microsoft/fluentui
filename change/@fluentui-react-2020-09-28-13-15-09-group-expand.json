@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Ensure GroupedList version is invalidated when parent list is invalidated",
   "packageName": "@fluentui/react",
   "email": "tmichon@microsoft.com",

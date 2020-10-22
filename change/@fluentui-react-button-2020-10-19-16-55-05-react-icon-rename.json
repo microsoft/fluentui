@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @fluentui/react-icons to @fluentui/react-icons-mdl2",
   "packageName": "@fluentui/react-button",
   "email": "ololubek@microsoft.com",

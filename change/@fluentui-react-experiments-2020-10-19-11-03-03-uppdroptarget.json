@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Add props to UPP to disable drag drop, drop to end of list",
   "packageName": "@fluentui/react-experiments",
   "email": "elvonspa@microsoft.com",

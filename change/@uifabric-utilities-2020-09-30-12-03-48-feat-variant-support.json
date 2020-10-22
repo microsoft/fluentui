@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "getId now can take in a blank string as prefix.",
   "packageName": "@uifabric/utilities",
   "email": "dzearing@hotmail.com",

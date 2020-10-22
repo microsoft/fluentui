@@ -1,7 +1,7 @@
 {
   "name": "theming-designer",
   "description": "Theming designer for @fluentui/react.",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -14,20 +14,20 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^7.142.0",
-    "@fluentui/merge-styles": "^7.19.1",
-    "@fluentui/react-docsite-components": "^7.15.18",
-    "@fluentui/foundation-legacy": "^7.9.9",
-    "@fluentui/scheme-utilities": "^7.2.21",
-    "@fluentui/set-version": "^7.0.23",
-    "@fluentui/font-icons-mdl2": "^7.5.8",
+    "@fluentui/react": "^8.0.0-beta",
+    "@fluentui/merge-styles": "^8.0.0-beta",
+    "@fluentui/react-docsite-components": "^8.0.0-beta",
+    "@fluentui/foundation-legacy": "^8.0.0-beta",
+    "@fluentui/scheme-utilities": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

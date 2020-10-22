@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename @uifabric/set-version to @fluentui/set-version",
   "packageName": "@fluentui/date-time-utilities",
   "email": "ololubek@microsoft.com",

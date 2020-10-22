@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/tsx-editor to @fluentui/react-monaco-editor",
   "packageName": "@fluentui/react-monaco-editor",
   "email": "elcraig@microsoft.com",

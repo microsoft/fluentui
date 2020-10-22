@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "0.6.10",
+  "version": "0.6.16",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,8 +36,8 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/react-conformance": "^0.1.5",
-    "@uifabric/build": "^7.0.0",
+    "@fluentui/react-conformance": "^1.0.0",
+    "@uifabric/build": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -46,11 +46,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.4",
-    "@fluentui/react-theme-provider": "^0.14.2",
+    "@fluentui/react-compose": "^0.19.6",
+    "@fluentui/react-theme-provider": "^1.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.13.5",
-    "@fluentui/set-version": "^7.0.23",
+    "@uifabric/react-hooks": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta",
     "object-fit-images": "^3.2.4",
     "tslib": "^1.10.0"
   },
@@ -59,5 +59,11 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
   }
 }
