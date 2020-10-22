@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
-import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
 import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({
@@ -54,13 +54,11 @@ export const CalendarInlineWeekSelectionExample: React.FunctionComponent = () =>
 
       <Calendar
         dateRangeType={dateRangeType}
-        highlightCurrentMonth={false}
         highlightSelectedMonth
         showGoToToday
         onSelectDate={onSelectDate}
         value={selectedDate}
         firstDayOfWeek={firstDayOfWeek}
-        strings={defaultDayPickerStrings}
       />
       <div>
         <DefaultButton className={styles.button} onClick={goPrevious} text="Previous" />

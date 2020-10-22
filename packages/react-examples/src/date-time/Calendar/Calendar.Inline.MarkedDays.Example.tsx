@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType, ICalendarDayProps } from '@uifabric/date-time';
+import { Calendar, ICalendarDayProps } from '@uifabric/date-time';
 import { addDays } from '@fluentui/date-time-utilities';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {
@@ -13,12 +13,10 @@ export const CalendarInlineMarkedDaysExample = () => {
     <div style={{ height: '360px' }}>
       <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
       <Calendar
-        dateRangeType={DateRangeType.Day}
         showGoToToday
         onSelectDate={setSelectedDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
+        // Add the marked days
         calendarDayProps={calendarDayProps}
       />
     </div>

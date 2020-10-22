@@ -8,9 +8,10 @@ import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@fluentui/utilities';
+import { ICalendarStrings } from '@fluentui/date-time-utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
 import { IComponentAs } from '@fluentui/utilities';
-import { IDateGridStrings } from '@fluentui/date-time-utilities';
+import { IDateFormatting } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IRefObject } from '@fluentui/utilities';
@@ -26,21 +27,33 @@ export enum AnimationDirection {
     Vertical = 1
 }
 
-// @public
-export const Calendar: import("react").FunctionComponent<import("./Calendar.types").ICalendarProps & import("react").RefAttributes<HTMLDivElement>>;
-
-// @public
-export const DatePicker: import("react").FunctionComponent<import("./DatePicker.types").IDatePickerProps & import("react").RefAttributes<HTMLDivElement>>;
+// @public (undocumented)
+export const Calendar: React.FunctionComponent<ICalendarProps>;
 
 // @public (undocumented)
-export const DatePickerBase: React.ForwardRefExoticComponent<IDatePickerProps & React.RefAttributes<HTMLDivElement>>;
+export const DatePicker: React.FunctionComponent<IDatePickerProps>;
+
+// @public (undocumented)
+export const DatePickerBase: React.FunctionComponent<IDatePickerProps>;
 
 export { DateRangeType }
 
 export { DayOfWeek }
 
 // @public (undocumented)
+export const defaultCalendarNavigationIcons: ICalendarNavigationIcons;
+
+// @public (undocumented)
+export const defaultCalendarStrings: ICalendarStrings;
+
+// @public (undocumented)
+export const defaultDatePickerStrings: IDatePickerStrings;
+
+// @public @deprecated (undocumented)
 export const defaultDayPickerStrings: ICalendarStrings;
+
+// @public (undocumented)
+export const defaultWeeklyDayPickerNavigationIcons: IWeeklyDayPickerNavigationIcons;
 
 // @public (undocumented)
 export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings;
@@ -50,6 +63,62 @@ export { FirstWeekOfYear }
 // @public (undocumented)
 export interface ICalendar {
     focus: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarDay {
+    // (undocumented)
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface ICalendarDayGrid {
+    // (undocumented)
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICalendarDayGrid> {
+    allFocusable?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    componentRef?: IRefObject<ICalendarDayGrid>;
+    customDayCellRef?: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => void;
+    dateRangeType: DateRangeType;
+    dateTimeFormatter: IDateFormatting;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+    labelledBy?: string;
+    lightenDaysOutsideNavigatedMonth?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigatedDate: Date;
+    onDismiss?: () => void;
+    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    selectedDate: Date;
+    showCloseButton?: boolean;
+    showWeekNumbers?: boolean;
+    strings: ICalendarStrings;
+    styles?: IStyleFunctionOrObject<ICalendarDayGridStyleProps, ICalendarDayGridStyles>;
+    theme?: ITheme;
+    today?: Date;
+    weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridStyleProps {
+    animateBackwards?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    dateRangeType?: DateRangeType;
+    lightenDaysOutsideNavigatedMonth?: boolean;
+    showWeekNumbers?: boolean;
+    theme: ITheme;
 }
 
 // @public (undocumented)
@@ -77,19 +146,16 @@ export interface ICalendarDayGridStyles {
     wrapper?: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalendarDay" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
     componentRef?: IRefObject<ICalendarDay>;
-    dateTimeFormatter: ICalendarFormatDateCallbacks;
+    dateTimeFormatter: IDateFormatting;
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
-    navigationIcons: ICalendarIconStrings;
+    navigationIcons: ICalendarNavigationIcons;
     onDismiss?: () => void;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -98,49 +164,58 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
     showSixWeeksByDefault?: boolean;
     showWeekNumbers?: boolean;
     strings: ICalendarStrings;
-    // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyles" needs to be exported by the entry point index.d.ts
     styles?: IStyleFunctionOrObject<ICalendarDayStyleProps, ICalendarDayStyles>;
     theme?: ITheme;
 }
 
 // @public (undocumented)
-export interface ICalendarFormatDateCallbacks {
-    formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
-    formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
-    formatYear: (date: Date) => string;
+export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
+    className?: string;
+    headerIsClickable?: boolean;
+    showWeekNumbers?: boolean;
+    theme: ITheme;
 }
 
 // @public (undocumented)
-export interface ICalendarIconStrings {
-    closeIcon?: string;
-    leftNavigation?: string;
-    rightNavigation?: string;
+export interface ICalendarDayStyles extends Partial<ICalendarDayGridStyles> {
+    disabledStyle: IStyle;
+    header: IStyle;
+    headerIconButton: IStyle;
+    monthAndYear: IStyle;
+    monthComponents: IStyle;
+    root: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalendarMonth" needs to be exported by the entry point index.d.ts
-//
+// @public @deprecated (undocumented)
+export type ICalendarFormatDateCallbacks = IDateFormatting;
+
+// @public @deprecated (undocumented)
+export type ICalendarIconStrings = ICalendarNavigationIcons;
+
+// @public (undocumented)
+export interface ICalendarMonth {
+    // (undocumented)
+    focus(): void;
+}
+
 // @public (undocumented)
 export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject<ICalendarMonth>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    dateTimeFormatter?: IDateFormatting;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
-    navigationIcons?: ICalendarIconStrings;
+    navigationIcons?: ICalendarNavigationIcons;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     selectedDate: Date;
     strings: ICalendarStrings;
-    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyles" needs to be exported by the entry point index.d.ts
     styles?: IStyleFunctionOrObject<ICalendarMonthStyleProps, ICalendarMonthStyles>;
     theme?: ITheme;
     today?: Date;
@@ -148,14 +223,65 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
 }
 
 // @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarMonthStyleProps extends ICalendarPickerStyleProps {
+}
+
+// @public (undocumented)
+export interface ICalendarMonthStyles extends ICalendarPickerStyles {
+}
+
+// @public (undocumented)
+export interface ICalendarNavigationIcons {
+    closeIcon?: string;
+    leftNavigation?: string;
+    rightNavigation?: string;
+}
+
+// @public (undocumented)
+export interface ICalendarPickerStyleProps {
+    animateBackwards?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    hasHeaderClickCallback?: boolean;
+    highlightCurrent?: boolean;
+    highlightSelected?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICalendarPickerStyles {
+    // (undocumented)
+    buttonRow: IStyle;
+    // (undocumented)
+    current: IStyle;
+    // (undocumented)
+    currentItemButton: IStyle;
+    // (undocumented)
+    disabled: IStyle;
+    // (undocumented)
+    gridContainer: IStyle;
+    // (undocumented)
+    headerContainer: IStyle;
+    // (undocumented)
+    itemButton: IStyle;
+    // (undocumented)
+    navigationButton: IStyle;
+    // (undocumented)
+    navigationButtonsContainer: IStyle;
+    root: IStyle;
+    // (undocumented)
+    selected: IStyle;
+}
+
+// @public (undocumented)
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     calendarDayProps?: Partial<ICalendarDayProps>;
     calendarMonthProps?: Partial<ICalendarMonthProps>;
     className?: string;
     componentRef?: IRefObject<ICalendar>;
     dateRangeType?: DateRangeType;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    dateTimeFormatter?: IDateFormatting;
     firstDayOfWeek?: DayOfWeek;
     firstWeekOfYear?: FirstWeekOfYear;
     highlightCurrentMonth?: boolean;
@@ -164,7 +290,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
     isMonthPickerVisible?: boolean;
     maxDate?: Date;
     minDate?: Date;
-    navigationIcons?: ICalendarIconStrings;
+    navigationIcons?: ICalendarNavigationIcons;
     onDismiss?: () => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
@@ -181,23 +307,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
     workWeekDays?: DayOfWeek[];
 }
 
-// @public (undocumented)
-export interface ICalendarStrings extends IDateGridStrings {
-    closeButtonAriaLabel?: string;
-    dayMarkedAriaLabel?: string;
-    goToToday: string;
-    monthPickerHeaderAriaLabel?: string;
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    nextYearRangeAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    prevYearRangeAriaLabel?: string;
-    selectedDateFormatString?: string;
-    todayDateFormatString?: string;
-    weekNumberFormatString?: string;
-    yearPickerHeaderAriaLabel?: string;
-}
+export { ICalendarStrings }
 
 // @public (undocumented)
 export interface ICalendarStyleProps {
@@ -205,6 +315,8 @@ export interface ICalendarStyleProps {
     isDayPickerVisible?: boolean;
     isMonthPickerVisible?: boolean;
     monthPickerOnly?: boolean;
+    overlaidWithButton?: boolean;
+    // @deprecated (undocumented)
     overlayedWithButton?: boolean;
     showGoToToday?: boolean;
     showMonthPickerAsOverlay?: boolean;
@@ -226,6 +338,76 @@ export interface ICalendarStyles {
 }
 
 // @public (undocumented)
+export interface ICalendarYear {
+    // (undocumented)
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
+    animateBackwards?: boolean;
+    onSelectNext?: () => void;
+    onSelectPrev?: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
+    animationDirection?: AnimationDirection;
+    className?: string;
+    componentRef?: IRefObject<ICalendarYear>;
+    highlightCurrentYear?: boolean;
+    highlightSelectedYear?: boolean;
+    maxYear?: number;
+    minYear?: number;
+    navigatedYear?: number;
+    navigationIcons?: ICalendarNavigationIcons;
+    onHeaderSelect?: (focus: boolean) => void;
+    onRenderTitle?: (props: ICalendarYearHeaderProps) => React.ReactNode;
+    onRenderYear?: (year: number) => React.ReactNode;
+    onSelectYear?: (year: number) => void;
+    selectedYear?: number;
+    strings?: ICalendarYearStrings;
+    styles?: IStyleFunctionOrObject<ICalendarYearStyleProps, ICalendarYearStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICalendarYearRange {
+    // (undocumented)
+    fromYear: number;
+    // (undocumented)
+    toYear: number;
+}
+
+// @public (undocumented)
+export interface ICalendarYearRangeToString {
+    // (undocumented)
+    (range: ICalendarYearRange): string;
+}
+
+// @public (undocumented)
+export interface ICalendarYearStrings {
+    // (undocumented)
+    headerAriaLabelFormatString?: string;
+    // (undocumented)
+    nextRangeAriaLabel?: string | ICalendarYearRangeToString;
+    // (undocumented)
+    prevRangeAriaLabel?: string | ICalendarYearRangeToString;
+    // (undocumented)
+    rangeAriaLabel?: string | ICalendarYearRangeToString;
+}
+
+// @public (undocumented)
+export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {
+}
+
+// @public (undocumented)
+export interface ICalendarYearStyles extends ICalendarPickerStyles {
+}
+
+export { IDateFormatting }
+
+// @public (undocumented)
 export interface IDatePicker {
     focus(): void;
     reset(): void;
@@ -233,7 +415,7 @@ export interface IDatePicker {
 }
 
 // @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     allowTextInput?: boolean;
     ariaLabel?: string;
@@ -243,7 +425,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    dateTimeFormatter?: IDateFormatting;
     disableAutoFocus?: boolean;
     disabled?: boolean;
     firstDayOfWeek?: DayOfWeek;
@@ -315,16 +497,19 @@ export interface IWeeklyDayPicker {
 }
 
 // @public (undocumented)
+export type IWeeklyDayPickerNavigationIcons = Pick<ICalendarNavigationIcons, 'leftNavigation' | 'rightNavigation'>;
+
+// @public (undocumented)
 export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
     animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject<IWeeklyDayPicker>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    dateTimeFormatter?: IDateFormatting;
     firstDayOfWeek?: DayOfWeek;
     initialDate?: Date;
     maxDate?: Date;
     minDate?: Date;
-    navigationIcons?: ICalendarIconStrings;
+    navigationIcons?: IWeeklyDayPickerNavigationIcons;
     onNavigateDate?: (date: Date) => void;
     onSelectDate?: (date: Date) => void;
     restrictedDates?: Date[];
@@ -342,8 +527,6 @@ export interface IWeeklyDayPickerStrings extends ICalendarStrings {
     prevWeekAriaLabel?: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridStyleProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
     className?: string;
@@ -357,12 +540,13 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
     root: IStyle;
 }
 
-// @public
-export const WeeklyDayPicker: import("react").FunctionComponent<import("./WeeklyDayPicker.types").IWeeklyDayPickerProps>;
+// @public (undocumented)
+export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";
 export * from "@fluentui/date-time-utilities/lib/dateValues/dateValues";
+export * from "@fluentui/date-time-utilities/lib/dateValues/timeConstants";
 
 // (No @packageDocumentation comment for this package)
 

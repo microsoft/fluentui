@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@uifabric/date-time';
+import { Calendar } from '@uifabric/date-time';
 
 export const CalendarInlineWeekNumbersExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -12,15 +12,7 @@ export const CalendarInlineWeekNumbersExample: React.FunctionComponent = () => {
     <div style={{ height: '360px' }}>
       <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
 
-      <Calendar
-        dateRangeType={DateRangeType.Day}
-        showGoToToday
-        showWeekNumbers
-        onSelectDate={onSelectDate}
-        value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
-      />
+      <Calendar showWeekNumbers showGoToToday onSelectDate={onSelectDate} value={selectedDate} />
     </div>
   );
 };

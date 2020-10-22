@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react';
-import { Calendar, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar } from '@uifabric/date-time';
 import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({
@@ -51,14 +51,10 @@ export const CalendarInlineMultidayDayViewExample: React.FunctionComponent = () 
       <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
       <Calendar
-        dateRangeType={DateRangeType.Day}
-        highlightCurrentMonth={false}
         highlightSelectedMonth
         showGoToToday
         onSelectDate={onSelectDate}
         value={selectedDate}
-        firstDayOfWeek={DayOfWeek.Sunday}
-        strings={defaultDayPickerStrings}
         calendarDayProps={{ daysToSelectInDayView }}
       />
       <Dropdown

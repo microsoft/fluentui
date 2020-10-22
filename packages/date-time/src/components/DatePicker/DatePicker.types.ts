@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DayOfWeek, ICalendarProps } from '../../Calendar';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
+import { ICalendarProps } from '../../Calendar';
+import { DayOfWeek, FirstWeekOfYear, ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
@@ -24,7 +23,10 @@ export interface IDatePicker {
 /**
  * {@docCategory DatePicker}
  */
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+export interface IDatePickerProps
+  extends IBaseProps<IDatePicker>,
+    React.HTMLAttributes<HTMLElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -131,7 +133,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   placeholder?: string;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -194,20 +196,20 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   showGoToToday?: boolean;
 
   /**
-   * Determines if DatePicker has a border.
+   * Determines if the DatePicker has a border.
    * @defaultvalue false
    */
   borderless?: boolean;
 
   /**
-   * Optional Classname for datepicker root element .
+   * Optional CSS class for the DatePicker root element.
    */
   className?: string;
 
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * The minimum allowable date.
@@ -220,7 +222,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   maxDate?: Date;
 
   /**
-   * The initially highlighted date in the calendar picker
+   * The initially highlighted date.
    */
   initialPickerDate?: Date;
 

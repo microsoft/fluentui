@@ -2,15 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
-import {
-  DateRangeType,
-  DayOfWeek,
-  FirstWeekOfYear,
-  ICalendarFormatDateCallbacks,
-  ICalendarStrings,
-  ICalendarIconStrings,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
+import { AnimationDirection } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import {
@@ -19,56 +11,15 @@ import {
   addDays,
   addMonths,
   compareDates,
-} from '../../utilities/dateMath/DateMath';
+  FirstWeekOfYear,
+  DateRangeType,
+  DayOfWeek,
+  DEFAULT_DATE_FORMATTING,
+} from '@fluentui/date-time-utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
+import { defaultWeeklyDayPickerStrings, defaultWeeklyDayPickerNavigationIcons } from './defaults';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
-
-const DEFAULT_STRINGS = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close date picker',
-  weekNumberFormatString: 'Week number {0}',
-  prevWeekAriaLabel: 'Go to previous week',
-  nextWeekAriaLabel: 'Go to next week',
-  dayMarkedAriaLabel: 'marked',
-};
-
-export const defaultIconStrings: ICalendarIconStrings = {
-  leftNavigation: 'ChevronLeft',
-  rightNavigation: 'ChevronRight',
-};
-
-const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
-  formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getFullYear(),
-  formatDay: (date: Date) => date.getDate().toString(),
-  formatYear: (date: Date) => date.getFullYear().toString(),
-};
 
 export interface IWeeklyDayPickerState {
   /** The currently focused date in the week picker, but not necessarily selected */
@@ -90,9 +41,9 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     initialDate: undefined,
     today: new Date(),
     firstDayOfWeek: DayOfWeek.Sunday,
-    strings: DEFAULT_STRINGS,
-    navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+    strings: defaultWeeklyDayPickerStrings,
+    navigationIcons: defaultWeeklyDayPickerNavigationIcons,
+    dateTimeFormatter: DEFAULT_DATE_FORMATTING,
     animationDirection: AnimationDirection.Horizontal,
   };
 
