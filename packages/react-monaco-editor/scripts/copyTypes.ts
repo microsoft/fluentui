@@ -6,7 +6,7 @@ import * as path from 'path';
 
 // Copy react.d.ts and other .d.ts files it references to the dist folder,
 // so we can more easily load them into the editor later.
-module.exports = function copyTypes() {
+export function copyTypes() {
   const packagesToResolve = ['@fluentui/react', '@fluentui/react-hooks', '@fluentui/example-data'];
   const resolvedPackages = [];
   const pathsToCopy = [];
