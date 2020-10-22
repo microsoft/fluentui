@@ -11,7 +11,7 @@ import {
   warnDeprecations,
   memoizeFunction,
 } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -36,6 +36,12 @@ type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = D3ScaleLinear<string, string>;
 const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
+
+// When displaying gaps between bars, the max height of the gap is given in the
+// props. The actual gap is calculated with this multiplier, with a minimum gap
+// of 1 pixel. (If these values are changed, update the comment for barGapMax.)
+const barGapMultiplier = 0.2;
+const barGapMin = 1;
 
 interface IRefArrayData {
   refElement?: SVGGElement | null;
@@ -70,7 +76,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _barWidth: number;
   private _additionalSpace: number;
   private _calloutId: string;
-  private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _colors: string[];
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
@@ -129,11 +134,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.theme!.palette,
       this._createLegendsForLine(this.props.data),
     );
-
-    this._classNames = getClassNames(this.props.styles!, {
-      href: this.props.href!,
-      theme: this.props.theme!,
-    });
 
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
@@ -585,23 +585,34 @@ export class VerticalStackedBarChartBase extends React.Component<
     yBarScale: NumericScale,
     containerHeight: number,
   ): JSX.Element[] => {
+    const { barGapMax = 0, barCornerRadius = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
       (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
-    const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
-      let startingPointOfY = 0;
 
-      let xPoint: number | string;
-      if (this._xAxisType === XAxisTypes.NumericAxis) {
-        xPoint = xBarScale(singleChartData.xAxisPoint as number);
-      } else {
-        xPoint = xBarScale(indexNumber);
-      }
-      // Removing datapoints with zero data
+    const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
+      let yPoint = containerHeight - this.margins.bottom!;
+      const xPoint = xBarScale(
+        this._xAxisType === XAxisTypes.NumericAxis ? (singleChartData.xAxisPoint as number) : indexNumber,
+      );
+
+      // Removing data points with zero data
       const nonZeroBars = singleChartData.chartData.filter(point => point.data > 0);
+
+      // When displaying gaps between the bars, the height of each bar is
+      // adjusted so that the total of all bars is not changed by the gaps
+      const totalData = nonZeroBars.reduce((iter, value) => iter + value.data, 0);
+      const totalHeight = yBarScale(totalData);
+      const spaces = barGapMax && nonZeroBars.length - 1;
+      const spaceHeight = spaces && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / spaces));
+      const heightValueRatio = (totalHeight - spaceHeight * spaces) / totalData;
+
+      if (heightValueRatio < 0) {
+        return undefined;
+      }
+
       const singleBar = nonZeroBars.map((point: IVSChartDataPoint, index: number) => {
-        startingPointOfY = startingPointOfY + point.data;
         const color = point.color ? point.color : this._colors[index];
         const ref: IRefArrayData = {};
 
@@ -609,7 +620,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         if (this.state.isLegendHovered || this.state.isLegendSelected) {
           shouldHighlight = this.state.selectedLegendTitle === point.legend;
         }
-        this._classNames = getClassNames(this.props.styles!, {
+        const classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
           href: this.props.href,
@@ -624,14 +635,40 @@ export class VerticalStackedBarChartBase extends React.Component<
           onBlur: this._handleMouseOut,
           onClick: this._redirectToUrl,
         };
+
+        const barHeight = heightValueRatio * point.data;
+        yPoint = yPoint - barHeight - (index ? spaceHeight : 0);
+
+        // If set, apply the corner radius to the top of the final bar
+        if (barCornerRadius && barHeight > barCornerRadius && index === nonZeroBars.length - 1) {
+          return (
+            <path
+              key={index + indexNumber}
+              className={classNames.opacityChangeOnHover}
+              d={`
+                M ${xPoint} ${yPoint + barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
+                h ${this._barWidth - 2 * barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${barCornerRadius}
+                v ${barHeight - barCornerRadius}
+                h ${-this._barWidth}
+                z
+              `}
+              fill={color}
+              ref={e => (ref.refElement = e)}
+              {...rectFocusProps}
+            />
+          );
+        }
+
         return (
           <rect
             key={index + indexNumber + `${shouldFocusWholeStack}`}
-            className={this._classNames.opacityChangeOnHover}
+            className={classNames.opacityChangeOnHover}
             x={xPoint}
-            y={containerHeight - this.margins.bottom! - yBarScale(startingPointOfY)}
+            y={yPoint}
             width={this._barWidth}
-            height={Math.max(yBarScale(point.data), 0)}
+            height={barHeight}
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
@@ -659,7 +696,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         </g>
       );
     });
-    return bars;
+
+    return bars.filter((bar): bar is JSX.Element => !!bar);
   };
 
   private _getScales = (

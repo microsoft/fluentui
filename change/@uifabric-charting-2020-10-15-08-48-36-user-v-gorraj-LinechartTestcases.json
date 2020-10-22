@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting: Test cases for linechart",
-  "packageName": "@uifabric/charting",
-  "email": "v-gorraj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-15T03:18:36.408Z"
-}

@@ -9,7 +9,6 @@ import {
   SelectionZone,
   Autofill,
   IInputProps,
-  MarqueeSelection,
   IDragDropEvents,
 } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
@@ -352,45 +351,43 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onCopy={_onCopy}
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
-        <MarqueeSelection selection={selection} isEnabled={true}>
-          <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', classNames.pickerText)}>
-              {headerComponent}
-              {_renderSelectedItemsList()}
-              {_canAddItems() && (
-                <div
-                  aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
-                  aria-expanded={isSuggestionsShown}
-                  aria-haspopup="listbox"
-                  role="combobox"
-                  className={css('ms-BasePicker-div', classNames.pickerDiv)}
-                >
-                  <Autofill
-                    {...(inputProps as IInputProps)}
-                    className={css('ms-BasePicker-input', classNames.pickerInput)}
-                    ref={input}
-                    /* eslint-disable react/jsx-no-bind */
-                    onFocus={_onInputFocus}
-                    onClick={_onInputClick}
-                    onInputValueChange={_onInputChange}
-                    /* eslint-enable react/jsx-no-bind */
-                    aria-autocomplete="list"
-                    aria-activedescendant={
-                      isSuggestionsShown && focusItemIndex >= 0
-                        ? 'FloatingSuggestionsItemId-' + focusItemIndex
-                        : undefined
-                    }
-                    disabled={false}
-                    /* eslint-disable react/jsx-no-bind */
-                    onPaste={_onPaste}
-                    onKeyDown={_onInputKeyDown}
-                    /* eslint-enable react/jsx-no-bind */
-                  />
-                </div>
-              )}
-            </div>
-          </SelectionZone>
-        </MarqueeSelection>
+        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+          <div className={css('ms-BasePicker-text', classNames.pickerText)}>
+            {headerComponent}
+            {_renderSelectedItemsList()}
+            {_canAddItems() && (
+              <div
+                aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
+                aria-expanded={isSuggestionsShown}
+                aria-haspopup="listbox"
+                role="combobox"
+                className={css('ms-BasePicker-div', classNames.pickerDiv)}
+              >
+                <Autofill
+                  {...(inputProps as IInputProps)}
+                  className={css('ms-BasePicker-input', classNames.pickerInput)}
+                  ref={input}
+                  /* eslint-disable react/jsx-no-bind */
+                  onFocus={_onInputFocus}
+                  onClick={_onInputClick}
+                  onInputValueChange={_onInputChange}
+                  /* eslint-enable react/jsx-no-bind */
+                  aria-autocomplete="list"
+                  aria-activedescendant={
+                    isSuggestionsShown && focusItemIndex >= 0
+                      ? 'FloatingSuggestionsItemId-' + focusItemIndex
+                      : undefined
+                  }
+                  disabled={false}
+                  /* eslint-disable react/jsx-no-bind */
+                  onPaste={_onPaste}
+                  onKeyDown={_onInputKeyDown}
+                  /* eslint-enable react/jsx-no-bind */
+                />
+              </div>
+            )}
+          </div>
+        </SelectionZone>
       </FocusZone>
       {_renderFloatingPicker()}
     </div>

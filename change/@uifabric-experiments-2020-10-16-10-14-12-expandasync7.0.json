@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Convert SelectedPersona GetExpandedItems to async",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T17:13:51.448Z"
+}

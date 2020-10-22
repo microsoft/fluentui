@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 15 Oct 2020 12:23:11 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.7)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.6..@fluentui/react-examples_v0.6.7)
+
+### Patches
+
+- Update CommandBar related snanpshots after aria role update. ([PR #15511](https://github.com/microsoft/fluentui/pull/15511) by xgao@microsoft.com)
 
 ## [0.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.6)
 

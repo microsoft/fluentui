@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Oct 2020 21:41:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.5.1)
+
+Fri, 16 Oct 2020 21:41:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.5.0..@fluentui/theme_v1.5.1)
+
+### Patches
+
+- Fix ITheme inferred typing error. ([PR #15560](https://github.com/microsoft/fluentui/pull/15560) by xgao@microsoft.com)
 
 ## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.5.0)
 

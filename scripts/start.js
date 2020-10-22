@@ -6,16 +6,12 @@ const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const allPackages = getAllPackageInfo();
 const extraArgs = process.argv.slice(2);
 
-const defaults = ['office-ui-fabric-react', '@fluentui/docs'];
+const defaults = ['office-ui-fabric-react'];
 
 const projectsWithStartCommand = Object.entries(allPackages)
   .reduce((acc, [pkg, info]) => {
     if (info.packageJson.scripts && info.packageJson.scripts.start) {
       acc.push({ title: pkg, value: { pkg, command: 'start' } });
-    }
-
-    if (info.packageJson.scripts && info.packageJson.scripts['start:profile']) {
-      acc.push({ title: `${pkg} (profile)`, value: { pkg, command: 'start:profile' } });
     }
 
     return acc;
