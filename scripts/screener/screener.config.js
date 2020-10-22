@@ -1,6 +1,6 @@
 // @ts-check
 
-require('@uifabric/build/babel/register');
+require('@fluentui/scripts/babel/register');
 
 const cp = require('child_process');
 

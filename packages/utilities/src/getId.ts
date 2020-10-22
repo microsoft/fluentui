@@ -1,5 +1,5 @@
 import { getWindow } from './dom/getWindow';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';

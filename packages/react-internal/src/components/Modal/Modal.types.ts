@@ -33,6 +33,11 @@ export interface IDragOptions {
    * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
    */
   menu: React.FunctionComponent<IContextualMenuProps>;
+
+  /**
+   * Whether the draggable content should be prevented from going off-screen
+   */
+  keepInBounds?: boolean;
 }
 
 /**

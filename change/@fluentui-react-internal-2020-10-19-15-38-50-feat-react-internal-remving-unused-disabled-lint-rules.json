@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Removing unused disabled eslint rules from react-internal package.",
+  "packageName": "@fluentui/react-internal",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-19T22:38:32.896Z"
+}

@@ -2,7 +2,7 @@ import { mergeThemes, PartialTheme, Theme } from '@fluentui/theme';
 import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
-import { getId, ICustomizerContext } from '@uifabric/utilities';
+import { getId, ICustomizerContext } from '@fluentui/utilities';
 import { getTokens } from './getTokens';
 
 const themeToIdMap = new Map<Object, string>();

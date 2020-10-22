@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Link } from '@fluentui/react/lib/Link';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
@@ -7,7 +7,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({

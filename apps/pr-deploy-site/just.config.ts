@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { preset, just } from '@uifabric/build';
-import { findGitRoot, getAllPackageInfo } from '@uifabric/build/monorepo/index';
-
-const { series, task, copyInstructionsTask, copyInstructions } = just;
+import { preset, series, task, copyInstructionsTask, copyInstructions } from '@fluentui/scripts';
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
 
 const gitRoot = findGitRoot();
 let instructions = copyInstructions.copyFilesToDestinationDirectory(

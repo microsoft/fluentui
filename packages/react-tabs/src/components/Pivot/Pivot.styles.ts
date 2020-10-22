@@ -7,7 +7,7 @@ import {
   normalize,
   FontWeights,
 } from '@fluentui/style-utilities';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
+import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
 const globalClassNames = {
   count: 'ms-Pivot-count',

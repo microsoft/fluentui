@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersona, IPersonaProps } from '@fluentui/react/lib/Persona';
-import { people } from '@uifabric/example-data';
+import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { IDragDropEvents, Selection } from '@fluentui/react';
 
 const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {

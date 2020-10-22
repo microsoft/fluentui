@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Rename build-related packages",
+  "packageName": "@fluentui/utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-20T16:58:36.919Z"
+}

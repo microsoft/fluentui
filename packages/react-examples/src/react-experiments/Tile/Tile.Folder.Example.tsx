@@ -7,7 +7,7 @@ import {
   renderFolderCoverWithLayout,
   FolderCoverType,
 } from '@fluentui/react-experiments/lib/FolderCover';
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 import { css, ISize, fitContentToBounds } from '@fluentui/react-experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@uifabric/utilities';
+import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import {

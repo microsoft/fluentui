@@ -6,7 +6,7 @@ import {
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction, IRefObject } from '@uifabric/utilities';
+import { IRenderFunction, IRefObject } from '@fluentui/utilities';
 
 /**
  * FloatingSuggestions component props

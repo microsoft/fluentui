@@ -1,4 +1,4 @@
-import { styled } from '@uifabric/utilities';
+import { styled } from '@fluentui/utilities';
 import { DatePickerBase } from './DatePicker.base';
 import { styles } from './DatePicker.styles';
 

@@ -1,4 +1,3 @@
-// @ts-check
 import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
 
 import path from 'path';
@@ -12,12 +11,11 @@ import { ts } from './tasks/ts';
 import { eslint } from './tasks/eslint';
 import { webpack, webpackDevServer } from './tasks/webpack';
 import { verifyApiExtractor, updateApiExtractor } from './tasks/api-extractor';
-import lintImports from './tasks/lint-imports';
-import prettier from './tasks/prettier';
-import bundleSizeCollect from './tasks/bundle-size-collect';
-import checkForModifiedFiles from './tasks/check-for-modified-files';
-import generateVersionFiles from './tasks/generate-version-files';
-import generatePackageManifestTask from './tasks/generate-package-manifest';
+import { lintImports } from './tasks/lint-imports';
+import { prettier } from './tasks/prettier';
+import { checkForModifiedFiles } from './tasks/check-for-modified-files';
+import { generateVersionFiles } from './tasks/generate-version-files';
+import { generatePackageManifestTask } from './tasks/generate-package-manifest';
 import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
@@ -42,6 +40,8 @@ function basicPreset() {
   option('registry', { default: 'https://registry.npmjs.org' } as any);
 
   option('push', { default: true } as any);
+
+  option('package', { alias: 'p' });
 }
 
 /** Resolve whereas a storybook config + stories exist for a given path */
@@ -57,7 +57,7 @@ function checkForStorybookExistence() {
   );
 }
 
-function preset() {
+export function preset() {
   basicPreset();
 
   task('no-op', () => {}).cached();
@@ -80,7 +80,6 @@ function preset() {
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
@@ -138,4 +137,8 @@ function preset() {
 }
 
 preset.basic = basicPreset;
-export = preset;
+
+if (process.cwd() === __dirname) {
+  // load the preset if this is being run within the scripts package
+  preset();
+}

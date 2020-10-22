@@ -1,5 +1,5 @@
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';

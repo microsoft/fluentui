@@ -3,7 +3,7 @@ import { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import { TilesList } from './TilesList';
 import { IFocusZone } from '@fluentui/react/lib/FocusZone';
 import { IListProps } from '@fluentui/react/lib/List';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {
   item: TItem;

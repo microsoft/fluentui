@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, PropertiesTableSet } from '@fluentui/react-docsite-components';
 import { WeeklyDayPickerInlineExample } from './WeeklyDayPicker.Inline.Example';
 import { WeeklyDayPickerInlineExpandableExample } from './WeeklyDayPicker.Inline.Expandable.Example';
 

@@ -1,4 +1,4 @@
-import { keyframes } from '@uifabric/merge-styles';
+import { keyframes } from '@fluentui/merge-styles';
 
 const fadeInAnimationName: string = keyframes({
   from: { opacity: 0 },

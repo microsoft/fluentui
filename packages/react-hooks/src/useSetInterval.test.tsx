@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSetInterval } from './useSetInterval';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useSetInterval', () => {

@@ -16,10 +16,10 @@ import { Popup } from '../../Popup';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
-import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
+import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
-import { getWindow, getDocument } from '@uifabric/utilities';
-import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useId } from '@uifabric/react-hooks';
+import { useWindow, useDocument } from '@fluentui/react-window-provider';
+import { useBoolean, useMergedRefs, useWarnings, useConst, useSetTimeout, useId } from '@fluentui/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -36,6 +36,8 @@ interface IModalInternalState {
   scrollableContent: HTMLDivElement | null;
   lastSetXCoordinate: number;
   lastSetYCoordinate: number;
+  minClampedPosition: ICoordinates;
+  maxClampedPosition: ICoordinates;
   events: EventGroup;
 }
 
@@ -94,8 +96,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const FocusTrapZoneId = useId();
 
-    const doc = getDocument();
-    const win = getWindow();
+    const doc = useDocument();
+    const win = useWindow();
 
     const { setTimeout, clearTimeout } = useSetTimeout();
 
@@ -118,6 +120,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       scrollableContent: null,
       lastSetXCoordinate: 0,
       lastSetYCoordinate: 0,
+      minClampedPosition: { x: 0, y: 0 },
+      maxClampedPosition: { x: 0, y: 0 },
       events: new EventGroup({}),
     }));
 
@@ -160,6 +164,37 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         internalState.scrollableContent = elt;
       },
       [internalState],
+    );
+
+    const registerInitialModalPosition = (): void => {
+      if (dragOptions?.keepInBounds && !internalState.minClampedPosition && !internalState.maxClampedPosition) {
+        const dialogMain = document.querySelector(`[data-id=${FocusTrapZoneId}]`);
+        if (dialogMain) {
+          const modalRectangle = dialogMain.getBoundingClientRect();
+          internalState.minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
+          internalState.maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
+        }
+      }
+    };
+
+    /**
+     * Clamps an axis to a specified min and max position.
+     *
+     * @param axis A string that represents the axis (x/y).
+     * @param position The position on the axis.
+     */
+    const getClampedAxis = React.useCallback(
+      (axis: string, position: number) => {
+        if (!dragOptions || !dragOptions.keepInBounds) {
+          return position;
+        }
+
+        position = Math.max(internalState.minClampedPosition[axis as keyof ICoordinates], position);
+        position = Math.min(internalState.minClampedPosition[axis as keyof ICoordinates], position);
+
+        return position;
+      },
+      [dragOptions, internalState],
     );
 
     const handleKeyUp = React.useCallback(
@@ -205,10 +240,10 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const handleDrag = React.useCallback(
       (ev: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, ui: IDragData): void => {
-        setXCoordinate(xCoordinate + ui.delta.x);
-        setYCoordinate(yCoordinate + ui.delta.y);
+        setXCoordinate(getClampedAxis('x', xCoordinate + ui.delta.x));
+        setYCoordinate(getClampedAxis('y', yCoordinate + ui.delta.y));
       },
-      [xCoordinate, yCoordinate],
+      [getClampedAxis, xCoordinate, yCoordinate],
     );
 
     const handleDragStop = React.useCallback((): void => {
@@ -256,19 +291,19 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
               break;
             }
             case KeyCodes.up: {
-              setYCoordinate(yCoordinate - delta);
+              setYCoordinate(getClampedAxis('y', yCoordinate - delta));
               break;
             }
             case KeyCodes.down: {
-              setYCoordinate(yCoordinate + delta);
+              setYCoordinate(getClampedAxis('y', yCoordinate + delta));
               break;
             }
             case KeyCodes.left: {
-              setXCoordinate(xCoordinate - delta);
+              setXCoordinate(getClampedAxis('x', xCoordinate - delta));
               break;
             }
             case KeyCodes.right: {
-              setXCoordinate(xCoordinate + delta);
+              setXCoordinate(getClampedAxis('x', xCoordinate + delta));
               break;
             }
             default: {
@@ -283,6 +318,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         }
       },
       [
+        getClampedAxis,
         internalState,
         isInKeyboardMoveMode,
         isModalMenuOpen,
@@ -375,6 +411,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       clearTimeout(internalState.onModalCloseTimer);
       // Opening the dialog
       if (isOpen) {
+        requestAnimationFrame(() => setTimeout(registerInitialModalPosition, 0));
+
         // Add a keyUp handler for all key up events when the dialog is open
         if (dragOptions) {
           registerForKeyUp();
@@ -406,6 +444,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     if (isOpen && isVisible) {
       registerForKeyUp();
+      registerInitialModalPosition();
     }
 
     useComponentRef(props, focusTrapZone);

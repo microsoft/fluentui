@@ -12,7 +12,7 @@ import {
   SkypeCheckIcon,
   SkypeMinusIcon,
   SkypeArrowIcon,
-} from '@fluentui/react-icons';
+} from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 

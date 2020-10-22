@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { TagPicker } from './TagPicker';
 import { ITag } from './TagPicker.types';
 import { IBasePicker } from '../BasePicker.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../../common/isConformant';
 
 function onResolveSuggestions(text: string): ITag[] {
@@ -55,7 +55,9 @@ describe('TagPicker', () => {
   isConformant({
     Component: TagPicker,
     displayName: 'TagPicker',
-    disabledTests: ['has-top-level-file'],
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['has-top-level-file', 'component-has-root-ref', 'component-handles-ref'],
   });
 
   it('can search for and select tags', () => {

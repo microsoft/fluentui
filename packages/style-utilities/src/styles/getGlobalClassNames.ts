@@ -1,6 +1,6 @@
 import { ITheme } from '../interfaces/index';
-import { Stylesheet } from '@uifabric/merge-styles';
-import { memoizeFunction } from '@uifabric/utilities';
+import { Stylesheet } from '@fluentui/merge-styles';
+import { memoizeFunction } from '@fluentui/utilities';
 
 export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 

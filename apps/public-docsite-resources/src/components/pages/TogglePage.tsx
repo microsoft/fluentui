@@ -5,7 +5,7 @@ import { TogglePageProps } from '@fluentui/react-examples/lib/react-toggle/Toggl
 
 export const TogglePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Toggle.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Toggle.page.json')}
     {...{ ...TogglePageProps, ...props }}
   />
 );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HoverCard, IPlainCardProps, HoverCardType } from '@fluentui/react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { Image, ImageFit } from '@fluentui/react/lib/Image';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getColorFromString } from '@fluentui/react/lib/Color';

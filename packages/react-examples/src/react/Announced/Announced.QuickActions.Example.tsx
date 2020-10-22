@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from '@fluentui/react/lib/DetailsList';
-import { IconButton, PrimaryButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { IconButton, PrimaryButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField, ITextField } from '@fluentui/react/lib/TextField';
 import { createArray } from '@fluentui/react/lib/Utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 

@@ -7,7 +7,7 @@ import {
   addYears,
   IDatePickerStyles,
 } from '@uifabric/date-time';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const datePickerStyles: Partial<IDatePickerStyles> = { root: { maxWidth: 300, marginTop: 15 } };
 

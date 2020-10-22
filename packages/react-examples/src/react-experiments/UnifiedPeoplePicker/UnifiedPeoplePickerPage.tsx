@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 import { UnifiedPeoplePickerExample } from './UnifiedPeoplePicker.Example';
 import { UnifiedPeoplePickerWithEditExample } from './UnifiedPeoplePicker.WithEdit.Example';
 import { DoubleUnifiedPeoplePickerExample } from './DoubleUnifiedPeoplePicker.Example';

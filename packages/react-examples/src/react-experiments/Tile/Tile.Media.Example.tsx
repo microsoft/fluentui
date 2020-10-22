@@ -10,7 +10,7 @@ import {
   getTileLayout,
   renderTileWithLayout,
 } from '@fluentui/react-experiments';
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 const ITEMS: { name: JSX.Element; activity: JSX.Element }[] = [

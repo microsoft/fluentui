@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Stop publishing shared scss and css in react-internal",
   "packageName": "@fluentui/react-internal",
   "email": "elcraig@microsoft.com",

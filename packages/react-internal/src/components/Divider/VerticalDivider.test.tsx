@@ -5,6 +5,8 @@ describe('VerticalDivider', () => {
   isConformant({
     Component: VerticalDivider,
     displayName: 'VerticalDivider',
-    disabledTests: ['has-top-level-file'],
+    // Problem: Doesn’t handle ref.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
   });
 });

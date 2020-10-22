@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove unneeded package dependencies.",
   "packageName": "@fluentui/azure-themes",
   "email": "xgao@microsoft.com",

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
@@ -7,7 +6,11 @@ import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
+import { useKeytipRef } from '../../Keytips';
+import { mount } from 'enzyme';
+
+const ReactDOM = require('react-dom');
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -43,8 +46,10 @@ const createNodeMock = (el: React.ReactElement<{}>) => {
 };
 
 describe('ComboBox', () => {
+  const createPortal = ReactDOM.createPortal;
+
   beforeEach(() => {
-    spyOn(ReactDOM, 'createPortal').and.callFake(element => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
   });
@@ -56,15 +61,21 @@ describe('ComboBox', () => {
   });
 
   it('renders with a Keytip correctly', () => {
+    ReactDOM.createPortal = createPortal;
     const keytipProps = {
       content: 'A',
       keySequences: ['a'],
     };
-    const component = renderer.create(<ComboBox options={DEFAULT_OPTIONS} keytipProps={keytipProps} />, {
-      createNodeMock,
-    });
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    const TestComponent: React.FunctionComponent = () => {
+      const comboboxRef = useKeytipRef<HTMLDivElement>({ keytipProps });
+      return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={comboboxRef} />;
+    };
+
+    const wrapper = mount(<TestComponent />);
+    expect(wrapper.getDOMNode()).toMatchSnapshot();
+
+    wrapper.unmount();
   });
 
   it(`renders`, () => {
@@ -76,8 +87,10 @@ describe('ComboBox', () => {
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
-    // Disabled due to being required to mount by safeCreate. A test called "renders" was added here as a replacement.
-    disabledTests: ['component-renders'],
+    // Problem: Currently doesn’t work with mount.
+    // Solution: Further investigate why ComboBox only works with create or fix customMount type
+    // in isConformant to work with other testing mount utilities such as create.
+    disabledTests: ['component-renders', 'component-handles-ref', 'component-has-root-ref'],
   });
 
   it('Can flip between enabled and disabled.', () => {

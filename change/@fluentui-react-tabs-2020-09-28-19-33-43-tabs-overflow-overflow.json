@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Pivot overflow: fix scrollbars appearing when the window is just barely wide enough to show all tabs",
   "packageName": "@fluentui/react-tabs",
   "email": "behowell@microsoft.com",

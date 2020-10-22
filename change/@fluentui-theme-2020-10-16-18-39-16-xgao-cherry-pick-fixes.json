@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix inferred type error related to ITheme.",
   "packageName": "@fluentui/theme",
   "email": "xgao@microsoft.com",
