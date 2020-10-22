@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove unused prop-types dependency; don't publish demo app",
   "packageName": "@fluentui/react-charting",
   "email": "elcraig@microsoft.com",

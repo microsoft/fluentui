@@ -1,5 +1,5 @@
 module.exports = {
-  ...require('@uifabric/build/jest'),
+  ...require('@fluentui/scripts/jest'),
   name: 'react-icons-northstar',
   moduleNameMapper: require('lerna-alias').jest(),
 };

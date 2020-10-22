@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as path from 'path';
-import { createApp, Markdown, examplesOf } from '@uifabric/example-app-base';
+import { createApp, Markdown, examplesOf } from '@fluentui/react-docsite-components';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import '@fluentui/ie11-polyfills';
 

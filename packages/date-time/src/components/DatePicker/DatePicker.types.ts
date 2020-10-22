@@ -3,7 +3,7 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
+import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
 import { ITextFieldProps } from '@fluentui/react-internal/lib/TextField';
 

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/charting to @fluentui/react-charting",
   "packageName": "@fluentui/react-charting",
   "email": "elcraig@microsoft.com",

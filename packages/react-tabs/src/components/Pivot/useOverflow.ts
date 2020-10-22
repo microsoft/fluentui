@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useRefEffect, RefCallback } from '@uifabric/react-hooks';
-import { getWindow } from '@uifabric/utilities';
+import { useRefEffect, RefCallback } from '@fluentui/react-hooks';
+import { getWindow } from '@fluentui/utilities';
 import { observeResize } from './observeResize';
 
 /**

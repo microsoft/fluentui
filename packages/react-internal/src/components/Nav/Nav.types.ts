@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonProps } from '../../compat/Button';
 
 /**
  * {@doccategory Nav}

@@ -25,7 +25,7 @@ import {
 } from '../../../Positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
-import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useTarget } from '@fluentui/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}

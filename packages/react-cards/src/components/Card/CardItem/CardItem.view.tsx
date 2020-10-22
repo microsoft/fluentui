@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '@uifabric/foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { ICardItemComponent, ICardItemProps, ICardItemSlots } from './CardItem.types';
 

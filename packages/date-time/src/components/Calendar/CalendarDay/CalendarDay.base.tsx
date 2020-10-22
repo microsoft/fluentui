@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { KeyCodes, css, classNamesFunction } from '@uifabric/utilities';
+import { KeyCodes, css, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { CalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 

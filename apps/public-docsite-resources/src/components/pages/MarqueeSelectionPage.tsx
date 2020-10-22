@@ -6,7 +6,7 @@ import { MarqueeSelectionPageProps } from '@fluentui/react-examples/lib/react/Ma
 
 export const MarqueeSelectionPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/MarqueeSelection.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/MarqueeSelection.page.json')}
     {...{ ...MarqueeSelectionPageProps, ...props }}
   />
 );

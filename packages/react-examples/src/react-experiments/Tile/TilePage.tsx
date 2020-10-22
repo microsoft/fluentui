@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 
 import { TileFolderExample } from './Tile.Folder.Example';
 const TileFolderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Tile/Tile.Folder.Example.tsx') as string;

@@ -5,7 +5,7 @@ import { ScrollablePanePageProps } from '@fluentui/react-examples/lib/react/Scro
 
 export const ScrollablePanePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/ScrollablePane.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ScrollablePane.page.json')}
     {...{ ...ScrollablePanePageProps, ...props }}
   />
 );

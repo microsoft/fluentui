@@ -6,7 +6,6 @@ import {
   ICommandBarItemProps,
   createTheme,
   Customizer,
-  DefaultButton,
   Dialog,
   DialogFooter,
   DialogType,
@@ -16,15 +15,15 @@ import {
   IStackStylesReturnType,
   IStackTokens,
   ITheme,
-  PrimaryButton,
   Stack,
   Toggle,
   Text,
 } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
-import { ThemeProvider } from '@uifabric/foundation';
+import { ThemeProvider } from '@fluentui/foundation-legacy';
 
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
   root: {

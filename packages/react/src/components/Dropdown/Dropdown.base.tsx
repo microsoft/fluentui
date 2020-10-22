@@ -35,7 +35,6 @@ import { ICalloutPositionedInfo, RectangleEdge } from '../../Positioning';
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import {
   ResponsiveMode,
@@ -48,9 +47,9 @@ import {
 } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { getPropsWithDefaults } from '@uifabric/utilities';
+import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
-import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
+import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -300,7 +299,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ariaLabel,
       required,
       errorMessage,
-      keytipProps,
       styles: propStyles,
       theme,
       panelProps,
@@ -366,61 +364,49 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return (
       <div className={this._classNames.root} ref={this.props.hoisted.rootRef}>
         {onRenderLabel(this.props, this._onRenderLabel)}
-        <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (keytipAttributes: any): JSX.Element => (
-            <div
-              {...keytipAttributes}
-              data-is-focusable={!disabled}
-              ref={this._dropDown}
-              id={id}
-              tabIndex={disabled ? -1 : 0}
-              role={ariaAttrs.role}
-              aria-haspopup="listbox"
-              aria-expanded={isOpen ? 'true' : 'false'}
-              aria-label={ariaLabel}
-              aria-labelledby={
-                label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined
-              }
-              aria-describedby={mergeAriaAttributeValues(
-                keytipAttributes['aria-describedby'],
-                hasErrorMessage ? this._id + '-errorMessage' : undefined,
-              )}
-              aria-activedescendant={ariaActiveDescendant}
-              aria-required={ariaAttrs.ariaRequired}
-              aria-disabled={disabled}
-              aria-owns={isOpen ? this._listId : undefined}
-              {...divProps}
-              className={this._classNames.dropdown}
-              onBlur={this._onDropdownBlur}
-              onKeyDown={this._onDropdownKeyDown}
-              onKeyUp={this._onDropdownKeyUp}
-              onClick={this._onDropdownClick}
-              onMouseDown={this._onDropdownMouseDown}
-              onFocus={this._onFocus}
-            >
-              <span
-                id={this._optionId}
-                className={this._classNames.title}
-                aria-live="polite"
-                aria-atomic={true}
-                aria-invalid={hasErrorMessage}
-                role={ariaAttrs.childRole}
-                aria-setsize={ariaAttrs.ariaSetSize}
-                aria-posinset={ariaAttrs.ariaPosInSet}
-                aria-selected={ariaAttrs.ariaSelected}
-              >
-                {// If option is selected render title, otherwise render the placeholder text
-                selectedOptions.length
-                  ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceholder(props, this._onRenderPlaceholder)}
-              </span>
-              <span className={this._classNames.caretDownWrapper}>
-                {onRenderCaretDown(props, this._onRenderCaretDown)}
-              </span>
-            </div>
-          )}
-        </KeytipData>
+        <div
+          data-is-focusable={!disabled}
+          data-ktp-target={true}
+          ref={this._dropDown}
+          id={id}
+          tabIndex={disabled ? -1 : 0}
+          role={ariaAttrs.role}
+          aria-haspopup="listbox"
+          aria-expanded={isOpen ? 'true' : 'false'}
+          aria-label={ariaLabel}
+          aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
+          aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
+          aria-activedescendant={ariaActiveDescendant}
+          aria-required={ariaAttrs.ariaRequired}
+          aria-disabled={disabled}
+          aria-owns={isOpen ? this._listId : undefined}
+          {...divProps}
+          className={this._classNames.dropdown}
+          onBlur={this._onDropdownBlur}
+          onKeyDown={this._onDropdownKeyDown}
+          onKeyUp={this._onDropdownKeyUp}
+          onClick={this._onDropdownClick}
+          onMouseDown={this._onDropdownMouseDown}
+          onFocus={this._onFocus}
+        >
+          <span
+            id={this._optionId}
+            className={this._classNames.title}
+            aria-live="polite"
+            aria-atomic={true}
+            aria-invalid={hasErrorMessage}
+            role={ariaAttrs.childRole}
+            aria-setsize={ariaAttrs.ariaSetSize}
+            aria-posinset={ariaAttrs.ariaPosInSet}
+            aria-selected={ariaAttrs.ariaSelected}
+          >
+            {// If option is selected render title, otherwise render the placeholder text
+            selectedOptions.length
+              ? onRenderTitle(selectedOptions, this._onRenderTitle)
+              : onRenderPlaceholder(props, this._onRenderPlaceholder)}
+          </span>
+          <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
+        </div>
         {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
@@ -513,7 +499,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return this.props.placeholder || this.props.placeHolder;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _copyArray(array: any[]): any[] {
     const newArray = [];
     for (const element of array) {
@@ -911,7 +896,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }, this._scrollIdleDelay);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -921,7 +905,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     targetElement.focus();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
@@ -933,7 +916,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     targetElement.focus();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -945,10 +927,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
      * sets the page focus but does not scroll the parent element.
      */
     if (this._host.current) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((this._host.current as any).setActive) {
         try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._host.current as any).setActive();
         } catch (e) {
           /* no-op */

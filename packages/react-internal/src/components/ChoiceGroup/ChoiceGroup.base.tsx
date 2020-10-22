@@ -10,7 +10,7 @@ import {
 } from './ChoiceGroup.types';
 import { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue, useWarnings } from '@uifabric/react-hooks';
+import { useId, useControllableValue, useWarnings } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 

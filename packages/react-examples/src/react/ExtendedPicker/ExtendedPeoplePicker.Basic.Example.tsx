@@ -6,8 +6,8 @@ import { SuggestionsStore, FloatingPeoplePicker } from '@fluentui/react/lib/Floa
 import { SelectedPeopleList, IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
-import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { people, mru, groupOne, groupTwo } from '@fluentui/example-data';
+import { useConst } from '@fluentui/react-hooks';
 
 const theme = getTheme();
 

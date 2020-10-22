@@ -2,7 +2,8 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
-import { MessageBarButton, Link, MessageBar, MessageBarType } from '@fluentui/react';
+import { Link, MessageBar, MessageBarType } from '@fluentui/react';
+import { MessageBarButton } from '@fluentui/react/lib/compat/Button';
 
 const noop = (): void => undefined;
 const longText =

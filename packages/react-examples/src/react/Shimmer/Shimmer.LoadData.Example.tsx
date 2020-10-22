@@ -3,7 +3,7 @@ import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/rea
 import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const wrapperClass = mergeStyles({
   padding: 2,

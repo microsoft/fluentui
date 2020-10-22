@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartProps, StackedBarChart, IStackedBarChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IExampleState {
   dynamicData: IChartProps;

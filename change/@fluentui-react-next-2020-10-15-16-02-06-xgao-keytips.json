@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update release notes about Keytips.",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-15T23:01:02.226Z"
+}

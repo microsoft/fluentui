@@ -5,7 +5,7 @@ import { StackPageProps } from '@fluentui/react-examples/lib/react/Stack/Stack.d
 
 export const StackPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Stack.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Stack.page.json')}
     {...{ ...StackPageProps, ...props }}
   />
 );

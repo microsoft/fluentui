@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '@uifabric/foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 
 import {
   ICollapsibleSectionComponent,

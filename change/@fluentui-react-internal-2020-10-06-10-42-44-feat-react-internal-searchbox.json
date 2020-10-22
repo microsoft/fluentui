@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Moving react-next SearchBox to react-internal.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

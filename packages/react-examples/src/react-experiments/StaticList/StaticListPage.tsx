@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@fluentui/react-docsite-components';
 
 export class StaticListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

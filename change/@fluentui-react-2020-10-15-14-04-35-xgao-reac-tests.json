@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Enable unit tests.",
   "packageName": "@fluentui/react",
   "email": "xgao@microsoft.com",

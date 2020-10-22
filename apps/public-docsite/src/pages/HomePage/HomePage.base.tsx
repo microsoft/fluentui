@@ -10,13 +10,13 @@ import {
   IProcessedStyleSet,
   IContextualMenuItem,
   DirectionalHint,
-  ActionButton,
   Stack,
   IRawStyle,
   css,
   IStackProps,
 } from '@fluentui/react';
-import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import { ActionButton } from '@fluentui/react/lib/compat/Button';
+import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@fluentui/react-docsite-components/lib/index2';
 import {
   androidLogoColor,
   appleLogoColor,

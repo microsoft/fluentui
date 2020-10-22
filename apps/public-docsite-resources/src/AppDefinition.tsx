@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
+import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@fluentui/react-docsite-components';
 import { DetailsListBasicExample } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.Basic.Example';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
@@ -10,7 +10,7 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];

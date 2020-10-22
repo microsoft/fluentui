@@ -1,4 +1,4 @@
-import { IAppDefinition } from '@uifabric/example-app-base';
+import { IAppDefinition } from '@fluentui/react-docsite-components';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {

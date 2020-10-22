@@ -4,7 +4,6 @@ import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../.
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
 
-/* eslint-disable */
 const styles: any = stylesImport;
 
 /**

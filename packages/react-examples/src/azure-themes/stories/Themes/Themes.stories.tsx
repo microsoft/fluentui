@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {
   Customizer,
-  DefaultButton,
-  PrimaryButton,
   TextField,
   Stack,
   Fabric,
@@ -13,6 +11,7 @@ import {
   Label,
   Text,
 } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import {
   AzureCustomizationsLight,
   AzureCustomizationsDark,

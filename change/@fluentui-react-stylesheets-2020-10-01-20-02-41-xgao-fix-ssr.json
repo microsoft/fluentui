@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix error when target is undefined (in case of SSR).",
   "packageName": "@fluentui/react-stylesheets",
   "email": "xgao@microsoft.com",

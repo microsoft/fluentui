@@ -1,6 +1,6 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
 import { ActionableStyles as styles, ActionableTokens as tokens } from './Actionable.styles';
 import { IActionableProps } from './Actionable.types';
 import { useActionableState as state } from './Actionable.state';

@@ -1,6 +1,6 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle, IRawStyle } from '../../Styling';
-import { getRTL } from '@uifabric/utilities';
+import { getRTL } from '@fluentui/utilities';
 
 const tickLabelSpacing = 13;
 

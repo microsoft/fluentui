@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, Text } from '@fluentui/react';
 import { CollapsibleSection } from '@fluentui/react-experiments/lib/CollapsibleSection';
 
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 
 export interface IFileItem {
   name: string;

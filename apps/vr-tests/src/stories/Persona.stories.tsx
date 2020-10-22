@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const examplePersona: IPersonaProps = {
   imageUrl: TestImages.personaFemale,
