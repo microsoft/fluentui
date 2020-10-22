@@ -22,7 +22,7 @@
     "@fluentui/eslint-plugin": "^0.54.1",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^10.3.2",
-    "@fluentui/scripts": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^7.9.0",

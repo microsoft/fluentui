@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/jest-serializer-merge-styles",
+  "name": "@uifabric/jest-serializer-merge-styles",
   "version": "7.2.2",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",
@@ -33,7 +33,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
-    "@fluentui/scripts": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/set-version": "^7.0.23",

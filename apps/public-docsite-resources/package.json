@@ -29,7 +29,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/scripts": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },

@@ -10,6 +10,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/scripts": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   }
 }

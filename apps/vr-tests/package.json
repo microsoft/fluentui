@@ -28,7 +28,7 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/scripts": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "@uifabric/date-time": "^7.17.16",
     "@fluentui/example-data": "^7.1.5",
     "@fluentui/react-experiments": "^7.33.1",
