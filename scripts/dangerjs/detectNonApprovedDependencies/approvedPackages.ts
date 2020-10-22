@@ -10,7 +10,7 @@ export default [
   '@emotion/utils@0.11.3',
   '@fluentui/merge-styles@7.19.1',
   '@fluentui/set-version@7.0.23',
-  '@fluentui/utilities@7.32.3',
+  '@uifabric/utilities@7.32.3',
   'classnames@2.2.6',
   'compute-scroll-into-view@1.0.11',
   'css-in-js-utils@2.0.1',
