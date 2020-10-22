@@ -18,8 +18,9 @@ const getOptionId = (option: IChoiceGroupOption, id: string): string => {
   return `${id}-${option.key}`;
 };
 
-const getCheckedOption = (options: IChoiceGroupOption[], keyChecked: string | number) =>
-  find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+const findOption = (options: IChoiceGroupOption[], key: string | number | undefined) => {
+  return key === undefined ? undefined : find(options, value => value.key === key);
+};
 
 const useComponentRef = (
   options: IChoiceGroupOption[],
@@ -31,10 +32,10 @@ const useComponentRef = (
     componentRef,
     () => ({
       get checkedOption() {
-        return getCheckedOption(options, keyChecked!);
+        return findOption(options, keyChecked);
       },
       focus() {
-        const optionToFocus = getCheckedOption(options, keyChecked!) || options.filter(option => !option.disabled)[0];
+        const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
         const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
 
         if (elementToFocus) {
@@ -88,24 +89,27 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   useDebugWarnings(props);
   useComponentRef(options, keyChecked, id, componentRef);
 
-  const onFocus = React.useCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
-    setKeyFocused(option.itemKey);
+  const onFocus = React.useCallback((ev?: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
+    if (option) {
+      setKeyFocused(option.itemKey);
+      option.onFocus?.(ev);
+    }
   }, []);
 
-  const onBlur = React.useCallback((ev: React.FocusEvent<HTMLElement>) => {
+  const onBlur = React.useCallback((ev: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
     setKeyFocused(undefined);
+    option?.onBlur?.(ev);
   }, []);
 
   const onOptionChange = React.useCallback(
-    (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOptionProps) => {
+    (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOptionProps) => {
+      if (!option) {
+        return;
+      }
       setKeyChecked(option.itemKey);
 
-      if (onChange) {
-        onChange(
-          evt,
-          find(options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
-        );
-      }
+      option.onChange?.(evt);
+      onChange?.(evt, findOption(options, option.itemKey));
     },
     [onChange, options, setKeyChecked],
   );
@@ -124,10 +128,10 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
               <ChoiceGroupOption
                 key={option.key}
                 itemKey={option.key}
+                {...option}
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onOptionChange}
-                {...option}
                 focused={option.key === keyFocused}
                 checked={option.key === keyChecked}
                 disabled={option.disabled || disabled}
