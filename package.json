@@ -71,18 +71,6 @@
       "apps/*",
       "packages/*",
       "scripts"
-    ],
-    "nohoist": [
-      "packages/web-components/typescript",
-      "packages/web-components/typescript/**",
-      "packages/web-components/ts-loader",
-      "packages/web-components/ts-loader/**",
-      "packages/web-components/ts-node",
-      "packages/web-components/ts-node/**",
-      "packages/web-components/mocha",
-      "packages/web-components/mocha/**",
-      "packages/web-components/webpack",
-      "packages/web-components/webpack/**"
     ]
   },
   "resolutions": {
@@ -97,23 +85,7 @@
     "source": [
       "package.json",
       "apps/*/package.json",
-      "packages/!(web-components)/package.json",
       "scripts/package.json"
-    ],
-    "versionGroups": [
-      {
-        "packages": [
-          "@fluentui/web-components"
-        ],
-        "dependencies": [
-          "mocha",
-          "ts-loader",
-          "ts-node",
-          "tslib",
-          "typescript",
-          "webpack"
-        ]
-      }
     ]
   }
 }
