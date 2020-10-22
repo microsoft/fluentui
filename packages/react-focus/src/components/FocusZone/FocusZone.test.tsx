@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { getCode, EnterKey } from '@fluentui/keyboard-key';
-import { setRTL, KeyCodes } from '@uifabric/utilities';
+import { setRTL, KeyCodes } from '@fluentui/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 import { isConformant } from '../../common/isConformant';

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Link}

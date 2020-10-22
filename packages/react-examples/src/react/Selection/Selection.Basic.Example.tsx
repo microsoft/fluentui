@@ -5,7 +5,7 @@ import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { IExampleItem, createListItems } from '@fluentui/example-data';
 import { IRawStyle, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { useConst, useForceUpdate } from '@uifabric/react-hooks';
+import { useConst, useForceUpdate } from '@fluentui/react-hooks';
 
 interface ISelectionItemExampleProps {
   item: IExampleItem;

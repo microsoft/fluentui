@@ -1,6 +1,6 @@
 import React from 'react';
 import { mergeStyleSets, Stack, Toggle } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { EditorWrapper } from '../components/EditorWrapper';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
 

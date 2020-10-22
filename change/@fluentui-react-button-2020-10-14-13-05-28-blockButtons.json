@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Button: Renaming `fluid` prop to `block` so that it is inline with the most used terminology in the web.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",

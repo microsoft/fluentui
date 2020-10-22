@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Example updates.",
   "packageName": "@fluentui/react-internal",
   "email": "dzearing@hotmail.com",

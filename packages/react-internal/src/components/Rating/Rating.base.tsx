@@ -4,7 +4,7 @@ import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRating } from './Rating.types';
-import { useId, useWarnings, useControllableValue } from '@uifabric/react-hooks';
+import { useId, useWarnings, useControllableValue } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 

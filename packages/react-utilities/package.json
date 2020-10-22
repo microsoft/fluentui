@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -43,11 +43,17 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^7.0.23",
+    "@fluentui/set-version": "^8.0.0-beta",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
   }
 }

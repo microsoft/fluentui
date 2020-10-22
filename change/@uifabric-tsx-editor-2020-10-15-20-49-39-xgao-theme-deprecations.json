@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Update codepen to use ThemeProvider instead of Fabric.",
   "packageName": "@fluentui/react-monaco-editor",
   "email": "xgao@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fixes tests to correctly run on Windows machines.",
   "packageName": "@fluentui/codemods",
   "email": "humbertomakotomorimoto@gmail.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Remove usage of includes (not supported by IE11).",
   "packageName": "@fluentui/react-monaco-editor",
   "email": "xgao@microsoft.com",

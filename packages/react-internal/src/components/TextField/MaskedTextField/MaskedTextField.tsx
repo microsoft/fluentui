@@ -14,7 +14,7 @@ import {
   insertString,
   parseMask,
 } from './inputMask';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 interface IMaskedTextFieldInternalState {
   maskCharData: IMaskValue[];

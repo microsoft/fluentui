@@ -11,7 +11,7 @@ import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '@
 import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
-import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
+import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 

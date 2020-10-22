@@ -53,7 +53,7 @@ export function lintImports() {
     '@fluentui/font-icons-mdl2': 'Icons',
     '@fluentui/merge-styles': 'Styling',
     '@fluentui/style-utilities': 'Styling',
-    '@uifabric/utilities': 'Utilities',
+    '@fluentui/utilities': 'Utilities',
     '@fluentui/date-time-utilities': 'DateTimeUtilities',
   };
 

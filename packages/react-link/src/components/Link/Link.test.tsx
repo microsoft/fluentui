@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import { create } from '@uifabric/utilities/lib/test';
-import { Customizer } from '@uifabric/utilities';
+import { create } from '@fluentui/utilities/lib/test';
+import { Customizer } from '@fluentui/utilities';
 import { createTheme } from '@fluentui/style-utilities';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';

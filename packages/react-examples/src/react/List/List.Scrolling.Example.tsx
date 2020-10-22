@@ -6,7 +6,7 @@ import { List, ScrollToMode, IList } from '@fluentui/react/lib/List';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { mergeStyleSets, getTheme, normalize } from '@fluentui/react/lib/Styling';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const evenItemHeight = 25;
 const oddItemHeight = 50;

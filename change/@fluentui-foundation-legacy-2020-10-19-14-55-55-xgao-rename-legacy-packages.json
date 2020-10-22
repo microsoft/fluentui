@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
   "packageName": "@fluentui/foundation-legacy",
   "email": "xgao@microsoft.com",

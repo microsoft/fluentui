@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { lorem } from '@fluentui/example-data';
 import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
 

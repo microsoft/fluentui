@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
-import { setRTL, setWarningCallback } from '@uifabric/utilities';
+import { create } from '@fluentui/utilities/lib/test';
+import { setRTL, setWarningCallback } from '@fluentui/utilities';
 import { Persona } from './Persona';
 import { mount } from 'enzyme';
 import { getIcon } from '../../Styling';

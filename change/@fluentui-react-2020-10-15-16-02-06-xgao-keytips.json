@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Remove keytipProps/KeytipData from ComboBox and Dropdown.",
   "packageName": "@fluentui/react",
   "email": "xgao@microsoft.com",

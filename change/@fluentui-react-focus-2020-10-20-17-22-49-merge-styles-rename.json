@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
   "packageName": "@fluentui/react-focus",
   "email": "ololubek@microsoft.com",

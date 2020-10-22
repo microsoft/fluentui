@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
+import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
 
 export type ExpandedState = {

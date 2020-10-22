@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Customizer } from '@uifabric/utilities';
+import { Customizer } from '@fluentui/utilities';
 import { createTheme } from '@fluentui/theme';
 import { loadTheme } from '@fluentui/style-utilities';
 import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';

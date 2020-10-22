@@ -3,7 +3,7 @@ import { IImageProps } from '@fluentui/react/lib/Image';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',

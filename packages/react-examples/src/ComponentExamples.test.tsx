@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';

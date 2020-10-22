@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Improvement for `useBoolean` hook",
   "packageName": "@uifabric/react-hooks",
   "email": "fu.juntao358@gmail.com",
