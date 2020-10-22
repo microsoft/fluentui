@@ -15,13 +15,14 @@
         redirectVersion = new URL(sessionStorage.redirect).pathname.split('/')[1];
         if (fluentuiDocsiteVersions.indexOf(redirectVersion) > -1) {
           window.location.pathname = '/' + redirectVersion;
+        } else {
+          // no version in path, use the latest version
+          window.location.pathname = '/' + fluentuiDocsiteVersions[0];
         }
       } else {
         // no version in path, use the latest version
         window.location.pathname = '/' + fluentuiDocsiteVersions[0];
       }
-
-      debugger;
     </script>
   </body>
 </html>
