@@ -309,6 +309,7 @@ export interface IYValueHover {
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
+  yAxisCalloutData?: string | { [id: string]: number };
 }
 
 export interface IChildProps {

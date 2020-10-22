@@ -103,6 +103,10 @@ export interface ILegend {
    */
   stripePattern?: boolean;
 
+  /**
+   * Indicates if the legend belongs to a line in the Bar Chart
+   */
+  isLineLegendInBarChart?: boolean;
   /*
    *  native button props for the legend button
    */
@@ -117,6 +121,7 @@ export interface ILegendStyleProps {
   opacity?: number;
   overflow?: boolean;
   stripePattern?: boolean;
+  isLineLegendInBarChart?: boolean;
 }
 
 export interface ILegendsProps {
