@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Basic unit test cases for pie chart and heatmapshart",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T05:39:23.721Z"
+}
