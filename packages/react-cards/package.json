@@ -46,9 +46,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^1.0.0-beta",
+    "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react": "^8.0.0-beta",
-    "@fluentui/react-compose": "^1.0.0-beta",
+    "@fluentui/react-compose": "^0.19.6",
     "@fluentui/react-theme-provider": "^1.0.0-beta",
     "@fluentui/theme": "^2.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",

@@ -4,9 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@uifabric/build": "^1.0.0",
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/react": "^7.142.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@types/node": "^10.3.2",
@@ -22,7 +20,9 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@uifabric/build": "^1.0.0",
     "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/react": "^8.0.0-beta",
     "gulp": "^4.0.2",
     "typescript": "3.7.2"
   },

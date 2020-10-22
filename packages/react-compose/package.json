@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "1.0.0-beta",
+  "version": "0.19.6",
   "description": "Fluent UI React component composition.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,5 +45,11 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
   }
 }

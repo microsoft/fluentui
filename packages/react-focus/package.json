@@ -46,7 +46,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^1.0.0-beta",
+    "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/merge-styles": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "@uifabric/utilities": "^8.0.0-beta",
