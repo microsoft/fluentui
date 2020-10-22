@@ -9,7 +9,7 @@ import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@fluentui/example-data';
 import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const _suggestions = [
   {

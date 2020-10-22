@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@fluentui/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 import { Autofill } from '@fluentui/react';
 import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
 
