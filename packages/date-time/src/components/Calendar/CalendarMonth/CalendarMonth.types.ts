@@ -1,11 +1,11 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 import {
   ICalendarStrings,
   ICalendarIconStrings,
   ICalendarFormatDateCallbacks,
   AnimationDirection,
 } from '../Calendar.types';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 export interface ICalendarMonth {

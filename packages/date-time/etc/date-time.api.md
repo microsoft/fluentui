@@ -7,17 +7,17 @@
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { IBaseProps } from '@uifabric/utilities';
+import { IBaseProps } from '@fluentui/utilities';
 import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
-import { IComponentAs } from '@uifabric/utilities';
+import { IComponentAs } from '@fluentui/utilities';
 import { IDateGridStrings } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
-import { IProcessedStyleSet } from '@uifabric/styling';
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITextFieldProps } from '@fluentui/react-internal/lib/TextField';
-import { ITheme } from '@uifabric/styling';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)

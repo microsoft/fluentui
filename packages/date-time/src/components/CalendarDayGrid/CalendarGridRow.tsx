@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { format } from '@uifabric/utilities';
+import { format } from '@fluentui/utilities';
 import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@uifabric/styling';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
 import { IDayInfo, IWeekCorners } from './CalendarDayGrid.base';
 

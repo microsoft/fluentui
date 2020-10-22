@@ -5,7 +5,7 @@
 
 // merged imports from all files
 import * as ts from 'typescript';
-import * as monaco from '@uifabric/monaco-editor';
+import * as monaco from '@fluentui/monaco-editor';
 import CancellationToken = monaco.CancellationToken;
 import IDisposable = monaco.IDisposable;
 import IEvent = monaco.IEvent;
@@ -15,7 +15,7 @@ import Range = monaco.Range;
 import Thenable = monaco.Thenable;
 import Uri = monaco.Uri;
 // temporarily using this Omit to prevent TS compatibility breaks
-import { Omit } from '@uifabric/utilities';
+import { Omit } from '@fluentui/utilities';
 
 // convenience re-export
 export type EmitOutput = ts.EmitOutput;

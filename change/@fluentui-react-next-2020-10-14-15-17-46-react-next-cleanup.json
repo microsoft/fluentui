@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Delete remaining v8 files and fix re-exports",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T22:17:46.931Z"
+}

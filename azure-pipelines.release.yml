@@ -129,13 +129,13 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite-resources/dist
+      pathtoPublish: apps/public-docsite-resources/dist/demo
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'
 
   - script: |
-      yarn workspace @uifabric/build just generate-package-manifest
+      yarn workspace @fluentui/scripts just generate-package-manifest
     displayName: 'Generates a package manifest'
 
   - task: AzureUpload@2

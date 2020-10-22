@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Reuse webpack config from react",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-15T09:01:31.436Z"
+}

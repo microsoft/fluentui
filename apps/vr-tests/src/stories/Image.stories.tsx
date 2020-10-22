@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import { storiesOf } from '@storybook/react';
 import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
 const img350x150 = 'http://placehold.it/350x150';
 

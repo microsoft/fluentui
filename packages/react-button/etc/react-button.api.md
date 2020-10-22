@@ -25,7 +25,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     target?: string;
     circular?: boolean;
     disabled?: boolean;
-    fluid?: boolean;
+    block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
@@ -120,7 +120,7 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
     primary?: TTokens;
     iconOnly?: TTokens;
     circular?: TTokens;
-    fluid?: TTokens;
+    block?: TTokens;
 };
 
 // @public (undocumented)
@@ -182,7 +182,7 @@ export type ExpandedState = {
     };
 };
 
-// @public (undocumented)
+// @public
 export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -206,7 +206,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens;
 
-// @public (undocumented)
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)

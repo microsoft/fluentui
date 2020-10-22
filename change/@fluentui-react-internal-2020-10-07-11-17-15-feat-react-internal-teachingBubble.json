@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Moving react-next TeachingBubble to react-internal package.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

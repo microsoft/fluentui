@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Autofill/index';
+export * from '@fluentui/react/lib/Autofill';

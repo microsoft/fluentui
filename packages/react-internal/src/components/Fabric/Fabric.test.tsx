@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
-//import { Customizer } from '@uifabric/utilities';
+import { create } from '@fluentui/utilities/lib/test';
+//import { Customizer } from '@fluentui/utilities';
 import { Fabric } from './Fabric';
 //import { Checkbox } from '@fluentui/react/lib/Checkbox';
 //import { createTheme } from '../../Styling';

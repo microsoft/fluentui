@@ -21,8 +21,10 @@ const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListSty
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastSelectionMode?: SelectionMode;
+  selectionMode?: IGroupedListProps['selectionMode'];
+  compact?: IGroupedListProps['compact'];
   groups?: IGroup[];
+  items?: IGroupedListProps['items'];
   listProps?: IGroupedListProps['listProps'];
   version: {};
 }
@@ -45,31 +47,42 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     nextProps: IGroupedListProps,
     previousState: IGroupedListState,
   ): IGroupedListState {
-    let nextState = previousState;
+    const { groups, selectionMode, compact, items, listProps } = nextProps;
+    const listVersion = listProps && listProps.version;
 
-    const { groups, selectionMode, compact } = nextProps;
-    let shouldForceUpdates = false;
-
-    nextState = {
+    let nextState = {
       ...previousState,
-      listProps: nextProps.listProps,
+      selectionMode,
+      compact,
+      groups,
+      listProps,
     };
 
-    const nextVersion = nextProps.listProps && nextProps.listProps.version;
-    const version = previousState.listProps && previousState.listProps.version;
+    let shouldForceUpdates = false;
 
-    if (nextVersion !== version) {
+    const previousListVersion = previousState.listProps && previousState.listProps.version;
+
+    if (
+      listVersion !== previousListVersion ||
+      items !== previousState.items ||
+      groups !== previousState.groups ||
+      selectionMode !== previousState.selectionMode ||
+      compact !== previousState.compact
+    ) {
+      // If there are any props not passed explicitly to `List` which have an impact on the behavior of `onRenderCell`,
+      // these need to 'force-update' this component by revving the version. Otherwise, the List might render with stale
+      // data.
       shouldForceUpdates = true;
     }
 
-    if (nextProps.groups !== groups) {
+    if (groups !== previousState.groups) {
       nextState = {
         ...nextState,
-        groups: nextProps.groups,
+        groups,
       };
     }
 
-    if (nextProps.selectionMode !== selectionMode || nextProps.compact !== compact) {
+    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
       shouldForceUpdates = true;
     }
 
@@ -94,6 +107,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this.state = {
       groups: props.groups,
+      items: props.items,
       listProps: props.listProps,
       version,
     };

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Modifying Panel examples to adhere to new API interface.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-08T23:34:47.748Z"
-}

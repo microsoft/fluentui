@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, memoizeFunction, css } from '@uifabric/utilities';
+import { styled, memoizeFunction, css } from '@fluentui/utilities';
 import {
   IPivotProps,
   IPivotStyleProps,
@@ -8,7 +8,7 @@ import {
   PivotLinkFormatType,
   PivotBase,
 } from '../index';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
+import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
 import * as classes from './Pivot.scss';
 
 const GlobalClassNames = {

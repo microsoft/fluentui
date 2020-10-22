@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IRefObject } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 
 // @public (undocumented)

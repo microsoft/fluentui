@@ -16,7 +16,6 @@ const v7ThemeOptions = [
   { label: 'V7 - Teams', theme: V7Themes.TeamsTheme },
   { label: 'V7 - Azure Light', theme: V7Themes.AzureLightTheme },
   { label: 'V7 - Azure Dark', theme: V7Themes.AzureDarkTheme, isDark: true },
-  { label: 'V7 - MDL2', theme: V7Themes.MDL2Theme },
 ];
 
 const themeOptions = [defaultThemeOption, ...v8ThemeOptions, ...v7ThemeOptions];

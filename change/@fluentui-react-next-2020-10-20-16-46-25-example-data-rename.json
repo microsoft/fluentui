@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Rename @uifabric/example-date to @fluentui/example-data",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-20T23:46:23.155Z"
+}

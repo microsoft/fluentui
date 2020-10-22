@@ -54,8 +54,8 @@ export const CompoundButtons = () => (
     <Text>A CompoundButton can appear round using the `circular` prop.</Text>
     <CompoundButtonExamples circular />
 
-    <Text>A CompoundButton can fill the width of its container using the `fluid` prop.</Text>
-    <CompoundButtonExamples fluid />
+    <Text>A CompoundButton can fill the width of its container using the `block` prop.</Text>
+    <CompoundButtonExamples block />
 
     <Text>A CompoundButton can contain only an icon using the `iconOnly` prop.</Text>
     <CompoundButtonExamples iconOnly />

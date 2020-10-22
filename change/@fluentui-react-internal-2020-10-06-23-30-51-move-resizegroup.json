@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Move v8 ResizeGroup changes from react-next to react",
   "packageName": "@fluentui/react-internal",
   "email": "elcraig@microsoft.com",

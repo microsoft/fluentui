@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IImageProps } from '@fluentui/react/lib/Image';
-import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x180', alt: 'Example placeholder image' };
 

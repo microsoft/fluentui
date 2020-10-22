@@ -1,8 +1,7 @@
-const perfTest = require('./tasks/perf-test');
-const { preset, just } = require('@uifabric/build');
-const { task, series } = just;
+import { getPerfRegressions } from './tasks/perf-test';
+import { preset, task, series } from '@fluentui/scripts';
 
 preset();
 
-task('run-perf-test', perfTest);
+task('run-perf-test', getPerfRegressions);
 task('perf-test', series('build', 'bundle', 'run-perf-test'));

@@ -58,7 +58,6 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'ariaSetSize',
       'styles',
       'onRenderLabel',
-      'keytipProps',
       'indeterminate',
       'defaultIndeterminate',
     ],

@@ -1,4 +1,4 @@
-@import '~@fluentui/common-styles/dist/sass/focusBorder';
+@import '~@fluentui/common-styles/src/focusBorder';
 
 /**
   * Slot definitions
@@ -128,7 +128,7 @@
     --button-borderRadius: 50000px;
   }
 
-  &._fluid {
+  &._block {
     --button-width: 100%;
   }
 

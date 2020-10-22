@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { SpinnerPageProps } from './SpinnerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
-import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 
 export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

@@ -1,4 +1,4 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 import {
   ICalendarStrings,
   DayOfWeek,
@@ -7,7 +7,7 @@ import {
   ICalendarFormatDateCallbacks,
   AnimationDirection,
 } from '../Calendar/Calendar.types';
-import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
+import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
 export interface ICalendarDayGrid {

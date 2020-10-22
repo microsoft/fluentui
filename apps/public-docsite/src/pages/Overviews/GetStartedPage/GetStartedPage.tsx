@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PlatformContext, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { PlatformContext, Page, IPageProps, IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { GetStartedPageProps } from './GetStartedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';

@@ -10,7 +10,7 @@ const ModalModelessExampleCode = require('!raw-loader!@fluentui/react-examples/s
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
   componentName: 'Modal',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Modal',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Modal',
   examples: [
     {
       title: 'Modal',
