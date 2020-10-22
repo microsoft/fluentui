@@ -191,7 +191,7 @@ function useErrorMessage(
   return [isCalendarShown ? undefined : errorMessage, validateTextInput, setErrorMessage] as const;
 }
 
-export const DatePickerBase = React.forwardRef(
+export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.forwardRef(
   (propsWithoutDefaults: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 

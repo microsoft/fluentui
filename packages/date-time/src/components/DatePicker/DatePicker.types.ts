@@ -23,7 +23,10 @@ export interface IDatePicker {
 /**
  * {@docCategory DatePicker}
  */
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+export interface IDatePickerProps
+  extends IBaseProps<IDatePicker>,
+    React.HTMLAttributes<HTMLElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

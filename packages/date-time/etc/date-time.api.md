@@ -27,14 +27,14 @@ export enum AnimationDirection {
     Vertical = 1
 }
 
-// @public
-export const Calendar: import("react").FunctionComponent<import("./Calendar.types").ICalendarProps & import("react").RefAttributes<HTMLDivElement>>;
-
-// @public
-export const DatePicker: import("react").FunctionComponent<import("./DatePicker.types").IDatePickerProps & import("react").RefAttributes<HTMLDivElement>>;
+// @public (undocumented)
+export const Calendar: React.FunctionComponent<ICalendarProps>;
 
 // @public (undocumented)
-export const DatePickerBase: React.ForwardRefExoticComponent<IDatePickerProps & React.RefAttributes<HTMLDivElement>>;
+export const DatePicker: React.FunctionComponent<IDatePickerProps>;
+
+// @public (undocumented)
+export const DatePickerBase: React.FunctionComponent<IDatePickerProps>;
 
 export { DateRangeType }
 
@@ -274,7 +274,7 @@ export interface ICalendarPickerStyles {
 }
 
 // @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     calendarDayProps?: Partial<ICalendarDayProps>;
     calendarMonthProps?: Partial<ICalendarMonthProps>;
@@ -306,6 +306,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
     value?: Date;
     workWeekDays?: DayOfWeek[];
 }
+
+export { ICalendarStrings }
 
 // @public (undocumented)
 export interface ICalendarStyleProps {
@@ -403,6 +405,8 @@ export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {
 export interface ICalendarYearStyles extends ICalendarPickerStyles {
 }
 
+export { IDateFormatting }
+
 // @public (undocumented)
 export interface IDatePicker {
     focus(): void;
@@ -411,7 +415,7 @@ export interface IDatePicker {
 }
 
 // @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     allowTextInput?: boolean;
     ariaLabel?: string;
@@ -536,8 +540,8 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
     root: IStyle;
 }
 
-// @public
-export const WeeklyDayPicker: import("react").FunctionComponent<import("./WeeklyDayPicker.types").IWeeklyDayPickerProps>;
+// @public (undocumented)
+export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";

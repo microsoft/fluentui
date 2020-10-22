@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
@@ -21,7 +22,7 @@ export interface ICalendar {
 /**
  * {@docCategory Calendar}
  */
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
