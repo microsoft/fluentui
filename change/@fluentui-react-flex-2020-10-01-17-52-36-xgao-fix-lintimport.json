@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix imports to reference physical files.",
   "packageName": "@fluentui/react-flex",
   "email": "xgao@microsoft.com",

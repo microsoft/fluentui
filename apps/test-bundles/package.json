@@ -1,6 +1,6 @@
 {
   "name": "test-bundles",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "description": "Testing Fluent UI React bundle sizes.",
   "private": true,
   "license": "MIT",
@@ -11,12 +11,12 @@
     "just": "just-scripts"
   },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react": "^7.142.0",
-    "@fluentui/react-button": "^0.14.3",
-    "@fluentui/react-compose": "^0.19.4",
-    "@uifabric/build": "^7.0.0",
+    "@fluentui/react": "^8.0.0-beta",
+    "@fluentui/react-button": "^1.0.0-beta",
+    "@fluentui/react-compose": "^0.19.6",
+    "@uifabric/build": "^1.0.0",
     "parallel-webpack": "^2.4.0",
     "webpack-bundle-analyzer": "^3.6.0"
   }

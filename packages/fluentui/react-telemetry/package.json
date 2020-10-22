@@ -12,11 +12,11 @@
     "react-table": "^7.1.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-table": "^7.0.19",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
     "react-dom": "16.8.6",

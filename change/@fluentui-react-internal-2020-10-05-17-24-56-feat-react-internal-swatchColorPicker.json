@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Moving SwatchColorPicker and ButtonGrid from react-next to react-internal.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",

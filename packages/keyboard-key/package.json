@@ -21,11 +21,17 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/jest": "~24.9.0",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
   }
 }

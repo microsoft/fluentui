@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "7.0.25",
+  "version": "8.0.0-beta",
   "description": "Fluent UI React utilities for Webpack bundler.",
   "repository": {
     "type": "git",
@@ -17,10 +17,10 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/loader-utils": "1.1.3",
     "@types/webpack": "4.4.0",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "webpack": "4.43.0"
   },
   "dependencies": {

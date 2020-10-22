@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Rename theme packages",
   "packageName": "@fluentui/theme-samples",
   "email": "elcraig@microsoft.com",

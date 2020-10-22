@@ -1,7 +1,7 @@
 {
   "name": "perf-test",
   "description": "Perf tests for @fluentui/react.",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -12,16 +12,16 @@
     "code-style": "just-scripts code-style"
   },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/react": "^7.142.0",
-    "@fluentui/react-avatar": "^0.6.5",
-    "@fluentui/react-button": "^0.14.3",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/react": "^8.0.0-beta",
+    "@fluentui/react-avatar": "^0.7.1",
+    "@fluentui/react-button": "^1.0.0-beta",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@fluentui/set-version": "^7.0.23",
+    "@uifabric/build": "^1.0.0",
+    "@fluentui/set-version": "^8.0.0-beta",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",
     "querystring": "^0.2.0",

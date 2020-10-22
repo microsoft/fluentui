@@ -172,7 +172,7 @@ export class Customizations {
     static unobserve(onChange: () => void): void;
 }
 
-// @public
+// @public @deprecated
 export class Customizer extends React.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/dom-utilities",
-  "version": "1.1.1",
+  "version": "2.0.0-beta",
   "description": "DOM utilities for use within Fluent web components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,12 +26,12 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/jest": "~24.9.0",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^7.0.23",
+    "@fluentui/set-version": "^8.0.0-beta",
     "tslib": "^1.10.0"
   }
 }

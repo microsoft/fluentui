@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix getTokens to only override with user provided tokens.",
   "packageName": "@fluentui/react-theme-provider",
   "email": "xgao@microsoft.com",

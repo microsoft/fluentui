@@ -7,7 +7,7 @@
     "@fluentui/react-northstar": "^0.51.0"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "gulp": "^4.0.2",
     "typescript": "3.7.2"
   },

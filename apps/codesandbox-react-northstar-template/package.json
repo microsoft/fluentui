@@ -1,7 +1,7 @@
 {
   "name": "codesandbox-react-northstar-template",
   "description": "Template for creating codesandbox environment for @fluentui/react-northstar packages.",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -11,10 +11,10 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
-    "@uifabric/build": "^7.0.0",
+    "@uifabric/build": "^1.0.0",
     "typescript": "3.7.2"
   },
   "dependencies": {
