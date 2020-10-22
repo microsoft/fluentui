@@ -21,7 +21,7 @@
     "bundle": "lage bundle --verbose",
     "bundle:prod": "yarn bundle --production",
     "bundlesize": "cd scripts && yarn bundlesize",
-    "bundlesizecollect": "cd scripts && just-scripts bundle-size-collect",
+    "bundlesizecollect": "node ./scripts/bundle-size-collect",
     "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
     "clean": "lage clean --verbose",
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",

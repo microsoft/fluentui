@@ -13,7 +13,6 @@ import { webpack, webpackDevServer } from './tasks/webpack';
 import { verifyApiExtractor, updateApiExtractor } from './tasks/api-extractor';
 import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
-import { bundleSizeCollect } from './tasks/bundle-size-collect';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
 import { generateVersionFiles } from './tasks/generate-version-files';
 import { generatePackageManifestTask } from './tasks/generate-package-manifest';
@@ -81,7 +80,6 @@ export function preset() {
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
@@ -139,3 +137,8 @@ export function preset() {
 }
 
 preset.basic = basicPreset;
+
+if (process.cwd() === __dirname) {
+  // load the preset if this is being run within the scripts package
+  preset();
+}
