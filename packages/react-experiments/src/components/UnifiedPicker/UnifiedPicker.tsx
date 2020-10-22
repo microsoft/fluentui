@@ -277,7 +277,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           addItems(resultItemsList);
           showPicker(false);
           if (input.current) {
-            input.current._updateValue('', composing);
+            input.current.clear();
           }
         }
       }
