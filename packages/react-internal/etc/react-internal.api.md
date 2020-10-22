@@ -3478,6 +3478,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     modalRectangleTop?: number;
     layerClassName?: string;
     isDefaultDragHandle?: boolean;
+    windowInnerHeight?: number;
 };
 
 // @public (undocumented)

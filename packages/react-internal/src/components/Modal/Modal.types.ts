@@ -200,6 +200,8 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     layerClassName?: string;
     /** Whether this modal is draggable and using the default handler */
     isDefaultDragHandle?: boolean;
+    /** The windows inner height */
+    windowInnerHeight?: number;
   };
 
 /**

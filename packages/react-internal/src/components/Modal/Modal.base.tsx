@@ -146,6 +146,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       topOffsetFixed,
       isModeless,
       layerClassName,
+      windowInnerHeight: win?.innerHeight,
       isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector,
     });
 
