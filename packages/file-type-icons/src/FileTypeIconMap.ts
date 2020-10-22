@@ -331,10 +331,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   multiple: {},
   one: {
-    extensions: ['one'], // this is a format for exported single - file notebook pages
+    extensions: ['note', 'one'], // This represents a single Fluid Note, or a partial exported section/page of a notebook.
   },
   onetoc: {
-    extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // this icon represents a complete, logical notebook.
+    extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
   pdf: {
