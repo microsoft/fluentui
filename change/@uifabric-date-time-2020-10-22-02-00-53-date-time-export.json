@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Prepare for exporting from @fluentui/react: Reuse shared types and defaults; add missing exports; improve interface names",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T09:00:33.780Z"
+}
