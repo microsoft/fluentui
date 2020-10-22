@@ -31,9 +31,6 @@ azure-pipelines* @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan
 
-#### Web Components
-packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
-
 #### Deprecated API Files
 *.api.ts @natalieethell
 
