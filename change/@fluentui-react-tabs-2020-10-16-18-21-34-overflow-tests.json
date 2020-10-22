@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Fix check for ResizeObserver, which was causing errors in the testing framework @testing-library/react",
   "packageName": "@fluentui/react-tabs",
   "email": "behowell@microsoft.com",

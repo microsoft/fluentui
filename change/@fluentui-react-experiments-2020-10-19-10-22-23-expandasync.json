@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Convert SelectedPersona GetExpandedItems to async",
   "packageName": "@fluentui/react-experiments",
   "email": "elvonspa@microsoft.com",

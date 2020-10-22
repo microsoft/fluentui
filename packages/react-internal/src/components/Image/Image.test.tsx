@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';

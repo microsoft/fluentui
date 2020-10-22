@@ -1,4 +1,4 @@
-import config from '@uifabric/build/config';
+import config from '@fluentui/scripts/config';
 import { Page, Viewport } from 'puppeteer';
 import * as path from 'path';
 import * as _ from 'lodash';

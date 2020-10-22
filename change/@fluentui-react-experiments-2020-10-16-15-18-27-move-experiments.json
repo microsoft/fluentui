@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @uifabric/experiments to @fluentui/react-experiments",
   "packageName": "@fluentui/react-experiments",
   "email": "elcraig@microsoft.com",

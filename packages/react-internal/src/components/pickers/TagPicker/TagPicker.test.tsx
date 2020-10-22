@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { TagPicker } from './TagPicker';
 import { ITag } from './TagPicker.types';
 import { IBasePicker } from '../BasePicker.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../../common/isConformant';
 
 function onResolveSuggestions(text: string): ITag[] {

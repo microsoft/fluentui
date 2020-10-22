@@ -4,7 +4,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../Positioning';
 import { ILayerProps } from '../../Layer';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 
 export { Target };
 

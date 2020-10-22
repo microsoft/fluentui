@@ -1,4 +1,4 @@
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 
 export const MainPanelNumericalWidth = 1100;
 export const MainPanelWidth = `${MainPanelNumericalWidth}px`;

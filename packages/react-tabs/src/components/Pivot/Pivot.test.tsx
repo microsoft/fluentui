@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
 import { isConformant } from '../../common/isConformant';
 

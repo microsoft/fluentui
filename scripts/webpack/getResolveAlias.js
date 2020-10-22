@@ -22,9 +22,9 @@ function getResolveAlias(useLib, cwd) {
   const excludedPackages = [
     '@fluentui/eslint-plugin',
     '@fluentui/api-docs',
-    '@uifabric/build',
-    '@uifabric/webpack-utils',
-    '@uifabric/jest-serializer-merge-styles',
+    '@fluentui/scripts',
+    '@fluentui/webpack-utilities',
+    '@fluentui/jest-serializer-merge-styles',
   ];
 
   const packageJson = readConfig(path.join(cwd, 'package.json'));

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename office-ui-fabric-react package and update references",
   "packageName": "@fluentui/codemods",
   "email": "elcraig@microsoft.com",

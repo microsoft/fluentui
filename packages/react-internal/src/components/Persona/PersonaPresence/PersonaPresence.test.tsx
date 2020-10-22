@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { setRTL } from '../../../Utilities';
 import * as PersonaTypes from '../Persona.types';
 import { PersonaPresence } from './PersonaPresence';

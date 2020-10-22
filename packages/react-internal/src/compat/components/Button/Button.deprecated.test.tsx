@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { CompoundButton } from './CompoundButton/CompoundButton';
-import { resetIds, setWarningCallback } from '@uifabric/utilities';
+import { resetIds, setWarningCallback } from '@fluentui/utilities';
 
 describe('Button', () => {
   beforeAll(() => {

@@ -383,7 +383,7 @@ export class Foo extends React.Component {}
   it('detects side effect imports', () => {
     const example = `
 import * as React from 'react';
-import '@uifabric/utilities';
+import '@fluentui/utilities';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
@@ -394,7 +394,7 @@ export class Foo extends React.Component {}
   it('detects import star', () => {
     const example = `
 import * as React from 'react';
-import * as Utilities from '@uifabric/utilities';
+import * as Utilities from '@fluentui/utilities';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
@@ -436,7 +436,7 @@ export class Foo extends React.Component {}
       'Importing from more than two levels below the package root is not supported by the editor.',
     );
 
-    example = example.replace('@fluentui/react/lib/utilities/baz', '@uifabric/utilities/lib/bar/baz');
+    example = example.replace('@fluentui/react/lib/utilities/baz', '@fluentui/utilities/lib/bar/baz');
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toBe(
       'Importing from more than two levels below the package root is not supported by the editor.',
     );
@@ -467,7 +467,7 @@ export class Foo extends React.Component {}
     const example = `
 import * as React from 'react';
 import { Bar } from '@fluentui/react/lib/Bar';
-import { createListItems } from '@uifabric/example-data';
+import { createListItems } from '@fluentui/example-data';
 export class Foo extends React.Component {}
 `;
     expect(tryParseExample(example, SUPPORTED_PACKAGES)).toEqual({
@@ -482,9 +482,9 @@ export class Foo extends React.Component {}
           identifiers: [{ name: 'Bar' }],
         },
         {
-          text: "import { createListItems } from '@uifabric/example-data';",
-          path: '@uifabric/example-data',
-          packageName: '@uifabric/example-data',
+          text: "import { createListItems } from '@fluentui/example-data';",
+          path: '@fluentui/example-data',
+          packageName: '@fluentui/example-data',
           identifiers: [{ name: 'createListItems' }],
         },
       ],

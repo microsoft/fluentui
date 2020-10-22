@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding react-button as a dependency.",
-  "packageName": "@fluentui/api-docs",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-18T05:05:21.044Z"
-}

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Fixing ColorTokens typings.",
   "packageName": "@fluentui/theme",
   "email": "Humberto.Morimoto@microsoft.com",

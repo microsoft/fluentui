@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IKeytipProps } from '@fluentui/react-internal';
 import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
-import { IRefObject, IRenderFunction } from '@uifabric/utilities';
+import { IRefObject, IRenderFunction } from '@fluentui/utilities';
 
 /**
  * {@docCategory Pivot}

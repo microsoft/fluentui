@@ -6,7 +6,7 @@ import { Dialog } from './Dialog';
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
-import { resetIds, setWarningCallback } from '@uifabric/utilities';
+import { resetIds, setWarningCallback } from '@fluentui/utilities';
 import { act } from 'react-dom/test-utils';
 import { isConformant } from '../../common/isConformant';
 

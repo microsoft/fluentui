@@ -9,7 +9,7 @@ import {
   PersonaSize,
 } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;

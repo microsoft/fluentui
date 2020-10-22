@@ -10,7 +10,7 @@ import {
 import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { getRTL } from '@fluentui/react/lib/Utilities';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
   const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(false);

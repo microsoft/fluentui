@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import config from '@uifabric/build/config';
+import config from '@fluentui/scripts/config';
 
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 

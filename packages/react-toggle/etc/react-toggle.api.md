@@ -4,10 +4,10 @@
 
 ```ts
 
-import { IComponentAs } from '@uifabric/utilities';
-import { IRefObject } from '@uifabric/utilities';
+import { IComponentAs } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 

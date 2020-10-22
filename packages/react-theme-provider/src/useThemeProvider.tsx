@@ -3,7 +3,7 @@ import * as React from 'react';
 import { renderThemeProvider as render } from './renderThemeProvider';
 import { makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { useThemeProviderState } from './useThemeProviderState';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 const mergeProps = makeMergeProps<ThemeProviderState>();
 

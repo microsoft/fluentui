@@ -4,19 +4,19 @@
 
 ```ts
 
-import { IBaseProps } from '@uifabric/utilities';
-import { IComponentAs } from '@uifabric/utilities';
+import { IBaseProps } from '@fluentui/utilities';
+import { IComponentAs } from '@fluentui/utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IRectangle } from '@uifabric/utilities';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRectangle } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import { KeyCodes } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { KeyCodes } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 
 // @public (undocumented)
 export class ActionButton extends React.Component<IButtonProps, {}> {

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Publish src folder to allow using imports that work without building locally",
   "packageName": "@fluentui/common-styles",
   "email": "elcraig@microsoft.com",

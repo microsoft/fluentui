@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "rename @uifabric/variants to @fluentui/scheme-utilities",
   "packageName": "@fluentui/theme-samples",
   "email": "xgao@microsoft.com",

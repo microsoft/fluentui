@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "fix memory overflow in codemods",
   "packageName": "@fluentui/codemods",
   "email": "joschect@microsoft.com",

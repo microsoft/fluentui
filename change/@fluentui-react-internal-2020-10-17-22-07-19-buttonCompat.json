@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Moves Button export to compat folder.",
   "packageName": "@fluentui/react-internal",
   "email": "humbertomakotomorimoto@gmail.com",

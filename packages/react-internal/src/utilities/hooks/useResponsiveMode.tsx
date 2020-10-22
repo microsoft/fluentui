@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getWindow } from '@uifabric/utilities';
-import { useOnEvent } from '@uifabric/react-hooks';
+import { getWindow } from '@fluentui/utilities';
+import { useOnEvent } from '@fluentui/react-hooks';
 import { ResponsiveMode, getResponsiveMode, getInitialResponsiveMode } from '../decorators/withResponsiveMode';
 import { useWindow } from '@fluentui/react-window-provider';
 

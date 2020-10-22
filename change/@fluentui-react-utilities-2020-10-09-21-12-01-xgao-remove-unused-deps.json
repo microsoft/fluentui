@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Add missing version.ts; Remove unneeded package dependencies.",
   "packageName": "@fluentui/react-utilities",
   "email": "xgao@microsoft.com",

@@ -12,7 +12,7 @@ import {
   Link,
   Text,
 } from '@fluentui/react';
-import { useBoolean, useId } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const DIRECTION_OPTIONS = [

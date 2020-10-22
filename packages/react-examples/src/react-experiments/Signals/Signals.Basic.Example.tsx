@@ -26,7 +26,7 @@ import {
   PicturesSignal,
 } from '@fluentui/react-experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from '@fluentui/react';
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 import * as SignalStylesModule from '@fluentui/react-experiments/lib/components/signals/Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
 

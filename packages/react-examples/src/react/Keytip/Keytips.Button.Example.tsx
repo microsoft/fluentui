@@ -4,7 +4,7 @@ import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const marginBottom = { root: { marginBottom: 28 } };

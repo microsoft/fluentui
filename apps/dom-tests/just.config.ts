@@ -1,7 +1,6 @@
-const { preset, just } = require('@uifabric/build');
-const { jestDom } = require('@uifabric/build/tasks/jest');
-const { webpackDevServerWithCompileResolution } = require('@uifabric/build/tasks/webpack');
-const { task, series } = just;
+import { preset, task, series } from '@fluentui/scripts';
+import { jestDom } from '@fluentui/scripts/tasks/jest';
+import { webpackDevServerWithCompileResolution } from '@fluentui/scripts/tasks/webpack';
 
 preset();
 

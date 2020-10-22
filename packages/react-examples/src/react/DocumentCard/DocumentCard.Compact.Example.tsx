@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react/lib/DocumentCard';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const theme = getTheme();

@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "SpinButton: fix component typing, ref and remove keytipProps.",
   "packageName": "@fluentui/react-internal",
   "email": "xgao@microsoft.com",
