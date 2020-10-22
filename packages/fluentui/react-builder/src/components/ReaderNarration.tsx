@@ -17,7 +17,7 @@ export type ReaderNarrationProps = {
 
 export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
-  const [narrationElement, setNarrationElement] = React.useState(null);
+  const [narrationElement, setNarrationElement] = React.useState<IAriaElement>(null);
   const [narrationText, setNarrationText] = React.useState('');
 
   // Sets the complete screen reader narration text to be displayed.
@@ -26,7 +26,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   }; // End setCompleteText
 
   // Handles the element path dropdown change event by updating the current and previous narration elements.
-  const handleElementPathChange = (event: any, props: DropdownProps) => {
+  const handleElementPathChange = (event: React.SyntheticEvent, props: DropdownProps) => {
     selectedElementPath = props.value as string;
     prevNarrationElement = narrationElement;
     setNarrationElement(focusableElements[selectedElementPath]);
@@ -64,16 +64,8 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
         if (elementsPaths.length >= 1) {
           // Begin if 2
           // Preselect the path and the narration element to the first focusable element with tabindex >= 0
-          let preselectedElementItem = focusableElementsItems[0];
-          focusableElementsItems.some(focusableElementItem => {
-            // Begin some 1
-            if (focusableElementItem.element.tabIndex >= 0) {
-              // Begin if 3
-              preselectedElementItem = focusableElementItem;
-              return true;
-            } // End if 3
-            return false;
-          }); // End some 1
+          const preselectedElementItem =
+            focusableElementsItems.find(item => item.element.tabIndex >= 0) || focusableElementsItems[0];
           selectedElementPath = preselectedElementItem.path;
           setNarrationElement(preselectedElementItem.element);
         } else {
