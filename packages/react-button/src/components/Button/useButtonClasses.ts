@@ -215,21 +215,23 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
     icon: [
       GlobalClassNames.icon,
       {
+        alignItems: 'center',
         color: 'var(--button-iconColor)',
         display: 'flex',
         flexShrink: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 'var(--button-iconSize)',
-        height: 'var(--button-iconSize)',
         fontSize: 'var(--button-iconSize, inherit)',
         fontWeight: 'normal',
+        height: 'var(--button-iconSize)',
+        justifyContent: 'center',
         lineHeight: '1',
+        position: 'relative',
+        width: 'var(--button-iconSize)',
       },
     ],
 
     content: {
       lineHeight: '1',
+      position: 'relative',
     },
   },
 

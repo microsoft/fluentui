@@ -2,7 +2,10 @@
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
 import { IStyle } from '@uifabric/merge-styles';
-import { makeClasses } from './makeClasses';
+import { merge } from '@uifabric/utilities';
+import { StyleRenderer, useTheme, useStyleRenderer } from './index';
+import { useWindow } from '@fluentui/react-window-provider';
+import { replaceCSSVariables } from './replaceCSSVariables';
 
 /**
  * Calls a function with the argument, or returns the given object.
@@ -11,31 +14,6 @@ import { makeClasses } from './makeClasses';
  */
 const callOrReturn = (objOrFunc: any, argument: any) =>
   typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
-
-const processVariants = (variants: Variants | undefined, theme: Theme, name?: string, prefix?: string) => {
-  const result: Record<string, IStyle> = {};
-
-  if (variants) {
-    variants = callOrReturn(variants, theme);
-
-    for (const variantName of Object.keys(variants!)) {
-      const modifierName = variantName === 'root' ? variantName : '_' + variantName;
-
-      const rule: any = (result[modifierName] = tokensToStyleObject(variants![variantName], prefix) as IStyle);
-
-      // The display name should be tied to the unique theme object, causing the
-      // renderer to treat scoped themes as sandboxed css scopes.
-      if (name) {
-        rule.displayName = `${name}${theme.id || ''}`;
-        if (variantName !== 'root') {
-          rule.displayName += `--${variantName}`;
-        }
-      }
-    }
-  }
-
-  return result;
-};
 
 /**
  * Options for makeVariantClasses.
@@ -69,19 +47,60 @@ export type MakeVariantClassesOptions = {
  * a variant string. Variants can be overridden through the theme of the component.
  */
 export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptions) => {
-  const { styles, variants, name, prefix } = options;
+  const { styles: styleOrFunction, variants, name, prefix } = options;
 
-  // This function will only be called when styles have not been evaluated for this set for
-  // the particular theme/window/direction combo.
-  const styleFunction: (theme: Theme) => IStyle = (theme: Theme) => {
+  return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
+    const win = useWindow();
+    const contextualTheme = useTheme();
+    const contextualRenderer = useStyleRenderer();
+
+    theme = theme || contextualTheme || {};
+    renderer = (renderer || contextualRenderer) as StyleRenderer;
+
+    const isStyleFunction = typeof styleOrFunction === 'function';
+    const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => any)(theme!) : styleOrFunction;
+
+    // Flatten and merge the variants from the definition and theme overrides.
     const themeVariants = name ? theme?.components?.[name]?.variants : undefined;
 
-    return [
-      callOrReturn(styles, theme),
-      processVariants(variants, theme, name, prefix),
-      processVariants(themeVariants, theme, name, prefix),
+    const variables1 = [
+      callOrReturn(variants, theme),
+      callOrReturn(themeVariants, theme),
+      { root: callOrReturn(state.tokens, theme) },
     ];
-  };
+    const variables = tokensToStyleObject(theme.tokens);
 
-  return makeClasses<TState>(styleFunction as any);
+    for (const set of variables1) {
+      if (set) {
+        for (const variantName of Object.keys(set)) {
+          if (variantName === 'root' || state[variantName] || state.variant === variantName) {
+            Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
+          } else {
+            const nameParts = variantName.split('_');
+            if (nameParts.length === 2 && state[nameParts[0]] === nameParts[1]) {
+              Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
+            }
+          }
+        }
+      }
+    }
+
+    console.log(variables);
+    const resolvedStyles = replaceCSSVariables(styles, variables);
+    const classes = renderer.renderStyles(resolvedStyles, { targetWindow: win, rtl: !!theme!.rtl });
+
+    for (let slot of Object.keys(classes)) {
+      _setClass(state, classes[slot], slot !== 'root' && slot);
+    }
+  };
 };
+
+function _setClass(state: Record<string, any>, className: string, slot?: string) {
+  const currentSlot = slot ? (state[slot] = state[slot] || {}) : state;
+
+  if (currentSlot.className) {
+    currentSlot.className += ' ' + className;
+  } else {
+    currentSlot.className = className;
+  }
+}
