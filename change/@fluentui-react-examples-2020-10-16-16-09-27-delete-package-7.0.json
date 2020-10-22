@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Remove packages from 7.0 branch which are not related to OUFR version 7.",
+  "packageName": "@fluentui/react-examples",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-16T23:09:11.328Z"
+}

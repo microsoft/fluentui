@@ -6,34 +6,16 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withCompatKeytipLayer, withKeytipLayer, withStrictMode, withThemeProvider } from '@fluentui/storybook';
+import { withKeytipLayer } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withA11y());
 addDecorator(withKnobs({ escapeHTML: false }));
-if (
-  [
-    'react-button',
-    'react-cards',
-    'react-checkbox',
-    'react-image',
-    'react-link',
-    'react-next',
-    'react-slider',
-    'react-tabs',
-    'react-toggle',
-  ].includes('PACKAGE_NAME')
-) {
-  addDecorator(withThemeProvider);
-  addDecorator(withStrictMode);
-}
-if (['react-next'].includes('PACKAGE_NAME')) {
+if (['office-ui-fabric-react'].includes('PACKAGE_NAME')) {
   addDecorator(withKeytipLayer);
 }
-if (['office-ui-fabric-react'].includes('PACKAGE_NAME')) {
-  addDecorator(withCompatKeytipLayer);
-}
+
 addParameters({
   a11y: {
     manual: true,

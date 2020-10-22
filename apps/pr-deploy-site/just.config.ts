@@ -16,14 +16,6 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 //
 // Dependencies are listed here and NOT in package.json because we do not want to allow for partial builds for scoping
 const dependencies = [
-  '@fluentui/react-button',
-  '@fluentui/react-checkbox',
-  '@fluentui/react-image',
-  '@fluentui/react-link',
-  '@fluentui/react-next',
-  '@fluentui/react-slider',
-  '@fluentui/react-tabs',
-  '@fluentui/react-toggle',
   '@uifabric/charting',
   '@uifabric/date-time',
   '@uifabric/experiments',
