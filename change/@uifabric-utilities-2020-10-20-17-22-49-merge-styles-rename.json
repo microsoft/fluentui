@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
   "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
-  "packageName": "@uifabric/utilities",
+  "packageName": "@fluentui/utilities",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-10-21T00:22:49.079Z"

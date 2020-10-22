@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Rename @fluentui/webpack-utilities to @fluentui/webpack-utilities",
   "packageName": "@fluentui/webpack-utilities",
   "email": "elcraig@microsoft.com",
