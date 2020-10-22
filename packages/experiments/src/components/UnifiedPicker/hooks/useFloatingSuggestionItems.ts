@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISuggestionsHeaderFooterProps } from 'office-ui-fabric-react';
+import { IFloatingSuggestionsHeaderFooterProps } from '../../FloatingSuggestionsComposite/FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 export interface IUseFloatingSuggestionItems<T> {
   focusItemIndex: number;
@@ -8,12 +8,12 @@ export interface IUseFloatingSuggestionItems<T> {
   setSuggestionItems: React.Dispatch<React.SetStateAction<T[]>>;
   footerItemIndex: number;
   setfooterItemIndex: React.Dispatch<React.SetStateAction<number>>;
-  footerItems: ISuggestionsHeaderFooterProps[];
-  setFooterItems: React.Dispatch<React.SetStateAction<ISuggestionsHeaderFooterProps[]>>;
+  footerItems: IFloatingSuggestionsHeaderFooterProps[];
+  setFooterItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[]>>;
   headerItemIndex: number;
   setHeaderItemIndex: React.Dispatch<React.SetStateAction<number>>;
-  headerItems: ISuggestionsHeaderFooterProps[];
-  setHeaderItems: React.Dispatch<React.SetStateAction<ISuggestionsHeaderFooterProps[]>>;
+  headerItems: IFloatingSuggestionsHeaderFooterProps[];
+  setHeaderItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[]>>;
   isSuggestionsShown: boolean;
   showPicker: (show: boolean) => void;
   selectNextSuggestion: () => void;
@@ -27,9 +27,9 @@ export const useFloatingSuggestionItems = <T extends {}>(
   floatingSuggestionItems: T[],
   focusSuggestionIndex?: number,
   focusFooterIndex?: number,
-  footerSuggestionItems?: ISuggestionsHeaderFooterProps[],
+  footerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   focusHeaderIndex?: number,
-  headerSuggestionItems?: ISuggestionsHeaderFooterProps[],
+  headerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   isSuggestionsVisible?: boolean,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
@@ -44,7 +44,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     setSuggestionItems(floatingSuggestionItems);
   }, [floatingSuggestionItems]);
 
-  const headerFooterItemsHaveExecute = (items: ISuggestionsHeaderFooterProps[]): boolean => {
+  const headerFooterItemsHaveExecute = (items: IFloatingSuggestionsHeaderFooterProps[]): boolean => {
     let haveExecute = false;
     items!.forEach(item => {
       if (item.onExecute !== undefined) {
@@ -57,7 +57,10 @@ export const useFloatingSuggestionItems = <T extends {}>(
   const hasSelectableFooters = footerItems ? headerFooterItemsHaveExecute(footerItems) : false;
   const hasSelectableHeaders = headerItems ? headerFooterItemsHaveExecute(headerItems) : false;
 
-  const getNextSelectableHeaderOrFooter = (items: ISuggestionsHeaderFooterProps[], itemIndex: number): number => {
+  const getNextSelectableHeaderOrFooter = (
+    items: IFloatingSuggestionsHeaderFooterProps[],
+    itemIndex: number,
+  ): number => {
     let nextIndex = -1;
     if (items) {
       let i = itemIndex + 1;
@@ -72,7 +75,10 @@ export const useFloatingSuggestionItems = <T extends {}>(
     return nextIndex;
   };
 
-  const getPreviousSelectableHeaderOrFooter = (items: ISuggestionsHeaderFooterProps[], itemIndex: number): number => {
+  const getPreviousSelectableHeaderOrFooter = (
+    items: IFloatingSuggestionsHeaderFooterProps[],
+    itemIndex: number,
+  ): number => {
     let nextIndex = -1;
     if (items) {
       let i = itemIndex !== -1 ? itemIndex - 1 : items.length - 1;
