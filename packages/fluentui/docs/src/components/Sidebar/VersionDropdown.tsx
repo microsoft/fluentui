@@ -5,6 +5,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 
 export function VersionDropdown(props: { width: number }) {
   const currentVersion = pkg.version;
+  window.sessionStorage.fluentuiDocsiteVersions = JSON.stringify(['0.51.2', '0.47.12']);
 
   if (
     !window.sessionStorage.fluentuiDocsiteVersions ||
@@ -17,7 +18,14 @@ export function VersionDropdown(props: { width: number }) {
 
   // We make assumptions about routing
   // https://<domain>/<version> should be the basename for each docsite in a multi version scenario
-  const onChange = (_, data: DropdownProps) => (window.location.pathname = `/${data.value}`);
+  const onChange = (_, data: DropdownProps) => {
+    if (window.location.pathname.split('/')[1] === currentVersion) {
+      const newPath = window.location.pathname.replace(currentVersion, data.value as string);
+      window.location.pathname = newPath;
+    } else {
+      window.location.pathname = `/${data.value}`;
+    }
+  };
 
   return (
     <Dropdown
