@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Vertical stacked bar chart basic unit test cases - v1",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-15T06:17:36.171Z"
+}
