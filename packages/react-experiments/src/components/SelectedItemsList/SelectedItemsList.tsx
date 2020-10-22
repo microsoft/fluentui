@@ -11,6 +11,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 
   const renderedItems = React.useMemo(() => items, [items]);
   const didMountRef = React.useRef(false);
+  const hiddenInput = React.useRef<any>();
 
   React.useEffect(() => {
     // block first call of the hook and forward each consecutive one
@@ -59,11 +60,24 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     [items],
   );
 
+  const _onFocus = (ev: React.FocusEvent<HTMLDivElement>) => {
+    // If we have an input, set focus to it so we can pick up the copy keyboard command
+    hiddenInput.current?.focus();
+  };
+
   const SelectedItem = props.onRenderItem;
   return (
     <>
       {items.length > 0 && (
-        <div role={'list'}>
+        <div role={'list'} onFocus={_onFocus}>
+          <input
+            // Add a zero zero size input. This is to pick up the copy command when we have
+            // keyboard focus in the list
+            // Focus is set to the input when the list gets focus via the _onFocus function
+            ref={hiddenInput}
+            style={{ height: '0px', width: '0px', border: 'none', outline: 'none' }}
+            data-is-focusable={false}
+          />
           {SelectedItem &&
             renderedItems.map((item: TItem, index: number) => (
               <SelectedItem
