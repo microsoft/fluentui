@@ -2,14 +2,14 @@
   "name": "@fluentui/react-next",
   "version": "9.0.0-alpha",
   "beachball": {
-    "tag": "alpha",
+    "tag": "latest",
     "disallowedChangeTypes": [
       "patch",
       "minor",
       "major"
     ]
   },
-  "description": "Next majostr release staging package: Reusable React components for building web experiences.",
+  "description": "Next major release staging package: Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",

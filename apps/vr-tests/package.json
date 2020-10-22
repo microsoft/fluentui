@@ -20,7 +20,7 @@
     "@fluentui/react": "^8.0.0-beta",
     "@fluentui/react-button": "^1.0.0-beta",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta",
-    "@fluentui/storybook": "^1.0.0-beta",
+    "@fluentui/storybook": "^1.0.0",
     "@storybook/addon-options": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@storybook/channels": "^5.3.8",

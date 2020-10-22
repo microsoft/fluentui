@@ -1,6 +1,3 @@
-/* eslint-disable deprecation/deprecation */
-/* eslint-disable import/no-extraneous-dependencies */
-
 import * as React from 'react';
 // @ts-ignore
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
