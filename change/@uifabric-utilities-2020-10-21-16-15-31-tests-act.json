@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Async: update setTimeout to use internal error logging method",
   "packageName": "@fluentui/utilities",
   "email": "elcraig@microsoft.com",
