@@ -157,7 +157,6 @@
           "@fluentui/styles"
         ],
         "dependencies": [
-          "@uifabric/utilities",
           "@fluentui/dom-utilities",
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
