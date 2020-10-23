@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
+exports[`Component Examples renders Tabs.OnChange.Example.tsx correctly 1`] = `
 <div>
   <label
     className=
