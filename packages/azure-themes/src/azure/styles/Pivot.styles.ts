@@ -1,4 +1,4 @@
-import { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Tabs';
+import { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Pivot';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
