@@ -7,6 +7,7 @@ import {
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@fluentui/utilities';
+import { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 /**
  * FloatingSuggestions component props
@@ -127,6 +128,45 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Arrow key callback
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
+
+  /**
+   * The properties used for selectable headers and footers
+   * takes precedence over onRenderHeader and onRenderFooter
+   */
+  pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
+
+  /**
+   * Index to indicate the selected header
+   * This logic must be driven by parent component
+   * Should be used with the headerItemProps on the pickerSuggestionProps
+   */
+  selectedHeaderIndex?: number;
+
+  /**
+   * Index to indicate the selected footer
+   * This logic must be driven by parent component
+   * Should be used with the footerItemProps on the pickerSuggestionProps
+   */
+  selectedFooterIndex?: number;
+}
+
+export interface IBaseFloatingPickerHeaderFooterProps {
+  /**
+   * An ARIA label for the container that is the parent of the suggestions header items.
+   */
+  suggestionsHeaderContainerAriaLabel?: string;
+  /**
+   * An ARIA label for the container that is the parent of the suggestions footer items.
+   */
+  suggestionsFooterContainerAriaLabel?: string;
+  /**
+   * The header items props
+   */
+  headerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
+  /**
+   * The footer items props
+   */
+  footerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
 }
 
 /**
