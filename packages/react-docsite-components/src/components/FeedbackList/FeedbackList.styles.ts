@@ -1,6 +1,6 @@
 import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { getFocusStyle, getTheme, FontWeights } from '@fluentui/react/lib/Styling';
-import { IPivotStyles } from '@fluentui/react/lib/Pivot';
+import { IPivotStyles } from '@fluentui/react/lib/Tabs';
 import { IFeedbackListStyleProps, IFeedbackListStyles } from './FeedbackList.types';
 
 const globalClassNames = {

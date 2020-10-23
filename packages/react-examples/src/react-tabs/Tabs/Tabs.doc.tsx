@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
-import { PivotBasicExample } from './Pivot.Basic.Example';
-import { PivotIconCountExample } from './Pivot.IconCount.Example';
-import { PivotLargeExample } from './Pivot.Large.Example';
-import { PivotTabsExample } from './Pivot.Tabs.Example';
-import { PivotTabsLargeExample } from './Pivot.TabsLarge.Example';
-import { PivotOnChangeExample } from './Pivot.OnChange.Example';
-import { PivotRemoveExample } from './Pivot.Remove.Example';
-import { PivotOverrideExample } from './Pivot.Override.Example';
-import { PivotSeparateExample } from './Pivot.Separate.Example';
-import { PivotOverflowMenuExample } from './Pivot.OverflowMenu.Example';
+import { PivotBasicExample } from './Tabs.Basic.Example';
+import { PivotIconCountExample } from './Tabs.IconCount.Example';
+import { PivotLargeExample } from './Tabs.Large.Example';
+import { PivotTabsExample } from './Tabs.Tabs.Example';
+import { PivotTabsLargeExample } from './Tabs.TabsLarge.Example';
+import { PivotOnChangeExample } from './Tabs.OnChange.Example';
+import { PivotRemoveExample } from './Tabs.Remove.Example';
+import { PivotOverrideExample } from './Tabs.Override.Example';
+import { PivotSeparateExample } from './Tabs.Separate.Example';
+import { PivotOverflowMenuExample } from './Tabs.OverflowMenu.Example';
 
 const PivotRemoveExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Basic.Example.tsx') as string;

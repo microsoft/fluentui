@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { List } from '@fluentui/react/lib/List';
 import { Link } from '@fluentui/react/lib/Link';
-import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Tabs';
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Label } from '@fluentui/react/lib/Label';
 import { styled, classNamesFunction } from '@fluentui/react/lib/Utilities';

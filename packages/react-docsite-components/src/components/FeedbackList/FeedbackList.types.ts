@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IPivotStyleProps } from '@fluentui/react/lib/Pivot';
+import { IPivotStyleProps } from '@fluentui/react/lib/Tabs';
 
 export interface IFeedbackListProps {
   title: string;
