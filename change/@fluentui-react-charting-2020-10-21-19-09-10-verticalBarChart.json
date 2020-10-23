@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Charting: Refactoring Vertical Bar Chart via implementation of Cartesian chart.",
   "packageName": "@fluentui/react-charting",
   "email": "humbertomakotomorimoto@gmail.com",
