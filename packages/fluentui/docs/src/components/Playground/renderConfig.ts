@@ -11,6 +11,7 @@ import * as Classnames from 'classnames';
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
 const projectPackageJson = require('@fluentui/react-northstar/package.json');
+const codeSandboxPackageJson = require('@fluentui/code-sandbox/package.json');
 
 export const babelConfig = {
   plugins: [
@@ -29,7 +30,7 @@ export const imports: Record<string, { version: string; module: any }> = {
   },
 
   '@fluentui/code-sandbox': {
-    version: 'latest',
+    version: codeSandboxPackageJson.version,
     module: CodeSandbox,
   },
   '@fluentui/docs-components': {
