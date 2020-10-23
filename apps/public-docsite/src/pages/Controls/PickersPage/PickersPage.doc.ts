@@ -6,7 +6,7 @@ const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls
 export const PickersPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/pickers',
+    componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/pickers',
     related,
   },
 };

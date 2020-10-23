@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove react-dom from peerDependencies",
-  "packageName": "@fluentui/file-type-icons",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-21T21:49:08.779Z"
-}

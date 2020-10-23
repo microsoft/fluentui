@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add beachball config disallowedChangeTypes.",
-  "packageName": "@fluentui/ie11-polyfills",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-21T00:17:43.407Z"
-}

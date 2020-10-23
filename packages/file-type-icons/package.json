@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/file-type-icons",
-  "version": "8.0.0-beta",
+  "version": "8.0.0-beta.0",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,7 +23,7 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@types/react": "16.8.25",
     "@types/webpack-env": "1.15.1",
     "@fluentui/scripts": "^1.0.0",
@@ -31,8 +31,8 @@
     "react-app-polyfill": "~1.0.1"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta",
-    "@fluentui/style-utilities": "^8.0.0-beta",
+    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/style-utilities": "^8.0.0-beta.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

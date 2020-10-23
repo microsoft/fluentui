@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Rename build-related packages",
-  "packageName": "@fluentui/codemods",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T16:56:50.071Z"
-}

@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v0.3.8..@fluentui/react-checkbox_v1.0.0-beta.0)
+
+### Changes
+
+- remove useGlobalClassNames usage from next. ([PR #15229](https://github.com/microsoft/fluentui/pull/15229) by xgao@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Remove keytipProps from props. ([PR #15534](https://github.com/microsoft/fluentui/pull/15534) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @fluentui/react-icons to @fluentui/react-icons-mdl2 ([PR #15599](https://github.com/microsoft/fluentui/pull/15599) by ololubek@microsoft.com)
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
 
 ## [0.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v0.3.8)
 

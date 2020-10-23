@@ -1,8 +1,20 @@
-# Change Log - @uifabric/icons
+# Change Log - @fluentui/font-icons-mdl2
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/font-icons-mdl2_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.5.2..@fluentui/font-icons-mdl2_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
 
 ## [7.3.36](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.3.36)
 

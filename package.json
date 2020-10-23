@@ -134,13 +134,34 @@
       {
         "packages": [
           "@fluentui/accessibility",
+          "@fluentui/code-sandbox",
+          "@fluentui/docs-components",
+          "@fluentui/docs",
+          "@fluentui/e2e",
+          "@fluentui/perf",
+          "@fluentui/perf-test",
+          "@fluentui/react-component-event-listener",
+          "@fluentui/react-component-nesting-registry",
+          "@fluentui/react-component-ref",
+          "@fluentui/react-context-selector",
+          "@fluentui/react-icons-northstar",
+          "@fluentui/react-northstar-emotion-renderer",
+          "@fluentui/react-northstar-fela-renderer",
+          "@fluentui/react-northstar-styles-renderer",
+          "@fluentui/react-proptypes",
+          "@fluentui/react-telemetry",
           "@fluentui/react-bindings",
-          "@fluentui/react-northstar"
+          "@fluentui/react-builder",
+          "@fluentui/react-northstar",
+          "@fluentui/state",
+          "@fluentui/styles"
         ],
         "dependencies": [
-          "@uifabric/utilities",
           "@fluentui/dom-utilities",
-          "@fluentui/date-time-utilities"
+          "@fluentui/date-time-utilities",
+          "@fluentui/eslint-plugin",
+          "@fluentui/react",
+          "@fluentui/react-compose"
         ]
       }
     ]

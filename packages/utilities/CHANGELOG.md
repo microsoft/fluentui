@@ -1,8 +1,23 @@
-# Change Log - @uifabric/utilities
+# Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.3..@fluentui/utilities_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- getId now can take in a blank string as prefix. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Deprecate Customizer. ([PR #15539](https://github.com/microsoft/fluentui/pull/15539) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
 
 ## [7.32.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.3)
 

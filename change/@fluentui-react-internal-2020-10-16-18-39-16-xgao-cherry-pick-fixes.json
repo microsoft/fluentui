@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Export getMenuStyles from ContextualMenu",
-  "packageName": "@fluentui/react-internal",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-17T01:38:58.544Z"
-}

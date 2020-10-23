@@ -1,8 +1,38 @@
-# Change Log - @uifabric/experiments
+# Change Log - @fluentui/react-experiments
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.1..@fluentui/react-experiments_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/experiments to @fluentui/react-experiments ([PR #15566](https://github.com/microsoft/fluentui/pull/15566) by elcraig@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Convert SelectedPersona GetExpandedItems to async ([PR #15557](https://github.com/microsoft/fluentui/pull/15557) by elvonspa@microsoft.com)
+- Remove undesired MarqueeSelection in UPP ([PR #15589](https://github.com/microsoft/fluentui/pull/15589) by sadelson@microsoft.com)
+- Add props to UPP to disable drag drop, drop to end of list ([PR #15428](https://github.com/microsoft/fluentui/pull/15428) by elvonspa@microsoft.com)
+- rename @uifabric/foundation to @fluentui/foundation-legacy ([PR #15595](https://github.com/microsoft/fluentui/pull/15595) by xgao@microsoft.com)
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Add onKeyDown prop to UnifiedPicker ([PR #15623](https://github.com/microsoft/fluentui/pull/15623) by elvonspa@microsoft.com)
+- Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- UnifiedPicker: Fixing input selection ([PR #15650](https://github.com/microsoft/fluentui/pull/15650) by nebhatna@microsoft.com)
+- Remove FluentStyles. ([PR #15307](https://github.com/microsoft/fluentui/pull/15307) by xgao@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Fix imports to reference physical files. ([PR #15340](https://github.com/microsoft/fluentui/pull/15340) by xgao@microsoft.com)
+- Update import paths from foundation package. ([PR #15354](https://github.com/microsoft/fluentui/pull/15354) by xgao@microsoft.com)
+- Don't publish demo app; remove unused example-app-base dev dependency ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- Remove unneeded dep on azure-themes ([PR #15454](https://github.com/microsoft/fluentui/pull/15454) by elcraig@microsoft.com)
+- Callout: Move to react-internal ([PR #15455](https://github.com/microsoft/fluentui/pull/15455) by joschect@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
 
 ## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.1)
 

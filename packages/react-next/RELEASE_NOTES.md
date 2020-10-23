@@ -12,7 +12,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Calendar
 
-`Calendar` has been replaced with the version from the `@uifabric/date-time` package. This should be almost identical in visuals and functionality
+`Calendar` has been replaced with the version from the `@fluentui/react-date-time` package. This should be almost identical in visuals and functionality
 
 - Converted styling from legacy SCSS to CSS-in-JS. Styling can now be customized using `ICalendarProps.styles`.
 - Removed the following props (TODO: suggest alternatives)
@@ -23,9 +23,14 @@ If you would like to continue using the previous button components for now, upda
 
 ### ChoiceGroup
 
-- Moved `root` class to the actual root element by replacing `applicationRole`.
-- Removed `applicationRole` from IChoiceGroupStyles.
-- Removed deprecated `onChanged` prop.
+- Setting `checked` on individual options to indicate their checked state is no longer supported. Instead, use `defaultSelectedKey` or `selectedKey`.
+- Moved `root` style to the actual root element and removed `applicationRole` style.
+- Removed deprecated props and types:
+  - `onChanged` from `IChoiceGroupProps` (use `onChange`)
+  - `checked` from `IChoiceGroupOption`. (See above for alternative. Also note that this is still available via `IChoiceGroupOptionProps` for custom rendering purposes only, and will be set correctly by the parent `ChoiceGroup`.)
+  - `applicationRole` from `IChoiceGroupStyles`
+  - Type aliases `OnFocusCallback` and `OnChangeCallback`: use `IChoiceGroupOptionProps['onFocus']` and `IChoiceGroupOptionProps['onChange']`
+- Only if manually rendering the `ChoiceGroupOption` component, the new prop `itemKey` is now required. (You can still use `key` when passing options via `IChoiceGroupProps.options`, which is by far the most common.)
 
 ### Coachmark
 
@@ -33,7 +38,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### DatePicker
 
-`DatePicker` has been replaced with the version from the `@uifabric/date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
+`DatePicker` has been replaced with the version from the `@fluentui/react-date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
 
 ### OverflowSet
 
