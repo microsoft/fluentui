@@ -440,7 +440,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onCopy={_onCopy}
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
-        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+        <SelectionZone
+          selection={selection}
+          selectionMode={SelectionMode.multiple}
+          className={css('ms-UnifiedPicker-selectionZone', classNames.selectionZone)}
+        >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             {headerComponent}
             {_renderSelectedItemsList()}
