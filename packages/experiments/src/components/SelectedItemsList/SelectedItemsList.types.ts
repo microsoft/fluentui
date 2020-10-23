@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDragDropEvents, IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -140,4 +141,10 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Should be used if it's possible to change some properties on items so a strict compare will fail
    */
   itemsAreEqual?: (item1?: any, item2?: any) => boolean;
+}
+
+export interface ISelectedItemsListStyleProps {}
+
+export interface ISelectedItemsListStyles {
+  copyInput: IStyle;
 }
