@@ -2502,10 +2502,13 @@
   resolved "https://registry.yarnpkg.com/@microsoft/package-deps-hash/-/package-deps-hash-2.2.158.tgz#57a02d6ee62fd95390a477120ab24186767cb0fe"
   integrity sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
 
-"@microsoft/task-scheduler@^2.6.4":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.4.tgz#ba684e26380f6b5d660656858a5f417a9c42487a"
-  integrity sha512-4RXr5Q0/CfRHAjJ6J+8V/if0LGoScTc4iFVnSHiLnJEEJRNWviLeBNgiDb/fI4H9vbdM+KF71agzKsji1C4jtQ==
+"@microsoft/task-scheduler@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.7.0.tgz#ec08645bbf708299a2d13bfd56a1a928189cd33c"
+  integrity sha512-8UnOEuq7bmz8kJECSnoJmT987t5jsurSX1kMadtFRe8z6AYMuJQaW0l3pQ2gllgRjOa8LTKujRPLKGRIfJcJcw==
+  dependencies:
+    memory-streams "^0.1.3"
+    p-graph "^1.1.0"
 
 "@microsoft/ts-command-line@4.3.6":
   version "4.3.6"
@@ -15233,12 +15236,12 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@0.19.9:
-  version "0.19.9"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.9.tgz#3b4d1644bfa0cf20a1c440b05172c2bdd49ddf4a"
-  integrity sha512-SOvsegn67DFTFUTvEE3xUy79nH1DoPzSkOPymTLSbNWt8FWjTsUcVWxmV8adJ+2E0vJRwYFiXIt8jLo0tqMosw==
+lage@0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.24.0.tgz#3c7667fcde30418e64a3b8477673a588a93ae463"
+  integrity sha512-wxh1RRt3RfA5uL6dSJfkg2dKGLuY9D9/xeLR7vj7/G5PWteo2QbDI+KlnPrfHsE1YXvriIElbD4w4jkxratozA==
   dependencies:
-    "@microsoft/task-scheduler" "^2.6.4"
+    "@microsoft/task-scheduler" "^2.7.0"
     abort-controller "^3.0.0"
     backfill "^6.0.1"
     backfill-config "^6.0.0"
@@ -15249,8 +15252,8 @@ lage@0.19.9:
     fast-glob "^3.2.2"
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
-    p-profiler "^0.1.2"
-    workspace-tools "^0.9.8"
+    p-profiler "^0.2.1"
+    workspace-tools "^0.10.1"
     yargs-parser "^18.1.3"
 
 last-run@^1.1.0:
@@ -16467,6 +16470,13 @@ memory-fs@^0.4.0, memory-fs@^0.4.1:
   dependencies:
     errno "^0.1.3"
     readable-stream "^2.0.1"
+
+memory-streams@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/memory-streams/-/memory-streams-0.1.3.tgz#d9b0017b4b87f1d92f55f2745c9caacb1dc93ceb"
+  integrity sha512-qVQ/CjkMyMInPaaRMrwWNDvf6boRZXaT/DbQeMYcCWuXPEBf1v8qChOc9OlEVQp2uOvRXa1Qu30fLmKhY6NipA==
+  dependencies:
+    readable-stream "~1.0.2"
 
 meow@^3.3.0, meow@^3.7.0:
   version "3.7.0"
@@ -18062,6 +18072,11 @@ p-finally@^1.0.0:
   resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
   integrity sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
 
+p-graph@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/p-graph/-/p-graph-1.1.0.tgz#c914cf067f8d4abc31a8a3cfcb932c213845df6a"
+  integrity sha512-IfwchSZEUfZHhdHrLSUPIbZfawOshc/UrTmdhT/BRjD428Fd78jVl4NUbIvWjUq+NxrenRjx8518VtQeIvbtMA==
+
 p-is-promise@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/p-is-promise/-/p-is-promise-2.1.0.tgz#918cebaea248a62cf7ffab8e3bca8c5f882fc42e"
@@ -18152,10 +18167,10 @@ p-pipe@^1.2.0:
   resolved "https://registry.yarnpkg.com/p-pipe/-/p-pipe-1.2.0.tgz#4b1a11399a11520a67790ee5a0c1d5881d6befe9"
   integrity sha1-SxoROZoRUgpneQ7loMHViB1r7+k=
 
-p-profiler@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/p-profiler/-/p-profiler-0.1.2.tgz#ff737d74eaf429a986da5375fdbacfac4d05b07a"
-  integrity sha512-9aeI5KeYwt7eaxnGR7t+d/8f22cId2yPtPnWWQ2mVrhaFFFedwAuW4A1JbQGaopWaYtRNpv8oQX3HzNalOIixw==
+p-profiler@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/p-profiler/-/p-profiler-0.2.1.tgz#853b5e6b482c5d376e5e2bb1e94bd09c0e715983"
+  integrity sha512-/XDER5u19OrAJ283ofIgw9hsLSoyQnjzki+tmn42vdppHOfo8PgivSSZfwaiyRAzLC2h02+Q+MKiIuuSve+7nw==
 
 p-queue@^4.0.0:
   version "4.0.0"
@@ -20246,7 +20261,7 @@ readable-stream@^3.4.0:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
-readable-stream@~1.0.17:
+readable-stream@~1.0.17, readable-stream@~1.0.2:
   version "1.0.34"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
   integrity sha1-Elgg40vIQtLyqq+v5MKRbuMsFXw=
@@ -24749,10 +24764,10 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.0.tgz#5ce0680c9bf38544d1f6261d6b0e2834347e676e"
-  integrity sha512-ji9mOpdxyJ1LBnCzfFzAuLw7x0OuqQso/eJFpeyR/W0nXRK3Uhmn0dAaqrlDlrUEW5nOT5nSz0MpsaCmeSyiUA==
+workspace-tools@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.10.1.tgz#326e92a4247d9f909e8a4017d56dbe4bb4361497"
+  integrity sha512-4qLbcBJuULUBkRK5aS4O4q3DEMmtKMyGGVftCMGUvS0TGeb9ni1HnuxUzGGaQyhds4RFr83aX3foJA3+RB2Uag==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"
@@ -24763,14 +24778,13 @@ workspace-tools@^0.9.0:
     git-url-parse "^11.1.2"
     globby "^11.0.0"
     jju "^1.4.0"
-    matcher "^3.0.0"
     multimatch "^4.0.0"
     read-yaml-file "^2.0.0"
 
-workspace-tools@^0.9.8:
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.8.tgz#fe53254bf56da289a8e9a6d9e8a0647f69bd964e"
-  integrity sha512-Vbyuc8fRLnbkE/n7Qb8wKEwexGEujTQamEGNFd/1RmgANCFk1u4FBI2PVoF/Tf32JbbtAlw/JkWtxmemRG4b8g==
+workspace-tools@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.0.tgz#5ce0680c9bf38544d1f6261d6b0e2834347e676e"
+  integrity sha512-ji9mOpdxyJ1LBnCzfFzAuLw7x0OuqQso/eJFpeyR/W0nXRK3Uhmn0dAaqrlDlrUEW5nOT5nSz0MpsaCmeSyiUA==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"
