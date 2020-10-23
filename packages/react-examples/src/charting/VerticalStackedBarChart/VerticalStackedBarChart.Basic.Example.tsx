@@ -6,6 +6,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 interface IVerticalStackedBarState {
   width: number;
   height: number;
+  barGapMax: number;
   showLine: boolean;
 }
 
@@ -16,6 +17,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       width: 650,
       height: 350,
       showLine: true,
+      barGapMax: 2,
     };
   }
   public render(): JSX.Element {
@@ -137,8 +139,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 0,
         ...(showLine && {
           lineData: [
-            { y: 10, legend: 'line', color: DefaultPalette.redDark },
-            { y: 42, legend: 'line2', color: DefaultPalette.magenta },
+            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
       },
@@ -146,7 +148,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'line2', color: DefaultPalette.magenta }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magenta }],
         }),
       },
       {
@@ -154,8 +156,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 20, legend: 'line', color: DefaultPalette.redDark },
-            { y: 60, legend: 'line2', color: DefaultPalette.magenta },
+            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
       },
@@ -164,8 +166,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 60,
         ...(showLine && {
           lineData: [
-            { y: 10, legend: 'line', color: DefaultPalette.redDark },
-            { y: 41, legend: 'line2', color: DefaultPalette.magenta },
+            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
       },
@@ -174,8 +176,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 80,
         ...(showLine && {
           lineData: [
-            { y: 70, legend: 'line', color: DefaultPalette.redDark },
-            { y: 100, legend: 'line2', color: DefaultPalette.magenta },
+            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 70, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
       },
@@ -193,6 +195,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label>BarGapMax:</label>
+        <input
+          type="range"
+          value={this.state.barGapMax}
+          min={0}
+          max={10}
+          onChange={e => this.setState({ barGapMax: +e.target.value })}
+        />
         <Checkbox
           label="show the lines (hide or show the lines)"
           checked={this.state.showLine}
@@ -201,6 +211,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            barGapMax={this.state.barGapMax}
             data={data}
             height={this.state.height}
             width={this.state.width}

@@ -580,7 +580,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: mouseEvent,
       isCalloutVisible: true,
-      YValueHover: isLinesPresent ? [...lineData!, ...found!.chartData] : found!.chartData,
+      YValueHover: isLinesPresent
+        ? [...lineData!, ...found!.chartData.slice().reverse()]
+        : found!.chartData.slice().reverse(),
       hoverXValue: xAxisPoint,
       stackCalloutProps: found!,
       activeXAxisDataPoint: xAxisPoint,
@@ -625,7 +627,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: groupRef.refElement,
       isCalloutVisible: true,
-      YValueHover: isLinesPresent ? [...lineData!, ...found!.chartData] : found!.chartData,
+      YValueHover: isLinesPresent
+        ? [...lineData!, ...found!.chartData.slice().reverse()]
+        : found!.chartData.slice().reverse(),
       hoverXValue: xAxisPoint,
       stackCalloutProps: found!,
       activeXAxisDataPoint: xAxisPoint,

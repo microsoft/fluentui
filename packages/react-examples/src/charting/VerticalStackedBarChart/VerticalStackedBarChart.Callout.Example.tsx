@@ -17,6 +17,7 @@ interface IVerticalStackedBarState {
   height: number;
   selectedCallout: 'singleCallout' | 'MultiCallout' | 'MultiCustomCallout' | 'singleCustomCallout';
   showLine: boolean;
+  barGapMax: number;
 }
 
 export class VerticalStackedBarChartCalloutExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -25,6 +26,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
     this.state = {
       width: 650,
       height: 350,
+      barGapMax: 2,
       showLine: true,
       selectedCallout: 'MultiCallout',
     };
@@ -191,6 +193,14 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label>BarGapMax:</label>
+        <input
+          type="range"
+          value={this.state.barGapMax}
+          min={0}
+          max={10}
+          onChange={e => this.setState({ barGapMax: +e.target.value })}
+        />
         <ChoiceGroup
           options={options}
           selectedKey={this.state.selectedCallout}
@@ -205,6 +215,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            barGapMax={this.state.barGapMax}
             data={data}
             height={this.state.height}
             width={this.state.width}
