@@ -9,17 +9,16 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 >
   <input
     aria-hidden={true}
-    className="ms-SelectedItemsList-copyInput"
+    className=
+        ms-SelectedItemsList-copyInput
+        {
+          border: none;
+          height: 0px;
+          outline: none;
+          width: 0px;
+        }
     data-is-focusable={false}
     hidden={true}
-    style={
-      Object {
-        "border": "none",
-        "height": "0px",
-        "outline": "none",
-        "width": "0px",
-      }
-    }
     tabIndex={-1}
   />
   <div
@@ -1046,17 +1045,16 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
 >
   <input
     aria-hidden={true}
-    className="ms-SelectedItemsList-copyInput"
+    className=
+        ms-SelectedItemsList-copyInput
+        {
+          border: none;
+          height: 0px;
+          outline: none;
+          width: 0px;
+        }
     data-is-focusable={false}
     hidden={true}
-    style={
-      Object {
-        "border": "none",
-        "height": "0px",
-        "outline": "none",
-        "width": "0px",
-      }
-    }
     tabIndex={-1}
   />
   <div
