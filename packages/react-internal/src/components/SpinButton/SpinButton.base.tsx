@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -7,16 +7,14 @@ import {
   calculatePrecision,
   classNamesFunction,
   precisionRound,
-  mergeAriaAttributeValues,
   getNativeProps,
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
-import { KeytipData } from '../../KeytipData';
-import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
-import { useId } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout, useControllableValue, useWarnings, useId } from '@fluentui/react-hooks';
+
 interface ISpinButtonInternalState {
   lastValidValue: string;
   spinningByMouse: boolean;
@@ -56,10 +54,6 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   HTMLDivElement,
   ISpinButtonProps
 >((props, ref) => {
-  const input = React.useRef<HTMLInputElement>(null);
-  const inputId = useId('input');
-  const labelId = useId('Label');
-
   const {
     disabled = false,
     label = '',
@@ -83,7 +77,6 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     ariaSetSize,
     ariaValueNow,
     ariaValueText,
-    keytipProps,
     className,
     inputProps,
     onDecrement,
@@ -95,6 +88,10 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     onBlur,
     styles,
   } = props as ISpinButtonProps;
+
+  const input = React.useRef<HTMLInputElement>(null);
+  const inputId = useId('input');
+  const labelId = useId('Label');
 
   const [isFocused, { setTrue: setTrueIsFocused, setFalse: setFalseIsFocused }] = useBoolean(false);
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
@@ -372,87 +369,83 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           )}
         </div>
       )}
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(keytipAttributes: any): JSX.Element => (
-          <div
-            {...nativeProps}
-            className={classNames.spinButtonWrapper}
-            aria-label={ariaLabel && ariaLabel}
-            aria-posinset={ariaPositionInSet}
-            aria-setsize={ariaSetSize}
-            data-ktp-target={keytipAttributes['data-ktp-target']}
-          >
-            <input
-              value={spinButtonValue}
-              id={inputId}
-              onChange={handleInputChange}
-              onInput={handleInputChange}
-              className={classNames.input}
-              type="text"
-              autoComplete="off"
-              role="spinbutton"
-              aria-labelledby={label && labelId}
-              aria-valuenow={
-                typeof ariaValueNow === 'number'
-                  ? ariaValueNow
-                  : spinButtonValue && !isNaN(Number(spinButtonValue)) // Number('') is 0 which may not be desirable
-                  ? Number(spinButtonValue)
-                  : undefined
-              }
-              aria-valuetext={
-                ariaValueText
-                  ? ariaValueText
-                  : !spinButtonValue || isNaN(Number(spinButtonValue))
-                  ? spinButtonValue
-                  : undefined
-              }
-              aria-valuemin={min}
-              aria-valuemax={max}
-              aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-              onBlur={handleBlur}
-              ref={input}
-              onFocus={handleFocus}
-              onKeyDown={handleKeyDown}
-              onKeyUp={handleKeyUp}
-              disabled={disabled}
-              aria-disabled={disabled}
-              data-lpignore
-              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              {...inputProps}
-            />
-            <span className={classNames.arrowButtonsContainer}>
-              <IconButton
-                styles={getArrowButtonStyles(theme!, true, customUpArrowButtonStyles)}
-                className={'ms-UpButton'}
-                checked={keyboardSpinDirection === KeyboardSpinDirection.up}
-                disabled={disabled}
-                iconProps={incrementButtonIcon}
-                onMouseDown={handleIncrementMouseDown}
-                onMouseLeave={stop}
-                onMouseUp={stop}
-                tabIndex={-1}
-                ariaLabel={incrementButtonAriaLabel}
-                data-is-focusable={false}
-                {...iconButtonProps}
-              />
-              <IconButton
-                styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
-                className={'ms-DownButton'}
-                checked={keyboardSpinDirection === KeyboardSpinDirection.down}
-                disabled={disabled}
-                iconProps={decrementButtonIcon}
-                onMouseDown={handleDecrementMouseDown}
-                onMouseLeave={stop}
-                onMouseUp={stop}
-                tabIndex={-1}
-                ariaLabel={decrementButtonAriaLabel}
-                data-is-focusable={false}
-                {...iconButtonProps}
-              />
-            </span>
-          </div>
-        )}
-      </KeytipData>
+      <div
+        {...nativeProps}
+        className={classNames.spinButtonWrapper}
+        aria-label={ariaLabel && ariaLabel}
+        aria-posinset={ariaPositionInSet}
+        aria-setsize={ariaSetSize}
+        data-ktp-target={true}
+      >
+        <input
+          value={spinButtonValue}
+          id={inputId}
+          onChange={handleInputChange}
+          onInput={handleInputChange}
+          className={classNames.input}
+          type="text"
+          autoComplete="off"
+          role="spinbutton"
+          aria-labelledby={label && labelId}
+          aria-valuenow={
+            typeof ariaValueNow === 'number'
+              ? ariaValueNow
+              : spinButtonValue && !isNaN(Number(spinButtonValue)) // Number('') is 0 which may not be desirable
+              ? Number(spinButtonValue)
+              : undefined
+          }
+          aria-valuetext={
+            ariaValueText
+              ? ariaValueText
+              : !spinButtonValue || isNaN(Number(spinButtonValue))
+              ? spinButtonValue
+              : undefined
+          }
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-describedby={ariaDescribedBy}
+          onBlur={handleBlur}
+          ref={input}
+          onFocus={handleFocus}
+          onKeyDown={handleKeyDown}
+          onKeyUp={handleKeyUp}
+          disabled={disabled}
+          aria-disabled={disabled}
+          data-lpignore
+          data-ktp-execute-target={true}
+          {...inputProps}
+        />
+        <span className={classNames.arrowButtonsContainer}>
+          <IconButton
+            styles={getArrowButtonStyles(theme!, true, customUpArrowButtonStyles)}
+            className={'ms-UpButton'}
+            checked={keyboardSpinDirection === KeyboardSpinDirection.up}
+            disabled={disabled}
+            iconProps={incrementButtonIcon}
+            onMouseDown={handleIncrementMouseDown}
+            onMouseLeave={stop}
+            onMouseUp={stop}
+            tabIndex={-1}
+            ariaLabel={incrementButtonAriaLabel}
+            data-is-focusable={false}
+            {...iconButtonProps}
+          />
+          <IconButton
+            styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
+            className={'ms-DownButton'}
+            checked={keyboardSpinDirection === KeyboardSpinDirection.down}
+            disabled={disabled}
+            iconProps={decrementButtonIcon}
+            onMouseDown={handleDecrementMouseDown}
+            onMouseLeave={stop}
+            onMouseUp={stop}
+            tabIndex={-1}
+            ariaLabel={decrementButtonAriaLabel}
+            data-is-focusable={false}
+            {...iconButtonProps}
+          />
+        </span>
+      </div>
       {labelPosition === Position.bottom && (iconProps || label) && (
         <div className={classNames.labelWrapper}>
           {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}

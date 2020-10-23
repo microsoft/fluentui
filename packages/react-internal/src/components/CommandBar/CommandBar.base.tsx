@@ -19,7 +19,7 @@ import {
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandBarButton, IButtonProps } from '../../Button';
+import { CommandBarButton, IButtonProps } from '../../compat/Button';
 import { TooltipHost } from '../../Tooltip';
 import { getCommandButtonStyles } from './CommandBar.styles';
 
@@ -126,9 +126,9 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       >
         {/*Primary Items*/}
         <OverflowSet
+          role="none"
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
-          doNotContainWithinFocusZone={true}
           items={data.primaryItems}
           overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
           onRenderItem={this._onRenderItem}
@@ -138,8 +138,8 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         {/*Secondary Items*/}
         {data.farItems && data.farItems.length > 0 && (
           <OverflowSet
+            role="none"
             className={css(this._classNames.secondarySet)}
-            doNotContainWithinFocusZone={true}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
             onRenderOverflowButton={nullRender}

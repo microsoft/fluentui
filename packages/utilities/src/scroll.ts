@@ -1,5 +1,5 @@
 import { getDocument } from './dom/getDocument';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { EventGroup } from './EventGroup';
 import { getWindow } from './dom/getWindow';
 

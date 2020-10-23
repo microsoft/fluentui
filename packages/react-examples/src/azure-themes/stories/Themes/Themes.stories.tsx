@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {
   Customizer,
-  DefaultButton,
-  PrimaryButton,
   TextField,
   Stack,
   Fabric,
@@ -13,12 +11,13 @@ import {
   Label,
   Text,
 } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import {
   AzureCustomizationsLight,
   AzureCustomizationsDark,
   AzureCustomizationsHighContrastLight,
   AzureCustomizationsHighContrastDark,
-} from '@uifabric/azure-themes';
+} from '@fluentui/azure-themes';
 import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';

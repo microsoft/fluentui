@@ -84,6 +84,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
           }
+      data-ktp-target={true}
     >
       <input
         aria-disabled={false}
@@ -131,6 +132,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               border-color: Highlight;
               color: HighlightText;
             }
+        data-ktp-execute-target={true}
         data-lpignore={true}
         disabled={false}
         id="input0"

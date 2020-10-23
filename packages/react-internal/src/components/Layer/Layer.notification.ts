@@ -47,7 +47,7 @@ export function notifyHostChanged(id: string) {
  * Layered content will be injected into. If not provided, an element will be
  * created at the end of the document body.
  *
- * Passing in a falsey value will clear the default target and reset back to
+ * Passing in a falsy value will clear the default target and reset back to
  * using a created element at the end of document body.
  */
 export function setDefaultTarget(selector?: string) {

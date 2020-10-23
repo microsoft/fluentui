@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { DefaultButton, IIconProps } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { IIconProps } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

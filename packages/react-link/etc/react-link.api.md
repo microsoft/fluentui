@@ -4,11 +4,10 @@
 
 ```ts
 
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -61,8 +60,6 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
     as?: React.ElementType;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
 }

@@ -1,1 +1,1 @@
-module.exports = require('@uifabric/build/gulp/.gulp');
+module.exports = require('@fluentui/scripts/gulp/.gulp');

@@ -25,7 +25,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     target?: string;
     circular?: boolean;
     disabled?: boolean;
-    fluid?: boolean;
+    block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
@@ -34,6 +34,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     primary?: boolean;
     secondary?: boolean;
     ghost?: boolean;
+    transparent?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokens>;
 };
@@ -119,7 +120,7 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
     primary?: TTokens;
     iconOnly?: TTokens;
     circular?: TTokens;
-    fluid?: TTokens;
+    block?: TTokens;
 };
 
 // @public (undocumented)
@@ -181,7 +182,7 @@ export type ExpandedState = {
     };
 };
 
-// @public (undocumented)
+// @public
 export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -205,7 +206,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens;
 
-// @public (undocumented)
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -277,7 +278,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useMenuButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
@@ -298,7 +299,7 @@ export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElem
 };
 
 // @public (undocumented)
-export const useToggleButtonClasses: (state: ToggleButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useToggleButtonClasses: (state: ToggleButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)

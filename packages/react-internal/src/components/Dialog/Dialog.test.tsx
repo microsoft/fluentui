@@ -6,10 +6,19 @@ import { Dialog } from './Dialog';
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
-import { setWarningCallback } from '@uifabric/utilities';
+import { resetIds, setWarningCallback } from '@fluentui/utilities';
+import { act } from 'react-dom/test-utils';
 import { isConformant } from '../../common/isConformant';
 
 describe('Dialog', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   afterEach(() => {
     jest.useRealTimers();
   });
@@ -56,10 +65,13 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('Fires dismissed after closing', () => {
-    jest.useFakeTimers();
+    act(() => {
+      jest.useFakeTimers();
+    });
     let dismissedCalled = false;
 
     const handleDismissed = () => {
@@ -69,10 +81,14 @@ describe('Dialog', () => {
     const wrapper = mount(<DialogBase hidden={false} modalProps={{ onDismissed: handleDismissed }} />);
 
     expect(document.querySelector('[role="dialog"]')).not.toBeNull();
-    wrapper.setProps({ hidden: true });
-    wrapper.update();
+    act(() => {
+      wrapper.setProps({ hidden: true });
+      wrapper.update();
+    });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(document.querySelector('[role="dialog"]')).toBeNull();
     expect(dismissedCalled).toEqual(true);
     wrapper.unmount();
@@ -83,7 +99,9 @@ describe('Dialog', () => {
       /* suppress deprecation warning as error */
     });
 
-    jest.useFakeTimers();
+    act(() => {
+      jest.useFakeTimers();
+    });
     let dismissedCalled = false;
 
     const handleDismissed = () => {
@@ -92,13 +110,19 @@ describe('Dialog', () => {
     const wrapper = mount(<DialogBase isOpen={true} modalProps={{ onDismissed: handleDismissed }} />);
 
     expect(document.querySelector('[role="dialog"]')).not.toBeNull();
-    wrapper.setProps({ isOpen: false });
-    wrapper.update();
+    act(() => {
+      wrapper.setProps({ isOpen: false });
+      wrapper.update();
+    });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(document.querySelector('[role="dialog"]')).toBeNull();
     expect(dismissedCalled).toEqual(true);
-    wrapper.unmount();
+    act(() => {
+      wrapper.unmount();
+    });
 
     setWarningCallback();
   });

@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-checkbox/lib/Checkbox';
+export * from '@fluentui/react/lib/Checkbox';

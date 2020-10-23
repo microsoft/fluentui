@@ -1,19 +1,12 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Props, PropValue, TestFacade } from '../types';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper, mount } from 'enzyme';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private actual: any;
-  private renderedComponent: ReactWrapper<
-    {
-      children?: React.ReactNode;
-    },
-    never,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    React.Component<{}, {}, any>
-  >;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private renderedComponent: ReactWrapper<any, any>;
   private onClickExecuted: boolean;
 
   constructor(private Component: React.FC, private props: Props = {}) {
@@ -26,11 +19,11 @@ export class ComponentTestFacade implements TestFacade {
     const container = document.createElement('div');
     document.body.appendChild(container);
 
-    ReactDOM.render(<Component {...props} />, container);
-    this.actual = container.lastChild;
-
-    // we need to render it in this way because using simulate function to fire mouse/keyboard event
-    this.renderedComponent = mount(<Component {...props} />).find(Component);
+    // we need to use mount, because then on the rendered component we can simulate keydown events
+    this.renderedComponent = mount(<Component {...props} />, {
+      attachTo: container,
+    });
+    this.actual = container.firstChild;
   }
 
   public slotExists(selector: string) {

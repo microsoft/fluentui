@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
+import { isConformant } from '../../common/isConformant';
 
 export interface ISimple {
   key: string;
@@ -26,6 +27,14 @@ describe('SelectedItemsList', () => {
       const component = renderer.create(<BaseSelectedItemsListWithType />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    isConformant({
+      Component: BaseSelectedItemsList,
+      displayName: 'BaseSelectedItemsList',
+      // Problem: Ref is not supported
+      // Solution: Convert to FunctionComponent and support using forwardRef
+      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
     });
 
     it('can remove items', () => {

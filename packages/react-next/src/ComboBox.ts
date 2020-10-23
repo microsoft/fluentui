@@ -1,2 +1,2 @@
 import './version';
-export * from './components/ComboBox/index';
+export * from '@fluentui/react/lib/ComboBox';

@@ -68,7 +68,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
-    role="search"
   >
     <div
       aria-hidden={true}
@@ -208,7 +207,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
-    role="search"
   >
     <div
       aria-hidden={true}

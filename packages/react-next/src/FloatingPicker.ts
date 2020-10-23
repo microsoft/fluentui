@@ -1,2 +1,2 @@
 import './version';
-export * from './components/FloatingPicker/index';
+export * from '@fluentui/react/lib/FloatingPicker';

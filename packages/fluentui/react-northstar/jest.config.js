@@ -1,15 +1,13 @@
-const commonConfig = require('@uifabric/build/jest');
+const commonConfig = require('@fluentui/scripts/jest');
 
-module.exports = {
-  ...commonConfig,
+const config = commonConfig({
   name: 'react',
   moduleNameMapper: {
-    ...require('lerna-alias').jest({
-      directory: require('@uifabric/build/monorepo/findGitRoot')(),
-    }),
     // Legacy aliases, they should not be used in new tests
     '^src/(.*)$': `<rootDir>/src/$1`,
     'test/(.*)$': `<rootDir>/test/$1`,
   },
-  setupFilesAfterEnv: [...commonConfig.setupFilesAfterEnv, './test/setup.ts'],
-};
+});
+config.setupFilesAfterEnv = [...config.setupFilesAfterEnv, './test/setup.ts'];
+
+module.exports = config;

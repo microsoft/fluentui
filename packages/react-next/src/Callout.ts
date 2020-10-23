@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Callout/index';
+export * from '@fluentui/react/lib/Callout';

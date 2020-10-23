@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsList, DetailsRow, IDetailsRowStyles, IDetailsListProps } from '@fluentui/react/lib/DetailsList';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { getTheme } from '@fluentui/react/lib/Styling';
 
 const theme = getTheme();

@@ -3,7 +3,7 @@ import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@flu
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Label } from '@fluentui/react/lib/Label';
 import { Stack } from '@fluentui/react/lib/Stack';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 export const PersonaBasicExample: React.FunctionComponent = () => {
   const [renderDetails, updateRenderDetails] = React.useState(true);

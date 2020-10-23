@@ -6,17 +6,19 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-export const CheckBase: React.FunctionComponent<ICheckProps> = props => {
-  const { checked = false, className, theme, styles, useFastIcons = true } = props;
+export const CheckBase: React.FunctionComponent<ICheckProps> = React.forwardRef<HTMLDivElement, ICheckProps>(
+  (props, ref) => {
+    const { checked = false, className, theme, styles, useFastIcons = true } = props;
 
-  const classNames = getClassNames(styles!, { theme: theme!, className, checked });
-  const IconComponent = useFastIcons ? FontIcon : Icon;
+    const classNames = getClassNames(styles!, { theme: theme!, className, checked });
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
-  return (
-    <div className={classNames.root}>
-      <IconComponent iconName="CircleRing" className={classNames.circle} />
-      <IconComponent iconName="StatusCircleCheckmark" className={classNames.check} />
-    </div>
-  );
-};
+    return (
+      <div className={classNames.root} ref={ref}>
+        <IconComponent iconName="CircleRing" className={classNames.circle} />
+        <IconComponent iconName="StatusCircleCheckmark" className={classNames.check} />
+      </div>
+    );
+  },
+);
 CheckBase.displayName = 'CheckBase';

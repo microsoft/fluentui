@@ -6,7 +6,7 @@ import {
   IComponent,
   IStyleableComponentProps,
   ISlottableProps,
-} from '@uifabric/foundation';
+} from '@fluentui/foundation-legacy';
 import { IFontStyles } from '../../Styling';
 
 /**

@@ -2,11 +2,12 @@ import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@f
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
 import { KnobProvider } from '@fluentui/docs-components';
 
 import { examplesContext } from '../contexts/examplesContext';
 import PageNotFound from '../views/PageNotFound';
-import { exampleKebabNameToFilename, parseExamplePath } from '../utils';
+import { exampleKebabNameToFilename, exampleKebabNameToDisplayName, parseExamplePath } from '../utils';
 
 const examplePaths = examplesContext.keys();
 
@@ -44,6 +45,7 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
 
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
+      <DocumentTitle title={`Fluent UI - ${exampleKebabNameToDisplayName(exampleName)}`} />
       <KnobProvider>
         <Example />
       </KnobProvider>

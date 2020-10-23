@@ -21,7 +21,7 @@ import {
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
-import { useWarnings } from '@uifabric/react-hooks';
+import { useWarnings } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.

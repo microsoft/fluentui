@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Popup: Replacing version in react-internal with version from react-next.",
+  "packageName": "@fluentui/react-next",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-08T23:02:49.456Z"
+}

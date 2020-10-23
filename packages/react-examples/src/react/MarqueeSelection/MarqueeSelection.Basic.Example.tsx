@@ -3,7 +3,7 @@ import { css, createArray } from '@fluentui/react/lib/Utilities';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from '@fluentui/react/lib/MarqueeSelection';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { useBoolean, useConst, useForceUpdate } from '@uifabric/react-hooks';
+import { useBoolean, useConst, useForceUpdate } from '@fluentui/react-hooks';
 
 interface IPhoto extends IObjectWithKey {
   url: string;

@@ -25,27 +25,48 @@ export const App = () => (
 You can also customize your own theme:
 
 ```tsx
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProvider, PartialTheme } from '@fluentui/react';
 
-export const theme: Theme = {
-  /* Provide any stylesheets which should come along with the theme */
-  stylesheets: [
-    '.className { ... }',
+const appTheme: PartialTheme = {
+  palette: {
+    themePrimary: 'red'
     ...
-  ],
-
-  /* Provide standard fluent tokens here. */
-  tokens: {
-    body: {
-      fill: '#fafafa',
-      text: '#333'
-    }
   }
 };
 
 export const App = () => (
-  <ThemeProvider theme={theme}>
-    <>...app</>
+  <ThemeProvider theme={appTheme}>
+    App content ...
+  </ThemeProvider>
+);
+```
+
+You can also nest `ThemeProvider`s:
+
+```tsx
+import { ThemeProvider, PartialTheme } from '@fluentui/react';
+
+const appTheme: PartialTheme = {
+  palette: {
+    themePrimary: 'red'
+    ...
+  }
+};
+
+const headerTheme: PartialTheme = {
+  palette: {
+    themePrimary: 'orange'
+    ...
+  }
+};
+
+export const App = () => (
+  <ThemeProvider theme={appTheme}>
+    <ThemeProvider theme={headerTheme}>
+      <MyHeader />
+    </ThemeProvider>
+
+    App content ...
   </ThemeProvider>
 );
 ```

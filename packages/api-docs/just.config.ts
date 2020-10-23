@@ -1,8 +1,5 @@
-const {
-  preset,
-  just: { task, series },
-} = require('@uifabric/build');
-const generateJsonTask = require('./tasks/generateJsonTask');
+import { preset, task, series } from '@fluentui/scripts';
+import { generateJsonTask } from './tasks/generateJsonTask';
 
 preset();
 
