@@ -8,6 +8,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
   role="list"
 >
   <input
+    className="ms-SelectedItemsList-copyInput"
     data-is-focusable={false}
     style={
       Object {
@@ -1041,6 +1042,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
   role="list"
 >
   <input
+    className="ms-SelectedItemsList-copyInput"
     data-is-focusable={false}
     style={
       Object {

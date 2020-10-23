@@ -74,6 +74,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             // Add a zero zero size input. This is to pick up the copy command when we have
             // keyboard focus in the list
             // Focus is set to the input when the list gets focus via the _onFocus function
+            className={'ms-SelectedItemsList-copyInput'}
             ref={hiddenInput}
             style={{ height: '0px', width: '0px', border: 'none', outline: 'none' }}
             data-is-focusable={false}
