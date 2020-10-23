@@ -184,8 +184,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             }
       >
         <div
+          onFocus={[Function]}
           role="list"
         >
+          <input
+            aria-hidden={true}
+            className=
+                ms-SelectedItemsList-copyInput
+                {
+                  border: none;
+                  height: 0px;
+                  outline: none;
+                  width: 0px;
+                }
+            data-is-focusable={false}
+            hidden={false}
+            tabIndex={-1}
+          />
           <div
             aria-labelledby="selectedItemPersona-id__2"
             className=
