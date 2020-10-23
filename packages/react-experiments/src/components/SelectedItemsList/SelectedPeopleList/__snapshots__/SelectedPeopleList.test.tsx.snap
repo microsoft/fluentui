@@ -8,8 +8,10 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
   role="list"
 >
   <input
+    aria-hidden={true}
     className="ms-SelectedItemsList-copyInput"
     data-is-focusable={false}
+    hidden={true}
     style={
       Object {
         "border": "none",
@@ -18,6 +20,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
         "width": "0px",
       }
     }
+    tabIndex={-1}
   />
   <div
     aria-labelledby="selectedItemPersona-id__0"
@@ -1042,8 +1045,10 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
   role="list"
 >
   <input
+    aria-hidden={true}
     className="ms-SelectedItemsList-copyInput"
     data-is-focusable={false}
+    hidden={true}
     style={
       Object {
         "border": "none",
@@ -1052,6 +1057,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
         "width": "0px",
       }
     }
+    tabIndex={-1}
   />
   <div
     aria-labelledby="selectedItemPersona-id__16"

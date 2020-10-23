@@ -174,8 +174,10 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
           role="list"
         >
           <input
+            aria-hidden={true}
             className="ms-SelectedItemsList-copyInput"
             data-is-focusable={false}
+            hidden={false}
             style={
               Object {
                 "border": "none",
@@ -184,6 +186,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 "width": "0px",
               }
             }
+            tabIndex={-1}
           />
           <div
             aria-labelledby="selectedItemPersona-id__2"

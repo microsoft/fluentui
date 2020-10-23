@@ -76,8 +76,11 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             // Focus is set to the input when the list gets focus via the _onFocus function
             className={'ms-SelectedItemsList-copyInput'}
             ref={hiddenInput}
+            hidden={!props.getItemCopyText}
             style={{ height: '0px', width: '0px', border: 'none', outline: 'none' }}
             data-is-focusable={false}
+            aria-hidden={true}
+            tabIndex={-1}
           />
           {SelectedItem &&
             renderedItems.map((item: TItem, index: number) => (
