@@ -19,7 +19,8 @@
     "react-router-dom": "^5.0.1",
     "react-source-render": "4.0.0-1",
     "react-virtualized": "^9.21.1",
-    "react-vis": "^1.11.6"
+    "react-vis": "^1.11.6",
+    "semver": "^7.3.2"
   },
   "devDependencies": {
     "@types/color": "^3.0.0",
@@ -30,6 +31,7 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-router-dom": "^4.3.4",
     "@types/react-virtualized": "^9.21.8",
+    "@types/semver": "^7.3.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "gulp": "^4.0.2"
