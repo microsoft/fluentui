@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@uifabric/react-cards_v0.114.0",
+      "version": "0.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove `next` folder.",
+            "author": "xgao@microsoft.com",
+            "commit": "94bf37f2e473626e3df403d4f868ccf20a997630",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/react-cards_v0.113.2",
       "version": "0.113.2",

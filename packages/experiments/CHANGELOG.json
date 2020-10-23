@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@uifabric/experiments_v7.35.0",
+      "version": "7.35.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add drop to end of UPP, ability to disable drag drop",
+            "author": "elvonspa@microsoft.com",
+            "commit": "002ca5c424c2e5c37adca880a21b26c6764560f8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2020 12:31:29 GMT",
       "tag": "@uifabric/experiments_v7.34.0",
       "version": "7.34.0",

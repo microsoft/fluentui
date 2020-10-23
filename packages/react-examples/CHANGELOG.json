@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@fluentui/react-examples_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify UPP examples dropping abilities",
+            "author": "elvonspa@microsoft.com",
+            "commit": "002ca5c424c2e5c37adca880a21b26c6764560f8",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove packages from 7.0 branch which are not related to OUFR version 7.",
+            "author": "xgao@microsoft.com",
+            "commit": "94bf37f2e473626e3df403d4f868ccf20a997630",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2020 12:31:29 GMT",
       "tag": "@fluentui/react-examples_v0.7.0",
       "version": "0.7.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating reference to latest CDN, and mapping .note file extension to the `one` filetype icon.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-22T20:18:54.367Z"
-}
