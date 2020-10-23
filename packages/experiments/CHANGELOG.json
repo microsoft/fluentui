@@ -2,6 +2,44 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@uifabric/experiments_v7.35.0",
+      "version": "7.35.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add drop to end of UPP, ability to disable drag drop",
+            "author": "elvonspa@microsoft.com",
+            "commit": "002ca5c424c2e5c37adca880a21b26c6764560f8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Oct 2020 12:31:29 GMT",
+      "tag": "@uifabric/experiments_v7.34.0",
+      "version": "7.34.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Convert SelectedPersona GetExpandedItems to async",
+            "author": "elvonspa@microsoft.com",
+            "commit": "b7f88774119cfb65333380c70d06384764c0675b",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove undesired MarqueeSelection in UnifiedPicker",
+            "author": "sadelson@microsoft.com",
+            "commit": "79be2051e559182503b473d7e86f9ca37d121b2a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@uifabric/experiments_v7.33.6",
       "version": "7.33.6",

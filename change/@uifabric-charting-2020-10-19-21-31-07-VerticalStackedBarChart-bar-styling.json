@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "[VerticalStackedBarChart] bar gaps and rounded corners",
-  "packageName": "@uifabric/charting",
-  "email": "mibes@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-20T04:31:00.016Z"
-}

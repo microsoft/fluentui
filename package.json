@@ -10,7 +10,7 @@
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
-    "build:min": "yarn build --to @fluentui/react-next --min",
+    "build:min": "yarn build --to @fluentui/react --min",
     "build:prod": "yarn build --production",
     "buildci": "yarn prelint && lage build test lint --verbose --grouped",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -71,18 +71,6 @@
       "apps/*",
       "packages/*",
       "scripts"
-    ],
-    "nohoist": [
-      "packages/web-components/typescript",
-      "packages/web-components/typescript/**",
-      "packages/web-components/ts-loader",
-      "packages/web-components/ts-loader/**",
-      "packages/web-components/ts-node",
-      "packages/web-components/ts-node/**",
-      "packages/web-components/mocha",
-      "packages/web-components/mocha/**",
-      "packages/web-components/webpack",
-      "packages/web-components/webpack/**"
     ]
   },
   "resolutions": {
@@ -97,23 +85,7 @@
     "source": [
       "package.json",
       "apps/*/package.json",
-      "packages/!(web-components)/package.json",
       "scripts/package.json"
-    ],
-    "versionGroups": [
-      {
-        "packages": [
-          "@fluentui/web-components"
-        ],
-        "dependencies": [
-          "mocha",
-          "ts-loader",
-          "ts-node",
-          "tslib",
-          "typescript",
-          "webpack"
-        ]
-      }
     ]
   }
 }

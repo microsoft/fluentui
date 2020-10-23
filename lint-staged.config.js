@@ -24,6 +24,6 @@ module.exports = {
 
   'packages/!(react-examples)/**/(docs|examples)/*': 'node ./scripts/lint-staged/no-old-example-paths',
   'packages/!(react-examples)/**/*.doc.ts*': 'node ./scripts/lint-staged/no-old-example-paths',
-  'packages/{office-ui-fabric-react,react-cards,react-focus,react-next}/src/components/__snapshots__/*':
+  'packages/{office-ui-fabric-react,react-cards,react-focus}/src/components/__snapshots__/*':
     'node ./scripts/lint-staged/no-old-snapshot-paths',
 };

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove undesired MarqueeSelection in UnifiedPicker",
-  "packageName": "@uifabric/experiments",
-  "email": "sadelson@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-21T15:47:13.115Z"
-}

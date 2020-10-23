@@ -2,6 +2,58 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@fluentui/react-examples_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify UPP examples dropping abilities",
+            "author": "elvonspa@microsoft.com",
+            "commit": "002ca5c424c2e5c37adca880a21b26c6764560f8",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove packages from 7.0 branch which are not related to OUFR version 7.",
+            "author": "xgao@microsoft.com",
+            "commit": "94bf37f2e473626e3df403d4f868ccf20a997630",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Oct 2020 12:31:29 GMT",
+      "tag": "@fluentui/react-examples_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added some example code for new feature",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "0239b7d97b4515ac0a6078da27e99f5f00e8b05d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Convert SelectedPersona GetExpandedItems to async",
+            "author": "elvonspa@microsoft.com",
+            "commit": "b7f88774119cfb65333380c70d06384764c0675b",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "[VerticalStackedBarChart] bar gaps and rounded corners",
+            "author": "mibes@microsoft.com",
+            "commit": "14ddc431c4faf73ba8f38dc7de27330dcaa054c8",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2020 12:25:26 GMT",
       "tag": "@fluentui/react-examples_v0.6.7",
       "version": "0.6.7",

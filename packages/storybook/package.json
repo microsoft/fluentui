@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/storybook",
-  "version": "0.5.14",
+  "version": "0.5.15",
   "description": "Storybook addons for Fluent UI React",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -25,8 +25,6 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-next": "^8.0.0-alpha.130",
-    "@fluentui/react-theme-provider": "^0.16.2",
     "@fluentui/theme": "^1.5.1",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
