@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, css } from '../../../Utilities';
+import { classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IFloatingSuggestionsHeaderFooterItemProps,
   IFloatingSuggestionHeaderFooterItemStylesProps,
