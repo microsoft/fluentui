@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Major bump react-compose package since it dependes on packages with new major.",
+  "packageName": "@fluentui/react-image",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-23T19:38:18.799Z"
+}

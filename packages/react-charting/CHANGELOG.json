@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.1",
+      "version": "5.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Added color fill bar feature to line chart component",
+            "author": "memille@microsoft.com",
+            "commit": "02adca22dcf9145495b96ec6f89f189cdc01759d",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.0",
       "version": "5.0.0-beta.0",

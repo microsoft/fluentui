@@ -4360,6 +4360,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;

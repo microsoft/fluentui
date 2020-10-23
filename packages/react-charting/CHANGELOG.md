@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:33:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.1)
+
+Fri, 23 Oct 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.0..@fluentui/react-charting_v5.0.0-beta.1)
+
+### Changes
+
+- Added color fill bar feature to line chart component ([PR #15660](https://github.com/microsoft/fluentui/pull/15660) by memille@microsoft.com)
 
 ## [5.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.0)
 

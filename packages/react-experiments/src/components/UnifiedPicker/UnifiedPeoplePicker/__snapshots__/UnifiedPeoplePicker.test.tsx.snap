@@ -18,7 +18,14 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
     onMouseDownCapture={[Function]}
   >
     <div
-      className="ms-SelectionZone"
+      className=
+          ms-SelectionZone
+          ms-UnifiedPicker-selectionZone
+          ms-UnifiedPicker-selectionZone
+          {
+            display: flex;
+            flex: 1 1 auto;
+          }
       onClick={[Function]}
       onContextMenu={[Function]}
       onDoubleClick={[Function]}
@@ -136,7 +143,14 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
     onMouseDownCapture={[Function]}
   >
     <div
-      className="ms-SelectionZone"
+      className=
+          ms-SelectionZone
+          ms-UnifiedPicker-selectionZone
+          ms-UnifiedPicker-selectionZone
+          {
+            display: flex;
+            flex: 1 1 auto;
+          }
       onClick={[Function]}
       onContextMenu={[Function]}
       onDoubleClick={[Function]}
@@ -170,8 +184,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             }
       >
         <div
+          onFocus={[Function]}
           role="list"
         >
+          <input
+            aria-hidden={true}
+            className=
+                ms-SelectedItemsList-copyInput
+                {
+                  border: none;
+                  height: 0px;
+                  outline: none;
+                  width: 0px;
+                }
+            data-is-focusable={false}
+            hidden={false}
+            tabIndex={-1}
+          />
           <div
             aria-labelledby="selectedItemPersona-id__2"
             className=

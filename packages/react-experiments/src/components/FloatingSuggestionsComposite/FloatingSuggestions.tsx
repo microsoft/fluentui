@@ -31,6 +31,9 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     calloutProps,
     pickerWidth,
     onKeyDown,
+    pickerSuggestionsProps,
+    selectedFooterIndex,
+    selectedHeaderIndex,
   } = props;
 
   const hidePicker = (ev?: React.MouseEvent | Event | React.KeyboardEvent): void => {
@@ -64,13 +67,19 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
             onRenderItem={onRenderSuggestion}
             onRenderHeader={onRenderHeader}
             onRenderFooter={onRenderFooter}
+            headerItemsProps={pickerSuggestionsProps?.headerItemsProps}
+            footerItemsProps={pickerSuggestionsProps?.footerItemsProps}
             onRenderNoResultFound={onRenderNoResultFound}
             noResultsFoundText={noResultsFoundText}
             maximumSuggestionsToShow={maximumSuggestionsToShow}
             suggestionsContainerAriaLabel={suggestionsContainerAriaLabel}
             selectedSuggestionIndex={selectedSuggestionIndex}
+            selectedFooterIndex={selectedFooterIndex}
+            selectedHeaderIndex={selectedHeaderIndex}
             suggestionsHeaderText={suggestionsHeaderText}
             pickerWidth={pickerWidth}
+            suggestionsHeaderContainerAriaLabel={pickerSuggestionsProps?.suggestionsHeaderContainerAriaLabel}
+            suggestionsFooterContainerAriaLabel={pickerSuggestionsProps?.suggestionsFooterContainerAriaLabel}
           />
         </Callout>
       ) : null}
