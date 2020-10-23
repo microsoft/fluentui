@@ -43,7 +43,8 @@
     "react-router-dom": "^5.2.0",
     "react-source-render": "4.0.0-1",
     "react-virtualized": "^9.21.1",
-    "react-vis": "^1.11.6"
+    "react-vis": "^1.11.6",
+    "semver": "^7.3.2"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.1",
@@ -57,6 +58,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
+    "@types/semver": "^7.3.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "gulp": "^4.0.2"
