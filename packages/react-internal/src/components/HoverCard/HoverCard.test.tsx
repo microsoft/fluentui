@@ -149,7 +149,7 @@ describe('HoverCard', () => {
     );
     jest.useFakeTimers();
 
-    expect(hoverCard).toBeDefined();
+    expect(hoverCard).toBeTruthy();
 
     // firing the onCardVisible callback after the component is updated.
     component.setState({ isHoverCardVisible: true });

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add beachball config for disallowed change types",
-  "packageName": "@fluentui/web-components",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T23:35:56.052Z"
-}

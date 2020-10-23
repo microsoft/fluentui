@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
-  "packageName": "@fluentui/style-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-16T22:41:33.317Z"
-}

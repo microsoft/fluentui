@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "ChoiceGroup option props cleanup",
-  "packageName": "@fluentui/react-internal",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-22T07:02:07.168Z"
-}

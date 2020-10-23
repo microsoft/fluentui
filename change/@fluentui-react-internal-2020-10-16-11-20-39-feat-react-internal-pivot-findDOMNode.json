@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Changing BaseButton's wrapper span to a fragment.",
-  "packageName": "@fluentui/react-internal",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-16T18:20:14.635Z"
-}

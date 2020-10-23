@@ -12,7 +12,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Calendar
 
-`Calendar` has been replaced with the version from the `@uifabric/date-time` package. This should be almost identical in visuals and functionality
+`Calendar` has been replaced with the version from the `@fluentui/react-date-time` package. This should be almost identical in visuals and functionality
 
 - Converted styling from legacy SCSS to CSS-in-JS. Styling can now be customized using `ICalendarProps.styles`.
 - Removed the following props (TODO: suggest alternatives)
@@ -38,7 +38,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### DatePicker
 
-`DatePicker` has been replaced with the version from the `@uifabric/date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
+`DatePicker` has been replaced with the version from the `@fluentui/react-date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
 
 ### OverflowSet
 

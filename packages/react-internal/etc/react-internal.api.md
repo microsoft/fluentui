@@ -4360,6 +4360,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;
@@ -5380,7 +5381,7 @@ export interface IVerticalDividerClassNames {
 }
 
 // @public
-export interface IVerticalDividerProps {
+export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;

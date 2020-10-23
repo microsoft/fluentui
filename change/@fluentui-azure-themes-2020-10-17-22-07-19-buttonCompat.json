@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating imports for Button component to import from the compat folder.",
-  "packageName": "@fluentui/azure-themes",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-18T05:05:44.986Z"
-}

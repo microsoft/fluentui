@@ -168,7 +168,7 @@ describe('DetailsList', () => {
   it('focuses row by index', () => {
     jest.useFakeTimers();
 
-    let component: any;
+    let component: IDetailsList | null;
     safeMount(
       <DetailsList
         items={mockData(5)}
@@ -177,8 +177,8 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
       />,
       () => {
-        expect(component).toBeDefined();
-        (component as IDetailsList).focusIndex(2);
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
         setTimeout(() => {
           expect(
             (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -330,7 +330,7 @@ describe('DetailsList', () => {
 
     jest.useFakeTimers();
 
-    let component: any;
+    let component: IDetailsList | null;
     safeMount(
       <DetailsList
         items={mockData(5)}
@@ -341,8 +341,8 @@ describe('DetailsList', () => {
         getCellValueKey={getCellValueKey}
       />,
       () => {
-        expect(component).toBeDefined();
-        (component as IDetailsList).focusIndex(3);
+        expect(component).toBeTruthy();
+        component!.focusIndex(3);
         jest.runOnlyPendingTimers();
         expect(
           (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -379,7 +379,7 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
       />,
       (wrapper: ReactWrapper) => {
-        expect(component).toBeDefined();
+        expect(component).toBeTruthy();
         component.setState({ focusedItemIndex: 3 });
         setTimeout(() => {
           expect(component.state.focusedItemIndex).toEqual(3);

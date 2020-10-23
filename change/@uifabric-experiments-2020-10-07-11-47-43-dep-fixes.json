@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-07T18:47:26.529Z"
-}

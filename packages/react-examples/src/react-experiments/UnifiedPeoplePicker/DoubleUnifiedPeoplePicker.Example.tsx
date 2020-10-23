@@ -188,14 +188,53 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSelectedItems(updatedItems);
   };
 
-  const _onInputChange = (filterText: string): void => {
+  const SEPARATOR_REGEX = new RegExp(';|,|\\n|\u000A', 'g');
+  const splitPasteInputIntoRecipientStrings = (inputText: string) =>
+    inputText
+      .split(SEPARATOR_REGEX)
+      .map((token: string) => token.trim())
+      .filter((token: string) => !!token);
+
+  const _onInputChange = (filterText: string, composing?: boolean, resultItemsList?: IPersonaProps[]): void => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
-    // We want to show top 5 results
-    setPeopleSuggestions(suggestionList.splice(0, 5));
+
+    const updatedItems: IPersonaProps[] = [];
+    const currentItems: IPersonaProps[] = [...peopleSelectedItems];
+
+    const lastCharIndex = filterText.length - 1;
+    const lastChar = filterText[lastCharIndex];
+    for (let i = 0; i < currentItems.length; i++) {
+      const item = currentItems[i];
+      updatedItems.push(item);
+    }
+
+    if (lastChar === ';' || lastChar === ',') {
+      const pastedText = splitPasteInputIntoRecipientStrings(filterText);
+      pastedText.forEach(itemText => {
+        let result;
+        const extractedText = itemText.substring(0, lastCharIndex);
+        // We need to do an exact match
+
+        allPeople.forEach((item: IPersonaProps) => {
+          if (item.text?.toLowerCase() === extractedText.toLowerCase()) {
+            result = item;
+          }
+        });
+
+        if (result && resultItemsList) {
+          resultItemsList.push(result);
+          updatedItems.push(result);
+        }
+        setPeopleSelectedItems(updatedItems);
+      });
+    } else {
+      // We want to show top 5 results
+      setPeopleSuggestions(suggestionList.splice(0, 5));
+    }
   };
 
   function _startsWith(text: string, filterText: string): boolean {

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Rename build-related packages",
-  "packageName": "@fluentui/theme",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T16:58:31.680Z"
-}

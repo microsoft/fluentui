@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-link/lib/Link';
+export * from '@fluentui/react/lib/Link';

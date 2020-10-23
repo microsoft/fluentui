@@ -1,2 +1,2 @@
 import './version';
-export * from '@uifabric/date-time/lib/Calendar';
+export * from '@fluentui/react/lib/Calendar';

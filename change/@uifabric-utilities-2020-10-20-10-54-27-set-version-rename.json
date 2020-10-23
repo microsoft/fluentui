@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename @uifabric/set-version to @fluentui/set-version",
-  "packageName": "@fluentui/utilities",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-20T17:54:27.880Z"
-}

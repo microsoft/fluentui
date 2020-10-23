@@ -49,6 +49,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           chartLabel={'Chart with Dynamic Data'}
           hideLegend={true}
           hideTooltip={true}
+          yMaxValue={50}
+          yAxisTickCount={5}
           height={400}
           width={650}
         />

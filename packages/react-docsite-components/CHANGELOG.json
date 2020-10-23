@@ -1,6 +1,113 @@
 {
-  "name": "@uifabric/example-app-base",
+  "name": "@fluentui/react-docsite-components",
   "entries": [
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/example-app-base to @fluentui/react-docsite-components",
+            "author": "elcraig@microsoft.com",
+            "commit": "820f5a34d43c6a573ffa8a9191f03b73e5d29666",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename @uifabric/example-date to @fluentui/example-data",
+            "author": "ololubek@microsoft.com",
+            "commit": "44c0b9f00e42bbbc2f470caa9b1b88dbbf0b3844",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "8396178690de955489a25133f8c257537238c6bf",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Update import paths from foundation package.",
+            "author": "xgao@microsoft.com",
+            "commit": "243797ca03e441815346d862be493bc8f9edadc3",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Fix codepen after replacing office-ui-fabric-react with @fluentui/react.",
+            "author": "xgao@microsoft.com",
+            "commit": "e3dbc4d338cbf8057c8132837ea0c3802e10e564",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Don't publish demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Remove duplicate shared scss files from src/common (use the ones from `@fluentui/common-styles` instead)",
+            "author": "elcraig@microsoft.com",
+            "commit": "d2fedc85c81bb0e2d86495ec1e928604bf2260f4",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Updating imports for Button component to import from the compat folder.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "9c92b506d8139d1ab596caaec276774d9ae27b81",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy.",
+            "author": "xgao@microsoft.com",
+            "commit": "ddb628724b27b6be3d430ea0a7b728ac9adfb8ec",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update text references to fabric-website",
+            "author": "elcraig@microsoft.com",
+            "commit": "ad2846b8a75c36bf074c7f3630c0b43db4510f79",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
     {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@uifabric/example-app-base_v7.15.18",

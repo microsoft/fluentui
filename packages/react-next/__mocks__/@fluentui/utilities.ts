@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export * from '@fluentui/utilities';
 import { Async } from '@fluentui/utilities';
 
@@ -40,6 +41,12 @@ class MockAsync extends Async {
     this._timeoutId = null;
 
     super.dispose();
+  }
+
+  protected _logError(e: any) {
+    super._logError(e);
+    // Don't eat errors thrown from async callbacks
+    throw e;
   }
 }
 

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
@@ -5,7 +6,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
  * {@docCategory VerticalDivider}
  * Props for the Vertical Divider
  */
-export interface IVerticalDividerProps {
+export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * @deprecated Use styles instead.
    * Optional function to generate the class names for the divider for custom styling

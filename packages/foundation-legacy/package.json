@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/foundation-legacy",
-  "version": "8.0.0-beta",
+  "version": "8.0.0-beta.0",
   "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,14 +27,14 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-test-renderer": "^16.0.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -43,10 +43,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.0.0-beta",
-    "@fluentui/set-version": "^8.0.0-beta",
-    "@fluentui/style-utilities": "^8.0.0-beta",
-    "@fluentui/utilities": "^8.0.0-beta",
+    "@fluentui/merge-styles": "^8.0.0-beta.0",
+    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/style-utilities": "^8.0.0-beta.0",
+    "@fluentui/utilities": "^8.0.0-beta.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
