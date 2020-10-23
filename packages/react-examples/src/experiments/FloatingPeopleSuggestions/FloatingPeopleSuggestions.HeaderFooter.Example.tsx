@@ -3,12 +3,11 @@ import {
   IFloatingSuggestionItemProps,
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
-  IBaseFloatingPickerHeaderFooterProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
-import { Autofill } from '@fluentui/react';
+import { Autofill } from 'office-ui-fabric-react';
 import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
 
 const _suggestions = [
@@ -64,7 +63,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
 
   const input = React.useRef<Autofill>(null);
 
-  const suggestionProps: IBaseFloatingPickerHeaderFooterProps = useConst(() => {
+  const suggestionProps = useConst(() => {
     return {
       headerItemsProps: [
         {
@@ -103,6 +102,8 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           ariaLabel: 'Select to log out to console',
         },
       ],
+      suggestionsFooterContainerAriaLabel: 'Footer container',
+      suggestionsHeaderContainerAriaLabel: 'Header container',
     };
   });
 
@@ -227,8 +228,6 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           selectedSuggestionIndex={selectedSuggestionIndex}
           selectedFooterIndex={selectedFooterIndex}
           selectedHeaderIndex={selectedHeaderIndex}
-          suggestionsFooterContainerAriaLabel={'Footer container'}
-          suggestionsHeaderContainerAriaLabel={'Header container'}
         />
       </>
     );
@@ -244,15 +243,9 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           flex: '1 1 auto',
           height: '34px',
           border: 'none',
-          flexGrow: '1',
           outline: 'none',
           padding: '0 6px 0px',
           margin: '1px',
-          selectors: {
-            '&::-ms-clear': {
-              display: 'none',
-            },
-          },
         }}
         // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={_onInputKeyDown}
