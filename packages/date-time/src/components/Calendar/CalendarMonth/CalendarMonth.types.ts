@@ -1,17 +1,19 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import {
-  ICalendarStrings,
-  ICalendarIconStrings,
-  ICalendarFormatDateCallbacks,
-  AnimationDirection,
-} from '../Calendar.types';
+import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@fluentui/style-utilities';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
+import { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonth {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   /**
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
@@ -60,12 +62,12 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: ICalendarNavigationIcons;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -77,7 +79,7 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -124,6 +126,12 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthStyleProps extends ICalendarPickerStyleProps {}
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarMonthStyles extends ICalendarPickerStyles {}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DatePicker } from '@uifabric/date-time';
 import { addDays } from '@fluentui/date-time-utilities';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/style-utilities';
@@ -25,7 +25,6 @@ export const DatePickerExternalControlsExample = () => {
       <DatePicker
         value={selectedDate}
         onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
-        strings={defaultDayPickerStrings}
         placeholder="Select a date..."
         ariaLabel="Select a date"
       />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, defaultDayPickerStrings } from '@uifabric/date-time';
+import { DatePicker } from '@uifabric/date-time';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const styles = mergeStyleSets({
@@ -14,14 +14,12 @@ export const DatePickerRequiredExample: React.FunctionComponent = () => {
       <DatePicker
         isRequired
         label="Date required (with label)"
-        strings={defaultDayPickerStrings}
         placeholder="Select a date..."
         ariaLabel="Select a date"
         className={styles.control}
       />
       <DatePicker
         isRequired
-        strings={defaultDayPickerStrings}
         placeholder="Date required with no label..."
         ariaLabel="Select a date"
         className={styles.control}

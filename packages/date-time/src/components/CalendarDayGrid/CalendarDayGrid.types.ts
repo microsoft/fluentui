@@ -1,19 +1,25 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import { AnimationDirection } from '../Calendar/Calendar.types';
 import {
   ICalendarStrings,
   DayOfWeek,
   FirstWeekOfYear,
   DateRangeType,
-  ICalendarFormatDateCallbacks,
-  AnimationDirection,
-} from '../Calendar/Calendar.types';
+  IDateFormatting,
+} from '@fluentui/date-time-utilities';
 import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGrid {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICalendarDayGrid> {
   /**
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
@@ -22,7 +28,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   componentRef?: IRefObject<ICalendarDayGrid>;
 
   /**
-   * Customized styles for the calendar day component
+   * Customized styles for the component.
    */
   styles?: IStyleFunctionOrObject<ICalendarDayGridStyleProps, ICalendarDayGridStyles>;
 
@@ -37,7 +43,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   className?: string;
 
   /**
-   * Localized strings to use in the Calendar
+   * Localized strings to use in the CalendarDayGrid
    */
   strings: ICalendarStrings;
 
@@ -99,7 +105,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   daysToSelectInDayView?: number;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -112,7 +118,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: IDateFormatting;
 
   /**
    * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the
@@ -185,6 +191,9 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -222,6 +231,9 @@ export interface ICalendarDayGridStyleProps {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayGridStyles {
   /**
    * The style for the root div

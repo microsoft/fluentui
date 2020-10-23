@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/DatePicker';
+export * from '@uifabric/date-time/lib/DatePicker';

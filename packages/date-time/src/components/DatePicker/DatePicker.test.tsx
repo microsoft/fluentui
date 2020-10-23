@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, ICalendarStrings } from '../../Calendar';
+import { Calendar } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
@@ -121,7 +121,7 @@ describe('DatePicker', () => {
         input.props.onClick();
       });
 
-      expect(textfield.props.errorMessage).toBe(' ');
+      expect(textfield.props.errorMessage).toBe('Field is required');
 
       renderer.act(() => {
         input.props.onChange({ target: { value: 'Jan 1 2030' }, persist: jest.fn() });
@@ -150,7 +150,7 @@ describe('DatePicker', () => {
         input.props.onClick();
       });
 
-      expect(textfield.props.errorMessage).toBe(' ');
+      expect(textfield.props.errorMessage).toBe('Field is required');
 
       renderer.act(() => {
         input.props.onClick();
@@ -333,11 +333,12 @@ describe('DatePicker', () => {
   describe('when Calendar properties are specified', () => {
     const value = new Date(2017, 10, 1);
     const today = new Date(2017, 9, 31);
-    const dateTimeFormatter = {
-      formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => 'm/d/y',
-      formatMonthYear: (date: Date, strings?: ICalendarStrings) => 'm/y',
-      formatDay: (date: Date) => 'd',
-      formatYear: (date: Date) => 'y',
+
+    const dateTimeFormatter: IDatePickerProps['dateTimeFormatter'] = {
+      formatMonthDayYear: () => 'm/d/y',
+      formatMonthYear: () => 'm/y',
+      formatDay: () => 'd',
+      formatYear: () => 'y',
     };
 
     const datePicker = shallow(

@@ -1,6 +1,9 @@
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarPickerStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -38,6 +41,9 @@ export interface ICalendarPickerStyleProps {
   animateBackwards?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarPickerStyles {
   /**
    * Style for the root element.

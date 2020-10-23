@@ -1,8 +1,18 @@
-import { IWeeklyDayPickerStrings } from './WeeklyDayPicker.types';
-import { defaultDayPickerStrings } from '../../Calendar';
+import { IWeeklyDayPickerStrings, IWeeklyDayPickerNavigationIcons } from './WeeklyDayPicker.types';
+import { DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
 
-export const WeeklyDayPickerStrings: IWeeklyDayPickerStrings = {
-  ...defaultDayPickerStrings,
+export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings = {
+  ...DEFAULT_CALENDAR_STRINGS,
   prevWeekAriaLabel: 'Previous week',
   nextWeekAriaLabel: 'Next week',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker',
+};
+
+export const defaultWeeklyDayPickerNavigationIcons: IWeeklyDayPickerNavigationIcons = {
+  leftNavigation: 'ChevronLeft',
+  rightNavigation: 'ChevronRight',
 };

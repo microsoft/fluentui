@@ -1,18 +1,23 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
+import { ICalendarNavigationIcons } from '../Calendar.types';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles,
 } from '../../CalendarDayGrid/CalendarDayGrid.types';
+import { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
-export { ICalendarDayGridStyles };
-
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDay {
   focus(): void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
@@ -58,9 +63,9 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   onDismiss?: () => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
-  navigationIcons: ICalendarIconStrings;
+  navigationIcons: ICalendarNavigationIcons;
 
   /**
    * Callback function when the header is selected
@@ -72,10 +77,11 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
    * @defaultvalue false
    */
   showWeekNumbers?: boolean;
+
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: IDateFormatting;
 
   /**
    * Whether the calendar should show 6 weeks by default.
@@ -111,6 +117,9 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   allFocusable?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -135,6 +144,9 @@ export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
   showWeekNumbers?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarDayStyles extends Partial<ICalendarDayGridStyles> {
   /**
    * Style for the root element.

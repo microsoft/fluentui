@@ -1,17 +1,28 @@
+import * as React from 'react';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
+import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
-import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  ICalendarStrings,
+  IDateFormatting,
+} from '@fluentui/date-time-utilities';
 
-export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
-
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendar {
   /** Sets focus to the selected date. */
   focus: () => void;
 }
 
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+/**
+ * {@docCategory Calendar}
+ */
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -44,7 +55,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   className?: string;
 
   /**
-   * Callback issued when a date is selected
+   * Callback for when a date is selected
    * @param date - The date the user selected
    * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
    * for the component.
@@ -52,7 +63,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
-   * Callback issued when calendar is closed
+   * Callback for when calendar is closed
    */
   onDismiss?: () => void;
 
@@ -62,7 +73,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   value?: Date;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -80,8 +91,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   * Defines when the first week of the year should start.
    * @defaultvalue FirstWeekOfYear.FirstDay
    */
   firstWeekOfYear?: FirstWeekOfYear;
@@ -121,14 +131,14 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   strings?: ICalendarStrings;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Custom navigation icons.
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons?: ICalendarNavigationIcons;
 
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: IDateFormatting;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -152,8 +162,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showSixWeeksByDefault?: boolean;
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek.
-   * If dateRangeType is not WorkWeek this property does nothing.
+   * The days that are selectable when `dateRangeType` is `WorkWeek`.
+   * If `dateRangeType` is not `WorkWeek` this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
@@ -183,82 +193,10 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarStrings extends IDateGridStrings {
-  /**
-   * String to render for button to direct the user to today's date.
-   */
-  goToToday: string;
-
-  /**
-   * Aria-label for the "previous month" button in day picker.
-   */
-  prevMonthAriaLabel?: string;
-
-  /**
-   * Aria-label for the "next month" button in day picker.
-   */
-  nextMonthAriaLabel?: string;
-
-  /**
-   * Aria-label for the "previous year" button in month picker.
-   */
-  prevYearAriaLabel?: string;
-
-  /**
-   * Aria-label for the "next year" button in month picker.
-   */
-  nextYearAriaLabel?: string;
-
-  /**
-   * Aria-label for the "previous year range" button in year picker.
-   */
-  prevYearRangeAriaLabel?: string;
-
-  /**
-   * Aria-label for the "next year range" button in year picker.
-   */
-  nextYearRangeAriaLabel?: string;
-
-  /**
-   * Aria-label format string for the header button in the month picker. Should have 1 string param, e.g. "`{0}`,
-   * select to change the year". This aria-label will only be applied if the year picker is enabled; otherwise
-   * the label will default to the header string, e.g. "2019".
-   */
-  monthPickerHeaderAriaLabel?: string;
-
-  /**
-   * Aria-label format string for the header button in the year picker.
-   * Should have 1 string param, e.g. "`{0}`, select to change the month"
-   */
-  yearPickerHeaderAriaLabel?: string;
-
-  /**
-   * Aria-label for the "close" button.
-   */
-  closeButtonAriaLabel?: string;
-
-  /**
-   * Aria-label format string for the week number header. Should have 1 string param, e.g. "week number `{0}`"
-   */
-  weekNumberFormatString?: string;
-
-  /**
-   * Aria-label format string for the currently selected date. Should have 1 string param, e.g. "Selected date `{0}`"
-   */
-  selectedDateFormatString?: string;
-
-  /**
-   * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
-   */
-  todayDateFormatString?: string;
-
-  /**
-   * Aria-label for when a date is marked
-   */
-  dayMarkedAriaLabel?: string;
-}
-
-export interface ICalendarIconStrings {
+/**
+ * {@docCategory Calendar}
+ */
+export interface ICalendarNavigationIcons {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
    * @defaultvalue  'Up'
@@ -278,36 +216,27 @@ export interface ICalendarIconStrings {
   closeIcon?: string;
 }
 
-export interface ICalendarFormatDateCallbacks {
-  /**
-   * Callback to apply formatting to mmmm d, yyyy formated dates
-   */
-  formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
+/**
+ * @deprecated Use `ICalendarNavigationIcons`
+ */
+export type ICalendarIconStrings = ICalendarNavigationIcons;
 
-  /**
-   * Callback to apply formatting to the month and year in the Day Picker header
-   */
-  formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
+/**
+ * @deprecated Use `IDateFormatting`
+ */
+export type ICalendarFormatDateCallbacks = IDateFormatting;
 
-  /**
-   * Callback to apply formatting to the days in the Day Picker calendar
-   */
-  formatDay: (date: Date) => string;
-
-  /**
-   * Callback to apply formatting to the year in the Month Picker header
-   */
-  formatYear: (date: Date) => string;
-}
-
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStyleProps {
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme: ITheme;
 
   /**
-   * Accept custom classNames
+   * Custom CSS class for the calendar.
    */
   className?: string;
 
@@ -327,15 +256,19 @@ export interface ICalendarStyleProps {
   monthPickerOnly?: boolean;
 
   /**
-   * Whether the month picker is overlayed on the day picker
+   * Whether the month picker is overlaid on the day picker
    */
   showMonthPickerAsOverlay?: boolean;
 
   /**
-   * Whether the month and day picker are overlayed and the 'go to today' button
-   * is shown
+   * @deprecated Use `overlaidWithButton`
    */
   overlayedWithButton?: boolean;
+
+  /**
+   * Whether the month and day picker are overlaid and the 'go to today' button is shown
+   */
+  overlaidWithButton?: boolean;
 
   /**
    * Whether the go to today button is shown
@@ -348,6 +281,9 @@ export interface ICalendarStyleProps {
   showWeekNumbers?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStyles {
   /**
    * Style for the root element.
@@ -363,6 +299,9 @@ export interface ICalendarStyles {
   liveRegion: IStyle;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export enum AnimationDirection {
   /**
    * Grid will transition out and in horizontally
