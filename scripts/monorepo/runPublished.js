@@ -26,4 +26,7 @@ const beachballPackages = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => !/[\\/]fluentui[\\/]/.test(packagePath) && packageJson.private !== true)
   .map(([packageName]) => packageName);
 
-runTo(script, beachballPackages, rest);
+// all packages needed for release build
+const allPackages = ['@fluentui/public-docsite', ...beachballPackages];
+
+runTo(script, allPackages, rest);
