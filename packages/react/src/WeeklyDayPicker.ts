@@ -1,1 +1,1 @@
-export * from '@uifabric/date-time/lib/WeeklyDayPicker';
+export * from '@fluentui/react-date-time/lib/WeeklyDayPicker';

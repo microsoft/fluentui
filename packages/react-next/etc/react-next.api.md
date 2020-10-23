@@ -213,22 +213,15 @@ export { TagPickerBase }
 export { ValidationState }
 
 
-export * from "@fluentui/react-button/lib/Button";
-export * from "@fluentui/react-button/lib/MenuButton";
-export * from "@fluentui/react-button/lib/SplitButton";
-export * from "@fluentui/react-button/lib/ToggleButton";
-export * from "@fluentui/react-checkbox/lib/Checkbox";
-export * from "@fluentui/react-link/lib/Link";
-export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Tabs";
-export * from "@fluentui/react-theme-provider";
-export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Autofill";
 export * from "@fluentui/react/lib/Breadcrumb";
+export * from "@fluentui/react/lib/Button";
+export * from "@fluentui/react/lib/Calendar";
 export * from "@fluentui/react/lib/Callout";
 export * from "@fluentui/react/lib/Check";
+export * from "@fluentui/react/lib/Checkbox";
 export * from "@fluentui/react/lib/ChoiceGroup";
 export * from "@fluentui/react/lib/Coachmark";
 export * from "@fluentui/react/lib/Color";
@@ -236,6 +229,7 @@ export * from "@fluentui/react/lib/ColorPicker";
 export * from "@fluentui/react/lib/ComboBox";
 export * from "@fluentui/react/lib/CommandBar";
 export * from "@fluentui/react/lib/ContextualMenu";
+export * from "@fluentui/react/lib/DatePicker";
 export * from "@fluentui/react/lib/DetailsList";
 export * from "@fluentui/react/lib/Dialog";
 export * from "@fluentui/react/lib/Divider";
@@ -260,8 +254,10 @@ export * from "@fluentui/react/lib/KeytipLayer";
 export * from "@fluentui/react/lib/Keytips";
 export * from "@fluentui/react/lib/Label";
 export * from "@fluentui/react/lib/Layer";
+export * from "@fluentui/react/lib/Link";
 export * from "@fluentui/react/lib/List";
 export * from "@fluentui/react/lib/MarqueeSelection";
+export * from "@fluentui/react/lib/MenuButton";
 export * from "@fluentui/react/lib/MessageBar";
 export * from "@fluentui/react/lib/Modal";
 export * from "@fluentui/react/lib/Nav";
@@ -284,20 +280,24 @@ export * from "@fluentui/react/lib/Selection";
 export * from "@fluentui/react/lib/Separator";
 export * from "@fluentui/react/lib/Shimmer";
 export * from "@fluentui/react/lib/ShimmeredDetailsList";
+export * from "@fluentui/react/lib/Slider";
 export * from "@fluentui/react/lib/SpinButton";
 export * from "@fluentui/react/lib/Spinner";
+export * from "@fluentui/react/lib/SplitButton";
 export * from "@fluentui/react/lib/Stack";
 export * from "@fluentui/react/lib/Sticky";
 export * from "@fluentui/react/lib/Styling";
 export * from "@fluentui/react/lib/SwatchColorPicker";
+export * from "@fluentui/react/lib/Tabs";
 export * from "@fluentui/react/lib/TeachingBubble";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/TextField";
+export * from "@fluentui/react/lib/Theme";
 export * from "@fluentui/react/lib/ThemeGenerator";
+export * from "@fluentui/react/lib/Toggle";
+export * from "@fluentui/react/lib/ToggleButton";
 export * from "@fluentui/react/lib/Tooltip";
 export * from "@fluentui/react/lib/Utilities";
-export * from "@uifabric/date-time/lib/Calendar";
-export * from "@uifabric/date-time/lib/DatePicker";
 
 // (No @packageDocumentation comment for this package)
 

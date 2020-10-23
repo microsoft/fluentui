@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-tabs/lib/Tabs';
+export * from '@fluentui/react/lib/Tabs';
