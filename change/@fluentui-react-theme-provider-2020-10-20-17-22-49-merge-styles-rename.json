@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-21T00:22:43.612Z"
-}

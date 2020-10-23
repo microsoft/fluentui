@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.3..@fluentui/react-button_v1.0.0-beta.0)
+
+### Changes
+
+- Updating styling to use variants. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Button: Adding high contrast styling. ([PR #15328](https://github.com/microsoft/fluentui/pull/15328) by humbertomakotomorimoto@gmail.com)
+- Don't publish demo app; remove unused example-app-base dev dependency ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- Button: Adding transparent variant. ([PR #15463](https://github.com/microsoft/fluentui/pull/15463) by Humberto.Morimoto@microsoft.com)
+- Button: Renaming `fluid` prop to `block` so that it is inline with the most used terminology in the web. ([PR #15513](https://github.com/microsoft/fluentui/pull/15513) by humbertomakotomorimoto@gmail.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Adds docCategory Button to all type files so that they are picked up by api-docs. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Rename @fluentui/react-icons to @fluentui/react-icons-mdl2 ([PR #15599](https://github.com/microsoft/fluentui/pull/15599) by ololubek@microsoft.com)
+- undefined ([PR #15585](https://github.com/microsoft/fluentui/pull/15585) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
 
 ## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.3)
 

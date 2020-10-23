@@ -1,8 +1,29 @@
-# Change Log - @uifabric/tsx-editor
+# Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.13.17..@fluentui/react-monaco-editor_v1.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/tsx-editor to @fluentui/react-monaco-editor ([PR #15617](https://github.com/microsoft/fluentui/pull/15617) by elcraig@microsoft.com)
+- Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Rename @uifabric/date-time to @fluentui/react-date-time ([PR #15659](https://github.com/microsoft/fluentui/pull/15659) by elcraig@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Fix codepen after replacing office-ui-fabric-react with @fluentui/react. ([PR #15394](https://github.com/microsoft/fluentui/pull/15394) by xgao@microsoft.com)
+- Remove usage of includes (not supported by IE11). ([PR #15501](https://github.com/microsoft/fluentui/pull/15501) by xgao@microsoft.com)
+- Don't publish demo app ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- Update codepen to use ThemeProvider instead of Fabric. ([PR #15539](https://github.com/microsoft/fluentui/pull/15539) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- rename @uifabric/foundation to @fluentui/foundation-legacy ([PR #15595](https://github.com/microsoft/fluentui/pull/15595) by xgao@microsoft.com)
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
 
 ## [0.11.131](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.131)
 

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
-  "packageName": "@fluentui/foundation-legacy",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-21T01:12:43.405Z"
-}

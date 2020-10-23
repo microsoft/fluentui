@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update references to doc site-related packages",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T18:12:22.889Z"
-}

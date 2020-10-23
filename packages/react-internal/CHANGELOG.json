@@ -1,0 +1,340 @@
+{
+  "name": "@fluentui/react-internal",
+  "entries": [
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add react-internal package",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Example updates.",
+            "author": "dzearing@hotmail.com",
+            "commit": "eff1a9885b9d67c6d811babc657fa1df778c16ac",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Export @fluentui/theme and react-theme-provider. Remove Foundation exports.",
+            "author": "xgao@microsoft.com",
+            "commit": "243797ca03e441815346d862be493bc8f9edadc3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving FocusTrapZone and Modal from react-next to react-internal.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5e0957143308b2d1a3b49d0085b4a06eaf300404",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move TextField \"next\" changes back to main package",
+            "author": "elcraig@microsoft.com",
+            "commit": "02a94bd839b1b96f4b86bccdddd50cc8973ce3e0",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving SwatchColorPicker and ButtonGrid from react-next to react-internal.",
+            "author": "czearing@outlook.com",
+            "commit": "4dbb92f6c59e79fcc22c6d7a418f918af992ecf3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move ChoiceGroup v8 changes to react",
+            "author": "elcraig@microsoft.com",
+            "commit": "e75f6dadead8d459709d6444de4673d45d9ec755",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "move Image component from react-next to react-internal",
+            "author": "ololubek@microsoft.com",
+            "commit": "b68d1f4be307f294f374fcb81176aaeab0d0010a",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next SearchBox to react-internal.",
+            "author": "czearing@outlook.com",
+            "commit": "6a007733fedfc986e81993cba67418e1b62db8a0",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "move persona to react-internal",
+            "author": "joschect@microsoft.com",
+            "commit": "8677503dc01a117c95d5d47514a3ee02737e15fd",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move Fabric from react-next to react-internal",
+            "author": "ololubek@microsoft.com",
+            "commit": "dbc58b74b99c3551085294cc794dda503040245a",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next OverflowSet to react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "87409628a4747b842b80f07c363216fff91f43d3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next MessageBar to react-internal.",
+            "author": "czearing@outlook.com",
+            "commit": "8e1d372b8d5e169d8c3deffb0710402638fff723",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move v8 Rating changes to from react-next to react",
+            "author": "elcraig@microsoft.com",
+            "commit": "1eff0e0d24d99c9feaf5b4dc9e7d6d1763e19498",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move v8 Coachmark changes from react-next to react",
+            "author": "elcraig@microsoft.com",
+            "commit": "44f5d80c54e799bd141a032c42076cd0c3e32d98",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Move v8 ResizeGroup changes from react-next to react",
+            "author": "elcraig@microsoft.com",
+            "commit": "4ccb2589b0e75579b9952dd883894238cd1f6578",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next Shimmer to react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "d5d1c22eb351d5392fb87a45af4698d2ddef352f",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next SpinButton to react-internal.",
+            "author": "czearing@outlook.com",
+            "commit": "bd50a5fc2b18de7fb09bc9781f179698d5451b76",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next TeachingBubble to react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "bbef6869c91cf388b5a1e7f33a869ef23476973c",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "ContextualMenu: Move to react-internal",
+            "author": "joschect@microsoft.com",
+            "commit": "dc7b95861268b740712290edb89b3571f487be9b",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next SelectedItemsList to react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "5f106c170b4e0fb127c5701b1a40fa25ebdcb79e",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Popup: Replacing version in react-internal with version from react-next.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1e626b101db22df0f12bf04f42be6e94c1c5fdcb",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "FloatingPickers: Move to react-internal",
+            "author": "joschect@microsoft.com",
+            "commit": "608304dc4858fab42de9a0d3fb3d89a88c7c01ea",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Callout: move to react-internal",
+            "author": "joschect@microsoft.com",
+            "commit": "510eb448ee82222e43b4dd1fc3b423e5c0b1aba9",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Remove unneeded package dependencies.",
+            "author": "xgao@microsoft.com",
+            "commit": "9775badfc989f8820a437367a53f761cc3ca7512",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving react-next Layer into react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "cbcf1510c6fcb5ea2c76ecb810a6546ab0209659",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Combobox: Move combobox to react",
+            "author": "joschect@microsoft.com",
+            "commit": "fc06f6cfa90237fed072b417e8783f8472aa651c",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Re-export FocusZone directly from react-focus",
+            "author": "elcraig@microsoft.com",
+            "commit": "8a2f70b3fc0fc4da01b07429312ca8b0763c6c85",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Don't ship a bundle of this package alone",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "SpinButton: fix component typing, ref and remove keytipProps.",
+            "author": "xgao@microsoft.com",
+            "commit": "1f144cef92621ad25f625f587d1ea1b6831d6e64",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Deprecate Fabric.",
+            "author": "xgao@microsoft.com",
+            "commit": "10a51aeeeb8071a4b289a39ab55eb8b030d91439",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Stop publishing shared scss and css in react-internal",
+            "author": "elcraig@microsoft.com",
+            "commit": "d2fedc85c81bb0e2d86495ec1e928604bf2260f4",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Changing BaseButton's wrapper span to a fragment.",
+            "author": "czearing@outlook.com",
+            "commit": "b4472b18090f070d8ab97d3949baa4b1f960720f",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Export getMenuStyles from ContextualMenu",
+            "author": "xgao@microsoft.com",
+            "commit": "313cd4c76b18c57938b0abacb07f55d14ec30e46",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moves Button export to compat folder.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "9c92b506d8139d1ab596caaec276774d9ae27b81",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
+            "author": "xgao@microsoft.com",
+            "commit": "ddb628724b27b6be3d430ea0a7b728ac9adfb8ec",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/icons to @fluentui/font-icons-mdl2",
+            "author": "ololubek@microsoft.com",
+            "commit": "d3bafa5b1bd0cc45ce7ba9c7888d4b670b512feb",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "CommandBar: Fixing incorrect aria role.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "07e487070b38576d7e7a203ef78243be9b0289d3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "SearchBox: Making role on root div opt in.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b14a4ed22b4ea4cd45fa09a4a34f9ccfe71d32dd",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Adding a forwardRef to Check (ref-conformance)",
+            "author": "czearing@outlook.com",
+            "commit": "6012a4f6d9677b3204e474540aca87b1e2599b2b",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Adding a forwardRef to ContextualMenu (ref-conformance)",
+            "author": "czearing@outlook.com",
+            "commit": "96fba5ad5cc6621c043b038f50804cbb55e9b156",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/example-date to @fluentui/example-data",
+            "author": "ololubek@microsoft.com",
+            "commit": "44c0b9f00e42bbbc2f470caa9b1b88dbbf0b3844",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "ChoiceGroup option props cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "fb8773239fa9476ab3dff28a483a1c758dac99ba",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Delete old Calendar and DatePicker",
+            "author": "elcraig@microsoft.com",
+            "commit": "c838c580546dffb42b3eda95f55899c93c14b396",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Adding a forwardRef to VerticalDivider within react-internal.",
+            "author": "czearing@outlook.com",
+            "commit": "67dfbd8018abe69426514a95cde33b3928cdb1b0",
+            "package": "@fluentui/react-internal"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Removing unused eslint-disable-next-line no-explicit-any rules from TextField.test.tsx",
+            "author": "czearing@outlook.com",
+            "commit": "66ba3997a888bc97e0ec33fc752f3be553d5ccf0",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Implementing ref conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "1daae9cb3c49e7254fe8f92228d64298cdec95db",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Removing unused disabled eslint rules from react-internal package.",
+            "author": "czearing@outlook.com",
+            "commit": "1020e8c78a40a77d10c7f498731cf3f51f7c76b9",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    }
+  ]
+}
