@@ -2,6 +2,33 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 23:25:40 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add option for keyboard selectable headers and footers to FloatingSuggestionsComposite",
+            "author": "elvonspa@microsoft.com",
+            "commit": "6036071c67199a0565fb99b70c61ccb8604e77f3",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "UnifiedPicker: Fixing fluent bugs",
+            "author": "nebhatna@microsoft.com",
+            "commit": "4da219bab9f1ea95e24ec1b7742e46f457a271c9",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "f23a2d48e285e8e5bfac5f5d8708e2ba601c15a0",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",
