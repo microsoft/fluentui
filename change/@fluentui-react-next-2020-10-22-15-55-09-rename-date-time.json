@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove direct references to re-exported packages",
+  "packageName": "@fluentui/react-next",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T22:55:05.010Z"
+}

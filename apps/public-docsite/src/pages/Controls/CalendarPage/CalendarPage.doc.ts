@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { CalendarPageProps as ExternalProps } from '@fluentui/react-examples/lib/date-time/Calendar/Calendar.doc';
+import { CalendarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-date-time/Calendar/Calendar.doc';
 
 const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/CalendarRelated.md') as string;
 const componentUrl =

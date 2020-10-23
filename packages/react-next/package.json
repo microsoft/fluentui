@@ -61,18 +61,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.0.0-beta",
-    "@fluentui/react-button": "^1.0.0-beta",
-    "@fluentui/react-checkbox": "^1.0.0-beta",
-    "@fluentui/react-internal": "^8.0.0-beta",
-    "@fluentui/react-link": "^1.0.0-beta",
-    "@fluentui/react-slider": "^1.0.0-beta",
-    "@fluentui/react-toggle": "^1.0.0-beta",
-    "@fluentui/react-tabs": "^1.0.0-beta",
-    "@fluentui/react-theme-provider": "^1.0.0-beta",
-    "@fluentui/react-window-provider": "^2.0.0-beta",
-    "@uifabric/date-time": "^8.0.0-beta",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta",
-    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "@fluentui/utilities": "^8.0.0-beta",
     "tslib": "^1.10.0"
