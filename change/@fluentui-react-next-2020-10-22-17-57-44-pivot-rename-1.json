@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Rename Pivot to Tabs, Part 1: Rename files and update imports",
+  "packageName": "@fluentui/react-next",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-23T00:57:35.715Z"
+}
