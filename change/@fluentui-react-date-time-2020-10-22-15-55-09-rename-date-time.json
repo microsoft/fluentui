@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Rename @uifabric/date-time to @fluentui/react-date-time",
+  "packageName": "@fluentui/react-date-time",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T22:54:45.606Z"
+}

@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-slider/lib/Slider';
+export * from '@fluentui/react/lib/Slider';

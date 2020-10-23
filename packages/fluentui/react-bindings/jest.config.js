@@ -1,7 +1,5 @@
-module.exports = {
-  ...require('@fluentui/scripts/jest'),
+const commonConfig = require('@fluentui/scripts/jest');
+
+module.exports = commonConfig({
   name: 'react-bindings',
-  moduleNameMapper: require('lerna-alias').jest({
-    directory: require('@fluentui/scripts/monorepo/findGitRoot')(),
-  }),
-};
+});
