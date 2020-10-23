@@ -151,7 +151,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      * 2. To draw the graph.
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicity-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);

@@ -5,9 +5,9 @@ import {
   ICartesianChartStyleProps,
   ICartesianChartProps,
   ICartesianChartStyles,
-  IHeatMapChartData,
-  ILegendsProps,
-} from '@fluentui/react-charting/src';
+} from '../CommonComponents/CartesianChart.types';
+import { ILegendsProps } from '../Legends/Legends.types';
+import { IHeatMapChartData } from '../../types/IDataPoint';
 
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
   /**
