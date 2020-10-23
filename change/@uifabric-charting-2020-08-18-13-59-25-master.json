@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added color fill bar feature to line chart component",
-  "packageName": "@fluentui/react-charting",
-  "email": "memille@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-18T20:59:25.017Z"
-}
