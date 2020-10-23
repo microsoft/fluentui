@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-23T20:07:05.274Z"
+}
