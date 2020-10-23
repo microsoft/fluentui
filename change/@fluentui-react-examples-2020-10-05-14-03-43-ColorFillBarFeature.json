@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Made color fill bars compatible with multi select legends",
-  "packageName": "@fluentui/react-examples",
-  "email": "memille@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-05T21:03:43.761Z"
-}
