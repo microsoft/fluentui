@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Updating react-internal SpinButton to handle onChange.",
   "packageName": "@fluentui/react-internal",
   "email": "czearing@outlook.com",
