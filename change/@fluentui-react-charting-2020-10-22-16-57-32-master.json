@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Charting: Implementing HeatMapChart and introducing some APIs in CartesianChart to support it.",
+  "packageName": "@fluentui/react-charting",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T23:57:32.552Z"
+}
