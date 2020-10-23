@@ -1,6 +1,16 @@
+import { css, classNamesFunction } from '@fluentui/react';
 import * as React from 'react';
+import {
+  ISelectedItemsList,
+  ISelectedItemsListProps,
+  BaseSelectedItem,
+  ISelectedItemsListStyleProps,
+  ISelectedItemsListStyles,
+} from './SelectedItemsList.types';
 
-import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+import { getStyles } from './SelectedItemsList.styles';
+
+const getClassNames = classNamesFunction<ISelectedItemsListStyleProps, ISelectedItemsListStyles>();
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
@@ -12,6 +22,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const renderedItems = React.useMemo(() => items, [items]);
   const didMountRef = React.useRef(false);
   const hiddenInput = React.useRef<any>();
+  const classNames = getClassNames(getStyles);
 
   React.useEffect(() => {
     // block first call of the hook and forward each consecutive one
@@ -74,10 +85,9 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             // Add a zero zero size input. This is to pick up the copy command when we have
             // keyboard focus in the list
             // Focus is set to the input when the list gets focus via the _onFocus function
-            className={'ms-SelectedItemsList-copyInput'}
+            className={css('ms-SelectedItemsList-copyInput', classNames.copyInput)}
             ref={hiddenInput}
             hidden={!props.getItemCopyText}
-            style={{ height: '0px', width: '0px', border: 'none', outline: 'none' }}
             data-is-focusable={false}
             aria-hidden={true}
             tabIndex={-1}
