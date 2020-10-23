@@ -24,7 +24,7 @@ const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyle
 const nullFunction = (): null => null;
 
 const OVERFLOW_KEY = 'overflow';
-const COMPONENT_NAME = 'BreadcrumbBase';
+const COMPONENT_NAME = 'Breadcrumb';
 
 const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
   styles: props => {
@@ -137,7 +137,7 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
         return {
           name: item.text,
           key: item.key,
-          onClick: item.onClick ? onBreadcrumbClicked.bind(ref, item) : null,
+          onClick: item.onClick ? ev => onBreadcrumbClicked(ev, item) : undefined,
           href: item.href,
           disabled: !isActionable,
           itemProps: isActionable ? undefined : nonActionableItemProps,
