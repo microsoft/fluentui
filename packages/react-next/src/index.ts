@@ -56,6 +56,7 @@ export * from './Persona';
 export * from './PersonaCoin';
 // export * from './PersonaPresence'; (Exported as part of Persona)
 export * from './Pickers';
+export * from './Pivot';
 export * from './Popup';
 export * from './Positioning';
 export * from './PositioningContainer';

@@ -266,6 +266,7 @@ export * from "@fluentui/react/lib/Overlay";
 export * from "@fluentui/react/lib/Panel";
 export * from "@fluentui/react/lib/Persona";
 export * from "@fluentui/react/lib/PersonaCoin";
+export * from "@fluentui/react/lib/Pivot";
 export * from "@fluentui/react/lib/Popup";
 export * from "@fluentui/react/lib/Positioning";
 export * from "@fluentui/react/lib/PositioningContainer";
