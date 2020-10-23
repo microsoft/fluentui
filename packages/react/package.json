@@ -60,19 +60,19 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta",
     "@fluentui/react-button": "^1.0.0-beta",
     "@fluentui/react-checkbox": "^1.0.0-beta",
+    "@fluentui/react-date-time": "^8.0.0-beta",
+    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/react-internal": "^8.0.0-beta",
     "@fluentui/react-link": "^1.0.0-beta",
     "@fluentui/react-slider": "^1.0.0-beta",
     "@fluentui/react-tabs": "^1.0.0-beta",
     "@fluentui/react-toggle": "^1.0.0-beta",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/date-time": "^8.0.0-beta",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta",
-    "@fluentui/react-hooks": "^8.0.0-beta",
     "@fluentui/set-version": "^8.0.0-beta",
     "@fluentui/utilities": "^8.0.0-beta",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

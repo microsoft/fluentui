@@ -1,1 +1,1 @@
-export * from '@uifabric/date-time/lib/Calendar';
+export * from '@fluentui/react-date-time/lib/Calendar';
