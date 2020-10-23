@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "SelectionZone: Adding an optional className prop",
+  "packageName": "@fluentui/react-internal",
+  "email": "nebhatna@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-22T20:57:57.716Z"
+}

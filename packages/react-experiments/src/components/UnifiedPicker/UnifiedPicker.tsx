@@ -406,7 +406,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         {...focusZoneProps}
         /* TODO: create mouse drag selection capability */
       >
-        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+        <SelectionZone
+          selection={selection}
+          selectionMode={SelectionMode.multiple}
+          className={css('ms-UnifiedPicker-selectionZone', classNames.selectionZone)}
+        >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             {headerComponent}
             {_renderSelectedItemsList()}
