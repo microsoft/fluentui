@@ -360,7 +360,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       this._hasWarnedNullValue = true;
       warn(
         `Warning: 'value' prop on '${COMPONENT_NAME}' should not be null. Consider using an ` +
-        'empty string to clear the component or undefined to indicate an uncontrolled component.',
+          'empty string to clear the component or undefined to indicate an uncontrolled component.',
       );
     }
   }
@@ -484,7 +484,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       'defaultValue',
     ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
-    const inputType = this.props.canRevealPassword ? this.state.type : (inputProps.type ?? 'text');
+    const inputType = this.props.canRevealPassword ? this.state.type : this.props.type ?? 'text';
     return (
       <input
         id={this._id}
