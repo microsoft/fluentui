@@ -1,8 +1,19 @@
-# Change Log - @uifabric/variants
+# Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.21..@fluentui/scheme-utilities_v8.0.0-beta.0)
+
+### Changes
+
+- rename @uifabric/variants to @fluentui/scheme-utilities ([PR #15598](https://github.com/microsoft/fluentui/pull/15598) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
 
 ## [7.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.21)
 

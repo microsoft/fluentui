@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Rename build-related packages",
-  "packageName": "@fluentui/react-tabs",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T16:58:00.163Z"
-}

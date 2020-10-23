@@ -1,6 +1,173 @@
 {
-  "name": "@uifabric/experiments",
+  "name": "@fluentui/react-experiments",
   "entries": [
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/experiments to @fluentui/react-experiments",
+            "author": "elcraig@microsoft.com",
+            "commit": "74992881d9e046805213421093810417bd944759",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Updating imports for Button component to import from the compat folder.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "9c92b506d8139d1ab596caaec276774d9ae27b81",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Convert SelectedPersona GetExpandedItems to async",
+            "author": "elvonspa@microsoft.com",
+            "commit": "74f096d72981df86e9e9c912a21c9c21bfb8e1fc",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Remove undesired MarqueeSelection in UPP",
+            "author": "sadelson@microsoft.com",
+            "commit": "6478d049b493c95546556047a6dfb1da5ab76489",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Add props to UPP to disable drag drop, drop to end of list",
+            "author": "elvonspa@microsoft.com",
+            "commit": "5dcd2ab51d735d3a171d2de67510890cfdaff1ef",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
+            "author": "xgao@microsoft.com",
+            "commit": "ddb628724b27b6be3d430ea0a7b728ac9adfb8ec",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/icons to @fluentui/font-icons-mdl2",
+            "author": "ololubek@microsoft.com",
+            "commit": "d3bafa5b1bd0cc45ce7ba9c7888d4b670b512feb",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Add onKeyDown prop to UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ac1cfd5c9000ec83a0f58f05f3ca45efd8869473",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/example-date to @fluentui/example-data",
+            "author": "ololubek@microsoft.com",
+            "commit": "44c0b9f00e42bbbc2f470caa9b1b88dbbf0b3844",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "UnifiedPicker: Fixing input selection",
+            "author": "nebhatna@microsoft.com",
+            "commit": "bed7f0a9df94cd482a5c2ac80a4c020bf888642d",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Remove FluentStyles.",
+            "author": "xgao@microsoft.com",
+            "commit": "94679d983c66e088f4ef1b9fff8dac7610385cf9",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "8396178690de955489a25133f8c257537238c6bf",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Update import paths from foundation package.",
+            "author": "xgao@microsoft.com",
+            "commit": "243797ca03e441815346d862be493bc8f9edadc3",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Remove unneeded dep on azure-themes",
+            "author": "elcraig@microsoft.com",
+            "commit": "dacc54122c2881a5b748cddbde337855351855c2",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Callout: Move to react-internal",
+            "author": "joschect@microsoft.com",
+            "commit": "510eb448ee82222e43b4dd1fc3b423e5c0b1aba9",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Remove unneeded package dependencies.",
+            "author": "xgao@microsoft.com",
+            "commit": "9775badfc989f8820a437367a53f761cc3ca7512",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update snapshots related to KeytipData removal.",
+            "author": "xgao@microsoft.com",
+            "commit": "1f144cef92621ad25f625f587d1ea1b6831d6e64",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Update references to doc site-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "820f5a34d43c6a573ffa8a9191f03b73e5d29666",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
     {
       "date": "Sun, 27 Sep 2020 04:20:52 GMT",
       "tag": "@uifabric/experiments_v7.33.1",
