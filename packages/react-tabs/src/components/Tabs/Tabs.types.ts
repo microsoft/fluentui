@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { PivotItem } from './PivotItem';
+import { PivotItem } from './TabPanel';
 
 /**
  * {@docCategory Pivot}

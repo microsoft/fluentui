@@ -220,7 +220,7 @@ export * from "@fluentui/react-button/lib/ToggleButton";
 export * from "@fluentui/react-checkbox/lib/Checkbox";
 export * from "@fluentui/react-link/lib/Link";
 export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Pivot";
+export * from "@fluentui/react-tabs/lib/Tabs";
 export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-toggle/lib/Toggle";
 export * from "@fluentui/react/lib/ActivityItem";

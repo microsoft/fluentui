@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '@fluentui/utilities';
-import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { PivotBase } from './Pivot.base';
-import { getStyles } from './Pivot.styles';
+import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Tabs.types';
+import { PivotBase } from './Tabs.base';
+import { getStyles } from './Tabs.styles';
 
 /**
  * The Pivot control and related tabs pattern are used for navigating frequently accessed,

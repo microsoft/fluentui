@@ -9,7 +9,7 @@ import {
   PivotBase,
 } from '../index';
 import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
-import * as classes from './Pivot.scss';
+import * as classes from './Tabs.scss';
 
 const GlobalClassNames = {
   count: 'ms-Pivot-count',

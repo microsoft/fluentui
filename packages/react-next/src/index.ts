@@ -56,7 +56,6 @@ export * from './Persona';
 export * from './PersonaCoin';
 // export * from './PersonaPresence'; (Exported as part of Persona)
 export * from './Pickers';
-export * from './Pivot';
 export * from './Popup';
 export * from './Positioning';
 export * from './PositioningContainer';
@@ -79,6 +78,7 @@ export * from './Stack';
 export * from './Sticky';
 export * from './Styling';
 export * from './SwatchColorPicker';
+export * from './Tabs';
 export * from './TeachingBubble';
 export * from './Text';
 export * from './TextField';

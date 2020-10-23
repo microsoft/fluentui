@@ -1,4 +1,4 @@
-import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { IPivotStyleProps, IPivotStyles } from './Tabs.types';
 import {
   AnimationVariables,
   getGlobalClassNames,

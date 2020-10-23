@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '@fluentui/utilities';
-import { IPivotItemProps } from './PivotItem.types';
+import { IPivotItemProps } from './TabPanel.types';
 
 const COMPONENT_NAME = 'PivotItem';
 
