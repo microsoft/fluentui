@@ -138,7 +138,7 @@ describe('TeachingBubble', () => {
     ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {
       const callout = document.querySelector('.ms-Callout') as HTMLElement;
-      expect(callout).toBeDefined();
+      expect(callout).toBeTruthy();
       expect(callout.classList.contains('ms-TeachingBubble')).toBeTruthy();
       expect(callout.classList.contains('foo')).toBeTruthy();
     }, 0);

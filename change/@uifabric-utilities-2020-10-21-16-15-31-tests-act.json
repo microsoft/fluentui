@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Async: update setTimeout to use internal error logging method",
+  "packageName": "@fluentui/utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-21T23:15:31.423Z"
+}
