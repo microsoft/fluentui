@@ -213,7 +213,6 @@ export { TagPickerBase }
 export { ValidationState }
 
 
-export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react/lib/ActivityItem";
 export * from "@fluentui/react/lib/Announced";
 export * from "@fluentui/react/lib/Autofill";
