@@ -4,8 +4,23 @@ exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 <div
+  onFocus={[Function]}
   role="list"
 >
+  <input
+    aria-hidden={true}
+    className=
+        ms-SelectedItemsList-copyInput
+        {
+          border: none;
+          height: 0px;
+          outline: none;
+          width: 0px;
+        }
+    data-is-focusable={false}
+    hidden={true}
+    tabIndex={-1}
+  />
   <div
     aria-labelledby="selectedItemPersona-id__0"
     className=
@@ -1025,8 +1040,23 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
 <div
+  onFocus={[Function]}
   role="list"
 >
+  <input
+    aria-hidden={true}
+    className=
+        ms-SelectedItemsList-copyInput
+        {
+          border: none;
+          height: 0px;
+          outline: none;
+          width: 0px;
+        }
+    data-is-focusable={false}
+    hidden={true}
+    tabIndex={-1}
+  />
   <div
     aria-labelledby="selectedItemPersona-id__16"
     className=
