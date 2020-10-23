@@ -54,11 +54,10 @@ export class NarrationComputer {
       // Begin if 1
       parents.push(element);
     } // End if 1
-    for (let i = 0; i < element.children.length; i++) {
-      // Begin for 1
-      const child = element.children[i] as IAriaElement;
+    Array.from(element.children).forEach((child: IAriaElement) => {
+      // Begin forEach 1
       this.findActiveDescendantsParents(child, parents);
-    } // End for 1
+    }); // End forEach 1
   } // End findActiveDescendantsParents
 
   // Recursively traverses the given element to find all the focusable elements and saves their paths along the way.
