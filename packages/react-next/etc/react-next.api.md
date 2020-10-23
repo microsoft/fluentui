@@ -292,6 +292,7 @@ export * from "@fluentui/react/lib/SwatchColorPicker";
 export * from "@fluentui/react/lib/TeachingBubble";
 export * from "@fluentui/react/lib/Text";
 export * from "@fluentui/react/lib/TextField";
+export * from "@fluentui/react/lib/Theme";
 export * from "@fluentui/react/lib/ThemeGenerator";
 export * from "@fluentui/react/lib/Toggle";
 export * from "@fluentui/react/lib/ToggleButton";
