@@ -331,7 +331,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   multiple: {},
   one: {
-    extensions: ['note', 'one'], // This represents a single Fluid Note, or a partial exported section/page of a notebook.
+    // This represents a single Fluid Note, or a partial exported section/page of a notebook.
+    extensions: ['note', 'one'],
   },
   onetoc: {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
