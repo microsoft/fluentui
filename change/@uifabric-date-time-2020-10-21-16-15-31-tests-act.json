@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "Remove incorrect usage of expect.toBeDefined",
-  "packageName": "@uifabric/date-time",
+  "packageName": "@fluentui/react-date-time",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "none",
   "date": "2020-10-21T23:13:49.132Z"
