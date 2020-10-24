@@ -66,7 +66,6 @@ type DesignerState = {
   jsonTreeOrigin: JSONTreeOrigin;
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
-  enabledVirtualCursor: boolean;
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
@@ -87,7 +86,6 @@ type DesignerAction =
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
-  | { type: 'ENABLE_VIRTUAL_CURSROR'; enabledVirtualCursor: boolean }
   | { type: 'SHOW_CODE'; show: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
@@ -221,10 +219,6 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       }
       break;
 
-    case 'ENABLE_VIRTUAL_CURSROR':
-      draftState.enabledVirtualCursor = action.enabledVirtualCursor;
-      break;
-
     case 'SOURCE_CODE_CHANGE':
       draftState.code = action.code;
       draftState.selectedJSONTreeElementUuid = null;
@@ -338,7 +332,6 @@ export const Designer: React.FunctionComponent = () => {
       jsonTreeOrigin,
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
-      enabledVirtualCursor: false,
       showCode: false,
       code: null,
       codeError: null,
@@ -364,7 +357,6 @@ export const Designer: React.FunctionComponent = () => {
     jsonTreeOrigin,
     /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
-    enabledVirtualCursor,
     showCode,
     code,
     codeError,
@@ -387,13 +379,6 @@ export const Designer: React.FunctionComponent = () => {
   const handleShowCodeChange = React.useCallback(
     showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
-    },
-    [dispatch],
-  );
-
-  const handleEnableVirtualCursorChange = React.useCallback(
-    enableVirtualCursor => {
-      dispatch({ type: 'ENABLE_VIRTUAL_CURSROR', enabledVirtualCursor: enableVirtualCursor });
     },
     [dispatch],
   );
@@ -654,8 +639,6 @@ export const Designer: React.FunctionComponent = () => {
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
-        eenabledVirtualCursor={enabledVirtualCursor}
-        onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
