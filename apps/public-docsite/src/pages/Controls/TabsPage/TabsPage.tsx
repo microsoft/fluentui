@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPageSectionProps, Markdown } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
-import { PivotPageProps } from './PivotPage.doc';
+import { PivotPageProps } from './TabsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PivotPage/';
