@@ -146,6 +146,68 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component handles classname prop */
+  'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
+    const el = customMount(<Component {...requiredProps} />);
+    const component = getComponent(el, helperComponents, wrapperComponent);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const classNames: any = component
+      .getDOMNode()
+      .getAttribute('class')
+      ?.split(' ');
+
+    it(`handles className prop`, () => {
+      try {
+        expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
+      } catch (e) {
+        defaultErrorMessages['component-handles-classname'](componentInfo, testInfo, e);
+        throw new Error('component-handles-classname');
+      }
+    });
+  },
+
+  /** Component correctly handles default classnames */
+  'component-handles-default-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
+    let el = customMount(<Component {...requiredProps} />);
+    let component = getComponent(el, helperComponents, wrapperComponent);
+
+    const defaultClassNames =
+      component
+        ?.getDOMNode()
+        ?.getAttribute('class')
+        ?.split(' ') || [];
+
+    const mergedProps: Partial<{}> = {
+      ...requiredProps,
+      className: 'testComponentClassName',
+    };
+
+    el = customMount(<Component {...mergedProps} />);
+    component = getComponent(el, helperComponents, wrapperComponent);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const classNames: any = component
+      .getDOMNode()
+      .getAttribute('class')
+      ?.split(' ');
+
+    it(`handles component's default classNames`, () => {
+      try {
+        if (defaultClassNames.length && defaultClassNames[0] !== '') {
+          for (const defaultClassName of defaultClassNames) {
+            expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);
+          }
+        }
+      } catch (e) {
+        defaultErrorMessages['component-handles-default-classname'](componentInfo, testInfo, e);
+        throw new Error('component-handles-default-classname');
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {
