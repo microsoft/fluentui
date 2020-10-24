@@ -53,7 +53,7 @@ describe('ChoiceGroup', () => {
   it('does not use className prop from parent on label', () => {
     choiceGroup = mount(<ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />);
     const label = choiceGroup.getDOMNode().querySelector('label');
-    expect(label).toBeDefined();
+    expect(label).toBeTruthy();
     expect(label!.textContent).toBe('test label');
     expect(label!.className).not.toContain('testClassName');
   });

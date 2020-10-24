@@ -74,8 +74,8 @@ describe('Layer', () => {
 
       const parentElement = appElement.querySelector('#parent');
 
-      expect(parentElement).toBeDefined();
-      expect(parentElement!.ownerDocument).toBeDefined();
+      expect(parentElement).toBeTruthy();
+      expect(parentElement!.ownerDocument).toBeTruthy();
 
       const childElement = appElement.querySelector('#child') as Element;
 

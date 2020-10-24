@@ -31,6 +31,11 @@ function onResolveSuggestions(text: string): ITag[] {
     .map(item => ({ key: item, name: item }));
 }
 
+const runAllTimers = () =>
+  ReactTestUtils.act(() => {
+    jest.runAllTimers();
+  });
+
 describe('TagPicker', () => {
   beforeEach(() => {
     resetIds();
@@ -74,11 +79,11 @@ describe('TagPicker', () => {
     input.value = 'bl';
 
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
-    expect(suggestions).toBeDefined();
+    expect(suggestions).toBeTruthy();
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
     expect(suggestionOptions.length).toEqual(2);
@@ -108,7 +113,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
@@ -152,7 +157,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 

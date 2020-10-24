@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as sinon from 'sinon';
 import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
@@ -32,6 +33,11 @@ function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]
   );
   return ktp ? ktp.keytip : undefined;
 }
+
+const runAllTimers = () =>
+  ReactTestUtils.act(() => {
+    jest.runAllTimers();
+  });
 
 describe('OverflowSet', () => {
   describe('snapshot tests', () => {
@@ -287,7 +293,7 @@ describe('OverflowSet', () => {
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         layerRef.current!.processInput('x');
-        jest.runAllTimers();
+        runAllTimers();
 
         // Opening the submenu should register the two keytips for those items
         const keytip3 = getKeytip(keytipManager, ['c']);
@@ -328,7 +334,7 @@ describe('OverflowSet', () => {
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         layerRef.current!.processInput('x');
-        jest.runAllTimers();
+        runAllTimers();
 
         // item3
         const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
@@ -509,7 +515,7 @@ describe('OverflowSet', () => {
           const subMenu6Keytip = getKeytip(keytipManager, modifiedKeytip6Sequence);
           expect(subMenu6Keytip).toBeDefined();
           expect(subMenu6Keytip!.overflowSetSequence![0]).toEqual('x');
-          jest.runAllTimers();
+          runAllTimers();
 
           // Those two keytips should now be visible in the Layer and have overflowSetSequence set
           const submenuKeytips = layerRef.current!.state.visibleKeytips;
@@ -605,7 +611,7 @@ describe('OverflowSet', () => {
           keytipTree.currentKeytip = keytipTree.root;
           layerRef.current!.processInput('d');
           // Wait for the menu to open
-          jest.runAllTimers();
+          runAllTimers();
 
           // Those two keytips should now be visible in the Layer and have overflowSetSequence set
           const submenuKeytips = layerRef.current!.state.visibleKeytips;
@@ -688,7 +694,6 @@ describe('OverflowSet', () => {
           keytipTree.currentKeytip = keytipTree.root;
 
           layerRef.current!.processInput('d');
-          jest.runAllTimers();
 
           // Those two keytips should now be visible in the Layer and have overflowSetSequence set
           const submenuKeytips = layerRef.current!.state.visibleKeytips;

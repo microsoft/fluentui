@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-22T21:52:53.930Z"
-}

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.1)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.0..@fluentui/react-experiments_v8.0.0-beta.1)
+
+### Changes
+
+- Add option for keyboard selectable headers and footers to FloatingSuggestionsComposite ([PR #15432](https://github.com/microsoft/fluentui/pull/15432) by elvonspa@microsoft.com)
+- UnifiedPicker: Fixing fluent bugs ([PR #15652](https://github.com/microsoft/fluentui/pull/15652) by nebhatna@microsoft.com)
+- Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker ([PR #15655](https://github.com/microsoft/fluentui/pull/15655) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.0)
 
