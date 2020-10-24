@@ -4,8 +4,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { IBasePicker } from '../BasePicker.types';
-import { resetIds } from '@uifabric/utilities';
-import { people } from '@uifabric/example-data';
+import { resetIds } from '@fluentui/utilities';
+import { people } from '@fluentui/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../../Persona/Persona.types';
 import { isConformant } from '../../../common/isConformant';
@@ -47,10 +47,12 @@ describe('PeoplePicker', () => {
     input.value = 'Valentyna';
 
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-    expect(suggestions).toBeDefined();
+    expect(suggestions).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(1);
@@ -61,7 +63,7 @@ describe('PeoplePicker', () => {
     expect(currentPicker![0].text).toEqual('Valentyna Lovrique');
 
     const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
-    expect(removeButton).toBeDefined();
+    expect(removeButton).toBeTruthy();
 
     ReactTestUtils.Simulate.click(removeButton);
     const currentPickerAfterRemove = picker.current!.items;
@@ -70,7 +72,7 @@ describe('PeoplePicker', () => {
     ReactDOM.unmountComponentAtNode(root);
   });
 
-  it('can not remove people when disabled', () => {
+  it('cannot remove people when disabled', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -90,7 +92,7 @@ describe('PeoplePicker', () => {
     expect(currentPicker).toHaveLength(1);
 
     const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
-    expect(removeButton).toBeDefined();
+    expect(removeButton).toBeTruthy();
 
     ReactTestUtils.Simulate.click(removeButton);
     const currentPickerAfterClick = picker.current!.items;
@@ -102,6 +104,8 @@ describe('PeoplePicker', () => {
   isConformant({
     Component: NormalPeoplePicker,
     displayName: 'NormalPeoplePicker',
-    disabledTests: ['has-top-level-file', 'name-matches-filename'],
+    // Problem: Doesn’t handle ref.
+    // Solution: Add a ref to the root element.
+    disabledTests: ['has-top-level-file', 'name-matches-filename', 'component-has-root-ref', 'component-handles-ref'],
   });
 });

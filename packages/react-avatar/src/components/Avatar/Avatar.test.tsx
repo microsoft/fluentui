@@ -4,7 +4,7 @@ import { isConformant } from '@fluentui/react-conformance';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { GroupIcon } from '@fluentui/react-icons';
+import { GroupIcon } from '@fluentui/react-icons-mdl2';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;

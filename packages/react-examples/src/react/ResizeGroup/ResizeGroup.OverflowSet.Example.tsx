@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { CommandBarButton } from '@fluentui/react/lib/Button';
+import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet';
 import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { mergeStyleSets } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const styles = mergeStyleSets({

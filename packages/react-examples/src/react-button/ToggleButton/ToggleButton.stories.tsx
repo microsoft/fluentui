@@ -23,6 +23,12 @@ const ToggleButtonExamples = (props: ToggleButtonProps) => (
     <ToggleButton {...props} ghost disabled icon="X">
       Hello, world
     </ToggleButton>
+    <ToggleButton {...props} transparent icon="X">
+      Hello, world
+    </ToggleButton>
+    <ToggleButton {...props} transparent disabled icon="X">
+      Hello, world
+    </ToggleButton>
   </div>
 );
 
@@ -34,9 +40,9 @@ export const ToggleButtons = () => (
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
     <ToggleButtonExamples circular />
 
-    <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
+    <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
     <div className={classes.vStack}>
-      <ToggleButtonExamples fluid />
+      <ToggleButtonExamples block />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>

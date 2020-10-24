@@ -1,5 +1,5 @@
-import config from '@uifabric/build/config';
-import { safeLaunchOptions } from '@uifabric/build/puppeteer/puppeteer.config';
+import config from '@fluentui/scripts/config';
+import { safeLaunchOptions } from '@fluentui/scripts/puppeteer/puppeteer.config';
 import express from 'express';
 import http from 'http';
 import puppeteer from 'puppeteer';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
+import { INavPage, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
 import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { Omit } from '@fluentui/react/lib/Utilities';
@@ -123,6 +123,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Separator: {},
     Stack: {},
     Text: {},
+    ThemeProvider: {},
     Themes: {},
   },
   Experimental: {
@@ -260,7 +261,7 @@ function _generatePage(
 }
 
 function _loadReferences(): INavPage[] {
-  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
+  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
@@ -290,81 +291,3 @@ export const controlsPagesWeb: INavPage[] = [
   },
   ...generateCategories(),
 ];
-
-// Old list
-// const categories: { [name: string]: string[] } = {
-//   'Basic Inputs': [
-//     'Button',
-//     'Checkbox',
-//     'ChoiceGroup',
-//     'ComboBox',
-//     'ContextualMenu',
-//     'Dropdown',
-//     'Label',
-//     'Link',
-//     'Rating',
-//     'Slider',
-//     'SpinButton',
-//     'TextField',
-//     'Toggle'
-//   ],
-//   Navigation: [
-//     'Breadcrumb',
-//     'CommandBar',
-//     'Nav',
-//     'OverflowSet',
-//     'Pivot',
-//     'SearchBox'
-//   ],
-//   Layout: [
-//     'Stack'
-//   ],
-//   Content: [
-//     'ActivityItem',
-//     'Calendar',
-//     'DetailsList',
-//     'Facepile',
-//     'GroupedList',
-//     'Icon',
-//     'Image',
-//     'List',
-//     'Persona',
-//     'Separator'
-//   ],
-//   Pickers: [
-//     'Pickers',
-//     'ColorPicker',
-//     'DatePicker',
-//     'PeoplePicker',
-//     'SwatchColorPicker'
-//   ],
-//   'Progress & Validation': [
-//     'MessageBar',
-//     'ProgressIndicator',
-//     'Shimmer',
-//     'Spinner'
-//   ],
-//   Surfaces: [
-//     'Callout',
-//     'Dialog',
-//     'DocumentCard',
-//     'HoverCard',
-//     'Layer',
-//     'Modal',
-//     'Overlay',
-//     'Panel',
-//     'ScrollablePane',
-//     'TeachingBubble',
-//     'Tooltip',
-//     'Coachmark'
-//   ],
-//   Utilities: [
-//     'FocusTrapZone',
-//     'FocusZone',
-//     'MarqueeSelection',
-//     'ResizeGroup',
-//     'Selection',
-//     'Text',
-//     'Themes'
-//   ]
-// };

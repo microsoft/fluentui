@@ -21,6 +21,9 @@ export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
   name: 'fluent-badge',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentBadge extends Badge {
   @attr({ mode: 'fromView' })

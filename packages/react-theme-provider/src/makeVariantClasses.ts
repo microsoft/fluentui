@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 import { makeClasses } from './makeClasses';
 
 /**

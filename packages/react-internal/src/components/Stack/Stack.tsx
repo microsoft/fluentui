@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createComponent, getSlots } from '@uifabric/foundation';
+import { withSlots, createComponent, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
 import { styles } from './Stack.styles';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';

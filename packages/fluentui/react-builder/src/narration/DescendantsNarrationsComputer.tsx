@@ -28,9 +28,9 @@ export class DescendantsNarrationsComputer {
       // Begin if 1
       parents.push(element);
     } // End if 1
-    Array.from(element.children).forEach((child: IAriaElement) => {
+    Array.from(element.children).forEach(child => {
       // Begin foreach 1
-      this.findActiveDescendantsParents(child, parents);
+      this.findActiveDescendantsParents(child as IAriaElement, parents);
     }); // End foreach 1
   } // End findActiveDescendantsParents
 

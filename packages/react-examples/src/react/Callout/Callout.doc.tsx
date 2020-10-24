@@ -17,7 +17,7 @@ const CalloutCoverExampleCode = require('!raw-loader!@fluentui/react-examples/sr
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Callout',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Callout',
   examples: [
     {
       title: 'Default Callout',

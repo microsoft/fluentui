@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { setWarningCallback } from '@uifabric/utilities';
+import { setWarningCallback } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 
 describe('Toggle', () => {

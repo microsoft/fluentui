@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useCustomizationSettings } from '@uifabric/utilities';
+import { useCustomizationSettings } from '@fluentui/utilities';
 import { ITheme, createTheme } from '@fluentui/theme';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';

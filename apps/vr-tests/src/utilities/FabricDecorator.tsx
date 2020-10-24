@@ -1,4 +1,3 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types';

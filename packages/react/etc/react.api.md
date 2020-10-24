@@ -4,10 +4,11 @@
 
 ```ts
 
+import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
-import { IButtonProps } from '@fluentui/react-internal/lib/Button';
-import { IButtonStyles } from '@fluentui/react-internal/lib/Button';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react-internal/lib/compat/Button';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
@@ -17,7 +18,6 @@ import { IDragDropHelper } from '@fluentui/react-internal/lib/DragDrop';
 import { IDragDropOptions } from '@fluentui/react-internal/lib/DragDrop';
 import { IFocusZoneProps } from '@fluentui/react-internal/lib/FocusZone';
 import { IIconProps } from '@fluentui/react-internal/lib/Icon';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react-internal/lib/Label';
 import { ILabelStyles } from '@fluentui/react-internal/lib/Label';
 import { ILinkProps } from '@fluentui/react-link/lib/Link';
@@ -38,7 +38,6 @@ import { IStyleFunctionOrObject } from '@fluentui/react-internal/lib/Utilities';
 import { ITheme } from '@fluentui/react-internal/lib/Styling';
 import { ITooltipHostProps } from '@fluentui/react-internal/lib/Tooltip';
 import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
-import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { IWithViewportProps } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
 import { Omit } from '@fluentui/react-internal/lib/Utilities';
 import { PersonaInitialsColor } from '@fluentui/react-internal/lib/Persona';
@@ -46,7 +45,6 @@ import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react-internal/lib/Positioning';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
 import { ScrollToMode } from '@fluentui/react-internal/lib/List';
-import { SelectableOptionMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { SelectionMode } from '@fluentui/react-internal/lib/Selection';
 
 // @public (undocumented)
@@ -95,27 +93,7 @@ export enum ColumnDragEndLocation {
 }
 
 // @public (undocumented)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IComboBoxProps;
-    dismissMenu: () => void;
-    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
-    // (undocumented)
-    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
-}
+export const ComboBox: React.FunctionComponent<IComboBoxProps>;
 
 // @public (undocumented)
 export enum ConstrainMode {
@@ -298,26 +276,9 @@ export enum DocumentCardType {
 export const Dropdown: React.FunctionComponent<IDropdownProps>;
 
 // @public (undocumented)
-export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
-    constructor(props: IDropdownProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: {
-        options: any[];
-    };
-    // (undocumented)
-    focus(shouldOpenOnFocus?: boolean): void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IDropdownOption[];
-    // (undocumented)
-    setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void;
-}
+export const DropdownBase: React.FunctionComponent<IDropdownProps>;
+
+export { DropdownMenuItemType }
 
 // @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
@@ -553,45 +514,9 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
-export interface IComboBoxClassNames {
-    // (undocumented)
-    callout: string;
-    // (undocumented)
-    container: string;
-    // (undocumented)
-    divider: string;
-    // (undocumented)
-    errorMessage: string;
-    // (undocumented)
-    header: string;
-    // (undocumented)
-    input: string;
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    optionsContainer: string;
-    // (undocumented)
-    optionsContainerWrapper: string;
-    // (undocumented)
-    root: string;
-    // (undocumented)
-    screenReaderText: string;
-}
-
-// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
-}
-
-// @public (undocumented)
-export interface IComboBoxOptionClassNames {
-    // (undocumented)
-    optionText: string;
-    // (undocumented)
-    optionTextWrapper: string;
-    // (undocumented)
-    root: string;
 }
 
 // @public (undocumented)
@@ -601,7 +526,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
@@ -612,10 +537,10 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
+    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -640,14 +565,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
-    currentOptions: IComboBoxOption[];
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
     focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
-    selectedIndices?: number[];
-    suggestedDisplayValue?: string;
 }
 
 // @public (undocumented)
@@ -1529,10 +1451,6 @@ export interface IDropdown {
     readonly selectedOptions: IDropdownOption[];
 }
 
-// @public
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
-}
-
 // @public (undocumented)
 export interface IDropdownOption extends ISelectableOption {
     // @deprecated
@@ -1540,12 +1458,11 @@ export interface IDropdownOption extends ISelectableOption {
 }
 
 // @public (undocumented)
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number;
     // @deprecated
     isDisabled?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
@@ -1564,17 +1481,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     selectedKeys?: string[] | number[] | null;
     styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IDropdownState {
-    // (undocumented)
-    calloutRenderEdge?: RectangleEdge;
-    hasFocus: boolean;
-    // (undocumented)
-    isOpen: boolean;
-    // (undocumented)
-    selectedIndices: number[];
 }
 
 // @public
@@ -1671,6 +1577,7 @@ export interface IGroupDividerProps {
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
+    onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group?: IGroup) => void;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -1760,11 +1667,15 @@ export interface IGroupedListSectionState {
 // @public (undocumented)
 export interface IGroupedListState {
     // (undocumented)
+    compact?: IGroupedListProps['compact'];
+    // (undocumented)
     groups?: IGroup[];
     // (undocumented)
-    lastSelectionMode?: SelectionMode;
+    items?: IGroupedListProps['items'];
     // (undocumented)
     listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListProps['selectionMode'];
     // (undocumented)
     version: {};
 }
@@ -1937,10 +1848,6 @@ export { IWithViewportProps }
 
 export { ResponsiveMode }
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType }
-
-export { SelectableOptionMenuItemType }
-
 // @public (undocumented)
 export enum SelectAllVisibility {
     // (undocumented)
@@ -1978,13 +1885,15 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-button";
+export * from "@fluentui/react-checkbox";
+export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
-export * from "@fluentui/react-link/lib/Link";
-export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-toggle/lib/Toggle";
+export * from "@fluentui/react-link";
+export * from "@fluentui/react-slider";
+export * from "@fluentui/react-tabs";
+export * from "@fluentui/react-toggle";
 
 // (No @packageDocumentation comment for this package)
 

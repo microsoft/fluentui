@@ -2,7 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
-import { useSetTimeout, useConst } from '@uifabric/react-hooks';
+import { useSetTimeout, useConst } from '@fluentui/react-hooks';
 
 const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 const COMPONENT_NAME = 'Shimmer';

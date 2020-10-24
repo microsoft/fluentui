@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
+import { IButtonProps } from '../../compat/Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
@@ -103,6 +103,11 @@ export interface ISearchBoxProps
    * @defaultvalue false
    */
   underlined?: boolean;
+
+  /**
+   * The role assigned to the root DIV element of the SearchBox, useful for defining a landmark role, such as "search".
+   */
+  role?: string;
 
   /**
    * Theme (provided through customization).

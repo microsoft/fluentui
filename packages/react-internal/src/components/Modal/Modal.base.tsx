@@ -17,10 +17,10 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '../Callout/index';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../Icon/index';
 import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
-import { initializeComponentRef } from '@uifabric/utilities';
+import { initializeComponentRef } from '@fluentui/utilities';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 

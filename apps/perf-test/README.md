@@ -2,7 +2,7 @@ Performance testing with flamegraphs is a feature that runs on all PRs opened ag
 
 ## Sample Performance Test Results Table
 
-Linked from [#9516](https://github.com/microsoft/fluentui/pull/9516#issuecomment-503795745), which made perf improvements to "New" Button components in `packages/experiments`, is a sample perf test comment:
+Linked from [#9516](https://github.com/microsoft/fluentui/pull/9516#issuecomment-503795745), which made perf improvements to "New" Button components in `packages/react-experiments`, is a sample perf test comment:
 
 Component Perf Analysis:
 

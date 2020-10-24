@@ -1,16 +1,16 @@
-// TODO: move to example-app-base once Site moves
+// TODO: move to react-docsite-components once Site moves
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric, setBaseUrl } from '@fluentui/react';
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
 import {
   INavPage,
   ISiteDefinition,
   currentFabricBreakpoint,
   handleRedirects,
-} from '@uifabric/example-app-base/lib/index2';
-import { Route, Router } from '@uifabric/example-app-base';
+} from '@fluentui/react-docsite-components/lib/index2';
+import { Route, Router } from '@fluentui/react-docsite-components';
 import { Site } from '../components/Site/index';
 import { hasUHF, isLocal } from './location';
 

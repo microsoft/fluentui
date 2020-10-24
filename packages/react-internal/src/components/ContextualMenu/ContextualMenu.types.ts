@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from '../Icon/Icon.types';
+import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+// Might need to be changed to compat button
+import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import {
   IContextualMenuItemProps,
@@ -17,7 +17,9 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
+
+export { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
  * {@docCategory ContextualMenu}
@@ -37,7 +39,10 @@ export interface IContextualMenu {}
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps
+  extends IBaseProps<IContextualMenu>,
+    React.RefAttributes<HTMLDivElement>,
+    IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -150,7 +155,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Callback when the ContextualMenu tries to close. If `dismissAll` is true then all
    * submenus will be dismissed.
    */
-  onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
 
   /**
    * Click handler which is invoked if `onClick` is not passed for individual contextual
@@ -329,7 +334,7 @@ export interface IContextualMenuItem {
   text?: string;
 
   /**
-   * Seconday description for the menu item to display
+   * Secondary description for the menu item to display
    */
   secondaryText?: string;
 
@@ -612,7 +617,7 @@ export interface IMenuItemStyles extends IButtonStyles {
   subMenuIcon: IStyle;
 
   /**
-   * Styles for a divider item of a ConextualMenu.
+   * Styles for a divider item of a ContextualMenu.
    */
   divider: IStyle;
 }

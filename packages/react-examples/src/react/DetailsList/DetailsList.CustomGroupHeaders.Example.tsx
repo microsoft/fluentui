@@ -8,7 +8,7 @@ import {
   IDetailsListProps,
   IDetailsGroupRenderProps,
 } from '@fluentui/react/lib/DetailsList';
-import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts

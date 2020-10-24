@@ -4102,6 +4102,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: #a4262c;
               }
           data-is-focusable={true}
+          data-ktp-target={true}
           id="Dropdown63"
           onBlur={[Function]}
           onChange={[Function]}

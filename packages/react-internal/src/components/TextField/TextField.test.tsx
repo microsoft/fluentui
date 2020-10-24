@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -134,6 +134,7 @@ describe('TextField rendering values from props', () => {
     Component: TextField,
     displayName: 'TextField',
     componentPath: path.join(__dirname, 'TextField.ts'),
+    elementRefName: 'elementRef',
   });
 
   it('can render a value', () => {
@@ -201,7 +202,7 @@ describe('TextField basic props', () => {
     const labelDOM = wrapper.getDOMNode().querySelector('label');
 
     // Assert the input ID and label FOR attribute are the same.
-    expect(inputDOM!.id).toBeDefined();
+    expect(inputDOM!.id).toBeTruthy();
     expect(inputDOM!.id).toEqual(labelDOM!.htmlFor);
   });
 
@@ -768,7 +769,7 @@ describe('TextField', () => {
 
     const onSelect = () => {
       const selectedText = window.getSelection();
-      expect(selectedText).toBeDefined();
+      expect(selectedText).toBeTruthy();
       expect(selectedText!.toString()).toEqual(initialValue);
     };
 
