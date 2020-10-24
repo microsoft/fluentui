@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating reference to latest CDN and mapping .note file extension to the 'one' filetype icon.",
+  "packageName": "@fluentui/file-type-icons",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-24T00:34:12.384Z"
+}
