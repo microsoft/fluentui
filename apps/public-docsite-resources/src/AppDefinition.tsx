@@ -363,7 +363,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/pickers',
         },
         {
-          component: require<any>('./components/pages/PivotPage').PivotPage,
+          component: require<any>('./components/pages/TabsPage').PivotPage,
           key: 'Pivot',
           name: 'Pivot',
           url: '#/examples/pivot',

@@ -103,7 +103,7 @@ export const controlsPagesIos: INavPage[] = [
         url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage)),
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/TabsPage/TabsPage').PivotPage)),
       },
       {
         title: 'Popup Menu',

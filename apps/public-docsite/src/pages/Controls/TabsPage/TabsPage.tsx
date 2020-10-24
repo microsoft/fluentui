@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PivotPageProps } from './TabsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PivotPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TabsPage/';
 
 export const PivotPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
@@ -22,11 +22,11 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
       return [
         {
           sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/ios/PivotImplementation.md',
+          editUrl: baseUrl + 'docs/ios/TabsImplementation.md',
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string
+                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TabsPage/docs/ios/TabsImplementation.md') as string
               }
             </Markdown>
           ),
