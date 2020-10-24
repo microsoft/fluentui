@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Avoid React.Children traversal for early return cases",
   "packageName": "@fluentui/react-internal",
   "email": "KevinTCoughlin@users.noreply.github.com",
