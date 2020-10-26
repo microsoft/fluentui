@@ -309,17 +309,37 @@ const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'h
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 const COMPONENT_NAME = 'ResizeGroup';
 
+type ResizeDataAction = {
+  type: 'resizeData' | keyof IResizeGroupState;
+  value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
+};
+
+function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): IResizeGroupState {
+  switch (action.type) {
+    case 'resizeData':
+      return { ...action.value };
+    case 'dataToMeasure': {
+      return { ...state, dataToMeasure: action.value, resizeDirection: 'grow', measureContainer: true };
+    }
+    default:
+      return { ...state, [action.type]: action.value };
+  }
+}
+
 function useResizeState(
   props: IResizeGroupProps,
   nextResizeGroupStateProvider: ReturnType<typeof getNextResizeGroupStateProvider>,
   rootRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const initialStateData = useConst(() => nextResizeGroupStateProvider.getInitialResizeGroupState(props.data));
-  const [resizeData, setResizeData] = React.useState(initialStateData);
+  const [resizeData, dispatchResizeDataAction] = React.useReducer(resizeDataReducer, initialStateData);
 
   // Reset state when new data is provided
   React.useEffect(() => {
-    setResizeData({ renderedData: props.data, resizeDirection: 'grow', measureContainer: true });
+    dispatchResizeDataAction({
+      type: 'dataToMeasure',
+      value: props.data,
+    });
   }, [props.data]);
 
   // Because it's possible that we may force more than one re-render per animation frame, we
@@ -329,19 +349,21 @@ function useResizeState(
 
   const updateResizeState = React.useCallback((nextState?: IResizeGroupState) => {
     if (nextState) {
-      setResizeData(nextState);
+      dispatchResizeDataAction({
+        type: 'resizeData',
+        value: nextState,
+      });
     }
   }, []);
 
   const remeasure: () => void = React.useCallback(() => {
     if (rootRef.current) {
-      setResizeData({
-        renderedData: resizeData.renderedData,
-        resizeDirection: resizeData.resizeDirection,
-        measureContainer: true,
+      dispatchResizeDataAction({
+        type: 'measureContainer',
+        value: true,
       });
     }
-  }, [rootRef, resizeData.renderedData, resizeData.resizeDirection]);
+  }, [rootRef]);
 
   return [stateRef, updateResizeState, remeasure] as const;
 }
