@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { makeVariantClasses, Theme, IStyle } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
-import { ButtonState } from './Button.types';
+import { ButtonState, ButtonVariants } from './Button.types';
 
 const GlobalClassNames = {
   root: 'ms-Button',
@@ -141,7 +141,7 @@ export const ButtonStyles = {
           color:
             'var(--button-highContrast-pressed-contentColor, ' +
             'var(--button-highContrast-hovered-contentColor, ' +
-            'var(--button-highContarst-contentColor)))',
+            'var(--button-highContrast-contentColor)))',
           [`.${GlobalClassNames.icon}`]: {
             color:
               'var(--button-highContrast-pressed-iconColor, ' +
@@ -198,7 +198,7 @@ export const ButtonStyles = {
   },
 };
 
-export const ButtonSizeVariants = {
+export const ButtonSizeVariantStyles = {
   size_smallest: {
     height: 'var(--button-size-smallest)',
     minHeight: 'var(--button-size-smallest)',
@@ -230,7 +230,7 @@ export const ButtonSizeVariants = {
   },
 };
 
-export const ButtonVariants = (theme: Theme) => {
+export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
   const { fonts, effects, palette, semanticColors } = theme;
 
   return {
@@ -246,7 +246,7 @@ export const ButtonVariants = (theme: Theme) => {
       },
 
       // Sizing tokens
-      iconSize: fonts?.mediumPlus?.fontSize,
+      iconSize: String(fonts?.mediumPlus?.fontSize || ''),
       borderWidth: '1px',
       boxShadow: 'none',
       borderRadius: effects?.roundedCorner2,
@@ -264,9 +264,9 @@ export const ButtonVariants = (theme: Theme) => {
 
       // Font tokens
       fontWeight: '600',
-      fontSize: fonts?.medium?.fontSize,
+      fontSize: String(fonts?.medium?.fontSize || ''),
       fontFamily: fonts?.medium?.fontFamily,
-      secondaryContentFontSize: fonts?.small.fontSize,
+      secondaryContentFontSize: String(fonts?.small.fontSize || ''),
 
       // Color tokens
       focusColor: palette?.black,
@@ -412,11 +412,11 @@ export const ButtonVariants = (theme: Theme) => {
         contentColor: palette?.themePrimary,
       },
 
-      focused: {
-        contentColor: palette?.neutralPrimary,
-        iconColor: palette?.themeDarkAlt,
-        secondaryContentColor: palette?.neutralPrimary,
-      },
+      // focused: {
+      //   contentColor: palette?.neutralPrimary,
+      //   iconColor: palette?.themeDarkAlt,
+      //   secondaryContentColor: palette?.neutralPrimary,
+      // },
 
       hovered: {
         background: palette?.neutralLighter,
@@ -489,7 +489,7 @@ export const ButtonVariants = (theme: Theme) => {
       },
     },
 
-    ...ButtonSizeVariants,
+    ...ButtonSizeVariantStyles,
   };
 };
 
@@ -497,7 +497,8 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
   name: 'Button',
   prefix: '--button',
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styles: ButtonStyles as any,
 
-  variants: ButtonVariants,
+  variants: ButtonVariantStyles,
 });

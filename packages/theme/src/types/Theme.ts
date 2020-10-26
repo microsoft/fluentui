@@ -55,6 +55,9 @@ export type ColorTokens = ColorTokenSet & {
   checked?: ColorTokenSet;
   checkedHovered?: ColorTokenSet;
   checkedPressed?: ColorTokenSet;
+  expanded?: ColorTokenSet;
+
+  highContrast?: ColorTokens;
 };
 
 export type FontTokens = Partial<{

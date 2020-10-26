@@ -45,16 +45,10 @@ export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: string;
 };
 
+// Warning: (ae-forgotten-export) The symbol "MakeVariantClassesOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
-
-// @public
-export type MakeVariantClassesOptions = {
-    name?: string;
-    prefix?: string;
-    styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-    variants?: Variants | ((theme: Theme) => Variants);
-};
+export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const MergeStylesProvider: ({ children }: {

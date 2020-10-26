@@ -5,38 +5,7 @@ import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { useStyleRenderer } from './styleRenderers/useStyleRenderer';
 import { StyleRenderer } from './styleRenderers/types';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
-  for (const key of path) {
-    graphNode = graphNode.get(key);
-
-    if (!graphNode) {
-      return;
-    }
-  }
-
-  return graphNode;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
-  for (let i = 0; i < path.length - 1; i++) {
-    const key = path[i];
-
-    let current = graphNode.get(key);
-
-    if (!current) {
-      current = new Map();
-
-      graphNode.set(key, current);
-    }
-
-    graphNode = current;
-  }
-
-  graphNode.set(path[path.length - 1], value);
-};
+import { graphGet, graphSet } from './graph';
 
 /**
  * Registers a css object, optionally as a function of the theme.

@@ -1,48 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { Variants, Theme } from '@fluentui/theme';
-import { IStyle } from '@uifabric/merge-styles';
+import { Theme } from '@fluentui/theme';
 import { StyleRenderer, useTheme, useStyleRenderer } from './index';
 import { useWindow } from '@fluentui/react-window-provider';
 import { replaceCSSVariables } from './replaceCSSVariables';
+import { callOrReturn } from './callOrReturn';
+import { graphSet, graphGet } from './graph';
+import { MakeVariantClassesOptions } from './makeVariantClasses.current';
 
-// type VariantClassesHook = <TState>(state: TState) =>
+/** Get cache keys array, based on the variants available. */
+const getCacheKeys = (state: any, variantSets: Record<string, any>[]) => {
+  const cacheKeys = [];
 
-/**
- * Calls a function with the argument, or returns the given object.
- * @param objOrFunc - Function or object.
- * @param argument - Argument to pass if a function is provided.
- */
-const callOrReturn = (objOrFunc: any, argument: any) =>
-  typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
+  for (const set of variantSets) {
+    if (set) {
+      for (const variantName of Object.keys(set)) {
+        if (variantName !== 'root') {
+          const variantNameParts = variantName.split('_');
 
-/**
- * Options for makeVariantClasses.
- */
-export type MakeVariantClassesOptions = {
-  /**
-   * Name of the component to use for fetching variants from the theme.
-   */
-  name?: string;
+          const isActive =
+            state.variant === variantName ||
+            state[variantName] ||
+            (variantNameParts.length === 2 && state[variantNameParts[0]] === variantNameParts[1]);
 
-  /** */
-  extends?: Make;
+          cacheKeys.push(variantName + '-' + isActive);
+        }
+      }
+    }
+  }
 
-  /**
-   * Prefix for css variables within the variants.
-   */
-  prefix?: string;
-
-  /**
-   * Styles for the component.
-   */
-  styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-
-  /**
-   * Variants for the styles. A variant defines token values when a particular prop is present, or the
-   * variant prop matches.
-   */
-  variants?: Variants | ((theme: Theme) => Variants);
+  return cacheKeys;
 };
 
 /**
@@ -52,49 +39,70 @@ export type MakeVariantClassesOptions = {
  */
 export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptions) => {
   const { styles: styleOrFunction, variants, name, prefix } = options;
+  const classCache = new Map();
 
   return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
     const win = useWindow();
     const contextualTheme = useTheme();
     const contextualRenderer = useStyleRenderer();
+    const rendererId = contextualRenderer.getId();
+    const { tokens: inlineTokens, variant: activeVariant } = state as any;
 
+    // Use the passed in theme/render, fall back to contextual values.
     theme = theme || contextualTheme || {};
     renderer = (renderer || contextualRenderer) as StyleRenderer;
 
-    const isStyleFunction = typeof styleOrFunction === 'function';
-    const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => any)(theme!) : styleOrFunction;
-
-    // Flatten and merge the variants from the definition and theme overrides.
+    // Build up the variant sets so that we can evaluate a cache key for the classes.
     const themeVariants = name ? theme?.components?.[name]?.variants : undefined;
-
-    const variables1 = [
+    const variantSets = [
       callOrReturn(variants, theme),
       callOrReturn(themeVariants, theme),
-      { root: callOrReturn(state.tokens, theme) },
+      { root: callOrReturn(inlineTokens, theme) },
     ];
-    const variables = tokensToStyleObject(theme.tokens);
 
-    for (const set of variables1) {
-      if (set) {
-        for (const variantName of Object.keys(set)) {
-          if (variantName === 'root' || state[variantName] || state.variant === variantName) {
-            Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
-          } else {
-            const nameParts = variantName.split('_');
-            if (nameParts.length === 2 && state[nameParts[0]] === nameParts[1]) {
+    // Derive the cache
+    const cachePath = [
+      rendererId,
+      win,
+      theme && theme.id ? theme.id : theme,
+      JSON.stringify(inlineTokens),
+      ...getCacheKeys(state, variantSets),
+    ];
+    let classNames = graphGet(classCache, cachePath);
+
+    if (!classNames) {
+      const isStyleFunction = typeof styleOrFunction === 'function';
+      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => any)(theme!) : styleOrFunction;
+      const variables = tokensToStyleObject(theme.tokens);
+
+      // Iterate through all valid variant sets in the order of least to most important (defaults, theme, inline)
+      for (const set of variantSets) {
+        if (set) {
+          // Loop through the variants in the set.
+          for (const variantName of Object.keys(set)) {
+            // If the set is root, or if the set matches a state modifier or the activeVariant,
+            if (variantName === 'root' || (state as any)[variantName] || activeVariant === variantName) {
+              // Assign the flattened token set to the variables set to resolve.
               Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
+            } else {
+              const nameParts = variantName.split('_');
+              // If the set matches an enum/value pair,
+              if (nameParts.length === 2 && (state as any)[nameParts[0]] === nameParts[1]) {
+                // Assign the flattened token set to the variables set to resolve.
+                Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
+              }
             }
           }
         }
       }
+
+      const resolvedStyles = replaceCSSVariables(styles, variables as any);
+      classNames = renderer.renderStyles(resolvedStyles, { targetWindow: win, rtl: !!theme!.rtl });
+      graphSet(classCache, cachePath, classNames);
     }
 
-    console.log(variables);
-    const resolvedStyles = replaceCSSVariables(styles, variables);
-    const classes = renderer.renderStyles(resolvedStyles, { targetWindow: win, rtl: !!theme!.rtl });
-
-    for (let slot of Object.keys(classes)) {
-      _setClass(state, classes[slot], slot !== 'root' && slot);
+    for (const slot of Object.keys(classNames)) {
+      _setClass(state, classNames[slot], slot !== 'root' ? slot : '');
     }
   };
 };

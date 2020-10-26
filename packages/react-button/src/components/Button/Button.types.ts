@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
@@ -101,29 +102,35 @@ export interface ButtonState extends ButtonProps {
 
 export type ButtonTokens = ColorTokens &
   FontTokens & {
-    /* sizing */
-    paddingLeft?: string;
-    paddingRight?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
-    margin?: string;
-    height?: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minHeight?: string;
-    contentGap?: string;
-    iconSize?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
     borderRadius?: string;
     borderTopLeftRadius?: string;
     borderTopRightRadius?: string;
-    borderBottomLeftRadius?: string;
-    borderBottomRightRadius?: string;
     borderWidth?: string;
     boxShadow?: string;
-    width?: string;
-
+    contentGap?: string;
+    forcedColorAdjust?: string;
+    height?: string;
+    iconSize?: string;
+    margin?: string;
+    maxWidth?: string;
+    menuIconColor?: string;
+    minHeight?: string;
+    minWidth?: string;
+    paddingBottom?: string;
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    secondaryContentFontSize?: string;
     transform?: string;
     transition?: string;
+    width?: string;
+
+    pressed?: {
+      transform?: string;
+      transition?: string;
+    };
 
     size?: {
       smallest?: string;
@@ -134,17 +141,25 @@ export type ButtonTokens = ColorTokens &
       larger?: string;
       largest?: string;
     };
-
-    pressed?: {
-      transform?: string;
-      transition?: string;
-    };
   };
 
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: TTokens;
+  root?: TTokens;
   primary?: TTokens;
+  ghost?: TTokens;
+  transparent?: TTokens;
   iconOnly?: TTokens;
   circular?: TTokens;
   block?: TTokens;
+  loading?: TTokens;
+
+  size_smallest?: TTokens;
+  size_smaller?: TTokens;
+  size_small?: TTokens;
+  size_regular?: TTokens;
+  size_large?: TTokens;
+  size_larger?: TTokens;
+  size_largest?: TTokens;
+
+  [key: string]: TTokens | undefined;
 };

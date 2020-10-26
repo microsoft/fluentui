@@ -3,7 +3,6 @@ import { IStyle } from '@uifabric/merge-styles';
 export const resolveSingleCSSVariable = (value: string, variables: Record<string, string>) => {
   let lastResult = value;
   let currentResult: string | undefined = value;
-  let isVariableReference = false;
 
   do {
     lastResult = currentResult;
@@ -12,7 +11,6 @@ export const resolveSingleCSSVariable = (value: string, variables: Record<string
     const matches = lastResult?.match(/(--[a-zA-Z0-9-]+)/g);
 
     if (matches) {
-      isVariableReference = true;
       for (const match of matches) {
         if (variables[match]) {
           currentResult = variables[match];
@@ -33,11 +31,10 @@ export const resolveSingleCSSVariable = (value: string, variables: Record<string
     }
   } while (currentResult && lastResult !== currentResult);
 
-  const resolvedValue = currentResult || lastResult;
-
-  if (isVariableReference && value === resolvedValue) {
-    console.log(`Could not resolve ${value}`);
-  }
+  // const resolvedValue = currentResult || lastResult;
+  // if (isVariableReference && value === resolvedValue) {
+  //   console.log(`Could not resolve ${value}`);
+  // }
 
   return currentResult || lastResult;
 };
@@ -59,8 +56,13 @@ export const resolveCSSVariableValue = (value: string, variables: Record<string,
   return value;
 };
 
-export const replaceCSSVariables = (inputStyles: IStyle, variables: Record<string, string>, outputStyles?: IStyle) => {
-  outputStyles = outputStyles || {};
+export const replaceCSSVariables = (
+  inputStyles: IStyle,
+  variables: Record<string, string>,
+  outputStyles: IStyle = {},
+) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const output: any = outputStyles;
 
   if (inputStyles) {
     const inputStylesArray = Array.isArray(inputStyles) ? inputStyles : [inputStyles];
@@ -75,28 +77,26 @@ export const replaceCSSVariables = (inputStyles: IStyle, variables: Record<strin
           if (value) {
             switch (valueType) {
               case 'string':
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (outputStyles as any)[name] = resolveCSSVariableValue(value as string, variables);
+                output[name] = resolveCSSVariableValue(value as string, variables);
                 break;
               case 'object':
                 if (Array.isArray(value)) {
-                  outputStyles[name] = outputStyles[name] || [];
+                  output[name] = output[name] || [];
+
                   for (const partStyles of value) {
                     if (typeof partStyles === 'object') {
-                      outputStyles[name].push(replaceCSSVariables(partStyles, variables));
+                      output[name].push(replaceCSSVariables(partStyles, variables));
                     } else {
-                      outputStyles[name].push(partStyles);
+                      output[name].push(partStyles);
                     }
                   }
                 } else {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  outputStyles[name] = outputStyles[name] || {};
-                  replaceCSSVariables(value, variables, (outputStyles as any)[name]);
+                  output[name] = output[name] || {};
+                  replaceCSSVariables(value, variables, output[name]);
                 }
                 break;
               default:
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (outputStyles as any)[name] = value;
+                output[name] = value;
             }
           }
         }
@@ -104,5 +104,5 @@ export const replaceCSSVariables = (inputStyles: IStyle, variables: Record<strin
     }
   }
 
-  return outputStyles;
+  return output;
 };

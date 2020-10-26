@@ -43,7 +43,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export const ButtonSizeVariants: {
+export const ButtonSizeVariantStyles: {
     size_smallest: {
         height: string;
         minHeight: string;
@@ -77,28 +77,212 @@ export interface ButtonState extends ButtonProps {
 }
 
 // @public (undocumented)
+export const ButtonStyles: {
+    root: (string | {
+        cursor: string;
+        alignItems: string;
+        borderStyle: string;
+        display: string;
+        justifyContent: string;
+        outline: string;
+        position: string;
+        userSelect: string;
+        boxSizing: string;
+        verticalAlign: string;
+        textDecoration: string;
+        background: string;
+        color: string;
+        borderColor: string;
+        borderTopLeftRadius: string;
+        borderTopRightRadius: string;
+        borderBottomLeftRadius: string;
+        borderBottomRightRadius: string;
+        borderLeftWidth: string;
+        borderRightWidth: string;
+        borderTopWidth: string;
+        borderBottomWidth: string;
+        boxShadow: string;
+        width: string;
+        maxWidth: string;
+        minWidth: string;
+        height: string;
+        minHeight: string;
+        paddingLeft: string;
+        paddingRight: string;
+        paddingTop: string;
+        paddingBottom: string;
+        transition: string;
+        whiteSpace: string;
+        fontFamily: string;
+        fontSize: string;
+        fontWeight: string;
+        WebkitFontSmoothing: string;
+        MozOsxFontSmoothing: string;
+        ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
+            content: string;
+            position: string;
+            left: number;
+            right: number;
+            top: number;
+            bottom: number;
+            borderWidth: string;
+            borderStyle: string;
+            borderColor: string;
+            borderTopLeftRadius: string;
+            borderTopRightRadius: string;
+            borderBottomLeftRadius: string;
+            borderBottomRightRadius: string;
+            boxShadow: string;
+            zIndex: number;
+            "@media screen and (forced-colors: active)": {
+                borderColor: string;
+                boxShadow: string;
+            };
+        };
+        "& > *:not(:first-child)": {
+            marginLeft: string;
+        };
+        "@media screen and (forced-colors: active)": {
+            [x: string]: string | {
+                color: string;
+            };
+            forcedColorAdjust: string;
+            background: string;
+            borderColor: string;
+            color: string;
+        };
+        '&:hover': {
+            [x: string]: string | {
+                color: string;
+                background?: undefined;
+                borderColor?: undefined;
+            } | {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+            background: string;
+            color: string;
+            borderColor: string;
+            boxShadow: string;
+            "@media screen and (forced-colors: active)": {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+        };
+        '&:active': {
+            [x: string]: string | {
+                color: string;
+                background?: undefined;
+                borderColor?: undefined;
+            } | {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+            background: string;
+            color: string;
+            borderColor: string;
+            boxShadow: string;
+            transform: string;
+            transition: string;
+            "@media screen and (forced-colors: active)": {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+        };
+        '&[aria-disabled=true]': {
+            [x: string]: string | {
+                color: string;
+                background?: undefined;
+                borderColor?: undefined;
+            } | {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+            pointerEvents: string;
+            opacity: string;
+            backgroundColor: string;
+            color: string;
+            borderColor: string;
+            boxShadow: string;
+            "@media screen and (forced-colors: active)": {
+                [x: string]: string | {
+                    color: string;
+                };
+                background: string;
+                borderColor: string;
+                color: string;
+            };
+        };
+    })[];
+    icon: (string | {
+        alignItems: string;
+        color: string;
+        display: string;
+        flexShrink: number;
+        fontSize: string;
+        fontWeight: string;
+        height: string;
+        justifyContent: string;
+        lineHeight: string;
+        position: string;
+        width: string;
+    })[];
+    content: {
+        lineHeight: string;
+        position: string;
+    };
+};
+
+// @public (undocumented)
 export type ButtonTokens = ColorTokens & FontTokens & {
-    paddingLeft?: string;
-    paddingRight?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
-    margin?: string;
-    height?: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minHeight?: string;
-    contentGap?: string;
-    iconSize?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
     borderRadius?: string;
     borderTopLeftRadius?: string;
     borderTopRightRadius?: string;
-    borderBottomLeftRadius?: string;
-    borderBottomRightRadius?: string;
     borderWidth?: string;
     boxShadow?: string;
-    width?: string;
+    contentGap?: string;
+    forcedColorAdjust?: string;
+    height?: string;
+    iconSize?: string;
+    margin?: string;
+    maxWidth?: string;
+    menuIconColor?: string;
+    minHeight?: string;
+    minWidth?: string;
+    paddingBottom?: string;
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    secondaryContentFontSize?: string;
     transform?: string;
     transition?: string;
+    width?: string;
+    pressed?: {
+        transform?: string;
+        transition?: string;
+    };
     size?: {
         smallest?: string;
         smaller?: string;
@@ -108,20 +292,30 @@ export type ButtonTokens = ColorTokens & FontTokens & {
         larger?: string;
         largest?: string;
     };
-    pressed?: {
-        transform?: string;
-        transition?: string;
-    };
 };
 
 // @public (undocumented)
 export type ButtonVariants<TTokens = ButtonTokens> = {
-    base?: TTokens;
+    root?: TTokens;
     primary?: TTokens;
+    ghost?: TTokens;
+    transparent?: TTokens;
     iconOnly?: TTokens;
     circular?: TTokens;
     block?: TTokens;
+    loading?: TTokens;
+    size_smallest?: TTokens;
+    size_smaller?: TTokens;
+    size_small?: TTokens;
+    size_regular?: TTokens;
+    size_large?: TTokens;
+    size_larger?: TTokens;
+    size_largest?: TTokens;
+    [key: string]: TTokens | undefined;
 };
+
+// @public (undocumented)
+export const ButtonVariantStyles: (theme: Theme) => ButtonVariants<import("./Button.types").ButtonTokens>;
 
 // @public (undocumented)
 export interface CheckedState {

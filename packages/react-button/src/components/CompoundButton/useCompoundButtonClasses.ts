@@ -1,7 +1,7 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { CompoundButtonState } from './CompoundButton.types';
-import { ButtonStyles, ButtonVariants } from '../Button/useButtonClasses';
-import { ButtonVariants as ButtonVariantsType } from '../Button/Button.types';
+import { ButtonStyles, ButtonVariantStyles } from '../Button/useButtonClasses';
+import { ButtonVariants } from '../Button/Button.types';
 
 import { merge } from '@uifabric/utilities';
 import { concatStyleSets } from '@fluentui/style-utilities';
@@ -85,7 +85,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
   variants: (theme: Theme) => {
     const { palette, semanticColors } = theme;
 
-    return merge<ButtonVariantsType>({}, ButtonVariants(theme), {
+    return merge<ButtonVariants>({}, ButtonVariantStyles(theme), {
       root: {
         height: 'auto',
         maxWidth: '280px',
@@ -188,7 +188,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
           secondaryContentColor: palette?.themePrimary,
         },
       },
-    });
+    } as ButtonVariants);
   },
 });
 
