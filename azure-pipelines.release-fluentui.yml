@@ -38,7 +38,7 @@ steps:
     displayName: yarn
   - script: |
       PRODUCTION=true yarn build
-    displayName: yarn build
+    displayName: npx midgard-yarn build
   - script: |
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs

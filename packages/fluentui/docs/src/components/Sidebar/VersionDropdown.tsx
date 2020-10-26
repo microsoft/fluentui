@@ -13,7 +13,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 export function VersionDropdown(props: { width: number }) {
   const [versions, setVersions] = React.useState<string[]>([]);
   React.useEffect(() => {
-    fetch('http://localhost:3000/manifest.json') // Assume that the manifest is hosted in the same blob storage
+    fetch('/manifest.json') // Assume that the manifest is hosted in the same blob storage
       .then(res => res.json())
       .then((manifest: VersionManifest) => {
         const availableVersions = Object.keys(manifest).reduce((versions, version) => {
