@@ -2,7 +2,7 @@ import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
 import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions, IStyle } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
-  const { className, theme } = props;
+  const { className, theme, isLineLegendInBarChart = false } = props;
   const { palette, fonts } = theme!;
   const options: IGetFocusStylesOptions = {
     inset: undefined,
@@ -42,7 +42,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         },
       },
       width: '12px',
-      height: '12px',
+      height: isLineLegendInBarChart ? '4px' : '12px',
       backgroundColor: props.stripePattern ? '' : props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
