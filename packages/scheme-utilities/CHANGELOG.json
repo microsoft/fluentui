@@ -2,6 +2,21 @@
   "name": "@fluentui/scheme-utilities",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename UMD global to FluentUISchemeUtilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "c0cc166b2cbf43933d451babebbe331fdb7499b9",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/scheme-utilities_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",
