@@ -12,7 +12,7 @@ export function webpack() {
 }
 
 export async function webpackDevServer() {
-  const fp = await import('find-free-port');
+  const fp = (await import('find-free-port')).default;
   const webpackConfigFilePath = argv().webpackConfig || 'webpack.serve.config.js';
   const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
   const port = await fp(4322, 4400);
