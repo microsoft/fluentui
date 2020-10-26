@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Charting: Added line feature to VerticalBarChart.",
+  "packageName": "@fluentui/react-charting",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-26T23:50:38.868Z"
+}
