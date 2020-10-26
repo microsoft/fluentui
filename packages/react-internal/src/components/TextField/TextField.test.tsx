@@ -202,7 +202,7 @@ describe('TextField basic props', () => {
     const labelDOM = wrapper.getDOMNode().querySelector('label');
 
     // Assert the input ID and label FOR attribute are the same.
-    expect(inputDOM!.id).toBeDefined();
+    expect(inputDOM!.id).toBeTruthy();
     expect(inputDOM!.id).toEqual(labelDOM!.htmlFor);
   });
 
@@ -769,7 +769,7 @@ describe('TextField', () => {
 
     const onSelect = () => {
       const selectedText = window.getSelection();
-      expect(selectedText).toBeDefined();
+      expect(selectedText).toBeTruthy();
       expect(selectedText!.toString()).toEqual(initialValue);
     };
 

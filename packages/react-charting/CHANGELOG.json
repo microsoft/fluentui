@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.3",
+      "version": "5.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Charting: Adding customized callout support to AreaChart and LineChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ef714229005bfe3ab09fa2a24f1c31bfe3b82e96",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Changing hover behavior of circles and removing focus of circles.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "fd68400cb0ce47b26aedebfd64823cba4e253621",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:33:29 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.1",
       "version": "5.0.0-beta.1",

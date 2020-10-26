@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.1)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.0..@fluentui/react-checkbox_v1.0.0-beta.1)
+
+### Changes
+
+- Major bump react-compose package since it dependes on packages with new major. ([PR #15679](https://github.com/microsoft/fluentui/pull/15679) by xgao@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.0)
 

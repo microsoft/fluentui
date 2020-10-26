@@ -1,8 +1,17 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.1)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.0..@fluentui/scheme-utilities_v8.0.0-beta.1)
+
+### Changes
+
+- Rename UMD global to FluentUISchemeUtilities ([PR #15683](https://github.com/microsoft/fluentui/pull/15683) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.0)
 

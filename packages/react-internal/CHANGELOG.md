@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.2)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.1..@fluentui/react-internal_v8.0.0-beta.2)
+
+### Changes
+
+- Adding a forwardRef to Separator within react-internal. ([PR #15678](https://github.com/microsoft/fluentui/pull/15678) by czearing@outlook.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.1)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.0..@fluentui/react-internal_v8.0.0-beta.1)
+
+### Changes
+
+- SelectionZone: Adding an optional className prop ([PR #15652](https://github.com/microsoft/fluentui/pull/15652) by nebhatna@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.0)
 

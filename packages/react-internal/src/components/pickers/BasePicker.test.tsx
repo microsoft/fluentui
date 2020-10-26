@@ -68,6 +68,11 @@ describe('BasePicker', () => {
     <div key={props.item.name}>{basicRenderer(props)}</div>
   );
 
+  const runAllTimers = () =>
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+
   it('renders correctly', () => {
     const component = renderer.create(
       <BasePickerWithType
@@ -124,9 +129,9 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(2);
@@ -169,9 +174,9 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(0);
@@ -220,9 +225,9 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const forceButton = document.querySelectorAll('[data-automationid=sug-forceResolve]');
     expect(forceButton.length).toEqual(1);
@@ -254,7 +259,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -330,7 +335,7 @@ describe('BasePicker', () => {
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(15);
@@ -359,7 +364,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
@@ -388,7 +393,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
@@ -397,12 +402,13 @@ describe('BasePicker', () => {
     expect(getSuggestions(document)).toBeFalsy();
     ReactTestUtils.Simulate.click(input, { button: 0 });
 
-    jest.runAllTimers();
+    runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
   });
 
   it('Opens menu when input refocused after search has happened', () => {
+    expect(getSuggestions(document)).toBeFalsy();
     jest.useFakeTimers();
     document.body.appendChild(root);
 
@@ -425,7 +431,10 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    // For some reason with act() this has to be run twice to make the callout dismiss callback
+    // actually be called?
+    runAllTimers();
+    runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
@@ -434,9 +443,9 @@ describe('BasePicker', () => {
     // Implicit test to ensure suggestions are dismissed when focus lost
     expect(getSuggestions(document)).toBeFalsy();
 
-    jest.runAllTimers();
+    runAllTimers();
     input.focus();
-    jest.runAllTimers();
+    runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
   });
@@ -465,7 +474,7 @@ describe('BasePicker', () => {
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
-    jest.runAllTimers();
+    runAllTimers();
 
     expect(count).toEqual(1);
 
@@ -507,9 +516,9 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'b';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
-    expect(getSuggestions(document)).toBeDefined();
+    expect(getSuggestions(document)).toBeTruthy();
 
     const moreButton = document.querySelector('[data-automationid=sug-searchForMore]') as HTMLElement;
     expect(moreButton).toBeTruthy();
