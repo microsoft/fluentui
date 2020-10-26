@@ -314,13 +314,17 @@ type ResizeDataAction = {
   value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
 };
 
+/**
+ * Use useReducer instead of userState because React is not batching the state updates
+ * when state is set in callbacks of setTimeout or requestAnimationFrame.
+ * See issue: https://github.com/facebook/react/issues/14259
+ */
 function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): IResizeGroupState {
   switch (action.type) {
     case 'resizeData':
       return { ...action.value };
-    case 'dataToMeasure': {
+    case 'dataToMeasure':
       return { ...state, dataToMeasure: action.value, resizeDirection: 'grow', measureContainer: true };
-    }
     default:
       return { ...state, [action.type]: action.value };
   }
