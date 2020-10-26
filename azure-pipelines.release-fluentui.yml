@@ -34,11 +34,11 @@ steps:
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
   - script: |
-      yarn install
+      npx midgard-yarn install
     displayName: yarn
   - script: |
       PRODUCTION=true yarn build
-    displayName: npx midgard-yarn build
+    displayName: yarn build
   - script: |
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
