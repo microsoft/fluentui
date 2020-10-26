@@ -301,7 +301,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: ICalloutProps;
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IYValueHover {
