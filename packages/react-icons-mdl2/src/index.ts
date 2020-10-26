@@ -1732,6 +1732,7 @@ export { default as WorldClockIcon } from './components/WorldClockIcon';
 export { default as WorldIcon } from './components/WorldIcon';
 export { default as XamarinLogoIcon } from './components/XamarinLogoIcon';
 export { default as XboxControllerIcon } from './components/XboxControllerIcon';
+export { default as ZipFolderIcon } from './components/ZipFolderIcon';
 export { default as ZoomIcon } from './components/ZoomIcon';
 export { default as ZoomInIcon } from './components/ZoomInIcon';
 export { default as ZoomOutIcon } from './components/ZoomOutIcon';
