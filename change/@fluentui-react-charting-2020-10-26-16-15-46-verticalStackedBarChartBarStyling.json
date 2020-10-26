@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Charting: Adding support for bar gaps and rounded corners in VerticalStackedBarChart.",
+  "packageName": "@fluentui/react-charting",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-26T23:15:45.984Z"
+}
