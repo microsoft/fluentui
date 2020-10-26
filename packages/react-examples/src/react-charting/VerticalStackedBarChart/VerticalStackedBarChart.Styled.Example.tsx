@@ -37,7 +37,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
+      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
@@ -74,6 +74,11 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
     const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
       return {
+        xAxis: {
+          selectors: {
+            text: { fill: 'black', fontSize: '8px' },
+          },
+        },
         chart: {
           paddingBottom: '45px',
         },
@@ -99,6 +104,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             height={this.state.height}
             width={this.state.width}
             yAxisTickCount={10}
+            // Just test link
             href={'www.google.com'}
             // eslint-disable-next-line react/jsx-no-bind
             styles={customStyles}
@@ -109,7 +115,12 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             }}
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
-            margins={{ left: 50 }}
+            margins={{
+              bottom: 0,
+              top: 0,
+              left: 0,
+              right: 0,
+            }}
             legendProps={{
               allowFocusOnLegends: true,
               styles: {
@@ -118,8 +129,8 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
+            // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-explicit-any
+            onRenderCalloutPerDataPoint={(props: any) =>
               props ? (
                 <ChartHoverCard
                   XValue={props.xAxisCalloutData}

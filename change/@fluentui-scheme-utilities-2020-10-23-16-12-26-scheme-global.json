@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename UMD global to FluentUISchemeUtilities",
-  "packageName": "@fluentui/scheme-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-23T23:12:26.107Z"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/file-type-icons_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating reference to latest CDN and mapping .note file extension to the 'one' filetype icon.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0aa8229bf24122b189ac34e59f4353ea760df2dd",
+            "package": "@fluentui/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/file-type-icons_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",

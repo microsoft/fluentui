@@ -157,6 +157,8 @@ export interface ICartesianChartProps {
 
   /**
    * Margins for the chart
+   * @default `{ top: 20, bottom: 35, left: 40, right: 20 }`
+   * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
   margins?: IMargins;
 
@@ -299,7 +301,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: ICalloutProps;
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IYValueHover {
