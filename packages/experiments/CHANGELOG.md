@@ -1,8 +1,23 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Oct 2020 12:22:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.0)
+
+Mon, 26 Oct 2020 12:22:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.35.0..@uifabric/experiments_v7.36.0)
+
+### Minor changes
+
+- Add property to FloatingSuggestionComposite to have keyboard selectable headers and footers ([PR #15555](https://github.com/microsoft/fluentui/pull/15555) by elvonspa@microsoft.com)
+- UnifiedPicker: Fixing input selection ([PR #15676](https://github.com/microsoft/fluentui/pull/15676) by elvonspa@microsoft.com)
+
+### Patches
+
+- UnifiedPicker: fixing fluent bugs ([PR #15677](https://github.com/microsoft/fluentui/pull/15677) by elvonspa@microsoft.com)
+- Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker ([PR #15680](https://github.com/microsoft/fluentui/pull/15680) by elvonspa@microsoft.com)
 
 ## [7.35.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.35.0)
 

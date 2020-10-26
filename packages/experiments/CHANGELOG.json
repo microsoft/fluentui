@@ -2,6 +2,41 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:22:51 GMT",
+      "tag": "@uifabric/experiments_v7.36.0",
+      "version": "7.36.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add property to FloatingSuggestionComposite to have keyboard selectable headers and footers",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a836650f1dd1487c98a1960bc91a60dd11a9aceb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "UnifiedPicker: Fixing input selection",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ba305588b4ec5918e1a0371f5daab52d15979a85",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "UnifiedPicker: fixing fluent bugs",
+            "author": "elvonspa@microsoft.com",
+            "commit": "64a90ffdf0026dc2e4f59ba6813472192b240c1a",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Fix copy when keyboard focus is in the SelectedItemsList in the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "0fb798427dd4a08036db27a43490b54afd2f8a31",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:21:51 GMT",
       "tag": "@uifabric/experiments_v7.35.0",
       "version": "7.35.0",

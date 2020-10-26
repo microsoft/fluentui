@@ -2,6 +2,33 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:22:51 GMT",
+      "tag": "@fluentui/react-examples_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add example to FloatingSuggestionsComposite with selectable headers and footers",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a836650f1dd1487c98a1960bc91a60dd11a9aceb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "UnifiedPicker: Fixing input selection",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ba305588b4ec5918e1a0371f5daab52d15979a85",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Updating UnifiedPicker example",
+            "author": "elvonspa@microsoft.com",
+            "commit": "64a90ffdf0026dc2e4f59ba6813472192b240c1a",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:21:51 GMT",
       "tag": "@fluentui/react-examples_v0.8.0",
       "version": "0.8.0",
