@@ -89,7 +89,7 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, ['className']);
 
-  const onBreadcrumbClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+  const onBreadcrumbClicked = (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: IBreadcrumbItem) => {
     item.onClick?.(ev, item);
   };
 
@@ -137,7 +137,9 @@ export const BreadcrumbBase: React.FunctionComponent<IBreadcrumbProps> = React.f
         return {
           name: item.text,
           key: item.key,
-          onClick: item.onClick ? ev => onBreadcrumbClicked(ev, item) : undefined,
+          onClick: item.onClick
+            ? ev => onBreadcrumbClicked(ev as React.MouseEvent<HTMLElement, MouseEvent>, item)
+            : undefined,
           href: item.href,
           disabled: !isActionable,
           itemProps: isActionable ? undefined : nonActionableItemProps,
