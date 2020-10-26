@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Charting: Adding tests for LineChart.",
+  "packageName": "@fluentui/react-charting",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-26T19:57:10.050Z"
+}
