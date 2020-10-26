@@ -146,31 +146,10 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Component handles classname prop */
+  /** Component file handles classname prop */
   'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
-    const el = customMount(<Component {...requiredProps} />);
-    const component = getComponent(el, helperComponents, wrapperComponent);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const classNames: any = component
-      .getDOMNode()
-      .getAttribute('class')
-      ?.split(' ');
-
-    it(`handles className prop`, () => {
-      try {
-        expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
-      } catch (e) {
-        defaultErrorMessages['component-handles-classname'](componentInfo, testInfo, e);
-        throw new Error('component-handles-classname');
-      }
-    });
-  },
-
-  /** Component correctly handles default classnames */
-  'component-handles-default-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
     let el = customMount(<Component {...requiredProps} />);
     let component = getComponent(el, helperComponents, wrapperComponent);
 
@@ -180,6 +159,7 @@ export const defaultTests: TestObject = {
         ?.getAttribute('class')
         ?.split(' ') || [];
 
+    const testClassName = 'testComponentClassName';
     const mergedProps: Partial<{}> = {
       ...requiredProps,
       className: 'testComponentClassName',
@@ -194,6 +174,15 @@ export const defaultTests: TestObject = {
       .getAttribute('class')
       ?.split(' ');
 
+    it(`handles className prop`, () => {
+      try {
+        expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
+      } catch (e) {
+        defaultErrorMessages['component-handles-classname'](componentInfo, testInfo, e, classNames);
+        throw new Error('component-handles-classname (handles className prop)');
+      }
+    });
+
     it(`handles component's default classNames`, () => {
       try {
         if (defaultClassNames.length && defaultClassNames[0] !== '') {
@@ -202,8 +191,14 @@ export const defaultTests: TestObject = {
           }
         }
       } catch (e) {
-        defaultErrorMessages['component-handles-default-classname'](componentInfo, testInfo, e);
-        throw new Error('component-handles-default-classname');
+        defaultErrorMessages['component-handles-default-classname'](
+          componentInfo,
+          testInfo,
+          e,
+          defaultClassNames,
+          classNames,
+        );
+        throw new Error('component-handles-classname (handles default classnames)');
       }
     });
   },
