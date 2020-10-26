@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Charting: Adding tests for LineChart.",
   "packageName": "@fluentui/react-charting",
   "email": "humbertomakotomorimoto@gmail.com",
