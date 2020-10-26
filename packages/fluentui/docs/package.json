@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/docs",
-  "version": "0.47.12",
+  "version": "0.47.13",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-telemetry": "^0.47.12",
+    "@fluentui/react-telemetry": "^0.47.13",
     "color": "^3.1.0",
     "copy-to-clipboard": "^3.2.0",
     "faker": "^4.1.0",
