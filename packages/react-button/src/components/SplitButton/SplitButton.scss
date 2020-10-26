@@ -1,4 +1,4 @@
-@import '~@fluentui/common-styles/dist/sass/focusBorder';
+@import '~@fluentui/common-styles/src/focusBorder';
 
 .root {
   width: auto;
@@ -65,7 +65,7 @@
     border-bottom-left-radius: var(--button-borderRadius);
   }
 
-  ._fluid & {
+  ._block & {
     flex-grow: 1;
     justify-content: flex-end;
   }

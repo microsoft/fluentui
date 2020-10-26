@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Page, IPageProps, PlatformContext } from '@uifabric/example-app-base/lib/index2';
+import { Page, IPageProps, PlatformContext } from '@fluentui/react-docsite-components/lib/index2';
 import { getSubTitle } from '../../utilities/index';
 import { Platforms } from '../../interfaces/Platforms';
 import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@uifabric/api-docs/lib/pages/', true, /^(?!references).*/);
+const apiRequireContext = require.context('@fluentui/api-docs/lib/pages/', true, /^(?!references).*/);
 
 const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;

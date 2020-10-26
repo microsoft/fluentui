@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -62,12 +62,6 @@ describe('Pickers', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    isConformant({
-      Component: BaseFloatingPicker,
-      displayName: 'BaseFloatingPicker',
-      disabledTests: ['has-top-level-file'],
-    });
-
     it('shows zero query options on empty input', () => {
       const root = document.createElement('div');
       const input = document.createElement('input');
@@ -115,7 +109,9 @@ describe('Pickers', () => {
 
       input.value = 'b';
       picker.onQueryStringChanged('b');
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       expect(picker.suggestions.length).toEqual(3);
 

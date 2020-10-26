@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createArray } from '@fluentui/react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const ITEMS = createArray(5, index => ({
   key: index.toString(),

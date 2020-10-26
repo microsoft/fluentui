@@ -28,7 +28,6 @@ module.exports = {
       '**/*.source.json',
       '**/*.info.json',
       '**/dist.stats.json',
-      'dist-storybook/**/*',
       '**/*.tar.gz',
       '!bower_components',
       '!node_modules',

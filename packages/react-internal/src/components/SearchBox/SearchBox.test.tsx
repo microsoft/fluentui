@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -35,6 +35,12 @@ describe('SearchBox', () => {
     component = create(<SearchBox />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders SearchBox role on the container div', () => {
+    wrapper = mount(<SearchBox role="search" />);
+
+    expect(wrapper.getDOMNode().getAttribute('role')).toEqual('search');
   });
 
   it('can execute an onClick on clear button', () => {

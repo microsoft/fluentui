@@ -7,6 +7,8 @@ pool: 'Self Host Ubuntu'
 workspace:
   clean: all
 
+name: '$(targetNpmVersion) ($(Rev:r))'
+
 steps:
   - template: .devops/templates/tools.yml
 
@@ -40,11 +42,9 @@ steps:
     displayName: 'Create tarball'
     workingDirectory: 'packages/react'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: oufr'
-    inputs:
-      PathtoPublish: 'packages/react/react-$(targetNpmVersion).tgz'
-      ArtifactName: oufr
+  - script: |
+      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf7 --//registry.npmjs.org/:_authToken=$(npmToken)
+    displayName: Publish new version
 
   - template: .devops/templates/cleanup.yml
     parameters:

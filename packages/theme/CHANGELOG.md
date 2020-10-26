@@ -1,8 +1,28 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.1..@fluentui/theme_v2.0.0-beta.0)
+
+### Changes
+
+- Updating typings to add `Variants`. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes. ([PR #15326](https://github.com/microsoft/fluentui/pull/15326) by xgao@microsoft.com)
+- Fix ParitalTheme typing. ([PR #15372](https://github.com/microsoft/fluentui/pull/15372) by xgao@microsoft.com)
+- Add missing version.ts. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Fixing ColorTokens typings. ([PR #15463](https://github.com/microsoft/fluentui/pull/15463) by Humberto.Morimoto@microsoft.com)
+- Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- Fix inferred type error related to ITheme. ([PR #15573](https://github.com/microsoft/fluentui/pull/15573) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.1)
 

@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { preset, just } from '@uifabric/build';
-import { findGitRoot, getAllPackageInfo } from '@uifabric/build/monorepo/index';
-
-const { series, task, copyInstructionsTask, copyInstructions } = just;
+import { preset, series, task, copyInstructionsTask, copyInstructions } from '@fluentui/scripts';
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
 
 const gitRoot = findGitRoot();
 let instructions = copyInstructions.copyFilesToDestinationDirectory(
@@ -14,29 +12,29 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 // If you are adding a new tile into this site, please make sure it is also listed in the siteInfo of
 // `pr-deploy-site.js`
 //
-// Dependencies are listed here and NOT in package.json because we do not want to allow for partial builds for scoping
+// Dependencies are listed here and NOT in package.json because declaring in package.json would
+// prevent scoped/partial builds from working. (Since the demo site has both v0 and v8 packages,
+// it would cause both of those dependency trees to get built every time.)
 const dependencies = [
   '@fluentui/docs',
   '@fluentui/perf-test',
+  '@fluentui/public-docsite-resources',
+  '@fluentui/public-docsite',
+  '@fluentui/react',
   '@fluentui/react-avatar',
   '@fluentui/react-button',
+  '@fluentui/react-charting',
   '@fluentui/react-checkbox',
+  '@fluentui/react-date-time',
+  '@fluentui/react-experiments',
   '@fluentui/react-image',
   '@fluentui/react-link',
-  '@fluentui/react-next',
   '@fluentui/react-slider',
   '@fluentui/react-tabs',
   '@fluentui/react-text',
   '@fluentui/react-toggle',
-  '@uifabric/charting',
-  '@uifabric/date-time',
-  '@uifabric/experiments',
-  '@fluentui/public-docsite',
-  '@fluentui/public-docsite-resources',
-  '@fluentui/react',
   'perf-test',
   'theming-designer',
-  'todo-app',
 ];
 
 const allPackages = getAllPackageInfo();
@@ -60,19 +58,6 @@ repoDeps.forEach(dep => {
       );
       deployedPackages.add(dep.packageJson.name);
     }
-  }
-
-  const distStorybookPath = path.join(gitRoot, dep.packagePath, 'dist-storybook');
-
-  if (fs.existsSync(distStorybookPath)) {
-    let sourcePath = distStorybookPath;
-    instructions.push(
-      ...copyInstructions.copyFilesToDestinationDirectory(
-        sourcePath,
-        path.join('dist', path.basename(dep.packagePath)),
-      ),
-    );
-    deployedPackages.add(dep.packageJson.name);
   }
 });
 

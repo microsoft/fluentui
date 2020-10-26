@@ -1,4 +1,4 @@
-let { createConfig } = require('@uifabric/build/jest/jest-resources');
+let { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 
 const config = createConfig({
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.dom\\.(ts|tsx)$',

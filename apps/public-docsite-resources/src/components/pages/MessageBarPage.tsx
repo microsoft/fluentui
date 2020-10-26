@@ -5,7 +5,7 @@ import { MessageBarPageProps } from '@fluentui/react-examples/lib/react/MessageB
 
 export const MessageBarPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/MessageBar.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/MessageBar.page.json')}
     {...{ ...MessageBarPageProps, ...props }}
   />
 );

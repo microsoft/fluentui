@@ -1,4 +1,4 @@
-import { merge } from '@uifabric/utilities';
+import { merge } from '@fluentui/utilities';
 import { IFontStyles, PartialTheme, Theme } from './types/index';
 import { getSemanticColors } from './utilities/makeSemanticColors';
 

@@ -4,7 +4,7 @@ import {
   IProcessedStyleSet,
   Stylesheet,
   IStyleFunctionOrObject,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
 import { StyleFunction } from './styled';

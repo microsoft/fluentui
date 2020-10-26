@@ -1,8 +1,29 @@
-# Change Log - @uifabric/file-type-icons
+# Change Log - @fluentui/file-type-icons
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/file-type-icons_v8.0.0-beta.1)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/file-type-icons_v8.0.0-beta.0..@fluentui/file-type-icons_v8.0.0-beta.1)
+
+### Changes
+
+- Updating reference to latest CDN and mapping .note file extension to the 'one' filetype icon. ([PR #15687](https://github.com/microsoft/fluentui/pull/15687) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/file-type-icons_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.8..@fluentui/file-type-icons_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/file-type-icons to @fluentui/file-type-icons ([PR #15626](https://github.com/microsoft/fluentui/pull/15626) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
 
 ## [7.6.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.8)
 

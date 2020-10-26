@@ -2,7 +2,7 @@ import * as React from 'react';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {

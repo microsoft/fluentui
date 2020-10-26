@@ -3,9 +3,10 @@ import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
 import os from 'os';
+import parseDocblock from './utils/parseDocblock';
+
 import * as _ from 'lodash';
 import * as path from 'path';
-import parseDocblock from './utils/parseDocblock';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -259,6 +260,59 @@ export const defaultErrorMessages = {
       );
     }
     failedTests.push('component-has-displayname');
+  },
+
+  'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    // Message Description: Handles scenario where the ref is not defined when passed to the component.
+    //
+    // It appears that "displayName" doesn't have a defined ref value.
+    // To Resolve this issue:
+    // 1. Check if your component has a ref.
+    // 2. If you component is a function component make sure that your are using forwardRef.
+    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
+    //    your test file.
+    console.log(
+      defaultErrorMessage(`component-handles-ref`, displayName, `defined ref value.`) +
+        resolveErrorMessages([
+          `Check if your component has a ${resolveInfo('ref')}.`,
+          `If you component is a function component make sure that your are using ${resolveInfo('forwardRef')}.`,
+          `Check if your component uses an element ref and add ${resolveInfo(
+            `elementRefName: 'elementRef'`,
+          )} to isConformant in your test file.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
+    const { displayName } = testInfo;
+    const { resolveInfo, failedError, testErrorInfo } = errorMessageColors;
+
+    // Message Description: Handles scenario where the ref doesn't match the DOM node.
+    //
+    // It appears that "displayName" doesn't have a ref that matches the components DOM node.
+    // To Resolve this issue:
+    // 1. Make sure that you are applying the ref to the root element in your component.
+    // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
+    //    your test file.
+    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
+    //    your test file.
+    console.log(
+      defaultErrorMessage(`component-has-root-ref`, displayName, `ref that matches the components DOM node.`) +
+        resolveErrorMessages([
+          `Make sure that you are applying the ref to the ${resolveInfo('root element')} in your component.`,
+          `Check if your component uses an element ref and add ${resolveInfo(
+            `elementRefName: 'elementRef'`,
+          )} to isConformant in your test file.`,
+          `Check if your component passes ref to an inner component and add ${resolveInfo(
+            `targetComponent`,
+          )} to isConformant in your test file.`,
+        ]) +
+        receivedErrorMessage('Expected:' + testErrorInfo(' ref') + ', Received: ' + failedError('DOM node ') + error),
+    );
   },
 
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
@@ -626,6 +680,7 @@ const errorMessageColors = {
   receivedErrorHeader: chalk.white.bold.bgRed,
   // Colors for the display-failed-tests section.
   failedText: chalk.white.bold,
+  failedError: chalk.red,
   failedDisplayname: chalk.red.bold.underline,
   // Color for section headers.
   sectionBackground: chalk.white.bold.italic.bgHex('#2e2e2e'),

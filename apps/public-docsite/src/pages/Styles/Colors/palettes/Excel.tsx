@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@fluentui/react-docsite-components/lib/index2';
 import { WXPNeutrals } from './WXPNeutrals';
 
 export const Excel = () => {

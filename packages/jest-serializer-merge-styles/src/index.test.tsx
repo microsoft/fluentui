@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { print, test } from './index';
-import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@fluentui/merge-styles';
 
 const indent = (val: string): string => '    ' + val;
 

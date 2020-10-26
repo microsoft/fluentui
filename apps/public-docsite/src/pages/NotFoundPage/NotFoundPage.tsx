@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link, DefaultButton, mergeStyles } from '@fluentui/react';
+import { Link, mergeStyles } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import {
   trackEvent,
   EventNames,
@@ -8,7 +9,7 @@ import {
   Page,
   IPageProps,
   IPageSectionProps,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight, mediaQuery } from '../../styles/constants';
 

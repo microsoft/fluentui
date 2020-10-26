@@ -5,7 +5,7 @@ import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
  * @description
- * Adds role 'treeitem' if the title is a leaf node inside the tree.
+ * Adds role 'listitem' if the title is a leaf node inside the tree.
  */
 export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
@@ -20,9 +20,9 @@ export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorPr
     },
   });
 
-  if (process.env.NODE_ENV !== 'production' && props.hasSubtree) {
-    // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+  if (process.env.NODE_ENV !== 'production') {
+    if (!props.hasSubtree) definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+    else definition.attributes.root['data-aa-class'] = behavior.attributes.root['data-aa-class'];
   }
 
   return definition;

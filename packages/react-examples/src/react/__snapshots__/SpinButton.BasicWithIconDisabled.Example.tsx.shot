@@ -120,6 +120,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
+      data-ktp-target={true}
     >
       <input
         aria-disabled={true}
@@ -165,6 +166,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
+        data-ktp-execute-target={true}
         data-lpignore={true}
         disabled={true}
         id="input0"

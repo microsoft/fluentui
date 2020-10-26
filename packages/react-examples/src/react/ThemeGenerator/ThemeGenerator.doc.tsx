@@ -19,7 +19,7 @@ import { TeachingBubbleBasicExample } from '../TeachingBubble/TeachingBubble.Bas
 import { TextFieldBasicExample } from '../TextField/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../react-toggle/Toggle/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/ProgressIndicator.Basic.Example';
-import { Async } from '@uifabric/utilities';
+import { Async } from '@fluentui/utilities';
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -95,15 +95,16 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/style-utilities';
 
     return (
       <div className="ms-themer">
         <div className="overview">
           <h2 id="Overview">Overview</h2>
           <p>
-            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by
-            Fabric React's styling package, see the{' '}
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by the{' '}
+            <code>@fluentui/style-utilities</code> package; see the{' '}
             <a className={'themeGeneratorPageLink'} href={stylingUrl}>
               documentation
             </a>

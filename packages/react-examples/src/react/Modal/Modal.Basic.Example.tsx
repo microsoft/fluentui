@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 import {
   getTheme,
   mergeStyleSets,
   FontWeights,
   ContextualMenu,
   Toggle,
-  DefaultButton,
   Modal,
   IDragOptions,
-  IconButton,
   IIconProps,
 } from '@fluentui/react';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
 
 const dragOptions: IDragOptions = {
   moveMenuItemText: 'Move',

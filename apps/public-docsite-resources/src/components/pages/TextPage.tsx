@@ -5,7 +5,7 @@ import { DemoPage } from '../DemoPage';
 
 export const TextPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Text.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Text.page.json')}
     {...{ ...TextPageProps, ...props }}
   />
 );
