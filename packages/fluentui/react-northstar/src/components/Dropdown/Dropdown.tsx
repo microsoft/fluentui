@@ -1075,9 +1075,20 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     };
     const { disabled } = this.props;
 
-    const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+    const handleInputKeyDown = (
+      e: React.KeyboardEvent<HTMLInputElement>,
+      searchInputProps: DropdownSearchInputProps,
+    ) => {
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
+          // https://github.com/downshift-js/downshift/issues/1097
+          // Downshift skips Home/End if Deopdown is opened
+          case keyboardKey.Home:
+            e.nativeEvent['preventDownshiftDefault'] = this.state.filteredItems.length === 0;
+            break;
+          case keyboardKey.End:
+            e.nativeEvent['preventDownshiftDefault'] = this.state.filteredItems.length === 0;
+            break;
           case keyboardKey.Tab:
             e.stopPropagation();
             this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
@@ -1124,10 +1135,15 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
           },
-          onChange: e => {
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
             // we prevent the onChange input event to bubble up to our Dropdown handler,
             // since in Dropdown it gets handled as onSearchQueryChange.
             e.stopPropagation();
+
+            // A state modification should be triggered there otherwise it will go to an another frame and will break
+            // cursor position:
+            // https://github.com/facebook/react/issues/955#issuecomment-469352730
+            this.setState({ searchQuery: e.target.value });
           },
         }),
       },
@@ -1148,7 +1164,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       onInputBlur: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
         handleInputBlur(e, searchInputProps);
       },
-      onInputKeyDown: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement>, searchInputProps: DropdownSearchInputProps) => {
         handleInputKeyDown(e, searchInputProps);
       },
     };

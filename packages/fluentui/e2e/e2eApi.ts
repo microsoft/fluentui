@@ -31,6 +31,10 @@ export class E2EApi {
     return await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
   };
 
+  public getPropertyValue = async (selector: string, prop) => {
+    return this.page.$eval(selector, (el, prop) => el[prop], prop);
+  };
+
   public count = async (selector: string) => {
     return (await this.page.$$(selector)).length;
   };

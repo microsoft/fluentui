@@ -1,10 +1,10 @@
 import { selectors } from './dialogWithDropdown-example';
-import { dropdownSlotClassNames } from '@fluentui/react-northstar';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const outerTrigger = `#${selectors.outerTrigger}`;
 const dropdownSelector = `#${selectors.dropdown}`;
 const dialogHeader = `#${selectors.dialogHeader}`;
-const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+const dropdownIndicator = `.${Dropdown.slotClassNames.toggleIndicator}`;
 
 describe('Dialog scroll', () => {
   beforeEach(async () => {

@@ -1,12 +1,12 @@
 import { selectors } from './dialogInDialogWithDropdown-example';
-import { dropdownSlotClassNames } from '@fluentui/react-northstar/src';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const outerHeader = `#${selectors.outerHeader}`;
 const outerTrigger = `#${selectors.outerTrigger}`;
 const innerHeader = `#${selectors.innerHeader}`;
 const innerTrigger = `#${selectors.innerTrigger}`;
 const dropdownSelector = `#${selectors.dropdown}`;
-const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+const dropdownIndicator = `.${Dropdown.slotClassNames.toggleIndicator}`;
 
 describe('Dialog in Dialog', () => {
   beforeEach(async () => {
