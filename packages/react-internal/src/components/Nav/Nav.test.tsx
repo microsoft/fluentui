@@ -46,7 +46,7 @@ describe('Nav', () => {
     displayName: 'Nav',
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'component-handles-classname'],
   });
 
   it('render Nav with overrides correctly', () => {

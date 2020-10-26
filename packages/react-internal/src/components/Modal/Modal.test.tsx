@@ -13,7 +13,7 @@ describe('Modal', () => {
     componentPath: path.join(__dirname, 'Modal.ts'),
     //Problem: Doesn’t currently handle a ref.
     // Solution: Add a ref.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'component-handles-classname'],
   });
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.

@@ -90,7 +90,12 @@ describe('ComboBox', () => {
     // Problem: Currently doesn’t work with mount.
     // Solution: Further investigate why ComboBox only works with create or fix customMount type
     // in isConformant to work with other testing mount utilities such as create.
-    disabledTests: ['component-renders', 'component-handles-ref', 'component-has-root-ref'],
+    disabledTests: [
+      'component-renders',
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+    ],
   });
 
   it('Can flip between enabled and disabled.', () => {

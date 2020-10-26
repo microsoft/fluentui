@@ -29,6 +29,7 @@ describe('SearchBox', () => {
   isConformant({
     Component: SearchBox,
     displayName: 'SearchBox',
+    disabledTests: ['component-handles-classname'],
   });
 
   it('renders SearchBox correctly', () => {

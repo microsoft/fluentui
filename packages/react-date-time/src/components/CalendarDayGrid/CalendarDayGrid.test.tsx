@@ -24,6 +24,6 @@ describe('CalendarDayGrid', () => {
       firstWeekOfYear: FirstWeekOfYear.FirstFullWeek,
       dateTimeFormatter: timeFormatter,
     },
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'component-handles-classname'],
   });
 });

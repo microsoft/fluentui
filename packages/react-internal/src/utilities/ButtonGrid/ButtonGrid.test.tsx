@@ -27,7 +27,7 @@ describe('ButtonGrid', () => {
         return;
       },
     },
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'component-handles-classname'],
   });
 
   it('Can render a ButtonGrid with width of four', () => {
