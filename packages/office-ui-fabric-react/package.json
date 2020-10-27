@@ -66,9 +66,10 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^7.16.15",
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.9.0",
+    "@fluentui/react-focus": "^7.16.15",
+    "@fluentui/react-window-provider": "^1.0.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/foundation": "^7.9.16",
     "@uifabric/icons": "^7.5.14",
     "@uifabric/merge-styles": "^7.19.1",
@@ -76,7 +77,6 @@
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/styling": "^7.16.15",
     "@uifabric/utilities": "^7.33.1",
-    "@fluentui/react-window-provider": "^0.3.3",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },
