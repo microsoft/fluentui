@@ -25,10 +25,10 @@ export interface CompoundButtonState extends CompoundButtonProps {}
  * {@docCategory Button}
  */
 export type CompoundButtonTokens = ButtonTokens & {
-  secondaryContentColor: string;
-  secondaryContentFontSize: string;
-  secondaryContentFontWeight: string;
-  secondaryContentGap: string;
+  secondaryContentColor?: string;
+  secondaryContentFontSize?: string;
+  secondaryContentFontWeight?: string;
+  secondaryContentGap?: string;
 };
 
 /**

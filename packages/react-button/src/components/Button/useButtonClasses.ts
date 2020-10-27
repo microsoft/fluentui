@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
-import { ButtonState } from './Button.types';
+import { ButtonState, ButtonVariants } from './Button.types';
 
 const GlobalClassNames = {
   root: 'ms-Button',
@@ -40,7 +40,7 @@ export const ButtonSizeVariants = {
   },
 };
 
-export const useButtonClasses = makeVariantClasses<ButtonState>({
+export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>({
   name: 'Button',
   prefix: '--button',
 
@@ -233,7 +233,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
     },
   },
 
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): ButtonVariants => {
     const { fonts, effects, palette, semanticColors } = theme;
 
     return {
@@ -249,7 +249,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         },
 
         // Sizing tokens
-        iconSize: fonts?.mediumPlus?.fontSize,
+        iconSize: fonts?.mediumPlus?.fontSize as string,
         borderWidth: '1px',
         boxShadow: 'none',
         borderRadius: effects?.roundedCorner2,
@@ -266,9 +266,8 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
 
         // Font tokens
         fontWeight: '600',
-        fontSize: fonts?.medium?.fontSize,
+        fontSize: fonts?.medium?.fontSize as string,
         fontFamily: fonts?.medium?.fontFamily,
-        secondaryContentFontSize: fonts?.small.fontSize,
 
         // Color tokens
         focusColor: palette?.black,
@@ -277,25 +276,21 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         borderColor: semanticColors?.buttonBorder,
         contentColor: semanticColors?.buttonText,
         iconColor: 'inherit',
-        secondaryContentColor: palette?.neutralSecondary,
 
         hovered: {
           background: semanticColors?.buttonBackgroundHovered,
           contentColor: semanticColors?.buttonTextHovered,
-          secondaryContentColor: palette?.neutralDark,
         },
 
         pressed: {
           background: semanticColors?.buttonBackgroundPressed,
           contentColor: semanticColors?.buttonTextPressed,
-          secondaryContentColor: semanticColors?.buttonTextPressed,
         },
 
         disabled: {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
         },
 
         highContrast: {
@@ -399,15 +394,12 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         contentColor: palette?.neutralPrimary,
         fontWeight: 'normal',
         iconColor: palette?.themeDarkAlt,
-        menuIconColor: palette?.neutralSecondary,
-        secondaryContentColor: palette?.neutralPrimary,
         forcedColorAdjust: 'none',
 
         disabled: {
           background: semanticColors?.disabledBackground,
           contentColor: palette?.neutralTertiary,
           iconColor: 'inherit',
-          secondaryContentColor: palette?.neutralTertiary,
         },
 
         expanded: {
@@ -417,21 +409,18 @@ export const useButtonClasses = makeVariantClasses<ButtonState>({
         focused: {
           contentColor: palette?.neutralPrimary,
           iconColor: palette?.themeDarkAlt,
-          secondaryContentColor: palette?.neutralPrimary,
         },
 
         hovered: {
           background: palette?.neutralLighter,
           contentColor: palette?.themePrimary,
           iconColor: palette?.themePrimary,
-          secondaryContentColor: palette?.neutralPrimary,
         },
 
         pressed: {
           background: palette?.neutralLight,
           contentColor: palette?.black,
           iconColor: palette?.themeDarker,
-          secondaryContentColor: palette?.black,
         },
 
         highContrast: {

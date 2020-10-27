@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps } from '../Button/Button.types';
+import { ButtonProps, ButtonVariants } from '../Button/Button.types';
 import { MenuButtonProps, MenuButtonState, MenuButtonTokens } from '../MenuButton/MenuButton.types';
 
 /**
@@ -33,4 +33,12 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
 /**
  * {@docCategory Button}
  */
-export type SplitButtonTokens = MenuButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens & {
+  dividerColor?: string;
+  dividerThickness?: string;
+};
+
+/**
+ * {@docCategory Button}
+ */
+export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;
