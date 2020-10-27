@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.2)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.1..@fluentui/utilities_v8.0.0-beta.2)
+
+### Changes
+
+- Store last language setting in sessionStorage not localStorage by default ([PR #15710](https://github.com/microsoft/fluentui/pull/15710) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.1)
 

@@ -2,6 +2,83 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2020 12:35:09 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.4",
+      "version": "5.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Charting: Adding custom Callout support for HorizontalBarChart, StackedBarChart and DonutChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "9340abc5a8320849355d56558d612ad66f37e22c",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Fixing uncaught type error in VerticalStackedBarChart and made minor edits to margins.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "26ce5d6cddc160738ba5cbecd136de044d6b0240",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding support for bar gaps and rounded corners in VerticalStackedBarChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8fa8f369e59b28b5e0b4e175b7733e0b3bb2dc60",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Added line feature to VerticalBarChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4858df7cdff9785cab466df525041875bdfe376a",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Charting: Adding tests for LineChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0b370e43432789ee9b170f60a8276b594493ca7a",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding tests for AreaChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0fe2bfaef0b0bbf827585db9f821b3c596080d8e",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Updating VerticalBarChart tests.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a4c18724f393c1728e38b1425e3a969f306a3d",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding HorizontalBarChart tests.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ec27806fb6b4ce21eea6c9659909758dcb32a385",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding tests for StackedBarChart and MultiStackedBarChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "766f5004a8af6b29e401fc7ef9fd22e3e21973e5",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding tests for VerticalStackedBarChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "79c9a4ce9027c419cf502c992d0e30eb9ce105c0",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Adding tests for HeatMapChart and PieChart.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "550192705b440b45d505c9d4f6922045f6d2c2d3",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2020 12:39:59 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.3",
       "version": "5.0.0-beta.3",

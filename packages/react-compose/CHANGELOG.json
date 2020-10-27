@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2020 12:35:09 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update beachball config for beta pacakge.",
+            "author": "xgao@microsoft.com",
+            "commit": "1370675e769de5a68d5a5a0a33d420e31b6c6af3",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-compose_v1.0.0-beta.0",
       "version": "1.0.0-beta.0",

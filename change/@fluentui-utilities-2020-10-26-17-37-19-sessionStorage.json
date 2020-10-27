@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Store last language setting in sessionStorage not localStorage by default",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-27T00:37:19.714Z"
-}
