@@ -5,6 +5,7 @@ import { ButtonProps } from './Button';
 export const useButtonStyles = ({ props, rtl }: UseComponentStyles<ButtonProps>) => {
   return useStyles('Button', {
     mapPropsToStyles: () => ({
+      children: props?.content?.children,
       text: props.text,
       primary: props.primary,
       disabled: props.disabled,

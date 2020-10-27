@@ -92,18 +92,18 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokens>;
   };
 
-type ShorthandObject = {
-  style: object;
-  styles: object;
-  className: string;
-};
+// type ShorthandObject = {
+//   style: object;
+//   styles: object;
+//   className: string;
+// };
 
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
-  components: { [key: string]: string | React.ComponentType };
-  icon: ShorthandObject;
-  loader: ShorthandObject;
-  content: ShorthandObject;
+  // components: { [key: string]: string | React.ComponentType };
+  // icon: ShorthandObject;
+  // loader: ShorthandObject;
+  // content: ShorthandObject;
 }
 
 export type ButtonTokens = ColorTokens &

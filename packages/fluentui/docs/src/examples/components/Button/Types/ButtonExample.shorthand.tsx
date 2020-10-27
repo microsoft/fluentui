@@ -20,11 +20,23 @@ const ButtonExample = () => (
     </Example>
 
     <Example title="content">
-      <Button content={{ children: 'Click Here' }} />
+      <Button content={{ children: 'Content' }} />
     </Example>
 
     <Example title="icon">
-      <Button icon={{ children: <AppsIcon /> }} content={{ children: 'Click Here' }} />
+      <Button icon={{ children: <AppsIcon /> }} content={{ children: 'Icon' }} />
+    </Example>
+
+    <Example title="loading">
+      <Button loading content={{ children: 'Loading' }} />
+    </Example>
+
+    <Example title="loading, icon={...}">
+      <Button loading icon={{ children: <AppsIcon /> }} content={{ children: 'Loading' }} />
+    </Example>
+
+    <Example title="loading, loader=null">
+      <Button loader={null} loading content={{ children: 'Loading' }} />
     </Example>
   </div>
 );

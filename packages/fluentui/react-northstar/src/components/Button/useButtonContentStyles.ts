@@ -1,6 +1,6 @@
 import { useStyles } from '@fluentui/react-bindings';
-import { UseComponentStyles } from './types';
 import { ButtonContentProps } from './ButtonContent';
+import { UseComponentStyles } from 'src/components/Button/types';
 
 export const useButtonContentStyles = ({ props, rtl }: UseComponentStyles<ButtonContentProps>) => {
   return useStyles('ButtonContent', {

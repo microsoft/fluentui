@@ -32,5 +32,8 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  draftState.disabled = draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  // TODO: v0 buttons are not disabled while loading, removed `disabled = loading` logic here
+  //       What is the "correct" thing here? Shouldn't aria experience match non-aria experience?
+  // draftState.disabled = draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  draftState['aria-disabled'] = draftState.disabled;
 };

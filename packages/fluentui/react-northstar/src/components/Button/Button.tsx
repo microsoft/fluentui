@@ -6,13 +6,13 @@ import * as cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
 import {
-  createShorthandFactory,
-  UIComponentProps,
-  ContentComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  SizeValue,
+  ContentComponentProps,
+  createShorthandFactory,
   ShorthandFactory,
+  SizeValue,
+  UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
@@ -74,6 +74,9 @@ export interface ButtonProps
   /** A button can emphasize that it represents the primary action. */
   primary?: boolean;
 
+  // TODO: typings error below because we need element props in our typings, respect `as` when doing so
+  style?: object;
+
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
   text?: boolean;
 
@@ -107,7 +110,11 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   setStart();
 
   // BASE
-  const { state, render } = useButton(props, ref);
+  const { state, render } = useButton(props, ref, {
+    icon: Box,
+    content: ButtonContent,
+    loader: Loader,
+  });
 
   // EXTRAS
   const { classes, styles: resolvedStyles } = useButtonStyles({ props: state, rtl: context.rtl });
@@ -121,18 +128,10 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
     size: 'medium',
 
     // OVERRIDES
-    components: {
-      ...state.components,
-      loader: Loader,
-      content: ButtonContent,
-      icon: Box,
-    },
     style: { ...state.style, ...props.style },
     styles: _.merge(state.styles, resolvedStyles.root, props.styles),
     className: cx(buttonClassName, state.className, classes.root, props.className),
 
-    // TODO: test that this works as expected still, without merging these props
-    //        - [ ] max call stack exceeded on click
     onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
       if (props.disabled) {
         e.preventDefault();
@@ -150,40 +149,31 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
 
     // TODO: this is ugly, don't require others to do this when authoring a new component
     //       this was added to prevent "defining" a slot with props when the user isn't using that slot in their props
-    ...(typeof props.icon !== 'undefined' && {
-      icon: {
-        ...(state.icon as object),
-        ...props.icon,
-        style: { ...state.icon?.style, ...props.icon?.style },
-        styles: _.merge(state.icon?.styles, resolvedStyles.icon, props.icon?.styles),
-        className: cx(state.icon?.className, classes.icon, props.icon?.className),
-      },
-    }),
+    icon: {
+      ...(state.icon as object),
+      ...props.icon,
+      style: { ...state.icon?.style, ...props.icon?.style },
+      styles: _.merge(state.icon?.styles, resolvedStyles.icon, props.icon?.styles),
+      className: cx(state.icon?.className, classes.icon, props.icon?.className),
+    },
 
-    ...(typeof props.loader !== 'undefined' && {
-      loader: {
-        ...(state.loader as object),
-        role: undefined, // TODO: why is this `undefined`?
-        ...props.loader,
-        style: { ...state.loader?.style, ...props.loader?.style },
-        styles: _.merge(state.loader?.styles, resolvedStyles.loader, props.loader?.styles),
-        className: cx(state.icon?.className, classes.loader, props.icon?.className),
-      },
-    }),
+    loader: {
+      ...(state.loader as object),
+      ...props.loader,
+      style: { ...state.loader?.style, ...props.loader?.style },
+      styles: _.merge(state.loader?.styles, resolvedStyles.loader, props.loader?.styles),
+      className: cx(state.icon?.className, classes.loader, props.icon?.className),
+    },
 
-    ...(typeof props.content !== 'undefined' && {
-      content: {
-        ...(state.content as object),
-        ...props.content,
-        style: { ...state.content?.style, ...props.content?.style },
-        styles: _.merge(state.content?.styles, resolvedStyles.content, props.content?.styles),
-        className: _.merge(state.content?.className, classes.content, props.content?.className),
-      },
-    }),
+    content: {
+      ...(state.content as object),
+      ...props.content,
+      style: { ...state.content?.style, ...props.content?.style },
+      styles: _.merge(state.content?.styles, resolvedStyles.content, props.content?.styles),
+      className: _.merge(state.content?.className, classes.content, props.content?.className),
+    },
   };
 
-  // TODO: verify all accessibility features are the same as they were
-  // TODO: there is no way
   const result = render(newState);
   setEnd();
 

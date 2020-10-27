@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NullRender } from '../resolveSlotProps';
 
 /**
  * Ensures that the given slots are represented using object syntax. This ensures that
@@ -18,14 +17,6 @@ export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames
     const propValue = props[propName];
 
     if (typeof propValue === 'undefined') {
-      continue;
-    }
-
-    if (propValue === null) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (newProps as any).components = (newProps as any).components || {};
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (newProps as any).components[propName] = NullRender;
       continue;
     }
 
