@@ -8111,7 +8111,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
-    type: string;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 

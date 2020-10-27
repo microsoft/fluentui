@@ -22,7 +22,7 @@ const globalClassNames = {
   prefix: 'ms-TextField-prefix',
   suffix: 'ms-TextField-suffix',
   wrapper: 'ms-TextField-wrapper',
-  reveal: 'ms-TextField-reveal',
+  revealButton: 'ms-TextField-reveal',
 
   multiline: 'ms-TextField--multiline',
   borderless: 'ms-TextField--borderless',
@@ -83,7 +83,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasRevealButton,
   } = props;
 
-  const { semanticColors, effects, fonts, palette } = theme;
+  const { semanticColors, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -416,11 +416,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     ],
     prefix: [classNames.prefix, fieldPrefixSuffix],
     suffix: [classNames.suffix, fieldPrefixSuffix],
-    subComponentStyles: {
-      label: getLabelStyles(props),
-    },
     revealButton: [
-      classNames.reveal,
+      classNames.revealButton,
       'ms-Button',
       'ms-Button--icon',
       {
@@ -433,8 +430,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         selectors: {
           ':hover': {
             outline: 0,
-            color: palette.themeDarkAlt,
-            backgroundColor: palette.neutralLighter,
+            color: semanticColors.primaryButtonBackgroundHovered,
+            backgroundColor: semanticColors.buttonBackgroundHovered,
             selectors: {
               [HighContrastSelector]: {
                 borderColor: 'Highlight',
@@ -449,23 +446,22 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         marginRight: 28,
       },
     ],
-    revealSpan: [
-      {
-        display: 'flex',
-        height: '100%',
-        alignItems: 'center',
-      },
-    ],
-    revealIcon: [
-      {
-        margin: '0px 4px',
-        pointerEvents: 'none',
-        bottom: 6,
-        right: 8,
-        top: 'auto',
-        fontSize: IconFontSizes.medium,
-        lineHeight: 18,
-      },
-    ],
+    revealSpan: {
+      display: 'flex',
+      height: '100%',
+      alignItems: 'center',
+    },
+    revealIcon: {
+      margin: '0px 4px',
+      pointerEvents: 'none',
+      bottom: 6,
+      right: 8,
+      top: 'auto',
+      fontSize: IconFontSizes.medium,
+      lineHeight: 18,
+    },
+    subComponentStyles: {
+      label: getLabelStyles(props),
+    },
   };
 }
