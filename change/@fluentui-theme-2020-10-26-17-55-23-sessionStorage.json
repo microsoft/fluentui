@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update DefaultFontStyles to store language in sessionStorage not localStorage",
+  "packageName": "@fluentui/theme",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-27T00:55:23.270Z"
+}

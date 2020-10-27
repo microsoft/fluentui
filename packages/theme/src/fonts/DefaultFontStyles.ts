@@ -9,7 +9,7 @@ import { IFabricConfig } from '../types/IFabricConfig';
 const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';
 
 // Standard font styling.
-export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());
+export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage('sessionStorage'));
 
 function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWeight, localFontName?: string): void {
   fontFamily = `'${fontFamily}'`;

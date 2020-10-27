@@ -51,6 +51,7 @@
     "@uifabric/icons": "^7.5.12",
     "@uifabric/set-version": "^7.0.23",
     "@uifabric/theme-samples": "^7.1.34",
+    "@uifabric/utilities": "^7.32.4",
     "json-loader": "^0.5.7",
     "office-ui-fabric-core": "^11.0.0",
     "office-ui-fabric-react": "^7.148.0",
