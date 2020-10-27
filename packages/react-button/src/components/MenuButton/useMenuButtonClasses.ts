@@ -62,6 +62,12 @@ export const useMenuButtonClasses = makeVariantClasses<MenuButtonState, MenuButt
 
       ghost: {
         menuIconColor: palette?.neutralSecondary,
+        hovered: {
+          menuIconColor: palette?.themePrimary,
+        },
+        pressed: {
+          menuIconColor: palette?.black,
+        },
       },
 
       transparent: {

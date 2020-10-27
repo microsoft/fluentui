@@ -93,7 +93,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButton
         iconSize: '28px',
         secondaryContentColor: palette.neutralSecondary,
         secondaryContentGap: '4px',
-        secondaryContentFontSize: fonts?.small.fontSize,
+        secondaryContentFontSize: fonts?.small.fontSize as string,
         secondaryContentFontWeight: 'normal',
 
         hovered: {
@@ -129,11 +129,11 @@ export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButton
       iconOnly: {
         minHeight: 'var(--button-size-regular)',
         width: 'var(--button-minHeight)',
-        minWidth: 0,
-        paddingBottom: 0,
-        paddingTop: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
+        minWidth: '0',
+        paddingBottom: '0',
+        paddingTop: '0',
+        paddingLeft: '0',
+        paddingRight: '0',
       },
 
       primary: {
@@ -166,15 +166,15 @@ export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButton
       },
 
       ghost: {
-        secondaryContentColor: palette.neutralPrimary,
+        secondaryContentColor: palette.neutralSecondary,
         disabled: {
           secondaryContentColor: palette.neutralTertiary,
         },
         focused: {
-          secondaryContentColor: palette.neutralPrimary,
+          secondaryContentColor: palette.neutralSecondary,
         },
         hovered: {
-          secondaryContentColor: palette.neutralPrimary,
+          secondaryContentColor: palette.neutralDark,
         },
         pressed: {
           secondaryContentColor: palette.black,

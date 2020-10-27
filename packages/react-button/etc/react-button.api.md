@@ -78,17 +78,17 @@ export interface ButtonState extends ButtonProps {
 
 // @public (undocumented)
 export type ButtonTokens = ColorTokens & FontTokens & {
-    paddingLeft?: string | number;
-    paddingRight?: string | number;
-    paddingTop?: string | number;
-    paddingBottom?: string | number;
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
     margin?: string;
     height?: string;
-    minWidth?: string | number;
-    maxWidth?: string | number;
+    minWidth?: string;
+    maxWidth?: string;
     minHeight?: string;
     contentGap?: string;
-    iconSize?: string | number;
+    iconSize?: string;
     borderRadius?: string;
     borderTopLeftRadius?: string;
     borderTopRightRadius?: string;
@@ -96,7 +96,7 @@ export type ButtonTokens = ColorTokens & FontTokens & {
     borderBottomRightRadius?: string;
     borderWidth?: string;
     boxShadow?: string;
-    width?: string | number;
+    width?: string;
     forcedColorAdjust?: string;
     transform?: string;
     transition?: string;
@@ -161,7 +161,7 @@ export interface CompoundButtonState extends CompoundButtonProps {
 // @public (undocumented)
 export type CompoundButtonTokens = ButtonTokens & {
     secondaryContentColor?: string;
-    secondaryContentFontSize?: string | number;
+    secondaryContentFontSize?: string;
     secondaryContentFontWeight?: string;
     secondaryContentGap?: string;
 };
@@ -209,7 +209,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens & {
     menuIconColor?: string;
-    menuIconSize?: string | number;
+    menuIconSize?: string;
 };
 
 // @public (undocumented)
@@ -237,7 +237,7 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
 // @public (undocumented)
 export type SplitButtonTokens = MenuButtonTokens & {
     dividerColor?: string;
-    dividerThickness?: string | number;
+    dividerThickness?: string;
 };
 
 // @public (undocumented)

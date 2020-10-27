@@ -249,7 +249,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         },
 
         // Sizing tokens
-        iconSize: fonts?.mediumPlus?.fontSize,
+        iconSize: fonts?.mediumPlus?.fontSize as string,
         borderWidth: '1px',
         boxShadow: 'none',
         borderRadius: effects?.roundedCorner2,
@@ -266,7 +266,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
 
         // Font tokens
         fontWeight: '600',
-        fontSize: fonts?.medium?.fontSize,
+        fontSize: fonts?.medium?.fontSize as string,
         fontFamily: fonts?.medium?.fontFamily,
 
         // Color tokens

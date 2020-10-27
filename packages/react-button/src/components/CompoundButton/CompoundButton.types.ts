@@ -26,7 +26,7 @@ export interface CompoundButtonState extends CompoundButtonProps {}
  */
 export type CompoundButtonTokens = ButtonTokens & {
   secondaryContentColor?: string;
-  secondaryContentFontSize?: string | number;
+  secondaryContentFontSize?: string;
   secondaryContentFontWeight?: string;
   secondaryContentGap?: string;
 };

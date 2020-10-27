@@ -48,7 +48,7 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
  */
 export type MenuButtonTokens = ButtonTokens & {
   menuIconColor?: string;
-  menuIconSize?: string | number;
+  menuIconSize?: string;
 };
 
 /**

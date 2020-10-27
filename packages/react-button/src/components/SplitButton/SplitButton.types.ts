@@ -35,7 +35,7 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
  */
 export type SplitButtonTokens = MenuButtonTokens & {
   dividerColor?: string;
-  dividerThickness?: string | number;
+  dividerThickness?: string;
 };
 
 /**

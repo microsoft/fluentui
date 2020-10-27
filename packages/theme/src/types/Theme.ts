@@ -21,6 +21,7 @@ export type ColorTokenSet = {
   secondaryContentColor?: string;
   linkColor?: string;
   iconColor?: string;
+  menuIconColor?: string;
   borderColor?: string;
   dividerColor?: string;
   focusColor?: string;
@@ -63,7 +64,7 @@ export type ColorTokens = ColorTokenSet & {
 
 export type FontTokens = Partial<{
   fontFamily: string;
-  fontSize: string | number;
+  fontSize: string;
   fontWeight: string;
 }>;
 
