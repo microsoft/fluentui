@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update SpinButton to inherit Fabric font styles.",
+  "packageName": "@fluentui/react-internal",
+  "email": "lesliewilliams234@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-27T19:39:19.174Z"
+}
