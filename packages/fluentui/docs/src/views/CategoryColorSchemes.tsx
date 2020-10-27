@@ -18,7 +18,10 @@ import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
 export default () => {
   const [color, setColor] = React.useState('red');
 
+  // Currently all flavours of themes (default/dark/hc) all have the same colors
+  // Should be updated if this is no longer the case
   const colors = Object.keys(teamsTheme.siteVariables.categoryColorScheme);
+
   return (
     <Provider
       theme={{
