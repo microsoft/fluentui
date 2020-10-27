@@ -7,6 +7,8 @@ const stackTokens = { childrenGap: 10 };
 
 export const CheckboxBasicExample: React.FunctionComponent = () => {
   // These checkboxes are uncontrolled because they don't set the `checked` prop.
+  console.log('render checkbox');
+
   return (
     <Stack tokens={stackTokens}>
       <Checkbox label="Unchecked checkbox (uncontrolled)" onChange={_onChange} />

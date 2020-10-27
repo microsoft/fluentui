@@ -82,9 +82,11 @@ const exampleCardProps: IExampleCardProps = { editorSupportedPackages };
 // same applies with ISiteDefinition
 const appDefinition: IAppDefinition = {
   // ...
-  customizations: {
-    scopedSettings: {
-      ExampleCard: exampleCardProps,
+  theme: {
+    components: {
+      ExampleCard: {
+        styles: exampleCardProps,
+      },
     },
   },
 };
