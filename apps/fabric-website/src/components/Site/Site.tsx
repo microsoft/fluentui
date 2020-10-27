@@ -75,7 +75,11 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       const topLevelPages = siteDefinition.pages.filter(page => !!page.platforms).map(page => page.title);
 
       // Get session storage platforms for top level pages.
-      activePlatforms = JSON.parse(getItem('activePlatforms') || '') || {};
+      try {
+        activePlatforms = JSON.parse(getItem('activePlatforms') || '') || {};
+      } catch (err) {
+        // ignore parsing error
+      }
 
       // Set active platform for each top level page to local storage platform or the first platform defined for
       // that page.

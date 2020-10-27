@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Website: Fix JSON parsing error",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-10-27T03:53:37.816Z"
+}
