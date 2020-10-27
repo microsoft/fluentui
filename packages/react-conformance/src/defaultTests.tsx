@@ -150,24 +150,21 @@ export const defaultTests: TestObject = {
   'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
 
-    let el = customMount(<Component {...requiredProps} />);
-    let component = getComponent(el, helperComponents, wrapperComponent);
-
+    const defaultEl = customMount(<Component {...requiredProps} />);
+    const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
     const defaultClassNames =
-      component
+      defaultComponent
         ?.getDOMNode()
         ?.getAttribute('class')
         ?.split(' ') || [];
 
-    const testClassName = 'testComponentClassName';
-    const mergedProps: Partial<{}> = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const mergedProps: any = {
       ...requiredProps,
       className: 'testComponentClassName',
     };
-
-    el = customMount(<Component {...mergedProps} />);
-    component = getComponent(el, helperComponents, wrapperComponent);
-
+    const el = customMount(<Component {...mergedProps} />);
+    const component = getComponent(el, helperComponents, wrapperComponent);
     const classNames = component
       .getDOMNode()
       .getAttribute('class')
@@ -175,7 +172,7 @@ export const defaultTests: TestObject = {
 
     it(`handles className prop`, () => {
       try {
-        expect(classNames).toContain(testClassName);
+        expect(classNames).toContain('testComponentClassName');
       } catch (e) {
         defaultErrorMessages['component-handles-classname'](componentInfo, testInfo, e, classNames);
         throw new Error('component-handles-classname (handles className prop)');
