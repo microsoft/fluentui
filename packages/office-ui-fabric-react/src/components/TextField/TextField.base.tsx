@@ -484,12 +484,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       'defaultValue',
     ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
+    const type = this.props.canRevealPassword ? this.state.type : this.props.type ?? 'text';
     return (
       <input
         id={this._id}
         aria-labelledby={ariaLabelledBy}
         {...inputProps}
-        type={this.state.type}
+        type={type}
         ref={this._textElement as React.RefObject<HTMLInputElement>}
         value={this.value || ''}
         onInput={this._onInputChange}
