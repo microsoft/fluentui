@@ -1,4 +1,4 @@
-import { getWindow } from '@uifabric/utilities';
+import { getWindow } from '@fluentui/utilities';
 
 /**
  * Wrapper for ResizeObserver, with fallback for browsers that don't support ResizeObserver.

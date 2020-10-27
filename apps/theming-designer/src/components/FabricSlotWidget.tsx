@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IThemeRules, FabricSlots, IThemeSlotRule } from '@fluentui/react/lib/ThemeGenerator';
 import { IColor } from '@fluentui/react/lib/Color';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 

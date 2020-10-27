@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISelectedItemProps } from '../SelectedItemsList.types';
 import { ItemCanDispatchTrigger, Item } from './ItemTrigger.types';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export type EditingItemComponentProps<T> = {
   item: T;

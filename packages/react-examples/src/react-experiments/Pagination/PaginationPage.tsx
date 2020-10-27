@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+} from '@fluentui/react-docsite-components';
 import { Link } from '@fluentui/react/lib/Link';
 import { PaginationButtonsBasicExample } from './Pagination.Buttons.Basic.Example';
 import { PaginationButtonsCustomizationExample } from './Pagination.Buttons.Customization.Example';

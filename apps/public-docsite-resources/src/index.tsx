@@ -1,5 +1,5 @@
-import { createDemoApp } from '@uifabric/example-app-base';
-import { configureEnvironment } from '@uifabric/tsx-editor';
+import { createDemoApp } from '@fluentui/react-docsite-components';
+import { configureEnvironment } from '@fluentui/react-monaco-editor';
 import { AppDefinition } from './AppDefinition';
 import { GettingStartedPage } from './GettingStartedPage';
 

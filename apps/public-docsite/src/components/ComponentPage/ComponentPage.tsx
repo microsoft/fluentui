@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Customizer } from '@fluentui/react/lib/Utilities';
 import { IStyleSet } from '@fluentui/react/lib/Styling';
-import { IComponentPageStyles } from '@uifabric/example-app-base/lib/index';
+import { IComponentPageStyles } from '@fluentui/react-docsite-components/lib/index';
 import { fullWidth, fullHeight, contentPadding } from '../../styles/mixins';
 
 export interface IComponentPageProps {}

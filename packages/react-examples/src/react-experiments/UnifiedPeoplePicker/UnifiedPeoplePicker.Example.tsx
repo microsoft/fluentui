@@ -6,9 +6,10 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@fluentui/react-experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { mru, people } from '@uifabric/example-data';
+import { mru, people } from '@fluentui/example-data';
 import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
+import { useConst } from '@fluentui/react-hooks';
 
 const _suggestions = [
   {
@@ -51,6 +52,22 @@ const _suggestions = [
     isSelected: false,
     showRemoveButton: true,
   },
+  {
+    key: '6',
+    id: '6',
+    displayText: 'Suggestion 6',
+    item: people[5],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+  {
+    key: '7',
+    id: '7',
+    displayText: 'Suggestion 7',
+    item: people[6],
+    isSelected: false,
+    showRemoveButton: true,
+  },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
 export const UnifiedPeoplePickerExample = (): JSX.Element => {
@@ -61,6 +78,50 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
   const ref = React.useRef<any>();
+
+  const suggestionProps = useConst(() => {
+    return {
+      // uncomment below section to see any example of a selectable header item
+      /*headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            alert('People suggestions selected');
+          },
+        },
+      ],*/
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {peopleSuggestions.length} results</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          // uncomment to see an example of multiple selectable footer items
+          /*onExecute: () => {
+            alert('Showing people suggestions executed');
+          },*/
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
+          },
+        },
+      ],
+    };
+  });
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -194,6 +255,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     onFloatingSuggestionsDismiss: undefined,
     showSuggestionRemoveButton: true,
     pickerWidth: '300px',
+    pickerSuggestionsProps: suggestionProps,
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
@@ -219,6 +281,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
+        autofillDragDropEnabled={false}
       />
     </>
   );

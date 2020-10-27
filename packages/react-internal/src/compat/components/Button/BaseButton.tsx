@@ -19,7 +19,7 @@ import {
   Async,
   FocusRects,
 } from '../../../Utilities';
-import { createMergedRef } from '@uifabric/utilities';
+import { createMergedRef } from '@fluentui/utilities';
 import { Icon, FontIcon, ImageIcon } from '../../../Icon';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../../ContextualMenu';

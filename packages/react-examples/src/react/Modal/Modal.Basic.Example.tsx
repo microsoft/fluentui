@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 import {
   getTheme,
   mergeStyleSets,

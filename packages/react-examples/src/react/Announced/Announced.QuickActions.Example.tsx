@@ -5,7 +5,7 @@ import { IconButton, PrimaryButton, IButtonStyles } from '@fluentui/react/lib/co
 import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField, ITextField } from '@fluentui/react/lib/TextField';
 import { createArray } from '@fluentui/react/lib/Utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 

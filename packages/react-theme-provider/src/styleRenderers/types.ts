@@ -1,4 +1,4 @@
-import { IFontFace, IKeyframes } from '@uifabric/merge-styles';
+import { IFontFace, IKeyframes } from '@fluentui/merge-styles';
 
 export type FontFace = IFontFace;
 export type KeyFrames = IKeyframes;

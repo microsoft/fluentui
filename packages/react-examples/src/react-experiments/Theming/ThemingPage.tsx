@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
+import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@fluentui/react-docsite-components';
 
 import { ThemingSchemesVariantExample } from './Theming.Schemes.Variant.Example';
 import { ThemingSchemesCustomExample } from './Theming.Schemes.Custom.Example';

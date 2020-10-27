@@ -1,8 +1,18 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Thu, 17 Sep 2020 15:52:49 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v1.1.1..@fluentui/dom-utilities_v2.0.0-beta.0)
+
+### Changes
+
+- Add missing version.ts; Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v1.1.1)
 

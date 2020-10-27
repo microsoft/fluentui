@@ -4,8 +4,9 @@ import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
+import { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 export interface IFloatingSuggestionsListProps<T> {
   suggestionItems: IFloatingSuggestionItem<T>[];
@@ -27,6 +28,12 @@ export interface IFloatingSuggestionsListProps<T> {
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;
   pickerWidth?: string;
+  headerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
+  selectedHeaderIndex?: number;
+  suggestionsHeaderContainerAriaLabel?: string;
+  footerItemsProps?: IFloatingSuggestionsHeaderFooterProps[];
+  selectedFooterIndex?: number;
+  suggestionsFooterContainerAriaLabel?: string;
 }
 
 export interface IFloatingSuggestionsListStyleProps {}

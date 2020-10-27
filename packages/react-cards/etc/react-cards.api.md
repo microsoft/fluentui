@@ -5,9 +5,9 @@
 ```ts
 
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent } from '@uifabric/foundation';
-import { IComponentStyles } from '@uifabric/foundation';
-import { ISlotProp } from '@uifabric/foundation';
+import { IComponent } from '@fluentui/foundation-legacy';
+import { IComponentStyles } from '@fluentui/foundation-legacy';
+import { ISlotProp } from '@fluentui/foundation-legacy';
 import { IStackItemProps } from '@fluentui/react/lib/Stack';
 import { IStackItemSlots } from '@fluentui/react/lib/Stack';
 import { IStackItemTokens } from '@fluentui/react/lib/Stack';
@@ -15,7 +15,7 @@ import { IStackProps } from '@fluentui/react/lib/Stack';
 import { IStackSlot } from '@fluentui/react/lib/Stack';
 import { IStackSlots } from '@fluentui/react/lib/Stack';
 import { IStackTokens } from '@fluentui/react/lib/Stack';
-import { IStyleableComponentProps } from '@uifabric/foundation';
+import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import * as React from 'react';
 
 // @public (undocumented)

@@ -1,4 +1,4 @@
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 import { Theme } from '@fluentui/theme';
 import { makeStyles } from './makeStyles';
 import { StyleRenderer } from './styleRenderers/types';

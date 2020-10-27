@@ -7,7 +7,7 @@ import { Dropdown } from '@fluentui/react/lib/Dropdown';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Link } from '@fluentui/react/lib/Link';
 import { MainPanelInnerContent, MainPanelNumericalWidth } from '../../shared/MainPanelStyles';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { mergeStyles } from '@fluentui/merge-styles/lib/mergeStyles';
 import { Persona, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { Slider } from '@fluentui/react/lib/Slider';

@@ -7,7 +7,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({

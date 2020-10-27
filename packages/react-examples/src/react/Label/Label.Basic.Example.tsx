@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react/lib/Label';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 export const LabelBasicExample = () => {
   const textFieldId = useId('anInput');

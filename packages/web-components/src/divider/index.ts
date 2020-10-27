@@ -15,6 +15,9 @@ import { DividerStyles as styles } from './divider.styles';
   name: 'fluent-divider',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentDivider extends Divider {}
 

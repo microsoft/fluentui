@@ -5,7 +5,7 @@ import { ProgressIndicatorPageProps } from '@fluentui/react-examples/lib/react/P
 
 export const ProgressIndicatorPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/ProgressIndicator.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ProgressIndicator.page.json')}
     {...{ ...ProgressIndicatorPageProps, ...props }}
   />
 );

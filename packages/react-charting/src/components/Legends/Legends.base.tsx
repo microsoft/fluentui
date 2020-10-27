@@ -30,6 +30,9 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
   shape?: LegendShape;
   key: number;
+  opacity?: number;
+  stripePattern?: boolean;
+  isLineLegendInBarChart?: boolean;
 }
 
 export interface ILegendState {
@@ -102,6 +105,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
+        stripePattern: legend.stripePattern,
+        isLineLegendInBarChart: legend.isLineLegendInBarChart,
+        opacity: legend.opacity,
         key: index,
       };
     });
@@ -338,6 +344,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       action: data.action,
       hoverAction: data.hoverAction,
       onMouseOutAction: data.onMouseOutAction,
+      stripePattern: data.stripePattern,
+      isLineLegendInBarChart: data.isLineLegendInBarChart,
+      opacity: data.opacity,
     };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
@@ -347,8 +356,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       colorOnSelectedState: color,
       borderColor: legend.color,
       overflow: overflow,
+      stripePattern: legend.stripePattern,
+      isLineLegendInBarChart: legend.isLineLegendInBarChart,
+      opacity: legend.opacity,
     });
-
     const onClickHandler = () => {
       this._onClick(legend);
     };
@@ -376,6 +387,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={allowFocusOnLegends}
+        /* eslint-enable react/jsx-no-bind */
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>

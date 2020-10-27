@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { ISvgIconProps } from '@fluentui/react-icons';
+import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -134,13 +133,6 @@ export interface ICheckboxProps
    * @deprecated Use label prop instead.
    */
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
-
-  /**
-   * Optional keytip.
-   *
-   * @deprecated This no longer works. Use `useKeytipData` hook instead.
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence

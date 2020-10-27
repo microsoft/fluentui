@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDownIcon } from '@fluentui/react-icons';
+import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';

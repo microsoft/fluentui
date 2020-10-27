@@ -3,7 +3,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 
 const ReactDOM = require('react-dom');
 
@@ -74,8 +74,8 @@ describe('Layer', () => {
 
       const parentElement = appElement.querySelector('#parent');
 
-      expect(parentElement).toBeDefined();
-      expect(parentElement!.ownerDocument).toBeDefined();
+      expect(parentElement).toBeTruthy();
+      expect(parentElement!.ownerDocument).toBeTruthy();
 
       const childElement = appElement.querySelector('#child') as Element;
 

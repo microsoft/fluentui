@@ -3,7 +3,7 @@ import { CommandBar } from '@fluentui/react/lib/CommandBar';
 import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
 import { Modal } from '@fluentui/react/lib/Modal';
 import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
-import { useBoolean, useConst } from '@uifabric/react-hooks';
+import { useBoolean, useConst } from '@fluentui/react-hooks';
 
 const commandBarFarItemsProps = [
   {

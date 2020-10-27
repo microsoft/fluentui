@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Calendar';
+export * from '@fluentui/react-date-time/lib/Calendar';

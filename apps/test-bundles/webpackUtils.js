@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path');
 const fs = require('fs');
-const resources = require('@uifabric/build/webpack/webpack-resources');
+const resources = require('@fluentui/scripts/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function createWebpackConfig(entries) {

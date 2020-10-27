@@ -22,7 +22,7 @@ import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { createGroups } from '@uifabric/example-data';
+import { createGroups } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const columnMidWidth = 200;

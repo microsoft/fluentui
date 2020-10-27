@@ -25,7 +25,7 @@ import {
 } from '@fluentui/react/lib/Pickers';
 import { IButtonProps } from '@fluentui/react/lib/compat/Button';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;

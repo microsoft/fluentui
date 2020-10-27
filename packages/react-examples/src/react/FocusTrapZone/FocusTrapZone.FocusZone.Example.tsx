@@ -5,7 +5,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const stackTokens = { childrenGap: 10 };
 const getTrapZoneStackStyles = memoizeFunction(

@@ -3,7 +3,7 @@ import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Layer, LayerHost } from '@fluentui/react/lib/Layer';
 import { AnimationClassNames, mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
 import { IToggleStyles } from '@fluentui/react/lib/Toggle';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean } from '@fluentui/react-hooks';
 
 export const LayerHostedExample: React.FunctionComponent = () => {
   const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);

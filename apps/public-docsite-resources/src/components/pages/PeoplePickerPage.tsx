@@ -4,7 +4,7 @@ import { PeoplePickerPageProps } from '@fluentui/react-examples/lib/react/People
 
 export const PeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/PeoplePicker.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/PeoplePicker.page.json')}
     {...{ ...PeoplePickerPageProps, ...props }}
   />
 );

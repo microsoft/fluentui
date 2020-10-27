@@ -1,8 +1,56 @@
-# Change Log - @uifabric/charting
+# Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.4)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.3..@fluentui/react-charting_v5.0.0-beta.4)
+
+### Changes
+
+- Charting: Adding custom Callout support for HorizontalBarChart, StackedBarChart and DonutChart. ([PR #15697](https://github.com/microsoft/fluentui/pull/15697) by humbertomakotomorimoto@gmail.com)
+- Charting: Fixing uncaught type error in VerticalStackedBarChart and made minor edits to margins. ([PR #15699](https://github.com/microsoft/fluentui/pull/15699) by humbertomakotomorimoto@gmail.com)
+- Charting: Adding support for bar gaps and rounded corners in VerticalStackedBarChart. ([PR #15704](https://github.com/microsoft/fluentui/pull/15704) by humbertomakotomorimoto@gmail.com)
+- Charting: Added line feature to VerticalBarChart. ([PR #15705](https://github.com/microsoft/fluentui/pull/15705) by humbertomakotomorimoto@gmail.com)
+
+## [5.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.3)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.1..@fluentui/react-charting_v5.0.0-beta.3)
+
+### Changes
+
+- Charting: Adding customized callout support to AreaChart and LineChart. ([PR #15684](https://github.com/microsoft/fluentui/pull/15684) by humbertomakotomorimoto@gmail.com)
+- Charting: Changing hover behavior of circles and removing focus of circles. ([PR #15686](https://github.com/microsoft/fluentui/pull/15686) by humbertomakotomorimoto@gmail.com)
+
+## [5.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.1)
+
+Fri, 23 Oct 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.0..@fluentui/react-charting_v5.0.0-beta.1)
+
+### Changes
+
+- Added color fill bar feature to line chart component ([PR #15660](https://github.com/microsoft/fluentui/pull/15660) by memille@microsoft.com)
+
+## [5.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.4..@fluentui/react-charting_v5.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/charting to @fluentui/react-charting ([PR #15564](https://github.com/microsoft/fluentui/pull/15564) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Charting: Refactoring Vertical Bar Chart via implementation of Cartesian chart. ([PR #15639](https://github.com/microsoft/fluentui/pull/15639) by humbertomakotomorimoto@gmail.com)
+- Charting: Resolving redraw issue after data change in AreaChart and implementing memoization. ([PR #15647](https://github.com/microsoft/fluentui/pull/15647) by humbertomakotomorimoto@gmail.com)
+- Charting: Implementing HeatMapChart and introducing some APIs in CartesianChart to support it. ([PR #15664](https://github.com/microsoft/fluentui/pull/15664) by humbertomakotomorimoto@gmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Fix imports to reference physical files. ([PR #15340](https://github.com/microsoft/fluentui/pull/15340) by xgao@microsoft.com)
+- Remove unused prop-types dependency; don't publish demo app ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
 
 ## [4.2.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.4)
 

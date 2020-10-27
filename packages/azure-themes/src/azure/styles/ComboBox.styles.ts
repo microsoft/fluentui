@@ -69,16 +69,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       borderColor: semanticColors.focusBorder,
     },
     callout: {
-      border: 'none',
       boxShadow: Depths.depth8,
-      selectors: {
-        '.ms-Callout-main': {
-          backgroundColor: semanticColors.inputBackground,
-          borderColor: semanticColors.inputBorder,
-          borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
-        },
-      },
     },
     divider: {
       backgroundColor: semanticColors.inputBorder,
@@ -91,7 +82,11 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     optionsContainer: {
       verticalAlign: 'middle',
+      border: 'none',
       selectors: {
+        '.ms-ComboBox-divider': {
+          backgroundColor: extendedSemanticColors.rowBorder,
+        },
         '.ms-ComboBox-header': {
           color: semanticColors.inputText,
           fontSize: theme.fonts.medium.fontSize,

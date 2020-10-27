@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { Image, ImageFit, Persona, PersonaPresence, Stack, Text } from '@fluentui/react';
 import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
 import { Card, CardBody, CardFooter, CardHeader } from '@fluentui/react-cards/lib/next/index';

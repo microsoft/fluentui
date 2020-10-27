@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 

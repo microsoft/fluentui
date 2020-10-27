@@ -662,10 +662,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover:after {
                     border-color: Highlight;
                   }
-              data-ktp-target="ktp-a-3"
+              data-ktp-target={true}
             >
               <input
-                aria-describedby="ktp-layer-id ktp-a-3"
                 aria-disabled={false}
                 aria-labelledby="Label12"
                 aria-valuemax={100}
@@ -711,7 +710,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       border-color: Highlight;
                       color: HighlightText;
                     }
-                data-ktp-execute-target="ktp-a-3"
+                data-ktp-execute-target={true}
                 data-lpignore={true}
                 disabled={false}
                 id="input11"
