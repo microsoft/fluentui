@@ -73,7 +73,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `hoverBackground` and `paddingRight` variables to `treeTitleVariables` @assuncaocharles ([#15200](https://github.com/microsoft/fluentui/pull/15200))
 - Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
-- Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([15717])(https://github.com/microsoft/fluentui/pull/15717)
+- Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([15717](https://github.com/microsoft/fluentui/pull/15717))
 
 ### Documentation
 - Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))
