@@ -8,10 +8,12 @@ import {
   DelayedRender,
   getId,
   getNativeProps,
+  getWindow,
   IStyleFunctionOrObject,
   initializeComponentRef,
   inputProperties,
   isControlled,
+  isIE11,
   textAreaProperties,
   warn,
   warnControlledUsage,
@@ -34,6 +36,12 @@ export interface ITextFieldState {
    * Use `this._errorMessage` to get the actual current error message.
    */
   errorMessage: string | JSX.Element;
+
+  /**
+   * Whether this field has `type='password'` and `canRevealPassword=true`, and the password is
+   * currently being revealed.
+   */
+  isRevealingPassword?: boolean;
 }
 
 /** @internal */
@@ -47,6 +55,9 @@ export interface ITextFieldSnapshot {
 
 const DEFAULT_STATE_VALUE = '';
 const COMPONENT_NAME = 'TextField';
+
+const REVEAL_ICON_NAME = 'RedEye';
+const HIDE_ICON_NAME = 'Hide';
 
 export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
   implements ITextField {
@@ -190,15 +201,19 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       theme,
       styles,
       autoAdjustHeight,
+      canRevealPassword,
+      type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
     } = this.props;
-    const { isFocused } = this.state;
+    const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
 
-    this._classNames = getClassNames(styles!, {
+    const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
+
+    const classNames = (this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       disabled,
@@ -213,21 +228,32 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       underlined,
       inputClassName,
       autoAdjustHeight,
-    });
+      hasRevealButton,
+    }));
 
     return (
       // eslint-disable-next-line deprecation/deprecation
-      <div ref={this.props.elementRef} className={this._classNames.root}>
-        <div className={this._classNames.wrapper}>
+      <div ref={this.props.elementRef} className={classNames.root}>
+        <div className={classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
-          <div className={this._classNames.fieldGroup}>
+          <div className={classNames.fieldGroup}>
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
-            {iconProps && <Icon className={this._classNames.icon} {...iconProps} />}
+            {iconProps && <Icon className={classNames.icon} {...iconProps} />}
+            {hasRevealButton && (
+              <button className={classNames.revealButton} onClick={this._onRevealButtonClick}>
+                <span className={classNames.revealSpan}>
+                  <Icon
+                    className={classNames.revealIcon}
+                    iconName={isRevealingPassword ? HIDE_ICON_NAME : REVEAL_ICON_NAME}
+                  />
+                </span>
+              </button>
+            )}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <div className={classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
             )}
           </div>
         </div>
@@ -237,7 +263,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {errorMessage && (
               <div role="alert">
                 <DelayedRender>
-                  <p className={this._classNames.errorMessage}>
+                  <p className={classNames.errorMessage}>
                     <span data-automation-id="error-message">{errorMessage}</span>
                   </p>
                 </DelayedRender>
@@ -458,11 +484,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
       'defaultValue',
+      'type',
     ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
+    const type = this.state.isRevealingPassword ? 'text' : this.props.type ?? 'text';
     return (
       <input
-        type={'text'}
+        type={type}
         id={this._id}
         aria-labelledby={ariaLabelledBy}
         {...inputProps}
@@ -480,6 +508,10 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       />
     );
   }
+
+  private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    this.setState(prevState => ({ isRevealingPassword: !prevState.isRevealingPassword }));
+  };
 
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
@@ -586,4 +618,23 @@ function _getValue(props: ITextFieldProps, state: ITextFieldState): string | und
  */
 function _shouldValidateAllChanges(props: ITextFieldProps): boolean {
   return !(props.validateOnFocusIn || props.validateOnFocusOut);
+}
+
+// Only calculate this once across all TextFields, since will stay the same
+let __browserNeedsRevealButton: boolean | undefined;
+
+function _browserNeedsRevealButton() {
+  if (typeof __browserNeedsRevealButton !== 'boolean') {
+    const win = getWindow();
+
+    if (win?.navigator) {
+      // Edge, Chromium Edge
+      const isEdge = /Edg/.test(win.navigator.userAgent || '');
+
+      __browserNeedsRevealButton = !(isIE11() || isEdge);
+    } else {
+      __browserNeedsRevealButton = true;
+    }
+  }
+  return __browserNeedsRevealButton;
 }
