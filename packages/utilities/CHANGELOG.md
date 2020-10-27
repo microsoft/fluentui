@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:28:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.0)
+
+Tue, 27 Oct 2020 12:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.4..@uifabric/utilities_v7.33.0)
+
+### Minor changes
+
+- Add option for where to store last language setting, and use getWindow utility for getting session storage values ([PR #15712](https://github.com/microsoft/fluentui/pull/15712) by elcraig@microsoft.com)
 
 ## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.4)
 

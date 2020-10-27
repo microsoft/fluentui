@@ -2,6 +2,36 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2020 12:28:11 GMT",
+      "tag": "office-ui-fabric-react_v7.148.1",
+      "version": "7.148.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField: Use type from state iff canRevealPassword is true",
+            "author": "fahasanw@microsoft.com",
+            "commit": "11ce21ba044ba68b68adc589615a577f9f9af58f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2020 12:22:51 GMT",
+      "tag": "office-ui-fabric-react_v7.148.0",
+      "version": "7.148.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SelectionZone: Adding an optional className prop",
+            "author": "elvonspa@microsoft.com",
+            "commit": "64a90ffdf0026dc2e4f59ba6813472192b240c1a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2020 21:41:23 GMT",
       "tag": "office-ui-fabric-react_v7.147.1",
       "version": "7.147.1",

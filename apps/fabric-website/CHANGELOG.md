@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:28:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.40](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.40)
+
+Tue, 27 Oct 2020 12:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.15.19..@uifabric/fabric-website_v7.15.40)
+
+### Patches
+
+- Store website info in sessionStorage (v7) ([PR #15712](https://github.com/microsoft/fluentui/pull/15712) by elcraig@microsoft.com)
 
 ## [7.15.19](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.19)
 

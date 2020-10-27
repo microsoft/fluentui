@@ -1,10 +1,5 @@
 {
   "buildCommand": "build:min",
-  "packages": [
-    "packages/office-ui-fabric-react",
-    "packages/react-button",
-    "packages/react-icons",
-    "packages/react-next"
-  ],
+  "packages": ["packages/office-ui-fabric-react", "packages/react-icons"],
   "sandboxes": ["u0e3w", "/apps/codesandbox-react-template", "/apps/codesandbox-react-next-template"]
 }

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.114.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.114.0)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.113.2..@uifabric/react-cards_v0.114.0)
+
+### Minor changes
+
+- Remove `next` folder. ([PR #15571](https://github.com/microsoft/fluentui/pull/15571) by xgao@microsoft.com)
 
 ## [0.113.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.113.2)
 

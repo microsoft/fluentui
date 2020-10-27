@@ -31,7 +31,7 @@ interface IRectRef {
   refElement: SVGGElement;
 }
 type RectanglesGraphData = { [key: string]: FlattenData[] };
-interface IHeatMapChartState {
+export interface IHeatMapChartState {
   /**
    * determines if the legend any of the legend is selected or not
    * @default false

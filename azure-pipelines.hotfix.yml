@@ -7,6 +7,8 @@ pool: 'Self Host Ubuntu'
 workspace:
   clean: all
 
+name: '$(targetNpmVersion) ($(Rev:r))'
+
 steps:
   - template: .devops/templates/tools.yml
 
