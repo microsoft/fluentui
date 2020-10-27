@@ -103,12 +103,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-17.14285714285714, -7.227722772277229)"
       >
         <rect
           fill="rgb(166, 207, 226)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -124,7 +124,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           25
         </text>
@@ -136,12 +136,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(11.42857142857143, -34.45544554455446)"
       >
         <rect
           fill="rgb(159, 198, 222)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -157,7 +157,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           50
         </text>
@@ -422,12 +422,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-17.14285714285714, -7.227722772277229)"
       >
         <rect
           fill="rgb(166, 207, 226)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -443,7 +443,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           25
         </text>
@@ -455,12 +455,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(11.42857142857143, -34.45544554455446)"
       >
         <rect
           fill="rgb(159, 198, 222)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -476,7 +476,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           50
         </text>
@@ -589,12 +589,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-17.14285714285714, -7.227722772277229)"
       >
         <rect
           fill="rgb(166, 207, 226)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -610,7 +610,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           25
         </text>
@@ -622,12 +622,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(11.42857142857143, -34.45544554455446)"
       >
         <rect
           fill="rgb(159, 198, 222)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -643,7 +643,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           50
         </text>
@@ -908,12 +908,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-17.14285714285714, -7.227722772277229)"
       >
         <rect
           fill="rgb(166, 207, 226)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -929,7 +929,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           25
         </text>
@@ -941,12 +941,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(11.42857142857143, -34.45544554455446)"
       >
         <rect
           fill="rgb(159, 198, 222)"
           height={26.683168316831683}
-          width={29.10891089108911}
+          width={25.71428571428571}
         />
         <text
           className=
@@ -962,7 +962,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(12.857142857142856, 13.341584158415841)"
         >
           50
         </text>
