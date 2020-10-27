@@ -309,63 +309,65 @@ const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'h
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 const COMPONENT_NAME = 'ResizeGroup';
 
+type ResizeDataAction = {
+  type: 'resizeData' | keyof IResizeGroupState;
+  value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
+};
+
+/**
+ * Use useReducer instead of userState because React is not batching the state updates
+ * when state is set in callbacks of setTimeout or requestAnimationFrame.
+ * See issue: https://github.com/facebook/react/issues/14259
+ */
+function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): IResizeGroupState {
+  switch (action.type) {
+    case 'resizeData':
+      return { ...action.value };
+    case 'dataToMeasure':
+      return { ...state, dataToMeasure: action.value, resizeDirection: 'grow', measureContainer: true };
+    default:
+      return { ...state, [action.type]: action.value };
+  }
+}
+
 function useResizeState(
   props: IResizeGroupProps,
   nextResizeGroupStateProvider: ReturnType<typeof getNextResizeGroupStateProvider>,
   rootRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const initialStateData = useConst(() => nextResizeGroupStateProvider.getInitialResizeGroupState(props.data));
-  /**
-   * Final data used to render proper sized component
-   */
-  const [renderedData, setRenderedData] = React.useState(initialStateData.renderedData);
-
-  /**
-   * Data to render in a hidden div for measurement
-   */
-  const [dataToMeasure, setDataToMeasure] = React.useState(initialStateData.dataToMeasure);
-
-  /**
-   * Set to true when the content container might have new dimensions and should
-   * be remeasured.
-   */
-  const [measureContainer, setMeasureContainer] = React.useState(initialStateData.measureContainer);
-
-  /**
-   * Are we resizing to accommodate having more or less available space?
-   * The 'grow' direction is when the container may have more room than the last render,
-   * such as when a window resize occurs. This means we will try to fit more content in the window.
-   * The 'shrink' direction is when the contents don't fit in the container and we need
-   * to find a transformation of the data that makes everything fit.
-   */
-  const [resizeDirection, setResizeDirection] = React.useState(initialStateData.resizeDirection);
+  const [resizeData, dispatchResizeDataAction] = React.useReducer(resizeDataReducer, initialStateData);
 
   // Reset state when new data is provided
   React.useEffect(() => {
-    setDataToMeasure(props.data);
-    setResizeDirection('grow');
-    setMeasureContainer(true);
+    dispatchResizeDataAction({
+      type: 'dataToMeasure',
+      value: props.data,
+    });
   }, [props.data]);
 
   // Because it's possible that we may force more than one re-render per animation frame, we
   // want to make sure that the RAF request is using the most recent data.
   const stateRef = React.useRef<IResizeGroupState>(initialStateData);
-  stateRef.current = { renderedData, dataToMeasure, measureContainer, resizeDirection };
+  stateRef.current = { ...resizeData };
 
-  function updateResizeState(nextState?: IResizeGroupState) {
+  const updateResizeState = React.useCallback((nextState?: IResizeGroupState) => {
     if (nextState) {
-      setRenderedData(nextState.renderedData);
-      setDataToMeasure(nextState.dataToMeasure);
-      setMeasureContainer(nextState.measureContainer);
-      setResizeDirection(nextState.resizeDirection);
+      dispatchResizeDataAction({
+        type: 'resizeData',
+        value: nextState,
+      });
     }
-  }
+  }, []);
 
-  function remeasure(): void {
+  const remeasure: () => void = React.useCallback(() => {
     if (rootRef.current) {
-      setMeasureContainer(true);
+      dispatchResizeDataAction({
+        type: 'measureContainer',
+        value: true,
+      });
     }
-  }
+  }, [rootRef]);
 
   return [stateRef, updateResizeState, remeasure] as const;
 }
@@ -453,6 +455,8 @@ function useDebugWarnings(props: IResizeGroupProps) {
   }
 }
 
+const measuredContextValue = { isMeasured: true };
+
 export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React.forwardRef<
   HTMLDivElement,
   IResizeGroupProps
@@ -489,7 +493,7 @@ export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React
       <div style={hiddenParentStyles}>
         {dataNeedsMeasuring && !isInitialMeasure && (
           <div style={hiddenDivStyles} ref={updateHiddenDiv}>
-            <MeasuredContext.Provider value={{ isMeasured: true }}>
+            <MeasuredContext.Provider value={measuredContextValue}>
               {onRenderData(dataToMeasure)}
             </MeasuredContext.Provider>
           </div>
