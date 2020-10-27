@@ -14,6 +14,7 @@ import {
 } from 'office-ui-fabric-react';
 import { isPageActive, hasActiveChild, INavPage, INavProps, NavSortType } from '@uifabric/example-app-base/lib/index2';
 import { theme } from '@uifabric/example-app-base/lib/styles/theme';
+import { getItem, setItem } from '@uifabric/utilities/lib/sessionStorage';
 import * as styles from './Nav.module.scss';
 
 export interface INavState {
@@ -32,9 +33,10 @@ export class Nav extends React.Component<INavProps, INavState> {
   public constructor(props: INavProps) {
     super(props);
 
-    this._localItems = !!window.localStorage
+    const defaultSortState = getItem('defaultSortState');
+    this._localItems = defaultSortState
       ? {
-          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType]
+          defaultSortState: NavSortType[defaultSortState as keyof typeof NavSortType],
         }
       : {};
 
@@ -46,7 +48,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 
   public componentDidMount(): void {
-    !this._localItems.defaultSortState && localStorage.setItem('defaultSortState', this.state.defaultSortState);
+    !this._localItems.defaultSortState && setItem('defaultSortState', this.state.defaultSortState);
   }
 
   public shouldComponentUpdate(nextProps: INavProps): boolean {
