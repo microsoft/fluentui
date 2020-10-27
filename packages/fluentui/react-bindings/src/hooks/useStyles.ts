@@ -7,6 +7,8 @@ import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps } from '../st
 import { getStyles } from '../styles/getStyles';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
+  // TODO: Adding a className to the root should not be the responsibility of useStyles.
+  //       This is a step to be done after styles are rendered.
   /** A classname that will be added by default to all instances of a component on the `root` slot. */
   className?: string;
 
@@ -60,7 +62,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   const context = useFluentContext();
 
   const {
-    className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
+    className,
     composeOptions,
     mapPropsToStyles = () => ({} as StyleProps),
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),

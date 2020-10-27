@@ -129,7 +129,7 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
     },
     style: { ...state.style, ...props.style },
     styles: _.merge(state.styles, resolvedStyles.root, props.styles),
-    className: cx(state.className, classes.root, props.className),
+    className: cx(buttonClassName, state.className, classes.root, props.className),
 
     // TODO: test that this works as expected still, without merging these props
     //        - [ ] max call stack exceeded on click
@@ -150,30 +150,36 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
 
     // TODO: this is ugly, don't require others to do this when authoring a new component
     //       this was added to prevent "defining" a slot with props when the user isn't using that slot in their props
-    icon: {
-      ...(state.icon as object),
-      ...props.icon,
-      style: { ...state.icon?.style, ...props.icon?.style },
-      styles: _.merge(state.icon?.styles, resolvedStyles.icon, props.icon?.styles),
-      className: cx(state.icon?.className, classes.icon, props.icon?.className),
-    },
+    ...(typeof props.icon !== 'undefined' && {
+      icon: {
+        ...(state.icon as object),
+        ...props.icon,
+        style: { ...state.icon?.style, ...props.icon?.style },
+        styles: _.merge(state.icon?.styles, resolvedStyles.icon, props.icon?.styles),
+        className: cx(state.icon?.className, classes.icon, props.icon?.className),
+      },
+    }),
 
-    loader: {
-      ...(state.loader as object),
-      role: undefined, // TODO: why is this `undefined`?
-      ...props.loader,
-      style: { ...state.loader?.style, ...props.loader?.style },
-      styles: _.merge(state.loader?.styles, resolvedStyles.loader, props.loader?.styles),
-      className: cx(state.icon?.className, classes.loader, props.icon?.className),
-    },
+    ...(typeof props.loader !== 'undefined' && {
+      loader: {
+        ...(state.loader as object),
+        role: undefined, // TODO: why is this `undefined`?
+        ...props.loader,
+        style: { ...state.loader?.style, ...props.loader?.style },
+        styles: _.merge(state.loader?.styles, resolvedStyles.loader, props.loader?.styles),
+        className: cx(state.icon?.className, classes.loader, props.icon?.className),
+      },
+    }),
 
-    content: {
-      ...(state.content as object),
-      ...props.content,
-      style: { ...state.content?.style, ...props.content?.style },
-      styles: _.merge(state.content?.styles, resolvedStyles.content, props.content?.styles),
-      className: _.merge(state.content?.className, classes.content, props.content?.className),
-    },
+    ...(typeof props.content !== 'undefined' && {
+      content: {
+        ...(state.content as object),
+        ...props.content,
+        style: { ...state.content?.style, ...props.content?.style },
+        styles: _.merge(state.content?.styles, resolvedStyles.content, props.content?.styles),
+        className: _.merge(state.content?.className, classes.content, props.content?.className),
+      },
+    }),
   };
 
   // TODO: verify all accessibility features are the same as they were

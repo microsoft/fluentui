@@ -1,7 +1,7 @@
 import { ComposePreparedOptions } from './types';
 
 export const defaultComposeOptions: Required<ComposePreparedOptions> = {
-  className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
+  className: '',
   classes: [],
   displayName: '',
   displayNames: [],
