@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add option for where to store last language setting",
+  "comment": "Add option for where to store last language setting, and use getWindow utility for getting session storage values",
   "packageName": "@uifabric/utilities",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
