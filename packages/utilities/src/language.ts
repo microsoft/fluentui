@@ -1,20 +1,29 @@
 import { getDocument } from './dom/getDocument';
-import { getItem, setItem } from './localStorage';
+import * as localStorage from './localStorage';
+import * as sessionStorage from './sessionStorage';
 
 // Default to undefined so that we initialize on first read.
 let _language: string | null;
 
+const STORAGE_KEY = 'language';
+
 /**
- * Gets the rtl state of the page (returns true if in rtl.)
- *
- * @public
+ * Gets the language set for the page.
+ * @param persistenceType - Where to persist the value. Default is `sessionStorage` if available.
  */
-export function getLanguage(): string | null {
+export function getLanguage(
+  persistenceType: 'localStorage' | 'sessionStorage' | 'none' = 'sessionStorage',
+): string | null {
   if (_language === undefined) {
     let doc = getDocument();
-    const savedLanguage = getItem('language');
+    const savedLanguage =
+      persistenceType === 'localStorage'
+        ? localStorage.getItem(STORAGE_KEY)
+        : persistenceType === 'sessionStorage'
+        ? sessionStorage.getItem(STORAGE_KEY)
+        : undefined;
 
-    if (savedLanguage !== null) {
+    if (savedLanguage) {
       _language = savedLanguage;
     }
 
@@ -31,19 +40,33 @@ export function getLanguage(): string | null {
 }
 
 /**
- * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
- *
- * @public
+ * Sets the language for the page (by adjusting the lang attribute of the html element).
+ * @param language - Language to set.
+ * @param persistenceType - Where to persist the value. Default is `sessionStorage` if available.
  */
-export function setLanguage(language: string, avoidPersisting: boolean = false): void {
+export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
+/**
+ * Sets the language for the page (by adjusting the lang attribute of the html element).
+ * @deprecated Use string parameter version.
+ * @param language - Language to set.
+ * @param avoidPersisting - If true, don't store the value.
+ */
+export function setLanguage(language: string, avoidPersisting?: boolean): void;
+export function setLanguage(
+  language: string,
+  persistenceParam?: 'localStorage' | 'sessionStorage' | 'none' | boolean,
+): void {
   let doc = getDocument();
 
   if (doc) {
     doc.documentElement.setAttribute('lang', language);
   }
 
-  if (!avoidPersisting) {
-    setItem('language', language);
+  const persistenceType = persistenceParam === true ? 'none' : !persistenceParam ? 'sessionStorage' : persistenceParam;
+  if (persistenceType === 'localStorage') {
+    localStorage.setItem(STORAGE_KEY, language);
+  } else if (persistenceType === 'sessionStorage') {
+    sessionStorage.setItem(STORAGE_KEY, language);
   }
 
   _language = language;

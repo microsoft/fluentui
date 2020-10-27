@@ -25,6 +25,7 @@ import {
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@fluentui/react-docsite-components/lib/index';
+import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 
@@ -73,13 +74,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       // Get top level pages with platforms.
       const topLevelPages = siteDefinition.pages.filter(page => !!page.platforms).map(page => page.title);
 
-      // Get local storage platforms for top level pages.
-      try {
-        // Accessing localStorage can throw for various reasons
-        activePlatforms = JSON.parse(localStorage.getItem('activePlatforms') || '') || {};
-      } catch (ex) {
-        // ignore
-      }
+      // Get session storage platforms for top level pages.
+      activePlatforms = JSON.parse(getItem('activePlatforms') || '') || {};
 
       // Set active platform for each top level page to local storage platform or the first platform defined for
       // that page.
@@ -448,11 +444,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   };
 
   private _setActivePlatforms = () => {
-    try {
-      localStorage.setItem('activePlatforms', JSON.stringify(this.state.activePlatforms));
-    } catch (ex) {
-      // ignore
-    }
+    setItem('activePlatforms', JSON.stringify(this.state.activePlatforms));
   };
 
   /**
