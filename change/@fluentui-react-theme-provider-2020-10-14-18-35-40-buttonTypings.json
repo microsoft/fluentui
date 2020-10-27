@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Expanding type of MakeVariantClassesOptions to take into account user provided Variants.",
   "packageName": "@fluentui/react-theme-provider",
   "email": "humbertomakotomorimoto@gmail.com",

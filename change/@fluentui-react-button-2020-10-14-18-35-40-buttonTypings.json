@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Updating use of makeVariantClasses and fixing typing bugs.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",

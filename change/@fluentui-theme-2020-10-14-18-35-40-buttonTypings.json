@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Fixing and expanding token typings.",
   "packageName": "@fluentui/theme",
   "email": "humbertomakotomorimoto@gmail.com",
