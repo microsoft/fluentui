@@ -151,6 +151,16 @@ export interface IVerticalBarChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * data to render the line along with bars
+   */
+  lineData?: ILineDataInVerticalBarChart;
+}
+
+export interface ILineDataInVerticalBarChart {
+  y: IVerticalBarChartDataPoint['y'];
+  yAxisCalloutData?: string | undefined;
 }
 
 export interface ILineChartDataPoint {
