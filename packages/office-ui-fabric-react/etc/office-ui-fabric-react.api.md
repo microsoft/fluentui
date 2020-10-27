@@ -8069,14 +8069,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
-    // @deprecated (undocumented)
-    mask?: string;
-    // @deprecated (undocumented)
-    maskChar?: string;
-    // @deprecated (undocumented)
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
@@ -8111,7 +8103,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
-    type: string;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 
