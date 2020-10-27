@@ -11,7 +11,7 @@ const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
 let __BASENAME__ = process.env.DEPLOYBASEPATH
   ? // This needs a trailing slash or images won't work
-    `/pr-deploy-site/${process.env.DEPLOYBASEPATH}/react-northstar/`
+    `/${process.env.DEPLOYBASEPATH}/react-northstar/`
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
