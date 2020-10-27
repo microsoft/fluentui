@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 26 Oct 2020 12:22:51 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:28:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.148.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.148.1)
+
+Tue, 27 Oct 2020 12:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.148.0..office-ui-fabric-react_v7.148.1)
+
+### Patches
+
+- TextField: Use type from state iff canRevealPassword is true ([PR #15673](https://github.com/microsoft/fluentui/pull/15673) by fahasanw@microsoft.com)
 
 ## [7.148.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.148.0)
 
