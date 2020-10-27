@@ -184,9 +184,10 @@ export const defaultTests: TestObject = {
     });
 
     it(`handles component's default classNames`, () => {
+      let defaultClassName: string = '';
       try {
         if (defaultClassNames.length && defaultClassNames[0] !== '') {
-          for (const defaultClassName of defaultClassNames) {
+          for (defaultClassName of defaultClassNames) {
             expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);
           }
         }
@@ -195,7 +196,7 @@ export const defaultTests: TestObject = {
           componentInfo,
           testInfo,
           e,
-          defaultClassNames,
+          defaultClassName,
           classNames,
         );
         throw new Error('component-handles-classname (handles default classnames)');

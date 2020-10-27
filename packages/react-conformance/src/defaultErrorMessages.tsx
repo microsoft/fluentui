@@ -328,32 +328,36 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where classname prop doesn't exist on the component
     //
     // It appears that "displayName" doesn't have a className prop.
+    // After applying a test className called "testComponentClassName" to "displayName" it received a className called:
+    // className='"classNames"'
+    //
+    // "displayName" should have returned:
+    // className="testComponentClassName"
+    //
     // To Resolve this issue:
-    // 1. Make sure that you are applying the ref to the root element in your component.
-    // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
-    //    your test file.
-    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
-    //    your test file.
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the component's className prop.
+    // 3. Make sure that your component is handling the className correctly.
     console.log(
       defaultErrorMessage(
         `component-handles-classname`,
         displayName,
         `properly applied className prop.` +
           paragraph(3) +
-          `After applying a test classname called ${testErrorInfo('"testComponentClassName"')} to ${testErrorName(
+          `After applying a test className called ${testErrorInfo('"testComponentClassName"')} to ${testErrorName(
             displayName,
           )} it received:` +
           paragraph() +
-          failedError(`classname='${formatObject(classNames || ['undefined'])}'`) +
+          failedError(`className='${formatObject(classNames || ['undefined'])}'`) +
           paragraph(3) +
           `${testErrorName(displayName)} should have returned:` +
           paragraph() +
-          testErrorInfo(`classname="testComponentClassName"`),
+          testErrorInfo(`className="testComponentClassName"`),
       ) +
         resolveErrorMessages([
-          `Make sure that your component ${resolveInfo('accepts a classname prop')}.`,
-          `Make sure that nothing is ${resolveInfo('overwriting')} the component's classname prop.`,
-          `Make sure that your ${resolveInfo('component is handling')} the classname correctly.`,
+          `Make sure that your component ${resolveInfo('accepts a className prop')}.`,
+          `Make sure that nothing is ${resolveInfo('overwriting')} the component's className prop.`,
+          `Make sure that your ${resolveInfo('component is handling')} the className correctly.`,
         ]) +
         receivedErrorMessage(error),
     );
@@ -363,21 +367,21 @@ export const defaultErrorMessages = {
     componentInfo: ComponentDoc,
     testInfo: IsConformantOptions,
     error: string,
-    defaultClassName: string[],
+    defaultClassName: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     classNames: any,
   ) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
 
-    // Message Description: Handles scenario where classname prop doesn't properly handle default classname.
+    // Message Description: Handles scenario where className prop doesn't properly handle default className.
     //
     // It appears that "displayName" doesn't have a properly applied default className.
-    // After applying a test classname called "testComponentClassName" to "displayName" it received a classname called:
-    // classname='"classNames"'
+    // After applying a test className called "testComponentClassName" to "displayName" it received a className called:
+    // className='"classNames"'
     //
-    // Since "displayName" has a default classname called: "defaultClassName" it should have been merged into:
-    // classname='"classNames" "defaultClassName"'
+    // Since "displayName" has a default className called: "defaultClassName" it should have been merged into:
+    // className='"classNames" "defaultClassName"'
     //
     // To Resolve this issue:
     // 1. Make sure that you are applying the ref to the root element in your component.
@@ -393,19 +397,19 @@ export const defaultErrorMessages = {
           paragraph(3) +
           `After applying a test classname called ${testErrorInfo('"testComponentClassName"')} to ${testErrorName(
             displayName,
-          )} it received a classname called:` +
+          )} it received a className called:` +
           paragraph() +
-          failedError(`classname='${formatObject(classNames)}'`) +
+          failedError(`className='${formatObject(classNames)}'`) +
           paragraph(3) +
-          `Since ${testErrorName(displayName)} has a default classname called: ${testErrorInfo(
-            defaultClassName.toString(),
+          `Since ${testErrorName(displayName)} has a default className called: ${testErrorInfo(
+            defaultClassName,
           )} it should have been merged into:` +
           paragraph() +
-          testErrorInfo(`classname="${formatObject(classNames)} ${defaultClassName}"`),
+          testErrorInfo(`className="${formatObject(classNames)} ${defaultClassName}"`),
       ) +
         resolveErrorMessages([
-          `Check the placement of your classname and make sure that nothing is ${resolveInfo('overwriting')} it.`,
-          `Make sure that you are ${resolveInfo('merging the classnames correctly')}.`,
+          `Check the placement of your className and make sure that nothing is ${resolveInfo('overwriting')} it.`,
+          `Make sure that you are ${resolveInfo('merging the className correctly')}.`,
         ]) +
         receivedErrorMessage('Expected:' + testErrorInfo(' ref') + ', Received: ' + failedError('DOM node ') + error),
     );
