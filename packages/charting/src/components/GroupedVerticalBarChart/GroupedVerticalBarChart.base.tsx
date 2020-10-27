@@ -13,7 +13,7 @@ import {
   memoizeFunction,
   warnDeprecations,
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ChartTypes, tooltipOfXAxislabels, XAxisTypes } from '../../utilities/index';
+import { ChartTypes, tooltipOfXAxislabels, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
 import {
   CartesianChart,
   ILegend,
@@ -68,7 +68,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _yMax: number;
   private _calloutId: string;
   private _tooltipId: string;
-  private _isNumeric: boolean;
+  private _isNumeric: XAxisTypes;
   private _isRtl: boolean = getRTL();
 
   public constructor(props: IGroupedVerticalBarChartProps) {
@@ -103,7 +103,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._keys = keys;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
-    this._isNumeric = points.length > 0 && typeof points[0].name === 'number';
+    this._isNumeric = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -139,7 +139,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         chartType={ChartTypes.GroupedVerticalBarChart}
         calloutProps={calloutProps}
         legendBars={legends}
-        xAxisType={this._isNumeric ? XAxisTypes.NumericAxis : XAxisTypes.StringAxis}
+        xAxisType={this._isNumeric}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         xAxisPadding={this.props.xAxisTickPadding || 5}
