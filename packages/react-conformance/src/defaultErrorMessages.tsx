@@ -368,8 +368,7 @@ export const defaultErrorMessages = {
     testInfo: IsConformantOptions,
     error: string,
     defaultClassName: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    classNames: any,
+    classNames: string[] | undefined,
   ) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
@@ -411,7 +410,7 @@ export const defaultErrorMessages = {
           `Check the placement of your className and make sure that nothing is ${resolveInfo('overwriting')} it.`,
           `Make sure that you are ${resolveInfo('merging the className correctly')}.`,
         ]) +
-        receivedErrorMessage('Expected:' + testErrorInfo(' ref') + ', Received: ' + failedError('DOM node ') + error),
+        receivedErrorMessage(error),
     );
   },
 

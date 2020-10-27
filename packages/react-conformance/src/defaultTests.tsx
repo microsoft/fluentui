@@ -168,15 +168,14 @@ export const defaultTests: TestObject = {
     el = customMount(<Component {...mergedProps} />);
     component = getComponent(el, helperComponents, wrapperComponent);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const classNames: any = component
+    const classNames = component
       .getDOMNode()
       .getAttribute('class')
       ?.split(' ');
 
     it(`handles className prop`, () => {
       try {
-        expect(classNames.indexOf(testClassName) >= 0).toEqual(true);
+        expect(classNames).toContain(testClassName);
       } catch (e) {
         defaultErrorMessages['component-handles-classname'](componentInfo, testInfo, e, classNames);
         throw new Error('component-handles-classname (handles className prop)');
@@ -188,7 +187,7 @@ export const defaultTests: TestObject = {
       try {
         if (defaultClassNames.length && defaultClassNames[0] !== '') {
           for (defaultClassName of defaultClassNames) {
-            expect(classNames.indexOf(defaultClassName) >= 0).toEqual(true);
+            expect(classNames).toContain(defaultClassName);
           }
         }
       } catch (e) {
