@@ -31,37 +31,27 @@ describe('Layer', () => {
     });
   });
 
-  it('can render in a targeted LayerHost and pass context through', () => {
-    class Child extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>;
-      }
-    }
+  fit('can render in a targeted LayerHost and pass context through', () => {
+    const Child: React.FunctionComponent<{}> = () => (
+      <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
+    );
 
-    class Parent extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return (
-          <context.Provider value={{ foo: 'bar' }}>
-            <div id="parent">
-              <Layer hostId="foo">
-                <Child />
-              </Layer>
-            </div>
-          </context.Provider>
-        );
-      }
-    }
+    const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
+      <context.Provider value={{ foo: 'bar' }}>
+        <div id="parent">
+          <Layer hostId={props.hostId}>
+            <Child />
+          </Layer>
+        </div>
+      </context.Provider>
+    );
 
-    class App extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return (
-          <div id="app">
-            <Parent />
-            <LayerHost id="foo" />
-          </div>
-        );
-      }
-    }
+    const App: React.FunctionComponent<{ hostId?: string }> = props => (
+      <div id="app">
+        <Parent hostId={props.hostId} />
+        <LayerHost id={props.hostId} />
+      </div>
+    );
 
     const appElement = document.createElement('div');
 
@@ -69,15 +59,17 @@ describe('Layer', () => {
       document.body.appendChild(appElement);
 
       ReactTestUtils.act(() => {
-        ReactDOM.render(<App />, appElement);
+        ReactDOM.render(<App hostId="foo" />, appElement);
       });
 
       const parentElement = appElement.querySelector('#parent');
-
       expect(parentElement).toBeTruthy();
       expect(parentElement!.ownerDocument).toBeTruthy();
 
-      const childElement = appElement.querySelector('#child') as Element;
+      const hostElement = document.getElementById('foo');
+      expect(hostElement).toBeTruthy();
+
+      const childElement = hostElement!.querySelector('#child') as Element;
 
       expect(childElement.textContent).toEqual('bar');
     } finally {
