@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
-import { WindowContext } from '@fluentui/react-window-provider';
+import { WindowContext } from '../../WindowProvider';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
