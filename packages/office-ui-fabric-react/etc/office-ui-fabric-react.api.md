@@ -10108,6 +10108,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
 
 export * from "@fluentui/react-focus";
+export * from "@fluentui/react-window-provider";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
