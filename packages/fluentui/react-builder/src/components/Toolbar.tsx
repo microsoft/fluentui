@@ -17,6 +17,8 @@ export type ToolbarProps = {
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
+  enabledVirtualCursor: boolean;
+  onEnableVirtualCursor: (enabledVirtualCursor: boolean) => void;
   style?: React.CSSProperties;
 };
 
@@ -34,6 +36,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   mode,
   showCode,
   showJSONTree,
+  enabledVirtualCursor,
+  onEnableVirtualCursor,
   style,
 }) => (
   <div
@@ -93,6 +97,13 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
     <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
     <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      <Checkbox
+        label="Enable virtual cursor"
+        toggle
+        checked={!!enabledVirtualCursor}
+        onChange={(e, data) => onEnableVirtualCursor(data.checked)}
+      />
+      &emsp;
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
       <Checkbox

@@ -4,6 +4,7 @@ import { NarrationComputer, IAriaElement } from './../narration/NarrationCompute
 
 const computer = new NarrationComputer();
 let prevSelector = null;
+let prevNode = null;
 let focusableElements = {};
 let elementsPaths = [];
 let selectedElementPath = null;
@@ -11,11 +12,12 @@ let prevNarrationElement = null;
 const aomMissing = !window.hasOwnProperty('getComputedAccessibleNode');
 
 export type ReaderNarrationProps = {
+  node: HTMLElement;
   selector: string;
   inUseMode: boolean;
 };
 
-export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ selector, inUseMode }) => {
+export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ node, selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
   const [narrationElement, setNarrationElement] = React.useState<IAriaElement>(null);
   const [narrationText, setNarrationText] = React.useState('');
@@ -48,7 +50,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     }
 
     // Recompute and save the focusable elements and their paths for the tree rooted at the selector's element upon every selector change
-    if (prevSelector !== selector) {
+    if (selector !== prevSelector) {
       // Begin if 1
       const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
       computer.getFocusableElements(element).then(focusableElementsItems => {
@@ -76,6 +78,14 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       }); // End getFocusableElements
 
       prevSelector = selector;
+    } // End if 1
+
+    // Update the current and previous narration elements upon every node change
+    if (node !== prevNode) {
+      // Begin if 1
+      prevNarrationElement = narrationElement;
+      setNarrationElement(node as IAriaElement);
+      prevNode = node;
     } // End if 1
 
     // The null value of the narration element means no focusable element has been found
@@ -121,7 +131,6 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           placeholder="Select the narration element"
         />
       )}
-
       <Ref innerRef={ref}>
         <Alert
           warning
