@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.3..@fluentui/react-internal_v8.0.0-beta.4)
+
+### Changes
+
+- Port TextField reveal password feature to master ([PR #15720](https://github.com/microsoft/fluentui/pull/15720) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.3)
 

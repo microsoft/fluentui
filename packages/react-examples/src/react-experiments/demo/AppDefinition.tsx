@@ -1,9 +1,9 @@
 import { IAppDefinition } from '@fluentui/react-docsite-components';
-import { AppCustomizations } from './customizations';
+import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Experiments',
-  customizations: AppCustomizations,
+  themes: AppThemes,
   testPages: [],
   examplePages: [
     {
