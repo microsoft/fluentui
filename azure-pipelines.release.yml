@@ -144,7 +144,7 @@ steps:
       azureSubscription: 'UI Fabric (private)'
       storage: fabricweb
       ContainerName: 'fabric'
-      BlobPrefix: ''
+      BlobPrefix: 'package-manifest'
       Gzip: false
 
   - template: .devops/templates/cleanup.yml
