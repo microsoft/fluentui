@@ -1,4 +1,5 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { MenuButtonState, MenuButtonVariants } from './MenuButton.types';
 
 const GlobalClassNames = {
   root: 'ms-Button-root',
@@ -8,7 +9,7 @@ const GlobalClassNames = {
   _expanded: 'ms-Button--expanded',
 };
 
-export const useMenuButtonClasses = makeVariantClasses({
+export const useMenuButtonClasses = makeVariantClasses<MenuButtonState, MenuButtonVariants>({
   name: 'MenuButton',
   prefix: '--button',
   styles: {
@@ -50,13 +51,23 @@ export const useMenuButtonClasses = makeVariantClasses({
     _disabled: [GlobalClassNames._disabled],
   },
 
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): MenuButtonVariants => {
     const { palette } = theme;
 
     return {
       root: {
         menuIconSize: '12px',
         menuIconColor: 'var(--body-menuIconColor)',
+      },
+
+      ghost: {
+        menuIconColor: palette?.neutralSecondary,
+        hovered: {
+          menuIconColor: palette?.themePrimary,
+        },
+        pressed: {
+          menuIconColor: palette?.black,
+        },
       },
 
       transparent: {

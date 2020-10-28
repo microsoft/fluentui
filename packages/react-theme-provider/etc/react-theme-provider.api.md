@@ -46,14 +46,14 @@ export function makeStyles<TStyleSet extends {
 };
 
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
 
 // @public
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
     name?: string;
     prefix?: string;
     styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-    variants?: Variants | ((theme: Theme) => Variants);
+    variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 // @public (undocumented)

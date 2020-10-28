@@ -1,8 +1,8 @@
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
-import { ToggleButtonState } from './ToggleButton.types';
+import { ToggleButtonState, ToggleButtonVariants } from './ToggleButton.types';
 
-export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
+export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState, ToggleButtonVariants>({
   name: 'ToggleButton',
   prefix: '--button',
 
@@ -68,7 +68,7 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     },
   },
 
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): ToggleButtonVariants => {
     const { palette, semanticColors } = theme;
 
     return {

@@ -96,7 +96,6 @@ exports[`Button renders a default state 1`] = `
           --button-disabled-background: #f3f2f1;
           --button-disabled-borderColor: #f3f2f1;
           --button-disabled-contentColor: #a19f9d;
-          --button-disabled-secondaryContentColor: #a19f9d;
           --button-focusColor: #000000;
           --button-focusInnerColor: #ffffff;
           --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -117,7 +116,6 @@ exports[`Button renders a default state 1`] = `
           --button-highContrast-pressed-iconColor: WindowText;
           --button-hovered-background: #f3f2f1;
           --button-hovered-contentColor: #201f1e;
-          --button-hovered-secondaryContentColor: #201f1e;
           --button-iconColor: inherit;
           --button-iconSize: 16px;
           --button-margin: 0;
@@ -130,9 +128,6 @@ exports[`Button renders a default state 1`] = `
           --button-paddingTop: 0;
           --button-pressed-background: #edebe9;
           --button-pressed-contentColor: #201f1e;
-          --button-pressed-secondaryContentColor: #201f1e;
-          --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
           --button-size-large: 40px;
           --button-size-larger: 48px;
           --button-size-largest: 64px;
@@ -379,7 +374,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-disabled-background: #f3f2f1;
           --button-disabled-borderColor: #f3f2f1;
           --button-disabled-contentColor: #a19f9d;
-          --button-disabled-secondaryContentColor: #a19f9d;
           --button-focusColor: #000000;
           --button-focusInnerColor: #ffffff;
           --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -400,7 +394,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-highContrast-pressed-iconColor: WindowText;
           --button-hovered-background: #f3f2f1;
           --button-hovered-contentColor: #201f1e;
-          --button-hovered-secondaryContentColor: #201f1e;
           --button-iconColor: inherit;
           --button-iconSize: 16px;
           --button-margin: 0;
@@ -413,9 +406,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-paddingTop: 0;
           --button-pressed-background: #edebe9;
           --button-pressed-contentColor: #201f1e;
-          --button-pressed-secondaryContentColor: #201f1e;
-          --button-secondaryContentColor: #605e5c;
-          --button-secondaryContentFontSize: 12px;
           --button-size-large: 40px;
           --button-size-larger: 48px;
           --button-size-largest: 64px;

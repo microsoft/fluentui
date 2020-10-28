@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.3)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.2..@fluentui/react-internal_v8.0.0-beta.3)
+
+### Changes
+
+- ResizeGroup: Improve perf by making sure resize data state change is batched. ([PR #15701](https://github.com/microsoft/fluentui/pull/15701) by xgao@microsoft.com)
 
 ## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.2)
 
