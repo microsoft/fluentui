@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 28 Oct 2020 12:29:09 GMT",
+      "tag": "@fluentui/react-examples_v0.8.3",
+      "version": "0.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField: reveal password fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "4fc7146c1c06ee8574b5492982775925a021c36e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2020 12:22:51 GMT",
       "tag": "@fluentui/react-examples_v0.8.1",
       "version": "0.8.1",

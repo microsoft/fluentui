@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:29:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.3)
+
+Wed, 28 Oct 2020 12:29:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.8.1..@fluentui/react-examples_v0.8.3)
+
+### Patches
+
+- TextField: reveal password fixes ([PR #15722](https://github.com/microsoft/fluentui/pull/15722) by elcraig@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.0)
 

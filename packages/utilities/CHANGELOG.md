@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 27 Oct 2020 12:28:11 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:29:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.1)
+
+Wed, 28 Oct 2020 12:29:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.33.0..@uifabric/utilities_v7.33.1)
+
+### Patches
+
+- isIE11 utility should use getWindow to get the window ([PR #15722](https://github.com/microsoft/fluentui/pull/15722) by elcraig@microsoft.com)
 
 ## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.0)
 

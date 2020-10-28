@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Wed, 28 Oct 2020 12:29:09 GMT",
+      "tag": "@uifabric/utilities_v7.33.1",
+      "version": "7.33.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "isIE11 utility should use getWindow to get the window",
+            "author": "elcraig@microsoft.com",
+            "commit": "4fc7146c1c06ee8574b5492982775925a021c36e",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2020 12:28:11 GMT",
       "tag": "@uifabric/utilities_v7.33.0",
       "version": "7.33.0",
