@@ -6,12 +6,14 @@ export interface IUnifiedPickerStyles {
   pickerText: IStyle;
   pickerInput: IStyle;
   pickerDiv: IStyle;
+  selectionZone: IStyle;
 }
 
 const GlobalClassNames = {
   pickerText: 'ms-UnifiedPicker-text',
   pickerInput: 'ms-UnifiedPicker-input',
   pickerDiv: 'ms-UnifiedPicker-div',
+  selectionZone: 'ms-UnifiedPicker-selectionZone',
 };
 
 export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles => {
@@ -65,6 +67,13 @@ export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles
     ],
     pickerDiv: [
       classNames.pickerDiv,
+      {
+        display: 'flex',
+        flex: '1 1 auto',
+      },
+    ],
+    selectionZone: [
+      classNames.selectionZone,
       {
         display: 'flex',
         flex: '1 1 auto',

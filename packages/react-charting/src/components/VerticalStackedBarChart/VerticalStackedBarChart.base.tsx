@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, find, warnDeprecations } from '@fluentui/react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -13,7 +13,6 @@ import {
   IChildProps,
   IDataPoint,
   IMargins,
-  IRefArrayData,
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartStyleProps,
   IVerticalStackedBarChartStyles,
@@ -21,16 +20,22 @@ import {
   IVSChartDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, additionalMarginRight } from '../../utilities/index';
+import { ChartTypes, XAxisTypes } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = D3ScaleLinear<string, string>;
 const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
-interface IBarRef {
-  index: number | string;
-  refElement: SVGGElement;
+
+// When displaying gaps between bars, the max height of the gap is given in the
+// props. The actual gap is calculated with this multiplier, with a minimum gap
+// of 1 pixel. (If these values are changed, update the comment for barGapMax.)
+const barGapMultiplier = 0.2;
+const barGapMin = 1;
+
+interface IRefArrayData {
+  refElement?: SVGGElement | null;
 }
 
 export interface IVerticalStackedBarChartState extends IBasestate {
@@ -49,9 +54,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _isNumeric: boolean;
   private _barWidth: number;
   private _calloutId: string;
-  private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
-  private _refArray: IRefArrayData[];
-  private _barRefArray: IBarRef[];
   private _colors: string[];
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
@@ -78,8 +80,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
-    this._refArray = [];
-    this._barRefArray = [];
     this._adjustProps();
     this._dataset = this._createDataSetLayer();
   }
@@ -100,11 +100,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._dataset = this._createDataSetLayer();
     this._isNumeric = this._dataset.length > 0 && typeof this._dataset[0].x === 'number';
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
-
-    this._classNames = getClassNames(this.props.styles!, {
-      href: this.props.href!,
-      theme: this.props.theme!,
-    });
 
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
@@ -280,14 +275,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
   }
 
-  private _refCallback(rectElement: SVGRectElement, legendTitle: string, index: number): void {
-    this._refArray[index] = { index: legendTitle, refElement: rectElement };
-  }
-
-  private _barRefCallback = (barElement: SVGGElement, index: number, xAxisPoint: number | string): void => {
-    this._barRefArray[index] = { index: xAxisPoint, refElement: barElement };
-  };
-
   private _onRectHover(
     xAxisPoint: string,
     point: IVSChartDataPoint,
@@ -327,44 +314,36 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
   };
 
-  private _onRectFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, refArrayIndexNumber: number): void {
+  private _onRectFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, ref: IRefArrayData): void {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
     ) {
-      this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (obj.index === point.legend && refArrayIndexNumber === index) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend,
-            dataForHoverCard: point.data,
-            color: color,
-            xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
-            yCalloutValue: point.yAxisCalloutData,
-            dataPointCalloutProps: point,
-          });
-        }
+      this.setState({
+        refSelected: ref.refElement,
+        isCalloutVisible: true,
+        selectedLegendTitle: point.legend,
+        dataForHoverCard: point.data,
+        color: color,
+        xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
+        yCalloutValue: point.yAxisCalloutData,
+        dataPointCalloutProps: point,
       });
     }
   }
 
-  private _onStackFocus = (xAxisPoint: string | number): void => {
+  private _onStackFocus = (xAxisPoint: string | number, groupRef: IRefArrayData): void => {
     const found = find(
       this._points,
       (sinlgePoint: { xAxisPoint: string | number; chartData: IVSChartDataPoint[] }) =>
         sinlgePoint.xAxisPoint === xAxisPoint,
     );
-    this._barRefArray.forEach((obj: IBarRef) => {
-      if (obj.index === xAxisPoint) {
-        this.setState({
-          refSelected: obj.refElement,
-          isCalloutVisible: true,
-          YValueHover: found!.chartData,
-          hoverXValue: xAxisPoint,
-          stackCalloutProps: found!,
-        });
-      }
+    this.setState({
+      refSelected: groupRef.refElement,
+      isCalloutVisible: true,
+      YValueHover: found!.chartData,
+      hoverXValue: xAxisPoint,
+      stackCalloutProps: found!,
     });
   };
 
@@ -374,9 +353,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
   };
 
-  private _redirectToUrl(): void {
+  private _redirectToUrl = (): void => {
     this.props.href ? (window.location.href = this.props.href) : '';
-  }
+  };
 
   private _getYMax(dataset: IDataPoint[]) {
     return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
@@ -387,81 +366,109 @@ export class VerticalStackedBarChartBase extends React.Component<
     yBarScale: NumericScale,
     containerHeight: number,
   ): JSX.Element[] => {
-    const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
-      let startingPointOfY = 0;
-      const isCalloutForStack = this.props.isCalloutForStack || false;
+    const { barGapMax = 0, barCornerRadius = 0 } = this.props;
 
-      const singleBar = singleChartData.chartData.map((point: IVSChartDataPoint, index: number) => {
-        startingPointOfY = startingPointOfY + point.data;
+    const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
+      let yPoint = containerHeight - this.margins.bottom!;
+      const isCalloutForStack = this.props.isCalloutForStack || false;
+      const xPoint = xBarScale(this._isNumeric ? (singleChartData.xAxisPoint as number) : indexNumber);
+
+      // Removing datapoints with zero data
+      const nonZeroBars = singleChartData.chartData.filter(point => point.data > 0);
+
+      // When displaying gaps between the bars, the height of each bar is
+      // adjusted so that the total of all bars is not changed by the gaps
+      const totalData = nonZeroBars.reduce((iter, value) => iter + value.data, 0);
+      const totalHeight = yBarScale(totalData);
+      const spaces = barGapMax && nonZeroBars.length - 1;
+      const spaceHeight = spaces && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / spaces));
+      const heightValueRatio = (totalHeight - spaceHeight * spaces) / totalData;
+
+      if (heightValueRatio < 0) {
+        return undefined;
+      }
+
+      const singleBar = nonZeroBars.map((point: IVSChartDataPoint, index: number) => {
         const color = point.color ? point.color : this._colors[index];
-        const refArrayIndexNumber = indexNumber * singleChartData.chartData.length + index;
+        const ref: IRefArrayData = {};
 
         let shouldHighlight = true;
         if (this.state.isLegendHovered || this.state.isLegendSelected) {
           shouldHighlight = this.state.selectedLegendTitle === point.legend;
         }
-        this._classNames = getClassNames(this.props.styles!, {
+        const classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
           href: this.props.href,
         });
-        let xPoint;
-        if (this._isNumeric) {
-          xPoint = xBarScale(singleChartData.xAxisPoint as number);
-        } else {
-          xPoint = xBarScale(indexNumber);
-        }
-
         const rectFocusProps = !isCalloutForStack && {
           'data-is-focusable': true,
           'aria-labelledby': this._calloutId,
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
           onMouseLeave: this._handleMouseOut,
-          onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, refArrayIndexNumber),
+          onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, ref),
           onBlur: this._handleMouseOut,
           onClick: this._redirectToUrl,
         };
+
+        const barHeight = heightValueRatio * point.data;
+        yPoint = yPoint - barHeight - (index ? spaceHeight : 0);
+
+        // If set, apply the corner radius to the top of the final bar
+        if (barCornerRadius && barHeight > barCornerRadius && index === nonZeroBars.length - 1) {
+          return (
+            <path
+              key={index + indexNumber}
+              className={classNames.opacityChangeOnHover}
+              d={`
+                M ${xPoint} ${yPoint + barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
+                h ${this._barWidth - 2 * barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${barCornerRadius}
+                v ${barHeight - barCornerRadius}
+                h ${-this._barWidth}
+                z
+              `}
+              fill={color}
+              ref={e => (ref.refElement = e)}
+              {...rectFocusProps}
+            />
+          );
+        }
+
         return (
           <rect
             key={index + indexNumber}
-            className={this._classNames.opacityChangeOnHover}
+            className={classNames.opacityChangeOnHover}
             x={xPoint}
-            y={containerHeight - this.margins.bottom! - yBarScale(startingPointOfY)}
+            y={yPoint}
             width={this._barWidth}
-            height={Math.max(yBarScale(point.data), 0)}
+            height={barHeight}
             fill={color}
-            ref={(e: SVGRectElement) => {
-              this._refCallback(e, point.legend, refArrayIndexNumber);
-            }}
+            ref={e => (ref.refElement = e)}
             {...rectFocusProps}
           />
         );
       });
+      const groupRef: IRefArrayData = {};
       const stackFocusProps = isCalloutForStack && {
         'data-is-focusable': true,
         onMouseOver: this._onStackHover.bind(this, singleChartData.xAxisPoint),
         onMouseMove: this._onStackHover.bind(this, singleChartData.xAxisPoint),
         onMouseLeave: this._handleMouseOut,
-        onFocus: this._onStackFocus.bind(this, singleChartData.xAxisPoint),
+        onFocus: this._onStackFocus.bind(this, singleChartData.xAxisPoint, groupRef),
         onBlur: this._handleMouseOut,
         onClick: this._redirectToUrl,
       };
       return (
-        <g
-          key={indexNumber}
-          id={`${indexNumber}-singleBar`}
-          data-is-focusable={this.props.isCalloutForStack}
-          ref={(gElement: SVGGElement) => {
-            this._barRefCallback(gElement, indexNumber, singleChartData.xAxisPoint);
-          }}
-          {...stackFocusProps}
-        >
+        <g key={indexNumber} id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
           {singleBar}
         </g>
       );
     });
-    return bars;
+
+    return bars.filter((bar): bar is JSX.Element => !!bar);
   };
 
   private _createNumericBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {
@@ -471,10 +478,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const xBarScale = d3ScaleLinear()
       .domain(this._isRtl ? [xMax, 0] : [0, xMax])
       .nice()
-      .range([
-        this.margins.left!,
-        containerWidth - this.margins.right! - this._barWidth - (this._isRtl ? additionalMarginRight : 0),
-      ]);
+      .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -485,16 +489,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createStringBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {
     const yMax = this._getYMax(this._dataset);
     const endpointDistance = 0.5 * ((containerWidth - this.margins.right!) / this._dataset.length);
-
     const xBarScale = d3ScaleLinear()
       .domain(this._isRtl ? [this._dataset.length - 1, 0] : [0, this._dataset.length - 1])
       .range([
         this.margins.left! + endpointDistance - 0.5 * this._barWidth,
-        containerWidth -
-          this.margins.right! -
-          endpointDistance -
-          0.5 * this._barWidth -
-          (this._isRtl ? additionalMarginRight : 0),
+        containerWidth - this.margins.right! - endpointDistance - 0.5 * this._barWidth,
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])

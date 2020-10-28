@@ -109,9 +109,7 @@ export class Async {
           }
           callback.apply(this._parent);
         } catch (e) {
-          if (this._onErrorHandler) {
-            this._onErrorHandler(e);
-          }
+          this._logError(e);
         }
       }, duration);
 

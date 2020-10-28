@@ -9,6 +9,6 @@ module.exports = resources.createConfig(BUNDLE_NAME, true, {
 
   output: {
     libraryTarget: 'var',
-    library: 'Variants',
+    library: 'FluentUISchemeUtilities',
   },
 });

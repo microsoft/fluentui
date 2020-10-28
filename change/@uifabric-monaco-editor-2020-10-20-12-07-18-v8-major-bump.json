@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update package version for @fluentui/react version 8 beta release.",
-  "packageName": "@fluentui/monaco-editor",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T19:06:05.403Z"
-}

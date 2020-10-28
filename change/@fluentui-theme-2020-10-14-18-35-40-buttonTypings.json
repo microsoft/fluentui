@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fixing and expanding token typings.",
+  "packageName": "@fluentui/theme",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-15T01:35:40.353Z"
+}

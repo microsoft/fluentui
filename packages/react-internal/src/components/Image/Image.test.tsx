@@ -3,7 +3,7 @@ import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
-import { ImageFit } from './Image.types';
+import { ImageFit, ImageCoverStyle } from './Image.types';
 import { act } from 'react-dom/test-utils';
 import { isConformant } from '../../common/isConformant';
 
@@ -68,7 +68,13 @@ describe('Image', () => {
   it('can cover a landscape (wide) parent element with a square image', () => {
     const component = mount(
       <div style={{ width: '10px', height: '20px' }}>
-        <Image className="is-frameMaximizedPortrait" imageFit={ImageFit.cover} maximizeFrame src={testImage1x1} />
+        <Image
+          className="is-frameMaximizedPortrait"
+          imageFit={ImageFit.cover}
+          coverStyle={ImageCoverStyle.portrait}
+          maximizeFrame
+          src={testImage1x1}
+        />
       </div>,
     );
 
@@ -79,13 +85,19 @@ describe('Image', () => {
       component.find('img').simulate('load');
     });
 
-    expect(component.getDOMNode().querySelector('.ms-Image-image--portrait')).toBeDefined();
+    expect(component.getDOMNode().querySelector('.ms-Image-image--portrait')).toBeTruthy();
   });
 
   it('can cover a portrait (tall) parent element with a square image', () => {
     const component = mount(
       <div style={{ width: '10px', height: '20px' }}>
-        <Image src={testImage1x1} imageFit={ImageFit.cover} className="is-frameMaximizedLandscape" maximizeFrame />
+        <Image
+          src={testImage1x1}
+          imageFit={ImageFit.cover}
+          coverStyle={ImageCoverStyle.landscape}
+          className="is-frameMaximizedLandscape"
+          maximizeFrame
+        />
       </div>,
     );
 
@@ -96,7 +108,7 @@ describe('Image', () => {
     act(() => {
       component.find('img').simulate('load');
     });
-    expect(component.getDOMNode().querySelector('.ms-Image-image--landscape')).toBeDefined();
+    expect(component.getDOMNode().querySelector('.ms-Image-image--landscape')).toBeTruthy();
   });
 
   it('renders ImageFit.centerContain correctly', () => {

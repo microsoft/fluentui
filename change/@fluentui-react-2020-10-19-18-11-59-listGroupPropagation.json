@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixing propagation of items and groups props from DetailsList through GroupedList.",
-  "packageName": "@fluentui/react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-20T01:11:59.934Z"
-}

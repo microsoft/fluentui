@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Use webpack config helper and update npmignore",
-  "packageName": "@fluentui/foundation-legacy",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-15T08:59:18.081Z"
-}

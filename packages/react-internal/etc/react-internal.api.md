@@ -4360,6 +4360,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;
@@ -4385,7 +4386,7 @@ export interface ISeparator {
 }
 
 // @public (undocumented)
-export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignContent?: 'start' | 'center' | 'end';
     styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
     theme?: ITheme;
@@ -5156,6 +5157,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     autoAdjustHeight?: boolean;
     autoComplete?: string;
     borderless?: boolean;
+    canRevealPassword?: boolean;
     className?: string;
     componentRef?: IRefObject<ITextField>;
     defaultValue?: string;
@@ -5202,6 +5204,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 
@@ -5211,6 +5214,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
     hasIcon?: boolean;
     hasLabel?: boolean;
     focused?: boolean;
+    hasRevealButton?: boolean;
 };
 
 // @public (undocumented)
@@ -5221,6 +5225,9 @@ export interface ITextFieldStyles {
     fieldGroup: IStyle;
     icon: IStyle;
     prefix: IStyle;
+    revealButton: IStyle;
+    revealIcon: IStyle;
+    revealSpan: IStyle;
     root: IStyle;
     subComponentStyles: ITextFieldSubComponentStyles;
     suffix: IStyle;
@@ -5381,7 +5388,7 @@ export interface IVerticalDividerClassNames {
 }
 
 // @public
-export interface IVerticalDividerProps {
+export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;

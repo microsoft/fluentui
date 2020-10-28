@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename @uifabric/icons to @fluentui/font-icons-mdl2",
-  "packageName": "@fluentui/react-internal",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-20T00:40:51.418Z"
-}

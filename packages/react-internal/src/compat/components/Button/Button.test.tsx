@@ -208,10 +208,8 @@ describe('Button', () => {
         expect(button.getAttribute('aria-label')).toBeNull();
 
         expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector(`.ms-Button-label`)!.id);
-        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
         expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
-        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-describedby to an IconButton', () => {
@@ -226,10 +224,8 @@ describe('Button', () => {
         expect(button.getAttribute('aria-label')).toBeNull();
 
         expect(button.getAttribute('aria-labelledby')).toBeNull();
-        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
         expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
-        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with ariaDescription', () => {
@@ -246,10 +242,8 @@ describe('Button', () => {
         expect(button.getAttribute('aria-label')).toBeNull();
 
         expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
-        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
         expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
-        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it(
@@ -263,10 +257,8 @@ describe('Button', () => {
           expect(button.getAttribute('aria-label')).toBeNull();
 
           expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
-          expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
           expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.ms-Button-description')!.id);
-          expect(button.getAttribute('aria-describedby')).toBeDefined();
         },
       );
 
@@ -983,15 +975,14 @@ describe('Button', () => {
 
         const button = render(element);
 
-        expect(button).toBeDefined();
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
         const menuId = button.getAttribute('aria-owns');
-        expect(menuId).toBeDefined();
+        expect(menuId).toBeTruthy();
 
         const menuDOM = button.ownerDocument!.getElementById(menuId as string);
-        expect(menuDOM).toBeDefined();
+        expect(menuDOM).toBeTruthy();
 
         return menuDOM as HTMLElement;
       }
@@ -1001,7 +992,7 @@ describe('Button', () => {
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeDefined();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeTruthy();
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
@@ -1048,12 +1039,11 @@ describe('Button', () => {
 
         const button = render(element);
 
-        expect(button).toBeDefined();
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
         const menuId = button.getAttribute('aria-owns');
-        expect(menuId).toBeDefined();
+        expect(menuId).toBeTruthy();
 
         const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
         expect(contextualMenuElement).not.toBeNull();

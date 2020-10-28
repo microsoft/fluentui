@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix imports in scss files to avoid requiring a build",
-  "packageName": "@fluentui/react-button",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-16T07:40:39.450Z"
-}

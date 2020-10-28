@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Rename build-related packages",
-  "packageName": "@fluentui/react-conformance",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T16:57:42.295Z"
-}

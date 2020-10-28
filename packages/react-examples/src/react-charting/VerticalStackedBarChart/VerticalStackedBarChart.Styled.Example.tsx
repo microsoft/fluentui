@@ -7,11 +7,19 @@ import {
   IVerticalStackedBarChartProps,
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
-import { DirectionalHint } from '@fluentui/react';
+import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
+
+const options: IChoiceGroupOption[] = [
+  { key: 'singleCallout', text: 'Single callout' },
+  { key: 'MultiCallout', text: 'Stack callout' },
+];
 
 interface IVerticalStackedBarState {
   width: number;
   height: number;
+  barGapMax: number;
+  barCornerRadius: number;
+  selectedCallout: string;
 }
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -20,24 +28,20 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     this.state = {
       width: 650,
       height: 350,
+      barGapMax: 2,
+      barCornerRadius: 2,
+      selectedCallout: 'MultiCallout',
     };
   }
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
 
-  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ width: parseInt(e.target.value, 10) });
-  };
-  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ height: parseInt(e.target.value, 10) });
-  };
-
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
+      { legend: 'Metadata1', data: 2, color: DefaultPalette.accent },
+      { legend: 'Metadata2', data: 1, color: DefaultPalette.blueMid },
+      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
@@ -74,6 +78,11 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
     const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
       return {
+        xAxis: {
+          selectors: {
+            text: { fill: 'black', fontSize: '10px' },
+          },
+        },
         chart: {
           paddingBottom: '45px',
         },
@@ -89,27 +98,72 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div>
+          <label>Width:</label>
+          <input
+            type="range"
+            value={this.state.width}
+            min={200}
+            max={1000}
+            onChange={e => this.setState({ width: +e.target.value })}
+          />
+          <label>Height:</label>
+          <input
+            type="range"
+            value={this.state.height}
+            min={200}
+            max={1000}
+            onChange={e => this.setState({ height: +e.target.value })}
+          />
+        </div>
+        <div>
+          <label>BarGapMax:</label>
+          <input
+            type="range"
+            value={this.state.barGapMax}
+            min={0}
+            max={10}
+            onChange={e => this.setState({ barGapMax: +e.target.value })}
+          />
+          <label>BarCornerRadius:</label>
+          <input
+            type="range"
+            value={this.state.barCornerRadius}
+            min={0}
+            max={10}
+            onChange={e => this.setState({ barCornerRadius: +e.target.value })}
+          />
+          <ChoiceGroup
+            options={options}
+            defaultSelectedKey="MultiCallout"
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
+            label="Pick one"
+          />
+        </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
             data={data}
-            height={this.state.height}
-            width={this.state.width}
+            {...this.state}
             yAxisTickCount={10}
+            // Just test link
             href={'www.google.com'}
             // eslint-disable-next-line react/jsx-no-bind
             styles={customStyles}
             yMaxValue={120}
             yMinValue={10}
+            isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             calloutProps={{
               directionalHint: DirectionalHint.topCenter,
             }}
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
-            margins={{ left: 50 }}
+            margins={{
+              bottom: 35,
+              top: 10,
+              left: 35,
+              right: 0,
+            }}
             legendProps={{
               allowFocusOnLegends: true,
               styles: {

@@ -1,8 +1,29 @@
-# Change Log - @uifabric/example-app-base
+# Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.18..@fluentui/react-docsite-components_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/example-app-base to @fluentui/react-docsite-components ([PR #15617](https://github.com/microsoft/fluentui/pull/15617) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Fix imports to reference physical files. ([PR #15340](https://github.com/microsoft/fluentui/pull/15340) by xgao@microsoft.com)
+- Update import paths from foundation package. ([PR #15354](https://github.com/microsoft/fluentui/pull/15354) by xgao@microsoft.com)
+- Fix codepen after replacing office-ui-fabric-react with @fluentui/react. ([PR #15394](https://github.com/microsoft/fluentui/pull/15394) by xgao@microsoft.com)
+- Don't publish demo app ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- Remove duplicate shared scss files from src/common (use the ones from `@fluentui/common-styles` instead) ([PR #15543](https://github.com/microsoft/fluentui/pull/15543) by elcraig@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- rename @uifabric/foundation to @fluentui/foundation-legacy. ([PR #15595](https://github.com/microsoft/fluentui/pull/15595) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
 
 ## [7.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.18)
 

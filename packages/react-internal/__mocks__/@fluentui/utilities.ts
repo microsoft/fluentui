@@ -41,6 +41,12 @@ class MockAsync extends Async {
 
     super.dispose();
   }
+
+  protected _logError(e: any) {
+    super._logError(e);
+    // Don't eat errors thrown from async callbacks
+    throw e;
+  }
 }
 
 export { MockAsync as Async };

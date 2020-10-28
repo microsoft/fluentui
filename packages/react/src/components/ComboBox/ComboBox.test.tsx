@@ -80,7 +80,7 @@ describe('ComboBox', () => {
 
   it(`renders`, () => {
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
-      expect(wrapper.root).toBeDefined();
+      expect(wrapper.root).toBeTruthy();
     });
   });
 
@@ -693,7 +693,7 @@ describe('ComboBox', () => {
         });
 
         const callout = container.root.find(node => node.props?.className?.split?.(' ').includes?.('ms-Callout'));
-        expect(callout).toBeDefined();
+        expect(callout).toBeTruthy();
         expect(callout.props.className.includes('ms-ComboBox-callout')).toBeTruthy();
         expect(callout.props.className.includes('foo')).toBeTruthy();
       },
@@ -922,7 +922,7 @@ describe('ComboBox', () => {
 
         // Find menu
         const calloutBeforeOpen = findNodeWithClass(container, 'ms-Callout');
-        expect(calloutBeforeOpen).toBeDefined();
+        expect(calloutBeforeOpen).toBeTruthy();
         expect(calloutBeforeOpen?.props?.className?.includes?.('ms-ComboBox-callout')).toBeTruthy();
 
         // Open combobox
@@ -940,7 +940,7 @@ describe('ComboBox', () => {
 
         // Ensure menu is still there
         const calloutAfterClose = findNodeWithClass(container, 'ms-Callout');
-        expect(calloutAfterClose).toBeDefined();
+        expect(calloutAfterClose).toBeTruthy();
         expect(calloutBeforeOpen?.props?.className?.includes?.('ms-ComboBox-callout')).toBeTruthy();
       },
     );
