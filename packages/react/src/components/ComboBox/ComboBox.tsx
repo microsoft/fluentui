@@ -534,7 +534,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ariaDescribedBy,
       required,
       errorMessage,
-      allowFreeform,
       buttonIconProps,
       isButtonAriaHidden = true,
       title,
