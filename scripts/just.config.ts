@@ -15,7 +15,6 @@ import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
 import { generateVersionFiles } from './tasks/generate-version-files';
-import { generatePackageManifestTask } from './tasks/generate-package-manifest';
 import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
@@ -82,7 +81,6 @@ export function preset() {
   task('prettier', prettier);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
-  task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
 
