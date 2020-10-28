@@ -27,6 +27,7 @@ import {
   useSetTimeout,
   useId,
   useMount,
+  useUnmount,
 } from '@fluentui/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
@@ -413,9 +414,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       }
     });
 
-    // useUnmount(() => {
-    //   internalState.events.dispose();
-    // });
+    useUnmount(() => {
+      internalState.events.dispose();
+    });
 
     useComponentRef(props, focusTrapZone);
     useDebugWarnings(props);
