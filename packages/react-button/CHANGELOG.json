@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 28 Oct 2020 12:32:24 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.4",
+      "version": "1.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating use of makeVariantClasses and fixing typing bugs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca3b8690a04e641ee494c7fecb62615f1c468af",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

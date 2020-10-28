@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.3)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.0..@fluentui/theme_v2.0.0-beta.3)
+
+### Changes
+
+- Fixing and expanding token typings. ([PR #15518](https://github.com/microsoft/fluentui/pull/15518) by humbertomakotomorimoto@gmail.com)
 
 ## [2.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.0)
 

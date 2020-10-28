@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating use of makeVariantClasses and fixing typing bugs.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-15T01:34:35.537Z"
-}

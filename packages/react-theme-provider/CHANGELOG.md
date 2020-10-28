@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.1..@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+### Changes
+
+- Expanding type of MakeVariantClassesOptions to take into account user provided Variants. ([PR #15518](https://github.com/microsoft/fluentui/pull/15518) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.1)
 
