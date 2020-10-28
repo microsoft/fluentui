@@ -21,22 +21,6 @@ jobs:
 
       - template: .devops/templates/pr-target-branch.yml
 
-      # TEMPORARY FOR TESTING
-      - script: |
-          node ./scripts/generate-package-manifest
-        displayName: 'Generates a package manifest'
-
-      # TEMPORARY FOR TESTING
-      - task: AzureUpload@2
-        displayName: Upload Package Manifest
-        inputs:
-          SourcePath: 'package-manifest'
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-          storage: fabricweb
-          ContainerName: 'fabric'
-          BlobPrefix: 'package-manifest'
-          Gzip: false
-
       - script: |
           yarn checkchange
         displayName: check change
