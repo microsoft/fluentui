@@ -47,7 +47,7 @@ describe('SelectedItemsList', () => {
         wrapper
           .find('div')
           .first()
-          .childAt(0)
+          .childAt(1)
           .text(),
       ).toEqual('a');
       expect(
@@ -81,7 +81,7 @@ describe('SelectedItemsList', () => {
       wrapper
         .find('div')
         .first()
-        .childAt(0)
+        .childAt(1)
         .text(),
     ).toEqual('da');
     expect(
@@ -108,7 +108,7 @@ describe('SelectedItemsList', () => {
       wrapper
         .find('div')
         .first()
-        .childAt(0)
+        .childAt(1)
         .text(),
     ).toEqual('Person A');
     expect(

@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2020 12:28:11 GMT",
+      "tag": "@uifabric/utilities_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add option for where to store last language setting, and use getWindow utility for getting session storage values",
+            "author": "elcraig@microsoft.com",
+            "commit": "ae0b2d7b63e7edd40f224d509c822cdd57136e47",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@uifabric/utilities_v7.32.4",
       "version": "7.32.4",

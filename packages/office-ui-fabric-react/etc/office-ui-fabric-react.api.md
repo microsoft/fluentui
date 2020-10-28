@@ -1322,7 +1322,7 @@ export const getMeasurementCache: () => {
 };
 
 // @public (undocumented)
-export const getMenuItemStyles: (theme: import("@fluentui/theme/lib/types").Theme) => IMenuItemStyles;
+export const getMenuItemStyles: (theme: ITheme) => IMenuItemStyles;
 
 // @public
 export const getNextResizeGroupStateProvider: (measurementCache?: {
@@ -4968,6 +4968,7 @@ export interface IGroupDividerProps {
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
+    onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group: IGroup) => void;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -7110,6 +7111,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;
@@ -8109,7 +8111,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
-    type: string;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 

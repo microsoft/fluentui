@@ -385,7 +385,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = PartialTheme;
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -545,7 +546,8 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export type ITheme = Theme;
+export interface ITheme extends Theme {
+}
 
 // @public (undocumented)
 export namespace LocalizedFontFamilies {

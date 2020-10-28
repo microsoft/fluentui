@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import {
   Async,
   DelayedRender,
@@ -9,9 +9,11 @@ import {
   classNamesFunction,
   getId,
   getNativeProps,
+  getWindow,
   initializeComponentRef,
   inputProperties,
   isControlled,
+  isIE11,
   textAreaProperties,
   warn,
   warnControlledUsage,
@@ -35,10 +37,10 @@ export interface ITextFieldState {
   errorMessage: string | JSX.Element;
 
   /**
-   * The type of the textfield
-   * Password by default, text when revealing the password
+   * Whether this field has `type='password'` and `canRevealPassword=true`, and the password is
+   * currently being revealed.
    */
-  type: string;
+  isRevealingPassword?: boolean;
 }
 
 /** @internal */
@@ -52,6 +54,9 @@ export interface ITextFieldSnapshot {
 
 const DEFAULT_STATE_VALUE = '';
 const COMPONENT_NAME = 'TextField';
+
+const REVEAL_ICON_NAME = 'RedEye';
+const HIDE_ICON_NAME = 'Hide';
 
 export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
   implements ITextField {
@@ -75,11 +80,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _async: Async;
   /** Most recent value from a change or input event, to help avoid processing events twice */
   private _lastChangeValue: string | undefined;
-
-  private _isPassword = false;
-  private _showRevealButton = false;
-  private _revealIconProps: IIconProps = { iconName: 'RedEye' };
-  private _hideIconProps: IIconProps = { iconName: 'Hide' };
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -107,11 +107,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       uncontrolledValue: this._isControlled ? undefined : defaultValue,
       isFocused: false,
       errorMessage: '',
-      type: this.props.type ?? 'text',
     };
-
-    this._isPassword = this.props.type === 'password';
-    this._showRevealButton = this._shouldShowRevealButton();
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
@@ -204,15 +200,19 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       theme,
       styles,
       autoAdjustHeight,
+      canRevealPassword,
+      type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
     } = this.props;
-    const { isFocused } = this.state;
+    const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
 
-    this._classNames = getClassNames(styles!, {
+    const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
+
+    const classNames = (this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       disabled,
@@ -227,31 +227,31 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       underlined,
       inputClassName,
       autoAdjustHeight,
-      hasRevealButton: this._isPassword,
-    });
+      hasRevealButton,
+    }));
 
     return (
-      <div className={this._classNames.root}>
-        <div className={this._classNames.wrapper}>
+      <div className={classNames.root}>
+        <div className={classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
-          <div className={this._classNames.fieldGroup}>
+          <div className={classNames.fieldGroup}>
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
-            {iconProps && <Icon className={this._classNames.icon} {...iconProps} />}
-            {this._isPassword && this._showRevealButton && (
-              <button className={this._classNames.revealButton} onClick={this._onRevealButtonClick}>
-                <span className={this._classNames.revealSpan} data-automationid="splitbuttonprimary">
+            {iconProps && <Icon className={classNames.icon} {...iconProps} />}
+            {hasRevealButton && (
+              <button className={classNames.revealButton} onClick={this._onRevealButtonClick}>
+                <span className={classNames.revealSpan}>
                   <Icon
-                    className={this._classNames.revealIcon}
-                    {...(this.state.type === 'password' ? this._revealIconProps : this._hideIconProps)}
+                    className={classNames.revealIcon}
+                    iconName={isRevealingPassword ? HIDE_ICON_NAME : REVEAL_ICON_NAME}
                   />
                 </span>
               </button>
             )}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <div className={classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
             )}
           </div>
         </div>
@@ -261,7 +261,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {errorMessage && (
               <div role="alert">
                 <DelayedRender>
-                  <p className={this._classNames.errorMessage}>
+                  <p className={classNames.errorMessage}>
                     <span data-automation-id="error-message">{errorMessage}</span>
                   </p>
                 </DelayedRender>
@@ -482,14 +482,16 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
       'defaultValue',
+      'type',
     ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
+    const type = this.state.isRevealingPassword ? 'text' : this.props.type ?? 'text';
     return (
       <input
+        type={type}
         id={this._id}
         aria-labelledby={ariaLabelledBy}
         {...inputProps}
-        type={this.state.type}
         ref={this._textElement as React.RefObject<HTMLInputElement>}
         value={this.value || ''}
         onInput={this._onInputChange}
@@ -506,12 +508,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    if (this.state.type === 'password') {
-      this.setState({ type: 'text' });
-    } else {
-      this.setState({ type: 'password' });
-    }
+    this.setState(prevState => ({ isRevealingPassword: !prevState.isRevealingPassword }));
   };
+
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
     // which have *probably* been fixed now:
@@ -599,29 +598,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       textField.style.height = textField.scrollHeight + 'px';
     }
   }
-
-  private _shouldShowRevealButton = (): boolean => {
-    if (typeof window === 'undefined' || !window.navigator || !window.navigator.userAgent) {
-      return false;
-    }
-
-    if (this.props.canRevealPassword) {
-      const userAgent = window.navigator.userAgent;
-
-      //IE
-      const isIE = /rv:11.0/.test(userAgent);
-
-      //Edge
-      //Chromium Edge
-      const isEdge = /Edg/.test(userAgent);
-
-      if (isIE || isEdge) {
-        return false;
-      }
-      return true;
-    }
-    return false;
-  };
 }
 
 /** Get the value from the given state and props (converting from number to string if needed) */
@@ -640,4 +616,23 @@ function _getValue(props: ITextFieldProps, state: ITextFieldState): string | und
  */
 function _shouldValidateAllChanges(props: ITextFieldProps): boolean {
   return !(props.validateOnFocusIn || props.validateOnFocusOut);
+}
+
+// Only calculate this once across all TextFields, since will stay the same
+let __browserNeedsRevealButton: boolean | undefined;
+
+function _browserNeedsRevealButton() {
+  if (typeof __browserNeedsRevealButton !== 'boolean') {
+    const win = getWindow();
+
+    if (win?.navigator) {
+      // Edge, Chromium Edge
+      const isEdge = /Edg/.test(win.navigator.userAgent || '');
+
+      __browserNeedsRevealButton = !(isIE11() || isEdge);
+    } else {
+      __browserNeedsRevealButton = true;
+    }
+  }
+  return __browserNeedsRevealButton;
 }

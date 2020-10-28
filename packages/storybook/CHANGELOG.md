@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Mon, 12 Oct 2020 12:30:13 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.15)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.10..@fluentui/storybook_v0.5.15)
+
+### Patches
+
+- Remove version 8 related code. ([PR #15571](https://github.com/microsoft/fluentui/pull/15571) by xgao@microsoft.com)
 
 ## [0.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.10)
 

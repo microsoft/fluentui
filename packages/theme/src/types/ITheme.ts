@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Theme, PartialTheme } from './Theme';
 export { ISchemeNames, IScheme } from './IScheme';
 
 /**
  * {@docCategory ITheme}
  */
-export type ITheme = Theme;
+export interface ITheme extends Theme {}
 
 /**
  * {@docCategory ITheme}
  */
-export type IPartialTheme = PartialTheme;
+export interface IPartialTheme extends PartialTheme {}

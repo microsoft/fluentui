@@ -154,29 +154,6 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
-  const _dropItemsAt = (insertIndex: number, newItems: IPersonaProps[], indicesToRemove: number[]): void => {
-    // Insert those items into the current list
-    if (insertIndex > -1) {
-      const currentItems: IPersonaProps[] = [...peopleSelectedItems];
-      const updatedItems: IPersonaProps[] = [];
-
-      for (let i = 0; i < currentItems.length; i++) {
-        const item = currentItems[i];
-        // If this is the insert before index, insert the dragged items, then the current item
-        if (i === insertIndex) {
-          newItems.forEach(draggedItem => {
-            updatedItems.push(draggedItem);
-          });
-          updatedItems.push(item);
-        } else if (!indicesToRemove.includes(i)) {
-          // only insert items into the new list that are not being dragged
-          updatedItems.push(item);
-        }
-      }
-      setPeopleSelectedItems(updatedItems);
-    }
-  };
-
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
     // Updating the local copy as well at the parent level.
     const currentItems: IPersonaProps[] = [...peopleSelectedItems];
@@ -241,7 +218,6 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
-    dropItemsAt: _dropItemsAt,
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
@@ -261,6 +237,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
+        defaultDragDropEnabled={false}
       />
     </>
   );

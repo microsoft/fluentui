@@ -2,6 +2,115 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:22:51 GMT",
+      "tag": "@fluentui/react-examples_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add example to FloatingSuggestionsComposite with selectable headers and footers",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a836650f1dd1487c98a1960bc91a60dd11a9aceb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "UnifiedPicker: Fixing input selection",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ba305588b4ec5918e1a0371f5daab52d15979a85",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Updating UnifiedPicker example",
+            "author": "elvonspa@microsoft.com",
+            "commit": "64a90ffdf0026dc2e4f59ba6813472192b240c1a",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@fluentui/react-examples_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify UPP examples dropping abilities",
+            "author": "elvonspa@microsoft.com",
+            "commit": "002ca5c424c2e5c37adca880a21b26c6764560f8",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove packages from 7.0 branch which are not related to OUFR version 7.",
+            "author": "xgao@microsoft.com",
+            "commit": "94bf37f2e473626e3df403d4f868ccf20a997630",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Oct 2020 12:31:29 GMT",
+      "tag": "@fluentui/react-examples_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added some example code for new feature",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "0239b7d97b4515ac0a6078da27e99f5f00e8b05d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Convert SelectedPersona GetExpandedItems to async",
+            "author": "elvonspa@microsoft.com",
+            "commit": "b7f88774119cfb65333380c70d06384764c0675b",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "[VerticalStackedBarChart] bar gaps and rounded corners",
+            "author": "mibes@microsoft.com",
+            "commit": "14ddc431c4faf73ba8f38dc7de27330dcaa054c8",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Oct 2020 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.6.7",
+      "version": "0.6.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update CommandBar related snanpshots after aria role update.",
+            "author": "xgao@microsoft.com",
+            "commit": "37759e2abeee45e825f47181fd05ddefabb31502",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Oct 2020 12:23:11 GMT",
+      "tag": "@fluentui/react-examples_v0.6.6",
+      "version": "0.6.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical stacked bar chart styled examples code updated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8828fdca589a3b4f9119798fb806163e29961a41",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Oct 2020 12:26:33 GMT",
       "tag": "@fluentui/react-examples_v0.6.4",
       "version": "0.6.4",
