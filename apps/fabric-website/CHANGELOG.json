@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 28 Oct 2020 12:19:58 GMT",
+      "tag": "@uifabric/fabric-website_v6.19.9",
+      "version": "6.19.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Store website info in sessionStorage",
+            "author": "elcraig@microsoft.com",
+            "commit": "79fc7157c509f39dcba3b5377e9e63addb88407e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2020 22:52:26 GMT",
       "tag": "@uifabric/fabric-website_v6.19.8",
       "version": "6.19.8",

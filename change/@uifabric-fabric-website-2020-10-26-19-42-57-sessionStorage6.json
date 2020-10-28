@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Store website info in sessionStorage",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "79fc7157c509f39dcba3b5377e9e63addb88407e",
-  "date": "2020-10-27T02:42:57.631Z"
-}

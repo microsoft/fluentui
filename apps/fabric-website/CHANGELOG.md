@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 01 Apr 2020 22:52:26 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:19:58 GMT and should not be manually modified.
 
+## 6.19.9
+Wed, 28 Oct 2020 12:19:58 GMT
+
+### Patches
+
+- Store website info in sessionStorage (elcraig@microsoft.com)
 ## 6.19.8
 Wed, 01 Apr 2020 22:52:26 GMT
 
