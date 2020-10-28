@@ -4880,7 +4880,9 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
+    // @deprecated
     firstFocusableSelector?: string | (() => string);
+    firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
