@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
-import { ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
+import { MenuButton, MenuButtonProps, MinimalMenuProps } from '@fluentui/react-button';
+import { ContextualMenu, Stack, Text } from '@fluentui/react';
 import * as classes from '../utils/Button.stories.scss';
 
 const menuProps = {
@@ -16,7 +16,7 @@ const menuProps = {
   ],
 };
 
-const Menu = (defaultSlotType: string, props: IContextualMenuProps) => {
+const Menu = (props: MinimalMenuProps) => {
   return <ContextualMenu {...props} {...menuProps} />;
 };
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
+import { MenuButtonProps } from './MenuButton.types';
 
 export type ExpandedState = {
   ref?: React.Ref<unknown>;
@@ -9,14 +10,13 @@ export type ExpandedState = {
   onClick?: (ev: React.MouseEvent) => void;
   onMenuDismiss?: () => void;
   onKeyDown?: (ev: React.KeyboardEvent) => void;
-  'aria-expanded'?: boolean;
-  'aria-haspopup'?: boolean;
+  'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
+  'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
 
-  menu: {
-    target?: React.Ref<HTMLElement | undefined>;
-    onDismiss?: () => void;
-  };
+  menu?: MenuButtonProps['menu'];
 };
+
+export const ExpandedContext = React.createContext<boolean | undefined>(false);
 
 /**
  * @param draftState - mutable state object to update to add expanded behavior.
@@ -68,18 +68,22 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     [onKeyDown, setExpandedValue],
   );
 
-  // Assign extra props to the menu slot.
-  draftState.menu = {
-    target: rootRef,
-    ...draftState.menu,
-    onDismiss: React.useCallback(() => {
-      onMenuDismiss?.();
+  const onDismiss = React.useCallback(() => {
+    onMenuDismiss?.();
 
-      setExpandedValue(false);
+    setExpandedValue(false);
 
-      // TODO: should we re-focus the root?
-    }, [onMenuDismiss, setExpandedValue]),
-  };
+    // TODO: Should we re-focus the root?
+  }, [onMenuDismiss, setExpandedValue]);
+
+  // Assign extra props to the menu slot if it exists.
+  if (draftState.menu) {
+    draftState.menu = () => (
+      <ExpandedContext.Provider value={expandedValue}>
+        <draftState.menu target={rootRef} onDismiss={onDismiss} />
+      </ExpandedContext.Provider>
+    );
+  }
 
   draftState['aria-expanded'] = expandedValue;
   draftState['aria-haspopup'] = true;
