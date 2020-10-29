@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 14 Oct 2020 20:26:08 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.0)
+
+Thu, 29 Oct 2020 12:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.3..@fluentui/web-components_v0.7.0)
+
+### Minor changes
+
+- add hover and focus-within elevation change for card ([PR #15751](https://github.com/microsoft/fluentui/pull/15751) by chhol@microsoft.com)
+
+### Patches
+
+- ensure elevated corner radius is applied to dialog ([PR #15752](https://github.com/microsoft/fluentui/pull/15752) by chhol@microsoft.com)
 
 ## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.3)
 
