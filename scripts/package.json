@@ -12,6 +12,9 @@
     "clean": "",
     "code-style": "node ./just-scripts.js code-style"
   },
+  "engines": {
+    "node": "^12.14.0 <12.16.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
