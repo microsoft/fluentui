@@ -5,6 +5,7 @@ const GlobalClassNames = {
   root: 'ms-Button-root',
   menuIcon: 'ms-Button-menuIcon',
   _disabled: 'ms-Button--disabled',
+  _iconOnly: 'ms-Button--iconOnly',
   _ghost: 'ms-Button--ghost',
   _expanded: 'ms-Button--expanded',
 };
@@ -16,7 +17,7 @@ export const useMenuButtonClasses = makeVariantClasses<MenuButtonState, MenuButt
     root: [
       GlobalClassNames.root,
       {
-        // This seems like a bad selector.
+        // This seems likea  bad selector.
         '& > .ms-Button-menuIcon + *': {
           marginLeft: 0,
         },
@@ -49,6 +50,15 @@ export const useMenuButtonClasses = makeVariantClasses<MenuButtonState, MenuButt
     ],
 
     _disabled: [GlobalClassNames._disabled],
+
+    _iconOnly: [
+      GlobalClassNames._iconOnly,
+      {
+        '& > .ms-Button-icon + *': {
+          marginLeft: 0,
+        },
+      },
+    ],
   },
 
   variants: (theme: Theme): MenuButtonVariants => {

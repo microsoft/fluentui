@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps, MinimalMenuProps } from '@fluentui/react-button';
 import { Callout, ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
-import * as classes from '../utils/Button.stories.scss';
+import * as classes from '../Button.stories.scss';
 
 const menuProps = {
   items: [

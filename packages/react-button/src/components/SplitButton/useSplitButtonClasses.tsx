@@ -40,11 +40,6 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
     menuButton: [
       GlobalClassNames.menuButton,
       {
-        // This seems like a bad selector.
-        '& > .ms-Button-icon + *': {
-          marginLeft: 0,
-        },
-
         // Scope the override to a child component, increase specificity.
         [`.${GlobalClassNames.root} &`]: {
           width: menuButtonWidth,
