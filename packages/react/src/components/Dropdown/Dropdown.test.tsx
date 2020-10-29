@@ -48,6 +48,13 @@ describe('Dropdown', () => {
   isConformant({
     Component: Dropdown,
     displayName: 'Dropdown',
+    // Disabled Tests:
+    //
+    // consistent-callback-names
+    // Problem: Contains onChanged, onEmptied, onEncrypted, onEncrypted, onEnded, onSeeked,
+    // and onStalled types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['consistent-callback-names'],
   });
 
   describe('single-select', () => {

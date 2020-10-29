@@ -24,9 +24,16 @@ describe('GroupedList', () => {
         return <div />;
       },
     },
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onEmptied, onEncrypted, onEnded, onSeeked, and onStalled types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['consistent-callback-names', 'component-has-root-ref', 'component-handles-ref'],
   });
 
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {

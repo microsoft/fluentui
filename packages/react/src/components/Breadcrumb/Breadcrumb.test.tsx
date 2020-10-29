@@ -93,9 +93,16 @@ describe('Breadcrumb', () => {
   isConformant({
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onEmptied, onEncrypted, onEnded, onSeeked, and onStalled types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['consistent-callback-names', 'component-has-root-ref', 'component-handles-ref'],
   });
 
   it('renders items with expected element type', () => {
