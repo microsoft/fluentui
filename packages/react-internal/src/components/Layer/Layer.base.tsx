@@ -89,7 +89,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       onLayerDidMount?.();
     };
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
       createLayerElement();
       // Check if the user provided a hostId prop and register the layer with the ID.
       if (hostId) {
@@ -103,11 +103,6 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
           unregisterLayer(hostId, createLayerElement);
         }
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount.
-    }, []);
-
-    React.useEffect(() => {
-      createLayerElement();
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should run if the hostId updates.
     }, [hostId]);
 
@@ -195,16 +190,3 @@ function useDebugWarnings(props: ILayerProps) {
     });
   }
 }
-
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useLayoutEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [],
-  );
-};
