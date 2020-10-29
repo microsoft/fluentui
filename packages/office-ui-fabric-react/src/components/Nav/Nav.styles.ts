@@ -5,7 +5,8 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights
+  FontWeights,
+  HighContrastSelector
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {
@@ -97,7 +98,15 @@ export const getStyles = (
             backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           },
-        },
+          [HighContrastSelector]: {
+            border: 0,
+            selectors: {
+              ':focus': {
+                border: '1px solid WindowText'
+              }
+            }
+          }
+        }
       },
       isSelected && {
         color: semanticColors.bodyTextChecked,
