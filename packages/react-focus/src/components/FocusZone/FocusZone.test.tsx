@@ -78,10 +78,15 @@ describe('FocusZone', () => {
   isConformant({
     Component: FocusZone,
     displayName: 'FocusZone',
-    disabledTests: [
-      // Their is no existing top level FocusZone.ts file.
-      'has-top-level-file',
-    ],
+    // Disabled Tests:
+    //
+    // has-top-level-file
+    // Their is no existing top level FocusZone.ts file.
+    //
+    // consistent-callback-names
+    // Problem: Contains onActiveElementChanged type.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['has-top-level-file', 'consistent-callback-names'],
     asPropHandlesRef: true,
     elementRefName: 'elementRef',
   });
