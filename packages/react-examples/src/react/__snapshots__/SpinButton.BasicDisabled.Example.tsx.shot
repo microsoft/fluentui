@@ -61,8 +61,8 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
-        htmlFor="input1"
-        id="Label0"
+        htmlFor="input0"
+        id="Label1"
       >
         Basic SpinButton:
       </label>
@@ -97,10 +97,11 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
+      data-ktp-target={true}
     >
       <input
         aria-disabled={true}
-        aria-labelledby="Label0"
+        aria-labelledby="Label1"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={25}
@@ -142,9 +143,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
+        data-ktp-execute-target={true}
         data-lpignore={true}
         disabled={true}
-        id="input1"
+        id="input0"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}

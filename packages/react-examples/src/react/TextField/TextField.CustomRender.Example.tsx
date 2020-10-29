@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from '@fluentui/react/lib/TextField';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
 import { IRenderFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from '@fluentui/react/lib/Styling';
-import { useBoolean, useId } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;

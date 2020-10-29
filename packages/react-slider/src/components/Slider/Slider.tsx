@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@uifabric/utilities';
+import { styled } from '@fluentui/utilities';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { SliderBase } from './Slider.base';
 import { getStyles } from './Slider.styles';

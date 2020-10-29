@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const ExpensiveToMount: React.FC = () => {
   const [mounted, setMounted] = React.useState(false);

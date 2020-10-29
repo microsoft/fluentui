@@ -1,4 +1,4 @@
-import { getWindow } from '@uifabric/utilities';
+import { getWindow } from '@fluentui/utilities';
 
 /**
  * Wrapper for ResizeObserver, with fallback for browsers that don't support ResizeObserver.
@@ -18,7 +18,7 @@ export const observeResize = (
   target: Element | Element[],
   onResize: (entries: readonly ResizeObserverEntry[] | undefined) => void,
 ): (() => void) => {
-  if (ResizeObserver) {
+  if (typeof ResizeObserver !== 'undefined') {
     const observer = new ResizeObserver(onResize);
 
     if (Array.isArray(target)) {

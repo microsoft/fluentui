@@ -4,9 +4,9 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -15,31 +15,32 @@ export const AnimationStyles: IAnimationStyles;
 export const AnimationVariables: IAnimationVariables;
 
 // @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    secondaryContentColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-    opacity: string;
-}>;
-
-// @public (undocumented)
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+    checked?: ColorTokenSet;
+    checkedHovered?: ColorTokenSet;
+    checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
+};
 
 // @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export type ColorTokenSet = {
+    background?: string;
+    contentColor?: string;
+    secondaryContentColor?: string;
+    linkColor?: string;
+    iconColor?: string;
+    menuIconColor?: string;
+    borderColor?: string;
+    dividerColor?: string;
+    focusColor?: string;
+    focusInnerColor?: string;
+    opacity?: string;
+    highContrast?: ColorTokens;
+};
 
 // @public (undocumented)
 export namespace CommunicationColors {
@@ -61,19 +62,22 @@ export namespace CommunicationColors {
     tint40 = "#eff6fc";
 }
 
-// @public (undocumented)
+// @public
+export type ComponentsStyles = {
+    [componentName: string]: ComponentStyles;
+};
+
+// @public
 export interface ComponentStyles {
-    // (undocumented)
-    [componentName: string]: {
-        styles?: IStyleFunctionOrObject<any, any>;
-    };
+    styles?: IStyleFunctionOrObject<any, any>;
+    variants?: Variants;
 }
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+export function createTheme(theme?: PartialTheme, depComments?: boolean): Theme;
 
 // @public (undocumented)
 export const DefaultEffects: IEffects;
@@ -385,20 +389,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = {
-    palette?: Partial<IPalette>;
-    fonts?: Partial<IFontStyles>;
-    defaultFontStyle?: IRawStyle;
-    semanticColors?: Partial<ISemanticColors>;
-    isInverted?: boolean;
-    disableGlobalClassNames?: boolean;
-    rtl?: boolean;
-    spacing?: Partial<ISpacing>;
-    effects?: Partial<IEffects>;
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
-};
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -558,11 +550,7 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export interface ITheme extends IScheme {
-    // @internal
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
+export interface ITheme extends Theme {
 }
 
 // @public (undocumented)
@@ -628,7 +616,7 @@ export namespace LocalizedFontNames {
 }
 
 // @public
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
+export function mergeThemes(theme: Theme, partialTheme?: PartialTheme): Theme;
 
 // @public (undocumented)
 export namespace MotionAnimations {
@@ -735,12 +723,35 @@ export namespace NeutralColors {
 }
 
 // @public
-export interface PartialTheme extends IPartialTheme {
+export interface PartialTheme {
     // (undocumented)
-    components?: ComponentStyles;
+    components?: ComponentsStyles;
+    defaultFontStyle?: IRawStyle;
+    // (undocumented)
+    disableGlobalClassNames?: boolean;
+    // (undocumented)
+    effects?: Partial<IEffects>;
+    // (undocumented)
+    fonts?: Partial<IFontStyles>;
+    // (undocumented)
+    isInverted?: boolean;
+    // (undocumented)
+    palette?: Partial<IPalette>;
+    // (undocumented)
+    rtl?: boolean;
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
+    // (undocumented)
+    semanticColors?: Partial<ISemanticColors>;
+    // Warning: (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+    //
+    // (undocumented)
+    spacing?: Partial<ISpacing>;
     // (undocumented)
     stylesheets?: string[];
-    // (undocumented)
+    // @internal
     tokens?: RecursivePartial<Tokens>;
 }
 
@@ -828,13 +839,17 @@ export namespace SharedColors {
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public
-export interface Theme extends ITheme {
-    // (undocumented)
-    components?: ComponentStyles;
-    // (undocumented)
+export interface Theme extends IScheme {
+    components?: ComponentsStyles;
+    // @internal
+    id?: string;
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
     stylesheets?: string[];
-    // (undocumented)
-    tokens?: Tokens;
+    // @internal
+    tokens?: RecursivePartial<Tokens>;
 }
 
 // @public (undocumented)
@@ -854,11 +869,9 @@ export type TokenSetType = {
     [key: string]: TokenSetType | string | number | undefined;
 };
 
+// @public
+export type Variants = Record<string, any>;
 
-// Warnings were encountered during analysis:
-//
-// lib/types/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/types/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

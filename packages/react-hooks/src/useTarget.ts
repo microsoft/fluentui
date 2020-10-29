@@ -1,4 +1,4 @@
-import { Point, getDocument } from '@uifabric/utilities';
+import { Point, getDocument } from '@fluentui/utilities';
 import * as React from 'react';
 import { useWindow } from '@fluentui/react-window-provider';
 

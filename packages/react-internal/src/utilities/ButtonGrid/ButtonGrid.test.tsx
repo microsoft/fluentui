@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ButtonGrid } from './ButtonGrid';
 import { getStyles } from './ButtonGrid.styles';
-import { safeMount } from '@uifabric/test-utilities';
+import { isConformant } from '../../common/isConformant';
+import { safeMount } from '@fluentui/test-utilities';
 
 const DEFAULT_ITEMS: any[] = [
   { id: 'a', text: '0,0' },
@@ -15,13 +16,27 @@ const DEFAULT_ITEMS: any[] = [
 ];
 
 describe('ButtonGrid', () => {
+  isConformant({
+    Component: ButtonGrid,
+    displayName: 'ButtonGrid',
+    requiredProps: {
+      items: DEFAULT_ITEMS,
+      columnCount: 4,
+      styles: getStyles,
+      onRenderItem: () => {
+        return;
+      },
+    },
+    disabledTests: ['has-top-level-file'],
+  });
+
   it('Can render a ButtonGrid with width of four', () => {
     safeMount(
       <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={4}
         styles={getStyles}
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
@@ -40,7 +55,7 @@ describe('ButtonGrid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
@@ -59,7 +74,7 @@ describe('ButtonGrid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <button role="gridcell">item.text</button>;
         }}
         positionInSet={1}

@@ -17,6 +17,8 @@ import { ICustomizerProps } from './Customizer.types';
  * - A function that receives the current settings and returns the new ones that apply to the scope
  *
  * @public
+ *
+ * @deprecated This component is deprecated as of `@fluentui/react` version 8. Use `ThemeProvider` instead.
  */
 export class Customizer extends React.Component<ICustomizerProps> {
   public componentDidMount(): void {

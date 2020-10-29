@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { IButtonProps } from '../../compat/Button';
 import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../Button';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
 /**
@@ -22,12 +22,14 @@ export interface ISearchBox {
 /**
  * {@docCategory SearchBox}
  */
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<ISearchBox>;
+  componentRef?: React.Ref<ISearchBox>;
 
   /**
    * Placeholder for the search box.
@@ -73,8 +75,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
-   * This prop is being deprecated since so far, uncontrolled behavior has not been implemented.
-   * @deprecated Not implemented.
    */
   defaultValue?: string;
 
@@ -103,6 +103,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @defaultvalue false
    */
   underlined?: boolean;
+
+  /**
+   * The role assigned to the root DIV element of the SearchBox, useful for defining a landmark role, such as "search".
+   */
+  role?: string;
 
   /**
    * Theme (provided through customization).

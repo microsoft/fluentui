@@ -11,6 +11,7 @@ export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
       {
         fontSize: theme.fonts.medium.fontSize,
         color: extendedSemanticColors.labelText,
+        fontWeight: 400,
       },
       disabled && {
         color: semanticColors.disabledBodyText,

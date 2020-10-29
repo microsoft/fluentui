@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { PrimaryButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import {
   IExtendedPersonaProps,
   SelectedPeopleList,
@@ -7,7 +7,7 @@ import {
   ExtendedSelectedItem,
 } from '@fluentui/react/lib/SelectedItemsList';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
-import { people, groupOne, groupTwo } from '@uifabric/example-data';
+import { people, groupOne, groupTwo } from '@fluentui/example-data';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: '100%' } };
@@ -20,7 +20,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 
 export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
-  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<any[]>([people[40]]);
+  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IExtendedPersonaProps[]>([people[40]]);
   const selectionList = React.useRef<SelectedPeopleList>(null);
 
   const onAddItemButtonClicked = (): void => {

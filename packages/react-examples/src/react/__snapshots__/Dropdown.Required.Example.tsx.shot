@@ -176,6 +176,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               border-color: #a4262c;
             }
         data-is-focusable={true}
+        data-ktp-target={true}
         id="Dropdown0"
         onBlur={[Function]}
         onClick={[Function]}
@@ -499,6 +500,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             right: -14px;
           }
       data-is-focusable={true}
+      data-ktp-target={true}
       id="Dropdown4"
       onBlur={[Function]}
       onClick={[Function]}

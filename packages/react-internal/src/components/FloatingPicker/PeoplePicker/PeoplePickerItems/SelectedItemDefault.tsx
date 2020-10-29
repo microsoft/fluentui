@@ -2,8 +2,9 @@ import * as React from 'react';
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
-import { IconButton } from '../../../../Button';
+import { IconButton } from '../../../../compat/Button';
 import * as stylesImport from './PickerItemsDefault.scss';
+
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
@@ -38,7 +39,8 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         <Persona
           {...item}
           presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28} // eslint-disable-line deprecation/deprecation
+          // eslint-disable-next-line deprecation/deprecation
+          size={PersonaSize.size28}
         />
       </div>
       <IconButton

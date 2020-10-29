@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { makeClasses } from './makeClasses';
-import { safeMount } from '@uifabric/test-utilities';
-import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
+import { safeMount } from '@fluentui/test-utilities';
+import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
 import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
 
 describe('makeClasses', () => {

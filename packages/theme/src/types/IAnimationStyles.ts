@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined

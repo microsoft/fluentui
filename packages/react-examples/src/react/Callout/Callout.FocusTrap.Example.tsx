@@ -1,15 +1,7 @@
 import * as React from 'react';
-import {
-  DefaultButton,
-  FocusTrapCallout,
-  Stack,
-  FocusZone,
-  PrimaryButton,
-  mergeStyleSets,
-  FontWeights,
-  Text,
-} from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { FocusTrapCallout, Stack, FocusZone, mergeStyleSets, FontWeights, Text } from '@fluentui/react';
+import { useBoolean } from '@fluentui/react-hooks';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 const styles = mergeStyleSets({
   buttonArea: {
@@ -81,7 +73,7 @@ export const CalloutFocusTrapExample: React.FunctionComponent = () => {
             <div className={styles.inner}>
               <div>
                 <Text className={styles.subtext}>
-                  Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
+                  Content is wrapped in a FocusTrapZone so that user cannot accidentally tab out of this callout.
                 </Text>
               </div>
             </div>

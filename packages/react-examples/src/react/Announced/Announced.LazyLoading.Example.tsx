@@ -5,10 +5,10 @@ import { Image } from '@fluentui/react/lib/Image';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { Text } from '@fluentui/react/lib/Text';
 import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useBoolean, useSetInterval, useConst } from '@uifabric/react-hooks';
+import { useBoolean, useSetInterval, useConst } from '@fluentui/react-hooks';
 
 const PHOTO_COUNT = 40;
 
@@ -71,7 +71,7 @@ export const AnnouncedLazyLoadingExample = () => {
       }, 500);
 
       const announceIntervalId = setInterval(() => {
-        // Refering to total directly would cause the effect to dispose.
+        // Referring to total directly would cause the effect to dispose.
         // Instead pull the total value from the setter to apply to the announcement.
         setTotal((t: number) => {
           setAnnouncedMessage(`${t} of ${PHOTO_COUNT} photos loaded`);

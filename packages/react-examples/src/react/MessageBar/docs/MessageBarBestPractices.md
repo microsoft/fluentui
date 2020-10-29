@@ -18,7 +18,7 @@ Describe the information or error state concisely, ideally in a single sentence.
 
 #### Action buttons (Optional)
 
-Offer one to two action buttons to help people solve any errors they're receiving. Limit button text to fewer than 50 charactesr (including spaces) to leave room for translation. Action buttons can have any callback attached to them and should provide people with options to address the notification and dismiss the message bar.
+Offer one to two action buttons to help people solve any errors they're receiving. Limit button text to fewer than 50 characters (including spaces) to leave room for translation. Action buttons can have any callback attached to them and should provide people with options to address the notification and dismiss the message bar.
 
 #### Link (Optional)
 

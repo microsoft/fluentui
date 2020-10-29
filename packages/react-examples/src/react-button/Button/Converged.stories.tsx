@@ -1,82 +1,54 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { UploadIcon } from '@fluentui/react-icons';
+import { UploadIcon } from '@fluentui/react-icons-mdl2';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { mergeThemes, PartialTheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/theme';
 import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';
 
-const paletteAccent = 'var(--palette-accent)';
-const paletteSoftest = 'var(--palette-softest)';
-const paletteStrongest = 'var(--palette-strongest)';
-
-const getThemes = (accent: string) => {
-  const lightTheme = mergeThemes({
+const getThemes = (brand: string) => {
+  const lightTheme: PartialTheme = {
     tokens: {
-      palette: {
-        accent: accent,
-        softest: 'white',
-        strongest: 'black',
-      },
-
-      body: {
-        background: 'white',
-        contentColor: 'black',
-      },
-
-      accent: {
-        background: paletteAccent,
-        contentColor: paletteSoftest,
-
-        hovered: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
+      color: {
+        body: {
+          background: 'white',
+          contentColor: 'black',
         },
-        pressed: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
-        },
-      },
 
-      button: {
-        background: '#ddd',
-      },
-    },
-    stylesheets: [],
-  });
+        brand: {
+          background: brand,
 
-  const darkTheme = mergeThemes(lightTheme, {
-    tokens: {
-      palette: {
-        softest: 'black',
-        strongest: 'white',
-      },
-
-      body: {
-        background: '#333',
-        contentColor: paletteStrongest,
-      },
-
-      button: {
-        background: 'transparent',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
-        },
-      },
-
-      accent: {
-        background: 'blue',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
+          hovered: {
+            background: brand,
+          },
+          pressed: {
+            background: brand,
+          },
         },
       },
     },
-  } as PartialTheme);
+  };
+
+  const darkTheme: PartialTheme = {
+    tokens: {
+      color: {
+        body: {
+          background: '#333',
+          contentColor: 'white',
+        },
+
+        brand: {
+          background: brand,
+
+          hovered: {
+            background: '#555',
+          },
+          pressed: {
+            background: '#555',
+          },
+        },
+      },
+    },
+  };
 
   return { lightTheme, darkTheme };
 };
@@ -103,7 +75,7 @@ export const ThemeExample = () => {
 
   return (
     <Stack gap={16}>
-      <Text variant="xLarge">Accent color</Text>
+      <Text variant="xLarge">brand color</Text>
       <ColorPicker color={color} onChange={onColorChange} />
 
       <ExampleBox title="Light" theme={lightTheme} />

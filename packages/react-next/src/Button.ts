@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-button/lib/Button';
+export * from '@fluentui/react/lib/Button';

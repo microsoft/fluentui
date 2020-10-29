@@ -1,15 +1,14 @@
 import * as React from 'react';
 import {
   Coachmark,
-  DefaultButton,
   DirectionalHint,
   Dropdown,
-  IButtonProps,
   IDropdownOption,
   TeachingBubbleContent,
   mergeStyleSets,
 } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const classNames = mergeStyleSets({
   dropdownContainer: {

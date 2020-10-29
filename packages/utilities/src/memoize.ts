@@ -1,4 +1,4 @@
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

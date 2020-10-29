@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 

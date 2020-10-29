@@ -3,14 +3,6 @@ import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
 
-/**
- * @description
- * Adds tabIndex='0' to 'trigger' slot, if it is not tabbable element and no tabIndex attribute provided.
- *
- * @specification
- * Adds attribute 'role=dialog' to 'popup' slot if 'trapFocus' property is true. Sets the attribute to 'complementary' otherwise.
- * Adds attribute 'aria-modal=true' to 'popup' slot if 'trapFocus' property is true. Does not set the attribute otherwise.
- */
 export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
   const onAsArray = _.isArray(props.on) ? props.on : [props.on];
   const tabbableTriggerProps = props.tabbableTrigger

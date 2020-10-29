@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -23,7 +22,7 @@ import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { createGroups } from '@uifabric/example-data';
+import { createGroups } from '@fluentui/example-data';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const columnMidWidth = 200;

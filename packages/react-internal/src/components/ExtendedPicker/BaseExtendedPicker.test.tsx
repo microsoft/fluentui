@@ -2,13 +2,11 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-
 import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
 import { BaseExtendedPicker } from './BaseExtendedPicker';
 import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
-import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../SelectedItemsList/index';
+import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../../SelectedItemsList';
 import { KeyCodes } from '../../Utilities';
-import { isConformant } from '../../common/isConformant';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -140,18 +138,6 @@ describe('Pickers', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    isConformant({
-      Component: BaseExtendedPicker,
-      displayName: 'BaseExtendedPicker',
-      requiredProps: {
-        floatingPickerProps: floatingPickerProps,
-        selectedItemsListProps: selectedItemsListProps,
-        onRenderSelectedItems: basicRenderSelectedItemsList,
-        onRenderFloatingPicker: basicRenderFloatingPicker,
-      },
-      disabledTests: ['has-top-level-file'],
-    });
-
     it('force resolves to the first suggestion', () => {
       jest.useFakeTimers();
       const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
@@ -171,7 +157,9 @@ describe('Pickers', () => {
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
-        jest.runAllTimers();
+        ReactTestUtils.act(() => {
+          jest.runAllTimers();
+        });
       }
 
       ReactDOM.render(
@@ -228,8 +216,11 @@ describe('Pickers', () => {
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
-        jest.runAllTimers();
       }
+
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
       picker.floatingPicker.current && picker.floatingPicker.current.hidePicker();
@@ -259,7 +250,9 @@ describe('Pickers', () => {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
         ReactTestUtils.Simulate.keyDown(picker.inputElement, { which: KeyCodes.down });
-        jest.runAllTimers();
+        ReactTestUtils.act(() => {
+          jest.runAllTimers();
+        });
       }
 
       // precondition check

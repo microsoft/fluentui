@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps, ButtonState, ButtonTokenSet } from '../Button/Button.types';
+import { ButtonProps, ButtonState, ButtonTokenSet, ButtonVariants } from '../Button/Button.types';
 
 export type MinimalMenuProps = {
   target?: React.Ref<HTMLElement | undefined>;
   onDismiss?: () => void;
 };
 
+/**
+ * {@docCategory Button}
+ */
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Menu that is displayed when the button is pressed.
@@ -40,4 +43,15 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 
 export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {}
 
-export type MenuButtonTokens = ButtonTokenSet;
+/**
+ * {@docCategory Button}
+ */
+export type MenuButtonTokens = ButtonTokens & {
+  menuIconColor?: string;
+  menuIconSize?: string;
+};
+
+/**
+ * {@docCategory Button}
+ */
+export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;

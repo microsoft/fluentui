@@ -48,8 +48,8 @@ exports[`SpinButton renders correctly 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input1"
-      id="Label0"
+      htmlFor="input0"
+      id="Label1"
     >
       label
     </label>
@@ -83,10 +83,11 @@ exports[`SpinButton renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -130,9 +131,10 @@ exports[`SpinButton renders correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
-      id="input1"
+      id="input0"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -485,8 +487,8 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input1"
-      id="Label0"
+      htmlFor="input0"
+      id="Label1"
     >
       label
     </label>
@@ -520,11 +522,12 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
     data-test="test"
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -569,9 +572,10 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
-      id="input1"
+      id="input0"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}

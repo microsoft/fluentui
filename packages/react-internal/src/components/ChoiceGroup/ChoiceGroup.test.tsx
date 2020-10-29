@@ -7,6 +7,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption, IChoiceGroup, IChoiceGroupProps } from './ChoiceGroup.types';
 import { merge, resetIds } from '../../Utilities';
 import { mountAttached } from '../../common/testUtilities';
+import { isConformant } from '../../common/isConformant';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
@@ -44,10 +45,15 @@ describe('ChoiceGroup', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  isConformant({
+    Component: ChoiceGroup,
+    displayName: 'ChoiceGroup',
+  });
+
   it('does not use className prop from parent on label', () => {
     choiceGroup = mount(<ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />);
     const label = choiceGroup.getDOMNode().querySelector('label');
-    expect(label).toBeDefined();
+    expect(label).toBeTruthy();
     expect(label!.textContent).toBe('test label');
     expect(label!.className).not.toContain('testClassName');
   });

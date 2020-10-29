@@ -1,2 +1,2 @@
 import './version';
-export * from './components/Popup/index';
+export * from '@fluentui/react/lib/Popup';

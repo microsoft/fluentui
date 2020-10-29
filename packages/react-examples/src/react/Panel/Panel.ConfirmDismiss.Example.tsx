@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Dialog, DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 import { Panel } from '@fluentui/react/lib/Panel';
 
@@ -18,7 +18,7 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
   const openPanel = React.useCallback(() => setIsPanelOpen(true), []);
-  const onDismiss = React.useCallback((ev?: React.SyntheticEvent) => {
+  const onDismiss = React.useCallback((ev?: React.SyntheticEvent | KeyboardEvent) => {
     if (ev) {
       // Instead of closing the panel immediately, cancel that action and show a dialog
       ev.preventDefault();

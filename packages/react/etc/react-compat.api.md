@@ -5,7 +5,7 @@
 ```ts
 
 
-export * from "@fluentui/react-internal/lib/Button";
+export * from "@fluentui/react-internal/lib/compat/Button";
 
 // (No @packageDocumentation comment for this package)
 
