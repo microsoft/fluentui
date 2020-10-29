@@ -92,7 +92,7 @@ describe('Returns correct element for custom CDN url', () => {
       },
       'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/',
     );
-    expect(elm).toBe(
+    expect(elm).toEqual(
       '<img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/96/docx.svg" alt="" />',
     );
   });
