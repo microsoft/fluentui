@@ -62,6 +62,18 @@ export interface ISemanticColors {
   bodyText: string;
 
   /**
+   * The default hover color for the backgrounds of interactable elements that don't have their own backgrounds.
+   * e.g. if links had hover backgrounds, they'd use this
+   */
+  bodyBackgroundHovered: string;
+
+  /**
+   * The default background color of selected interactable elements that don't have their own backgrounds.
+   * e.g. indicates in the nav which page you're currently on
+   */
+  bodyBackgroundChecked: string;
+
+  /**
    * Checked text color, e.g. selected menu item text.
    */
   bodyTextChecked: string;

@@ -120,6 +120,8 @@ export function createTheme(theme: IPartialTheme): ITheme {
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyBackgroundHovered: p.neutralLighter,
+    bodyBackgroundChecked: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,

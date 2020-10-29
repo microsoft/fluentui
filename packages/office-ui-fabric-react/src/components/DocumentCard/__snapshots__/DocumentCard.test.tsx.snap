@@ -30,7 +30,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       >
         <div
           className="ms-Persona-coin ms-Persona--size32 undefined"
-          role="persentation"
+          role="presentation"
           size={11}
         >
           <div
