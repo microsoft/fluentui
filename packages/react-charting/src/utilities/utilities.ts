@@ -133,9 +133,9 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
-    xAxistickSize = 10,
+    xAxistickSize = 6,
     tickPadding = 10,
-    xAxisCount = 10,
+    xAxisCount = 6,
     xAxisElement,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
@@ -164,13 +164,14 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
  * @param {boolean} isRtl
  */
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
-  const { domainNRangeValues, xAxisElement } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(10)
-    .tickPadding(10);
+    .tickSize(xAxistickSize)
+    .tickPadding(10)
+    .ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
@@ -192,7 +193,7 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @returns
  */
 export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
-  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
+  const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
