@@ -534,7 +534,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ariaDescribedBy,
       required,
       errorMessage,
-      allowFreeform,
       buttonIconProps,
       isButtonAriaHidden = true,
       title,
@@ -580,7 +579,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-expanded={isOpen}
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
-          readOnly={disabled || !allowFreeform}
+          readOnly={disabled}
           aria-labelledby={label && this._id + '-label'}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
