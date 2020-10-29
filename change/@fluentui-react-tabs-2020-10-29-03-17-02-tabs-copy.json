@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Create the Tabs component as a renamed clone of the Pivot component",
+  "packageName": "@fluentui/react-tabs",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-29T10:17:02.565Z"
+}
