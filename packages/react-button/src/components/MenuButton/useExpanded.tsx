@@ -73,17 +73,24 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
 
     setExpandedValue(false);
 
-    // TODO: Should we re-focus the root?
+    // TODO: should we re-focus the root?
   }, [onMenuDismiss, setExpandedValue]);
 
-  // Assign extra props to the menu slot if it exists.
-  if (draftState.menu) {
-    draftState.menu = () => (
+  // Assign extra props to the menu slot.
+  draftState.menu = {
+    children: (
       <ExpandedContext.Provider value={expandedValue}>
-        <draftState.menu target={rootRef} onDismiss={onDismiss} />
+        {draftState.menu
+          ? typeof draftState.menu.children === 'function'
+            ? draftState.menu.children(draftState.menu.as, {
+                target: rootRef,
+                onDismiss,
+              })
+            : draftState.menu.children
+          : null}
       </ExpandedContext.Provider>
-    );
-  }
+    ),
+  };
 
   draftState['aria-expanded'] = expandedValue;
   draftState['aria-haspopup'] = true;

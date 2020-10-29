@@ -16,7 +16,7 @@ const menuProps = {
   ],
 };
 
-const Menu = (props: MinimalMenuProps) => {
+const Menu = (defaultSlotType: string, props: MinimalMenuProps) => {
   return <ContextualMenu {...props} {...menuProps} />;
 };
 
