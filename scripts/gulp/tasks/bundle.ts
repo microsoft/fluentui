@@ -14,16 +14,18 @@ const packageName = config.package;
 // Clean
 // ----------------------------------------
 
-task('bundle:package:clean', () =>
-  del(
-    [
-      `${paths.packageDist(packageName)}/es/*`,
-      `${paths.packageDist(packageName)}/commonjs/*`,
-      `${paths.packageDist(packageName)}/dts`,
-    ],
+task('bundle:package:clean', () => {
+  const pathsToDelete = [
+    `${paths.packageDist(packageName)}/es/*`,
+    `${paths.packageDist(packageName)}/commonjs/*`,
+    `${paths.packageDist(packageName)}/dts`,
+  ];
+
+  return del(
+    pathsToDelete.map(x => x.replace(/\\/g, '/')), // replace backslash if on windows
     { force: true },
-  ),
-);
+  );
+});
 
 // ----------------------------------------
 // Build
