@@ -5,7 +5,7 @@ import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 import { useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { useDocument } from '@fluentui/react-window-provider';
+import { useDocument } from '../../WindowProvider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 

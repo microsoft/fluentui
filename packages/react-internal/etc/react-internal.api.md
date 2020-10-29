@@ -6777,6 +6777,7 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 export * from "@fluentui/font-icons-mdl2";
 export * from "@fluentui/react-focus";
 export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/react-window-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
 export * from "@fluentui/utilities";

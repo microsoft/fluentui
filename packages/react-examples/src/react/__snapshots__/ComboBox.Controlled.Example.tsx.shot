@@ -232,7 +232,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onTouchStart={[Function]}
-      readOnly={false}
       role="combobox"
       spellCheck={false}
       type="text"

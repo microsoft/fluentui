@@ -15,6 +15,14 @@ export const CardStyles = css`
     border-radius: calc(var(--elevated-corner-radius) * 1px);
     ${elevation}
   }
+
+  :host(:hover) {
+    --elevation: 8;
+  }
+
+  :host(:focus-within) {
+    --elevation: 8;
+  }
 `.withBehaviors(
   neutralFillCardRestBehavior,
   forcedColorsStylesheetBehavior(

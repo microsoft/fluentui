@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled, Customizer } from '@fluentui/react/lib/Utilities';
+import { AppThemesContext } from '../../utilities/theme';
+import { classNamesFunction, css, styled, ThemeProvider } from '@fluentui/react';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 import { getStyles } from './App.styles';
@@ -41,7 +41,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
   public render(): JSX.Element {
     const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
-    const { customizations } = appDefinition;
+    const { themes } = appDefinition;
     const { isMenuVisible } = this.state;
 
     const onlyExamples = this._showOnlyExamples;
@@ -103,18 +103,14 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       </Fabric>
     );
 
-    if (customizations) {
-      const { exampleCardCustomizations, hideSchemes, ...otherCustomizations } = customizations;
+    if (themes) {
+      const { exampleCardTheme, hideSchemes, ...otherTheme } = themes;
 
-      if (exampleCardCustomizations || typeof hideSchemes === 'boolean') {
-        app = (
-          <AppCustomizationsContext.Provider value={{ exampleCardCustomizations, hideSchemes }}>
-            {app}
-          </AppCustomizationsContext.Provider>
-        );
+      if (exampleCardTheme || typeof hideSchemes === 'boolean') {
+        app = <AppThemesContext.Provider value={{ exampleCardTheme, hideSchemes }}>{app}</AppThemesContext.Provider>;
       }
-      if (Object.keys(otherCustomizations).length) {
-        app = <Customizer {...otherCustomizations}>{app}</Customizer>;
+      if (Object.keys(otherTheme).length) {
+        app = <ThemeProvider theme={otherTheme}>{app}</ThemeProvider>;
       }
     }
 

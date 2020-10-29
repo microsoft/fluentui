@@ -4,12 +4,13 @@
 
 ## A basic component walkthrough
 
-Building a recomposable component requires that we build legos; we put them together, but we let others put them together how they may need. Here's what's needed:
+Building a recomposable component requires that we build legos; we put them together, but we can reconfigure and add to parts as needed. 
 
-- **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
-- **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
-- **Component factory hook** - a hook which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
-- **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
+Here's what's needed:
+
+- **State hook** - A hook which takes in props/ref for the component and returns a mutable state object.
+- **Style hook** - hooks which can mix the appropriate classnames on the mutable state.
+- **Render function** - a function which takes in state of the component and returns JSX. (e.g. `renderButton`)
 
 With these building blocks, you can compose or recompose the component in numerous ways.
 
@@ -26,60 +27,68 @@ const renderButton = state => {
 A hook which can manipulate the state (defining accessibility and behaviors):
 
 ```jsx
-const useButtonState = state => {
+const useButton = (props, ref, defaultProps) => {
+  const state = merge({}, defaultProps, props);
+  
   // If the button is rendered as something besides a button or anchor, make it focusable.
   if (state.as !== 'button' && state.as !== 'a') {
     state.tabIndex = 0;
   }
+  
+  return state;
 };
 ```
 
-A factory function sets up the state and render function:
+The Button is designed using `React.forwardRef` to ensure the ref is forwarded to the root element:
 
 ```jsx
-const useButton = (userProps, ref, defaultProps) => {
-  const state = _.merge({}, defaultProps, userProps);
-
-  // Apply button behaviors.
-  useButtonState(state);
-
-  return { state, render: renderButton };
-};
+const Button = React.forwardRef((props, ref) => {
+  const state = useButton(props, ref);
+  
+  // Apply styling here. (e.g. add className to state.)
+  
+  return renderButton(state);
+});  
 ```
 
-A button can now be easily scaffolded, along with your choice of styling systems:
+A button can now be easily scaffolded, along with your choice of styling system:
 
 ```jsx
 import * as styles from './Button.scss';
 
-const useStyles = makeStyles(styles);
-
 const Button = React.forwardRef((props, ref) => {
-  const { state, render } = useButton(props, ref);
+  const state = useButton(props, ref);
 
   // Inject classNames as needed.
-  useStyles(state);
+  state.className = css(state.className, styles.root);
 
+  // Render component.
   return render(state);
 });
 ```
 
-We can also use these building blocks to scaffold other types of buttons, transform input, pull values from
-context, redefine styling, or mix/match behaviors:
+We can now use these building blocks to scaffold other types of buttons. For example, building a toggle button simly means we start with base and handle the additional input:
 
 ```jsx
-const ToggleButton = React.forwardRef((props, ref) => {
-  const { state, render } = useButton(props, ref);
+const useToggleButton = (props, ref) => {
+  const state = useButton(props, ref);
 
   // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
   // and appropriate a11y attributes.
   useChecked(state);
+};
+
+const ToggleButton = React.forwardRef((props, ref) => {
+  const state = useToggleButton(props, ref);
 
   // Inject classNames as needed.
-  useStyles(state);
+  state.className = css(
+    state.className, 
+    styles.root, 
+    state.checked && styles.checked
+  );
 
-  return render(state);
-
+  return renderButton(state);
 ```
 
 ### Details

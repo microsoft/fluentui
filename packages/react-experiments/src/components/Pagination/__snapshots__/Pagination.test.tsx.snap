@@ -1558,7 +1558,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        readOnly={true}
         role="combobox"
         spellCheck={false}
         type="text"
