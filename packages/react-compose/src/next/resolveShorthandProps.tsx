@@ -6,25 +6,20 @@ import * as React from 'react';
  * @param props - The incoming props
  * @param shorthandPropNames - An array of prop names to apply simplification to
  */
-export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]): TProps => {
-  if (shorthandPropNames.length === 0) {
-    return props;
-  }
+export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]) => {
+  let newProps = props;
 
-  const newProps: TProps = { ...props };
+  if (shorthandPropNames && shorthandPropNames.length) {
+    newProps = {
+      ...props,
+    };
+    for (const propName of shorthandPropNames) {
+      const propValue = props[propName];
 
-  for (const propName of shorthandPropNames) {
-    const propValue = props[propName];
-
-    if (typeof propValue === 'undefined') {
-      continue;
-    }
-
-    if (typeof propValue !== 'object' || React.isValidElement(propValue)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (newProps[propName] as any) = newProps[propName] || {};
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (newProps[propName] as any).children = propValue;
+      if (propValue !== undefined && (typeof propValue !== 'object' || React.isValidElement(propValue))) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (newProps as any)[propName] = { children: propValue };
+      }
     }
   }
 

@@ -16,7 +16,7 @@ import {
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
-import { ComponentEventHandler } from '../../types';
+import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
 // TODO: had to use deep path because SASS was trying to be compiled as a side effect
@@ -25,7 +25,7 @@ import { useButtonStyles } from './useButtonStyles';
 
 export interface ButtonProps
   extends UIComponentProps,
-    ContentComponentProps<ButtonContentProps>,
+    ContentComponentProps<ShorthandValue<ButtonContentProps>>,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -40,7 +40,7 @@ export interface ButtonProps
   fluid?: boolean;
 
   /** A button can have an icon. */
-  icon?: BoxProps;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A button can contain only an icon. */
   iconOnly?: boolean;
@@ -52,7 +52,7 @@ export interface ButtonProps
   inverted?: boolean;
 
   /** Shorthand to customize a button's loader. */
-  loader?: LoaderProps;
+  loader?: ShorthandValue<LoaderProps>;
 
   /** A button can show a loading indicator. */
   loading?: boolean;
@@ -111,9 +111,11 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
 
   // BASE
   const { state, render } = useButton(props, ref, {
-    icon: Box,
-    content: ButtonContent,
-    loader: Loader,
+    components: {
+      icon: Box,
+      content: ButtonContent,
+      loader: Loader,
+    },
   });
 
   // EXTRAS

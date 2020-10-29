@@ -36,7 +36,6 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
 
       // TODO: Handle slots that are "empty" or not defined by the user
       //        was handled with nullRenderer (prob right)
-      console.log(name, slotDefinition, Component)
       // slot has been opted-out
       if (Component === null || slotDefinition === null) {
         continue;

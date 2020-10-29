@@ -1,11 +1,10 @@
 import { useStyles } from '@fluentui/react-bindings';
-import { UseComponentStyles } from './types'
 import { ButtonProps } from './Button';
+import { UseComponentStyles } from 'src/components/Button/types';
 
-export const useButtonStyles = ({ props, rtl }: UseComponentStyles<ButtonProps>) => {
-  return useStyles('Button', {
+export const useButtonStyles = ({ props, displayName = 'Button', rtl }: UseComponentStyles<ButtonProps>) => {
+  return useStyles(displayName, {
     mapPropsToStyles: () => ({
-      children: props?.content?.children,
       text: props.text,
       primary: props.primary,
       disabled: props.disabled,
@@ -19,7 +18,6 @@ export const useButtonStyles = ({ props, rtl }: UseComponentStyles<ButtonProps>)
       hasContent: !!props.content,
     }),
     mapPropsToInlineStyles: () => ({
-      className: props.className,
       design: props.design,
       styles: props.styles,
       variables: props.variables,

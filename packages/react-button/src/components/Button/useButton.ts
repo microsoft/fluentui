@@ -16,15 +16,11 @@ export const buttonShorthandProps = ['icon', 'loader', 'content'];
 export const useButton = (
   props: ButtonProps,
   ref: React.Ref<HTMLElement>,
-  components?: { [k in 'icon' | 'loader' | 'content']?: React.ComponentType } = {},
+  options?: {
+    components?: { [k in 'icon' | 'loader' | 'content']?: React.ComponentType };
+  },
 ) => {
-  // TODO: Sometimes we need to special things with NullRender...
-  // loader={null} opted out of loader
-  // loader={undefined} as in, user did not pass a loader, default to regular loader if props.loading
-  // loader={...} where ... is user's definition, then use their definition
-  const LoaderComponent = (props.loader === null || !props.loading)
-    ? NullRender
-    : (components.loader || 'span');
+  const { components = {} } = options || {};
 
   const state: ButtonState = {
     // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
@@ -38,8 +34,11 @@ export const useButton = (
       //       Some components will have default slots.
       icon: typeof props.icon !== 'undefined' ? components.icon || 'span' : NullRender,
       content: typeof props.content !== 'undefined' ? components.content || 'span' : NullRender,
-
-      loader: LoaderComponent,
+      // TODO: Sometimes we need to special things with NullRender...
+      // loader={null} opted out of loader
+      // loader={undefined} as in, user did not pass a loader, default to regular loader if props.loading
+      // loader={...} where ... is user's definition, then use their definition
+      loader: props.loader !== null ? components.loader || 'span' : NullRender,
     },
     ...resolveShorthandProps<ButtonProps>(props, buttonShorthandProps),
   };

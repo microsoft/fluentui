@@ -12,7 +12,7 @@ interface ButtonContentOwnProps {
 }
 
 export interface ButtonContentProps extends BoxProps, ButtonContentOwnProps {}
-export type ButtonContentStylesProps = Pick<ButtonContentProps, 'size'>;
+export type ButtonContentStylesProps = ButtonContentOwnProps;
 
 export const buttonContentClassName = 'ui-button__content';
 
