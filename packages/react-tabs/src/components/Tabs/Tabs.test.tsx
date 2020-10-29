@@ -67,7 +67,7 @@ describe('Tabs', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders large tab Tabs correctly', () => {
+  it('renders large tabs correctly', () => {
     const component = create(
       <Tabs tabSize="large">
         <TabItem headerText="Test Link 1" />
@@ -77,7 +77,7 @@ describe('Tabs', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders tabbed Tabs correctly', () => {
+  it('renders tab format correctly', () => {
     const component = create(
       <Tabs tabFormat="tabs">
         <TabItem headerText="Test Link 1" />
@@ -87,7 +87,7 @@ describe('Tabs', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders large tabbed Tabs correctly', () => {
+  it('renders large tab format correctly', () => {
     const component = create(
       <Tabs tabFormat="tabs" tabSize="large">
         <TabItem headerText="Test Link 1" />

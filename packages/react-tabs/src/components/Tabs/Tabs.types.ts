@@ -46,7 +46,7 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.R
   defaultSelectedKey?: string;
 
   /**
-   * Key of the selected tab item. Updating this will override the Tabs's selected item state.
+   * Key of the selected tab item. Updating this will override the selected tab state.
    * Only provide this if the Tabs is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.
    */
@@ -68,8 +68,8 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.R
   tabFormat?: TabFormatType;
 
   /**
-   * Overflow behavior when there is not enough room to display all of the links/tabs
-   * * none: Tabs links will overflow the container and may not be visible
+   * Overflow behavior when there is not enough room to display all of the tabs
+   * * none: Tabs will overflow the container and may not be visible
    * * menu: Display an overflow menu that contains the tabs that don't fit
    *
    * @default none

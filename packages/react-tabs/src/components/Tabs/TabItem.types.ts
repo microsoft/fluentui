@@ -31,14 +31,14 @@ export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
   itemKey?: string;
 
   /**
-   * The aria label of each tab which will read by screen reader instead of linkText.
+   * The aria label of each tab which will read by screen reader instead of headerText.
    *
    * Note that unless you have compelling requirements you should not override aria-label.
    */
   ariaLabel?: string;
 
   /**
-   * Defines an optional item count displayed in parentheses just after the `linkText`.
+   * Defines an optional item count displayed in parentheses just after the `headerText`.
    *
    * Examples: completed (4), Unread (99+)
    */
