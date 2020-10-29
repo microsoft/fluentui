@@ -2,12 +2,10 @@ import * as React from 'react';
 import { LayerBasicExample } from './Layer.Basic.Example';
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { LayerHostedExample } from './Layer.Hosted.Example';
-import { LayerCustomizedExample } from './Layer.Customized.Example';
 import { LayerNestedLayersExample } from './Layer.NestedLayers.Example';
 
 const LayerBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Layer/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Layer/Layer.Hosted.Example.tsx') as string;
-const LayerCustomizedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Layer/Layer.Customized.Example.tsx') as string;
 const LayerNestedLayersExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Layer/Layer.NestedLayers.Example.tsx') as string;
 
 export const LayerPageProps: IDocPageProps = {
@@ -24,11 +22,6 @@ export const LayerPageProps: IDocPageProps = {
       title: 'Using LayerHost to control projection',
       code: LayerHostedExampleCode,
       view: <LayerHostedExample />,
-    },
-    {
-      title: 'Using Customizer to control the default layer behavior',
-      code: LayerCustomizedExampleCode,
-      view: <LayerCustomizedExample />,
     },
     {
       title: 'Nested Layers Example',
