@@ -22,8 +22,8 @@
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-proptypes",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -36,6 +36,5 @@
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  "sideEffects": false
 }

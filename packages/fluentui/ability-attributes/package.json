@@ -17,7 +17,7 @@
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/ability-attributes",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
+  "main": "src/index.ts",
   "module": "dist/es/index.js",
   "publishConfig": {
     "access": "public"
@@ -28,6 +28,5 @@
     "clean": "gulp bundle:package:clean",
     "schema": "allyschema -c \"process.env.NODE_ENV !== 'production'\" schema.json > ./src/schema.ts"
   },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  "sideEffects": false
 }

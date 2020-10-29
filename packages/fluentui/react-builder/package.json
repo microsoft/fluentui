@@ -36,8 +36,8 @@
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-builder",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "main": "src/index.tsx",
+  "module": "src/index.tsx",
   "publishConfig": {
     "access": "public"
   },
@@ -50,6 +50,5 @@
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  "sideEffects": false
 }

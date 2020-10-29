@@ -31,8 +31,8 @@
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/docs-components",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "peerDependencies": {
     "prettier": "^1.19.1",
     "react": "^16.8.0",
@@ -48,6 +48,5 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  "sideEffects": false
 }
