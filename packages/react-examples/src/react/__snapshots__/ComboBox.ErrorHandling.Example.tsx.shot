@@ -169,6 +169,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
+        readOnly={true}
         role="combobox"
         spellCheck={false}
         type="text"
@@ -570,6 +571,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
+        readOnly={true}
         role="combobox"
         spellCheck={false}
         type="text"
