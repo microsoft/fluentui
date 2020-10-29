@@ -27,7 +27,7 @@ export function VersionDropdown(props: { width: number }) {
 
         setVersions(availableVersions);
       });
-  });
+  }, []);
 
   if (!versions.length) {
     return null;
