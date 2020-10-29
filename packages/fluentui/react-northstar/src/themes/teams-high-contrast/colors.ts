@@ -293,6 +293,7 @@ const createCategoryColorScheme = (customValues = {}) => {
     foreground: colors.black,
     foreground1: accessibleYellow,
     background: accessibleYellow,
+    borderActive: accessibleCyan,
     ...customValues,
   };
 };

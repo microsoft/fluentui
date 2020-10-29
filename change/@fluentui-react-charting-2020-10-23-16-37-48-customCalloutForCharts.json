@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Charting: Adding customized callout support to AreaChart and LineChart.",
-  "packageName": "@fluentui/react-charting",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-23T23:37:48.170Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding a forwardRef to Separator within react-internal.",
-  "packageName": "@fluentui/react-internal",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-23T18:25:33.495Z"
-}

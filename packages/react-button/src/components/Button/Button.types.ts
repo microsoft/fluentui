@@ -131,6 +131,8 @@ export type ButtonTokens = ColorTokens &
     boxShadow?: string;
     width?: string;
 
+    forcedColorAdjust?: string;
+
     transform?: string;
     transition?: string;
 
@@ -154,9 +156,11 @@ export type ButtonTokens = ColorTokens &
  * {@docCategory Button}
  */
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: TTokens;
-  primary?: TTokens;
-  iconOnly?: TTokens;
-  circular?: TTokens;
+  root?: TTokens;
   block?: TTokens;
+  circular?: TTokens;
+  iconOnly?: TTokens;
+  ghost?: TTokens;
+  primary?: TTokens;
+  transparent?: TTokens;
 };

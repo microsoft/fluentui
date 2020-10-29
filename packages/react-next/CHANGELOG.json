@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/react-next_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Properly log and propagate async exceptions from tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "1491aa2a78a528064e2b33df46f6c864be878403",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-next_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove incorrect usage of expect.toBeDefined + add missing act() in tests",
-  "packageName": "@fluentui/react-internal",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-21T23:14:42.523Z"
-}

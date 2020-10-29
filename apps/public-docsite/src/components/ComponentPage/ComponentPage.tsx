@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Customizer } from '@fluentui/react/lib/Utilities';
 import { IStyleSet } from '@fluentui/react/lib/Styling';
 import { IComponentPageStyles } from '@fluentui/react-docsite-components/lib/index';
 import { fullWidth, fullHeight, contentPadding } from '../../styles/mixins';
+import { ThemeProvider, PartialTheme } from '@fluentui/react/lib/Theme';
 
 export interface IComponentPageProps {}
 
@@ -28,14 +28,12 @@ const componentPageStyles: IStyleSet<Partial<IComponentPageStyles>> = {
   },
 };
 
+const theme: PartialTheme = {
+  components: {
+    ComponentPage: { styles: componentPageStyles },
+  },
+};
+
 export const ComponentPage: React.FunctionComponent = props => {
-  return (
-    <Customizer
-      scopedSettings={{
-        ComponentPage: { styles: componentPageStyles },
-      }}
-    >
-      {props.children}
-    </Customizer>
-  );
+  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 };

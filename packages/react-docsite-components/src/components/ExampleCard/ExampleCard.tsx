@@ -1,24 +1,10 @@
 import * as React from 'react';
 import { CommandButton } from '@fluentui/react/lib/compat/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { ThemeProvider } from '@fluentui/foundation-legacy';
-import {
-  styled,
-  Customizer,
-  classNamesFunction,
-  css,
-  CustomizerContext,
-  warn,
-  ICustomizations,
-  memoizeFunction,
-} from '@fluentui/react/lib/Utilities';
+import { styled, Theme, ThemeProvider, classNamesFunction, css, warn, memoizeFunction } from '@fluentui/react';
 import { ISchemeNames, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { IStackComponent, Stack } from '@fluentui/react/lib/Stack';
-import {
-  AppCustomizationsContext,
-  IAppCustomizations,
-  IExampleCardCustomizations,
-} from '../../utilities/customizations';
+import { AppThemesContext, IAppThemes, IExampleCardTheme } from '../../utilities/theme';
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
@@ -55,10 +41,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
    */
   private _transformedInitialCode: string | undefined;
 
-  private _themeCustomizations: IExampleCardCustomizations[] | undefined;
+  private _exampleCardTheme: IExampleCardTheme[] | undefined;
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
-  private _activeCustomizations: ICustomizations | undefined;
+  private _activeTheme: Theme | undefined;
   private _isStrict: boolean;
 
   constructor(props: IExampleCardProps) {
@@ -103,28 +89,26 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     const { themeIndex, schemeIndex, latestCode } = this.state;
 
     return (
-      <AppCustomizationsContext.Consumer>
-        {(context: IAppCustomizations) => {
-          const { exampleCardCustomizations, hideSchemes } = context;
-          this._activeCustomizations =
-            exampleCardCustomizations &&
-            exampleCardCustomizations[themeIndex] &&
-            exampleCardCustomizations[themeIndex].customizations;
-          if (exampleCardCustomizations !== this._themeCustomizations) {
-            this._themeCustomizations = exampleCardCustomizations;
-            this._themeOptions = exampleCardCustomizations
-              ? exampleCardCustomizations.map((item: IExampleCardCustomizations, index: number) => ({
+      <AppThemesContext.Consumer>
+        {(context: IAppThemes) => {
+          const { exampleCardTheme, hideSchemes } = context;
+          this._activeTheme = exampleCardTheme && exampleCardTheme[themeIndex] && exampleCardTheme[themeIndex].theme;
+          if (exampleCardTheme !== this._exampleCardTheme) {
+            this._exampleCardTheme = exampleCardTheme;
+            this._themeOptions = exampleCardTheme
+              ? exampleCardTheme.map((item: IExampleCardTheme, index: number) => ({
                   key: index,
                   text: 'Theme: ' + item.title,
                 }))
               : [];
           }
+
           const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, theme, isCodeVisible };
           const classNames = (this._classNames = getClassNames(styles, styleProps));
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const ExamplePreview = this._getPreviewComponent(this._activeCustomizations, schemeIndex);
+          const ExamplePreview = this._getPreviewComponent(this._activeTheme, _schemes[schemeIndex]);
 
           return (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
@@ -138,7 +122,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {exampleCardCustomizations && (
+                  {exampleCardTheme && (
                     <Dropdown
                       ariaLabel="Example theme"
                       defaultSelectedKey={0}
@@ -148,7 +132,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {exampleCardCustomizations && !hideSchemes && (
+                  {exampleCardTheme && !hideSchemes && (
                     <Dropdown
                       ariaLabel="Example scheme"
                       defaultSelectedKey={0}
@@ -194,7 +178,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
             </div>
           );
         }}
-      </AppCustomizationsContext.Consumer>
+      </AppThemesContext.Consumer>
     );
   }
 
@@ -218,7 +202,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
-    (activeCustomizations: ICustomizations | undefined, schemeIndex: number): React.FunctionComponent => {
+    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent => {
       // Generate a component which renders the children with the current
       return props => {
         const { children } = props;
@@ -228,15 +212,13 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           </div>
         );
 
-        if (activeCustomizations) {
+        if (activeTheme) {
+          const themeToApply = activeTheme.schemes?.[scheme] || activeTheme;
+
           return (
-            <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
-              <Customizer {...activeCustomizations}>
-                <ThemeProvider scheme={_schemes[schemeIndex]}>
-                  <Stack styles={regionStyles}>{content}</Stack>
-                </ThemeProvider>
-              </Customizer>
-            </CustomizerContext.Provider>
+            <ThemeProvider theme={themeToApply}>
+              <Stack styles={regionStyles}>{content}</Stack>
+            </ThemeProvider>
           );
         }
         return content;

@@ -124,11 +124,16 @@ describe('TextField snapshots', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders with reveal password button', () => {
+    const component = create(<TextField type="password" canRevealPassword />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 }); // end snapshots
 
-describe('TextField rendering values from props', () => {
+describe('TextField', () => {
   beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
 
   isConformant({
     Component: TextField,
@@ -136,6 +141,11 @@ describe('TextField rendering values from props', () => {
     componentPath: path.join(__dirname, 'TextField.ts'),
     elementRefName: 'elementRef',
   });
+});
+
+describe('TextField rendering values from props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   it('can render a value', () => {
     const testText = 'initial value';
@@ -235,6 +245,39 @@ describe('TextField basic props', () => {
     const suffixDOM: Element = wrapper.getDOMNode().getElementsByClassName('ms-TextField-suffix')[0];
     expect(prefixDOM.textContent).toEqual(examplePrefix);
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
+  });
+
+  it('should not render reveal password button by default', () => {
+    wrapper = mount(<TextField type="password" />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('should render reveal password button if canRevealPassword=true', () => {
+    wrapper = mount(<TextField type="password" canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(1);
+  });
+
+  it('ignores canRevealPassword if type is unspecified', () => {
+    wrapper = mount(<TextField canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('ignores canRevealPassword if type is not password', () => {
+    wrapper = mount(<TextField type="text" canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('should toggle reveal password on reveal button click', () => {
+    wrapper = mount(<TextField type="password" canRevealPassword={true} />);
+    const input = wrapper.find('input');
+    const reveal = wrapper.find('.ms-TextField-reveal');
+
+    input.simulate('input', mockEvent('Password123$'));
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('text');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
   });
 
   it('should not give an aria-labelledby if no label is provided', () => {

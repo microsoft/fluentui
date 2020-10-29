@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove incorrect usage of expect.toBeDefined",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-21T23:14:57.115Z"
-}
