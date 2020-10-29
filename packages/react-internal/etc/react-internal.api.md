@@ -1888,6 +1888,8 @@ export interface IContextualMenu {
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
+    ariaDescribedBy?: string;
+    ariaDescription?: string;
     ariaLabel?: string;
     canCheck?: boolean;
     checked?: boolean;
@@ -2002,6 +2004,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
     linkContent: IStyle;
     linkContentMenu: IStyle;
     root: IStyle;
+    screenReaderText: IStyle;
     secondaryText: IStyle;
     splitContainer: IStyle;
     splitMenu: IStyle;
