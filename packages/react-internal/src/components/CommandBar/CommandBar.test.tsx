@@ -51,9 +51,16 @@ describe('CommandBar', () => {
   isConformant({
     Component: CommandBar,
     displayName: 'CommandBar',
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onDataReduced type.
+    // Solution: Remove the inconsistent callback name.
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'consistent-callback-names'],
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {

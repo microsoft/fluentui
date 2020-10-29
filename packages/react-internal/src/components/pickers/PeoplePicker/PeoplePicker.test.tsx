@@ -104,8 +104,21 @@ describe('PeoplePicker', () => {
   isConformant({
     Component: NormalPeoplePicker,
     displayName: 'NormalPeoplePicker',
+    // Disabled Tests:
+    //
+    // component-handles-ref, component-has-root-ref
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['has-top-level-file', 'name-matches-filename', 'component-has-root-ref', 'component-handles-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onItemSelected type.
+    // Solution: Remove the inconsistent callback name.
+    disabledTests: [
+      'component-has-root-ref',
+      'component-handles-ref',
+      'has-top-level-file',
+      'name-matches-filename',
+      'consistent-callback-names',
+    ],
   });
 });

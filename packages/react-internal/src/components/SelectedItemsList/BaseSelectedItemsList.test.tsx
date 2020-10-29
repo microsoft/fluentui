@@ -32,9 +32,21 @@ describe('SelectedItemsList', () => {
     isConformant({
       Component: BaseSelectedItemsList,
       displayName: 'BaseSelectedItemsList',
+      // Disabled Tests:
+      //
+      // component-has-root-ref, component-handles-ref
       // Problem: Ref is not supported
       // Solution: Convert to FunctionComponent and support using forwardRef
-      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+      //
+      // consistent-callback-names
+      // Problem: Contains onItemSelected, onItemDeleted, and onItemsDeleted types.
+      // Solution: Remove the inconsistent callback names.
+      disabledTests: [
+        'has-top-level-file',
+        'component-handles-ref',
+        'component-has-root-ref',
+        'consistent-callback-names',
+      ],
     });
 
     it('can remove items', () => {

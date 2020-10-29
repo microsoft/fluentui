@@ -29,6 +29,12 @@ describe('SearchBox', () => {
   isConformant({
     Component: SearchBox,
     displayName: 'SearchBox',
+    // Disabled Tests:
+    //
+    // consistent-callback-names
+    // Problem: Contains onChanged type.
+    // Solution: Remove the inconsistent callback name.
+    disabledTests: ['consistent-callback-names'],
   });
 
   it('renders SearchBox correctly', () => {

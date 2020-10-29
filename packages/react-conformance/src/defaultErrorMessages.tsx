@@ -488,7 +488,7 @@ export const defaultErrorMessages = {
         const words = propName.slice(2).match(/[A-Z][a-z]+/g);
         if (words) {
           const lastWord = words[words.length - 1];
-          if (!lastWord.endsWith('ed')) {
+          if (lastWord.endsWith('ed')) {
             callbackNames.push(propName);
           }
         }
@@ -500,7 +500,7 @@ export const defaultErrorMessages = {
     // It appears that "displayName" doesn't have a consistent callback name.
     // The received callback needs to be renamed: "callbackNames"
     // To Resolve this issue:
-    // 1. Rename "displayName"'s callback props that don't end with "ed".
+    // 1. Rename "displayName"'s callback props to not include "ed".
     // 2. Include the prop in TestOptions ignoreProps.
     console.log(
       defaultErrorMessage(
@@ -513,7 +513,7 @@ export const defaultErrorMessages = {
           testErrorInfo(formatObject(callbackNames)),
       ) +
         resolveErrorMessages([
-          `Rename ${resolveInfo(displayName + `'s`)} callback props to include "ed".`,
+          `Rename ${resolveInfo(displayName + `'s`)} callback prop(s) to not include "ed".`,
           `Include the prop in TestOptions ${resolveInfo('ignoreProps')}.`,
         ]) +
         receivedErrorMessage(error),

@@ -189,9 +189,16 @@ describe('Panel', () => {
     Component: Panel,
     displayName: 'Panel',
     componentPath: path.join(__dirname, 'Panel.ts'),
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // Problem: Ref doesn't match DOM node.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onOpened and onDismissed types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
   });
 
   describe('onClose', () => {

@@ -38,12 +38,18 @@ describe('ContextualMenu', () => {
       hidden: false,
       items: [{ text: 'test', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }],
     },
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // TODO: ContextualMenu handles ref but doesn't pass:
     // expect(rootRef.current?.getAttribute).toBeDefined();
-    //
     // This test failure likely stems from Callout as it experiences the same error. The failing test should be
     // further investigated and re-enabled in a future pull request.
-    disabledTests: ['component-handles-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onMenuOpened and onMenuDismissed types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['component-handles-ref', 'consistent-callback-names'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {

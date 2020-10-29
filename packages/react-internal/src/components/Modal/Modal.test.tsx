@@ -11,9 +11,16 @@ describe('Modal', () => {
     displayName: 'Modal',
     requiredProps: { isOpen: true },
     componentPath: path.join(__dirname, 'Modal.ts'),
-    //Problem: Doesn’t currently handle a ref.
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
+    // Problem: Doesn’t currently handle a ref.
     // Solution: Add a ref.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onDismissed type.
+    // Solution: Remove the inconsistent callback name.
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
   });
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.

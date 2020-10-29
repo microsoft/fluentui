@@ -110,9 +110,21 @@ describe('SelectionZone - disabled touch targets', () => {
     Component: SelectionZone,
     displayName: 'SelectionZone',
     requiredProps: { selection: new Selection() },
+    // Disabled Tests:
+    //
+    // component-handles-ref, component-has-root-ref
     // Problem: Doesn’t pass ref to the root element.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onItemInvoked type.
+    // Solution: Remove the inconsistent callback name.
+    disabledTests: [
+      'component-has-root-ref',
+      'component-handles-ref',
+      'has-top-level-file',
+      'consistent-callback-names',
+    ],
   });
 
   it('toggles an item on click of toggle element', () => {

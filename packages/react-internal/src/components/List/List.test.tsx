@@ -39,9 +39,16 @@ describe('List', () => {
   isConformant({
     Component: List,
     displayName: 'List',
+    // Disabled Tests:
+    //
+    // component-has-root-ref, component-handles-ref
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    //
+    // consistent-callback-names
+    // Problem: Contains onPagesUpdated, onPageAdded, and onPageRemoved types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
   });
 
   it('can complete rendering', done => {
