@@ -10,11 +10,6 @@ export const TabsOverflowMenuExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <div style={{ background: '#EEE' }}>
-        <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={toggleOverflow} />
-        <Toggle label="tabFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
-        <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
-      </div>
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
         <Tabs
           aria-label="Tabs Overflow Menu Example"
@@ -47,6 +42,11 @@ export const TabsOverflowMenuExample: React.FunctionComponent = () => {
           </TabItem>
         </Tabs>
       </Fabric>
+      <div style={{ background: '#EEE', marginTop: 10 }}>
+        <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={toggleOverflow} />
+        <Toggle label="tabFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
+        <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
+      </div>
     </>
   );
 };

@@ -8,11 +8,11 @@ const getTabId = (itemKey: string) => {
 export const TabsSeparateExample = () => {
   const [selectedKey, setSelectedKey] = React.useState('rectangleRed');
 
-  const handleTabClick = (item?: TabItem) => {
+  const handleTabClick = React.useCallback((item?: TabItem) => {
     if (item) {
       setSelectedKey(item.props.itemKey!);
     }
-  };
+  }, []);
 
   return (
     <div>
@@ -29,7 +29,6 @@ export const TabsSeparateExample = () => {
       <Tabs
         aria-label="Separately Rendered Content Tabs Example"
         selectedKey={selectedKey}
-        // eslint-disable-next-line react/jsx-no-bind
         onTabClick={handleTabClick}
         headersOnly={true}
         getTabId={getTabId}

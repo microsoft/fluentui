@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Label } from '@fluentui/react';
 import { Tabs, TabItem } from '@fluentui/react-tabs';
 
-export const TabsTabsExample = () => (
+export const TabsLargeTabFormatExample = () => (
   <div>
-    <Tabs aria-label="Tabs of Tab Style Tabs Example" tabFormat="tabs">
+    <Tabs aria-label="Tabs of Large Tabs Tabs Example" tabFormat="tabs" tabSize="large">
       <TabItem headerText="Foo">
         <Label>Tab #1</Label>
       </TabItem>

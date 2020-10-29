@@ -30,7 +30,7 @@ export const TabsRemoveExample = () => {
         <DefaultButton
           aria-live="polite"
           onClick={toggleShowFirstItem}
-          text={`${showFirstItem ? 'Hide' : 'Show'} First Tabs Item`}
+          text={`${showFirstItem ? 'Hide' : 'Show'} First Tab Item`}
         />
       </div>
     </div>

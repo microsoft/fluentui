@@ -4,8 +4,8 @@ import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types
 import { TabsBasicExample } from './Tabs.Basic.Example';
 import { TabsIconCountExample } from './Tabs.IconCount.Example';
 import { TabsLargeExample } from './Tabs.Large.Example';
-import { TabsTabsExample } from './Tabs.Tabs.Example';
-import { TabsTabsLargeExample } from './Tabs.TabsLarge.Example';
+import { TabsTabFormatExample } from './Tabs.TabFormat.Example';
+import { TabsLargeTabFormatExample } from './Tabs.LargeTabFormat.Example';
 import { TabsOnChangeExample } from './Tabs.OnChange.Example';
 import { TabsRemoveExample } from './Tabs.Remove.Example';
 import { TabsOverrideExample } from './Tabs.Override.Example';
@@ -15,8 +15,8 @@ import { TabsOverflowMenuExample } from './Tabs.OverflowMenu.Example';
 const TabsRemoveExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.Remove.Example.tsx') as string;
 const TabsBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.Basic.Example.tsx') as string;
 const TabsLargeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.Large.Example.tsx') as string;
-const TabsTabsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.Tabs.Example.tsx') as string;
-const TabsTabsLargeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.TabsLarge.Example.tsx') as string;
+const TabsTabFormatExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.TabFormat.Example.tsx') as string;
+const TabsLargeTabFormatExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.LargeTabFormat.Example.tsx') as string;
 const TabsOnChangeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.OnChange.Example.tsx') as string;
 const TabsIconCountExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.IconCount.Example.tsx') as string;
 const TabsOverrideExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Tabs/Tabs.Override.Example.tsx') as string;
@@ -45,13 +45,13 @@ export const TabsPageProps: IDocPageProps = {
     },
     {
       title: 'Tabs of tab style',
-      code: TabsTabsExampleCode,
-      view: <TabsTabsExample />,
+      code: TabsTabFormatExampleCode,
+      view: <TabsTabFormatExample />,
     },
     {
       title: 'Tabs of large tab style',
-      code: TabsTabsLargeExampleCode,
-      view: <TabsTabsLargeExample />,
+      code: TabsLargeTabFormatExampleCode,
+      view: <TabsLargeTabFormatExample />,
     },
     {
       title: 'Trigger onchange event',

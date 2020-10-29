@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Tabs.TabsLarge.Example.tsx correctly 1`] = `
+exports[`Component Examples renders Tabs.LargeTabFormat.Example.tsx correctly 1`] = `
 <div>
   <div
     aria-label="Tabs of Large Tabs Tabs Example"

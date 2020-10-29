@@ -3,12 +3,12 @@ import { Label } from '@fluentui/react';
 import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsOnChangeExample = () => {
-  const [lastHeader, setLastHeader] = React.useState<{ props: TabItemProps } | undefined>(undefined);
+  const [lastTab, setLastTab] = React.useState<{ props: TabItemProps } | undefined>(undefined);
 
   return (
     <div>
-      <Label>Last onTabClick from: {lastHeader?.props.headerText}</Label>
-      <Tabs aria-label="OnChange Tabs Example" tabSize="large" tabFormat="tabs" onTabClick={setLastHeader}>
+      <Label>Last onTabClick from: {lastTab?.props.headerText}</Label>
+      <Tabs aria-label="OnChange Tabs Example" tabSize="large" tabFormat="tabs" onTabClick={setLastTab}>
         <TabItem headerText="Foo">
           <Label>Tab #1</Label>
         </TabItem>
