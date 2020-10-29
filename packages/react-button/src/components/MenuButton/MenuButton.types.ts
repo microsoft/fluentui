@@ -18,7 +18,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Menu that is displayed when the button is pressed.
    */
-  menu?: React.PropsWithChildren<MinimalMenuProps>;
+  menu?: ShorthandProps;
 
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
@@ -45,7 +45,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   onMenuDismiss?: () => void;
 };
 
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {}
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
+  menu?: React.PropsWithChildren<MinimalMenuProps>;
+}
 
 /**
  * {@docCategory Button}

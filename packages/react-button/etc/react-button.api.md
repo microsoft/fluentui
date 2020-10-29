@@ -182,7 +182,7 @@ export type ExpandedState = {
     onKeyDown?: (ev: React.KeyboardEvent) => void;
     'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
     'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
-    menu?: MenuButtonProps['menu'];
+    menu?: MenuButtonState['menu'];
 };
 
 // @public
@@ -190,7 +190,7 @@ export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, s
 
 // @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
-    menu?: React.PropsWithChildren<MinimalMenuProps>;
+    menu?: ShorthandProps;
     menuIcon?: ShorthandProps;
     defaultExpanded?: boolean;
     expanded?: boolean;
@@ -201,7 +201,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 export const menuButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
+    // (undocumented)
+    menu?: React.PropsWithChildren<MinimalMenuProps>;
 }
 
 // @public (undocumented)
@@ -234,7 +236,7 @@ export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
 export const splitButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface SplitButtonState extends SplitButtonProps, MenuButtonState {
+export interface SplitButtonState extends Omit<SplitButtonProps, 'omit'>, MenuButtonState {
     // (undocumented)
     menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }

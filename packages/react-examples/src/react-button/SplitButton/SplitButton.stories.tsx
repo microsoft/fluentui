@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { MinimalMenuProps, SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { ContextualMenu, Stack, Text } from '@fluentui/react';
+import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
-const menuProps = {
+const menuProps: IContextualMenuProps = {
+  directionalHint: DirectionalHint.bottomRightEdge,
   items: [
     {
       key: 'a',
@@ -17,7 +18,7 @@ const menuProps = {
 };
 
 const Menu = (defaultSlotType: string, props: MinimalMenuProps) => {
-  return <ContextualMenu {...props} {...menuProps} />;
+  return <ContextualMenu {...(props as IContextualMenuProps)} {...menuProps} />;
 };
 
 const SplitButtonExamples = (props: SplitButtonProps) => (
