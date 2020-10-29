@@ -78,7 +78,7 @@ describe('Layer', () => {
     }
   });
 
-  fit('renders in targeted LayerHost on re-render', () => {
+  it('renders in targeted LayerHost on re-render', () => {
     const appElement = document.createElement('div');
 
     try {

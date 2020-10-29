@@ -96,7 +96,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         registerLayer(hostId, createLayerElement);
       }
 
-      () => {
+      return () => {
         removeLayerElement();
 
         if (hostId) {
