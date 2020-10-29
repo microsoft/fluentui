@@ -21,6 +21,7 @@ import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { fluentuiLernaPublish } from './tasks/fluentui-publish';
+import { fluentuiLernaPrePublish } from './tasks/fluentui-prepublish';
 import { findGitRoot } from './monorepo/index';
 
 /** Do only the bare minimum setup of options and resolve paths */
@@ -86,8 +87,9 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
 
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('fluentui:prepublish', fluentuiLernaPrePublish);
+  task('fluentui:publish:patch', series('fluentui:prepublish', fluentuiLernaPublish('patch')));
+  task('fluentui:publish:minor', series('fluentui:prepublish', fluentuiLernaPublish('minor')));
 
   task('ts:compile', () => {
     return argv().commonjs
