@@ -36,19 +36,25 @@ export { IStyleFunctionOrObject }
 export type KeyFrames = IKeyframes;
 
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>), cache?: Map<any, any> | undefined) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet), graph?: Map<any, any>): (theme?: Theme, renderer?: StyleRenderer) => {
     [key in keyof TStyleSet]: string;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MakeVariantClassesOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+
+// @public
+export type MakeVariantClassesOptions = {
+    name?: string;
+    prefix?: string;
+    styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
+    variants?: Variants | ((theme: Theme) => Variants);
+};
 
 // @public (undocumented)
 export const MergeStylesProvider: ({ children }: {
@@ -144,6 +150,12 @@ export function useThemeProviderClasses(state: ThemeProviderState): void;
 
 // @public (undocumented)
 export const useThemeProviderState: (draftState: ThemeProviderState) => void;
+
+// @public (undocumented)
+export type UseVariantClassesOverride = (state: any, theme?: Theme, renderer?: StyleRenderer, options?: MakeVariantClassesOptions, cache?: Map<any, any>) => void;
+
+// @public (undocumented)
+export const UseVariantClassesOverrideKey = "useVariantClassesOverride";
 
 // @public (undocumented)
 export const withThemeProvider: <TProps>(Component: React.FunctionComponent<TProps>) => React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps> & React.RefAttributes<HTMLButtonElement>>;

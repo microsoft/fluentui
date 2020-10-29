@@ -1,6 +1,6 @@
 # @fluentui/react-theme-provider
 
-**React theming component and hook for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Hooks, utilities, and React components for controlling the application appearance using [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 ## Installation
 
@@ -248,7 +248,7 @@ Instead of using `Fabric` component, you can now replace it fully with `ThemePro
 | `applyThemeToBody` | `applyTo="body"`                                                                                                                                                                                    |
 | `dir`              | set `rtl` in `theme` prop                                                                                                                                                                           |
 
-#### Other call-outs
+## Additional notes
 
 - `ThemeProvider` by default sets `background-color` for the root element using `theme.semanticColors.bodyBackground`. If you find the background color being incorrect after switching to `ThemeProvider`, the right fix is likely that you need to update your theme definition to have the correct `bodyBackground`. Or, if you don't want any default stylings applied to the root element, you can set `applyTo` prop to `"none"`.
 - `ThemeProvider` does not set `font-family: inherit` on all native `button`, `input`, `textArea` elements. If you find any Fluent UI component having incorrect fonts after switching to `ThemeProvider`, please [report an issue](https://github.com/microsoft/fluentui/issues/new?template=bug_report.md).

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeVariantClasses } from './makeVariantClasses.current';
+import { makeVariantClasses } from './makeVariantClasses';
 import { Stylesheet, InjectionMode } from '@uifabric/merge-styles';
 import { ReactWrapper } from 'enzyme';
 import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';

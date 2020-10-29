@@ -12,7 +12,7 @@ import { StyleRenderer } from './styleRenderers/types';
  * Usage:
  *
  * ```tsx
- * const useButtonClasses makeClasses(theme => {
+ * const useButtonClasses = makeClasses(theme => {
  *   root: { ... },
  *   _primary: { ... },
  *   _size_small: { ... }
@@ -35,8 +35,10 @@ import { StyleRenderer } from './styleRenderers/types';
  */
 export const makeClasses = <TState extends {}>(
   styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  cache?: Map<any, any>,
 ) => {
-  const useStyles = makeStyles(styleOrFunction);
+  const useStyles = makeStyles(styleOrFunction, cache);
 
   return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
     const classes = useStyles(theme, renderer);
@@ -46,7 +48,7 @@ export const makeClasses = <TState extends {}>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const value = (classes as any)[slotName];
 
-      // If the renderer returns non-classNames (like subComponentStyles), ignore.
+      // If the renderer returns non-class-names (like subComponentStyles), ignore.
       if (typeof value === 'string') {
         const parts = slotName.split('_');
 

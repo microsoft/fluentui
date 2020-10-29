@@ -15,9 +15,10 @@ import { graphGet, graphSet } from './graph';
  */
 export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  graph: Map<any, any> = new Map(),
 ): (theme?: Theme, renderer?: StyleRenderer) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.
-  const graph = new Map();
 
   return (theme?: Theme, renderer?: StyleRenderer) => {
     const win = useWindow();

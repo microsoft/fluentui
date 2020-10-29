@@ -9,13 +9,15 @@ export * from './withThemeProvider';
 
 export { useTheme } from './useTheme';
 export { ThemeContext } from './ThemeContext';
+
 export * from './types';
 export * from './getStyleFromPropsAndOptions';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';
-export * from './makeVariantClasses';
 export * from './makeStyles';
 export * from './makeClasses';
+export * from './makeVariantClasses';
+
 export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 
 export * from './styleRenderers/mergeStylesRenderer';

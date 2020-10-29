@@ -1,118 +1,115 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { Theme } from '@fluentui/theme';
-import { StyleRenderer, useTheme, useStyleRenderer } from './index';
-import { useWindow } from '@fluentui/react-window-provider';
-import { replaceCSSVariables } from './replaceCSSVariables';
-import { callOrReturn } from './callOrReturn';
-import { graphSet, graphGet } from './graph';
-import { MakeVariantClassesOptions } from './makeVariantClasses.current';
+import { Variants, Theme } from '@fluentui/theme';
+import { IStyle } from '@uifabric/merge-styles';
+import { makeClasses } from './makeClasses';
+import { GlobalSettings, isIE11 } from '@uifabric/utilities';
+import { StyleRenderer } from './styleRenderers/types';
+import { useVariantClassesIE11Override } from './useVariantClassesIE11Override';
 
-/** Get cache keys array, based on the variants available. */
-const getCacheKeys = (state: any, variantSets: Record<string, any>[]) => {
-  const cacheKeys = [];
+/**
+ * Calls a function with the argument, or returns the given object.
+ * @param objOrFunc - Function or object.
+ * @param argument - Argument to pass if a function is provided.
+ */
+const callOrReturn = (objOrFunc: any, argument: any) =>
+  typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
-  for (const set of variantSets) {
-    if (set) {
-      for (const variantName of Object.keys(set)) {
+const processVariants = (variants: Variants | undefined, theme: Theme, name?: string, prefix?: string) => {
+  const result: Record<string, IStyle> = {};
+
+  if (variants) {
+    variants = callOrReturn(variants, theme);
+
+    for (const variantName of Object.keys(variants!)) {
+      const modifierName = variantName === 'root' ? variantName : '_' + variantName;
+
+      const rule: any = (result[modifierName] = tokensToStyleObject(variants![variantName], prefix) as IStyle);
+
+      // The display name should be tied to the unique theme object, causing the
+      // renderer to treat scoped themes as sandboxed css scopes.
+      if (name) {
+        rule.displayName = `${name}${theme.id || ''}`;
         if (variantName !== 'root') {
-          const variantNameParts = variantName.split('_');
-
-          const isActive =
-            state.variant === variantName ||
-            state[variantName] ||
-            (variantNameParts.length === 2 && state[variantNameParts[0]] === variantNameParts[1]);
-
-          cacheKeys.push(variantName + '-' + isActive);
+          rule.displayName += `--${variantName}`;
         }
       }
     }
   }
 
-  return cacheKeys;
+  return result;
 };
 
+/**
+ * Options for makeVariantClasses.
+ */
+export type MakeVariantClassesOptions = {
+  /**
+   * Name of the component to use for fetching variants from the theme.
+   */
+  name?: string;
+
+  /**
+   * Prefix for css variables within the variants.
+   */
+  prefix?: string;
+
+  /**
+   * Styles for the component.
+   */
+  styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
+
+  /**
+   * Variants for the styles. A variant defines token values when a particular prop is present, or the
+   * variant prop matches.
+   */
+  variants?: Variants | ((theme: Theme) => Variants);
+};
+
+export type UseVariantClassesOverride = (
+  state: any,
+  theme?: Theme,
+  renderer?: StyleRenderer,
+  options?: MakeVariantClassesOptions,
+  cache?: Map<any, any>,
+) => void;
+
+export const UseVariantClassesOverrideKey = 'useVariantClassesOverride';
 /**
  * Hook factory for creating a `use*Variants` helper. Variants represent a configuration of
  * token values mapped to modifiers on the component. A variant can also be referenced using
  * a variant string. Variants can be overridden through the theme of the component.
  */
 export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptions) => {
-  const { styles: styleOrFunction, variants, name, prefix } = options;
-  const classCache = new Map();
+  const cache = new Map();
+  const { styles, name, prefix, variants } = options;
 
-  return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
-    const win = useWindow();
-    const contextualTheme = useTheme();
-    const contextualRenderer = useStyleRenderer();
-    const rendererId = contextualRenderer.getId();
-    const { tokens: inlineTokens, variant: activeVariant } = state as any;
-
-    // Use the passed in theme/render, fall back to contextual values.
-    theme = theme || contextualTheme || {};
-    renderer = (renderer || contextualRenderer) as StyleRenderer;
-
-    // Build up the variant sets so that we can evaluate a cache key for the classes.
+  // This function will only be called when styles have not been evaluated for this set for
+  // the particular theme/window/direction combo.
+  const styleFunction: (theme: Theme) => IStyle = (theme: Theme) => {
     const themeVariants = name ? theme?.components?.[name]?.variants : undefined;
-    const variantSets = [
-      callOrReturn(variants, theme),
-      callOrReturn(themeVariants, theme),
-      { root: callOrReturn(inlineTokens, theme) },
+
+    return [
+      callOrReturn(styles, theme),
+      processVariants(variants, theme, name, prefix),
+      processVariants(themeVariants, theme, name, prefix),
     ];
-
-    // Derive the cache
-    const cachePath = [
-      rendererId,
-      win,
-      theme && theme.id ? theme.id : theme,
-      JSON.stringify(inlineTokens),
-      ...getCacheKeys(state, variantSets),
-    ];
-    let classNames = graphGet(classCache, cachePath);
-
-    if (!classNames) {
-      const isStyleFunction = typeof styleOrFunction === 'function';
-      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => any)(theme!) : styleOrFunction;
-      const variables = tokensToStyleObject(theme.tokens);
-
-      // Iterate through all valid variant sets in the order of least to most important (defaults, theme, inline)
-      for (const set of variantSets) {
-        if (set) {
-          // Loop through the variants in the set.
-          for (const variantName of Object.keys(set)) {
-            // If the set is root, or if the set matches a state modifier or the activeVariant,
-            if (variantName === 'root' || (state as any)[variantName] || activeVariant === variantName) {
-              // Assign the flattened token set to the variables set to resolve.
-              Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
-            } else {
-              const nameParts = variantName.split('_');
-              // If the set matches an enum/value pair,
-              if (nameParts.length === 2 && (state as any)[nameParts[0]] === nameParts[1]) {
-                // Assign the flattened token set to the variables set to resolve.
-                Object.assign(variables, tokensToStyleObject(set[variantName], prefix));
-              }
-            }
-          }
-        }
-      }
-
-      const resolvedStyles = replaceCSSVariables(styles, variables as any);
-      classNames = renderer.renderStyles(resolvedStyles, { targetWindow: win, rtl: !!theme!.rtl });
-      graphSet(classCache, cachePath, classNames);
-    }
-
-    for (const slot of Object.keys(classNames)) {
-      _setClass(state, classNames[slot], slot !== 'root' ? slot : '');
-    }
   };
+
+  // This will create a default cached implementation of the hook.
+  const defaultUseVariantClasses = makeClasses<TState>(styleFunction as any, cache);
+
+  // This function is what will execute on every render. Within it, we will determine whether to call
+  // the default implementation, or an override for the IE11 case.
+  const useVariantClasses = (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
+    // If a global override is defined, use that. Otherwise use the default behavior.
+    const callback = GlobalSettings.getValue<UseVariantClassesOverride>(UseVariantClassesOverrideKey);
+
+    return isIE11()
+      ? // eslint-disable-next-line react-hooks/rules-of-hooks
+        useVariantClassesIE11Override(state, theme, renderer, options, cache)
+      : defaultUseVariantClasses(state, theme, renderer);
+  };
+
+  return useVariantClasses;
 };
-
-function _setClass(state: Record<string, any>, className: string, slot?: string) {
-  const currentSlot = slot ? (state[slot] = state[slot] || {}) : state;
-
-  if (currentSlot.className) {
-    currentSlot.className += ' ' + className;
-  } else {
-    currentSlot.className = className;
-  }
-}
