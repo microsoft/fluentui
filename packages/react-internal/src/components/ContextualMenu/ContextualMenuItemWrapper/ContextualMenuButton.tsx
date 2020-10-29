@@ -76,7 +76,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
-      'aria-describedBy': ariaDescribedByIds,
+      'aria-describedby': ariaDescribedByIds,
       'aria-haspopup': itemHasSubmenu || undefined,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,

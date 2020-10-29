@@ -63,7 +63,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     );
 
     const additionalItemProperties = {
-      'aria-describedBy': ariaDescribedByIds,
+      'aria-describedby': ariaDescribedByIds,
     };
 
     return (
