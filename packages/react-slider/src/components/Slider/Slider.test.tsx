@@ -26,6 +26,12 @@ describe('Slider', () => {
   isConformant({
     Component: Slider,
     displayName: 'Slider',
+    // Disabled Tests:
+    //
+    // consistent-callback-names
+    // Problem: Contains onChanged type.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: ['consistent-callback-names'],
   });
 
   it('renders correctly', () => {
