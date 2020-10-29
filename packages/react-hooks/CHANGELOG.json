@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Thu, 29 Oct 2020 12:24:41 GMT",
+      "tag": "@uifabric/react-hooks_v7.13.9",
+      "version": "7.13.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update react-window-provider package version.",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6e9f38daf17603caab4c7c681ffbae7dc2be1c",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/react-hooks_v7.13.5",
       "version": "7.13.5",

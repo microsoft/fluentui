@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Major bump version to 1.0.0 to avoid package duplication.",
-  "packageName": "@fluentui/react-window-provider",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-27T23:24:37.914Z"
-}

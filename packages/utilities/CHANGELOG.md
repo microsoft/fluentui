@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 28 Oct 2020 12:29:09 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Oct 2020 12:24:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.2)
+
+Thu, 29 Oct 2020 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.33.1..@uifabric/utilities_v7.33.2)
+
+### Patches
+
+- Make FocusTrapZone properly focus the first element of a FocusZone ([PR #14606](https://github.com/microsoft/fluentui/pull/14606) by tmichon@microsoft.com)
 
 ## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.1)
 

@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Oct 2020 12:29:09 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Oct 2020 12:24:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.149.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.0)
+
+Thu, 29 Oct 2020 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.148.2..office-ui-fabric-react_v7.149.0)
+
+### Minor changes
+
+- Add 'firstFocusableTarget' prop to FocusTrapZone ([PR #14606](https://github.com/microsoft/fluentui/pull/14606) by tmichon@microsoft.com)
+- Export react-window-provider. ([PR #15736](https://github.com/microsoft/fluentui/pull/15736) by xgao@microsoft.com)
 
 ## [7.148.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.148.2)
 
