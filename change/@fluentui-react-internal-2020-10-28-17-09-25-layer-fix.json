@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Layer: fix not rendering into targeted host element defined by hostId prop.",
+  "packageName": "@fluentui/react-internal",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-29T00:09:25.435Z"
+}
