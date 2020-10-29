@@ -1,34 +1,32 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { PivotItem } from './PivotItem';
+import { TabItem } from './TabItem';
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IPivot {
+export interface TabsImperativeHandle {
   /**
-   * Sets focus to the first pivot tab.
+   * Sets focus to the first tab.
    */
   focus(): void;
 }
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the IPivot interface. Use this instead of ref for accessing
+   * Optional callback to access the TabsImperativeHandle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<IPivot>;
+  componentRef?: React.RefObject<TabsImperativeHandle>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+  styles?: IStyleFunctionOrObject<TabsStyleProps, TabsStyles>;
 
   /**
    * Theme provided by High-Order Component.
@@ -36,42 +34,42 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
   theme?: ITheme;
 
   /**
-   * Additional css class to apply to the Pivot
+   * Additional css class to apply to the Tabs
    * @defaultvalue undefined
    */
   className?: string;
 
   /**
-   * Default selected key for the pivot. Only provide this if the pivot is an uncontrolled component;
+   * Default selected TabItem key. Only provide this if the Tabs is an uncontrolled component;
    * otherwise, use the `selectedKey` property.
    */
   defaultSelectedKey?: string;
 
   /**
-   * Key of the selected pivot item. Updating this will override the Pivot's selected item state.
-   * Only provide this if the pivot is a controlled component where you are maintaining the
+   * Key of the selected tab item. Updating this will override the Tabs's selected item state.
+   * Only provide this if the Tabs is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.
    */
   selectedKey?: string | null;
 
   /**
-   * Callback for when the selected pivot item is changed.
+   * Callback for when the selected tab item is changed.
    */
-  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+  onTabClick?: (item?: TabItem, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Link size (normal, large)
+   * Tab size (normal, large)
    */
-  linkSize?: PivotLinkSizeType;
+  tabSize?: TabSizeType;
 
   /**
-   * Link format (links, tabs)
+   * Tab format (links, tabs)
    */
-  linkFormat?: PivotLinkFormatType;
+  tabFormat?: TabFormatType;
 
   /**
    * Overflow behavior when there is not enough room to display all of the links/tabs
-   * * none: Pivot links will overflow the container and may not be visible
+   * * none: Tabs links will overflow the container and may not be visible
    * * menu: Display an overflow menu that contains the tabs that don't fit
    *
    * @default none
@@ -93,67 +91,66 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
 }
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  */
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
-  Pick<IPivotProps, 'className'> & {
-    linkSize?: PivotLinkSizeType;
-    linkFormat?: PivotLinkFormatType;
+export type TabsStyleProps = Required<Pick<TabsProps, 'theme'>> &
+  Pick<TabsProps, 'className'> & {
+    tabSize?: TabSizeType;
+    tabFormat?: TabFormatType;
   };
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IPivotStyles {
+export interface TabsStyles {
   /**
    * Style for the root element.
    */
   root: IStyle;
-  link: IStyle;
-  linkIsSelected: IStyle;
-  linkContent: IStyle;
+  tab: IStyle;
+  tabIsSelected: IStyle;
+  tabContent: IStyle;
   text: IStyle;
   count: IStyle;
   icon: IStyle;
-  linkInMenu: IStyle;
+  tabInMenu: IStyle;
   overflowMenuButton: IStyle;
   itemContainer?: IStyle;
 }
 
 /**
- * {@docCategory Pivot}
- * Display mode for the pivot links/tabs
+ * {@docCategory Tabs}
+ * Display mode for the tabs
  */
-export type PivotLinkFormatType = 'links' | 'tabs';
+export type TabFormatType = 'links' | 'tabs';
 
 /**
- * {@docCategory Pivot}
- * Size of the pivot links/tabs
+ * {@docCategory Tabs}
+ * Size of the tabs
  */
-export type PivotLinkSizeType = 'normal' | 'large';
+export type TabSizeType = 'normal' | 'large';
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  * @deprecated Use strings 'links' or 'tabs' instead of this enum
  */
-export const enum PivotLinkFormat {
+export const enum TabFormat {
   /**
-   * Display Pivot Links as links
+   * Display tabs as links
    */
   links = 'links',
 
   /**
-   * Display Pivot Links as Tabs
+   * Display tabs as Tabs
    */
   tabs = 'tabs',
 }
 
 /**
- * {@docCategory Pivot}
+ * {@docCategory Tabs}
  * @deprecated Use strings 'normal' or 'large' instead of this enum
  */
-export const enum PivotLinkSize {
+export const enum TabSize {
   /**
    * Display Link using normal font size
    */

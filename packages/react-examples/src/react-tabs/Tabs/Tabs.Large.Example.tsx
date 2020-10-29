@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
-export const PivotLargeExample = () => (
+export const TabsLargeExample = () => (
   <div>
-    <Pivot aria-label="Large Link Size Pivot Example" linkSize="large">
-      <PivotItem headerText="My Files">
-        <Label>Pivot #1</Label>
-      </PivotItem>
-      <PivotItem headerText="Recent">
-        <Label>Pivot #2</Label>
-      </PivotItem>
-      <PivotItem headerText="Shared with me">
-        <Label>Pivot #3</Label>
-      </PivotItem>
-    </Pivot>
+    <Tabs aria-label="Large Tab Size Tabs Example" tabSize="large">
+      <TabItem headerText="My Files">
+        <Label>Tab #1</Label>
+      </TabItem>
+      <TabItem headerText="Recent">
+        <Label>Tab #2</Label>
+      </TabItem>
+      <TabItem headerText="Shared with me">
+        <Label>Tab #3</Label>
+      </TabItem>
+    </Tabs>
   </div>
 );

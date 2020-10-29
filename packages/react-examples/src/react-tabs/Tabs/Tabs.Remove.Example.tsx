@@ -2,35 +2,35 @@ import * as React from 'react';
 import { Label } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { useBoolean } from '@fluentui/react-hooks';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
-export const PivotRemoveExample = () => {
+export const TabsRemoveExample = () => {
   const [showFirstItem, { toggle: toggleShowFirstItem }] = useBoolean(true);
   return (
     <div>
-      <Pivot aria-label="Remove Pivot Example" linkSize="large" linkFormat="tabs">
+      <Tabs aria-label="Remove Tabs Example" tabSize="large" tabFormat="tabs">
         {showFirstItem && (
-          <PivotItem headerText="Foo" itemKey="Foo" key="Foo">
-            <Label>Click the button below to show/hide this pivot item.</Label>
-            <Label>The selected item will not change when the number of pivot items changes.</Label>
+          <TabItem headerText="Foo" itemKey="Foo" key="Foo">
+            <Label>Click the button below to show/hide this tab item.</Label>
+            <Label>The selected item will not change when the number of tab items changes.</Label>
             <Label>If the selected item was removed, the new first item will be selected.</Label>
-          </PivotItem>
+          </TabItem>
         )}
-        <PivotItem headerText="Bar" itemKey="Bar" key="Bar">
-          <Label>Pivot #2</Label>
-        </PivotItem>
-        <PivotItem headerText="Bas" itemKey="Bas" key="Bas">
-          <Label>Pivot #3</Label>
-        </PivotItem>
-        <PivotItem headerText="Biz" itemKey="Biz" key="Biz">
-          <Label>Pivot #4</Label>
-        </PivotItem>
-      </Pivot>
+        <TabItem headerText="Bar" itemKey="Bar" key="Bar">
+          <Label>Tab #2</Label>
+        </TabItem>
+        <TabItem headerText="Bas" itemKey="Bas" key="Bas">
+          <Label>Tab #3</Label>
+        </TabItem>
+        <TabItem headerText="Biz" itemKey="Biz" key="Biz">
+          <Label>Tab #4</Label>
+        </TabItem>
+      </Tabs>
       <div>
         <DefaultButton
           aria-live="polite"
           onClick={toggleShowFirstItem}
-          text={`${showFirstItem ? 'Hide' : 'Show'} First Pivot Item`}
+          text={`${showFirstItem ? 'Hide' : 'Show'} First Tabs Item`}
         />
       </div>
     </div>

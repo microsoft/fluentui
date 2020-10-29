@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '@fluentui/utilities';
-import { IPivotItemProps } from './PivotItem.types';
+import { TabItemProps } from './TabItem.types';
 
-const COMPONENT_NAME = 'PivotItem';
+const COMPONENT_NAME = 'TabItem';
 
-export class PivotItem extends React.Component<IPivotItemProps, {}> {
-  constructor(props: IPivotItemProps) {
+export class TabItem extends React.Component<TabItemProps, {}> {
+  constructor(props: TabItemProps) {
     super(props);
 
     initializeComponentRef(this);

@@ -1,3 +1,3 @@
-- [Web Pivot](#/controls/web/pivot)
-- [iOS Pivot](#/controls/ios/pivot)
+- [Web Tabs](#/controls/web/Tabs)
+- [iOS Tabs](#/controls/ios/Tabs)
 - [iOS Pill Button Bar](#/controls/ios/pillbuttonbar)

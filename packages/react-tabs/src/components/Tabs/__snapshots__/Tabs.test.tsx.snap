@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
+exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
 <div
   role="toolbar"
 >
@@ -157,7 +157,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           }
       data-content="test"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="test"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -316,7 +316,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           }
       data-content="Test Link (20+)"
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name="Test Link"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -381,7 +381,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -395,7 +395,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
 </div>
 `;
 
-exports[`Pivot renders Pivot correctly with custom className 1`] = `
+exports[`Tabs renders Tabs correctly with custom className 1`] = `
 <div
   className="specialClassName"
   role="toolbar"
@@ -553,7 +553,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -712,7 +712,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           }
       data-content="Test Link 2"
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name="Test Link 2"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -765,7 +765,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -781,7 +781,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 </div>
 `;
 
-exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
+exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
 <div
   role="toolbar"
 >
@@ -938,7 +938,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           }
       data-content=" (12)"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -1097,7 +1097,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           }
       data-content="Test Link (12)"
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name="Test Link"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -1268,7 +1268,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           }
       data-content="Text with icon xx"
       data-is-focusable={true}
-      id="Pivot0-Tab2"
+      id="Tabs0-Tab2"
       name="Text with icon"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -1342,7 +1342,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -1356,7 +1356,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 </div>
 `;
 
-exports[`Pivot renders Pivot with overflow 1`] = `
+exports[`Tabs renders Tabs with overflow 1`] = `
 <div
   role="toolbar"
 >
@@ -1513,7 +1513,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           }
       data-content="Test 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -1672,7 +1672,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           }
       data-content="Test 2"
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name="Test 2"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -1904,7 +1904,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -1918,7 +1918,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
 </div>
 `;
 
-exports[`Pivot renders large link Pivot correctly 1`] = `
+exports[`Tabs renders large tab Tabs correctly 1`] = `
 <div
   role="toolbar"
 >
@@ -2076,7 +2076,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -2235,7 +2235,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           }
       data-content=""
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name=""
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -2288,7 +2288,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -2302,7 +2302,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 </div>
 `;
 
-exports[`Pivot renders large tabbed Pivot correctly 1`] = `
+exports[`Tabs renders large tabbed Tabs correctly 1`] = `
 <div
   role="toolbar"
 >
@@ -2495,7 +2495,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -2688,7 +2688,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
       data-content=""
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name=""
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -2741,7 +2741,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -2755,7 +2755,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 </div>
 `;
 
-exports[`Pivot renders link Pivot correctly 1`] = `
+exports[`Tabs renders tabs as links correctly 1`] = `
 <div
   role="toolbar"
 >
@@ -2912,7 +2912,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3071,7 +3071,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           }
       data-content=""
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name=""
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3124,7 +3124,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -3138,7 +3138,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 </div>
 `;
 
-exports[`Pivot renders tabbed Pivot correctly 1`] = `
+exports[`Tabs renders tabbed Tabs correctly 1`] = `
 <div
   role="toolbar"
 >
@@ -3330,7 +3330,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3523,7 +3523,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
       data-content=""
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name=""
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3576,7 +3576,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab0"
+    aria-labelledby="Tabs0-Tab0"
     className=
 
         &[hidden] {
@@ -3590,7 +3590,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
 </div>
 `;
 
-exports[`Pivot supports JSX expressions 1`] = `
+exports[`Tabs supports JSX expressions 1`] = `
 <div
   role="toolbar"
 >
@@ -3736,7 +3736,7 @@ exports[`Pivot supports JSX expressions 1`] = `
           }
       data-content="Test Link 1"
       data-is-focusable={true}
-      id="Pivot0-Tab0"
+      id="Tabs0-Tab0"
       name="Test Link 1"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3906,7 +3906,7 @@ exports[`Pivot supports JSX expressions 1`] = `
           }
       data-content="Test Link 3"
       data-is-focusable={true}
-      id="Pivot0-Tab1"
+      id="Tabs0-Tab1"
       name="Test Link 3"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -3959,7 +3959,7 @@ exports[`Pivot supports JSX expressions 1`] = `
   </div>
   <div
     aria-hidden={false}
-    aria-labelledby="Pivot0-Tab1"
+    aria-labelledby="Tabs0-Tab1"
     className=
 
         &[hidden] {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`] = `
+exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] = `
 <div>
   <div
     className=
@@ -136,7 +136,7 @@ exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`]
     </div>
   </div>
   <div
-    aria-label="Separately Rendered Content Pivot Example"
+    aria-label="Separately Rendered Content Tabs Example"
     role="toolbar"
   >
     <div
@@ -292,7 +292,7 @@ exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`]
             }
         data-content="Expensive component #1"
         data-is-focusable={true}
-        id="Pivot1-Tab0"
+        id="Tabs1-Tab0"
         name="Expensive component #1"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -451,7 +451,7 @@ exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`]
             }
         data-content="Expensive component #2"
         data-is-focusable={true}
-        id="Pivot1-Tab1"
+        id="Tabs1-Tab1"
         name="Expensive component #2"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -504,7 +504,7 @@ exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`]
     </div>
     <div
       aria-hidden={false}
-      aria-labelledby="Pivot1-Tab0"
+      aria-labelledby="Tabs1-Tab0"
       className=
 
           &[hidden] {

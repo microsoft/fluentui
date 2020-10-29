@@ -1,4 +1,4 @@
-Pivots are used for switching between sub-views or different pre-defined filtering or sorting configurations for a given view. Variants may also use a combination of icons and text or just icons to articulate section content.
+Tabs are used for switching between sub-views or different pre-defined filtering or sorting configurations for a given view. Variants may also use a combination of icons and text or just icons to articulate section content.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
 const getTabId = (itemKey: string) => {
-  return `ShapeColorPivot_${itemKey}`;
+  return `ShapeColorTabs_${itemKey}`;
 };
 
-export const PivotSeparateExample = () => {
+export const TabsSeparateExample = () => {
   const [selectedKey, setSelectedKey] = React.useState('rectangleRed');
 
-  const handleLinkClick = (item?: PivotItem) => {
+  const handleTabClick = (item?: TabItem) => {
     if (item) {
       setSelectedKey(item.props.itemKey!);
     }
@@ -26,18 +26,18 @@ export const PivotSeparateExample = () => {
           background: selectedKey === 'rectangleGreen' ? 'green' : 'red',
         }}
       />
-      <Pivot
-        aria-label="Separately Rendered Content Pivot Example"
+      <Tabs
+        aria-label="Separately Rendered Content Tabs Example"
         selectedKey={selectedKey}
         // eslint-disable-next-line react/jsx-no-bind
-        onLinkClick={handleLinkClick}
+        onTabClick={handleTabClick}
         headersOnly={true}
         getTabId={getTabId}
       >
-        <PivotItem headerText="Rectangle red" itemKey="rectangleRed" />
-        <PivotItem headerText="Square red" itemKey="squareRed" />
-        <PivotItem headerText="Rectangle green" itemKey="rectangleGreen" />
-      </Pivot>
+        <TabItem headerText="Rectangle red" itemKey="rectangleRed" />
+        <TabItem headerText="Square red" itemKey="squareRed" />
+        <TabItem headerText="Rectangle green" itemKey="rectangleGreen" />
+      </Tabs>
     </div>
   );
 };

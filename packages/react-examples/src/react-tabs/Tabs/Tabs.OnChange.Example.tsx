@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
-export const PivotOnChangeExample = () => {
-  const [lastHeader, setLastHeader] = React.useState<{ props: IPivotItemProps } | undefined>(undefined);
+export const TabsOnChangeExample = () => {
+  const [lastHeader, setLastHeader] = React.useState<{ props: TabItemProps } | undefined>(undefined);
 
   return (
     <div>
-      <Label>Last onLinkClick from: {lastHeader?.props.headerText}</Label>
-      <Pivot aria-label="OnChange Pivot Example" linkSize="large" linkFormat="tabs" onLinkClick={setLastHeader}>
-        <PivotItem headerText="Foo">
-          <Label>Pivot #1</Label>
-        </PivotItem>
-        <PivotItem headerText="Bar">
-          <Label>Pivot #2</Label>
-        </PivotItem>
-        <PivotItem headerText="Bas">
-          <Label>Pivot #3</Label>
-        </PivotItem>
-        <PivotItem headerText="Biz">
-          <Label>Pivot #4</Label>
-        </PivotItem>
-      </Pivot>
+      <Label>Last onTabClick from: {lastHeader?.props.headerText}</Label>
+      <Tabs aria-label="OnChange Tabs Example" tabSize="large" tabFormat="tabs" onTabClick={setLastHeader}>
+        <TabItem headerText="Foo">
+          <Label>Tab #1</Label>
+        </TabItem>
+        <TabItem headerText="Bar">
+          <Label>Tab #2</Label>
+        </TabItem>
+        <TabItem headerText="Bas">
+          <Label>Tab #3</Label>
+        </TabItem>
+        <TabItem headerText="Biz">
+          <Label>Tab #4</Label>
+        </TabItem>
+      </Tabs>
     </div>
   );
 };

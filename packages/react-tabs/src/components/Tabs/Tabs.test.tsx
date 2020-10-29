@@ -2,38 +2,38 @@ import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
-import { Pivot, PivotItem, IPivot } from './index';
+import { Tabs, TabItem, TabsImperativeHandle } from './index';
 import { isConformant } from '../../common/isConformant';
 
-describe('Pivot', () => {
+describe('Tabs', () => {
   beforeEach(() => {
     // Resetting ids to create predictability in generated ids.
     resetIds();
   });
-  it('renders link Pivot correctly', () => {
+  it('renders tabs as links correctly', () => {
     const component = create(
-      <Pivot>
-        <PivotItem headerText="Test Link 1" />
-        <PivotItem headerText="" />
-      </Pivot>,
+      <Tabs>
+        <TabItem headerText="Test Link 1" />
+        <TabItem headerText="" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   isConformant({
-    Component: Pivot,
-    displayName: 'Pivot',
+    Component: Tabs,
+    displayName: 'Tabs',
   });
 
   it('can be focused', () => {
-    const pivotRef = React.createRef<IPivot>();
+    const tabsRef = React.createRef<TabsImperativeHandle>();
 
     mount(
-      <Pivot componentRef={pivotRef}>
-        <PivotItem headerText="Link 1" />
-        <PivotItem headerText="Link 2" />
-      </Pivot>,
+      <Tabs componentRef={tabsRef}>
+        <TabItem headerText="Link 1" />
+        <TabItem headerText="Link 2" />
+      </Tabs>,
     );
 
     // Instruct FocusZone to treat all elements as visible.
@@ -41,9 +41,9 @@ describe('Pivot', () => {
     (HTMLElement.prototype as any).isVisible = true;
 
     try {
-      expect(pivotRef.current).toBeTruthy();
+      expect(tabsRef.current).toBeTruthy();
 
-      pivotRef.current!.focus();
+      tabsRef.current!.focus();
       expect(document.activeElement).toBeTruthy();
       expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
     } finally {
@@ -54,86 +54,86 @@ describe('Pivot', () => {
 
   it('supports JSX expressions', () => {
     const component = create(
-      <Pivot defaultSelectedKey="1">
-        <PivotItem headerText="Test Link 1">
+      <Tabs defaultSelectedKey="1">
+        <TabItem headerText="Test Link 1">
           <div>This is item 1</div>
-        </PivotItem>
-        {false && <PivotItem headerText="Test Link 2" />}
-        <PivotItem headerText="Test Link 3">
+        </TabItem>
+        {false && <TabItem headerText="Test Link 2" />}
+        <TabItem headerText="Test Link 3">
           <div>This is Item 3</div>
-        </PivotItem>
-      </Pivot>,
+        </TabItem>
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders large link Pivot correctly', () => {
+  it('renders large tab Tabs correctly', () => {
     const component = create(
-      <Pivot linkSize="large">
-        <PivotItem headerText="Test Link 1" />
-        <PivotItem headerText="" />
-      </Pivot>,
+      <Tabs tabSize="large">
+        <TabItem headerText="Test Link 1" />
+        <TabItem headerText="" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders tabbed Pivot correctly', () => {
+  it('renders tabbed Tabs correctly', () => {
     const component = create(
-      <Pivot linkFormat="tabs">
-        <PivotItem headerText="Test Link 1" />
-        <PivotItem headerText="" />
-      </Pivot>,
+      <Tabs tabFormat="tabs">
+        <TabItem headerText="Test Link 1" />
+        <TabItem headerText="" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders large tabbed Pivot correctly', () => {
+  it('renders large tabbed Tabs correctly', () => {
     const component = create(
-      <Pivot linkFormat="tabs" linkSize="large">
-        <PivotItem headerText="Test Link 1" />
-        <PivotItem headerText="" />
-      </Pivot>,
+      <Tabs tabFormat="tabs" tabSize="large">
+        <TabItem headerText="Test Link 1" />
+        <TabItem headerText="" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders Pivot correctly with custom className', () => {
+  it('renders Tabs correctly with custom className', () => {
     const component = create(
-      <Pivot className="specialClassName">
-        <PivotItem headerText="Test Link 1" className="specialClassName" />
-        <PivotItem headerText="Test Link 2" />
-      </Pivot>,
+      <Tabs className="specialClassName">
+        <TabItem headerText="Test Link 1" className="specialClassName" />
+        <TabItem headerText="Test Link 2" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders Pivot correctly with icon, text and count', () => {
+  it('renders Tabs correctly with icon, text and count', () => {
     const component = create(
-      <Pivot>
-        <PivotItem itemCount={12} />
-        <PivotItem headerText="Test Link" itemCount={12} />
-        <PivotItem headerText="Text with icon" itemIcon="Recent" />
-      </Pivot>,
+      <Tabs>
+        <TabItem itemCount={12} />
+        <TabItem headerText="Test Link" itemCount={12} />
+        <TabItem headerText="Text with icon" itemIcon="Recent" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders Pivot correctly when itemCount is a string', () => {
+  it('renders Tabs correctly when itemCount is a string', () => {
     const component = create(
-      <Pivot>
-        <PivotItem headerText="test" />
-        <PivotItem headerText="Test Link" itemCount="20+" />
-      </Pivot>,
+      <Tabs>
+        <TabItem headerText="test" />
+        <TabItem headerText="Test Link" itemCount="20+" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('renders Pivot with overflow', () => {
+  it('renders Tabs with overflow', () => {
     const component = create(
-      <Pivot overflowBehavior="menu">
-        <PivotItem headerText="Test 1" />
-        <PivotItem headerText="Test 2" />
-      </Pivot>,
+      <Tabs overflowBehavior="menu">
+        <TabItem headerText="Test 1" />
+        <TabItem headerText="Test 2" />
+      </Tabs>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

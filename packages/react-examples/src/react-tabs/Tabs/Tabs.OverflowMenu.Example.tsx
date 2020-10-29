@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Fabric, Icon, Label, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
-export const PivotOverflowMenuExample: React.FunctionComponent = () => {
+export const TabsOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
   const [tabs, { toggle: toggleTabs }] = useBoolean(false);
   const [rtl, { toggle: toggleRtl }] = useBoolean(false);
@@ -12,57 +12,57 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
     <>
       <div style={{ background: '#EEE' }}>
         <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={toggleOverflow} />
-        <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
+        <Toggle label="tabFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
         <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
       </div>
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
-        <Pivot
-          aria-label="Pivot Overflow Menu Example"
-          linkFormat={tabs ? 'tabs' : 'links'}
+        <Tabs
+          aria-label="Tabs Overflow Menu Example"
+          tabFormat={tabs ? 'tabs' : 'links'}
           overflowBehavior={overflow ? 'menu' : 'none'}
         >
-          <PivotItem headerText="My Files">
-            <Label>Pivot #1</Label>
-          </PivotItem>
-          <PivotItem itemCount={23} itemIcon="Recent">
-            <Label>Pivot #2</Label>
-          </PivotItem>
-          <PivotItem headerText="Placeholder" itemIcon="Globe">
-            <Label>Pivot #3</Label>
-          </PivotItem>
-          <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-            <Label>Pivot #4</Label>
-          </PivotItem>
-          <PivotItem headerText="Custom Renderer" itemIcon="Airplane" onRenderItemLink={_customRenderer}>
-            <Label>Pivot #5</Label>
-          </PivotItem>
-          <PivotItem headerText="This tab has a relatively long title">
-            <Label>Pivot #6</Label>
-          </PivotItem>
-          <PivotItem headerText="Short">
-            <Label>Pivot #7</Label>
-          </PivotItem>
-          <PivotItem headerText="The Last Tab">
-            <Label>Pivot #8</Label>
-          </PivotItem>
-        </Pivot>
+          <TabItem headerText="My Files">
+            <Label>Tab #1</Label>
+          </TabItem>
+          <TabItem itemCount={23} itemIcon="Recent">
+            <Label>Tab #2</Label>
+          </TabItem>
+          <TabItem headerText="Placeholder" itemIcon="Globe">
+            <Label>Tab #3</Label>
+          </TabItem>
+          <TabItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
+            <Label>Tab #4</Label>
+          </TabItem>
+          <TabItem headerText="Custom Renderer" itemIcon="Airplane" onRenderTab={_customRenderer}>
+            <Label>Tab #5</Label>
+          </TabItem>
+          <TabItem headerText="This tab has a relatively long title">
+            <Label>Tab #6</Label>
+          </TabItem>
+          <TabItem headerText="Short">
+            <Label>Tab #7</Label>
+          </TabItem>
+          <TabItem headerText="The Last Tab">
+            <Label>Tab #8</Label>
+          </TabItem>
+        </Tabs>
       </Fabric>
     </>
   );
 };
 
 function _customRenderer(
-  link?: IPivotItemProps,
-  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
+  tab?: TabItemProps,
+  defaultRenderer?: (tab?: TabItemProps) => JSX.Element | null,
 ): JSX.Element | null {
-  if (!link || !defaultRenderer) {
+  if (!tab || !defaultRenderer) {
     return null;
   }
 
   return (
     <span style={{ flex: '0 1 100%' }}>
-      {defaultRenderer({ ...link, itemIcon: undefined })}
-      <Icon iconName={link.itemIcon} style={{ color: 'red' }} />
+      {defaultRenderer({ ...tab, itemIcon: undefined })}
+      <Icon iconName={tab.itemIcon} style={{ color: 'red' }} />
     </span>
   );
 }

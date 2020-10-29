@@ -1,4 +1,4 @@
-import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { TabsStyleProps, TabsStyles } from './Tabs.types';
 import {
   AnimationVariables,
   getGlobalClassNames,
@@ -12,26 +12,26 @@ import { IsFocusVisibleClassName } from '@fluentui/utilities';
 const globalClassNames = {
   count: 'ms-Pivot-count',
   icon: 'ms-Pivot-icon',
-  linkIsSelected: 'is-selected',
-  link: 'ms-Pivot-link',
-  linkContent: 'ms-Pivot-linkContent',
+  tabIsSelected: 'is-selected',
+  tab: 'ms-Pivot-link',
+  tabContent: 'ms-Pivot-linkContent',
   root: 'ms-Pivot',
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
   text: 'ms-Pivot-text',
-  linkInMenu: 'ms-Pivot-linkInMenu',
+  tabInMenu: 'ms-Pivot-linkInMenu',
   overflowMenuButton: 'ms-Pivot-overflowMenuButton',
 };
 
 const getLinkStyles = (
-  props: IPivotStyleProps,
+  props: TabsStyleProps,
   classNames: { [key: string]: string },
   isLinkInOverflowMenu: boolean = false,
 ): IStyle[] => {
-  const { linkSize, linkFormat } = props;
+  const { tabSize, tabFormat } = props;
   const { semanticColors, fonts } = props.theme;
-  const rootIsLarge = linkSize === 'large';
-  const rootIsTabs = linkFormat === 'tabs';
+  const rootIsLarge = tabSize === 'large';
+  const rootIsTabs = tabFormat === 'tabs';
 
   return [
     fonts.medium,
@@ -123,7 +123,7 @@ const getLinkStyles = (
               color: semanticColors.primaryButtonText,
               backgroundColor: semanticColors.primaryButtonBackground,
             },
-            [`&.${classNames.linkIsSelected}`]: {
+            [`&.${classNames.tabIsSelected}`]: {
               backgroundColor: semanticColors.primaryButtonBackground,
               color: semanticColors.primaryButtonText,
               fontWeight: FontWeights.regular,
@@ -162,14 +162,14 @@ const getLinkStyles = (
   ];
 };
 
-export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
-  const { className, linkSize, linkFormat, theme } = props;
+export const getStyles = (props: TabsStyleProps): TabsStyles => {
+  const { className, tabSize, tabFormat, theme } = props;
   const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
-  const rootIsLarge = linkSize === 'large';
-  const rootIsTabs = linkFormat === 'tabs';
+  const rootIsLarge = tabSize === 'large';
+  const rootIsTabs = tabFormat === 'tabs';
 
   return {
     root: [
@@ -192,8 +192,8 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         },
       },
     },
-    link: [
-      classNames.link,
+    tab: [
+      classNames.tab,
       ...getLinkStyles(props, classNames),
       {
         [`&[data-is-overflowing='true']`]: {
@@ -207,14 +207,14 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         visibility: 'hidden',
         position: 'absolute',
         right: 0,
-        [`.${classNames.link}[data-is-overflowing='true'] ~ &`]: {
+        [`.${classNames.tab}[data-is-overflowing='true'] ~ &`]: {
           visibility: 'visible',
           position: 'relative',
         },
       },
     ],
-    linkInMenu: [
-      classNames.linkInMenu,
+    tabInMenu: [
+      classNames.tabInMenu,
       ...getLinkStyles(props, classNames, true),
       {
         textAlign: 'left',
@@ -223,9 +223,9 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         lineHeight: 36,
       },
     ],
-    linkIsSelected: [
-      classNames.link,
-      classNames.linkIsSelected,
+    tabIsSelected: [
+      classNames.tab,
+      classNames.tabIsSelected,
       {
         fontWeight: FontWeights.semibold,
         selectors: {
@@ -247,8 +247,8 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         },
       },
     ],
-    linkContent: [
-      classNames.linkContent,
+    tabContent: [
+      classNames.tabContent,
       {
         flex: '0 1 100%',
         selectors: {
