@@ -42,10 +42,8 @@ const getTabItems = (props: TabsProps, baseId: string): TabItemCollection => {
   React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isTabItem(child)) {
       // eslint-disable-next-line deprecation/deprecation
-      const { linkText, ...tabItemProps } = child.props;
-      const itemKey = child.props.itemKey || index.toString();
+      const { itemKey = index.toString(), ...tabItemProps } = child.props;
       result.tabs.push({
-        headerText: linkText,
         ...tabItemProps,
         itemKey: itemKey,
       });

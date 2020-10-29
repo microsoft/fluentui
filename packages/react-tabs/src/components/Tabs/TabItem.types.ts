@@ -13,12 +13,6 @@ export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: IRefObject<{}>;
 
   /**
-   * The text displayed of each tab - renaming to `headerText`.
-   * @deprecated Use `headerText` instead.
-   */
-  linkText?: string;
-
-  /**
    * The text displayed of each tab.
    */
   headerText?: string;

@@ -129,35 +129,3 @@ export type TabFormatType = 'links' | 'tabs';
  * Size of the tabs
  */
 export type TabSizeType = 'normal' | 'large';
-
-/**
- * {@docCategory Tabs}
- * @deprecated Use strings 'links' or 'tabs' instead of this enum
- */
-export const enum TabFormat {
-  /**
-   * Display tabs as links
-   */
-  links = 'links',
-
-  /**
-   * Display tabs as Tabs
-   */
-  tabs = 'tabs',
-}
-
-/**
- * {@docCategory Tabs}
- * @deprecated Use strings 'normal' or 'large' instead of this enum
- */
-export const enum TabSize {
-  /**
-   * Display Link using normal font size
-   */
-  normal = 'normal',
-
-  /**
-   * Display links using large font size
-   */
-  large = 'large',
-}

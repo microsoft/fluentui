@@ -112,12 +112,6 @@ export const enum PivotLinkSize {
 // @public
 export type PivotLinkSizeType = 'normal' | 'large';
 
-// @public @deprecated (undocumented)
-export const enum TabFormat {
-    links = "links",
-    tabs = "tabs"
-}
-
 // @public
 export type TabFormatType = 'links' | 'tabs';
 
@@ -141,8 +135,6 @@ export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
     itemIcon?: string;
     itemKey?: string;
     keytipProps?: IKeytipProps;
-    // @deprecated
-    linkText?: string;
     onRenderTab?: IRenderFunction<TabItemProps>;
 }
 
@@ -155,12 +147,6 @@ export const TabsBase: React.FunctionComponent<TabsProps>;
 // @public (undocumented)
 export interface TabsImperativeHandle {
     focus(): void;
-}
-
-// @public @deprecated (undocumented)
-export const enum TabSize {
-    large = "large",
-    normal = "normal"
 }
 
 // @public
