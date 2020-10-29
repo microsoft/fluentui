@@ -72,13 +72,14 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     const itemHasSubmenu = hasSubmenu(item);
 
-    let { keytipProps, ariaDescription } = item;
+    let { keytipProps } = item;
     if (keytipProps) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     // Check for ariaDescription to set the _ariaDescriptionId and render a hidden span with
     // the description in it to be added to ariaDescribedBy
+    const { ariaDescription } = item;
     if (ariaDescription) {
       this._ariaDescriptionId = getId();
     }
