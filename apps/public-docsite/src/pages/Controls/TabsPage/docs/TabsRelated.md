@@ -1,3 +1,0 @@
-- [Web Tabs](#/controls/web/Tabs)
-- [iOS Tabs](#/controls/ios/Tabs)
-- [iOS Pill Button Bar](#/controls/ios/pillbuttonbar)
