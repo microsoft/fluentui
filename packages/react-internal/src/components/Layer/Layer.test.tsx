@@ -18,6 +18,27 @@ describe('Layer', () => {
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
 
+  const TestChild: React.FunctionComponent<{}> = () => (
+    <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
+  );
+
+  const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
+    <context.Provider value={{ foo: 'bar' }}>
+      <div id="parent">
+        <Layer hostId={props.hostId}>
+          <TestChild />
+        </Layer>
+      </div>
+    </context.Provider>
+  );
+
+  const TestApp: React.FunctionComponent<{ hostId?: string }> = props => (
+    <div id="app">
+      <Parent hostId={props.hostId} />
+      <LayerHost id={props.hostId} />
+    </div>
+  );
+
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
@@ -31,35 +52,14 @@ describe('Layer', () => {
     });
   });
 
-  fit('can render in a targeted LayerHost and pass context through', () => {
-    const Child: React.FunctionComponent<{}> = () => (
-      <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
-    );
-
-    const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
-      <context.Provider value={{ foo: 'bar' }}>
-        <div id="parent">
-          <Layer hostId={props.hostId}>
-            <Child />
-          </Layer>
-        </div>
-      </context.Provider>
-    );
-
-    const App: React.FunctionComponent<{ hostId?: string }> = props => (
-      <div id="app">
-        <Parent hostId={props.hostId} />
-        <LayerHost id={props.hostId} />
-      </div>
-    );
-
+  it('can render in a targeted LayerHost and pass context through', () => {
     const appElement = document.createElement('div');
 
     try {
       document.body.appendChild(appElement);
 
       ReactTestUtils.act(() => {
-        ReactDOM.render(<App hostId="foo" />, appElement);
+        ReactDOM.render(<TestApp hostId="foo" />, appElement);
       });
 
       const parentElement = appElement.querySelector('#parent');
@@ -72,6 +72,37 @@ describe('Layer', () => {
       const childElement = hostElement!.querySelector('#child') as Element;
 
       expect(childElement.textContent).toEqual('bar');
+    } finally {
+      ReactDOM.unmountComponentAtNode(appElement);
+      appElement.remove();
+    }
+  });
+
+  fit('renders in targeted LayerHost on re-render', () => {
+    const appElement = document.createElement('div');
+
+    try {
+      document.body.appendChild(appElement);
+      // first render with no host id
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestApp />, appElement);
+      });
+
+      // re-render with host id
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestApp hostId="foo" />, appElement);
+      });
+
+      const parentElement = appElement.querySelector('#parent');
+      expect(parentElement).toBeTruthy();
+      expect(parentElement!.ownerDocument).toBeTruthy();
+
+      const hostElement = document.getElementById('foo');
+      expect(hostElement).toBeTruthy();
+
+      const childElement = hostElement!.querySelector('#child') as Element;
+      expect(childElement).toBeTruthy();
+      expect(childElement!.textContent).toEqual('bar');
     } finally {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
