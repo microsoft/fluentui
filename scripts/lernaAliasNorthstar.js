@@ -5,6 +5,8 @@ const path = require('path');
 // northstar packages should pull these from npm, not the repo
 const excludedPackages = ['@fluentui/date-time-utilities', '@fluentui/dom-utilities', '@fluentui/react-compose'];
 
+// N* now points module main entrypoints to raw src, so there is no need for aliases
+// However dependencies outside of packages/fluentui still need to aliased
 function deleteNorthstarAliases(aliases) {
   const northstarRoot = path.join(findGitRoot(), 'packages', 'fluentui');
   for (const [pkg, path] of Object.entries(aliases)) {

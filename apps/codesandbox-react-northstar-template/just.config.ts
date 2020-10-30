@@ -2,4 +2,4 @@ import { preset, task } from '@fluentui/scripts';
 
 preset();
 
-task('build', 'ts:commonjs-only');
+task('build', 'ts:build');

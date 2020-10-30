@@ -75,6 +75,7 @@ export function preset() {
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
+  task('ts:build', ts.build);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
   task('api-extractor:verify', verifyApiExtractor());

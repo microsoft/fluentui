@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build -b",
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",

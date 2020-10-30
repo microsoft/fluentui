@@ -13,6 +13,8 @@ function getExtraTscParams(args) {
     target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
+    // sourceMap must be true for inlineSources and sourceRoot to work
+    // ...(args['use-references'] && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
   };
 }
 
@@ -44,5 +46,8 @@ export const ts = {
     const extraOptions = getExtraTscParams(argv());
     // Use default tsbuildinfo for this variant (since it's the only variant)
     return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
+  },
+  build: () => {
+    return tscTask({ build: true });
   },
 };

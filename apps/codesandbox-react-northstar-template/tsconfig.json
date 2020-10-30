@@ -1,5 +1,7 @@
 {
+  "extends": "../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
+    "composite": true,
     "outDir": "lib",
     "baseUrl": ".",
     "target": "es6",
@@ -7,14 +9,16 @@
     "sourceMap": true,
     "module": "commonjs",
     "jsx": "react",
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "lib": ["es5", "dom"],
-    "types": []
+    "lib": ["es5", "dom"]
   },
+  "references": [
+    {
+      "path": "../../packages/fluentui/react-northstar"
+    },
+    {
+      "path": "../../packages/fluentui/code-sandbox"
+    }
+  ],
   "include": ["src"]
 }
