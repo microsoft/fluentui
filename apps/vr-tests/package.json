@@ -16,6 +16,7 @@
   "dependencies": {
     "@fluentui/react-icons": "^0.3.9",
     "@fluentui/storybook": "^0.5.20",
+    "@fluentui/react-theme-provider": "^0.16.2",
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/experiments": "^7.36.4",
     "@uifabric/react-cards": "^0.114.5",
