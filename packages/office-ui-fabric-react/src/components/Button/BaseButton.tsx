@@ -596,8 +596,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       'data-is-focusable': false,
     });
 
-    const ariaDescribedBy = buttonProps.ariaDescription;
-
     if (keytipProps && menuProps) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
@@ -619,7 +617,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         aria-expanded={!menuHidden}
         aria-pressed={toggle ? !!checked : undefined} // should only be present for toggle buttons
         aria-describedby={mergeAriaAttributeValues(
-          ariaDescribedBy,
+          buttonProps['aria-describedby'],
           keytipAttributes ? keytipAttributes['aria-describedby'] : undefined,
         )}
         className={classNames && classNames.splitButtonContainer}
