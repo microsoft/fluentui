@@ -1,4 +1,4 @@
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 
 export const resolveSingleCSSVariable = (value: string, variables: Record<string, string>) => {
   let lastResult = value;
