@@ -401,10 +401,10 @@ export const buttonVariants = (theme: Theme): ButtonVariants => {
         contentColor: palette?.themePrimary,
       },
 
-      // focused: {
-      //   contentColor: palette?.neutralPrimary,
-      //   iconColor: palette?.themeDarkAlt,
-      // },
+      focused: {
+        contentColor: palette?.neutralPrimary,
+        iconColor: palette?.themeDarkAlt,
+      },
 
       hovered: {
         background: palette?.neutralLighter,
