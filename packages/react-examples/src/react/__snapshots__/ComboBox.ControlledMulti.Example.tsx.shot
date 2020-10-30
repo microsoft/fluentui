@@ -253,7 +253,6 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onTouchStart={[Function]}
-      readOnly={false}
       role="combobox"
       spellCheck={false}
       type="text"
