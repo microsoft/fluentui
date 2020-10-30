@@ -136,7 +136,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
 
     return (
       <RootType ref={forwardedRef as React.Ref<HTMLDivElement>} {...slotProps.root}>
-        {label && <Label {...slotProps.label} />}
+        {label && <Label {...slotProps.label} onClick={(ev: React.MouseEvent<HTMLElement>) => {ev.preventDefault();}}/>}
         <div {...slotProps.container}>
           <button {...slotProps.pill}>
             <span {...slotProps.thumb} />
