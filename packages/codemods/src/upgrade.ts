@@ -34,6 +34,10 @@ export function upgrade(options: CommandParserResult) {
         okays.forEach(v => {
           logger.log('name: ', v.modName, 'logdata: ', v.logs);
         });
+        if (!error && options.saveSync) {
+          logger.log(`Saving file: ${result.file.getBaseName()}`);
+          result.file.saveSync();
+        }
       });
     } catch (e) {
       logger.error(e);
