@@ -9,7 +9,18 @@ describe('Animation', () => {
     testPath: __filename,
     constructorName: 'Animation',
     hasAccessibilityProp: false,
-    disabledTests: ['as-renders-fc', 'as-passes-as-value', 'as-renders-html', 'as-renders-react-class'],
+    // Disabled Tests:
+    //
+    // consistent-callback-names
+    // Problem: Contains onEntered, onExited types.
+    // Solution: Remove the inconsistent callback names.
+    disabledTests: [
+      'as-renders-fc',
+      'as-passes-as-value',
+      'as-renders-html',
+      'as-renders-react-class',
+      'consistent-callback-names',
+    ],
     requiredProps: { children: <div /> },
   });
 
