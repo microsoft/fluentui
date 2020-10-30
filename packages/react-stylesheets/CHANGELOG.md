@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-stylesheets
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.2.4)
+
+Fri, 30 Oct 2020 18:59:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v1.0.0-beta.0..@fluentui/react-stylesheets_v0.2.4)
+
+### Patches
+
+- add react-stylesheets (v0) package back in 7.0 branch ([PR #15789](https://github.com/microsoft/fluentui/pull/15789) by xgao@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v1.0.0-beta.0)
 

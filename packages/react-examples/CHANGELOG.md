@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 30 Oct 2020 12:23:06 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.6)
+
+Fri, 30 Oct 2020 18:59:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.8.5..@fluentui/react-examples_v0.8.6)
+
+### Patches
+
+- Add examples for react-theme-provider. ([PR #15789](https://github.com/microsoft/fluentui/pull/15789) by xgao@microsoft.com)
 
 ## [0.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.5)
 

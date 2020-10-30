@@ -2,6 +2,21 @@
   "name": "@fluentui/react-stylesheets",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 18:59:48 GMT",
+      "tag": "@fluentui/react-stylesheets_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add react-stylesheets (v0) package back in 7.0 branch",
+            "author": "xgao@microsoft.com",
+            "commit": "958dd32c439c2565b578a7b600ed852b131dddd8",
+            "package": "@fluentui/react-stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-stylesheets_v1.0.0-beta.0",
       "version": "1.0.0-beta.0",

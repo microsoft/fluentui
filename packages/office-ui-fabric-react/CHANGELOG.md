@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Oct 2020 12:23:06 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.149.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.2)
+
+Fri, 30 Oct 2020 18:59:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.149.1..office-ui-fabric-react_v7.149.2)
+
+### Patches
+
+- Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem ([PR #15784](https://github.com/microsoft/fluentui/pull/15784) by jspurlin@microsoft.com)
 
 ## [7.149.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.1)
 

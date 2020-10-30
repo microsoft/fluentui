@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.16.3)
+
+Fri, 30 Oct 2020 18:59:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.4..@fluentui/react-theme-provider_v0.16.3)
+
+### Patches
+
+- add react-theme-provider (v0) package back in 7.0 branch ([PR #15789](https://github.com/microsoft/fluentui/pull/15789) by xgao@microsoft.com)
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.4)
 

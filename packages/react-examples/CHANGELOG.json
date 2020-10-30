@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 18:59:48 GMT",
+      "tag": "@fluentui/react-examples_v0.8.6",
+      "version": "0.8.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add examples for react-theme-provider.",
+            "author": "xgao@microsoft.com",
+            "commit": "958dd32c439c2565b578a7b600ed852b131dddd8",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:23:06 GMT",
       "tag": "@fluentui/react-examples_v0.8.5",
       "version": "0.8.5",

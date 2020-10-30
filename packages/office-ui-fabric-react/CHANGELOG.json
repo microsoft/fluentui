@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 18:59:48 GMT",
+      "tag": "office-ui-fabric-react_v7.149.2",
+      "version": "7.149.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem",
+            "author": "jspurlin@microsoft.com",
+            "commit": "c77eec3a00782c7053984a9c0a8b30120d47abcc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:23:06 GMT",
       "tag": "office-ui-fabric-react_v7.149.1",
       "version": "7.149.1",
