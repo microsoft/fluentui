@@ -25,9 +25,9 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: |
-          yarn checkchange
-        displayName: check change
+      # - script: |
+      #     yarn checkchange
+      #   displayName: check change
 
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
@@ -36,19 +36,19 @@ jobs:
         displayName: do syncpack and lint-files checks
 
       ## Danger.js checks for Fluent UI N*
-      - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
-        displayName: danger
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      # - script: |
+      #     if [ $BUILD_REASON == "PullRequest" ]; then
+      #       yarn danger ci
+      #     else
+      #       echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+      #     fi
+      #   displayName: danger
+      #   env:
+      #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       ## only do scoped builds with PRs
       - script: |
-          yarn buildci --no-cache --since $(targetBranch)
+          yarn buildci --no-cache --since $(targetBranch) --scope @fluentui/react
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -81,7 +81,7 @@ jobs:
 
       ## only do scoped bundle with PRs
       - script: |
-          yarn bundle --no-cache --since $(targetBranch)
+          yarn bundle --no-cache --since $(targetBranch) --scope @fluentui/react
         displayName: bundle (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -133,37 +133,6 @@ jobs:
           ContainerName: 'fabric-website' # this container has a CDN
           SourcePath: 'packages/fluentui/docs/src/public'
           storage: fabricweb
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: ScreenerFluent
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: yarn workspace @fluentui/docs vr:build
-        displayName: build FUI N* VR Test
-
-      - task: AzureUpload@2
-        displayName: Upload N* doc site
-        inputs:
-          azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)/react-northstar'
-          CacheControl: 'public, max-age=600000'
-          ContainerName: '$web'
-          SourcePath: 'packages/fluentui/docs/dist'
-          storage: fabricweb
-
-      - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml
 

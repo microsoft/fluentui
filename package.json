@@ -103,7 +103,11 @@
     "eslint": "^7.1.0",
     "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
     "@testing-library/dom": "7.22.3",
-    "copy-to-clipboard": "3.2.0"
+    "copy-to-clipboard": "3.2.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-is": "17.0.1",
+    "react-test-renderer": "17.0.1"
   },
   "syncpack": {
     "prod": true,
