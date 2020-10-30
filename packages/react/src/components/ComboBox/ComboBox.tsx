@@ -455,7 +455,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-live="polite"
           aria-atomic="true"
           id={errorMessageId}
-          className={hasErrorMessage ? this._classNames.errorMessage : ''}
+          {...(hasErrorMessage ? { className: this._classNames.errorMessage } : { 'aria-hidden': true })}
         >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
