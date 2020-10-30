@@ -759,11 +759,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option) =>
+          option =>
             option.itemType !== SelectableOptionMenuItemType.Header &&
             option.itemType !== SelectableOptionMenuItemType.Divider,
         )
-        .filter((option) => this._getPreviewText(option) === updatedValue);
+        .filter(option => this._getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -789,11 +789,16 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option) =>
+          option =>
             option.itemType !== SelectableOptionMenuItemType.Header &&
             option.itemType !== SelectableOptionMenuItemType.Divider,
         )
-        .filter((option) => this._getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0);
+        .filter(
+          option =>
+            this._getPreviewText(option)
+              .toLocaleLowerCase()
+              .indexOf(updatedValue) === 0,
+        );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = this._getPreviewText(items[0]);
@@ -811,11 +816,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option) =>
+          option =>
             option.itemType !== SelectableOptionMenuItemType.Header &&
             option.itemType !== SelectableOptionMenuItemType.Divider,
         )
-        .filter((option) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -861,11 +866,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
             return { ...item, index: i };
           })
           .filter(
-            (option) =>
+            option =>
               option.itemType !== SelectableOptionMenuItemType.Header &&
               option.itemType !== SelectableOptionMenuItemType.Divider,
           )
-          .filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+          .filter(option => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
@@ -1107,7 +1112,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
             // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the
             // Callout is clicked) checks if the relatedTarget is a parent of _comboBoxMenu
-            findElementRecursive(this._comboBoxMenu.current, (element) => element === relatedTarget))))
+            findElementRecursive(this._comboBoxMenu.current, element => element === relatedTarget))))
     ) {
       event.preventDefault();
       event.stopPropagation();
@@ -1326,7 +1331,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         aria-labelledby={id + '-label'}
         role="listbox"
       >
-        {options.map((item) => (onRenderItem as any)(item, this._onRenderItem))}
+        {options.map(item => (onRenderItem as any)(item, this._onRenderItem))}
       </div>
     );
   };
@@ -1505,7 +1510,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   /**
    * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
    */
-  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = (ev) => {
+  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
     ev.preventDefault();
   };
 
@@ -1590,9 +1595,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     const { index } = item;
 
     return (ev: any): void => {
-      onItemClick && onItemClick(ev, item, index);
-      this._setSelectedIndex(index as number, ev);
-
       // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
         // ensure that focus returns to the input, not the button
@@ -1601,6 +1603,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           isOpen: false,
         });
       }
+
+      // Continue processing the click only after
+      // performing menu close / control focus(inner working)
+      onItemClick && onItemClick(ev, item, index);
+      this._setSelectedIndex(index as number, ev);
     };
   }
 
@@ -1650,13 +1657,15 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     });
 
     for (const selectedKey of selectedKeys) {
-      const index = findIndex(options, (option) => option.key === selectedKey);
+      const index = findIndex(options, option => option.key === selectedKey);
       if (index > -1) {
         selectedIndices[index] = true;
       }
     }
 
-    return Object.keys(selectedIndices).map(Number).sort();
+    return Object.keys(selectedIndices)
+      .map(Number)
+      .sort();
   }
 
   /**
