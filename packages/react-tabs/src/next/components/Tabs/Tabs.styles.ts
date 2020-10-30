@@ -10,17 +10,17 @@ import {
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
 const globalClassNames = {
-  count: 'ms-Pivot-count',
-  icon: 'ms-Pivot-icon',
+  count: 'ms-Tabs-count',
+  icon: 'ms-Tabs-icon',
   tabIsSelected: 'is-selected',
-  tab: 'ms-Pivot-link',
-  tabContent: 'ms-Pivot-linkContent',
-  root: 'ms-Pivot',
-  rootIsLarge: 'ms-Pivot--large',
-  rootIsTabs: 'ms-Pivot--tabs',
-  text: 'ms-Pivot-text',
-  tabInMenu: 'ms-Pivot-linkInMenu',
-  overflowMenuButton: 'ms-Pivot-overflowMenuButton',
+  tab: 'ms-Tabs-tab',
+  tabContent: 'ms-Tabs-tabContent',
+  root: 'ms-Tabs',
+  rootIsLarge: 'ms-Tabs--large',
+  rootIsTabs: 'ms-Tabs--tabs',
+  text: 'ms-Tabs-text',
+  tabInMenu: 'ms-Tabs-tabInMenu',
+  overflowMenuButton: 'ms-Tabs-overflowMenuButton',
 };
 
 const getLinkStyles = (
