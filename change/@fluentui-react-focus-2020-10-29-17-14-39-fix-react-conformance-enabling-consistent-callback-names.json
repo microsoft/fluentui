@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Enabling consistent-callback-names test and disabling where necessary.",
+  "comment": "Updating disabledTests within react-focus package.",
   "packageName": "@fluentui/react-focus",
   "email": "czearing@outlook.com",
   "dependentChangeType": "none",
