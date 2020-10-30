@@ -7,8 +7,9 @@ import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Butto
  */
 export type MinimalMenuProps = {
   as?: string;
-  target?: React.Ref<HTMLElement | undefined>;
+  expanded?: boolean;
   onDismiss?: () => void;
+  target?: React.Ref<HTMLElement | undefined>;
 };
 
 /**

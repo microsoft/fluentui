@@ -170,9 +170,6 @@ export type CompoundButtonTokens = ButtonTokens & {
 export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;
 
 // @public (undocumented)
-export const ExpandedContext: React.Context<boolean | undefined>;
-
-// @public (undocumented)
 export type ExpandedState = {
     ref?: React.Ref<unknown>;
     expanded?: boolean;
@@ -218,8 +215,9 @@ export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 // @public (undocumented)
 export type MinimalMenuProps = {
     as?: string;
-    target?: React.Ref<HTMLElement | undefined>;
+    expanded?: boolean;
     onDismiss?: () => void;
+    target?: React.Ref<HTMLElement | undefined>;
 };
 
 // @public

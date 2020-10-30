@@ -17,7 +17,7 @@ export const useMenuButtonClasses = makeVariantClasses<MenuButtonState, MenuButt
     root: [
       GlobalClassNames.root,
       {
-        // This seems likea  bad selector.
+        // This seems like a bad selector.
         '& > .ms-Button-menuIcon + *': {
           marginLeft: 0,
         },

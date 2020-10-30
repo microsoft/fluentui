@@ -17,8 +17,9 @@ const menuProps: IContextualMenuProps = {
   ],
 };
 
-const Menu = (defaultSlotType: string, props: MinimalMenuProps) => {
-  return <ContextualMenu {...(props as IContextualMenuProps)} {...menuProps} />;
+const Menu = (props: MinimalMenuProps) => {
+  const { expanded, ...rest } = props;
+  return expanded ? <ContextualMenu {...(rest as IContextualMenuProps)} {...menuProps} /> : null;
 };
 
 const SplitButtonExamples = (props: SplitButtonProps) => (

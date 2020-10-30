@@ -16,8 +16,9 @@ const menuProps = {
   ],
 };
 
-const Menu = (defaultSlotType: string, props: MinimalMenuProps) => {
-  return <ContextualMenu {...(props as IContextualMenuProps)} {...menuProps} />;
+const Menu = (props: MinimalMenuProps) => {
+  const { expanded, ...rest } = props;
+  return expanded ? <ContextualMenu {...(rest as IContextualMenuProps)} {...menuProps} /> : null;
 };
 
 const MenuButtonExamples = (props: MenuButtonProps) => (
@@ -83,8 +84,9 @@ export const MenuButtons = () => (
   </Stack>
 );
 
-const CustomMenu = (defaultSlotType: string, props: MinimalMenuProps) => {
-  return <Callout {...(props as IContextualMenuProps)}>This is a custom menu</Callout>;
+const CustomMenu = (props: MinimalMenuProps) => {
+  const { expanded, ...rest } = props;
+  return expanded ? <Callout {...(rest as IContextualMenuProps)}>This is a custom menu</Callout> : null;
 };
 
 export const MenuButtonsWithCustomMenus = () => (

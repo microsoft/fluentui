@@ -16,8 +16,6 @@ export type ExpandedState = {
   menu?: MenuButtonState['menu'];
 };
 
-export const ExpandedContext = React.createContext<boolean | undefined>(false);
-
 /**
  * @param draftState - mutable state object to update to add expanded behavior.
  */
@@ -78,18 +76,15 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
 
   // Assign extra props to the menu slot.
   draftState.menu = {
-    children: (
-      <ExpandedContext.Provider value={expandedValue}>
-        {draftState.menu
-          ? typeof draftState.menu.children === 'function'
-            ? draftState.menu.children(draftState.menu.as, {
-                target: rootRef,
-                onDismiss,
-              })
-            : draftState.menu.children
-          : null}
-      </ExpandedContext.Provider>
-    ),
+    children: draftState.menu
+      ? typeof draftState.menu.children === 'function'
+        ? draftState.menu.children({
+            expanded: expandedValue,
+            onDismiss,
+            target: rootRef,
+          })
+        : draftState.menu.children
+      : null,
   };
 
   draftState['aria-expanded'] = expandedValue;
