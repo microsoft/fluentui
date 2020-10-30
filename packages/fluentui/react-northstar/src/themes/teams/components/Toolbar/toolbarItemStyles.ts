@@ -46,6 +46,7 @@ export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesPro
         color: v.foregroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.backgroundDisabled,
         cursor: 'default',
+        pointerEvents: 'none',
         ':hover': {
           // empty to overwrite all existing hover styles
         },

@@ -1,82 +1,36 @@
 import * as React from 'react';
-import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { mergeSlotProp, ComposePreparedOptions } from '@fluentui/react-compose';
-import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
-import { DirectionalHint, IContextualMenuProps } from 'office-ui-fabric-react';
-import { useButton } from '../Button/useButton';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
+import { useMenuButtonState } from './useMenuButtonState';
+import { renderMenuButton } from './renderMenuButton';
+
+export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
+
+const mergeProps = makeMergeProps({ deepMerge: menuButtonShorthandProps });
 
 /**
- * The useMenuButton hook processes the MenuButton component props and returns state.
- * @param props - MenuButton props to derive state from.
+ * Redefine the component factory, reusing button factory.
  */
-export const useMenuButton = (
-  props: MenuButtonProps,
-  ref: React.Ref<HTMLElement>,
-  options: ComposePreparedOptions,
-): MenuButtonState => {
-  const {
-    defaultExpanded = false,
-    expanded: controlledExpanded,
-    menu,
-    menuIcon,
-    onClick,
-    onKeyDown,
-    onMenuDismiss,
-    ...rest
-  } = props;
-  const [expanded, setExpanded] = useControllableValue(controlledExpanded, defaultExpanded);
-  const buttonRef = React.useRef(null);
+export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps) => {
+  // Note: because menu button's template and slots are different, we can't reuse
+  // those, but the useMenuButtonState hook can reuse useButtonState.
+  const state = mergeProps(
+    {
+      ref,
+      as: 'button',
+      icon: { as: 'span' },
+      content: { as: 'span', children: props.children },
+      menuIcon: { as: 'span' },
+      menu: { as: 'span' },
+    },
+    defaultProps,
+    resolveShorthandProps(props, menuButtonShorthandProps),
+  ) as MenuButtonState;
 
-  const _onClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) {
-      onClick(ev);
+  useMenuButtonState(state);
 
-      if (ev.defaultPrevented) {
-        return;
-      }
-    }
-
-    setExpanded(!expanded);
+  return {
+    state,
+    render: renderMenuButton,
   };
-
-  const onDismiss = () => {
-    if (onMenuDismiss) {
-      onMenuDismiss();
-    }
-
-    setExpanded(false);
-  };
-
-  const _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (onKeyDown) {
-      onKeyDown(ev);
-
-      if (ev.defaultPrevented) {
-        return;
-      }
-    }
-
-    if ((ev.altKey || ev.metaKey) && getCode(ev) === ArrowDownKey) {
-      setExpanded(true);
-    }
-  };
-
-  const state = {
-    ...rest,
-    'aria-expanded': expanded,
-    expanded,
-    onClick: _onClick,
-    onKeyDown: _onKeyDown,
-    ref: useMergedRefs(ref, buttonRef),
-
-    // Menu slot props.
-    menu: mergeSlotProp<Partial<IContextualMenuProps>>(menu, {
-      directionalHint: DirectionalHint.bottomRightEdge,
-      onDismiss,
-      target: buttonRef && buttonRef.current,
-    }),
-  };
-
-  return useButton(state, ref, options);
 };

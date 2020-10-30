@@ -7,8 +7,6 @@ import * as React from 'react';
  *
  * If the value should ever change based on dependencies, use `React.useMemo` instead.
  *
- * If the value itself is a function, consider using `useConstCallback` instead.
- *
  * @param initialValue - Initial value, or function to get the initial value. Similar to `useState`,
  * only the value/function passed in the first time this is called is respected.
  * @returns The value. The identity of this value will always be the same.

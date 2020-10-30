@@ -8,7 +8,7 @@ const CardExampleWithPreview = () => (
       <Checkbox aria-label="test checkbox" />
     </Card.TopControls>
     <Card.Preview>
-      <Image fluid src="public/images/wireframe/square-image.png" />
+      <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
     </Card.Preview>
     <Card.Header fitted>
       <Flex padding="padding.medium">

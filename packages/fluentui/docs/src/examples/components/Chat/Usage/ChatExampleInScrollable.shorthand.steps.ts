@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 import {
   chatClassName,
   chatItemClassName,

@@ -4,7 +4,13 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  ChildrenComponentProps,
+  commonPropTypes,
+  shouldPreventDefaultOnKeyDown,
+} from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
@@ -17,6 +23,7 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import { CircleIcon } from '@fluentui/react-icons-northstar';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
@@ -47,6 +54,9 @@ export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponent
 
   /** The radio item indicator can be customized. */
   indicator?: ShorthandValue<BoxProps>;
+
+  /** The checked radio item indicator can be customized. */
+  checkedIndicator?: ShorthandValue<BoxProps>;
 
   /** The HTML input name. */
   name?: string;
@@ -86,7 +96,18 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
-  const { label, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } = props;
+  const {
+    label,
+    checkedIndicator,
+    indicator,
+    disabled,
+    vertical,
+    className,
+    design,
+    styles,
+    variables,
+    shouldFocus,
+  } = props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -129,7 +150,9 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
     debugName: RadioGroupItem.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        if (shouldPreventDefaultOnKeyDown(e)) {
+          e.preventDefault();
+        }
         handleClick(e);
       },
     },
@@ -156,7 +179,7 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
           ...unhandledProps,
         })}
       >
-        {Box.create(indicator, {
+        {Box.create(checked ? checkedIndicator : indicator, {
           defaultProps: () => ({
             className: radioGroupItemSlotClassNames.indicator,
             styles: resolvedStyles.indicator,
@@ -184,6 +207,7 @@ RadioGroupItem.propTypes = {
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
+  checkedIndicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
   name: PropTypes.string,
   onClick: PropTypes.func,
@@ -195,7 +219,8 @@ RadioGroupItem.propTypes = {
 
 RadioGroupItem.defaultProps = {
   accessibility: radioGroupItemBehavior,
-  indicator: {},
+  indicator: <CircleIcon outline size="small" />,
+  checkedIndicator: <CircleIcon size="small" />,
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;

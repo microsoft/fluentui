@@ -1,3 +1,4 @@
+import { IKeyframes } from './IKeyframes';
 import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { serializeRuleEntries } from './styleToClassName';
@@ -7,7 +8,7 @@ import { serializeRuleEntries } from './styleToClassName';
  *
  * @public
  */
-export function keyframes(timeline: { [key: string]: {} }): string {
+export function keyframes(timeline: IKeyframes): string {
   const stylesheet = Stylesheet.getInstance();
   const name = stylesheet.getClassName();
 

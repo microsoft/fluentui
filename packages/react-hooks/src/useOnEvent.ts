@@ -1,4 +1,4 @@
-import { on } from '@uifabric/utilities';
+import { on } from '@fluentui/utilities';
 import * as React from 'react';
 
 /**
@@ -9,7 +9,7 @@ import * as React from 'react';
  * @param useCapture - Whether or not to attach the handler for the capture phase
  */
 export function useOnEvent<TElement extends Element, TEvent extends Event>(
-  element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null,
+  element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null,
   eventName: string,
   callback: (ev: TEvent) => void,
   useCapture?: boolean,

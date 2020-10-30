@@ -1,12 +1,14 @@
 import { task, series } from 'gulp';
-import * as yargs from 'yargs';
 import del from 'del';
+import { Server } from 'http';
+import portfinder from 'portfinder';
+import * as yargs from 'yargs';
+
 import config from '../../config';
 import webpackPlugin from '../plugins/gulp-webpack';
 
 import jest from '../plugins/gulp-jest';
 import serve, { forceClose } from '../serve';
-import { Server } from 'http';
 
 const { paths } = config;
 
@@ -23,7 +25,12 @@ task('test:e2e:build', cb => {
 
 let server: Server;
 task('test:e2e:serve:start', async () => {
-  server = await serve(paths.e2eDist(), config.server_host, config.e2e_port, app =>
+  const serverPort = await portfinder.getPortPromise({ port: config.e2e_port });
+
+  // Assign a port to make it visible for "test:e2e:run" task
+  process.env.E2E_PORT = String(serverPort);
+
+  server = await serve(paths.e2eDist(), config.server_host, serverPort, app =>
     app.get('/favicon.ico', (req, res) => res.status(204)),
   );
 });

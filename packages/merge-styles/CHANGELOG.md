@@ -1,8 +1,47 @@
-# Change Log - @uifabric/merge-styles
+# Change Log - @fluentui/merge-styles
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.19.1..@fluentui/merge-styles_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles (#15627) ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.19.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.18.0..@uifabric/merge-styles_v7.19.0)
+
+### Minor changes
+
+- Exporting additional typings, updated auto-unit generation to not prefix the default unit (px) on css custom properties. ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.18.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.17.0..@uifabric/merge-styles_v7.18.0)
+
+### Minor changes
+
+- Update IRawStyleBase tying to allow css variables (string) as acceptable values. ([PR #14773](https://github.com/microsoft/fluentui/pull/14773) by xgao@microsoft.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.17.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.16.1..@uifabric/merge-styles_v7.17.0)
+
+### Minor changes
+
+- Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
 
 ## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.16.1)
 

@@ -1,4 +1,5 @@
 import { CommandParser, CommandParserResult, yargsParse } from '../../command';
+import { Ok } from '../../helpers/result';
 
 describe('command parser', () => {
   describe('when called with a single argument', () => {
@@ -39,7 +40,7 @@ describe('command parser', () => {
         result.modsFilter({
           name: 'one',
           run: () => {
-            return {};
+            return Ok({ logs: [] });
           },
         }),
       ).toBe(true);
@@ -50,7 +51,7 @@ describe('command parser', () => {
         result.modsFilter({
           name: 'one',
           run: () => {
-            return {};
+            return Ok({ logs: [] });
           },
         }),
       ).toBe(false);

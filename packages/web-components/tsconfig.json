@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "declarationDir": "dist/dts",
+    "outDir": "dist/esm",
+    "strictNullChecks": true,
+    "target": "es2015",
+    "module": "ESNext",
+    "allowJs": true,
+    "importHelpers": true,
+    "types": ["mocha", "webpack-env"],
+    "lib": ["DOM", "ES2015"]
+  },
+  "include": ["src"]
+}

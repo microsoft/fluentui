@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IBaseProps } from '@uifabric/utilities';
-import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
+import { IStackSlot, IStackTokens } from '@fluentui/react/lib/Stack';
+import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import { IComponent, IComponentStyles, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 
 /**
  * {@docCategory Card}

@@ -1,0 +1,5378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = `
+<div>
+  <div>
+    <button
+      aria-disabled={true}
+      className=
+          ms-Button
+          ms-Button--primary
+          is-disabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f3f2f1;
+            border-color: #f3f2f1;
+            border-radius: 2px;
+            border: 1px solid #0078d4;
+            box-sizing: border-box;
+            color: #a19f9d;
+            cursor: default;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            pointer-events: none;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline-color: #ffffff;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
+          }
+          &:hover {
+            outline: 0px;
+          }
+          &:focus {
+            outline: 0px;
+          }
+      data-is-focusable={false}
+      disabled={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <span
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <span
+          className=
+              ms-Button-textContainer
+              {
+                display: block;
+                flex-grow: 1;
+              }
+        >
+          <span
+            className=
+                ms-Button-label
+                {
+                  display: block;
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__0"
+          >
+            Prev
+          </span>
+        </span>
+      </span>
+    </button>
+    <span
+      className=
+
+          {
+            margin-bottom: 0;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 0;
+            width: 100px;
+          }
+    >
+      Page 
+      1
+       of 
+      20
+    </span>
+    <button
+      className=
+          ms-Button
+          ms-Button--primary
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #0078d4;
+            border-radius: 2px;
+            border: 1px solid #0078d4;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline-color: #ffffff;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            border-color: WindowText;
+            color: Window;
+          }
+          &:hover {
+            background-color: #106ebe;
+            border: 1px solid #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Window;
+          }
+          &:active {
+            background-color: #005a9e;
+            border: 1px solid #005a9e;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&:active {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            border-color: WindowText;
+            color: Window;
+          }
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <span
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <span
+          className=
+              ms-Button-textContainer
+              {
+                display: block;
+                flex-grow: 1;
+              }
+        >
+          <span
+            className=
+                ms-Button-label
+                {
+                  display: block;
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__3"
+          >
+            Next
+          </span>
+        </span>
+      </span>
+    </button>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1310l-1024 598L0 1310 1024 140l1024 1170zm-526 60q30 0 57-11t46-31 31-47 12-57q0-30-11-56t-32-46-46-31-57-12q-32 0-62 14l-314-359q23-35 23-79 0-30-11-56t-31-46-46-31-57-12q-30 0-56 11t-47 31-31 46-12 57q0 21 6 41t18 38l-314 359q-30-14-62-14-30 0-56 11t-47 31-31 46-12 57q0 30 11 57t31 46 47 31 57 12q28 0 54-10t46-31l257 150q-5 20-5 36 0 30 11 56t32 47 46 31 57 12q30 0 56-11t47-32 31-46 12-57q0-16-5-36l256-150q20 20 46 30t55 11zM962 787l10 4q5 2 12 4v580q-35 11-61 35l-257-150q5-20 5-36 0-44-23-79l314-358zm438 358q-23 35-23 79 0 20 4 36l-256 150q-26-24-61-35V795q6-2 11-4t11-4l314 358z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AADLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M640 1755L19 1133l90-90 531 530L1939 275l90 90L640 1755z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AcceptIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1902 196l121 120L683 1657 25 999l121-121 537 537L1902 196z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AcceptMediumIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 128v1792h384v128H0V0h1115l549 549v91h-640V128H128zm1024 91v293h293l-293-293zm384 1061l-192 256-192-256h128V768h128v512h128zm512 64l-256 192v-128h-192l96-128h96v-128l256 192zm-1401 64q9-81 39-155t82-139l91 91q-69 90-84 203H647zm128 128q15 113 84 203l-91 91q-51-64-81-138t-40-156h128zm377-505q-113 15-203 84l-91-91q64-51 138-81t156-40v128zm421 708q69-90 84-203h128q-9 81-39 155t-82 139l-91-91zm-293 174q113-15 203-84l91 91q-64 51-138 81t-156 40v-128zm-422 7l91-91q90 69 203 84v128q-81-9-155-39t-139-82z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccessibiltyCheckerIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1280 64q137 0 274 15 24 3 69 9t101 18 112 28 105 39 77 51 30 64v1472q0 35-30 63t-77 51-104 39-113 28-100 19-70 9q-137 15-274 15-138 0-274-15-24-2-69-9t-101-18-112-28-105-39-77-51-30-64v-224H85q-35 0-60-25t-25-60V597q0-35 25-60t60-25h427V288q0-35 30-63t77-51 104-39 113-28 100-18 70-10q136-15 274-15zm0 128q-65 0-145 4t-162 16-161 29-138 47q62 29 139 47t159 29 161 15 147 5q67 0 146-4t161-15 159-29 140-48q-60-28-138-46t-160-30-163-15-145-5zM403 1207h217l51 153h171L597 688H430l-248 672h170l51-153zm1517 532v-303q-66 29-147 48t-168 30-170 17-155 5q-73 0-145-4t-145-13q-23 17-51 17H640v203q29 23 78 41t108 31 125 21 126 14 115 8 88 2q35 0 88-2t114-7 127-14 124-22 109-31 78-41zm0-446V924q-66 29-147 48t-168 30-170 17-155 5q-64 0-128-3t-128-10v384q64 7 128 10t128 3q37 0 90-2t113-7 125-14 123-22 108-30 81-40zm0-512V412q-66 29-147 48t-168 30-170 17-155 5q-71 0-155-5t-170-16-167-31-148-48v100h299q35 0 60 25t25 60v286q64 7 128 10t128 3q37 0 90-2t113-7 125-14 123-22 108-30 81-40zM442 1077l69-209 67 209H442z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccessLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 256v1792H256V256h512q0-53 20-99t55-82 81-55 100-20q53 0 99 20t82 55 55 81 20 100h512zM640 384v128h768V384h-256V256q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50v128H640zm1024 0h-128v256H512V384H384v1536h1280V384zm-405 335q42 0 78 15t64 42 42 63 16 78q0 39-15 76t-43 65l-526 531-358 68 75-351 526-530q28-28 65-42t76-15zm51 249q21-23 21-51 0-31-20-50t-52-20q-14 0-27 4t-23 15l-499 503-27 126 129-25 498-502z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccountActivityIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 128v1664H0V128h2048zM128 256v256h1792V256H128zm1792 1408V640H128v1024h1792zm-710-464q46 26 82 62t62 79 40 93 14 102h-128q0-53-20-99t-55-82-81-55-100-20q-53 0-99 20t-82 55-55 81-20 100H640q0-52 14-101t39-93 62-80 83-62q-33-35-51-81t-19-95q0-53 20-99t55-82 81-55 100-20q53 0 99 20t82 55 55 81 20 100q0 49-18 95t-52 81zm-314-176q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccountBrowserIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1148 1152q-83-62-179-95t-201-33q-88 0-170 23t-153 64-129 100-100 130-65 153-23 170H0q0-120 35-231t101-205 156-167 204-115q-56-35-100-82t-76-104-47-119-17-129q0-106 40-199t110-162T569 41 768 0q106 0 199 40t162 110 110 163 41 199q0 66-16 129t-48 119-76 103-101 83q60 23 113 54v152h-4zM384 512q0 80 30 149t82 122 122 83 150 30q79 0 149-30t122-82 83-122 30-150q0-79-30-149t-82-122-123-83-149-30q-80 0-149 30t-122 82-83 123-30 149zm1664 768v768H1024v-768h256v-256h512v256h256zm-640 0h256v-128h-256v128zm512 384h-128v128h-128v-128h-256v128h-128v-128h-128v256h768v-256zm0-256h-768v128h768v-128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccountManagementIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 0q141 0 272 36t245 103 207 160 160 208 103 245 37 272q0 55-10 114t-32 117-53 108-74 89-97 61-118 23q-54 0-105-14t-96-42-80-66-61-88q-30 47-69 85t-85 67-98 43-110 15q-102 0-185-44t-141-117-90-164-32-187q0-95 31-187t90-164 142-116 185-45q95 0 176 41t144 112V512h128v640q0 53 20 99t55 82 81 55 100 20q44 0 80-18t65-49 50-70 34-83 20-85 7-79q0-123-32-237t-90-214-141-182-181-140-214-91-238-32q-123 0-237 32t-214 90-182 141-140 181-91 214-32 238q0 123 32 237t90 214 141 182 181 140 214 91 238 32q178 0 343-68l49 118q-94 39-192 58t-200 20q-141 0-272-36t-245-103-207-160-160-208-103-244-37-273q0-141 36-272t103-245 160-207 208-160T751 37t273-37zm-64 1408q75 0 134-34t101-90 63-123 22-137q0-68-22-136t-63-124-100-89-135-35q-75 0-134 34t-101 90-63 123-22 137q0 68 22 136t63 124 100 89 135 35z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AccountsIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h2048v1664h-640l-384 384-384-384H0V0zm1920 1536V128H128v1408h565l331 331 331-331h565z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ActionCenterIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2029 1453l-557 558-269-270 90-90 179 178 467-466 90 90zM1024 640H640V512h384v128zm0 256H640V768h384v128zm-384 128h384v128H640v-128zM512 640H384V512h128v128zm0 256H384V768h128v128zm-128 128h128v128H384v-128zm768-384V128H256v1792h896v128H128V0h1115l549 549v731l-128 128V640h-512zm128-128h293l-293-293v293z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ActivateOrdersIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 1088V768H0V128h1664v640H448l-320 320zm0-448h128v139l139-139h1141V256H128v384zm1920 384v640h-128v320l-320-320H384v-640h1664zm-128 128H512v384h1141l139 139v-139h128v-384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ActivityFeedIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 1581l64 32q32 16 64 33v143l-128-64-640 323V0h1280v1280h-128V128H512v1712q129-65 256-130t256-129zm896 83v128h-256v256h-128v-256h-256v-128h256v-256h128v256h256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddBookmarkIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1664 128h384v1792H0V128h384V0h128v128h1024V0h128v128zM384 256H128v256h1792V256h-256v128h-128V256H512v128H384V256zM128 1792h1792V640H128v1152zm960-1024v384h384v128h-384v384H960v-384H576v-128h384V768h128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddEventIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1860 832l-519 399 90 286-23 19h-128v78l-39 28-217-167-519 399 202-643-519-399h643l193-618 193 618h643z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddFavoriteFillIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1370 1536l-103-329 405-311h-502l-146-467-138 467H384l397 311-154 493 397-306 256 197v162l-256-197-640 492 248-794L0 768h784L1024 0l240 768h784l-632 486 88 282h-134zm422-128v256h256v128h-256v256h-128v-256h-256v-128h256v-256h128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddFavoriteIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1536 1536h-13q-23-112-81-206t-141-162-187-106-218-38q-88 0-170 23t-153 64-129 100-100 130-65 153-23 170H128q0-120 35-231t101-205 156-167 204-115q-113-74-176-186t-64-248q0-106 40-199t109-163T696 40 896 0q106 0 199 40t163 109 110 163 40 200q0 66-16 129t-48 119-75 103-101 83q112 43 206 118t162 176v296zM512 512q0 80 30 149t82 122 122 83 150 30q79 0 149-30t122-82 83-122 30-150q0-79-30-149t-82-122-123-83-149-30q-80 0-149 30t-122 82-83 123-30 149zm1280 1152h256v128h-256v256h-128v-256h-256v-128h256v-256h128v256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddFriendIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1250 1333q68 34 123 85t93 118h-157q-54-61-128-94t-157-34q-80 0-149 30t-122 82-83 123-30 149H512q0-73 20-141t57-129 91-108 118-81q-75-54-116-135t-42-174q0-53-20-99t-55-82-81-55-100-20q-53 0-99 20t-82 55-55 81-20 100H0q0-52 14-102t39-93 63-80 83-61q-34-35-52-81t-19-95q0-53 20-99t55-82 81-55 100-20q53 0 99 20t82 55 55 81 20 100q0 49-18 95t-53 81q42 23 75 55t60 70q27-40 62-72t76-54 87-35 95-12q48 0 94 12t87 34 77 55 62 72q26-38 59-70t76-55q-34-35-52-81t-19-95q0-53 20-99t55-82 81-55 100-20q53 0 99 20t82 55 55 81 20 100q0 49-18 95t-53 81q46 25 83 61t62 79 40 94 14 102h-128q0-53-20-99t-55-82-81-55-100-20q-53 0-99 20t-82 55-55 81-20 100q0 92-41 173t-117 136zm414-949q-27 0-50 10t-40 27-28 41-10 50q0 27 10 50t27 40 41 28 50 10q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10zM384 640q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50q0 27 10 50t27 40 41 28 50 10zm640 640q53 0 99-20t82-55 55-81 20-100q0-53-20-99t-55-82-81-55-100-20q-53 0-99 20t-82 55-55 81-20 100q0 53 20 99t55 82 81 55 100 20zm768 384h256v128h-256v256h-128v-256h-256v-128h256v-256h128v256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddGroupIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M768 1664v-640h512v768h-128v-640H896v640H256V987l-83 82-90-90 941-942 941 942-90 90-83-82v293h-128V859l-640-640-640 640v805h384zm1024 0h256v128h-256v256h-128v-256h-256v-128h256v-256h128v256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddHomeIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 960v128h-960v960H960v-960H0V960h960V0h128v960h960z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 128v896h896v1024H0V128h1024zM896 1920v-768H128v768h768zm0-896V256H128v768h768zm896 128h-768v768h768v-768zm-128-768h384v128h-384v384h-128V512h-384V384h384V0h128v384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddInIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M768 1216q0 66 25 124t68 102 102 69 125 25h192v128h-192q-93 0-174-35t-142-96-96-142-36-175q0-93 35-174t96-142 142-96 175-36h64v128h-64q-66 0-124 25t-102 69-69 102-25 124zm768-320V768h64q93 0 174 35t142 96 96 142 36 175q0 88-33 169t-95 144v-313q0-66-25-124t-69-101-102-69-124-26h-64zM960 384q93 0 174 35t142 96 96 142 36 175q0 93-35 174t-96 142-142 96-175 36h-64v-128h64q66 0 124-25t101-68 69-102 26-125q0-66-25-124t-69-101-102-69-124-26H448q-66 0-124 25t-102 69-69 102-25 124q0 66 25 124t68 102 102 69 125 25h64v128h-64q-93 0-174-35t-142-96-96-142T0 832q0-93 35-174t96-142 142-96 175-36h512zm1088 1280v128h-256v256h-128v-256h-256v-128h256v-256h128v256h256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddLinkIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 256h2048v128H0V256zm0 640V768h2048v128H0zm0 512v-128h1280v128H0zm0 512v-128h1280v128H0zm1790-640v256h256v128h-256v256h-128v-256h-256v-128h256v-256h128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddNotesIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 0q141 0 272 36t245 103 207 160 160 208 103 245 37 272q0 99-19 195t-56 189h-309v-128h218q38-126 38-256 0-133-37-256h-363q8 64 12 127t4 129h-128q0-65-4-128t-13-128H657q-8 64-12 127t-5 129q0 65 4 128t13 128h623v128H679q8 39 23 92t37 110 50 112 65 100 78 71 92 27q30 0 57-11t51-30 44-41 37-46h67v222q-63 17-127 25t-129 9q-141 0-272-36t-245-103-207-160-160-208-103-244-37-273q0-141 36-272t103-245 160-207 208-160T751 37t273-37zM731 177q-85 29-161 75T427 357 308 487t-93 153h333q11-59 27-120t39-121 52-116 65-106zm0 1694q-36-49-65-105t-51-116-39-121-28-121H215q39 81 92 152t120 131 142 105 162 75zm-203-591q-8-64-12-127t-4-129q0-65 4-128t12-128H165q-37 123-37 256t37 256h363zm841-640q-8-39-23-92t-37-110-50-112-65-100-78-71-92-27q-49 0-91 27t-79 71-64 99-51 113-37 110-23 92h690zm464 0q-39-81-92-152t-120-131-142-105-162-75q36 49 65 105t51 116 39 121 28 121h333zm-297 896h384v128h-384v384h-128v-384h-384v-128h384v-384h128v384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddOnlineMeetingIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1402 1307q39 0 76 15t65 43l191 191q28 28 43 65t15 76q0 39-15 76t-43 65l-96 96q-63 62-143 88t-166 26q-107 0-221-33t-228-94-223-142-207-179-180-207-143-223-93-228T0 720q0-77 13-131t40-98 66-85 91-92q28-28 65-43t76-15q39 0 76 15t65 43l191 191q28 28 43 65t15 76q0 39-13 69t-32 56-42 46-42 40-33 37-13 39q0 29 21 50l478 478q21 21 50 21 21 0 39-13t37-32 39-42 46-42 55-33 71-13zm-71 613q60 0 101-11t74-34 65-54 72-73q21-21 21-50 0-30-21-51l-191-191q-21-21-51-21-21 0-39 13t-37 32-39 42-45 42-56 33-70 13q-40 0-76-15t-65-44l-477-477q-28-28-43-64t-16-77q0-39 13-69t32-56 42-45 42-40 33-37 13-40q0-29-21-50L401 405q-21-21-50-21-30 0-51 21-41 41-73 72t-54 64-33 75-12 101q0 95 31 197t86 204 130 202 165 188 188 164 201 131 205 86 197 31zm717-1536v128h-384v384h-128V512h-384V384h384V0h128v384h384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddPhoneIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 3200 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 896q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10zm1408 128q0 142-36 272t-103 245-160 207-208 160-245 103-272 37q-142 0-272-36t-245-103-207-160-160-208-103-245-37-272q0-141 36-272t103-245 160-207 208-160 245-103 272-37q141 0 272 36t245 103 207 160 160 208 103 245 37 272zm-1024 896q123 0 237-32t214-90 182-141 140-181 91-214 32-238q0-123-32-237t-90-214-141-182-181-140-214-91-238-32q-124 0-238 32t-213 90-182 141-140 181-91 214-32 238q0 124 32 238t90 213 141 182 181 140 214 91 238 32zm384-1024q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10zm-384 640q73 0 141-20t128-57 106-90 81-118l115 58q-41 81-101 147t-134 112-159 71-177 25q-92 0-177-25t-159-71-134-112-101-147l115-58q33 65 80 118t107 90 127 57 142 20zM512 512v384h384v128H512v384H384v-384H0V896h384V512h128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddReactionIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 768V640h1792v128H128zm0-640h1792v128H128V128zm896 1414l163-163 90 90-317 317-317-317 90-90 163 163V896h128v646z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddSpaceAfterIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 1792v-128h1792v128H128zm0-640h1792v128H128v-128zm1149-451l-317 317-317-317 90-90 163 163V128h128v646l163-163 90 90z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddSpaceBeforeIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1088 960h320v128h-320v320H960v-320H640V960h320V640h128v320zm-64-832q124 0 238 32t214 90 181 140 140 181 91 214 32 239q0 124-32 238t-90 214-140 181-181 140-214 91-239 32q-124 0-238-32t-214-90-181-140-140-181-91-214-32-239q0-124 32-238t90-214 140-181 181-140 214-91 239-32zm0 1664q106 0 204-27t183-78 156-120 120-155 77-184 28-204q0-106-27-204t-78-183-120-156-155-120-184-77-204-28q-106 0-204 27t-183 78-156 120-120 155-77 184-28 204q0 106 27 204t78 183 120 156 155 120 184 77 204 28z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddToIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M640 896H512V768h128v128zm896 0H768V768h768v128zM512 1152h128v128H512v-128zm256 0h768v128H768v-128zM640 512H512V384h128v128zm896 0H768V384h768v128zm512 1152v128h-256v256h-128v-256h-256v-128h256v-256h128v256h256zm-1664 0h896v128H256V0h1536v1280h-128V128H384v1536z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddToShoppingListIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 384v1024h-128V839l-640 321v120H768v-120L128 839v697h1152v128H0V384h640V256q0-27 10-50t27-40 41-28 50-10h512q27 0 50 10t40 27 28 41 10 50v128h640zm-1280 0h512V256H768v128zm384 640H896v128h256v-128zm768-327V512H128v185l640 319V896h512v120l640-319zm-128 839h256v128h-256v256h-128v-256h-256v-128h256v-256h128v256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AddWorkIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1757 1356q-14 19-28 37t-30 35l75 194-262 153-132-172q-27 5-54 8t-55 3q-28 0-55-3v386L64 1731V317L1216 51v386q9-1 18-1t19-1l83-187 293 77-28 212q20 14 38 28t36 31l192-74 152 262-170 131q5 23 7 46t3 46l189 84-77 293-214-28zm-541-49q14 2 27 3t27 2q60 0 112-22t92-62 61-91 23-113q0-60-22-112t-62-92-91-61-113-23q-14 0-27 1t-27 4v167q25-12 54-12 27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-29 0-54-12v167zm-328 84q-55-189-111-375T668 640l-164 10-199 705 146 9 38-147h190l42 164 167 10zm737 21q30-27 55-58t45-67l198 26 49-185-177-79v-11q0-6 1-11 0-35-5-69t-13-70l158-121-97-166-180 69q-57-57-126-101l25-196-186-49-78 175q-5-1-11-1t-11 0q-14 0-27 3h-1l-4 1h-24v174q14-2 27-3t27-1q73 0 137 27t112 76 75 112 28 137q0 73-27 137t-76 112-112 75-137 28q-14 0-27-1t-27-3v175q13 2 25 2t25 0q71 0 140-18l122 160 167-97-70-182zM582 830q0 2 4 18t10 41 13 54 15 56 12 47 8 28H520l58-229q2-10 4-15z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminALogo32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2020 1109l-63 240-206-27q-17 26-36 51t-43 47l72 188-214 125-127-166q-62 14-123 14-67 0-131-15t-125-47v-305q45 61 112 95t144 35q66 0 124-25t102-68 69-102 25-125q0-66-25-124t-68-102-102-69-125-25q-76 0-143 34t-113 96V529q61-32 126-47t134-15l80-181 240 63-27 204q55 35 100 80l186-71 124 214-163 125q6 32 9 63t4 64l183 81zM691 607l240 819-235-15-42-167H514l-39 154-211-13 215-765 212-13z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminALogoFill32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1407 1025q0 26-10 49t-27 40-41 27-49 10V897q26 0 49 10t40 27 28 41 10 50zm613 84l-63 240-210-28q-17 26-35 50t-41 46l73 191-214 125-128-167q-60 15-122 15v-209q72 0 135-27t110-74 74-111 27-135q0-71-27-134t-74-110-110-74-135-28V464h5l79-178 240 63-27 204q27 17 51 37t48 43l187-71 124 214-166 127q13 59 13 124l186 82zM619 779q17 80 36 158t38 159l-151-2q19-79 38-157t36-158h3zM64 272L1216 67v1914L64 1782V272zm276 1099l134 8 40-159 211 7 44 170 156 10-224-766-158 10-203 720z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminALogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1406 1025q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zm611 84l-63 239-209-28q-17 26-36 50t-40 46l73 190-213 124-127-166q-30 8-60 11t-62 4v-209q71 0 134-27t110-73 74-110 27-134q0-71-27-134t-74-110-109-74-135-27V467h5l79-178 238 63-26 203q26 17 51 37t47 43l186-71 124 213-165 127q6 31 9 61t4 62l185 82zM64 273L1216 68v1912L64 1781V273zm676 354q-93 0-164 31t-119 86-73 130-25 165q0 83 21 152t65 120 108 77 153 28q38 0 77-5t75-23v-162q-72 43-155 43-53 0-91-20t-63-53-37-77-12-92q0-51 13-96t40-80 67-55 97-20q38 0 73 9t68 30V644q-29-10-58-13t-60-4z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminCLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M761 999q0 44-9 91t-30 87-57 64-90 26q-18 0-36-1t-36-2V754q20-1 39-2t40-1q51 0 85 22t56 59 29 80 9 87zM64 273L1216 68v1912L64 1781V273zm312 1129q57 4 114 9t114 6q86 0 145-38t97-100 53-136 17-148q0-76-13-147t-46-127-91-89-146-34q-61 0-122 7t-122 13v784zm1030-377q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zm610 84l-62 239-210-28q-17 26-35 50t-40 46l73 189-213 125-127-166q-60 13-122 15v-209q71 0 134-27t110-73 74-110 27-134q0-71-27-134t-74-110-110-74-134-27V467h5l79-178 238 63-27 203q53 34 99 80l186-71 124 213-166 127q6 28 9 56t4 57v10l185 82z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminDLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M64 273L1216 68v1912L64 1781V273zm383 1151l377 30v-157l-242-12v-187l210 2V944l-210 4V766l226-13V596l-361 32v796zm959-399q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zm610 84l-62 239-210-28q-17 26-35 50t-40 46l73 189-213 125-127-166q-60 13-122 15v-209q71 0 134-27t110-73 74-110 27-134q0-71-27-134t-74-110-110-74-134-27V467h5l79-178 238 63-27 203q53 34 99 80l186-71 124 213-166 127q6 28 9 56t4 57v10l185 82z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminELogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 896v384q0 170-88 328-68 121-190 231-48 44-94 78t-84 57-62 36-31 16l-27 13q-20-10-23-12t-5-2l-30-15q-24-12-62-36t-84-56-95-78q-60-55-107-112t-82-120q-88-158-88-328V896h64q62 0 107-6t79-15 61-22 51-26q21-11 43-21t48-19 56-14 67-5q37 0 67 5t55 13 48 19 44 22q24 13 50 25t61 22 80 16 107 6h64zm-128 126q-57-3-101-11t-79-20-62-25-51-25q-19-10-36-18t-35-14-38-9-46-4q-26 0-46 3t-38 10-35 14-36 18q-24 12-51 25t-62 24-79 20-101 12v258q0 87 26 162t67 139 93 116 101 91 93 67 68 41q16-9 39-23t52-33 61-44 64-54q232-211 232-462v-258zM128 1152h640v128H0V256h1792v412q-11-4-21-8t-19-9q-20-14-42-24t-46-19V384H128v768z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M64 272L1216 67v1914L64 1782V272zm398 1122l391 22-3-143-256-4V626l-132 16v752zm944-369q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zm610 84l-62 239-210-28q-17 26-35 50t-40 46l73 189-213 125-127-166q-60 13-122 15v-209q71 0 134-27t110-73 74-110 27-134q0-71-27-134t-74-110-110-74-134-27V467h5l79-178 238 63-27 203q53 34 99 80l186-71 124 213-166 127q6 28 9 56t4 57v10l185 82z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminLLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1405 1024q0 26-10 49t-27 40-39 27-49 10V899q26 0 48 10t40 27 27 40 10 48zm606 85l-63 236-207-27q-34 53-75 95l72 188-211 123-126-164q-62 14-121 14v-207q71 0 133-26t108-73 74-109 27-133q0-71-27-133t-73-108-109-74-133-27V472h5l78-177 236 63-26 201q54 35 98 80l184-71 123 211-164 126q13 58 13 122l184 82zM64 269L1216 64v1920L64 1785V269zm197 1124l113 9V988q0-48-1-96t-4-97l3-1q4 26 7 52t11 52l140 516 115 9 153-542q8-27 12-54t10-56h3q-2 45-3 88t-2 88v490l156 13V605l-223 18-132 477q-8 28-14 55t-11 57h-3q-6-56-21-112L447 648l-186 15v730z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminMLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1406 1025q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zm611 84l-63 239-209-28q-17 26-36 50t-40 46l73 190-213 124-127-166q-60 13-122 15v-209q71 0 134-27t110-73 74-110 27-134q0-72-27-134t-74-110-110-74-134-27V467h5l79-178 238 63-26 203q26 17 51 37t47 43l186-71 124 213-166 127q6 28 9 56t4 57v10l186 82zM628 1279q-42 0-72-27t-48-65-27-82-9-77q0-33 8-76t27-82 49-65 72-27q42 0 72 26t48 65 27 82 9 77q0 33-8 76t-27 83-49 65-72 27zM64 272L1216 67v1914L64 1782V272zm575 356q-50 0-92 17t-75 48-59 70-43 84-25 91-9 90q0 43 8 89t26 91 42 84 59 70 76 48 92 18q75 0 132-38t95-97 57-129 19-136q0-65-19-135t-57-130-95-97-132-38z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminOLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1408 1024q0 26-10 49t-27 41-41 28-50 10V897q27 0 50 10t40 27 28 40 10 50zm616 86l-63 241-212-28q-17 26-35 50t-41 46l74 192-216 126-128-168q-60 15-123 15v-210q72 0 135-27t111-75 74-110 28-136q0-72-27-135t-75-111-110-75-136-28V461h5l79-180 241 64-27 205q27 17 52 37t48 44l188-72 125 215-167 129q13 59 13 124l187 83zM769 850q0 72-38 101t-105 29h-25q-12 0-25-1V728q17-1 33-2t34-1q126 0 126 125zM64 272L1216 67v1914L64 1782V272zm363 1115l149 18v-288q75 2 142-9t118-44 79-88 30-144q0-122-65-186t-186-64q-66 0-133 5t-134 10v790z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminPLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M64 272L1216 67v1914L64 1782V272zm613 347q-54 0-98 17t-75 50-48 76-17 98q0 59 18 98t49 69 68 55 78 57q17 14 26 33t9 42q0 38-23 58t-60 20q-23 0-46-6t-44-18-40-28-32-35v173q39 26 84 40t93 14q50 0 91-15t70-45 44-70 16-92q0-62-19-104t-49-72-62-50-63-41-48-43-20-58q0-22 8-38t23-26 33-14 39-5q33 0 69 13t60 38V641q-31-11-66-16t-68-6zm731 405q0 26-10 49t-27 41-41 28-50 10V897q27 0 50 10t40 27 28 40 10 50zm616 86l-63 241-212-28q-17 26-35 50t-41 46l74 192-216 126-128-168q-60 15-123 15v-210q72 0 135-27t111-75 74-110 28-136q0-72-27-135t-75-111-110-75-136-28V461h5l79-180 241 64-27 205q27 17 52 37t48 44l188-72 125 215-167 129q13 59 13 124l187 83z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminSLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1406 1025q0 26-10 49t-27 40-40 27-49 10V898q26 0 49 10t40 27 27 41 10 49zM64 273L1216 68v1912L64 1781V273zm257 387l206 508v284l159 14v-298l248-560-184 16-119 321q-6 16-9 32t-7 33h-2l-6-34q-3-17-10-33L487 646l-166 14zm1695 449l-62 239-210-28q-17 26-35 50t-40 46l73 189-213 125-127-166q-60 13-122 15v-209q71 0 134-27t110-73 74-110 27-134q0-71-27-134t-74-110-110-74-134-27V467h5l79-178 238 63-27 203q53 34 99 80l186-71 124 213-166 127q6 28 9 56t4 57v10l185 82z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AdminYLogoInverse32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 768q52 0 99 20t81 55 55 82 21 99q0 53-20 99t-55 81-82 55-99 21h-448l-384 768H512l256-768H512l-64 128H0l128-384L0 640h448l64 128h256L512 0h448l384 768h448zm0 384q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10h-527q-99-192-193-383T881 128H690q64 193 127 384t129 384H433l-64-128H178q21 64 41 128t44 128q-23 64-43 128t-42 128h191l64-128h513q-66 192-129 383t-127 385h191q97-193 191-384t193-384h527z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AirplaneIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1856 768q40 0 75 15t61 41 41 61 15 75q0 40-15 75t-41 61-61 41-75 15h-544l-384 768H662l256-768H256l-67 128H0l108-320L0 640h189l67 128h662L662 0h266l384 768h544z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AirplaneSolidIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 640v1152H0V640h440q1 0 33-10t87-29 126-42 154-51 169-57 172-58 161-54 139-46 103-35 56-19l134 401h274zm-1206 0h797l-79-239-718 239zm1078 128H128v896h1792V768zm-256 128v128h-128V896h128zm0 256v128h-128v-128h128zm0 384h-128v-128h128v128zm128-384h-128v-128h128v128zm0 256h-128v-128h128v128zM469 1280l-85-256h128l64 128h277l-85-256h128l128 256h256q26 0 45 19t19 45q0 26-19 45t-45 19h-256l-128 256H768l85-256H469z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AirTicketsIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1408 1152v128H896V640h128v512h384zm240-1024q83 0 156 31t127 86 85 127 32 156q0 50-12 97t-35 91-56 80-74 64q25 71 37 144t12 148q0 162-56 313t-163 274l200 200-90 90-200-200q-122 106-273 162t-314 57q-162 0-313-56t-274-163l-200 200-90-90 200-200q-106-122-162-273t-57-314q0-75 12-148t37-144q-41-27-74-64t-56-80-35-90-12-98q0-83 31-156t86-127 127-85 156-32q49 0 97 12t91 35 80 56 64 74q71-25 144-37t148-12q75 0 148 12t144 37q27-41 64-74t80-56 90-35 98-12zM400 256q-56 0-105 21t-87 59-58 86-22 106q0 62 26 117t75 94q64-124 161-221t221-161q-38-48-93-74t-118-27zm624 1664q159 0 298-60t244-165 165-244 61-299q0-159-60-298t-165-244-244-165-299-61q-159 0-298 60T482 609 317 853t-61 299q0 159 60 298t165 244 244 165 299 61zm795-1181q48-38 74-93t27-118q0-56-21-105t-59-87-86-58-106-22q-62 0-117 26t-94 75q124 64 221 161t161 221z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlarmClockIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1856 256q40 0 75 15t61 41 41 61 15 75v1152q0 40-15 75t-41 61-61 41-75 15H0V256h1856zM128 1664h128V384H128v1280zM1920 448q0-26-19-45t-45-19H384v1280h1472q26 0 45-19t19-45V448zM768 640h768v384H768V640zm128 256h512V768H896v128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlbumIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1856 256q40 0 75 15t61 41 41 61 15 75v768h-128V448q0-26-19-45t-45-19H384v1280h832v128H0V256h1856zM256 384H128v1280h128V384zm1280 640H768V640h768v384zm-128-256H896v128h512V768zm586 685l-226 227 226 226-90 90-226-226-225 224-90-90 224-224-224-225 90-90 225 224 226-226 90 90z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlbumRemoveIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 512v640H896V512h128zm-64 1280q17 0 32-1t33-3q21 65 56 124-30 4-60 6t-61 2q-133 0-256-34t-229-96-194-150-150-194-97-230T0 960q0-133 34-256t96-229 150-194 194-150 230-97T960 0q133 0 256 34t229 96 194 150 150 194 97 230 34 256q0 30-2 60t-6 61q-29-18-60-31t-64-25q1-17 2-32t2-33q0-114-30-220t-84-199-130-169-168-130-199-84-221-30q-115 0-221 30t-198 84-169 130-130 168-84 199-30 221q0 115 30 221t84 198 130 169 168 130 199 84 221 30zm-64-384v-128h128v128H896zm1024 192q0 31-6 61l124 51-49 119-124-52q-35 51-86 86l52 124-119 49-51-124q-30 6-61 6t-61-6l-51 124-119-49 52-124q-51-35-86-86l-124 52-49-119 124-51q-6-30-6-61t6-61l-124-51 49-119 124 52q35-51 86-86l-52-124 119-49 51 124q30-6 61-6t61 6l51-124 119 49-52 124q51 35 86 86l124-52 49 119-124 51q6 30 6 61zm-128 0q0-40-15-75t-41-61-61-41-75-15q-40 0-75 15t-61 41-41 61-15 75q0 40 15 75t41 61 61 41 75 15q40 0 75-15t61-41 41-61 15-75z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlertSettingsIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm128 1536v-256H896v256h256zm0-384V512H896v640h256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlertSolidIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 128h2048v128H0V128zm256 384h1536v128H256V512zm0 768h1536v128H256v-128zM0 1792v-128h2048v128H0zm0-768V896h2048v128H0z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignCenterIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 1664h-768v384H896v-384H128v-512h768V896H384V384h512V0h128v384h512v512h-512v256h768v512zM512 768h896V512H512v256zm1152 512H256v256h1408v-256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignHorizontalCenterIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h128v2048H0V0zm1408 896H256V384h1152v512zm-128-384H384v256h896V512zm640 640v512H256v-512h1664zm-128 128H384v256h1408v-256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignHorizontalLeftIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1920 0v2048h-128V0h128zM512 384h1152v512H512V384zm128 384h896V512H640v256zM0 1152h1664v512H0v-512zm128 384h1408v-256H128v256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignHorizontalRightIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 128v128H0V128h2048zM0 1664h2048v128H0v-128zm0-768h2048v128H0V896zm0-384h2048v128H0V512zm0 768h2048v128H0v-128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignJustifyIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 128v128H0V128h2048zm0 1664H0v-128h2048v128zm0-768H0V896h2048v128zm-512-384H0V512h1536v128zm0 768H0v-128h1536v128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignLeftIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 128h2048v128H0V128zm0 1664v-128h2048v128H0zm0-768V896h2048v128H0zm512-384V512h1536v128H512zm0 768v-128h1536v128H512z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignRightIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1792v128H0v-128h2048zm-384-128h-512V512h512v1152zM1536 640h-256v896h256V640zM896 1664H384V0h512v1664zM768 128H512v1408h256V128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignVerticalBottomIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1024h-384v512h-512v-512H896v768H384v-768H0V896h384V128h512v768h256V384h512v512h384v128zM768 256H512v1408h256V256zm768 256h-256v896h256V512z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignVerticalCenterIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 0v128H0V0h2048zm-896 256h512v1152h-512V256zm128 1024h256V384h-256v896zM384 256h512v1664H384V256zm128 1536h256V384H512v1408z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AlignVerticalTopIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 1408v-384h384v384H0zm128-256v128h128v-128H128zM0 896V512h384v384H0zm128-256v128h128V640H128zM0 384V0h384v384H0zm128-256v128h128V128H128zm512 640V640h1152v128H640zm896 384v128H640v-128h896zM640 128h1408v128H640V128zM0 1920v-384h384v384H0zm128-256v128h128v-128H128zm512 128v-128h1152v128H640z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AllAppsIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1408v-384h-384v384h384zm-128-256v128h-128v-128h128zm128-256V512h-384v384h384zm-128-256v128h-128V640h128zm128-256V0h-384v384h384zm-128-256v128h-128V128h128zm-512 640V640H256v128h1152zm-896 384v128h896v-128H512zm896-1024H0v128h1408V128zm640 1792v-384h-384v384h384zm-128-256v128h-128v-128h128zm-512 128v-128H256v128h1152z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AllAppsMirroredIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M959 1026q-48-2-99-12t-94-31q-17-8-27-23t-10-35q0-26 19-45t45-19q13 0 27 6 66 29 138 30V678q-37-13-71-32t-61-45-43-61-16-77q0-41 16-74t43-57 61-41 71-25q0-29 16-50t48-22q27 0 45 18t19 46q35 2 66 9t65 17l-44 120q-21-8-43-12t-44-6v200q34 12 68 32t62 47 45 61 17 74q0 44-15 80t-40 63-61 45-76 28q0 28-17 48t-47 20q-25 0-43-17t-20-41zm127-143q28-11 46-30t18-52q0-12-6-23t-16-20-21-17-21-14v156zM895 463q0 28 20 46t43 30V400q-3 1-13 5t-12 7q-14 5-26 20t-12 31zm745 351q92 36 167 96t128 137 83 169 30 191q0 88-23 170t-64 153-100 129-130 101-153 65-170 23q-104 0-202-33t-181-96q-84 63-182 96t-203 33q-89 0-170-23t-153-64-129-100-100-130-65-153-23-171q0-99 29-190t83-169 129-138 167-96q-24-84-24-173 0-88 23-170t64-153 100-129T701 88t153-65 170-23q88 0 170 23t153 65 129 100 100 130 65 153 23 170q0 89-24 173zm-616-686q-106 0-199 40T662 279 552 442t-40 199q0 106 40 199t109 163 163 110 200 41q106 0 199-40t163-110 110-163 40-200q0-106-40-199t-109-163-163-110-200-41zM640 1920q106 0 199-40t163-110 110-163 40-200q0-68-20-134-54 9-108 9-105 0-203-33t-183-97q-7 4-13 5-88 26-133 91t-46 157v2h126q26 0 45 19t19 45q0 31-17 44t-41 18-51 4-46-2q35 59 93 92t128 34q29 0 54-6t52-17q13-5 26-5 26 0 45 18t19 45q0 29-22 47t-54 28-65 14-55 4q-61 0-117-18t-104-52-84-80-57-104q-16 0-31-3t-26-10-19-19-7-32q0-26 17-44t44-20q0-56 14-109t41-100 67-84 94-60q-23-29-43-60t-38-64q-74 29-133 77t-103 111-66 136-23 153q0 106 40 199t109 163 163 110 200 41zm768 0q106 0 199-40t163-110 110-163 40-200q0-79-23-152t-66-136-103-110-133-78q-38 74-93 136t-124 108l93 126 140-187q19-26 51-26 27 0 46 19t19 46q0 20-13 38l-180 239v105h41q22 0 42 4t33 18 14 42q0 28-13 41t-33 19-42 5-42-1v41q0 22-4 42t-18 33-42 14q-28 0-41-13t-19-33-5-42 1-42h-41q-22 0-41-4t-33-18-13-42q0-28 13-41t32-19 42-5 41 1v-105l-142-194-6 2q12 41 17 84t5 85q0 118-40 226t-119 197q64 44 136 67t151 23z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AllCurrencyIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1536 704q0-26 19-45t45-19q26 0 45 19t19 45q0 26-19 45t-45 19q-26 0-45-19t-19-45zM0 256h2048v1024h-128V384H128v677l448-447 640 640 256-256 283 282h-182l-101-102-101 102h-310L576 794l-448 449v421h512v128H0V256zm768 1792v-640h1280v640H768zm128-512v384h1024v-384H896zm256 256v-128h512v128h-512z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AltTextIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1504 912q0-8 3-15t13-7q5 0 14 3t15 6q39 15 76 23t80 9q21 0 45-3t44-13 33-27 13-44q0-27-16-44t-43-28-58-20-66-20-62-27-50-44q-17-23-25-46t-9-53q0-45 20-78t52-56 72-33 80-11q16 0 42 3t52 9 50 15 33 23q8 12 8 31v12q0 6-1 12 0 8-3 15t-13 7q-7 0-13-3t-13-6q-30-14-64-20t-67-6q-20 0-41 3t-40 11-29 25-12 41q0 33 24 51t61 31 79 24 79 32 61 52 25 87q0 50-21 86t-55 59-78 35-87 11q-16 0-47-3t-63-11-60-18-34-27q-3-6-4-13t-1-15v-13q0-6 1-12zM641 419q0-17 16-17h67q20 0 27 7t13 26l115 451 106-451q5-22 18-28t30-7q11 0 23 1t24 1q19 0 27 7t13 26l107 456 118-456q5-17 13-25t27-8h63q17 0 17 17 0 8-2 14t-4 14l-164 526q-7 23-20 29t-30 6q-11 0-23-1t-26-1q-20 0-27-7t-13-27l-105-439-105 439q-5 23-18 30t-31 7q-11 0-23-1t-27-2q-20 0-27-8t-13-26L647 446q-2-6-4-13t-2-14zM468 669v-50q0-39-8-66t-25-43-44-24-66-7q-42 0-75 8t-72 24q-7 2-17 6t-18 5q-10 0-12-10t-3-22v-13q0-6 1-10v-12q0-7 4-12 9-13 37-24t61-18 65-12 48-4q115 0 175 52t60 171v221h2q0 14 1 30t6 30q2 5 6 14t9 20 8 19 4 12q0 6-9 15t-22 19-25 15-18 6q-10 0-20-10t-19-23-16-27-11-22q-79 94-200 94-41 0-75-12t-60-35-38-56-14-76q0-49 19-85t50-61 73-36 87-12q38 0 75 6t76 15zm-3 105v-29q-31-8-62-12t-64-4q-27 0-51 5t-43 17-30 32-11 52q0 47 24 72t72 25q24 0 49-6t47-18 39-30 24-45q4-14 5-29t1-30zm1371 526q12 0 22 7t10 21q0 8-5 15t-11 12q-79 63-181 110t-214 80-223 48-212 16q-138 0-275-25t-268-74-249-121T9 1222q-9-9-9-18 0-7 5-11t12-5q7 0 15 5 237 131 489 200t525 69q201 0 394-41t379-117q5-2 8-3t9-1zm212-79q0 38-10 81t-28 86-43 79-54 61q-4 3-8 5t-10 3q-11 0-11-12 0-8 10-35t24-63 23-73 11-67q0-19-8-29t-22-16-29-6-31-2h-16q-42 0-82 4t-82 9h-4q-5 0-9-2t-5-9q0-6 4-11t9-9q22-17 50-29t59-19 62-11 58-4q9 0 29 1t41 4 40 8 24 15q5 8 6 19t2 22z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AmazonWebServicesLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1024q0 142-36 272t-103 245-160 207-208 160-245 103-272 37q-142 0-272-36t-245-103-207-160-160-208-103-245-37-272q0-26 19-45t45-19q26 0 45 19t19 45q0 124 32 238t90 213 141 182 181 140 214 91 238 32q123 0 237-32t214-90 182-141 140-181 91-214 32-238q0-123-32-237t-90-214-141-182-181-140-214-91-238-32q-26 0-45-19t-19-45q0-26 19-45t45-19q141 0 272 36t245 103 207 160 160 208 103 245 37 272zm-1024 640q-26 0-45-19t-19-45q0-26 19-45t45-19q106 0 199-40t162-110 110-163 41-199q0-106-40-199t-110-162-163-110-199-41q-26 0-45-19t-19-45q0-26 19-45t45-19q133 0 249 50t204 137 137 203 50 250q0 133-50 249t-137 204-203 137-250 50zm-64-832q0-26 19-45t45-19q53 0 99 20t82 55 55 81 20 100q0 26-19 45t-45 19q-26 0-45-19t-19-45q0-27-10-50t-27-40-41-28-50-10q-26 0-45-19t-19-45z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnalyticsLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 1024h-128q0-123-32-237t-90-214-141-182-181-140-214-91-238-32q-124 0-238 32t-213 90-182 141-140 181-91 214-32 238q0 124 32 238t90 213 141 182 181 140 214 91 238 32v128q-142 0-272-36t-245-103-207-160-160-208-103-245-37-272q0-141 36-272t103-245 160-207 208-160T752 37t272-37q141 0 272 36t245 103 207 160 160 208 103 245 37 272zM1024 384q133 0 249 50t204 137 137 203 50 250h-128q0-106-40-199t-110-162-163-110-199-41q-106 0-199 40T663 662 553 825t-41 199q0 103 38 196t112 166l-91 91q-91-91-139-208t-48-245q0-133 50-249t137-204 203-137 250-50zm0 384q53 0 99 20t82 55 55 81 20 100q0 53-20 99t-55 82-81 55-100 20q-53 0-99-20t-82-55-55-81-20-100q0-53 20-99t55-82 81-55 100-20zm0 384q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50q0 27 10 50t27 40 41 28 50 10z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnalyticsQueryIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 1024q0 149 46 285t131 250 203 197 260 126v132q-169-44-310-138t-243-226-158-291-57-335q0-141 36-272t104-244 160-207 207-161T752 37t272-37q135 0 260 33t236 95 203 149 161 193 110 230 51 257l-154-154q-38-148-120-272t-198-214-255-139-294-50q-124 0-238 32t-213 90-182 141-140 181-91 214-32 238zm896-512q-106 0-199 40T663 662 553 825t-41 199q0 103 38 196t112 166l-91 91q-91-91-139-208t-48-245q0-88 23-170t64-153 100-129 130-100 153-65 170-23q75 0 147 17t137 51 123 80 102 108h-174q-70-62-155-95t-180-33zm603 256l421 421v859H896V768h731zm37 219v165h165l-165-165zm256 933v-640h-384V896h-512v1024h896zm-128-512v384h-128v-384h128zm-640 384v-512h128v512h-128zm256 0v-256h128v256h-128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnalyticsReportIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 128v1664H0V128h2048zM128 256v256h1792V256H128zm1792 1408V640H128v1024h1792zM256 896h128v640H256V896zm256 384h128v256H512v-256zm256-128h128v384H768v-384zm256-384h128v768h-128V768zm512 128h128v640h-128V896zm-256 256h128v384h-128v-384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnalyticsViewIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1216 640q26 0 45 19t19 45q0 26-19 45t-45 19h-192v1017q33-3 65-11t63-20v136q-47 14-95 22t-97 8q-91 0-176-22t-160-64-138-99-111-129-78-153-38-173H128l192-256 192 256H391q11 100 54 187t110 154 154 110 187 54V768H704q-26 0-45-19t-19-45q0-26 19-45t45-19h192V500q-29-10-52-28t-40-41-26-52-10-59q0-40 15-75t41-61 61-41 75-15q40 0 75 15t61 41 41 61 15 75q0 30-9 58t-26 52-41 42-52 28v140h192zM960 384q26 0 45-19t19-45q0-26-19-45t-45-19q-26 0-45 19t-19 45q0 26 19 45t45 19zm1088 1024v640h-768v-640h128v-128q0-53 20-99t55-82 81-55 100-20q53 0 99 20t82 55 55 81 20 100v128h128zm-512 0h256v-128q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50v128zm384 128h-512v384h512v-384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnchorLockIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1229 186q64 33 117 80t91 106 60 127 21 141H384q0-73 21-141t59-126 92-106 118-81q-4-7-18-33t-31-55-28-53-13-28q0-17 16-17 11 0 16 9l89 162q118-52 246-52t247 52l89-162q4-9 16-9 16 0 16 17 0 4-12 28t-29 53-30 55-19 33zM704 384q26 0 45-19t19-45q0-26-19-45t-45-19q-26 0-45 19t-19 45q0 26 19 45t45 19zm512 0q26 0 45-19t19-45q0-26-19-45t-45-19q-26 0-45 19t-19 45q0 26 19 45t45 19zM384 704h1149v759q0 28-11 53t-29 43-44 30-53 11h-116v255q0 27-10 50t-27 41-41 28-50 10q-27 0-50-10t-40-28-28-41-10-50v-255H896v255q0 27-10 50t-27 41-41 28-51 10q-27 0-50-10t-40-28-27-41-10-50v-255H521q-29 0-53-10t-44-30-29-43-11-54V704zm-192 0q26 0 49 10t41 27 28 41 10 50v512q0 26-10 49t-27 41-41 28-50 10q-26 0-49-10t-41-27-28-41-10-50V832q0-26 10-49t27-41 41-28 50-10zm1536 0q26 0 49 10t41 27 28 41 10 50v512q0 26-10 49t-27 41-41 28-50 10q-26 0-49-10t-41-27-28-41-10-50V832q0-26 10-49t27-41 41-28 50-10z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AndroidLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1115 1024h677l-128 128H987l-314 313q45 36 70 88t25 111q0 53-20 99t-55 81-82 55-99 21q-53 0-99-20t-81-55-55-81-21-100q0-52 20-99t55-81 81-55 100-21l35 2 258-258H478q-35 59-94 93t-128 35q-53 0-99-20t-81-55-55-81-21-100q0-52 20-99t55-81 81-55 100-21q52 0 99 20t81 55 55 82 21 99h421l512-512h182l-512 512zm-859 128q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50q0 27 10 50t27 40 41 28 50 10zm256 640q27 0 50-10t40-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10q-27 0-50 10t-40 27-28 41-10 50q0 27 10 50t27 40 41 28 50 10zM1920 256h128v128h-128V256zM2048 0v128h-128V0h128zm-384 0h128v128h-128V0zm-128 128h-128V0h128v128zm-256 0h-128V0h128v128zm-256 0H896V0h128v128zm-256 0H640V0h128v128zm-256 0H384V0h128v128zm0 256H384V256h128v128zm0 256H384V512h128v128zm1408-128h128v128h-128V512zm0 256h128v128h-128V768zm0 256h128v128h-128v-128zm0 256h128v128h-128v-128zm0 256h128v128h-128v-128zm-256 0h128v128h-128v-128zm-256 0h128v128h-128v-128zm-256 0h128v128h-128v-128zm-256 0h128v128H896v-128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AnnotationIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 945q-17 20-31 42t-30 43q-24 34-50 68t-56 65-64 57-74 42q-44 18-92 31t-96 14q-11 0-21-2t-21-4q127 134 213 295t137 339q3 11 3 22 0 31-23 49t-53 19q-29 0-43-13t-25-38q-6-14-9-28t-9-29q-9-28-19-55t-22-55q-46-112-109-215t-147-192q-3 53-10 106t-20 104q-13 55-47 110t-80 107-95 95-96 76q-28-22-55-67t-51-97-42-105-29-87q-33 18-90 32t-128 26-148 19-149 15-131 10-96 5q15-36 38-90t53-117 64-129 71-125 72-105 69-72q-31-35-58-74t-54-79Q265 762 168 548T0 110q15-5 33-8t37-4 38-2 35-1q42 0 103 3t125 10 123 17 99 23q46 16 105 41t117 59 109 73 77 84q90-31 178-68t172-84 160-102 143-128q34 52 53 109t30 116 14 121 6 121q2 66 25 134t63 130 92 112 111 79z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ApacheIvyLogo32Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2021 183q9 0 15 6t7 16v4l-317 1565q-3 18-22 18h-274q-9 0-15-6t-7-16v-4l181-1063-605 1078q-6 11-19 11H754q-8 0-13-5t-8-13L555 723 319 1775q-2 8-7 12t-14 5H27q-9 0-15-6t-7-16v-4L321 200q2-8 8-12t14-5h461q8 0 14 5t8 14l139 1047 543-1054q6-12 20-12h493z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ApacheMavenLogoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1920 0v1024h-896v896H0V0h1920zM896 1792v-768H128v768h768zm0-896V128H128v768h768zm896 0V128h-768v768h768zm-128 640h384v128h-384v384h-128v-384h-384v-128h384v-384h128v384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AppIconDefaultAddIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h1920v1024h-896v896H0V0zm896 1792v-768H128v768h768zm0-896V128H128v768h768zm896 0V128h-768v768h768z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AppIconDefaultIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1280 1664v-128h128v128h-128zm256 0v-128h512v128h-512zm-256 256v-128h128v128h-128zm256 0v-128h512v128h-512zm-256-512v-128h128v128h-128zm256-128h512v128h-512v-128zM1920 0v1024h-896v896H0V0h1920zM896 1792v-768H128v768h768zm0-896V128H128v768h768zm896 0V128h-768v768h768z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AppIconDefaultListIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 128v640h-128v1152H128V768H0V128h2048zm-256 1664V768H256v1024h1536zm128-1152V256H128v384h1792zm-512 512H640v-128h768v128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArchiveIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1728 1152q67 0 125 25t102 69 68 103 25 126q0 91-34 171t-97 146q-26 26-53 50t-54 48q-45 40-88 79t-88 79l-98-91q46-39 91-78t90-79q28-24 55-48t54-51q47-48 70-104t24-125q0-41-15-76t-42-61-62-40-76-15q-66 0-116 21t-92 58-77 82-69 95h293v128h-512v-512h128v286q46-61 91-113t96-90 115-61 146-22zM0 128h2048v640h-128v256h-128V768H256v1024h1152v128H128V768H0V128zm1920 512V256H128v384h1792zm-896 512H640v-128h384v128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArchiveUndoIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 1792l1664 1v128l-1792-1V129h128v1663zm1664-859v731H384V760l320-160 435 218 333-332 448 447zM704 744l-192 95v441h433l540-270 307 307V987l-320-321-307 308-461-230zm-192 792h1280v-37l-333-333-484 242H512v128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AreaChartIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1664 1664H0V0h1664v1664zM1536 128H128v1408h1408V128zm512 640v1280H768v-256h128v128h1024V896h-128V768h256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrangeBringForwardIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1664 1664H384V384h1280v1280zM1536 512H512v1024h1024V512zM128 768h128v128H0V0h896v256H768V128H128v640zm1920 384v896h-896v-256h128v128h640v-640h-128v-128h256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrangeBringToFrontIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 632v464q-41-114-128-201v-36l-19 18q-24-22-50-40t-56-35l102-102-873-436-873 436 324 324h581q-16 31-28 62t-21 66H421L128 859v933h787q-25 61-39 128H0V632l1024-512 1024 512zm-284 957q65 32 117 80t90 109 57 129 20 141h-128q0-79-30-149t-82-122-123-83-149-30q-80 0-149 30t-122 82-83 123-30 149h-128q0-72 20-141t57-129 89-108 118-81q-74-55-115-136t-41-173q0-79 30-149t82-122 122-83 150-30q79 0 149 30t122 82 83 123 30 149q0 92-41 173t-115 136zm-484-309q0 53 20 99t55 82 81 55 100 20q53 0 99-20t82-55 55-81 20-100q0-53-20-99t-55-82-81-55-100-20q-53 0-99 20t-82 55-55 81-20 100z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrangeByFromIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 1536h512v128H0V0h1664v640h-128V128H128v1408zm1920-768v1280H768V768h1280zm-128 128H896v1024h1024V896z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrangeSendBackwardIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 1536h512v128H384v-640h128v512zM1536 512h-512V384h640v640h-128V512zM896 896H0V0h896v896zM768 128H128v640h640V128zm1280 1024v896h-896v-896h896zm-128 128h-640v640h640v-640z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrangeSendToBackIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1920 1216q0 40-15 75t-41 61-61 41-75 15H128L0 896h384l32 128h256L512 384h320l320 640h576q40 0 75 15t61 41 41 61 15 75zm-1692 64h1500q26 0 45-19t19-45q0-26-19-45t-45-19h-655q-78-162-158-320T753 512h-77q40 161 79 320t81 320H316l-16-64-16-64H164l64 256zm1820 384v128H640v-128h1408z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrivalsIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 256h256v1792H256v-256h1355L37 219 219 37l1573 1574V256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowDownRight8Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 256H0v1792h1792v-256H437L2011 219 1829 37 256 1611V256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowDownRightMirrored8Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M219 1920h933v128H0V896h128v933L1939 19l90 90L219 1920z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowTallDownLeftIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 896v1152H896v-128h933L19 109l90-90 1811 1810V896h128z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowTallDownRightIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1939 2029L128 219v933H0V0h1152v128H219l1810 1811-90 90z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowTallUpLeftIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2048 0v1152h-128V219L109 2029l-90-90L1829 128H896V0h1152z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowTallUpRightIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 0h1792v1792h-256V437L219 2011 37 1829 1611 256H256V0z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowUpRight8Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M384 256h1408v1408h-128V475L347 1792l-91-91L1573 384H384V256z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowUpRightIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1792 0H0v1792h256V437l1573 1574 182-182L437 256h1355V0z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArrowUpRightMirrored8Icon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1536 768v128H512V768h1024zm-256-512v128H512V256h768zm-256 1536v-640h512v640h-512zm128-512v384h256v-384h-256zm384-768v128H512V512h1024zM256 0h1536v2048H256V0zm1408 1920V128H384v1792h1280zm-768-256v128H512v-128h384zm0-512v128H512v-128h384zm0 256v128H512v-128h384z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        ArticlesIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1216 1024h512l-320 640h320v128h-512l320-640h-320v-128zm-704 614l163-163 90 90-317 318-317-318 90-90 163 163V128h128v1510zm811-870l-43 128h-128l256-768h128l256 768h-128l-43-128h-298zm149-448l-107 320h214l-107-320z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AscendingIcon
+      </code>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            height: 50px;
+            margin-bottom: 80px;
+            margin-left: 80px;
+            margin-right: 80px;
+            margin-top: 80px;
+            width: 50px;
+          }
+    >
+      <span
+        aria-hidden={true}
+        className=
+
+            {
+              font-size: 50px;
+            }
+        role="presentation"
+        style={Object {}}
+      >
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 256h128v128H0V256zm0 256h128v128H0V512zm0 256h128v128H0V768zm0 256h128v128H0v-128zm0 512h128v128H0v-128zM256 256h128v128H256V256zm0 1280h128v128H256v-128zm1664 0h128v128h-128v-128zM0 1280h128v128H0v-128zm1920 0h128v128h-128v-128zm0-256h128v128h-128v-128zm0-256h128v128h-128V768zm0-256h128v128h-128V512zm128-256v128h-128V256h128zm-384 1280h128v128h-128v-128zm0-1280h128v128h-128V256zm-1152 0h1024v1408H512V256zm128 1280h768V384H640v1152z"
+          />
+        </svg>
+      </span>
+      <br />
+      <code
+        className=
+
+            {
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+            }
+      >
+        AspectRatioIcon
+      </code>
+    </div>
+  </div>
+</div>
+`;

@@ -4,7 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const jju = require('jju');
 
-const testFiles = ['**/*{.,-}test.{ts,tsx}', '**/*.stories.tsx', '**/{test,tests,stories}/**'];
+const testFiles = [
+  '**/*{.,-}test.{ts,tsx}',
+  '**/*.stories.tsx',
+  '**/{test,tests,stories}/**',
+  '**/testUtilities.{ts,tsx}',
+  '**/common/isConformant.{ts,tsx}',
+];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 

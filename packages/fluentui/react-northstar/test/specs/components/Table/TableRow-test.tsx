@@ -6,7 +6,7 @@ import { TableCell } from 'src/components/Table/TableCell';
 import { TableRow } from 'src/components/Table/TableRow';
 
 describe('TableRow', () => {
-  isConformant(TableRow, { constructorName: 'TableRow' });
+  isConformant(TableRow, { testPath: __filename, constructorName: 'TableRow' });
 
   describe('accessiblity', () => {
     handlesAccessibility(TableRow, { defaultRootRole: 'row' });

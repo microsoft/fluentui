@@ -128,7 +128,7 @@ export const transparentColors: TeamsTransparentColors = {
     200: 'rgba(255,255,255,0.75)',
     300: 'rgba(255,255,255,0.65)',
     400: 'rgba(255,255,255,0.5)',
-    500: undefined,
+    500: 'rgba(255,255,255,0.4)',
     600: 'rgba(255,255,255,0.3)',
     700: 'rgba(255,255,255,0.2)',
     800: 'rgba(255,255,255,0.1)',
@@ -217,6 +217,8 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground2: colors.grey[450],
     foreground3: colors.white,
     foreground4: colors.white,
+    foreground5: colors.grey[100],
+    foreground6: colors.grey[200],
 
     background: colors.white,
     background1: colors.grey[50],

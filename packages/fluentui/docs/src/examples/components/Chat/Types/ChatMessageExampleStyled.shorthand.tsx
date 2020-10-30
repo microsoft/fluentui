@@ -8,7 +8,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
 ];
 
 const janeAvatar: AvatarProps = {
-  image: 'public/images/avatar/small/ade.jpg',
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 

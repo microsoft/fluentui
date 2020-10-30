@@ -1,1 +1,2 @@
-export * from './components/SearchBox/index';
+import './version';
+export * from '@fluentui/react/lib/SearchBox';

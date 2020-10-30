@@ -115,6 +115,7 @@ export const baseElementProperties = toObjectMap([
   'htmlFor', // global
   'id', // global
   'lang', // global
+  'ref', // global
   'role', // global
   'style', // global
   'tabIndex', // global

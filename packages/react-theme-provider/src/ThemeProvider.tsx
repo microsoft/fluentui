@@ -1,55 +1,36 @@
 import * as React from 'react';
-import cx from 'classnames';
+import { ThemeProviderProps } from './ThemeProvider.types';
+import { useThemeProviderClasses } from './useThemeProviderClasses';
+import { useThemeProvider } from './useThemeProvider';
+import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import { useStylesheet } from '@fluentui/react-stylesheets';
-import { tokensToStyleObject } from './tokensToStyleObject';
-import { ThemeContext } from './ThemeContext';
-import { PartialTheme, Theme } from './types';
-import { mergeThemes } from './mergeThemes';
-import { useTheme } from './useTheme';
-import * as classes from './ThemeProvider.scss';
-
-/**
- * Props for the ThemeProvider component.
- */
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Defines the theme provided by the user.
-   */
-  theme?: PartialTheme | Theme;
-}
+import { useFocusRects } from '@fluentui/utilities';
 
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
  */
-export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
-  (
-    { theme, style, className, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
-    ref: React.Ref<HTMLDivElement>,
-  ) => {
-    // Pull contextual theme.
-    const parentTheme = useTheme();
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.forwardRef<
+  HTMLDivElement,
+  ThemeProviderProps
+>((props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {
+  const { render, state } = useThemeProvider(props, ref, {
+    // The renderer default value is required to be defined, so if you're recomposing
+    // this component, be sure to do so.
+    renderer: mergeStylesRenderer,
+    applyTo: 'element',
+  });
 
-    // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<Theme>(() => mergeThemes(parentTheme, theme), [parentTheme, theme]);
+  // Register stylesheets as needed.
+  useStylesheet(state.theme.stylesheets);
 
-    // Generate the inline style object only when merged theme mutates.
-    const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => tokensToStyleObject(fullTheme.tokens, undefined, { ...style }),
-      [fullTheme, style],
-    );
+  // Render styles.
+  useThemeProviderClasses(state);
 
-    const rootClass = cx(className, classes.root) || undefined;
+  // Apply focus rect class on key presses.
+  useFocusRects(state.ref);
 
-    // Register stylesheets as needed.
-    useStylesheet(fullTheme.stylesheets);
-
-    // Provide the theme in case it's required through context.
-    return (
-      <ThemeContext.Provider value={fullTheme}>
-        <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
-      </ThemeContext.Provider>
-    );
-  },
-);
+  // Return the rendered content.
+  return render(state);
+});
 
 ThemeProvider.displayName = 'ThemeProvider';

@@ -25,6 +25,12 @@ import {
 } from '../../utils';
 import { ListContextProvider, ListContextValue } from './listContext';
 import { ListItem, ListItemProps } from './ListItem';
+import { ListItemContent } from './ListItemContent';
+import { ListItemContentMedia } from './ListItemContentMedia';
+import { ListItemEndMedia } from './ListItemEndMedia';
+import { ListItemHeader } from './ListItemHeader';
+import { ListItemHeaderMedia } from './ListItemHeaderMedia';
+import { ListItemMedia } from './ListItemMedia';
 
 export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -82,6 +88,12 @@ export const listClassName = 'ui-list';
 export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
+    ItemContent: typeof ListItemContent;
+    ItemContentMedia: typeof ListItemContentMedia;
+    ItemEndMedia: typeof ListItemEndMedia;
+    ItemHeader: typeof ListItemHeader;
+    ItemHeaderMedia: typeof ListItemHeaderMedia;
+    ItemMedia: typeof ListItemMedia;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
@@ -202,5 +214,11 @@ List.propTypes = {
 
 List.handledProps = Object.keys(List.propTypes) as any;
 List.Item = ListItem;
+List.ItemContent = ListItemContent;
+List.ItemContentMedia = ListItemContentMedia;
+List.ItemEndMedia = ListItemEndMedia;
+List.ItemHeader = ListItemHeader;
+List.ItemHeaderMedia = ListItemHeaderMedia;
+List.ItemMedia = ListItemMedia;
 
 List.create = createShorthandFactory({ Component: List, mappedArrayProp: 'items' });

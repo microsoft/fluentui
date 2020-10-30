@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Divider';
+export * from '@fluentui/react-internal/lib/Divider';

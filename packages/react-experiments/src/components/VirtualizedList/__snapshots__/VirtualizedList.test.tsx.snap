@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VirtualizedList renders 1`] = `
+<div
+  className="ms-ScrollContainer"
+  data-is-scrollable={true}
+>
+  <div
+    className="ms-VirtualizedList"
+  >
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 0
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 1
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 2
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 3
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 4
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 5
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 6
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 7
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 8
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 9
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 10
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 11
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 12
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 13
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 14
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 15
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 16
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 17
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 18
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 19
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 20
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 21
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 22
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 23
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 24
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 25
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 26
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 27
+    </div>
+    <div
+      style={
+        Object {
+          "height": 30,
+        }
+      }
+    >
+      Item 28
+    </div>
+    <div
+      style={
+        Object {
+          "height": 59160,
+        }
+      }
+    />
+  </div>
+</div>
+`;

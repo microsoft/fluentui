@@ -1,8 +1,79 @@
-# Change Log - @uifabric/azure-themes
+# Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.17..@fluentui/azure-themes_v8.0.0-beta.0)
+
+### Changes
+
+- Rename theme packages ([PR #15454](https://github.com/microsoft/fluentui/pull/15454) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Update Theme instances to contain components/scopedSettings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Azure Theme: Updating control outlines, pivot indentation and label weight. ([PR #15633](https://github.com/microsoft/fluentui/pull/15633) by humbertomakotomorimoto@gmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Updating SpinButton.styles to a StyleFunction. ([PR #15408](https://github.com/microsoft/fluentui/pull/15408) by czearing@outlook.com)
+
+## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.3..@uifabric/azure-themes_v7.5.17)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.1..@uifabric/azure-themes_v7.4.3)
+
+### Patches
+
+- Body text font size clean up, <Text> ([PR #14534](https://github.com/microsoft/fluentui/pull/14534) by jagaheri@microsoft.com)
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.6..@uifabric/azure-themes_v7.4.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.6)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.0..@uifabric/azure-themes_v7.3.6)
+
+### Patches
+
+- Messagebar palette update, defaultbutton as primiary styling fix ([PR #14459](https://github.com/microsoft/fluentui/pull/14459) by jagaheri@microsoft.com)
+- fix publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.2.0..@uifabric/azure-themes_v7.3.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.2.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.49..@uifabric/azure-themes_v7.2.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
 
 ## [7.1.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.49)
 

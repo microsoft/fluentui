@@ -41,6 +41,17 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
   });
 
+  it('can have child selectors without the selectors wrapper', () => {
+    styleToClassName(
+      {},
+      {
+        '.foo': { background: 'red' },
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
+  });
+
   it('can have child selectors with comma', () => {
     styleToClassName(
       {},
@@ -54,6 +65,17 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}.css-0 .bar{background:red;}');
   });
 
+  it('can have child selectors with comma without the selectors wrapper', () => {
+    styleToClassName(
+      {},
+      {
+        '.foo, .bar': { background: 'red' },
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}.css-0 .bar{background:red;}');
+  });
+
   it('can have child selectors with comma with pseudo selectors', () => {
     styleToClassName(
       {},
@@ -61,6 +83,17 @@ describe('styleToClassName', () => {
         selectors: {
           ':hover, :active': { background: 'red' },
         },
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:red;}.css-0:active{background:red;}');
+  });
+
+  it('can have child selectors with comma with pseudo selectors', () => {
+    styleToClassName(
+      {},
+      {
+        ':hover, :active': { background: 'red' },
       },
     );
 
@@ -84,6 +117,21 @@ describe('styleToClassName', () => {
     );
   });
 
+  it('can have child selectors with comma with @media query', () => {
+    styleToClassName(
+      {},
+      {
+        '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+          background: 'red',
+        },
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual(
+      '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){.css-0{background:red;}}',
+    );
+  });
+
   it('can have same element class selectors', () => {
     styleToClassName(
       {},
@@ -97,6 +145,17 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
   });
 
+  it('can have same element class selectors without the selectors wrapper', () => {
+    styleToClassName(
+      {},
+      {
+        '&.foo': [{ background: 'red' }],
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
+  });
+
   it('can register pseudo selectors', () => {
     const className = styleToClassName(
       {},
@@ -104,6 +163,18 @@ describe('styleToClassName', () => {
         selectors: {
           ':hover': { background: 'red' },
         },
+      },
+    );
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:red;}');
+  });
+
+  it('can register pseudo selectors without the selectors wrapper', () => {
+    const className = styleToClassName(
+      {},
+      {
+        ':hover': { background: 'red' },
       },
     );
 

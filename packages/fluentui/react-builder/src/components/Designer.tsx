@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button } from '@fluentui/react-northstar';
+import DocumentTitle from 'react-document-title';
+import { Text, Button, Divider } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Editor, renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -21,6 +23,7 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
+  getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -29,8 +32,8 @@ import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } 
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
-import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
+import { InsertComponent } from './InsertComponent';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -38,9 +41,22 @@ function debug(...args) {
   console.log('--Designer', ...args);
 }
 
+const CodeEditor = React.lazy(async () => {
+  const _CodeEditor = (await import(/* webpackChunkName: "codeeditor" */ './CodeEditor')).CodeEditor;
+  return {
+    default: _CodeEditor,
+  };
+});
+
 function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
 }
+
+const focusTreeTitle = uuid => {
+  // TODO: use refs
+  const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
+  element && element.focus();
+};
 
 type JSONTreeOrigin = 'store' | 'url';
 
@@ -53,6 +69,9 @@ type DesignerState = {
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
+  history: Array<JSONTreeElement>;
+  redo: Array<JSONTreeElement>;
+  insertComponent: { uuid: string; where: string; parentUuid?: string };
 };
 
 type DesignerAction =
@@ -68,7 +87,13 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
-  | { type: 'SOURCE_CODE_CHANGE'; code: string };
+  | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
+  | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
+  | { type: 'UNDO' }
+  | { type: 'REDO' }
+  | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
+  | { type: 'CLOSE_ADD_DIALOG' }
+  | { type: 'ADD_COMPONENT'; component: string; module: string };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -76,10 +101,15 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
 
   switch (action.type) {
     case 'DRAG_START':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = action.component;
       break;
 
     case 'DRAG_ABORT':
+      draftState.history.pop();
+
       draftState.draggingElement = null;
       break;
 
@@ -97,10 +127,12 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         draftState.selectedJSONTreeElementUuid = addedComponent.uuid;
         draftState.selectedComponentInfo = componentInfoContext.byDisplayName[addedComponent.displayName];
       }
-
       break;
 
     case 'DRAG_CLONE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
@@ -108,6 +140,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DRAG_MOVE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
@@ -135,6 +170,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DELETE_SELECTED_COMPONENT':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
         draftState.selectedJSONTreeElementUuid = null;
@@ -144,6 +182,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'PROP_CHANGE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
       if (editedComponent) {
         if (!editedComponent.props) {
@@ -161,6 +202,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'RESET_STORE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
       treeChanged = true;
@@ -179,14 +223,71 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       draftState.code = action.code;
       draftState.selectedJSONTreeElementUuid = null;
       draftState.selectedComponentInfo = null;
-      try {
-        draftState.jsonTree = codeToTree(action.code);
-        draftState.codeError = null;
-      } catch (e) {
-        draftState.codeError = e.message;
+      draftState.jsonTree = action.jsonTree;
+      draftState.codeError = null;
+      break;
+
+    case 'SOURCE_CODE_ERROR':
+      draftState.code = action.code;
+      draftState.selectedJSONTreeElementUuid = null;
+      draftState.selectedComponentInfo = null;
+      draftState.codeError = action.error;
+      break;
+
+    case 'UNDO':
+      if (draftState.history.length > 0) {
+        draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.history.pop();
+      }
+      break;
+
+    case 'REDO':
+      if (draftState.redo.length > 0) {
+        draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.redo.pop();
+      }
+      break;
+
+    case 'OPEN_ADD_DIALOG': {
+      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
+      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+      break;
+    }
+
+    case 'CLOSE_ADD_DIALOG':
+      draftState.insertComponent = null;
+      break;
+
+    case 'ADD_COMPONENT': {
+      const element = resolveDraggingElement(action.component, action.module);
+
+      let parent: JSONTreeElement = undefined;
+      let index = 0;
+      const { where, uuid, parentUuid } = draftState.insertComponent;
+      draftState.insertComponent = null;
+
+      if (where === 'first') {
+        parent = draftState.jsonTree;
+      } else if (where === 'child') {
+        parent = jsonTreeFindElement(draftState.jsonTree, uuid);
+      } else {
+        parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
+        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
+        if (index === -1) {
+          index = 0;
+        } else {
+          where === 'after' && index++;
+        }
       }
 
+      resolveDrop(element, parent, index);
+
+      draftState.selectedJSONTreeElementUuid = element.uuid;
+      draftState.selectedComponentInfo = componentInfoContext.byDisplayName[element.displayName];
+      treeChanged = true;
+      setTimeout(() => focusTreeTitle(element.uuid));
       break;
+    }
 
     default:
       throw new Error(`Invalid action ${action}`);
@@ -234,11 +335,15 @@ export const Designer: React.FunctionComponent = () => {
       showCode: false,
       code: null,
       codeError: null,
+      history: [],
+      redo: [],
+      insertComponent: null,
     };
   });
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [headerMessage, setHeaderMessage] = React.useState('');
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -255,6 +360,7 @@ export const Designer: React.FunctionComponent = () => {
     showCode,
     code,
     codeError,
+    insertComponent,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
@@ -280,7 +386,10 @@ export const Designer: React.FunctionComponent = () => {
   const handleDragStart = React.useCallback(
     (info, e) => {
       dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-      dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName) });
+      dispatch({
+        type: 'DRAG_START',
+        component: resolveDraggingElement(info.displayName, info.moduleName),
+      });
     },
     [dispatch],
   );
@@ -350,7 +459,7 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const handleDeleteComponent = React.useCallback(() => {
+  const handleDeleteSelectedComponent = React.useCallback(() => {
     dispatch({ type: 'DELETE_SELECTED_COMPONENT' });
   }, [dispatch]);
 
@@ -358,9 +467,28 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'SELECT_PARENT' });
   }, [dispatch]);
 
+  const handleUndo = () => {
+    dispatch({
+      type: 'UNDO',
+    });
+  };
+
+  const handleRedo = () => {
+    dispatch({
+      type: 'REDO',
+    });
+  };
+
   const handleSourceCodeChange = React.useCallback(
-    code => {
-      dispatch({ type: 'SOURCE_CODE_CHANGE', code });
+    (code, jsonTree) => {
+      dispatch({ type: 'SOURCE_CODE_CHANGE', code, jsonTree });
+    },
+    [dispatch],
+  );
+
+  const handleSourceCodeError = React.useCallback(
+    (code, error) => {
+      dispatch({ type: 'SOURCE_CODE_ERROR', code, error });
     },
     [dispatch],
   );
@@ -371,8 +499,76 @@ export const Designer: React.FunctionComponent = () => {
 
   const switchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
-    // FIXME: remove tree_lz from current URL
+    const url = window.location.href.split('#')[0];
+    window.history.pushState('', document.title, url);
   }, [dispatch]);
+
+  const hotkeys = {
+    'Ctrl+c': () => {
+      if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
+        dragAndDropData.current.position = { x: -300, y: -300 };
+        dispatch({ type: 'DRAG_CLONE' });
+      }
+    },
+    'Ctrl+v': () => {
+      if (state.draggingElement) {
+        dispatch({
+          type: 'DRAG_DROP',
+          dropParent: dragAndDropData.current.dropParent,
+          dropIndex: dragAndDropData.current.dropIndex,
+        });
+      }
+    },
+    'Ctrl+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Ctrl+Shift+Z': handleRedo,
+    Delete: handleDeleteSelectedComponent,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = React.useCallback(
+    (e: KeyboardEvent) => {
+      let command = '';
+      command += e.altKey ? 'Alt+' : '';
+      command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
+      command += e.shiftKey ? 'Shift+' : '';
+      command += e.key;
+      hotkeys.hasOwnProperty(command) && hotkeys[command]();
+    },
+    [hotkeys],
+  );
+
+  const handleOpenAddComponentDialog = React.useCallback(
+    (uuid: string, where: string) => {
+      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
+    },
+    [dispatch],
+  );
+
+  const handleCloseAddComponentDialog = React.useCallback(() => {
+    dispatch({ type: 'CLOSE_ADD_DIALOG' });
+  }, [dispatch]);
+
+  const handleAddComponent = React.useCallback(
+    (component: string, module: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component, module });
+    },
+    [dispatch],
+  );
 
   const selectedComponent =
     !draggingElement &&
@@ -380,6 +576,8 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement?.uuid &&
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
+
+  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
 
   return (
     <div
@@ -392,6 +590,11 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <DocumentTitle title={`Fluent UI Builder`} />
+      <EventListener type="keydown" listener={handleKeyDown} target={document} />
+      {insertComponent && (
+        <InsertComponent onDismiss={handleCloseAddComponentDialog} onComponentAdded={handleAddComponent} />
+      )}
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -428,6 +631,10 @@ export const Designer: React.FunctionComponent = () => {
         mode={mode}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
+        onUndo={handleUndo}
+        onRedo={handleRedo}
+        canUndo={state.history.length > 0}
+        canRedo={state.redo.length > 0}
         onReset={handleReset}
         onModeChange={setMode}
         showCode={showCode}
@@ -449,14 +656,27 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-          <ComponentTree
-            tree={jsonTree}
-            selectedComponent={selectedComponent}
-            onSelectComponent={handleSelectComponent}
-            onCloneComponent={handleCloneComponent}
-            onMoveComponent={handleMoveComponent}
-            onDeleteComponent={handleDeleteComponent}
-          />
+          <div role="complementary" aria-label="Component tree">
+            <Divider style={{ margin: '1rem' }} />
+            {jsonTree?.props?.children?.length > 0 ? (
+              <ComponentTree
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                onSelectComponent={handleSelectComponent}
+                onCloneComponent={handleCloneComponent}
+                onMoveComponent={handleMoveComponent}
+                onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                onAddComponent={handleOpenAddComponentDialog}
+              />
+            ) : (
+              <Button
+                text
+                content="Insert first component"
+                fluid
+                onClick={() => handleOpenAddComponentDialog('', 'first')}
+              />
+            )}
+          </div>
         </div>
 
         <div
@@ -478,6 +698,7 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
+                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{headerMessage}</Text>}</div>,
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
@@ -488,6 +709,33 @@ export const Designer: React.FunctionComponent = () => {
                     </>
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <CodeSandboxExporter
+                    exampleCode={codeSandboxData.code}
+                    exampleLanguage="js"
+                    exampleName="uibuilder"
+                    imports={codeSandboxData.imports}
+                  >
+                    {(state, onCodeSandboxClick) => {
+                      const codeSandboxContent =
+                        state === CodeSandboxState.Default
+                          ? 'CodeSandbox'
+                          : state === CodeSandboxState.Loading
+                          ? 'Exporting...'
+                          : 'Click to open';
+
+                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
+
+                      return (
+                        <Button
+                          loading={state === CodeSandboxState.Loading}
+                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
+                          onClick={onCodeSandboxClick}
+                          icon={codeSandboxIcon}
+                          content={codeSandboxContent}
+                        />
+                      );
+                    }}
+                  </CodeSandboxExporter>
                 </div>,
               ]}
               style={{
@@ -504,14 +752,18 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
+                  onKeyDown={handleKeyDown}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
                   selectedComponent={selectedComponent}
                   onCloneComponent={handleCloneComponent}
                   onMoveComponent={handleMoveComponent}
-                  onDeleteComponent={handleDeleteComponent}
+                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  role="main"
+                  inUseMode={mode === 'use'}
+                  setHeaderMessage={setHeaderMessage}
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -519,8 +771,14 @@ export const Designer: React.FunctionComponent = () => {
             {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
-                  <div>
-                    <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
+                  <div role="complementary" aria-label="Code editor">
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                      <CodeEditor
+                        code={code}
+                        onCodeChange={handleSourceCodeChange}
+                        onCodeError={handleSourceCodeError}
+                      />
+                    </React.Suspense>
                     {codeError && (
                       <pre
                         style={{
@@ -543,7 +801,11 @@ export const Designer: React.FunctionComponent = () => {
                   </div>
                 )}
                 {showJSONTree && (
-                  <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
+                  <div
+                    role="complementary"
+                    aria-label="JSON tree"
+                    style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
+                  >
                     <h3 style={{ margin: 0 }}>JSON Tree</h3>
                     <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
                   </div>
@@ -555,6 +817,8 @@ export const Designer: React.FunctionComponent = () => {
 
         {selectedComponentInfo && (
           <div
+            role="complementary"
+            aria-label="Component properties"
             style={{
               width: '20rem',
               padding: '1rem',
@@ -567,7 +831,6 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-            <pre>{JSON.stringify(selectedJSONTreeElement.props, null, 2)}</pre>
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {selectedJSONTreeElement && (
               <Knobs

@@ -1,1 +1,2 @@
-export * from './components/OverflowSet/index';
+import './version';
+export * from '@fluentui/react/lib/OverflowSet';

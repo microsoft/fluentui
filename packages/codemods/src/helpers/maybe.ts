@@ -3,7 +3,6 @@ import { Chainable, Flattened } from './chainable';
 interface MaybeChain<T> extends Chainable<T> {
   something?: boolean;
   __isMaybe: true;
-  fmap: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>) => Maybe<ReturnType>;
   chain: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => Maybe<ReturnType>) => Maybe<ReturnType>;
   flatten: () => Flattened<T, Maybe<T>>;
   then: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => ReturnType | Maybe<ReturnType>) => Maybe<ReturnType>;
@@ -21,10 +20,6 @@ class MB<T> implements MaybeChain<T> {
   public something: boolean;
   public value: T | undefined;
   public __isMaybe: true = true;
-
-  public fmap<ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>): Maybe<ReturnType> {
-    return this.something ? Something(fn(this.value)) : Nothing();
-  }
 
   public chain<R>(this: Maybe<T>, fn: (v: NonNullable<T>) => Maybe<R>): Maybe<R> {
     return this.something ? fn(this.value) : Nothing();
@@ -68,6 +63,27 @@ export const Something = <T>(value: NonNullable<T>): Something<T> => {
     something: true,
     value: value,
   });
+};
+
+export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
+  return new Proxy<{ [key: string]: Maybe<T> }>((dictionary as unknown) as { [key: string]: Maybe<T> }, {
+    get: (target: { [key: string]: Maybe<T> | T }, name: string): Maybe<T> => {
+      const value = target[name];
+      if (!value || !('__isMaybe' in value)) {
+        const mb = Maybe(value);
+        target[name] = mb;
+        return mb;
+      }
+      return value;
+    },
+  });
+};
+export const isSomething = <T>(val: Maybe<T>): val is Something<T> => {
+  return val.something;
+};
+
+export const isNothing = <T>(val: Maybe<T>): val is Nothing<T> => {
+  return !val.something;
 };
 
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {

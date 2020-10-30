@@ -1,5 +1,5 @@
 export function on(
-  element: Element | Window,
+  element: Element | Window | Document,
   eventName: string,
   callback: (ev: Event) => void,
   options?: boolean,

@@ -16,12 +16,17 @@ module.exports = {
   // matched relative to cwd
   ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-commonjs', 'node_modules', 'temp'],
   rules: {
+    '@fluentui/no-global-react': 'error',
     '@fluentui/no-tslint-comments': 'error',
 
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
     'import/no-default-export': 'error',
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
+    ],
 
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
@@ -47,10 +52,6 @@ module.exports = {
     'import/export': 'off',
     'import/first': 'off',
     'import/no-dynamic-require': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
-    ],
     'import/no-named-default': 'off',
     'import/no-useless-path-segments': 'off',
     'import/order': 'off',

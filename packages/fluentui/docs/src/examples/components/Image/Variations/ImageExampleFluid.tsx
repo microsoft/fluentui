@@ -6,17 +6,23 @@ const ImageExampleFluent = () => (
     <Layout
       styles={{ maxWidth: '70px' }}
       debug
-      renderMainArea={() => <Image fluid src="public/images/wireframe/square-image.png" />}
+      renderMainArea={() => (
+        <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
+      )}
     />
     <Layout
       styles={{ maxWidth: '100px' }}
       debug
-      renderMainArea={() => <Image fluid src="public/images/wireframe/square-image.png" />}
+      renderMainArea={() => (
+        <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
+      )}
     />
     <Layout
       styles={{ maxWidth: '150px' }}
       debug
-      renderMainArea={() => <Image fluid src="public/images/wireframe/square-image.png" />}
+      renderMainArea={() => (
+        <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
+      )}
     />
   </div>
 );

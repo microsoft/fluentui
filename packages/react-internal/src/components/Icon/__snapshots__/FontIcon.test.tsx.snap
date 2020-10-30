@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FontIcon renders FontIcon correctly 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      ms-Icon
+      {
+        display: inline-block;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "FabricMDL2Icons-2";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="CompassNW"
+  role="presentation"
+  style={
+    Object {
+      "fontFamily": "\\"FabricMDL2Icons-2\\"",
+    }
+  }
+>
+  
+</i>
+`;
+
+exports[`FontIcon renders FontIcon with children correctly 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      ms-Icon
+      {
+        display: inline-block;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+  role="presentation"
+  style={
+    Object {
+      "fontFamily": "\\"FabricMDL2Icons\\"",
+    }
+  }
+>
+  
+</i>
+`;

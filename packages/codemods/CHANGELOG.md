@@ -1,8 +1,128 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.14..@fluentui/codemods_v1.0.0-beta.0)
+
+### Changes
+
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- fix memory overflow in codemods ([PR #15353](https://github.com/microsoft/fluentui/pull/15353) by joschect@microsoft.com)
+- Codemods: Tighten up NoOp return types ([PR #15377](https://github.com/microsoft/fluentui/pull/15377) by joschect@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Fixes tests to correctly run on Windows machines. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.14)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.3..@fluentui/codemods_v0.11.14)
+
+### Patches
+
+- Codemods: Fix config mod to run if no changes present ([PR #15159](https://github.com/microsoft/fluentui/pull/15159) by joschect@microsoft.com)
+
+## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.3)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.0..@fluentui/codemods_v0.11.3)
+
+### Patches
+
+- Support for configmod ([PR #14837](https://github.com/microsoft/fluentui/pull/14837) by t-dama@microsoft.com)
+- Codemods: Remove unneeded compat mods and refactor ([PR #14849](https://github.com/microsoft/fluentui/pull/14849) by joschect@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.10.0..@fluentui/codemods_v0.11.0)
+
+### Minor changes
+
+- add list feature to codemods modruner ([PR #14785](https://github.com/microsoft/fluentui/pull/14785) by t-dama@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.10.0)
+
+Thu, 27 Aug 2020 12:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.4..@fluentui/codemods_v0.10.0)
+
+### Minor changes
+
+- add support for a config-based codemod execution ([PR #14765](https://github.com/microsoft/fluentui/pull/14765) by t-dama@microsoft.com)
+
+## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.4)
+
+Wed, 26 Aug 2020 12:35:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.2..@fluentui/codemods_v0.9.4)
+
+### Patches
+
+- Add docs for codemod writing ([PR #14718](https://github.com/microsoft/fluentui/pull/14718) by t-dama@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.2)
+
+Fri, 21 Aug 2020 12:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.1..@fluentui/codemods_v0.9.2)
+
+### Patches
+
+- CodeMods: Improve logging and more result implementation ([PR #14645](https://github.com/microsoft/fluentui/pull/14645) by joschect@microsoft.com)
+- add Maybe to prop utilities ([PR #14642](https://github.com/microsoft/fluentui/pull/14642) by t-dama@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.9.0..@fluentui/codemods_v0.9.1)
+
+### Patches
+
+- bug fixes in renameProp ([PR #14610](https://github.com/microsoft/fluentui/pull/14610) by t-dama@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.9.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.8.0..@fluentui/codemods_v0.9.0)
+
+### Patches
+
+- Add support for non-json codemod creation ([PR #14574](https://github.com/microsoft/fluentui/pull/14574) by t-dama@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.8.0)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.15..@fluentui/codemods_v0.8.0)
+
+### Minor changes
+
+- add generic config mod ([PR #14496](https://github.com/microsoft/fluentui/pull/14496) by t-dama@microsoft.com)
+- add support for repathing and function dictionary ([PR #14536](https://github.com/microsoft/fluentui/pull/14536) by t-dama@microsoft.com)
+
+### Patches
+
+- Codemods: Implement result and prepare for logging changes ([PR #14548](https://github.com/microsoft/fluentui/pull/14548) by joschect@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.15)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.4..@fluentui/codemods_v0.6.15)
+
+### Patches
+
+- polish renameProp ([PR #14451](https://github.com/microsoft/fluentui/pull/14451) by t-dama@microsoft.com)
+
+## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.4)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.2..@fluentui/codemods_v0.6.4)
+
+### Patches
+
+- Result: add in an result helper to assit in the creation of codemods ([PR #14154](https://github.com/microsoft/fluentui/pull/14154) by joschect@microsoft.com)
 
 ## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.2)
 

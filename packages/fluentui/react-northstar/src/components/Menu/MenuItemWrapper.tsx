@@ -37,6 +37,9 @@ interface MenuItemWrapperOwnProps {
 
   /** A vertical menu displays elements vertically. */
   vertical?: boolean;
+
+  /** Menu can be set to open on hover */
+  on?: 'hover';
 }
 
 export interface MenuItemWrapperProps extends BoxProps, MenuItemWrapperOwnProps {}
@@ -53,6 +56,7 @@ export type MenuItemWrapperStylesProps = Required<
     | 'secondary'
     | 'underlined'
     | 'vertical'
+    | 'on'
   >
 >;
 
@@ -75,6 +79,7 @@ export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapp
     underlined: props.underlined,
     vertical: props.vertical,
     primary: props.primary,
+    on: props.on,
   }),
   handledProps: [
     'active',
@@ -87,6 +92,7 @@ export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapp
     'underlined',
     'vertical',
     'primary',
+    'on',
   ],
 
   overrideStyles: true,

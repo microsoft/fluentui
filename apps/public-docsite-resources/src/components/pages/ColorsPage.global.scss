@@ -1,0 +1,74 @@
+@import '~@fluentui/common-styles/src/common';
+:global {
+  .overview .themeGeneratorPageLink {
+    color: $ms-color-themePrimary;
+  }
+
+  .ms-themer {
+    padding: 12px;
+    h2,
+    h3,
+    h4 {
+      color: $ms-color-black;
+    }
+  }
+  .ms-themer h3 {
+    margin: 0;
+  }
+
+  .ms-themer-paletteSlot {
+    text-align: center;
+    padding: 16px;
+  }
+
+  .ms-themer-swatch {
+    display: inline-block;
+    flex-shrink: 0;
+    height: 36px;
+    width: 36px;
+    margin: 4px;
+  }
+
+  .ms-themer-swatchBg {
+    padding: 4px;
+    font-size: 0;
+    .ms-themer-swatch {
+      height: 28px;
+      width: 28px;
+      margin: 2px;
+    }
+  }
+
+  .ms-themer-example {
+    padding: 20px;
+  }
+
+  .ms-themer-fabricPalette-root {
+    display: flex;
+    > div {
+      padding-left: 20px;
+    }
+  }
+
+  .ms-themer-accessibilityTable td {
+    padding: 4px;
+    text-align: center;
+  }
+
+  .ms-themer-slot {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .ms-themer-output-root {
+    display: flex;
+    textarea {
+      height: 400px;
+      width: 280px;
+      margin-right: 28px;
+      background-color: white;
+      color: #333;
+    }
+  }
+}

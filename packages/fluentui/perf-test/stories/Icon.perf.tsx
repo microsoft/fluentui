@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FontIcon as IconFabric, initializeIcons } from 'office-ui-fabric-react';
+import { FontIcon as IconFabric, initializeIcons } from '@fluentui/react';
 import { CloseIcon } from '@fluentui/react-northstar';
 
 initializeIcons();

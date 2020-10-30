@@ -9,7 +9,7 @@ interface ChatMessageHeaderOwnProps {
 export interface ChatMessageHeaderProps extends ChatMessageHeaderOwnProps, BoxProps {}
 
 export type ChatMessageHeaderStylesProps = never;
-export const ChatMessageHeaderClassName = `ui-chat__message__header`;
+export const chatMessageHeaderClassName = `ui-chat__messageheader`;
 
 /**
  * A ChatMessageHeader provides a slot for author/date/reactions for the ChatMessage.
@@ -21,7 +21,7 @@ export const ChatMessageHeader = compose<
   BoxProps,
   BoxStylesProps
 >(Box, {
-  className: ChatMessageHeaderClassName,
+  className: chatMessageHeaderClassName,
   displayName: 'ChatMessageHeader',
   shorthandConfig: { mappedProp: 'content' },
   overrideStyles: true,

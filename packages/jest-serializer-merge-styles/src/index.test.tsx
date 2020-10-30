@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { print, test } from './index';
-import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@fluentui/merge-styles';
 
 const indent = (val: string): string => '    ' + val;
 
@@ -33,6 +33,30 @@ describe('print', () => {
         ':hover': {
           background: 'green',
         },
+      },
+    });
+
+    expect(print(classNames, () => '', indent)).toEqual(
+      [
+        '',
+        indent('ms-GlobalClassName'),
+        indent('{'),
+        indent('  background: red;'),
+        indent('  color: white;'),
+        indent('}'),
+        indent('&:hover {'),
+        indent('  background: green;'),
+        indent('}'),
+      ].join('\n'),
+    );
+  });
+
+  it('can format, sort, and indent the class names without selectors wrapper', () => {
+    const classNames = mergeStyles('ms-GlobalClassName', {
+      color: 'white',
+      background: 'red',
+      ':hover': {
+        background: 'green',
       },
     });
 

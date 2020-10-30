@@ -7,6 +7,7 @@ export interface ListItemVariables {
 
   headerLineHeight: string;
   headerFontSize: string;
+  gap: string;
   zIndex: number;
 
   // Header Media
@@ -35,6 +36,7 @@ export const listItemVariables = (siteVariables: any): ListItemVariables => {
   return {
     minHeight: pxToRem(48),
     rootPadding: `0 ${pxToRem(18)} 0 ${pxToRem(20)}`,
+    gap: pxToRem(8),
     zIndex: siteVariables.zIndexes.foreground,
 
     // Header

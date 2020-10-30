@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createTheme, DetailsRowBase, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react';
+import { createTheme, DetailsRowBase, IColumn, Selection, SelectionMode } from '@fluentui/react';
 
 const Items = Array.from({ length: 10 }, (n, i) => ({
   key: `Item ${i}`,

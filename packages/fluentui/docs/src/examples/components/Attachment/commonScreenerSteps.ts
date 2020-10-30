@@ -1,4 +1,5 @@
 import { attachmentClassName, attachmentActionClassName } from '@fluentui/react-northstar';
+import { ScreenerSteps } from '@fluentui/scripts/screener';
 
 const selectors = {
   root: `.${attachmentClassName}`,

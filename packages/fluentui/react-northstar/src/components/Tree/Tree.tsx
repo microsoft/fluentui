@@ -165,7 +165,10 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  * @accessibilityIssues
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
+ * [Aria-selected and aria-checked are not output correctly for trees #432](https://github.com/FreedomScientific/VFO-standards-support/issues/432)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
+ * [VoiceOver narrates "selected false" for DOM with role=option and no aria-selected attribute](http://www.openradar.me/FB8050959)
+ * [VoiceOver does not support Aria 1.2 listbox role owning unselectable group role](http://www.openradar.me/FB8050958)
  */
 export const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {
@@ -208,6 +211,9 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
+    mapPropsToBehavior: () => ({
+      selectable,
+    }),
   });
 
   const { classes } = useStyles<TreeStylesProps>(Tree.displayName, {
@@ -239,23 +245,28 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setSelectedItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
-        ...stableProps.current,
-        selectedItemIds: updateSelectedItemIds,
+      setSelectedItemIdsState(prevSelectedItemIds => {
+        const nextSelectedItemIds = updateSelectedItemIds(prevSelectedItemIds);
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+        return nextSelectedItemIds;
       });
-
-      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: updateActiveItemIds,
+      setActiveItemIdsState(prevActiveItemIds => {
+        const nextActiveItemIds = updateActiveItemIds(prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
   );
@@ -301,9 +312,9 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         expandItems(e, treeItemProps);
       }
 
-      if (treeItemProps.selectable) {
+      if (selectable) {
         // parent must be selectable and expanded in order to procced with selection, otherwise return
-        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        if (treeItemHasSubtree && !treeItemProps.selectable) {
           return;
         }
 
@@ -315,7 +326,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         setSelectedItemIds(e, currSelectedItemIds => processItemsForSelection(treeItemProps, currSelectedItemIds));
       }
     },
-    [expandItems, setSelectedItemIds],
+    [expandItems, selectable, setSelectedItemIds],
   );
 
   const onFocusFirstChild = React.useCallback(
@@ -372,7 +383,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
-    if (!item.selectableParent || !item.items) {
+    if (!selectable || !hasSubtree(item)) {
       return false;
     }
 
@@ -385,7 +396,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   };
 
   const isSelectedItem = (item: TreeItemProps): boolean => {
-    if (item.selectableParent && item.items) {
+    if (selectable && hasSubtree(item)) {
       return isAllGroupChecked(item.items as TreeItemProps[], selectedItemIds);
     }
 

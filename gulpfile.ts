@@ -20,11 +20,11 @@ tsPaths.register({
 
 // load tasks in order of dependency usage
 require('./scripts/gulp/tasks/bundle');
+require('./scripts/gulp/tasks/component-info');
 require('./scripts/gulp/tasks/docs');
 require('./scripts/gulp/tasks/screener');
 require('./scripts/gulp/tasks/stats');
 require('./scripts/gulp/tasks/test-unit');
-require('./scripts/gulp/tasks/test-projects');
 require('./scripts/gulp/tasks/perf');
 require('./scripts/gulp/tasks/test-e2e');
 require('./scripts/gulp/tasks/test-circulars');

@@ -355,7 +355,13 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: <Image src="public/images/github.png" width="16px" height="16px" />,
+        icon: (
+          <Image
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+            width="16px"
+            height="16px"
+          />
+        ),
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',

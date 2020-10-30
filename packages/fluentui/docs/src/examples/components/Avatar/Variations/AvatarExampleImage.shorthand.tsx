@@ -3,8 +3,8 @@ import { Avatar } from '@fluentui/react-northstar';
 
 const AvatarExampleImageShorthand = () => (
   <>
-    <Avatar image="public/images/avatar/small/matt.jpg" />
-    <Avatar image="public/images/avatar/large/jerry.png" />
+    <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg" />
+    <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/jerry.png" />
   </>
 );
 

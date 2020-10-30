@@ -26,6 +26,7 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - Fix bidirectional `FocusZone` to land focus correctly on DOWN key press after series of UP arrow keys @sophieH29 ([#1794](https://github.com/stardust-ui/react/pull/1794))
 - Use always `getDocument` to correctly define current document object @sophieH29 ([#1820](https://github.com/stardust-ui/react/pull/1820))
 - Fix element reference memory leaks - Fabric PR 11618 @jurokapsiar ([#2270](https://github.com/microsoft/fluent-ui-react/pull/2270))
+- Adding aria-hidden to bumper elements so that they are not read by screen readers @khmakoto ([#14376](https://github.com/microsoft/fluentui/pull/14376))
 
 ### Features
 - Add embed mode for FocusZone and new Chat behavior ([#233](https://github.com/stardust-ui/react/pull/233))
@@ -39,6 +40,7 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - Add `shouldFocusFirstElementWhenReceivedFocus` prop, which forces focus to first element when container receives focus @sophieH29 ([#469](https://github.com/stardust-ui/react/pull/469))
 - Handle keyDownCapture based on `shouldHandleKeyDownCapture` prop @sophieH29 ([#563](https://github.com/stardust-ui/react/pull/563))
 - Add `bidirectionalDomOrder` direction allowing arrow keys navigation following DOM order @sophieH29 ([#1637](https://github.com/stardust-ui/react/pull/1647))
+- FocusZone: Adding `forceAlignment` attribute to `focusElement` to set focus alignment according to the element provided @khmakoto ([#14911](https://github.com/microsoft/fluentui/pull/14911))
 
 ### Upgrade `FocusZone` to the latest version from `fabric-ui` @sophieH29 ([#1772](https://github.com/stardust-ui/react/pull/1772))
 - Restore focus on removing item ([OfficeDev/office-ui-fabric-react#7818](https://github.com/OfficeDev/office-ui-fabric-react/pull/7818))

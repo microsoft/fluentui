@@ -1,0 +1,96 @@
+:root {
+  --badge-size: var(--badge-size-small);
+  --badge-size-smallest: 6px;
+  --badge-size-smaller: 8px;
+  --badge-size-small: 10px;
+  --badge-size-medium: 16px;
+  --badge-size-large: 20px;
+  --badge-size-larger: 24px;
+  --badge-size-largest: 32px;
+
+  --badge-borderRadius: 9999px;
+
+  // TODO this should match the parent's background color
+  --badge-glowColor: var(--siteVariables-colors-white, white);
+
+  --badge-color: var(--siteVariables-colors-grey-350, rgb(151, 149, 147));
+  --badge-iconColor: var(--siteVariables-colors-white, white);
+  --badge-error-color: var(--siteVariables-colors-red-400, rgb(196, 49, 75));
+  --badge-error-iconColor: var(--siteVariables-colors-white, white);
+  --badge-info-color: var(--siteVariables-colors-brand500, rgb(151, 149, 147));
+  --badge-info-iconColor: var(--siteVariables-colors-white, white);
+  --badge-success-color: var(--siteVariables-colors-green200, rgb(146, 195, 83));
+  --badge-success-iconColor: var(--siteVariables-colors-white, white);
+  --badge-warning-color: var(--siteVariables-colors-yellow-400, rgb(248, 210, 42));
+  --badge-warning-iconColor: var(--siteVariables-colors-white, white);
+}
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  border-radius: var(--badge-borderRadius);
+  border-width: var(--badge-borderWidth, calc(var(--badge-size) / 8));
+  border-style: var(--badge-borderStyle);
+  border-color: var(--badge-borderColor);
+  box-shadow: 0 0 0 var(--badge-glowWidth, calc(var(--badge-size) / 8)) var(--badge-glowColor);
+  background-color: var(--badge-color);
+  color: var(--badge-iconColor);
+  width: var(--badge-size);
+  height: var(--badge-size);
+}
+
+.icon {
+  display: flex;
+  width: 75%;
+  height: 75%;
+}
+
+._state_success {
+  --badge-color: var(--badge-success-color);
+  --badge-iconColor: var(--badge-success-iconColor);
+}
+
+._state_info {
+  --badge-color: var(--badge-info-color);
+  --badge-iconColor: var(--badge-info-iconColor);
+}
+
+._state_warning {
+  --badge-color: var(--badge-warning-color);
+  --badge-iconColor: var(--badge-warning-iconColor);
+}
+
+._state_error {
+  --badge-color: var(--badge-error-color);
+  --badge-iconColor: var(--badge-error-iconColor);
+}
+
+._size_smallest {
+  --badge-size: var(--badge-size-smallest);
+}
+
+._size_smaller {
+  --badge-size: var(--badge-size-smaller);
+}
+
+._size_small {
+  --badge-size: var(--badge-size-small);
+}
+
+._size_medium {
+  --badge-size: var(--badge-size-medium);
+}
+
+._size_large {
+  --badge-size: var(--badge-size-large);
+}
+
+._size_larger {
+  --badge-size: var(--badge-size-larger);
+}
+
+._size_largest {
+  --badge-size: var(--badge-size-largest);
+}

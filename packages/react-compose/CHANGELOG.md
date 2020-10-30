@@ -1,8 +1,122 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.7..@fluentui/react-compose_v1.0.0-beta.0)
+
+### Changes
+
+- Major bump react-compose package since it dependes on packages with new major. ([PR #15679](https://github.com/microsoft/fluentui/pull/15679) by xgao@microsoft.com)
+
+## [0.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.7)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.1..@fluentui/react-compose_v0.19.7)
+
+### Patches
+
+- Add missing version.ts; Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.0)
+
+Tue, 15 Sep 2020 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.18.2..@fluentui/react-compose_v0.19.0)
+
+### Minor changes
+
+- Updated mergeProps to makeMergeProps, which can be configured with options. ([PR #14985](https://github.com/microsoft/fluentui/pull/14985) by dzearing@hotmail.com)
+
+## [0.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.2)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.18.1..@fluentui/react-compose_v0.18.2)
+
+### Patches
+
+- getSlots: handles empty definitions and defaults 'as' to 'span'. Note this will change in an upcoming update, as we move to `components` rather than `as`. ([PR #14889](https://github.com/microsoft/fluentui/pull/14889) by dzearing@microsoft.com)
+
+## [0.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.18.1)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.17.1..@fluentui/react-compose_v0.18.1)
+
+### Patches
+
+- Fixing undefined merging, adding tests for mergeProps. ([PR #14856](https://github.com/microsoft/fluentui/pull/14856) by dzearing@hotmail.com)
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.17.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.16.0..@fluentui/react-compose_v0.17.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.16.0)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.3..@fluentui/react-compose_v0.16.0)
+
+### Minor changes
+
+- Updating readme. ([PR #14518](https://github.com/microsoft/fluentui/pull/14518) by dzearing@hotmail.com)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.3)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.2..@fluentui/react-compose_v0.14.3)
+
+### Patches
+
+- Adding null check in mergeProps. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.2)
+
+Mon, 10 Aug 2020 18:27:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.1..@fluentui/react-compose_v0.14.2)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.1)
+
+Mon, 10 Aug 2020 15:56:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.14.0..@fluentui/react-compose_v0.14.1)
+
+### Patches
+
+- next mergeProps: adding type check ([PR #14435](https://github.com/microsoft/fluentui/pull/14435) by dzearing@hotmail.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.14.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.13.0..@fluentui/react-compose_v0.14.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.13.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.12.1..@fluentui/react-compose_v0.13.0)
+
+### Minor changes
+
+- Adding a re-worked compose helper under /lib/next. This should not modify the public api in any way, but will simply let us try the updates before we buy into them. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.12.0)
 

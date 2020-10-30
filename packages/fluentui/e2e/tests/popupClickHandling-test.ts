@@ -10,14 +10,14 @@ describe('Popup - on content click', () => {
     await e2e.gotoTestCase(__filename, popupTrigger);
   });
 
-  it('is not closed if ESC is handled by children', async () => {
+  it('is not closed if an element inside disappeared', async () => {
     await e2e.clickOn(popupTrigger); // opens popup
     await e2e.clickOn(popupContentButton); // clicks on button in popup
 
     // button disappears from popup content
-    expect(await e2e.exists(popupContentButton)).toBe(false);
+    await e2e.expectHidden(popupContentButton);
 
     // but popup content itself remains to be opened
-    expect(await e2e.exists(popupContent)).toBe(true);
+    await e2e.exists(popupContent);
   });
 });

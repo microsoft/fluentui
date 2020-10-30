@@ -5,7 +5,7 @@ import * as DateGrid from './getDayGrid';
 import { IDay } from './dateGrid.types';
 
 describe('getDayGrid', () => {
-  const defaultDate = new Date('2016-04-01T00:00:00.000Z');
+  const defaultDate = new Date('Apr 1 2016');
   const defaultOptions: IDayGridOptions = {
     selectedDate: defaultDate,
     navigatedDate: defaultDate,
@@ -74,6 +74,11 @@ describe('getDayGrid', () => {
       daysToSelectInDayView: daysToSelect,
     });
     expect(countDays(result, day => day.isSelected)).toBe(daysToSelect);
+  });
+
+  it('returns grid with no selected days', () => {
+    const result = DateGrid.getDayGrid({ ...defaultOptions, selectedDate: new Date(0) });
+    expect(countDays(result, day => day.isSelected)).toBe(0);
   });
 
   it('returns grid with proper amount of weeks', () => {

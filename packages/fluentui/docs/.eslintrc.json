@@ -1,5 +1,14 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
+  "overrides": [
+    {
+      // These files don't have actual dependencies
+      "files": ["src/examples/**/*.steps.ts", "src/examples/**/commonScreenerSteps.ts"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
   "rules": {
     "no-alert": "off",
     "import/no-default-export": "off"

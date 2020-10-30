@@ -4,7 +4,7 @@ import { mountWithProviderAndGetComponent } from 'test/utils';
 import { TableCell } from 'src/components/Table/TableCell';
 
 describe('TableCell', () => {
-  isConformant(TableCell, { constructorName: 'TableCell' });
+  isConformant(TableCell, { testPath: __filename, constructorName: 'TableCell' });
 
   describe('accessiblity', () => {
     handlesAccessibility(TableCell, { defaultRootRole: 'cell' });

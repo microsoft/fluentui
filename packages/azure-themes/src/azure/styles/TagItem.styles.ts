@@ -1,4 +1,4 @@
-import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemStyleProps, ITagItemStyles } from '@fluentui/react/lib/Pickers';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { transparent } from '../Constants';
 

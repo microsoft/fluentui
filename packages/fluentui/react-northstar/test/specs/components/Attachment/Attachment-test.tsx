@@ -26,7 +26,7 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
 };
 
 describe('Attachment', () => {
-  isConformant(Attachment, { constructorName: 'Attachment' });
+  isConformant(Attachment, { testPath: __filename, constructorName: 'Attachment' });
 
   attachmentImplementsShorthandProp('action', AttachmentAction);
   attachmentImplementsShorthandProp('description', AttachmentDescription);

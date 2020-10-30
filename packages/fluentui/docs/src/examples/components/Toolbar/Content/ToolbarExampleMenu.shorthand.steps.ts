@@ -1,4 +1,5 @@
 import { toolbarItemWrapperClassName, toolbarMenuItemClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],

@@ -6,7 +6,7 @@ import { mountWithProvider } from 'test/utils';
 import { Text } from 'src/components/Text/Text';
 
 describe('Text', () => {
-  isConformant(Text, { constructorName: 'Text' });
+  isConformant(Text, { testPath: __filename, constructorName: 'Text' });
 
   test('renders children', () => {
     expect(mountWithProvider(<Text>children</Text>).text()).toEqual('children');

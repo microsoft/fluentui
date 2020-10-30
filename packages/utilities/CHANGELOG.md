@@ -1,8 +1,145 @@
-# Change Log - @uifabric/utilities
+# Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.3)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.2..@fluentui/utilities_v8.0.0-beta.3)
+
+### Changes
+
+- isIE11 utility should use getWindow to get the window ([PR #15720](https://github.com/microsoft/fluentui/pull/15720) by elcraig@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.2)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.1..@fluentui/utilities_v8.0.0-beta.2)
+
+### Changes
+
+- Store last language setting in sessionStorage not localStorage by default ([PR #15710](https://github.com/microsoft/fluentui/pull/15710) by elcraig@microsoft.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.1)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.0..@fluentui/utilities_v8.0.0-beta.1)
+
+### Changes
+
+- Async: update setTimeout to use internal error logging method ([PR #15636](https://github.com/microsoft/fluentui/pull/15636) by elcraig@microsoft.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.3..@fluentui/utilities_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- getId now can take in a blank string as prefix. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Deprecate Customizer. ([PR #15539](https://github.com/microsoft/fluentui/pull/15539) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+
+## [7.32.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.3)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.32.0..@uifabric/utilities_v7.32.3)
+
+### Patches
+
+- Fix for Styled pure functions to have a displayName. ([PR #14940](https://github.com/microsoft/fluentui/pull/14940) by czearing@outlook.com)
+
+## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.32.0)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.31.0..@uifabric/utilities_v7.32.0)
+
+### Minor changes
+
+- Consume virtual DOM functions from new location ([PR #15039](https://github.com/microsoft/fluentui/pull/15039) by tmichon@microsoft.com)
+
+## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.30.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.28.0..@uifabric/utilities_v7.30.0)
+
+### Minor changes
+
+- Added document type to element parameter within on.ts utility. ([PR #14238](https://github.com/microsoft/fluentui/pull/14238) by czearing@outlook.com)
+
+### Patches
+
+- Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function ([PR #14204](https://github.com/microsoft/fluentui/pull/14204) by sllynn8907@gmail.com)
+
+## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.28.0)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.27.0..@uifabric/utilities_v7.28.0)
+
+### Minor changes
+
+- Adding `createMergedRef` utility for merging refs in a class component. ([PR #14517](https://github.com/microsoft/fluentui/pull/14517) by dzearing@hotmail.com)
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.27.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.1..@uifabric/utilities_v7.27.0)
+
+### Minor changes
+
+- Updating getNativeProps default attribute set to include "ref" as a safe prop. ([PR #14274](https://github.com/microsoft/fluentui/pull/14274) by dzearing@microsoft.com)
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.26.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.1)
+
+Fri, 07 Aug 2020 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.0..@uifabric/utilities_v7.26.1)
+
+### Patches
+
+- useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled ([PR #14393](https://github.com/microsoft/fluentui/pull/14393) by xgao@microsoft.com)
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.1..@uifabric/utilities_v7.26.0)
+
+### Minor changes
+
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
+
+## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.1)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.0..@uifabric/utilities_v7.25.1)
+
+### Patches
+
+- omit: changed to for in for more perf improvement. ([PR #14313](https://github.com/microsoft/fluentui/pull/14313) by dzearing@microsoft.com)
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.0)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.6..@uifabric/utilities_v7.25.0)
+
+### Minor changes
+
+- Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce. ([PR #14281](https://github.com/microsoft/fluentui/pull/14281) by dzearing@microsoft.com)
+
+## [7.24.6](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.6)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.5..@uifabric/utilities_v7.24.6)
+
+### Patches
+
+- useCustomizationSettings: get settings from CustomizerContext if exists. ([PR #14145](https://github.com/microsoft/fluentui/pull/14145) by xgao@microsoft.com)
 
 ## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
 

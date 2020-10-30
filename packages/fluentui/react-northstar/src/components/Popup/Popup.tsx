@@ -6,6 +6,7 @@ import {
   useAutoControlled,
   useTelemetry,
   useFluentContext,
+  useTriggerElement,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -16,9 +17,9 @@ import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { elementContains, setVirtualParent } from '@fluentui/dom-utilities';
 
 import {
-  childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -130,7 +131,6 @@ export const Popup: React.FC<PopupProps> &
     align,
     autoFocus,
     inline,
-    children,
     contentRef,
     flipBoundary,
     on,
@@ -195,7 +195,6 @@ export const Popup: React.FC<PopupProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      disabled: false, // definition has this prop, but `Popup` doesn't support it
       isOpenedByRightClick,
       on,
       trapFocus,
@@ -370,12 +369,13 @@ export const Popup: React.FC<PopupProps> &
     return contentHandlerProps;
   };
 
-  const shouldBlurClose = e => {
-    return (
-      !e.currentTarget ||
-      !popupContentRef.current ||
-      (!e.currentTarget.contains(e.relatedTarget) && !popupContentRef.current.contains(e.relatedTarget))
-    );
+  const shouldBlurClose = (e: React.FocusEvent) => {
+    const relatedTarget = e.relatedTarget as Node;
+    const isInsideContent = elementContains(popupContentRef.current, relatedTarget as HTMLElement);
+    const isInsideTarget = elementContains(e.currentTarget as HTMLElement, relatedTarget as HTMLElement);
+    // When clicking in the popup content that has no tabIndex focus goes to body
+    // We shouldn't close the popup in this case
+    return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
   const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
@@ -408,14 +408,28 @@ export const Popup: React.FC<PopupProps> &
               {popupContent}
             </Ref>
 
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="contextmenu" capture />
-            <EventListener listener={handleDocumentKeyDown(getRefs)} target={context.target} type="keydown" capture />
-
-            {isOpenedByRightClick && (
+            {context.target && (
               <>
-                <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="contextmenu"
+                  capture
+                />
+                <EventListener
+                  listener={handleDocumentKeyDown(getRefs)}
+                  target={context.target}
+                  type="keydown"
+                  capture
+                />
+
+                {isOpenedByRightClick && (
+                  <>
+                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                  </>
+                )}
               </>
             )}
           </>
@@ -470,13 +484,13 @@ export const Popup: React.FC<PopupProps> &
    * Can be either trigger DOM element itself or the element inside it.
    */
   const updateTriggerFocusableRef = () => {
-    const activeDocument: HTMLDocument = context.target;
-    const activeElement = activeDocument.activeElement;
-
-    triggerFocusableRef.current =
-      triggerRef.current && triggerRef.current.contains(activeElement)
-        ? (activeElement as HTMLElement)
-        : triggerRef.current;
+    const activeElement = context.target?.activeElement;
+    if (activeElement) {
+      triggerFocusableRef.current =
+        triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
+          ? (activeElement as HTMLElement)
+          : triggerRef.current;
+    }
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
@@ -508,8 +522,20 @@ export const Popup: React.FC<PopupProps> &
     }
   });
 
-  const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
+  const triggerNode = useTriggerElement(props);
   const triggerProps = getTriggerProps(triggerNode);
+
+  React.useEffect(() => {
+    if (open) {
+      setVirtualParent(popupContentRef.current, triggerRef.current);
+    }
+
+    return () => {
+      if (open && popupContentRef.current) {
+        setVirtualParent(popupContentRef.current, null);
+      }
+    };
+  }, [open]);
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>

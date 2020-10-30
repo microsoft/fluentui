@@ -2,7 +2,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-
+import cx from 'classnames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
@@ -134,7 +134,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
       onKeyUp={handleKeyUp}
       {...unhandledProps}
       wrapper={{
-        className: dropdownSearchInputSlotClassNames.wrapper,
+        className: cx(dropdownSearchInputSlotClassNames.wrapper, className),
         styles: resolvedStyles.root,
         ...accessibilityComboboxProps,
         ...unhandledProps.wrapper,

@@ -47,7 +47,7 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
-    const uuid = props?.['data-builder-id'] ?? getUUID();
+    const uuid = props && props.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
     delete props?.['data-builder-id'];
 
     return {

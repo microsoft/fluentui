@@ -15,6 +15,7 @@ jest.useFakeTimers();
 
 describe('Dropdown', () => {
   isConformant(Dropdown, {
+    testPath: __filename,
     hasAccessibilityProp: false,
     constructorName: 'Dropdown',
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],

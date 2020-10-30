@@ -8,6 +8,7 @@ import { ListItem } from 'src/components/List/ListItem';
 
 describe('ListItem', () => {
   isConformant(ListItem, {
+    testPath: __filename,
     constructorName: 'ListItem',
   });
   handlesAccessibility(ListItem, { defaultRootRole: 'listitem' });

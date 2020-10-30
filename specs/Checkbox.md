@@ -210,7 +210,13 @@ Could consider supporting an invalid state/error state but this might just be su
 
 ```html
 <div class="ms-Checkbox-checkbox">
-  <input type="checkbox" class="input-226" id="checkbox-268" aria-label="Unchecked checkbox (uncontrolled)" aria-checked="false" />
+  <input
+    type="checkbox"
+    class="input-226"
+    id="checkbox-268"
+    aria-label="Unchecked checkbox (uncontrolled)"
+    aria-checked="false"
+  />
   <label class="ms-Checkbox-label label-227" for="checkbox-268">
     <div class="ms-Checkbox-checkbox checkbox-228">
       <i data-icon-name="CheckMark" aria-hidden="true" class="ms-Checkbox-checkmark checkmark-231"> </i>
@@ -316,12 +322,31 @@ Same behavior as above except no preview of toggled state through hover.
 
 ### Screenreader accessibility:
 
+#### `Fluent UI & Fluent UI Northstar comparison`:
+
+From accessibility point of view the main difference is in type of element used for Checkbox itself:
+
+- Fluent UI has `<input>` element with type="checkbox"
+- Fluent UI Northstar has `<div>` element with role="checkbox"
+
+  [Verification with screen reader](https://jurokapsiar.github.io/open-a11y/components/checkbox.research) doens't show any differences between these two approaches, everything was working as expected.
+
+#### `Accessibility variants`:
+
+- two-state checkbox
+- tri-state checkbox
+- disabled
+
 #### `root`:
 
 - should render the native element using the `as` prop, defaulting to `div`
 - should mix in native props expected for the element type defined in `as`.
 
-Input slot: role should be set to `checkbox`
+Input slot:
+
+- receives `aria-checked` representing checkbox state
+- receives `aria-disabled="true"` representing disabled checkbox
+
 A visible label referenced by the value of `aria-labelledby` (id of element containing the label) set on the element with role `checkbox`.
 If there's additional static text representing that is descriptive, `aria-describedby` should be set to id of element containing the description.
 `aria-label` set on the element with role `checkbox`.

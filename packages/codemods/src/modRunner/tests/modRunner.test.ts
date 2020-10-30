@@ -8,11 +8,12 @@ import {
 } from '../runnerUtilities';
 import { CodeMod, CodeModResult } from '../../codeMods/types';
 import { Maybe, Nothing } from '../../helpers/maybe';
+import { Ok } from '../../helpers/result';
 
 describe('modRunner tests', () => {
   it('gets the appropriate path to mods based on current dir', () => {
-    const modPath = getModsRootPath();
-    expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
+    const modPath = getModsRootPath().replace(/\\/g, '/');
+    expect(modPath).toEqual(`${process.cwd().replace(/\\/g, '/')}/src/modRunner/../codeMods/mods`);
   });
 
   it('returns the right paths to run for mods', () => {
@@ -40,7 +41,7 @@ describe('modRunner tests', () => {
     let runCount = 0;
     const runCallBack = (foo: string): CodeModResult => {
       runCount = runCount + 1;
-      return {};
+      return Ok({ logs: [] });
     };
     const mods: CodeMod<string>[] = [
       {
@@ -65,7 +66,7 @@ describe('modRunner tests', () => {
 
   it('filters enabled and nothing Mods', () => {
     const runcallBack = (foo: string): CodeModResult => {
-      return {};
+      return Ok({ logs: [] });
     };
 
     // use a generator to simulate getting each mod back
@@ -89,6 +90,7 @@ describe('modRunner tests', () => {
     const gen = modGen();
 
     const filtered = getEnabledMods(
+      console,
       () => ['1', '2', '3', '4'],
       () => gen.next().value,
     );

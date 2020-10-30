@@ -42,7 +42,6 @@ export interface TextVariables {
   atMentionOtherColor: string;
   atMentionMeFontWeight: number;
   importantWeight: number;
-  timestampHoverColor: string;
 }
 
 export const textVariables = (siteVariables): TextVariables => {
@@ -83,7 +82,6 @@ export const textVariables = (siteVariables): TextVariables => {
     importantWeight: siteVariables.fontWeightBold,
     importantColor: siteVariables.colors.red[400],
     successColor: siteVariables.colors.green[600],
-    timestampColor: siteVariables.colors.grey[350],
-    timestampHoverColor: siteVariables.colors.grey[500],
+    timestampColor: siteVariables.colorScheme.default.foreground1,
   };
 };

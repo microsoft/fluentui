@@ -1,6 +1,134 @@
 {
-  "name": "@uifabric/merge-styles",
+  "name": "@fluentui/merge-styles",
   "entries": [
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/merge-styles_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/merge-styles"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles (#15627)",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/merge-styles"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/merge-styles"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/merge-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/merge-styles"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/merge-styles"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/merge-styles_v7.19.1",
+      "version": "7.19.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@uifabric/merge-styles_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting additional typings, updated auto-unit generation to not prefix the default unit (px) on css custom properties.",
+            "author": "dzearing@hotmail.com",
+            "commit": "1838dcc8b214345f6cc8f9c0904a2cc66cc39f71",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/merge-styles_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/merge-styles_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update IRawStyleBase tying to allow css variables (string) as acceptable values.",
+            "author": "xgao@microsoft.com",
+            "commit": "787a28b8ac5f9e6f42dfe9a0630f012fea3900bf",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/merge-styles_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Deprecating the `selectors` node. While it still works, you no longer need to wrap selectors within it. Just inline them next to the other styles.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5b987c2dacab9ebddda7c3966e03521e974fbd63",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
     {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/merge-styles_v7.16.1",

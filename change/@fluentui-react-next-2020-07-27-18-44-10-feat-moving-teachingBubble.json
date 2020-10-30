@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Copying teachingBubble to react-next, in preparation for converting to a function component.",
-  "packageName": "@fluentui/react-next",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-28T01:44:10.935Z"
-}

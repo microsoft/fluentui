@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { StyleProps, StyleOptions } from './types';
 

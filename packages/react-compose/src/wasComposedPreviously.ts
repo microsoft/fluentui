@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComposedComponent, Input } from './types';
 
 /**

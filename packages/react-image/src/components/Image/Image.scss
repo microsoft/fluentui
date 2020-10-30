@@ -6,12 +6,13 @@
  * they will be resolved on the :root element only; not at usage time.
 **/
 :root {
-  --image-borderRadius: 0;
+  --image-borderColor: #d1d1d1 /* Neutral stroke primary */;
+  --image-borderRadius: 0px; /* None */
+  --image-boxShadow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1); /* --Shadow 4 */
 
-  --image-bordered-borderColor: black;
-  --image-bordered-borderWidth: 2px;
-  --image-circular-borderRadius: 50%;
-  --image-rounded-borderRadius: 5px;
+  --image-bordered-borderWidth: 1px; /* Thin */
+  --image-circular-borderRadius: 50%; /* Circle */
+  --image-rounded-borderRadius: 4px; /* Medium */
 }
 
 /**
@@ -28,7 +29,10 @@
   */
 
 .root {
+  border-color: var(--image-borderColor);
   border-radius: var(--image-borderRadius);
+  box-shadow: var(--image-boxShadow);
+
   box-sizing: border-box;
   display: inline-block;
 
@@ -42,7 +46,6 @@
    * 3. Avoid defining styles directly.
    */
   &._bordered {
-    border-color: var(--image-bordered-borderColor);
     border-style: solid;
     border-width: var(--image-bordered-borderWidth);
   }
@@ -93,6 +96,10 @@
 
     /* IE 11 */
     font-family: 'object-fit: cover; object-position: center;';
+  }
+
+  &._fluid {
+    width: 100%;
   }
 
   &._rounded {

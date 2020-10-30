@@ -1,5 +1,6 @@
 import { getModFilter, getRegexFilter, getStringFilter } from '../modFilter';
 import { Maybe } from '../../helpers/maybe';
+import { Ok } from '../../helpers/result';
 
 describe('modRunner tests', () => {
   it('gets a basic exact name match filter from string', () => {
@@ -21,7 +22,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'ohi',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(true);
@@ -29,7 +30,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'bar',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(true);
@@ -37,7 +38,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'foo',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(true);
@@ -49,7 +50,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'hi',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(true);
@@ -57,7 +58,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'o zz o',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(true);
@@ -65,7 +66,7 @@ describe('modRunner tests', () => {
       modFilter({
         name: 'I wont be filtered!',
         run: () => {
-          return {};
+          return Ok({ logs: [] });
         },
       }),
     ).toBe(false);

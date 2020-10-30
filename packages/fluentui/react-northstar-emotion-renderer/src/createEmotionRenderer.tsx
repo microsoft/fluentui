@@ -112,6 +112,10 @@ export function createEmotionRenderer(target?: Document): Renderer {
   };
 
   return {
+    // TODO: check that should be in clean up for Emotion
+    registerUsage: () => {},
+    unregisterUsage: () => {},
+
     renderGlobal,
     renderFont,
     renderRule,

@@ -18,7 +18,7 @@ const getFormField = (control: React.ComponentType<any> | string) =>
   mountWithProvider(<FormField control={{ as: control }} name="firstName" />).find('FormField');
 
 describe('FormField', () => {
-  isConformant(FormField, { constructorName: 'FormField' });
+  isConformant(FormField, { testPath: __filename, constructorName: 'FormField' });
   formFieldImplementsShorthandProp('label', Text);
   formFieldImplementsShorthandProp('message', Text);
   formFieldImplementsShorthandProp('control', Box, { mapsValueToProp: 'children' });

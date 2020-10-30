@@ -4,13 +4,13 @@
 
 ```ts
 
-import { IButtonProps } from 'office-ui-fabric-react';
-import { IKeytipProps } from 'office-ui-fabric-react';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
+import { IKeytipProps } from '@fluentui/react-internal';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -37,7 +37,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: React.RefObject<IPivot>;
     defaultSelectedKey?: string;
@@ -53,8 +53,9 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & Pick<IPivotProps, 'linkSize'> & Pick<IPivotProps, 'linkFormat'> & {
-    linkIsSelected?: boolean;
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    linkSize?: PivotLinkSizeType;
+    linkFormat?: PivotLinkFormatType;
 };
 
 // @public (undocumented)
@@ -112,7 +113,7 @@ export const enum PivotLinkSize {
 export type PivotLinkSizeType = 'normal' | 'large';
 
 
-export * from "@fluentui/react-theme-provider/lib/compat";
+export * from "@fluentui/react-theme-provider";
 
 // (No @packageDocumentation comment for this package)
 

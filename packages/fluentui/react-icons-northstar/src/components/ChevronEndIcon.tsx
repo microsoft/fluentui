@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ChevronEndIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svgFlippingInRtl}>
       <g>
         <path
           className={cx(iconClassNames.outline, classes.outlinePart)}
