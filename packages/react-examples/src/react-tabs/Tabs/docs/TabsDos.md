@@ -1,3 +1,0 @@
-- Use on content-heavy pages that require a significant amount of scrolling to access the various sections.
-- Be concise on the navigation labels, ideally one or two words rather than a phrase.
-- Make sure all the children of the Tabs component are of type TabItem.

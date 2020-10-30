@@ -1,4 +1,0 @@
-- Don’t use on pages which don’t scroll.
-- Don’t use the Tabs to tab to a new page.
-- Don’t use the Tabs to tab to hidden content.
-- Don’t pass any children of type other than TabItem to the Tabs component.
