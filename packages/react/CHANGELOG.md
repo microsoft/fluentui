@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 12:33:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.6)
+
+Fri, 30 Oct 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.5..@fluentui/react_v8.0.0-beta.6)
+
+### Changes
+
+- remove check for allowFreeForm to enable readOnly prop ([PR #15737](https://github.com/microsoft/fluentui/pull/15737) by ololubek@microsoft.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.5)
 
