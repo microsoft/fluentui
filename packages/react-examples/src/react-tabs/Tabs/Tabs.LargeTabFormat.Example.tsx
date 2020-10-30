@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { Tabs, TabItem } from '@fluentui/react-tabs';
+import { Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
 
 export const TabsLargeTabFormatExample = () => (
   <div>

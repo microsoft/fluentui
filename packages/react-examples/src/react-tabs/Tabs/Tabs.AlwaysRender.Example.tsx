@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tabs, TabItem } from '@fluentui/react-tabs';
+import { Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@fluentui/react-hooks';
 
