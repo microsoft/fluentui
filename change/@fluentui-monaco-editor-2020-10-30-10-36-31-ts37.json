@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove code for TS < 3.7 compat",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-30T17:36:05.975Z"
+}
