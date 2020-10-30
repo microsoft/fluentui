@@ -1615,9 +1615,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { onItemClick } = this.props;
     const { index } = item;
     return (ev: React.MouseEvent<any>): void => {
-      onItemClick && onItemClick(ev, item, index);
-      this._setSelectedIndex(index as number, ev);
-
       // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
         // ensure that focus returns to the input, not the button
@@ -1626,6 +1623,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           isOpen: false,
         });
       }
+
+      // Continue processing the click only after
+      // performing menu close / control focus(inner working)
+      onItemClick && onItemClick(ev, item, index);
+      this._setSelectedIndex(index as number, ev);
     };
   }
 
