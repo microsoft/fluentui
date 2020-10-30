@@ -23,5 +23,3 @@ coverage
 etc
 change
 
-# package specific files
-packages/web-components/**/*.spec.ts

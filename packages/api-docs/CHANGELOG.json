@@ -2,6 +2,21 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Wed, 21 Oct 2020 12:32:12 GMT",
+      "tag": "@uifabric/api-docs_v7.5.32",
+      "version": "7.5.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update package.json",
+            "author": "xgao@microsoft.com",
+            "commit": "03eece78b4583e0c34e42b159a954a8f64748be3",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/api-docs_v7.5.17",
       "version": "7.5.17",

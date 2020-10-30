@@ -19,12 +19,10 @@ const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
-const generatePackageManifestTask = require('./tasks/generate-package-manifest');
 const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
-const { fluentuiLernaPublish } = require('./tasks/fluentui-publish');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -84,12 +82,8 @@ module.exports = function preset() {
   task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
-  task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
 
   task('ts:compile', () => {
     return argv().commonjs

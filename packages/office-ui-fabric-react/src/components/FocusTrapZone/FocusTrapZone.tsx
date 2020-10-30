@@ -138,7 +138,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public focus() {
-    const { focusPreviouslyFocusedInnerElement, firstFocusableSelector } = this.props;
+    // eslint-disable-next-line deprecation/deprecation
+    const { focusPreviouslyFocusedInnerElement, firstFocusableSelector, firstFocusableTarget } = this.props;
 
     if (
       focusPreviouslyFocusedInnerElement &&
@@ -158,7 +159,11 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     let _firstFocusableChild: HTMLElement | null = null;
 
     if (this._root.current) {
-      if (focusSelector) {
+      if (typeof firstFocusableTarget === 'string') {
+        _firstFocusableChild = this._root.current.querySelector(firstFocusableTarget);
+      } else if (firstFocusableTarget) {
+        _firstFocusableChild = firstFocusableTarget(this._root.current);
+      } else if (focusSelector) {
         _firstFocusableChild = this._root.current.querySelector('.' + focusSelector);
       }
 

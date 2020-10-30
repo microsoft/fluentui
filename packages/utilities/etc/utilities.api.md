@@ -331,7 +331,7 @@ export function getId(prefix?: string): string;
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
 // @public
-export function getLanguage(): string | null;
+export function getLanguage(persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): string | null;
 
 // @public
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
@@ -1132,6 +1132,9 @@ export function setBaseUrl(baseUrl: string): void;
 export function setFocusVisibility(enabled: boolean, target?: Element): void;
 
 // @public
+export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
+
+// @public @deprecated
 export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setMemoizeWeakMap" should be prefixed with an underscore because the declaration is marked as @internal

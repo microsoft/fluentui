@@ -44,20 +44,23 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       {
         color: semanticColors.buttonText,
         height: 36,
+        paddingLeft: 0,
+        paddingRight: 0,
+        marginRight: 24,
       },
       !rootIsLarge && {
-        fontSize: theme.fonts.medium.fontSize,
+        fontSize: theme.fonts.large.fontSize,
       },
       !rootIsTabs && {
         selectors: {
           ':hover': {
-            backgroundColor: extendedSemanticColors.tabHover,
+            backgroundColor: extendedSemanticColors.bodyBackground,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.listItemBackgroundCheckedHovered,
+            backgroundColor: semanticColors.bodyBackground,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
           },
@@ -70,13 +73,13 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         marginBottom: '-1px',
         selectors: {
           ':hover': {
-            backgroundColor: semanticColors.listItemBackgroundHovered,
+            backgroundColor: semanticColors.bodyBackground,
             border: StyleConstants.borderNone,
             borderBottom: `1px solid ${semanticColors.inputBorder}`,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.listItemBackgroundHovered,
+            backgroundColor: semanticColors.bodyBackground,
             border: StyleConstants.borderNone,
             borderBottom: `1px solid ${semanticColors.inputBorder}`,
             transition: 'background-color .2s ease-out',
@@ -85,16 +88,34 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       },
     ],
     linkIsSelected: [
+      {
+        marginRight: 24,
+        selectors: {
+          '.ms-Fabric--isFocusVisible': {
+            outline: '1px solid black !important',
+          },
+          ':active': {
+            backgroundColor: semanticColors.bodyBackground,
+          },
+        },
+      },
       !rootIsLarge && {
-        fontSize: theme.fonts.medium.fontSize,
+        fontSize: theme.fonts.large.fontSize,
         height: 36,
+        paddingLeft: 0,
+        paddingRight: 0,
+        // the selected underline
+        '::before': {
+          left: 0,
+          right: 0,
+        },
       },
       !rootIsTabs && {
         color: semanticColors.bodyText,
         paddingBottom: '1px',
         selectors: {
           ':hover': {
-            backgroundColor: extendedSemanticColors.tabHover,
+            backgroundColor: extendedSemanticColors.bodyBackground,
             color: extendedSemanticColors.bodyTextHovered,
             border: StyleConstants.borderNone,
           },

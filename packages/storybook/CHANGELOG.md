@@ -1,8 +1,26 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Tue, 06 Oct 2020 17:31:19 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.15)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.10..@fluentui/storybook_v0.5.15)
+
+### Patches
+
+- Remove version 8 related code. ([PR #15571](https://github.com/microsoft/fluentui/pull/15571) by xgao@microsoft.com)
+
+## [0.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.10)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.7..@fluentui/storybook_v0.5.10)
+
+### Patches
+
+- Move v8 theme instances from react-theme-provider. ([PR #15449](https://github.com/microsoft/fluentui/pull/15449) by xgao@microsoft.com)
 
 ## [0.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.7)
 
