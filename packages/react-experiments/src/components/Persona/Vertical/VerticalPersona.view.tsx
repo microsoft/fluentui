@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
-import { getSlots, withSlots } from '@uifabric/foundation';
+import { getSlots, withSlots } from '@fluentui/foundation-legacy';
 import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
 

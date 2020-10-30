@@ -15,6 +15,9 @@ import { TabPanelStyles as styles } from './tab-panel.styles';
   name: 'fluent-tab-panel',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentTabPanel extends TabPanel {}
 

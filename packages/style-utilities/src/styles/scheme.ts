@@ -1,4 +1,4 @@
-import { Customizations, mergeSettings, ICustomizerContext } from '@uifabric/utilities';
+import { Customizations, mergeSettings, ICustomizerContext } from '@fluentui/utilities';
 import { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**

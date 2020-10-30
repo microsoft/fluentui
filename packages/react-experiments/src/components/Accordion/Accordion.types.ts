@@ -1,5 +1,5 @@
 import { IStyle } from '../../Styling';
-import { IComponent, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
+import { IComponent, IHTMLSlot, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 
 export type IAccordionComponent = IComponent<IAccordionProps, IAccordionTokens, IAccordionStyles>;
 

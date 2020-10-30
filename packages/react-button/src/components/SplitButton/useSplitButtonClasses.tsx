@@ -1,6 +1,7 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
-import { ButtonSizeVariantStyles } from '../Button/index';
+import { buttonSizeVariants } from '../Button/index';
+import { SplitButtonState, SplitButtonVariants } from './SplitButton.types';
 
 const GlobalClassNames = {
   root: 'ms-SplitButton',
@@ -10,7 +11,7 @@ const GlobalClassNames = {
 
 const menuButtonWidth = '32px';
 
-export const useSplitButtonClasses = makeVariantClasses({
+export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitButtonVariants>({
   name: 'SplitButton',
   prefix: '--button',
 
@@ -92,7 +93,7 @@ export const useSplitButtonClasses = makeVariantClasses({
       },
     },
   },
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): SplitButtonVariants => {
     const { palette, semanticColors } = theme;
 
     return {
@@ -143,7 +144,7 @@ export const useSplitButtonClasses = makeVariantClasses({
         menuIconColor: palette.neutralSecondary,
       },
 
-      ...ButtonSizeVariantStyles,
+      ...buttonSizeVariants,
     };
   },
 });

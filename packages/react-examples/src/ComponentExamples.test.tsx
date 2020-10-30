@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
 import { resetIds } from '@fluentui/react/lib/Utilities';
 
-import * as ExampleData from '@uifabric/example-data';
-import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
+import * as ExampleData from '@fluentui/example-data';
+import * as mergeStylesSerializer from '@fluentui/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');
 
@@ -122,10 +122,10 @@ const includedPackages = [
   'react-button',
   'react-cards',
   'react-checkbox',
-  // TODO: Fix these issues then re-enable tests for date-time components:
+  // TODO: Fix these issues then re-enable tests for react-date-time components:
   // 1. Date mocking causes infinite loops for examples that involve generating date ranges
   // 2. Snapshots are sometimes different between local build and CI due to different machine time zones
-  // 'date-time',
+  // 'react-date-time',
   'react-focus',
   'react-link',
   'react-slider',

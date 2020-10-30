@@ -1,4 +1,4 @@
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
 
 export interface IGetFocusStylesOptions {
   /**

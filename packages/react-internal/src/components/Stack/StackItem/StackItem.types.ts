@@ -1,4 +1,10 @@
-import { IComponentStyles, IHTMLSlot, IComponent, ISlotProp, IStyleableComponentProps } from '@uifabric/foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  IComponent,
+  ISlotProp,
+  IStyleableComponentProps,
+} from '@fluentui/foundation-legacy';
 
 /**
  * {@docCategory Stack}

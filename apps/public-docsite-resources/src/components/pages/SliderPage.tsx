@@ -5,7 +5,7 @@ import { SliderPageProps } from '@fluentui/react-examples/lib/react-slider/Slide
 
 export const SliderPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Slider.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Slider.page.json')}
     {...{ ...SliderPageProps, ...props }}
   />
 );

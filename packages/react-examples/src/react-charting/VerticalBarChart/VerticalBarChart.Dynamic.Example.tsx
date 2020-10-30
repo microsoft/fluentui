@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IExampleState {
   dynamicData: IDataPoint[];
@@ -49,6 +49,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           chartLabel={'Chart with Dynamic Data'}
           hideLegend={true}
           hideTooltip={true}
+          yMaxValue={50}
+          yAxisTickCount={5}
           height={400}
           width={650}
         />

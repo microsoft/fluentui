@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 import { makeClasses } from './makeClasses';
-import { GlobalSettings, isIE11 } from '@uifabric/utilities';
+import { isIE11 } from '@fluentui/utilities';
 import { StyleRenderer } from './styleRenderers/types';
 import { useVariantClassesIE11Override } from './useVariantClassesIE11Override';
 
@@ -43,7 +43,7 @@ const processVariants = (variants: Variants | undefined, theme: Theme, name?: st
 /**
  * Options for makeVariantClasses.
  */
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
   /**
    * Name of the component to use for fetching variants from the theme.
    */
@@ -63,7 +63,7 @@ export type MakeVariantClassesOptions = {
    * Variants for the styles. A variant defines token values when a particular prop is present, or the
    * variant prop matches.
    */
-  variants?: Variants | ((theme: Theme) => Variants);
+  variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 export type UseVariantClassesOverride = (
@@ -80,9 +80,11 @@ export const UseVariantClassesOverrideKey = 'useVariantClassesOverride';
  * token values mapped to modifiers on the component. A variant can also be referenced using
  * a variant string. Variants can be overridden through the theme of the component.
  */
-export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptions) => {
+export const makeVariantClasses = <TState = {}, TVariants = Variants>(
+  options: MakeVariantClassesOptions<TVariants>,
+) => {
   const cache = new Map();
-  const { styles, name, prefix, variants } = options;
+  const { styles, variants, name, prefix } = options;
 
   // This function will only be called when styles have not been evaluated for this set for
   // the particular theme/window/direction combo.
@@ -103,7 +105,7 @@ export const makeVariantClasses = <TState = {}>(options: MakeVariantClassesOptio
   // the default implementation, or an override for the IE11 case.
   const useVariantClasses = (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
     // If a global override is defined, use that. Otherwise use the default behavior.
-    const callback = GlobalSettings.getValue<UseVariantClassesOverride>(UseVariantClassesOverrideKey);
+    // const callback = GlobalSettings.getValue<UseVariantClassesOverride>(UseVariantClassesOverrideKey);
 
     return isIE11()
       ? // eslint-disable-next-line react-hooks/rules-of-hooks

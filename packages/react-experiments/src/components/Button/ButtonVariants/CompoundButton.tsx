@@ -1,8 +1,8 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
-import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
-import { IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
+import { IComponent } from '@fluentui/foundation-legacy/lib/next/IComponent';
+import { IComponentStyles, IStylesFunction, ITokenFunction } from '@fluentui/foundation-legacy';
 import { Text, ITextStyles } from '@fluentui/react';
 import { parseGap } from '@fluentui/react-internal/lib/components/Stack/StackUtils';
 import { HighContrastSelector } from '../../../Styling';

@@ -4,7 +4,7 @@ import { Label } from '@fluentui/react/lib/Label';
 import { TooltipHost, TooltipOverflowMode, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const contentParent =
   "If the parent element's content overflows, hovering here will show a tooltip (anchored to the parent element).";

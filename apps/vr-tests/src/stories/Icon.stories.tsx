@@ -3,9 +3,9 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Icon, IconType, getIconClassName, Fabric } from '@fluentui/react';
-import * as IconNames from '../../../../packages/icons/src/IconNames';
+import * as IconNames from '@fluentui/font-icons-mdl2/src/IconNames';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 // Rendering allIcons tests that the icon package can initialize all icons from the cdn
 const allIcons: JSX.Element[] = [];

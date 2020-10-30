@@ -1,7 +1,11 @@
+import { getWindow } from './dom/getWindow';
+
 export const isIE11 = (): boolean => {
-  if (typeof window === 'undefined' || !window.navigator || !window.navigator.userAgent) {
+  const win = getWindow();
+
+  if (!win?.navigator?.userAgent) {
     return false;
   }
 
-  return window.navigator.userAgent.indexOf('rv:11.0') > -1;
+  return win.navigator.userAgent.indexOf('rv:11.0') > -1;
 };

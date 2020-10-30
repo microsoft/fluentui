@@ -5,7 +5,7 @@ import { LabelPageProps } from '@fluentui/react-examples/lib/react/Label/Label.d
 
 export const LabelPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Label.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Label.page.json')}
     {...{ ...LabelPageProps, ...props }}
   />
 );

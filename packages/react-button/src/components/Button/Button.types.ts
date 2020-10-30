@@ -3,6 +3,9 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -96,10 +99,16 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokens>;
   };
 
+/**
+ * {@docCategory Button}
+ */
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
     borderBottomLeftRadius?: string;
@@ -116,6 +125,7 @@ export type ButtonTokens = ColorTokens &
     margin?: string;
     maxWidth?: string;
     menuIconColor?: string;
+    menuIconSize?: string;
     minHeight?: string;
     minWidth?: string;
     paddingBottom?: string;
@@ -143,23 +153,27 @@ export type ButtonTokens = ColorTokens &
     };
   };
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  root?: TTokens;
-  primary?: TTokens;
-  ghost?: TTokens;
-  transparent?: TTokens;
-  iconOnly?: TTokens;
-  circular?: TTokens;
   block?: TTokens;
+  circular?: TTokens;
+  ghost?: TTokens;
+  iconOnly?: TTokens;
   loading?: TTokens;
+  primary?: TTokens;
+  root?: TTokens;
 
-  size_smallest?: TTokens;
-  size_smaller?: TTokens;
-  size_small?: TTokens;
-  size_regular?: TTokens;
   size_large?: TTokens;
   size_larger?: TTokens;
   size_largest?: TTokens;
+  size_regular?: TTokens;
+  size_small?: TTokens;
+  size_smaller?: TTokens;
+  size_smallest?: TTokens;
+
+  transparent?: TTokens;
 
   [key: string]: TTokens | undefined;
 };

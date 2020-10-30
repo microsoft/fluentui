@@ -1,13 +1,13 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { IComponent } from '@fluentui/foundation-legacy/lib/next/IComponent';
 import {
   IComponentStyles,
   IHTMLSlot,
   ISlotProp,
   ISlottableProps,
   IStyleableComponentProps,
-} from '@uifabric/foundation';
+} from '@fluentui/foundation-legacy';
 import { IBaseProps } from '../../../Utilities';
 import { INativeButtonProps } from '../Button.types';
 import {

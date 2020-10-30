@@ -1,6 +1,6 @@
 import { getGlobalClassNames } from './getGlobalClassNames';
 import { createTheme } from './theme';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 import { ITheme } from '../interfaces/index';
 
 const styleSheet = Stylesheet.getInstance();

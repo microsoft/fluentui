@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IPageSectionProps, Markdown } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps, Markdown } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PersonaPageProps } from './PersonaPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
-import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
 import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */

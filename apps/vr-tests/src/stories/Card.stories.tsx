@@ -11,9 +11,8 @@ import {
   ICardItemTokens,
   ICardSectionStyles,
   ICardSectionTokens,
-} from '@uifabric/react-cards';
+} from '@fluentui/react-cards';
 import {
-  ActionButton,
   Fabric,
   FontWeights,
   Icon,
@@ -24,6 +23,7 @@ import {
   Text,
   ITextStyles,
 } from '@fluentui/react';
+import { ActionButton } from '@fluentui/react/lib/compat/Button';
 
 const cardClicked = (): void => {
   /** no-impl **/

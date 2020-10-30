@@ -4,7 +4,7 @@ import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import { useStylesheet } from '@fluentui/react-stylesheets';
-import { useFocusRects } from '@uifabric/utilities';
+import { useFocusRects } from '@fluentui/utilities';
 
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.

@@ -5,16 +5,16 @@ import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
 import { ITheme, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { IconButton } from '@fluentui/react/lib/Button';
+import { IconButton } from '@fluentui/react/lib/compat/Button';
 import { IDragDropOptions } from '@fluentui/react/lib/DragDrop';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 
 type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   isValid?: (item: TPersona) => boolean;
   canExpand?: (item: TPersona) => boolean;
-  getExpandedItems?: (item: TPersona) => TPersona[];
+  getExpandedItems?: (item: TPersona) => Promise<TPersona[]>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -97,7 +97,7 @@ const SelectedPersonaInner = React.memo(
     );
 
     const isDraggable = React.useMemo(
-      () => (dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined),
+      () => (dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined),
       [dragDropEvents],
     );
 
@@ -111,7 +111,13 @@ const SelectedPersonaInner = React.memo(
         ev.stopPropagation();
         ev.preventDefault();
         if (onItemChange && getExpandedItems) {
-          onItemChange(getExpandedItems(item), index);
+          getExpandedItems(item)
+            .then(value => {
+              onItemChange(value, index);
+            })
+            .catch(error => {
+              // No op
+            });
         }
       },
       [onItemChange, getExpandedItems, item, index],

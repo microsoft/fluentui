@@ -25,7 +25,7 @@ export const App = () => (
 You can also customize your own theme:
 
 ```tsx
-import { ThemeProvider, PartialTheme } from '@fluentui/react';
+import { ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider';
 
 const appTheme: PartialTheme = {
   palette: {
@@ -44,7 +44,7 @@ export const App = () => (
 You can also nest `ThemeProvider`s:
 
 ```tsx
-import { ThemeProvider, PartialTheme } from '@fluentui/react';
+import { ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider';
 
 const appTheme: PartialTheme = {
   palette: {

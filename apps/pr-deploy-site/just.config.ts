@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { preset, just } from '@uifabric/build';
-import { findGitRoot, getAllPackageInfo } from '@uifabric/build/monorepo/index';
-
-const { series, task, copyInstructionsTask, copyInstructions } = just;
+import { preset, series, task, copyInstructionsTask, copyInstructions } from '@fluentui/scripts';
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
 
 const gitRoot = findGitRoot();
 let instructions = copyInstructions.copyFilesToDestinationDirectory(
@@ -20,21 +18,21 @@ let instructions = copyInstructions.copyFilesToDestinationDirectory(
 const dependencies = [
   '@fluentui/docs',
   '@fluentui/perf-test',
+  '@fluentui/public-docsite-resources',
+  '@fluentui/public-docsite',
+  '@fluentui/react',
   '@fluentui/react-avatar',
   '@fluentui/react-button',
+  '@fluentui/react-charting',
   '@fluentui/react-checkbox',
+  '@fluentui/react-date-time',
+  '@fluentui/react-experiments',
   '@fluentui/react-image',
   '@fluentui/react-link',
   '@fluentui/react-slider',
   '@fluentui/react-tabs',
   '@fluentui/react-text',
   '@fluentui/react-toggle',
-  '@fluentui/react-charting',
-  '@uifabric/date-time',
-  '@fluentui/react-experiments',
-  '@fluentui/public-docsite',
-  '@fluentui/public-docsite-resources',
-  '@fluentui/react',
   'perf-test',
   'theming-designer',
 ];

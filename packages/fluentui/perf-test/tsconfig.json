@@ -1,5 +1,5 @@
 {
-  "extends": "@uifabric/build/typescript/tsconfig.common",
+  "extends": "@fluentui/scripts/typescript/tsconfig.common",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",

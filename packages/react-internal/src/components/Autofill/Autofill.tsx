@@ -204,7 +204,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // If the event is actively being composed, then don't alert autofill.
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (!(ev.nativeEvent as any).isComposing) {
       switch (ev.which) {
         case KeyCodes.backspace:
@@ -232,13 +231,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     const value: string = this._getCurrentInputValue(ev);
 
     if (!this._isComposing) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this._tryEnableAutofill(value, this.value, (ev.nativeEvent as any).isComposing);
     }
 
     // If it is not IE11 and currently composing, update the value
     if (!(isIE11() && this._isComposing)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const nativeEventComposing = (ev.nativeEvent as any).isComposing;
       const isComposing = nativeEventComposing === undefined ? this._isComposing : nativeEventComposing;
       this._updateValue(value, isComposing);

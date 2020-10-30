@@ -1,6 +1,6 @@
 import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
-import { composed } from '@uifabric/foundation/lib/next/composed';
+import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
 import { useSplitButtonState as state } from './SplitButton.state';
 import { SplitButtonStyles as styles, SplitButtonTokens as tokens } from './SplitButton.styles';
 import { ISplitButtonProps } from './SplitButton.types';

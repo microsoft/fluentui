@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 }, root: { height: 100 } };
 

@@ -15,7 +15,7 @@ describe('withResponsiveMode', () => {
     setSSR(true);
 
     setResponsiveMode(ResponsiveMode.large);
-    expect(() => ReactTestUtils.renderIntoDocument(<Example />)).toBeDefined();
+    expect(() => ReactTestUtils.renderIntoDocument(<Example />)).toBeTruthy();
 
     setSSR(false);
   });

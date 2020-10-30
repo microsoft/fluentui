@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown } from '@uifabric/example-app-base';
+import { Markdown } from '@fluentui/react-docsite-components';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const rootClass = mergeStyles({

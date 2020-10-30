@@ -7,6 +7,7 @@
 import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { FontTokens } from '@fluentui/theme';
+import { IStyle } from '@fluentui/react-theme-provider';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
@@ -43,7 +44,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export const ButtonSizeVariantStyles: {
+export const buttonSizeVariants: {
     size_smallest: {
         height: string;
         minHeight: string;
@@ -77,181 +78,7 @@ export interface ButtonState extends ButtonProps {
 }
 
 // @public (undocumented)
-export const ButtonStyles: {
-    root: (string | {
-        cursor: string;
-        alignItems: string;
-        borderStyle: string;
-        display: string;
-        justifyContent: string;
-        outline: string;
-        position: string;
-        userSelect: string;
-        boxSizing: string;
-        verticalAlign: string;
-        textDecoration: string;
-        background: string;
-        color: string;
-        borderColor: string;
-        borderTopLeftRadius: string;
-        borderTopRightRadius: string;
-        borderBottomLeftRadius: string;
-        borderBottomRightRadius: string;
-        borderLeftWidth: string;
-        borderRightWidth: string;
-        borderTopWidth: string;
-        borderBottomWidth: string;
-        boxShadow: string;
-        width: string;
-        maxWidth: string;
-        minWidth: string;
-        height: string;
-        minHeight: string;
-        paddingLeft: string;
-        paddingRight: string;
-        paddingTop: string;
-        paddingBottom: string;
-        transition: string;
-        whiteSpace: string;
-        fontFamily: string;
-        fontSize: string;
-        fontWeight: string;
-        WebkitFontSmoothing: string;
-        MozOsxFontSmoothing: string;
-        ':global(.ms-Fabric--isFocusVisible) &:focus::after': {
-            content: string;
-            position: string;
-            left: number;
-            right: number;
-            top: number;
-            bottom: number;
-            borderWidth: string;
-            borderStyle: string;
-            borderColor: string;
-            borderTopLeftRadius: string;
-            borderTopRightRadius: string;
-            borderBottomLeftRadius: string;
-            borderBottomRightRadius: string;
-            boxShadow: string;
-            zIndex: number;
-            "@media screen and (forced-colors: active)": {
-                borderColor: string;
-                boxShadow: string;
-            };
-        };
-        "& > *:not(:first-child)": {
-            marginLeft: string;
-        };
-        "@media screen and (forced-colors: active)": {
-            [x: string]: string | {
-                color: string;
-            };
-            forcedColorAdjust: string;
-            background: string;
-            borderColor: string;
-            color: string;
-        };
-        '&:hover': {
-            [x: string]: string | {
-                color: string;
-                background?: undefined;
-                borderColor?: undefined;
-            } | {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-            background: string;
-            color: string;
-            borderColor: string;
-            boxShadow: string;
-            "@media screen and (forced-colors: active)": {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-        };
-        '&:active': {
-            [x: string]: string | {
-                color: string;
-                background?: undefined;
-                borderColor?: undefined;
-            } | {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-            background: string;
-            color: string;
-            borderColor: string;
-            boxShadow: string;
-            transform: string;
-            transition: string;
-            "@media screen and (forced-colors: active)": {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-        };
-        '&[aria-disabled=true]': {
-            [x: string]: string | {
-                color: string;
-                background?: undefined;
-                borderColor?: undefined;
-            } | {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-            pointerEvents: string;
-            opacity: string;
-            backgroundColor: string;
-            color: string;
-            borderColor: string;
-            boxShadow: string;
-            "@media screen and (forced-colors: active)": {
-                [x: string]: string | {
-                    color: string;
-                };
-                background: string;
-                borderColor: string;
-                color: string;
-            };
-        };
-    })[];
-    icon: (string | {
-        alignItems: string;
-        color: string;
-        display: string;
-        flexShrink: number;
-        fontSize: string;
-        fontWeight: string;
-        height: string;
-        justifyContent: string;
-        lineHeight: string;
-        position: string;
-        width: string;
-    })[];
-    content: {
-        lineHeight: string;
-        position: string;
-    };
-};
+export const buttonStyles: Record<string, IStyle>;
 
 // @public (undocumented)
 export type ButtonTokens = ColorTokens & FontTokens & {
@@ -269,6 +96,7 @@ export type ButtonTokens = ColorTokens & FontTokens & {
     margin?: string;
     maxWidth?: string;
     menuIconColor?: string;
+    menuIconSize?: string;
     minHeight?: string;
     minWidth?: string;
     paddingBottom?: string;
@@ -296,26 +124,26 @@ export type ButtonTokens = ColorTokens & FontTokens & {
 
 // @public (undocumented)
 export type ButtonVariants<TTokens = ButtonTokens> = {
-    root?: TTokens;
-    primary?: TTokens;
-    ghost?: TTokens;
-    transparent?: TTokens;
-    iconOnly?: TTokens;
-    circular?: TTokens;
     block?: TTokens;
+    circular?: TTokens;
+    ghost?: TTokens;
+    iconOnly?: TTokens;
     loading?: TTokens;
-    size_smallest?: TTokens;
-    size_smaller?: TTokens;
-    size_small?: TTokens;
-    size_regular?: TTokens;
+    primary?: TTokens;
+    root?: TTokens;
     size_large?: TTokens;
     size_larger?: TTokens;
     size_largest?: TTokens;
+    size_regular?: TTokens;
+    size_small?: TTokens;
+    size_smaller?: TTokens;
+    size_smallest?: TTokens;
+    transparent?: TTokens;
     [key: string]: TTokens | undefined;
 };
 
 // @public (undocumented)
-export const ButtonVariantStyles: (theme: Theme) => ButtonVariants<import("./Button.types").ButtonTokens>;
+export const buttonVariants: (theme: Theme) => ButtonVariants<import("./Button.types").ButtonTokens>;
 
 // @public (undocumented)
 export interface CheckedState {
@@ -351,10 +179,10 @@ export interface CompoundButtonState extends CompoundButtonProps {
 
 // @public (undocumented)
 export type CompoundButtonTokens = ButtonTokens & {
-    secondaryContentColor: string;
-    secondaryContentFontSize: string;
-    secondaryContentFontWeight: string;
-    secondaryContentGap: string;
+    secondaryContentColor?: string;
+    secondaryContentFontSize?: string;
+    secondaryContentFontWeight?: string;
+    secondaryContentGap?: string;
 };
 
 // @public (undocumented)
@@ -376,7 +204,7 @@ export type ExpandedState = {
     };
 };
 
-// @public (undocumented)
+// @public
 export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -398,9 +226,15 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 }
 
 // @public (undocumented)
-export type MenuButtonTokens = ButtonTokens;
+export type MenuButtonTokens = ButtonTokens & {
+    menuIconColor?: string;
+    menuIconSize?: string;
+};
 
 // @public (undocumented)
+export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
+
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -420,7 +254,13 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
 }
 
 // @public (undocumented)
-export type SplitButtonTokens = MenuButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens & {
+    dividerColor?: string;
+    dividerThickness?: string;
+};
+
+// @public (undocumented)
+export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;
 
 // @public
 export const ToggleButton: React.ForwardRefExoticComponent<Pick<ToggleButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -434,6 +274,12 @@ export interface ToggleButtonProps extends ButtonProps {
 // @public (undocumented)
 export interface ToggleButtonState extends ToggleButtonProps {
 }
+
+// @public (undocumented)
+export type ToggleButtonTokens = ButtonTokens;
+
+// @public (undocumented)
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
@@ -450,9 +296,6 @@ export const useButtonState: (draftState: ButtonState) => void;
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
 
-// @public (undocumented)
-export const useClasses: (state: CompoundButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
-
 // @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => {
     state: Record<string, any>;
@@ -460,7 +303,7 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTML
 };
 
 // @public (undocumented)
-export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
+export const useCompoundButtonClasses: (state: CompoundButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
@@ -472,7 +315,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useMenuButtonClasses: (state: MenuButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
@@ -484,7 +327,7 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useSplitButtonClasses: (state: SplitButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {

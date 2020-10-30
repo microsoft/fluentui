@@ -7,7 +7,7 @@ import {
   SelectableOptionMenuItemType,
   Toggle,
 } from '@fluentui/react/lib/index';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },

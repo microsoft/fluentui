@@ -12,7 +12,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### Calendar
 
-`Calendar` has been replaced with the version from the `@uifabric/date-time` package. This should be almost identical in visuals and functionality
+`Calendar` has been replaced with the version from the `@fluentui/react-date-time` package. This should be almost identical in visuals and functionality
 
 - Converted styling from legacy SCSS to CSS-in-JS. Styling can now be customized using `ICalendarProps.styles`.
 - Removed the following props (TODO: suggest alternatives)
@@ -23,9 +23,14 @@ If you would like to continue using the previous button components for now, upda
 
 ### ChoiceGroup
 
-- Moved `root` class to the actual root element by replacing `applicationRole`.
-- Removed `applicationRole` from IChoiceGroupStyles.
-- Removed deprecated `onChanged` prop.
+- Setting `checked` on individual options to indicate their checked state is no longer supported. Instead, use `defaultSelectedKey` or `selectedKey`.
+- Moved `root` style to the actual root element and removed `applicationRole` style.
+- Removed deprecated props and types:
+  - `onChanged` from `IChoiceGroupProps` (use `onChange`)
+  - `checked` from `IChoiceGroupOption`. (See above for alternative. Also note that this is still available via `IChoiceGroupOptionProps` for custom rendering purposes only, and will be set correctly by the parent `ChoiceGroup`.)
+  - `applicationRole` from `IChoiceGroupStyles`
+  - Type aliases `OnFocusCallback` and `OnChangeCallback`: use `IChoiceGroupOptionProps['onFocus']` and `IChoiceGroupOptionProps['onChange']`
+- Only if manually rendering the `ChoiceGroupOption` component, the new prop `itemKey` is now required. (You can still use `key` when passing options via `IChoiceGroupProps.options`, which is by far the most common.)
 
 ### Coachmark
 
@@ -33,7 +38,7 @@ If you would like to continue using the previous button components for now, upda
 
 ### DatePicker
 
-`DatePicker` has been replaced with the version from the `@uifabric/date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
+`DatePicker` has been replaced with the version from the `@fluentui/react-date-time` package, which also uses the `Calendar` from that package. The only breaking changes are to `ICalendarProps` (see above).
 
 ### OverflowSet
 
@@ -129,6 +134,34 @@ If you're using a removed `ISpinButtonStyles` prop, you can instead pass a style
 
 Please see the [`@fluentui/react-theme-provider` package README](https://github.com/microsoft/fluentui/blob/master/packages/react-theme-provider/README.md) for details about usage and a migration guide.
 
+### Keytips
+
+Previously, `KeytipData` was built in different components which needed Keytip support. This added extra bundle size to our components. In version 8, we have removed `KeytipData` and `keytipProps` props from `Link`, `Toggle`, `Checkbox`, `ComboBox`, `Dropdown`, `SpinButton` and other non-compat `Button`s (the ones which are not exported from `lib/compat`).
+
+Here is an example on how to migrate from this change:
+Before:
+
+```jsx
+<Checkbox label="Checkbox" keytipProps={checkboxKeytips} />
+```
+
+After:
+
+```jsx
+import { useKeytipRef } from '@fluentui/react/lib/Keytips';
+
+const checkboxRef = useKeytipRef({ keytipProps: checkboxKeytips });
+
+<Checkbox label="Checkbox" ref={checkboxRef} />;
+```
+
+You can find more code examples on the public documentation site [here](https://developer.microsoft.com/en-us/fluentui#/controls/web/keytips).
+
+#### Other call-outs
+
+- If the component is disabled and you don't want to enable keytips in that case, make sure you are passing `disabled: true` to `keytipProps`. It's possible you weren't setting `disabled` previously and still worked because the value was populated within the component which uses `KeytipData`.
+- If you have another `ref` that needs to be passed to a component apart from the `ref` returned by `useKeytipRef`, you can use `useMergedRefs` from `@fluentui/react-hooks` to merge multiple refs into one then pass it to the component.
+
 ### Component package moves and renames
 
 In addition to the rename of `office-ui-fabric-react` to `@fluentui/react`, most components have been moved to either a new **internal use only** package `@fluentui/react-internal`, or to individual component packages. This means **deep path imports will no longer work.** We've added root-level export files for most things that were intended to be part of the public API, but if anything is missing, please file an issue.
@@ -141,7 +174,6 @@ Note that directly importing from the `@fluentui/react-internal` package (the ro
 
 ### Others
 
-- `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 - `WindowProvider` is required for child windows/embeds.
 - `FluentStyles` is removed from `experiments` package.

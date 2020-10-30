@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
 import { IFloatingSuggestionItem, IFloatingPeopleSuggestionsProps } from '../../../FloatingPeopleSuggestionsComposite';
-import { people, mru } from '@uifabric/example-data';
+import { people, mru } from '@fluentui/example-data';
 import { ISelectedPeopleListProps } from '../../../SelectedItemsList';
 
 type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
@@ -93,7 +93,7 @@ describe('UnifiedPeoplePicker', () => {
       />,
     );
 
-    const inputElement: InputElementWrapper = wrapper.find('input');
+    const inputElement: InputElementWrapper = wrapper.find('input').last();
     expect(inputElement).toHaveLength(1);
     inputElement.simulate('input', { target: { value: 'annie' } });
 

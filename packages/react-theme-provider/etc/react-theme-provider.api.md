@@ -5,12 +5,13 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
-import { ICustomizerContext } from '@uifabric/utilities';
-import { IFontFace } from '@uifabric/merge-styles';
-import { IKeyframes } from '@uifabric/merge-styles';
+import { ICustomizerContext } from '@fluentui/utilities';
+import { IFontFace } from '@fluentui/merge-styles';
+import { IKeyframes } from '@fluentui/merge-styles';
 import { IRawFontStyle } from '@uifabric/merge-styles';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { IStyle } from '@uifabric/merge-styles';
+import { IStyle as IStyle_2 } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
@@ -36,24 +37,24 @@ export { IStyleFunctionOrObject }
 export type KeyFrames = IKeyframes;
 
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>), cache?: Map<any, any> | undefined) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle_2> | ((theme: Theme) => Record<string, IStyle_2>), cache?: Map<any, any> | undefined) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
-    [key: string]: IStyle;
+    [key: string]: IStyle_2;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet), graph?: Map<any, any>): (theme?: Theme, renderer?: StyleRenderer) => {
     [key in keyof TStyleSet]: string;
 };
 
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
 
 // @public
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
     name?: string;
     prefix?: string;
-    styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-    variants?: Variants | ((theme: Theme) => Variants);
+    styles?: Record<string, IStyle_2> | ((theme: Theme) => Record<string, IStyle_2>);
+    variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 // @public (undocumented)

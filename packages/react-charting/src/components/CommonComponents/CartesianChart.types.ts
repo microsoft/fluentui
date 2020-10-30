@@ -6,7 +6,8 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IMargins } from '../../types/index';
-import { ChartTypes, XAxisTypes } from '../../utilities/index';
+import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/index';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -156,6 +157,8 @@ export interface ICartesianChartProps {
 
   /**
    * Margins for the chart
+   * @default `{ top: 20, bottom: 35, left: 40, right: 20 }`
+   * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
   margins?: IMargins;
 
@@ -220,6 +223,24 @@ export interface ICartesianChartProps {
   yAxisTickCount?: number;
 
   /**
+   * defines the number of ticks on the x-axis
+   * @default 10
+   */
+  xAxisTickCount?: number;
+
+  /**
+   * define the size of the tick on the x-axis
+   * @default 10
+   */
+  xAxistickSize?: number;
+
+  /**
+   * define the space between the tick and the data point
+   * @default 10
+   */
+  tickPadding?: number;
+
+  /**
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
@@ -280,7 +301,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: ICalloutProps;
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IYValueHover {
@@ -288,6 +309,7 @@ export interface IYValueHover {
   y?: number;
   color?: string;
   data?: string | number;
+  yAxisCalloutData?: string | { [id: string]: number };
 }
 
 export interface IChildProps {
@@ -320,6 +342,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /** X axis type */
   xAxisType: XAxisTypes;
+
+  /** Y axis type */
+  yAxisType?: YAxisType;
 
   /**
    * Legeds of the chart.
@@ -362,6 +387,16 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     tickFormat?: string;
   };
 
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  xAxisPadding?: number;
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  yAxisPadding?: number;
+
   children(props: IChildProps): React.ReactNode;
 
   /**
@@ -382,8 +417,24 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   customizedCallout?: any;
 
   /**
+   * if the data points for the y-axis is of type string, then we need to give this
+   * prop to construct the y-axis
+   */
+  stringDatasetForYAxisDomain?: string[];
+
+  /**
    * Focus zone direction to the chart
    * @default FocusZoneDirection.horizontal
    */
   focusZoneDirection?: FocusZoneDirection;
+
+  /**
+   * props to send into the chart hover card
+   */
+  chartHoverProps?: IChartHoverCardProps;
+
+  /**
+   * props to send to the focuszone
+   */
+  svgFocusZoneProps?: IFocusZoneProps;
 }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme, IStyle } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonState, ButtonVariants } from './Button.types';
 
@@ -8,7 +8,39 @@ const GlobalClassNames = {
   icon: 'ms-Button-icon',
 };
 
-export const ButtonStyles = {
+export const buttonSizeVariants = {
+  size_smallest: {
+    height: 'var(--button-size-smallest)',
+    minHeight: 'var(--button-size-smallest)',
+  },
+
+  size_smaller: {
+    height: 'var(--button-size-smaller)',
+    minHeight: 'var(--button-size-smaller)',
+  },
+
+  size_small: {
+    height: 'var(--button-size-small)',
+    minHeight: 'var(--button-size-small)',
+  },
+
+  size_large: {
+    height: 'var(--button-size-large)',
+    minHeight: 'var(--button-size-large)',
+  },
+
+  size_larger: {
+    height: 'var(--button-size-larger)',
+    minHeight: 'var(--button-size-larger)',
+  },
+
+  size_largest: {
+    height: 'var(--button-size-largest)',
+    minHeight: 'var(--button-size-largest)',
+  },
+};
+
+export const buttonStyles: Record<string, IStyle> = {
   root: [
     GlobalClassNames.root,
     {
@@ -48,8 +80,8 @@ export const ButtonStyles = {
       paddingTop: 'var(--button-paddingTop)',
       paddingBottom: 'var(--button-paddingBottom)',
 
-      transition: 'var(--button-transition, none)',
-      whiteSpace: 'var(--button-whiteSpace, nowrap)',
+      transition: 'var(--button-transition)',
+      whiteSpace: 'var(--button-whiteSpace)',
 
       fontFamily: 'var(--button-fontFamily)',
       fontSize: 'var(--button-fontSize)',
@@ -141,7 +173,7 @@ export const ButtonStyles = {
           color:
             'var(--button-highContrast-pressed-contentColor, ' +
             'var(--button-highContrast-hovered-contentColor, ' +
-            'var(--button-highContrast-contentColor)))',
+            'var(--button-highContarst-contentColor)))',
           [`.${GlobalClassNames.icon}`]: {
             color:
               'var(--button-highContrast-pressed-iconColor, ' +
@@ -178,59 +210,25 @@ export const ButtonStyles = {
   icon: [
     GlobalClassNames.icon,
     {
-      alignItems: 'center',
       color: 'var(--button-iconColor)',
       display: 'flex',
       flexShrink: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 'var(--button-iconSize)',
+      height: 'var(--button-iconSize)',
       fontSize: 'var(--button-iconSize, inherit)',
       fontWeight: 'normal',
-      height: 'var(--button-iconSize)',
-      justifyContent: 'center',
       lineHeight: '1',
-      position: 'relative',
-      width: 'var(--button-iconSize)',
     },
   ],
 
   content: {
     lineHeight: '1',
-    position: 'relative',
   },
 };
 
-export const ButtonSizeVariantStyles = {
-  size_smallest: {
-    height: 'var(--button-size-smallest)',
-    minHeight: 'var(--button-size-smallest)',
-  },
-
-  size_smaller: {
-    height: 'var(--button-size-smaller)',
-    minHeight: 'var(--button-size-smaller)',
-  },
-
-  size_small: {
-    height: 'var(--button-size-small)',
-    minHeight: 'var(--button-size-small)',
-  },
-
-  size_large: {
-    height: 'var(--button-size-large)',
-    minHeight: 'var(--button-size-large)',
-  },
-
-  size_larger: {
-    height: 'var(--button-size-larger)',
-    minHeight: 'var(--button-size-larger)',
-  },
-
-  size_largest: {
-    height: 'var(--button-size-largest)',
-    minHeight: 'var(--button-size-largest)',
-  },
-};
-
-export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
+export const buttonVariants = (theme: Theme): ButtonVariants => {
   const { fonts, effects, palette, semanticColors } = theme;
 
   return {
@@ -246,7 +244,7 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       },
 
       // Sizing tokens
-      iconSize: String(fonts?.mediumPlus?.fontSize || ''),
+      iconSize: fonts?.mediumPlus?.fontSize as string,
       borderWidth: '1px',
       boxShadow: 'none',
       borderRadius: effects?.roundedCorner2,
@@ -256,7 +254,6 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       paddingBottom: '0',
       margin: '0',
       width: 'auto',
-      height: 'var(--button-size-regular)',
       minWidth: '96px',
       maxWidth: '280px',
       minHeight: 'var(--button-size-regular)',
@@ -264,9 +261,8 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
 
       // Font tokens
       fontWeight: '600',
-      fontSize: String(fonts?.medium?.fontSize || ''),
+      fontSize: fonts?.medium?.fontSize as string,
       fontFamily: fonts?.medium?.fontFamily,
-      secondaryContentFontSize: String(fonts?.small.fontSize || ''),
 
       // Color tokens
       focusColor: palette?.black,
@@ -275,25 +271,21 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       borderColor: semanticColors?.buttonBorder,
       contentColor: semanticColors?.buttonText,
       iconColor: 'inherit',
-      secondaryContentColor: palette?.neutralSecondary,
 
       hovered: {
         background: semanticColors?.buttonBackgroundHovered,
         contentColor: semanticColors?.buttonTextHovered,
-        secondaryContentColor: palette?.neutralDark,
       },
 
       pressed: {
         background: semanticColors?.buttonBackgroundPressed,
         contentColor: semanticColors?.buttonTextPressed,
-        secondaryContentColor: semanticColors?.buttonTextPressed,
       },
 
       disabled: {
         background: semanticColors?.buttonBackgroundDisabled,
         borderColor: semanticColors?.buttonBorderDisabled,
         contentColor: semanticColors?.buttonTextDisabled,
-        secondaryContentColor: semanticColors?.buttonTextDisabled,
       },
 
       highContrast: {
@@ -397,15 +389,12 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       contentColor: palette?.neutralPrimary,
       fontWeight: 'normal',
       iconColor: palette?.themeDarkAlt,
-      menuIconColor: palette?.neutralSecondary,
-      secondaryContentColor: palette?.neutralPrimary,
       forcedColorAdjust: 'none',
 
       disabled: {
         background: semanticColors?.disabledBackground,
         contentColor: palette?.neutralTertiary,
         iconColor: 'inherit',
-        secondaryContentColor: palette?.neutralTertiary,
       },
 
       expanded: {
@@ -415,21 +404,18 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       // focused: {
       //   contentColor: palette?.neutralPrimary,
       //   iconColor: palette?.themeDarkAlt,
-      //   secondaryContentColor: palette?.neutralPrimary,
       // },
 
       hovered: {
         background: palette?.neutralLighter,
         contentColor: palette?.themePrimary,
         iconColor: palette?.themePrimary,
-        secondaryContentColor: palette?.neutralPrimary,
       },
 
       pressed: {
         background: palette?.neutralLight,
         contentColor: palette?.black,
         iconColor: palette?.themeDarker,
-        secondaryContentColor: palette?.black,
       },
 
       highContrast: {
@@ -489,16 +475,15 @@ export const ButtonVariantStyles = (theme: Theme): ButtonVariants => {
       },
     },
 
-    ...ButtonSizeVariantStyles,
+    ...buttonSizeVariants,
   };
 };
 
-export const useButtonClasses = makeVariantClasses<ButtonState>({
+export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>({
   name: 'Button',
   prefix: '--button',
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  styles: ButtonStyles as any,
+  styles: buttonStyles,
 
-  variants: ButtonVariantStyles,
+  variants: buttonVariants,
 });

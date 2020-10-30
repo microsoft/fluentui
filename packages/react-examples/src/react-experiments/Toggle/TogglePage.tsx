@@ -5,7 +5,7 @@ import {
   ComponentPage,
   Markdown,
   PropertiesTableSet,
-} from '@uifabric/example-app-base';
+} from '@fluentui/react-docsite-components';
 
 import { ToggleExample } from './Toggle.Example';
 const ToggleExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Example.tsx') as string;

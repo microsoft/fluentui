@@ -1,4 +1,4 @@
-import { IAppDefinition } from '@uifabric/example-app-base';
+import { IAppDefinition } from '@fluentui/react-docsite-components';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Charting',
@@ -66,6 +66,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'GroupedVerticalBarChart',
           name: 'GroupedVerticalBarChart',
           url: '#/examples/GroupedVerticalBarChart',
+        },
+        {
+          component: require<any>('../HeatMapChart/HeatMapChartPage').HeatMapChart,
+          key: 'HeatMapChart',
+          name: 'HeatMapChart',
+          url: '#/examples/HeatMapChart',
         },
       ],
     },

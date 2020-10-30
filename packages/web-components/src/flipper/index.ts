@@ -15,6 +15,9 @@ import { FlipperStyles as styles } from './flipper.styles';
   name: 'fluent-flipper',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentFlipper extends Flipper {}
 

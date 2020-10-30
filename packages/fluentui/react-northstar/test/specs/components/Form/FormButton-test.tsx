@@ -7,6 +7,6 @@ describe('FormButton', () => {
     testPath: __filename,
     constructorName: 'FormButton',
     forwardsRefTo: `Button`,
-    passesUnhandledPropsTo: Button,
+    targetComponent: Button,
   });
 });

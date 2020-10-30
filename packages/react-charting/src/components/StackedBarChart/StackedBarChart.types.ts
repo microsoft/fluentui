@@ -1,5 +1,6 @@
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
@@ -114,6 +115,16 @@ export interface IStackedBarChartProps {
    * props for the legends in the chart
    */
   legendProps?: Partial<ILegendsProps>;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IStackedBarChartStyleProps {

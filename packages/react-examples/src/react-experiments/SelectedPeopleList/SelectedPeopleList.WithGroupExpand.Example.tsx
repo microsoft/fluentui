@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
-import { people, groupOne, groupTwo } from '@uifabric/example-data';
+import { people, groupOne, groupTwo } from '@fluentui/example-data';
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -73,7 +73,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
     });
   };
 
-  private _getExpandedGroupItems(item: IPersonaProps): IPersonaProps[] {
+  private async _getExpandedGroupItems(item: IPersonaProps): Promise<IPersonaProps[]> {
     switch (item.text) {
       case 'Group One':
         return groupOne;

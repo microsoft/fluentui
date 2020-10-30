@@ -1,7 +1,10 @@
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps, ButtonState, ButtonTokens } from '../Button/Button.types';
+import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 import { ExpandedState } from './useExpanded';
 
+/**
+ * {@docCategory Button}
+ */
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Menu that is displayed when the button is pressed.
@@ -33,8 +36,22 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   onMenuDismiss?: () => void;
 };
 
+/**
+ * {@docCategory Button}
+ */
 export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
   menu: ExpandedState['menu'];
 }
 
-export type MenuButtonTokens = ButtonTokens;
+/**
+ * {@docCategory Button}
+ */
+export type MenuButtonTokens = ButtonTokens & {
+  menuIconColor?: string;
+  menuIconSize?: string;
+};
+
+/**
+ * {@docCategory Button}
+ */
+export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConst, useBoolean } from '@uifabric/react-hooks';
+import { useConst, useBoolean } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { Callout } from '@fluentui/react/lib/Callout';
 import {

@@ -7,8 +7,8 @@
 import { SelectableOptionMenuItemType as DropdownMenuItemType } from '@fluentui/react-internal/lib/SelectableOption';
 import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
-import { IButtonProps } from '@fluentui/react-internal/lib/Button';
-import { IButtonStyles } from '@fluentui/react-internal/lib/Button';
+import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react-internal/lib/compat/Button';
 import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
 import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
@@ -18,7 +18,6 @@ import { IDragDropHelper } from '@fluentui/react-internal/lib/DragDrop';
 import { IDragDropOptions } from '@fluentui/react-internal/lib/DragDrop';
 import { IFocusZoneProps } from '@fluentui/react-internal/lib/FocusZone';
 import { IIconProps } from '@fluentui/react-internal/lib/Icon';
-import { IKeytipProps } from '@fluentui/react-internal/lib/Keytip';
 import { ILabelStyleProps } from '@fluentui/react-internal/lib/Label';
 import { ILabelStyles } from '@fluentui/react-internal/lib/Label';
 import { ILinkProps } from '@fluentui/react-link/lib/Link';
@@ -542,7 +541,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -1465,7 +1463,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     dropdownWidth?: number;
     // @deprecated
     isDisabled?: boolean;
-    keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
@@ -1580,6 +1577,7 @@ export interface IGroupDividerProps {
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
+    onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group?: IGroup) => void;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -1669,11 +1667,15 @@ export interface IGroupedListSectionState {
 // @public (undocumented)
 export interface IGroupedListState {
     // (undocumented)
+    compact?: IGroupedListProps['compact'];
+    // (undocumented)
     groups?: IGroup[];
     // (undocumented)
-    lastSelectionMode?: SelectionMode;
+    items?: IGroupedListProps['items'];
     // (undocumented)
     listProps?: IGroupedListProps['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListProps['selectionMode'];
     // (undocumented)
     version: {};
 }
@@ -1883,13 +1885,15 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-button";
+export * from "@fluentui/react-checkbox";
+export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
-export * from "@fluentui/react-link/lib/Link";
-export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-toggle/lib/Toggle";
+export * from "@fluentui/react-link";
+export * from "@fluentui/react-slider";
+export * from "@fluentui/react-tabs";
+export * from "@fluentui/react-toggle";
 
 // (No @packageDocumentation comment for this package)
 

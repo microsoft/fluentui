@@ -52,8 +52,7 @@ export class SuggestionsStore<T> {
         ariaLabel:
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)
-            : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              ((suggestion as any) as ITag).name ||
+            : ((suggestion as any) as ITag).name ||
               (<IPersonaProps>suggestion).text ||
               // eslint-disable-next-line deprecation/deprecation
               (<IPersonaProps>suggestion).primaryText,
