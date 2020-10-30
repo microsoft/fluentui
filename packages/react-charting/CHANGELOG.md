@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 12:33:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.7)
+
+Fri, 30 Oct 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.4..@fluentui/react-charting_v5.0.0-beta.7)
+
+### Changes
+
+- Charting: Make x axis tick count default  value to 6 for Cartesian chart and use the xAxisTickCount prop ([PR #15774](https://github.com/microsoft/fluentui/pull/15774) by v-gorraj@microsoft.com)
 
 ## [5.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.4)
 
