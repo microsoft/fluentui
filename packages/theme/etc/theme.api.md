@@ -16,12 +16,14 @@ export const AnimationVariables: IAnimationVariables;
 
 // @public
 export type ColorTokens = ColorTokenSet & {
-    hovered?: ColorTokenSet;
-    pressed?: ColorTokenSet;
-    disabled?: ColorTokenSet;
     checked?: ColorTokenSet;
     checkedHovered?: ColorTokenSet;
     checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
 };
 
 // @public
@@ -31,11 +33,13 @@ export type ColorTokenSet = {
     secondaryContentColor?: string;
     linkColor?: string;
     iconColor?: string;
+    menuIconColor?: string;
     borderColor?: string;
     dividerColor?: string;
     focusColor?: string;
     focusInnerColor?: string;
     opacity?: string;
+    highContrast?: ColorTokens;
 };
 
 // @public (undocumented)

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 23 Oct 2020 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.4)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.3..@fluentui/react-charting_v5.0.0-beta.4)
+
+### Changes
+
+- Charting: Adding custom Callout support for HorizontalBarChart, StackedBarChart and DonutChart. ([PR #15697](https://github.com/microsoft/fluentui/pull/15697) by humbertomakotomorimoto@gmail.com)
+- Charting: Fixing uncaught type error in VerticalStackedBarChart and made minor edits to margins. ([PR #15699](https://github.com/microsoft/fluentui/pull/15699) by humbertomakotomorimoto@gmail.com)
+- Charting: Adding support for bar gaps and rounded corners in VerticalStackedBarChart. ([PR #15704](https://github.com/microsoft/fluentui/pull/15704) by humbertomakotomorimoto@gmail.com)
+- Charting: Added line feature to VerticalBarChart. ([PR #15705](https://github.com/microsoft/fluentui/pull/15705) by humbertomakotomorimoto@gmail.com)
+
+## [5.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.3)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.1..@fluentui/react-charting_v5.0.0-beta.3)
+
+### Changes
+
+- Charting: Adding customized callout support to AreaChart and LineChart. ([PR #15684](https://github.com/microsoft/fluentui/pull/15684) by humbertomakotomorimoto@gmail.com)
+- Charting: Changing hover behavior of circles and removing focus of circles. ([PR #15686](https://github.com/microsoft/fluentui/pull/15686) by humbertomakotomorimoto@gmail.com)
 
 ## [5.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.1)
 

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.3)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.2..@fluentui/utilities_v8.0.0-beta.3)
+
+### Changes
+
+- isIE11 utility should use getWindow to get the window ([PR #15720](https://github.com/microsoft/fluentui/pull/15720) by elcraig@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.2)
+
+Tue, 27 Oct 2020 12:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.1..@fluentui/utilities_v8.0.0-beta.2)
+
+### Changes
+
+- Store last language setting in sessionStorage not localStorage by default ([PR #15710](https://github.com/microsoft/fluentui/pull/15710) by elcraig@microsoft.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.1)
+
+Mon, 26 Oct 2020 12:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.0..@fluentui/utilities_v8.0.0-beta.1)
+
+### Changes
+
+- Async: update setTimeout to use internal error logging method ([PR #15636](https://github.com/microsoft/fluentui/pull/15636) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.0)
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@fluentui/react-docsite-components';
 import { DetailsListBasicExample } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.Basic.Example';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { AppCustomizations } from './customizations/customizations';
+import { AppThemes } from './theme/AppThemes';
 
 const propertiesTableMargins = mergeStyles({
   marginLeft: '40px',
@@ -27,7 +27,7 @@ function loadReferences(): IAppLink[] {
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React',
-  customizations: AppCustomizations,
+  themes: AppThemes,
   testPages: [
     {
       component: DetailsListBasicExample,

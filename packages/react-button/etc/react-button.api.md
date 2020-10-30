@@ -97,6 +97,7 @@ export type ButtonTokens = ColorTokens & FontTokens & {
     borderWidth?: string;
     boxShadow?: string;
     width?: string;
+    forcedColorAdjust?: string;
     transform?: string;
     transition?: string;
     size?: {
@@ -116,11 +117,13 @@ export type ButtonTokens = ColorTokens & FontTokens & {
 
 // @public (undocumented)
 export type ButtonVariants<TTokens = ButtonTokens> = {
-    base?: TTokens;
-    primary?: TTokens;
-    iconOnly?: TTokens;
-    circular?: TTokens;
+    root?: TTokens;
     block?: TTokens;
+    circular?: TTokens;
+    iconOnly?: TTokens;
+    ghost?: TTokens;
+    primary?: TTokens;
+    transparent?: TTokens;
 };
 
 // @public (undocumented)
@@ -157,10 +160,10 @@ export interface CompoundButtonState extends CompoundButtonProps {
 
 // @public (undocumented)
 export type CompoundButtonTokens = ButtonTokens & {
-    secondaryContentColor: string;
-    secondaryContentFontSize: string;
-    secondaryContentFontWeight: string;
-    secondaryContentGap: string;
+    secondaryContentColor?: string;
+    secondaryContentFontSize?: string;
+    secondaryContentFontWeight?: string;
+    secondaryContentGap?: string;
 };
 
 // @public (undocumented)
@@ -204,7 +207,13 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 }
 
 // @public (undocumented)
-export type MenuButtonTokens = ButtonTokens;
+export type MenuButtonTokens = ButtonTokens & {
+    menuIconColor?: string;
+    menuIconSize?: string;
+};
+
+// @public (undocumented)
+export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
 // @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -226,7 +235,13 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
 }
 
 // @public (undocumented)
-export type SplitButtonTokens = MenuButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens & {
+    dividerColor?: string;
+    dividerThickness?: string;
+};
+
+// @public (undocumented)
+export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;
 
 // @public
 export const ToggleButton: React.ForwardRefExoticComponent<Pick<ToggleButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -240,6 +255,12 @@ export interface ToggleButtonProps extends ButtonProps {
 // @public (undocumented)
 export interface ToggleButtonState extends ToggleButtonProps {
 }
+
+// @public (undocumented)
+export type ToggleButtonTokens = ButtonTokens;
+
+// @public (undocumented)
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
@@ -278,7 +299,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useMenuButtonClasses: (state: MenuButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
@@ -290,7 +311,7 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useSplitButtonClasses: (state: SplitButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {

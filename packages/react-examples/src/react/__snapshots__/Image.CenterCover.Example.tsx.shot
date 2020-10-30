@@ -3,41 +3,34 @@
 exports[`Component Examples renders Image.CenterCover.Example.tsx correctly 1`] = `
 <div>
   <p>
-    Setting the imageFit property to "centerCover" will cause the image to scale up or down proportionally. Images smaller than their frame will be rendered as "ImageFit.center", while images larger than both the frame's height and width will render as "ImageFit.cover".
+    Setting the 
+    <code>
+      imageFit
+    </code>
+     property to 
+    <code>
+      ImageFit.centerCover
+    </code>
+     will cause the image to scale up or down proportionally. Images smaller than their frame will be rendered as 
+    <code>
+      ImageFit.center
+    </code>
+    , while images larger than either frame's height or width will render as 
+    <code>
+      ImageFit.cover
+    </code>
+    .
   </p>
-  <label
-    className=
-        ms-Label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-  >
-    The image is smaller than the frame, so it's centered and rendered at its natural size.
-  </label>
+  <p>
+    This image is smaller than the frame, so it's centered and rendered at its natural size.
+  </p>
   <div
     className=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          border: 1px solid #605e5c;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -73,40 +66,16 @@ exports[`Component Examples renders Image.CenterCover.Example.tsx correctly 1`] 
       src="http://placehold.it/100x150"
     />
   </div>
-  <br />
-  <label
-    className=
-        ms-Label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-  >
-    The image has a wider aspect ratio (more landscape) than the frame but is not as tall as the frame, so it's rendered at its natural size while cropping the sides.
-  </label>
+  <p>
+    This image has a wider aspect ratio (more landscape) than the frame but is not as tall as the frame, so it's rendered at its natural size while cropping the sides.
+  </p>
   <div
     className=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          border: 1px solid #605e5c;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -142,40 +111,16 @@ exports[`Component Examples renders Image.CenterCover.Example.tsx correctly 1`] 
       src="http://placehold.it/300x100"
     />
   </div>
-  <br />
-  <label
-    className=
-        ms-Label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-  >
-    The image has a taller aspect ratio (more portrait) than the frame but is not as wide as the frame, so it's rendered at its natural size while cropping the top and bottom.
-  </label>
+  <p>
+    This image has a taller aspect ratio (more portrait) than the frame but is not as wide as the frame, so it's rendered at its natural size while cropping the top and bottom.
+  </p>
   <div
     className=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          border: 1px solid #605e5c;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -211,40 +156,16 @@ exports[`Component Examples renders Image.CenterCover.Example.tsx correctly 1`] 
       src="http://placehold.it/100x300"
     />
   </div>
-  <br />
-  <label
-    className=
-        ms-Label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-  >
+  <p>
     These images are taller and wider than the frame, so they grow just enough to "cover" the frame area.
-  </label>
+  </p>
   <div
     className=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          border: 1px solid #605e5c;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -281,12 +202,14 @@ exports[`Component Examples renders Image.CenterCover.Example.tsx correctly 1`] 
     />
   </div>
   <br />
+  <br />
   <div
     className=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          border: 1px solid #605e5c;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
