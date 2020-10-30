@@ -104,7 +104,9 @@
   "resolutions": {
     "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
-    "copy-to-clipboard": "3.2.0"
+    "copy-to-clipboard": "3.2.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "syncpack": {
     "prod": true,
