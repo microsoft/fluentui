@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem",
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-30T02:17:45.731Z"
+}
