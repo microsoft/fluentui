@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove TS < 3.7 compat code",
+  "packageName": "@fluentui/utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-30T23:42:42.876Z"
+}
