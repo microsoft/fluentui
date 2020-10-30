@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 29 Oct 2020 12:34:59 GMT",
+      "tag": "@fluentui/web-components_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add hover and focus-within elevation change for card",
+            "author": "chhol@microsoft.com",
+            "commit": "962a5b718089d9577970ea5f22f73dd8650c4d1e",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ensure elevated corner radius is applied to dialog",
+            "author": "chhol@microsoft.com",
+            "commit": "a04560ff92d957157d69b875e0bad09f5e62b5ff",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/web-components_v0.6.3",
       "version": "0.6.3",

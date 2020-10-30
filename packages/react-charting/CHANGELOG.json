@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 12:33:11 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.7",
+      "version": "5.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Charting: Make x axis tick count default  value to 6 for Cartesian chart and use the xAxisTickCount prop",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "eb0f2c4b76a921fa9a8b069189ecdacff7029117",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2020 12:35:09 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.4",
       "version": "5.0.0-beta.4",

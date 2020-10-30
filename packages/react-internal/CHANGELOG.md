@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.5)
+
+Thu, 29 Oct 2020 12:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.4..@fluentui/react-internal_v8.0.0-beta.5)
+
+### Changes
+
+- Export all from react-window-provider. ([PR #15738](https://github.com/microsoft/fluentui/pull/15738) by xgao@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.4)
 
