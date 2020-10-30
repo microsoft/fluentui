@@ -28,8 +28,6 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
     "test:watch": "gulp test:watch"
   },
   "sideEffects": false,

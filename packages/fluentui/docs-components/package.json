@@ -44,9 +44,7 @@
   "repository": "microsoft/fluentui.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
+    "clean": "gulp bundle:package:clean"
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts"

@@ -34,15 +34,15 @@ jobs:
         displayName: do syncpack and lint-files checks
 
       ## Danger.js checks for Fluent UI N*
-      - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
-        displayName: danger
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      # - script: |
+      #     if [ $BUILD_REASON == "PullRequest" ]; then
+      #       yarn danger ci
+      #     else
+      #       echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+      #     fi
+      #   displayName: danger
+      #   env:
+      #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       ## only do scoped builds with PRs
       - script: |

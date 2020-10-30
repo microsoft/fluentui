@@ -22,8 +22,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
-  }
+  "scripts": {}
 }
