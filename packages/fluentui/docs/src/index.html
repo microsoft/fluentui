@@ -7,6 +7,7 @@
       content="Docisite shell to handle multi-version support and redirects, should not be the end content for users"
     />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch%2CURL"></script>
+    <script src="https://cdn.jsdelivr.net/npm/compare-versions@3.6.0/index.min.js"></script>
   </head>
   <body>
     <script>
@@ -23,89 +24,73 @@
           return versions;
         }, []);
 
-        availabeVersionsInParts = availabeVersions.map(v => v.split('.'));
-        sortVersionsDescending(availabeVersionsInParts);
-        return availabeVersionsInParts.map(x => x.join('.'));
+        sortVersionsDescending(availabeVersions);
+        return availabeVersions;
       }
 
-      function setRedirectInSessionStorage(currentVersion, newVersion) {
+      function setRedirectInSessionStorage(href) {
         if (!sessionStorage.redirect) {
           return;
         }
 
-        const url = new URL(sessionStorage.redirect);
-        const newPath = url.pathname.replace(currentVersion, newVersion);
-        url.pathname = newPath;
-        sessionStorage.redirect = url.href;
+        sessionStorage.redirect = href;
       }
 
       function sortVersionsDescending(versions) {
-        versions.sort((a, b) => {
-          // we assume that the manifest contains all parts of semver (major/minor/patch)
-          for (let i = 0; i < 3; i++) {
-            if (parseInt(a[i]) > parseInt(b[i])) return -1;
-
-            if (parseInt(a[i]) < parseInt(b[i])) return 1;
-          }
-          return 0;
-        });
+        versions.sort((a, b) => window.compareVersions(a, b)).reverse();
       }
 
       // If the version provided can't be found in the manifest we try to match it to the closest version
-      // Only works based on partial match, if none of the semver parts match, simply return the latest available
+      // We try the find the closest version by reverse iterating an array of available versions sorted
+      // in descending order
       function findClosestVersion(version, availableVersions) {
-        const parts = version.split('.');
-
         // invalid semver check
-        if (parts.length > 3 || parts.some(part => isNaN(part))) {
+        if (!window.compareVersions.validate(version)) {
           return availableVersions[0];
         }
 
-        const availabeVersionsInParts = availableVersions.map(version => version.split('.'));
-        let lastMatchedVersions = availabeVersionsInParts;
-
-        let matched = false;
-        let i = 0;
-        while (i < parts.length) {
-          const matchedVersions = lastMatchedVersions.filter(versionInParts => versionInParts[i] === parts[i]);
-          if (matchedVersions.length) {
-            lastMatchedVersions = matchedVersions;
-          } else {
-            matched = true;
-          }
-
-          i++;
+        let i = availableVersions.length - 1;
+        while (i >= 0 && window.compareVersions.compare(version, availableVersions[i], '>')) {
+          i--;
         }
 
-        if (!matched) {
+        if (i < 0) {
           return availableVersions[0];
         }
 
-        sortVersionsDescending(lastMatchedVersions);
-        return lastMatchedVersions[0].join('.');
+        return availableVersions[i];
       }
 
       function redirectToDocsite(manifest) {
         const fluentuiDocsiteVersions = getAvailableVersionsFromManifest(manifest);
+        if (!sessionStorage.redirect) {
+          window.location.pathname = '/' + fluentuiDocsiteVersions[0];
+          return;
+        }
 
-        let redirectVersion = undefined;
-        if (sessionStorage.redirect) {
-          redirectVersion = new URL(sessionStorage.redirect).pathname.split('/')[1];
+        const redirectVersion = new URL(sessionStorage.redirect).pathname.split('/')[1];
+        // handles paths without versions, assume invalid version numbers fit this case
+        // will cause problems with /thisIsWrong/components/Accordion/....
+        // hope the above case doesn't happen often
+        if (!window.compareVersions.validate(redirectVersion)) {
+          const url = new URL(sessionStorage.redirect);
+          const newPath = '/' + fluentuiDocsiteVersions[0] + url.pathname;
+          url.pathname = newPath;
+          setRedirectInSessionStorage(url.href);
+          window.location.pathname = '/' + fluentuiDocsiteVersions[0];
+          return;
         }
 
         if (fluentuiDocsiteVersions.indexOf(redirectVersion) > -1) {
           window.location.pathname = '/' + redirectVersion;
-          return;
-        }
-
-        if (redirectVersion) {
+        } else {
           const closestVersion = findClosestVersion(redirectVersion, fluentuiDocsiteVersions);
-          setRedirectInSessionStorage(redirectVersion, closestVersion);
+          const url = new URL(sessionStorage.redirect);
+          const newPath = url.pathname.replace(redirectVersion, closestVersion);
+          url.pathname = newPath;
+          setRedirectInSessionStorage(url.href);
           window.location.pathname = '/' + closestVersion;
-          return;
         }
-
-        window.location.pathname = '/' + fluentuiDocsiteVersions[0];
       }
 
       (function init() {
