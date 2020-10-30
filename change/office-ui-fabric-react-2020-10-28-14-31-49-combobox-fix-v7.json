@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove allowFreeForm prop in ComboBox to set readonly only when disabled",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-28T21:31:49.607Z"
-}

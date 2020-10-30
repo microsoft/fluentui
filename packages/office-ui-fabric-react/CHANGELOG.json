@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 12:23:06 GMT",
+      "tag": "office-ui-fabric-react_v7.149.1",
+      "version": "7.149.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove allowFreeForm prop in ComboBox to set readonly only when disabled",
+            "author": "ololubek@microsoft.com",
+            "commit": "9c0596c67f5fad10823f6b626926f0444873bc8c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2020 12:24:41 GMT",
       "tag": "office-ui-fabric-react_v7.149.0",
       "version": "7.149.0",

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Oct 2020 12:24:41 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 12:23:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.149.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.1)
+
+Fri, 30 Oct 2020 12:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.149.0..office-ui-fabric-react_v7.149.1)
+
+### Patches
+
+- remove allowFreeForm prop in ComboBox to set readonly only when disabled ([PR #15748](https://github.com/microsoft/fluentui/pull/15748) by ololubek@microsoft.com)
 
 ## [7.149.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.0)
 

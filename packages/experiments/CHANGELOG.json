@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 30 Oct 2020 12:23:06 GMT",
+      "tag": "@uifabric/experiments_v7.36.4",
+      "version": "7.36.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "9c0596c67f5fad10823f6b626926f0444873bc8c",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2020 12:22:51 GMT",
       "tag": "@uifabric/experiments_v7.36.0",
       "version": "7.36.0",

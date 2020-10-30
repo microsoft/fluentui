@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 26 Oct 2020 12:22:51 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Oct 2020 12:23:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.4)
+
+Fri, 30 Oct 2020 12:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.36.0..@uifabric/experiments_v7.36.4)
+
+### Patches
+
+- update snapshots ([PR #15748](https://github.com/microsoft/fluentui/pull/15748) by ololubek@microsoft.com)
 
 ## [7.36.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.0)
 

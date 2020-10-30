@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "7.8.42",
+  "version": "7.8.43",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,18 +36,18 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-examples": "^0.8.4",
+    "@fluentui/react-examples": "^0.8.5",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/api-docs": "^7.5.37",
-    "@uifabric/azure-themes": "^7.5.35",
-    "@uifabric/example-app-base": "^7.15.34",
+    "@uifabric/api-docs": "^7.5.38",
+    "@uifabric/azure-themes": "^7.5.36",
+    "@uifabric/example-app-base": "^7.15.35",
     "@uifabric/icons": "^7.5.15",
-    "@uifabric/mdl2-theme": "^0.3.33",
+    "@uifabric/mdl2-theme": "^0.3.34",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/theme-samples": "^7.1.37",
-    "@uifabric/tsx-editor": "^0.13.34",
+    "@uifabric/theme-samples": "^7.1.38",
+    "@uifabric/tsx-editor": "^0.13.35",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.149.0",
+    "office-ui-fabric-react": "^7.149.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
