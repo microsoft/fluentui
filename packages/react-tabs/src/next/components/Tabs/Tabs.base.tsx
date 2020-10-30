@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-internal';
 import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
 import { TabsImperativeHandle, TabItemProps, TabsProps, TabsStyleProps, TabsStyles, TabItem } from './index';
-import { useOverflow } from '../../utilities/useOverflow';
+import { useOverflow } from '../../../utilities/useOverflow';
 
 const getClassNames = classNamesFunction<TabsStyleProps, TabsStyles>();
 
@@ -41,7 +41,6 @@ const getTabItems = (props: TabsProps, baseId: string): TabItemCollection => {
 
   React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isTabItem(child)) {
-      // eslint-disable-next-line deprecation/deprecation
       const { itemKey = index.toString(), ...tabItemProps } = child.props;
       result.tabs.push({
         ...tabItemProps,

@@ -3,7 +3,7 @@ import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
 import { Tabs, TabItem, TabsImperativeHandle } from './index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../../common/isConformant';
 
 describe('Tabs', () => {
   beforeEach(() => {
@@ -24,6 +24,7 @@ describe('Tabs', () => {
   isConformant({
     Component: Tabs,
     displayName: 'Tabs',
+    exportSubdir: 'next',
   });
 
   it('can be focused', () => {
