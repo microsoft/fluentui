@@ -63,6 +63,7 @@
     "@uifabric/merge-styles": "^7.19.1",
     "@uifabric/react-cards": "^0.114.5",
     "@uifabric/react-hooks": "^7.13.9",
+    "@fluentui/react-theme-provider": "^0.16.2",
     "@uifabric/styling": "^7.16.16",
     "@uifabric/theme-samples": "^7.1.38",
     "@uifabric/utilities": "^7.33.2",
