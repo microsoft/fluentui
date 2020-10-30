@@ -18,7 +18,7 @@ export * from './makeStyles';
 export * from './makeClasses';
 export * from './makeVariantClasses';
 
-export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@uifabric/merge-styles';
+export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
 export * from './styleRenderers/mergeStylesRenderer';
 export * from './styleRenderers/types';

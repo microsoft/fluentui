@@ -12,6 +12,9 @@ const GlobalClassNames = {
   secondaryContent: 'ms-CompoundButton-secondaryContent',
 };
 
+/**
+ * CompoundButton classes hook for mixing classes into a mutable state object.
+ */
 export const useCompoundButtonClasses = makeVariantClasses<CompoundButtonState, CompoundButtonVariants>({
   name: 'CompoundButton',
   prefix: '--button',

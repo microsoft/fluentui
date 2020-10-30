@@ -12,15 +12,9 @@ export const InjectionMode = {
   insertNode: 1 as 1,
 
   /**
-   * Appends rules using appendChild. New rules will be inserted into the "active" style element, which gets reset on
-   * the next animation frame to a new style element. Creating new style elements ensures previously registered rules
-   * do not become modified, thus invalidating layouts for more elements than necessary. On IE11 however, the style
-   * element is reused.
+   * Appends rules using appendChild.
    */
   appendChild: 2 as 2,
-
-  /** Works the same as `appendChild`, but always re-creates the element on new frames, even for IE11. */
-  appendNewElements: 3 as 3,
 };
 
 export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
@@ -82,7 +76,6 @@ export interface IStyleSheetConfig {
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
-
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
  * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
@@ -252,7 +245,6 @@ export class Stylesheet {
           break;
 
         case InjectionMode.appendChild:
-        case InjectionMode.appendNewElements:
           element.appendChild(document.createTextNode(rule));
           break;
       }
@@ -298,14 +290,13 @@ export class Stylesheet {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = this._createStyleElement();
 
-      if (!REUSE_STYLE_NODE || this._config.injectionMode === InjectionMode.appendNewElements) {
+      if (!REUSE_STYLE_NODE) {
         // Reset the style element on the next frame.
         window.requestAnimationFrame(() => {
           this._styleElement = undefined;
         });
       }
     }
-
     return this._styleElement;
   }
 

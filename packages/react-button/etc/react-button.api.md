@@ -302,7 +302,7 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTML
     render: (state: import("./CompoundButton.types").CompoundButtonState) => JSX.Element;
 };
 
-// @public (undocumented)
+// @public
 export const useCompoundButtonClasses: (state: CompoundButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)

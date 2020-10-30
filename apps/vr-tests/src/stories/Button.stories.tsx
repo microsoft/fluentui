@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@fluentui/react-button';
+import { Button } from '@fluentui/react';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
-storiesOf('Button Next', module)
+storiesOf('Button', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (

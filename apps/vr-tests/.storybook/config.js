@@ -1,15 +1,9 @@
 import * as storybook from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-import { Stylesheet, InjectionMode } from '@fluentui/react/lib/Styling';
 
 setOptions({
   name: 'Fabric',
-});
-
-Stylesheet.getInstance().setConfig({
-  // Ensure compatibility with IE11.
-  injectionMode: InjectionMode.appendNewElements,
 });
 
 const req = require.context('../src/stories', true, /\.stories\.tsx$/);

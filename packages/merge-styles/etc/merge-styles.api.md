@@ -72,7 +72,6 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    appendNewElements: 3;
 };
 
 // @public (undocumented)
