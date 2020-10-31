@@ -31,7 +31,8 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
 
   if (slotNames) {
     for (const name of slotNames) {
-      const slotDefinition = state[name];
+      // TODO: add/update tests ensuring missing slotDefinition does not throw (maybe getNativeProps test, it throws)
+      const slotDefinition = typeof state[name] === 'undefined' ? {} : state[name];
       const Component = state?.components?.[name];
 
       // TODO: Handle slots that are "empty" or not defined by the user
@@ -44,7 +45,7 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
       slots[name] = Component;
 
       // children render function
-      if (typeof slotDefinition?.children === 'function') {
+      if (typeof slotDefinition.children === 'function') {
         slotProps[name] = {
           children: slotDefinition.children(Component, omit(slotDefinition, ['children'])),
         };

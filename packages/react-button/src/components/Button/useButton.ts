@@ -33,7 +33,13 @@ export const useButton = (
       //       This is required because we need to render slots EXCLUSIVELY when user passes slot info.
       //       Some components will have default slots.
       icon: typeof props.icon !== 'undefined' ? components.icon || 'span' : NullRender,
-      content: typeof props.content !== 'undefined' ? components.content || 'span' : NullRender,
+      content:
+      // TODO: This is another strange pattern, aliasing content to children.
+      //       Originally, <Button>Hi</Button> did not render the text.
+      //       That is because `content` isn't defined, which resulted in content being a NullRenderer.
+        typeof props.content !== 'undefined' || typeof props.children !== 'undefined'
+          ? components.content || 'span'
+          : NullRender,
       // TODO: Sometimes we need to special things with NullRender...
       // loader={null} opted out of loader
       // loader={undefined} as in, user did not pass a loader, default to regular loader if props.loading
