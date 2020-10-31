@@ -97,6 +97,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         transform="translate(40, 0)"
       />
       <g />
+      <g />
     </svg>
   </div>
   <div
@@ -440,6 +441,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         transform="translate(40, 0)"
       />
       <g />
+      <g />
     </svg>
   </div>
   <div
@@ -763,6 +765,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         transform="translate(40, 0)"
       />
       <g />
+      <g />
     </svg>
   </div>
 </div>
@@ -864,6 +867,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         id="yAxisGElementchart_8"
         transform="translate(40, 0)"
       />
+      <g />
       <g />
     </svg>
   </div>
@@ -1208,6 +1212,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         transform="translate(40, 0)"
       />
       <g />
+      <g />
     </svg>
   </div>
   <div
@@ -1550,6 +1555,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
+      <g />
       <g />
     </svg>
   </div>
@@ -1894,6 +1900,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         transform="translate(40, 0)"
       />
       <g />
+      <g />
     </svg>
   </div>
   <div
@@ -2236,6 +2243,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         id="yAxisGElementchart_28"
         transform="translate(40, 0)"
       />
+      <g />
       <g />
     </svg>
   </div>
