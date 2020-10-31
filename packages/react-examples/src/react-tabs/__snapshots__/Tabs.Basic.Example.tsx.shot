@@ -8,7 +8,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -44,7 +44,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -185,7 +185,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -198,7 +198,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -216,7 +216,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -344,7 +344,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -357,7 +357,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -375,7 +375,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -503,7 +503,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -516,7 +516,7 @@ exports[`Component Examples renders Tabs.Basic.Example.tsx correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;

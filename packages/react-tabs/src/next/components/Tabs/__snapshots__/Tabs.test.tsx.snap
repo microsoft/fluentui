@@ -7,7 +7,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -43,7 +43,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -182,7 +182,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -195,7 +195,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -213,7 +213,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -341,7 +341,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -354,7 +354,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -365,7 +365,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
           </span>
           <span
             className=
-                ms-Pivot-count
+                ms-Tabs-count
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -403,7 +403,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -439,7 +439,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -578,7 +578,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -591,7 +591,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -609,7 +609,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -737,7 +737,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -750,7 +750,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -788,7 +788,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -824,7 +824,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -962,7 +962,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -975,7 +975,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
         >
           <span
             className=
-                ms-Pivot-count
+                ms-Tabs-count
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -994,7 +994,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1122,7 +1122,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -1135,7 +1135,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -1146,7 +1146,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           </span>
           <span
             className=
-                ms-Pivot-count
+                ms-Tabs-count
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -1165,7 +1165,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1293,7 +1293,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -1305,7 +1305,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
               }
         >
           <span
-            className="ms-Pivot-icon"
+            className="ms-Tabs-icon"
           >
             <i
               aria-hidden={true}
@@ -1327,7 +1327,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           </span>
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -1363,7 +1363,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -1399,7 +1399,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1538,7 +1538,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -1551,7 +1551,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -1569,7 +1569,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1697,7 +1697,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -1710,7 +1710,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -1731,8 +1731,8 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           ms-Button--action
           ms-Button--command
           ms-Button--hasMenu
-          ms-Pivot-link
-          ms-Pivot-overflowMenuButton
+          ms-Tabs-tab
+          ms-Tabs-overflowMenuButton
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1835,7 +1835,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          .ms-Pivot-link[data-is-overflowing='true'] ~ & {
+          .ms-Tabs-tab[data-is-overflowing='true'] ~ & {
             position: relative;
             visibility: visible;
           }
@@ -1925,9 +1925,9 @@ exports[`Tabs renders large tab format correctly 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
-        ms-Pivot--large
-        ms-Pivot--tabs
+        ms-Tabs
+        ms-Tabs--large
+        ms-Tabs--tabs
         &:focus {
           outline: none;
         }
@@ -1963,7 +1963,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -2136,7 +2136,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -2149,7 +2149,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -2167,7 +2167,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2329,7 +2329,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -2342,7 +2342,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -2378,8 +2378,8 @@ exports[`Tabs renders large tabs correctly 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
-        ms-Pivot--large
+        ms-Tabs
+        ms-Tabs--large
         &:focus {
           outline: none;
         }
@@ -2415,7 +2415,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -2554,7 +2554,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -2567,7 +2567,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -2585,7 +2585,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2713,7 +2713,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -2726,7 +2726,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -2762,8 +2762,8 @@ exports[`Tabs renders tab format correctly 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
-        ms-Pivot--tabs
+        ms-Tabs
+        ms-Tabs--tabs
         &:focus {
           outline: none;
         }
@@ -2799,7 +2799,7 @@ exports[`Tabs renders tab format correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -2972,7 +2972,7 @@ exports[`Tabs renders tab format correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -2985,7 +2985,7 @@ exports[`Tabs renders tab format correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -3003,7 +3003,7 @@ exports[`Tabs renders tab format correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -3165,7 +3165,7 @@ exports[`Tabs renders tab format correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -3178,7 +3178,7 @@ exports[`Tabs renders tab format correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -3214,7 +3214,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -3250,7 +3250,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -3389,7 +3389,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -3402,7 +3402,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -3420,7 +3420,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -3548,7 +3548,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -3561,7 +3561,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -3597,7 +3597,7 @@ exports[`Tabs supports JSX expressions 1`] = `
   <div
     className=
         ms-FocusZone
-        ms-Pivot
+        ms-Tabs
         &:focus {
           outline: none;
         }
@@ -3633,7 +3633,7 @@ exports[`Tabs supports JSX expressions 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -3761,7 +3761,7 @@ exports[`Tabs supports JSX expressions 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -3774,7 +3774,7 @@ exports[`Tabs supports JSX expressions 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;
@@ -3792,7 +3792,7 @@ exports[`Tabs supports JSX expressions 1`] = `
           ms-Button
           ms-Button--action
           ms-Button--command
-          ms-Pivot-link
+          ms-Tabs-tab
           is-selected
           {
             -moz-osx-font-smoothing: grayscale;
@@ -3931,7 +3931,7 @@ exports[`Tabs supports JSX expressions 1`] = `
       >
         <span
           className=
-              ms-Pivot-linkContent
+              ms-Tabs-tabContent
               {
                 flex: 0 1 100%;
               }
@@ -3944,7 +3944,7 @@ exports[`Tabs supports JSX expressions 1`] = `
         >
           <span
             className=
-                ms-Pivot-text
+                ms-Tabs-text
                 {
                   display: inline-block;
                   vertical-align: top;

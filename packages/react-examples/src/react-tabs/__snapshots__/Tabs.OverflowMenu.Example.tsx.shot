@@ -31,7 +31,7 @@ Array [
       <div
         className=
             ms-FocusZone
-            ms-Pivot
+            ms-Tabs
             &:focus {
               outline: none;
             }
@@ -67,7 +67,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               is-selected
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -206,7 +206,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -219,7 +219,7 @@ Array [
             >
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -237,7 +237,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -364,7 +364,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -376,7 +376,7 @@ Array [
                   }
             >
               <span
-                className="ms-Pivot-icon"
+                className="ms-Tabs-icon"
               >
                 <i
                   aria-hidden={true}
@@ -398,7 +398,7 @@ Array [
               </span>
               <span
                 className=
-                    ms-Pivot-count
+                    ms-Tabs-count
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -417,7 +417,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -545,7 +545,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -557,7 +557,7 @@ Array [
                   }
             >
               <span
-                className="ms-Pivot-icon"
+                className="ms-Tabs-icon"
               >
                 <i
                   aria-hidden={true}
@@ -579,7 +579,7 @@ Array [
               </span>
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -597,7 +597,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -725,7 +725,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -737,7 +737,7 @@ Array [
                   }
             >
               <span
-                className="ms-Pivot-icon"
+                className="ms-Tabs-icon"
               >
                 <i
                   aria-hidden={true}
@@ -759,7 +759,7 @@ Array [
               </span>
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -770,7 +770,7 @@ Array [
               </span>
               <span
                 className=
-                    ms-Pivot-count
+                    ms-Tabs-count
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -789,7 +789,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -924,7 +924,7 @@ Array [
             >
               <span
                 className=
-                    ms-Pivot-linkContent
+                    ms-Tabs-tabContent
                     {
                       flex: 0 1 100%;
                     }
@@ -937,7 +937,7 @@ Array [
               >
                 <span
                   className=
-                      ms-Pivot-text
+                      ms-Tabs-text
                       {
                         display: inline-block;
                         vertical-align: top;
@@ -978,7 +978,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1106,7 +1106,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -1119,7 +1119,7 @@ Array [
             >
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -1137,7 +1137,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1265,7 +1265,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -1278,7 +1278,7 @@ Array [
             >
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -1296,7 +1296,7 @@ Array [
               ms-Button
               ms-Button--action
               ms-Button--command
-              ms-Pivot-link
+              ms-Tabs-tab
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1424,7 +1424,7 @@ Array [
           >
             <span
               className=
-                  ms-Pivot-linkContent
+                  ms-Tabs-tabContent
                   {
                     flex: 0 1 100%;
                   }
@@ -1437,7 +1437,7 @@ Array [
             >
               <span
                 className=
-                    ms-Pivot-text
+                    ms-Tabs-text
                     {
                       display: inline-block;
                       vertical-align: top;
@@ -1458,8 +1458,8 @@ Array [
               ms-Button--action
               ms-Button--command
               ms-Button--hasMenu
-              ms-Pivot-link
-              ms-Pivot-overflowMenuButton
+              ms-Tabs-tab
+              ms-Tabs-overflowMenuButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1562,7 +1562,7 @@ Array [
               &[data-is-overflowing='true'] {
                 display: none;
               }
-              .ms-Pivot-link[data-is-overflowing='true'] ~ & {
+              .ms-Tabs-tab[data-is-overflowing='true'] ~ & {
                 position: relative;
                 visibility: visible;
               }
