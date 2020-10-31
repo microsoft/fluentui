@@ -6,8 +6,7 @@ import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Butto
  * {@docCategory Button}
  */
 export type MinimalMenuProps = {
-  as?: string;
-  expanded?: boolean;
+  hidden?: boolean;
   onDismiss?: () => void;
   target?: React.Ref<HTMLElement | undefined>;
 };

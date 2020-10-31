@@ -214,8 +214,7 @@ export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
 // @public (undocumented)
 export type MinimalMenuProps = {
-    as?: string;
-    expanded?: boolean;
+    hidden?: boolean;
     onDismiss?: () => void;
     target?: React.Ref<HTMLElement | undefined>;
 };
@@ -308,6 +307,9 @@ export const useMenuButtonClasses: (state: MenuButtonState, theme?: Theme | unde
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public (undocumented)
+export const useMenuContext: () => MinimalMenuProps;
 
 // @public
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {

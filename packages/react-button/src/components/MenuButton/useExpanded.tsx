@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { MenuButtonState } from './MenuButton.types';
+import { MenuButtonState, MinimalMenuProps } from './MenuButton.types';
 
 export type ExpandedState = {
   ref?: React.Ref<unknown>;
@@ -14,6 +14,11 @@ export type ExpandedState = {
   'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
 
   menu?: MenuButtonState['menu'];
+};
+
+const MenuContext = React.createContext<MinimalMenuProps>({});
+export const useMenuContext = () => {
+  return React.useContext(MenuContext);
 };
 
 /**
@@ -74,17 +79,21 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     // TODO: should we re-focus the root?
   }, [onMenuDismiss, setExpandedValue]);
 
+  const menuProps: MinimalMenuProps = {
+    hidden: !expandedValue,
+    onDismiss,
+    target: rootRef,
+  };
+
   // Assign extra props to the menu slot.
   draftState.menu = {
-    children: draftState.menu
-      ? typeof draftState.menu.children === 'function'
-        ? draftState.menu.children({
-            expanded: expandedValue,
-            onDismiss,
-            target: rootRef,
-          })
-        : draftState.menu.children
-      : null,
+    children: draftState.menu ? (
+      typeof draftState.menu.children === 'function' ? (
+        draftState.menu.children(menuProps)
+      ) : (
+        <MenuContext.Provider value={menuProps}>{draftState.menu.children}</MenuContext.Provider>
+      )
+    ) : null,
   };
 
   draftState['aria-expanded'] = expandedValue;
