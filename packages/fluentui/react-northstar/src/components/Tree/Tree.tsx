@@ -27,8 +27,28 @@ import {
   FluentComponentStaticProps,
   ShorthandRenderFunction,
 } from '../../types';
-import { useTree } from './hooks/useTree';
-import { TreeContext, TreeRenderContextValue } from './context';
+import { useSelectableTree } from './hooks/useSelectableTree';
+import { BaseFlatTreeItem } from './hooks/flattenTree';
+
+export interface TreeRenderContextValue {
+  toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
+  toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
+  focusFirstChild: (itemId: string) => void;
+  focusParent: (itemId: string) => void;
+  siblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
+  registerItemRef: (id: string, node: HTMLElement) => void;
+  getItemById: (id: string) => BaseFlatTreeItem & { [key: string]: any };
+}
+
+export const TreeContext = React.createContext<TreeRenderContextValue>({
+  toggleActive: _.noop,
+  toggleSelect: _.noop,
+  focusFirstChild: _.noop,
+  focusParent: _.noop,
+  siblingsExpand: _.noop,
+  registerItemRef: _.noop,
+  getItemById: id => ({ id } as any),
+});
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -137,48 +157,42 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     rtl: context.rtl,
   });
 
+  const treeRef = React.useRef<HTMLElement>();
+
   const {
-    visibleItemIds,
-    getItemById,
+    tobeRenderedItemsProps,
+    toggleActive,
+    focusParent,
+    focusFirstChild,
+    siblingsExpand,
     registerItemRef,
-    toggleItemActive,
-    focusItemById,
-    expandSiblings,
-    toggleItemSelect,
-  } = useTree(props);
+    toggleSelect,
+    getItemById,
+  } = useSelectableTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({
-      getItemById,
+      toggleActive,
+      focusParent,
+      siblingsExpand,
+      focusFirstChild,
       registerItemRef,
-      toggleItemActive,
-      expandSiblings,
-      focusItemById,
-      toggleItemSelect,
+      toggleSelect,
+      getItemById,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, toggleItemSelect],
+    [toggleActive, focusParent, siblingsExpand, focusFirstChild, registerItemRef, toggleSelect, getItemById],
   );
 
   const renderContent = (): React.ReactElement[] => {
-    return visibleItemIds.map(id => {
-      const item = getItemById(id);
-      const { expanded, parent, level, index, treeSize } = item;
-      return TreeItem.create(item.item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            renderItemTitle: props.renderItemTitle,
-          }),
-        overrideProps: {
-          expanded,
-          parent,
-          key: id,
-          level,
-          index,
-          treeSize,
-          selectable: selectable ? item.item.selectable : false,
+    if (!tobeRenderedItemsProps) return [];
+    return tobeRenderedItemsProps.map(props =>
+      TreeItem.create(
+        { id: props.id }, // this is useless. {} would work, but won't pass type check
+        {
+          defaultProps: () => getA11yProps('item', props),
         },
-      });
-    });
+      ),
+    );
   };
 
   const element = (

@@ -26,7 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { TreeContext } from './context';
+import { TreeContext } from './Tree';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -98,7 +98,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-  const { focusItemById } = React.useContext(TreeContext);
+  const { focusParent } = React.useContext(TreeContext);
   const {
     accessibility,
     children,
@@ -131,7 +131,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       },
       focusParent: e => {
         // allow bubbling up to parent treeItem
-        focusItemById(props.parent);
+        focusParent(props.parent);
       },
       performSelection: e => {
         e.preventDefault();

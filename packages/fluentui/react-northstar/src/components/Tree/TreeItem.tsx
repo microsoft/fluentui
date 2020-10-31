@@ -32,7 +32,7 @@ import {
 } from '../../types';
 import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
-import { TreeContext } from './context';
+import { TreeContext } from './Tree';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -139,15 +139,16 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   } = props;
 
   const {
-    getItemById,
+    focusParent,
+    siblingsExpand,
+    focusFirstChild,
+    toggleActive,
+    toggleSelect,
     registerItemRef,
-    toggleItemActive,
-    focusItemById,
-    expandSiblings,
-    toggleItemSelect,
+    getItemById,
   } = React.useContext(TreeContext);
 
-  const { selected, hasSubtree, childrenIds } = getItemById(id);
+  const { selected, hasSubtree } = getItemById(id);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -220,32 +221,32 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const handleSelection = e => {
     if (selectable) {
-      toggleItemSelect(e, id);
+      toggleSelect([id], e);
     }
     _.invoke(props, 'onTitleClick', e, props);
   };
 
   const handleTitleClick = e => {
     if (hasSubtree && e.target === e.currentTarget) {
-      toggleItemActive(e, id);
+      toggleActive([id], e);
     } else if (selectable) {
-      toggleItemSelect(e, id);
+      toggleSelect([id], e);
     }
     _.invoke(props, 'onTitleClick', e, props);
   };
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
-    focusItemById(childrenIds?.[0]);
+    focusFirstChild(props.id);
   };
 
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
-    focusItemById(parent);
+    focusParent(parent);
   };
 
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
-    expandSiblings(e, props.id);
+    siblingsExpand(e, props);
   };
 
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
@@ -276,6 +277,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
   const element = (
     <ElementType
+      // ref={ref}
       {...getA11Props('root', {
         className: classes.root,
         id,
@@ -325,7 +327,6 @@ TreeItem.propTypes = {
   contentRef: customPropTypes.ref,
   id: PropTypes.string.isRequired,
   index: PropTypes.number,
-  items: customPropTypes.collectionShorthand,
   level: PropTypes.number,
   onFocusFirstChild: PropTypes.func,
   onFocusParent: PropTypes.func,

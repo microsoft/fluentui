@@ -1,7 +1,7 @@
-import { ObjectShorthandValue } from '../../../types';
+import { ObjectShorthandCollection, ShorthandRenderFunction, TreeTitleProps } from '../../../index';
 import { TreeItemProps } from '../TreeItem';
 
-export interface FlatTreeItem {
+export type BaseFlatTreeItem = {
   /**
    * Also in TreeItemProps.
    * The index of the item among its siblings. Count starts at 1.
@@ -38,120 +38,107 @@ export interface FlatTreeItem {
 
   /** children ids of the tree item. For leaf tree item, childrenIds is undefined */
   childrenIds?: string[];
+};
 
-  /** Shorthand props for the current item */
-  item: ObjectShorthandValue<TreeItemProps>;
+export type FlatTree = {
+  [key: string]: BaseFlatTreeItem & { [key: string]: any };
+};
 
-  /**
-   * when selected=true, the tree item is fully selected, indicating all its descendents are fully selected;
-   * when selected=false, the tree item is not selected, indicating none of its descendents is selected;
-   * when selected='indeterminate', only part of the tree item's descendents are selected
-   */
-  selected?: boolean | 'indeterminate';
-}
-
-export type FlatTree = Record<string, FlatTreeItem>;
-
-// Fluent UI Tree component does not have a root item.
-// Adding a 'secret' root (level=0) helps traversing among the top level (level=1) tree items.
-// This 'secret' root should NOT be returned as part of orderedItemIds, because it is not an item from user props
-const SECRET_ROOT_ID = 'FLUENT_UI_SECRET_ROOT_ID';
-
-/**
- * @returns returns the flattened tree, and an array of all visible tree item ids in a Depth First order.
- */
 export function flattenTree(
-  items: ObjectShorthandValue<TreeItemProps>[],
-  activeItemIds: string[],
-  selectedItemIds: string[],
-): { flatTree: FlatTree; visibleItemIds: string[] } {
-  const flatTree = {
-    [SECRET_ROOT_ID]: {
-      index: 1,
-      level: 0,
-      expanded: true,
-      treeSize: 1,
-      hasSubtree: true,
-    } as FlatTreeItem,
+  items: ObjectShorthandCollection<TreeItemProps>, // tree's props.items
+): FlatTree {
+  const result = {};
+  const flatten = (baseItems, level, parent?) => {
+    if (!baseItems) return;
+
+    if (parent) {
+      result[parent].childrenIds = [];
+    }
+
+    baseItems.forEach((item, indexAmongSiblings, arr) => {
+      const { id, items, expanded } = item;
+      if (parent) {
+        result[parent].childrenIds.push(id);
+      }
+
+      result[id] = {
+        index: indexAmongSiblings + 1, // Used for aria-posinset and it's 1-based.
+        level,
+        expanded: items?.length ? !!expanded : undefined,
+        parent: parent == null ? undefined : parent,
+        treeSize: arr.length,
+        hasSubtree: !!items?.length,
+      };
+
+      if (items?.length) {
+        flatten(items, level + 1, id);
+      }
+    });
   };
 
-  // returns an extra array of orderedItemIds because flattened tree object does not keep the order of insertion
-  return flattenSubTree(items, 1, SECRET_ROOT_ID, flatTree, true, activeItemIds, [], selectedItemIds);
+  flatten(items, 1);
+  return result;
 }
 
-function flattenSubTree(
-  items: ObjectShorthandValue<TreeItemProps>[],
-  level: number = 1,
-  parent: string,
+export function getTobeRenderedItemsProps(
+  items: ObjectShorthandCollection<TreeItemProps>, // tree's props.items
   flatTree: FlatTree,
-  isParentVisible: boolean = true,
-  activeItemIds: string[],
-  visibleItemIds: string[],
-  selectedItemIds: string[],
-): { flatTree: FlatTree; visibleItemIds: string[]; selectedChildrenNum: number; selectableChildrenNum: number } {
+  treeRenderItemTitle?: ShorthandRenderFunction<TreeTitleProps>,
+): TreeItemProps[] {
   if (!items) {
-    return { flatTree, visibleItemIds, selectedChildrenNum: 0, selectableChildrenNum: 0 };
+    return [];
   }
 
-  const itemsInLeaf = items.length;
-  let selectedNum = 0;
-  let selectableNum = 0;
+  return items.reduce((prevProps: TreeItemProps[], currItem) => {
+    const {
+      id,
+      items,
+      title,
+      accessibility,
+      onFocusFirstChild,
+      onFocusParent,
+      onTitleClick,
+      onClick,
+      onSiblingsExpand,
+      renderItemTitle,
+      selectable,
+      selectionIndicator,
+    } = currItem;
 
-  items.forEach((item, indexAmongSiblings) => {
-    const { id, selectable, items: childrenItems } = item;
-    const hasSubtree = childrenItems ? !!childrenItems.length : false;
-    const expanded = hasSubtree && activeItemIds.indexOf(id) !== -1;
+    if (!flatTree[id]) {
+      // should never happen
+      return prevProps;
+    }
 
-    flatTree[id] = {
-      item,
-      index: indexAmongSiblings + 1, // Used for aria-posinset and it's 1-based.
-      level,
+    const { expanded, parent, level, index, treeSize } = flatTree[id];
+
+    const treeItemProps = {
+      // user props:
+      id,
+      items,
+      key: id,
+      title,
+      ...(accessibility && { accessibility }), // to not override accessibility passed down from tree
+      onFocusFirstChild,
+      onFocusParent,
+      onTitleClick,
+      onClick,
+      onSiblingsExpand,
+      renderItemTitle: renderItemTitle ?? treeRenderItemTitle,
+      selectable,
+      selectionIndicator,
+      // props from flatTree:
       expanded,
-      parent: parent == null ? undefined : parent,
-      treeSize: itemsInLeaf,
-      hasSubtree,
-      selected: false,
+      parent,
+      level,
+      index,
+      treeSize,
     };
 
-    if (isParentVisible) {
-      visibleItemIds.push(id);
-    }
-
-    if (hasSubtree) {
-      const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
-        childrenItems as ObjectShorthandValue<TreeItemProps>[],
-        level + 1,
-        id,
-        flatTree,
-        isParentVisible && expanded, // parent being visible and expanded means subtree is visible
-        activeItemIds,
-        visibleItemIds,
-        selectedItemIds,
-      );
-
-      if (selectedChildrenNum === selectableChildrenNum) {
-        flatTree[id].selected = true;
-        selectedNum++;
-      } else if (selectedChildrenNum > 0) {
-        flatTree[id].selected = 'indeterminate';
-        selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
-      }
-    } else if (selectedItemIds.indexOf(id) >= 0) {
-      flatTree[id].selected = true;
-      selectedNum++;
-    }
-
-    if (selectable !== false) {
-      // by default item is selectable, unless selectable=false specified
-      selectableNum++;
-    }
-
-    if (flatTree[parent].childrenIds) {
-      flatTree[parent].childrenIds.push(id);
-    } else {
-      flatTree[parent].childrenIds = [id];
-    }
-  });
-
-  return { flatTree, visibleItemIds, selectedChildrenNum: selectedNum, selectableChildrenNum: selectableNum };
+    return [
+      ...prevProps,
+      treeItemProps,
+      ...(flatTree[id].expanded ? getTobeRenderedItemsProps(items as any, flatTree, treeRenderItemTitle) : ([] as any)),
+    ];
+  }, []);
 }
