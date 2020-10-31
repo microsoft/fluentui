@@ -143,12 +143,14 @@ export const getStyles = memoizeFunction(
     const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
     const defaultStyles: ISpinButtonStyles = {
-      root: {
-        outline: 'none',
-        fontSize: fonts.medium.fontSize,
-        width: '100%',
-        minWidth: DEFAULT_MIN_WIDTH,
-      },
+      root: [
+        fonts.medium,
+        {
+          outline: 'none',
+          width: '100%',
+          minWidth: DEFAULT_MIN_WIDTH,
+        },
+      ],
       labelWrapper: {
         display: 'inline-flex',
         alignItems: 'center',
