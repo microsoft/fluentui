@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Try react 17",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-31T00:32:22.899Z"
+}
