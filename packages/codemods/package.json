@@ -28,7 +28,9 @@
     "@types/node": "^10.3.2",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.8.25",
-    "@types/semver": "^5.5.0"
+    "@types/semver": "^5.5.0",
+    "fs-extra": "^9.0.1",
+    "@types/fs-extra": "^5.0.2"
   },
   "dependencies": {
     "tslib": "^1.10.0",
