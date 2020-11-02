@@ -58,7 +58,7 @@ steps:
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'
       azureSubscription: 'UI Fabric (private)'
-      storage: fluentsiteversiontest
+      storage: fluentsite
       ContainerName: '$web'
       BlobPrefix: '$(deployBasePath)'
       # uncomment to deploy to prod
