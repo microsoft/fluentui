@@ -4975,6 +4975,10 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaPosInSet?: number;
+    ariaRowCount?: number;
+    ariaRowIndex?: number;
+    ariaSetSize?: number;
     className?: string;
     compact?: boolean;
     // (undocumented)
@@ -5139,8 +5143,6 @@ export interface IGroupHeaderCheckboxProps {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
     expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;

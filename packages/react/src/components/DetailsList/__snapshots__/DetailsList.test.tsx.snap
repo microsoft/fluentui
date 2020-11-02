@@ -139,7 +139,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection117"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -209,7 +209,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection118"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -403,7 +403,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection117"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -481,7 +481,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection118"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -683,7 +683,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection110"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -743,7 +743,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection111"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -803,7 +803,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection112"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -863,7 +863,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection113"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1047,7 +1047,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection110"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1107,7 +1107,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection111"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1167,7 +1167,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection112"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1227,7 +1227,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection113"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1411,7 +1411,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection114"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1489,7 +1489,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection115"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1691,7 +1691,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection114"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1769,7 +1769,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection115"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -6893,8 +6893,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-label="Group 0"
                         aria-level={1}
-                        aria-posinset={1}
-                        aria-setsize={2}
+                        aria-rowcount={3}
+                        aria-rowindex={2}
                         className=
                             ms-GroupHeader
                             {
@@ -7105,7 +7105,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection18"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -7519,8 +7519,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-label="Group 1"
                         aria-level={1}
-                        aria-posinset={2}
-                        aria-setsize={2}
+                        aria-rowcount={3}
+                        aria-rowindex={3}
                         className=
                             ms-GroupHeader
                             {
@@ -7731,7 +7731,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         className="ms-List"
                         id="GroupedListSection19"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"

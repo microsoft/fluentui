@@ -354,6 +354,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+
           return onRenderDetailsGroupHeader(
             {
               ...groupHeaderProps,
@@ -368,20 +370,22 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               ariaColSpan: adjustedColumns.length,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
-              ariaRowCount: groupHeaderProps.ariaSetSize + (isHeaderVisible ? 1 : 0),
-              ariaRowIndex: groupHeaderProps.ariaPosInSet + (isHeaderVisible ? 1 : 0),
+              ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
+          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
-            ariaRowCount: groupHeaderProps.ariaSetSize + (isHeaderVisible ? 1 : 0),
-            ariaRowIndex: groupHeaderProps.ariaPosInSet + (isHeaderVisible ? 1 : 0),
+            ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
