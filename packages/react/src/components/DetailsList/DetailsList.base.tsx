@@ -366,6 +366,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
               ariaColSpan: adjustedColumns.length,
+              ariaPosInSet: undefined,
+              ariaSetSize: undefined,
+              ariaRowCount: groupHeaderProps.ariaSetSize + (isHeaderVisible ? 1 : 0),
+              ariaRowIndex: groupHeaderProps.ariaPosInSet + (isHeaderVisible ? 1 : 0),
             },
             defaultRender,
           );
@@ -374,6 +378,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
+            ariaPosInSet: undefined,
+            ariaSetSize: undefined,
+            ariaRowCount: groupHeaderProps.ariaSetSize + (isHeaderVisible ? 1 : 0),
+            ariaRowIndex: groupHeaderProps.ariaPosInSet + (isHeaderVisible ? 1 : 0),
           });
         };
   }, [
@@ -381,6 +389,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     adjustedColumns,
     groupNestingDepth,
     indentWidth,
+    isHeaderVisible,
     selection,
     selectionMode,
     viewport,
@@ -391,6 +400,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
+      role: 'rowgroup',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };

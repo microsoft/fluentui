@@ -28,6 +28,12 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
   /** Defines an element's number or position in the current set of listitems or treeitems */
   ariaPosInSet?: number;
 
+  /** Defines the number of items in the current set of grid items */
+  ariaRowCount?: number;
+
+  /** Defines an element's number or position in the current set of grid items */
+  ariaRowIndex?: number;
+
   /**
    * If provided, can be used to render a custom checkbox
    */
