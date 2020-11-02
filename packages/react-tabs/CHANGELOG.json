@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.6",
+      "version": "1.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Create the Tabs component as a renamed clone of the Pivot component",
+            "author": "behowell@microsoft.com",
+            "commit": "4f09ae6072f6f42512d64a8ea5f88763111c57ec",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.0",
       "version": "1.0.0-beta.0",

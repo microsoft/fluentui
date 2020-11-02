@@ -476,7 +476,7 @@ export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
 // @public
@@ -506,7 +506,7 @@ export class Stylesheet {
 
 // Warnings were encountered during analysis:
 //
-// lib/IStyleSet.d.ts:50:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:53:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
