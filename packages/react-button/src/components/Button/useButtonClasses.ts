@@ -112,6 +112,10 @@ export const buttonStyles: Record<string, IStyle> = {
         },
       },
 
+      /**
+       * IE11 button content will jitter on press unless the position is relative. We can remove this once we no longer
+       * support IE11.
+       */
       '& > span': {
         position: 'relative',
       },
