@@ -6,17 +6,10 @@ import { makeClasses } from './makeClasses';
 import { isIE11 } from '@fluentui/utilities';
 import { StyleRenderer } from './styleRenderers/types';
 import { useVariantClassesIE11Override } from './useVariantClassesIE11Override';
+import { callOrReturn } from './callOrReturn';
 
 // Track if we're using IE11 to use later in the hot codepath.
 const useIE11 = isIE11();
-
-/**
- * Calls a function with the argument, or returns the given object.
- * @param objOrFunc - Function or object.
- * @param argument - Argument to pass if a function is provided.
- */
-const callOrReturn = (objOrFunc: any, argument: any) =>
-  typeof objOrFunc === 'function' ? objOrFunc(argument) : objOrFunc;
 
 const processVariants = (variants: Variants | undefined, theme: Theme, name?: string, prefix?: string) => {
   const result: Record<string, IStyle> = {};
