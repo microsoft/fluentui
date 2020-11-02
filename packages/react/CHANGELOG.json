@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem",
+            "author": "jspurlin@microsoft.com",
+            "commit": "98517e3ed70affa08a8c46ddca6f3529885bb155",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove references to custom Omit helper",
+            "author": "elcraig@microsoft.com",
+            "commit": "2858fcaf942682621467b87aaef5d1be47f8ce47",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:33:11 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.6",
       "version": "8.0.0-beta.6",

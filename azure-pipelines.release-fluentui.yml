@@ -7,6 +7,12 @@ name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - name: docsiteVersion
+    value: empty
+  - name: deployBasePath
+    value: empty
+  - name: officialRelease
+    value: 1
 
 pool: 'Self Host Ubuntu'
 
@@ -17,22 +23,30 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
+      ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+      echo "##vso[task.setvariable variable=deployBasePath]$ver"
+      echo "##vso[task.setvariable variable=docsiteVersion]$ver"
+      echo "Docsite base path published to for version $ver"
+    displayName: Set base path and version variables for job
+  - script: |
       git config user.name "Fluent UI Build"
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
-
   - script: |
       npx midgard-yarn install
     displayName: yarn
-
   - script: |
       PRODUCTION=true yarn build
     displayName: yarn build
-
   - script: |
       NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish docsite as pipeline artifact'
+    inputs:
+      PathtoPublish: 'packages/fluentui/docs/dist'
+      ArtifactName: 'docsite_v$(docsiteVersion)'
 
   - task: AzureUpload@2
     displayName: Upload docs site
@@ -41,7 +55,10 @@ steps:
       azureSubscription: 'UI Fabric (private)'
       storage: fluentsite
       ContainerName: '$web'
-      BlobPrefix: ''
+      BlobPrefix: '$(deployBasePath)'
+      # uncomment to deploy to prod
+      # storage: fluentsite
+      # BlobPrefix: ''
 # No NPM release in CI for now
 #  - script: |
 #      yarn test
