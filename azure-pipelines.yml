@@ -24,9 +24,9 @@ jobs:
 
       - template: .devops/templates/pr-target-branch.yml
 
-      - script: |
-          yarn checkchange
-        displayName: check change
+      # - script: |
+      #     yarn checkchange
+      #   displayName: check change
 
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
