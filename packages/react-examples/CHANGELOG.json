@@ -2,6 +2,33 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:29:00 GMT",
+      "tag": "@fluentui/react-examples_v0.8.7",
+      "version": "0.8.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped vertical bar chart refactor",
+            "author": "v-jasha@microsoft.com",
+            "commit": "0033f85694f4a72d5e5165b6fd4c9d9deba45df2",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "modified the example code as per the changes",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "33e5b93c58f4b0042c2567416ce6da93cb97e71c",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Update SpinButton snapshots to show inherited Fabric font styles.",
+            "author": "lesliewilliams234@gmail.com",
+            "commit": "ba7160c5ee6acfbe565b581926fb07b89ef0ff40",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 18:59:48 GMT",
       "tag": "@fluentui/react-examples_v0.8.6",
       "version": "0.8.6",

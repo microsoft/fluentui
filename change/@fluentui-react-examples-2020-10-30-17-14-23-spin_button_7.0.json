@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update SpinButton snapshots to show inherited Fabric font styles.",
-  "packageName": "@fluentui/react-examples",
-  "email": "lesliewilliams234@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-31T00:14:23.222Z"
-}

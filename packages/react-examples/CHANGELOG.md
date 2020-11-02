@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:29:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.7)
+
+Mon, 02 Nov 2020 12:29:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.8.6..@fluentui/react-examples_v0.8.7)
+
+### Patches
+
+- Grouped vertical bar chart refactor ([PR #15468](https://github.com/microsoft/fluentui/pull/15468) by v-jasha@microsoft.com)
+- modified the example code as per the changes ([PR #15551](https://github.com/microsoft/fluentui/pull/15551) by v-sivsar@microsoft.com)
+- Update SpinButton snapshots to show inherited Fabric font styles. ([PR #15801](https://github.com/microsoft/fluentui/pull/15801) by lesliewilliams234@gmail.com)
 
 ## [0.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.6)
 

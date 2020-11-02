@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "7.9.17",
+  "version": "7.9.18",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:29:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.0)
+
+Mon, 02 Nov 2020 12:29:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.8.1..@uifabric/charting_v4.9.0)
+
+### Minor changes
+
+- Grouped vertical bar chart refactor added minor features ([PR #15468](https://github.com/microsoft/fluentui/pull/15468) by v-jasha@microsoft.com)
+- added the new feature, which is complex combo chart, where we give ability to the user to draw lines in the vertical stacked bar chart ([PR #15551](https://github.com/microsoft/fluentui/pull/15551) by v-sivsar@microsoft.com)
 
 ## [4.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.8.1)
 

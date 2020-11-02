@@ -2,6 +2,21 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:29:00 GMT",
+      "tag": "@uifabric/foundation_v7.9.18",
+      "version": "7.9.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add deprecation note to foundation readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "1867e11134aef221cf9376b5f29562637c199bf6",
+            "package": "@uifabric/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Oct 2020 12:26:33 GMT",
       "tag": "@uifabric/foundation_v7.9.12",
       "version": "7.9.12",

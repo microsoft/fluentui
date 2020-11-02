@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:29:00 GMT",
+      "tag": "@uifabric/charting_v4.9.0",
+      "version": "4.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Grouped vertical bar chart refactor added minor features",
+            "author": "v-jasha@microsoft.com",
+            "commit": "0033f85694f4a72d5e5165b6fd4c9d9deba45df2",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "added the new feature, which is complex combo chart, where we give ability to the user to draw lines in the vertical stacked bar chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "33e5b93c58f4b0042c2567416ce6da93cb97e71c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:21:51 GMT",
       "tag": "@uifabric/charting_v4.8.1",
       "version": "4.8.1",

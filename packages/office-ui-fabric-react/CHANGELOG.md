@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Oct 2020 18:59:48 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:29:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.149.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.3)
+
+Mon, 02 Nov 2020 12:29:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.149.2..office-ui-fabric-react_v7.149.3)
+
+### Patches
+
+- SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers. ([PR #15798](https://github.com/microsoft/fluentui/pull/15798) by humbertomakotomorimoto@gmail.com)
+- Update SpinButton to inherit Fabric font styles. ([PR #15801](https://github.com/microsoft/fluentui/pull/15801) by lesliewilliams234@gmail.com)
 
 ## [7.149.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.149.2)
 

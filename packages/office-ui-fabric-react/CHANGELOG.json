@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2020 12:29:00 GMT",
+      "tag": "office-ui-fabric-react_v7.149.3",
+      "version": "7.149.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "195a506438c7734e09e6c45e3738af70d725ac0a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update SpinButton to inherit Fabric font styles.",
+            "author": "lesliewilliams234@gmail.com",
+            "commit": "ba7160c5ee6acfbe565b581926fb07b89ef0ff40",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 18:59:48 GMT",
       "tag": "office-ui-fabric-react_v7.149.2",
       "version": "7.149.2",

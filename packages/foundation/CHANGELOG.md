@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:29:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.18](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.9.18)
+
+Mon, 02 Nov 2020 12:29:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.9.12..@uifabric/foundation_v7.9.18)
+
+### Patches
+
+- Add deprecation note to foundation readme ([PR #15799](https://github.com/microsoft/fluentui/pull/15799) by elcraig@microsoft.com)
 
 ## [7.9.12](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.9.12)
 

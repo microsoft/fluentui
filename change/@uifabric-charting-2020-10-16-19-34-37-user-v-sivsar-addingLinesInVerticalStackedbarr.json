@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "added the new feature, which is complex combo chart, where we give ability to the user to draw lines in the vertical stacked bar chart",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-16T14:04:22.573Z"
-}
