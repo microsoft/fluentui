@@ -93,6 +93,10 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
       }
     };
 
+    const onClickLable = (ev: React.MouseEvent<HTMLElement>) => {
+      ev.preventDefault();
+    };
+
     const slotProps = {
       root: {
         className: classNames.root,
@@ -103,6 +107,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
         className: classNames.label,
         htmlFor: id,
         id: labelId,
+        onClick: onClickLable,
       },
       container: {
         className: classNames.container,
@@ -136,7 +141,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
 
     return (
       <RootType ref={forwardedRef as React.Ref<HTMLDivElement>} {...slotProps.root}>
-        {label && <Label {...slotProps.label} onClick={(ev: React.MouseEvent<HTMLElement>) => {ev.preventDefault();}}/>}
+        {label && <Label {...slotProps.label}/>}
         <div {...slotProps.container}>
           <button {...slotProps.pill}>
             <span {...slotProps.thumb} />
