@@ -142,6 +142,7 @@ exports[`Toggle renders toggle correctly 1`] = `
         }
     htmlFor="Toggle0"
     id="Toggle0-label"
+    onClick={[Function]}
   >
     Label
   </label>
@@ -276,6 +277,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
         }
     htmlFor="Toggle0"
     id="Toggle0-label"
+    onClick={[Function]}
   >
     <p>
       Label
@@ -412,6 +414,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
         }
     htmlFor="Toggle0"
     id="Toggle0-label"
+    onClick={[Function]}
   >
     Label
   </label>
@@ -545,6 +548,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
         }
     htmlFor="Toggle0"
     id="Toggle0-label"
+    onClick={[Function]}
   >
     Label
   </label>
