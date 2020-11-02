@@ -1,4 +1,4 @@
-import { _upgradeTest } from '../../upgrade';
+import { _upgradeInternal } from '../../upgrade';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as os from 'os';
@@ -9,14 +9,23 @@ const tempPath = path.join(tempDir, 'codemods');
 const startingPath = process.cwd();
 
 describe('modRunner tests', () => {
+  let temp: string = '';
+
+  beforeEach(() => {
+    temp = fs.mkdtempSync(tempPath);
+  });
+
+  afterEach(() => {
+    fs.removeSync(temp);
+  });
+
   it('saves syncronously correctly', () => {
     const saveAsync = jest.fn();
     const saveSync = jest.fn();
     try {
-      const temp = fs.mkdtempSync(tempPath);
       fs.copySync(path.join(__dirname, '/mocks/MockProject'), temp);
       process.chdir(temp);
-      _upgradeTest(
+      _upgradeInternal(
         {
           modsFilter: () => true,
         },
@@ -31,10 +40,9 @@ describe('modRunner tests', () => {
     const saveAsync = jest.fn();
     const saveSync = jest.fn();
     try {
-      const temp = fs.mkdtempSync(tempPath);
       fs.copySync(path.join(__dirname, '/mocks/MockProject'), temp);
       process.chdir(temp);
-      _upgradeTest(
+      _upgradeInternal(
         {
           modsFilter: () => true,
           saveSync: true,

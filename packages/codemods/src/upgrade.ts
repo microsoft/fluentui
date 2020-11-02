@@ -11,7 +11,7 @@ interface UpgradeFunctions {
   saveAsync: (project: { save: () => void }) => void;
 }
 
-export function _upgradeTest(options: CommandParserResult, fns: UpgradeFunctions) {
+export function _upgradeInternal(options: CommandParserResult, fns: UpgradeFunctions) {
   const mods = getEnabledMods(logger).filter(options.modsFilter);
 
   logger.log('getting configs');
@@ -57,7 +57,7 @@ export function _upgradeTest(options: CommandParserResult, fns: UpgradeFunctions
 }
 
 export function upgrade(options: CommandParserResult) {
-  _upgradeTest(options, {
+  _upgradeInternal(options, {
     saveAsync: pr => pr.save(),
     saveSync: file => file.saveSync(),
     getTsConfigs: getTsConfigs,
