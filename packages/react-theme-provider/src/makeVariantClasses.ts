@@ -7,6 +7,9 @@ import { isIE11 } from '@fluentui/utilities';
 import { StyleRenderer } from './styleRenderers/types';
 import { useVariantClassesIE11Override } from './useVariantClassesIE11Override';
 
+// Track if we're using IE11 to use later in the hot codepath.
+const useIE11 = isIE11();
+
 /**
  * Calls a function with the argument, or returns the given object.
  * @param objOrFunc - Function or object.
@@ -105,9 +108,7 @@ export const makeVariantClasses = <TState = {}, TVariants = Variants>(
   // the default implementation, or an override for the IE11 case.
   const useVariantClasses = (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
     // If a global override is defined, use that. Otherwise use the default behavior.
-    // const callback = GlobalSettings.getValue<UseVariantClassesOverride>(UseVariantClassesOverrideKey);
-
-    return isIE11()
+    return useIE11
       ? // eslint-disable-next-line react-hooks/rules-of-hooks
         useVariantClassesIE11Override(state, theme, renderer, options, cache)
       : defaultUseVariantClasses(state, theme, renderer);

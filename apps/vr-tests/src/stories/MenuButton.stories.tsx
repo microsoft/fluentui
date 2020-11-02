@@ -69,7 +69,7 @@ storiesOf('MenuButton', module)
     <MenuButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
-storiesOf('MenuButton Next - Block', module)
+storiesOf('MenuButton - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -135,7 +135,7 @@ storiesOf('MenuButton Next - Block', module)
     </MenuButton>
   ));
 
-storiesOf('MenuButton Next - Teams Theme', module)
+storiesOf('MenuButton - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (

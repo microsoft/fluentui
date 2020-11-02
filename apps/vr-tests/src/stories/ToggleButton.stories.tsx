@@ -69,7 +69,7 @@ storiesOf('ToggleButton', module)
     <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ));
 
-storiesOf('ToggleButton Next - Block', module)
+storiesOf('ToggleButton - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -135,7 +135,7 @@ storiesOf('ToggleButton Next - Block', module)
     </ToggleButton>
   ));
 
-storiesOf('ToggleButton Next - Teams Theme', module)
+storiesOf('ToggleButton - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (

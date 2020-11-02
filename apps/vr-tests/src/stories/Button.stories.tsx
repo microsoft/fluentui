@@ -54,7 +54,7 @@ storiesOf('Button', module)
   ))
   .addStory('Anchor', () => <Button href="https://www.bing.com">Hello, world</Button>);
 
-storiesOf('Button Next - Teams Theme', module)
+storiesOf('Button - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
@@ -89,7 +89,7 @@ storiesOf('Button Next - Teams Theme', module)
   ))
   .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>);
 
-storiesOf('Button Next - With icon before content', module)
+storiesOf('Button - With icon before content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -152,7 +152,7 @@ storiesOf('Button Next - With icon before content', module)
     </Button>
   ));
 
-storiesOf('Button Next - With icon after content', module)
+storiesOf('Button - With icon after content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -218,7 +218,7 @@ storiesOf('Button Next - With icon after content', module)
     </Button>
   ));
 
-storiesOf('Button Next - Circular', module)
+storiesOf('Button - Circular', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -284,7 +284,7 @@ storiesOf('Button Next - Circular', module)
     </Button>
   ));
 
-storiesOf('Button Next - Icon only', module)
+storiesOf('Button - Icon only', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -350,7 +350,7 @@ storiesOf('Button Next - Icon only', module)
     </Button>
   ));
 
-storiesOf('Button Next - Block', module)
+storiesOf('Button - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -416,7 +416,7 @@ storiesOf('Button Next - Block', module)
     </Button>
   ));
 
-storiesOf('Button Next - Inverted', module)
+storiesOf('Button - Inverted', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -482,7 +482,7 @@ storiesOf('Button Next - Inverted', module)
     </Button>
   ));
 
-storiesOf('Button Next - Loading', module)
+storiesOf('Button - Loading', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -548,7 +548,7 @@ storiesOf('Button Next - Loading', module)
     </Button>
   ));
 
-storiesOf('Button Next - Sizes', module)
+storiesOf('Button - Sizes', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -604,7 +604,7 @@ storiesOf('Button Next - Sizes', module)
     </Button>
   ));
 
-storiesOf('Button Next - With styled icon from react-icons via tokens', module)
+storiesOf('Button - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (

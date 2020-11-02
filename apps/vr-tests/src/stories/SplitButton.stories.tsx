@@ -75,7 +75,7 @@ storiesOf('SplitButton', module)
     </ThemeProvider>
   ));
 
-storiesOf('SplitButton Next - Block', module)
+storiesOf('SplitButton - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -141,7 +141,7 @@ storiesOf('SplitButton Next - Block', module)
     </SplitButton>
   ));
 
-storiesOf('SplitButton Next - Teams Theme', module)
+storiesOf('SplitButton - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
