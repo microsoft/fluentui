@@ -26,32 +26,31 @@ storiesOf('Tabs', module)
   .addStory('Root', () => (
     <Tabs>
       <TabItem headerText="My Files">
-        <p>Tabs #1</p>
+        <p>Tab #1</p>
       </TabItem>
       <TabItem headerText="Recent">
-        <p>Tabs #2</p>
+        <p>Tab #2</p>
       </TabItem>
       <TabItem headerText="Shared with me">
-        <p>Tabs #3</p>
+        <p>Tab #3</p>
       </TabItem>
     </Tabs>
   ))
-
   .addStory(
     'Count and icon',
     () => (
       <Tabs>
         <TabItem headerText="My Files" itemCount={42} itemIcon="Emoji2">
-          <p>Tabs #1</p>
+          <p>Tab #1</p>
         </TabItem>
         <TabItem itemCount="20+" itemIcon="Recent">
-          <p>Tabs #2</p>
+          <p>Tab #2</p>
         </TabItem>
         <TabItem itemIcon="Globe">
-          <p>Tabs #3</p>
+          <p>Tab #3</p>
         </TabItem>
         <TabItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-          <p>Tabs #4</p>
+          <p>Tab #4</p>
         </TabItem>
         <TabItem
           headerText="Customized Rendering"
@@ -65,52 +64,52 @@ storiesOf('Tabs', module)
     ),
     { rtl: true },
   )
-  .addStory('Large', () => (
+  .addStory('Large links', () => (
     <Tabs tabSize="large">
       <TabItem headerText="My Files">
-        <p>Tabs #1</p>
+        <p>Tab #1</p>
       </TabItem>
       <TabItem headerText="Recent">
-        <p>Tabs #2</p>
+        <p>Tab #2</p>
       </TabItem>
       <TabItem headerText="Shared with me">
-        <p>Tabs #3</p>
+        <p>Tab #3</p>
       </TabItem>
     </Tabs>
   ))
   .addStory(
-    'Tabs',
+    'Tab format',
     () => (
       <Tabs tabFormat="tabs">
         <TabItem headerText="Foo">
-          <p>Tabs #1</p>
+          <p>Tab #1</p>
         </TabItem>
         <TabItem headerText="Bar">
-          <p>Tabs #2</p>
+          <p>Tab #2</p>
         </TabItem>
         <TabItem headerText="Bas">
-          <p>Tabs #3</p>
+          <p>Tab #3</p>
         </TabItem>
         <TabItem headerText="Biz">
-          <p>Tabs #4</p>
+          <p>Tab #4</p>
         </TabItem>
       </Tabs>
     ),
     { rtl: true },
   )
-  .addStory('Tabs large', () => (
+  .addStory('Large tab format', () => (
     <Tabs tabFormat="tabs" tabSize="large">
       <TabItem headerText="Foo">
-        <p>Tabs #1</p>
+        <p>Tab #1</p>
       </TabItem>
       <TabItem headerText="Bar">
-        <p>Tabs #2</p>
+        <p>Tab #2</p>
       </TabItem>
       <TabItem headerText="Bas">
-        <p>Tabs #3</p>
+        <p>Tab #3</p>
       </TabItem>
       <TabItem headerText="Biz">
-        <p>Tabs #4</p>
+        <p>Tab #4</p>
       </TabItem>
     </Tabs>
   ));
@@ -145,45 +144,45 @@ storiesOf('Tabs - Overflow', module)
   .addStory('Root', () => (
     <Tabs overflowBehavior="menu">
       <TabItem headerText="My Files">
-        <p>Tabs #1</p>
+        <p>Tab #1</p>
       </TabItem>
       <TabItem itemCount={23} itemIcon="Recent">
-        <p>Tabs #2</p>
+        <p>Tab #2</p>
       </TabItem>
       <TabItem headerText="Placeholder" itemIcon="Globe">
-        <p>Tabs #3</p>
+        <p>Tab #3</p>
       </TabItem>
       <TabItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-        <p>Tabs #4</p>
+        <p>Tab #4</p>
       </TabItem>
       <TabItem headerText="Custom Renderer" itemIcon="Airplane" onRenderTab={_customRenderer}>
-        <p>Tabs #5</p>
+        <p>Tab #5</p>
       </TabItem>
       <TabItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-        <p>Tabs #6</p>
+        <p>Tab #6</p>
       </TabItem>
     </Tabs>
   ))
-  .addStory('Tabs - RTL', () => (
+  .addStory('RTL - Tab format', () => (
     <Fabric dir="rtl">
       <Tabs overflowBehavior="menu" tabFormat="tabs">
         <TabItem headerText="My Files">
-          <p>Tabs #1</p>
+          <p>Tab #1</p>
         </TabItem>
         <TabItem itemCount={23} itemIcon="Recent">
-          <p>Tabs #2</p>
+          <p>Tab #2</p>
         </TabItem>
         <TabItem headerText="Placeholder" itemIcon="Globe">
-          <p>Tabs #3</p>
+          <p>Tab #3</p>
         </TabItem>
         <TabItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-          <p>Tabs #4</p>
+          <p>Tab #4</p>
         </TabItem>
         <TabItem headerText="Custom Renderer" itemIcon="Airplane" onRenderTab={_customRenderer}>
-          <p>Tabs #5</p>
+          <p>Tab #5</p>
         </TabItem>
         <TabItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-          <p>Tabs #6</p>
+          <p>Tab #6</p>
         </TabItem>
       </Tabs>
     </Fabric>
