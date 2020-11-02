@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
@@ -83,7 +84,9 @@ describe('ThemeProvider', () => {
     expect(themeProvider1.getAttribute('dir')).toBe('ltr');
     expect(themeProvider2.getAttribute('dir')).toBe(null);
 
-    wrapper.unmount();
+    ReactTestUtils.act(() => {
+      wrapper.unmount();
+    });
   });
 
   it('renders a div with styling', () => {
@@ -151,7 +154,9 @@ describe('ThemeProvider', () => {
 
     expect(document.body).toMatchSnapshot();
 
-    wrapper.unmount();
+    ReactTestUtils.act(() => {
+      wrapper.unmount();
+    });
 
     expect(document.body.className).toBe('');
 
