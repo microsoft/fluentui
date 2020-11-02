@@ -113,12 +113,11 @@ To view the documentation including examples, contracts, component status, and t
 1. `git clone https://github.com/microsoft/fluentui.git`
 2. `cd fluentui`
 3. `yarn`
-4. `yarn builddemo`
-5. `yarn start`
+4. `yarn start`
 
 This will start a demo page from the `@fluentui/react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
-To build and run tests for all packages in the repo, run `yarn build` from the root.
+To build all packages in the repo, run `yarn build` from the root. You can also run `yarn test` to run tests.
 
 To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn buildto` script to build to the specific package you want.
 
