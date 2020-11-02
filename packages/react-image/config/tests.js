@@ -1,6 +1,6 @@
 /** Jest test setup file. */
 const { configure } = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
 // Mock requestAnimationFrame for React 16+.
 global.requestAnimationFrame = callback => {

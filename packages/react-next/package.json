@@ -50,7 +50,7 @@
     "@fluentui/react-conformance": "^1.0.0",
     "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.2.0",
     "glob": "^7.1.2",
     "jest-snapshot": "~24.9.0",
     "react": "16.8.6",
