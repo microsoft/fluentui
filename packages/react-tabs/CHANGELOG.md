@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.6)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.0..@fluentui/react-tabs_v1.0.0-beta.6)
+
+### Changes
+
+- Create the Tabs component as a renamed clone of the Pivot component ([PR #15782](https://github.com/microsoft/fluentui/pull/15782) by behowell@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.0)
 
