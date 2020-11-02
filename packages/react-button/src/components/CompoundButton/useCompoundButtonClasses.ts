@@ -3,7 +3,7 @@ import { CompoundButtonState, CompoundButtonVariants } from './CompoundButton.ty
 import { buttonStyles, buttonVariants } from '../Button/useButtonClasses';
 import { ButtonVariants } from '../Button/Button.types';
 
-import { merge } from '@uifabric/utilities';
+import { merge } from '@fluentui/utilities';
 import { concatStyleSets } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
