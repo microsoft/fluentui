@@ -20,7 +20,7 @@ export const resolveSingleCSSVariable = (value: string, variables: Record<string
 
       if (!currentResult) {
         // Couldn't find a match. is there a literal fallback?
-        const literalMatch = lastResult?.match(/var\([-a-zA-Z0-9]+[, ]+([-a-zA-Z0-9]+)/);
+        const literalMatch = lastResult?.match(/var\([-a-zA-Z0-9]+[, ]+([-a-zA-Z0-9%+-/ ]+)/);
 
         if (literalMatch && literalMatch.length === 2) {
           currentResult = literalMatch[1];

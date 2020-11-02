@@ -63,8 +63,8 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
       backgroundColor: 'var(--button-dividerColor)',
       position: 'absolute',
       right: menuButtonWidth,
-      top: 8,
-      bottom: 8,
+      top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+      bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
 
       [EdgeChromiumHighContrastSelector]: {
         backgroundColor: 'var(--button-highContrast-dividerColor)',

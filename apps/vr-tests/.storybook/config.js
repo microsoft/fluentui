@@ -3,7 +3,7 @@ import { setOptions } from '@storybook/addon-options';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 
 setOptions({
-  name: 'Fabric',
+  name: 'Fluent UI',
 });
 
 const req = require.context('../src/stories', true, /\.stories\.tsx$/);

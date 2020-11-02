@@ -59,6 +59,23 @@ describe('replaceCSSVariables', () => {
     });
   });
 
+  it('can use a fallback literal with percent', () => {
+    expect(
+      replaceCSSVariables(
+        {
+          root: {
+            background: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
+          },
+        },
+        {},
+      ),
+    ).toEqual({
+      root: {
+        background: 'calc(100% - 100% + 8px)',
+      },
+    });
+  });
+
   it('can fallback to other variables', () => {
     expect(
       replaceCSSVariables(
