@@ -1720,7 +1720,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       id="ComboBox6-error"
       role="region"
     >
-
+      
     </div>
   </div>
   <button
