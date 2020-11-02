@@ -135,6 +135,7 @@ export type ButtonTokens = ColorTokens &
     secondaryContentFontSize?: string;
     transform?: string;
     transition?: string;
+    whiteSpace?: string;
     width?: string;
 
     pressed?: {

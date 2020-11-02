@@ -101,6 +101,7 @@ exports[`Button renders a default state 1`] = `
           --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           --button-fontSize: 14px;
           --button-fontWeight: 600;
+          --button-height: var(--button-minHeight);
           --button-highContrast-borderColor: WindowText;
           --button-highContrast-contentColor: WindowText;
           --button-highContrast-disabled-background: Window;
@@ -135,6 +136,8 @@ exports[`Button renders a default state 1`] = `
           --button-size-small: 24px;
           --button-size-smaller: 24px;
           --button-size-smallest: 24px;
+          --button-transition: none;
+          --button-whiteSpace: nowrap;
           --button-width: auto;
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -196,6 +199,9 @@ exports[`Button renders a default state 1`] = `
         @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
           border-color: var(--button-highContrast-focusColor);
           box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+        }
+        & > span {
+          position: relative;
         }
         & > *:not(:first-child) {
           margin-left: var(--button-contentGap);
@@ -379,6 +385,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-fontFamily: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           --button-fontSize: 14px;
           --button-fontWeight: 600;
+          --button-height: var(--button-minHeight);
           --button-highContrast-borderColor: WindowText;
           --button-highContrast-contentColor: WindowText;
           --button-highContrast-disabled-background: Window;
@@ -413,6 +420,8 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           --button-size-small: 24px;
           --button-size-smaller: 24px;
           --button-size-smallest: 24px;
+          --button-transition: none;
+          --button-whiteSpace: nowrap;
           --button-width: auto;
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -474,6 +483,9 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
           border-color: var(--button-highContrast-focusColor);
           box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset;
+        }
+        & > span {
+          position: relative;
         }
         & > *:not(:first-child) {
           margin-left: var(--button-contentGap);

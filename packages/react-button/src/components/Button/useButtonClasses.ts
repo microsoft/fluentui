@@ -112,7 +112,11 @@ export const buttonStyles: Record<string, IStyle> = {
         },
       },
 
-      ['& > *:not(:first-child)']: {
+      '& > span': {
+        position: 'relative',
+      },
+
+      '& > *:not(:first-child)': {
         marginLeft: 'var(--button-contentGap)',
       },
 
@@ -256,9 +260,11 @@ export const buttonVariants = (theme: Theme): ButtonVariants => {
       width: 'auto',
       minWidth: '96px',
       maxWidth: '280px',
+      height: 'var(--button-minHeight)',
       minHeight: 'var(--button-size-regular)',
       contentGap: '8px',
-
+      whiteSpace: 'nowrap',
+      transition: 'none',
       // Font tokens
       fontWeight: '600',
       fontSize: fonts?.medium?.fontSize as string,
