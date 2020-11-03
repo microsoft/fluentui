@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "ContextualMenu: Using MenuContext.Consumer to consume context from MenuButton.",
+  "comment": "Exporting MenuContext from MenuButton.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
