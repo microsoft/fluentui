@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/TeachingBubble';
+export * from '@fluentui/react-internal/lib/TeachingBubble';

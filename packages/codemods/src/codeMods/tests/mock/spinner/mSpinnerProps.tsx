@@ -1,6 +1,5 @@
-/* eslint-disable deprecation/deprecation */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+// @ts-ignore
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
 export const RenderSpinner = (props: any) => {

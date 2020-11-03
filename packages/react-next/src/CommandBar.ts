@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/CommandBar';
+import './version';
+export * from '@fluentui/react/lib/CommandBar';

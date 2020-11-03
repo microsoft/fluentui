@@ -18,10 +18,10 @@
   }
 
   &._primary {
-    --button-secondaryContentColor: var(--accent-secondaryContentColor);
-    --button-focused-secondaryContentColor: var(--accent-focused-secondaryContentColor);
-    --button-hovered-secondaryContentColor: var(--accent-hovered-secondaryContentColor);
-    --button-pressed-secondaryContentColor: var(--accent-pressed-secondaryContentColor);
+    --button-secondaryContentColor: var(--color-brand-secondaryContentColor);
+    --button-focused-secondaryContentColor: var(--color-brand-focused-secondaryContentColor);
+    --button-hovered-secondaryContentColor: var(--color-brand-hovered-secondaryContentColor);
+    --button-pressed-secondaryContentColor: var(--color-brand-pressed-secondaryContentColor);
   }
 
   &._disabled {

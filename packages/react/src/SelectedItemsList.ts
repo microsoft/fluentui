@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/SelectedItemsList';
+export * from '@fluentui/react-internal/lib/SelectedItemsList';

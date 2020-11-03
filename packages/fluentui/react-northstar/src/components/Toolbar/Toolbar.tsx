@@ -130,6 +130,7 @@ export const toolbarClassName = 'ui-toolbar';
  *  * Implements [ARIA Toolbar](https://www.w3.org/TR/wai-aria-practices-1.1/#toolbar) design pattern.
  * @accessibilityIssues
  * [Issue 988424: VoiceOver narrates selected for button in toolbar](https://bugs.chromium.org/p/chromium/issues/detail?id=988424)
+ * [In toolbars that can toggle items in a menu, VoiceOver narrates "1" for menuitemcheckbox/radio when checked.](https://github.com/microsoft/fluentui/issues/14064)
  */
 export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {

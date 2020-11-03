@@ -1,4 +1,5 @@
 import * as React from 'react';
+// @ts-ignore
 import { Persona, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export class PersonaExtender extends React.Component<IPersonaProps, {}> {

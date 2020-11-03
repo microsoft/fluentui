@@ -27,7 +27,11 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
         }}
       >
         <>
-          <Image src="public/images/github.png" width="16px" height="16px" />
+          <Image
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+            width="16px"
+            height="16px"
+          />
           <code>
             <a
               style={{ color: 'rgba(0,0,0,.4)' }}

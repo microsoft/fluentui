@@ -105,7 +105,7 @@ const ChatExampleInScrollableShorthand = () => {
       ),
     },
     {
-      gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
+      gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg" />,
       message: (
         <Chat.Message
           actionMenu={actionMenu}

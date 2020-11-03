@@ -3,7 +3,13 @@ import { selectors } from './datepicker-example';
 const datepicker = `.${selectors.DatepickerClassName}`;
 const datepickerButton = `.${selectors.DatepickerClassName}>button`;
 const datepickerCalendar = `.${selectors.CalendarClassName}`;
-const datepickerCalendarCell = index => `.${selectors.CellClassName}:nth-child(${index})`;
+const datepickerCalendarCell = index => {
+  const row = Math.floor((index - 1) / 7);
+  const col = index - row * 7;
+  return `.${selectors.CalendarGridRowClassName}:nth-child(${row})
+            >.${selectors.CellClassName}:nth-child(${col})
+            >.${selectors.CellButtonClassName}`;
+};
 
 // https://github.com/microsoft/fluent-ui-react/issues/1674
 describe('Datepicker', () => {

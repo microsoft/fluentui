@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import * as sinon from 'sinon';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
+import { isConformant } from '../../common/isConformant';
 
 describe('Toggle', () => {
   beforeEach(() => {
@@ -48,6 +49,12 @@ describe('Toggle', () => {
     const component = create(<Toggle hidden />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Toggle,
+    displayName: 'Toggle',
+    targetComponent: Toggle,
   });
 
   it('renders aria-label', () => {

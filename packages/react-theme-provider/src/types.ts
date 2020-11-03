@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ColorTokenSet } from '@fluentui/theme';
-
 export { Theme, PartialTheme } from '@fluentui/theme';
 
 /**

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/DatePicker';
+export * from '@fluentui/react-date-time/lib/DatePicker';

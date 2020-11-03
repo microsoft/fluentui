@@ -64,6 +64,9 @@ import {
   treeAsListBehavior,
   treeItemAsListItemBehavior,
   treeTitleAsListItemTitleBehavior,
+  treeAsListboxBehavior,
+  treeItemAsOptionBehavior,
+  treeTitleAsOptionBehavior,
   carouselItemBehavior,
   carouselBehavior,
   tableBehavior,
@@ -90,8 +93,11 @@ import {
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
+  datepickerCalendarGridRowBehavior,
   datepickerCalendarCellBehavior,
+  datepickerCalendarCellButtonBehavior,
   skeletonBehavior,
+  breadcrumbBehavior,
   breadcrumbItemBehavior,
   breadcrumbDividerBehavior,
 } from '@fluentui/accessibility';
@@ -163,6 +169,9 @@ testHelper.addBehavior('textAreaBehavior', textAreaBehavior);
 testHelper.addBehavior('treeAsListBehavior', treeAsListBehavior);
 testHelper.addBehavior('treeItemAsListItemBehavior', treeItemAsListItemBehavior);
 testHelper.addBehavior('treeTitleAsListItemTitleBehavior', treeTitleAsListItemTitleBehavior);
+testHelper.addBehavior('treeAsListboxBehavior', treeAsListboxBehavior);
+testHelper.addBehavior('treeItemAsOptionBehavior', treeItemAsOptionBehavior);
+testHelper.addBehavior('treeTitleAsOptionBehavior', treeTitleAsOptionBehavior);
 testHelper.addBehavior('carouselItemBehavior', carouselItemBehavior);
 testHelper.addBehavior('carouselBehavior', carouselBehavior);
 testHelper.addBehavior('tableBehavior', tableBehavior);
@@ -188,8 +197,11 @@ testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
+testHelper.addBehavior('datepickerCalendarGridRowBehavior', datepickerCalendarGridRowBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
+testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalendarCellButtonBehavior);
 testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
+testHelper.addBehavior('breadcrumbBehavior', breadcrumbBehavior);
 testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
 testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
 

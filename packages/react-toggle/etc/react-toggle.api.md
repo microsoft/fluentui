@@ -4,22 +4,17 @@
 
 ```ts
 
-import { IComponentAs } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IComponentAs } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
 export interface IToggle {
     // (undocumented)
     focus: () => void;
-}
-
-// @public (undocumented)
-export interface IToggleOptions {
 }
 
 // @public
@@ -31,8 +26,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
     label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
@@ -46,15 +39,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export type IToggleSlotProps = {
-    [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-// @public (undocumented)
-export interface IToggleSlots {
 }
 
 // @public

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Overlay';
+export * from '@fluentui/react-internal/lib/Overlay';

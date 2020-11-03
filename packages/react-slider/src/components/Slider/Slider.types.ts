@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IStyleFunctionOrObject, IRefObject } from '@uifabric/utilities';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}
@@ -88,14 +88,9 @@ export interface ISliderProps
 
   /**
    * A description of the Slider for the benefit of screen readers.
-   * @deprecated use aria-label instead.
    */
   ariaLabel?: string;
 
-  /**
-   * A description of the Slider for the benefit of screen readers.
-   */
-  'aria-label'?: string;
   /**
    * A text description of the Slider number value for the benefit of screen readers.
    * This should be used when the Slider number value is not accurately represented by a number.

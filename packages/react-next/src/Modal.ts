@@ -1,1 +1,2 @@
-export * from './components/Modal/index';
+import './version';
+export * from '@fluentui/react/lib/Modal';

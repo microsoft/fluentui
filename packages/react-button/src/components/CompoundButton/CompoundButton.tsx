@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
-import { useButtonClasses } from '../Button/useButtonClasses';
+import { useFocusRects } from '@fluentui/utilities';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonClasses } from './useCompoundButtonClasses';
+
 /**
- * Define a styled Button, using the `useCompoundButton` hook.
+ * Define a styled CompoundButton, using the `useCompoundButton` hook.
+ * {@docCategory Button}
  */
 export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
   const { render, state } = useCompoundButton(props, ref);
 
-  useButtonClasses(state);
   useCompoundButtonClasses(state);
   useFocusRects(state.ref);
   useInlineTokens(state, '--button');

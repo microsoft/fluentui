@@ -1,4 +1,4 @@
-import { ISuggestionsStyleProps, ISuggestionsStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsStyleProps, ISuggestionsStyles } from '@fluentui/react/lib/Pickers';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SuggestionsStyles = (props: ISuggestionsStyleProps): Partial<ISuggestionsStyles> => {

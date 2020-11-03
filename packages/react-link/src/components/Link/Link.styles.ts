@@ -2,7 +2,7 @@ import {
   getEdgeChromiumNoHighContrastAdjustSelector,
   getGlobalClassNames,
   HighContrastSelector,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {

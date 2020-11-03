@@ -36,7 +36,7 @@ if (fs.existsSync(configPath)) {
       `Add this to CodePen:
   <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script type="text/javascript" src="${url}/office-ui-fabric-react.js"></script>
+  <script type="text/javascript" src="${url}/fluentui-react.js"></script>
 `,
     );
   });

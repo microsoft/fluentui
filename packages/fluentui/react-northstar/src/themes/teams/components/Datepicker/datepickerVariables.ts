@@ -1,10 +1,13 @@
 import { pxToRem } from '../../../../utils';
+import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
 
 export interface DatepickerVariables {
   calendarCellBorder: string;
   calendarCellHeight: string;
   calendarCellWidth: string;
   calendarCellBorderRadius: string;
+  calendarCellPadding: string;
+  calendarCellMargin: string;
   calendarCellBackgroundColor: string;
   calendarCellColor: string;
   calendarCellQuietColor: string;
@@ -19,6 +22,9 @@ export interface DatepickerVariables {
   calendarCellDisabledBackgroundColor: string;
 
   calendarHeaderCellFontWeight: number;
+  calendarHeaderCellHeight: string;
+  calendarHeaderCellWidth: string;
+  calendarHeaderCellPadding: string;
 
   calendarHeaderPaddingTop: string;
   calendarHeaderPaddingBottom: string;
@@ -33,6 +39,8 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellHeight: pxToRem(32),
   calendarCellWidth: pxToRem(32),
   calendarCellBorderRadius: pxToRem(2),
+  calendarCellPadding: pxToRem(0),
+  calendarCellMargin: pxToRem(0),
   calendarCellBackgroundColor: siteVars.colorScheme.default.background,
   calendarCellColor: 'inherit',
   calendarCellQuietColor: siteVars.colorScheme.brand.foregroundDisabled,
@@ -47,11 +55,14 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
 
   calendarHeaderCellFontWeight: siteVars.fontWeightRegular,
+  calendarHeaderCellHeight: pxToRem(32),
+  calendarHeaderCellPadding: `${pxToRem(2)} ${pxToRem(0)} ${pxToRem(2)} ${pxToRem(0)}`,
+  calendarHeaderCellWidth: `calc(100%/${DAYS_IN_WEEK})`,
 
   calendarHeaderPaddingTop: pxToRem(5),
   calendarHeaderPaddingBottom: pxToRem(5),
   calendarHeaderLabelPaddingLeft: pxToRem(10),
   calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
 
-  calendarMinHeight: pxToRem(266),
+  calendarMinHeight: pxToRem(282),
 });

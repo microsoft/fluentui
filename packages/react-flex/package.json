@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-flex",
-  "version": "0.1.0",
+  "version": "0.2.2-4",
   "description": "Flexbox abstraction that provides a component to align and distribute its children.",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -28,20 +27,17 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-bindings": "^0.51.0",
-    "@fluentui/react-button": "^0.12.6",
-    "@fluentui/react-compose": "^0.19.1",
-    "@fluentui/react-theme-provider": "^0.12.1",
-    "@fluentui/theme": "^0.2.2",
-    "@uifabric/set-version": "^7.0.23",
-    "office-ui-fabric-react": "^7.137.3",
+    "@fluentui/react-compose": "^1.0.0-beta.5",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.6",
+    "@fluentui/theme": "^2.0.0-beta.5",
+    "@fluentui/set-version": "^8.0.0-beta.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
@@ -49,5 +45,11 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
   }
 }

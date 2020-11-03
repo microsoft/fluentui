@@ -1,9 +1,11 @@
-import { ScreenerTestsConfig } from '@uifabric/build/screener';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
+        .click('#set-open')
+        .snapshot('Default positioning')
         .click('#above')
         .snapshot('Sets positions to above')
         .click('#before')

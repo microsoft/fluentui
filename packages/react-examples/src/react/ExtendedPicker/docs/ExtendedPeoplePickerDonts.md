@@ -1,0 +1,3 @@
+- Use the ExtendedPeoplePicker to select something other than people
+- Use the ExtendedPeoplePicker to display people without an option to select them
+- Use the ExtendedPeoplePicker without sufficient space

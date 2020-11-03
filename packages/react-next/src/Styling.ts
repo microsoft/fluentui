@@ -1,2 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Styling';
-export * from '@fluentui/react-theme-provider';
+import './version';
+export * from '@fluentui/react/lib/Styling';

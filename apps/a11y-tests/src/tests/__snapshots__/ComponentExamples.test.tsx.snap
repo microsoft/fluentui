@@ -4,11 +4,9 @@ exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Basic.Exam
 
 exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Compact.Example) 1`] = `Array []`;
 
+exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Compact.Example) 2`] = `Array []`;
+
 exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Persona.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Persona.Example) 2`] = `Array []`;
-
-exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Persona.Example) 3`] = `Array []`;
 
 exports[`a11y test checks accessibility of Announced (Announced.BulkOperations.Example) 1`] = `Array []`;
 
@@ -232,7 +230,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button ms-DatePicker-day--today undefined\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button ms-DatePicker-day--today undefined\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-current=\\"date\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },

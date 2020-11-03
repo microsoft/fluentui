@@ -61,7 +61,7 @@ const titleRenderer: ShorthandRenderFunction<TreeTitleProps & {
   index?: number;
 }> = (Component, { content, header, headerMedia, media, index, ...restProps }) => {
   // as providing all props to List.Item was showing console errors, therefore reducing props
-  const { treeSize, expanded, hasSubtree, selectableParent, selectionIndicator, ...restReducedProps } = restProps;
+  const { treeSize, expanded, hasSubtree, selectionIndicator, ...restReducedProps } = restProps;
   return header ? (
     <List.Item
       {...restReducedProps}

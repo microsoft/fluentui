@@ -580,3 +580,4 @@ These are some of the notable FluentUI vs. Fabric differences:
 
 - Datepicker with disabled input does not open on focus in FluentUI.
 - Placeholder has a default value in FluentUI.
+- Datepicker navigates to disabled dates in FluentUI.

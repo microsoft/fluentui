@@ -115,10 +115,6 @@ yarn-error.log*
 # Dependency change files generated from npmx aka rush
 package-deps.json
 
-# Non Essential Visual testing files.
-**/office-ui-fabric-react/visualtests/results/*.png
-**/office-ui-fabric-react/failures/*.png
-
 common/temp
 
 # Gulp cache
@@ -136,8 +132,8 @@ package-lock.json
 *swp
 *swo
 
-# Fabric website
-apps/fabric-website/flights/
+# Website
+/apps/public-docsite/flights/
 
 # Rush files - since we are moving away from it
 /common

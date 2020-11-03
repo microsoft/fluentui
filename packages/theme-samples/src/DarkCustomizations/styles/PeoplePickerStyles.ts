@@ -1,4 +1,4 @@
-import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react';
+import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from '@fluentui/react';
 import { DarkTheme } from '../DarkCustomizations';
 
 export const PeoplePickerItemStyles = (

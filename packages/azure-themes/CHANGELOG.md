@@ -1,8 +1,33 @@
-# Change Log - @uifabric/azure-themes
+# Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.17..@fluentui/azure-themes_v8.0.0-beta.0)
+
+### Changes
+
+- Rename theme packages ([PR #15454](https://github.com/microsoft/fluentui/pull/15454) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Update Theme instances to contain components/scopedSettings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Azure Theme: Updating control outlines, pivot indentation and label weight. ([PR #15633](https://github.com/microsoft/fluentui/pull/15633) by humbertomakotomorimoto@gmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Updating SpinButton.styles to a StyleFunction. ([PR #15408](https://github.com/microsoft/fluentui/pull/15408) by czearing@outlook.com)
+
+## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.3..@uifabric/azure-themes_v7.5.17)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
 
 ## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
 

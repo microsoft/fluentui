@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerType } from '@fluentui/react/lib/Spinner';
 import { ITodoProps, ITodoState } from '../types/index';
 
 import TodoForm from './TodoForm';

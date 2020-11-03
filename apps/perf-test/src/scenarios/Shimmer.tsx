@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Shimmer, ShimmerElementType } from 'office-ui-fabric-react';
+import { Shimmer, ShimmerElementType } from '@fluentui/react';
 
 const exampleShimmer = [
   { type: ShimmerElementType.circle },

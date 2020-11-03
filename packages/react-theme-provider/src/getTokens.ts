@@ -1,183 +1,141 @@
-import { Tokens, Theme } from '@fluentui/theme';
-import { defaultTokens } from './createDefaultTheme';
-import { merge } from '@uifabric/utilities';
+import { Tokens, Theme, RecursivePartial } from '@fluentui/theme';
+import { merge } from '@fluentui/utilities';
 
 /**
  * Get tokens from theme object.
  */
-export function getTokens(theme: Theme): Tokens {
-  // TODO: ensure only used tokens are converted before shipping Fluent v8.
-  const {
-    components,
-    schemes,
-    rtl,
-    isInverted,
-    disableGlobalClassNames,
-    tokens,
-    stylesheets,
-    ...passThroughTokens
-  } = theme;
-  const { fonts, effects, palette, semanticColors } = theme;
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens> {
+  const { fonts } = theme;
+  const { palette, semanticColors } = theme;
 
-  const preparedTokens: Tokens = merge(
-    {},
-    defaultTokens,
+  const preparedTokens = merge<RecursivePartial<Tokens>>(
     {
-      // accent is currently only mapped for primary button to use.
-      accent: {
-        background: semanticColors?.primaryButtonBackground,
-        borderColor: semanticColors?.primaryButtonBorder,
-        contentColor: semanticColors?.primaryButtonText,
-        iconColor: palette?.white,
-        dividerColor: palette?.white,
-        secondaryContentColor: palette?.white,
-
-        hovered: {
-          background: semanticColors?.primaryButtonBackgroundHovered,
-          contentColor: semanticColors?.primaryButtonTextHovered,
-          secondaryContentColor: palette?.white,
+      color: {
+        body: {
+          background: semanticColors.bodyBackground,
+          contentColor: semanticColors.bodyText,
         },
 
-        pressed: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-          secondaryContentColor: semanticColors?.primaryButtonTextPressed,
-        },
+        // accent is currently only mapped for primary button to use.
+        brand: {
+          background: semanticColors.primaryButtonBackground,
+          borderColor: semanticColors.primaryButtonBorder,
+          contentColor: semanticColors.primaryButtonText,
+          iconColor: palette.white,
+          dividerColor: palette.white,
+          secondaryContentColor: palette.white,
 
-        disabled: {
-          background: semanticColors?.primaryButtonBackgroundDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-          dividerColor: palette?.neutralTertiaryAlt,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
-        },
+          hovered: {
+            background: semanticColors.primaryButtonBackgroundHovered,
+            contentColor: semanticColors.primaryButtonTextHovered,
+            secondaryContentColor: palette.white,
+            borderColor: 'var(--color-brand-borderColor)',
+          },
 
-        checked: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-        },
+          pressed: {
+            background: semanticColors.primaryButtonBackgroundPressed,
+            contentColor: semanticColors.primaryButtonTextPressed,
+            secondaryContentColor: semanticColors.primaryButtonTextPressed,
+            borderColor: 'var(--color-brand-borderColor)',
+            iconColor: 'var(--color-brand-iconColor)',
+          },
 
-        checkedHovered: {
-          background: semanticColors?.primaryButtonBackgroundPressed,
-          contentColor: semanticColors?.primaryButtonTextPressed,
-        },
-      },
+          focused: {
+            background: 'var(--color-brand-background)',
+            borderColor: 'var(--color-brand-borderColor)',
+            contentColor: 'var(--color-brand-contentColor)',
+            iconColor: 'var(--color-brand-iconColor)',
+            secondaryContentColor: 'var(--color-brand-focused-contentColor)',
+          },
 
-      // ghost is currently only mapped for ghost button to use.
-      ghost: {
-        background: semanticColors?.bodyBackground,
-        borderColor: 'transparent',
-        contentColor: palette?.neutralPrimary,
-        iconColor: palette?.themeDarkAlt,
-        menuIconColor: palette?.neutralSecondary,
-        secondaryContentColor: palette?.neutralPrimary,
+          disabled: {
+            background: semanticColors.primaryButtonBackgroundDisabled,
+            contentColor: semanticColors.buttonTextDisabled,
+            dividerColor: palette.neutralTertiaryAlt,
+            secondaryContentColor: 'var(--color-brand-disabled-contentColor)',
+            borderColor: 'var(--color-brand-disabled-background)',
+            iconColor: 'var(--color-brand-disabled-contentColor)',
+          },
 
-        checked: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-        },
+          checked: {
+            background: semanticColors.primaryButtonBackgroundPressed,
+            contentColor: semanticColors.primaryButtonTextPressed,
+            iconColor: semanticColors.primaryButtonTextPressed,
+          },
 
-        checkedHovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-        },
-
-        disabled: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.neutralTertiary,
-          iconColor: 'inherit',
-          secondaryContentColor: palette?.neutralTertiary,
-        },
-
-        expanded: {
-          contentColor: palette?.themePrimary,
-        },
-
-        focused: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.neutralPrimary,
-          iconColor: palette?.themeDarkAlt,
-          secondaryContentColor: palette?.neutralPrimary,
-        },
-
-        hovered: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.themePrimary,
-          iconColor: palette?.themePrimary,
-          secondaryContentColor: palette?.themePrimary,
-        },
-
-        pressed: {
-          background: semanticColors?.bodyBackground,
-          borderColor: 'transparent',
-          contentColor: palette?.black,
-          iconColor: palette?.themeDarker,
-          secondaryContentColor: palette?.black,
+          checkedHovered: {
+            background: semanticColors.primaryButtonBackgroundPressed,
+            contentColor: semanticColors.primaryButtonTextPressed,
+            iconColor: semanticColors.primaryButtonTextPressed,
+          },
         },
       },
 
       body: {
-        background: semanticColors?.bodyBackground,
-        contentColor: semanticColors?.bodyText,
+        fontFamily: fonts.medium.fontFamily,
+        fontWeight: fonts.medium.fontWeight,
+        fontSize: fonts.medium.fontSize,
+        mozOsxFontSmoothing: fonts.medium.MozOsxFontSmoothing,
+        webkitFontSmoothing: fonts.medium.WebkitFontSmoothing,
       },
 
-      button: {
-        fontWeight: '600',
-        fontSize: fonts?.medium?.fontSize,
-        fontFamily: fonts?.medium?.fontFamily,
-        iconSize: fonts?.mediumPlus?.fontSize,
-        borderRadius: effects?.roundedCorner2,
-        focusColor: palette?.black,
-        focusInnerColor: palette?.white,
+      // TODO: This will be moved out as a text variant.
+      text: {
+        variant: {
+          caption: {
+            fontSize: '12px',
+            fontWeight: '400',
+            lineHeight: '14px',
+          },
+          body: {
+            fontSize: '14px',
+            fontWeight: '400',
+            lineHeight: '20px',
+          },
 
-        background: semanticColors?.buttonBackground,
-        borderColor: semanticColors?.buttonBorder,
-        contentColor: semanticColors?.buttonText,
-        dividerColor: palette?.neutralTertiaryAlt,
+          subHeadline: {
+            fontSize: '16px',
+            fontWeight: '600',
+            lineHeight: '22px',
+          },
+          headline: {
+            fontSize: '20px',
+            fontWeight: '600',
+            lineHeight: '28px',
+          },
 
-        secondaryContentColor: palette?.neutralSecondary,
-        secondaryContentFontSize: fonts?.small.fontSize,
+          title3: {
+            fontSize: '24px',
+            fontWeight: '600',
+            lineHeight: '32px',
+          },
+          title2: {
+            fontSize: '28px',
+            fontWeight: '600',
+            lineHeight: '36px',
+          },
+          title1: {
+            fontSize: '32px',
+            fontWeight: '600',
+            lineHeight: '40px',
+          },
 
-        hovered: {
-          background: semanticColors?.buttonBackgroundHovered,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextHovered,
-          secondaryContentColor: palette?.neutralDark,
-        },
-
-        pressed: {
-          background: semanticColors?.buttonBackgroundPressed,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextPressed,
-          secondaryContentColor: semanticColors?.buttonTextPressed,
-        },
-
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-
-        disabled: {
-          background: semanticColors?.buttonBackgroundDisabled,
-          borderColor: semanticColors?.buttonBorderDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-          secondaryContentColor: semanticColors?.buttonTextDisabled,
+          largeTitle: {
+            fontSize: '40px',
+            fontWeight: '600',
+            lineHeight: '52px',
+          },
+          display: {
+            fontSize: '68px',
+            fontWeight: '600',
+            lineHeight: '92px',
+          },
         },
       },
     },
-    tokens,
+
+    userTokens,
   );
 
-  return { ...((passThroughTokens as unknown) as Tokens), ...preparedTokens };
+  return preparedTokens;
 }

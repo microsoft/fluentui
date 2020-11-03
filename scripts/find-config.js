@@ -4,9 +4,10 @@
  * Find a config file path, starting in the current directory and looking up to the Git root directory
  * (which contain .git) or the drive root.
  * @param {string} configName - Config file name. If an absolute path, will be returned unmodified.
+ * @param {string} [cwd] optional different cwd
  * @returns The config file's path, or undefined if not found
  */
-function findConfig(configName) {
+function findConfig(configName, cwd) {
   if (!configName) {
     return undefined;
   }
@@ -19,7 +20,7 @@ function findConfig(configName) {
   }
 
   const rootPath = path.resolve('/');
-  let cwd = process.cwd();
+  cwd = cwd || process.cwd();
   let foundGitRoot = false;
 
   while (cwd !== rootPath && !foundGitRoot) {

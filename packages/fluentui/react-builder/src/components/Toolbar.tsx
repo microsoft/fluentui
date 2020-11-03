@@ -45,7 +45,10 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       ...style,
     }}
   >
-    <Image styles={{ height: '1.5rem', marginRight: '0.25rem' }} src={`public/images/fluent-ui-logo.png`} />
+    <Image
+      styles={{ height: '1.5rem', marginRight: '0.25rem' }}
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png"
+    />
     <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
       FluentUI
       <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
