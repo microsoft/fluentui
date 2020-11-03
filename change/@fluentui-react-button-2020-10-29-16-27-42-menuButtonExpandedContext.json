@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Extrapolating expanded functionality in MenuButton to be provided via Context.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-29T23:27:05.816Z"
+}

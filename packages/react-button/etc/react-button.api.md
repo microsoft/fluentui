@@ -177,12 +177,9 @@ export type ExpandedState = {
     onClick?: (ev: React.MouseEvent) => void;
     onMenuDismiss?: () => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
-    'aria-expanded'?: boolean;
-    'aria-haspopup'?: boolean;
-    menu: {
-        target?: React.Ref<HTMLElement | undefined>;
-        onDismiss?: () => void;
-    };
+    'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
+    'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
+    menu?: MenuButtonState['menu'];
 };
 
 // @public
@@ -201,9 +198,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 export const menuButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
     // (undocumented)
-    menu: ExpandedState['menu'];
+    menu?: React.PropsWithChildren<MinimalMenuProps>;
 }
 
 // @public (undocumented)
@@ -214,6 +211,13 @@ export type MenuButtonTokens = ButtonTokens & {
 
 // @public (undocumented)
 export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
+
+// @public (undocumented)
+export type MinimalMenuProps = {
+    hidden?: boolean;
+    onDismiss?: () => void;
+    target?: React.Ref<HTMLElement | undefined>;
+};
 
 // @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -303,6 +307,9 @@ export const useMenuButtonClasses: (state: MenuButtonState, theme?: Theme | unde
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public (undocumented)
+export const useMenuContext: () => MinimalMenuProps;
 
 // @public
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {
