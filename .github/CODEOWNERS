@@ -70,8 +70,11 @@ packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/style-utilities/ @dzearing
-packages/style-utilities/src/interfaces/ @phkuo
-packages/style-utilities/src/styles/ @phkuo
+packages/style-utilities/src/interfaces/ @phkuo @xugao
+packages/style-utilities/src/styles/ @phkuo @xugao
+packages/theme/ @dzearing @xugao
+packages/react-theme-provider/ @dzearing @xugao
+packages/react-stylesheets/ @dzearing @xugao
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
