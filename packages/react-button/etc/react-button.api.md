@@ -233,7 +233,7 @@ export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
 export const splitButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface SplitButtonState extends Omit<SplitButtonProps, 'omit'>, MenuButtonState {
+export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
     // (undocumented)
     menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }
