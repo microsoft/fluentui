@@ -14,6 +14,7 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
+import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
 import { getCode } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
@@ -31,7 +32,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker', process.env.NODE_ENV === 'production' && 'SvgIcon'];
+const componentsBlackList = ['Debug', 'Design', process.env.NODE_ENV === 'production' && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -186,11 +187,6 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'virtualized-table',
     title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
-    public: true,
-  },
-  {
-    id: 'unstable-datepicker',
-    title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
     public: true,
   },
 ];
@@ -491,6 +487,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         >
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
+        <VersionDropdown width={props.width} />
         <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
           {(active, onClick) => (
             <Box
@@ -520,7 +517,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
           <Box>
             GitHub
-            <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
+            <Image
+              src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+              width="20px"
+              height="20px"
+              styles={{ float: 'right' }}
+            />
           </Box>
         </a>
         <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>

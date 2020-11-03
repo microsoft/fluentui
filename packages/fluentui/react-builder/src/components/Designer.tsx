@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
+import DocumentTitle from 'react-document-title';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, ErrorIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -632,6 +633,7 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <DocumentTitle title={`Fluent UI Builder`} />
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
       {insertComponent && (
         <InsertComponent onDismiss={handleCloseAddComponentDialog} onComponentAdded={handleAddComponent} />

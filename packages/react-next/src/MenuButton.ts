@@ -1,1 +1,2 @@
-export * from '@fluentui/react-button/lib/MenuButton';
+import './version';
+export * from '@fluentui/react/lib/MenuButton';

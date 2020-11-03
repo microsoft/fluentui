@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
+import { IIconProps } from '@fluentui/react-internal/lib/Icon';
 
 /**
  * Checkbox class interface.
@@ -124,11 +123,6 @@ export interface ICheckboxProps
    * Custom icon props for the check mark rendered by the checkbox
    */
   checkmarkIconProps?: IIconProps;
-
-  /**
-   * Optional keytip for this checkbox
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence

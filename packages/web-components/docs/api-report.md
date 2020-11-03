@@ -10,7 +10,6 @@ import { Anchor } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
-import { Card } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
@@ -26,6 +25,7 @@ import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
+import { Skeleton } from '@microsoft/fast-foundation';
 import { Slider } from '@microsoft/fast-foundation';
 import { SliderLabel } from '@microsoft/fast-foundation';
 import { Switch } from '@microsoft/fast-foundation';
@@ -189,12 +189,23 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends Card {
+export class FluentCard extends DesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
+    backgroundColor: string;
+    cardBackgroundColor: string;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(source: DesignSystem, name: string): void;
+    // @internal
+    neutralPalette: string[];
 }
 
 // @public
 export class FluentCheckbox extends Checkbox {
 }
+
+// @public (undocumented)
+export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'>;
 
 // @public
 export class FluentDesignSystemProvider extends DesignSystemProvider implements Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
@@ -221,6 +232,8 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     // (undocumented)
     accentPalette: string[];
     backgroundColor: string;
+    // (undocumented)
+    protected backgroundColorChanged(): void;
     // (undocumented)
     baseHeightMultiplier: number;
     // (undocumented)
@@ -372,6 +385,10 @@ export class FluentRadio extends Radio {
 
 // @public
 export class FluentRadioGroup extends RadioGroup {
+}
+
+// @public
+export class FluentSkeleton extends Skeleton {
 }
 
 // @public
@@ -594,6 +611,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SkeletonStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;

@@ -1,0 +1,25 @@
+@import '../CardSection/CardSection.scss';
+
+:root {
+  --card-footer-margin: var(--card-section-margin);
+
+  /* modifiers */
+  /* fitted card body */
+  --card-footer-fitted-margin: var(--card-section-fitted-margin);
+}
+
+/* slots */
+.root {
+  display: flex;
+  flex-direction: column;
+  margin: var(--card-footer-margin);
+
+  --card-footer-margin: var(--card-section-margin);
+}
+
+/* modifiers */
+/* fitted card body */
+.root._fitted {
+  --card-footer-margin: var(--card-footer-fitted-margin);
+  --card-footer-fitted-margin: var(--card-section-fitted-margin);
+}

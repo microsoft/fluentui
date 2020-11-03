@@ -18,6 +18,8 @@ export { buttonGroupVariables as ButtonGroup } from './components/Button/buttonG
 export { buttonContentVariables as ButtonContent } from './components/Button/buttonContentVariables';
 
 export { breadcrumbVariables as Breadcrumb } from './components/Breadcrumb/breadcrumbVariables';
+export { breadcrumbItemVariables as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemVariables';
+export { breadcrumbLinkVariables as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkVariables';
 export { breadcrumbDividerVariables as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerVariables';
 
 export { chatVariables as Chat } from './components/Chat/chatVariables';
@@ -152,6 +154,9 @@ export { cardExpandableBoxVariables as CardExpandableBox } from './components/Ca
 
 export { datepickerVariables as Datepicker } from './components/Datepicker/datepickerVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
+export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonVariables';
 export { datepickerCalendarVariables as DatepickerCalendar } from './components/Datepicker/datepickerCalendarVariables';
 export { datepickerCalendarHeaderVariables as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderVariables';
 export { datepickerCalendarHeaderCellVariables as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellVariables';
+export { datepickerCalendarGridVariables as DatepickerCalendarGrid } from './components/Datepicker/datepickerCalendarGridVariables';
+export { datepickerCalendarGridRowVariables as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowVariables';

@@ -1,3 +1,0 @@
-- Use for things other than people.
-- Overwhelm users by listing every single person as a circle but truncate and provide a way to see the full list.
-- Don’t use this control for experiences where you need to manage details of hundreds of users, you are better off using a list control.

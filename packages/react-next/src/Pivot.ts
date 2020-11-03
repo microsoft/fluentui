@@ -1,1 +1,2 @@
-export * from '@fluentui/react-tabs/lib/Pivot';
+import './version';
+export * from '@fluentui/react/lib/Pivot';

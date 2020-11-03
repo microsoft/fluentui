@@ -1,5 +1,6 @@
 import { Accessibility } from '../../types';
 import { datepickerCalendarGridBehavior } from './datepickerCalendarGridBehavior';
+import { datepickerCalendarGridRowBehavior } from './datepickerCalendarGridRowBehavior';
 import { keyboardKey } from '@fluentui/keyboard-key';
 /**
  * @description
@@ -10,6 +11,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
 export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
   childBehaviors: {
     calendarGrid: datepickerCalendarGridBehavior,
+    calendarGridRow: datepickerCalendarGridRowBehavior,
   },
   keyActions: {
     calendarCell: {

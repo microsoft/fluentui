@@ -15,6 +15,11 @@ describe('elementContains', () => {
     expect(elementContains(parentDiv, childDiv)).toEqual(true);
   });
 
+  it('can find itself', () => {
+    expect(elementContains(childDiv, childDiv)).toEqual(true);
+    expect(elementContains(childDiv, childDiv, false)).toEqual(true);
+  });
+
   it('can return false on an unattached child', () => {
     expect(elementContains(parentDiv, unattachedDiv)).toEqual(false);
   });

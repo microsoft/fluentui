@@ -3,6 +3,7 @@
 const { spawnSync } = require('child_process');
 const lernaBin = require.resolve('lerna/cli.js');
 const getAllPackageInfo = require('./getAllPackageInfo');
+const os = require('os');
 
 const argv = process.argv.slice(2);
 
@@ -68,7 +69,18 @@ function runTo(script, projects, rest) {
   // --stream allows the build to proceed in parallel but still in order
   spawnSync(
     process.execPath,
-    [lernaBin, 'run', script, ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest],
+    [
+      lernaBin,
+      'run',
+      script,
+      ...scopes,
+      '--include-filtered-dependencies', // makes the build include dependencies
+      '--stream', // run in parallel but still in order
+      // Except when running in PR/CI, reduce concurrency so the computer is usable while building
+      ...(process.env.TF_BUILD ? [] : ['--concurrency=' + (os.cpus().length - 2)]),
+      '--',
+      ...rest,
+    ],
     {
       stdio: 'inherit',
     },

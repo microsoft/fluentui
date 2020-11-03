@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { PivotItem } from './PivotItem';
 
 /**
@@ -44,8 +44,6 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
   /**
    * Default selected key for the pivot. Only provide this if the pivot is an uncontrolled component;
    * otherwise, use the `selectedKey` property.
-   *
-   * This property is also mutually exclusive with `defaultSelectedIndex`.
    */
   defaultSelectedKey?: string;
 

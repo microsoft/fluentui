@@ -6,6 +6,9 @@ import { Renderer } from './types';
 const NoopProvider: React.FC = props => React.createElement(React.Fragment, null, props.children);
 
 export const noopRenderer: Renderer = {
+  registerUsage: () => {},
+  unregisterUsage: () => {},
+
   renderFont: () => {},
   renderGlobal: () => {},
   renderRule: () => '',

@@ -19,15 +19,26 @@ const AvatarExampleSizeShorthand = () => (
       <React.Fragment key={size}>
         <strong>{size}</strong>
         <div>
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" status={statusProps} />
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            status={statusProps}
+          />
           &emsp;
           <Avatar size={size} name="John Doe" status={statusProps} />
           &emsp;
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" />
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+          />
           &emsp;
           <Avatar size={size} icon={<UserFriendsIcon />} />
           &emsp;
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" square />
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            square
+          />
         </div>
       </React.Fragment>
     ))}

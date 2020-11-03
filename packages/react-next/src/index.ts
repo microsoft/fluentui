@@ -1,3 +1,5 @@
+import './version';
+
 export * from './ActivityItem';
 export * from './Autofill';
 export * from './Announced';
@@ -80,10 +82,9 @@ export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './Text';
 export * from './TextField';
+export * from './Theme';
 export * from './ThemeGenerator';
 export * from './Toggle';
 export * from './ToggleButton';
 export * from './Tooltip';
 export * from './Utilities';
-
-import './version';

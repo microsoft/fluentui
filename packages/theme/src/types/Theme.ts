@@ -1,21 +1,35 @@
-import { IPartialTheme, ITheme } from './ITheme';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { IPalette } from './IPalette';
+import { IFontStyles } from './IFontStyles';
+import { ISemanticColors } from './ISemanticColors';
+import { ISpacing } from './ISpacing';
+import { IEffects } from './IEffects';
+import { IScheme, ISchemeNames } from './IScheme';
+
+/**
+ * A ramp of size values.
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 /**
  * A baseline set of color plates.
  */
-export type ColorTokens = Partial<{
-  background: string;
-  contentColor: string;
-  subTextColor: string;
-  linkColor: string;
-  iconColor: string;
-  borderColor: string;
-  dividerColor: string;
-  focusColor: string;
-  focusInnerColor: string;
-  opacity: string;
-}>;
+export type ColorTokenSet = {
+  background?: string;
+  contentColor?: string;
+  secondaryContentColor?: string;
+  linkColor?: string;
+  iconColor?: string;
+  menuIconColor?: string;
+  borderColor?: string;
+  dividerColor?: string;
+  focusColor?: string;
+  focusInnerColor?: string;
+  opacity?: string;
+
+  highContrast?: ColorTokens;
+};
 
 /**
  * A set of states for each color plate to use.
@@ -37,16 +51,16 @@ export type ColorTokens = Partial<{
  * compatible with other platforms reusing token names, we have decided to snap
  * to "pressed".
  */
-export type ColorTokenStates = Partial<{
-  hovered: ColorTokens;
-  pressed: ColorTokens;
-  disabled: ColorTokens;
-  checked: ColorTokens;
-  checkedHovered: ColorTokens;
-  checkedPressed: ColorTokens;
-}>;
-
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export type ColorTokens = ColorTokenSet & {
+  checked?: ColorTokenSet;
+  checkedHovered?: ColorTokenSet;
+  checkedPressed?: ColorTokenSet;
+  disabled?: ColorTokenSet;
+  expanded?: ColorTokenSet;
+  focused?: ColorTokenSet;
+  hovered?: ColorTokenSet;
+  pressed?: ColorTokenSet;
+};
 
 export type FontTokens = Partial<{
   fontFamily: string;
@@ -67,31 +81,124 @@ export type RecursivePartial<T> = {
 };
 
 export interface Tokens {
-  body: ColorTokenSet & TokenSetType;
+  color: {
+    body: ColorTokenSet & TokenSetType;
+    brand: ColorTokenSet & TokenSetType;
+    [key: string]: TokenSetType;
+  };
+
   [key: string]: TokenSetType;
 }
 
+/**
+ * A set of style configurations for variants of a component (e.g. primary is a variant for the Button component).
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Variants = Record<string, any>;
+
+/**
+ * {@docCategory Theme}
+ * Component-level styles and variants.
+ */
 export interface ComponentStyles {
-  [componentName: string]: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    styles?: IStyleFunctionOrObject<any, any>;
-  };
+  /**
+   * styles prop for a component.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  styles?: IStyleFunctionOrObject<any, any>;
+
+  /**
+   * The variants property is still in an experimental phase. This is only applied by `ThemeProvider`.
+   */
+  variants?: Variants;
 }
 
 /**
+ * {@docCategory Theme}
+ * Component-level styles and token set.
+ */
+export type ComponentsStyles = {
+  [componentName: string]: ComponentStyles;
+};
+
+/**
+ * {@docCategory Theme}
  * A prepared (fully expanded) theme object.
  */
-export interface Theme extends ITheme {
-  components?: ComponentStyles;
-  tokens?: Tokens;
+export interface Theme extends IScheme {
+  /**
+   * Component-level styles and token set.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
+  components?: ComponentsStyles;
+
+  /**
+   * @internal
+   * CSS stylesheets to be registered.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
   stylesheets?: string[];
+
+  /**
+   * @internal
+   * Id of the theme. This is for internal use only.
+   */
+  id?: string;
+
+  /**
+   * @internal
+   * Global tokens. This is for internal use only and is not production-ready.
+   * */
+  tokens?: RecursivePartial<Tokens>;
+
+  /**
+   * @internal
+   * The schemes property is still in an experimental phase. The intent is to have it work
+   * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
+   * Alternative themes that can be referred to by name.
+   */
+  schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
 /**
- * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
+ * {@docCategory Theme}
+ * A partial theme.
  */
-export interface PartialTheme extends IPartialTheme {
-  components?: ComponentStyles;
-  tokens?: RecursivePartial<Tokens>;
+export interface PartialTheme {
+  components?: ComponentsStyles;
+
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  rtl?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  /**
+   * @internal
+   * CSS stylesheets to be registered.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
   stylesheets?: string[];
+
+  /**
+   * @internal
+   * Global tokens. This is experimental and not production-ready.
+   * */
+  tokens?: RecursivePartial<Tokens>;
+
+  /**
+   * @internal
+   * The schemes property is still in an experimental phase. The intent is to have it work
+   * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
+   * Alternative themes that can be referred to by name.
+   */
+  schemes?: { [P in ISchemeNames]?: IScheme };
 }

@@ -1,8 +1,137 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 16 Sep 2020 12:27:22 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v9.0.0-alpha.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.118..@fluentui/react-next_v9.0.0-alpha.0)
+
+### Changes
+
+- Autofill: Make autofill in react-next compliant ([PR #15227](https://github.com/microsoft/fluentui/pull/15227) by joschect@microsoft.com)
+- Update release notes. ([PR #15307](https://github.com/microsoft/fluentui/pull/15307) by xgao@microsoft.com)
+- Fix imports to reference physical files. ([PR #15340](https://github.com/microsoft/fluentui/pull/15340) by xgao@microsoft.com)
+- Export @fluentui/theme and react-theme-provider. Remove Foundation exports. ([PR #15354](https://github.com/microsoft/fluentui/pull/15354) by xgao@microsoft.com)
+- move Image component from react-next to react-internal ([PR #15367](https://github.com/microsoft/fluentui/pull/15367) by ololubek@microsoft.com)
+- Moving FocusTrapZone and Modal from react-next to react-internal. ([PR #15368](https://github.com/microsoft/fluentui/pull/15368) by humbertomakotomorimoto@gmail.com)
+- Move TextField "next" changes back to main package ([PR #15370](https://github.com/microsoft/fluentui/pull/15370) by elcraig@microsoft.com)
+- Moving SwatchColorPicker and ButtonGrid from react-next to react-internal. ([PR #15373](https://github.com/microsoft/fluentui/pull/15373) by czearing@outlook.com)
+- Move ChoiceGroup v8 changes to react ([PR #15387](https://github.com/microsoft/fluentui/pull/15387) by elcraig@microsoft.com)
+- Moving react-next SearchBox to react-internal. ([PR #15385](https://github.com/microsoft/fluentui/pull/15385) by czearing@outlook.com)
+- move persona to react-internal ([PR #15386](https://github.com/microsoft/fluentui/pull/15386) by joschect@microsoft.com)
+- Move Fabric from react-next to react-internal ([PR #15388](https://github.com/microsoft/fluentui/pull/15388) by ololubek@microsoft.com)
+- Moving react-next OverflowSet to react-internal package. ([PR #15389](https://github.com/microsoft/fluentui/pull/15389) by czearing@outlook.com)
+- Moving react-next MessageBar to react-internal. ([PR #15393](https://github.com/microsoft/fluentui/pull/15393) by czearing@outlook.com)
+- Re-export Rating from react ([PR #15398](https://github.com/microsoft/fluentui/pull/15398) by elcraig@microsoft.com)
+- Move v8 Coachmark changes from react-next to react ([PR #15400](https://github.com/microsoft/fluentui/pull/15400) by elcraig@microsoft.com)
+- Move v8 ResizeGroup changes from react-next to react ([PR #15401](https://github.com/microsoft/fluentui/pull/15401) by elcraig@microsoft.com)
+- Moving react-next Shimmer to react-internal package. ([PR #15407](https://github.com/microsoft/fluentui/pull/15407) by czearing@outlook.com)
+- Moving react-next SpinButton to react-internal. ([PR #15408](https://github.com/microsoft/fluentui/pull/15408) by czearing@outlook.com)
+- Moving react-next TeachingBubble to react-internal package. ([PR #15411](https://github.com/microsoft/fluentui/pull/15411) by czearing@outlook.com)
+- ContextualMenu: Move to react-internal ([PR #15448](https://github.com/microsoft/fluentui/pull/15448) by joschect@microsoft.com)
+- Moving react-next SelectedItemsList to react-internal package. ([PR #15430](https://github.com/microsoft/fluentui/pull/15430) by czearing@outlook.com)
+- Popup: Replacing version in react-internal with version from react-next. ([PR #15436](https://github.com/microsoft/fluentui/pull/15436) by humbertomakotomorimoto@gmail.com)
+- FloatingPickers: Move to react-internal ([PR #15458](https://github.com/microsoft/fluentui/pull/15458) by joschect@microsoft.com)
+- Callout: move to react-internal ([PR #15455](https://github.com/microsoft/fluentui/pull/15455) by joschect@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Moving react-next Layer into react-internal package. ([PR #15481](https://github.com/microsoft/fluentui/pull/15481) by czearing@outlook.com)
+- Combobox: Move combobox to react ([PR #15490](https://github.com/microsoft/fluentui/pull/15490) by joschect@microsoft.com)
+- Dropdown: Move to react-internal ([PR #15500](https://github.com/microsoft/fluentui/pull/15500) by joschect@microsoft.com)
+- Delete remaining v8 files and fix re-exports ([PR #15515](https://github.com/microsoft/fluentui/pull/15515) by elcraig@microsoft.com)
+- Update release notes about Keytips. ([PR #15534](https://github.com/microsoft/fluentui/pull/15534) by xgao@microsoft.com)
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove direct references to re-exported packages ([PR #15659](https://github.com/microsoft/fluentui/pull/15659) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.118)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.117..@fluentui/react-next_v8.0.0-alpha.118)
+
+### Changes
+
+- Updating FocusTrapZone to a function component. ([PR #14804](https://github.com/microsoft/fluentui/pull/14804) by czearing@outlook.com)
+- Porting a fix to callout dismissal when blurring to a new window. ([PR #15161](https://github.com/microsoft/fluentui/pull/15161) by czearing@outlook.com)
+- Exposed onRenderItem function for SwatchColorPicker ([PR #15180](https://github.com/microsoft/fluentui/pull/15180) by email not defined)
+- Breadcrumb: add role prop for items ([PR #15199](https://github.com/microsoft/fluentui/pull/15199) by erabelle@microsoft.com)
+- Update release notes related to ThemeProvider. ([PR #15194](https://github.com/microsoft/fluentui/pull/15194) by xgao@microsoft.com)
+
+## [8.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.117)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.116..@fluentui/react-next_v8.0.0-alpha.117)
+
+### Changes
+
+- Delete unneeded compat exports and move button migration guide ([PR #15128](https://github.com/microsoft/fluentui/pull/15128) by elcraig@microsoft.com)
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+- Porting a patch to allow SpinButton to pass event information. ([PR #15164](https://github.com/microsoft/fluentui/pull/15164) by czearing@outlook.com)
+
+## [8.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.116)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.115..@fluentui/react-next_v8.0.0-alpha.116)
+
+### Changes
+
+- Set font-family inherit on button and input elements. ([PR #15172](https://github.com/microsoft/fluentui/pull/15172) by xgao@microsoft.com)
+
+## [8.0.0-alpha.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.115)
+
+Wed, 23 Sep 2020 12:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.114..@fluentui/react-next_v8.0.0-alpha.115)
+
+### Changes
+
+- Fixing issues revealed by conformance tests: add missing exports and displayNames. ([PR #14871](https://github.com/microsoft/fluentui/pull/14871) by czearing@outlook.com)
+- Floating Pickers: Make strict mode compliant ([PR #15131](https://github.com/microsoft/fluentui/pull/15131) by joschect@microsoft.com)
+
+## [8.0.0-alpha.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.114)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.113..@fluentui/react-next_v8.0.0-alpha.114)
+
+### Changes
+
+- Updating Coachmark.Basic.Example.tsx to a function component. ([PR #15104](https://github.com/microsoft/fluentui/pull/15104) by czearing@outlook.com)
+- Updating react-next component documentation to the newest versions found in office-ui-fabric-react. ([PR #15107](https://github.com/microsoft/fluentui/pull/15107) by czearing@outlook.com)
+- Autofill: Add to react-next ([PR #15148](https://github.com/microsoft/fluentui/pull/15148) by joschect@microsoft.com)
+- Updating react-next example imports. ([PR #15153](https://github.com/microsoft/fluentui/pull/15153) by czearing@outlook.com)
+
+## [8.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.113)
+
+Mon, 21 Sep 2020 12:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.112..@fluentui/react-next_v8.0.0-alpha.113)
+
+### Changes
+
+- Updating Layer to a function component. ([PR #14698](https://github.com/microsoft/fluentui/pull/14698) by czearing@outlook.com)
+
+## [8.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.111)
+
+Thu, 17 Sep 2020 23:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.109..@fluentui/react-next_v8.0.0-alpha.111)
+
+### Changes
+
+- Fix React StrictMode issues in ComboBox ([PR #14719](https://github.com/microsoft/fluentui/pull/14719) by miclo@microsoft.com)
+- Adding Calendar and DatePicker to react-next compat folder. ([PR #15079](https://github.com/microsoft/fluentui/pull/15079) by czearing@outlook.com)
+- Fix implicit merge conflict in ComboBox ([PR #15096](https://github.com/microsoft/fluentui/pull/15096) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.109)
+
+Thu, 17 Sep 2020 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.108..@fluentui/react-next_v8.0.0-alpha.109)
+
+### Changes
+
+- Floating/ExtendedPicker: added to react-next in prep for release ([PR #14908](https://github.com/microsoft/fluentui/pull/14908) by joschect@microsoft.com)
+- Moving Breadcrumb to react-next for future function component conversion. ([PR #15054](https://github.com/microsoft/fluentui/pull/15054) by czearing@outlook.com)
 
 ## [8.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.108)
 

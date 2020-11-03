@@ -1,1 +1,2 @@
-export * from './utilities/index';
+import './version';
+export * from '@fluentui/react/lib/Utilities';

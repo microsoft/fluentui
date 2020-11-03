@@ -4,10 +4,10 @@
 
 ```ts
 
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -20,8 +20,6 @@ export interface ISlider {
 
 // @public (undocumented)
 export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
-    'aria-label'?: string;
-    // @deprecated
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;

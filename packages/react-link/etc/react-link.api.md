@@ -4,11 +4,10 @@
 
 ```ts
 
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -20,8 +19,6 @@ export interface ILink {
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     // (undocumented)
     [index: string]: any;
-    // (undocumented)
-    as?: React.ElementType;
     // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
@@ -59,21 +56,12 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
-export interface ILinkOptions {
-}
-
-// @public (undocumented)
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
+    as?: React.ElementType;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILinkSlots {
 }
 
 // @public (undocumented)
@@ -99,11 +87,6 @@ export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
 export const LinkBase: React.FunctionComponent<ILinkProps>;
-
-// @public (undocumented)
-export type LinkSlotProps = {
-    [key in keyof ILinkSlots]: ILinkProps[key];
-};
 
 
 // (No @packageDocumentation comment for this package)

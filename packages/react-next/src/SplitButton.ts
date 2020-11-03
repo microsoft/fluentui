@@ -1,1 +1,2 @@
-export * from '@fluentui/react-button/lib/SplitButton';
+import './version';
+export * from '@fluentui/react/lib/SplitButton';

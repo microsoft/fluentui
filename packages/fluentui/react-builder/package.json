@@ -15,15 +15,16 @@
     "lz-string": "^1.4.4",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-document-title": "^2.0.3",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
     "use-immer": "^0.4.1",
     "axe-core": "3.5.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@types/react-frame-component": "^4.1.1",
-    "@uifabric/build": "^7.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "typescript": "3.7.2"
   },

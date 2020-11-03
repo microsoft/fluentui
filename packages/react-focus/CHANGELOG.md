@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 07 Sep 2020 12:26:26 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.8..@fluentui/react-focus_v8.0.0-beta.0)
+
+### Changes
+
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.2..@fluentui/react-focus_v7.16.6)
+
+### Patches
+
+- FocusZone: Moving custom onFocus call at the end of private onFocus logic. ([PR #15108](https://github.com/microsoft/fluentui/pull/15108) by humbertomakotomorimoto@gmail.com)
 
 ## [7.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.0)
 

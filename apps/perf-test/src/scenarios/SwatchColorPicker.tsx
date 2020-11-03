@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SwatchColorPicker } from 'office-ui-fabric-react';
+import { SwatchColorPicker } from '@fluentui/react';
 
 const colorCells = [
   { id: 'a', label: 'orange', color: '#ca5010' },

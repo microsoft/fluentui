@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/SpinButton';
+export * from '@fluentui/react-internal/lib/SpinButton';

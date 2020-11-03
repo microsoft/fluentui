@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Link}
@@ -17,8 +16,6 @@ export interface ILink {
  * {@docCategory Link}
  */
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-  as?: React.ElementType;
-
   // Shared
   type?: string;
 
@@ -76,11 +73,9 @@ export interface ILinkProps
   theme?: ITheme;
 
   /**
-   * Optional keytip.
-   *
-   * @deprecated This no longer works. Use `useKeytipData` hook instead.
+   * A component type or primitive that is rendered as the type of the root element.
    */
-  keytipProps?: IKeytipProps;
+  as?: React.ElementType;
 }
 
 /**
@@ -99,20 +94,3 @@ export interface ILinkStyleProps {
 export interface ILinkStyles {
   root: IStyle;
 }
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkSlots {}
-
-/**
- * {@docCategory Link}
- */
-export type LinkSlotProps = {
-  [key in keyof ILinkSlots]: ILinkProps[key];
-};
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkOptions {}

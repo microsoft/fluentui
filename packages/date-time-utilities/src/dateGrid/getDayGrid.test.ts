@@ -76,6 +76,11 @@ describe('getDayGrid', () => {
     expect(countDays(result, day => day.isSelected)).toBe(daysToSelect);
   });
 
+  it('returns grid with no selected days', () => {
+    const result = DateGrid.getDayGrid({ ...defaultOptions, selectedDate: new Date(0) });
+    expect(countDays(result, day => day.isSelected)).toBe(0);
+  });
+
   it('returns grid with proper amount of weeks', () => {
     const result = DateGrid.getDayGrid({
       ...defaultOptions,
