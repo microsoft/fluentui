@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
@@ -166,12 +165,19 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
   primary?: TTokens;
   root?: TTokens;
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_large?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_larger?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_largest?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_regular?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_small?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_smaller?: TTokens;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   size_smallest?: TTokens;
 
   transparent?: TTokens;
