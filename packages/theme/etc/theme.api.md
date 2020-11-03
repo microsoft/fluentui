@@ -745,7 +745,7 @@ export interface PartialTheme {
     //
     // (undocumented)
     spacing?: Partial<ISpacing>;
-    // (undocumented)
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -843,6 +843,7 @@ export interface Theme extends IScheme {
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
