@@ -408,7 +408,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
         this._onInvokeMouseDown(ev, index);
 
-        const skipPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
+        const skipPreventDefault = onItemContextMenu(selection.getItems()[index], index, (ev as unknown) as Event);
 
         // In order to keep back compat, if the value here is undefined, then we should still
         // call preventDefault(). Only in the case where true is explicitly returned should
