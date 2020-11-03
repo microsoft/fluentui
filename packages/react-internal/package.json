@@ -55,6 +55,7 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
+    "@fluentui/react-button": "^1.0.0-beta.6",
     "@fluentui/react-focus": "^8.0.0-beta.5",
     "@fluentui/react-theme-provider": "^1.0.0-beta.6",
     "@fluentui/theme": "^2.0.0-beta.5",

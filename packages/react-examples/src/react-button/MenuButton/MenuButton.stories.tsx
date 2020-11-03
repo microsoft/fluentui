@@ -45,6 +45,42 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
   </div>
 );
 
+export const DefaultMenuButtons = () => {
+  return (
+    <Stack gap={20}>
+      <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
+      <MenuButtonExamples menu={<ContextualMenu {...menuProps} />} />
+
+      <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
+      <MenuButtonExamples circular menu={<ContextualMenu {...menuProps} />} />
+
+      <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
+      <div className={classes.vStack}>
+        <MenuButtonExamples block menu={<ContextualMenu {...menuProps} />} />
+      </div>
+
+      <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
+      <MenuButtonExamples iconOnly menu={<ContextualMenu {...menuProps} />} />
+
+      <Text>A button can be both `circular` and `iconOnly`.</Text>
+      <MenuButtonExamples circular iconOnly menu={<ContextualMenu {...menuProps} />} />
+
+      <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
+      <MenuButtonExamples loading menu={<ContextualMenu {...menuProps} />} />
+
+      <Text variant="xLarge">A button can be sized.</Text>
+      <div className={classes.vStack}>
+        <MenuButtonExamples size="smallest" menu={<ContextualMenu {...menuProps} />} />
+        <MenuButtonExamples size="smaller" menu={<ContextualMenu {...menuProps} />} />
+        <MenuButtonExamples size="small" menu={<ContextualMenu {...menuProps} />} />
+        <MenuButtonExamples size="large" menu={<ContextualMenu {...menuProps} />} />
+        <MenuButtonExamples size="larger" menu={<ContextualMenu {...menuProps} />} />
+        <MenuButtonExamples size="largest" menu={<ContextualMenu {...menuProps} />} />
+      </div>
+    </Stack>
+  );
+};
+
 const JSXMenu = () => <ContextualMenu {...(useMenuContext() as IContextualMenuProps)} {...menuProps} />;
 
 export const MenuButtonsWithMenuAsJsx = () => {

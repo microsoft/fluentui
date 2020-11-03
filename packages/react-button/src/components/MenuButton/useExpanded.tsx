@@ -16,7 +16,7 @@ export type ExpandedState = {
   menu?: MenuButtonState['menu'];
 };
 
-const MenuContext = React.createContext<MinimalMenuProps>({});
+export const MenuContext = React.createContext<MinimalMenuProps>({});
 export const useMenuContext = () => {
   return React.useContext(MenuContext);
 };

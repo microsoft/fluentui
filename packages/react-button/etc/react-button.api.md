@@ -213,6 +213,9 @@ export type MenuButtonTokens = ButtonTokens & {
 export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
 // @public (undocumented)
+export const MenuContext: React.Context<MinimalMenuProps>;
+
+// @public (undocumented)
 export type MinimalMenuProps = {
     hidden?: boolean;
     onDismiss?: () => void;
