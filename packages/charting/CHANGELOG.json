@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2020 12:22:17 GMT",
+      "tag": "@uifabric/charting_v4.9.1",
+      "version": "4.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "basic unit test cases and snapshot test cases for donut chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "d90109cc627cc9d0e2fb644546d32afb7ec9d732",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:29:00 GMT",
       "tag": "@uifabric/charting_v4.9.0",
       "version": "4.9.0",
