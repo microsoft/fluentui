@@ -12,8 +12,6 @@ import { ReaderNarration } from './ReaderNarration';
 const pkg = require('../../package.json');
 const axeVersion = pkg.dependencies['axe-core'];
 
-const showNarration = false;
-
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
   jsonTree: JSONTreeElement;
