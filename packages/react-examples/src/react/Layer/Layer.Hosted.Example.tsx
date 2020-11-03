@@ -20,7 +20,11 @@ export const LayerHostedExample: React.FunctionComponent = () => {
     <div className={styles.root}>
       <Toggle label="Show host" inlineLabel checked={showHost} onChange={toggleShowHost} />
 
-      {showHost && <LayerHost id={layerHostId} className={styles.customHost} />}
+      {showHost && (
+        <LayerHost id={layerHostId} className={styles.customHost}>
+          I am a LayerHost with id={layerHostId}
+        </LayerHost>
+      )}
 
       <p>
         In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along
@@ -92,8 +96,6 @@ const styles = {
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)',
-          // double quotes required to make the string show up
-          content: '"I am a LayerHost with id=layerhost1"',
         },
       },
     },
