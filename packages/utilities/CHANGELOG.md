@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.5)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.4..@fluentui/utilities_v8.0.0-beta.5)
+
+### Changes
+
+- Update Customizer deprecation message. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.4)
 

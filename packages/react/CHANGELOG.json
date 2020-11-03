@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add aria-hidden to error section",
+            "author": "dahajek@microsoft.com",
+            "commit": "588ce795462bbc96d1df7407ad50daace76e7f7e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:32:47 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.7",
       "version": "8.0.0-beta.7",

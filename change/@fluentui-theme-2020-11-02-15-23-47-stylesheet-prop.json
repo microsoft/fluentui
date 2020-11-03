@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Mark stylesheets in theme as internal.",
-  "packageName": "@fluentui/theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-02T23:23:47.770Z"
-}

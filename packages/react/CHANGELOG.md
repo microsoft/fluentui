@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.7..@fluentui/react_v8.0.0-beta.8)
+
+### Changes
+
+- Add aria-hidden to error section ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.7)
 

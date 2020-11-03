@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove abandoned scss-based Pivot from react-tabs/next folder",
-  "packageName": "@fluentui/react-tabs",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-02T23:33:22.362Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Codemods: fix an issue where they would not save synchronously",
-  "packageName": "@fluentui/codemods",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-30T23:38:22.464Z"
-}

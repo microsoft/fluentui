@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Layer: fix not rendering into targeted host element defined by hostId prop.",
+            "author": "xgao@microsoft.com",
+            "commit": "f17bf808e08939ad938b3645425b8f7db1de9363",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:32:47 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.6",
       "version": "8.0.0-beta.6",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.6..@fluentui/react-tabs_v1.0.0-beta.7)
+
+### Changes
+
+- Remove abandoned scss-based Pivot from react-tabs/next folder ([PR #15807](https://github.com/microsoft/fluentui/pull/15807) by behowell@microsoft.com)
 
 ## [1.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.6)
 

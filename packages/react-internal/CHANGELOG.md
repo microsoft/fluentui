@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.6..@fluentui/react-internal_v8.0.0-beta.7)
+
+### Changes
+
+- Layer: fix not rendering into targeted host element defined by hostId prop. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.6)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.7",
+      "version": "1.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove abandoned scss-based Pivot from react-tabs/next folder",
+            "author": "behowell@microsoft.com",
+            "commit": "d34a9ef992fea7877ffe1e7691b6794155cc0e48",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:32:47 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.6",
       "version": "1.0.0-beta.6",
