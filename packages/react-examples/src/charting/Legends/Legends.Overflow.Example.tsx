@@ -181,9 +181,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       <Legends
         legends={legends}
         overflowText={'Overflow Items'}
-        allowFocusOnLegends={false}
+        allowFocusOnLegends={true}
         overflowProps={{ focusZoneProps: { 'aria-label': 'legends container' } }}
-        canSelectMultipleLegends
+        canSelectMultipleLegends={false}
       />
     );
   }

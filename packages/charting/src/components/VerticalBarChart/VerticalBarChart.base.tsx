@@ -340,7 +340,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _onBarHover(
     point: IVerticalBarChartDataPoint,
     color: string,
-    mouseEvent: React.MouseEvent<SVGPathElement>,
+    mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     mouseEvent.persist();
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);

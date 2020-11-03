@@ -406,7 +406,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this._reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (this.props.hideLegend) {
-        legendContainerHeight = 32;
+        legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
         legendContainerHeight =
