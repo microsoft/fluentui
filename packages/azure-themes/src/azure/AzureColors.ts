@@ -75,6 +75,7 @@ export namespace BaseColors {
   export const GRAY_595959 = '#595959';
   export const GRAY_605E5C = '#605E5C';
   export const GRAY_747474 = '#747474';
+  export const GRAY_797775 = '#797775';
   export const GRAY_808080 = '#808080';
   export const GRAY_8A8886 = '#8A8886';
   export const GRAY_979693 = '#979693';
@@ -201,7 +202,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,
-      border: BaseColors.GRAY_F3F2F1,
+      border: BaseColors.GRAY_252423,
       text: BaseColors.GRAY_A19F9D,
     },
     focus: {
@@ -209,8 +210,8 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
   },
   disabledButton: {
-    background: BaseColors.GRAY_F3F2F1,
-    text: BaseColors.GRAY_A19F9D,
+    background: BaseColors.GRAY_252423,
+    text: BaseColors.GRAY_797775,
   },
   secondaryButton: {
     rest: {
