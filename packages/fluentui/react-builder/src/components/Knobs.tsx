@@ -143,7 +143,7 @@ type DesignKnobProps = {
 };
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
-  const [menuActivePane, setMenuActivePane] = React.useState('props');
+  const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   return (
     <div>
       <Menu
