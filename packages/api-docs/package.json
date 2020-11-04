@@ -27,9 +27,9 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.0-beta.0",
     "@fluentui/merge-styles": "^8.0.0-beta.1",
-    "@fluentui/react": "^8.0.0-beta.8",
-    "@fluentui/react-button": "^1.0.0-beta.6",
-    "@fluentui/react-cards": "^1.0.0-beta.8",
+    "@fluentui/react": "^8.0.0-beta.9",
+    "@fluentui/react-button": "^1.0.0-beta.7",
+    "@fluentui/react-cards": "^1.0.0-beta.9",
     "@fluentui/react-checkbox": "^1.0.0-beta.7",
     "@fluentui/react-date-time": "^8.0.0-beta.7",
     "@fluentui/react-focus": "^8.0.0-beta.5",
