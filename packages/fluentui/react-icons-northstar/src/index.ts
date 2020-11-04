@@ -225,6 +225,7 @@ export { TabsIcon } from './components/TabsIcon';
 export { TagIcon } from './components/TagIcon';
 export { TeamCreateIcon } from './components/TeamCreateIcon';
 export { TeamsIcon } from './components/TeamsIcon';
+export { TeamsMonochromeIcon } from './components/TeamsMonochromeIcon';
 export { TenantWorkIcon } from './components/TenantWorkIcon';
 export { TenantPersonalIcon } from './components/TenantPersonalIcon';
 export { ThumbtackIcon } from './components/ThumbtackIcon';
