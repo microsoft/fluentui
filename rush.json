@@ -75,14 +75,9 @@
     "postRushBuild": []
   },
   /**
-   * Older releases of the NodeJS engine may be missing features required by your system.
-   * Other releases may have bugs.  In particular, the "latest" version will not be a
-   * Long Term Support (LTS) version and is likely to have regressions.
-   *
-   * Specify a SemVer range to ensure developers use a NodeJS version that is appropriate
-   * for your repo.
+   * `rush install` fails on Node 12+ (and 9 and 11 are no longer supported)
    */
-  "nodeSupportedVersionRange": ">=8.9.0",
+  "nodeSupportedVersionRange": ">=8.9.0 <9.0.0 || >=10.9.0 <11.0.0",
   /**
    * If you would like the version specifiers for your dependencies to be consistent, then
    * uncomment this line. This is effectively similar to running "rush check" before any
