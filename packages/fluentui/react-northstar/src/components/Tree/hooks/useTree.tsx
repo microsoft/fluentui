@@ -26,7 +26,8 @@ export interface UseTreeOptions {
 }
 
 export function useTree(props: UseTreeOptions) {
-  // build flattened tree from props.items
+  // reason for flattening: useTree returns a flat array of props for each tree item child,
+  // this plays better with virtualization.
   const flatTreeFromProps = React.useMemo(() => flattenTree(props.items), [props.items]);
 
   // useTreeActiveState hook updates flattened tree with the expand/collapse state of each tree node
