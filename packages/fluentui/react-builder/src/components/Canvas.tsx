@@ -10,6 +10,7 @@ import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
 
 const pkg = require('../../package.json');
+
 const axeVersion = pkg.dependencies['axe-core'];
 
 export type CanvasProps = {
