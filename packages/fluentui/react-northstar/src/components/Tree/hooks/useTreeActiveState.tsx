@@ -35,8 +35,9 @@ export function useTreeActiveState(
 
   // compute a new flattened tree based on activeItemIds state
   const updatedFlatTree = React.useMemo(() => {
-    const updatedFlatTree = { ...flatTree };
-    Object.keys(updatedFlatTree).forEach(key => {
+    const updatedFlatTree = {};
+    Object.keys(flatTree).forEach(key => {
+      updatedFlatTree[key] = { ...flatTree[key] };
       if (updatedFlatTree[key].expanded) {
         updatedFlatTree[key].expanded = false;
       }
