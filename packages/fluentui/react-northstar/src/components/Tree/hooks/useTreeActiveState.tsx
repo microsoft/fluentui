@@ -49,7 +49,7 @@ export function useTreeActiveState(
   }, [activeItemIds, flatTree]);
 
   const toggleActiveOnOneId = React.useCallback(
-    (ids: string[], id: string): string[] => {
+    (activeIds: string[], idToToggle: string): string[] => {
       if (!updatedFlatTree[id]?.hasSubtree) {
         // leaf node does not have the concept of active/inactive
         return ids;
