@@ -49,7 +49,7 @@ export const TreeContext = React.createContext<TreeRenderContextValue>({
   focusParent: _.noop,
   siblingsExpand: _.noop,
   registerItemRef: _.noop,
-  getItemById: id => ({ id } as any),
+  getItemById: id => ({ id } as Partial<BaseFlatTreeItem>),
 });
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
