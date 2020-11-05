@@ -6,7 +6,7 @@ import { FlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
 import * as _ from 'lodash';
 
-export interface TreeActiveState {
+export interface UseTreeActiveStateResult {
   activeItemIds: string[];
   flatTree: FlatTree;
   toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
