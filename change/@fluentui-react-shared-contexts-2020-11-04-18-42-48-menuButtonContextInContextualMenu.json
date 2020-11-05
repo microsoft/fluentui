@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Creating @fluentui/react-shared-contexts package and moving MenuContext from @fluentui/react-button into it.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-05T02:42:48.834Z"
+}
