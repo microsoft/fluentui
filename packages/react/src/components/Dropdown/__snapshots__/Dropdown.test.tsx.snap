@@ -94,6 +94,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           border-color: #a4262c;
         }
     data-is-focusable={true}
+    data-ktp-target={true}
     id="Dropdown0"
     onBlur={[Function]}
     onClick={[Function]}
@@ -270,6 +271,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           border-color: #a4262c;
         }
     data-is-focusable={true}
+    data-ktp-target={true}
     id="Dropdown0"
     onBlur={[Function]}
     onClick={[Function]}

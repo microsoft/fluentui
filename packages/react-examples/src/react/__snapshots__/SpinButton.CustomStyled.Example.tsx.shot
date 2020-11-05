@@ -6,7 +6,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
     className=
 
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
+          font-weight: 400;
           min-width: 86px;
           outline: none;
           width: 400px;
@@ -84,6 +88,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
           }
+      data-ktp-target={true}
     >
       <input
         aria-disabled={false}
@@ -131,6 +136,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               border-color: Highlight;
               color: HighlightText;
             }
+        data-ktp-execute-target={true}
         data-lpignore={true}
         disabled={false}
         id="input0"

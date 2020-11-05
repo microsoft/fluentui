@@ -1,1 +1,1 @@
-export * from './components/FocusZone/index';
+export * from '@fluentui/react-focus';

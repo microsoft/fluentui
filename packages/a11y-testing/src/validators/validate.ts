@@ -5,7 +5,6 @@ import { SlotRule } from './../rules/rules';
 export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void => {
   const slot = rule.getData();
   const slotProps = slot.props || [{}];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   slotProps.forEach((props: Props) => {
     const testFacade = baseTestFacade.forProps(props);
 

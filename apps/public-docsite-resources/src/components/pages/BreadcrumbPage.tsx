@@ -5,7 +5,7 @@ import { DemoPage } from '../DemoPage';
 
 export const BreadcrumbPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Breadcrumb.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Breadcrumb.page.json')}
     {...{ ...BreadcrumbPageProps, ...props }}
   />
 );

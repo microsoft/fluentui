@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Set correct dir on root element based on rtl value in theme.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-02T19:18:14.759Z"
-}

@@ -1,8 +1,27 @@
-# Change Log - @uifabric/monaco-editor
+# Change Log - @fluentui/monaco-editor
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.1)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.0-beta.0..@fluentui/monaco-editor_v1.0.0-beta.1)
+
+### Changes
+
+- Remove code for TS < 3.7 compat ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/monaco-editor_v0.5.18..@fluentui/monaco-editor_v1.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/monaco-editor to @fluentui/monaco-editor ([PR #15617](https://github.com/microsoft/fluentui/pull/15617) by elcraig@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
 
 ## [0.5.8](https://github.com/microsoft/fluentui/tree/@uifabric/monaco-editor_v0.5.8)
 

@@ -10,7 +10,7 @@ const OverlayDarkExampleCode = require('!raw-loader!@fluentui/react-examples/src
 export const OverlayPageProps: IDocPageProps = {
   title: 'Overlay',
   componentName: 'Overlay',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Overlay',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Overlay',
   examples: [
     {
       title: 'Light',

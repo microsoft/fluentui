@@ -106,6 +106,10 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    * item's contextual menu action occurs.
    */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
+  /**
+   * Additional CSS class(es) to apply to the SelectionZone.
+   */
+  className?: string;
 }
 
 /**
@@ -183,7 +187,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
     return (
       <div
-        className={css('ms-SelectionZone', {
+        className={css('ms-SelectionZone', this.props.className, {
           'ms-SelectionZone--modal': !!isModal,
         })}
         ref={this._root}

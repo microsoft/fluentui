@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react/lib/Persona';
 import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 import { Stack } from '@fluentui/react/lib/Stack';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };
 const iconStyles: Partial<IIconStyles> = { root: { marginRight: 5 } };

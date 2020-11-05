@@ -5,7 +5,7 @@ import { RatingPageProps } from '@fluentui/react-examples/lib/react/Rating/Ratin
 
 export const RatingPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Rating.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Rating.page.json')}
     {...{ ...RatingPageProps, ...props }}
   />
 );

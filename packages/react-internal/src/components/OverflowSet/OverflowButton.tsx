@@ -2,7 +2,7 @@ import * as React from 'react';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
 import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const useKeytipRegistrations = (
   persistedKeytips: { [uniqueID: string]: IKeytipProps },

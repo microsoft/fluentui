@@ -22,7 +22,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@uifabric/react-hooks';
+import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@fluentui/react-hooks';
 import { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();

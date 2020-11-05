@@ -6,7 +6,7 @@ import {
   IconFontSizes,
   getInputFocusStyle,
 } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '../../compat/Button';
 
 import { ISpinButtonStyles, ISpinButtonStyleProps } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
@@ -143,9 +143,9 @@ export const getStyles = (props: ISpinButtonStyleProps): ISpinButtonStyles => {
 
   return {
     root: [
+      fonts.medium,
       {
         outline: 'none',
-        fontSize: fonts.medium.fontSize,
         width: '100%',
         minWidth: DEFAULT_MIN_WIDTH,
       },

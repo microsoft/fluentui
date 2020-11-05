@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useWindow, useDocument, WindowProvider } from './WindowProvider';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 
 describe('WindowProvider', () => {
   let lastWindow: Window | undefined;

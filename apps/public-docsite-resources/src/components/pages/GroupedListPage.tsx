@@ -5,7 +5,7 @@ import { GroupedListPageProps } from '@fluentui/react-examples/lib/react/Grouped
 
 export const GroupedListPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/GroupedList.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/GroupedList.page.json')}
     {...{ ...GroupedListPageProps, ...props }}
   />
 );

@@ -6,6 +6,7 @@ import { useButtonClasses } from './useButtonClasses';
 
 /**
  * Define a styled Button, using the `useButton` hook.
+ * {@docCategory Button}
  */
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const { render, state } = useButton(props, ref);

@@ -32,7 +32,9 @@ describe('SelectedItemsList', () => {
     isConformant({
       Component: BaseSelectedItemsList,
       displayName: 'BaseSelectedItemsList',
-      disabledTests: [`has-top-level-file`],
+      // Problem: Ref is not supported
+      // Solution: Convert to FunctionComponent and support using forwardRef
+      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
     });
 
     it('can remove items', () => {

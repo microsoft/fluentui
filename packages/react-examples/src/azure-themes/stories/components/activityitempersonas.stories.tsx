@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ActivityItem, IActivityItemProps, Link, mergeStyleSets } from '@fluentui/react';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const classNames = mergeStyleSets({
   exampleRoot: {

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-stylesheets
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-stylesheets_v0.2.2..@fluentui/react-stylesheets_v1.0.0-beta.0)
+
+### Changes
+
+- Fix error when target is undefined (in case of SSR). ([PR #15342](https://github.com/microsoft/fluentui/pull/15342) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-stylesheets_v0.1.13)
 

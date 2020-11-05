@@ -17,6 +17,11 @@ import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
 
 export default () => {
   const [color, setColor] = React.useState('red');
+
+  // Currently all flavours of themes (default/dark/hc) all have the same colors
+  // Should be updated if this is no longer the case
+  const colors = Object.keys(teamsTheme.siteVariables.categoryColorScheme);
+
   return (
     <Provider
       theme={{
@@ -38,20 +43,7 @@ export default () => {
       <DocPage title="Category color schemes">
         <Flex column>
           <Dropdown
-            items={[
-              'red',
-              'redDark',
-              'orangeDark',
-              'orange',
-              'orangeLight',
-              'yellowDark',
-              'yellow',
-              'brown',
-              'oliveDark',
-              'olive',
-              'neon',
-              'formatting',
-            ]}
+            items={colors}
             defaultValue={'red'}
             placeholder="Select the color"
             onChange={(e, { value }) => setColor(value as string)}

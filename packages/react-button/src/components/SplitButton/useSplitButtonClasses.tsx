@@ -1,5 +1,7 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonSizeVariants } from '../Button/index';
+import { SplitButtonState, SplitButtonVariants } from './SplitButton.types';
 
 const GlobalClassNames = {
   root: 'ms-SplitButton',
@@ -9,7 +11,7 @@ const GlobalClassNames = {
 
 const menuButtonWidth = '32px';
 
-export const useSplitButtonClasses = makeVariantClasses({
+export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitButtonVariants>({
   name: 'SplitButton',
   prefix: '--button',
 
@@ -45,6 +47,7 @@ export const useSplitButtonClasses = makeVariantClasses({
           '--button-borderLeftWidth': 0,
           '--button-borderTopLeftRadius': 0,
           '--button-borderBottomLeftRadius': 0,
+          '--button-iconColor': 'var(--button-menuIconColor)',
           '--button-iconSize': 'var(--button-splitMenuIconSize)',
         },
       },
@@ -58,12 +61,20 @@ export const useSplitButtonClasses = makeVariantClasses({
       top: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
       bottom: 'calc(100% - var(--button-dividerLength, 100% + 8px))',
 
+      [EdgeChromiumHighContrastSelector]: {
+        backgroundColor: 'var(--button-highContrast-dividerColor)',
+      },
+
       [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
         backgroundColor: 'var(--button-disabled-dividerColor)',
+
+        [EdgeChromiumHighContrastSelector]: {
+          backgroundColor: 'var(--button-highContrast-disabled-dividerColor, var(--button-highContrast-dividerColor))',
+        },
       },
     },
 
-    _fluid: {
+    _block: {
       width: '100%',
       maxWidth: '100%',
 
@@ -77,7 +88,7 @@ export const useSplitButtonClasses = makeVariantClasses({
       },
     },
   },
-  variants: (theme: Theme) => {
+  variants: (theme: Theme): SplitButtonVariants => {
     const { palette, semanticColors } = theme;
 
     return {
@@ -96,7 +107,16 @@ export const useSplitButtonClasses = makeVariantClasses({
         disabled: {
           dividerColor: semanticColors.disabledText,
         },
+        menuIconColor: 'var(--body-menuIconColor)',
         menuIconSize: '12px',
+
+        highContrast: {
+          dividerColor: 'WindowText',
+
+          disabled: {
+            dividerColor: 'GrayText',
+          },
+        },
       },
 
       primary: {
@@ -105,7 +125,20 @@ export const useSplitButtonClasses = makeVariantClasses({
         disabled: {
           dividerColor: semanticColors.disabledText,
         },
+
+        highContrast: {
+          dividerColor: 'Window',
+
+          disabled: {
+            dividerColor: 'GrayText',
+          },
+        },
       },
+
+      transparent: {
+        menuIconColor: palette.neutralSecondary,
+      },
+
       ...ButtonSizeVariants,
     };
   },

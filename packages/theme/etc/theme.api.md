@@ -4,9 +4,9 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -16,12 +16,14 @@ export const AnimationVariables: IAnimationVariables;
 
 // @public
 export type ColorTokens = ColorTokenSet & {
-    hovered?: ColorTokens;
-    pressed?: ColorTokens;
-    disabled?: ColorTokens;
-    checked?: ColorTokens;
-    checkedHovered?: ColorTokens;
-    checkedPressed?: ColorTokens;
+    checked?: ColorTokenSet;
+    checkedHovered?: ColorTokenSet;
+    checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
 };
 
 // @public
@@ -31,11 +33,13 @@ export type ColorTokenSet = {
     secondaryContentColor?: string;
     linkColor?: string;
     iconColor?: string;
+    menuIconColor?: string;
     borderColor?: string;
     dividerColor?: string;
     focusColor?: string;
     focusInnerColor?: string;
     opacity?: string;
+    highContrast?: ColorTokens;
 };
 
 // @public (undocumented)
@@ -58,13 +62,15 @@ export namespace CommunicationColors {
     tint40 = "#eff6fc";
 }
 
-// @public (undocumented)
+// @public
+export type ComponentsStyles = {
+    [componentName: string]: ComponentStyles;
+};
+
+// @public
 export interface ComponentStyles {
-    // (undocumented)
-    [componentName: string]: {
-        styles?: IStyleFunctionOrObject<any, any>;
-        variants?: Variants;
-    };
+    styles?: IStyleFunctionOrObject<any, any>;
+    variants?: Variants;
 }
 
 // @public (undocumented)
@@ -383,20 +389,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = {
-    palette?: Partial<IPalette>;
-    fonts?: Partial<IFontStyles>;
-    defaultFontStyle?: IRawStyle;
-    semanticColors?: Partial<ISemanticColors>;
-    isInverted?: boolean;
-    disableGlobalClassNames?: boolean;
-    rtl?: boolean;
-    spacing?: Partial<ISpacing>;
-    effects?: Partial<IEffects>;
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
-};
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -556,11 +550,7 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export interface ITheme extends IScheme {
-    // @internal
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
+export interface ITheme extends Theme {
 }
 
 // @public (undocumented)
@@ -733,12 +723,35 @@ export namespace NeutralColors {
 }
 
 // @public
-export interface PartialTheme extends IPartialTheme {
+export interface PartialTheme {
     // (undocumented)
-    components?: ComponentStyles;
+    components?: ComponentsStyles;
+    defaultFontStyle?: IRawStyle;
     // (undocumented)
+    disableGlobalClassNames?: boolean;
+    // (undocumented)
+    effects?: Partial<IEffects>;
+    // (undocumented)
+    fonts?: Partial<IFontStyles>;
+    // (undocumented)
+    isInverted?: boolean;
+    // (undocumented)
+    palette?: Partial<IPalette>;
+    // (undocumented)
+    rtl?: boolean;
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
+    // (undocumented)
+    semanticColors?: Partial<ISemanticColors>;
+    // Warning: (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+    //
+    // (undocumented)
+    spacing?: Partial<ISpacing>;
+    // @internal
     stylesheets?: string[];
-    // (undocumented)
+    // @internal
     tokens?: RecursivePartial<Tokens>;
 }
 
@@ -826,12 +839,15 @@ export namespace SharedColors {
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public
-export interface Theme extends ITheme {
-    // (undocumented)
-    components?: ComponentStyles;
-    // (undocumented)
+export interface Theme extends IScheme {
+    components?: ComponentsStyles;
+    // @internal
     id?: string;
-    // (undocumented)
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -854,14 +870,9 @@ export type TokenSetType = {
     [key: string]: TokenSetType | string | number | undefined;
 };
 
-// @public (undocumented)
+// @public
 export type Variants = Record<string, any>;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/types/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/types/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

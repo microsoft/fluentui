@@ -59,9 +59,6 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** Size of the tree containing this title without any children. */
   treeSize?: number;
 
-  /** Whether or not tree title is part of the selectable parent. */
-  selectableParent?: boolean;
-
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
 
@@ -83,8 +80,10 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
 export type TreeTitleStylesProps = Pick<
   TreeTitleProps,
-  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate' | 'level'
->;
+  'selected' | 'selectable' | 'disabled' | 'indeterminate' | 'level'
+> & {
+  showIndicator: boolean;
+};
 
 export const treeTitleClassName = 'ui-tree__title';
 
@@ -116,12 +115,11 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     disabled,
     selected,
     selectable,
-    selectableParent,
     expanded,
     indeterminate,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
+  const getA11Props = useAccessibility<TreeTitleBehaviorProps>(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
@@ -148,7 +146,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       treeSize,
       selected,
       selectable,
-      selectableParent,
     }),
     rtl: context.rtl,
   });
@@ -157,11 +154,11 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     className: treeTitleClassName,
     mapPropsToStyles: () => ({
       selected,
-      selectableParent,
       disabled,
       selectable,
       indeterminate,
       level,
+      showIndicator: selectable && ((hasSubtree && expanded) || selected || indeterminate),
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -182,13 +179,9 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     defaultProps: () => ({
       as: 'span',
       selected,
-      ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
-          _.isEmpty(selectionIndicator) && {
-            styles: resolvedStyles.selectionIndicator,
-          }),
+        styles: resolvedStyles.selectionIndicator,
       }),
     }),
   });
@@ -204,8 +197,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       })}
     >
       {childrenExist(children) ? children : content}
-
-      {selectable && selectIndicator}
+      {selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -224,7 +216,6 @@ TreeTitle.propTypes = {
   expanded: PropTypes.bool,
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
-  selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,

@@ -10,7 +10,7 @@ export interface ISeparator {}
 /**
  * {@docCategory Separator}
  */
-export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Theme (provided through customization.)
    */

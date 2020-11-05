@@ -25,7 +25,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     target?: string;
     circular?: boolean;
     disabled?: boolean;
-    fluid?: boolean;
+    block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
@@ -34,6 +34,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     primary?: boolean;
     secondary?: boolean;
     ghost?: boolean;
+    transparent?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokens>;
 };
@@ -96,6 +97,7 @@ export type ButtonTokens = ColorTokens & FontTokens & {
     borderWidth?: string;
     boxShadow?: string;
     width?: string;
+    forcedColorAdjust?: string;
     transform?: string;
     transition?: string;
     size?: {
@@ -115,11 +117,13 @@ export type ButtonTokens = ColorTokens & FontTokens & {
 
 // @public (undocumented)
 export type ButtonVariants<TTokens = ButtonTokens> = {
-    base?: TTokens;
-    primary?: TTokens;
-    iconOnly?: TTokens;
+    root?: TTokens;
+    block?: TTokens;
     circular?: TTokens;
-    fluid?: TTokens;
+    iconOnly?: TTokens;
+    ghost?: TTokens;
+    primary?: TTokens;
+    transparent?: TTokens;
 };
 
 // @public (undocumented)
@@ -156,10 +160,10 @@ export interface CompoundButtonState extends CompoundButtonProps {
 
 // @public (undocumented)
 export type CompoundButtonTokens = ButtonTokens & {
-    secondaryContentColor: string;
-    secondaryContentFontSize: string;
-    secondaryContentFontWeight: string;
-    secondaryContentGap: string;
+    secondaryContentColor?: string;
+    secondaryContentFontSize?: string;
+    secondaryContentFontWeight?: string;
+    secondaryContentGap?: string;
 };
 
 // @public (undocumented)
@@ -173,15 +177,12 @@ export type ExpandedState = {
     onClick?: (ev: React.MouseEvent) => void;
     onMenuDismiss?: () => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
-    'aria-expanded'?: boolean;
-    'aria-haspopup'?: boolean;
-    menu: {
-        target?: React.Ref<HTMLElement | undefined>;
-        onDismiss?: () => void;
-    };
+    'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
+    'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
+    menu?: MenuButtonState['menu'];
 };
 
-// @public (undocumented)
+// @public
 export const MenuButton: React.ForwardRefExoticComponent<Pick<MenuButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -197,15 +198,28 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 export const menuButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
     // (undocumented)
-    menu: ExpandedState['menu'];
+    menu?: React.PropsWithChildren<MinimalMenuProps>;
 }
 
 // @public (undocumented)
-export type MenuButtonTokens = ButtonTokens;
+export type MenuButtonTokens = ButtonTokens & {
+    menuIconColor?: string;
+    menuIconSize?: string;
+};
 
 // @public (undocumented)
+export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
+
+// @public (undocumented)
+export type MinimalMenuProps = {
+    hidden?: boolean;
+    onDismiss?: () => void;
+    target?: React.Ref<HTMLElement | undefined>;
+};
+
+// @public
 export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -225,7 +239,13 @@ export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuBu
 }
 
 // @public (undocumented)
-export type SplitButtonTokens = MenuButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens & {
+    dividerColor?: string;
+    dividerThickness?: string;
+};
+
+// @public (undocumented)
+export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;
 
 // @public
 export const ToggleButton: React.ForwardRefExoticComponent<Pick<ToggleButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -239,6 +259,12 @@ export interface ToggleButtonProps extends ButtonProps {
 // @public (undocumented)
 export interface ToggleButtonState extends ToggleButtonProps {
 }
+
+// @public (undocumented)
+export type ToggleButtonTokens = ButtonTokens;
+
+// @public (undocumented)
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
@@ -277,10 +303,13 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 };
 
 // @public (undocumented)
-export const useMenuButtonClasses: (state: {}, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useMenuButtonClasses: (state: MenuButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public (undocumented)
+export const useMenuContext: () => MinimalMenuProps;
 
 // @public
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {
@@ -289,7 +318,7 @@ export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElemen
 };
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: {}, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useSplitButtonClasses: (state: SplitButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
@@ -298,7 +327,7 @@ export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElem
 };
 
 // @public (undocumented)
-export const useToggleButtonClasses: (state: ToggleButtonState, theme?: import("@fluentui/react-theme-provider").Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
+export const useToggleButtonClasses: (state: ToggleButtonState, theme?: Theme | undefined, renderer?: import("@fluentui/react-theme-provider").StyleRenderer | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)

@@ -5,7 +5,7 @@ import { ImagePageProps } from '@fluentui/react-examples/lib/react/Image/Image.d
 
 export const ImagePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Image.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Image.page.json')}
     {...{ ...ImagePageProps, ...props }}
   />
 );

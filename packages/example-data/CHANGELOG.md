@@ -1,8 +1,17 @@
-# Change Log - @uifabric/example-data
+# Change Log - @fluentui/example-data
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-data_v7.1.5..@fluentui/example-data_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
 
 ## [7.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-data_v7.1.5)
 

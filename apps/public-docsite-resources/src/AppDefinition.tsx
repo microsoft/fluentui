@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
+import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@fluentui/react-docsite-components';
 import { DetailsListBasicExample } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.Basic.Example';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { AppCustomizations } from './customizations/customizations';
+import { AppThemes } from './theme/AppThemes';
 
 const propertiesTableMargins = mergeStyles({
   marginLeft: '40px',
@@ -10,7 +10,7 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
@@ -27,7 +27,7 @@ function loadReferences(): IAppLink[] {
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React',
-  customizations: AppCustomizations,
+  themes: AppThemes,
   testPages: [
     {
       component: DetailsListBasicExample,
@@ -521,6 +521,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#/examples/themes',
+        },
+        {
+          component: require<any>('./components/pages/ThemeProviderPage').ThemeProviderPage,
+          key: 'ThemeProvider',
+          name: 'ThemeProvider',
+          url: '#/examples/themeprovider',
         },
         {
           component: require<any>('./components/pages/ColorsPage').ColorsPage,

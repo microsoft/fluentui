@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FocusRects } from '@uifabric/utilities';
+import { FocusRects } from '@fluentui/utilities';
 import { ISliderProps } from './Slider.types';
 import { Label } from '@fluentui/react-internal/lib/Label';
 import { useSlider } from './useSlider';
-import { useWarnings } from '@uifabric/react-hooks';
+import { useWarnings } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
