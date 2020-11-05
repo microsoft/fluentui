@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.0..@fluentui/web-components_v0.7.1)
+
+### Patches
+
+- flipper cursor should be pointer on hover ([PR #15824](https://github.com/microsoft/fluentui/pull/15824) by chhol@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.0)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 04 Nov 2020 12:34:30 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.8)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.7..@fluentui/react-button_v1.0.0-beta.8)
+
+### Changes
+
+- Button: Removing unused scss files. ([PR #15835](https://github.com/microsoft/fluentui/pull/15835) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.7)
 
