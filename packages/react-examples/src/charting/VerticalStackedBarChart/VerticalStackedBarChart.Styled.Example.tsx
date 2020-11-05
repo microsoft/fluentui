@@ -157,7 +157,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             {...this.state}
             yAxisTickCount={10}
             // eslint-disable-next-line react/jsx-no-bind
-            onBarClick={(event, data) => console.log('clicked', event, data)}
+            onBarClick={(event, clickData) => console.log('clicked', event, clickData)}
             // eslint-disable-next-line react/jsx-no-bind
             styles={customStyles}
             yMaxValue={120}
