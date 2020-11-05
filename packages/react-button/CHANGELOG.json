@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 05 Nov 2020 12:29:43 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.8",
+      "version": "1.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Removing unused scss files.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "08d28c85ddc861eb731df5ad30e7073128187a2d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Nov 2020 12:34:30 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.7",
       "version": "1.0.0-beta.7",
