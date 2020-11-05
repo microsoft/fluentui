@@ -1,6 +1,6 @@
 /*
 TODO:
-* Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
+* Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification. 
 * With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration.
 * Should we also consider the "disabled" state?
 */
@@ -50,9 +50,6 @@ export class NarrationComputer {
 
   // Recursively traverses the DOM tree rooted at the given element to find all the parents which have the ariaActiveDescendantElement property set, and saves the found elements to the given parents array.
   findActiveDescendantsParents(element: IAriaElement, parents: IAriaElement[]) {
-    if (!element) {
-      return;
-    }
     if (element.ariaActiveDescendantElement != null) {
       // Begin if 1
       parents.push(element);
