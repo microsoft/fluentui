@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FlatTree } from './flattenTree';
+import { BaseFlatTree } from './flattenTree';
 
 export function useTreeBehavior(
-  flatTree: FlatTree,
+  flatTree: BaseFlatTree,
   toggleActive: (ids: string[], e: React.SyntheticEvent) => void,
   isExclusiveTree: boolean,
   getItemRef: (id: string) => HTMLElement,
@@ -57,7 +57,7 @@ export function useTreeBehavior(
   };
 }
 
-function getInactiveSiblingIds(flatTree: FlatTree, id: string): string[] {
+function getInactiveSiblingIds(flatTree: BaseFlatTree, id: string): string[] {
   const item = flatTree[id];
   if (!item) {
     return [];

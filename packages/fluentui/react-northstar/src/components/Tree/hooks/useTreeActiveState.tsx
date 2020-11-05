@@ -2,19 +2,19 @@ import * as React from 'react';
 import { useAutoControlled } from '@fluentui/react-bindings';
 import { UseTreeOptions } from './useTree';
 import { useStableProps } from './useStableProps';
-import { FlatTree } from './flattenTree';
+import { BaseFlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
 import * as _ from 'lodash';
 
 export interface TreeActiveState {
   activeItemIds: string[];
-  flatTree: FlatTree;
+  flatTree: BaseFlatTree;
   toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
 }
 
 export function useTreeActiveState(
   props: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
-  flatTree: FlatTree,
+  flatTree: BaseFlatTree,
 ): TreeActiveState {
   // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
   const initialActiveItemIds = React.useMemo(() => {
@@ -50,22 +50,22 @@ export function useTreeActiveState(
 
   const toggleActiveOnOneId = React.useCallback(
     (activeIds: string[], idToToggle: string): string[] => {
-      if (!updatedFlatTree[id]?.hasSubtree) {
+      if (!updatedFlatTree[idToToggle]?.hasSubtree) {
         // leaf node does not have the concept of active/inactive
-        return ids;
+        return activeIds;
       }
 
       let result: string[];
-      const index = findIndex(ids, id);
+      const index = findIndex(activeIds, idToToggle);
       if (index >= 0) {
-        result = removeItemAtIndex(ids, index);
+        result = removeItemAtIndex(activeIds, index);
       } else {
         if (props.exclusive) {
           // need to collapse everything else, except id and its ancestors
-          const ancestors = getAncestorsIds(updatedFlatTree, id);
-          return [...ancestors, id];
+          const ancestors = getAncestorsIds(updatedFlatTree, idToToggle);
+          return [...ancestors, idToToggle];
         }
-        return [...ids, id];
+        return [...activeIds, idToToggle];
       }
 
       return result;
@@ -95,7 +95,7 @@ export function useTreeActiveState(
   };
 }
 
-function getAncestorsIds(flatTree: FlatTree, id: string): string[] {
+function getAncestorsIds(flatTree: BaseFlatTree, id: string): string[] {
   const result = [];
   let parent = flatTree[id]?.parent;
   while (parent) {

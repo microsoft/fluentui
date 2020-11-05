@@ -3,18 +3,18 @@ import { useAutoControlled } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import { UseSelectableTreeOptions } from './useSelectableTree';
 import { useStableProps } from './useStableProps';
-import { FlatTree } from './flattenTree';
+import { BaseFlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
 
 export interface TreeSelectState {
   selectedItemIds: string[];
-  flatTree: FlatTree;
+  flatTree: BaseFlatTree;
   toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
 }
 
 export function useTreeSelectState(
   props: Pick<UseSelectableTreeOptions, 'defaultSelectedItemIds' | 'selectedItemIds' | 'items'>,
-  flatTree: FlatTree,
+  flatTree: BaseFlatTree,
 ): TreeSelectState {
   // selectedItemIds is only valid for leaf nodes.
   // For non-leaf nodes, their 'selected' states are defered from all their descendents
@@ -76,10 +76,10 @@ export function useTreeSelectState(
   }, [flatTree, selectedItemIds]);
 
   const toggleSelectOnOneId = React.useCallback(
-    (ids: string[], id: string): string[] => {
-      const leafs = getLeavesOfSubTree(updatedFlatTree, id);
+    (selectedIds: string[], idToToggle: string): string[] => {
+      const leafs = getLeavesOfSubTree(updatedFlatTree, idToToggle);
 
-      if (updatedFlatTree[id]?.selected === true) {
+      if (updatedFlatTree[idToToggle]?.selected === true) {
         // remove all leaves from selected
         return leafs.reduce((prevResult, leaf) => {
           const leafIndex = findIndex(prevResult, leaf);
@@ -87,7 +87,7 @@ export function useTreeSelectState(
             return removeItemAtIndex(prevResult, leafIndex);
           }
           return prevResult;
-        }, ids);
+        }, selectedIds);
       }
 
       return leafs.reduce((prevResult, leaf) => {
@@ -97,7 +97,7 @@ export function useTreeSelectState(
           return [...prevResult, leaf];
         }
         return prevResult;
-      }, ids);
+      }, selectedIds);
     },
     [updatedFlatTree],
   );
