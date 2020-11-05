@@ -4880,7 +4880,9 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
+    // @deprecated
     firstFocusableSelector?: string | (() => string);
+    firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
@@ -4968,6 +4970,7 @@ export interface IGroupDividerProps {
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
+    onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group: IGroup) => void;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -5695,6 +5698,8 @@ export interface IListState<T = any> {
     measureVersion?: number;
     // (undocumented)
     pages?: IPage<T>[];
+    // (undocumented)
+    pagesVersion?: {};
 }
 
 // @public (undocumented)
@@ -6978,6 +6983,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     onEscape?: (ev?: any) => void;
     onSearch?: (newValue: any) => void;
     placeholder?: string;
+    role?: string;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
@@ -7109,6 +7115,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;
@@ -8108,7 +8115,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
-    type: string;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 
@@ -8567,7 +8574,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -10105,6 +10112,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
 
 export * from "@fluentui/react-focus";
+export * from "@fluentui/react-window-provider";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";

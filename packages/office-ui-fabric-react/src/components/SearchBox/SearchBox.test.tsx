@@ -5,10 +5,15 @@ import { SearchBox } from './SearchBox';
 import { KeyCodes } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
+import { resetIds } from '@uifabric/utilities';
 
 describe('SearchBox', () => {
   let component: renderer.ReactTestRenderer | undefined;
   let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
@@ -25,6 +30,12 @@ describe('SearchBox', () => {
     component = renderer.create(<SearchBox />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders SearchBox role on the container div', () => {
+    wrapper = mount(<SearchBox role="search" />);
+
+    expect(wrapper.getDOMNode().getAttribute('role')).toEqual('search');
   });
 
   it('can execute an onClick on clear button', () => {

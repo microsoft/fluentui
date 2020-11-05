@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 30 Sep 2020 12:27:52 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.15)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.10..@uifabric/file-type-icons_v7.6.15)
+
+### Patches
+
+- Updating reference to latest CDN, and mapping .note file extension to the `one` filetype icon. ([PR #15649](https://github.com/microsoft/fluentui/pull/15649) by caperez@microsoft.com)
 
 ## [7.6.10](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.10)
 

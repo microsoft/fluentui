@@ -2,6 +2,29 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2020 12:28:11 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.40",
+      "version": "7.15.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Store website info in sessionStorage (v7)",
+            "author": "elcraig@microsoft.com",
+            "commit": "ae0b2d7b63e7edd40f224d509c822cdd57136e47",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Website: Fix JSON parsing error",
+            "author": "elcraig@microsoft.com",
+            "commit": "3ab27dcb3351510079cb9a2a26d5150058d47cc8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Sep 2020 12:28:49 GMT",
       "tag": "@uifabric/fabric-website_v7.15.19",
       "version": "7.15.19",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Thu, 29 Oct 2020 12:24:41 GMT",
+      "tag": "@fluentui/react-window-provider_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Major bump version to 1.0.0 to avoid package duplication.",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6e9f38daf17603caab4c7c681ffbae7dc2be1c",
+            "package": "@fluentui/react-window-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/react-window-provider_v0.3.2",
       "version": "0.3.2",

@@ -10,8 +10,10 @@ function lintFiles() {
   const gitRoot = findGitRoot();
 
   const exampleFiles = glob.sync(
-    'packages/{office-ui-fabric-react,react-cards,react-focus,react-next}/src/components/__snapshots__/*',
-    { cwd: gitRoot },
+    'packages/{office-ui-fabric-react,react-cards,react-focus}/src/components/__snapshots__/*',
+    {
+      cwd: gitRoot,
+    },
   );
   if (exampleFiles.length) {
     console.error(

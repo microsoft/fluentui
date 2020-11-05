@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Oct 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.12](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.9.12)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.9.8..@uifabric/foundation_v7.9.12)
+
+### Patches
+
+- withSlots: avoid calling traverseAllChildren twice ([PR #15471](https://github.com/microsoft/fluentui/pull/15471) by KevinTCoughlin@users.noreply.github.com)
 
 ## [7.9.8](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.9.8)
 

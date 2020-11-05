@@ -8,6 +8,7 @@ const apiDocs = require('../lib/index');
 /** @type {apiDocs.IPageJsonOptions} */
 module.exports = {
   apiJsonPaths: [
+    // NOTE: when adding new package to this list, also add package dep in package.json.
     path.resolve(__dirname, '../../styling/dist/styling.api.json'),
     path.resolve(__dirname, '../../theme/dist/theme.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
@@ -16,6 +17,7 @@ module.exports = {
     path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
     path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json'),
     path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
+    // NOTE: when adding new package to this list, also add package dep in package.json.
   ],
   outputRoot: path.resolve(__dirname, '../lib/pages'),
   fallbackGroup: 'references',

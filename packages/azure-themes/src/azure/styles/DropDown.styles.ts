@@ -1,14 +1,24 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
   const { disabled, theme, hasError, isOpen } = props;
+
   if (!theme) {
     return {};
   }
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
+    root: {
+      selectors: {
+        '.ms-Dropdown': {
+          height: StyleConstants.inputControlHeight,
+        },
+      },
+    },
     callout: {
       border: 'none',
       boxShadow: Depths.depth8,
@@ -17,7 +27,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: '0',
+          borderWidth: 0,
         },
       },
     },
@@ -37,12 +47,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdown: [
       {
         fontSize: theme.fonts.medium.fontSize,
-        height: StyleConstants.inputControlHeight,
+        height: StyleConstants.dropDownItemHeight,
         color: semanticColors.inputText,
-
+        border: 0,
         selectors: {
           ':focus::after, :focus': {
-            //borderColor: semanticColors.inputBorderHovered,
+            borderColor: extendedSemanticColors.controlAccent,
           },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
@@ -78,7 +88,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     ],
     dropdownDivider: {
-      backgroundColor: semanticColors.inputBorder,
+      backgroundColor: extendedSemanticColors.rowBorder,
     },
     title: [
       {
@@ -107,6 +117,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdownItemsWrapper: {
       backgroundColor: semanticColors.bodyBackground,
       borderColor: semanticColors.inputBorder,
+      border: 0,
     },
     dropdownItem: {
       color: semanticColors.bodyText,

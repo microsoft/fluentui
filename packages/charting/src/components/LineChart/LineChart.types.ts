@@ -32,6 +32,11 @@ export interface ILineChartProps extends ICartesianChartProps {
    */
   eventAnnotationProps?: IEventsAnnotationProps;
 
+  /*
+   * Color fill bars for the chart,
+   */
+  colorFillBars?: IColorFillBarsProps[];
+
   /**
    * Define a custom callout renderer for a data point
    */
@@ -54,3 +59,16 @@ export interface IEventsAnnotationProps {
 export interface ILineChartStyles extends ICartesianChartStyles {}
 
 export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
+
+export interface IColorFillBarsProps {
+  legend: string;
+  color: string;
+  data: IColorFillBarData[];
+  applyPattern?: boolean;
+  onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
+}
+
+export interface IColorFillBarData {
+  startX: number | Date;
+  endX: number | Date;
+}

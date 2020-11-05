@@ -2,6 +2,51 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 29 Oct 2020 12:24:41 GMT",
+      "tag": "@uifabric/utilities_v7.33.2",
+      "version": "7.33.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make FocusTrapZone properly focus the first element of a FocusZone",
+            "author": "tmichon@microsoft.com",
+            "commit": "578e7603c807a14d59e0e010ded40e629b876d04",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Oct 2020 12:29:09 GMT",
+      "tag": "@uifabric/utilities_v7.33.1",
+      "version": "7.33.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "isIE11 utility should use getWindow to get the window",
+            "author": "elcraig@microsoft.com",
+            "commit": "4fc7146c1c06ee8574b5492982775925a021c36e",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Oct 2020 12:28:11 GMT",
+      "tag": "@uifabric/utilities_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add option for where to store last language setting, and use getWindow utility for getting session storage values",
+            "author": "elcraig@microsoft.com",
+            "commit": "ae0b2d7b63e7edd40f224d509c822cdd57136e47",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Oct 2020 17:31:19 GMT",
       "tag": "@uifabric/utilities_v7.32.4",
       "version": "7.32.4",

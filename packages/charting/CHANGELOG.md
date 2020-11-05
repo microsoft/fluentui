@@ -1,8 +1,88 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 06 Oct 2020 12:25:11 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.8.1)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.8.0..@uifabric/charting_v4.8.1)
+
+### Patches
+
+- Vertical stacked bar chart basic unit test cases - v1 ([PR #15522](https://github.com/microsoft/fluentui/pull/15522) by v-jasha@microsoft.com)
+- Basic unit test cases to the stacked bar chart and Multistacked bar chart ([PR #15578](https://github.com/microsoft/fluentui/pull/15578) by v-jasha@microsoft.com)
+- Horizontal bar chart basic unit test cases and snapshot test cases ([PR #15579](https://github.com/microsoft/fluentui/pull/15579) by v-jasha@microsoft.com)
+- Basic unit test cases and snapshot test cases for pie chart and heatmapshart ([PR #15640](https://github.com/microsoft/fluentui/pull/15640) by v-jasha@microsoft.om)
+
+## [4.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.8.0)
+
+Thu, 22 Oct 2020 12:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.4..@uifabric/charting_v4.8.0)
+
+### Minor changes
+
+- [VerticalStackedBarChart] bar gaps and rounded corners ([PR #15606](https://github.com/microsoft/fluentui/pull/15606) by mibes@microsoft.com)
+
+### Patches
+
+- added line to the vertical bar chart ([PR #15505](https://github.com/microsoft/fluentui/pull/15505) by v-sivsar@microsoft.com)
+
+## [4.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.4)
+
+Fri, 16 Oct 2020 21:41:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.3..@uifabric/charting_v4.7.4)
+
+### Patches
+
+- Area chart basic unit test cases - v1 ([PR #15520](https://github.com/microsoft/fluentui/pull/15520) by v-jasha@microsoft.com)
+- Charting: Vertical bar cahrt test cases updated ([PR #15523](https://github.com/microsoft/fluentui/pull/15523) by v-jasha@microsoft.com)
+
+## [4.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.3)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.2..@uifabric/charting_v4.7.3)
+
+### Patches
+
+- Charting: Test cases for linechart ([PR #15507](https://github.com/microsoft/fluentui/pull/15507) by v-gorraj@microsoft.com)
+
+## [4.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.2)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.7.0..@uifabric/charting_v4.7.2)
+
+### Patches
+
+- Vertical stacked bar chart uncaught type error fixed. Minor edits to margins ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
+
+## [4.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.7.0)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.6.1..@uifabric/charting_v4.7.0)
+
+### Minor changes
+
+- Custom callout support for Horizontal bar chart, donut chart added, Multi stacked bar chart and stacked bar chart ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
+
+## [4.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.1)
+
+Fri, 09 Oct 2020 18:03:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.6.0..@uifabric/charting_v4.6.1)
+
+### Patches
+
+- changes in the hover behavior of circles and also removed focusing of circles  ([PR #15403](https://github.com/microsoft/fluentui/pull/15403) by v-sivsar@microsoft.com)
+
+## [4.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.6.0)
+
+Thu, 08 Oct 2020 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.5.0..@uifabric/charting_v4.6.0)
+
+### Minor changes
+
+- Added color fill bar feature to line chart component ([PR #14597](https://github.com/microsoft/fluentui/pull/14597) by email not defined)
 
 ## [4.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.5.0)
 

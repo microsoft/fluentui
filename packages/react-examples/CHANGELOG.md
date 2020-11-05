@@ -1,8 +1,99 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 07 Oct 2020 12:24:30 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Oct 2020 12:29:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.3)
+
+Wed, 28 Oct 2020 12:29:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.8.1..@fluentui/react-examples_v0.8.3)
+
+### Patches
+
+- TextField: reveal password fixes ([PR #15722](https://github.com/microsoft/fluentui/pull/15722) by elcraig@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.8.0)
+
+Fri, 23 Oct 2020 12:21:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.7.0..@fluentui/react-examples_v0.8.0)
+
+### Minor changes
+
+- Remove packages from 7.0 branch which are not related to OUFR version 7. ([PR #15571](https://github.com/microsoft/fluentui/pull/15571) by xgao@microsoft.com)
+
+### Patches
+
+- Modify UPP examples dropping abilities ([PR #15554](https://github.com/microsoft/fluentui/pull/15554) by elvonspa@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.7.0)
+
+Thu, 22 Oct 2020 12:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.7..@fluentui/react-examples_v0.7.0)
+
+### Minor changes
+
+- [VerticalStackedBarChart] bar gaps and rounded corners ([PR #15606](https://github.com/microsoft/fluentui/pull/15606) by mibes@microsoft.com)
+
+### Patches
+
+- added some example code for new feature ([PR #15505](https://github.com/microsoft/fluentui/pull/15505) by v-sivsar@microsoft.com)
+- Convert SelectedPersona GetExpandedItems to async ([PR #15553](https://github.com/microsoft/fluentui/pull/15553) by elvonspa@microsoft.com)
+
+## [0.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.7)
+
+Fri, 16 Oct 2020 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.6..@fluentui/react-examples_v0.6.7)
+
+### Patches
+
+- Update CommandBar related snanpshots after aria role update. ([PR #15511](https://github.com/microsoft/fluentui/pull/15511) by xgao@microsoft.com)
+
+## [0.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.6)
+
+Thu, 15 Oct 2020 12:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.4..@fluentui/react-examples_v0.6.6)
+
+### Patches
+
+- Vertical stacked bar chart styled examples code updated. ([PR #15447](https://github.com/microsoft/fluentui/pull/15447) by v-jasha@microsoft.com)
+
+## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.4)
+
+Tue, 13 Oct 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.3..@fluentui/react-examples_v0.6.4)
+
+### Patches
+
+- Custom callout support for Horizontal bar chart, donut chart, stacked bar chart and multi stacked bar chart examples updated ([PR #15298](https://github.com/microsoft/fluentui/pull/15298) by v-jasha@microsoft.com)
+
+## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.3)
+
+Mon, 12 Oct 2020 12:30:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.1..@fluentui/react-examples_v0.6.3)
+
+### Patches
+
+- Update react-button story theme example. ([PR #15452](https://github.com/microsoft/fluentui/pull/15452) by xgao@microsoft.com)
+- Updating example snapshots. ([PR #15450](https://github.com/microsoft/fluentui/pull/15450) by dzearing@hotmail.com)
+
+## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.1)
+
+Fri, 09 Oct 2020 12:23:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.6.0..@fluentui/react-examples_v0.6.1)
+
+### Patches
+
+- Added error message to check color ([PR #15395](https://github.com/microsoft/fluentui/pull/15395) by jagaheri@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.6.0)
+
+Thu, 08 Oct 2020 12:23:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.5.0..@fluentui/react-examples_v0.6.0)
+
+### Minor changes
+
+- Made color fill bars compatible with multi select legends ([PR #14597](https://github.com/microsoft/fluentui/pull/14597) by memille@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.5.0)
 
