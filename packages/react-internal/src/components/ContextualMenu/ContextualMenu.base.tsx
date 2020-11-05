@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuContext } from '@fluentui/react-button';
+import { MenuContext } from '@fluentui/react-shared-contexts';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
