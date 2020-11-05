@@ -21,6 +21,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         width: 196,
         padding: 12,
         boxSizing: 'content-box',
+        minHeight: 238,
       },
       showWeekNumbers && {
         width: 226,
