@@ -91,7 +91,6 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   controlOutline: HighContrastDarkSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastDarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastDarkSemanticColors.controlOutlines.hover,
-  iconButtonBackground: HighContrastDarkSemanticColors.primaryButton.hover.background,
   iconButtonFill: HighContrastDarkSemanticColors.text.icon,
   iconButtonFillHovered: HighContrastDarkSemanticColors.primaryButton.hover.text,
   labelText: HighContrastDarkSemanticColors.text.label,
