@@ -1,6 +1,15 @@
+import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
-import { ExpandedState } from './useExpanded';
+
+/**
+ * {@docCategory Button}
+ */
+export type MinimalMenuProps = {
+  hidden?: boolean;
+  onDismiss?: () => void;
+  target?: React.Ref<HTMLElement | undefined>;
+};
 
 /**
  * {@docCategory Button}
@@ -36,11 +45,8 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   onMenuDismiss?: () => void;
 };
 
-/**
- * {@docCategory Button}
- */
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
-  menu: ExpandedState['menu'];
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
+  menu?: React.PropsWithChildren<MinimalMenuProps>;
 }
 
 /**

@@ -3,7 +3,6 @@ import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/l
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { renderSplitButton } from './renderSplitButton';
 import { useMergedRefs } from '@fluentui/react-hooks';
-import { useExpanded } from '../MenuButton/useExpanded';
 
 export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
 
@@ -64,6 +63,7 @@ export const useSplitButton = (
       },
 
       divider: { as: 'span', children: null },
+
       menuButton: {
         as: 'span',
         primary,
@@ -73,18 +73,12 @@ export const useSplitButton = (
         disabled: disabledOrLoading,
         loading,
         transparent,
-        menu: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...(menu as any),
-          target: ref,
-        },
+        menu,
         children: null,
       },
     },
     defaultProps,
   ) as SplitButtonState;
-
-  useExpanded(state);
 
   return {
     state,

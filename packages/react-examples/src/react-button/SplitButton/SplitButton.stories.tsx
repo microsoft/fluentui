@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { Stack, Text } from '@fluentui/react';
+import { MinimalMenuProps, SplitButton, SplitButtonProps } from '@fluentui/react-button';
+import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
-const menuProps = {
+const menuProps: IContextualMenuProps = {
+  directionalHint: DirectionalHint.bottomRightEdge,
   items: [
     {
       key: 'a',
@@ -16,30 +17,35 @@ const menuProps = {
   ],
 };
 
+const Menu = (props: MinimalMenuProps) => {
+  const { hidden, ...rest } = props;
+  return !hidden ? <ContextualMenu {...(rest as IContextualMenuProps)} {...menuProps} /> : null;
+};
+
 const SplitButtonExamples = (props: SplitButtonProps) => (
   <div className={classes.hStack}>
-    <SplitButton {...props} menu={menuProps}>
+    <SplitButton {...props} menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} disabled menu={menuProps}>
+    <SplitButton {...props} disabled menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary menu={menuProps}>
+    <SplitButton {...props} primary menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary disabled menu={menuProps}>
+    <SplitButton {...props} primary disabled menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost menu={menuProps}>
+    <SplitButton {...props} ghost menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost disabled menu={menuProps}>
+    <SplitButton {...props} ghost disabled menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent menu={menuProps}>
+    <SplitButton {...props} transparent menu={Menu}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent disabled menu={menuProps}>
+    <SplitButton {...props} transparent disabled menu={Menu}>
       Hello, world
     </SplitButton>
   </div>

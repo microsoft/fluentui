@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 04 Nov 2020 12:34:30 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.7",
+      "version": "1.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Extrapolating expanded functionality in MenuButton to be provided via Context.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6f7c0988c2a942c9ec67239c589961a590b449b2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Oct 2020 12:32:24 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.4",
       "version": "1.0.0-beta.4",
