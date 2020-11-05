@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.8)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.7..@fluentui/react-button_v1.0.0-beta.8)
+
+### Changes
+
+- Button: Removing unused scss files. ([PR #15835](https://github.com/microsoft/fluentui/pull/15835) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.7)
+
+Wed, 04 Nov 2020 12:34:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.4..@fluentui/react-button_v1.0.0-beta.7)
+
+### Changes
+
+- Button: Extrapolating expanded functionality in MenuButton to be provided via Context. ([PR #15780](https://github.com/microsoft/fluentui/pull/15780) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.4)
 
