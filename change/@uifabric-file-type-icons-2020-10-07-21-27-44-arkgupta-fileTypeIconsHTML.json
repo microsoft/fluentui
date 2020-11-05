@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fileicons as html strings",
+  "comment": "Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments.",
   "packageName": "@uifabric/file-type-icons",
   "email": "arkgupta@microsoft.com",
   "dependentChangeType": "patch",
