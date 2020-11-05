@@ -120,7 +120,7 @@ export function useTreeSelectState(
   return { selectedItemIds, flatTree: updatedFlatTree, toggleSelect };
 }
 
-function getLeavesOfSubTree(flatTree, subTreeRootId) {
+function getLeafNodes(flatTree, rootId) {
   const leaves = [];
   const traverseDown = id => {
     if (flatTree[id]?.childrenIds) {
