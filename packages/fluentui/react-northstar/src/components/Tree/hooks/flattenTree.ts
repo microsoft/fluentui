@@ -43,38 +43,36 @@ export type BaseFlatTreeItem = {
 export type BaseFlatTree = Record<string, BaseFlatTreeItem>;
 
 export function flattenTree(
-  items: ObjectShorthandCollection<TreeItemProps>, // tree's props.items
-): FlatTree {
-  const result = {};
-  const flatten = (baseItems, level, parent?) => {
-    if (!baseItems) return;
+  items: ObjectShorthandValue<TreeItemProps>[],
+  level: number = 1,
+  parent: string | null = null,
+  result: BaseFlatTree = {},
+): BaseFlatTree {
+  const itemsInLeaf = items.length;
 
-    if (parent) {
-      result[parent].childrenIds = [];
+  items.forEach((item, indexAmongSiblings) => {
+    const { id, expanded, items: childrenItems } = item;
+    const hasSubtree = childrenItems ? !!childrenItems.length : false;
+
+    result[id] = {
+      index: indexAmongSiblings + 1, // Used for aria-posinset and it's 1-based.
+      level,
+      expanded: hasSubtree ? !!expanded : undefined,
+      parent: parent == null ? undefined : parent,
+      treeSize: itemsInLeaf,
+      hasSubtree,
+      childrenIds: [],
+    };
+
+    if (hasSubtree) {
+      flattenTree(childrenItems as ObjectShorthandValue<TreeItemProps>[], level + 1, id, result);
     }
 
-    baseItems.forEach((item, indexAmongSiblings, arr) => {
-      const { id, items, expanded } = item;
-      if (parent) {
-        result[parent].childrenIds.push(id);
-      }
+    if (parent) {
+      result[parent].childrenIds.push(id);
+    }
+  });
 
-      result[id] = {
-        index: indexAmongSiblings + 1, // Used for aria-posinset and it's 1-based.
-        level,
-        expanded: items?.length ? !!expanded : undefined,
-        parent: parent == null ? undefined : parent,
-        treeSize: arr.length,
-        hasSubtree: !!items?.length,
-      };
-
-      if (items?.length) {
-        flatten(items, level + 1, id);
-      }
-    });
-  };
-
-  flatten(items, 1);
   return result;
 }
 
