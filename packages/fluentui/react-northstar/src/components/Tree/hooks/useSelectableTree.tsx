@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { TreeProps } from '../Tree';
 import { BaseFlatTreeItem } from './flattenTree';
 import { useTreeSelectState } from './useTreeSelectState';
-import { useTree } from './useTree';
+import { useTree, UseTreeOptions } from './useTree';
 
 export type SelectableFlatTreeItem = BaseFlatTreeItem & {
   /**
@@ -13,7 +12,16 @@ export type SelectableFlatTreeItem = BaseFlatTreeItem & {
   selected?: boolean | 'indeterminate';
 };
 
-export function useSelectableTree(props: TreeProps) {
+export interface UseSelectableTreeOptions extends UseTreeOptions {
+  /** Whether or not tree items are selectable. */
+  selectable?: boolean;
+  /** Ids of selected leaf items. */
+  selectedItemIds?: string[];
+  /** Initial selectedItemIds value. */
+  defaultSelectedItemIds?: string[];
+}
+
+export function useSelectableTree(props: UseSelectableTreeOptions) {
   const baseTree = useTree(props);
   const { flatTree: baseflatTree, tobeRenderedItemsProps } = baseTree;
 

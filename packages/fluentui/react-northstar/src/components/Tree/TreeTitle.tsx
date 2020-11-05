@@ -26,7 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { TreeContext } from './Tree';
+import { TreeContext } from './context';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;

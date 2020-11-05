@@ -9,10 +9,8 @@ import {
   useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Ref } from '@fluentui/react-component-ref';
 import { TreeItem, TreeItemProps } from './TreeItem';
 import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import {
@@ -30,27 +28,7 @@ import {
   ShorthandRenderFunction,
 } from '../../types';
 import { useSelectableTree } from './hooks/useSelectableTree';
-import { BaseFlatTreeItem } from './hooks/flattenTree';
-
-export interface TreeRenderContextValue {
-  toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
-  toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
-  focusFirstChild: (itemId: string) => void;
-  focusParent: (itemId: string) => void;
-  siblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
-  registerItemRef: (id: string, node: HTMLElement) => void;
-  getItemById: (id: string) => BaseFlatTreeItem & { [key: string]: any };
-}
-
-export const TreeContext = React.createContext<TreeRenderContextValue>({
-  toggleActive: _.noop,
-  toggleSelect: _.noop,
-  focusFirstChild: _.noop,
-  focusParent: _.noop,
-  siblingsExpand: _.noop,
-  registerItemRef: _.noop,
-  getItemById: id => ({ id } as any),
-});
+import { TreeContext, TreeRenderContextValue } from './context';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -159,8 +137,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     rtl: context.rtl,
   });
 
-  const treeRef = React.useRef<HTMLElement>();
-
   const {
     tobeRenderedItemsProps,
     toggleActive,
@@ -186,7 +162,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
 
   const renderContent = (): React.ReactElement[] => {
-    if (!tobeRenderedItemsProps) return [];
     return tobeRenderedItemsProps.map(props =>
       TreeItem.create(
         { id: props.id }, // this is useless. {} would work, but won't pass type check
@@ -199,19 +174,17 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const element = (
     <TreeContext.Provider value={contextValue}>
-      <Ref innerRef={treeRef}>
-        {getA11yProps.unstable_wrapWithFocusZone(
-          <ElementType
-            {...getA11yProps('root', {
-              className: classes.root,
-              ...rtlTextContainer.getAttributes({ forElements: [children] }),
-              ...unhandledProps,
-            })}
-          >
-            {childrenExist(children) ? children : renderedItems ? renderedItems(renderContent()) : renderContent()}
-          </ElementType>,
-        )}
-      </Ref>
+      {getA11yProps.unstable_wrapWithFocusZone(
+        <ElementType
+          {...getA11yProps('root', {
+            className: classes.root,
+            ...rtlTextContainer.getAttributes({ forElements: [children] }),
+            ...unhandledProps,
+          })}
+        >
+          {childrenExist(children) ? children : renderedItems ? renderedItems(renderContent()) : renderContent()}
+        </ElementType>,
+      )}
     </TreeContext.Provider>
   );
   setEnd();

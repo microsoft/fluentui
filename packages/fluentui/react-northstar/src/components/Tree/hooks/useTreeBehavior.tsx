@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { TreeItemProps } from '../TreeItem';
 import { FlatTree } from './flattenTree';
 
 export function useTreeBehavior(
@@ -40,12 +39,11 @@ export function useTreeBehavior(
   );
 
   const siblingsExpand = React.useCallback(
-    (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+    (e: React.SyntheticEvent, id: string) => {
       if (isExclusiveTree) {
         return;
       }
 
-      const { id } = treeItemProps;
       const siblingIds = getInactiveSiblingIds(flatTree, id);
       toggleActive(siblingIds, e);
     },

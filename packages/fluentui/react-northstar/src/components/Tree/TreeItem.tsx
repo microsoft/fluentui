@@ -32,7 +32,7 @@ import {
 } from '../../types';
 import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
-import { TreeContext } from './Tree';
+import { TreeContext } from './context';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -246,7 +246,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
-    siblingsExpand(e, props);
+    siblingsExpand(e, props.id);
   };
 
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
