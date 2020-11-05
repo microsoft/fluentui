@@ -6,7 +6,7 @@ import {
 } from '../../../index';
 import { TreeItemProps } from '../TreeItem';
 
-export type BaseFlatTreeItem = {
+export interface BaseFlatTreeItem {
   /**
    * Also in TreeItemProps.
    * The index of the item among its siblings. Count starts at 1.
@@ -43,7 +43,7 @@ export type BaseFlatTreeItem = {
 
   /** children ids of the tree item. For leaf tree item, childrenIds is undefined */
   childrenIds?: string[];
-};
+}
 
 export type BaseFlatTree = Record<string, BaseFlatTreeItem>;
 
@@ -53,6 +53,10 @@ export function flattenTree(
   parent: string | null = null,
   result: BaseFlatTree = {},
 ): BaseFlatTree {
+  if (!items) {
+    return result;
+  }
+
   const itemsInLeaf = items.length;
 
   items.forEach((item, indexAmongSiblings) => {
@@ -66,7 +70,6 @@ export function flattenTree(
       parent: parent == null ? undefined : parent,
       treeSize: itemsInLeaf,
       hasSubtree,
-      childrenIds: [],
     };
 
     if (hasSubtree) {
@@ -74,7 +77,11 @@ export function flattenTree(
     }
 
     if (parent) {
-      result[parent].childrenIds.push(id);
+      if (result[parent].childrenIds) {
+        result[parent].childrenIds.push(id);
+      } else {
+        result[parent].childrenIds = [id];
+      }
     }
   });
 

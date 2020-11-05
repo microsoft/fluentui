@@ -51,7 +51,7 @@ export function useTreeSelectState(
       let noNodeSelected = true;
 
       nodes.forEach(id => {
-        if (updatedFlatTree[id].childrenIds) {
+        if (updatedFlatTree[id].hasSubtree && updatedFlatTree[id].childrenIds) {
           updatedFlatTree[id].selected = traverseTree(updatedFlatTree[id].childrenIds);
         }
 

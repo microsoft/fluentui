@@ -3,14 +3,14 @@ import { BaseFlatTreeItem } from './flattenTree';
 import { useTreeSelectState } from './useTreeSelectState';
 import { useTree, UseTreeOptions } from './useTree';
 
-export type SelectableFlatTreeItem = BaseFlatTreeItem & {
+export interface SelectableFlatTreeItem extends BaseFlatTreeItem {
   /**
    * when selected=true, the tree item is fully selected, indicating all its descendents are fully selected;
    * when selected=false, the tree item is not selected, indicating none of its descendents is selected;
    * when selected='indeterminate', only part of the tree item's descendents are selected
    */
   selected?: boolean | 'indeterminate';
-};
+}
 
 export interface UseSelectableTreeOptions extends UseTreeOptions {
   /** Whether or not tree items are selectable. */
