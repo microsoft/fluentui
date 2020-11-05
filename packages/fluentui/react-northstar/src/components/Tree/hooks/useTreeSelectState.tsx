@@ -6,7 +6,7 @@ import { useStableProps } from './useStableProps';
 import { BaseFlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
 
-export interface TreeSelectState {
+export interface UseTreeSelectStateResult {
   selectedItemIds: string[];
   flatTree: BaseFlatTree;
   toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
@@ -15,7 +15,7 @@ export interface TreeSelectState {
 export function useTreeSelectState(
   props: Pick<UseSelectableTreeOptions, 'defaultSelectedItemIds' | 'selectedItemIds' | 'items'>,
   flatTree: BaseFlatTree,
-): TreeSelectState {
+): UseTreeSelectStateResult {
   // selectedItemIds is only valid for leaf nodes.
   // For non-leaf nodes, their 'selected' states are defered from all their descendents
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
