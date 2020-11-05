@@ -1,4 +1,9 @@
-import { ObjectShorthandCollection, ShorthandRenderFunction, TreeTitleProps } from '../../../index';
+import {
+  ObjectShorthandCollection,
+  ObjectShorthandValue,
+  ShorthandRenderFunction,
+  TreeTitleProps,
+} from '../../../index';
 import { TreeItemProps } from '../TreeItem';
 
 export type BaseFlatTreeItem = {
@@ -78,7 +83,7 @@ export function flattenTree(
 
 export function getTobeRenderedItemsProps(
   items: ObjectShorthandCollection<TreeItemProps>, // tree's props.items
-  flatTree: FlatTree,
+  flatTree: BaseFlatTree,
   treeRenderItemTitle?: ShorthandRenderFunction<TreeTitleProps>,
 ): TreeItemProps[] {
   if (!items) {
