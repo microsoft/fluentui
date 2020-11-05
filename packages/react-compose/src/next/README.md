@@ -4,7 +4,7 @@
 
 ## A basic component walkthrough
 
-Building a recomposable component requires that we build legos; we put them together, but we can reconfigure and add to parts as needed. 
+Building a recomposable component requires that we build legos; we put them together, but we can reconfigure and add to parts as needed.
 
 Here's what's needed:
 
@@ -29,12 +29,12 @@ A hook which can manipulate the state (defining accessibility and behaviors):
 ```jsx
 const useButton = (props, ref, defaultProps) => {
   const state = merge({}, defaultProps, props);
-  
+
   // If the button is rendered as something besides a button or anchor, make it focusable.
   if (state.as !== 'button' && state.as !== 'a') {
     state.tabIndex = 0;
   }
-  
+
   return state;
 };
 ```
@@ -44,11 +44,11 @@ The Button is designed using `React.forwardRef` to ensure the ref is forwarded t
 ```jsx
 const Button = React.forwardRef((props, ref) => {
   const state = useButton(props, ref);
-  
+
   // Apply styling here. (e.g. add className to state.)
-  
+
   return renderButton(state);
-});  
+});
 ```
 
 A button can now be easily scaffolded, along with your choice of styling system:
@@ -83,8 +83,8 @@ const ToggleButton = React.forwardRef((props, ref) => {
 
   // Inject classNames as needed.
   state.className = css(
-    state.className, 
-    styles.root, 
+    state.className,
+    styles.root,
     state.checked && styles.checked
   );
 

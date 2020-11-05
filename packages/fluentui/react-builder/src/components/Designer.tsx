@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import DocumentTitle from 'react-document-title';
-import { Text, Button, Divider } from '@fluentui/react-northstar';
+import { Text, Button, Divider, Accordion } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, ErrorIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -621,7 +621,6 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement;
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
-
   return (
     <div
       style={{
@@ -875,25 +874,7 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {axeErrors.length > 0 && (
-              <div
-                style={{
-                  background: '#e3404022',
-                }}
-              >
-                <h4 style={{ padding: '0rem 0.7rem', marginBottom: '0rem' }}>
-                  <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility Errors
-                </h4>
-                <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
-                  {axeErrors.map(error => (
-                    <li>
-                      <strong>AXE</strong>&nbsp;
-                      {error}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {axeErrors.length > 0 && <ErrorPanel axeErrors={axeErrors} />}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
@@ -904,6 +885,40 @@ export const Designer: React.FunctionComponent = () => {
           </div>
         )}
       </div>
+    </div>
+  );
+};
+
+const ErrorPanel = ({ axeErrors }) => {
+  const panels = [
+    {
+      key: 'axe',
+      title: {
+        'aria-level': 4,
+        content: (
+          <Text>
+            <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility Error
+            {axeErrors.length > 1 ? 's' : ''}
+          </Text>
+        ),
+      },
+      content: (
+        <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
+          {axeErrors.map(error => (
+            <li>{error}</li>
+          ))}
+        </ul>
+      ),
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        background: '#e3404022',
+      }}
+    >
+      <Accordion panels={panels} />
     </div>
   );
 };
