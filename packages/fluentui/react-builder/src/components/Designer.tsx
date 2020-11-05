@@ -874,7 +874,7 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {axeErrors.length > 0 && <ErrorPanel axeErrors={axeErrors} />}
+            {!!axeErrors.length && <ErrorPanel axeErrors={axeErrors} />}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
