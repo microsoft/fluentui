@@ -15,7 +15,7 @@ export interface UseTreeActiveStateResult {
 export function useTreeActiveState(
   props: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
   flatTree: BaseFlatTree,
-): TreeActiveState {
+): UseTreeActiveStateResult {
   // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
   const initialActiveItemIds = React.useMemo(() => {
     const initalValue = [];
