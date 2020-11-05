@@ -76,7 +76,7 @@ export function useTreeSelectState(
 
   const toggleSelectOnOneId = React.useCallback(
     (selectedIds: string[], idToToggle: string): string[] => {
-      const leafs = getLeavesOfSubTree(updatedFlatTree, idToToggle);
+      const leafs = getLeafNodes(updatedFlatTree, idToToggle);
 
       if (updatedFlatTree[idToToggle]?.selected === true) {
         // remove all leaves from selected
@@ -119,7 +119,7 @@ export function useTreeSelectState(
   return { selectedItemIds, flatTree: updatedFlatTree, toggleSelect };
 }
 
-function getLeavesOfSubTree(flatTree, subTreeRootId) {
+function getLeafNodes(flatTree, rootId) {
   const leaves = [];
   const traverseDown = id => {
     if (flatTree[id]?.childrenIds) {
@@ -130,6 +130,6 @@ function getLeavesOfSubTree(flatTree, subTreeRootId) {
       leaves.push(id);
     }
   };
-  traverseDown(subTreeRootId);
+  traverseDown(rootId);
   return leaves;
 }
