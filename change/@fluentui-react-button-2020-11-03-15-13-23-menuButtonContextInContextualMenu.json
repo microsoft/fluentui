@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Exporting MenuContext from MenuButton.",
+  "comment": "Moving MenuContext outside of @fluentui/react-button and into @fluentui/react-shared-contexts.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
