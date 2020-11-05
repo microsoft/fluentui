@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import DocumentTitle from 'react-document-title';
-import { Text, Button, Divider } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import { Text, Button, Divider, Accordion } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon, ErrorIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
@@ -34,6 +34,8 @@ import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
+
+import * as axeCore from 'axe-core';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -343,7 +345,48 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [axeErrors, setAxeErrors] = React.useState([]);
   const [headerMessage, setHeaderMessage] = React.useState('');
+
+  const runAxeOnElement = React.useCallback(selectedElementUuid => {
+    const iframe = document.getElementsByTagName('iframe')[0];
+    const selectedComponentAxeErrors = [];
+    axeCore.run(
+      iframe,
+      {
+        rules: {
+          // excluding rules which are related to the whole page not to components
+          'page-has-heading-one': { enabled: false },
+          region: { enabled: false },
+          'landmark-one-main': { enabled: false },
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.error('Axe failed', err);
+        } else {
+          result.violations.forEach(violation => {
+            violation.nodes.forEach(node => {
+              if (node.html.includes(`data-builder-id="${selectedElementUuid}"`)) {
+                selectedComponentAxeErrors.push(
+                  node.failureSummary
+                    .replace('Fix all of the following:', '-')
+                    .replace('Fix any of the following:', '-'),
+                );
+              }
+            });
+          });
+        }
+        setAxeErrors(selectedComponentAxeErrors);
+      },
+    );
+  }, []);
+
+  React.useEffect(() => {
+    if (state.selectedJSONTreeElementUuid) {
+      runAxeOnElement(state.selectedJSONTreeElementUuid);
+    }
+  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -578,7 +621,6 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement;
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
-
   return (
     <div
       style={{
@@ -832,6 +874,7 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
+            {!!axeErrors.length && <ErrorPanel axeErrors={axeErrors} />}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
@@ -842,6 +885,40 @@ export const Designer: React.FunctionComponent = () => {
           </div>
         )}
       </div>
+    </div>
+  );
+};
+
+const ErrorPanel = ({ axeErrors }) => {
+  const panels = [
+    {
+      key: 'axe',
+      title: {
+        'aria-level': 4,
+        content: (
+          <Text>
+            <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility{' '}
+            {axeErrors.length > 1 ? 'Errors' : 'Error'}
+          </Text>
+        ),
+      },
+      content: (
+        <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
+          {axeErrors.map(error => (
+            <li>{error}</li>
+          ))}
+        </ul>
+      ),
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        background: '#e3404022',
+      }}
+    >
+      <Accordion panels={panels} />
     </div>
   );
 };
