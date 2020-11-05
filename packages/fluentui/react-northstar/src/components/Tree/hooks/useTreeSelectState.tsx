@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAutoControlled } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
-import { TreeProps } from '../Tree';
+import { UseSelectableTreeOptions } from './useSelectableTree';
 import { useStableProps } from './useStableProps';
 import { FlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
@@ -13,7 +13,7 @@ export interface TreeSelectState {
 }
 
 export function useTreeSelectState(
-  props: Pick<TreeProps, 'defaultSelectedItemIds' | 'selectedItemIds' | 'items'>,
+  props: Pick<UseSelectableTreeOptions, 'defaultSelectedItemIds' | 'selectedItemIds' | 'items'>,
   flatTree: FlatTree,
 ): TreeSelectState {
   // selectedItemIds is only valid for leaf nodes.

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAutoControlled } from '@fluentui/react-bindings';
-import { TreeProps } from '../Tree';
+import { UseTreeOptions } from './useTree';
 import { useStableProps } from './useStableProps';
 import { FlatTree } from './flattenTree';
 import { findIndex, removeItemAtIndex } from './utils';
@@ -13,7 +13,7 @@ export interface TreeActiveState {
 }
 
 export function useTreeActiveState(
-  props: Pick<TreeProps, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
+  props: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
   flatTree: FlatTree,
 ): TreeActiveState {
   const initialActiveItemIds = React.useMemo(() => {

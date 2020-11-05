@@ -1,21 +1,23 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { FlatTreeItem } from './hooks/flattenTree';
+import { BaseFlatTreeItem } from './hooks/flattenTree';
 
 export interface TreeRenderContextValue {
-  getItemById: (id: string) => FlatTreeItem & { [key: string]: any };
+  toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
+  toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
+  focusFirstChild: (id: string) => void;
+  focusParent: (id: string) => void;
+  siblingsExpand: (e: React.SyntheticEvent, id: string) => void;
   registerItemRef: (id: string, node: HTMLElement) => void;
-  toggleItemActive: (e: React.SyntheticEvent, idToToggle: string) => void;
-  focusItemById: (id: string) => void;
-  expandSiblings: (e: React.SyntheticEvent, id: string) => void;
-  toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
+  getItemById: (id: string) => BaseFlatTreeItem & { [key: string]: any };
 }
 
 export const TreeContext = React.createContext<TreeRenderContextValue>({
-  getItemById: id => ({ id } as any),
+  toggleActive: _.noop,
+  toggleSelect: _.noop,
+  focusFirstChild: _.noop,
+  focusParent: _.noop,
+  siblingsExpand: _.noop,
   registerItemRef: _.noop,
-  toggleItemActive: _.noop,
-  focusItemById: _.noop,
-  expandSiblings: _.noop,
-  toggleItemSelect: _.noop,
+  getItemById: id => ({ id } as any),
 });
