@@ -30,10 +30,7 @@ export function useTreeBehavior(
         firstChildRef.focus();
       } else {
         // when node is leaf, need to focus on the inner treeTitle
-        const firstElementChild = firstChildRef.firstElementChild;
-        if (firstElementChild) {
-          (firstElementChild as HTMLElement).focus();
-        }
+        (firstChildRef.firstElementChild as HTMLElement)?.focus();
       }
     },
     [flatTree, getItemRef],
