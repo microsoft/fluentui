@@ -3,7 +3,6 @@ import { useAutoControlled } from '@fluentui/react-bindings';
 import { UseTreeOptions } from './useTree';
 import { useStableProps } from './useStableProps';
 import { BaseFlatTree } from './flattenTree';
-import { findIndex, removeItemAtIndex } from './utils';
 import * as _ from 'lodash';
 
 export interface UseTreeActiveStateResult {
@@ -56,9 +55,9 @@ export function useTreeActiveState(
       }
 
       let result: string[];
-      const index = findIndex(activeIds, idToToggle);
+      const index = activeIds.indexOf(idToToggle);
       if (index >= 0) {
-        result = removeItemAtIndex(activeIds, index);
+        result = _.without(activeIds, idToToggle);
       } else {
         if (props.exclusive) {
           // need to collapse everything else, except id and its ancestors

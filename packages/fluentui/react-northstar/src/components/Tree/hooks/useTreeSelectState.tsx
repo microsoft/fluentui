@@ -4,7 +4,6 @@ import * as _ from 'lodash';
 import { UseSelectableTreeOptions } from './useSelectableTree';
 import { useStableProps } from './useStableProps';
 import { BaseFlatTree } from './flattenTree';
-import { findIndex, removeItemAtIndex } from './utils';
 
 export interface UseTreeSelectStateResult {
   selectedItemIds: string[];
@@ -82,9 +81,9 @@ export function useTreeSelectState(
       if (updatedFlatTree[idToToggle]?.selected === true) {
         // remove all leaves from selected
         return leafs.reduce((prevResult, leaf) => {
-          const leafIndex = findIndex(prevResult, leaf);
+          const leafIndex = prevResult.indexOf(leaf);
           if (leafIndex >= 0) {
-            return removeItemAtIndex(prevResult, leafIndex);
+            return _.without(prevResult, leafIndex);
           }
           return prevResult;
         }, selectedIds);
@@ -92,7 +91,7 @@ export function useTreeSelectState(
 
       return leafs.reduce((prevResult, leaf) => {
         // add all leaves to selected
-        const leafIndex = findIndex(prevResult, leaf);
+        const leafIndex = prevResult.indexOf(leaf);
         if (leafIndex < 0) {
           return [...prevResult, leaf];
         }
