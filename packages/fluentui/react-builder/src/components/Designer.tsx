@@ -897,8 +897,8 @@ const ErrorPanel = ({ axeErrors }) => {
         'aria-level': 4,
         content: (
           <Text>
-            <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility Error
-            {axeErrors.length > 1 ? 's' : ''}
+            <ErrorIcon style={{ marginRight: '0.5rem' }} /> {axeErrors.length} Accessibility{' '}
+            {axeErrors.length > 1 ? 'Errors' : 'Error'}
           </Text>
         ),
       },
