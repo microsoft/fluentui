@@ -75,8 +75,8 @@ export function useTreeActiveState(
 
   const stableProps = useStableProps(props);
   const toggleActive = React.useCallback(
-    (ids: string[], e: React.SyntheticEvent) => {
-      const nextActiveItemIds = ids.reduce((prev, currId) => toggleActiveOnOneId(prev, currId), activeItemIds);
+    (idsToToggle: string[], e: React.SyntheticEvent) => {
+      const nextActiveItemIds = idsToToggle.reduce((prev, currId) => toggleActiveOnOneId(prev, currId), activeItemIds);
 
       _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
         ...stableProps.current,
