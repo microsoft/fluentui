@@ -103,8 +103,11 @@ export function useTreeSelectState(
 
   const stableProps = useStableProps(props);
   const toggleSelect = React.useCallback(
-    (ids: string[], e: React.SyntheticEvent) => {
-      const nextSelectedItemIds = ids.reduce((prev, currId) => toggleSelectOnOneId(prev, currId), selectedItemIds);
+    (idsToToggle: string[], e: React.SyntheticEvent) => {
+      const nextSelectedItemIds = idsToToggle.reduce(
+        (prev, currId) => toggleSelectOnOneId(prev, currId),
+        selectedItemIds,
+      );
 
       _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
         ...stableProps.current,
