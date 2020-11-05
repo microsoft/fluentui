@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MenuContext } from '@fluentui/react-shared-contexts';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
@@ -384,7 +385,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */
-    let contextMenuStyle;
+    let contextMenuStyle: React.CSSProperties;
     const targetAsHtmlElement = targetRef.current as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
@@ -419,62 +420,66 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         : undefined;
 
       return (
-        <Callout
-          styles={calloutStyles}
-          onRestoreFocus={this._tryFocusPreviousActiveElement}
-          {...calloutProps}
-          target={target}
-          isBeakVisible={isBeakVisible}
-          beakWidth={beakWidth}
-          directionalHint={directionalHint}
-          directionalHintForRTL={directionalHintForRTL}
-          gapSpace={gapSpace}
-          coverTarget={coverTarget}
-          doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
-          setInitialFocus={shouldFocusOnMount}
-          onDismiss={this.props.onDismiss}
-          onScroll={this._onScroll}
-          bounds={bounds}
-          directionalHintFixed={directionalHintFixed}
-          alignTargetEdge={alignTargetEdge}
-          hidden={this.props.hidden}
-          ref={hostElement}
-        >
-          <div
-            aria-label={ariaLabel}
-            aria-labelledby={labelElementId}
-            style={contextMenuStyle}
-            id={id}
-            className={this._classNames.container}
-            tabIndex={shouldFocusOnContainer ? 0 : -1}
-            onKeyDown={this._onMenuKeyDown}
-            onKeyUp={this._onKeyUp}
-            onFocusCapture={onMenuFocusCapture}
-          >
-            {title && <div className={this._classNames.title}> {title} </div>}
-            {items && items.length ? (
-              <FocusZone
-                className={this._classNames.root}
-                isCircularNavigation={true}
-                handleTabKey={FocusZoneTabbableElements.all}
-                {...this._adjustedFocusZoneProps}
+        <MenuContext.Consumer>
+          {menuContext => (
+            <Callout
+              styles={calloutStyles}
+              onRestoreFocus={this._tryFocusPreviousActiveElement}
+              {...calloutProps}
+              target={target || (menuContext.target as IContextualMenuProps['target'])}
+              isBeakVisible={isBeakVisible}
+              beakWidth={beakWidth}
+              directionalHint={directionalHint}
+              directionalHintForRTL={directionalHintForRTL}
+              gapSpace={gapSpace}
+              coverTarget={coverTarget}
+              doNotLayer={doNotLayer}
+              className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
+              setInitialFocus={shouldFocusOnMount}
+              onDismiss={this.props.onDismiss || menuContext.onDismiss}
+              onScroll={this._onScroll}
+              bounds={bounds}
+              directionalHintFixed={directionalHintFixed}
+              alignTargetEdge={alignTargetEdge}
+              hidden={this.props.hidden || menuContext.hidden}
+              ref={hostElement}
+            >
+              <div
+                aria-label={ariaLabel}
+                aria-labelledby={labelElementId}
+                style={contextMenuStyle}
+                id={id}
+                className={this._classNames.container}
+                tabIndex={shouldFocusOnContainer ? 0 : -1}
+                onKeyDown={this._onMenuKeyDown}
+                onKeyUp={this._onKeyUp}
+                onFocusCapture={onMenuFocusCapture}
               >
-                {onRenderMenuList(
-                  {
-                    items,
-                    totalItemCount,
-                    hasCheckmarks,
-                    hasIcons,
-                    defaultMenuItemRenderer: this._defaultMenuItemRenderer,
-                  },
-                  this._onRenderMenuList,
-                )}
-              </FocusZone>
-            ) : null}
-            {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
-          </div>
-        </Callout>
+                {title && <div className={this._classNames.title}> {title} </div>}
+                {items && items.length ? (
+                  <FocusZone
+                    className={this._classNames.root}
+                    isCircularNavigation={true}
+                    handleTabKey={FocusZoneTabbableElements.all}
+                    {...this._adjustedFocusZoneProps}
+                  >
+                    {onRenderMenuList(
+                      {
+                        items,
+                        totalItemCount,
+                        hasCheckmarks,
+                        hasIcons,
+                        defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                      },
+                      this._onRenderMenuList,
+                    )}
+                  </FocusZone>
+                ) : null}
+                {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
+              </div>
+            </Callout>
+          )}
+        </MenuContext.Consumer>
       );
     } else {
       return null;

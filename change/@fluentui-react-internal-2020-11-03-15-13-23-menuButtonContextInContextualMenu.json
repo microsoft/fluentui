@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton.",
+  "packageName": "@fluentui/react-internal",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-03T23:13:23.506Z"
+}

@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
-
-/**
- * {@docCategory Button}
- */
-export type MinimalMenuProps = {
-  hidden?: boolean;
-  onDismiss?: () => void;
-  target?: React.Ref<HTMLElement | undefined>;
-};
 
 /**
  * {@docCategory Button}

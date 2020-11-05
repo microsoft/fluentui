@@ -50,13 +50,14 @@
     "@fluentui/react-compose": "^1.0.0-beta.5",
     "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta.5",
+    "@fluentui/react-shared-contexts": "^1.0.0-beta.0",
     "@fluentui/react-theme-provider": "^1.0.0-beta.6",
     "@fluentui/theme": "^2.0.0-beta.5",
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/react-hooks": "^8.0.0-beta.5",
     "@fluentui/set-version": "^8.0.0-beta.0",
     "@fluentui/style-utilities": "^8.0.0-beta.5",
     "@fluentui/utilities": "^8.0.0-beta.5",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
