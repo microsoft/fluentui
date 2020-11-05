@@ -40,9 +40,7 @@ export type BaseFlatTreeItem = {
   childrenIds?: string[];
 };
 
-export type FlatTree = {
-  [key: string]: BaseFlatTreeItem & { [key: string]: any };
-};
+export type BaseFlatTree = Record<string, BaseFlatTreeItem>;
 
 export function flattenTree(
   items: ObjectShorthandCollection<TreeItemProps>, // tree's props.items
