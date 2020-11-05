@@ -14,27 +14,6 @@ export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, opti
   });
 }
 
-// export function getFileTypeIconAsHTMLString(iconName: string, baseUrl: string = DEFAULT_BASE_URL): string |
-// undefined {
-//   const regex = /(?<type>[a-z]+)(?<size>16|20|24|32|40|48|64|96)(_(?<pixelRatio>1.5|2|3|4)x)?_(?<suffix>png|svg)/;
-//   //
-//   const result = regex.exec(iconName);
-//   if (result && result.length) {
-//     let src = '';
-//     const type = result[1];//groups.type;
-//     const size = result[2]//groups.size;
-//     const pixelRatio = result[4];//groups.pixelRatio;
-//     const suffix = result[5];//groups.suffix;
-//     if (pixelRatio) {
-//       src = `${baseUrl}${size}_${pixelRatio}/${type}.${suffix}`
-//       return `<img src="${src}" height="100%" width="100%" />`;
-//     } else {
-//       src = `${baseUrl}${size}/${type}.${suffix}`;
-//       return `<img src="${src}" alt="" />`;
-//     }
-//   }
-// }
-
 function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIconOptions>): void {
   const iconTypes: string[] = Object.keys(FileTypeIconMap);
   const fileTypeIcons: { [key: string]: JSX.Element } = {};
