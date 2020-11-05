@@ -83,7 +83,7 @@ export function useTreeSelectState(
         return leafs.reduce((prevResult, leaf) => {
           const leafIndex = prevResult.indexOf(leaf);
           if (leafIndex >= 0) {
-            return _.without(prevResult, leafIndex);
+            return _.without(prevResult, leaf);
           }
           return prevResult;
         }, selectedIds);
