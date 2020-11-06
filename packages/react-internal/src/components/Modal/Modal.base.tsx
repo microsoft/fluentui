@@ -19,7 +19,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
 import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
-import { useWindow, useDocument } from '@fluentui/react-window-provider';
+import { useWindow } from '@fluentui/react-window-provider';
 import {
   useBoolean,
   useMergedRefs,
@@ -46,6 +46,7 @@ interface IModalInternalState {
   /** Ensures we dispose the same keyup callback as was registered (also tracks whether keyup has been registered) */
   disposeOnKeyUp?: () => void;
   isInKeyboardMoveMode?: boolean;
+  hasBeenOpened?: boolean;
 }
 
 const ZERO: ICoordinates = { x: 0, y: 0 };
@@ -122,19 +123,18 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const rootRef = React.useRef<HTMLDivElement>(null);
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
+    const focusTrapZoneElm = React.useRef<HTMLDivElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
 
     const modalResponsiveMode = useResponsiveMode(mergedRef);
 
     const focusTrapZoneId = useId('ModalFocusTrapZone');
 
-    const doc = useDocument();
     const win = useWindow();
 
     const { setTimeout, clearTimeout } = useSetTimeout();
 
     const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
-    const [hasBeenOpened, setHasBeenOpened] = React.useState(isOpen);
     const [isVisible, setIsVisible] = React.useState(isOpen);
     const [coordinates, setCoordinates] = React.useState<ICoordinates>(ZERO);
     const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
@@ -161,7 +161,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       scrollableContentClassName,
       isOpen,
       isVisible,
-      hasBeenOpened,
+      hasBeenOpened: internalState.hasBeenOpened,
       modalRectangleTop,
       topOffsetFixed,
       isModeless,
@@ -196,12 +196,18 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     );
 
     const registerInitialModalPosition = (): void => {
-      if (keepInBounds && !internalState.minClampedPosition && !internalState.maxClampedPosition) {
-        const dialogMain = doc?.querySelector(`[data-id=${focusTrapZoneId}]`);
-        if (dialogMain) {
-          const modalRectangle = dialogMain.getBoundingClientRect();
-          internalState.minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
-          internalState.maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
+      const dialogMain = focusTrapZoneElm.current;
+      const modalRectangle = dialogMain?.getBoundingClientRect();
+
+      if (modalRectangle) {
+        if (topOffsetFixed) {
+          setModalRectangleTop(modalRectangle.top);
+        }
+
+        if (keepInBounds) {
+          // x/y are unavailable in IE, so use the equivalent left/top
+          internalState.minClampedPosition = { x: -modalRectangle.left, y: -modalRectangle.top };
+          internalState.maxClampedPosition = { x: modalRectangle.left, y: modalRectangle.top };
         }
       }
     };
@@ -219,7 +225,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         }
 
         position = Math.max(internalState.minClampedPosition[axis], position);
-        position = Math.min(internalState.minClampedPosition[axis], position);
+        position = Math.min(internalState.maxClampedPosition[axis], position);
 
         return position;
       },
@@ -366,7 +372,9 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       clearTimeout(internalState.onModalCloseTimer);
       // Opening the dialog
       if (isOpen) {
+        // This must be done after the modal content has rendered
         requestAnimationFrame(() => setTimeout(registerInitialModalPosition, 0));
+
         setIsModalOpen(true);
 
         // Add a keyUp handler for all key up events once the dialog is open.
@@ -374,17 +382,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           registerForKeyUp();
         }
 
-        setHasBeenOpened(true);
+        internalState.hasBeenOpened = true;
         setIsVisible(true);
-
-        if (topOffsetFixed) {
-          const dialogMain = doc?.getElementsByClassName('ms-Dialog-main');
-          let modalRectangle;
-          if (dialogMain && dialogMain.length > 0) {
-            modalRectangle = dialogMain[0].getBoundingClientRect();
-            setModalRectangleTop(modalRectangle.top);
-          }
-        }
       }
 
       // Closing the dialog
@@ -411,7 +410,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const modalContent = (
       <FocusTrapZone
-        data-id={focusTrapZoneId}
+        id={focusTrapZoneId}
+        ref={focusTrapZoneElm}
         componentRef={focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -475,7 +475,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
               )}
               {dragOptions ? (
                 <DraggableZone
-                  handleSelector={dragOptions.dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
+                  handleSelector={dragOptions.dragHandleSelector || `#${focusTrapZoneId}`}
                   preventDragSelector="button"
                   onStart={handleDragStart}
                   onDragChange={handleDrag}
