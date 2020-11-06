@@ -4,8 +4,16 @@ import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@fluentui/test-utilities';
+import { resetIds } from '../../Utilities';
 
 describe('Modal', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+  afterAll(() => {
+    resetIds();
+  });
+
   isConformant({
     Component: Modal,
     displayName: 'Modal',
