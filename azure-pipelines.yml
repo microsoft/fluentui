@@ -22,8 +22,6 @@ jobs:
       - script: npx midgard-yarn install
         displayName: yarn
 
-      - template: .devops/templates/pr-target-branch.yml
-
       - script: |
           yarn checkchange
         displayName: check change
@@ -46,7 +44,7 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
-          yarn buildci --no-cache --since $(target_branch)
+          yarn buildci --no-cache --since $(targetBranch)
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -75,11 +73,9 @@ jobs:
       - script: npx midgard-yarn install
         displayName: yarn
 
-      - template: .devops/templates/pr-target-branch.yml
-
       ## only do scoped bundle with PRs
       - script: |
-          yarn bundle --no-cache --grouped --since $(target_branch)
+          yarn bundle --no-cache --grouped --since $(targetBranch)
         displayName: bundle (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -171,8 +167,6 @@ jobs:
 
       - script: npx midgard-yarn install
         displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           yarn lage screener --to vr-tests --debug --verbose --no-cache --grouped
