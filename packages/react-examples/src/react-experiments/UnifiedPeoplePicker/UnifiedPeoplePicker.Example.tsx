@@ -76,7 +76,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     ..._suggestions,
   ]);
 
-  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
 
   const ref = React.useRef<any>();
 
