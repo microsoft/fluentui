@@ -54,8 +54,6 @@ jobs:
   - job: Deploy
     workspace:
       clean: all
-    variables:
-      - template: .devops/templates/variables.yml
     steps:
       - template: .devops/templates/tools.yml
 
