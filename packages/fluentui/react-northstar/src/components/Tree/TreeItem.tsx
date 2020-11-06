@@ -139,13 +139,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   } = props;
 
   const {
+    getItemById,
+    registerItemRef,
+    toggleItemActive,
     focusParent,
     siblingsExpand,
     focusFirstChild,
-    toggleActive,
-    toggleSelect,
-    registerItemRef,
-    getItemById,
+    toggleItemSelect,
   } = React.useContext(TreeContext);
 
   const { selected, hasSubtree } = getItemById(id);
@@ -221,16 +221,16 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const handleSelection = e => {
     if (selectable) {
-      toggleSelect([id], e);
+      toggleItemSelect(e, id);
     }
     _.invoke(props, 'onTitleClick', e, props);
   };
 
   const handleTitleClick = e => {
     if (hasSubtree && e.target === e.currentTarget) {
-      toggleActive([id], e);
+      toggleItemActive(e, id);
     } else if (selectable) {
-      toggleSelect([id], e);
+      toggleItemSelect(e, id);
     }
     _.invoke(props, 'onTitleClick', e, props);
   };
@@ -277,7 +277,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
   const element = (
     <ElementType
-      // ref={ref}
       {...getA11Props('root', {
         className: classes.root,
         id,
@@ -327,6 +326,7 @@ TreeItem.propTypes = {
   contentRef: customPropTypes.ref,
   id: PropTypes.string.isRequired,
   index: PropTypes.number,
+  items: customPropTypes.collectionShorthand,
   level: PropTypes.number,
   onFocusFirstChild: PropTypes.func,
   onFocusParent: PropTypes.func,

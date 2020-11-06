@@ -158,38 +158,67 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   });
 
   const {
-    tobeRenderedItemsProps,
-    toggleActive,
+    orderedItemIds,
+    getItemById,
+    registerItemRef,
+    toggleItemActive,
     focusParent,
     focusFirstChild,
     siblingsExpand,
-    registerItemRef,
-    toggleSelect,
-    getItemById,
+    toggleItemSelect,
   } = useSelectableTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({
-      toggleActive,
+      getItemById,
+      registerItemRef,
+      toggleItemActive,
       focusParent,
       siblingsExpand,
       focusFirstChild,
-      registerItemRef,
-      toggleSelect,
-      getItemById,
+      toggleItemSelect,
     }),
-    [toggleActive, focusParent, siblingsExpand, focusFirstChild, registerItemRef, toggleSelect, getItemById],
+    [getItemById, registerItemRef, toggleItemActive, focusParent, siblingsExpand, focusFirstChild, toggleItemSelect],
   );
 
   const renderContent = (): React.ReactElement[] => {
-    return tobeRenderedItemsProps.map(props =>
-      TreeItem.create(
-        { id: props.id }, // this is useless. {} would work, but won't pass type check
-        {
-          defaultProps: () => getA11yProps('item', props),
-        },
-      ),
-    );
+    const itemsRendered = [];
+
+    let i = 0;
+    while (i < orderedItemIds.length) {
+      const id = orderedItemIds[i];
+      const item = getItemById(id);
+      const { expanded, parent, level, index, treeSize } = item;
+      itemsRendered.push(
+        TreeItem.create(item.item, {
+          defaultProps: () =>
+            getA11yProps('item', {
+              key: id,
+              expanded,
+              parent,
+              level,
+              index,
+              treeSize,
+              selectable: selectable ? item.item.selectable !== false : false,
+              renderItemTitle: item.item.renderItemTitle || props.renderItemTitle,
+            }),
+        }),
+      );
+
+      i++;
+      if (!item.expanded) {
+        // item is collpased, so skip all its descendents
+        while (i < orderedItemIds.length) {
+          const nextItem = getItemById(orderedItemIds[i]);
+          if (nextItem?.level <= item.level) {
+            break;
+          }
+          i++;
+        }
+      }
+    }
+
+    return itemsRendered;
   };
 
   const element = (
