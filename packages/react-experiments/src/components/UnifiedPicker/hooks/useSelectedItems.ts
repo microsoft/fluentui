@@ -43,8 +43,8 @@ export const useSelectedItems = <T extends {}>(
         itemsToAdd.forEach(draggedItem => {
           updatedItems.push(draggedItem);
         });
-        updatedItems.push(item);
-      } else if (!indicesToRemove.includes(i)) {
+      }
+      if (!indicesToRemove.includes(i)) {
         // only insert items into the new list that are not being dragged
         updatedItems.push(item);
       }
