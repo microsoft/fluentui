@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 14 Oct 2020 12:26:59 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Nov 2020 12:22:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.40)
+
+Fri, 06 Nov 2020 12:22:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.29..@uifabric/azure-themes_v7.5.40)
+
+### Patches
+
+- Icon button & disabled textbox style fix ([PR #15812](https://github.com/microsoft/fluentui/pull/15812) by jagaheri@microsoft.com)
 
 ## [7.5.29](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.29)
 
