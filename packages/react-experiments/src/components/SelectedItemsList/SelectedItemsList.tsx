@@ -71,27 +71,11 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     [items],
   );
 
-  const _onFocus = (ev: React.FocusEvent<HTMLDivElement>) => {
-    // If we have an input, set focus to it so we can pick up the copy keyboard command
-    hiddenInput.current?.focus();
-  };
-
   const SelectedItem = props.onRenderItem;
   return (
     <>
       {items.length > 0 && (
-        <div role={'list'} onFocus={_onFocus}>
-          <input
-            // Add a zero zero size input. This is to pick up the copy command when we have
-            // keyboard focus in the list
-            // Focus is set to the input when the list gets focus via the _onFocus function
-            className={css('ms-SelectedItemsList-copyInput', classNames.copyInput)}
-            ref={hiddenInput}
-            hidden={!props.getItemCopyText}
-            data-is-focusable={false}
-            aria-hidden={true}
-            tabIndex={-1}
-          />
+        <div role={'list'}>
           {SelectedItem &&
             renderedItems.map((item: TItem, index: number) => (
               <SelectedItem
