@@ -258,7 +258,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        readOnly={true}
         role="combobox"
         spellCheck={false}
         type="text"
@@ -416,8 +415,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
     </div>
     <div
       aria-atomic="true"
+      aria-hidden={true}
       aria-live="polite"
-      className=""
       id="ComboBox0-error"
       role="region"
     >
@@ -650,7 +649,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        readOnly={false}
         role="combobox"
         spellCheck={false}
         type="text"
@@ -808,8 +806,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
     </div>
     <div
       aria-atomic="true"
+      aria-hidden={true}
       aria-live="polite"
-      className=""
       id="ComboBox4-error"
       role="region"
     >

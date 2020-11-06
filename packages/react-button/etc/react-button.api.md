@@ -7,6 +7,7 @@
 import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { FontTokens } from '@fluentui/theme';
+import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
@@ -177,12 +178,9 @@ export type ExpandedState = {
     onClick?: (ev: React.MouseEvent) => void;
     onMenuDismiss?: () => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
-    'aria-expanded'?: boolean;
-    'aria-haspopup'?: boolean;
-    menu: {
-        target?: React.Ref<HTMLElement | undefined>;
-        onDismiss?: () => void;
-    };
+    'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
+    'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
+    menu?: MenuButtonState['menu'];
 };
 
 // @public
@@ -201,9 +199,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 export const menuButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
     // (undocumented)
-    menu: ExpandedState['menu'];
+    menu?: React.PropsWithChildren<MinimalMenuProps>;
 }
 
 // @public (undocumented)

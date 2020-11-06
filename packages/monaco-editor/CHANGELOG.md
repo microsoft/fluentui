@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.1)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.0-beta.0..@fluentui/monaco-editor_v1.0.0-beta.1)
+
+### Changes
+
+- Remove code for TS < 3.7 compat ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.0)
 

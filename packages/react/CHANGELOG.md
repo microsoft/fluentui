@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.7..@fluentui/react_v8.0.0-beta.8)
+
+### Changes
+
+- Add aria-hidden to error section ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.7)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.6..@fluentui/react_v8.0.0-beta.7)
+
+### Changes
+
+- Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem ([PR #15791](https://github.com/microsoft/fluentui/pull/15791) by jspurlin@microsoft.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.6)
+
+Fri, 30 Oct 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.5..@fluentui/react_v8.0.0-beta.6)
+
+### Changes
+
+- remove check for allowFreeForm to enable readOnly prop ([PR #15737](https://github.com/microsoft/fluentui/pull/15737) by ololubek@microsoft.com)
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.5)
+
+Thu, 29 Oct 2020 12:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.2..@fluentui/react_v8.0.0-beta.5)
+
+### Changes
+
+- Export all from react-window-provider. ([PR #15738](https://github.com/microsoft/fluentui/pull/15738) by xgao@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.0)
 

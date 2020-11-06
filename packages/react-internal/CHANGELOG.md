@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Nov 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.8)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.7..@fluentui/react-internal_v8.0.0-beta.8)
+
+### Changes
+
+- ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.6..@fluentui/react-internal_v8.0.0-beta.7)
+
+### Changes
+
+- Layer: fix not rendering into targeted host element defined by hostId prop. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.6)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.5..@fluentui/react-internal_v8.0.0-beta.6)
+
+### Changes
+
+- Update SpinButton to inherit Fabric font styles. ([PR #15724](https://github.com/microsoft/fluentui/pull/15724) by lesliewilliams234@gmail.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+- SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers. ([PR #15797](https://github.com/microsoft/fluentui/pull/15797) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.5)
+
+Thu, 29 Oct 2020 12:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.4..@fluentui/react-internal_v8.0.0-beta.5)
+
+### Changes
+
+- Export all from react-window-provider. ([PR #15738](https://github.com/microsoft/fluentui/pull/15738) by xgao@microsoft.com)
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.3..@fluentui/react-internal_v8.0.0-beta.4)
+
+### Changes
+
+- Port TextField reveal password feature to master ([PR #15720](https://github.com/microsoft/fluentui/pull/15720) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.3)
 

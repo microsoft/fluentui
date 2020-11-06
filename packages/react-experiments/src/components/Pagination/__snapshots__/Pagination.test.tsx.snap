@@ -1558,7 +1558,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        readOnly={true}
         role="combobox"
         spellCheck={false}
         type="text"
@@ -1716,8 +1715,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     </div>
     <div
       aria-atomic="true"
+      aria-hidden={true}
       aria-live="polite"
-      className=""
       id="ComboBox6-error"
       role="region"
     >

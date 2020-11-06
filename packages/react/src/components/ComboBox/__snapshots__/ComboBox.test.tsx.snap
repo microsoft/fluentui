@@ -198,7 +198,6 @@ exports[`ComboBox Renders correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onTouchStart={[Function]}
-      readOnly={true}
       role="combobox"
       spellCheck={false}
       type="text"
@@ -356,8 +355,8 @@ exports[`ComboBox Renders correctly 1`] = `
   </div>
   <div
     aria-atomic="true"
+    aria-hidden={true}
     aria-live="polite"
-    className=""
     id="ComboBox0-error"
     role="region"
   >
@@ -554,7 +553,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       data-ktp-execute-target="ktp-a"
       data-lpignore="true"
       id="ComboBox4-input"
-      readonly=""
       role="combobox"
       spellcheck="false"
       type="text"
@@ -701,8 +699,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
   </div>
   <div
     aria-atomic="true"
+    aria-hidden="true"
     aria-live="polite"
-    class=""
     id="ComboBox4-error"
     role="region"
   />

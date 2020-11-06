@@ -12,7 +12,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
     className=
 
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
+          font-weight: 400;
           min-width: 86px;
           outline: none;
           width: 100%;

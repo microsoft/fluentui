@@ -43,7 +43,7 @@ steps:
     workingDirectory: 'packages/react'
 
   - script: |
-      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf7 --//registry.npmjs.org/:_authToken=$(npmToken)
+      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
     displayName: Publish new version
 
   - template: .devops/templates/cleanup.yml

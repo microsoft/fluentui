@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric, setBaseUrl } from '@fluentui/react';
+import { setBaseUrl, ThemeProvider } from '@fluentui/react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
 import {
   INavPage,
@@ -112,11 +112,11 @@ export function createSite<TPlatforms extends string>(
     const renderSite = (props: {}) => <Site siteDefinition={siteDefinition} hasUHF={hasUHF} {...props} />;
 
     ReactDOM.render(
-      <Fabric>
+      <ThemeProvider>
         <Router>
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
-      </Fabric>,
+      </ThemeProvider>,
       rootElement,
     );
   }

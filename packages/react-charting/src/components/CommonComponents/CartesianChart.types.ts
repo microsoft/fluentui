@@ -224,7 +224,7 @@ export interface ICartesianChartProps {
 
   /**
    * defines the number of ticks on the x-axis
-   * @default 10
+   * @default 6
    */
   xAxisTickCount?: number;
 

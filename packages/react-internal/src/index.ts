@@ -69,5 +69,6 @@ export * from './Theme';
 export * from './ThemeGenerator';
 export * from './Tooltip';
 export * from './Utilities';
+export * from './WindowProvider';
 
 import './version';

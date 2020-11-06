@@ -1,6 +1,5 @@
 import { NodePlopAPI, AddManyActionConfig } from 'plop';
 import { Actions } from 'node-plop';
-import * as inquirer from 'inquirer'; // implicit dep for types only
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
@@ -50,7 +49,7 @@ module.exports = (plop: NodePlopAPI) => {
         default: true,
         when: answers => answers.target === 'node', // react always has tests
       },
-    ] as inquirer.Question<Partial<Answers>>[],
+    ],
 
     actions: (answers: Answers): Actions => {
       const { packageName, target, hasTests } = answers;

@@ -1,4 +1,4 @@
-import { ICustomizations } from '@fluentui/react';
+import { Theme } from '@fluentui/react';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
@@ -20,8 +20,8 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
   /** Defines the pages for the app. */
   pages: INavPage<TPlatforms>[];
 
-  /** Defines app-wide customizations eg. fluent. */
-  customizations?: ICustomizations;
+  /** Defines app-wide theme. */
+  theme?: Theme;
 
   /** Defines the source of the logo image in the top nav bar. */
   siteLogoSource?: string;
