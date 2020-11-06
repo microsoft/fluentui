@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 06 Nov 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.9",
+      "version": "1.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Moving MenuContext outside of @fluentui/react-button and into @fluentui/react-shared-contexts.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb55393551e4e06a3864a6e2351c7cad7777dd6",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Nov 2020 12:29:43 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.8",
       "version": "1.0.0-beta.8",

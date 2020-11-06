@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Nov 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.8)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.7..@fluentui/react-internal_v8.0.0-beta.8)
+
+### Changes
+
+- ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.7)
 
