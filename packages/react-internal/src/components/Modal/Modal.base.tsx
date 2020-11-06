@@ -9,7 +9,7 @@ import {
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
-import { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
+import { IDragOptions, IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../../Popup';
@@ -31,23 +31,21 @@ import {
 } from '@fluentui/react-hooks';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
-const DefaultLayerProps: ILayerProps = {
-  eventBubblingEnabled: false,
-};
 
 interface IModalInternalState {
   onModalCloseTimer: number;
   allowTouchBodyScroll: boolean;
-  hasRegisteredKeyUp: boolean;
+  hasRegisteredKeyUp?: boolean;
   scrollableContent: HTMLDivElement | null;
-  lastSetXCoordinate: number;
-  lastSetYCoordinate: number;
+  lastSetCoordinates: ICoordinates;
   minClampedPosition: ICoordinates;
   maxClampedPosition: ICoordinates;
   events: EventGroup;
   disposeOnKeyDown?: () => void;
-  isInKeyboardMoveMode: boolean;
+  isInKeyboardMoveMode?: boolean;
 }
+
+const ZERO: ICoordinates = { x: 0, y: 0 };
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
 
@@ -127,8 +125,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
     const [hasBeenOpened, setHasBeenOpened] = React.useState(isOpen);
     const [isVisible, setIsVisible] = React.useState(isOpen);
-    const [xCoordinate, setXCoordinate] = React.useState<number>(0);
-    const [yCoordinate, setYCoordinate] = React.useState<number>(0);
+    const [coordinates, setCoordinates] = React.useState<ICoordinates>(ZERO);
     const [modalRectangleTop, setModalRectangleTop] = React.useState<number | undefined>();
 
     const [isModalMenuOpen, { toggle: toggleModalMenuOpen, setFalse: setModalMenuClose }] = useBoolean(false);
@@ -136,18 +133,15 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     const internalState = useConst<IModalInternalState>(() => ({
       onModalCloseTimer: 0,
       allowTouchBodyScroll,
-      hasRegisteredKeyUp: false,
       scrollableContent: null,
-      lastSetXCoordinate: 0,
-      lastSetYCoordinate: 0,
-      minClampedPosition: { x: 0, y: 0 },
-      maxClampedPosition: { x: 0, y: 0 },
+      lastSetCoordinates: ZERO,
+      minClampedPosition: ZERO,
+      maxClampedPosition: ZERO,
       events: new EventGroup({}),
-      disposeOnKeyDown: undefined,
-      isInKeyboardMoveMode: false,
     }));
 
     const hasDragOptions = !!dragOptions;
+    const { keepInBounds } = dragOptions || ({} as IDragOptions);
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
     const classNames = getClassNames(styles, {
@@ -166,8 +160,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector,
     });
 
-    const mergedLayerProps = {
-      ...DefaultLayerProps,
+    const mergedLayerProps: ILayerProps = {
+      eventBubblingEnabled: false,
       ...layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
       insertFirst: isModeless,
@@ -192,7 +186,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     );
 
     const registerInitialModalPosition = (): void => {
-      if (dragOptions?.keepInBounds && !internalState.minClampedPosition && !internalState.maxClampedPosition) {
+      if (keepInBounds && !internalState.minClampedPosition && !internalState.maxClampedPosition) {
         const dialogMain = doc?.querySelector(`[data-id=${focusTrapZoneId}]`);
         if (dialogMain) {
           const modalRectangle = dialogMain.getBoundingClientRect();
@@ -209,28 +203,26 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
      * @param position The position on the axis.
      */
     const getClampedAxis = React.useCallback(
-      (axis: string, position: number) => {
-        if (!dragOptions || !dragOptions.keepInBounds) {
+      (axis: keyof ICoordinates, position: number) => {
+        if (!keepInBounds) {
           return position;
         }
 
-        position = Math.max(internalState.minClampedPosition[axis as keyof ICoordinates], position);
-        position = Math.min(internalState.minClampedPosition[axis as keyof ICoordinates], position);
+        position = Math.max(internalState.minClampedPosition[axis], position);
+        position = Math.min(internalState.minClampedPosition[axis], position);
 
         return position;
       },
-      [dragOptions, internalState],
+      [keepInBounds, internalState],
     );
 
     const handleModalClose = (): void => {
-      internalState.lastSetXCoordinate = 0;
-      internalState.lastSetYCoordinate = 0;
+      internalState.lastSetCoordinates = ZERO;
 
       setModalMenuClose();
       internalState.isInKeyboardMoveMode = false;
       setIsModalOpen(false);
-      setXCoordinate(0);
-      setYCoordinate(0);
+      setCoordinates(ZERO);
 
       const handleKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
         // Needs to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
@@ -258,9 +250,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     }, [internalState, setModalMenuClose]);
 
     const handleDrag = React.useCallback(
-      (ev: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, ui: IDragData): void => {
-        setXCoordinate(prevValue => getClampedAxis('x', prevValue + ui.delta.x));
-        setYCoordinate(prevValue => getClampedAxis('y', prevValue + ui.delta.y));
+      (ev: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, dragData: IDragData): void => {
+        setCoordinates(prevValue => ({
+          x: getClampedAxis('x', prevValue.x + dragData.delta.x),
+          y: getClampedAxis('y', prevValue.y + dragData.delta.y),
+        }));
       },
       [getClampedAxis],
     );
@@ -298,30 +292,28 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         switch (ev.keyCode) {
           /* eslint-disable no-fallthrough */
           case KeyCodes.escape:
-            setXCoordinate(internalState.lastSetXCoordinate);
-            setYCoordinate(internalState.lastSetYCoordinate);
+            setCoordinates(internalState.lastSetCoordinates);
           case KeyCodes.enter: {
             // TODO: determine if fallthrough was intentional
             /* eslint-enable no-fallthrough */
-            internalState.lastSetXCoordinate = 0;
-            internalState.lastSetYCoordinate = 0;
+            internalState.lastSetCoordinates = ZERO;
             // setIsInKeyboardMoveMode(false);
             break;
           }
           case KeyCodes.up: {
-            setYCoordinate(prevValue => getClampedAxis('y', prevValue - delta));
+            setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y - delta) }));
             break;
           }
           case KeyCodes.down: {
-            setYCoordinate(prevValue => getClampedAxis('y', prevValue + delta));
+            setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y + delta) }));
             break;
           }
           case KeyCodes.left: {
-            setXCoordinate(prevValue => getClampedAxis('x', prevValue - delta));
+            setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x - delta), y: prevValue.y }));
             break;
           }
           case KeyCodes.right: {
-            setXCoordinate(prevValue => getClampedAxis('x', prevValue + delta));
+            setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x + delta), y: prevValue.y }));
             break;
           }
           default: {
@@ -336,8 +328,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     };
 
     const handleEnterKeyboardMoveMode = () => {
-      internalState.lastSetXCoordinate = xCoordinate;
-      internalState.lastSetYCoordinate = yCoordinate;
+      internalState.lastSetCoordinates = coordinates;
       setModalMenuClose();
       internalState.isInKeyboardMoveMode = true;
       // internalState.events.on(win, 'keydown', handleKeyDown, true /* useCapture */);
@@ -347,8 +338,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     };
 
     const handleExitKeyboardMoveMode = () => {
-      internalState.lastSetXCoordinate = 0;
-      internalState.lastSetYCoordinate = 0;
+      internalState.lastSetCoordinates = ZERO;
       internalState.isInKeyboardMoveMode = false;
       internalState.disposeOnKeyDown = () =>
         internalState.events.off(win, 'keydown', handleKeyDown, true /* useCapture */);
@@ -492,7 +482,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
                   onStart={handleDragStart}
                   onDragChange={handleDrag}
                   onStop={handleDragStop}
-                  position={{ x: xCoordinate, y: yCoordinate }}
+                  position={coordinates}
                 >
                   {modalContent}
                 </DraggableZone>
