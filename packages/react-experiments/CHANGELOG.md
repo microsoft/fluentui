@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 30 Oct 2020 12:33:11 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.8)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.7..@fluentui/react-experiments_v8.0.0-beta.8)
+
+### Changes
+
+- Fix snapshots ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.7)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.6..@fluentui/react-experiments_v8.0.0-beta.7)
+
+### Changes
+
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.6)
 

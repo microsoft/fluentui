@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.1)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.0..@fluentui/codemods_v1.0.0-beta.1)
+
+### Changes
+
+- Codemods: fix an issue where they would not save synchronously ([PR #15800](https://github.com/microsoft/fluentui/pull/15800) by joschect@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.0)
 

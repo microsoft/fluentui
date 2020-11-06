@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
+import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
+import { MenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
+import { MenuButtonState } from './MenuButton.types';
 
 export type ExpandedState = {
   ref?: React.Ref<unknown>;
@@ -9,13 +11,10 @@ export type ExpandedState = {
   onClick?: (ev: React.MouseEvent) => void;
   onMenuDismiss?: () => void;
   onKeyDown?: (ev: React.KeyboardEvent) => void;
-  'aria-expanded'?: boolean;
-  'aria-haspopup'?: boolean;
+  'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
+  'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
 
-  menu: {
-    target?: React.Ref<HTMLElement | undefined>;
-    onDismiss?: () => void;
-  };
+  menu?: MenuButtonState['menu'];
 };
 
 /**
@@ -68,17 +67,29 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     [onKeyDown, setExpandedValue],
   );
 
+  const onDismiss = React.useCallback(() => {
+    onMenuDismiss?.();
+
+    setExpandedValue(false);
+
+    // TODO: should we re-focus the root?
+  }, [onMenuDismiss, setExpandedValue]);
+
+  const menuProps: MinimalMenuProps = {
+    hidden: !expandedValue,
+    onDismiss,
+    target: rootRef,
+  };
+
   // Assign extra props to the menu slot.
   draftState.menu = {
-    target: rootRef,
-    ...draftState.menu,
-    onDismiss: React.useCallback(() => {
-      onMenuDismiss?.();
-
-      setExpandedValue(false);
-
-      // TODO: should we re-focus the root?
-    }, [onMenuDismiss, setExpandedValue]),
+    children: draftState.menu ? (
+      typeof draftState.menu.children === 'function' ? (
+        draftState.menu.children(menuProps)
+      ) : (
+        <MenuContext.Provider value={menuProps}>{draftState.menu.children}</MenuContext.Provider>
+      )
+    ) : null,
   };
 
   draftState['aria-expanded'] = expandedValue;

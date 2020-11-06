@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.5)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.3..@fluentui/theme_v2.0.0-beta.5)
+
+### Changes
+
+- Mark stylesheets in theme as internal. ([PR #15806](https://github.com/microsoft/fluentui/pull/15806) by xgao@microsoft.com)
 
 ## [2.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.3)
 
