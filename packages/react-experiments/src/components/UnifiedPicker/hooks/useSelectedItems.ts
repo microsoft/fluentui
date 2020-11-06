@@ -22,11 +22,15 @@ export const useSelectedItems = <T extends {}>(
 ): IUseSelectedItemsResponse<T> => {
   const [items, setSelectedItems] = React.useState(selectedItems || []);
 
-  React.useEffect(() => {
-    if (selectedItems !== undefined) {
-      selection.setItems(selectedItems);
-    }
-  }, []);
+  React.useEffect(
+    () => {
+      if (selectedItems !== undefined) {
+        selection.setItems(selectedItems);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- we want to do this once
+    [],
+  );
 
   React.useEffect(() => {
     setSelectedItems(selectedItems ? selectedItems : []);
