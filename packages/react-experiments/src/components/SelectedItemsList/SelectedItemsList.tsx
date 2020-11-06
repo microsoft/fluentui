@@ -1,16 +1,5 @@
-import { css, classNamesFunction } from '@fluentui/react';
 import * as React from 'react';
-import {
-  ISelectedItemsList,
-  ISelectedItemsListProps,
-  BaseSelectedItem,
-  ISelectedItemsListStyleProps,
-  ISelectedItemsListStyles,
-} from './SelectedItemsList.types';
-
-import { getStyles } from './SelectedItemsList.styles';
-
-const getClassNames = classNamesFunction<ISelectedItemsListStyleProps, ISelectedItemsListStyles>();
+import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
@@ -21,8 +10,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 
   const renderedItems = React.useMemo(() => items, [items]);
   const didMountRef = React.useRef(false);
-  const hiddenInput = React.useRef<any>();
-  const classNames = getClassNames(getStyles);
 
   React.useEffect(() => {
     // block first call of the hook and forward each consecutive one
