@@ -23,6 +23,12 @@ export const useSelectedItems = <T extends {}>(
   const [items, setSelectedItems] = React.useState(selectedItems || []);
 
   React.useEffect(() => {
+    if (selectedItems !== undefined) {
+      selection.setItems(selectedItems);
+    }
+  }, []);
+
+  React.useEffect(() => {
     setSelectedItems(selectedItems ? selectedItems : []);
   }, [selectedItems]);
 
