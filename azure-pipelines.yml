@@ -46,6 +46,9 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
+          echo
+          echo
+          echo
           echo "target_branch $(target_branch)"
           echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
           yarn buildci --no-cache --since $(target_branch)
