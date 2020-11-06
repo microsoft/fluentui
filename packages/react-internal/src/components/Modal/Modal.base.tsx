@@ -37,8 +37,10 @@ interface IModalInternalState {
   allowTouchBodyScroll?: boolean;
   scrollableContent: HTMLDivElement | null;
   lastSetCoordinates: ICoordinates;
-  minClampedPosition: ICoordinates;
-  maxClampedPosition: ICoordinates;
+  /** Minimum clamped position, if dragging and clamping (`dragOptions.keepInBounds`) are enabled */
+  minPosition?: ICoordinates;
+  /** Maximum clamped position, if dragging and clamping (`dragOptions.keepInBounds`) are enabled */
+  maxPosition?: ICoordinates;
   events: EventGroup;
   /** Ensures we dispose the same keydown callback as was registered */
   disposeOnKeyDown?: () => void;
@@ -145,8 +147,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       allowTouchBodyScroll,
       scrollableContent: null,
       lastSetCoordinates: ZERO,
-      minClampedPosition: ZERO,
-      maxClampedPosition: ZERO,
       events: new EventGroup({}),
     }));
 
@@ -205,8 +205,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
         if (keepInBounds) {
           // x/y are unavailable in IE, so use the equivalent left/top
-          internalState.minClampedPosition = { x: -modalRectangle.left, y: -modalRectangle.top };
-          internalState.maxClampedPosition = { x: modalRectangle.left, y: modalRectangle.top };
+          internalState.minPosition = { x: -modalRectangle.left, y: -modalRectangle.top };
+          internalState.maxPosition = { x: modalRectangle.left, y: modalRectangle.top };
         }
       }
     };
@@ -219,13 +219,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
      */
     const getClampedAxis = React.useCallback(
       (axis: keyof ICoordinates, position: number) => {
-        if (!keepInBounds) {
-          return position;
+        const { minPosition, maxPosition } = internalState;
+        if (keepInBounds && minPosition && maxPosition) {
+          position = Math.max(minPosition[axis], position);
+          position = Math.min(maxPosition[axis], position);
         }
-
-        position = Math.max(internalState.minClampedPosition[axis], position);
-        position = Math.min(internalState.maxClampedPosition[axis], position);
-
         return position;
       },
       [keepInBounds, internalState],
