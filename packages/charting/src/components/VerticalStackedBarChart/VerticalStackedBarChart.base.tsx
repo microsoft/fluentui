@@ -44,7 +44,7 @@ const barGapMin = 1;
 interface IRefArrayData {
   refElement?: SVGGElement | null;
 }
-type LinePoint = ILineDataInVerticalStackedBarChart & { index: number; x: IVerticalStackedChartProps };
+type LinePoint = ILineDataInVerticalStackedBarChart & { index: number; xItem: IVerticalStackedChartProps };
 type LineObject = { [key: string]: LinePoint[] };
 type LineLegends = {
   title: string;
@@ -215,22 +215,22 @@ export class VerticalStackedBarChartBase extends React.Component<
     data.forEach((item: IVerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         // injecting corresponding x data point in each of the line data
-        // we inject index also , it will be helpful to draw lines when x asix is
+        // we inject index also , it will be helpful to draw lines when x axis is
         // of string type
         item.lineData.forEach(line => {
           linesData.push({
             ...line,
             index,
-            x: item,
+            xItem: item,
           });
         });
       }
     });
     linesData.forEach(item => {
       if (formattedLineData[item.legend]) {
-        formattedLineData[item.legend].push({ ...item, index: item.index!, x: item.x });
+        formattedLineData[item.legend].push(item);
       } else {
-        formattedLineData[item.legend] = [{ ...item, index: item.index!, x: item.x }];
+        formattedLineData[item.legend] = [item];
       }
     });
     return formattedLineData;
@@ -267,11 +267,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       }
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = isNumeric
-          ? xScale(lineObject[item][i - 1].x.xAxisPoint as number)
+          ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
           : xBarScale(lineObject[item][i - 1].index) + this._additionalSpace;
         const y1 = yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
-          ? xScale(lineObject[item][i].x.xAxisPoint as number)
+          ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
           : xBarScale(lineObject[item][i].index) + this._additionalSpace;
         const y2 = yScale(lineObject[item][i].y);
         lines.push(
@@ -300,24 +300,24 @@ export class VerticalStackedBarChartBase extends React.Component<
             key={`${index}-${subIndex}-dot`}
             cx={
               isNumeric
-                ? xScale(circlePoint.x.xAxisPoint as number)
+                ? xScale(circlePoint.xItem.xAxisPoint as number)
                 : xBarScale(circlePoint.index) + this._additionalSpace
             }
             cy={yScale(circlePoint.y)}
             onMouseOver={
               isLegendSelected && selectedLegendTitle === item
                 ? this._lineHover.bind(this, circlePoint)
-                : this._onStackHover.bind(this, circlePoint.x)
+                : this._onStackHover.bind(this, circlePoint.xItem)
             }
             {...(isLegendSelected &&
               selectedLegendTitle === item && {
                 onMouseLeave: this._lineHoverOut,
               })}
-            r={this._getCircleVisibilityAndRadius(circlePoint.x.xAxisPoint, circlePoint.legend).radius}
+            r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
-            visibility={this._getCircleVisibilityAndRadius(circlePoint.x.xAxisPoint, circlePoint.legend).visibility}
+            visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
           />,
         );
       });
@@ -532,9 +532,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       refSelected: mouseEvent,
       isCalloutVisible: true,
-      xCalloutValue: `${lineData.x}`,
+      xCalloutValue: `${lineData.xItem.xAxisPoint}`,
       yCalloutValue: `${lineData.yAxisCalloutData || lineData.data || lineData.y}`,
-      activeXAxisDataPoint: lineData.x.xAxisPoint,
+      activeXAxisDataPoint: lineData.xItem.xAxisPoint,
       color: lineData.color,
     });
   };
