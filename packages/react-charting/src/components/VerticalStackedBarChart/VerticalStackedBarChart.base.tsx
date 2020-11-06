@@ -283,7 +283,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             y1={y1}
             x2={x2}
             y2={y2}
-            opacity={shouldHighlight ? 1 : 0.4}
+            opacity={shouldHighlight ? 1 : 0.1}
             strokeWidth={3}
             stroke={lineObject[item][i].color}
             {...(isLegendSelected &&
@@ -582,7 +582,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       refSelected: mouseEvent,
       isCalloutVisible: true,
       YValueHover: isLinesPresent
-        ? [...lineData!, ...found!.chartData.slice().reverse()]
+        ? [
+            ...lineData!.sort((a: ILineDataInVerticalStackedBarChart, b: ILineDataInVerticalStackedBarChart) => {
+              return a.data! < b.data! ? 1 : -1;
+            }),
+            ...found!.chartData.slice().reverse(),
+          ]
         : found!.chartData.slice().reverse(),
       hoverXValue: xAxisPoint,
       stackCalloutProps: found!,
@@ -629,7 +634,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       refSelected: groupRef.refElement,
       isCalloutVisible: true,
       YValueHover: isLinesPresent
-        ? [...lineData!, ...found!.chartData.slice().reverse()]
+        ? [
+            ...lineData!.sort((a: ILineDataInVerticalStackedBarChart, b: ILineDataInVerticalStackedBarChart) => {
+              return a.data! < b.data! ? 1 : -1;
+            }),
+            ...found!.chartData.slice().reverse(),
+          ]
         : found!.chartData.slice().reverse(),
       hoverXValue: xAxisPoint,
       stackCalloutProps: found!,
