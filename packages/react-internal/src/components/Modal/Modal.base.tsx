@@ -3,6 +3,7 @@ import {
   classNamesFunction,
   allowScrollOnElement,
   allowOverscrollOnElement,
+  getPropsWithDefaults,
   KeyCodes,
   elementContains,
   EventGroup,
@@ -34,7 +35,7 @@ import {
 
 interface IModalInternalState {
   onModalCloseTimer: number;
-  allowTouchBodyScroll: boolean;
+  allowTouchBodyScroll?: boolean;
   scrollableContent: HTMLDivElement | null;
   lastSetCoordinates: ICoordinates;
   minClampedPosition: ICoordinates;
@@ -48,6 +49,13 @@ interface IModalInternalState {
 }
 
 const ZERO: ICoordinates = { x: 0, y: 0 };
+
+const DEFAULT_PROPS: Partial<IModalProps> = {
+  isOpen: false,
+  isDarkOverlay: true,
+  className: '',
+  containerClassName: '',
+};
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
 
@@ -79,24 +87,25 @@ const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFoc
 };
 
 export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<HTMLDivElement, IModalProps>(
-  (props, ref) => {
+  (propsWithoutDefaults, ref) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const {
-      allowTouchBodyScroll = false,
-      className = '',
+      allowTouchBodyScroll,
+      className,
       children,
-      containerClassName = '',
+      containerClassName,
       scrollableContentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
       ignoreExternalFocusing,
-      isBlocking = false,
+      isBlocking,
       isClickableOutsideFocusTrap,
-      isDarkOverlay = true,
+      isDarkOverlay,
       onDismiss,
       layerProps,
       overlay,
-      isOpen = false,
+      isOpen,
       titleAriaId,
       styles,
       subtitleAriaId,
