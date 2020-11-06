@@ -35,13 +35,15 @@ import {
 interface IModalInternalState {
   onModalCloseTimer: number;
   allowTouchBodyScroll: boolean;
-  hasRegisteredKeyUp?: boolean;
   scrollableContent: HTMLDivElement | null;
   lastSetCoordinates: ICoordinates;
   minClampedPosition: ICoordinates;
   maxClampedPosition: ICoordinates;
   events: EventGroup;
+  /** Ensures we dispose the same keydown callback as was registered */
   disposeOnKeyDown?: () => void;
+  /** Ensures we dispose the same keyup callback as was registered (also tracks whether keyup has been registered) */
+  disposeOnKeyUp?: () => void;
   isInKeyboardMoveMode?: boolean;
 }
 
@@ -140,7 +142,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       events: new EventGroup({}),
     }));
 
-    const hasDragOptions = !!dragOptions;
     const { keepInBounds } = dragOptions || ({} as IDragOptions);
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
@@ -224,22 +225,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       setIsModalOpen(false);
       setCoordinates(ZERO);
 
-      const handleKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
-        // Needs to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
-        // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-        if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
-          if (elementContains(internalState.scrollableContent, ev.target as HTMLElement)) {
-            toggleModalMenuOpen();
-            internalState.isInKeyboardMoveMode = true;
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        }
-      };
-
-      if (hasDragOptions && internalState.hasRegisteredKeyUp) {
-        internalState.events.off(win, 'keyup', handleKeyUp, true /* useCapture */);
-      }
+      internalState.disposeOnKeyUp?.();
 
       onDismissed?.();
     };
@@ -265,84 +251,84 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       }
     }, []);
 
-    // We need a global handleKeyDown event when we are in the move mode so that we can
-    // handle the key presses and the components inside the modal do not get the events
-    const handleKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-      if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
-        // CTRL + ALT + SPACE is handled during keyUp
-        ev.preventDefault();
-        ev.stopPropagation();
-        return;
-      }
-
-      if (isModalMenuOpen && (ev.altKey || ev.keyCode === KeyCodes.escape)) {
-        setModalMenuClose();
-      }
-
-      if (internalState.isInKeyboardMoveMode && (ev.keyCode === KeyCodes.escape || ev.keyCode === KeyCodes.enter)) {
-        internalState.isInKeyboardMoveMode = false;
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-
-      if (internalState.isInKeyboardMoveMode) {
-        let handledEvent = true;
-        const delta = getMoveDelta(ev);
-
-        switch (ev.keyCode) {
-          /* eslint-disable no-fallthrough */
-          case KeyCodes.escape:
-            setCoordinates(internalState.lastSetCoordinates);
-          case KeyCodes.enter: {
-            // TODO: determine if fallthrough was intentional
-            /* eslint-enable no-fallthrough */
-            internalState.lastSetCoordinates = ZERO;
-            // setIsInKeyboardMoveMode(false);
-            break;
-          }
-          case KeyCodes.up: {
-            setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y - delta) }));
-            break;
-          }
-          case KeyCodes.down: {
-            setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y + delta) }));
-            break;
-          }
-          case KeyCodes.left: {
-            setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x - delta), y: prevValue.y }));
-            break;
-          }
-          case KeyCodes.right: {
-            setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x + delta), y: prevValue.y }));
-            break;
-          }
-          default: {
-            handledEvent = false;
-          }
+    const handleEnterKeyboardMoveMode = () => {
+      // We need a global handleKeyDown event when we are in the move mode so that we can
+      // handle the key presses and the components inside the modal do not get the events
+      const handleKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+        if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
+          // CTRL + ALT + SPACE is handled during keyUp
+          ev.preventDefault();
+          ev.stopPropagation();
+          return;
         }
-        if (handledEvent) {
+
+        if (isModalMenuOpen && (ev.altKey || ev.keyCode === KeyCodes.escape)) {
+          setModalMenuClose();
+        }
+
+        if (internalState.isInKeyboardMoveMode && (ev.keyCode === KeyCodes.escape || ev.keyCode === KeyCodes.enter)) {
+          internalState.isInKeyboardMoveMode = false;
           ev.preventDefault();
           ev.stopPropagation();
         }
-      }
-    };
 
-    const handleEnterKeyboardMoveMode = () => {
+        if (internalState.isInKeyboardMoveMode) {
+          let handledEvent = true;
+          const delta = getMoveDelta(ev);
+
+          switch (ev.keyCode) {
+            /* eslint-disable no-fallthrough */
+            case KeyCodes.escape:
+              setCoordinates(internalState.lastSetCoordinates);
+            case KeyCodes.enter: {
+              // TODO: determine if fallthrough was intentional
+              /* eslint-enable no-fallthrough */
+              internalState.lastSetCoordinates = ZERO;
+              // setIsInKeyboardMoveMode(false);
+              break;
+            }
+            case KeyCodes.up: {
+              setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y - delta) }));
+              break;
+            }
+            case KeyCodes.down: {
+              setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y + delta) }));
+              break;
+            }
+            case KeyCodes.left: {
+              setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x - delta), y: prevValue.y }));
+              break;
+            }
+            case KeyCodes.right: {
+              setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x + delta), y: prevValue.y }));
+              break;
+            }
+            default: {
+              handledEvent = false;
+            }
+          }
+          if (handledEvent) {
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        }
+      };
+
       internalState.lastSetCoordinates = coordinates;
       setModalMenuClose();
       internalState.isInKeyboardMoveMode = true;
-      // internalState.events.on(win, 'keydown', handleKeyDown, true /* useCapture */);
 
-      // internalState.disposeOnKeyDown = () =>
       internalState.events.on(win, 'keydown', handleKeyDown, true /* useCapture */);
+      internalState.disposeOnKeyDown = () => {
+        internalState.events.off(win, 'keydown', handleKeyDown, true /* useCapture */);
+        internalState.disposeOnKeyDown = undefined;
+      };
     };
 
     const handleExitKeyboardMoveMode = () => {
       internalState.lastSetCoordinates = ZERO;
       internalState.isInKeyboardMoveMode = false;
-      internalState.disposeOnKeyDown = () =>
-        internalState.events.off(win, 'keydown', handleKeyDown, true /* useCapture */);
-      // internalState.events.off(win, 'keydown', handleKeyDown, true /* useCapture */);
+      internalState.disposeOnKeyDown?.();
     };
 
     const registerForKeyUp = (): void => {
@@ -358,9 +344,12 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         }
       };
 
-      if (!internalState.hasRegisteredKeyUp) {
+      if (!internalState.disposeOnKeyUp) {
         internalState.events.on(win, 'keyup', handleKeyUp, true /* useCapture */);
-        internalState.hasRegisteredKeyUp = true;
+        internalState.disposeOnKeyUp = () => {
+          internalState.events.off(win, 'keyup', handleKeyUp, true /* useCapture */);
+          internalState.disposeOnKeyUp = undefined;
+        };
       }
     };
 
