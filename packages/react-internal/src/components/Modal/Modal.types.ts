@@ -7,6 +7,7 @@ import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IOverlayProps } from '../../Overlay';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
