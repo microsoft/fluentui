@@ -476,6 +476,19 @@ export class Button extends React.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
+export const ButtonGlobalClassNames: {
+    msButton: string;
+    msButtonHasMenu: string;
+    msButtonIcon: string;
+    msButtonMenuIcon: string;
+    msButtonLabel: string;
+    msButtonDescription: string;
+    msButtonScreenReaderText: string;
+    msButtonFlexContainer: string;
+    msButtonTextContainer: string;
+};
+
+// @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
@@ -521,13 +534,56 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     // (undocumented)
     render(): JSX.Element;
 }
+
+// @public (undocumented)
+export const CalloutContent: React.FunctionComponent<ICalloutProps>;
+
+// @public (undocumented)
+export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutState> {
+    constructor(props: ICalloutProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        preventDismissOnLostFocus: boolean;
+        preventDismissOnScroll: boolean;
+        preventDismissOnResize: boolean;
+        isBeakVisible: boolean;
+        beakWidth: number;
+        gapSpace: number;
+        minPagePadding: number;
+        directionalHint: 7;
+    };
+    // (undocumented)
+    dismiss: (ev?: Event | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => void;
+    // (undocumented)
+    protected _dismissOnLostFocus: (ev: Event) => void;
+    // (undocumented)
+    protected _dismissOnResize: (ev: Event) => void;
+    // (undocumented)
+    protected _dismissOnScroll: (ev: Event) => void;
+    // (undocumented)
+    protected _onComponentDidMount: () => void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    protected _setInitialFocus: () => void;
+    // (undocumented)
+    shouldComponentUpdate(newProps: ICalloutProps, newState: ICalloutState): boolean;
+    // (undocumented)
+    UNSAFE_componentWillMount(): void;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(newProps: ICalloutProps): void;
+    }
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -1286,6 +1342,9 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
+export const getBaseButtonClassNames: (theme: ITheme, styles: IButtonStyles, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, hasMenu: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
+
+// @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
@@ -1311,6 +1370,14 @@ export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
+
+// Warning: (ae-internal-missing-underscore) The name "getItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const getItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
+
+// @public
+export const getItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
 
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
@@ -1345,6 +1412,9 @@ export function getShade(color: IColor, shade: Shade, isInverted?: boolean): ICo
 
 // @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
+
+// @public (undocumented)
+export const getSplitButtonVerticalDividerClassNames: (theme: ITheme) => IVerticalDividerClassNames;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1892,6 +1962,26 @@ export interface IButton {
 }
 
 // @public (undocumented)
+export interface IButtonClassNames {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    flexContainer?: string;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    label?: string;
+    // (undocumented)
+    menuIcon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    screenReaderText?: string;
+    // (undocumented)
+    textContainer?: string;
+}
+
+// @public (undocumented)
 export interface IButtonGrid {
 }
 
@@ -1901,7 +1991,6 @@ export interface IButtonGridCellProps<T> {
     cellIsSelectedStyle?: string[];
     className?: string;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
     id: string;
     index?: number;
@@ -2243,6 +2332,18 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICalloutState {
+    // (undocumented)
+    calloutElementRect?: ClientRect;
+    // (undocumented)
+    heightOffset?: number;
+    // (undocumented)
+    positions?: ICalloutPositionedInfo;
+    // (undocumented)
+    slideDirectionalClassName?: string;
 }
 
 // @public (undocumented)
@@ -3084,6 +3185,22 @@ export class IconButton extends React.Component<IButtonProps, {}> {
 export interface IContextualMenu {
 }
 
+// @public @deprecated (undocumented)
+export interface IContextualMenuClassNames {
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    list: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    subComponentStyles?: IContextualMenuSubComponentStyles;
+    // (undocumented)
+    title: string;
+}
+
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
@@ -3095,8 +3212,6 @@ export interface IContextualMenuItem {
     customOnRenderListLength?: number;
     data?: any;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -3244,8 +3359,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
-    // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -5800,6 +5913,36 @@ export interface IMaskedTextFieldState {
     maskCursorPosition?: number;
 }
 
+// @public @deprecated (undocumented)
+export interface IMenuItemClassNames {
+    // (undocumented)
+    checkmarkIcon: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    item: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    linkContent: string;
+    // (undocumented)
+    linkContentMenu: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    secondaryText: string;
+    // (undocumented)
+    splitContainer: string;
+    // (undocumented)
+    splitMenu: string;
+    // (undocumented)
+    splitPrimary: string;
+    // (undocumented)
+    subMenuIcon: string;
+}
+
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
@@ -6175,8 +6318,6 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
@@ -8826,6 +8967,32 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
 
 // @public
 export const Panel: React.FunctionComponent<IPanelProps>;
+
+// Warning: (ae-forgotten-export) The symbol "IPanelState" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class PanelBase extends React.Component<IPanelProps, IPanelState> implements IPanel {
+    constructor(props: IPanelProps);
+    // (undocumented)
+    close(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPanelProps;
+    // (undocumented)
+    dismiss: (ev?: React.SyntheticEvent<HTMLElement, Event> | undefined) => void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null;
+    readonly isActive: boolean;
+    // (undocumented)
+    open(): void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export enum PanelType {
