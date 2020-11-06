@@ -46,6 +46,8 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
+          echo "target_branch $(target_branch)"
+          echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
           yarn buildci --no-cache --since $(target_branch)
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
