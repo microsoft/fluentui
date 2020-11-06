@@ -1,4 +1,5 @@
 export * from './BaseButton';
+export * from './BaseButton.classNames';
 export * from './Button.types';
 export * from './Button';
 export * from './ActionButton/ActionButton';
