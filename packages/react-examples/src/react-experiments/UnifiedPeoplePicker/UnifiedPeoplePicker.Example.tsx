@@ -245,6 +245,16 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
+  const _replaceItem = (newItem: IPersonaProps | IPersonaProps[], index: number): void => {
+    const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+
+    if (index >= 0) {
+      const newItems: IPersonaProps[] = [...peopleSelectedItems];
+      newItems.splice(index, 1, ...newItemsArray);
+      setPeopleSelectedItems(newItems);
+    }
+  };
+
   /**
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of eidting
@@ -290,6 +300,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
     dropItemsAt: _dropItemsAt,
+    replaceItem: _replaceItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
