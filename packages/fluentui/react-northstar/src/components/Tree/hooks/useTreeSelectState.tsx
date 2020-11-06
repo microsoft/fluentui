@@ -3,17 +3,25 @@ import { useAutoControlled } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import { UseSelectableTreeOptions } from './useSelectableTree';
 import { useStableProps } from './useStableProps';
-import { BaseFlatTree } from './flattenTree';
+import { BaseFlatTreeItem } from './flattenTree';
+
+export interface SelectableFlatTreeItem extends BaseFlatTreeItem {
+  /**
+   * when selected=true, the tree item is fully selected, indicating all its descendents are fully selected;
+   * when selected=false, the tree item is not selected, indicating none of its descendents is selected;
+   * when selected='indeterminate', only part of the tree item's descendents are selected
+   */
+  selected?: boolean | 'indeterminate';
+}
 
 export interface UseTreeSelectStateResult {
   selectedItemIds: string[];
-  flatTree: BaseFlatTree;
-  toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
+  toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
 }
 
 export function useTreeSelectState(
   props: Pick<UseSelectableTreeOptions, 'defaultSelectedItemIds' | 'selectedItemIds' | 'items'>,
-  flatTree: BaseFlatTree,
+  getItemById: (id: string) => SelectableFlatTreeItem,
 ): UseTreeSelectStateResult {
   // selectedItemIds is only valid for leaf nodes.
   // For non-leaf nodes, their 'selected' states are defered from all their descendents
@@ -23,116 +31,49 @@ export function useTreeSelectState(
     initialValue: [],
   });
 
-  // compute a new flattened tree based on selectedItemIds state
-  const updatedFlatTree = React.useMemo(() => {
-    // build updatedFlatTree based on flatTree, with all tree item having selected false.
-    // then updates the 'selected' prop of leaves based on selectedItemIds
-    const updatedFlatTree = {};
-    const rootsIds = [];
-    Object.keys(flatTree).forEach(id => {
-      updatedFlatTree[id] = {
-        ...flatTree[id],
-        selected: false,
-      };
-      if (!updatedFlatTree[id].parent) {
-        rootsIds.push(id);
-      }
-    });
-    selectedItemIds.forEach(id => {
-      if (!updatedFlatTree[id].hasSubtree) {
-        updatedFlatTree[id].selected = true;
-      }
-    });
-
-    // traverse all tree nodes in updatedFlatTree for once,
-    // to calculate the selection state of the parent nodes based on leaf nodes
-    const traverseTree = nodes => {
-      let allNodesSelected = true;
-      let noNodeSelected = true;
-
-      nodes.forEach(id => {
-        if (updatedFlatTree[id].hasSubtree && updatedFlatTree[id].childrenIds) {
-          updatedFlatTree[id].selected = traverseTree(updatedFlatTree[id].childrenIds);
-        }
-
-        if (updatedFlatTree[id].selected === true) {
-          noNodeSelected = false;
-        } else if (updatedFlatTree[id].selected === 'indeterminate') {
-          allNodesSelected = false;
-          noNodeSelected = false;
-        } else {
-          allNodesSelected = false;
-        }
-      });
-
-      if (allNodesSelected) return true;
-      if (noNodeSelected) return false;
-      return 'indeterminate';
-    };
-
-    traverseTree(rootsIds);
-    return updatedFlatTree;
-  }, [flatTree, selectedItemIds]);
-
-  const toggleSelectOnOneId = React.useCallback(
-    (selectedIds: string[], idToToggle: string): string[] => {
-      const leafs = getLeafNodes(updatedFlatTree, idToToggle);
-
-      if (updatedFlatTree[idToToggle]?.selected === true) {
-        // remove all leaves from selected
-        return leafs.reduce((prevResult, leaf) => {
-          const leafIndex = prevResult.indexOf(leaf);
-          if (leafIndex >= 0) {
-            return _.without(prevResult, leaf);
-          }
-          return prevResult;
-        }, selectedIds);
-      }
-
-      return leafs.reduce((prevResult, leaf) => {
-        // add all leaves to selected
-        const leafIndex = prevResult.indexOf(leaf);
-        if (leafIndex < 0) {
-          return [...prevResult, leaf];
-        }
-        return prevResult;
-      }, selectedIds);
-    },
-    [updatedFlatTree],
-  );
-
   const stableProps = useStableProps(props);
-  const toggleSelect = React.useCallback(
-    (idsToToggle: string[], e: React.SyntheticEvent) => {
-      const nextSelectedItemIds = idsToToggle.reduce(
-        (prev, currId) => toggleSelectOnOneId(prev, currId),
-        selectedItemIds,
-      );
 
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
-        ...stableProps.current,
-        selectedItemIds: nextSelectedItemIds,
+  const toggleItemSelect = React.useCallback(
+    (e: React.SyntheticEvent, idToToggle: string) => {
+      const item = getItemById(idToToggle) as SelectableFlatTreeItem;
+      if (!item) {
+        return;
+      }
+      const leafs = getLeafNodes(getItemById, idToToggle);
+
+      setSelectedItemIdsState(selectedItemIds => {
+        let nextSelectedItemIds;
+        if (item.selected === true) {
+          // remove all leaves from selected
+          nextSelectedItemIds = _.without(selectedItemIds, ...leafs);
+        } else {
+          // add all leaves to selected
+          nextSelectedItemIds = _.uniq(selectedItemIds.concat(leafs));
+        }
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+        return nextSelectedItemIds;
       });
-
-      setSelectedItemIdsState(nextSelectedItemIds);
     },
-    [selectedItemIds, setSelectedItemIdsState, stableProps, toggleSelectOnOneId],
+    [getItemById, setSelectedItemIdsState, stableProps],
   );
 
-  return { selectedItemIds, flatTree: updatedFlatTree, toggleSelect };
+  return { selectedItemIds, toggleItemSelect };
 }
 
-function getLeafNodes(flatTree, rootId) {
-  const leaves = [];
+function getLeafNodes(getItemById: (id: string) => BaseFlatTreeItem, rootId: string) {
+  const leafs = [];
   const traverseDown = id => {
-    if (flatTree[id]?.childrenIds) {
-      flatTree[id].childrenIds.forEach(child => {
+    if (getItemById(id)?.childrenIds) {
+      getItemById(id)?.childrenIds.forEach(child => {
         traverseDown(child);
       });
     } else {
-      leaves.push(id);
+      leafs.push(id);
     }
   };
   traverseDown(rootId);
-  return leaves;
+  return leafs;
 }

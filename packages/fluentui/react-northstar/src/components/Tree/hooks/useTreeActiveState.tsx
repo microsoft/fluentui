@@ -2,105 +2,99 @@ import * as React from 'react';
 import { useAutoControlled } from '@fluentui/react-bindings';
 import { UseTreeOptions } from './useTree';
 import { useStableProps } from './useStableProps';
-import { BaseFlatTree } from './flattenTree';
+import { BaseFlatTreeItem } from './flattenTree';
 import * as _ from 'lodash';
 
 export interface UseTreeActiveStateResult {
   activeItemIds: string[];
-  flatTree: BaseFlatTree;
-  toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
+  toggleItemActive: (e: React.SyntheticEvent, idToToggle: string) => void;
+  expandSiblings: (e: React.KeyboardEvent, focusedItemId: string) => void;
 }
 
 export function useTreeActiveState(
   props: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
-  flatTree: BaseFlatTree,
+  getItemById: (id: string) => BaseFlatTreeItem,
+  deprecated_initialActiveItemIds: string[],
 ): UseTreeActiveStateResult {
-  // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
-  const initialActiveItemIds = React.useMemo(() => {
-    const initalValue = [];
-    Object.keys(flatTree).forEach(key => {
-      if (flatTree[key].expanded) {
-        initalValue.push(key);
-      }
-    });
-    return initalValue;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // initialValue only needs to be computed on mount
-
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: initialActiveItemIds,
+    initialValue: deprecated_initialActiveItemIds,
   });
 
-  // compute a new flattened tree based on activeItemIds state
-  const updatedFlatTree = React.useMemo(() => {
-    const updatedFlatTree = {};
-    Object.keys(flatTree).forEach(key => {
-      updatedFlatTree[key] = { ...flatTree[key] };
-      if (updatedFlatTree[key].expanded) {
-        updatedFlatTree[key].expanded = false;
-      }
-    });
-    activeItemIds.forEach(activeId => {
-      updatedFlatTree[activeId].expanded = true;
-    });
-    return updatedFlatTree;
-  }, [activeItemIds, flatTree]);
+  const stableProps = useStableProps(props);
 
-  const toggleActiveOnOneId = React.useCallback(
-    (activeIds: string[], idToToggle: string): string[] => {
-      if (!updatedFlatTree[idToToggle]?.hasSubtree) {
+  const toggleItemActive = React.useCallback(
+    (e: React.SyntheticEvent, idToToggle: string) => {
+      const item = getItemById(idToToggle);
+      if (!item || !item.hasSubtree) {
         // leaf node does not have the concept of active/inactive
-        return activeIds;
+        return;
       }
 
-      let result: string[];
-      const index = activeIds.indexOf(idToToggle);
-      if (index >= 0) {
-        result = _.without(activeIds, idToToggle);
-      } else {
-        if (props.exclusive) {
+      setActiveItemIdsState(activeItemIds => {
+        let nextActiveItemIds;
+        const index = activeItemIds.indexOf(idToToggle);
+
+        if (index >= 0) {
+          nextActiveItemIds = _.without(activeItemIds, idToToggle);
+        } else if (props.exclusive) {
           // need to collapse everything else, except id and its ancestors
-          const ancestors = getAncestorsIds(updatedFlatTree, idToToggle);
-          return [...ancestors, idToToggle];
+          const ancestors = getAncestorsIds(getItemById, item);
+          nextActiveItemIds = [...ancestors, idToToggle];
+        } else {
+          nextActiveItemIds = [...activeItemIds, idToToggle];
         }
-        return [...activeIds, idToToggle];
-      }
 
-      return result;
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+
+        return nextActiveItemIds;
+      });
     },
-    [props.exclusive, updatedFlatTree],
+    [getItemById, props.exclusive, setActiveItemIdsState, stableProps],
   );
 
-  const stableProps = useStableProps(props);
-  const toggleActive = React.useCallback(
-    (idsToToggle: string[], e: React.SyntheticEvent) => {
-      const nextActiveItemIds = idsToToggle.reduce((prev, currId) => toggleActiveOnOneId(prev, currId), activeItemIds);
+  const expandSiblings = React.useCallback(
+    (e: React.KeyboardEvent, focusedItemId: string) => {
+      const item = getItemById(focusedItemId);
+      if (!item) {
+        return;
+      }
 
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: nextActiveItemIds,
+      const siblingsIds = _.without(getItemById(item?.parent)?.childrenIds || [], focusedItemId);
+
+      if (!siblingsIds) {
+        return;
+      }
+
+      setActiveItemIdsState(activeItemIds => {
+        const nextActiveItemIds = _.uniq(activeItemIds.concat(siblingsIds));
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-
-      setActiveItemIdsState(nextActiveItemIds);
     },
-    [activeItemIds, stableProps, setActiveItemIdsState, toggleActiveOnOneId],
+    [getItemById, setActiveItemIdsState, stableProps],
   );
 
   return {
     activeItemIds,
-    flatTree: updatedFlatTree,
-    toggleActive,
+    toggleItemActive,
+    expandSiblings,
   };
 }
 
-function getAncestorsIds(flatTree: BaseFlatTree, id: string): string[] {
+function getAncestorsIds(getItemById: (id: string) => BaseFlatTreeItem, item: BaseFlatTreeItem): string[] {
   const result = [];
-  let parent = flatTree[id]?.parent;
-  while (parent) {
+  let parent = item?.parent;
+  while (parent && getItemById(parent)?.level >= 1) {
     result.push(parent);
-    parent = flatTree[parent]?.parent;
+    parent = getItemById(parent)?.parent;
   }
   return result;
 }

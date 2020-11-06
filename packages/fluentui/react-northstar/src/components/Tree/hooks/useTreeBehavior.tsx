@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BaseFlatTree } from './flattenTree';
+import { BaseFlatTreeItem } from './flattenTree';
 
 export function useTreeBehavior(
-  flatTree: BaseFlatTree,
-  toggleActive: (ids: string[], e: React.SyntheticEvent) => void,
+  getItemById: (id: string) => BaseFlatTreeItem,
+  expandSiblings: (e: React.KeyboardEvent, focusedItemId: string) => void,
   isExclusiveTree: boolean,
   getItemRef: (id: string) => HTMLElement,
 ) {
@@ -17,7 +17,7 @@ export function useTreeBehavior(
 
   const focusFirstChild = React.useCallback(
     (id: string) => {
-      const firstChild = flatTree[id]?.childrenIds?.[0];
+      const firstChild = getItemById(id)?.childrenIds?.[0];
       if (!firstChild) return;
 
       const firstChildRef = getItemRef(firstChild);
@@ -25,26 +25,25 @@ export function useTreeBehavior(
         return;
       }
 
-      if (flatTree[firstChild]?.hasSubtree) {
+      if (getItemById(firstChild)?.hasSubtree) {
         firstChildRef.focus();
       } else {
         // when node is leaf, need to focus on the inner treeTitle
         (firstChildRef.firstElementChild as HTMLElement)?.focus();
       }
     },
-    [flatTree, getItemRef],
+    [getItemById, getItemRef],
   );
 
   const siblingsExpand = React.useCallback(
-    (e: React.SyntheticEvent, id: string) => {
+    (e: React.KeyboardEvent, id: string) => {
       if (isExclusiveTree) {
         return;
       }
 
-      const siblingIds = getInactiveSiblingIds(flatTree, id);
-      toggleActive(siblingIds, e);
+      expandSiblings(e, id);
     },
-    [flatTree, isExclusiveTree, toggleActive],
+    [expandSiblings, isExclusiveTree],
   );
 
   return {
@@ -52,19 +51,4 @@ export function useTreeBehavior(
     focusFirstChild,
     siblingsExpand,
   };
-}
-
-function getInactiveSiblingIds(flatTree: BaseFlatTree, id: string): string[] {
-  const item = flatTree[id];
-  if (!item) {
-    return [];
-  }
-  const parent = item.parent;
-  const siblingIds = [];
-  Object.keys(flatTree).forEach(key => {
-    if (flatTree[key].parent === parent && key !== id && flatTree[key].expanded === false) {
-      siblingIds.push(key);
-    }
-  });
-  return siblingIds;
 }

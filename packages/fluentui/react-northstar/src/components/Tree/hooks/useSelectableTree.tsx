@@ -1,16 +1,7 @@
 import * as React from 'react';
-import { BaseFlatTreeItem } from './flattenTree';
-import { useTreeSelectState } from './useTreeSelectState';
+import { SelectableFlatTreeItem, useTreeSelectState } from './useTreeSelectState';
 import { useTree, UseTreeOptions } from './useTree';
-
-export interface SelectableFlatTreeItem extends BaseFlatTreeItem {
-  /**
-   * when selected=true, the tree item is fully selected, indicating all its descendents are fully selected;
-   * when selected=false, the tree item is not selected, indicating none of its descendents is selected;
-   * when selected='indeterminate', only part of the tree item's descendents are selected
-   */
-  selected?: boolean | 'indeterminate';
-}
+import { SECRET_ROOT_ID } from './flattenTree';
 
 export interface UseSelectableTreeOptions extends UseTreeOptions {
   /** Whether or not tree items are selectable. */
@@ -23,26 +14,54 @@ export interface UseSelectableTreeOptions extends UseTreeOptions {
 
 export function useSelectableTree(props: UseSelectableTreeOptions) {
   const baseTree = useTree(props);
-  const { flatTree: baseflatTree, tobeRenderedItemsProps } = baseTree;
+  const { getItemById, flatTree } = baseTree;
 
-  const { selectedItemIds, flatTree, toggleSelect } = useTreeSelectState(props, baseflatTree);
+  const { selectedItemIds, toggleItemSelect } = useTreeSelectState(props, getItemById);
 
+  // We want to set `selected` value on all items to simplify rendering later
+  // There is no sense to recreate a flat tree so we simply mutating it
   React.useMemo(() => {
-    tobeRenderedItemsProps.forEach(itemProps => {
-      // tree item is selectable when it is in a selectable tree, and does not receive selectable=false prop
-      itemProps.selectable = props.selectable ? itemProps.selectable !== false : false;
+    Object.keys(flatTree).forEach(id => {
+      (flatTree[id] as SelectableFlatTreeItem).selected = false;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tobeRenderedItemsProps, flatTree]);
+    selectedItemIds.forEach(id => {
+      if (!flatTree[id].hasSubtree) {
+        (flatTree[id] as SelectableFlatTreeItem).selected = true;
+      }
+    });
 
-  const getItemById = React.useCallback(id => flatTree[id], [flatTree]);
+    // traverse all tree nodes in updatedFlatTree for once,
+    // to calculate the selection state of the parent nodes based on leaf nodes
+    const traverseTree = nodes => {
+      let allNodesSelected = true;
+      let noNodeSelected = true;
+
+      nodes?.forEach(id => {
+        const item = flatTree[id] as SelectableFlatTreeItem;
+        if (item.hasSubtree && item.childrenIds) {
+          item.selected = traverseTree(item.childrenIds);
+        }
+
+        if (item.selected === true) {
+          noNodeSelected = false;
+        } else if (item.selected === 'indeterminate') {
+          allNodesSelected = false;
+          noNodeSelected = false;
+        } else {
+          allNodesSelected = false;
+        }
+      });
+
+      if (allNodesSelected) return true;
+      if (noNodeSelected) return false;
+      return 'indeterminate';
+    };
+
+    traverseTree(flatTree[SECRET_ROOT_ID].childrenIds);
+  }, [flatTree, selectedItemIds]);
 
   return {
     ...baseTree,
-    flatTree,
-    selectedItemIds,
-    tobeRenderedItemsProps,
-    toggleSelect,
-    getItemById,
+    toggleItemSelect,
   };
 }
