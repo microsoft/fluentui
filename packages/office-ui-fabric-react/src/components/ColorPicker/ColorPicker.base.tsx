@@ -180,6 +180,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     }
     const ariaLabel = strings.rootAriaLabelFormat.replace('{0}', selectedColorAriaParts.join(' '));
 
+    const getRgbaAriaProps = (comp: Exclude<ColorComponent, 'hex'>) => ({
+      role: 'spinbutton',
+      ariaValuenow: this._getAriaValueNow(comp),
+      ariaValuemax: comp === 'a' || comp === 't' ? MAX_COLOR_ALPHA : MAX_COLOR_RGB,
+      ariaValuemin: 0,
+    });
+
     return (
       <div className={classNames.root} role="group" aria-label={ariaLabel}>
         <div className={classNames.panel}>
@@ -252,6 +259,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                         spellCheck={false}
                         ariaLabel={textLabels[comp]}
                         autoComplete="off"
+                        {...(comp !== 'hex' ? getRgbaAriaProps(comp) : null)} // We don't need aria props for hex
                       />
                     </td>
                   );
@@ -275,6 +283,17 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return String(color[component]);
     }
     return '';
+  }
+
+  private _getAriaValueNow(component: Exclude<ColorComponent, 'hex'>): number {
+    const { color, editingColor } = this.state;
+
+    if (editingColor && editingColor.component === component) {
+      const maxValue = component === 'a' || component === 't' ? MAX_COLOR_ALPHA : MAX_COLOR_RGB;
+      return clamp(Number(editingColor.value), maxValue);
+    }
+
+    return color[component] || 0;
   }
 
   private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
