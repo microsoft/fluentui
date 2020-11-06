@@ -6,10 +6,11 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@fluentui/react-experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { mru, people } from '@fluentui/example-data';
+import { mru, people, groupOne, groupTwo } from '@fluentui/example-data';
 import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
+import { SelectedPersona, ISelectedItemProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 
 const _suggestions = [
   {
@@ -244,6 +245,30 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
+  /**
+   * Build a custom selected item capable of being edited with a dropdown and
+   * capable of eidting
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
+    <SelectedPersona canExpand={_canExpandItem} getExpandedItems={_getExpandedGroupItems} {...props} />
+  );
+
+  const _getExpandedGroupItems = async (item: IPersonaProps): Promise<IPersonaProps[]> => {
+    switch (item.text) {
+      case 'Group One':
+        return groupOne;
+      case 'Group Two':
+        return groupTwo;
+      default:
+        return [];
+    }
+  };
+
+  const _canExpandItem = (item: IPersonaProps): boolean => {
+    return item.text !== undefined && item.text.indexOf('Group') !== -1;
+  };
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -260,6 +285,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const selectedPeopleListProps = {
     selectedItems: [...peopleSelectedItems],
+    onRenderItem: SelectedItem,
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
