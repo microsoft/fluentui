@@ -27,7 +27,6 @@ import {
   useConst,
   useSetTimeout,
   useId,
-  useMount,
   useUnmount,
 } from '@fluentui/react-hooks';
 
@@ -393,13 +392,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isModalOpen or isOpen mutates.
     }, [isModalOpen, isOpen]);
-
-    useMount(() => {
-      if (isOpen && isVisible) {
-        registerForKeyUp();
-        registerInitialModalPosition();
-      }
-    });
 
     useUnmount(() => {
       internalState.events.dispose();
