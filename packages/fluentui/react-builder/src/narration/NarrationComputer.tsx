@@ -340,10 +340,10 @@ export class NarrationComputer {
     this.computedParts.value = node.valueText;
   } // End computeValue
 
-  // Returns just "[X of Y]" because the real computation of the position in set would be too difficult.
-  // We can set the position part for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
+  // Returns just a constant string because the real computation of the position in set would be too difficult.
   computePosition() {
-    this.computedParts.position = '[X of Y]';
+    // We can set the position part for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
+    this.computedParts.position = SRNC.position['Win/JAWS'];
   } // End computePosition
 
   // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.

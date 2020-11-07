@@ -4,7 +4,7 @@ export const SRNC: Record<string, any> = {
   STATES_SEPARATOR: ' ',
   DESCBY_AND_LABBY_SEPARATOR: ' ',
 
-  // Landmarks and groups (definitions (definitions are stored in a separate file per each platform)
+  // Landmarks and groups definitions (definitions are stored in a separate file per each platform)
   landmarksAndGroups: {
     'Win/JAWS': {},
   }, // End landmarksAndGroups
@@ -34,8 +34,14 @@ export const SRNC: Record<string, any> = {
       switch: 'Switch',
       tab: 'Tab',
       option: '',
+      gridcell: 'column X row Y',
     }, // End Win/JAWS
   }, // End typeStrings
+
+  // Position definitions for each platform
+  position: {
+    'Win/JAWS': 'X of Y',
+  }, // End position
 
   // Element state strings for each platform and definition name
   stateStrings: {
@@ -128,6 +134,17 @@ export const SRNC: Record<string, any> = {
         'aria-selected=false': '',
       }, // End role=tab
       'role=option': {}, // End role=option
+      'role=gridcell': {
+        'aria-selected=true': 'selected',
+        'aria-selected=false': '',
+        'aria-haspopup=true': 'Has Popup',
+        'aria-haspopup=menu': 'Has Popup',
+        'aria-haspopup=listbox': 'Has Popup',
+        'aria-haspopup=tree': 'Has Popup',
+        'aria-haspopup=grid': 'Has Popup',
+        'aria-haspopup=dialog': 'Has Popup',
+        'aria-haspopup=': '',
+      }, // End role=gridcell
     }, // End Win/JAWS
   }, // End stateStrings
 
@@ -210,6 +227,7 @@ export const SRNC: Record<string, any> = {
       select: 'input:text',
       'role=tab': 'input:radio',
       'role=option': 'input:radio',
+      gridcell: ['landmarksAndGroups', 'type', 'name', 'state', 'description'],
     }, // End Win/JAWS
   }, // End readingOrder
 
@@ -231,5 +249,6 @@ export const SRNC: Record<string, any> = {
     'role=switch': ['aria-checked'],
     'role=option': [],
     'role=tab': ['aria-selected'],
+    'role=gridcell': ['aria-selected', 'aria-haspopup'],
   }, // End possibleStates
 };

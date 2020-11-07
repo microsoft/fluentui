@@ -266,4 +266,23 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: SRNC.typeStrings['Win/JAWS'].option,
     },
   ], // End role=option
+  'role=gridcell': [
+    {
+      combination: [],
+      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+    },
+    {
+      combination: ['aria-selected'],
+      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+    },
+    {
+      combination: ['aria-haspopup'],
+      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+    },
+    {
+      combination: ['aria-selected', 'aria-haspopup'],
+      order: ['aria-selected', 'aria-haspopup'],
+      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+    },
+  ], // End role=gridcell
 };
