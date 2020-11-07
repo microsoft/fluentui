@@ -182,9 +182,9 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
     const getRgbaAriaProps = (comp: Exclude<ColorComponent, 'hex'>) => ({
       role: 'spinbutton',
-      ariaValuenow: this._getAriaValueNow(comp),
-      ariaValuemax: comp === 'a' || comp === 't' ? MAX_COLOR_ALPHA : MAX_COLOR_RGB,
-      ariaValuemin: 0,
+      'aria-valuenow': this._getAriaValueNow(comp),
+      'aria-valuemax': comp === 'a' || comp === 't' ? MAX_COLOR_ALPHA : MAX_COLOR_RGB,
+      'aria-valuemin': 0,
     });
 
     return (
