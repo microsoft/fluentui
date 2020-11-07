@@ -25,6 +25,7 @@ import {
   IVerticalStackedChartProps,
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
+  IModifiedCartesianChartProps,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartTypes, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
@@ -131,7 +132,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       this._createLegendsForLine(this.props.data),
     );
 
-    const calloutProps = {
+    const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topRightEdge,
       id: `toolTip${this._calloutId}`,
@@ -508,18 +509,32 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
   }
 
-  private _onRectHover(xAxisPoint: string, point: IVSChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>): void {
+  private _onRectHover(
+    xAxisPoint: string,
+    point: IVSChartDataPoint,
+    color: string,
+    mouseEvent: React.MouseEvent<SVGElement>,
+  ): void {
     mouseEvent.persist();
+    this._onRectFocusHover(xAxisPoint, point, color, mouseEvent);
+  }
+
+  private _onRectFocusHover(
+    xAxisPoint: string,
+    point: IVSChartDataPoint,
+    color: string,
+    refSelected: React.MouseEvent<SVGElement> | SVGGElement,
+  ): void {
     if (
       this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point!.legend)
+      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
     ) {
       this.setState({
-        refSelected: mouseEvent,
+        refSelected,
         isCalloutVisible: true,
         selectedLegendTitle: point.legend,
         dataForHoverCard: point.data,
-        color: point.color!,
+        color: color,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
@@ -550,8 +565,15 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
   };
 
-  private _onStackHover = (stack: IVerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGElement>): void => {
+  private _onStackHover(stack: IVerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGElement>): void {
     mouseEvent.persist();
+    this._onStackHoverFocus(stack, mouseEvent);
+  }
+
+  private _onStackHoverFocus(
+    stack: IVerticalStackedChartProps,
+    refSelected: React.MouseEvent<SVGElement> | SVGGElement,
+  ): void {
     const lineData = stack.lineData;
     const isLinesPresent: boolean = lineData !== undefined && lineData.length > 0;
     if (isLinesPresent) {
@@ -561,7 +583,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       });
     }
     this.setState({
-      refSelected: mouseEvent,
+      refSelected,
       isCalloutVisible: true,
       YValueHover: isLinesPresent
         ? [...lineData!, ...stack.chartData.slice().reverse()]
@@ -570,46 +592,19 @@ export class VerticalStackedBarChartBase extends React.Component<
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
     });
-  };
+  }
 
   private _onRectFocus(point: IVSChartDataPoint, xAxisPoint: string, color: string, ref: IRefArrayData): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
-    ) {
-      this.setState({
-        refSelected: ref.refElement,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend,
-        dataForHoverCard: point.data,
-        color: color,
-        xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
-        yCalloutValue: point.yAxisCalloutData,
-        dataPointCalloutProps: point,
-      });
+    if (ref.refElement) {
+      this._onRectFocusHover(xAxisPoint, point, color, ref.refElement);
     }
   }
 
-  private _onStackFocus = (stack: IVerticalStackedChartProps, groupRef: IRefArrayData): void => {
-    const lineData = stack.lineData;
-    const isLinesPresent: boolean = lineData !== undefined && lineData.length > 0;
-    if (isLinesPresent) {
-      lineData!.forEach((item: ILineDataInVerticalStackedBarChart & { shouldDrawBorderBottom?: boolean }) => {
-        item.data = item.data || item.y;
-        item.shouldDrawBorderBottom = true;
-      });
+  private _onStackFocus(stack: IVerticalStackedChartProps, groupRef: IRefArrayData): void {
+    if (groupRef.refElement) {
+      this._onStackHoverFocus(stack, groupRef.refElement);
     }
-    this.setState({
-      refSelected: groupRef.refElement,
-      isCalloutVisible: true,
-      YValueHover: isLinesPresent
-        ? [...lineData!, ...stack.chartData.slice().reverse()]
-        : stack.chartData.slice().reverse(),
-      hoverXValue: stack.xAxisPoint,
-      stackCalloutProps: stack,
-      activeXAxisDataPoint: stack.xAxisPoint,
-    });
-  };
+  }
 
   private _handleMouseOut = (): void => {
     this.setState({
@@ -700,8 +695,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         const rectFocusProps = !shouldFocusWholeStack && {
           'data-is-focusable': true,
           'aria-labelledby': this._calloutId,
-          onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
-          onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point),
+          onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
+          onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseLeave: this._handleMouseOut,
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, ref),
           onBlur: this._handleMouseOut,
