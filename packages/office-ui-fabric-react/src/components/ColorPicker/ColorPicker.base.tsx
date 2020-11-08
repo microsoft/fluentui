@@ -288,7 +288,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   private _getAriaValueNow(component: Exclude<ColorComponent, 'hex'>): number {
     const { color, editingColor } = this.state;
 
-    if (editingColor && editingColor.component === component) {
+    // Test for editingColor.value !== '' to ensure that we don't update aria-valuenow if input is empty string
+    if (editingColor && editingColor.component === component && editingColor.value !== '') {
       const maxValue = component === 'a' || component === 't' ? MAX_COLOR_ALPHA : MAX_COLOR_RGB;
       return clamp(Number(editingColor.value), maxValue);
     }

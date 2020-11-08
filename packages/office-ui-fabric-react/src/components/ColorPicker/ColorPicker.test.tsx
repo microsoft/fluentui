@@ -35,6 +35,7 @@ describe('ColorPicker', () => {
     calls: number;
     prop: keyof IColor;
     value: string | number;
+    ariaValuenow?: number;
     input?: HTMLInputElement;
     inputValue?: string;
   }
@@ -54,7 +55,7 @@ describe('ColorPicker', () => {
   }
 
   function validateChange(opts: IValidateChangeOptions) {
-    const { calls, prop, value, input, inputValue = String(value) } = opts;
+    const { calls, prop, value, ariaValuenow, input, inputValue = String(value) } = opts;
     expect(onChange).toHaveBeenCalledTimes(calls);
     if (calls > 0) {
       expect(updatedColor![prop]).toBe(value);
@@ -62,6 +63,11 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color[prop]).toBe(value);
     if (input) {
       expect(input.value).toBe(inputValue);
+      if (prop !== 'hex') {
+        expect(Number(input.attributes.getNamedItem('aria-valuenow')?.value)).toBe(
+          ariaValuenow ? ariaValuenow : Number(value),
+        );
+      }
     }
   }
 
@@ -413,9 +419,15 @@ describe('ColorPicker', () => {
 
     // value too large => allowed in field but onChange not called
     ReactTestUtils.Simulate.input(redInput, mockEvent('456'));
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput, inputValue: '456' });
+    // This situation is a bit complex, the value was 123, we entered 456, but didn't switch focus yet
+    // The behavior here is:
+    //   - ColorPicker actual value for red should be 123 (previous valid value)
+    //   - aria-valuenow attribute of input element for red component should be 255 (indicating future valid value)
+    //   - input element for red component should show 456 (indicating the current typed value)
+    validateChange({ calls: 1, prop: 'r', value: 123, ariaValuenow: 255, input: redInput, inputValue: '456' });
 
     // blur => value clamped
+    // once we change focus, the aria-valuenow and actual values align
     ReactTestUtils.Simulate.blur(redInput);
     validateChange({ calls: 2, prop: 'r', value: 255, input: redInput });
   });
@@ -430,7 +442,8 @@ describe('ColorPicker', () => {
 
     // value too large => allowed in field but onChange not called
     ReactTestUtils.Simulate.input(alphaInput, mockEvent('123'));
-    validateChange({ calls: 1, prop: 'a', value: 50, input: alphaInput, inputValue: '123' });
+    // The behavior here is the same as with the red component above
+    validateChange({ calls: 1, prop: 'a', value: 50, ariaValuenow: 100, input: alphaInput, inputValue: '123' });
 
     // blur => value clamped
     ReactTestUtils.Simulate.blur(alphaInput);
@@ -456,7 +469,7 @@ describe('ColorPicker', () => {
 
     // invalid new value too long "pasted" => use substring but don't call onChange
     ReactTestUtils.Simulate.input(redInput, mockEvent('4567'));
-    validateChange({ calls: 2, prop: 'r', value: 100, input: redInput, inputValue: '456' });
+    validateChange({ calls: 2, prop: 'r', value: 100, ariaValuenow: 255, input: redInput, inputValue: '456' });
   });
 
   it('handles 3-char hex value', () => {
