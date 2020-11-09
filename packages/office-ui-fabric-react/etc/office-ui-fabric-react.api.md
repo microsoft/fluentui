@@ -476,19 +476,6 @@ export class Button extends React.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-export const ButtonGlobalClassNames: {
-    msButton: string;
-    msButtonHasMenu: string;
-    msButtonIcon: string;
-    msButtonMenuIcon: string;
-    msButtonLabel: string;
-    msButtonDescription: string;
-    msButtonScreenReaderText: string;
-    msButtonFlexContainer: string;
-    msButtonTextContainer: string;
-};
-
-// @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
@@ -1342,9 +1329,6 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export const getBaseButtonClassNames: (theme: ITheme, styles: IButtonStyles, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, hasMenu: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
-
-// @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
@@ -1370,14 +1354,6 @@ export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
-
-// Warning: (ae-internal-missing-underscore) The name "getItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated (undocumented)
-export const getItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
-
-// @public
-export const getItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
 
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
@@ -1412,9 +1388,6 @@ export function getShade(color: IColor, shade: Shade, isInverted?: boolean): ICo
 
 // @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
-
-// @public (undocumented)
-export const getSplitButtonVerticalDividerClassNames: (theme: ITheme) => IVerticalDividerClassNames;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
