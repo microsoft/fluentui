@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
 import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
-import { IRenderFunction, IComponentAsProps } from '@uifabric/utilities';
+import { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 
 const linkOne: INavLink = {

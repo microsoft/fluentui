@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ImageProps, ImageState } from './Image.types';
 import { useImageState } from './useImageState';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 /**
  * Consts listing which props are shorthand props.

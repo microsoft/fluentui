@@ -6,7 +6,7 @@ import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory TeachingBubble}

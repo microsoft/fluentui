@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TagPicker, IBasePicker, ITag, IInputProps, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const rootClass = mergeStyles({
   maxWidth: 500,

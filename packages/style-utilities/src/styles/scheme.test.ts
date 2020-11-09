@@ -2,7 +2,7 @@ import { getThemedContext } from './scheme';
 import { createTheme } from './theme';
 import { ISchemeNames, ITheme } from '../interfaces/index';
 import { loadTheme } from './theme';
-import { ICustomizerContext } from '@uifabric/utilities';
+import { ICustomizerContext } from '@fluentui/utilities';
 
 describe('getSchemedCustomizations', () => {
   const testSchemeName = 'soft';

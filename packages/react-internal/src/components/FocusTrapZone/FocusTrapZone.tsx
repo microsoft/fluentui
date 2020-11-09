@@ -12,8 +12,8 @@ import {
   on,
 } from '../../Utilities';
 import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
-import { useId, useConst, useMergedRefs } from '@uifabric/react-hooks';
-import { useDocument } from '@fluentui/react-window-provider';
+import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
+import { useDocument } from '../../WindowProvider';
 
 interface IFocusTrapZoneInternalState {
   disposeFocusHandler: (() => void) | undefined;

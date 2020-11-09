@@ -47,9 +47,9 @@ import {
 } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { getPropsWithDefaults } from '@uifabric/utilities';
+import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
-import { useMergedRefs, usePrevious } from '@uifabric/react-hooks';
+import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 

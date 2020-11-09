@@ -1,5 +1,12 @@
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IChartProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData } from '../../types/index';
+import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import {
+  IChartProps,
+  ILineChartPoints,
+  IMargins,
+  IBasestate,
+  IRefArrayData,
+  ICustomizedCalloutData,
+} from '../../types/index';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
 import {
   ICartesianChartProps,
@@ -24,6 +31,21 @@ export interface ILineChartProps extends ICartesianChartProps {
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;
+
+  /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /*
+   * Color fill bars for the chart,
+   */
+  colorFillBars?: IColorFillBarsProps[];
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
@@ -37,3 +59,16 @@ export interface IEventsAnnotationProps {
 export interface ILineChartStyles extends ICartesianChartStyles {}
 
 export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
+
+export interface IColorFillBarsProps {
+  legend: string;
+  color: string;
+  data: IColorFillBarData[];
+  applyPattern?: boolean;
+  onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
+}
+
+export interface IColorFillBarData {
+  startX: number | Date;
+  endX: number | Date;
+}

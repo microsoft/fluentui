@@ -1,8 +1,19 @@
-# Change Log - @uifabric/jest-serializer-merge-styles
+# Change Log - @fluentui/jest-serializer-merge-styles
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/jest-serializer-merge-styles_v7.1.0..@fluentui/jest-serializer-merge-styles_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @fluentui/jest-serializer-merge-styles to @fluentui/jest-serializer-merge-styles ([PR #15615](https://github.com/microsoft/fluentui/pull/15615) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
 
 ## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/jest-serializer-merge-styles_v7.1.0)
 

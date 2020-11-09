@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react/lib/FloatingPicker';
 import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { people } from '@fluentui/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const searchBoxWrapperStyling = { width: 208 };
 

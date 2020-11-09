@@ -26,7 +26,7 @@ import {
   getWindow,
   findScrollableParent,
   createMergedRef,
-} from '@uifabric/utilities';
+} from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';

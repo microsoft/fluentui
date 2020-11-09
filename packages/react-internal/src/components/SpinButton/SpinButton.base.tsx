@@ -15,7 +15,7 @@ import {
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../Positioning';
-import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@fluentui/react-hooks';
 
 interface ISpinButtonInternalState {
   inputId: string;

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating typings to add `Variants`.",
-  "packageName": "@fluentui/theme",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-21T18:36:16.186Z"
-}

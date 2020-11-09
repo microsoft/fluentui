@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import * as sinon from 'sinon';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 import { isConformant } from '../../common/isConformant';
 

@@ -16,5 +16,8 @@ variables:
 
   azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
 
+  ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
+
   backfillProvider: 'azure-blob'
   backfillOptions: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'

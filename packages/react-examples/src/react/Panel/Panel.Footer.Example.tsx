@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const buttonStyles = { root: { marginRight: 8 } };
 

@@ -5,7 +5,7 @@ import { ContextualMenu } from '@fluentui/react/lib/ContextualMenu';
 import { SpinButton } from '@fluentui/react/lib/SpinButton';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType } from '@fluentui/react/lib/index';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const options: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },

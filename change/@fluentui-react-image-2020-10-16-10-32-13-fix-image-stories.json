@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix stories for `react-image`, use images from CDN",
-  "packageName": "@fluentui/react-image",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-16T08:32:13.798Z"
-}

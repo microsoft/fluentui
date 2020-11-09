@@ -30,7 +30,7 @@ export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingS
       classNames.suggestionsContainer,
       {
         overflowX: 'auto',
-        overflowY: 'hidden',
+        overflowY: 'auto',
         maxHeight: '300px',
         borderBottom: `1px solid ${neutralLight}`,
       },

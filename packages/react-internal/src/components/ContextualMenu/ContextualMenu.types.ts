@@ -17,7 +17,7 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -39,7 +39,10 @@ export interface IContextualMenu {}
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps
+  extends IBaseProps<IContextualMenu>,
+    React.RefAttributes<HTMLDivElement>,
+    IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

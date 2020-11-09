@@ -87,17 +87,21 @@ export const defaultTests: TestObject = {
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`handles ref`, () => {
       try {
-        const { Component, requiredProps, elementRefName = 'ref' } = testInfo;
+        const { Component, requiredProps, elementRefName = 'ref', targetComponent, customMount = mount } = testInfo;
         const rootRef = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
           [elementRefName]: rootRef,
         };
+
         act(() => {
-          mount(<Component {...mergedProps} />);
-          expect(rootRef.current).toBeDefined();
+          targetComponent
+            ? customMount(<Component {...mergedProps} />).find(targetComponent)
+            : customMount(<Component {...mergedProps} />);
+
+          expect(rootRef.current).toBeTruthy();
           // Ref should resolve to an HTML element.
-          expect(rootRef.current?.getAttribute).toBeDefined();
+          expect(rootRef.current?.getAttribute).toBeTruthy();
         });
       } catch (e) {
         defaultErrorMessages['component-handles-ref'](componentInfo, testInfo, e);
@@ -162,9 +166,9 @@ export const defaultTests: TestObject = {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
         try {
-          const { displayName, componentPath, Component } = testInfo;
+          const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
           const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-          const indexFile = require(path.join(rootPath, 'src', 'index'));
+          const indexFile = require(path.join(rootPath, 'src', exportSubdir, 'index'));
 
           expect(indexFile[displayName]).toBe(Component);
         } catch (e) {
@@ -180,9 +184,9 @@ export const defaultTests: TestObject = {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level file 'package/src/Component'`, () => {
         try {
-          const { displayName, componentPath, Component } = testInfo;
+          const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
           const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-          const topLevelFile = require(path.join(rootPath, 'src', displayName));
+          const topLevelFile = require(path.join(rootPath, 'src', exportSubdir, displayName));
 
           expect(topLevelFile[displayName]).toBe(Component);
         } catch (e) {

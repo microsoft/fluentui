@@ -1,10 +1,9 @@
-const { preset, just } = require('@uifabric/build');
-const { task, option } = just;
-const { createInternalFlightConfigTask, createPublicFlightConfigTask } = require('./scripts/createFlightConfig');
+import { preset, task, option } from '@fluentui/scripts';
+import { createInternalFlightConfigTask, createPublicFlightConfigTask } from './scripts/createFlightConfig';
 
 preset();
 
-option('baseCDNUrl', { default: './dist' });
+option('baseCDNUrl', { default: './dist' } as any);
 
 task('create-internal-flight-config', createInternalFlightConfigTask());
 

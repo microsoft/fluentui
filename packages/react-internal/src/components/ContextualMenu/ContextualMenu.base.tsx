@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MenuContext } from '@fluentui/react-shared-contexts';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
@@ -47,7 +48,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
+import { useTarget, usePrevious, useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
@@ -188,10 +189,15 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
+  HTMLDivElement,
+  IContextualMenuProps
+>((propsWithoutDefaults, forwardedRef) => {
+  const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
-  const hostElement = React.useRef<HTMLDivElement>(null);
+  const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+
   const [targetRef, targetWindow] = useTarget(hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
@@ -219,7 +225,7 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
       responsiveMode={responsiveMode}
     />
   );
-};
+});
 ContextualMenuBase.displayName = 'ContextualMenuBase';
 
 interface IContextualMenuInternalProps extends IContextualMenuProps {
@@ -340,7 +346,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, hostElement, onMenuFocusCapture },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement },
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -379,7 +385,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */
-    let contextMenuStyle;
+    let contextMenuStyle: React.CSSProperties;
     const targetAsHtmlElement = targetRef.current as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
@@ -414,62 +420,66 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         : undefined;
 
       return (
-        <Callout
-          styles={calloutStyles}
-          onRestoreFocus={this._tryFocusPreviousActiveElement}
-          {...calloutProps}
-          target={target}
-          isBeakVisible={isBeakVisible}
-          beakWidth={beakWidth}
-          directionalHint={directionalHint}
-          directionalHintForRTL={directionalHintForRTL}
-          gapSpace={gapSpace}
-          coverTarget={coverTarget}
-          doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
-          setInitialFocus={shouldFocusOnMount}
-          onDismiss={this.props.onDismiss}
-          onScroll={this._onScroll}
-          bounds={bounds}
-          directionalHintFixed={directionalHintFixed}
-          alignTargetEdge={alignTargetEdge}
-          hidden={this.props.hidden}
-        >
-          <div
-            aria-label={ariaLabel}
-            aria-labelledby={labelElementId}
-            style={contextMenuStyle}
-            ref={hostElement}
-            id={id}
-            className={this._classNames.container}
-            tabIndex={shouldFocusOnContainer ? 0 : -1}
-            onKeyDown={this._onMenuKeyDown}
-            onKeyUp={this._onKeyUp}
-            onFocusCapture={onMenuFocusCapture}
-          >
-            {title && <div className={this._classNames.title}> {title} </div>}
-            {items && items.length ? (
-              <FocusZone
-                className={this._classNames.root}
-                isCircularNavigation={true}
-                handleTabKey={FocusZoneTabbableElements.all}
-                {...this._adjustedFocusZoneProps}
+        <MenuContext.Consumer>
+          {menuContext => (
+            <Callout
+              styles={calloutStyles}
+              onRestoreFocus={this._tryFocusPreviousActiveElement}
+              {...calloutProps}
+              target={target || (menuContext.target as IContextualMenuProps['target'])}
+              isBeakVisible={isBeakVisible}
+              beakWidth={beakWidth}
+              directionalHint={directionalHint}
+              directionalHintForRTL={directionalHintForRTL}
+              gapSpace={gapSpace}
+              coverTarget={coverTarget}
+              doNotLayer={doNotLayer}
+              className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
+              setInitialFocus={shouldFocusOnMount}
+              onDismiss={this.props.onDismiss || menuContext.onDismiss}
+              onScroll={this._onScroll}
+              bounds={bounds}
+              directionalHintFixed={directionalHintFixed}
+              alignTargetEdge={alignTargetEdge}
+              hidden={this.props.hidden || menuContext.hidden}
+              ref={hostElement}
+            >
+              <div
+                aria-label={ariaLabel}
+                aria-labelledby={labelElementId}
+                style={contextMenuStyle}
+                id={id}
+                className={this._classNames.container}
+                tabIndex={shouldFocusOnContainer ? 0 : -1}
+                onKeyDown={this._onMenuKeyDown}
+                onKeyUp={this._onKeyUp}
+                onFocusCapture={onMenuFocusCapture}
               >
-                {onRenderMenuList(
-                  {
-                    items,
-                    totalItemCount,
-                    hasCheckmarks,
-                    hasIcons,
-                    defaultMenuItemRenderer: this._defaultMenuItemRenderer,
-                  },
-                  this._onRenderMenuList,
-                )}
-              </FocusZone>
-            ) : null}
-            {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
-          </div>
-        </Callout>
+                {title && <div className={this._classNames.title}> {title} </div>}
+                {items && items.length ? (
+                  <FocusZone
+                    className={this._classNames.root}
+                    isCircularNavigation={true}
+                    handleTabKey={FocusZoneTabbableElements.all}
+                    {...this._adjustedFocusZoneProps}
+                  >
+                    {onRenderMenuList(
+                      {
+                        items,
+                        totalItemCount,
+                        hasCheckmarks,
+                        hasIcons,
+                        defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                      },
+                      this._onRenderMenuList,
+                    )}
+                  </FocusZone>
+                ) : null}
+                {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
+              </div>
+            </Callout>
+          )}
+        </MenuContext.Consumer>
       );
     } else {
       return null;

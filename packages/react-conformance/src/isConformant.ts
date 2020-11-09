@@ -10,12 +10,12 @@ import { getComponentDoc } from './utils/getComponentDoc';
 
 export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
-  const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = mergedOptions;
+  const { componentPath, displayName, disabledTests = [], extraTests, isInternal, exportSubdir = '' } = mergedOptions;
   if (!fs.existsSync(componentPath)) {
     throw new Error(`Path ${componentPath} does not exist`);
   }
 
-  const components = getComponentDoc(componentPath);
+  const components = getComponentDoc(componentPath, exportSubdir);
   const mainComponents = components.filter(comp => comp.displayName === displayName);
 
   if (mainComponents.length === 1) {

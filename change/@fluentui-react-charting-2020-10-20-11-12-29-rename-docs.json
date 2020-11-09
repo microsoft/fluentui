@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update references to doc site-related packages",
-  "packageName": "@fluentui/react-charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-20T18:12:12.826Z"
-}

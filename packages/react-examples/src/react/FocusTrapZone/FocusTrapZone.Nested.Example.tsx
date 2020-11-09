@@ -4,7 +4,7 @@ import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({

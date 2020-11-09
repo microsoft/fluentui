@@ -13,7 +13,7 @@ import {
   INavStyles,
   IRenderGroupHeaderProps,
 } from './Nav.types';
-import { composeComponentAs, composeRenderFunction } from '@uifabric/utilities';
+import { composeComponentAs, composeRenderFunction } from '@fluentui/utilities';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;

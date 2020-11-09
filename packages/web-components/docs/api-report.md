@@ -25,6 +25,7 @@ import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
+import { Skeleton } from '@microsoft/fast-foundation';
 import { Slider } from '@microsoft/fast-foundation';
 import { SliderLabel } from '@microsoft/fast-foundation';
 import { Switch } from '@microsoft/fast-foundation';
@@ -188,10 +189,8 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends FluentDesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
+export class FluentCard extends DesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
     backgroundColor: string;
-    // (undocumented)
-    protected backgroundColorChanged(): void;
     cardBackgroundColor: string;
     // (undocumented)
     connectedCallback(): void;
@@ -204,6 +203,9 @@ export class FluentCard extends FluentDesignSystemProvider implements Pick<Desig
 // @public
 export class FluentCheckbox extends Checkbox {
 }
+
+// @public (undocumented)
+export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'>;
 
 // @public
 export class FluentDesignSystemProvider extends DesignSystemProvider implements Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
@@ -383,6 +385,10 @@ export class FluentRadio extends Radio {
 
 // @public
 export class FluentRadioGroup extends RadioGroup {
+}
+
+// @public
+export class FluentSkeleton extends Skeleton {
 }
 
 // @public
@@ -605,6 +611,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SkeletonStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;

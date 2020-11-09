@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 export const TeachingBubbleWideExample: React.FunctionComponent = () => {
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);

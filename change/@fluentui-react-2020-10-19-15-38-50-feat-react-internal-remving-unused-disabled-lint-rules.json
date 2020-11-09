@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Removing unused disabled eslint rules from react package.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-19T22:38:50.964Z"
-}

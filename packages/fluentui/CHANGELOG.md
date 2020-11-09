@@ -47,6 +47,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `TreeTitle` arrow left navigation @assuncaocharles ([#15262](https://github.com/microsoft/fluentui/pull/15262))
 - Updated `ReactionsIcon` @TanelVari ([#15358](https://github.com/microsoft/fluentui/pull/15358))
 - Memoize context value in `Provider` to avoid rerenders @layershifter ([#15358](https://github.com/microsoft/fluentui/pull/15380))
+- Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -73,8 +74,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `hoverBackground` and `paddingRight` variables to `treeTitleVariables` @assuncaocharles ([#15200](https://github.com/microsoft/fluentui/pull/15200))
 - Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
+- Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
+- Added `SaveIcon`, `LocationIcon`, `ArrowSortIcon`, `TeamsMonochromeIcon` and `MegaphoneIcon`. @TanelVari ([#15830](https://github.com/microsoft/fluentui/pull/15830))
 
 ### Documentation
+- AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))
+- UIBuilder: Add accessibility props panel @jurokapsiar ([#15820](https://github.com/microsoft/fluentui/pull/15820))
 - Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))
 - Fixed icon margins after code change in UI builder @vyhnalekl ([#14859](https://github.com/microsoft/fluentui/pull/14859))
 - Fixed image with no height in build mode - UI builder @vyhnalekl ([#14893](https://github.com/microsoft/fluentui/pull/14893))
@@ -100,6 +105,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Detect focus on body in use mode - UI builder @vyhnalekl ([#14954](https://github.com/microsoft/fluentui/pull/14954))
 - Fixed `ComponentTree` accessibility in UI builder @vyhnalekl ([#14967](https://github.com/microsoft/fluentui/pull/14967))
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
+- Fixed category color scheme dropdown to show all available colors @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
+- Added support to serve different docsite versions @ling1726 ([#15692](https://github.com/microsoft/fluentui/pull/15692))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)

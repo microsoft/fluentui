@@ -14,10 +14,11 @@ import {
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
-  additionalMarginRight,
+  createStringYAxis,
   IMargins,
   getMinMaxOfYAxis,
   XAxisTypes,
+  YAxisType,
 } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -58,11 +59,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       _height: this.props.height || 350,
     };
     this.idForGraph = getId('chart_');
+    /**
+     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
+     * So that, in RTL, left margins becomes right margins and viceversa.
+     * As graph needs to be drawn perfecty, these values consider as default values.
+     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
+     */
     this.margins = {
-      top: this.props.margins?.top || 20,
-      right: this.props.margins?.right || 20,
-      bottom: this.props.margins?.bottom || 35,
-      left: this.props.margins?.left || 40,
+      top: this.props.margins?.top ?? 20,
+      bottom: this.props.margins?.bottom ?? 35,
+      right: this._isRtl ? this.props.margins?.left ?? 40 : this.props.margins?.right ?? 20,
+      left: this._isRtl ? this.props.margins?.right ?? 20 : this.props.margins?.left ?? 40,
     };
   }
 
@@ -81,7 +88,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -100,6 +107,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
+      xAxisCount: this.props.xAxisTickCount,
+      xAxistickSize: this.props.xAxistickSize,
+      tickPadding: this.props.tickPadding,
+      xAxisPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
@@ -114,6 +125,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       tickPadding: 10,
       maxOfYVal: this.props.maxOfYVal,
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+      yAxisPadding: this.props.yAxisPadding,
     };
 
     /**
@@ -144,7 +156,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      * 2. To draw the graph.
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
-    const yScale = createYAxis(YAxisParams, this._isRtl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let yScale: any;
+    if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
+      yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
+    } else {
+      yScale = createYAxis(YAxisParams, this._isRtl);
+    }
 
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
@@ -180,14 +198,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <FocusZone direction={focusDirection}>
+        <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -196,16 +214,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl ? svgDimensions.width - this.margins.right! - additionalMarginRight : 40
+                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
               }, 0)`}
               className={this._classNames.yAxis}
             />
             {children}
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {this.props.legendBars}
-        </div>
+        {!this.props.hideLegend && (
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+            {this.props.legendBars}
+          </div>
+        )}
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
           <Callout {...calloutProps}>
             {/** Given custom callout, then it will render */}
@@ -219,6 +239,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 Legend={calloutProps.legend!}
                 YValue={calloutProps.YValue!}
                 color={calloutProps.color!}
+                {...chartHoverProps}
               />
             )}
           </Callout>
@@ -336,14 +357,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
-
     this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
+      let legendContainerHeight;
+      if (this.props.hideLegend) {
+        legendContainerHeight = 32;
+      } else {
+        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        legendContainerHeight =
+          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+          parseFloat(legendContainerComputedStyles.marginTop || '0') +
+          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+      }
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
       const currentContainerWidth = container.getBoundingClientRect().width;
       const currentContainerHeight =

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
+import { ChartHoverCard, IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
@@ -123,6 +123,12 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       href={'https://developer.microsoft.com/en-us/'}
       focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
       legendsOverflowText={'OverFlow Items'}
+      // eslint-disable-next-line react/jsx-no-bind
+      onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+        props ? (
+          <ChartHoverCard Legend={props.legend} YValue={props.yAxisCalloutData || props.data} color={props.color} />
+        ) : null
+      }
     />
   );
 };

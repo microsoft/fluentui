@@ -39,7 +39,6 @@ import { ITheme } from '@fluentui/react-internal/lib/Styling';
 import { ITooltipHostProps } from '@fluentui/react-internal/lib/Tooltip';
 import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
 import { IWithViewportProps } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
-import { Omit } from '@fluentui/react-internal/lib/Utilities';
 import { PersonaInitialsColor } from '@fluentui/react-internal/lib/Persona';
 import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react-internal/lib/Positioning';
@@ -1671,6 +1670,8 @@ export interface IGroupedListState {
     // (undocumented)
     groups?: IGroup[];
     // (undocumented)
+    items?: IGroupedListProps['items'];
+    // (undocumented)
     listProps?: IGroupedListProps['listProps'];
     // (undocumented)
     selectionMode?: IGroupedListProps['selectionMode'];
@@ -1879,18 +1880,19 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
+    get selectedOptions(): IComboBoxOption[];
 }
 
 
 export * from "@fluentui/react-button";
-export * from "@fluentui/react-checkbox/lib/Checkbox";
+export * from "@fluentui/react-checkbox";
+export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
-export * from "@fluentui/react-link/lib/Link";
-export * from "@fluentui/react-slider/lib/Slider";
-export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-toggle/lib/Toggle";
+export * from "@fluentui/react-link";
+export * from "@fluentui/react-slider";
+export * from "@fluentui/react-tabs";
+export * from "@fluentui/react-toggle";
 
 // (No @packageDocumentation comment for this package)
 

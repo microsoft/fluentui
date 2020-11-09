@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useControllableValue, useId } from '@uifabric/react-hooks';
-import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
+import { useControllableValue, useId } from '@fluentui/react-hooks';
+import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
 import {
   DirectionalHint,
   FocusZone,
@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-internal';
 import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
-import { useOverflow } from './useOverflow';
+import { useOverflow } from '../../utilities/useOverflow';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
