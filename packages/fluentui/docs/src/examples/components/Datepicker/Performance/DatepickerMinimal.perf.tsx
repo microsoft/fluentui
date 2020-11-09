@@ -1,7 +1,7 @@
 import { Datepicker } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DatepickerMinimalPerf = () => <Datepicker calendarOpenState={true} />;
+const DatepickerMinimalPerf = () => <Datepicker calendarOpenState={true} today={new Date(2020, 8, 12, 0, 0, 0, 0)} />;
 
 DatepickerMinimalPerf.iterations = 1000;
 DatepickerMinimalPerf.filename = 'DatepickerMinimal.perf.tsx';
