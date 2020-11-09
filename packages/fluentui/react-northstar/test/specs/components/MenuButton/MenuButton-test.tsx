@@ -125,8 +125,7 @@ describe('MenuButtonBehavior', () => {
   describe('trigger slot - NO tabbabble - Anchor without href', () => {
     const triggerAnchorWtihoutHref = (
       <a data-slotid="trigger" id="triggerElementID">
-        {' '}
-        triggerLink{' '}
+        triggerLink
       </a>
     );
     const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerAnchorWtihoutHref, menu: menuToRender });
