@@ -1,8 +1,9 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
+import { safeCreate } from '@fluentui/test-utilities';
 
 const ReactDOM = require('react-dom');
 
@@ -17,66 +18,91 @@ describe('Layer', () => {
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
 
+  const TestChild: React.FunctionComponent<{}> = () => (
+    <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
+  );
+
+  const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
+    <context.Provider value={{ foo: 'bar' }}>
+      <div id="parent">
+        <Layer hostId={props.hostId}>
+          <TestChild />
+        </Layer>
+      </div>
+    </context.Provider>
+  );
+
+  const TestApp: React.FunctionComponent<{ hostId?: string }> = props => (
+    <div id="app">
+      <Parent hostId={props.hostId} />
+      <LayerHost id={props.hostId} />
+    </div>
+  );
+
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer>Content</Layer>, component => {
+      const tree = component!.toJSON();
+      expect(tree).toMatchSnapshot();
+      ReactDOM.createPortal = createPortal;
     });
-
-    const component = renderer.create(<Layer>Content</Layer>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-    ReactDOM.createPortal = createPortal;
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {
-    class Child extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>;
-      }
-    }
-
-    class Parent extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return (
-          <context.Provider value={{ foo: 'bar' }}>
-            <div id="parent">
-              <Layer hostId="foo">
-                <Child />
-              </Layer>
-            </div>
-          </context.Provider>
-        );
-      }
-    }
-
-    class App extends React.Component<{}, {}> {
-      public render(): JSX.Element {
-        return (
-          <div id="app">
-            <Parent />
-            <LayerHost id="foo" />
-          </div>
-        );
-      }
-    }
-
     const appElement = document.createElement('div');
 
     try {
       document.body.appendChild(appElement);
-      ReactDOM.render(<App />, appElement);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestApp hostId="foo" />, appElement);
+      });
 
       const parentElement = appElement.querySelector('#parent');
+      expect(parentElement).toBeTruthy();
+      expect(parentElement!.ownerDocument).toBeTruthy();
 
-      expect(parentElement).toBeDefined();
-      expect(parentElement!.ownerDocument).toBeDefined();
+      const hostElement = document.getElementById('foo');
+      expect(hostElement).toBeTruthy();
 
-      const childElement = appElement.querySelector('#child') as Element;
+      const childElement = hostElement!.querySelector('#child') as Element;
 
       expect(childElement.textContent).toEqual('bar');
+    } finally {
+      ReactDOM.unmountComponentAtNode(appElement);
+      appElement.remove();
+    }
+  });
+
+  it('renders in targeted LayerHost on re-render', () => {
+    const appElement = document.createElement('div');
+
+    try {
+      document.body.appendChild(appElement);
+      // first render with no host id
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestApp />, appElement);
+      });
+
+      // re-render with host id
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestApp hostId="foo" />, appElement);
+      });
+
+      const parentElement = appElement.querySelector('#parent');
+      expect(parentElement).toBeTruthy();
+      expect(parentElement!.ownerDocument).toBeTruthy();
+
+      const hostElement = document.getElementById('foo');
+      expect(hostElement).toBeTruthy();
+
+      const childElement = hostElement!.querySelector('#child') as Element;
+      expect(childElement).toBeTruthy();
+      expect(childElement!.textContent).toEqual('bar');
     } finally {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();

@@ -5,8 +5,8 @@ import {
   AnimationVariables,
   getFocusStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
-} from '@uifabric/styling';
-import { getRTL } from '@uifabric/utilities';
+} from '@fluentui/style-utilities';
+import { getRTL } from '@fluentui/utilities';
 
 const GlobalClassNames = {
   root: 'ms-Slider',

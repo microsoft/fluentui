@@ -1,5 +1,5 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
-import { CompoundButtonState } from './CompoundButton.types';
+import { CompoundButtonState, CompoundButtonVariants } from './CompoundButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
 
 const GlobalClassNames = {
@@ -8,7 +8,7 @@ const GlobalClassNames = {
   secondaryContent: 'ms-CompoundButton-secondaryContent',
 };
 
-export const useClasses = makeVariantClasses<CompoundButtonState>({
+export const useClasses = makeVariantClasses<CompoundButtonState, CompoundButtonVariants>({
   name: 'CompoundButton',
   prefix: '--button',
   styles: {
@@ -37,8 +37,18 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         lineHeight: '100%',
         marginTop: 'var(--button-secondaryContentGap)',
 
+        '@media (forced-colors: active)': {
+          color: 'var(--button-highContrast-secondaryContentColor)',
+        },
+
         [`.${GlobalClassNames.root}:hover &`]: {
           color: 'var(--button-hovered-secondaryContentColor, var(--button-secondaryContentColor))',
+
+          '@media (forced-colors: active)': {
+            color:
+              'var(--button-highContrast-hovered-secondaryContentColor, ' +
+              'var(--button-highContrast-secondaryContentColor))',
+          },
         },
 
         [`.${GlobalClassNames.root}:active &`]: {
@@ -46,17 +56,30 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
             'var(--button-pressed-secondaryContentColor, ' +
             'var(--button-hovered-secondaryContentColor, ' +
             'var(--button-secondaryContentColor)))',
+
+          '@media (forced-colors: active)': {
+            color:
+              'var(--button-highContrast-pressed-secondaryContentColor, ' +
+              'var(--button-highContrast-hovered-secondaryContentColor, ' +
+              'var(--button-highContrast-secondaryContentColor)))',
+          },
         },
 
         [`.${GlobalClassNames.root}[aria-disabled="true"] &`]: {
           color: 'var(--button-disabled-secondaryContentColor, var(--button-disabled-contentColor))',
+
+          '@media (forced-colors: active)': {
+            color:
+              'var(--button-highContrast-disabled-secondaryContentColor, ' +
+              'var(--button-highContrast-secondaryContentColor))',
+          },
         },
       },
     ],
   },
 
-  variants: (theme: Theme) => {
-    const { palette, semanticColors } = theme;
+  variants: (theme: Theme): CompoundButtonVariants => {
+    const { fonts, palette, semanticColors } = theme;
 
     return {
       root: {
@@ -70,6 +93,7 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         iconSize: '28px',
         secondaryContentColor: palette.neutralSecondary,
         secondaryContentGap: '4px',
+        secondaryContentFontSize: fonts?.small.fontSize as string,
         secondaryContentFontWeight: 'normal',
 
         hovered: {
@@ -81,18 +105,35 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
         },
 
         disabled: {
-          secondaryContentColor: 'var(--button-disabled-contentColor)',
+          secondaryContentColor: semanticColors.buttonTextDisabled,
         },
+
+        highContrast: {
+          secondaryContentColor: 'WindowText',
+          hovered: {
+            secondaryContentColor: 'Highlight',
+          },
+          pressed: {
+            secondaryContentColor: 'WindowText',
+          },
+          disabled: {
+            secondaryContentColor: 'GrayText',
+          },
+        },
+      },
+
+      block: {
+        maxWidth: '100%',
       },
 
       iconOnly: {
         minHeight: 'var(--button-size-regular)',
         width: 'var(--button-minHeight)',
-        minWidth: 0,
-        paddingBottom: 0,
-        paddingTop: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
+        minWidth: '0',
+        paddingBottom: '0',
+        paddingTop: '0',
+        paddingLeft: '0',
+        paddingRight: '0',
       },
 
       primary: {
@@ -108,6 +149,54 @@ export const useClasses = makeVariantClasses<CompoundButtonState>({
 
         pressed: {
           secondaryContentColor: 'var(--color-brand-pressed-secondaryContentColor)',
+        },
+
+        highContrast: {
+          secondaryContentColor: 'Window',
+          hovered: {
+            secondaryContentColor: 'Window',
+          },
+          pressed: {
+            secondaryContentColor: 'Window',
+          },
+          disabled: {
+            secondaryContentColor: 'GrayText',
+          },
+        },
+      },
+
+      ghost: {
+        secondaryContentColor: palette.neutralSecondary,
+        disabled: {
+          secondaryContentColor: palette.neutralTertiary,
+        },
+        focused: {
+          secondaryContentColor: palette.neutralSecondary,
+        },
+        hovered: {
+          secondaryContentColor: palette.neutralDark,
+        },
+        pressed: {
+          secondaryContentColor: palette.black,
+        },
+
+        highContrast: {
+          secondaryContentColor: 'WindowText',
+          hovered: {
+            secondaryContentColor: 'Highlight',
+          },
+          pressed: {
+            secondaryContentColor: 'Highlight',
+          },
+          disabled: {
+            secondaryContentColor: 'GrayText',
+          },
+        },
+      },
+
+      transparent: {
+        hovered: {
+          secondaryContentColor: palette?.themePrimary,
         },
       },
     };

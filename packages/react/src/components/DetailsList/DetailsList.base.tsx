@@ -46,8 +46,8 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction } from '@uifabric/utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { composeRenderFunction } from '@fluentui/utilities';
+import { useConst } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 

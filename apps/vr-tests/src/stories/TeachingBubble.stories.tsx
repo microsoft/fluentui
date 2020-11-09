@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
+import { FabricDecoratorTall } from '../utilities/index';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 

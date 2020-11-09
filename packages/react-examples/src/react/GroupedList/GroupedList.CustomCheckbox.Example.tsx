@@ -10,8 +10,8 @@ import { IColumn, IObjectWithKey, DetailsRow } from '@fluentui/react/lib/Details
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { useConst } from '@uifabric/react-hooks';
-import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
+import { useConst } from '@fluentui/react-hooks';
+import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 
 const groupCount = 3;
 const groupDepth = 1;

@@ -14,7 +14,7 @@ const SeparatorIconExampleCode = require('!raw-loader!@fluentui/react-examples/s
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
   componentName: 'Separator',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Separator',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Separator',
   examples: [
     {
       title: 'Basic Separator with Text',

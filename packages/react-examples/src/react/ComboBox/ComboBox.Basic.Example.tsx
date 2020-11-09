@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  ComboBox,
-  IComboBox,
-  IComboBoxOption,
-  PrimaryButton,
-  SelectableOptionMenuItemType,
-} from '@fluentui/react/lib/index';
+import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
+import { SelectableOptionMenuItemType } from '@fluentui/react/lib/SelectableOption';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 const comboBoxBasicOptions: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },

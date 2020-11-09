@@ -5,7 +5,7 @@ import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { createTheme } from '@fluentui/theme';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 import { getTokens } from './getTokens';
 
 const lightTheme = {

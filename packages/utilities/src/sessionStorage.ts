@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 /**
  * Fetches an item from session storage without throwing an exception
  * @param key The key of the item to fetch from session storage
@@ -5,7 +7,8 @@
 export function getItem(key: string): string | null {
   let result = null;
   try {
-    result = window.sessionStorage.getItem(key);
+    const win = getWindow();
+    result = win ? win.sessionStorage.getItem(key) : null;
   } catch (e) {
     /* Eat the exception */
   }
@@ -19,7 +22,7 @@ export function getItem(key: string): string | null {
  */
 export function setItem(key: string, data: string): void {
   try {
-    window.sessionStorage.setItem(key, data);
+    getWindow()?.sessionStorage.setItem(key, data);
   } catch (e) {
     /* Eat the exception */
   }

@@ -20,19 +20,16 @@ export interface IUseBooleanCallbacks {
  */
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks] {
   const [value, setValue] = React.useState(initialState);
-  // Storing the value in a ref is redundant but allows the `toggle` callback to have a
-  // constant identity, which overall is probably better for consumers' perf.
-  const valueRef = React.useRef(value);
 
   const setTrue = useConst(() => () => {
     setValue(true);
-    valueRef.current = true;
   });
   const setFalse = useConst(() => () => {
     setValue(false);
-    valueRef.current = false;
   });
-  const toggle = useConst(() => () => (valueRef.current ? setFalse() : setTrue()));
+  const toggle = useConst(() => () => {
+    setValue(currentValue => !currentValue);
+  });
 
   return [value, { setTrue, setFalse, toggle }];
 }

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
-import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
-import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
+import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
 import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */

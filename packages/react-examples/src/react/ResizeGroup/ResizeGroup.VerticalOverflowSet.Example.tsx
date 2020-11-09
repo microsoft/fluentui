@@ -3,13 +3,12 @@ import {
   mergeStyles,
   IContextualMenuItem,
   ResizeGroupDirection,
-  CommandBarButton,
   ResizeGroup,
   OverflowSet,
-  IButtonStyles,
   DirectionalHint,
   createArray,
 } from '@fluentui/react';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];

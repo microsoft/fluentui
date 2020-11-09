@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removing react-next OverflowSet examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-06T21:51:08.563Z"
-}

@@ -58,7 +58,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="group"
+          role="none"
         >
           <div
             className=
@@ -407,7 +407,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="group"
+          role="none"
         >
           <div
             className=

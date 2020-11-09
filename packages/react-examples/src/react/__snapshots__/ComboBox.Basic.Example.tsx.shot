@@ -161,6 +161,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             right: 0px;
             top: 0px;
           }
+      data-ktp-target={true}
       id="ComboBox0wrapper"
     >
       <input
@@ -213,6 +214,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: WindowText;
             }
         data-is-interactable={true}
+        data-ktp-execute-target={true}
         data-lpignore={true}
         id="ComboBox0-input"
         onBlur={[Function]}
@@ -226,7 +228,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        readOnly={false}
         role="combobox"
         spellCheck={false}
         type="text"
@@ -384,8 +385,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </div>
     <div
       aria-atomic="true"
+      aria-hidden={true}
       aria-live="polite"
-      className=""
       id="ComboBox0-error"
       role="region"
     >

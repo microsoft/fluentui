@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Announced } from '@fluentui/react/lib/Announced';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import { Selection } from '@fluentui/react/lib/Selection';
 import { Text } from '@fluentui/react/lib/Text';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { createArray } from '@fluentui/react/lib/Utilities';
 
 interface IExampleItem {

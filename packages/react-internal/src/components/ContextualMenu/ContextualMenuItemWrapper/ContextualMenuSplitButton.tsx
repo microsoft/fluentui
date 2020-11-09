@@ -15,7 +15,7 @@ import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { IKeytipProps } from '../../Keytip/Keytip.types';
+import { IKeytipProps } from '../../../Keytip';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 
 export interface IContextualMenuSplitButtonState {}

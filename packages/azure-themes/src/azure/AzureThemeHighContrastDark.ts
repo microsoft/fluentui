@@ -1,8 +1,9 @@
-import { createTheme, ITheme } from '@fluentui/react';
+import { createTheme, Theme } from '@fluentui/react';
 import { CommonSemanticColors, HighContrastDarkSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
+import { AzureStyleSettings } from './AzureStyleSettings';
 
 const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: HighContrastDarkSemanticColors.background,
@@ -125,11 +126,14 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   linkBorderStyle: 'dashed',
 };
 
-export const AzureThemeHighContrastDark: ITheme = createTheme({
+export const AzureThemeHighContrastDark: Theme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
       fontSize: FontSizes.size13,
+    },
+    large: {
+      fontSize: FontSizes.size14,
     },
   },
   palette: {
@@ -145,3 +149,5 @@ export const AzureThemeHighContrastDark: ITheme = createTheme({
   },
   semanticColors: highContrastDarkExtendedSemanticColors,
 });
+
+AzureThemeHighContrastDark.components = AzureStyleSettings(AzureThemeHighContrastDark);

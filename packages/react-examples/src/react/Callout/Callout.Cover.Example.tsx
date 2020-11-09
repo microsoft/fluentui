@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  DefaultButton,
   Callout,
   DirectionalHint,
   Dropdown,
@@ -9,7 +8,8 @@ import {
   FontWeights,
   Text,
 } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
