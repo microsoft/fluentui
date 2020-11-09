@@ -3,7 +3,7 @@
  * The first part matches characters within parenthesis, including the parenthesis.
  * The second part matches special ASCII characters except space, plus some unicode special characters.
  */
-const UNWANTED_CHARS_REGEX: RegExp = /\([^)]*\)|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
+const UNWANTED_CHARS_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
 
 /**
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
