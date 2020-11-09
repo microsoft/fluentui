@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 06 Nov 2020 12:22:44 GMT",
+      "tag": "@uifabric/azure-themes_v7.5.40",
+      "version": "7.5.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon button & disabled textbox style fix",
+            "author": "jagaheri@microsoft.com",
+            "commit": "74abc00293c8d4c32906680b204544dc6ff7f58a",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Oct 2020 12:26:59 GMT",
       "tag": "@uifabric/azure-themes_v7.5.29",
       "version": "7.5.29",

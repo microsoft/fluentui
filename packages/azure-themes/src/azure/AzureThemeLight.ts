@@ -91,7 +91,6 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutline: LightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
-  iconButtonBackground: StyleConstants.transparent,
   iconButtonFill: LightSemanticColors.primaryButton.rest.background,
   iconButtonFillHovered: LightSemanticColors.primaryButton.hover.background,
   labelText: LightSemanticColors.text.label,

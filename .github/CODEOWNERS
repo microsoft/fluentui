@@ -58,10 +58,11 @@ packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
-packages/styling/src/interfaces/ @phkuo
-packages/styling/src/styles/ @phkuo
-packages/theme/ @xugao
-packages/tsx-editor/ @ecraig12345
+packages/styling/src/interfaces/ @phkuo @xugao
+packages/styling/src/styles/ @phkuo @xugao
+packages/theme/ @dzearing @xugao
+packages/react-theme-provider/ @dzearing @xugao
+packages/react-stylesheets/ @dzearing @xugao
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd

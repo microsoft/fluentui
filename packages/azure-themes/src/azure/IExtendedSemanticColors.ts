@@ -46,7 +46,6 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   errorBackground: string;
   errorText: string;
   focusBorder: string;
-  iconButtonBackground: string;
   iconButtonFill: string;
   iconButtonFillHovered: string;
   inputBackground: string;

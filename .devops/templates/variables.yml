@@ -13,3 +13,6 @@ variables:
     deployBasePath: "pr-deploy-site/${{ variables['Build.SourceVersion'] }}"
 
   deployHost: 'fabricweb.z5.web.core.windows.net'
+
+  ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/7.0') }}:
+    targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
