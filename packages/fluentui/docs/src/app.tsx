@@ -6,6 +6,8 @@ import {
   teamsTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
   RendererContext,
 } from '@fluentui/react-northstar';
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
@@ -29,6 +31,8 @@ const themes = {
   teamsTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
 };
 
 function useRendererFactory(): CreateRenderer {

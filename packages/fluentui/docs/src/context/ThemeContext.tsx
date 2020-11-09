@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-export type ThemeName = 'teamsTheme' | 'teamsDarkTheme' | 'teamsHighContrastTheme';
+export type ThemeName =
+  | 'teamsTheme'
+  | 'teamsDarkTheme'
+  | 'teamsHighContrastTheme'
+  | 'teamsV2Theme'
+  | 'teamsDarkV2Theme';
 type ThemeOption = { text: string; value: ThemeName };
 
 export type ThemeContextData = {
@@ -15,6 +20,8 @@ export const themeContextDefaults: ThemeContextData = {
     { text: 'Teams', value: 'teamsTheme' },
     { text: 'Teams Dark', value: 'teamsDarkTheme' },
     { text: 'Teams High Contrast', value: 'teamsHighContrastTheme' },
+    { text: 'Teams V2', value: 'teamsV2Theme' },
+    { text: 'Teams Dark V2', value: 'teamsDarkV2Theme' },
   ],
   changeTheme: () => {},
 };
