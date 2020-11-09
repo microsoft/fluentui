@@ -1,4 +1,4 @@
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from '@fluentui/react/lib/ChoiceGroup';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import * as StyleConstants from '../Constants';
 

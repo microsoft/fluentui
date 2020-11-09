@@ -1,2 +1,2 @@
 import './version';
-export * from '@fluentui/react-toggle/lib/Toggle';
+export * from '@fluentui/react/lib/Toggle';

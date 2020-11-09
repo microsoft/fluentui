@@ -1,5 +1,4 @@
-const { preset, just } = require('@uifabric/build');
-const { task, series } = just;
+import { preset, task, series } from '@fluentui/scripts';
 
 preset();
 

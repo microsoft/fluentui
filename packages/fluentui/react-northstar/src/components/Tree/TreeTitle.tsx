@@ -26,6 +26,7 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { TreeContext } from './utils';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -58,9 +59,6 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** Size of the tree containing this title without any children. */
   treeSize?: number;
 
-  /** Whether or not tree title is part of the selectable parent. */
-  selectableParent?: boolean;
-
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
 
@@ -75,12 +73,17 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** For selectable parents define if all nested children are checked */
   indeterminate?: boolean;
+
+  /** The id of the parent tree title, if any. */
+  parent?: string;
 }
 
 export type TreeTitleStylesProps = Pick<
   TreeTitleProps,
-  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate'
->;
+  'selected' | 'selectable' | 'disabled' | 'indeterminate' | 'level'
+> & {
+  showIndicator: boolean;
+};
 
 export const treeTitleClassName = 'ui-tree__title';
 
@@ -95,7 +98,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-
+  const { onFocusParent } = React.useContext(TreeContext);
   const {
     accessibility,
     children,
@@ -112,12 +115,11 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     disabled,
     selected,
     selectable,
-    selectableParent,
     expanded,
     indeterminate,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
+  const getA11Props = useAccessibility<TreeTitleBehaviorProps>(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
@@ -126,6 +128,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         }
         e.stopPropagation();
         handleClick(e);
+      },
+      focusParent: e => {
+        // allow bubbling up to parent treeItem
+        onFocusParent(props.parent);
       },
       performSelection: e => {
         e.preventDefault();
@@ -140,18 +146,19 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       treeSize,
       selected,
       selectable,
-      selectableParent,
     }),
     rtl: context.rtl,
   });
+
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: treeTitleClassName,
     mapPropsToStyles: () => ({
       selected,
-      selectableParent,
       disabled,
       selectable,
       indeterminate,
+      level,
+      showIndicator: selectable && ((hasSubtree && expanded) || selected || indeterminate),
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -172,13 +179,9 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     defaultProps: () => ({
       as: 'span',
       selected,
-      ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
-          _.isEmpty(selectionIndicator) && {
-            styles: resolvedStyles.selectionIndicator,
-          }),
+        styles: resolvedStyles.selectionIndicator,
       }),
     }),
   });
@@ -194,8 +197,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       })}
     >
       {childrenExist(children) ? children : content}
-
-      {selectable && selectIndicator}
+      {selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -214,10 +216,10 @@ TreeTitle.propTypes = {
   expanded: PropTypes.bool,
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
-  selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   indeterminate: PropTypes.bool,
+  parent: PropTypes.string,
 };
 TreeTitle.defaultProps = {
   as: 'a',

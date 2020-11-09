@@ -1,29 +1,26 @@
-// @ts-check
+import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
 
-const { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } = require('just-scripts');
+import path from 'path';
+import fs from 'fs';
 
-const path = require('path');
-const fs = require('fs');
-
-const { clean } = require('./tasks/clean');
-const { copy } = require('./tasks/copy');
-const { jest: jestTask, jestWatch } = require('./tasks/jest');
-const { sass } = require('./tasks/sass');
-const { ts } = require('./tasks/ts');
-const { eslint } = require('./tasks/eslint');
-const { webpack, webpackDevServer } = require('./tasks/webpack');
-const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
-const lintImports = require('./tasks/lint-imports');
-const prettier = require('./tasks/prettier');
-const bundleSizeCollect = require('./tasks/bundle-size-collect');
-const checkForModifiedFiles = require('./tasks/check-for-modified-files');
-const generateVersionFiles = require('./tasks/generate-version-files');
-const generatePackageManifestTask = require('./tasks/generate-package-manifest');
-const { postprocessTask } = require('./tasks/postprocess');
-const { postprocessAmdTask } = require('./tasks/postprocess-amd');
-const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
-const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
-const { fluentuiLernaPublish } = require('./tasks/fluentui-publish');
+import { clean } from './tasks/clean';
+import { copy } from './tasks/copy';
+import { jest as jestTask, jestWatch } from './tasks/jest';
+import { sass } from './tasks/sass';
+import { ts } from './tasks/ts';
+import { eslint } from './tasks/eslint';
+import { webpack, webpackDevServer } from './tasks/webpack';
+import { verifyApiExtractor, updateApiExtractor } from './tasks/api-extractor';
+import { lintImports } from './tasks/lint-imports';
+import { prettier } from './tasks/prettier';
+import { checkForModifiedFiles } from './tasks/check-for-modified-files';
+import { generateVersionFiles } from './tasks/generate-version-files';
+import { postprocessTask } from './tasks/postprocess';
+import { postprocessAmdTask } from './tasks/postprocess-amd';
+import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
+import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
+import { fluentuiLernaPublish } from './tasks/fluentui-publish';
+import { findGitRoot } from './monorepo/index';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -37,14 +34,29 @@ function basicPreset() {
   // Build only commonjs (not other TS variants) but still run other tasks
   option('commonjs');
 
-  option('cached', { default: false });
+  option('cached', { default: false } as any);
 
-  option('registry', { default: 'https://registry.npmjs.org' });
+  option('registry', { default: 'https://registry.npmjs.org' } as any);
 
-  option('push', { default: true });
+  option('push', { default: true } as any);
+
+  option('package', { alias: 'p' });
 }
 
-module.exports = function preset() {
+/** Resolve whereas a storybook config + stories exist for a given path */
+function checkForStorybookExistence() {
+  const packageName = path.basename(process.cwd());
+
+  // Returns true if the current package has a storybook config or the examples package has a storybook config and
+  // contains a folder with the current package's name.
+  return (
+    !!resolveCwd('./.storybook/main.js') ||
+    (!!resolveCwd('../react-examples/.storybook/main.js') &&
+      fs.existsSync(path.join(findGitRoot(), `packages/react-examples/src/${packageName}`)))
+  );
+}
+
+export function preset() {
   basicPreset();
 
   task('no-op', () => {}).cached();
@@ -67,10 +79,8 @@ module.exports = function preset() {
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
-  task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
 
@@ -119,9 +129,14 @@ module.exports = function preset() {
     'bundle',
     parallel(
       condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
+      condition('storybook:build', () => checkForStorybookExistence()),
     ),
   );
-};
+}
 
-module.exports.basic = basicPreset;
+preset.basic = basicPreset;
+
+if (process.cwd() === __dirname) {
+  // load the preset if this is being run within the scripts package
+  preset();
+}

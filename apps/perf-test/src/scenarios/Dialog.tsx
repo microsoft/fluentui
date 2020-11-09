@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, DialogType, DialogFooter, IDialogContentProps } from 'office-ui-fabric-react/lib/Dialog';
+import { Dialog, DialogType, DialogFooter, IDialogContentProps } from '@fluentui/react/lib/Dialog';
 
 const dialogContentProps: IDialogContentProps = {
   type: DialogType.normal,

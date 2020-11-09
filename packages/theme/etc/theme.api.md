@@ -4,36 +4,43 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
-export type ColorTokens = Partial<{
-    background: string;
-    contentColor: string;
-    secondaryContentColor: string;
-    linkColor: string;
-    iconColor: string;
-    borderColor: string;
-    dividerColor: string;
-    focusColor: string;
-    focusInnerColor: string;
-    opacity: string;
-}>;
-
-// @public (undocumented)
-export type ColorTokenSet = ColorTokens & ColorTokenStates;
+export const AnimationStyles: IAnimationStyles;
 
 // @public
-export type ColorTokenStates = Partial<{
-    hovered: ColorTokens;
-    pressed: ColorTokens;
-    disabled: ColorTokens;
-    checked: ColorTokens;
-    checkedHovered: ColorTokens;
-    checkedPressed: ColorTokens;
-}>;
+export const AnimationVariables: IAnimationVariables;
+
+// @public
+export type ColorTokens = ColorTokenSet & {
+    checked?: ColorTokenSet;
+    checkedHovered?: ColorTokenSet;
+    checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
+};
+
+// @public
+export type ColorTokenSet = {
+    background?: string;
+    contentColor?: string;
+    secondaryContentColor?: string;
+    linkColor?: string;
+    iconColor?: string;
+    menuIconColor?: string;
+    borderColor?: string;
+    dividerColor?: string;
+    focusColor?: string;
+    focusInnerColor?: string;
+    opacity?: string;
+    highContrast?: ColorTokens;
+};
 
 // @public (undocumented)
 export namespace CommunicationColors {
@@ -55,16 +62,22 @@ export namespace CommunicationColors {
     tint40 = "#eff6fc";
 }
 
-// @public (undocumented)
+// @public
+export type ComponentsStyles = {
+    [componentName: string]: ComponentStyles;
+};
+
+// @public
 export interface ComponentStyles {
-    // (undocumented)
-    [componentName: string]: {
-        styles?: IStyleFunctionOrObject<any, any>;
-    };
+    styles?: IStyleFunctionOrObject<any, any>;
+    variants?: Variants;
 }
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
+
+// @public
+export function createTheme(theme?: PartialTheme, depComments?: boolean): Theme;
 
 // @public (undocumented)
 export const DefaultEffects: IEffects;
@@ -79,6 +92,23 @@ export const DefaultPalette: IPalette;
 //
 // @public (undocumented)
 export const DefaultSpacing: ISpacing;
+
+// @public (undocumented)
+export namespace Depths {
+    const // (undocumented)
+    depth0 = "0 0 0 0 transparent";
+    const // (undocumented)
+    depth4 = "0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth8 = "0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth16 = "0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108)";
+    const // (undocumented)
+    depth64 = "0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18)";
+}
+
+// @public (undocumented)
+export const FluentTheme: ITheme;
 
 // @public (undocumented)
 export namespace FontSizes {
@@ -153,6 +183,102 @@ export namespace FontWeights {
     semibold: IFontWeight;
     const // (undocumented)
     bold: IFontWeight;
+}
+
+// @public
+export interface IAnimationStyles {
+    // (undocumented)
+    fadeIn100: IRawStyle;
+    // (undocumented)
+    fadeIn200: IRawStyle;
+    // (undocumented)
+    fadeIn400: IRawStyle;
+    // (undocumented)
+    fadeIn500: IRawStyle;
+    // (undocumented)
+    fadeOut100: IRawStyle;
+    // (undocumented)
+    fadeOut200: IRawStyle;
+    // (undocumented)
+    fadeOut400: IRawStyle;
+    // (undocumented)
+    fadeOut500: IRawStyle;
+    // (undocumented)
+    rotate90deg: IRawStyle;
+    // (undocumented)
+    rotateN90deg: IRawStyle;
+    // (undocumented)
+    scaleDownIn100: IRawStyle;
+    // (undocumented)
+    scaleDownOut98: IRawStyle;
+    // (undocumented)
+    scaleUpIn100: IRawStyle;
+    // (undocumented)
+    scaleUpOut103: IRawStyle;
+    // (undocumented)
+    slideDownIn10: IRawStyle;
+    // (undocumented)
+    slideDownIn20: IRawStyle;
+    // (undocumented)
+    slideDownOut10: IRawStyle;
+    // (undocumented)
+    slideDownOut20: IRawStyle;
+    // (undocumented)
+    slideLeftIn10: IRawStyle;
+    // (undocumented)
+    slideLeftIn20: IRawStyle;
+    // (undocumented)
+    slideLeftIn40: IRawStyle;
+    // (undocumented)
+    slideLeftIn400: IRawStyle;
+    // (undocumented)
+    slideLeftOut10: IRawStyle;
+    // (undocumented)
+    slideLeftOut20: IRawStyle;
+    // (undocumented)
+    slideLeftOut40: IRawStyle;
+    // (undocumented)
+    slideLeftOut400: IRawStyle;
+    // (undocumented)
+    slideRightIn10: IRawStyle;
+    // (undocumented)
+    slideRightIn20: IRawStyle;
+    // (undocumented)
+    slideRightIn40: IRawStyle;
+    // (undocumented)
+    slideRightIn400: IRawStyle;
+    // (undocumented)
+    slideRightOut10: IRawStyle;
+    // (undocumented)
+    slideRightOut20: IRawStyle;
+    // (undocumented)
+    slideRightOut40: IRawStyle;
+    // (undocumented)
+    slideRightOut400: IRawStyle;
+    // (undocumented)
+    slideUpIn10: IRawStyle;
+    // (undocumented)
+    slideUpIn20: IRawStyle;
+    // (undocumented)
+    slideUpOut10: IRawStyle;
+    // (undocumented)
+    slideUpOut20: IRawStyle;
+}
+
+// @public (undocumented)
+export interface IAnimationVariables {
+    // (undocumented)
+    durationValue1: string;
+    // (undocumented)
+    durationValue2: string;
+    // (undocumented)
+    durationValue3: string;
+    // (undocumented)
+    durationValue4: string;
+    // (undocumented)
+    easeFunction1: string;
+    // (undocumented)
+    easeFunction2: string;
 }
 
 // @public (undocumented)
@@ -263,20 +389,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = {
-    palette?: Partial<IPalette>;
-    fonts?: Partial<IFontStyles>;
-    defaultFontStyle?: IRawStyle;
-    semanticColors?: Partial<ISemanticColors>;
-    isInverted?: boolean;
-    disableGlobalClassNames?: boolean;
-    rtl?: boolean;
-    spacing?: Partial<ISpacing>;
-    effects?: Partial<IEffects>;
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
-};
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -436,11 +550,7 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export interface ITheme extends IScheme {
-    // @internal
-    schemes?: {
-        [P in ISchemeNames]?: IScheme;
-    };
+export interface ITheme extends Theme {
 }
 
 // @public (undocumented)
@@ -506,7 +616,7 @@ export namespace LocalizedFontNames {
 }
 
 // @public
-export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
+export function mergeThemes(theme: Theme, partialTheme?: PartialTheme): Theme;
 
 // @public (undocumented)
 export namespace MotionAnimations {
@@ -613,12 +723,35 @@ export namespace NeutralColors {
 }
 
 // @public
-export interface PartialTheme extends IPartialTheme {
+export interface PartialTheme {
     // (undocumented)
-    components?: ComponentStyles;
+    components?: ComponentsStyles;
+    defaultFontStyle?: IRawStyle;
     // (undocumented)
+    disableGlobalClassNames?: boolean;
+    // (undocumented)
+    effects?: Partial<IEffects>;
+    // (undocumented)
+    fonts?: Partial<IFontStyles>;
+    // (undocumented)
+    isInverted?: boolean;
+    // (undocumented)
+    palette?: Partial<IPalette>;
+    // (undocumented)
+    rtl?: boolean;
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
+    // (undocumented)
+    semanticColors?: Partial<ISemanticColors>;
+    // Warning: (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+    //
+    // (undocumented)
+    spacing?: Partial<ISpacing>;
+    // @internal
     stylesheets?: string[];
-    // (undocumented)
+    // @internal
     tokens?: RecursivePartial<Tokens>;
 }
 
@@ -706,13 +839,18 @@ export namespace SharedColors {
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public
-export interface Theme extends ITheme {
-    // (undocumented)
-    components?: ComponentStyles;
-    // (undocumented)
+export interface Theme extends IScheme {
+    components?: ComponentsStyles;
+    // @internal
+    id?: string;
+    // @internal
+    schemes?: {
+        [P in ISchemeNames]?: IScheme;
+    };
+    // @internal
     stylesheets?: string[];
-    // (undocumented)
-    tokens?: Tokens;
+    // @internal
+    tokens?: RecursivePartial<Tokens>;
 }
 
 // @public (undocumented)
@@ -732,11 +870,9 @@ export type TokenSetType = {
     [key: string]: TokenSetType | string | number | undefined;
 };
 
+// @public
+export type Variants = Record<string, any>;
 
-// Warnings were encountered during analysis:
-//
-// lib/types/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/types/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

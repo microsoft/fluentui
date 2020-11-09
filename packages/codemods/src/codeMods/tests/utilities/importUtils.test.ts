@@ -36,13 +36,13 @@ describe('Import Utilities test', () => {
     const imp = getImportsByPath(file, /office\-ui\-fabric\-react.+Button/)
       .chain(v => {
         if (v.length !== 1) {
-          return Err<ImportDeclaration, NoOp>({ reason: 'wrong number of results' });
+          return Err<ImportDeclaration, NoOp>({ logs: ['wrong number of results'] });
         }
         return Ok(v[0]);
       })
       .resolve(
         v => v.getModuleSpecifierValue(),
-        nop => nop.reason,
+        () => 'error',
       );
     expect(imp).toEqual(buttonPath);
   });
@@ -51,10 +51,10 @@ describe('Import Utilities test', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const imps = getImportsByPath(file, /office\-ui\-fabric\-react/)
       .chain(v => {
-        return v.length > 1 ? Ok(v) : Err<ImportDeclaration[], NoOp>({ reason: 'too few values returned' });
+        return v.length > 1 ? Ok(v) : Err<ImportDeclaration[], NoOp>({ logs: ['too few values returned'] });
       })
       .then(v => v.map(i => i.getModuleSpecifierValue()))
-      .resolveOk(r => [r.reason]);
+      .resolveOk(() => ['error']);
     imps.forEach(imp => {
       expect(imp).toContain(rootPath);
     });

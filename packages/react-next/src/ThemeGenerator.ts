@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/ThemeGenerator';
+export * from '@fluentui/react/lib/ThemeGenerator';

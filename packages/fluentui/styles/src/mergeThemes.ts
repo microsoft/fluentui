@@ -50,34 +50,40 @@ export const mergeComponentStyles__PROD = (
   const initial: ComponentSlotStylesPrepared = {};
 
   return sources.reduce<ComponentSlotStylesPrepared>((partStylesPrepared, stylesByPart) => {
-    _.forEach(stylesByPart, (partStyle, partName) => {
-      // Break references to avoid an infinite loop.
-      // We are replacing functions with a new ones that calls the originals.
-      const originalTarget = partStylesPrepared[partName];
-      const originalSource = partStyle;
+    // The of "[].forEach()" instead of "_.forEach" has zero sense, but somehow it solves a reported memory leak.
+    // There is no 100% confidence that it actually fixes anything.
+    if (_.isPlainObject(stylesByPart)) {
+      Object.keys(stylesByPart).forEach(partName => {
+        const partStyle = stylesByPart[partName];
 
-      // if there is no source, merging is a no-op, skip it
-      if (
-        typeof originalSource === 'undefined' ||
-        originalSource === null ||
-        (typeof originalSource === 'object' && Object.keys(originalSource).length === 0)
-      ) {
-        return;
-      }
+        // Break references to avoid an infinite loop.
+        // We are replacing functions with a new ones that calls the originals.
+        const originalTarget = partStylesPrepared[partName];
+        const originalSource = partStyle;
 
-      // no target means source doesn't need to merge onto anything
-      // just ensure source is callable (prepared format)
-      if (typeof originalTarget === 'undefined') {
-        partStylesPrepared[partName] = typeof originalSource === 'function' ? originalSource : callable(originalSource);
-        return;
-      }
+        // if there is no source, merging is a no-op, skip it
+        if (
+          typeof originalSource === 'undefined' ||
+          originalSource === null ||
+          (typeof originalSource === 'object' && Object.keys(originalSource).length === 0)
+        ) {
+          return;
+        }
 
-      // We have both target and source, replace with merge fn
-      partStylesPrepared[partName] = styleParam => {
-        // originalTarget is always prepared, fn is guaranteed
-        return _.merge(originalTarget(styleParam), callable(originalSource)(styleParam));
-      };
-    });
+        // no target means source doesn't need to merge onto anything
+        // just ensure source is callable (prepared format)
+        if (typeof originalTarget === 'undefined') {
+          partStylesPrepared[partName] = callable(originalSource);
+          return;
+        }
+
+        // We have both target and source, replace with merge fn
+        partStylesPrepared[partName] = styleParam => {
+          // originalTarget is always prepared, fn is guaranteed
+          return _.merge(originalTarget(styleParam), callable(originalSource)(styleParam));
+        };
+      });
+    }
 
     return partStylesPrepared;
   }, initial);

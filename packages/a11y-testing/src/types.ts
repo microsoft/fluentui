@@ -15,3 +15,22 @@ export interface TestFacade {
   pressEnterKey(slotName: string): void;
   verifyOnclickExecution(slotName: string): boolean;
 }
+
+export interface Rule {
+  stringify: () => string;
+}
+
+export interface Slot {
+  name: string;
+  props: Props[];
+  expectAttribute: boolean;
+  expectedAttribute: string;
+  expectedValue: PropValue;
+  description: string;
+  hidden: boolean;
+  afterEventData: Event;
+  checkClick: boolean;
+  checkSpaceKeyPressed: boolean;
+  checkEnterKeyPressed: boolean;
+  checkOnClickWasExecuted: boolean;
+}

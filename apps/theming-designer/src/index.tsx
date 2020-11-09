@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { initializeIcons } from '@uifabric/icons';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { ThemingDesigner } from './components/ThemingDesigner';
 
 initializeIcons();

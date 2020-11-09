@@ -1,2 +1,2 @@
 import './version';
-export * from 'office-ui-fabric-react/lib/PersonaPresence';
+export * from '@fluentui/react/lib/PersonaPresence';

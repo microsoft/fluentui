@@ -6,7 +6,7 @@ import {
   mergeCssSets,
   fontFace as mergeFontFace,
   keyframes as mergeKeyframes,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';
 
 let _seed = 0;
 
@@ -20,7 +20,7 @@ export const mergeStylesRenderer: StyleRenderer = {
 
   renderStyles: (styleSet, options) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return mergeCssSets([styleSet as any], options) as any;
+    return mergeCssSets((Array.isArray(styleSet) ? styleSet : [styleSet]) as any, options) as any;
   },
 
   renderFontFace: (fontFace, options) => {

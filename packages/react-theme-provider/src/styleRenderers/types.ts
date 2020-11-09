@@ -1,9 +1,9 @@
-import { IFontFace, IKeyframes } from '@uifabric/merge-styles';
+import { IFontFace, IKeyframes } from '@fluentui/merge-styles';
 
 export type FontFace = IFontFace;
 export type KeyFrames = IKeyframes;
 export type StyleRendererOptions = {
-  rtl: boolean;
+  rtl?: boolean;
   targetWindow: Window | undefined;
 };
 

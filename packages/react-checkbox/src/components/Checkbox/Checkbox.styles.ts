@@ -4,8 +4,8 @@ import {
   getGlobalClassNames,
   getEdgeChromiumNoHighContrastAdjustSelector,
   IStyle,
-} from '@uifabric/styling';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
+} from '@fluentui/style-utilities';
+import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
 const GlobalClassNames = {
   root: 'ms-Checkbox',

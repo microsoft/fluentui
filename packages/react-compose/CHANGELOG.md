@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 15 Sep 2020 12:26:06 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.7..@fluentui/react-compose_v1.0.0-beta.0)
+
+### Changes
+
+- Major bump react-compose package since it dependes on packages with new major. ([PR #15679](https://github.com/microsoft/fluentui/pull/15679) by xgao@microsoft.com)
+
+## [0.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.7)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.1..@fluentui/react-compose_v0.19.7)
+
+### Patches
+
+- Add missing version.ts; Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
 
 ## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.0)
 

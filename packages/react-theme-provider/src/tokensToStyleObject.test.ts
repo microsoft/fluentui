@@ -41,4 +41,15 @@ describe('tokensToStyleObject', () => {
       '--ms-body-text': 'blue',
     });
   });
+
+  it('can no-op on objects that have already been converted', () => {
+    const styleObject = tokensToStyleObject(
+      {
+        background: 'red',
+      },
+      '--button',
+    );
+
+    expect(tokensToStyleObject(styleObject)).toBe(styleObject);
+  });
 });

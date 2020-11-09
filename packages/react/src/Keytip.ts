@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Keytip';
+export * from '@fluentui/react-internal/lib/Keytip';

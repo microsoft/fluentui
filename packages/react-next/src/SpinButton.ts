@@ -1,2 +1,2 @@
 import './version';
-export * from './components/SpinButton/index';
+export * from '@fluentui/react/lib/SpinButton';

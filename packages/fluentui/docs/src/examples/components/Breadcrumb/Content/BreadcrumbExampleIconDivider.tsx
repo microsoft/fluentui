@@ -5,13 +5,13 @@ import { ChevronEndMediumIcon } from '@fluentui/react-icons-northstar';
 const BreadcrumbExampleIconDivider = props => (
   <Breadcrumb aria-label="breadcrumb">
     <Breadcrumb.Item>
-      <a href="">Home</a>
+      <Breadcrumb.Link href="">Home</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Divider>
       <ChevronEndMediumIcon />
     </Breadcrumb.Divider>
     <Breadcrumb.Item>
-      <a href="">Store</a>
+      <Breadcrumb.Link href="">Store</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Divider>
       <ChevronEndMediumIcon />

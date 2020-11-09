@@ -11,8 +11,8 @@ The Fluent UI web repository is home to 3 main projects today, the following tab
 |---| ----- | --------------- | -------------- |
 | **Overview**    | Mature, refreshing with new concepts from react-northstar. | Newer, has concepts we're iterating on. | Web Component implementation of Fluent UI. |
 | **Used By**     | Office| Teams | Edge |
-| **Read Me**     | [README.md](/packages/office-ui-fabric-react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
-| **Repo**        | [./packages/react](/packages/react) [./packages/office-ui-fabric-react](/packages/office-ui-fabric-react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
+| **Read Me**     | [README.md](/packages/react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
+| **Repo**        | [./packages/react](/packages/react) [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
 | **Quick Start** | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [Quick Start](https://fluentsite.z22.web.core.windows.net/quick-start) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
 | **Docs**        | aka.ms/fluentui-react | aka.ms/fluentui-react-northstar | aka.ms/fluentui-web-components |
 | **NPM**         | `@fluentui/react` | `@fluentui/react-northstar` | `@fluentui/web-components` |

@@ -89,6 +89,9 @@ export type AvatarTokenSet = {
   /** Background shown behind the initials or icon */
   background?: string;
 
+  /** Color of the initials or icon */
+  color?: string;
+
   /** Border radius */
   borderRadius?: string;
 
@@ -114,7 +117,7 @@ export type AvatarTokenSet = {
   inactiveOpacity?: string;
 
   /** Scale transform applied to the avatar when active=false */
-  inactiveScaleFactor?: string;
+  inactiveScale?: string;
 };
 
 export type AvatarState = AvatarProps;

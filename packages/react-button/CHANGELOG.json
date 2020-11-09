@@ -2,6 +2,235 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 06 Nov 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.9",
+      "version": "1.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Moving MenuContext outside of @fluentui/react-button and into @fluentui/react-shared-contexts.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb55393551e4e06a3864a6e2351c7cad7777dd6",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Nov 2020 12:29:43 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.8",
+      "version": "1.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Removing unused scss files.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "08d28c85ddc861eb731df5ad30e7073128187a2d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Nov 2020 12:34:30 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.7",
+      "version": "1.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Extrapolating expanded functionality in MenuButton to be provided via Context.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6f7c0988c2a942c9ec67239c589961a590b449b2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Oct 2020 12:32:24 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.4",
+      "version": "1.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating use of makeVariantClasses and fixing typing bugs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca3b8690a04e641ee494c7fecb62615f1c468af",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 23:25:40 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Major bump react-compose package since it dependes on packages with new major.",
+            "author": "xgao@microsoft.com",
+            "commit": "302f8e93bc5bc9fd87d1c5a082713560f3bc4583",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating styling to use variants.",
+            "author": "dzearing@hotmail.com",
+            "commit": "eff1a9885b9d67c6d811babc657fa1df778c16ac",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Adding high contrast styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7befd3044831e2ac6b1bf19ed40fbbae1c17cf49",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Adding transparent variant.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4fa0f14dc1e674cf56bdcaf6e57db28f57c4b4af",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Renaming `fluid` prop to `block` so that it is inline with the most used terminology in the web.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f60a6d9b90e980cb68ee3e094600566ad863f72a",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Adds docCategory Button to all type files so that they are picked up by api-docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "9c92b506d8139d1ab596caaec276774d9ae27b81",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Rename @fluentui/react-icons to @fluentui/react-icons-mdl2",
+            "author": "ololubek@microsoft.com",
+            "commit": "53457a5108da77c5ef2a3200fbb161fe59f3a267",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "author": "xgao@microsoft.com",
+            "commit": "17f2130e2a97e602ca2dfbb63adba24aa905d5da",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update snapshots in tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "5b078c73e52ed6c791b369a320fa053c101df1de",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Implementing ref conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "1daae9cb3c49e7254fe8f92228d64298cdec95db",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Fix imports in scss files to avoid requiring a build",
+            "author": "elcraig@microsoft.com",
+            "commit": "d2fedc85c81bb0e2d86495ec1e928604bf2260f4",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update ThemeProvider snapshots.",
+            "author": "xgao@microsoft.com",
+            "commit": "17f2130e2a97e602ca2dfbb63adba24aa905d5da",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update references to doc site-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "820f5a34d43c6a573ffa8a9191f03b73e5d29666",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-button_v0.14.3",
+      "version": "0.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MenuButton: Removing office-ui-fabric-react dependency by having ContextualMenu as a JSX slot replacement instead of the default.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a51b4255e077c6ac6b52eb16d64c01988cbfe81b",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-button_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add migration guide to readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e1d2f43c91fb227d5ae649e99cf59f2dd36d8e7",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2020 12:27:48 GMT",
       "tag": "@fluentui/react-button_v0.14.0",
       "version": "0.14.0",

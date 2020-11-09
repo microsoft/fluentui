@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
-import { css, memoizeFunction, styled } from '@uifabric/utilities';
+import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
+import { css, memoizeFunction, styled } from '@fluentui/utilities';
 import { LinkBase } from './LinkBase';
 import { ILinkProps, ILinkStyleProps, ILinkStyles } from '../Link';
 import * as classes from './Link.scss';

@@ -8,6 +8,7 @@ export * from './Button/buttonGroupBehavior';
 export * from './Button/buttonGroupBehavior';
 export * from './Button/toggleButtonBehavior';
 
+export * from './Breadcrumb/breadcrumbBehavior';
 export * from './Breadcrumb/breadcrumbItemBehavior';
 export * from './Breadcrumb/breadcrumbDividerBehavior';
 
@@ -90,6 +91,9 @@ export * from './Tree/treeTitleBehavior';
 export { treeAsListBehavior } from './Tree/treeAsListBehavior';
 export { treeItemAsListItemBehavior } from './Tree/treeItemAsListItemBehavior';
 export { treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsListItemTitleBehavior';
+export { treeAsListboxBehavior } from './Tree/treeAsListboxBehavior';
+export { treeItemAsOptionBehavior } from './Tree/treeItemAsOptionBehavior';
+export { treeTitleAsOptionBehavior } from './Tree/treeTitleAsOptionBehavior';
 
 export * from './TextArea/textAreaBehavior';
 

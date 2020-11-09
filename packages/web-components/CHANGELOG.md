@@ -1,12 +1,94 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.0..@fluentui/web-components_v0.7.1)
+
+### Patches
+
+- flipper cursor should be pointer on hover ([PR #15824](https://github.com/microsoft/fluentui/pull/15824) by chhol@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.0)
+
+Thu, 29 Oct 2020 12:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.3..@fluentui/web-components_v0.7.0)
+
+### Minor changes
+
+- add hover and focus-within elevation change for card ([PR #15751](https://github.com/microsoft/fluentui/pull/15751) by chhol@microsoft.com)
+
+### Patches
+
+- ensure elevated corner radius is applied to dialog ([PR #15752](https://github.com/microsoft/fluentui/pull/15752) by chhol@microsoft.com)
+
+## [0.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.3)
+
+Wed, 14 Oct 2020 20:26:08 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.2..@fluentui/web-components_v0.6.3)
+
+### Patches
+
+- operate dialog in open mode to ensure accessible focus behavior is supported ([PR #15502](https://github.com/microsoft/fluentui/pull/15502) by chhol@microsoft.com)
+- remove un-necessary palette generation ([PR #15509](https://github.com/microsoft/fluentui/pull/15509) by nicholasrice@users.noreply.github.com)
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.2)
+
+Fri, 09 Oct 2020 18:03:19 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.1..@fluentui/web-components_v0.6.2)
+
+### Patches
+
+- removes palette generation for every card and adds better null checking to avoid runtime errors ([PR #15429](https://github.com/microsoft/fluentui/pull/15429) by nicholasrice@users.noreply.github.com)
+
+## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.1)
+
+Fri, 09 Oct 2020 12:23:45 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.0..@fluentui/web-components_v0.6.1)
+
+### Patches
+
+- fix: ensure font properties are inherited to control and start/end content ([PR #15435](https://github.com/microsoft/fluentui/pull/15435) by chhol@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.6.0)
+
+Wed, 07 Oct 2020 12:24:30 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.5.0..@fluentui/web-components_v0.6.0)
+
+### Minor changes
+
+- close shadow roots of all web components ([PR #15382](https://github.com/microsoft/fluentui/pull/15382) by nicholasrice@users.noreply.github.com)
+- add skeleton as a new component ([PR #15397](https://github.com/microsoft/fluentui/pull/15397) by chhol@microsoft.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.5.0)
+
+Fri, 02 Oct 2020 12:28:46 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.4.0..@fluentui/web-components_v0.5.0)
+
+### Minor changes
+
+- export DesignSystem interface ([PR #15313](https://github.com/microsoft/fluentui/pull/15313) by chhol@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.4.0)
+
+Thu, 24 Sep 2020 00:46:56 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.3.1..@fluentui/web-components_v0.4.0)
+
+### Minor changes
+
+- Feat: adds automatic card background color calculation ([PR #15126](https://github.com/microsoft/fluentui/pull/15126) by jes@microsoft.com)
+
+### Patches
+
+- center align the start and end slot on tabs ([PR #14852](https://github.com/microsoft/fluentui/pull/14852) by 37851220+khamudom@users.noreply.github.com)
+
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.3.1)
 
-Wed, 23 Sep 2020 12:27:48 GMT 
+Wed, 23 Sep 2020 12:27:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.3.0..@fluentui/web-components_v0.3.1)
 
 ### Patches
@@ -15,7 +97,7 @@ Wed, 23 Sep 2020 12:27:48 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.3.0)
 
-Thu, 17 Sep 2020 23:15:07 GMT 
+Thu, 17 Sep 2020 23:15:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.2.0..@fluentui/web-components_v0.3.0)
 
 ### Minor changes
@@ -24,7 +106,7 @@ Thu, 17 Sep 2020 23:15:07 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.2.0)
 
-Thu, 17 Sep 2020 12:25:04 GMT 
+Thu, 17 Sep 2020 12:25:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.8..@fluentui/web-components_v0.2.0)
 
 ### Minor changes
@@ -33,7 +115,7 @@ Thu, 17 Sep 2020 12:25:04 GMT
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.8)
 
-Tue, 01 Sep 2020 12:27:02 GMT 
+Tue, 01 Sep 2020 12:27:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.7..@fluentui/web-components_v0.1.8)
 
 ### Patches
@@ -42,7 +124,7 @@ Tue, 01 Sep 2020 12:27:02 GMT
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
 
-Tue, 18 Aug 2020 07:58:00 GMT 
+Tue, 18 Aug 2020 07:58:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.5..@fluentui/web-components_v0.1.7)
 
 ### Patches
@@ -53,7 +135,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
 
-Thu, 13 Aug 2020 12:41:58 GMT 
+Thu, 13 Aug 2020 12:41:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.4..@fluentui/web-components_v0.1.5)
 
 ### Patches
@@ -62,7 +144,7 @@ Thu, 13 Aug 2020 12:41:58 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.4)
 
-Wed, 12 Aug 2020 18:34:18 GMT 
+Wed, 12 Aug 2020 18:34:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.3..@fluentui/web-components_v0.1.4)
 
 ### Patches
@@ -71,7 +153,7 @@ Wed, 12 Aug 2020 18:34:18 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.3)
 
-Tue, 11 Aug 2020 05:47:07 GMT 
+Tue, 11 Aug 2020 05:47:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.2..@fluentui/web-components_v0.1.3)
 
 ### Patches
@@ -80,7 +162,7 @@ Tue, 11 Aug 2020 05:47:07 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.2)
 
-Mon, 10 Aug 2020 06:19:21 GMT 
+Mon, 10 Aug 2020 06:19:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.1..@fluentui/web-components_v0.1.2)
 
 ### Patches
@@ -89,7 +171,7 @@ Mon, 10 Aug 2020 06:19:21 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.1)
 
-Thu, 06 Aug 2020 22:49:13 GMT 
+Thu, 06 Aug 2020 22:49:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.0..@fluentui/web-components_v0.1.1)
 
 ### Patches
