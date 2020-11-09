@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "7.8.48",
+  "version": "7.8.49",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-examples": "^0.8.10",
+    "@fluentui/react-examples": "^0.8.11",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.5.42",
     "@uifabric/azure-themes": "^7.5.40",

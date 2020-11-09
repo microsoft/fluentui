@@ -381,6 +381,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
+      replaceItem: _replaceItem,
       dragDropHelper: dragDropHelper,
       dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents,
     });
@@ -415,6 +416,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
     }
   };
+  const _replaceItem = (newItem: T | T[], index: number) => {
+    const newItems = Array.isArray(newItem) ? newItem : [newItem];
+    dropItemsAt(index, newItems, [index]);
+    if (props.selectedItemsListProps.replaceItem) {
+      props.selectedItemsListProps.replaceItem(newItem, index);
+    }
+  };
+
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
