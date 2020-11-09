@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 03 Nov 2020 12:22:17 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Nov 2020 12:21:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.3)
+
+Mon, 09 Nov 2020 12:21:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.1..@uifabric/charting_v4.9.3)
+
+### Patches
+
+- applied the ordering(descending order) in the callout for line points, fixed the opacity of the line also  ([PR #15814](https://github.com/microsoft/fluentui/pull/15814) by v-sivsar@microsoft.com)
 
 ## [4.9.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.1)
 
