@@ -136,8 +136,7 @@ describe('MenuButtonBehavior', () => {
   describe('trigger slot - NO tabbabble - Span', () => {
     const triggerWithoutTabIndex = (
       <span data-slotid="trigger" id="triggerElementID">
-        {' '}
-        text to trigger popup{' '}
+        text to trigger popup
       </span>
     );
     const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
