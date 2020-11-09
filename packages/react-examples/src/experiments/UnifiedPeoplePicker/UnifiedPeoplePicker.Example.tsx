@@ -6,10 +6,11 @@ import {
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { mru, people } from '@uifabric/example-data';
+import { mru, people, groupOne, groupTwo } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { IInputProps } from 'office-ui-fabric-react';
 import { useConst } from '@uifabric/react-hooks';
+import { SelectedPersona, ISelectedItemProps } from '@uifabric/experiments/lib/SelectedItemsList';
 
 const _suggestions = [
   {
@@ -75,7 +76,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     ..._suggestions,
   ]);
 
-  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
 
   const ref = React.useRef<any>();
 
@@ -244,6 +245,40 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
+  const _replaceItem = (newItem: IPersonaProps | IPersonaProps[], index: number): void => {
+    const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+
+    if (index >= 0) {
+      const newItems: IPersonaProps[] = [...peopleSelectedItems];
+      newItems.splice(index, 1, ...newItemsArray);
+      setPeopleSelectedItems(newItems);
+    }
+  };
+
+  /**
+   * Build a custom selected item capable of being edited with a dropdown and
+   * capable of eidting
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
+    <SelectedPersona canExpand={_canExpandItem} getExpandedItems={_getExpandedGroupItems} {...props} />
+  );
+
+  const _getExpandedGroupItems = async (item: IPersonaProps): Promise<IPersonaProps[]> => {
+    switch (item.text) {
+      case 'Group One':
+        return groupOne;
+      case 'Group Two':
+        return groupTwo;
+      default:
+        return [];
+    }
+  };
+
+  const _canExpandItem = (item: IPersonaProps): boolean => {
+    return item.text !== undefined && item.text.indexOf('Group') !== -1;
+  };
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -260,10 +295,12 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const selectedPeopleListProps = {
     selectedItems: [...peopleSelectedItems],
+    onRenderItem: SelectedItem,
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
     dropItemsAt: _dropItemsAt,
+    replaceItem: _replaceItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
