@@ -39,7 +39,7 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
       // Load the package info into the API model.
       apiModel.loadPackage(tmpFile);
 
-      // Delete the temporary package.
+      // Delete the temporary file.
       fs.unlinkSync(tmpFile);
     } else {
       apiModel.loadPackage(apiJsonPath);
