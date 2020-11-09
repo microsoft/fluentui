@@ -1,5 +1,6 @@
 export * from './ContextualMenu';
 export * from './ContextualMenu.base';
+// eslint-disable-next-line deprecation/deprecation
 export { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export * from './ContextualMenu.types';
 export * from './ContextualMenuItem';
