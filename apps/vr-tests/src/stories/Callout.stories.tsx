@@ -81,11 +81,11 @@ storiesOf('Callout', module)
       {calloutContent}
     </Callout>
   ))
-  .addStory('Left center', () => (
-    <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
-      {calloutContent}
-    </Callout>
-  ))
+  // .addStory('Left center', () => (
+  // <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
+  // {calloutContent}
+  // </Callout>
+  // ))
   .addStory('Left top edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftTopEdge}>
       {calloutContent}
