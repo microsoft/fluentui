@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import * as fse from 'fs-extra';
+import * as os from 'os';
+import * as path from 'path';
 import { ApiModel } from '@microsoft/api-extractor-model';
 import { IPageJsonOptions } from './types';
 import { generatePageJson } from './pageJson';
 
-const tmpFile = path.join(__dirname, 'tmp.json');
+const tmpFile = path.join(os.tmpdir(), 'compat.api.json');
 
 /**
  * Main entry point to create API \*.page.json files.
@@ -34,13 +34,13 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
       jsonObject.name = jsonObject.name + '-compat';
 
       // Write the info into a temporary file.
-      fs.writeFileSync(tmpFile, JSON.stringify(jsonObject));
+      fse.writeJSONSync(tmpFile, jsonObject);
 
       // Load the package info into the API model.
       apiModel.loadPackage(tmpFile);
 
       // Delete the temporary file.
-      fs.unlinkSync(tmpFile);
+      fse.unlinkSync(tmpFile);
     } else {
       apiModel.loadPackage(apiJsonPath);
     }
