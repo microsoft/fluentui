@@ -38,7 +38,7 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials in LTR with brackets', () => {
-    let result = getInitials('David [The man] Goff', false);
+    let result = getInitials('David Goff [The man]', false);
     expect(result).toEqual('DG');
   });
 
