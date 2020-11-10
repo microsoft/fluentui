@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Update ColorPicker to annouce changes to RGBA and hex fields",
+  "comment": "Update ColorPicker to annouce changes to RGBA and hex fields via aria-live",
   "packageName": "@fluentui/react-examples",
   "email": "jslone@microsoft.com",
   "dependentChangeType": "none",
