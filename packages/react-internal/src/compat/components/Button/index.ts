@@ -1,4 +1,5 @@
 export * from './BaseButton';
+export { IButtonClassNames } from './BaseButton.classNames';
 export * from './Button.types';
 export * from './Button';
 export * from './ActionButton/ActionButton';

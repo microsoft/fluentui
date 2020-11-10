@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 06 Nov 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Nov 2020 12:30:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.9)
+
+Tue, 10 Nov 2020 12:30:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.8..@fluentui/react-internal_v8.0.0-beta.9)
+
+### Changes
+
+- Updating Modal to a function component within react-internal. ([PR #15569](https://github.com/microsoft/fluentui/pull/15569) by czearing@outlook.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.8)
 

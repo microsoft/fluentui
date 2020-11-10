@@ -25,6 +25,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     isModeless,
     layerClassName,
     isDefaultDragHandle,
+    windowInnerHeight,
   } = props;
   const { palette, effects, fonts } = theme;
 
@@ -91,7 +92,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         maxHeight: '100vh',
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
-            maxHeight: window.innerHeight,
+            maxHeight: windowInnerHeight,
           },
         },
       },
