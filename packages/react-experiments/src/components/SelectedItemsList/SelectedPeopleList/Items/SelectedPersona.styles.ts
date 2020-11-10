@@ -1,4 +1,4 @@
-import { FontSizes, IRawStyle } from '@fluentui/react/lib/Styling';
+import { FontSizes } from '@fluentui/react/lib/Styling';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ISelectedPersonaStyleProps, ISelectedPersonaStyles } from './SelectedPersona.types';
 
@@ -14,106 +14,122 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         borderRadius: 15,
         display: 'inline-flex',
         alignItems: 'center',
-        background: isSelected ? palette.themePrimary : palette.themeLighterAlt,
+        background: palette.themeLighterAlt,
         margin: 4,
         cursor: 'default',
         userSelect: 'none',
         verticalAlign: 'middle',
         position: 'relative',
-      },
-      {
-        selectors: {
-          // hover styles
-          ':hover': [
-            {
-              background: palette.themeLighter,
-            },
-            {
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'HighlightText',
-                },
-              },
-            },
-          ],
-          // Add border and background in high contrast
+
+        // hover + selected hover state
+        ':hover': {
+          background: isSelected ? palette.themePrimary : palette.themeLighter,
+
+          // high contrast hover state
           [HighContrastSelector]: {
-            borderColor: 'Highlight',
+            border: '1px solid ButtonText',
+            color: 'HighlightText',
             background: 'Highlight',
-            '-ms-high-contrast-adjust': 'none',
-            // cast here because '-ms-high-contrast-adjust is not on styles
-          } as IRawStyle,
-        },
-      },
-      isSelected && {
-        background: palette.themePrimary,
-        selectors: {
-          [HighContrastSelector]: {
-            border: '1px solid WindowText',
-          },
-        },
-      },
-    ],
-    personaWrapper: [
-      {
-        position: 'relative',
-        display: 'inherit',
-      },
-    ],
-    expandButton: [
-      {
-        borderRadius: '15px 0px 0px 15px',
-        height: 33,
-        width: 44,
-        paddingRight: 16,
-        position: 'inherit',
-        display: 'flex',
-        marginRight: -17,
-        selectors: {
-          ':hover': {
-            backgroundColor: palette.themeLight,
-          },
-        },
-      },
-    ],
-    removeButton: [
-      {
-        borderRadius: 15,
-        flex: '0 0 auto',
-        width: 33,
-        height: 33,
-        selectors: {
-          ':hover': {
-            backgroundColor: palette.themeLight,
-          },
-        },
-      },
-    ],
-    itemContentWrapper: [
-      {
-        flex: '0 1 auto',
-        minWidth: 0,
-        /** Needed for IE 11 to properly truncate long persona names in the picker **/
-        maxWidth: '100%',
-      },
-    ],
-    subComponentStyles: {
-      personaStyles: {
-        // primary text in personas
-        primaryText: {
-          color: !isValid
-            ? // red iff valid, else white iff selected, else dark
-              palette.red
-            : isSelected
-            ? palette.white
-            : palette.themeDark,
-          fontSize: FontSizes.medium,
-          selectors: {
-            [HighContrastSelector]: {
+
+            // persona text
+            ['.ms-PickerItem-content']: {
+              color: 'HighlightText',
+            },
+
+            // remove/expand buttons
+            ['.ms-PickerItem-removeButton']: {
               color: 'HighlightText',
             },
           },
         },
+
+        // high contrast normal state
+        [HighContrastSelector]: {
+          border: '1px solid ButtonText',
+          color: !isValid ? palette.red : 'ButtonText',
+          background: 'ButtonFace',
+          '-ms-high-contrast-adjust': 'none',
+
+          // remove/expand buttons
+          ['.ms-PickerItem-removeButton']: {
+            color: 'ButtonText',
+          },
+        },
+      },
+      isSelected && {
+        background: palette.themePrimary,
+
+        // high contrast selected state
+        [HighContrastSelector]: {
+          color: 'HighlightText',
+          background: 'Highlight',
+
+          // remove/expand buttons
+          ['.ms-PickerItem-removeButton']: {
+            color: 'HighlightText',
+          },
+        },
+      },
+    ],
+    personaWrapper: {
+      position: 'relative',
+      display: 'inherit',
+    },
+    expandButton: {
+      borderRadius: '15px 0px 0px 15px',
+      height: 32,
+      width: 44,
+      paddingRight: 16,
+      position: 'inherit',
+      display: 'flex',
+      marginRight: -17,
+    },
+    removeButton: {
+      borderRadius: 15,
+      flex: '0 0 auto',
+      width: 32,
+      height: 32,
+    },
+    itemContentWrapper: {
+      flex: '0 1 auto',
+      minWidth: 0,
+      /** Needed for IE 11 to properly truncate long persona names in the picker **/
+      maxWidth: '100%',
+    },
+    subComponentStyles: {
+      personaStyles: {
+        root: {
+          // use color logic from personaContainer
+          color: 'inherit',
+        },
+        // primary text in personas
+        primaryText: [
+          {
+            color: !isValid ? palette.red : palette.themeDark,
+            fontSize: FontSizes.medium,
+
+            ':hover': {
+              color: !isValid ? palette.red : palette.themeDark,
+
+              // high contrast: use color logic from personaContainer
+              [HighContrastSelector]: {
+                color: 'inherit',
+              },
+            },
+
+            // high contrast: use color logic from personaContainer
+            [HighContrastSelector]: {
+              color: 'inherit',
+            },
+          },
+          isSelected && {
+            color: palette.white,
+
+            ':hover': {
+              color: palette.white,
+            },
+          },
+        ],
         details: {
           padding: '0 8px',
         },
@@ -126,18 +142,45 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
             },
       },
       actionButtonStyles: {
-        root: {
-          color: palette.white,
-        },
-        icon: {
-          color: isSelected ? palette.white : palette.themeDark,
-          selectors: {
-            ':hover': {
-              backgroundColor: isSelected ? palette.themeDark : undefined,
-            },
+        // root element for remove/expand button
+        root: [
+          {
+            color: palette.themeDark,
+
             [HighContrastSelector]: {
-              color: 'HighlightText',
+              // high contrast: use color logic from personaContainer
+              color: 'inherit',
+              backgroundColor: 'inherit',
             },
+          },
+          isSelected && {
+            color: palette.white,
+          },
+        ],
+        rootHovered: [
+          {
+            color: palette.themeDark,
+            backgroundColor: palette.themeLight,
+
+            [HighContrastSelector]: {
+              // high contrast: use color logic from personaContainer
+              color: 'inherit',
+              background: 'inherit',
+            },
+          },
+          isSelected && {
+            color: palette.white,
+            backgroundColor: palette.themeDarkAlt,
+          },
+        ],
+        rootPressed: {
+          color: palette.white,
+          backgroundColor: palette.themeDarkAlt,
+
+          [HighContrastSelector]: {
+            // high contrast: use color logic from personaContainer
+            color: 'inherit',
+            background: 'inherit',
           },
         },
       },
