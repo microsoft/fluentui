@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Nov 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.9)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.8..@fluentui/react-button_v1.0.0-beta.9)
+
+### Changes
+
+- Moving MenuContext outside of @fluentui/react-button and into @fluentui/react-shared-contexts. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.8)
 

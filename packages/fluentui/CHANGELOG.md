@@ -48,6 +48,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updated `ReactionsIcon` @TanelVari ([#15358](https://github.com/microsoft/fluentui/pull/15358))
 - Memoize context value in `Provider` to avoid rerenders @layershifter ([#15358](https://github.com/microsoft/fluentui/pull/15380))
 - Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
+- Fix `SplitButton` focus outline @assuncaocharles ([#15873](https://github.com/microsoft/fluentui/pull/15873))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
@@ -76,6 +77,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `paddingRight` variable to `treeTitleVariables` @assuncaocharles ([#15206](https://github.com/microsoft/fluentui/pull/15206))
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
+- Added `SaveIcon`, `LocationIcon`, `ArrowSortIcon`, `TeamsMonochromeIcon` and `MegaphoneIcon`. @TanelVari ([#15830](https://github.com/microsoft/fluentui/pull/15830))
 
 ### Documentation
 - AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))

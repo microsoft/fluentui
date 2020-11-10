@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { MenuButtonState, MinimalMenuProps } from './MenuButton.types';
+import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
+import { MenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
+import { MenuButtonState } from './MenuButton.types';
 
 export type ExpandedState = {
   ref?: React.Ref<unknown>;
@@ -14,11 +15,6 @@ export type ExpandedState = {
   'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
 
   menu?: MenuButtonState['menu'];
-};
-
-const MenuContext = React.createContext<MinimalMenuProps>({});
-export const useMenuContext = () => {
-  return React.useContext(MenuContext);
 };
 
 /**

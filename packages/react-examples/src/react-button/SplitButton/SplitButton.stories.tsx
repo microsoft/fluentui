@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MinimalMenuProps, SplitButton, SplitButtonProps } from '@fluentui/react-button';
+import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
 import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
@@ -17,35 +17,30 @@ const menuProps: IContextualMenuProps = {
   ],
 };
 
-const Menu = (props: MinimalMenuProps) => {
-  const { hidden, ...rest } = props;
-  return !hidden ? <ContextualMenu {...(rest as IContextualMenuProps)} {...menuProps} /> : null;
-};
-
 const SplitButtonExamples = (props: SplitButtonProps) => (
   <div className={classes.hStack}>
-    <SplitButton {...props} menu={Menu}>
+    <SplitButton {...props} menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} disabled menu={Menu}>
+    <SplitButton {...props} disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary menu={Menu}>
+    <SplitButton {...props} primary menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary disabled menu={Menu}>
+    <SplitButton {...props} primary disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost menu={Menu}>
+    <SplitButton {...props} ghost menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost disabled menu={Menu}>
+    <SplitButton {...props} ghost disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent menu={Menu}>
+    <SplitButton {...props} transparent menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent disabled menu={Menu}>
+    <SplitButton {...props} transparent disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
   </div>
