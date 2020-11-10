@@ -444,6 +444,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Hex"
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -616,9 +617,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Red"
-                      aria-valuemax={255}
-                      aria-valuemin={0}
-                      aria-valuenow={255}
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -705,7 +704,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       onChange={[Function]}
                       onFocus={[Function]}
                       onInput={[Function]}
-                      role="spinbutton"
                       spellCheck={false}
                       type="text"
                       value="255"
@@ -792,9 +790,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Green"
-                      aria-valuemax={255}
-                      aria-valuemin={0}
-                      aria-valuenow={255}
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -881,7 +877,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       onChange={[Function]}
                       onFocus={[Function]}
                       onInput={[Function]}
-                      role="spinbutton"
                       spellCheck={false}
                       type="text"
                       value="255"
@@ -968,9 +963,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Blue"
-                      aria-valuemax={255}
-                      aria-valuemin={0}
-                      aria-valuenow={255}
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -1057,7 +1050,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       onChange={[Function]}
                       onFocus={[Function]}
                       onInput={[Function]}
-                      role="spinbutton"
                       spellCheck={false}
                       type="text"
                       value="255"
@@ -1144,9 +1136,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Alpha"
-                      aria-valuemax={100}
-                      aria-valuemin={0}
-                      aria-valuenow={100}
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -1233,7 +1223,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       onChange={[Function]}
                       onFocus={[Function]}
                       onInput={[Function]}
-                      role="spinbutton"
                       spellCheck={false}
                       type="text"
                       value="100"
