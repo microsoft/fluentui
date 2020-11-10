@@ -158,7 +158,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   });
 
   const {
-    orderedItemIds,
+    visibleItemIds,
     getItemById,
     registerItemRef,
     toggleItemActive,
@@ -182,43 +182,23 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
 
   const renderContent = (): React.ReactElement[] => {
-    const itemsRendered = [];
-
-    let i = 0;
-    while (i < orderedItemIds.length) {
-      const id = orderedItemIds[i];
+    return visibleItemIds.map(id => {
       const item = getItemById(id);
       const { expanded, parent, level, index, treeSize } = item;
-      itemsRendered.push(
-        TreeItem.create(item.item, {
-          defaultProps: () =>
-            getA11yProps('item', {
-              key: id,
-              expanded,
-              parent,
-              level,
-              index,
-              treeSize,
-              selectable: selectable ? item.item.selectable !== false : false,
-              renderItemTitle: item.item.renderItemTitle || props.renderItemTitle,
-            }),
-        }),
-      );
-
-      i++;
-      if (!item.expanded) {
-        // item is collpased, so skip all its descendents
-        while (i < orderedItemIds.length) {
-          const nextItem = getItemById(orderedItemIds[i]);
-          if (nextItem?.level <= item.level) {
-            break;
-          }
-          i++;
-        }
-      }
-    }
-
-    return itemsRendered;
+      return TreeItem.create(item.item, {
+        defaultProps: () =>
+          getA11yProps('item', {
+            key: id,
+            expanded,
+            parent,
+            level,
+            index,
+            treeSize,
+            selectable: selectable ? item.item.selectable !== false : false,
+            renderItemTitle: item.item.renderItemTitle || props.renderItemTitle,
+          }),
+      });
+    });
   };
 
   const element = (
