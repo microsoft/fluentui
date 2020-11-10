@@ -14,7 +14,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend1');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 2',
@@ -25,7 +25,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend2');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 3',
@@ -36,7 +36,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend3');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 4',
@@ -47,7 +47,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend4');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 5',
@@ -58,7 +58,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend5');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 6',
@@ -69,7 +69,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend6');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 7',
@@ -80,7 +80,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend7');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 8',
@@ -91,7 +91,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend8');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 9',
@@ -102,7 +102,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend9');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 10',
@@ -113,7 +113,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend10');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 11',
@@ -124,7 +124,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend11');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 12',
@@ -135,7 +135,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend12');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 13',
@@ -146,7 +146,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend13');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 14',
@@ -157,7 +157,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend14');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 15',
@@ -168,7 +168,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend15');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 16',
@@ -179,7 +179,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend16');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
       {
         title: 'Legend 17',
@@ -190,7 +190,7 @@ export class LegendWrapLinesExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('Hover action for legend17');
         },
-        onMouseOutAction: () => {},
+        onMouseOutAction: () => undefined,
       },
     ];
 
