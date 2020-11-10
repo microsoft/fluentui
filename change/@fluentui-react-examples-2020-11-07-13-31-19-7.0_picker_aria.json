@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Update ColorPicker to treat RGBA input as aria spinbutton",
+  "comment": "Update ColorPicker to annouce changes to RGBA and hex fields",
   "packageName": "@fluentui/react-examples",
   "email": "jslone@microsoft.com",
   "dependentChangeType": "none",

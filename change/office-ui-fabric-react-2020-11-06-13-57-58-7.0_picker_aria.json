@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Update ColorPicker to treat RGBA fields as aria spinbuttons",
+  "comment": "Update ColorPicker to annouce changes to RGBA and hex fields via aria-live",
   "packageName": "office-ui-fabric-react",
   "email": "jslone@microsoft.com",
   "dependentChangeType": "patch",
