@@ -237,7 +237,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   -ms-high-contrast-adjust: none;
                   background: ButtonFace;
                   border: 1px solid ButtonText;
-                  color: #e81123;
+                  color: ButtonText;
                 }
                 @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
                   color: ButtonText;
@@ -566,7 +566,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       className=
                           ms-Persona-primaryText
                           {
-                            color: #e81123;
+                            color: #005a9e;
                             font-size: 14px;
                             font-weight: 400;
                             overflow: hidden;
@@ -574,7 +574,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                             white-space: nowrap;
                           }
                           &:hover {
-                            color: #e81123;
+                            color: #005a9e;
                           }
                           @media screen and (-ms-high-contrast: active){&:hover {
                             color: inherit;

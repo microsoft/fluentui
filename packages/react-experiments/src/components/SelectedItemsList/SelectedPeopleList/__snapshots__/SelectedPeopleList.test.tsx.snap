@@ -57,7 +57,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
-          color: #e81123;
+          color: ButtonText;
         }
         @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
@@ -334,7 +334,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               className=
                   ms-Persona-primaryText
                   {
-                    color: #e81123;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
@@ -342,7 +342,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #e81123;
+                    color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: inherit;
@@ -589,7 +589,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
-          color: #e81123;
+          color: ButtonText;
         }
         @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
@@ -866,7 +866,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               className=
                   ms-Persona-primaryText
                   {
-                    color: #e81123;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
@@ -874,7 +874,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #e81123;
+                    color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: inherit;
@@ -1143,7 +1143,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
-          color: #e81123;
+          color: ButtonText;
         }
         @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
@@ -1420,7 +1420,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               className=
                   ms-Persona-primaryText
                   {
-                    color: #e81123;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
@@ -1428,7 +1428,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #e81123;
+                    color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: inherit;
@@ -1675,7 +1675,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
-          color: #e81123;
+          color: ButtonText;
         }
         @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
@@ -1952,7 +1952,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               className=
                   ms-Persona-primaryText
                   {
-                    color: #e81123;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
@@ -1960,7 +1960,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #e81123;
+                    color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: inherit;
