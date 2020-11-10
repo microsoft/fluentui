@@ -52,7 +52,7 @@ describe('getInitials', () => {
     expect(result).toEqual('DG');
   });
 
-  it('calculates an expected initials in LTR with multiple parentheses, brackets, extra spaces, and unwanted characters', () => {
+  it('calculates an expected initials in LTR with multiple types of unwanted text', () => {
     let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)  [Beta]  ', false);
     expect(result).toEqual('DG');
   });

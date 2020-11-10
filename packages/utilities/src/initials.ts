@@ -3,6 +3,7 @@
  * The first part matches characters within parenthesis, including the parenthesis.
  * The second part matches special ASCII characters except space, plus some unicode special characters.
  */
+// eslint-disable-next-line @fluentui/max-len
 const UNWANTED_CHARS_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
 
 /**
