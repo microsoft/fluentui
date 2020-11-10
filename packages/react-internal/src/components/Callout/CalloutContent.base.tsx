@@ -26,7 +26,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst, useTarget } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,

@@ -1,4 +1,4 @@
-import { IStyleFunctionOrObject, Omit } from '../Utilities';
+import { IStyleFunctionOrObject } from '../Utilities';
 import { ITheme, IStyle } from '../Styling';
 
 export interface IExample {

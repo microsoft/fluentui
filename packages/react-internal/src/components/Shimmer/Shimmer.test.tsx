@@ -4,8 +4,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
-import { safeMount } from '@uifabric/test-utilities';
-import { resetIds } from '@uifabric/utilities';
+import { safeMount } from '@fluentui/test-utilities';
+import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('Shimmer', () => {

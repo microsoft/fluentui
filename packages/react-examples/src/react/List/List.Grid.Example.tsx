@@ -3,8 +3,8 @@ import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { List } from '@fluentui/react/lib/List';
 import { IRectangle } from '@fluentui/react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { createListItems, IExampleItem } from '@fluentui/example-data';
+import { useConst } from '@fluentui/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;

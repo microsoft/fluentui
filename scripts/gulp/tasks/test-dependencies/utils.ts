@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../../../lernaAliasNorthstar';
 import { LicenseWebpackPlugin } from 'license-webpack-plugin';
 import webpack from 'webpack';
 

@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -95,10 +98,16 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokens>;
   };
 
+/**
+ * {@docCategory Button}
+ */
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
     /* sizing */
@@ -122,6 +131,8 @@ export type ButtonTokens = ColorTokens &
     boxShadow?: string;
     width?: string;
 
+    forcedColorAdjust?: string;
+
     transform?: string;
     transition?: string;
 
@@ -141,10 +152,15 @@ export type ButtonTokens = ColorTokens &
     };
   };
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: TTokens;
-  primary?: TTokens;
-  iconOnly?: TTokens;
-  circular?: TTokens;
+  root?: TTokens;
   block?: TTokens;
+  circular?: TTokens;
+  iconOnly?: TTokens;
+  ghost?: TTokens;
+  primary?: TTokens;
+  transparent?: TTokens;
 };

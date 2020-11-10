@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router, Route, IRouteProps } from '@uifabric/example-app-base';
+import { Router, Route, IRouteProps } from '@fluentui/react-docsite-components';
 import { setBaseUrl } from '@fluentui/react/lib/Utilities';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 

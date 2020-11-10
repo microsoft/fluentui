@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react';
 import { DatePickerStyles } from './styles/DatePickerStyles';
 import { PeoplePickerItemStyles } from './styles/PeoplePickerStyles';
-import { addVariants } from '@uifabric/variants';
+import { addVariants } from '@fluentui/scheme-utilities';
 
 const DarkDefaultPalette: Partial<IPalette> = {
   themeDarker: '#82c7ff',

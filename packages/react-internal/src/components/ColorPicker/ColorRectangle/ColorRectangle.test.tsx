@@ -71,7 +71,7 @@ describe('ColorRectangle', () => {
     const descriptionId = element.getAttribute('aria-describedby');
     expect(descriptionId).toBeTruthy();
     const descriptionEl = element.querySelectorAll('#' + descriptionId)[0];
-    expect(descriptionEl).toBeDefined();
+    expect(descriptionEl).toBeTruthy();
     expect(descriptionEl.textContent).toBe(
       'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
     );

@@ -5,13 +5,13 @@
 ```ts
 
 import { ColorTokenSet } from '@fluentui/theme';
-import { ICustomizerContext } from '@uifabric/utilities';
-import { IFontFace } from '@uifabric/merge-styles';
-import { IKeyframes } from '@uifabric/merge-styles';
-import { IRawFontStyle } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { ICustomizerContext } from '@fluentui/utilities';
+import { IFontFace } from '@fluentui/merge-styles';
+import { IKeyframes } from '@fluentui/merge-styles';
+import { IRawFontStyle } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';
@@ -46,14 +46,14 @@ export function makeStyles<TStyleSet extends {
 };
 
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
 
 // @public
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
     name?: string;
     prefix?: string;
     styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-    variants?: Variants | ((theme: Theme) => Variants);
+    variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 // @public (undocumented)

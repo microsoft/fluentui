@@ -58,7 +58,7 @@ describe('CommandBar', () => {
 
     menuItem.simulate('click');
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('keeps menu open after update if item is still present', () => {
@@ -87,7 +87,7 @@ describe('CommandBar', () => {
     menuItem.simulate('click');
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
 
     // Update the props, and re-render
     commandBar.setProps({
@@ -100,7 +100,7 @@ describe('CommandBar', () => {
     });
 
     // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('closes menu after update if item is not longer present', () => {
@@ -129,7 +129,7 @@ describe('CommandBar', () => {
     menuItem.simulate('click');
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
 
     // Update the props, and re-render
     commandBar.setProps({
@@ -164,7 +164,7 @@ describe('CommandBar', () => {
     menuItem.simulate('click');
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
 
     // Update the props
     items[0].subMenuProps.items[0].className = 'SubMenuClassUpdate';
@@ -175,6 +175,6 @@ describe('CommandBar', () => {
     });
 
     // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClassUpdate')).toBeDefined();
+    expect(document.querySelector('.SubMenuClassUpdate')).toBeTruthy();
   });
 });

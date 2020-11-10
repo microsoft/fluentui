@@ -8,7 +8,7 @@ import {
   Table,
   Video,
   MarkdownCode,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';

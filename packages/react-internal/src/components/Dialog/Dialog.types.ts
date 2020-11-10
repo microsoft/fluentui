@@ -2,12 +2,12 @@ import * as React from 'react';
 import { IModalProps } from '../../Modal';
 import { DialogBase } from './Dialog.base';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonProps } from '../../compat/Button';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ICSSRule, ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 
 /**
  * {@docCategory Dialog}

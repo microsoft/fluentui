@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { UploadIcon } from '@fluentui/react-icons';
+import { UploadIcon } from '@fluentui/react-icons-mdl2';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { PartialTheme } from '@fluentui/theme';
 import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';

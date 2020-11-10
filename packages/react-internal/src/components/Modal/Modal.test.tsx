@@ -3,14 +3,24 @@ import { Modal } from './Modal';
 import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
+import { resetIds } from '../../Utilities';
 
 describe('Modal', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+  afterAll(() => {
+    resetIds();
+  });
+
   isConformant({
     Component: Modal,
     displayName: 'Modal',
+    requiredProps: { isOpen: true },
     componentPath: path.join(__dirname, 'Modal.ts'),
   });
+
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');

@@ -2,10 +2,11 @@
 // 1. Open <root>/node_modules/monaco-typescript/release/esm
 // 2. Merge .d.ts files into this file (unfortunately a manual process right now)
 // 3. Resolve any type mismatch issues (likely caused by mismatches between our TS version and Monaco's)
+/* eslint-disable */
 
 // merged imports from all files
 import * as ts from 'typescript';
-import * as monaco from '@uifabric/monaco-editor';
+import * as monaco from '@fluentui/monaco-editor';
 import CancellationToken = monaco.CancellationToken;
 import IDisposable = monaco.IDisposable;
 import IEvent = monaco.IEvent;
@@ -14,8 +15,6 @@ import Position = monaco.Position;
 import Range = monaco.Range;
 import Thenable = monaco.Thenable;
 import Uri = monaco.Uri;
-// temporarily using this Omit to prevent TS compatibility breaks
-import { Omit } from '@uifabric/utilities';
 
 // convenience re-export
 export type EmitOutput = ts.EmitOutput;
@@ -40,8 +39,7 @@ export declare class DiagnosticsAdapter extends Adapter {
   private _tsDiagnosticCategoryToMarkerSeverity;
 }
 export declare class SuggestAdapter extends Adapter implements monaco.languages.CompletionItemProvider {
-  // changed from getter syntax
-  readonly triggerCharacters: string[];
+  get triggerCharacters(): string[];
   provideCompletionItems(model: monaco.editor.ITextModel, position: Position, _context: monaco.languages.CompletionContext, token: CancellationToken): Promise<monaco.languages.CompletionList | undefined>;
   resolveCompletionItem(model: monaco.editor.ITextModel, _position: Position, item: monaco.languages.CompletionItem, token: CancellationToken): Promise<monaco.languages.CompletionItem>;
   private static convertKind;
@@ -103,14 +101,11 @@ export declare class FormatAdapter extends FormatHelper implements monaco.langua
   provideDocumentRangeFormattingEdits(model: monaco.editor.ITextModel, range: Range, options: monaco.languages.FormattingOptions, token: CancellationToken): Promise<monaco.languages.TextEdit[] | undefined>;
 }
 export declare class FormatOnTypeAdapter extends FormatHelper implements monaco.languages.OnTypeFormattingEditProvider {
-// changed from getter syntax
-  readonly autoFormatTriggerCharacters: string[];
+  get autoFormatTriggerCharacters(): string[];
   provideOnTypeFormattingEdits(model: monaco.editor.ITextModel, position: Position, ch: string, options: monaco.languages.FormattingOptions, token: CancellationToken): Promise<monaco.languages.TextEdit[] | undefined>;
 }
 export declare class CodeActionAdaptor extends FormatHelper implements monaco.languages.CodeActionProvider {
-  provideCodeActions(model: monaco.editor.ITextModel, range: Range, context: monaco.languages.CodeActionContext, token: CancellationToken): Promise<monaco.languages.CodeActionList>;
-  // Original:
-  // provideCodeActions(model: monaco.editor.ITextModel, range: Range, context: monaco.languages.CodeActionContext, token: CancellationToken): Promise<monaco.languages.CodeActionList | undefined>;
+  provideCodeActions(model: monaco.editor.ITextModel, range: Range, context: monaco.languages.CodeActionContext, token: CancellationToken): Promise<monaco.languages.CodeActionList | undefined>;
   private _tsCodeFixActionToMonacoCodeAction;
 }
 export declare class RenameAdapter extends Adapter implements monaco.languages.RenameProvider {
@@ -134,10 +129,8 @@ export declare class LanguageServiceDefaultsImpl implements monaco.languages.typ
   private _diagnosticsOptions;
   private _onDidExtraLibsChangeTimeout;
   constructor(compilerOptions: monaco.languages.typescript.CompilerOptions, diagnosticsOptions: monaco.languages.typescript.DiagnosticsOptions);
-  // changed from getter syntax
-  readonly onDidChange: IEvent<void>;
-  // changed from getter syntax
-  readonly onDidExtraLibsChange: IEvent<void>;
+  get onDidChange(): IEvent<void>;
+  get onDidExtraLibsChange(): IEvent<void>;
   getExtraLibs(): IExtraLibs;
   addExtraLib(content: string, _filePath?: string): IDisposable;
   setExtraLibs(libs: { content: string; filePath?: string; }[]): void;

@@ -1,6 +1,5 @@
-const { preset, just } = require('@uifabric/build');
-const { task, resolveCwd } = just;
-const { run } = require('parallel-webpack');
+import { preset, task, resolveCwd } from '@fluentui/scripts';
+import { run } from 'parallel-webpack';
 
 preset();
 

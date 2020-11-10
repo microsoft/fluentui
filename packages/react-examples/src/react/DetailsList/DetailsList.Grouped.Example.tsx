@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  DefaultButton,
   DetailsHeader,
   DetailsList,
   IColumn,
@@ -11,8 +10,8 @@ import {
   IToggleStyles,
   mergeStyles,
   Toggle,
-  IButtonStyles,
 } from '@fluentui/react';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({

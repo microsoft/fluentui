@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ThemeProvider: RecursivePartial now correctly works.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-17T14:55:51.573Z"
-}

@@ -3,7 +3,7 @@
 module.exports = function(env, argv) {
   const resources = require('../../scripts/webpack/webpack-resources');
   const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
-  const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
+  const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
   // @ts-ignore
   const version = require('./package.json').version;
   // production mode is either coming from env variable, CLI argument as mode or production

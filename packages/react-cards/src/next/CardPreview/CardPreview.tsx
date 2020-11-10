@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useFocusRects } from '@uifabric/utilities';
+import { useFocusRects } from '@fluentui/utilities';
 import { CardSectionProps } from '../CardSection/CardSection.types';
 import { useCardSection } from '../CardSection/useCardSection';
 import { useCardPreviewClasses } from './useCardPreviewClasses';

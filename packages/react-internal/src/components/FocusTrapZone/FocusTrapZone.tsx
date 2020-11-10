@@ -12,8 +12,8 @@ import {
   on,
 } from '../../Utilities';
 import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
-import { useId, useConst, useMergedRefs } from '@uifabric/react-hooks';
-import { useDocument } from '@fluentui/react-window-provider';
+import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
+import { useDocument } from '../../WindowProvider';
 
 interface IFocusTrapZoneInternalState {
   disposeFocusHandler: (() => void) | undefined;
@@ -204,7 +204,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   );
 
   const returnFocusToInitiator = React.useCallback((): void => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     FocusTrapZone.focusStack = FocusTrapZone.focusStack.filter((value: any) => {
       return id !== value;
     });
@@ -366,7 +365,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       <div {...bumperProps} ref={lastBumper} onFocus={() => onBumperFocus(false)} />
     </div>
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as any;
 
 const useUnmount = (unmountFunction: () => void) => {

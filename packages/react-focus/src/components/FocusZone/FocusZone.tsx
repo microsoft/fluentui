@@ -26,8 +26,8 @@ import {
   getWindow,
   findScrollableParent,
   createMergedRef,
-} from '@uifabric/utilities';
-import { mergeStyles } from '@uifabric/merge-styles';
+} from '@fluentui/utilities';
+import { mergeStyles } from '@fluentui/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';

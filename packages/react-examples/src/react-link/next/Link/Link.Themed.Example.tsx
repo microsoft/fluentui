@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, ILinkStyleProps } from '@fluentui/react-link/lib/next';
 import { Stack } from '@fluentui/react/lib/Stack';
-import { Customizer } from '@uifabric/utilities';
+import { Customizer } from '@fluentui/utilities';
 
 const customStyles = { root: { background: 'lightblue' } };
 const themedStyles = (props: ILinkStyleProps) => ({

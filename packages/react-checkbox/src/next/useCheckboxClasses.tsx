@@ -1,5 +1,5 @@
 import { createClassResolver, ClassFunction } from '@fluentui/react-compose';
-import { css } from '@uifabric/utilities';
+import { css } from '@fluentui/utilities';
 import { ICheckboxClasses } from './Checkbox.types';
 import * as classes from './Checkbox.scss';
 

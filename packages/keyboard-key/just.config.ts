@@ -1,3 +1,3 @@
-import { preset } from '@uifabric/build';
+import { preset } from '@fluentui/scripts';
 
 preset();

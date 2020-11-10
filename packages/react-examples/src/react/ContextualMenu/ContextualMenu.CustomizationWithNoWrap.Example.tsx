@@ -4,7 +4,7 @@ import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
 import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({

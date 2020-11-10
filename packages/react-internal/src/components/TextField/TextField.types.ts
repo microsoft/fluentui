@@ -256,6 +256,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
   autoComplete?: string;
+
+  /**
+   * Whether to show the reveal password button for input type `'password'` (will be ignored unless
+   * the `type` prop is set to `'password'`).
+   */
+  canRevealPassword?: boolean;
 }
 
 /**
@@ -282,6 +288,8 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     hasLabel?: boolean;
     /** Element has focus. */
     focused?: boolean;
+    /** Element has a peek button for passwords */
+    hasRevealButton?: boolean;
   };
 
 /**
@@ -349,6 +357,21 @@ export interface ITextFieldStyles {
    * Styling for subcomponents.
    */
   subComponentStyles: ITextFieldSubComponentStyles;
+
+  /**
+   * Styling for reveal password button
+   */
+  revealButton: IStyle;
+
+  /**
+   * Styling for reveal password span
+   */
+  revealSpan: IStyle;
+
+  /**
+   * Styling for reveal password icon
+   */
+  revealIcon: IStyle;
 }
 
 /**

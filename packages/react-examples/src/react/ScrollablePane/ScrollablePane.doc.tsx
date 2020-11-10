@@ -10,7 +10,8 @@ const ScrollablePaneDetailsListExampleCode = require('!raw-loader!@fluentui/reac
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
   componentName: 'ScrollablePane',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ScrollablePane',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ScrollablePane',
   examples: [
     {
       title: 'Default',

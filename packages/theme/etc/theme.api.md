@@ -4,9 +4,9 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -16,12 +16,14 @@ export const AnimationVariables: IAnimationVariables;
 
 // @public
 export type ColorTokens = ColorTokenSet & {
-    hovered?: ColorTokenSet;
-    pressed?: ColorTokenSet;
-    disabled?: ColorTokenSet;
     checked?: ColorTokenSet;
     checkedHovered?: ColorTokenSet;
     checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
 };
 
 // @public
@@ -31,11 +33,13 @@ export type ColorTokenSet = {
     secondaryContentColor?: string;
     linkColor?: string;
     iconColor?: string;
+    menuIconColor?: string;
     borderColor?: string;
     dividerColor?: string;
     focusColor?: string;
     focusInnerColor?: string;
     opacity?: string;
+    highContrast?: ColorTokens;
 };
 
 // @public (undocumented)
@@ -385,7 +389,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = PartialTheme;
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -545,7 +550,8 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export type ITheme = Theme;
+export interface ITheme extends Theme {
+}
 
 // @public (undocumented)
 export namespace LocalizedFontFamilies {
@@ -743,7 +749,7 @@ export interface PartialTheme {
     //
     // (undocumented)
     spacing?: Partial<ISpacing>;
-    // (undocumented)
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -841,6 +847,7 @@ export interface Theme extends IScheme {
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;

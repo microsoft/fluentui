@@ -4,22 +4,9 @@ import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../ChoiceGroup.types';
 
 /**
- * @deprecated Use `IChoiceGroupOptionProps['onFocus']` directly
- * {@docCategory ChoiceGroup}
- */
-export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
-
-/**
- * @deprecated Use `IChoiceGroupOptionProps['onChange']` directly
- * {@docCategory ChoiceGroup}
- */
-export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
-
-/**
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
-  itemKey?: string;
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -27,19 +14,39 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
   componentRef?: IRefObject<IChoiceGroupOption>;
 
   /**
-   * A callback for receiving a notification when the choice has been changed.
+   * Unique key for the option, set based on `IChoiceGroupOption.key`.
    */
-  onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+  itemKey: string;
 
   /**
-   * A callback for receiving a notification when the choice has received focus.
+   * The option key. This will always be provided for callbacks (copied from `itemKey`) but is
+   * optional when manually creating ChoiceGroupOptions.
    */
-  onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+  key?: string;
 
   /**
-   * A callback for receiving a notification when the choice has lost focus.
+   * Whether or not the option is checked. Set by `ChoiceGroup` based on `selectedKey` or
+   * `defaultSelectedKey` from `IChoiceGroupProps`.
    */
-  onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
+  checked?: boolean;
+
+  /**
+   * Callback for the ChoiceGroup creating the option to be notified when the choice has been changed.
+   */
+  onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;
+
+  /**
+   * Callback for the ChoiceGroup creating the option to be notified when the choice has received focus.
+   */
+  onFocus?: (
+    ev?: React.FocusEvent<HTMLElement | HTMLInputElement>,
+    props?: IChoiceGroupOptionProps,
+  ) => void | undefined;
+
+  /**
+   * Callback for the ChoiceGroup creating the option to be notified when the choice has lost focus.
+   */
+  onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
 
   /**
    * Indicates if the ChoiceGroupOption should appear focused, visually
