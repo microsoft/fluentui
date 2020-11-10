@@ -28,6 +28,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('hover action');
         },
+        onMouseOutAction: () => {},
       },
       {
         title: 'Legend 3',
@@ -38,6 +39,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('hover action');
         },
+        onMouseOutAction: () => {},
       },
       {
         title: 'Legend 4',
@@ -49,6 +51,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('hover action');
         },
+        onMouseOutAction: () => {},
       },
     ];
 

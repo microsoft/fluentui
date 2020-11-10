@@ -534,7 +534,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         isCalloutVisible: true,
         selectedLegendTitle: point.legend,
         dataForHoverCard: point.data,
-        color: color,
+        color,
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
