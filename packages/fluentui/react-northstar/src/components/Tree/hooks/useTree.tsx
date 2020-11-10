@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ObjectShorthandCollection, ShorthandRenderFunction, TreeItemProps, TreeTitleProps } from '../../../index';
+import { ObjectShorthandCollection, TreeItemProps } from '../../../index';
 import { flattenTree } from './flattenTree';
 import { useGetItemById } from './useGetItemById';
 import { useTreeActiveState } from './useTreeActiveState';
@@ -8,15 +8,6 @@ import { useTreeBehavior } from './useTreeBehavior';
 export interface UseTreeOptions {
   /** Shorthand array of props for Tree. */
   items?: ObjectShorthandCollection<TreeItemProps>;
-
-  /**
-   * A custom render function for the title slot.
-   *
-   * @param Component - The computed component for this slot.
-   * @param props - The computed props for this slot.
-   * @param children - The computed children for this slot.
-   */
-  renderItemTitle?: ShorthandRenderFunction<TreeTitleProps>;
 
   /** Ids of expanded items. */
   activeItemIds?: string[];
