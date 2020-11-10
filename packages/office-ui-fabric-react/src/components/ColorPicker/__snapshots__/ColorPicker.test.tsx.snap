@@ -408,6 +408,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -580,9 +581,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={171}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -669,7 +668,6 @@ exports[`ColorPicker renders correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="171"
@@ -756,9 +754,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={205}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -845,7 +841,6 @@ exports[`ColorPicker renders correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="205"
@@ -932,9 +927,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={239}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1021,7 +1014,6 @@ exports[`ColorPicker renders correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="239"
@@ -1108,9 +1100,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
-                    aria-valuemax={100}
-                    aria-valuemin={0}
-                    aria-valuenow={100}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1197,7 +1187,6 @@ exports[`ColorPicker renders correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="100"
@@ -1648,6 +1637,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1820,9 +1810,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={171}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1909,7 +1897,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="171"
@@ -1996,9 +1983,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={205}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2085,7 +2070,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="205"
@@ -2172,9 +2156,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={239}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2261,7 +2243,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="239"
@@ -2348,9 +2329,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
-                    aria-valuemax={100}
-                    aria-valuemin={0}
-                    aria-valuenow={100}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2437,7 +2416,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="100"
@@ -2865,6 +2843,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3037,9 +3016,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={171}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3126,7 +3103,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="171"
@@ -3213,9 +3189,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={205}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3302,7 +3276,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="205"
@@ -3389,9 +3362,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-valuemax={255}
-                    aria-valuemin={0}
-                    aria-valuenow={239}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3478,7 +3449,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="239"
@@ -3565,9 +3535,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Transparency"
-                    aria-valuemax={100}
-                    aria-valuemin={0}
-                    aria-valuenow={0}
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3654,7 +3622,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    role="spinbutton"
                     spellCheck={false}
                     type="text"
                     value="0"
