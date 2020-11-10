@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Modify getInitials to strip [] and {} just like it strips ()",
+  "comment": "Modify Persona example and tests to cover the new initials behavior",
   "packageName": "@fluentui/react-internal",
   "email": "elvonspa@microsoft.com",
   "dependentChangeType": "patch",

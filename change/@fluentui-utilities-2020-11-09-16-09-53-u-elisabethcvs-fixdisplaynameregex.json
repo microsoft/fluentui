@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Modify Persona example and tests to cover the new initials behavior",
+  "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
   "packageName": "@fluentui/utilities",
   "email": "elvonspa@microsoft.com",
   "dependentChangeType": "patch",
