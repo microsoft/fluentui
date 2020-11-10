@@ -81,6 +81,7 @@ storiesOf('Callout', module)
       {calloutContent}
     </Callout>
   ))
+  // Disabling because test failed intermittently.
   // .addStory('Left center', () => (
   // <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
   // {calloutContent}
