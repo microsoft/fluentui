@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "changed the example to showcase the changes in the code",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-06T18:58:54.531Z"
-}

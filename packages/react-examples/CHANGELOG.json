@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2020 16:51:16 GMT",
+      "tag": "@fluentui/react-examples_v0.8.12",
+      "version": "0.8.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "changed the example to showcase the changes in the code",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fc9066da270d7cfb8c181b75ca17b88fa619aa4b",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "UPP example now has initial item, group expand",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1ecf8f1b3c84b6ea95e5cfcff2a93cddfb2164da",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:29:00 GMT",
       "tag": "@fluentui/react-examples_v0.8.7",
       "version": "0.8.7",

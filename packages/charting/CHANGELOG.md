@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 09 Nov 2020 12:21:30 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.9.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.4)
+
+Tue, 10 Nov 2020 16:51:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.3..@uifabric/charting_v4.9.4)
+
+### Patches
+
+- fix for exception thrown when the data of the first category is empty ([PR #15851](https://github.com/microsoft/fluentui/pull/15851) by v-sivsar@microsoft.com)
 
 ## [4.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.3)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix keyboard selection when UPP loads with items (and group expand)",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-09T18:22:20.097Z"
-}

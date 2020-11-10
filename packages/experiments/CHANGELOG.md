@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 30 Oct 2020 12:23:06 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.9)
+
+Tue, 10 Nov 2020 16:51:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.36.4..@uifabric/experiments_v7.36.9)
+
+### Patches
+
+- Fix keyboard selection when UPP loads with items (and group expand) ([PR #15875](https://github.com/microsoft/fluentui/pull/15875) by elvonspa@microsoft.com)
 
 ## [7.36.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.4)
 
