@@ -52,6 +52,7 @@ export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesPro
       position: 'relative',
       whiteSpace: 'nowrap',
       display: 'inline-block',
+      width: 'fit-content',
       ':focus-within': {
         boxShadow: 'none',
         ...(p.isFromKeyboard && {
