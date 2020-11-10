@@ -9,19 +9,25 @@ import {
   Modal,
   IDragOptions,
   IIconProps,
+  Stack,
+  IStackProps,
 } from '@fluentui/react';
-import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
-
-const dragOptions: IDragOptions = {
-  moveMenuItemText: 'Move',
-  closeMenuItemText: 'Close',
-  menu: ContextualMenu,
-};
-const cancelIcon: IIconProps = { iconName: 'Cancel' };
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
 
 export const ModalBasicExample: React.FunctionComponent = () => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
+  const [keepInBounds, { toggle: toggleKeepInBounds }] = useBoolean(false);
+  // Normally the drag options would be in a constant, but here the toggle can modify keepInBounds
+  const dragOptions = React.useMemo(
+    (): IDragOptions => ({
+      moveMenuItemText: 'Move',
+      closeMenuItemText: 'Close',
+      menu: ContextualMenu,
+      keepInBounds,
+    }),
+    [keepInBounds],
+  );
 
   // Use useId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings and manually ensure uniqueness.)
@@ -29,13 +35,17 @@ export const ModalBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <Toggle
-        styles={toggleStyles}
-        label="Is draggable"
-        inlineLabel
-        onChange={toggleIsDraggable}
-        checked={isDraggable}
-      />
+      <Stack {...stackProps}>
+        <Toggle label="Is draggable" inlineLabel onChange={toggleIsDraggable} checked={isDraggable} />
+        <Toggle
+          label="Keep in bounds"
+          inlineLabel
+          onChange={toggleKeepInBounds}
+          checked={keepInBounds}
+          disabled={!isDraggable}
+        />
+      </Stack>
+
       <DefaultButton onClick={showModal} text="Open Modal" />
       <Modal
         titleAriaId={titleId}
@@ -101,6 +111,8 @@ export const ModalBasicExample: React.FunctionComponent = () => {
   );
 };
 
+const cancelIcon: IIconProps = { iconName: 'Cancel' };
+
 const theme = getTheme();
 const contentStyles = mergeStyleSets({
   container: {
@@ -132,8 +144,12 @@ const contentStyles = mergeStyleSets({
     },
   },
 });
-const toggleStyles = { root: { marginBottom: '20px' } };
-const iconButtonStyles = {
+const stackProps: Partial<IStackProps> = {
+  horizontal: true,
+  tokens: { childrenGap: 40 },
+  styles: { root: { marginBottom: 20 } },
+};
+const iconButtonStyles: Partial<IButtonStyles> = {
   root: {
     color: theme.palette.neutralPrimary,
     marginLeft: 'auto',
