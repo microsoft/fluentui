@@ -136,7 +136,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         xAxisType={this._isNumeric}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
-        xAxisPadding={this.props.xAxisTickPadding || 5}
+        tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
           direction: FocusZoneDirection.horizontal,
