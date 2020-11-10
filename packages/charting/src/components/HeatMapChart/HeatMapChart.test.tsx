@@ -56,6 +56,37 @@ const HeatMapData: IHeatMapChartProps['data'] = [
   },
 ];
 
+const HeatMapData2: IHeatMapChartProps['data'] = [
+  {
+    value: 100,
+    legend: 'Execllent (0-200)',
+    data: [],
+  },
+  {
+    value: 200,
+    legend: 'Nasty',
+    data: [
+      {
+        x: xPoint[0],
+        y: yPoint[0],
+        value: 50,
+        rectText: 50,
+        ratio: [50, 2391],
+        descriptionMessage: 'a good day to start with in Texas with best air quality',
+      },
+      {
+        x: xPoint[1],
+        y: yPoint[1],
+        value: 25,
+        rectText: 25,
+        ratio: [25, 2479],
+        descriptionMessage: `Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days`,
+      },
+    ],
+  },
+];
+
 describe('HeatMapChart snapShot testing', () => {
   it('renders HeatMapChart correctly', () => {
     const component = renderer.create(
@@ -63,6 +94,18 @@ describe('HeatMapChart snapShot testing', () => {
         data={HeatMapData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders corretly even when data is not present for some group', () => {
+    const component = renderer.create(
+      <HeatMapChart
+        data={HeatMapData2} // first group has no data in it
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['pink', 'yellow']}
       />,
     );
     const tree = component.toJSON();
