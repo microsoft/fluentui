@@ -31,18 +31,15 @@ azure-pipelines* @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan
 
-#### Deprecated API Files
-*.api.ts @natalieethell
-
 #### Apps
 # component-demo/
-fabric-website/ @ecraig12345 @Jahnp
+fabric-website/ @ecraig12345
 fabric-website-resources/ @ecraig12345
 perf-test/ @JasonGore @xugao
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
-Controls/web.tsx @Vitalius1 @natalieethell
+Controls/web.tsx @Vitalius1 @natalieethell @ecraig12345
 
 #### Packages
 packages/charting/ @Raghurk
@@ -101,7 +98,7 @@ packages/office-ui-fabric-react/src/components/FocusTrapZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @dzearing
-packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
+packages/office-ui-fabric-react/src/components/HoverCard/  @Jahnp @Vitalius1
 packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @khmakoto
@@ -127,7 +124,7 @@ packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
 packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/SearchBox/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Separator/ @natalieethell
-packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1 @atneik
+packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1
 packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Slider/ @joschect
 packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
