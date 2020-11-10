@@ -60,6 +60,10 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     return {
       ...(p.hasImage && { marginLeft: pxToRem(3) }),
       marginRight: pxToRem(3),
+      maxWidth: pxToRem(100),
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     };
   },
   icon: ({ variables: v }) => ({
