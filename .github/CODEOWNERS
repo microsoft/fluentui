@@ -38,7 +38,7 @@ sizeauditor.json @aftab-hassan
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @jurokapsiar
 packages/a11y-testing/ @kolaps33 @jurokapsiar
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar
+packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
