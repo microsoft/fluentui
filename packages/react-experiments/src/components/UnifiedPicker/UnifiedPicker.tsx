@@ -245,6 +245,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
 
     // Handle copy if focus is in the selected items list
+    // This is a temporary work around, it has localization issues
+    // we plan on rewriting how this works in the future
     if (ev.ctrlKey && ev.which === KeyCodes.c) {
       if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
         ev.preventDefault();
