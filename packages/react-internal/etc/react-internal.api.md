@@ -2280,30 +2280,6 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
 }
 
 // @public (undocumented)
-export interface IDialogState {
-    // (undocumented)
-    hasBeenOpened?: boolean;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isInKeyboardMoveMode?: boolean;
-    // (undocumented)
-    isModalMenuOpen?: boolean;
-    // (undocumented)
-    isOpen?: boolean;
-    // (undocumented)
-    isVisible?: boolean;
-    // (undocumented)
-    isVisibleClose?: boolean;
-    // (undocumented)
-    modalRectangleTop?: number;
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
-}
-
-// @public (undocumented)
 export interface IDialogStyleProps {
     className?: string;
     // @deprecated
@@ -3246,7 +3222,7 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IModal>;
@@ -3263,6 +3239,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
@@ -3279,6 +3256,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     modalRectangleTop?: number;
     layerClassName?: string;
     isDefaultDragHandle?: boolean;
+    windowInnerHeight?: number;
 };
 
 // @public (undocumented)
@@ -5663,23 +5641,7 @@ export const MIN_RGBA_LENGTH = 1;
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
-export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
-    constructor(props: IModalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IModalProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
-}
+export const ModalBase: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
 export const Nav: React.FunctionComponent<INavProps>;
