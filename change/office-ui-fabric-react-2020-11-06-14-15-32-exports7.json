@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add missing exports",
+  "packageName": "office-ui-fabric-react",
+  "email": "dahajek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-06T22:15:32.118Z"
+}
