@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Nov 2020 12:30:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.12)
+
+Tue, 10 Nov 2020 12:30:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.8..@fluentui/react-experiments_v8.0.0-beta.12)
+
+### Changes
+
+- Fix keyboard selection in UPP on initial load with recipients, group expansion ([PR #15872](https://github.com/microsoft/fluentui/pull/15872) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.8)
 
