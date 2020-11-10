@@ -423,6 +423,12 @@ export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButt
 // @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
+// @public (undocumented)
+export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
+
+// @public (undocumented)
+export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;
+
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
@@ -1885,6 +1891,22 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 export interface IContextualMenu {
 }
 
+// @public @deprecated (undocumented)
+export interface IContextualMenuClassNames {
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    list: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    subComponentStyles?: IContextualMenuSubComponentStyles;
+    // (undocumented)
+    title: string;
+}
+
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
@@ -1896,8 +1918,6 @@ export interface IContextualMenuItem {
     customOnRenderListLength?: number;
     data?: any;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2045,8 +2065,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
-    // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -3153,6 +3171,36 @@ export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttribu
     };
 }
 
+// @public @deprecated (undocumented)
+export interface IMenuItemClassNames {
+    // (undocumented)
+    checkmarkIcon: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    item: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    linkContent: string;
+    // (undocumented)
+    linkContentMenu: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    secondaryText: string;
+    // (undocumented)
+    splitContainer: string;
+    // (undocumented)
+    splitMenu: string;
+    // (undocumented)
+    splitPrimary: string;
+    // (undocumented)
+    subMenuIcon: string;
+}
+
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
@@ -3509,8 +3557,6 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
@@ -5706,6 +5752,32 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
 
 // @public
 export const Panel: React.FunctionComponent<IPanelProps>;
+
+// Warning: (ae-forgotten-export) The symbol "IPanelState" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class PanelBase extends React.Component<IPanelProps, IPanelState> implements IPanel {
+    constructor(props: IPanelProps);
+    // (undocumented)
+    close(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPanelProps;
+    // (undocumented)
+    dismiss: (ev?: KeyboardEvent | React.SyntheticEvent<HTMLElement, Event> | undefined) => void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null;
+    get isActive(): boolean;
+    // (undocumented)
+    open(): void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export enum PanelType {
