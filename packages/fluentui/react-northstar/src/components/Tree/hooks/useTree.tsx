@@ -51,18 +51,33 @@ export function useTree(props: UseTreeOptions) {
     deprecated_initialActiveItemIds,
   );
 
-  // We want to set `expanded` value on all items to simplify rendering later
+  // We want to set `visibleItemIds` to simplify rendering later
   // There is no sense to recreate a flat tree so we simply mutating it
-  React.useMemo(() => {
-    Object.keys(flatTree).forEach(key => {
-      if (flatTree[key].expanded) {
-        flatTree[key].expanded = false;
+  const visibleItemIds = React.useMemo(() => {
+    const result = [];
+    let i = 0;
+    while (i < orderedItemIds.length) {
+      const id = orderedItemIds[i];
+      const item = flatTree[id];
+      result.push(id);
+      i++;
+      if (activeItemIds.includes(id)) {
+        flatTree[id].expanded = item.hasSubtree ? true : undefined;
+      } else {
+        flatTree[id].expanded = item.hasSubtree ? false : undefined;
+        // item is collpased, so all its descendents are not visible
+        while (i < orderedItemIds.length) {
+          const nextItem = flatTree[orderedItemIds[i]];
+          nextItem.expanded = item.hasSubtree ? false : undefined;
+          if (nextItem?.level <= item.level) {
+            break;
+          }
+          i++;
+        }
       }
-    });
-    activeItemIds.forEach(activeId => {
-      flatTree[activeId].expanded = true;
-    });
-  }, [activeItemIds, flatTree]);
+    }
+    return result;
+  }, [activeItemIds, flatTree, orderedItemIds]);
 
   // === manage ref to all to-be-rendered tree items  ===
   const nodes = React.useRef<Record<string, HTMLElement>>({});
@@ -84,6 +99,7 @@ export function useTree(props: UseTreeOptions) {
     orderedItemIds,
     getItemById,
     activeItemIds,
+    visibleItemIds,
     registerItemRef,
     getItemRef,
     toggleItemActive,
