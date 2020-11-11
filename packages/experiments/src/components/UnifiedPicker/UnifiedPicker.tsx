@@ -271,6 +271,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         );
       }
     }
+
     // Handle delete of items via backspace
     else if (ev.which === KeyCodes.backspace && selectedItems.length) {
       if (
