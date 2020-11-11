@@ -4,7 +4,7 @@ The following code shows you how to specify a file type icon by extension, item 
 
 ```jsx
 // Done by the app.
-import { initializeFileTypeIcons } from ‘@uifabric/file-type-icons’;
+import { initializeFileTypeIcons } from ‘@uifabric/react-file-type-icons’;
 initializeFileTypeIcons(/* optional base url */);
 
 // Done in components
@@ -21,6 +21,6 @@ When specifying `size`, stick to these default sizes so the images appear as int
 
 Here's a [simple demo](https://github.com/microsoft/fluentui/blob/master/packages/react-examples/src/react-experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx) of how to use the [`@fluentui/react-file-type-icons` package](https://github.com/microsoft/fluentui/tree/master/packages/react-file-type-icons).  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/microsoft/fluentui/blob/master/packages/react-file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are kept up-to-date on Fluent UI's CDN, so we recommend not copying or referencing these assets directly.
 
-#### Map icons to extensions - [TypeScript mapping file](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/FileTypeIconMap.ts)
+#### Map icons to extensions - [TypeScript mapping file](https://github.com/microsoft/fluentui/blob/master/packages/react-file-type-icons/src/FileTypeIconMap.ts)
 
-This file maps file extensions to the right PNG or SVG icon. The mapping minimizes the number of required icons while maximizing the number of files that get a non-generic icon. Support for non-file system objects which may not have file extensions can be added in [getFileTypeIconProps.ts](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts) and [FileIconType.ts](https://github.com/microsoft/fluentui/blob/master/packages/file-type-icons/src/FileIconType.ts).
+This file maps file extensions to the right PNG or SVG icon. The mapping minimizes the number of required icons while maximizing the number of files that get a non-generic icon. Support for non-file system objects which may not have file extensions can be added in [getFileTypeIconProps.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-file-type-icons/src/getFileTypeIconProps.ts) and [FileIconType.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-file-type-icons/src/FileIconType.ts).
