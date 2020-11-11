@@ -6,4 +6,4 @@ export { IPalette } from '@fluentui/theme/lib/types/IPalette';
 export { ISemanticColors } from '@fluentui/theme/lib/types/ISemanticColors';
 export { ISemanticTextColors } from '@fluentui/theme/lib/types/ISemanticTextColors';
 export { ISpacing } from '@fluentui/theme/lib/types/ISpacing';
-export { ITheme, IPartialTheme, IScheme, ISchemeNames } from '@fluentui/theme/lib/types/ITheme';
+export { ITheme, IPartialTheme, IScheme, ISchemeNames } from '@fluentui/theme';

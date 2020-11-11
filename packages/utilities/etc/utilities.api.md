@@ -812,7 +812,8 @@ export { IStyleFunctionOrObject }
 
 export { isVirtualElement }
 
-export { IVirtualElement }
+// @public (undocumented)
+export type IVirtualElementXX = IVirtualElement;
 
 // @public (undocumented)
 export interface IWarnControlledUsageParams<P> {

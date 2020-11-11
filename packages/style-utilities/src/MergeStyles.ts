@@ -5,8 +5,8 @@ export {
   IStyle,
   IStyleSet,
   IProcessedStyleSet,
-  IStyleSheetConfig,
-  ICSPSettings,
+  // IStyleSheetConfig,
+  // ICSPSettings,
   InjectionMode,
   Stylesheet,
   concatStyleSets,
@@ -16,3 +16,7 @@ export {
   mergeStyleSets,
   mergeStyles,
 } from '@fluentui/merge-styles';
+
+import { IStyleSheetConfig, ICSPSettings } from '@fluentui/merge-styles';
+export type IStyleSheetConfigXX = IStyleSheetConfig;
+export type ICSPSettingsXX = ICSPSettings;

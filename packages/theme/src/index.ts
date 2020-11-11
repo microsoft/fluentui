@@ -8,5 +8,5 @@ export * from './fonts/index';
 export * from './utilities/index';
 export * from './createTheme';
 export { FluentTheme } from './FluentTheme';
-
+export { IThemeXX as ITheme, IPartialThemeXX as IPartialTheme } from './types/index';
 import './version';

@@ -1,1 +1,2 @@
-export { IVirtualElement } from '@fluentui/dom-utilities';
+import { IVirtualElement } from '@fluentui/dom-utilities';
+export type IVirtualElementXX = IVirtualElement;
