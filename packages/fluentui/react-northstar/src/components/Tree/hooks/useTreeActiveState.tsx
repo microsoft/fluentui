@@ -34,9 +34,9 @@ export function useTreeActiveState(
 
       setActiveItemIdsState(activeItemIds => {
         let nextActiveItemIds: string[];
-        const index = activeItemIds.indexOf(idToToggle);
+        const isActiveId = activeItemIds.indexOf(idToToggle) !== -1;
 
-        if (index >= 0) {
+        if (isActiveId) {
           nextActiveItemIds = _.without(activeItemIds, idToToggle);
         } else if (options.exclusive) {
           // need to collapse everything else, except id and its ancestors
