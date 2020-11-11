@@ -19,7 +19,7 @@ export function useTreeActiveState(
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: deprecated_initialActiveItemIds,
+    initialValue: deprecated_initialActiveItemIds, // will become []
   });
 
   const stableProps = useStableProps(props);
