@@ -12,17 +12,17 @@ export interface UseTreeActiveStateResult {
 }
 
 export function useTreeActiveState(
-  props: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
+  options: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
   getItemById: (id: string) => BaseFlatTreeItem,
   deprecated_initialActiveItemIds: string[],
 ): UseTreeActiveStateResult {
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
-    defaultValue: props.defaultActiveItemIds,
-    value: props.activeItemIds,
+    defaultValue: options.defaultActiveItemIds,
+    value: options.activeItemIds,
     initialValue: deprecated_initialActiveItemIds, // will become []
   });
 
-  const stableProps = useStableProps(props);
+  const stableProps = useStableProps(options);
 
   const toggleItemActive = React.useCallback(
     (e: React.SyntheticEvent, idToToggle: string) => {
@@ -38,7 +38,7 @@ export function useTreeActiveState(
 
         if (index >= 0) {
           nextActiveItemIds = _.without(activeItemIds, idToToggle);
-        } else if (props.exclusive) {
+        } else if (options.exclusive) {
           // need to collapse everything else, except id and its ancestors
           const ancestors = getAncestorsIds(getItemById, item);
           nextActiveItemIds = [...ancestors, idToToggle];
@@ -54,7 +54,7 @@ export function useTreeActiveState(
         return nextActiveItemIds;
       });
     },
-    [getItemById, props.exclusive, setActiveItemIdsState, stableProps],
+    [getItemById, options.exclusive, setActiveItemIdsState, stableProps],
   );
 
   const expandSiblings = React.useCallback(
