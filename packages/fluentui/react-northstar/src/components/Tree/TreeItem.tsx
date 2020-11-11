@@ -343,6 +343,7 @@ TreeItem.propTypes = {
 
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
+  selectable: true,
 };
 
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
