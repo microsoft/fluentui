@@ -33,10 +33,10 @@ export function useTreeActiveState(
       }
 
       setActiveItemIdsState(activeItemIds => {
-        let nextActiveItemIds;
-        const index = activeItemIds.indexOf(idToToggle);
+        let nextActiveItemIds: string[];
+        const isActiveId = activeItemIds.indexOf(idToToggle) !== -1;
 
-        if (index >= 0) {
+        if (isActiveId) {
           nextActiveItemIds = _.without(activeItemIds, idToToggle);
         } else if (options.exclusive) {
           // need to collapse everything else, except id and its ancestors
@@ -59,12 +59,13 @@ export function useTreeActiveState(
 
   const expandSiblings = React.useCallback(
     (e: React.KeyboardEvent, focusedItemId: string) => {
-      const item = getItemById(focusedItemId);
-      if (!item) {
+      const focusedItem = getItemById(focusedItemId);
+      if (!focusedItem) {
         return;
       }
 
-      const siblingsIds = _.without(getItemById(item?.parent)?.childrenIds || [], focusedItemId);
+      const parentItem = getItemById(focusedItem?.parent);
+      const siblingsIds = _.without(parentItem?.childrenIds || [], focusedItemId);
 
       if (!siblingsIds) {
         return;
