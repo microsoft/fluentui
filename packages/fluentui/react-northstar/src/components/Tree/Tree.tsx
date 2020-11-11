@@ -197,7 +197,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
           level,
           index,
           treeSize,
-          selectable: selectable ? item.item.selectable !== false : false,
+          selectable: selectable ? item.item.selectable : false,
         },
       });
     });
