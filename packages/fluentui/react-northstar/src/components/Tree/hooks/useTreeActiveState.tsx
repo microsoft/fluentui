@@ -33,7 +33,7 @@ export function useTreeActiveState(
       }
 
       setActiveItemIdsState(activeItemIds => {
-        let nextActiveItemIds;
+        let nextActiveItemIds: string[];
         const index = activeItemIds.indexOf(idToToggle);
 
         if (index >= 0) {
