@@ -22,7 +22,7 @@ storiesOf('Callout', module)
       style={{
         alignItems: 'center',
         width: '800px',
-        height: '300px',
+        height: '800px',
         display: 'flex',
         justifyContent: 'center',
       }}
@@ -81,12 +81,11 @@ storiesOf('Callout', module)
       {calloutContent}
     </Callout>
   ))
-  // Disabling because test failed intermittently.
-  // .addStory('Left center', () => (
-  // <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
-  // {calloutContent}
-  // </Callout>
-  // ))
+  .addStory('Left center', () => (
+    <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
+      {calloutContent}
+    </Callout>
+  ))
   .addStory('Left top edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftTopEdge}>
       {calloutContent}
