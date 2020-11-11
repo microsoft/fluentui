@@ -62,7 +62,7 @@ packages/react-date-time @lorejoh12 @evlevy @pompomon
 packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
 packages/react-docsite-components/ @ecraig12345
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation-legacy/ @dzearing @khmakoto
 # packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/

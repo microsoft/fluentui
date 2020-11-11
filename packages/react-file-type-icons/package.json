@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/file-type-icons",
+  "name": "@fluentui/react-file-type-icons",
   "version": "8.0.0-beta.6",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
