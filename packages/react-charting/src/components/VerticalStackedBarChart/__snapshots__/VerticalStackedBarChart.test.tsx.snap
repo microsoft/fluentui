@@ -86,8 +86,8 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -422,8 +422,8 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -738,8 +738,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -841,8 +841,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1177,8 +1177,8 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1513,8 +1513,8 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1849,8 +1849,8 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -2185,8 +2185,8 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;

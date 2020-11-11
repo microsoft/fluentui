@@ -86,8 +86,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -394,8 +394,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -682,8 +682,8 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -846,8 +846,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1154,8 +1154,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1462,8 +1462,8 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1770,8 +1770,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;

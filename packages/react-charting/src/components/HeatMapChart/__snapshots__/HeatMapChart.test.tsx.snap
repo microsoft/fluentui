@@ -86,8 +86,8 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -397,8 +397,8 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -797,8 +797,8 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -964,8 +964,8 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
@@ -1275,8 +1275,8 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
               opacity: 0.1;
