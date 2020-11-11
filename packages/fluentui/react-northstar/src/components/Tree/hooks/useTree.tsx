@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ObjectShorthandCollection, TreeItemProps } from '../../../index';
+import { ObjectShorthandCollection } from '../../../types';
+import { TreeItemProps } from '../TreeItem';
 import { flattenTree } from './flattenTree';
 import { useGetItemById } from './useGetItemById';
 import { useTreeActiveState } from './useTreeActiveState';
@@ -8,7 +9,6 @@ import { useTreeBehavior } from './useTreeBehavior';
 export interface UseTreeOptions {
   /** Shorthand array of props for Tree. */
   items?: ObjectShorthandCollection<TreeItemProps>;
-
   /** Ids of expanded items. */
   activeItemIds?: string[];
   /** Initial activeItemIds value. */
