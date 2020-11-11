@@ -66,7 +66,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         },
         line: {
           opacity: 0.2,
-          fill: theme.semanticColors.bodyText,
+          stroke: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
               opacity: 0.1,
