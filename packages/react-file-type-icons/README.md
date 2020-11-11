@@ -29,7 +29,7 @@ If you are using Fluent UI React, you can use the `Icon` component and pass in t
 import { Icon } from '@fluentui/react/lib/Icon';
 import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
 
-<Icon {...getFileTypeIconProps({extension: 'docx', size: 16}) />
+<Icon {...getFileTypeIconProps({ extension: 'docx', size: 16 })} />;
 ```
 
 ## Notes

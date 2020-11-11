@@ -4,7 +4,7 @@ The following code shows you how to specify a file type icon by extension, item 
 
 ```jsx
 // Done by the app.
-import { initializeFileTypeIcons } from ‘@uifabric/react-file-type-icons’;
+import { initializeFileTypeIcons } from ‘@fluentui/react-file-type-icons’;
 initializeFileTypeIcons(/* optional base url */);
 
 // Done in components
