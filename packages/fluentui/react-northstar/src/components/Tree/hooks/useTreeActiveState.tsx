@@ -59,12 +59,13 @@ export function useTreeActiveState(
 
   const expandSiblings = React.useCallback(
     (e: React.KeyboardEvent, focusedItemId: string) => {
-      const item = getItemById(focusedItemId);
-      if (!item) {
+      const focusedItem = getItemById(focusedItemId);
+      if (!focusedItem) {
         return;
       }
 
-      const siblingsIds = _.without(getItemById(item?.parent)?.childrenIds || [], focusedItemId);
+      const parentItem = getItemById(focusedItem?.parent);
+      const siblingsIds = _.without(parentItem?.childrenIds || [], focusedItemId);
 
       if (!siblingsIds) {
         return;
