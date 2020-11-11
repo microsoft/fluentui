@@ -43,7 +43,6 @@ export function useTree(props: UseTreeOptions) {
 
   const getItemById = useGetItemById(flatTree);
 
-  // === manage the expand/collapse state of each tree node
   // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
   const deprecated_initialActiveItemIds = React.useMemo(() => {
     const initalValue = [];
