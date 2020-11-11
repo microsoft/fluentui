@@ -64,6 +64,34 @@ const webpackConfig: webpack.Configuration = {
         test: /\.mdx?$/,
         use: ['babel-loader', '@mdx-js/loader'],
       },
+      {
+        test: /\.scss$/,
+        enforce: 'pre',
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+            options: {
+              modules: true,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function() {
+                return [require('autoprefixer')];
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
