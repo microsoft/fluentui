@@ -1,4 +1,4 @@
-import { ObjectShorthandValue } from '../../../index';
+import { ObjectShorthandValue } from '../../../types';
 import { TreeItemProps } from '../TreeItem';
 
 export interface BaseFlatTreeItem {
@@ -48,7 +48,7 @@ export type BaseFlatTree = Record<string, BaseFlatTreeItem>;
 // Fluent UI Tree component does not have a root item.
 // Adding a 'secret' root (level=0) helps traversing among the top level (level=1) tree items.
 // This 'secret' root should NOT be returned as part of orderedItemIds, because it is not an item from user props
-export const SECRET_ROOT_ID = 'FLUENT_UI_SECRET_ROOT_ID';
+const SECRET_ROOT_ID = 'FLUENT_UI_SECRET_ROOT_ID';
 
 /**
  * @param items
