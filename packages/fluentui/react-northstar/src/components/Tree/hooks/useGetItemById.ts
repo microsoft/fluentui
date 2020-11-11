@@ -14,7 +14,7 @@ export function useGetItemById(flatTree: BaseFlatTree): GetItemById {
   });
   // We are assigning a callback during render as it can be used during render and in event handlers
   callbackRef.current = itemId => {
-    return flatTree[itemId];
+    return process.env.NODE === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
   };
   return React.useCallback<GetItemById>((...args) => {
     return callbackRef.current(...args);
