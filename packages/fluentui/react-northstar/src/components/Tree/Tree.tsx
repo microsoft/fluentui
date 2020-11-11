@@ -168,15 +168,17 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       return TreeItem.create(item.item, {
         defaultProps: () =>
           getA11yProps('item', {
-            key: id,
-            expanded,
-            parent,
-            level,
-            index,
-            treeSize,
-            selectable: selectable ? item.item.selectable !== false : false,
             renderItemTitle: props.renderItemTitle,
           }),
+        overrideProps: {
+          expanded,
+          parent,
+          key: id,
+          level,
+          index,
+          treeSize,
+          selectable: selectable ? item.item.selectable !== false : false,
+        },
       });
     });
   };
