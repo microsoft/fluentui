@@ -123,7 +123,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.xAxisPadding,
+      tickPadding: this.props.tickPadding,
+      xAxisPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
@@ -406,7 +407,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this._reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (this.props.hideLegend) {
-        legendContainerHeight = 32;
+        legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
         legendContainerHeight =

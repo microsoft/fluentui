@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Wed, 04 Nov 2020 12:25:34 GMT",
+      "tag": "@fluentui/theme_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Mark stylesheets property in Theme as internal.",
+            "author": "xgao@microsoft.com",
+            "commit": "a98a4734d820ca772552d877134c5ee2a6e6a9c6",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2020 12:28:11 GMT",
       "tag": "@fluentui/theme_v1.5.2",
       "version": "1.5.2",

@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2020 16:51:16 GMT",
+      "tag": "@uifabric/experiments_v7.36.9",
+      "version": "7.36.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix keyboard selection when UPP loads with items (and group expand)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1ecf8f1b3c84b6ea95e5cfcff2a93cddfb2164da",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:23:06 GMT",
       "tag": "@uifabric/experiments_v7.36.4",
       "version": "7.36.4",

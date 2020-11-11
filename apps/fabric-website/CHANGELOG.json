@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 11 Nov 2020 12:27:20 GMT",
+      "tag": "@uifabric/fabric-website_v7.15.51",
+      "version": "7.15.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix which content is used by localization page language section",
+            "author": "elcraig@microsoft.com",
+            "commit": "10ea503545d576c309f2052b6915dc5cfa9ab01c",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2020 12:28:11 GMT",
       "tag": "@uifabric/fabric-website_v7.15.40",
       "version": "7.15.40",
