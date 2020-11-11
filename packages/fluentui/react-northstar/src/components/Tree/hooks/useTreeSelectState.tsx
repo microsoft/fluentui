@@ -42,14 +42,10 @@ export function useTreeSelectState(
       const leafs = getLeafNodes(getItemById, idToToggle);
 
       setSelectedItemIdsState(selectedItemIds => {
-        let nextSelectedItemIds;
-        if (item.selected === true) {
-          // remove all leaves from selected
-          nextSelectedItemIds = _.without(selectedItemIds, ...leafs);
-        } else {
-          // add all leaves to selected
-          nextSelectedItemIds = _.uniq(selectedItemIds.concat(leafs));
-        }
+const nextSelectedItemIds =
+          item.selected === true
+            ? _.without(selectedItemIds, ...leafs) // remove all leaves from selected
+            : _.uniq(selectedItemIds.concat(leafs)); // add all leaves to selected
         _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
           ...stableProps.current,
           selectedItemIds: nextSelectedItemIds,
