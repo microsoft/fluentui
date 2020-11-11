@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Charting updates and fixes:",
+  "packageName": "@uifabric/charting",
+  "email": "mibes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-03T05:20:39.881Z"
+}

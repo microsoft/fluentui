@@ -225,7 +225,6 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
               this.state.selectedCallout === 'MultiCallout' || this.state.selectedCallout === 'MultiCustomCallout'
             }
             yMaxValue={120}
-            yMinValue={10}
             calloutProps={{
               directionalHint: DirectionalHint.topCenter,
             }}
@@ -251,6 +250,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
                 );
               },
             })}
+            allowHoverOnLegend={false}
           />
         </div>
       </>
