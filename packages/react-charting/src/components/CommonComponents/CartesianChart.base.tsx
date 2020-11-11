@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
@@ -9,6 +10,7 @@ import {
   IYValueHover,
 } from '../../index';
 import {
+  ChartHoverCard,
   createNumericXAxis,
   createStringXAxis,
   getDomainNRangeValues,
@@ -19,9 +21,8 @@ import {
   getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
+  createWrapOfXLabels,
 } from '../../utilities/index';
-import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -30,6 +31,17 @@ export interface ICartesianChartState {
   containerHeight: number;
   _width: number;
   _height: number;
+  /* To update this values using setState in render method.
+   * To avoid multiple re renders, Only first time setting the value.
+   */
+  isRemoveValCalculated?: boolean;
+  /* Used for when WrapXAxisLabels props appeared.
+   * To display the total word (space separated words), Need to have more space than usual.
+   * This height will get total height need to disaply total word.
+   * These value need to be removed from actual svg height/graph height.
+   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
+   */
+  _removalValueForTextTuncate?: number;
 }
 
 /**
@@ -57,6 +69,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       containerWidth: 0,
       _width: this.props.width || 600,
       _height: this.props.height || 350,
+      _removalValueForTextTuncate: 0,
+      isRemoveValCalculated: true,
     };
     this.idForGraph = getId('chart_');
     /**
@@ -109,14 +123,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding,
-      xAxisPadding: this.props.xAxisPadding,
+      tickPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
       margins: this.margins,
       containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
+      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
       yAxisElement: this.yAxisElement,
       yAxisTickFormat: this.props.yAxisTickFormat!,
       yAxisTickCount: this.props.yAxisTickCount!,
@@ -138,16 +151,30 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        xScale = createNumericXAxis(XAxisParams);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, this._isRtl);
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams, this._isRtl);
+        xScale = createNumericXAxis(XAxisParams);
+    }
+
+    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+      const wrapLabelProps = {
+        node: this.xAxisElement,
+        xAxis: xScale,
+        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+      };
+      const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
+      // this value need to be updated for draw graph updated. So instead of using private value, using set state.
+      if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
+        this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+      }
     }
 
     /**
@@ -205,7 +232,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
-              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
+              // To add wrap of x axis lables feature, need to remove word height from svg height.
+              transform={`translate(0, ${svgDimensions.height -
+                this.margins.bottom! -
+                this.state._removalValueForTextTuncate!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -388,6 +418,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getData = (xScale: any, yScale: any) => {
     this.props.getGraphData &&
-      this.props.getGraphData(xScale, yScale, this.state.containerHeight, this.state.containerWidth);
+      this.props.getGraphData(
+        xScale,
+        yScale,
+        this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        this.state.containerWidth,
+        this.xAxisElement,
+      );
   };
 }

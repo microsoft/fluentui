@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Wed, 11 Nov 2020 12:30:44 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "be9b211dc65086d9ce1194c25d0a88aade3428f1",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Nov 2020 12:32:23 GMT",
       "tag": "@fluentui/utilities_v8.0.0-beta.5",
       "version": "8.0.0-beta.5",

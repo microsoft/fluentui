@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 11 Nov 2020 12:30:44 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.14",
+      "version": "5.0.0-beta.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Donut chart test cases cherry pick to master",
+            "author": "v-jasha@microsoft.com",
+            "commit": "950b07c18ec96e35d8ec439dd98d555b763ab307",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Grouped vertical bar chart code refactor cherry pick to port master",
+            "author": "v-jasha@microsoft.com",
+            "commit": "33fc4b360533fb274e3310e4639ed9e1a914582d",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:33:11 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.7",
       "version": "5.0.0-beta.7",
