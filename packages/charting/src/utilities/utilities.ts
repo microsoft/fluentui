@@ -526,14 +526,15 @@ export function domainRangeOfDateForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  tickValues: Date[] | number[],
 ): IDomainNRange {
-  let sDate = new Date();
-  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-  let lDate = new Date(-8640000000000000);
-  const xAxisData: Date[] = [];
+  // Here unable to calculate min and max values directly. So, Initializing with least date and largest date.
+  // Dates need to calculate by comparing with data passed, so initializing sDate and lDate values in reverse
+  let sDate = new Date(8640000000000000); // largest date - 275760 th year
+  let lDate = new Date(-8640000000000000); // least date - 01 Jan 1970
+
   points.forEach((singleLineChartData: ILineChartPoints) => {
     singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-      xAxisData.push(point.x as Date);
       if (point.x < sDate) {
         sDate = point.x as Date;
       }
@@ -542,13 +543,20 @@ export function domainRangeOfDateForAreaChart(
       }
     });
   });
+  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates by comparing tickValues with above sDate & lDate.
+  const tickValuesLength = tickValues && tickValues.length;
+  const smallestDate = (tickValuesLength && tickValues[0] < sDate ? tickValues[0] : sDate) || sDate;
+  const largestDate =
+    (tickValuesLength && tickValues[tickValuesLength - 1] > lDate ? tickValues[tickValuesLength - 1] : lDate) || lDate;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
-    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
+    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
 }
 
 /**
@@ -680,7 +688,8 @@ export function getDomainNRangeValues(
   chartType: ChartTypes,
   isRTL: boolean,
   xAxisType: XAxisTypes,
-  barWidth?: number,
+  barWidth: number | undefined,
+  tickValues: Date[] | number[] | undefined,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -702,7 +711,7 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL, tickValues!);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };

@@ -72,6 +72,8 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             hideLegend={true}
             height={this.state.height}
             width={this.state.width}
+            tickFormat={'%m/%d'}
+            tickValues={[new Date('2018-01-01'), new Date('2018-02-09')]}
             // eslint-disable-next-line react/jsx-no-bind
             onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
               props ? (
