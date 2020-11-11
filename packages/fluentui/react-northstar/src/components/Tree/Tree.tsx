@@ -195,7 +195,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
             index,
             treeSize,
             selectable: selectable ? item.item.selectable !== false : false,
-            renderItemTitle: item.item.renderItemTitle || props.renderItemTitle,
+            renderItemTitle: props.renderItemTitle,
           }),
       });
     });
