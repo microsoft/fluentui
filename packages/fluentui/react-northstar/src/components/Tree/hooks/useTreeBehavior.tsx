@@ -1,12 +1,7 @@
 import * as React from 'react';
-import { BaseFlatTreeItem } from './flattenTree';
+import { GetItemById } from './useGetItemById';
 
-export function useTreeBehavior(
-  getItemById: (id: string) => BaseFlatTreeItem,
-  expandSiblings: (e: React.KeyboardEvent, focusedItemId: string) => void,
-  isExclusiveTree: boolean,
-  getItemRef: (id: string) => HTMLElement,
-) {
+export function useTreeBehavior(getItemById: GetItemById, getItemRef: (id: string) => HTMLElement) {
   const focusParent = React.useCallback(
     (parent: string) => {
       const parentRef = getItemRef(parent);
@@ -35,20 +30,8 @@ export function useTreeBehavior(
     [getItemById, getItemRef],
   );
 
-  const siblingsExpand = React.useCallback(
-    (e: React.KeyboardEvent, id: string) => {
-      if (isExclusiveTree) {
-        return;
-      }
-
-      expandSiblings(e, id);
-    },
-    [expandSiblings, isExclusiveTree],
-  );
-
   return {
     focusParent,
     focusFirstChild,
-    siblingsExpand,
   };
 }
