@@ -42,7 +42,7 @@ export function useTreeSelectState(
       const leafs = getLeafNodes(getItemById, idToToggle);
 
       setSelectedItemIdsState(selectedItemIds => {
-const nextSelectedItemIds =
+        const nextSelectedItemIds =
           item.selected === true
             ? _.without(selectedItemIds, ...leafs) // remove all leaves from selected
             : _.uniq(selectedItemIds.concat(leafs)); // add all leaves to selected
