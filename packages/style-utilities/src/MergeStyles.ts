@@ -17,6 +17,6 @@ export {
   mergeStyles,
 } from '@fluentui/merge-styles';
 
-import { IStyleSheetConfig, ICSPSettings } from '@fluentui/merge-styles';
-export type IStyleSheetConfigXX = IStyleSheetConfig;
-export type ICSPSettingsXX = ICSPSettings;
+import { IStyleSheetConfig as IStyleSheetConfigXX, ICSPSettings as ICSPSettingsXX } from '@fluentui/merge-styles';
+export type IStyleSheetConfig = IStyleSheetConfigXX;
+export type ICSPSettings = ICSPSettingsXX;

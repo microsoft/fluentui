@@ -4,7 +4,12 @@ export * from './utilities/index';
 export * from './interfaces/index';
 export * from './MergeStyles';
 
-import { IIconRecordXX, IIconSubsetXX, IIconSubsetRecordXX, IIconOptionsXX } from './utilities/index';
+import {
+  IIconRecord as IIconRecordXX,
+  IIconSubset as IIconSubsetXX,
+  IIconSubsetRecord as IIconSubsetRecordXX,
+  IIconOptions as IIconOptionsXX,
+} from './utilities/index';
 
 export type IIconRecord = IIconRecordXX;
 export type IIconSubset = IIconSubsetXX;

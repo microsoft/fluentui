@@ -19,7 +19,7 @@ import { FontWeights } from '@fluentui/theme/lib/fonts/index';
 import { IAnimationStyles } from '@fluentui/theme/lib/types/IAnimationStyles';
 import { IAnimationVariables } from '@fluentui/theme/lib/types/IAnimationStyles';
 import { IconFontSizes } from '@fluentui/theme/lib/fonts/index';
-import { ICSPSettings } from '@fluentui/merge-styles';
+import { ICSPSettings as ICSPSettings_2 } from '@fluentui/merge-styles';
 import { ICustomizerContext } from '@fluentui/utilities';
 import { IEffects } from '@fluentui/theme/lib/types/IEffects';
 import { IFontFace } from '@fluentui/merge-styles';
@@ -37,7 +37,7 @@ import { ISemanticTextColors } from '@fluentui/theme/lib/types/ISemanticTextColo
 import { ISpacing } from '@fluentui/theme/lib/types/ISpacing';
 import { IStyle } from '@fluentui/merge-styles';
 import { IStyleSet } from '@fluentui/merge-styles';
-import { IStyleSheetConfig } from '@fluentui/merge-styles';
+import { IStyleSheetConfig as IStyleSheetConfig_2 } from '@fluentui/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
@@ -120,7 +120,7 @@ export function getGlobalClassNames<T>(classNames: GlobalClassNames_2<T>, theme:
 // Warning: (ae-forgotten-export) The symbol "IIconRecord" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function getIcon(name?: string): IIconRecord_2 | undefined;
+export function getIcon(name?: string): IIconRecord_3 | undefined;
 
 // @public
 export function getIconClassName(name: string): string;
@@ -167,7 +167,7 @@ export { IAnimationVariables }
 export { IconFontSizes }
 
 // @public (undocumented)
-export type ICSPSettingsXX = ICSPSettings;
+export type ICSPSettings = ICSPSettings_2;
 
 export { IEffects }
 
@@ -188,35 +188,25 @@ export interface IGetFocusStylesOptions {
     width?: number;
 }
 
-// @public (undocumented)
-export type IIconOptions = IIconOptionsXX;
-
 // Warning: (ae-forgotten-export) The symbol "IIconOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type IIconOptionsXX = IIconOptions_2;
+export type IIconOptions = IIconOptions_2;
 
-// @public (undocumented)
-export type IIconRecord = IIconRecordXX;
-
-// @public (undocumented)
-export type IIconRecordXX = IIconRecord_2;
-
-// @public (undocumented)
-export type IIconSubset = IIconSubsetXX;
-
-// @public (undocumented)
-export type IIconSubsetRecord = IIconSubsetRecordXX;
-
-// Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IIconRecord" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type IIconSubsetRecordXX = IIconSubsetRecord_2;
+export type IIconRecord = IIconRecord_2;
 
 // Warning: (ae-forgotten-export) The symbol "IIconSubset" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type IIconSubsetXX = IIconSubset_2;
+export type IIconSubset = IIconSubset_3;
+
+// Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type IIconSubsetRecord = IIconSubsetRecord_3;
 
 export { InjectionMode }
 
@@ -243,7 +233,7 @@ export { IStyle }
 export { IStyleSet }
 
 // @public (undocumented)
-export type IStyleSheetConfigXX = IStyleSheetConfig;
+export type IStyleSheetConfig = IStyleSheetConfig_2;
 
 export { ITheme }
 
@@ -274,8 +264,11 @@ export { registerDefaultFontFaces }
 // @public
 export function registerIconAlias(iconName: string, mappedToName: string): void;
 
+// Warning: (ae-forgotten-export) The symbol "IIconSubset" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IIconOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function registerIcons(iconSubset: IIconSubset_2, options?: Partial<IIconOptions_2>): void;
+export function registerIcons(iconSubset: IIconSubset_2, options?: Partial<IIconOptions_3>): void;
 
 // @public
 export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
@@ -320,7 +313,7 @@ export const ScreenWidthMinXXLarge = 1366;
 export const ScreenWidthMinXXXLarge = 1920;
 
 // @public
-export function setIconOptions(options: Partial<IIconOptions_2>): void;
+export function setIconOptions(options: Partial<IIconOptions_3>): void;
 
 export { Stylesheet }
 

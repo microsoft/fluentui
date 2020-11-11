@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix typing for babel.",
+  "packageName": "@fluentui/utilities",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-11T22:17:58.098Z"
+}

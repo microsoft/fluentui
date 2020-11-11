@@ -397,11 +397,7 @@ export interface IPalette {
 // Warning: (ae-forgotten-export) The symbol "IPartialTheme" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-type IPartialThemeXX = IPartialTheme_2;
-
-export { IPartialThemeXX as IPartialTheme }
-
-export { IPartialThemeXX }
+export type IPartialTheme = IPartialTheme_2;
 
 // @public (undocumented)
 export interface IScheme {
@@ -561,11 +557,7 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-type IThemeXX = ITheme_2;
-
-export { IThemeXX as ITheme }
-
-export { IThemeXX }
+export type ITheme = ITheme_2;
 
 // @public (undocumented)
 export namespace LocalizedFontFamilies {

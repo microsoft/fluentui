@@ -16,7 +16,7 @@ import { IStyleFunction } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import { IStyleSet } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
-import { IVirtualElement } from '@fluentui/dom-utilities';
+import { IVirtualElement as IVirtualElement_2 } from '@fluentui/dom-utilities';
 import { Omit } from '@fluentui/merge-styles';
 import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React from 'react';
@@ -813,7 +813,7 @@ export { IStyleFunctionOrObject }
 export { isVirtualElement }
 
 // @public (undocumented)
-export type IVirtualElementXX = IVirtualElement;
+export type IVirtualElement = IVirtualElement_2;
 
 // @public (undocumented)
 export interface IWarnControlledUsageParams<P> {
