@@ -58,8 +58,8 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' },
 ];
 
-const CURRENT_VERSION = '7';
-const VERSIONS = ['7', '6', '5'];
+const CURRENT_VERSION = '8';
+const VERSIONS = ['8', '7', '6', '5'];
 const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   key: version,
   text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
