@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix UPP ctrl+c copy",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-06T23:06:17.728Z"
-}
