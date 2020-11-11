@@ -7,7 +7,7 @@ export interface TreeRenderContextValue {
   registerItemRef: (id: string, node: HTMLElement) => void;
   toggleItemActive: (e: React.SyntheticEvent, idToToggle: string) => void;
   focusParent: (id: string) => void;
-  siblingsExpand: (e: React.SyntheticEvent, id: string) => void;
+  expandSiblings: (e: React.SyntheticEvent, id: string) => void;
   focusFirstChild: (id: string) => void;
   toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
 }
@@ -17,7 +17,7 @@ export const TreeContext = React.createContext<TreeRenderContextValue>({
   registerItemRef: _.noop,
   toggleItemActive: _.noop,
   focusParent: _.noop,
-  siblingsExpand: _.noop,
+  expandSiblings: _.noop,
   focusFirstChild: _.noop,
   toggleItemSelect: _.noop,
 });

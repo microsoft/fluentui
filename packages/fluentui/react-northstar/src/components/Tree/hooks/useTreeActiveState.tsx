@@ -4,6 +4,7 @@ import { UseTreeOptions } from './useTree';
 import { useStableProps } from './useStableProps';
 import { BaseFlatTreeItem } from './flattenTree';
 import * as _ from 'lodash';
+import { GetItemById } from './useGetItemById';
 
 export interface UseTreeActiveStateResult {
   activeItemIds: string[];
@@ -13,7 +14,7 @@ export interface UseTreeActiveStateResult {
 
 export function useTreeActiveState(
   options: Pick<UseTreeOptions, 'defaultActiveItemIds' | 'activeItemIds' | 'exclusive'>,
-  getItemById: (id: string) => BaseFlatTreeItem,
+  getItemById: GetItemById,
   deprecated_initialActiveItemIds: string[],
 ): UseTreeActiveStateResult {
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
@@ -59,6 +60,10 @@ export function useTreeActiveState(
 
   const expandSiblings = React.useCallback(
     (e: React.KeyboardEvent, focusedItemId: string) => {
+      if (options.exclusive) {
+        return;
+      }
+
       const focusedItem = getItemById(focusedItemId);
       if (!focusedItem) {
         return;
@@ -80,7 +85,7 @@ export function useTreeActiveState(
         return nextActiveItemIds;
       });
     },
-    [getItemById, setActiveItemIdsState, stableProps],
+    [getItemById, options.exclusive, setActiveItemIdsState, stableProps],
   );
 
   return {

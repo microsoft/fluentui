@@ -144,7 +144,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     toggleItemActive,
     focusParent,
     focusFirstChild,
-    siblingsExpand,
+    expandSiblings,
     toggleItemSelect,
   } = useSelectableTree(props);
 
@@ -154,11 +154,11 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       registerItemRef,
       toggleItemActive,
       focusParent,
-      siblingsExpand,
+      expandSiblings,
       focusFirstChild,
       toggleItemSelect,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusParent, siblingsExpand, focusFirstChild, toggleItemSelect],
+    [getItemById, registerItemRef, toggleItemActive, focusParent, expandSiblings, focusFirstChild, toggleItemSelect],
   );
 
   const renderContent = (): React.ReactElement[] => {

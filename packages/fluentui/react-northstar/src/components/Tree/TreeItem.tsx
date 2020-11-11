@@ -143,7 +143,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     registerItemRef,
     toggleItemActive,
     focusParent,
-    siblingsExpand,
+    expandSiblings,
     focusFirstChild,
     toggleItemSelect,
   } = React.useContext(TreeContext);
@@ -246,7 +246,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
-    siblingsExpand(e, props.id);
+    expandSiblings(e, props.id);
   };
 
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
