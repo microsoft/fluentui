@@ -368,7 +368,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onMouseOut={this._handleMouseOut.bind(this, circleId, lineColor)}
-              onFocus={this._handleFocus.bind(this, lineId, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onFocus={() => this._handleFocus(lineId, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onBlur={this._handleMouseOut.bind(this, circleId, lineColor)}
               onClick={this._onDataPointClick.bind(
                 this,
@@ -396,7 +396,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onMouseOut={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
-                onFocus={this._handleFocus.bind(this, lineId, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
+                onFocus={() => this._handleFocus(lineId, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onBlur={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
                 onClick={this._onDataPointClick.bind(
                   this,
@@ -500,7 +500,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     x: number | Date,
     y: number | string,
     lineColor: string,
-    xAxisCalloutData: string,
+    xAxisCalloutData: string | undefined,
     circleId: string,
   ) => {
     this._uniqueCallOutID = circleId;
@@ -535,7 +535,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     lineColor: string,
     xAxisCalloutData: string,
     circleId: string,
-    mouseEvent: React.MouseEvent<SVGPathElement>,
+    mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
     this._uniqueCallOutID = circleId;
