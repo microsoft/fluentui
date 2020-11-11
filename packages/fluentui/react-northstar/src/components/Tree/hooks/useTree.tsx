@@ -88,7 +88,7 @@ export function useTree(props: UseTreeOptions) {
     return result;
   }, [activeItemIds, flatTree, orderedItemIds]);
 
-  // === manage ref to all to-be-rendered tree items  ===
+  // Maintains stable collection of refs to avoid unnecessary React context updates
   const nodes = React.useRef<Record<string, HTMLElement>>({});
   const registerItemRef = React.useCallback((id: string, node: HTMLElement) => {
     nodes.current[id] = node;
