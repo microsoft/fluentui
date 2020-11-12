@@ -1,4 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
+import { SystemColors } from '@microsoft/fast-web-utilities';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../size';
 import {
@@ -22,7 +23,6 @@ import {
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
 } from '../behaviors';
-import { SystemColors } from '@microsoft/fast-web-utilities';
 
 /**
  * @internal
