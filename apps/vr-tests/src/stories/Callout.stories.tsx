@@ -22,7 +22,7 @@ storiesOf('Callout', module)
       style={{
         alignItems: 'center',
         width: '800px',
-        height: '300px',
+        height: '800px',
         display: 'flex',
         justifyContent: 'center',
       }}
