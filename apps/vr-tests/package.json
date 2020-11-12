@@ -18,7 +18,7 @@
     "@fluentui/storybook": "^0.5.25",
     "@fluentui/react-theme-provider": "^0.16.4",
     "@uifabric/example-data": "^7.1.5",
-    "@uifabric/experiments": "^7.36.9",
+    "@uifabric/experiments": "^7.36.10",
     "@uifabric/react-cards": "^0.114.10",
     "@uifabric/react-hooks": "^7.13.9",
     "@uifabric/set-version": "^7.0.23",

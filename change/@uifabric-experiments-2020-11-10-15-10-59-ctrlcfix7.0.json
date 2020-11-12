@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SelectedItemsList: remove copy input, add copy to UnifiedPicker",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-10T23:10:59.639Z"
-}

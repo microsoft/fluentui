@@ -1,8 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Nov 2020 12:25:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.10)
+
+Thu, 12 Nov 2020 12:25:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.36.9..@uifabric/experiments_v7.36.10)
+
+### Patches
+
+- 7.0: SelectedPersona: Fix hover/active states in normal and high contrast modes ([PR #15904](https://github.com/microsoft/fluentui/pull/15904) by chrp@microsoft.com)
+- SelectedItemsList: remove copy input, add copy to UnifiedPicker ([PR #15906](https://github.com/microsoft/fluentui/pull/15906) by elvonspa@microsoft.com)
 
 ## [7.36.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.9)
 
