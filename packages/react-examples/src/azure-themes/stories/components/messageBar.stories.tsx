@@ -166,7 +166,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
       <StackItem disableShrink>
         <ChoiceGroup
           styles={choiceGroupStyles}
-          label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
+          label="Select a MessageBar Example Below. To test in narrator, show one message at a time"
           selectedKey={choice}
           onChange={(e, v) => setChoice(v!.key)}
           options={choiceOptions}
