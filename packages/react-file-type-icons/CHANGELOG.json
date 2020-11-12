@@ -1,6 +1,21 @@
 {
-  "name": "@fluentui/file-type-icons",
+  "name": "@fluentui/react-file-type-icons",
   "entries": [
+    {
+      "date": "Thu, 12 Nov 2020 12:28:12 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Renaming @fluentui/file-type-icons to @fluentui/react-file-type-icons",
+            "author": "dzearing@hotmail.com",
+            "commit": "44f70d32bedda98e754f248efdc34a6041317db1",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ]
+      }
+    },
     {
       "date": "Mon, 26 Oct 2020 12:39:59 GMT",
       "tag": "@fluentui/file-type-icons_v8.0.0-beta.1",
