@@ -528,7 +528,7 @@ export function domainRangeOfDateForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
-  tickValues: Date[],
+  tickValues: Date[] = [],
 ): IDomainNRange {
   const sDate = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data, (item: ILineChartDataPoint) => {
@@ -544,11 +544,8 @@ export function domainRangeOfDateForAreaChart(
   // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
   // That may be Either from given graph data or from prop 'tickValues' date values.
   // So, Finding smallest and largest dates
-  const tickValuesLength = tickValues && tickValues.length;
-  const minTickDate = tickValuesLength && d3Min(tickValues, (singleDate: Date | number) => singleDate);
-  const maxTickDate = tickValuesLength && d3Max(tickValues, (singleDate: Date | number) => singleDate);
-  const smallestDate = (minTickDate && minTickDate < sDate ? minTickDate : sDate) || sDate;
-  const largestDate = (maxTickDate && maxTickDate > lDate ? maxTickDate : lDate) || lDate;
+  const smallestDate = d3Min([...tickValues, sDate])!;
+  const largestDate = d3Max([...tickValues, lDate])!;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
