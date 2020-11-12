@@ -72,7 +72,7 @@ const App: React.FC = () => {
     <ThemeContext.Provider value={themeContext}>
       <RendererContext.Provider value={rendererFactory}>
         <TelemetryPopover>
-          <ThemeProvider>
+          <ThemeProvider applyTo="none">
             <Provider
               as={React.Fragment}
               theme={mergeThemes(themes[themeName], {
