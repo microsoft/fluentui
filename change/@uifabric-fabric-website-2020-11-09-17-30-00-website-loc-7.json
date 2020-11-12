@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix which content is used by localization page language section",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-10T01:30:00.098Z"
-}

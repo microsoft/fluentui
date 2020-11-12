@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 27 Oct 2020 12:28:11 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Nov 2020 12:27:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.51](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.51)
+
+Wed, 11 Nov 2020 12:27:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.15.40..@uifabric/fabric-website_v7.15.51)
+
+### Patches
+
+- Fix which content is used by localization page language section ([PR #15884](https://github.com/microsoft/fluentui/pull/15884) by elcraig@microsoft.com)
 
 ## [7.15.40](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.40)
 

@@ -1,8 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Nov 2020 12:27:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.10.0)
+
+Wed, 11 Nov 2020 12:27:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.4..@uifabric/charting_v4.10.0)
+
+### Minor changes
+
+- Charting updates and fixes: ([PR #15816](https://github.com/microsoft/fluentui/pull/15816) by mibes@microsoft.com)
+
+### Patches
+
+- replacing fill with the stroke, as y-axis lines are not showing up in the darkMode ([PR #15907](https://github.com/microsoft/fluentui/pull/15907) by v-sivsar@microsoft.com)
 
 ## [4.9.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.4)
 

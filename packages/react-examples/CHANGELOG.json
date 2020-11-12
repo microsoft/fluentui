@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 11 Nov 2020 12:27:20 GMT",
+      "tag": "@fluentui/react-examples_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Charting updates and fixes:",
+            "author": "mibes@microsoft.com",
+            "commit": "e5b9b6912fda01687e15433d6c4906e327c03d4c",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2020 16:51:16 GMT",
       "tag": "@fluentui/react-examples_v0.8.12",
       "version": "0.8.12",
