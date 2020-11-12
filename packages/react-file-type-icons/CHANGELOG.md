@@ -6,7 +6,7 @@ This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be m
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/file-type-icons_v8.0.0-beta.1)
 
-Mon, 26 Oct 2020 12:39:59 GMT 
+Mon, 26 Oct 2020 12:39:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/file-type-icons_v8.0.0-beta.0..@fluentui/file-type-icons_v8.0.0-beta.1)
 
 ### Changes
@@ -15,7 +15,7 @@ Mon, 26 Oct 2020 12:39:59 GMT
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/file-type-icons_v8.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT 
+Fri, 23 Oct 2020 03:26:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.8..@fluentui/file-type-icons_v8.0.0-beta.0)
 
 ### Changes
@@ -27,7 +27,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [7.6.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.8)
 
-Wed, 23 Sep 2020 12:27:48 GMT 
+Wed, 23 Sep 2020 12:27:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.1..@uifabric/file-type-icons_v7.6.8)
 
 ### Patches
@@ -36,7 +36,7 @@ Wed, 23 Sep 2020 12:27:48 GMT
 
 ## [7.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.1)
 
-Tue, 01 Sep 2020 12:27:02 GMT 
+Tue, 01 Sep 2020 12:27:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.15..@uifabric/file-type-icons_v7.6.1)
 
 ### Patches
@@ -45,7 +45,7 @@ Tue, 01 Sep 2020 12:27:02 GMT
 
 ## [7.4.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.15)
 
-Tue, 18 Aug 2020 07:58:00 GMT 
+Tue, 18 Aug 2020 07:58:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.2..@uifabric/file-type-icons_v7.4.15)
 
 ### Patches
@@ -54,7 +54,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [7.4.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.2)
 
-Mon, 13 Jul 2020 23:14:39 GMT 
+Mon, 13 Jul 2020 23:14:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.1..@uifabric/file-type-icons_v7.4.2)
 
 ### Patches
@@ -63,7 +63,7 @@ Mon, 13 Jul 2020 23:14:39 GMT
 
 ## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.1)
 
-Fri, 10 Jul 2020 12:40:33 GMT 
+Fri, 10 Jul 2020 12:40:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.0..@uifabric/file-type-icons_v7.4.1)
 
 ### Patches
@@ -72,7 +72,7 @@ Fri, 10 Jul 2020 12:40:33 GMT
 
 ## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.0)
 
-Thu, 09 Jul 2020 21:59:04 GMT 
+Thu, 09 Jul 2020 21:59:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.9..@uifabric/file-type-icons_v7.4.0)
 
 ### Minor changes
@@ -82,7 +82,7 @@ Thu, 09 Jul 2020 21:59:04 GMT
 
 ## [7.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.7)
 
-Wed, 24 Jun 2020 12:37:46 GMT 
+Wed, 24 Jun 2020 12:37:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.5..@uifabric/file-type-icons_v7.3.7)
 
 ### Patches
@@ -91,7 +91,7 @@ Wed, 24 Jun 2020 12:37:46 GMT
 
 ## [7.3.5](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.5)
 
-Wed, 17 Jun 2020 16:07:40 GMT 
+Wed, 17 Jun 2020 16:07:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.4..@uifabric/file-type-icons_v7.3.5)
 
 ### Patches
@@ -100,7 +100,7 @@ Wed, 17 Jun 2020 16:07:40 GMT
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.0)
 
-Fri, 29 May 2020 12:35:34 GMT 
+Fri, 29 May 2020 12:35:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.49..@uifabric/file-type-icons_v7.3.0)
 
 ### Minor changes
@@ -109,7 +109,7 @@ Fri, 29 May 2020 12:35:34 GMT
 
 ## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.49)
 
-Mon, 25 May 2020 12:38:22 GMT 
+Mon, 25 May 2020 12:38:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.44..@uifabric/file-type-icons_v7.2.49)
 
 ### Patches
@@ -118,7 +118,7 @@ Mon, 25 May 2020 12:38:22 GMT
 
 ## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.44)
 
-Fri, 15 May 2020 00:07:39 GMT 
+Fri, 15 May 2020 00:07:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.40..@uifabric/file-type-icons_v7.2.44)
 
 ### Patches
@@ -127,7 +127,7 @@ Fri, 15 May 2020 00:07:39 GMT
 
 ## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
 
-Thu, 07 May 2020 01:06:55 GMT 
+Thu, 07 May 2020 01:06:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.39..@uifabric/file-type-icons_v7.2.40)
 
 ### Patches
@@ -136,7 +136,7 @@ Thu, 07 May 2020 01:06:55 GMT
 
 ## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
 
-Wed, 06 May 2020 12:32:22 GMT 
+Wed, 06 May 2020 12:32:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.30..@uifabric/file-type-icons_v7.2.39)
 
 ### Patches
@@ -145,7 +145,7 @@ Wed, 06 May 2020 12:32:22 GMT
 
 ## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.30)
 
-Thu, 16 Apr 2020 04:01:45 GMT 
+Thu, 16 Apr 2020 04:01:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.28..@uifabric/file-type-icons_v7.2.30)
 
 ### Patches

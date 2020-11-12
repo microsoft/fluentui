@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 10 Nov 2020 12:30:36 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Nov 2020 12:30:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.10)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.9..@fluentui/react-internal_v8.0.0-beta.10)
+
+### Changes
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #15880](https://github.com/microsoft/fluentui/pull/15880) by elvonspa@microsoft.com)
+- Add missing exports to API ([PR #15882](https://github.com/microsoft/fluentui/pull/15882) by dahajek@microsoft.com)
 
 ## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.9)
 
