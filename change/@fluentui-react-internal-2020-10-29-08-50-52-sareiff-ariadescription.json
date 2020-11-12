@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Add support for ariaDescription in contextual menu items",
+  "packageName": "@fluentui/react-internal",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-29T15:50:52.233Z"
+}
