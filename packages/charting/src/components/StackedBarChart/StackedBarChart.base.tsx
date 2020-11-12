@@ -171,6 +171,66 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
+  private _attachEvents = (
+    pointData: number,
+    color: string,
+    point: IChartDataPoint,
+  ): React.SVGAttributes<SVGGElement> | {} => {
+    const { hideTooltip = false, href } = this.props;
+    const isUrlPresent = !!href;
+    // if it is a placeholder attach nothing
+    if (point.placeHolder) {
+      return {};
+      // if user want's to hide the tooltip at the same time
+      // href is present for the bar, then only attach
+      // onclick to the G element
+    } else if (hideTooltip && isUrlPresent) {
+      return {
+        onClick: this._redirectToUrl.bind(this, href),
+        'data-is-focusable': true,
+        pointerEvents: 'all',
+      };
+      // if user want's to hide the tooltip and also
+      // no url is present then attach none, make g
+      // non-tabbable and non- focusable
+    } else if (hideTooltip && !isUrlPresent) {
+      return {
+        'data-is-focusable': false,
+      };
+      // if user don't want to hide the tooltip, and if
+      // url is not present then attatch all the event
+      // which are responsible for showing the callout
+      // don't attach onclick
+    } else if (!hideTooltip && !isUrlPresent) {
+      return {
+        'data-is-focusable': true,
+        onFocus: this._onBarFocus.bind(this, pointData, color, point),
+        onBlur: this._onBarLeave,
+        'aria-labelledby': this._calloutId,
+        onMouseOver: this._onBarHover.bind(this, pointData, color, point),
+        onMouseMove: this._onBarHover.bind(this, pointData, color, point),
+        onMouseLeave: this._onBarLeave,
+        pointerEvents: 'all',
+      };
+      // if user want's to show callout and url is present
+      // then attach everything, make is focusable.
+    } else if (!hideTooltip && isUrlPresent) {
+      return {
+        'data-is-focusable': true,
+        onFocus: this._onBarFocus.bind(this, pointData, color, point),
+        onBlur: this._onBarLeave,
+        'aria-labelledby': this._calloutId,
+        onMouseOver: this._onBarHover.bind(this, pointData, color, point),
+        onMouseMove: this._onBarHover.bind(this, pointData, color, point),
+        onMouseLeave: this._onBarLeave,
+        pointerEvents: 'all',
+        onClick: this._redirectToUrl.bind(this, href),
+      };
+    } else {
+      return {};
+    }
+  };
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -245,15 +305,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
-          data-is-focusable={true}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
-          onBlur={this._onBarLeave}
-          aria-labelledby={this._calloutId}
-          onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
-          onMouseLeave={this._onBarLeave}
-          pointerEvents="all"
-          onClick={this._redirectToUrl.bind(this, this.props.href!)}
+          {...this._attachEvents(pointData, color, point)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
