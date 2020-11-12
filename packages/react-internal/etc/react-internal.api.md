@@ -3193,6 +3193,8 @@ export interface IMenuItemClassNames {
     // (undocumented)
     root: string;
     // (undocumented)
+    screenReaderText: string;
+    // (undocumented)
     secondaryText: string;
     // (undocumented)
     splitContainer: string;
