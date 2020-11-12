@@ -13,10 +13,12 @@ const calloutContent = (
 const defaultProps: ICalloutProps = {
   target: '#target',
   calloutWidth: 200,
-
-  // Layer is causing tests being unstable.
-  // TODO: investigate and re-enable using Layer.
   doNotLayer: true,
+  styles: {
+    root: {
+      animation: 'none',
+    },
+  },
 };
 
 storiesOf('Callout', module)
