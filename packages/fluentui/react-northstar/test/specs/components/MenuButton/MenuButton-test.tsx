@@ -122,7 +122,7 @@ describe('MenuButtonBehavior', () => {
     expect(errors).toEqual([]);
   });
 
-  describe('trigger slot - NO tabbabble - Anchor without href', () => {
+  describe('trigger slot - NO tabbable - Anchor without href', () => {
     const triggerAnchorWtihoutHref = (
       <a data-slotid="trigger" id="triggerElementID">
         triggerLink
@@ -133,7 +133,7 @@ describe('MenuButtonBehavior', () => {
     expect(errors).toEqual([]);
   });
 
-  describe('trigger slot - NO tabbabble - Span', () => {
+  describe('trigger slot - NO tabbable - Span', () => {
     const triggerWithoutTabIndex = (
       <span data-slotid="trigger" id="triggerElementID">
         text to trigger popup
