@@ -255,8 +255,16 @@ export class Page extends React.Component<IPageProps, IPageState> {
   };
 
   private _getPageHeader = (): JSX.Element | null => {
-    const { title, subTitle } = this.props;
-    return title ? <PageHeader pageTitle={title} pageSubTitle={subTitle} /> : null;
+    const { currentVersionData, onVersionMenuClick, title, subTitle, versionOptions } = this.props;
+    return title ? (
+      <PageHeader
+        pageTitle={title}
+        pageSubTitle={subTitle}
+        currentVersionData={currentVersionData}
+        onVersionMenuClick={onVersionMenuClick}
+        versionOptions={versionOptions}
+      />
+    ) : null;
   };
 
   private _getSideRail = (sections: IPageSectionProps[]): JSX.Element | undefined => {

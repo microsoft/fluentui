@@ -1,4 +1,5 @@
-import { Theme } from '@fluentui/react';
+import * as React from 'react';
+import { IContextualMenuItem, Theme } from '@fluentui/react';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
@@ -37,6 +38,22 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
    * that need to show that message bar. You can define exclusions too.
    */
   messageBars?: ISiteMessageBarConfig[];
+
+  /**
+   * The available versions whose documentation is presented on the website.
+   */
+  versionOptions?: IContextualMenuItem[];
+
+  /**
+   * Callback that determines what happens when a version is chosen from the version dropdown.
+   */
+  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
+
+  /**
+   * The data regarding the current version of the library.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  currentVersionData?: any;
 }
 
 export interface ISiteMessageBarConfig extends ISiteMessageBarProps {

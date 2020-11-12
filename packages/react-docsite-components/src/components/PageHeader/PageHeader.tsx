@@ -6,7 +6,6 @@ import {
   styled,
   DirectionalHint,
   FontWeights,
-  IContextualMenuItem,
   IStyleFunction,
   ScreenWidthMinUhfMobile,
 } from '@fluentui/react';
@@ -14,9 +13,6 @@ import { ActionButton } from '@fluentui/react/lib/compat/Button';
 import { FontSizes } from '@fluentui/theme';
 import { appPaddingSm, appPaddingLg, pageHeaderFullHeight } from '../../styles/constants';
 import * as pageHeaderStyles from './PageHeader.module.scss';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reactPackageData = require<any>('@fluentui/react/package.json');
 
 const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {
   const palette = props.theme!.palette;
@@ -56,16 +52,15 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
 
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
-const CURRENT_VERSION = '8';
-const VERSIONS = ['8', '7', '6', '5'];
-const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
-  key: version,
-  text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
-  checked: version === CURRENT_VERSION,
-}));
-
 const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
-  const { pageTitle = 'Page title', pageSubTitle, theme } = props;
+  const {
+    currentVersionData,
+    onVersionMenuClick,
+    pageTitle = 'Page title',
+    pageSubTitle,
+    theme,
+    versionOptions,
+  } = props;
   const styles = getClassNames(getStyles, { theme });
 
   const monoFont =
@@ -79,38 +74,32 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
         {pageTitle}
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
       </h1>
-      <ActionButton
-        allowDisabledFocus={true}
-        styles={{
-          root: { height: '1em', padding: '12px 0' },
-          flexContainer: { fontFamily: monoFont },
-          rootHovered: { borderBottom: '1px solid black' },
-        }}
-        menuProps={{
-          gapSpace: 3,
-          beakWidth: 8,
-          isBeakVisible: true,
-          shouldFocusOnMount: true,
-          items: fabricVersionOptions,
-          directionalHint: DirectionalHint.bottomCenter,
-          onItemClick: onVersionMenuClick,
-          styles: {
-            root: { minWidth: 100 },
-          },
-        }}
-      >
-        Fluent UI React {reactPackageData.version}
-      </ActionButton>
+      {versionOptions && (
+        <ActionButton
+          allowDisabledFocus={true}
+          styles={{
+            root: { height: '1em', padding: '12px 0' },
+            flexContainer: { fontFamily: monoFont },
+            rootHovered: { borderBottom: '1px solid black' },
+          }}
+          menuProps={{
+            gapSpace: 3,
+            beakWidth: 8,
+            isBeakVisible: true,
+            shouldFocusOnMount: true,
+            items: versionOptions,
+            directionalHint: DirectionalHint.bottomCenter,
+            onItemClick: onVersionMenuClick,
+            styles: {
+              root: { minWidth: 100 },
+            },
+          }}
+        >
+          Fluent UI React {currentVersionData.version}
+        </ActionButton>
+      )}
     </header>
   );
-};
-
-const onVersionMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem): void => {
-  const restOfPath = location.href.substr(location.href.indexOf('#'));
-  if (item.key !== CURRENT_VERSION) {
-    // Reload the page to switch versions
-    location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}${restOfPath}`;
-  }
 };
 
 export const PageHeader: React.FunctionComponent<IPageHeaderProps> = styled<
