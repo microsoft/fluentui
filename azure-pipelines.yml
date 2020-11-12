@@ -146,6 +146,9 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
+      - script: yarn buildto @fluentui/docs
+        displayName: yarn build to docs
+
       - script: yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
 
