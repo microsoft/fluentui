@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "making G element focusable/non-focusable depending on situation",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-12T03:06:42.337Z"
+}
