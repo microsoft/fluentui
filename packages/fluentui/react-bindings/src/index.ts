@@ -26,6 +26,7 @@ export { RendererContext } from './renderer/RendererContext';
 export { createAnimationStyles as unstable_createAnimationStyles } from './styles/createAnimationStyles';
 export { calculateAnimationTimeout as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
 export { getStyles as unstable_getStyles } from './styles/getStyles';
+export { resolveVariables as unstable_resolveVariables } from './styles/resolveVariables';
 export * from './styles/types';
 
 export { getTelemetry as deprecated_getTelemetry, useTelemetry } from './telemetry/useTelemetry';
