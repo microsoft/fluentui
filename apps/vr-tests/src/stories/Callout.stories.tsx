@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 
 const calloutContent = (
@@ -14,6 +13,10 @@ const calloutContent = (
 const defaultProps: ICalloutProps = {
   target: '#target',
   calloutWidth: 200,
+
+  // Layer is causing tests being unstable.
+  // TODO: investigate and re-enable using Layer.
+  doNotLayer: true,
 };
 
 storiesOf('Callout', module)
@@ -31,7 +34,6 @@ storiesOf('Callout', module)
       {story()}
     </div>
   ))
-  .addDecorator(FabricDecoratorTall)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
