@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useAutoControlled } from '@fluentui/react-bindings';
+import { useStableProps } from './useStableProps';
 import { ObjectShorthandCollection } from '../../../types';
 import { TreeItemProps } from '../TreeItem';
 import { flattenTree } from './flattenTree';
 import { useGetItemById } from './useGetItemById';
-import { useTreeActiveState } from './useTreeActiveState';
 import { useTreeBehavior } from './useTreeBehavior';
+import * as _ from 'lodash';
 
 export interface UseTreeOptions {
   /** Shorthand array of props for Tree. */
@@ -17,57 +19,99 @@ export interface UseTreeOptions {
   exclusive?: boolean;
 }
 
-export function useTree(props: UseTreeOptions) {
-  // reason for flattening: useTree returns a flat array of props for each tree item child,
-  // this plays better with virtualization.
-  const { flatTree, orderedItemIds } = React.useMemo(() => flattenTree(props.items), [props.items]);
+export function useTree(options: UseTreeOptions) {
+  // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
+  const deprecated_initialActiveItemIds = React.useMemo(
+    () => deprecated_getInitialActiveItemIds(options.items),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [], // initialValue only needs to be computed on mount
+  );
+
+  const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
+    defaultValue: options.defaultActiveItemIds,
+    value: options.activeItemIds,
+    initialValue: deprecated_initialActiveItemIds, // will become []
+  });
+
+  // We want to set `visibleItemIds` to simplify rendering later
+  const { flatTree, visibleItemIds } = React.useMemo(() => flattenTree(options.items, activeItemIds), [
+    activeItemIds,
+    options.items,
+  ]);
 
   const getItemById = useGetItemById(flatTree);
 
-  // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
-  const deprecated_initialActiveItemIds = React.useMemo(() => {
-    const initalValue = [];
-    Object.keys(flatTree).forEach(key => {
-      if (flatTree[key].expanded) {
-        initalValue.push(key);
+  const stableProps = useStableProps(options);
+
+  const toggleItemActive = React.useCallback(
+    (e: React.SyntheticEvent, idToToggle: string) => {
+      const item = getItemById(idToToggle);
+      if (!item || !item.hasSubtree) {
+        // leaf node does not have the concept of active/inactive
+        return;
       }
-    });
-    return initalValue;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // initialValue only needs to be computed on mount
-  const { activeItemIds, toggleItemActive, expandSiblings } = useTreeActiveState(
-    props,
-    getItemById,
-    deprecated_initialActiveItemIds,
+
+      setActiveItemIdsState(activeItemIds => {
+        let nextActiveItemIds: string[];
+        const isActiveId = activeItemIds.indexOf(idToToggle) !== -1;
+
+        if (isActiveId) {
+          nextActiveItemIds = _.without(activeItemIds, idToToggle);
+        } else {
+          nextActiveItemIds = [...activeItemIds, idToToggle];
+
+          if (options.exclusive) {
+            // remove active siblings, if any, from activeItemIds
+            const parent = getItemById(idToToggle)?.parent;
+            const activeSibling = getItemById(parent)?.childrenIds?.find(
+              id => id !== idToToggle && nextActiveItemIds.indexOf(id) >= 0,
+            );
+            if (activeSibling != null) {
+              nextActiveItemIds = _.without(nextActiveItemIds, activeSibling);
+            }
+          }
+        }
+
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+
+        return nextActiveItemIds;
+      });
+    },
+    [getItemById, options.exclusive, setActiveItemIdsState, stableProps],
   );
 
-  // We want to set `visibleItemIds` to simplify rendering later
-  // There is no sense to recreate a flat tree so we simply mutating it
-  const visibleItemIds = React.useMemo(() => {
-    const result = [];
-    let i = 0;
-    while (i < orderedItemIds.length) {
-      const id = orderedItemIds[i];
-      const item = flatTree[id];
-      result.push(id);
-      i++;
-      if (activeItemIds.includes(id)) {
-        flatTree[id].expanded = item.hasSubtree ? true : undefined;
-      } else {
-        flatTree[id].expanded = item.hasSubtree ? false : undefined;
-        // item is collpased, so all its descendents are not visible
-        while (i < orderedItemIds.length) {
-          const nextItem = flatTree[orderedItemIds[i]];
-          nextItem.expanded = item.hasSubtree ? false : undefined;
-          if (nextItem?.level <= item.level) {
-            break;
-          }
-          i++;
-        }
+  const expandSiblings = React.useCallback(
+    (e: React.KeyboardEvent, focusedItemId: string) => {
+      if (options.exclusive) {
+        return;
       }
-    }
-    return result;
-  }, [activeItemIds, flatTree, orderedItemIds]);
+
+      const focusedItem = getItemById(focusedItemId);
+      if (!focusedItem) {
+        return;
+      }
+
+      const parentItem = getItemById(focusedItem?.parent);
+      const siblingsIds = _.without(parentItem?.childrenIds || [], focusedItemId);
+
+      if (!siblingsIds) {
+        return;
+      }
+
+      setActiveItemIdsState(activeItemIds => {
+        const nextActiveItemIds = _.uniq(activeItemIds.concat(siblingsIds));
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
+      });
+    },
+    [getItemById, options.exclusive, setActiveItemIdsState, stableProps],
+  );
 
   // Maintains stable collection of refs to avoid unnecessary React context updates
   const nodes = React.useRef<Record<string, HTMLElement>>({});
@@ -81,7 +125,6 @@ export function useTree(props: UseTreeOptions) {
 
   return {
     flatTree,
-    orderedItemIds,
     getItemById,
     activeItemIds,
     visibleItemIds,
@@ -92,4 +135,24 @@ export function useTree(props: UseTreeOptions) {
     focusFirstChild,
     expandSiblings,
   };
+}
+
+function deprecated_getInitialActiveItemIds(items?: ObjectShorthandCollection<TreeItemProps>) {
+  if (!items) {
+    return [];
+  }
+
+  let result = [];
+  items.forEach(item => {
+    if (item.expanded) {
+      result.push(item.id);
+    }
+
+    if (item.items) {
+      result = result.concat(
+        deprecated_getInitialActiveItemIds(item.items as ObjectShorthandCollection<TreeItemProps>),
+      );
+    }
+  });
+  return result;
 }
