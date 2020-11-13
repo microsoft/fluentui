@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix react-internal.api.md.",
-  "packageName": "@fluentui/react-internal",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-11-12T22:08:00.887Z"
-}
