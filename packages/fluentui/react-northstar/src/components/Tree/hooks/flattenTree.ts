@@ -48,15 +48,16 @@ export type BaseFlatTree = Record<string, BaseFlatTreeItem>;
 // Fluent UI Tree component does not have a root item.
 // Adding a 'secret' root (level=0) helps traversing among the top level (level=1) tree items.
 // This 'secret' root should NOT be returned as part of orderedItemIds, because it is not an item from user props
-const SECRET_ROOT_ID = 'FLUENT_UI_SECRET_ROOT_ID';
+// TODO remove export after merging select state also in flattenTree process
+export const SECRET_ROOT_ID = 'FLUENT_UI_SECRET_ROOT_ID';
 
 /**
- * @param items
- * @returns returns the flattened tree, and returns an array of all tree item ids in a Depth First order.
+ * @returns returns the flattened tree, and an array of all visible tree item ids in a Depth First order.
  */
 export function flattenTree(
   items: ObjectShorthandValue<TreeItemProps>[],
-): { flatTree: BaseFlatTree; orderedItemIds: string[] } {
+  activeItemIds: string[],
+): { flatTree: BaseFlatTree; visibleItemIds: string[] } {
   const flatTree = {
     [SECRET_ROOT_ID]: {
       index: 1,
@@ -68,7 +69,7 @@ export function flattenTree(
   };
 
   // returns an extra array of orderedItemIds because flattened tree object does not keep the order of insertion
-  return flattenSubTree(items, 1, SECRET_ROOT_ID, flatTree, []);
+  return flattenSubTree(items, 1, SECRET_ROOT_ID, flatTree, true, activeItemIds, []);
 }
 
 function flattenSubTree(
@@ -76,31 +77,46 @@ function flattenSubTree(
   level: number = 1,
   parent: string,
   flatTree: BaseFlatTree,
-  orderedItemIds: string[],
-) {
+  isVisible: boolean = true,
+  activeItemIds: string[],
+  visibleItemIds: string[],
+): { flatTree: BaseFlatTree; visibleItemIds: string[] } {
   if (!items) {
-    return { flatTree, orderedItemIds };
+    return { flatTree, visibleItemIds };
   }
 
   const itemsInLeaf = items.length;
 
   items.forEach((item, indexAmongSiblings) => {
-    const { id, expanded, items: childrenItems } = item;
+    const { id, items: childrenItems } = item;
     const hasSubtree = childrenItems ? !!childrenItems.length : false;
-    orderedItemIds.push(id);
+    const expanded = hasSubtree && activeItemIds.includes(id);
 
     flatTree[id] = {
       item,
       index: indexAmongSiblings + 1, // Used for aria-posinset and it's 1-based.
       level,
-      expanded: hasSubtree ? !!expanded : undefined,
+
+      expanded,
       parent: parent == null ? undefined : parent,
       treeSize: itemsInLeaf,
       hasSubtree,
     };
 
+    if (isVisible) {
+      visibleItemIds.push(id);
+    }
+
     if (hasSubtree) {
-      flattenSubTree(childrenItems as ObjectShorthandValue<TreeItemProps>[], level + 1, id, flatTree, orderedItemIds);
+      flattenSubTree(
+        childrenItems as ObjectShorthandValue<TreeItemProps>[],
+        level + 1,
+        id,
+        flatTree,
+        isVisible && expanded, // parent being visible and expanded means subtree is visible
+        activeItemIds,
+        visibleItemIds,
+      );
     }
 
     if (flatTree[parent].childrenIds) {
@@ -110,5 +126,5 @@ function flattenSubTree(
     }
   });
 
-  return { flatTree, orderedItemIds };
+  return { flatTree, visibleItemIds };
 }
