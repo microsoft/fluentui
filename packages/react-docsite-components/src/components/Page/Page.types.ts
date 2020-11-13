@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IComponentAs, IContextualMenuItem } from '@fluentui/react';
+import { IComponentAs } from '@fluentui/react';
+import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IVersionSwitcherDefinition } from '../../utilities/SiteDefinition.types';
 
 /**
  * Props for the page.
@@ -114,20 +115,9 @@ export interface IPageProps<TPlatforms extends string = string> {
   platform?: TPlatforms;
 
   /**
-   * The available versions whose documentation is presented on the website.
+   * Defines the necessary information to populate the version switcher.
    */
-  versionOptions?: IContextualMenuItem[];
-
-  /**
-   * Callback that determines what happens when a version is chosen from the version dropdown.
-   */
-  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
-
-  /**
-   * The data regarding the current version of the library.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  currentVersionData?: any;
+  versionSwitcherDefinition?: IVersionSwitcherDefinition;
 }
 
 export interface IExample extends IExampleCardProps {

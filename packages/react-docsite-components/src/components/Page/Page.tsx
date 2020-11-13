@@ -255,15 +255,9 @@ export class Page extends React.Component<IPageProps, IPageState> {
   };
 
   private _getPageHeader = (): JSX.Element | null => {
-    const { currentVersionData, onVersionMenuClick, title, subTitle, versionOptions } = this.props;
+    const { title, subTitle, versionSwitcherDefinition } = this.props;
     return title ? (
-      <PageHeader
-        pageTitle={title}
-        pageSubTitle={subTitle}
-        currentVersionData={currentVersionData}
-        onVersionMenuClick={onVersionMenuClick}
-        versionOptions={versionOptions}
-      />
+      <PageHeader pageTitle={title} pageSubTitle={subTitle} versionSwitcherDefinition={versionSwitcherDefinition} />
     ) : null;
   };
 

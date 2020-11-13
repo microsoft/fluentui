@@ -8,6 +8,7 @@ import {
   FontWeights,
   IStyleFunction,
   ScreenWidthMinUhfMobile,
+  IContextualMenuItem,
 } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/compat/Button';
 import { FontSizes } from '@fluentui/theme';
@@ -18,7 +19,7 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
   const palette = props.theme!.palette;
   return {
     root: {
-      alignItems: 'center',
+      alignItems: 'flex-end',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -53,20 +54,17 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
 const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
-  const {
-    currentVersionData,
-    onVersionMenuClick,
-    pageTitle = 'Page title',
-    pageSubTitle,
-    theme,
-    versionOptions,
-  } = props;
+  const { pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
   const styles = getClassNames(getStyles, { theme });
 
-  const monoFont =
-    '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter",' +
-    '"DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,' +
-    'monospace';
+  const versionOptions: IContextualMenuItem[] | undefined =
+    versionSwitcherDefinition && versionSwitcherDefinition.versions
+      ? versionSwitcherDefinition.versions.map(version => ({
+          key: version,
+          text: version,
+          checked: version === versionSwitcherDefinition.currentVersion,
+        }))
+      : undefined;
 
   return (
     <header className={css(styles.root, pageHeaderStyles.root, props.className)}>
@@ -74,12 +72,11 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
         {pageTitle}
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
       </h1>
-      {versionOptions && (
+      {versionSwitcherDefinition && versionOptions && (
         <ActionButton
           allowDisabledFocus={true}
           styles={{
             root: { height: '1em', padding: '12px 0' },
-            flexContainer: { fontFamily: monoFont },
             rootHovered: { borderBottom: '1px solid black' },
           }}
           menuProps={{
@@ -89,13 +86,13 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
             shouldFocusOnMount: true,
             items: versionOptions,
             directionalHint: DirectionalHint.bottomCenter,
-            onItemClick: onVersionMenuClick,
+            onItemClick: versionSwitcherDefinition.onVersionMenuClick,
             styles: {
               root: { minWidth: 100 },
             },
           }}
         >
-          Fluent UI React {currentVersionData.version}
+          Fluent UI React {versionSwitcherDefinition.currentVersionNumber}
         </ActionButton>
       )}
     </header>

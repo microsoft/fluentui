@@ -5,6 +5,31 @@ import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
 
 /**
+ * Interface defining the necessary information to populate the version switcher.
+ */
+export interface IVersionSwitcherDefinition {
+  /**
+   * The list of available versions whose documentation is presented on the website.
+   */
+  versions?: string[];
+
+  /**
+   * Callback that determines what happens when a version is chosen from the version dropdown.
+   */
+  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
+
+  /**
+   * The current version of the library.
+   */
+  currentVersion?: string;
+
+  /**
+   * The current version number of the library, as specified in package.json.
+   */
+  currentVersionNumber?: string;
+}
+
+/**
  * Site definition.
  * TPlatform can be an enum type and is expected to contain the key `default`.
  */
@@ -40,20 +65,9 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
   messageBars?: ISiteMessageBarConfig[];
 
   /**
-   * The available versions whose documentation is presented on the website.
+   * Defines the necessary information to populate the version switcher.
    */
-  versionOptions?: IContextualMenuItem[];
-
-  /**
-   * Callback that determines what happens when a version is chosen from the version dropdown.
-   */
-  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
-
-  /**
-   * The data regarding the current version of the library.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  currentVersionData?: any;
+  versionSwitcherDefinition?: IVersionSwitcherDefinition;
 }
 
 export interface ISiteMessageBarConfig extends ISiteMessageBarProps {
