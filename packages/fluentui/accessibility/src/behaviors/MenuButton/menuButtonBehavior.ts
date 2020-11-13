@@ -16,7 +16,6 @@ import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
  * Adds attribute 'aria-expanded=true' based on the property 'open' to 'trigger' slot.
  * Adds attribute 'id=trigger-id' based on the property 'triggerId' to 'trigger' slot.
  * Adds attribute 'id=menu-id' based on the property 'menuId' to 'menu' slot.
- * Adds attribute 'aria-labelledby=trigger-id' based on the property 'triggerId' to 'menu' slot.
  */
 export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
   const behavior = popupBehavior(props);
