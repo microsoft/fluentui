@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "improve Text variant style inheritance",
+  "packageName": "@fluentui/react-internal",
+  "email": "blaymist@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-14T20:42:00.390Z"
+}
