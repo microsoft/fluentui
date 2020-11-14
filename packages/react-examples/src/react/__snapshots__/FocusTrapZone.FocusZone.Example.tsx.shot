@@ -85,6 +85,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             }
         htmlFor="Toggle1"
         id="Toggle1-label"
+        onClick={[Function]}
       >
         Use trap zone
       </label>

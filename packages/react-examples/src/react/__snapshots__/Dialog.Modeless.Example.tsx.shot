@@ -47,6 +47,7 @@ Array [
             }
         htmlFor="Toggle0"
         id="Toggle0-label"
+        onClick={[Function]}
       >
         Is draggable
       </label>

@@ -3625,6 +3625,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             }
         htmlFor="Toggle60"
         id="Toggle60-label"
+        onClick={[Function]}
       >
         Enable caching
       </label>
@@ -3754,6 +3755,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             }
         htmlFor="Toggle61"
         id="Toggle61-label"
+        onClick={[Function]}
       >
         Enable onGrowData
       </label>
@@ -3883,6 +3885,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             }
         htmlFor="Toggle62"
         id="Toggle62-label"
+        onClick={[Function]}
       >
         Buttons checked
       </label>

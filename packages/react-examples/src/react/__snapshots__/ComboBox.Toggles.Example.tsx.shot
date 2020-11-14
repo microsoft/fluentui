@@ -462,6 +462,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
           }
       htmlFor="Toggle4"
       id="Toggle4-label"
+      onClick={[Function]}
     >
       Allow freeform
     </label>
@@ -599,6 +600,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
           }
       htmlFor="Toggle5"
       id="Toggle5-label"
+      onClick={[Function]}
     >
       Auto-complete
     </label>

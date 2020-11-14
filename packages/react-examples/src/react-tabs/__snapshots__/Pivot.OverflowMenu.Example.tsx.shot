@@ -50,6 +50,7 @@ Array [
             }
         htmlFor="Toggle0"
         id="Toggle0-label"
+        onClick={[Function]}
       >
         overflow
       </label>
@@ -229,6 +230,7 @@ Array [
             }
         htmlFor="Toggle1"
         id="Toggle1-label"
+        onClick={[Function]}
       >
         linkFormat
       </label>
@@ -400,6 +402,7 @@ Array [
             }
         htmlFor="Toggle2"
         id="Toggle2-label"
+        onClick={[Function]}
       >
         direction
       </label>

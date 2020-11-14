@@ -42,6 +42,7 @@ Array [
           }
       htmlFor="Toggle0"
       id="Toggle0-label"
+      onClick={[Function]}
     >
       Toggle to load content
     </label>

@@ -267,6 +267,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               }
           htmlFor="Toggle4"
           id="Toggle4-label"
+          onClick={[Function]}
         >
           Use trap zone
         </label>
