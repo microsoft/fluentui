@@ -24,12 +24,6 @@ export const CalloutPageProps: IDocPageProps = {
       code: CalloutBasicExampleCode,
       view: <CalloutBasicExample />,
     },
-
-    {
-      title: 'FocusTrapCallout Variant',
-      code: CalloutFocusTrapExampleCode,
-      view: <CalloutFocusTrapExample />,
-    },
     {
       title: 'Non-focusable Callout with accessible text',
       code: StatusCalloutExampleCode,
@@ -44,6 +38,11 @@ export const CalloutPageProps: IDocPageProps = {
       title: 'Callout that covers the target element',
       code: CalloutCoverExampleCode,
       view: <CalloutCoverExample />,
+    },
+    {
+      title: 'FocusTrapCallout variant',
+      code: CalloutFocusTrapExampleCode,
+      view: <CalloutFocusTrapExample />,
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),
