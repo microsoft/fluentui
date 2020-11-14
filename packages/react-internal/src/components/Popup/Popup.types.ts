@@ -45,7 +45,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
 
   /**
    * Called when the component is unmounting, and focus needs to be restored. If this is provided,
-   * focus will not be restored automatically, and you'll need to call `options.originalElement.focus()`.
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }

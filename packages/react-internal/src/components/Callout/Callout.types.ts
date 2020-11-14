@@ -264,9 +264,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 
   /**
    * Called when the component is unmounting, and focus needs to be restored. If this is provided,
-   * focus will not be restored automatically, and you'll need to call `options.originalElement.focus()`.
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
-  onRestoreFocus?: (options: IPopupRestoreFocusParams) => void;
+  onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }
 
 /**
