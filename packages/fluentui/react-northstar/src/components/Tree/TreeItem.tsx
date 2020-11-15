@@ -142,13 +142,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     getItemById,
     registerItemRef,
     toggleItemActive,
-    focusParent,
+    focusItemById,
     expandSiblings,
-    focusFirstChild,
     toggleItemSelect,
   } = React.useContext(TreeContext);
 
-  const { selected, hasSubtree } = getItemById(id);
+  const { selected, hasSubtree, childrenIds } = getItemById(id);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -236,12 +235,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
-    focusFirstChild(props.id);
+    focusItemById(childrenIds?.[0]);
   };
 
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
-    focusParent(parent);
+    focusItemById(parent);
   };
 
   const handleSiblingsExpand = e => {

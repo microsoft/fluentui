@@ -5,7 +5,6 @@ import { ObjectShorthandCollection } from '../../../types';
 import { TreeItemProps } from '../TreeItem';
 import { flattenTree } from './flattenTree';
 import { useGetItemById } from './useGetItemById';
-import { useTreeBehavior } from './useTreeBehavior';
 import * as _ from 'lodash';
 
 export interface UseTreeOptions {
@@ -120,8 +119,26 @@ export function useTree(options: UseTreeOptions) {
   }, []);
   const getItemRef = React.useCallback((id): HTMLElement => nodes.current[id], []);
 
-  // === provide arrow left/right key navigation ===
-  const { focusParent, focusFirstChild } = useTreeBehavior(getItemById, getItemRef);
+  // can be used for keyboard navigation ===
+  const focusItemById = React.useCallback(
+    (id: string) => {
+      if (id == null) {
+        return;
+      }
+      const itemRef = getItemRef(id);
+      if (itemRef == null) {
+        return;
+      }
+
+      if (getItemById(id)?.hasSubtree) {
+        itemRef.focus();
+      } else {
+        // when node is leaf, need to focus on the inner treeTitle
+        (itemRef.firstElementChild as HTMLElement)?.focus();
+      }
+    },
+    [getItemById, getItemRef],
+  );
 
   return {
     flatTree,
@@ -131,8 +148,7 @@ export function useTree(options: UseTreeOptions) {
     registerItemRef,
     getItemRef,
     toggleItemActive,
-    focusParent,
-    focusFirstChild,
+    focusItemById,
     expandSiblings,
   };
 }
