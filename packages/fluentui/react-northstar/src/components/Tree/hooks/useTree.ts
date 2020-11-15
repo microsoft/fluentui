@@ -94,7 +94,7 @@ export function useTree(options: UseTreeOptions) {
       }
 
       const parentItem = getItemById(focusedItem?.parent);
-      const siblingsIds = _.without(parentItem?.childrenIds || [], focusedItemId);
+      const siblingsIds = parentItem?.childrenIds;
 
       if (!siblingsIds) {
         return;
