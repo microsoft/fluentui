@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating api to match output of makeStyles.",
+  "packageName": "@fluentui/react-text",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-16T22:43:34.805Z"
+}
