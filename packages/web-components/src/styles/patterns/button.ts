@@ -149,6 +149,22 @@ export const BaseButtonStyles: ElementStyles = css`
             cursor: ${disabledCursor};
             opacity: 1;
         }
+
+        :host([href]) {
+          color: ${SystemColors.LinkText};
+        }
+
+        :host([href]) .control:hover,
+        :host(.outline[href]) .control:hover
+        :host(:hover[href]),
+        :host([href]) .control:${focusVisible}{
+          forced-color-adjust: none;
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.LinkText};
+          box-shadow: 0 0 0 1px ${SystemColors.LinkText} inset;
+          color: ${SystemColors.LinkText};
+          fill: currentColor;
+        }
     `,
   ),
 );
@@ -187,27 +203,45 @@ export const AccentButtonStyles = css`
     css`
         :host(.accent) .control {
             forced-color-adjust: none;
-            background-color: ${SystemColors.Highlight};
+            background: ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
         }
 
         :host(.accent) .control:hover {
-            background-color: ${SystemColors.HighlightText};
+            background: ${SystemColors.HighlightText};
             border-color: ${SystemColors.Highlight};
             color: ${SystemColors.Highlight};
         }
 
-        :host(.accent:${focusVisible}) .control {
+        :host(.accent) .control:${focusVisible} {
             border-color: ${SystemColors.ButtonText};
             box-shadow: 0 0 0 2px ${SystemColors.HighlightText} inset;
         }
 
         :host(.accent.disabled) .control,
         :host(.accent.disabled) .control:hover {
-            background-color: ${SystemColors.ButtonFace};
+            background: ${SystemColors.ButtonFace};
             border-color: ${SystemColors.GrayText};
             color: ${SystemColors.GrayText};
         }
+
+        :host(.accent[href]) .control{
+            background: ${SystemColors.LinkText};
+            color: ${SystemColors.HighlightText};
+        }
+
+        :host(.accent[href]) .control:hover {
+            background: ${SystemColors.ButtonFace};
+            border-color: ${SystemColors.LinkText};
+            box-shadow: none;
+            color: ${SystemColors.LinkText};
+            fill: currentColor;
+        }
+
+        :host(.accent[href]) .control:${focusVisible} {
+          border-color: ${SystemColors.LinkText};
+          box-shadow: 0 0 0 2px ${SystemColors.HighlightText} inset;
+      }
     `,
   ),
 );
@@ -330,7 +364,7 @@ export const LightweightButtonStyles = css`
         :host(.lightweight) .control:hover,
         :host(.lightweight) .control:${focusVisible} {
             forced-color-adjust: none;
-            background-color: ${SystemColors.ButtonFace};
+            background: ${SystemColors.ButtonFace};
             color: ${SystemColors.Highlight};
         }
         :host(.lightweight) .control:hover .content::before,
@@ -345,6 +379,18 @@ export const LightweightButtonStyles = css`
 
         :host(.lightweight.disabled) .control:hover .content::before {
             background: none;
+        }
+
+        :host(.lightweight[href]) .control:hover,
+        :host(.lightweight[href]) .control:${focusVisible} {
+            background: ${SystemColors.ButtonFace};
+            box-shadow: none;
+            color: ${SystemColors.LinkText};
+        }
+
+        :host(.lightweight[href]) .control:hover .content::before,
+        :host(.lightweight[href]) .control:${focusVisible} .content::before {
+            background: ${SystemColors.LinkText};
         }
     `,
   ),
@@ -448,6 +494,23 @@ export const StealthButtonStyles = css`
             border-color: transparent;
             color: ${SystemColors.GrayText};
         }
+
+        :host(.stealth[href]) .control {
+            color: ${SystemColors.LinkText};
+        }
+
+        :host(.stealth:hover[href]) .control {
+            background-color: ${SystemColors.LinkText};
+            border-color: ${SystemColors.LinkText};
+            color: ${SystemColors.HighlightText};
+            fill: currentColor;
+        }
+
+      :host(.stealth:${focusVisible}[href]) .control {
+          box-shadow: 0 0 0 1px ${SystemColors.LinkText};
+          color: ${SystemColors.LinkText};
+          fill: currentColor;
+      }
     `,
   ),
 );
