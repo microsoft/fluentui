@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Line chart mouse over",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-11-16T09:13:02.078Z"
+}
