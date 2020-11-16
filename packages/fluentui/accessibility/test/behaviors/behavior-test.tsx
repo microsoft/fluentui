@@ -51,6 +51,7 @@ import {
   toolbarMenuItemBehavior,
   toolbarMenuItemRadioBehavior,
   toolbarMenuRadioGroupBehavior,
+  toolbarMenuDividerBehavior,
   toolbarRadioGroupBehavior,
   toolbarRadioGroupItemBehavior,
   tooltipAsDescriptionBehavior,
@@ -157,6 +158,7 @@ testHelper.addBehavior('toolbarMenuItemBehavior', toolbarMenuItemBehavior);
 testHelper.addBehavior('toolbarMenuItemCheckboxBehavior', toolbarMenuItemCheckboxBehavior);
 testHelper.addBehavior('toolbarMenuItemRadioBehavior', toolbarMenuItemRadioBehavior);
 testHelper.addBehavior('toolbarMenuRadioGroupBehavior', toolbarMenuRadioGroupBehavior);
+testHelper.addBehavior('toolbarMenuDividerBehavior', toolbarMenuDividerBehavior);
 testHelper.addBehavior('toolbarRadioGroupBehavior', toolbarRadioGroupBehavior);
 testHelper.addBehavior('toolbarRadioGroupItemBehavior', toolbarRadioGroupItemBehavior);
 testHelper.addBehavior('tooltipAsDescriptionBehavior', tooltipAsDescriptionBehavior);
