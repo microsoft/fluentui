@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Line chart mouse over",
+  "comment": "Line chart mouse over feature",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-11-16T09:13:02.078Z"
 }
