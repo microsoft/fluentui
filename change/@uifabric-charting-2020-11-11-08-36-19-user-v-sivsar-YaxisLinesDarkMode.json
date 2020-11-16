@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "replacing fill with the stroke, as y-axis lines are not showing up in the darkMode",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-11T03:06:19.332Z"
-}
