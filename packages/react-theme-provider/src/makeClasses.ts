@@ -1,7 +1,6 @@
 import { IStyle } from '@fluentui/merge-styles';
 import { Theme } from '@fluentui/theme';
-import { makeStyles } from './makeStyles';
-import { StyleRenderer } from './styleRenderers/types';
+import { makeStyles, UseStylesOptions } from './makeStyles';
 
 /**
  * The `makeClasses` helper encapsulates `makeStyles`, and given a style map which follows
@@ -38,8 +37,8 @@ export const makeClasses = <TState extends {}>(
 ) => {
   const useStyles = makeStyles(styleOrFunction);
 
-  return (state: TState, theme?: Theme, renderer?: StyleRenderer) => {
-    const classes = useStyles(theme, renderer);
+  return (state: TState, options?: UseStylesOptions) => {
+    const classes = useStyles(options);
     const slotNames = Object.keys(classes);
 
     for (const slotName of slotNames) {
