@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IPageHeaderProps, IPageHeaderStyleProps, IPageHeaderStyles } from './PageHeader.types';
 import {
   classNamesFunction,
-  css,
   styled,
   DirectionalHint,
   FontWeights,
@@ -12,27 +11,32 @@ import {
 } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/compat/Button';
 import { FontSizes } from '@fluentui/theme';
-import { appPaddingSm, appPaddingLg, pageHeaderFullHeight } from '../../styles/constants';
-import * as pageHeaderStyles from './PageHeader.module.scss';
+import { appPaddingSm, appPaddingLg, contentWidth, pageHeaderFullHeight } from '../../styles/constants';
 
 const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {
   const palette = props.theme!.palette;
   return {
-    root: {
-      alignItems: 'flex-end',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: appPaddingSm,
-      position: 'relative',
-      selectors: {
-        [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
-          marginBottom: 0,
-          padding: `${appPaddingLg}px 0`,
-          minHeight: pageHeaderFullHeight,
+    root: [
+      {
+        alignItems: 'flex-end',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: appPaddingSm,
+        position: 'relative',
+        selectors: {
+          [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
+            marginBottom: 0,
+            padding: `${appPaddingLg}px 0`,
+            minHeight: pageHeaderFullHeight,
+          },
+          '@media only screen and (min-width: 1360px)': {
+            maxWidth: contentWidth + appPaddingSm * 2,
+          },
         },
       },
-    },
+      props.className,
+    ],
     title: {
       alignItems: 'baseline',
       color: palette.neutralPrimary,
@@ -54,8 +58,8 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
 const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
-  const { pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
-  const styles = getClassNames(getStyles, { theme });
+  const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
+  const styles = getClassNames(getStyles, { className, theme });
 
   const versionOptions: IContextualMenuItem[] | undefined =
     versionSwitcherDefinition && versionSwitcherDefinition.versions
@@ -67,7 +71,7 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
       : undefined;
 
   return (
-    <header className={css(styles.root, pageHeaderStyles.root, props.className)}>
+    <header className={styles.root}>
       <h1 className={styles.title}>
         {pageTitle}
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
