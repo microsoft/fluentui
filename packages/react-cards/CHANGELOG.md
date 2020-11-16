@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Nov 2020 12:31:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.14)
+
+Mon, 16 Nov 2020 12:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.1..@fluentui/react-cards_v1.0.0-beta.14)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.1)
 

@@ -7,6 +7,7 @@ import {
   memoizeFunction,
   Async,
   EventGroup,
+  getId,
 } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
@@ -26,6 +27,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _splitButton: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
+  private _ariaDescriptionId: string;
 
   private _async: Async;
   private _events: EventGroup;
@@ -75,6 +77,13 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
+    // Check for ariaDescription to set the _ariaDescriptionId and render a hidden span with
+    // the description in it to be added to ariaDescribedBy
+    const { ariaDescription } = item;
+    if (ariaDescription) {
+      this._ariaDescriptionId = getId();
+    }
+
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
         {(keytipAttributes: any): JSX.Element => (
@@ -87,7 +96,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-disabled={isItemDisabled(item)}
             aria-expanded={itemHasSubmenu ? item.key === expandedMenuItemKey : undefined}
             aria-haspopup={true}
-            aria-describedby={mergeAriaAttributeValues(item.ariaDescription, keytipAttributes['aria-describedby'])}
+            aria-describedby={mergeAriaAttributeValues(
+              item.ariaDescribedBy,
+              ariaDescription ? this._ariaDescriptionId : undefined,
+              keytipAttributes['aria-describedby'],
+            )}
             aria-checked={item.isChecked || item.checked}
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
@@ -106,6 +119,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             {this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!)}
             {this._renderSplitDivider(item)}
             {this._renderSplitIconButton(item, classNames, index, keytipAttributes)}
+            {this._renderAriaDescription(ariaDescription, classNames.screenReaderText)}
           </div>
         )}
       </KeytipData>
@@ -125,6 +139,15 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._splitButton;
+  };
+
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
+    return ariaDescription ? (
+      <span id={this._ariaDescriptionId} className={className}>
+        {ariaDescription}
+      </span>
+    ) : null;
   };
 
   private _renderSplitPrimaryButton(

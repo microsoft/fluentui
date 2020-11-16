@@ -68,7 +68,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
+                {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationFonts.md')}
               </Markdown>
               <MarkdownHeader as="h3">Supported languages</MarkdownHeader>
               <p>Fluent UI supports a variety of language codes, which map to the following font stacks:</p>
