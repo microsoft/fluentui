@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating makeStyles hook to take in options bag, rather than specific arguments.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-16T20:53:20.530Z"
+}
