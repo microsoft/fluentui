@@ -1,5 +1,6 @@
 import { Rule } from './../../types';
 import { BehaviorRule } from './../../rules/rules';
+import { buttonBehaviorDefinition } from './buttonBehaviorDefinition';
 
 export const toggleButtonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
@@ -9,4 +10,5 @@ export const toggleButtonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
     .hasAttribute('aria-pressed', 'false')
     .description(`if element has no 'active' prop.`),
+  ...buttonBehaviorDefinition,
 ];
