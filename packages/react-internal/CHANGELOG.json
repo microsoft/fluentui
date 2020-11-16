@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Mon, 16 Nov 2020 12:31:52 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Avoid React.Children traversal for early return cases",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "4a1eddf27492571a17d4934f34b613b33ee2fff4",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Nov 2020 12:33:46 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.11",
       "version": "8.0.0-beta.11",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 13 Nov 2020 12:33:46 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Nov 2020 12:31:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.12)
+
+Mon, 16 Nov 2020 12:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.11..@fluentui/react-internal_v8.0.0-beta.12)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
 
 ## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.11)
 
