@@ -66,6 +66,9 @@ export interface ButtonProps
   /** A button can show a loading indicator. */
   loading?: boolean;
 
+  /** A button can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
+
   /**
    * Called after a user clicks the button.
    * @param event - React's original SyntheticEvent.
@@ -95,7 +98,17 @@ export interface ButtonProps
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid' | 'iconPosition'
+  | 'text'
+  | 'primary'
+  | 'disabled'
+  | 'disabledFocusable'
+  | 'circular'
+  | 'size'
+  | 'loading'
+  | 'inverted'
+  | 'iconOnly'
+  | 'fluid'
+  | 'iconPosition'
 > & {
   hasContent?: boolean;
 };
@@ -124,6 +137,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       icon,
       loader,
       disabled,
+      disabledFocusable,
       iconPosition,
       loading,
       text,
@@ -148,6 +162,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         active,
         disabled,
         loading,
+        disabledFocusable,
       }),
       actionHandlers: {
         performClick: event => {
@@ -163,6 +178,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         text,
         primary,
         disabled,
+        disabledFocusable,
         circular,
         size,
         loading,
@@ -215,7 +231,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const handleClick = (e: React.SyntheticEvent) => {
-      if (disabled) {
+      if (disabled || disabledFocusable) {
         e.preventDefault();
         return;
       }
@@ -285,6 +301,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       'content',
       'design',
       'disabled',
+      'disabledFocusable',
       'fluid',
       'icon',
       'iconOnly',
@@ -321,6 +338,7 @@ Button.propTypes = {
   }),
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
+  disabledFocusable: PropTypes.bool,
   fluid: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   iconOnly: PropTypes.bool,
