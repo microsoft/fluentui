@@ -21,11 +21,13 @@ export type ColorTokenSet = {
   secondaryContentColor?: string;
   linkColor?: string;
   iconColor?: string;
+  menuIconColor?: string;
   borderColor?: string;
   dividerColor?: string;
   focusColor?: string;
   focusInnerColor?: string;
   opacity?: string;
+  highContrast?: ColorTokens;
 };
 
 /**
@@ -49,12 +51,14 @@ export type ColorTokenSet = {
  * to "pressed".
  */
 export type ColorTokens = ColorTokenSet & {
-  hovered?: ColorTokens;
-  pressed?: ColorTokens;
-  disabled?: ColorTokens;
   checked?: ColorTokens;
   checkedHovered?: ColorTokens;
   checkedPressed?: ColorTokens;
+  disabled?: ColorTokenSet;
+  expanded?: ColorTokenSet;
+  focused?: ColorTokenSet;
+  hovered?: ColorTokenSet;
+  pressed?: ColorTokenSet;
 };
 
 export type FontTokens = Partial<{
