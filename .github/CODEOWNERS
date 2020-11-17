@@ -42,6 +42,7 @@ perf-test/ @JasonGore @xugao
 Controls/web.tsx @Vitalius1 @natalieethell @ecraig12345
 
 #### Packages
+packages/react-button/ @dzearing @khmakoto
 packages/charting/ @Raghurk
 packages/date-time @lorejoh12 @evlevy @pompomon
 packages/date-time-utilities @lorejoh12 @evlevy @pompomon

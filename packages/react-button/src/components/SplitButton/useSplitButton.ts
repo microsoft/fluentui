@@ -1,0 +1,87 @@
+import * as React from 'react';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
+import { renderSplitButton } from './renderSplitButton';
+import { useMergedRefs } from '@uifabric/react-hooks';
+
+export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
+
+const mergeProps = makeMergeProps({ deepMerge: splitButtonShorthandProps });
+
+/**
+ * Redefine the component factory, reusing button factory.
+ */
+export const useSplitButton = (
+  props: SplitButtonProps,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: SplitButtonProps,
+) => {
+  const {
+    as = 'span',
+    className,
+    style,
+    primary,
+    ghost,
+    disabled,
+    loading,
+    circular,
+    block,
+    menu,
+    size,
+    transparent,
+    ...userProps
+  } = resolveShorthandProps(props, splitButtonShorthandProps);
+
+  ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
+
+  // A split button should be disabled when disabled or loading.
+  const disabledOrLoading = disabled || loading;
+
+  const state = mergeProps(
+    {
+      as: 'span',
+      className,
+      style,
+      disabled,
+      block,
+      primary,
+      size,
+      transparent,
+      'aria-disabled': disabledOrLoading,
+
+      button: {
+        as: 'span',
+        ref,
+        primary,
+        ghost,
+        circular,
+        disabled: disabledOrLoading,
+        loading,
+        size,
+        transparent,
+        ...userProps,
+      },
+
+      divider: { as: 'span', children: null },
+
+      menuButton: {
+        as: 'span',
+        primary,
+        ghost,
+        circular,
+        size,
+        disabled: disabledOrLoading,
+        loading,
+        transparent,
+        menu,
+        children: null,
+      },
+    },
+    defaultProps,
+  ) as SplitButtonState;
+
+  return {
+    state,
+    render: renderSplitButton,
+  };
+};

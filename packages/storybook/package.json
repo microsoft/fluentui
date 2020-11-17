@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@fluentui/theme": "^1.6.0",
+    "@fluentui/react-theme-provider": "^0.16.4",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.5.41",
