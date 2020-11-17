@@ -217,7 +217,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize, column: number): JSX.Element {
     if (item.grid.mode === TilesGridMode.none) {
       return (
-        <div className={css(TilesListStyles.header)}>
+        <div role="presentation" className={css(TilesListStyles.header)}>
           {item.onRender({
             item: item.content,
             finalSize: { width: 0, height: 0 },
@@ -481,6 +481,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       const finalGrid: JSX.Element = (
         <div
           key={grid.key}
+          role="presentation"
           className={css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none,
             [`${TilesListStyles.shimmeredList}`]: isPlaceholder,
@@ -502,7 +503,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
 
     return (
-      <div {...divProps} className={css(pageClassName, this._onGetPageClassName())}>
+      <div role="presentation" {...divProps} className={css(pageClassName, this._onGetPageClassName())}>
         {grids}
       </div>
     );
@@ -714,7 +715,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _renderRow: IRenderFunction<ITilesListRowProps<TItem>> = (props: ITilesListRowProps<TItem>): JSX.Element => {
     const { cellElements, divProps } = props;
 
-    return <div {...divProps}>{cellElements}</div>;
+    return (
+      <div role="presentation" {...divProps}>
+        {cellElements}
+      </div>
+    );
   };
 
   private _onGetCellClassName = (): string => {
