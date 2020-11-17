@@ -36,17 +36,17 @@ export { IStyleFunctionOrObject }
 export type KeyFrames = IKeyframes;
 
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: UseStylesOptions | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
 };
 
 // @public
-export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: import("./makeStyles").UseStylesOptions | undefined) => void;
 
 // @public
 export type MakeVariantClassesOptions<TVariants = Variants> = {
@@ -135,6 +135,12 @@ export const useInlineTokens: (draftState: {
 
 // @public (undocumented)
 export const useStyleRenderer: () => StyleRenderer;
+
+// @public
+export type UseStylesOptions = {
+    theme?: Theme;
+    renderer?: StyleRenderer;
+};
 
 // @public
 export const useTheme: () => Theme;

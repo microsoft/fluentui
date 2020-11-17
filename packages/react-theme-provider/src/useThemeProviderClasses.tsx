@@ -62,7 +62,7 @@ function useApplyClassToBody(state: ThemeProviderState, classesToApply: string[]
 }
 
 export function useThemeProviderClasses(state: ThemeProviderState): void {
-  const classes = useThemeProviderStyles(state.theme, state.renderer);
+  const classes = useThemeProviderStyles(state);
   const { className, applyTo } = state;
 
   useApplyClassToBody(state, [classes.root, classes.body]);
