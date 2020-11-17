@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Nov 2020 12:27:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.26](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.26)
+
+Tue, 17 Nov 2020 12:27:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.15..@fluentui/storybook_v0.5.26)
+
+### Patches
+
+- Add withThemeProvider decorator. ([PR #15956](https://github.com/microsoft/fluentui/pull/15956) by xgao@microsoft.com)
 
 ## [0.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.15)
 

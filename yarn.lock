@@ -1221,6 +1221,11 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/common-styles@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@fluentui/common-styles/-/common-styles-0.2.6.tgz#b01963782bfec8c0683928bb7a960e1ec0b9813f"
+  integrity sha512-6qelocpVQzEirMpK/jCo7Zs8Qc5T4GWVrIC919Wl29cP5SqUhXKQEIetQjjCzGwVyGexkyTwtRRguPYNInF43A==
+
 "@fluentui/keyboard-key@^0.2.12":
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/@fluentui/keyboard-key/-/keyboard-key-0.2.12.tgz#74eddf4657c164193b6c8855746e691af466441a"

@@ -2,6 +2,59 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 11 Nov 2020 12:27:20 GMT",
+      "tag": "@uifabric/charting_v4.10.0",
+      "version": "4.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Charting updates and fixes:",
+            "author": "mibes@microsoft.com",
+            "commit": "e5b9b6912fda01687e15433d6c4906e327c03d4c",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "replacing fill with the stroke, as y-axis lines are not showing up in the darkMode",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "36b0d9fe5f631a17b104550aac9229fdf04815a8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2020 16:51:16 GMT",
+      "tag": "@uifabric/charting_v4.9.4",
+      "version": "4.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix for exception thrown when the data of the first category is empty",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fc9066da270d7cfb8c181b75ca17b88fa619aa4b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Nov 2020 12:21:30 GMT",
+      "tag": "@uifabric/charting_v4.9.3",
+      "version": "4.9.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "applied the ordering(descending order) in the callout for line points, fixed the opacity of the line also ",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "103d56db8a7203e4d922328a1d6c4246bceb2936",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Nov 2020 12:22:17 GMT",
       "tag": "@uifabric/charting_v4.9.1",
       "version": "4.9.1",

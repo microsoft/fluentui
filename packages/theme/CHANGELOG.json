@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:27:56 GMT",
+      "tag": "@fluentui/theme_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fixing and expanding token typings.",
+            "author": "xgao@microsoft.com",
+            "commit": "17abde4b0156c449f64a8e85f40aa7805a2810d6",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Nov 2020 12:25:34 GMT",
       "tag": "@fluentui/theme_v1.6.0",
       "version": "1.6.0",

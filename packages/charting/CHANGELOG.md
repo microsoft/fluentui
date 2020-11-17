@@ -1,8 +1,39 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 03 Nov 2020 12:22:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Nov 2020 12:27:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.10.0)
+
+Wed, 11 Nov 2020 12:27:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.4..@uifabric/charting_v4.10.0)
+
+### Minor changes
+
+- Charting updates and fixes: ([PR #15816](https://github.com/microsoft/fluentui/pull/15816) by mibes@microsoft.com)
+
+### Patches
+
+- replacing fill with the stroke, as y-axis lines are not showing up in the darkMode ([PR #15907](https://github.com/microsoft/fluentui/pull/15907) by v-sivsar@microsoft.com)
+
+## [4.9.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.4)
+
+Tue, 10 Nov 2020 16:51:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.3..@uifabric/charting_v4.9.4)
+
+### Patches
+
+- fix for exception thrown when the data of the first category is empty ([PR #15851](https://github.com/microsoft/fluentui/pull/15851) by v-sivsar@microsoft.com)
+
+## [4.9.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.3)
+
+Mon, 09 Nov 2020 12:21:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.9.1..@uifabric/charting_v4.9.3)
+
+### Patches
+
+- applied the ordering(descending order) in the callout for line points, fixed the opacity of the line also  ([PR #15814](https://github.com/microsoft/fluentui/pull/15814) by v-sivsar@microsoft.com)
 
 ## [4.9.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.9.1)
 

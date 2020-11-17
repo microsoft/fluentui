@@ -2,6 +2,42 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 12 Nov 2020 12:25:33 GMT",
+      "tag": "@uifabric/experiments_v7.36.10",
+      "version": "7.36.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "7.0: SelectedPersona: Fix hover/active states in normal and high contrast modes",
+            "author": "chrp@microsoft.com",
+            "commit": "62e12ee71ba946cc2f1f5999df1b5b64ba662445",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "SelectedItemsList: remove copy input, add copy to UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2c141737a76344b0ef7ba412b2633132ea4923ca",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2020 16:51:16 GMT",
+      "tag": "@uifabric/experiments_v7.36.9",
+      "version": "7.36.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix keyboard selection when UPP loads with items (and group expand)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1ecf8f1b3c84b6ea95e5cfcff2a93cddfb2164da",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 12:23:06 GMT",
       "tag": "@uifabric/experiments_v7.36.4",
       "version": "7.36.4",

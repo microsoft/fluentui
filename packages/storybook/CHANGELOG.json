@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:27:56 GMT",
+      "tag": "@fluentui/storybook_v0.5.26",
+      "version": "0.5.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add withThemeProvider decorator.",
+            "author": "xgao@microsoft.com",
+            "commit": "17abde4b0156c449f64a8e85f40aa7805a2810d6",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:21:51 GMT",
       "tag": "@fluentui/storybook_v0.5.15",
       "version": "0.5.15",
