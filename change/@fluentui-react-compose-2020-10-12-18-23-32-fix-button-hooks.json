@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Updating the README example in compose/next.",
   "packageName": "@fluentui/react-compose",
   "email": "dzearing@hotmail.com",

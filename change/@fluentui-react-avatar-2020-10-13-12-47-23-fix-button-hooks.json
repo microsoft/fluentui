@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Updating useStatus and useAvatar to return state only, exporting render functions separately.",
   "packageName": "@fluentui/react-avatar",
   "email": "dzearing@hotmail.com",
