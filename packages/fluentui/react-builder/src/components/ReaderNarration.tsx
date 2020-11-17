@@ -120,6 +120,11 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
+      <select aria-label="choose from me">
+        <option>first</option>
+        <option>Second</option>
+        <option>Third</option>
+      </select>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}

@@ -16,11 +16,13 @@ export const SRNC: Record<string, any> = {
 
   // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
   narrateLabelIfNoRole: ['Win/JAWS'],
+
   // Element type strings for each platform
   typeStrings: {
     'Win/JAWS': {
       toggleButton: 'Toggle button',
       textInput: 'Edit',
+      searchInput: 'Search edit',
       button: 'Button',
       checkboxInput: 'check box',
       radioInput: 'radio button',
@@ -159,6 +161,9 @@ export const SRNC: Record<string, any> = {
       'input:text': {
         '[default]': 'Type in text.',
       }, // End input:text
+      'role=searchbox': {
+        '[default]': 'Type in text.',
+      }, // End role=searchbox
       'input:checkbox': {
         '[default]': 'To check press Spacebar.',
         'checked=true': 'To clear checkmark press Spacebar.',
@@ -217,10 +222,14 @@ export const SRNC: Record<string, any> = {
     'Win/JAWS': {
       '[default]': ['landmarksAndGroups', 'name', 'type', 'state', 'description', 'usage'],
       'input:text': ['landmarksAndGroups', 'name', 'type', 'state', 'value', 'description', 'usage'],
+      'role=textbox': 'input:text',
+      'input:search': 'input:text',
+      'role=searchbox': 'input:text',
       'role=combobox': 'input:text',
       'input:radio': ['landmarksAndGroups', 'name', 'type', 'state', 'position', 'description', 'usage'],
       'role=radio': 'input:radio',
       a: ['landmarksAndGroups', 'name', 'state', 'type', 'description', 'usage'],
+      'role=link': 'a',
       'role=menuitem': 'input:radio',
       'role=menuitemcheckbox': 'input:radio',
       'role=menuitemradio': 'input:radio',
@@ -235,6 +244,7 @@ export const SRNC: Record<string, any> = {
   possibleStates: {
     button: ['aria-expanded', 'aria-haspopup', 'aria-pressed'],
     'input:text': ['aria-invalid', 'aria-required'],
+    'role=searchbox': ['aria-invalid', 'aria-required'],
     'input:checkbox': ['checked', 'aria-required'],
     'role=checkbox': ['aria-checked', 'aria-required'],
     'input:radio': ['checked', 'aria-required'],

@@ -59,6 +59,27 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: SRNC.typeStrings['Win/JAWS'].textInput,
     },
   ], // End input:text
+  'role=textbox': 'input:text',
+  'input:search': 'input:text',
+  'role=searchbox': [
+    {
+      combination: [],
+      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+    },
+    {
+      combination: ['aria-invalid'],
+      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+    },
+    {
+      combination: ['aria-required'],
+      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+    },
+    {
+      combination: ['aria-invalid', 'aria-required'],
+      order: ['aria-required', 'aria-invalid'],
+      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+    },
+  ], // End role=searchbox
   'input:checkbox': [
     {
       combination: ['checked'],
@@ -188,6 +209,7 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: SRNC.typeStrings['Win/JAWS'].link,
     },
   ], // End a
+  'role=link': 'a',
   'role=menuitem': [
     {
       combination: [],
