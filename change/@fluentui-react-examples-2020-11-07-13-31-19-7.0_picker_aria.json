@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update ColorPicker to annouce changes to RGBA and hex fields via aria-live",
+  "packageName": "@fluentui/react-examples",
+  "email": "jslone@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-11-07T21:31:19.012Z"
+}
