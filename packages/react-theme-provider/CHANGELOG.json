@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:36:24 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.8",
+      "version": "1.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating makeStyles hook to take in options bag, rather than specific arguments.",
+            "author": "dzearing@hotmail.com",
+            "commit": "c170c8c0891fd77ea5572f5e922a15efcfeeccab",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Changing useStyleRenderer to default to merge-styles so that things actually happen.",
+            "author": "xgao@microsoft.com",
+            "commit": "79ff394998a9917d69f6d3262ffcc931e189e648",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Oct 2020 12:32:24 GMT",
       "tag": "@fluentui/react-theme-provider_v1.0.0-beta.4",
       "version": "1.0.0-beta.4",

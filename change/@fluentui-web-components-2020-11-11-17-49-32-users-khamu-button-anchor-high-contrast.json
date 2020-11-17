@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "moved high contrast work into common button styles file",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-12T01:49:32.286Z"
-}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:36:24 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.11",
+      "version": "1.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating arguments of style hook. ",
+            "author": "dzearing@hotmail.com",
+            "commit": "c170c8c0891fd77ea5572f5e922a15efcfeeccab",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Updating classes hooks derived from Button to actually derive from Button.",
+            "author": "xgao@microsoft.com",
+            "commit": "79ff394998a9917d69f6d3262ffcc931e189e648",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Nov 2020 12:34:34 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.9",
       "version": "1.0.0-beta.9",
