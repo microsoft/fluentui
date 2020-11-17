@@ -6,7 +6,7 @@
  * Usage:
  *
  * ```tsx
- * const useButtonClasses makeClasses(theme => {
+ * const useButtonClasses = makeClasses(theme => {
  *   root: { ... },
  *   _primary: { ... },
  *   _size_small: { ... }
