@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add react-button examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-17T01:22:32.018Z"
+}
