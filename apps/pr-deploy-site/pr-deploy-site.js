@@ -19,6 +19,12 @@ const siteInfo = [
     icon: 'Website',
     title: 'Website',
   },
+  {
+    package: '@fluentui/react-button',
+    link: './react-button/dist-storybook/index.html',
+    icon: 'LikeSolid',
+    title: 'Button',
+  },
   { package: '@uifabric/experiments', link: './experiments/dist/index.html', icon: 'TestBeaker', title: 'Experiments' },
   { package: '@uifabric/charting', link: './charting/dist/index.html', icon: 'BarChart4', title: 'Charting' },
   { package: '@uifabric/date-time', link: './date-time/dist/index.html', icon: 'PrimaryCalendar', title: 'Date/Time' },
