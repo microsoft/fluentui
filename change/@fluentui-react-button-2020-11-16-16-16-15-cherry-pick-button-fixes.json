@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating classes hooks derived from Button to actually derive from Button.",
-  "packageName": "@fluentui/react-button",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-17T00:16:09.623Z"
-}

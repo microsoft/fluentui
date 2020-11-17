@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 06 Nov 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Nov 2020 12:36:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.11)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.9..@fluentui/react-button_v1.0.0-beta.11)
+
+### Changes
+
+- Updating arguments of style hook.  ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
+- Updating classes hooks derived from Button to actually derive from Button. ([PR #15955](https://github.com/microsoft/fluentui/pull/15955) by xgao@microsoft.com)
 
 ## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.9)
 
