@@ -251,7 +251,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
                         ariaLabel={textLabels[comp]}
-                        aria-live="assertive"
+                        aria-live={comp !== 'hex' ? 'assertive' : undefined}
                         autoComplete="off"
                       />
                     </td>

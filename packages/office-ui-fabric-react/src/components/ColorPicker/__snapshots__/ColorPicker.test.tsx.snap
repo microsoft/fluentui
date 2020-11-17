@@ -408,7 +408,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1637,7 +1636,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2843,7 +2841,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
