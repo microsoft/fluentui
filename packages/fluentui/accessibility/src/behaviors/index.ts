@@ -41,12 +41,13 @@ export * from './Toolbar/menuAsToolbarBehavior';
 export * from './Toolbar/toolbarMenuBehavior';
 export * from './Toolbar/toolbarMenuItemBehavior';
 export * from './Toolbar/toolbarMenuItemRadioBehavior';
-export * from './Toolbar/toolbarMenuDividerBehavior';
 export * from './Toolbar/menuItemAsToolbarButtonBehavior';
 export * from './Toolbar/toolbarBehavior';
 export * from './Toolbar/toolbarItemBehavior';
 export * from './Toolbar/toolbarMenuItemCheckboxBehavior';
+export * from './Toolbar/toolbarMenuDividerBehavior';
 export * from './Toolbar/toolbarMenuRadioGroupBehavior';
+export * from './Toolbar/toolbarMenuRadioGroupWrapperBehavior';
 export * from './Toolbar/toolbarRadioGroupBehavior';
 export * from './Toolbar/toolbarRadioGroupItemBehavior';
 
