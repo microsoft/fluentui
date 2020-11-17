@@ -237,42 +237,36 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       }
       startingPoint.push(prevPosition);
       return (
-        <>
-          {point.legend !== '' ? (
-            <rect
-              key={index}
-              x={startingPoint[index] + '%'}
-              y={0}
-              data-is-focusable={true}
-              width={value + '%'}
-              height={this._barHeight}
-              fill={color}
-              onMouseOver={this._hoverOn.bind(
-                this,
-                point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                point,
-              )}
-              onFocus={this._hoverOn.bind(
-                this,
-                point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                point,
-              )}
-              aria-labelledby={this._calloutId}
-              onBlur={this._hoverOff}
-              onMouseLeave={this._hoverOff}
-            />
-          ) : (
-            <rect
-              key={index}
-              x={startingPoint[index] + '%'}
-              y={0}
-              data-is-focusable={false}
-              width={value + '%'}
-              height={this._barHeight}
-              fill={color}
-            />
-          )}
-        </>
+        <rect
+          key={index}
+          x={startingPoint[index] + '%'}
+          y={0}
+          data-is-focusable={point.legend !== '' ? true : false}
+          width={value + '%'}
+          height={this._barHeight}
+          fill={color}
+          onMouseOver={
+            point.legend !== ''
+              ? this._hoverOn.bind(
+                  this,
+                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+                  point,
+                )
+              : undefined
+          }
+          onFocus={
+            point.legend !== ''
+              ? this._hoverOn.bind(
+                  this,
+                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+                  point,
+                )
+              : undefined
+          }
+          aria-labelledby={this._calloutId}
+          onBlur={this._hoverOff}
+          onMouseLeave={this._hoverOff}
+        />
       );
     });
     return bars;
