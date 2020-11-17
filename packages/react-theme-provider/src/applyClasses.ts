@@ -36,7 +36,8 @@ export const applyClasses = <TState extends {}>(state: TState, classMap: Record<
       case 1:
         if (key === 'root') {
           _setClass(state, value);
-        } else {
+        } else if (key !== 'subComponentStyles') {
+          // The subComponentStyles check is an unfortunate workaround to avoid breaking partners.
           _setClass(state, value, key);
         }
         break;

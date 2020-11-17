@@ -44,6 +44,7 @@ describe('applyClasses', () => {
     applyClasses(state, testClassMap);
 
     expect(state).toEqual({
+      primary: true,
       className: 'existing1 root primary',
       slot1: { className: 'existing2 slot1' },
     });
@@ -60,6 +61,7 @@ describe('applyClasses', () => {
 
     expect(state).toEqual({
       className: 'existing1 root small',
+      size: 'small',
       slot1: { className: 'existing2 slot1' },
     });
   });
