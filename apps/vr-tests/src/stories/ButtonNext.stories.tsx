@@ -85,7 +85,6 @@ const TeamsTheme: PartialTheme = {
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
