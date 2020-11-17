@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating use of makeVariantClasses and fixing typing bugs; Updating arguments of style hook.",
-  "packageName": "@fluentui/react-button",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-17T01:22:22.679Z"
-}

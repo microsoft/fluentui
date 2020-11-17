@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:27:56 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Changing useStyleRenderer to default to merge-styles so that things actually happen.",
+            "author": "xgao@microsoft.com",
+            "commit": "17abde4b0156c449f64a8e85f40aa7805a2810d6",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 18:59:48 GMT",
       "tag": "@fluentui/react-theme-provider_v0.16.3",
       "version": "0.16.3",
