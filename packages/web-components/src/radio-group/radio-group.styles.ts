@@ -12,4 +12,12 @@ export const RadioGroupStyles = css`
     display: flex;
     flex-wrap: wrap;
   }
+
+  :host([orientation='vertical']) .positioning-region {
+    flex-direction: column;
+  }
+
+  :host([orientation='horizontal']) .positioning-region {
+    flex-direction: row;
+  }
 `;
