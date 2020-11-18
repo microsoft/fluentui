@@ -27,7 +27,7 @@ import {
   FluentComponentStaticProps,
   ShorthandRenderFunction,
 } from '../../types';
-import { useSelectableTree } from './hooks/useSelectableTree';
+import { useTree } from './hooks/useTree';
 import { TreeContext, TreeRenderContextValue } from './context';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
@@ -145,7 +145,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     focusItemById,
     expandSiblings,
     toggleItemSelect,
-  } = useSelectableTree(props);
+  } = useTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({

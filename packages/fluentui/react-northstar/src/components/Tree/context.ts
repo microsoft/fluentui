@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { BaseFlatTreeItem } from './hooks/flattenTree';
+import { FlatTreeItem } from './hooks/flattenTree';
 
 export interface TreeRenderContextValue {
-  getItemById: (id: string) => BaseFlatTreeItem & { [key: string]: any };
+  getItemById: (id: string) => FlatTreeItem & { [key: string]: any };
   registerItemRef: (id: string, node: HTMLElement) => void;
   toggleItemActive: (e: React.SyntheticEvent, idToToggle: string) => void;
   focusItemById: (id: string) => void;
