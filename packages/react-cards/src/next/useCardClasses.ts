@@ -17,6 +17,7 @@ export const useCardClasses = makeClasses<CardState>({
       backgroundColor: 'var(--card-backgroundColor)',
       borderColor: 'var(--card-borderColor)',
       borderRadius: 'var(--card-borderRadius)',
+      borderStyle: 'var(--card-borderStyle)',
       borderWidth: 'var(--card-borderWidth)',
       boxShadow: 'var(--card-boxShadow)',
       height: 'var(--card-height)',
