@@ -44,6 +44,14 @@ export interface IWithViewportProps {
    * direct DOM dependencies.
    */
   skipViewportMeasures?: boolean;
+  /**
+   * Whether or not to explicitly disable usage of the `ResizeObserver` in favor of a `'resize'` event on `window`,
+   * even if the browser supports `ResizeObserver`. This may be necessary if use of `ResizeObserver` results in too
+   * many re-renders of the wrapped component due to the frequency at which events are fired.
+   *
+   * This has no impact if `skipViewportMeasures` is `true`, as no viewport measurement strategy is used.
+   */
+  disableResizeObserver?: boolean;
 }
 
 const RESIZE_DELAY = 500;
@@ -80,7 +88,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
@@ -88,7 +96,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       });
 
       if (!skipViewportMeasures) {
-        if (this._isResizeObserverAvailable()) {
+        if (!disableResizeObserver && this._isResizeObserverAvailable()) {
           this._registerResizeObserver();
         } else {
           this._events.on(win, 'resize', this._onAsyncResize);
@@ -99,13 +107,13 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidUpdate(previousProps: TProps) {
-      const { skipViewportMeasures: oldSkipViewportMeasures } = previousProps as IWithViewportProps;
-      const { skipViewportMeasures: newSkipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures: previousSkipViewportMeasures } = previousProps as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
-      if (newSkipViewportMeasures !== oldSkipViewportMeasures) {
-        if (!newSkipViewportMeasures) {
-          if (this._isResizeObserverAvailable()) {
+      if (skipViewportMeasures !== previousSkipViewportMeasures) {
+        if (!skipViewportMeasures) {
+          if (!disableResizeObserver && this._isResizeObserverAvailable()) {
             if (!this._viewportResizeObserver) {
               this._registerResizeObserver();
             }
