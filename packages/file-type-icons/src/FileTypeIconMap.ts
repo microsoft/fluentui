@@ -311,6 +311,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'layer',
       'layout',
       'max',
+      'mcworld',
       'mtl',
       'obj',
       'off',
