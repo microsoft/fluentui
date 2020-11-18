@@ -6,8 +6,8 @@ export const FilesZipIcon = createSvgIcon({
     <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <defs>
         <linearGradient id="FilesZipIconLinearGradient" x1="1" y1="5" x2="1" y2="17" gradientUnits="userSpaceOnUse">
-          <stop stop-color="white" stop-opacity="0.01" />
-          <stop offset="0.999" stop-color="#FFD75E" stop-opacity="0.3" />
+          <stop stopColor="white" stop-opacity="0.01" />
+          <stop offset="0.999" stopColor="#FFD75E" stopOpacity="0.3" />
         </linearGradient>
       </defs>
       <path

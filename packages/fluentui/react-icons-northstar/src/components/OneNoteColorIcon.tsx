@@ -6,8 +6,8 @@ export const OneNoteColorIcon = createSvgIcon({
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
         opacity="0.64"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M9.5 30H26.5C27.327 30 28 29.327 28 28.5V3.5C28 2.673 27.327 2 26.5 2H9.5C8.673 2 8 2.673 8 3.5V28.5C8 29.327 8.673 30 9.5 30ZM9 3.5C9 3.22386 9.22386 3 9.5 3H26.5C26.7761 3 27 3.22386 27 3.5V28.5C27 28.7761 26.7761 29 26.5 29H9.5C9.22386 29 9 28.7761 9 28.5V3.5Z"
         fill="#605E5C"
       />
