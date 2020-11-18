@@ -192,7 +192,6 @@ export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
 export * from './components/Tree/hooks/useTree';
-export * from './components/Tree/hooks/useVirtualTree';
 
 export * from './components/Reaction/Reaction';
 export * from './components/Reaction/ReactionGroup';
