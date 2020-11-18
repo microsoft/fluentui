@@ -67,6 +67,14 @@ export const FloatingPeoplePickerTypesSelectableFooterExample: React.FunctionCom
       footerItemsProps: [
         {
           renderItem: () => {
+            return <>Showing {picker.current ? picker.current.suggestions.length : 0} results</>;
+          },
+          shouldShow: () => {
+            return !!picker.current && picker.current.suggestions.length > 0;
+          },
+        },
+        {
+          renderItem: () => {
             return <>Click me!</>;
           },
           shouldShow: () => {
