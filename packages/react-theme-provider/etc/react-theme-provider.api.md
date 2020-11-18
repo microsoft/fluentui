@@ -18,6 +18,9 @@ import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 import { Variants } from '@fluentui/theme';
 
+// @public
+export const applyClasses: <TState extends {}>(state: TState, classMap: Record<string, string>) => void;
+
 // @public (undocumented)
 export type FontFace = IFontFace;
 
