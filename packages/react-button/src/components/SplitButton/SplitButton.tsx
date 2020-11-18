@@ -6,20 +6,20 @@ import { useSplitButton } from './useSplitButton';
 import { useSplitButtonClasses } from './useSplitButtonClasses';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
+import { renderSplitButton } from './renderSplitButton';
 
 /**
  * Define a styled SplitButton, using the `useSplitButton` hook.
  * {@docCategory Button}
  */
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
-  const { state, render } = useSplitButton(props, ref, {
+  const state = useSplitButton(props, ref, {
     button: { as: Button },
     menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
   });
 
   useSplitButtonClasses(state);
 
-  // TODO remove any
   /**
    * Type 'SplitButtonState' has no properties in common with type '{
    *  style?: CSSProperties | undefined; tokens?: string | { [key: string]: any; }
@@ -28,7 +28,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useInlineTokens(state as any, '--button');
 
-  return render(state);
+  return renderSplitButton(state);
 });
 
 SplitButton.displayName = 'SplitButton';

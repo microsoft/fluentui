@@ -4,7 +4,8 @@
 
 ## A basic component walkthrough
 
-Building a recomposable component requires that we build legos; we put them together, but we let others put them together how they may need. Here's what's needed:
+Building a re-composable component requires that we create building blocks; we put them together, but we can reconfigure
+and add to parts as needed.
 
 - **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
 - **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
@@ -15,19 +16,13 @@ With these building blocks, you can compose or recompose the component in numero
 
 ### Simple example
 
-A render function:
+A hook which can produce mutable state of the component (defining accessibility and behaviors):
 
 ```jsx
-const renderButton = state => {
-  return <button {...state} />;
-};
-```
+const useButton = (userProps, ref, defaultProps) => {
+  const state = _.merge({}, defaultProps, userProps);
 
-A hook which can manipulate the state (defining accessibility and behaviors):
-
-```jsx
-const useButtonState = state => {
-  // If the button is rendered as something besides a button or anchor, make it focusable.
+  // Apply button behaviors.
   if (state.as !== 'button' && state.as !== 'a') {
     state.tabIndex = 0;
   }
@@ -50,7 +45,7 @@ const useButton = (userProps, ref, defaultProps) => {
 A button can now be easily scaffolded, along with your choice of styling systems:
 
 ```jsx
-import * as styles from './Button.scss';
+import { renderButton, useButton, useButtonClasses } from '@fluentui/react-button';
 
 const useStyles = makeStyles(styles);
 
@@ -58,14 +53,15 @@ const Button = React.forwardRef((props, ref) => {
   const { state, render } = useButton(props, ref);
 
   // Inject classNames as needed.
-  useStyles(state);
+  useButtonClasses(state);
 
-  return render(state);
+  // Return the rendered result.
+  return renderButton(state);
 });
 ```
 
-We can also use these building blocks to scaffold other types of buttons, transform input, pull values from
-context, redefine styling, or mix/match behaviors:
+We can now use these building blocks to scaffold other types of buttons. For example, building a toggle button simply
+means we start with base and handle the additional input:
 
 ```jsx
 const ToggleButton = React.forwardRef((props, ref) => {
@@ -86,7 +82,11 @@ const ToggleButton = React.forwardRef((props, ref) => {
 
 #### Creating mutable state with `mergeProps`
 
-In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they apply state updates correctly, avoiding accidents like stomping on existing event handlers by blind object assigning the results.
+In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and
+using that to construct state simplifies hook development and usage; rather than trying to re-clone objects
+unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self
+contained hooks, which can ensure they apply state updates correctly, avoiding accidents like stomping on existing event
+handlers by blind object assigning the results.
 
 However, deep merge overlooks many edge cases for component props:
 
@@ -94,11 +94,13 @@ However, deep merge overlooks many edge cases for component props:
 - Deep merging JSX, ref objects, or arrays should replace, not recurse/clone
 - Deep merging an object on a string should replace
 
-...which introduces the first utility: `mergeProps`. Merge props works like a deep merge, but takes care of classnames, JSX, arrays, and object edge cases.
+...which introduces the first utility: `mergeProps`. Merge props works like a deep merge, but takes care of classnames,
+JSX, arrays, and object edge cases.
 
 #### Supporting the `as` prop with `getSlots`
 
-Fluent UI components take a common `as` prop. This allows the root element to be rendered with something other than the default.
+Fluent UI components take a common `as` prop. This allows the root element to be rendered with something other than the
+default.
 
 To support the `as` prop, the render function might look like this:
 
@@ -110,7 +112,9 @@ const renderButton = state => {
 };
 ```
 
-Additionally, you will need to filter out native properties which apply to the root; otherwise you will end up mixing any unexpected props into the element. To do this, we have a `getNativeElementProps` helper, which can be used for this purpose:
+Additionally, you will need to filter out native properties which apply to the root; otherwise you will end up mixing
+any unexpected props into the element. To do this, we have a `getNativeElementProps` helper, which can be used for this
+purpose:
 
 ```jsx
 const renderButton = state => {
@@ -133,7 +137,9 @@ const renderButton = state => {
 
 #### Supporting shorthand props
 
-Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allow them to be configured through "shorthand props", which lets the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
+Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allow them to be
+configured through "shorthand props", which lets the caller pass in a variety of inputs for a given slot. Take a
+Button's "icon" slot:
 
 ```jsx
 // The icon can be a string
@@ -221,8 +227,11 @@ The `getSlots` function takes in a state object and a list of slot keys with the
 
 In cases where the `as` prop of the slot represents a primitive element tag name, there are some additional behaviors:
 
-- Props will be automatically filtered based on the element type. E.g. `href` will be passed to `a` tag slots, but not `button` slots.
-- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing `null` in for the children. (E.g. `{ as: 'input', children: null }`).
+- Props will be automatically filtered based on the element type. E.g. `href` will be passed to `a` tag slots, but not
+  `button` slots.
+- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be
+  wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing
+  `null` in for the children. (E.g. `{ as: 'input', children: null }`).
 
 Example:
 
