@@ -123,15 +123,14 @@ export function useTree(options: UseTreeOptions) {
   const focusItemById = React.useCallback(
     (id: string) => {
       const itemRef = getItemRef(id);
-      if (itemRef == null) {
-        return;
-      }
 
-      if (getItemById(id)?.hasSubtree) {
-        itemRef.focus();
-      } else {
-        // when node is leaf, need to focus on the inner treeTitle
-        (itemRef.firstElementChild as HTMLElement)?.focus();
+      if (itemRef instanceof HTMLElement) {
+        if (getItemById(id)?.hasSubtree) {
+          itemRef.focus();
+        } else {
+          // when node is leaf, need to focus on the inner treeTitle
+          (itemRef.firstElementChild as HTMLElement)?.focus();
+        }
       }
     },
     [getItemById, getItemRef],
