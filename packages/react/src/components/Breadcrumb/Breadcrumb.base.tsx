@@ -169,6 +169,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       (item): IContextualMenuItem => {
         const isActionable = !!(item.onClick || item.href);
         return {
+          text: item.text,
           name: item.text,
           key: item.key,
           onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
