@@ -54,7 +54,39 @@ export interface UseTreeOptions {
   defaultSelectedItemIds?: string[];
 }
 
-export function useTree(options: UseTreeOptions) {
+export interface UseTreeResult {
+  /** An object with key being id of each tree item, and value being information of each tree item */
+  flatTree: FlatTree;
+
+  /** Access information of a tree item */
+  getItemById: GetItemById;
+
+  /** Ids of expanded items. */
+  activeItemIds: string[];
+
+  /** Ids of visible items */
+  visibleItemIds: string[];
+
+  /** register ref to a tree item, should be used in callback ref on tree item */
+  registerItemRef: (id: string, node: HTMLElement) => void;
+
+  /** get ref to a tree item by its id */
+  getItemRef: (id: string) => HTMLElement;
+
+  /** update the state of tree when a tree item is expanded/collapsed */
+  toggleItemActive: (e: React.SyntheticEvent, idToToggle: string) => void;
+
+  /** set focus on a tree item by its id. Useful for keyboard navigation */
+  focusItemById: (id: string) => void;
+
+  /** update the state of tree when it is needed to expand all siblings of a tree item, for example on '*' keydown */
+  expandSiblings: (e: React.KeyboardEvent, focusedItemId: string) => void;
+
+  /** update the state of tree when a tree item is selected/unselected */
+  toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
+}
+
+export function useTree(options: UseTreeOptions): UseTreeResult {
   // We need this because we want to handle `expanded` prop on `items`, should be deprecated and removed
   const deprecated_initialActiveItemIds = React.useMemo(
     () => deprecated_getInitialActiveItemIds(options.items),
