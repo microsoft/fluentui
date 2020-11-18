@@ -17,6 +17,9 @@ export const SRNC: Record<string, any> = {
   // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
   narrateLabelIfNoRole: ['Win/JAWS'],
 
+  // Platforms on which in the case of <textarea> element the "[containsText] string overrides the description when the <textarea> contains text
+  stringOverridesDescription: [],
+
   // Element type strings for each platform
   typeStrings: {
     'Win/JAWS': {

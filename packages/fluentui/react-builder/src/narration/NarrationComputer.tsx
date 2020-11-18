@@ -306,12 +306,13 @@ export class NarrationComputer {
   // Computes and stores the accessible description part of the narration for the given definitionName, element and platform.
   computeDescription(definitionName: string, element: HTMLElement, platform: string) {
     // First, handle some special case conditions
+    // Note: Actually, this special case condition is currently not in use by any platform, but we are keeping it here for a potential use in future
     let value;
     if (definitionName === 'textarea') {
       // Begin if 1
       value = (element as HTMLTextAreaElement).value.trim();
     } // End if 1
-    if (definitionName === 'textarea' && platform === 'Win/JAWS' && value) {
+    if (definitionName === 'textarea' && SRNC.stringOverridesDescription.includes(platform) && value) {
       // Begin if 1
       this.computedParts.description = SRNC.stateStrings[platform]['textarea']['[containsText]'];
     } else {
