@@ -77,7 +77,7 @@ function flattenSubTree(
   level: number = 1,
   parent: string,
   flatTree: BaseFlatTree,
-  isVisible: boolean = true,
+  isParentVisible: boolean = true,
   activeItemIds: string[],
   visibleItemIds: string[],
 ): { flatTree: BaseFlatTree; visibleItemIds: string[] } {
@@ -103,7 +103,7 @@ function flattenSubTree(
       hasSubtree,
     };
 
-    if (isVisible) {
+    if (isParentVisible) {
       visibleItemIds.push(id);
     }
 
@@ -113,7 +113,7 @@ function flattenSubTree(
         level + 1,
         id,
         flatTree,
-        isVisible && expanded, // parent being visible and expanded means subtree is visible
+        isParentVisible && expanded, // parent being visible and expanded means subtree is visible
         activeItemIds,
         visibleItemIds,
       );
