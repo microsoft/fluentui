@@ -164,18 +164,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const rectHeight = props.containerHeight! - this.margins.top!;
           return (
             <>
-              <g>
-                <rect
-                  id={this._rectId}
-                  key={this._rectId}
-                  width={Math.max(width1, 0)}
-                  height={Math.max(rectHeight, 0)}
-                  fill={'transparent'}
-                  onMouseMove={this._onRectMouseMove}
-                  onMouseOut={this._onRectMouseOut}
-                  onMouseOver={this._onRectMouseMove}
-                />
-              </g>
+              <rect
+                id={this._rectId}
+                key={this._rectId}
+                width={Math.max(width1, 0)}
+                height={Math.max(rectHeight, 0)}
+                fill={'transparent'}
+                onMouseMove={this._onRectMouseMove}
+                onMouseOut={this._onRectMouseOut}
+                onMouseOver={this._onRectMouseMove}
+              />
               <g>
                 <g>
                   {this._renderedColorFillBars}
@@ -240,6 +238,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     let axisType: XAxisTypes | null = null;
     let pointToHighlight: string | Date | number | null = null;
     let index: null | number = null;
+    axisType = lineChartData![0] && (getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes);
     if (d0 === undefined && d1 !== undefined) {
       pointToHighlight = d1.x;
       index = i;
@@ -247,7 +246,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       pointToHighlight = d0.x;
       index = i - 1;
     } else {
-      axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
       let x0;
       let point0;
       let point1;
@@ -425,34 +423,31 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const legendVal: string = this._points[i].legend;
       lineColor = this._points[i].color;
       if (this._points[i].data.length === 1) {
-        const x1 =
-          this._points[i].data[0].x instanceof Date
-            ? (this._points[i].data[0].x as Date).getTime()
-            : this._points[i].data[0].x;
+        const x1 = this._points[i].data[0].x;
+        const x1Point = x1 instanceof Date ? (x1 as Date).getTime() : x1;
         const y1 = this._points[i].data[0].y;
         lines.push(
           <circle
             id={`${this._circleId}${i}`}
             key={`${this._circleId}${i}`}
-            r={this._getCircleRadius(x1)}
+            r={this._getCircleRadius(x1Point)}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={this._updateCircleFillColor(x1, lineColor)}
+            onMouseMove={this._onRectMouseMove}
+            onMouseOut={this._onRectMouseOut}
+            onMouseOver={this._onRectMouseMove}
           />,
         );
       }
       for (let j = 1; j < this._points[i].data.length; j++) {
         const lineId = `${this._lineId}${i}${j}`;
         const circleId = `${this._circleId}${i}${j}`;
-        const x1 =
-          this._points[i].data[j - 1].x instanceof Date
-            ? (this._points[i].data[j - 1].x as Date).getTime()
-            : this._points[i].data[j - 1].x;
+        const x1 = this._points[i].data[j - 1].x;
+        const x1Point = x1 instanceof Date ? (x1 as Date).getTime() : x1;
         const y1 = this._points[i].data[j - 1].y;
-        const x2 =
-          this._points[i].data[j].x instanceof Date
-            ? (this._points[i].data[j].x as Date).getTime()
-            : this._points[i].data[j].x;
+        const x2 = this._points[i].data[j].x;
+        const x2Point = x2 instanceof Date ? (x2 as Date).getTime() : x2;
         const y2 = this._points[i].data[j].y;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend) {
           lines.push(
@@ -477,7 +472,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             <circle
               id={circleId}
               key={circleId}
-              r={this._getCircleRadius(x1)}
+              r={this._getCircleRadius(x1Point)}
               cx={this._xAxisScale(x1)}
               cy={this._yAxisScale(y1)}
               onMouseMove={this._onRectMouseMove}
@@ -490,7 +485,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 lineColor,
               )}
               opacity={1}
-              fill={this._updateCircleFillColor(x1, lineColor)}
+              fill={this._updateCircleFillColor(x1Point, lineColor)}
               stroke={lineColor}
               strokeWidth={3}
             />,
@@ -501,7 +496,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               <circle
                 id={lastCircleId}
                 key={lastCircleId}
-                r={this._getCircleRadius(x2)}
+                r={this._getCircleRadius(x2Point)}
                 cx={this._xAxisScale(x2)}
                 cy={this._yAxisScale(y2)}
                 onMouseMove={this._onRectMouseMove}
@@ -514,7 +509,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   lineColor,
                 )}
                 opacity={1}
-                fill={this._updateCircleFillColor(x2, lineColor)}
+                fill={this._updateCircleFillColor(x2Point, lineColor)}
                 stroke={lineColor}
                 strokeWidth={3}
               />,
@@ -530,10 +525,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               y1={this._yAxisScale(y1)}
               x2={this._xAxisScale(x2)}
               y2={this._yAxisScale(y2)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
               strokeWidth={this.props.strokeWidth || 4}
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
+              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
         }
