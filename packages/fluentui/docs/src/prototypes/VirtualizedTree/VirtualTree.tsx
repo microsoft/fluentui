@@ -21,11 +21,45 @@ import {
   useVirtualTree,
 } from '@fluentui/react-northstar';
 import { TreeContext, TreeRenderContextValue } from '@fluentui/react-northstar/src/components/Tree/context';
-import { VariableSizeList, VariableSizeListProps, ListChildComponentProps } from 'react-window';
+import { VariableSizeList } from 'react-window';
+import { useVirtualTree } from './useVirtualTree';
 
-export interface VirtualTreeProps
-  extends Omit<TreeProps, 'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable'>,
-    Pick<VariableSizeListProps, 'itemSize' | 'estimatedItemSize' | 'height'> {}
+export interface VirtualTreeProps extends UIComponentProps, ChildrenComponentProps {
+  /** Accessibility behavior if overridden by the user. */
+  accessibility?: Accessibility<TreeBehaviorProps>;
+
+  /** Ids of expanded items. */
+  activeItemIds?: string[];
+
+  /** Initial activeItemIds value. */
+  defaultActiveItemIds?: string[];
+
+  /** Only allow one subtree to be expanded at a time. */
+  exclusive?: boolean;
+
+  /** Shorthand array of props for Tree. */
+  items?: ObjectShorthandCollection<TreeItemProps>;
+
+  /**
+   * A custom render function for the title slot.
+   *
+   * @param Component - The computed component for this slot.
+   * @param props - The computed props for this slot.
+   * @param children - The computed children for this slot.
+   */
+  renderItemTitle?: ShorthandRenderFunction<TreeTitleProps>;
+
+  height: number;
+  estimatedItemSize: number;
+  itemSize: (index: number) => number;
+}
+
+export interface VirtualItemData {
+  visibleItemIds: string[];
+  createTreeItem: (id, style) => React.ReactElement<TreeItemProps> | null;
+}
+
+export const virtualTreeClassName = 'ui-virtualtree';
 
 export interface VirtualItemData {
   visibleItemIds: string[];
@@ -81,7 +115,17 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings],
   );
 
-  const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
+  const getItemKey = React.useCallback(
+    (index: number, data: VirtualItemData) => {
+      const { visibleItemIds } = data;
+      const id = visibleItemIds[index];
+      if (getItemById(id)) {
+        return id;
+      }
+      return index;
+    },
+    [getItemById],
+  );
 
   const createTreeItem = React.useCallback(
     (id, style) => {
@@ -94,7 +138,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
               renderItemTitle: props.renderItemTitle,
             }),
           overrideProps: {
-            style, // came from react-window
+            style,
             expanded,
             parent,
             key: id,
@@ -121,7 +165,6 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
           })}
         >
           <VariableSizeList
-            width={-1} // width is not used for vertical list
             ref={listRef}
             height={height}
             estimatedItemSize={estimatedItemSize}
@@ -140,12 +183,36 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   return element;
 };
 
-const ItemWrapper = React.memo<ListChildComponentProps & { data: VirtualItemData }>(({ index, style, data }) => {
-  const { visibleItemIds, createTreeItem } = data;
-  return createTreeItem(visibleItemIds[index], style);
-});
+class ItemWrapper extends React.PureComponent<{
+  index: number;
+  isScrolling?: boolean;
+  style: Object;
+  data: VirtualItemData;
+}> {
+  render() {
+    const { index, style, data } = this.props;
+    const { visibleItemIds, createTreeItem } = data;
+    return createTreeItem(visibleItemIds[index], style);
+  }
+}
 
 VirtualTree.displayName = 'VirtualTree';
+
+VirtualTree.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  activeItemIds: customPropTypes.collectionShorthand,
+  defaultActiveItemIds: customPropTypes.collectionShorthand,
+  items: customPropTypes.collectionObjectShorthand,
+  renderItemTitle: PropTypes.func,
+  height: PropTypes.number,
+  estimatedItemSize: PropTypes.number,
+  itemSize: PropTypes.func,
+};
+
+VirtualTree.Item = TreeItem;
+VirtualTree.Title = TreeTitle;
 
 VirtualTree.defaultProps = {
   accessibility: treeBehavior,

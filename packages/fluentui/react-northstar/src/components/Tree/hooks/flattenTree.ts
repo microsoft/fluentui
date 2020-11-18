@@ -88,16 +88,17 @@ function flattenSubTree(
   activeItemIds: string[],
   visibleItemIds: string[],
   selectedItemIds: string[],
-): { flatTree: FlatTree; visibleItemIds: string[]; selectedChildrenNum: number } {
+): { flatTree: FlatTree; visibleItemIds: string[]; selectedChildrenNum: number; selectableChildrenNum: number } {
   if (!items) {
-    return { flatTree, visibleItemIds, selectedChildrenNum: 0 };
+    return { flatTree, visibleItemIds, selectedChildrenNum: 0, selectableChildrenNum: 0 };
   }
 
   const itemsInLeaf = items.length;
   let selectedNum = 0;
+  let selectableNum = 0;
 
   items.forEach((item, indexAmongSiblings) => {
-    const { id, items: childrenItems } = item;
+    const { id, selectable, items: childrenItems } = item;
     const hasSubtree = childrenItems ? !!childrenItems.length : false;
     const expanded = hasSubtree && activeItemIds.indexOf(id) !== -1;
 
@@ -117,7 +118,7 @@ function flattenSubTree(
     }
 
     if (hasSubtree) {
-      const { selectedChildrenNum } = flattenSubTree(
+      const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
         childrenItems as ObjectShorthandValue<TreeItemProps>[],
         level + 1,
         id,
@@ -127,18 +128,22 @@ function flattenSubTree(
         visibleItemIds,
         selectedItemIds,
       );
-      if (selectedChildrenNum === childrenItems.length) {
+
+      if (selectedChildrenNum === selectableChildrenNum) {
         flatTree[id].selected = true;
         selectedNum++;
       } else if (selectedChildrenNum > 0) {
         flatTree[id].selected = 'indeterminate';
         selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
       }
-    }
-
-    if (!hasSubtree && selectedItemIds.indexOf(id) >= 0) {
+    } else if (selectedItemIds.indexOf(id) >= 0) {
       flatTree[id].selected = true;
       selectedNum++;
+    }
+
+    if (selectable !== false) {
+      // by default item is selectable, unless selectable=false specified
+      selectableNum++;
     }
 
     if (flatTree[parent].childrenIds) {
@@ -148,5 +153,5 @@ function flattenSubTree(
     }
   });
 
-  return { flatTree, visibleItemIds, selectedChildrenNum: selectedNum };
+  return { flatTree, visibleItemIds, selectedChildrenNum: selectedNum, selectableChildrenNum: selectableNum };
 }
