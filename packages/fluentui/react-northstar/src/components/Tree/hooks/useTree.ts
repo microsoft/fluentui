@@ -3,19 +3,25 @@ import { useAutoControlled } from '@fluentui/react-bindings';
 import { useStableProps } from './useStableProps';
 import { ObjectShorthandCollection } from '../../../types';
 import { TreeItemProps } from '../TreeItem';
-import { flattenTree } from './flattenTree';
+import { FlatTreeItem, flattenTree } from './flattenTree';
 import { useGetItemById } from './useGetItemById';
 import * as _ from 'lodash';
 
 export interface UseTreeOptions {
   /** Shorthand array of props for Tree. */
   items?: ObjectShorthandCollection<TreeItemProps>;
+
   /** Ids of expanded items. */
   activeItemIds?: string[];
   /** Initial activeItemIds value. */
   defaultActiveItemIds?: string[];
   /** Only allow one subtree to be expanded at a time. */
   exclusive?: boolean;
+
+  /** Ids of selected leaf items. */
+  selectedItemIds?: string[];
+  /** Initial selectedItemIds value. */
+  defaultSelectedItemIds?: string[];
 }
 
 export function useTree(options: UseTreeOptions) {
@@ -32,10 +38,19 @@ export function useTree(options: UseTreeOptions) {
     initialValue: deprecated_initialActiveItemIds, // will become []
   });
 
+  // selectedItemIds is only valid for leaf nodes.
+  // For non-leaf nodes, their 'selected' states are defered from all their descendents
+  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
+    defaultValue: options.defaultSelectedItemIds,
+    value: options.selectedItemIds,
+    initialValue: [],
+  });
+
   // We want to set `visibleItemIds` to simplify rendering later
-  const { flatTree, visibleItemIds } = React.useMemo(() => flattenTree(options.items, activeItemIds), [
+  const { flatTree, visibleItemIds } = React.useMemo(() => flattenTree(options.items, activeItemIds, selectedItemIds), [
     activeItemIds,
     options.items,
+    selectedItemIds,
   ]);
 
   const getItemById = useGetItemById(flatTree);
@@ -112,6 +127,29 @@ export function useTree(options: UseTreeOptions) {
     [getItemById, options.exclusive, setActiveItemIdsState, stableProps],
   );
 
+  const toggleItemSelect = React.useCallback(
+    (e: React.SyntheticEvent, idToToggle: string) => {
+      const item = getItemById(idToToggle);
+      if (!item) {
+        return;
+      }
+      const leafs = getLeafNodes(getItemById, idToToggle);
+
+      setSelectedItemIdsState(selectedItemIds => {
+        const nextSelectedItemIds =
+          item.selected === true
+            ? _.without(selectedItemIds, ...leafs) // remove all leaves from selected
+            : _.uniq(selectedItemIds.concat(leafs)); // add all leaves to selected
+        _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+          ...stableProps.current,
+          selectedItemIds: nextSelectedItemIds,
+        });
+        return nextSelectedItemIds;
+      });
+    },
+    [getItemById, setSelectedItemIdsState, stableProps],
+  );
+
   // Maintains stable collection of refs to avoid unnecessary React context updates
   const nodes = React.useRef<Record<string, HTMLElement>>({});
   const registerItemRef = React.useCallback((id: string, node: HTMLElement) => {
@@ -146,6 +184,7 @@ export function useTree(options: UseTreeOptions) {
     toggleItemActive,
     focusItemById,
     expandSiblings,
+    toggleItemSelect,
   };
 }
 
@@ -167,4 +206,19 @@ function deprecated_getInitialActiveItemIds(items?: ObjectShorthandCollection<Tr
     }
   });
   return result;
+}
+
+function getLeafNodes(getItemById: (id: string) => FlatTreeItem, rootId: string) {
+  const leafs = [];
+  const traverseDown = id => {
+    if (getItemById(id)?.childrenIds) {
+      getItemById(id)?.childrenIds.forEach(child => {
+        traverseDown(child);
+      });
+    } else {
+      leafs.push(id);
+    }
+  };
+  traverseDown(rootId);
+  return leafs;
 }

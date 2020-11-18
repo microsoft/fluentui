@@ -27,28 +27,8 @@ import {
   FluentComponentStaticProps,
   ShorthandRenderFunction,
 } from '../../types';
-import { useSelectableTree } from './hooks/useSelectableTree';
-import { BaseFlatTreeItem } from './hooks/flattenTree';
-
-export interface TreeRenderContextValue {
-  toggleActive: (ids: string[], e: React.SyntheticEvent) => void;
-  toggleSelect: (ids: string[], e: React.SyntheticEvent) => void;
-  focusFirstChild: (itemId: string) => void;
-  focusParent: (itemId: string) => void;
-  siblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
-  registerItemRef: (id: string, node: HTMLElement) => void;
-  getItemById: (id: string) => BaseFlatTreeItem & { [key: string]: any };
-}
-
-export const TreeContext = React.createContext<TreeRenderContextValue>({
-  toggleActive: _.noop,
-  toggleSelect: _.noop,
-  focusFirstChild: _.noop,
-  focusParent: _.noop,
-  siblingsExpand: _.noop,
-  registerItemRef: _.noop,
-  getItemById: id => ({ id } as Partial<BaseFlatTreeItem>),
-});
+import { useTree } from './hooks/useTree';
+import { TreeContext, TreeRenderContextValue } from './context';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -165,7 +145,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     focusItemById,
     expandSiblings,
     toggleItemSelect,
-  } = useSelectableTree(props);
+  } = useTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({
