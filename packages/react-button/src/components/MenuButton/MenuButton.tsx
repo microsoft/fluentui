@@ -19,7 +19,6 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
   useButtonClasses(state);
   useMenuButtonClasses(state);
 
-  // TODO remove any
   /**
    * Type 'MenuButtonState' has no properties in common with type '{
    *  style?: CSSProperties | undefined; tokens?: string | { [key: string]: any; }
