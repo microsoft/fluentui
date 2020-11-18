@@ -31,6 +31,7 @@ export class NarrationComputer {
     type: '',
     state: '',
     position: '',
+    level: '',
     usage: '',
   };
 
@@ -222,7 +223,7 @@ export class NarrationComputer {
     this.computeDescription(definitionName, element, platform);
     this.computeNameAndTitle(node, element);
     this.computeValue(node);
-    this.computePosition();
+    this.computePositionAndLevel(platform);
     this.computeTypeAndState(node, definitionName, element, platform);
 
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
@@ -312,7 +313,7 @@ export class NarrationComputer {
     } // End if 1
     if (definitionName === 'textarea' && platform === 'Win/JAWS' && value) {
       // Begin if 1
-      this.computedParts.description = SRNC.stateStrings['Win/JAWS']['textarea']['[containsText]'];
+      this.computedParts.description = SRNC.stateStrings[platform]['textarea']['[containsText]'];
     } else {
       // Else if 1
       this.computedParts.description =
@@ -340,11 +341,12 @@ export class NarrationComputer {
     this.computedParts.value = node.valueText;
   } // End computeValue
 
-  // Returns just a constant string because the real computation of the position in set would be too difficult.
-  computePosition() {
-    // We can set the position part for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
-    this.computedParts.position = SRNC.position['Win/JAWS'];
-  } // End computePosition
+  // Sets just constant strings because the real computation of the position in set and level would be too difficult.
+  computePositionAndLevel(platform: string) {
+    // We can set the position and level parts for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
+    this.computedParts.position = SRNC.position[platform];
+    this.computedParts.level = SRNC.level[platform];
+  } // End computePositionAndLevel
 
   // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.
   computeTypeAndState(node: any, definitionName: string, element: HTMLElement, platform: string) {

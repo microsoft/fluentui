@@ -46,6 +46,11 @@ export const SRNC: Record<string, any> = {
     'Win/JAWS': 'X of Y',
   }, // End position
 
+  // Level definitions for each platform
+  level: {
+    'Win/JAWS': 'level',
+  }, // End level
+
   // Element state strings for each platform and definition name
   stateStrings: {
     'Win/JAWS': {
@@ -244,7 +249,7 @@ export const SRNC: Record<string, any> = {
       select: 'input:text',
       'role=tab': 'input:radio',
       'role=option': 'input:radio',
-      'role=treeitem': 'input:radio',
+      'role=treeitem': ['landmarksAndGroups', 'level', 'name', 'type', 'state', 'description', 'usage'],
       gridcell: ['landmarksAndGroups', 'type', 'name', 'state', 'description'],
     }, // End Win/JAWS
   }, // End readingOrder
