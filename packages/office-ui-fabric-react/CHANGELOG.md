@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.151.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.151.0)
+
+Wed, 18 Nov 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.150.0..office-ui-fabric-react_v7.151.0)
+
+### Minor changes
+
+- Update ColorPicker to annouce changes to RGBA and hex fields via aria-live ([PR #15855](https://github.com/microsoft/fluentui/pull/15855) by jslone@microsoft.com)
 
 ## [7.150.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.150.0)
 

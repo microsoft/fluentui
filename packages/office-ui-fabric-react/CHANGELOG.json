@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:26:33 GMT",
+      "tag": "office-ui-fabric-react_v7.151.0",
+      "version": "7.151.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update ColorPicker to annouce changes to RGBA and hex fields via aria-live",
+            "author": "jslone@microsoft.com",
+            "commit": "922a86f8f337a2fb1d6bf480736aac8118dfffb8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2020 16:51:16 GMT",
       "tag": "office-ui-fabric-react_v7.150.0",
       "version": "7.150.0",

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:26:33 GMT",
+      "tag": "@fluentui/react-examples_v0.9.3",
+      "version": "0.9.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update ColorPicker to annouce changes to RGBA and hex fields via aria-live",
+            "author": "jslone@microsoft.com",
+            "commit": "922a86f8f337a2fb1d6bf480736aac8118dfffb8",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Updated examples.",
+            "author": "dzearing@hotmail.com",
+            "commit": "950fceaf705bba893ab929901eef918d426f99cf",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Nov 2020 12:27:56 GMT",
       "tag": "@fluentui/react-examples_v0.9.2",
       "version": "0.9.2",

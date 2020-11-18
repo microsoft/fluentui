@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 17 Nov 2020 12:27:56 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.18.0)
+
+Wed, 18 Nov 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.17.0..@fluentui/react-theme-provider_v0.18.0)
+
+### Minor changes
+
+- Adding applyClasses helper. ([PR #15968](https://github.com/microsoft/fluentui/pull/15968) by dzearing@hotmail.com)
 
 ## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.17.0)
 
