@@ -90,7 +90,7 @@ function flattenSubTree(
   items.forEach((item, indexAmongSiblings) => {
     const { id, items: childrenItems } = item;
     const hasSubtree = childrenItems ? !!childrenItems.length : false;
-    const expanded = hasSubtree && activeItemIds.includes(id);
+    const expanded = hasSubtree && activeItemIds.indexOf(id) !== -1;
 
     flatTree[id] = {
       item,
