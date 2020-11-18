@@ -186,6 +186,9 @@ export namespace FontWeights {
 }
 
 // @public
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
+
+// @public
 export interface IAnimationStyles {
     // (undocumented)
     fadeIn100: IRawStyle;

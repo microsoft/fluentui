@@ -7,5 +7,6 @@ export * from './motion/index';
 export * from './fonts/index';
 export * from './createTheme';
 export { FluentTheme } from './FluentTheme';
+export { getTokens } from './utilities/getTokens';
 
 import './version';
