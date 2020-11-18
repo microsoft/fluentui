@@ -1,7 +1,7 @@
 import { Customizations, getWindow } from '@fluentui/utilities';
 import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IRawStyle } from '@fluentui/merge-styles';
+import { IRawStyle, setRTL } from '@fluentui/merge-styles';
 import { createTheme } from '@fluentui/theme/lib/createTheme';
 
 export { createTheme } from '@fluentui/theme/lib/createTheme';
@@ -72,6 +72,9 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
 
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
+
+  // Call setRTL
+  _theme.rtl && setRTL(_theme.rtl);
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
