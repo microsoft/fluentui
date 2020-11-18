@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 17 Nov 2020 12:36:24 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.8..@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+### Changes
+
+- Moving the auto-distribution logic out of makeClasses and into an applyClasses helper. ([PR #15959](https://github.com/microsoft/fluentui/pull/15959) by dzearing@hotmail.com)
 
 ## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.8)
 

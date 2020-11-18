@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: radio group orientation vertical broken",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-16T21:06:32.783Z"
-}

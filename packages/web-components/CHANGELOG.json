@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:30:07 GMT",
+      "tag": "@fluentui/web-components_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: radio group orientation vertical broken",
+            "author": "jes@microsoft.com",
+            "commit": "5467837e6426d68375fe3832f5448ebed678e704",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Nov 2020 12:36:24 GMT",
       "tag": "@fluentui/web-components_v0.7.2",
       "version": "0.7.2",

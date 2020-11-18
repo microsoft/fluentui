@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Moving the auto-distribution logic out of makeClasses and into an applyClasses helper.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-17T17:18:25.630Z"
-}

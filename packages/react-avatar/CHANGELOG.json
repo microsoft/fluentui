@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:30:07 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-7",
+      "version": "0.8.2-7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating useStatus and useAvatar to return state only, exporting render functions separately.",
+            "author": "dzearing@hotmail.com",
+            "commit": "16bb581c41bc50a285f39791e21da71d1e6c0441",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-avatar_v0.8.1",
       "version": "0.8.1",
