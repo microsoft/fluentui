@@ -122,9 +122,6 @@ export function useTree(options: UseTreeOptions) {
   // can be used for keyboard navigation ===
   const focusItemById = React.useCallback(
     (id: string) => {
-      if (id == null) {
-        return;
-      }
       const itemRef = getItemRef(id);
       if (itemRef == null) {
         return;
