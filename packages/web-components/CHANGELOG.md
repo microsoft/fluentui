@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Nov 2020 12:36:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.2)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.1..@fluentui/web-components_v0.7.2)
+
+### Patches
+
+- moved high contrast work into common button styles file ([PR #15916](https://github.com/microsoft/fluentui/pull/15916) by khamu@microsoft.com)
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
 
