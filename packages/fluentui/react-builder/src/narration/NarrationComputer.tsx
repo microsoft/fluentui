@@ -173,7 +173,7 @@ export class NarrationComputer {
         } // End if 2
 
         // If the definition exists and it is not an exception that the landmark or group element or role also must have the "aria-label" or "aria-labelledby" attribute to be narrated, add the definition to the narration"""
-        if (definition && !SRNC.narrateOnlyWhenLabelled[platform].includes(testName)) {
+        if (definition && (landmarkOrGroup.length >= 1 || !SRNC.narrateOnlyWhenLabelled[platform].includes(testName))) {
           // Begin if 2
           landmarkOrGroup.push(definition);
         } // End if 2

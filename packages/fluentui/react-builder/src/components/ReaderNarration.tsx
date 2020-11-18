@@ -44,6 +44,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   ); // End handleFocusIn
 
   // Recomputes the narration text upon every render.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     if (!ref.current || aomMissing) {
       return;
@@ -120,11 +121,6 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
-      <select aria-label="choose from me">
-        <option>first</option>
-        <option>Second</option>
-        <option>Third</option>
-      </select>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}

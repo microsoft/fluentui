@@ -36,6 +36,7 @@ export const SRNC: Record<string, any> = {
       switch: 'Switch',
       tab: 'Tab',
       option: '',
+      treeitem: '',
       gridcell: 'column X row Y',
     }, // End Win/JAWS
   }, // End typeStrings
@@ -136,6 +137,10 @@ export const SRNC: Record<string, any> = {
         'aria-selected=false': '',
       }, // End role=tab
       'role=option': {}, // End role=option
+      'role=treeitem': {
+        'aria-expanded=true': 'open',
+        'aria-expanded=false': 'closed',
+      }, // End role=treeitem
       'role=gridcell': {
         'aria-selected=true': 'selected',
         'aria-selected=false': '',
@@ -206,6 +211,9 @@ export const SRNC: Record<string, any> = {
       'role=option': {
         '[default]': 'To move to an item press the Arrow keys.',
       }, // End role=option
+      'role=treeitem': {
+        '[default]': 'To move through or expand items use the Arrow keys.',
+      }, // End role=treeitem
     }, // End Win/JAWS
   }, // End usageStrings
 
@@ -236,6 +244,7 @@ export const SRNC: Record<string, any> = {
       select: 'input:text',
       'role=tab': 'input:radio',
       'role=option': 'input:radio',
+      'role=treeitem': 'input:radio',
       gridcell: ['landmarksAndGroups', 'type', 'name', 'state', 'description'],
     }, // End Win/JAWS
   }, // End readingOrder
@@ -258,6 +267,7 @@ export const SRNC: Record<string, any> = {
     select: ['aria-invalid', 'aria-required'],
     'role=switch': ['aria-checked'],
     'role=option': [],
+    'role=treeitem': ['aria-expanded'],
     'role=tab': ['aria-selected'],
     'role=gridcell': ['aria-selected', 'aria-haspopup'],
   }, // End possibleStates

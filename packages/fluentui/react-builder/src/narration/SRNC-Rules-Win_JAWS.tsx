@@ -288,6 +288,16 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: SRNC.typeStrings['Win/JAWS'].option,
     },
   ], // End role=option
+  'role=treeitem': [
+    {
+      combination: [],
+      elementType: SRNC.typeStrings['Win/JAWS'].treeitem,
+    },
+    {
+      combination: ['aria-expanded'],
+      elementType: SRNC.typeStrings['Win/JAWS'].treeitem,
+    },
+  ], // End role=treeitem
   'role=gridcell': [
     {
       combination: [],
