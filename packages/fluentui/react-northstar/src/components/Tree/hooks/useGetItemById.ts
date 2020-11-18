@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { BaseFlatTree, BaseFlatTreeItem } from './flattenTree';
+import { FlatTree, FlatTreeItem } from './flattenTree';
 
-export type GetItemById = (id: string) => BaseFlatTreeItem;
+export type GetItemById = (id: string) => FlatTreeItem;
 
 /**
  * This hook returns a stable `getItemById()` function that will lookup in latest `flatTree`.
  * This is used used to have stable callbacks that can be passed to React's Context.
  */
-export function useGetItemById(flatTree: BaseFlatTree): GetItemById {
+export function useGetItemById(flatTree: FlatTree): GetItemById {
   // An exception is thrown there to ensure that a proper callback will assigned to ref
   const callbackRef = React.useRef<GetItemById>(() => {
     throw new Error('Callback is not assigned yet');
