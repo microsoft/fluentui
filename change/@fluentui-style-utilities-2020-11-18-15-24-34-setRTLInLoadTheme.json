@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Allow for custom overflow button in breadcrumb with correct props (#15977)",
+  "packageName": "@fluentui/style-utilities",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-18T23:24:34.538Z"
+}

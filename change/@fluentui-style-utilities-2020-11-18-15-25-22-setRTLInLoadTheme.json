@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Calling setRTL on loadTheme so that it is respected in non-theme related scenarios.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-18T23:25:21.984Z"
+}
