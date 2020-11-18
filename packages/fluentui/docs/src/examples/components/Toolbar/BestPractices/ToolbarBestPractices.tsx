@@ -14,6 +14,7 @@ const doList = [
   </Text>,
   'Use `active` prop on a ToolbarMenuItem if you want to have an active icon indicator displayed next to it.',
   'If `Toolbar` contains menu, the menu closes after clicking on one of the menu items. To prevent losing focus, move it manually in the `onClick` handler.',
+  'If `Toolbar` contains multiple radio groups in the menu, consider using role="group" and `aria-label` for radio group shorthands',
 ];
 
 const ToolbarBestPractices: React.FunctionComponent<{}> = () => {
