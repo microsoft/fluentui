@@ -2,15 +2,15 @@ import { Accessibility } from '../../types';
 
 /**
  * @description
- * toolbar menu divider is used to separate and distinguish groups of menuitems.
+ * toolbar menu divider is used only visualy to separate and distinguish groups of menuitems.
  *
  * @specification
- * Adds role='separator'.
+ * Adds role='presentation'.
  */
 export const toolbarMenuDividerBehavior: Accessibility<ToolbarMenuDividerBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'separator',
+      role: 'presentation',
     },
   },
 });
