@@ -6,7 +6,7 @@ export * from './useThemeProviderClasses';
 export * from './useThemeProvider';
 export * from './useThemeProviderState';
 export * from './withThemeProvider';
-
+export * from './applyClasses';
 export { useTheme } from './useTheme';
 export { ThemeContext } from './ThemeContext';
 export * from './types';
