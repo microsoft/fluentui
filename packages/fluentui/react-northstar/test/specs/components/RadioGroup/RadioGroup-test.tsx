@@ -17,7 +17,6 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
     value: 'test-value1',
     'data-foo': 'something',
     onClick: jest.fn(),
-    onChange: jest.fn(),
     disabled: props && props.disabledItem === 0,
   },
   {
