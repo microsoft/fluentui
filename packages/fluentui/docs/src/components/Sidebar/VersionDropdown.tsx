@@ -20,9 +20,8 @@ export function VersionDropdown(props: { width: number }) {
         }
 
         // No need to do anything apart from fail silently for now
-        return JSON.stringify({});
+        return {};
       })
-      .then(res => res.json())
       .then((manifest: VersionManifest) => {
         const availableVersions = Object.keys(manifest).reduce((versions, version) => {
           if (manifest[version]) {
