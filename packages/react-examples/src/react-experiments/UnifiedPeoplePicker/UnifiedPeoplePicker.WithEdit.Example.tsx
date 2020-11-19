@@ -94,16 +94,9 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       menuItems: (item, onTrigger) => [
         {
           key: 'copy',
-          text: 'Copy this Item',
+          text: 'copy',
           onClick: () => {
-            _copyToClipboard(_getItemsCopyText([item]));
-          },
-        },
-        {
-          key: 'copy selected',
-          text: 'Copy All Selected',
-          onClick: () => {
-            _copyAllToClipboard(item);
+            _copyToClipboardWrapper(item);
           },
         },
         {
@@ -116,10 +109,12 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }),
   });
 
-  const _copyAllToClipboard = (item: IPersona) => {
+  const _copyToClipboardWrapper = (item: IPersona) => {
     const selectedItems = ref.current?.getSelectedItems();
-    if (selectedItems) {
+    if (selectedItems && selectedItems.length > 1) {
       _copyToClipboard(_getItemsCopyText(selectedItems));
+    } else {
+      _copyToClipboard(_getItemsCopyText([item]));
     }
   };
 
