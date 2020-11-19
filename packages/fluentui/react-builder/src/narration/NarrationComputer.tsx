@@ -1,12 +1,15 @@
 /*
 TODO:
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
-* With JAWS, in the case of the element with the "listbox" role, differentiate between having and not having the aria-multiselectable="true" attribute. If this attribute is present, then aria-selected="false" on the child elements with the role "option" behave differently than if it is not present. Specifically, if aria-multiselectable="true" is present, the aria-selected="false" causes the narration of "not selected", but if present, having the aria-selected attribute makes no difference to the narration. 
 * Should we also consider the "disabled" state?
 */
 import { SRNC } from './SRNC-Definitions';
 import './SRNC-Rules-Win_JAWS';
 import './SRNC-LandmarksAndGroups-Win_JAWS';
+import './SRNC-ElementTypes-Win_JAWS';
+import './SRNC-ElementStates-Win_JAWS';
+import './SRNC-Usages-Win_JAWS';
+import './SRNC-ReadingOrder-Win_JAWS';
 
 export interface IAriaElement extends HTMLElement {
   ariaLabel: string | null;
@@ -224,7 +227,7 @@ export class NarrationComputer {
     this.computePositionAndLevel(platform);
     this.computeTypeAndState(node, definitionName, element, platform);
 
-    definitionName = this.getDefinitionName(element, platform, 'usageStrings');
+    definitionName = this.getDefinitionName(element, platform, 'usages');
     this.computeUsage(definitionName, element, platform);
 
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
@@ -238,7 +241,7 @@ export class NarrationComputer {
     const definitionTypes: Record<string, any> = {
       readingOrder: SRNC.readingOrder[platform],
       stateRules: SRNC.stateRules[platform],
-      usageStrings: SRNC.usageStrings[platform],
+      usages: SRNC.usages[platform],
     };
     const definitions = definitionTypes[definitionType];
 
@@ -285,7 +288,7 @@ export class NarrationComputer {
   // Computes and stores the usage part of the narration for the given definitionName, element and platform.
   computeUsage(definitionName: string, element: HTMLElement, platform: string) {
     this.computedParts.usage = '';
-    const usages = SRNC.usageStrings[platform][definitionName];
+    const usages = SRNC.usages[platform][definitionName];
     if (usages) {
       // Begin if 1
       this.computedParts.usage = usages['[default]'] || '';
@@ -317,7 +320,7 @@ export class NarrationComputer {
     } // End if 1
     if (definitionName === 'textarea' && SRNC.stringOverridesDescription.includes(platform) && value) {
       // Begin if 1
-      this.computedParts.description = SRNC.stateStrings[platform]['textarea']['[containsText]'];
+      this.computedParts.description = SRNC.elementStates[platform]['textarea']['[containsText]'];
     } else {
       // Else if 1
       this.computedParts.description =
@@ -348,8 +351,8 @@ export class NarrationComputer {
   // Sets just constant strings because the real computation of the position in set and level would be too difficult.
   computePositionAndLevel(platform: string) {
     // We can set the position and level parts for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order rule
-    this.computedParts.position = SRNC.position[platform];
-    this.computedParts.level = SRNC.level[platform];
+    this.computedParts.position = SRNC.positions[platform];
+    this.computedParts.level = SRNC.levels[platform];
   } // End computePositionAndLevel
 
   // Computes the type and state parts of the narration for the given definitionName, element and platform using the given computed node.
@@ -370,9 +373,9 @@ export class NarrationComputer {
           // Begin some 1
           const stateValue = element.getAttribute(possibleState);
 
-          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansOmitted" list. But let's define it the other way around so that there is not too much negations
+          // A state is considred not to be present on the element if it is null, or is false but is included in the "falseMeansNotPresent" list. But let's define it the other way around so that there is not too much negations
           const elementHasState =
-            stateValue !== null && (stateValue !== 'false' || !SRNC.falseMeansOmitted.includes(possibleState));
+            stateValue !== null && (stateValue !== 'false' || !SRNC.falseMeansNotPresent.includes(possibleState));
 
           // Handle the special case of the "checked" state where we are not looking for an attribute but a DOM property
           const elementHasCheckedProp =
@@ -394,12 +397,12 @@ export class NarrationComputer {
         }
 
         // We have found the matching rule, retrieve and store the element's type
-        this.computedParts.type = SRNC.typeStrings[platform][rule.elementType];
+        this.computedParts.type = SRNC.elementTypes[platform][rule.elementType];
 
         // Compute and store the element's state
         // But first, prepare some variables
         const computedStateArr: string[] = [];
-        const stateStrings = SRNC.stateStrings[platform][definitionName];
+        const elementStates = SRNC.elementStates[platform][definitionName];
 
         // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
         const order = rule.combination.length <= 1 && !rule.order ? rule.combination : rule.order;
@@ -419,7 +422,7 @@ export class NarrationComputer {
           } // End if 2
 
           // Determine the state string by using "<stateName>=<stateValue>" as the definition key. If such key does not exist, try using "<stateName>=" as the key. Therefore, "<stateName>=" key will match the given stateName and any not defined stateValue
-          const partialState = stateStrings[`${stateName}=${stateValue}`] || stateStrings[`${stateName}=`];
+          const partialState = elementStates[`${stateName}=${stateValue}`] || elementStates[`${stateName}=`];
           if (partialState) {
             // Begin if 2
             computedStateArr.push(partialState);
