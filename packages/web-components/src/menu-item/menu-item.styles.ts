@@ -26,6 +26,7 @@ export const MenuItemStyles = css`
         color: ${neutralForegroundRestBehavior.var};
         fill: ${neutralForegroundRestBehavior.var};
         cursor: pointer;
+        font-family: var(--body-font);
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
         border-radius: calc(var(--corner-radius) * 1px);
