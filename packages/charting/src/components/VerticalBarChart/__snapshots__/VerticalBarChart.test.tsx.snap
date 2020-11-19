@@ -16,7 +16,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_1"
+  id="chart_2"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -65,7 +65,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_1"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -93,7 +93,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_1"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -205,7 +205,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -503,7 +503,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         overflow: hidden;
         width: 100%;
       }
-  id="chart_12"
+  id="chart_16"
   role="presentation"
 >
   <div
@@ -512,7 +512,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -552,7 +552,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & path {
               display: none;
             }
-        id="xAxisGElementchart_12"
+        id="xAxisGElementchart_16"
         transform="translate(0, -35)"
       />
       <g
@@ -580,12 +580,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_12"
+        id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout11"
+          aria-labelledby="callout14"
           className=
 
               {
@@ -603,7 +603,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={-24}
         />
         <rect
-          aria-labelledby="callout11"
+          aria-labelledby="callout14"
           className=
 
               {
@@ -621,7 +621,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={20}
         />
         <rect
-          aria-labelledby="callout11"
+          aria-labelledby="callout14"
           className=
 
               {
@@ -675,7 +675,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               justify-content: unset;
               position: relative;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone18"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -970,7 +970,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_5"
+  id="chart_7"
   role="presentation"
 >
   <div
@@ -979,7 +979,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1019,7 +1019,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_5"
+        id="xAxisGElementchart_7"
         transform="translate(0, -35)"
       />
       <g
@@ -1047,12 +1047,12 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_5"
+        id="yAxisGElementchart_7"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout4"
+          aria-labelledby="callout5"
           className=
 
               {
@@ -1070,7 +1070,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout4"
+          aria-labelledby="callout5"
           className=
 
               {
@@ -1088,7 +1088,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout4"
+          aria-labelledby="callout5"
           className=
 
               {
@@ -1127,7 +1127,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_11"
   role="presentation"
 >
   <div
@@ -1136,7 +1136,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1176,7 +1176,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
+        id="xAxisGElementchart_11"
         transform="translate(0, -35)"
       />
       <g
@@ -1204,12 +1204,12 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_11"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout7"
+          aria-labelledby="callout9"
           className=
 
               {
@@ -1227,7 +1227,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout7"
+          aria-labelledby="callout9"
           className=
 
               {
@@ -1245,7 +1245,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout7"
+          aria-labelledby="callout9"
           className=
 
               {
@@ -1316,7 +1316,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone13"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1614,7 +1614,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_21"
   role="presentation"
 >
   <div
@@ -1623,7 +1623,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone22"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1663,7 +1663,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_21"
         transform="translate(0, -35)"
       />
       <g
@@ -1691,12 +1691,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_21"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="callout19"
           className=
 
               {
@@ -1714,7 +1714,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={-24}
         />
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="callout19"
           className=
 
               {
@@ -1732,7 +1732,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={20}
         />
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="callout19"
           className=
 
               {
@@ -1803,7 +1803,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone23"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2101,7 +2101,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_20"
+  id="chart_26"
   role="presentation"
 >
   <div
@@ -2110,7 +2110,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2150,7 +2150,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_20"
+        id="xAxisGElementchart_26"
         transform="translate(0, -35)"
       />
       <g
@@ -2178,12 +2178,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_20"
+        id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="callout24"
           className=
 
               {
@@ -2201,7 +2201,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="callout24"
           className=
 
               {
@@ -2219,7 +2219,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="callout24"
           className=
 
               {
@@ -2290,7 +2290,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone28"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2588,7 +2588,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_24"
+  id="chart_31"
   role="presentation"
 >
   <div
@@ -2597,7 +2597,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone32"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2637,7 +2637,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_24"
+        id="xAxisGElementchart_31"
         transform="translate(0, -35)"
       />
       <g
@@ -2665,12 +2665,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_24"
+        id="yAxisGElementchart_31"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout23"
+          aria-labelledby="callout29"
           className=
 
               {
@@ -2688,7 +2688,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout23"
+          aria-labelledby="callout29"
           className=
 
               {
@@ -2706,7 +2706,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout23"
+          aria-labelledby="callout29"
           className=
 
               {
@@ -2777,7 +2777,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone26"
+              data-focuszone-id="FocusZone33"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

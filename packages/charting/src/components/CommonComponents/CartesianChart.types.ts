@@ -273,25 +273,6 @@ export interface ICartesianChartProps {
   legendProps?: Partial<ILegendsProps>;
 
   /**
-   *@default false
-   *Used for to elipse x axis labes and show tooltip on x axis labels
-   */
-  showXAxisLablesTooltip?: boolean;
-
-  /**
-   * @default 4
-   * Used for X axis labels
-   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
-   */
-  noOfCharsToTruncate?: number;
-
-  /**
-   * @default false
-   * Used to display x axis labels values (whole value)
-   */
-  wrapXAxisLables?: boolean;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
@@ -441,4 +422,23 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * props to send to the focuszone
    */
   svgFocusZoneProps?: IFocusZoneProps;
+
+  /**
+   *@default false
+   *Used for to elipse x axis labes and show tooltip on x axis labels
+   */
+  showXAxisLablesTooltip?: boolean;
+
+  /**
+   * @default 4
+   * Used for X axis labels
+   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
+   */
+  noOfCharsToTruncate?: number;
+
+  /**
+   * @default false
+   * Used to display x axis labels values (whole value)
+   */
+  wrapXAxisLables?: boolean;
 }

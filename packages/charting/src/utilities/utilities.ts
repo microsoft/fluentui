@@ -147,13 +147,13 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
  * @param {ITickParams} tickParams
  */
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
-  const { domainNRangeValues, xAxisElement } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
-    .tickPadding(10);
+    .tickPadding(tickPadding!);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {

@@ -123,7 +123,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding,
+      tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
       xAxisPadding: this.props.xAxisPadding,
     };
 

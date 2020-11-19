@@ -67,18 +67,6 @@ describe('LineChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders showXAxisLablesTooltip correctly', () => {
-    const component = renderer.create(<LineChart data={chartPoints} showXAxisLablesTooltip={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders wrapXAxisLables correctly', () => {
-    const component = renderer.create(<LineChart data={chartPoints} wrapXAxisLables={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('renders yAxisTickFormat correctly', () => {
     const component = renderer.create(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
     const tree = component.toJSON();
