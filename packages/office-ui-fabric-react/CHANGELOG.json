@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 Nov 2020 12:26:02 GMT",
+      "tag": "office-ui-fabric-react_v7.152.0",
+      "version": "7.152.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add text to breacrumb overflow items",
+            "author": "pbelsal@gmail.com",
+            "commit": "82b01a8b4f2acf60efaf3673d7f95b29e9e81c43",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
+            "author": "tmichon@microsoft.com",
+            "commit": "ffb733fcb71034eb92a2145e2618d2d969445c1c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "office-ui-fabric-react_v7.151.0",
       "version": "7.151.0",

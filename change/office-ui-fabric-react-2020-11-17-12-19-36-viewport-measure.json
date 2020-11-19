@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-17T20:19:36.495Z"
-}

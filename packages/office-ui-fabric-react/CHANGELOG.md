@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Nov 2020 12:26:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.152.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.0)
+
+Thu, 19 Nov 2020 12:26:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.151.0..office-ui-fabric-react_v7.152.0)
+
+### Minor changes
+
+- Add text to breacrumb overflow items ([PR #15987](https://github.com/microsoft/fluentui/pull/15987) by pbelsal@gmail.com)
+- Fully disable viewport measurement with 'skipViewportMeasures' ([PR #15963](https://github.com/microsoft/fluentui/pull/15963) by tmichon@microsoft.com)
 
 ## [7.151.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.151.0)
 
