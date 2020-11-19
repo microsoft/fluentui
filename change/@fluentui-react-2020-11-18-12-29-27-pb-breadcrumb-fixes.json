@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "minor",
   "comment": "Add text to breacrumb overflow items",
   "packageName": "@fluentui/react",
   "email": "pbelsal@gmail.com",
