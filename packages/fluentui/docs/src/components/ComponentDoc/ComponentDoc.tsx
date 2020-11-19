@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
-import { tabListBehavior, Header, Dropdown, Text, Flex, Menu } from '@fluentui/react-northstar';
+import { tabListBehavior, Header, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 import { getFormattedHash } from '../../utils';
@@ -214,17 +214,19 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
                 key={info.displayName}
                 style={{ marginTop: '1rem' }}
               />
-              <Flex column>
-                <ComponentBestPractices displayName={info.displayName} />
-                <ExampleContext.Provider
-                  value={{
-                    activeAnchorName: activePath,
-                    onExamplePassed: this.handleExamplePassed,
-                  }}
-                >
-                  <ComponentExamples displayName={info.displayName} />
-                </ExampleContext.Provider>
-              </Flex>
+              <Grid columns="auto 300px" styles={{ justifyContent: 'normal', justifyItems: 'stretch' }}>
+                <div>
+                  <ComponentBestPractices displayName={info.displayName} />
+                  <ExampleContext.Provider
+                    value={{
+                      activeAnchorName: activePath,
+                      onExamplePassed: this.handleExamplePassed,
+                    }}
+                  >
+                    <ComponentExamples displayName={info.displayName} />
+                  </ExampleContext.Provider>
+                </div>
+              </Grid>
             </>
           )}
 

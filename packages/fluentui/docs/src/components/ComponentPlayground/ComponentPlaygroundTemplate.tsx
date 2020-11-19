@@ -1,5 +1,5 @@
 import { KnobInspector, unstable_KnobContext } from '@fluentui/docs-components';
-import { Flex, Header, Segment } from '@fluentui/react-northstar';
+import { Grid, Header, Segment } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -19,45 +19,35 @@ const NoopKnobProvider: React.FunctionComponent = props => {
 };
 
 const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTemplateProps> = props => (
-  <Flex fill gap="gap.medium">
-    <Flex
-      column
-      fill
+  <Grid columns="1fr 300px" rows="1fr auto" styles={{ gridColumnGap: '1rem' }}>
+    <Segment
       styles={{
-        height: 'auto',
-        alignItems: 'stretch',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: props.fluid ? 'stretch' : 'center',
+        justifyContent: 'center',
+        gridRow: 1,
       }}
     >
-      <Segment
-        styles={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: props.fluid ? 'stretch' : 'center',
-          justifyContent: 'center',
-          height: 'auto',
-          flex: 1,
-        }}
-      >
-        {props.element || React.createElement(props.component)}
-      </Segment>
+      {props.element || React.createElement(props.component)}
+    </Segment>
 
-      {/* ComponentPlaygroundSnippet will evaluate passed component again and if it contains
-        knobs it will execute them again and will fail because hooks with that name have
-        been already registered.
-      */}
-      <NoopKnobProvider>
-        <ComponentPlaygroundSnippet element={props.element} component={props.component} style={{ gridRow: 2 }} />
-      </NoopKnobProvider>
-    </Flex>
-
-    <Segment color="brand">
+    <Segment color="brand" styles={{ gridRow: '1 / 3' }}>
       <Header as="h4" className="no-anchor" styles={{ marginTop: 0 }}>
         Props
       </Header>
       <KnobInspector />
       {props.children}
     </Segment>
-  </Flex>
+
+    {/* ComponentPlaygroundSnippet will evaluate passed component again and if it contains
+        knobs it will execute them again and will fail because hooks with that name have
+        been already registered.
+      */}
+    <NoopKnobProvider>
+      <ComponentPlaygroundSnippet element={props.element} component={props.component} style={{ gridRow: 2 }} />
+    </NoopKnobProvider>
+  </Grid>
 );
 
 export default ComponentPlaygroundTemplate;

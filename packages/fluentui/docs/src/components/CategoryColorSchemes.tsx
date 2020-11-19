@@ -48,15 +48,10 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
       )),
     ]);
 
-    const columns = _.times(themes.length, () => '180px').join(' ');
+    const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`;
     return (
       <div className={classes.root}>
-        <Grid
-          styles={{
-            gridTemplateColumns: `auto ${columns}`,
-            msGridColumns: `minmax(min-content, 1fr) ${columns}`,
-          }}
-        >
+        <Grid columns={columns}>
           {headers && headers.map(header => Header.create(header))}
           {elements}
         </Grid>
