@@ -106,6 +106,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         input.current.focus();
       }
     },
+    getSelectedItems: () => {
+      return getSelectedItems() as T[];
+    },
   }));
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
