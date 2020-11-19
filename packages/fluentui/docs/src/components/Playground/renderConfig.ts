@@ -88,7 +88,7 @@ export const imports: Record<string, CodeSandboxImport> = {
     required: true,
   },
   '@material-ui/styles': {
-    version: projectPackageJson.peerDependencies['@fluentui/react-northstar'],
+    version: projectPackageJson.dependencies['@material-ui/styles'],
     module: MUIStyles,
     required: true,
   },
