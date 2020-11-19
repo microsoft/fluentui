@@ -204,7 +204,7 @@ export class FluentCard extends DesignSystemProvider implements Pick<DesignSyste
 export class FluentCheckbox extends Checkbox {
 }
 
-// @public (undocumented)
+// @public
 export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'>;
 
 // @public
