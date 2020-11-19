@@ -118,13 +118,21 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
     initialValue: false,
   });
 
+  const prevChecked = React.useRef<boolean>(checked);
+
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);
     setChecked(prevChecked => {
-      _.invoke(props, 'onChange', undefined, { ...props, checked: !prevChecked });
       return !prevChecked;
     });
   };
+
+  React.useEffect(() => {
+    if (prevChecked.current !== checked) {
+      _.invoke(props, 'onChange', undefined, { ...props, checked });
+      prevChecked.current = checked;
+    }
+  });
 
   React.useEffect(() => {
     if (checked && shouldFocus) elementRef.current.focus();
