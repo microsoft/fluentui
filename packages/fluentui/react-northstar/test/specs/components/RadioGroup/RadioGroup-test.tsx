@@ -98,11 +98,9 @@ describe('RadioGroup', () => {
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
       radioGroupItems.first().simulate('click');
-      wrapper.update();
       expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
 
       radioGroupItems.last().simulate('click');
-      wrapper.update();
       expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
     });
 
