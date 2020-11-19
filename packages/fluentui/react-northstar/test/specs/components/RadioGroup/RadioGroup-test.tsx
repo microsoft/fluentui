@@ -17,6 +17,7 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
     value: 'test-value1',
     'data-foo': 'something',
     onClick: jest.fn(),
+    onChange: jest.fn(),
     disabled: props && props.disabledItem === 0,
   },
   {
@@ -79,6 +80,29 @@ describe('RadioGroup', () => {
 
       const onClick = items[0].onClick || items[0].props.onClick;
       expect(onClick).toHaveBeenCalled();
+    });
+
+    it('calls onChange handler for item with updated checked state', () => {
+      const items = getItems();
+      const wrapper = mountWithProvider(<RadioGroup items={items} />);
+      const radioGroupItems = wrapper.find('RadioGroupItem');
+
+      radioGroupItems
+        .first()
+        .find('div')
+        .first()
+        .simulate('click');
+      wrapper.update();
+      const onChange = items[0].onChange || items[0].props.onChange;
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
+
+      radioGroupItems
+        .last()
+        .find('div')
+        .first()
+        .simulate('click');
+      wrapper.update();
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
     });
 
     it('passes arbitrary props', () => {

@@ -127,6 +127,8 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
     });
   };
 
+  // This behavior is not conformant with native input radio, it was added to avoid breaking change
+  // and it should be fixed to be conformant with native, only calling onChange when item is clicked (checked will always be true)
   React.useEffect(() => {
     if (prevChecked.current !== checked) {
       _.invoke(props, 'onChange', undefined, { ...props, checked });

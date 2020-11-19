@@ -1,0 +1,794 @@
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201119.114302.52278.0.001.json",
+    "dumpEventTime": "2020-11-19T11:43:02Z",
+    "dumpEventTimeStamp": "1605796982202",
+    "processId": 52278,
+    "threadId": null,
+    "cwd": "/Users/chassunc/Projects/fluentui/packages/fluentui/react-northstar",
+    "commandLine": [
+      "/usr/local/bin/node",
+      "/Users/chassunc/Projects/fluentui/node_modules/.bin/jest",
+      "--config",
+      "./jest.config.js",
+      "--coverage",
+      "/RadioGroup-"
+    ],
+    "nodejsVersion": "v12.16.2",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "darwin",
+    "componentVersions": {
+      "node": "12.16.2",
+      "v8": "7.8.279.23-node.34",
+      "uv": "1.34.2",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1e",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2.tar.gz"
+    },
+    "osName": "Darwin",
+    "osRelease": "19.6.0",
+    "osVersion": "Darwin Kernel Version 19.6.0: Thu Oct 29 22:56:45 PDT 2020; root:xnu-6153.141.2.2~1/RELEASE_X86_64",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 23802500,
+        "nice": 0,
+        "sys": 13142710,
+        "idle": 107896380,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 655520,
+        "nice": 0,
+        "sys": 500120,
+        "idle": 143573460,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 19023220,
+        "nice": 0,
+        "sys": 8825620,
+        "idle": 116880850,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 595460,
+        "nice": 0,
+        "sys": 376730,
+        "idle": 143756870,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 15151100,
+        "nice": 0,
+        "sys": 6781980,
+        "idle": 122796580,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 594770,
+        "nice": 0,
+        "sys": 312990,
+        "idle": 143821270,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 11836010,
+        "nice": 0,
+        "sys": 5047230,
+        "idle": 127846390,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 578870,
+        "nice": 0,
+        "sys": 259900,
+        "idle": 143890220,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 9717990,
+        "nice": 0,
+        "sys": 3993340,
+        "idle": 131018280,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 559340,
+        "nice": 0,
+        "sys": 220020,
+        "idle": 143949600,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 7228550,
+        "nice": 0,
+        "sys": 2714320,
+        "idle": 134786700,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 543250,
+        "nice": 0,
+        "sys": 189660,
+        "idle": 143996020,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 5851830,
+        "nice": 0,
+        "sys": 2067330,
+        "idle": 136810380,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 528160,
+        "nice": 0,
+        "sys": 167610,
+        "idle": 144033130,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 5010230,
+        "nice": 0,
+        "sys": 1551870,
+        "idle": 138167400,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 514320,
+        "nice": 0,
+        "sys": 151410,
+        "idle": 144063130,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::1",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 1
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:53:3c:33",
+        "address": "fe80::18ca:997a:501d:ddd2",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 6
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:53:3c:33",
+        "address": "192.168.100.18",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:53:3c:33",
+        "address": "2804:d45:c5a1:6000:42:7ef9:2e9e:3da4",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:53:3c:33",
+        "address": "2804:d45:c5a1:6000:e506:2977:a47c:df18",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "awdl0",
+        "internal": false,
+        "mac": "96:96:60:9b:0e:57",
+        "address": "fe80::9496:60ff:fe9b:e57",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      },
+      {
+        "name": "llw0",
+        "internal": false,
+        "mac": "96:96:60:9b:0e:57",
+        "address": "fe80::9496:60ff:fe9b:e57",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "utun0",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::506f:f90e:deba:8297",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 15
+      },
+      {
+        "name": "utun1",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::90a2:eab0:d8e2:b03",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 16
+      },
+      {
+        "name": "utun2",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::aede:48ff:fe00:1122",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 17
+      },
+      {
+        "name": "utun2",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "10.10.8.57",
+        "netmask": "255.255.255.255",
+        "family": "IPv4"
+      },
+      {
+        "name": "utun2",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "2001:4898:6f10:e:8000::a",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "en5",
+        "internal": false,
+        "mac": "ac:de:48:00:11:22",
+        "address": "fe80::aede:48ff:fe00:1122",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 4
+      }
+    ],
+    "host": "DESKTOP-9QBKCQA.fareast.corp.microsoft.com"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": ["Unavailable."]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00000001001636d3",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, v8::Local<v8::String>) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100084d5a",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100186477",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100186417",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001003141c5",
+      "symbol": "v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100315a3a",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010031246c",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010031026e",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010031c13a",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010031c1c1",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002e9dfa",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010063f028",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010097d5b9",
+      "symbol": "Builtins_CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010097e48d",
+      "symbol": "Builtins_StringAdd_CheckNone [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000037bf3314b2dc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000037bf3314b1f7",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2152538112,
+    "totalCommittedMemory": 2151182720,
+    "usedMemory": 2144814016,
+    "availableMemory": 47681016,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 1312712,
+        "capacity": 1047456,
+        "used": 328048,
+        "available": 719408
+      },
+      "old_space": {
+        "memorySize": 2103844864,
+        "committedMemory": 2103690872,
+        "capacity": 2100288432,
+        "used": 2099651464,
+        "available": 636968
+      },
+      "code_space": {
+        "memorySize": 2527232,
+        "committedMemory": 2470304,
+        "capacity": 2185056,
+        "used": 2185056,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 3936256,
+        "committedMemory": 3805280,
+        "capacity": 2907120,
+        "used": 2907120,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 39821312,
+        "committedMemory": 39821312,
+        "capacity": 39706736,
+        "used": 39706736,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 90.6871,
+    "kernelCpuSeconds": 3.18552,
+    "cpuConsumptionPercent": 177.118,
+    "maxRss": 2321798922240,
+    "pageFaults": {
+      "IORequired": 1,
+      "IONotRequired": 758469
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "libuv": [],
+  "workers": [],
+  "environmentVariables": {
+    "PLUGINS": "/Users/chassunc/.oh-my-zsh/custom/plugins",
+    "BUILD_SOURCEBRANCH": "charles_local",
+    "npm_package_devDependencies_react_dom": "16.8.6",
+    "npm_package_scripts_build_info": "gulp build:component-info",
+    "npm_package_dependencies__fluentui_react_northstar_styles_renderer": "^0.51.0",
+    "TERM_PROGRAM": "iTerm.app",
+    "npm_package_dependencies_downshift": "5.0.5",
+    "NODE": "/usr/local/bin/node",
+    "INIT_CWD": "/Users/chassunc/Projects/fluentui/packages/fluentui/react-northstar",
+    "npm_package_homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar",
+    "npm_package_devDependencies_typescript": "3.7.2",
+    "npm_config_version_git_tag": "true",
+    "SHELL": "/bin/zsh",
+    "TERM": "xterm-256color",
+    "npm_package_dependencies__fluentui_state": "^0.51.0",
+    "npm_package_dependencies__fluentui_react_component_nesting_registry": "^0.51.0",
+    "TMPDIR": "/var/folders/6p/zbp7v59n00x_tqqm5ntzcyp80000gn/T/",
+    "npm_package_dependencies__uifabric_utilities": "^7.32.3",
+    "npm_config___domoreexp_pkgs_visualstudio_com__packaging_npm_mirror_npm_registry__username": "domoreexp",
+    "npm_config___domoreexp_pkgs_visualstudio_com__packaging_npm_mirror_npm_registry__email": "charles.assuncao@microsoft.com",
+    "npm_package_scripts_lint": "eslint --ext .js,.ts,.tsx .",
+    "npm_package_dependencies__fluentui_react_bindings": "^0.51.0",
+    "npm_config_init_license": "MIT",
+    "TERM_PROGRAM_VERSION": "3.4.1",
+    "npm_package_dependencies__fluentui_react_proptypes": "^0.51.0",
+    "TERM_SESSION_ID": "w0t1p0:E231AB9A-500D-456F-BADB-E001D8B13830",
+    "npm_package_devDependencies__types_gulp": "^4.0.6",
+    "npm_package_devDependencies__types_classnames": "^2.2.9",
+    "npm_package_sideEffects": "false",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "ZSH": "/Users/chassunc/.oh-my-zsh",
+    "npm_package_repository_url": "https://github.com/microsoft/fluentui.git",
+    "npm_package_peerDependencies_react_dom": "^16.8.0",
+    "npm_package_dependencies__fluentui_react_context_selector": "^0.51.0",
+    "USER": "chassunc",
+    "npm_package_devDependencies_react": "16.8.6",
+    "npm_package_devDependencies_csstype": "^2.6.7",
+    "npm_package_dependencies__fluentui_styles": "^0.51.0",
+    "npm_package_description": "A themable React component library.",
+    "npm_package_license": "MIT",
+    "npm_package_devDependencies__types_react": "16.8.25",
+    "npm_config___domoreexp_pkgs_visualstudio_com__packaging_npm_mirror_npm__username": "domoreexp",
+    "COMMAND_MODE": "unix2003",
+    "npm_package_devDependencies_qs": "^6.8.0",
+    "npm_package_devDependencies__types_react_is": "^16.7.1",
+    "npm_config_always_auth": "true",
+    "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.AUzgLpeDkx/Listeners",
+    "npm_package_dependencies_lodash": "^4.17.15",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0",
+    "npm_package_devDependencies__fluentui_a11y_testing": "^0.1.0",
+    "npm_execpath": "/usr/local/lib/node_modules/yarn/bin/yarn.js",
+    "PAGER": "less",
+    "npm_package_module": "dist/es/index.js",
+    "npm_package_author_name": "Levi Thomason",
+    "LSCOLORS": "Gxfxcxdxbxegedabagacad",
+    "npm_package_devDependencies__types_react_dom": "16.8.4",
+    "npm_package_dependencies_compute_scroll_into_view": "1.0.11",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_package_dependencies__fluentui_dom_utilities": "^1.1.1",
+    "PATH": "/var/folders/6p/zbp7v59n00x_tqqm5ntzcyp80000gn/T/yarn--1605796924652-0.0616651926035523:/Users/chassunc/Projects/fluentui/packages/fluentui/react-northstar/node_modules/.bin:/Users/chassunc/.config/yarn/link/node_modules/.bin:/Users/chassunc/Projects/fluentui/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Users/chassunc/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/chassunc/.rvm/bin:/Users/chassunc/maven/bin:/Users/chassunc/Projects/fluentui/node_modules/.bin",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"test\"],\"original\":[\"test\",\"-F\",\"/RadioGroup-\"]}",
+    "npm_package_scripts_lint_fix": "yarn lint --fix",
+    "npm_package_dependencies__babel_runtime": "^7.10.4",
+    "LaunchInstanceID": "B9BFF341-C188-4514-840C-FE9509D109BB",
+    "_": "/Users/chassunc/Projects/fluentui/node_modules/.bin/jest",
+    "PWD": "/Users/chassunc/Projects/fluentui/packages/fluentui/react-northstar",
+    "npm_package_devDependencies__fluentui_eslint_plugin": "^1.0.0-beta",
+    "SCREENER_FILTER": "*SplitButton*",
+    "npm_package_scripts_test_watch": "gulp test:watch",
+    "npm_package_devDependencies_fela_tools": "^10.6.1",
+    "npm_package_bugs_url": "https://github.com/microsoft/fluentui/issues",
+    "npm_lifecycle_event": "test",
+    "npm_package_types": "dist/es/index.d.ts",
+    "npm_package_repository_type": "git",
+    "npm_package_name": "@fluentui/react-northstar",
+    "ITERM_PROFILE": "Default",
+    "npm_package_scripts_build": "gulp bundle:package:no-umd && yarn build:info",
+    "npm_package_dependencies__fluentui_react_component_ref": "^0.51.0",
+    "npm_config_version_commit_hooks": "true",
+    "XPC_FLAGS": "0x0",
+    "npm_package_devDependencies_faker": "^4.1.0",
+    "npm_config_bin_links": "true",
+    "NODE_ENV": "test",
+    "npm_package_devDependencies_simulant": "^0.2.2",
+    "npm_package_devDependencies__fluentui_react_conformance": "^1.0.0",
+    "npm_package_dependencies_classnames": "^2.2.6",
+    "RBENV_SHELL": "zsh",
+    "npm_package_main": "dist/commonjs/index.js",
+    "npm_config___domoreexp_pkgs_visualstudio_com__packaging_npm_mirror_npm__email": "charles.assuncao@microsoft.com",
+    "XPC_SERVICE_NAME": "0",
+    "npm_package_devDependencies_jest_axe": "^3.2.0",
+    "npm_package_dependencies__fluentui_react_icons_northstar": "^0.51.0",
+    "npm_package_version": "0.51.0",
+    "npm_package_devDependencies__types_simulant": "^0.2.0",
+    "COLORFGBG": "15;0",
+    "HOME": "/Users/chassunc",
+    "SHLVL": "3",
+    "npm_package_scripts_test": "gulp test",
+    "LC_TERMINAL_VERSION": "3.4.1",
+    "npm_package_devDependencies_lerna_alias": "^3.0.3-0",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "SCREENER_API_KEY": "953e2ef4-08b5-4145-ac25-04d8da2128c3",
+    "npm_package_devDependencies_gulp": "^4.0.2",
+    "npm_config_version_git_message": "v%s",
+    "CI": "undefined",
+    "npm_package_publishConfig_access": "public",
+    "ITERM_SESSION_ID": "w0t1p0:E231AB9A-500D-456F-BADB-E001D8B13830",
+    "LOGNAME": "chassunc",
+    "LESS": "-R",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_package_devDependencies_jest_react_fela": "^10.6.1",
+    "npm_lifecycle_script": "gulp test",
+    "npm_package_dependencies_react_transition_group": "^4.3.0",
+    "npm_package_dependencies__fluentui_keyboard_key": "^0.2.12",
+    "npm_package_dependencies__fluentui_date_time_utilities": "^7.9.0",
+    "LC_CTYPE": "UTF-8",
+    "npm_package_jsnext_main": "dist/es/index.js",
+    "npm_package_author_email": "me@levithomason.com",
+    "npm_config_package_lock": "",
+    "npm_package_peerDependencies_react": "^16.8.0",
+    "npm_package_devDependencies__types_faker": "^4.1.3",
+    "npm_package_dependencies__fluentui_react_component_event_listener": "^0.51.0",
+    "npm_config_version_git_sign": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.16.2 darwin x64",
+    "npm_package_dependencies_react_is": "^16.6.3",
+    "npm_package_dependencies__fluentui_accessibility": "^0.51.0",
+    "LC_TERMINAL": "iTerm2",
+    "npm_package_files_0": "dist",
+    "npm_package_dependencies__popperjs_core": "^2.4.2",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_ignore_optional": "",
+    "SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS": "/Users/chassunc/Library/WebKit/Databases",
+    "SECURITYSESSIONID": "186a6",
+    "npm_package_scripts_clean": "gulp clean:component-info bundle:package:clean",
+    "npm_package_gulp_componentInfo": "./src/components/*/[A-Z]*.tsx",
+    "npm_package_devDependencies__fluentui_scripts": "^1.0.0",
+    "COLORTERM": "truecolor",
+    "npm_node_execpath": "/usr/local/bin/node",
+    "npm_package_devDependencies__testing_library_jest_dom": "^5.1.1",
+    "npm_config_version_tag_prefix": "v",
+    "JEST_WORKER_ID": "1"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 98304,
+      "hard": "unlimited"
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": 67104768
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 11136,
+      "hard": 11136
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "/usr/local/bin/node",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libfakelink.dylib",
+    "/usr/lib/libDiagnosticMessagesClient.dylib",
+    "/usr/lib/libicucore.A.dylib",
+    "/usr/lib/libz.1.dylib",
+    "/usr/lib/libc++abi.dylib",
+    "/usr/lib/system/libcache.dylib",
+    "/usr/lib/system/libcommonCrypto.dylib",
+    "/usr/lib/system/libcompiler_rt.dylib",
+    "/usr/lib/system/libcopyfile.dylib",
+    "/usr/lib/system/libcorecrypto.dylib",
+    "/usr/lib/system/libdispatch.dylib",
+    "/usr/lib/system/libdyld.dylib",
+    "/usr/lib/system/libkeymgr.dylib",
+    "/usr/lib/system/liblaunch.dylib",
+    "/usr/lib/system/libmacho.dylib",
+    "/usr/lib/system/libquarantine.dylib",
+    "/usr/lib/system/libremovefile.dylib",
+    "/usr/lib/system/libsystem_asl.dylib",
+    "/usr/lib/system/libsystem_blocks.dylib",
+    "/usr/lib/system/libsystem_c.dylib",
+    "/usr/lib/system/libsystem_configuration.dylib",
+    "/usr/lib/system/libsystem_coreservices.dylib",
+    "/usr/lib/system/libsystem_darwin.dylib",
+    "/usr/lib/system/libsystem_dnssd.dylib",
+    "/usr/lib/system/libsystem_featureflags.dylib",
+    "/usr/lib/system/libsystem_info.dylib",
+    "/usr/lib/system/libsystem_m.dylib",
+    "/usr/lib/system/libsystem_malloc.dylib",
+    "/usr/lib/system/libsystem_networkextension.dylib",
+    "/usr/lib/system/libsystem_notify.dylib",
+    "/usr/lib/system/libsystem_sandbox.dylib",
+    "/usr/lib/system/libsystem_secinit.dylib",
+    "/usr/lib/system/libsystem_kernel.dylib",
+    "/usr/lib/system/libsystem_platform.dylib",
+    "/usr/lib/system/libsystem_pthread.dylib",
+    "/usr/lib/system/libsystem_symptoms.dylib",
+    "/usr/lib/system/libsystem_trace.dylib",
+    "/usr/lib/system/libunwind.dylib",
+    "/usr/lib/system/libxpc.dylib",
+    "/Users/chassunc/Projects/fluentui/node_modules/jest-haste-map/node_modules/fsevents/lib/binding/Release/node-v72-darwin-x64/fse.node",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SharedFileList.framework/Versions/A/SharedFileList",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/usr/lib/libsqlite3.dylib",
+    "/usr/lib/libxml2.2.dylib",
+    "/usr/lib/libnetwork.dylib",
+    "/usr/lib/libapple_nghttp2.dylib",
+    "/usr/lib/libauto.dylib",
+    "/usr/lib/libcompression.dylib",
+    "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+    "/usr/lib/libarchive.2.dylib",
+    "/usr/lib/liblangid.dylib",
+    "/usr/lib/libCRFSuite.dylib",
+    "/usr/lib/liblzma.5.dylib",
+    "/usr/lib/libenergytrace.dylib",
+    "/usr/lib/libbsm.0.dylib",
+    "/usr/lib/system/libkxld.dylib",
+    "/System/Library/PrivateFrameworks/AppleFSCompression.framework/Versions/A/AppleFSCompression",
+    "/usr/lib/libcoretls.dylib",
+    "/usr/lib/libcoretls_cfhelpers.dylib",
+    "/usr/lib/libpam.2.dylib",
+    "/usr/lib/libxar.1.dylib",
+    "/usr/lib/libbz2.1.0.dylib",
+    "/usr/lib/libiconv.2.dylib",
+    "/usr/lib/libcharset.1.dylib",
+    "/usr/lib/libpcap.A.dylib",
+    "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "/System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth",
+    "/System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport",
+    "/System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC",
+    "/System/Library/PrivateFrameworks/CoreNLP.framework/Versions/A/CoreNLP",
+    "/System/Library/PrivateFrameworks/MetadataUtilities.framework/Versions/A/MetadataUtilities",
+    "/usr/lib/libmecabra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+    "/usr/lib/libmecab.dylib",
+    "/usr/lib/libgermantok.dylib",
+    "/usr/lib/libThaiTokenizer.dylib",
+    "/usr/lib/libChineseTokenizer.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparseBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBNNS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparse.dylib",
+    "/System/Library/PrivateFrameworks/LanguageModeling.framework/Versions/A/LanguageModeling",
+    "/System/Library/PrivateFrameworks/CoreEmoji.framework/Versions/A/CoreEmoji",
+    "/System/Library/PrivateFrameworks/LinguisticData.framework/Versions/A/LinguisticData",
+    "/System/Library/PrivateFrameworks/Lexicon.framework/Versions/A/Lexicon",
+    "/usr/lib/libcmph.dylib",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory",
+    "/System/Library/PrivateFrameworks/APFS.framework/Versions/A/APFS",
+    "/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation",
+    "/usr/lib/libutil.dylib",
+    "/System/Library/PrivateFrameworks/CoreServicesStore.framework/Versions/A/CoreServicesStore",
+    "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement",
+    "/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/BackgroundTaskManagement",
+    "/usr/lib/libxslt.1.dylib"
+  ]
+}
