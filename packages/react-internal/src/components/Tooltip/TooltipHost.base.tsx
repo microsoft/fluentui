@@ -223,7 +223,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   };
 
   private _onTooltipKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.escape || ev.ctrlKey) {
+    if ((ev.which === KeyCodes.escape || ev.ctrlKey) && this.state.isTooltipVisible) {
       this._hideTooltip();
       ev.stopPropagation();
     }
