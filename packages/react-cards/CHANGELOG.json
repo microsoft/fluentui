@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.17",
+      "version": "1.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adding borderStyle token to Card styles.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cee44d393cb5f9ea25e9dc792bc46fb8124a2011",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Nov 2020 12:31:52 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.14",
       "version": "1.0.0-beta.14",

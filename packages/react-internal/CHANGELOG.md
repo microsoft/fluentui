@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 16 Nov 2020 12:31:52 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Nov 2020 12:28:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.15)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.12..@fluentui/react-internal_v8.0.0-beta.15)
+
+### Changes
+
+- improve Text variant style inheritance ([PR #15942](https://github.com/microsoft/fluentui/pull/15942) by blaymist@gmail.com)
 
 ## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.12)
 

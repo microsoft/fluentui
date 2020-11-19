@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.15",
+      "version": "8.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "improve Text variant style inheritance",
+            "author": "blaymist@gmail.com",
+            "commit": "a7727b31ea80eda2d346f80b5986162e8cacd63b",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Nov 2020 12:31:52 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.12",
       "version": "8.0.0-beta.12",
