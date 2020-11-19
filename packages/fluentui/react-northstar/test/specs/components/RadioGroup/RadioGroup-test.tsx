@@ -83,7 +83,17 @@ describe('RadioGroup', () => {
     });
 
     it('calls onChange handler for item with updated checked state', () => {
-      const items = getItems();
+      const onChange = jest.fn();
+      const items = [
+          {
+             name: 'test-name',
+             key: 'test-key0',
+             label: 'test-label0',
+             value: 'test-value0',
+             onChange,
+           },
+        ...getItems(),
+      ]
       const wrapper = mountWithProvider(<RadioGroup items={items} />);
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
