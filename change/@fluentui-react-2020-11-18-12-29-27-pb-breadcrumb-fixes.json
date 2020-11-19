@@ -1,7 +1,7 @@
 {
   "type": "minor",
   "comment": "Add text to breacrumb overflow items",
-  "packageName": "@fluentui/react",
+  "packageName": "office-ui-fabric-react",
   "email": "pbelsal@gmail.com",
   "dependentChangeType": "patch",
   "date": "2020-11-18T20:29:27.909Z"
