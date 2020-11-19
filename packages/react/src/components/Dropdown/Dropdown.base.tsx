@@ -494,9 +494,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
-  private _getPlaceholder = (): string | null => {
+  private _getPlaceholder = (): string | undefined => {
     // eslint-disable-next-line deprecation/deprecation
-    return this.props.placeholder || this.props.placeHolder || null;
+    return this.props.placeholder || this.props.placeHolder;
   };
 
   private _copyArray(array: any[]): any[] {
