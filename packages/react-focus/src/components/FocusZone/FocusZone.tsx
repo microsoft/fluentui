@@ -29,6 +29,7 @@ import {
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { ThemeContext, Theme } from '@fluentui/react-theme-provider';
+import { getTheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -274,7 +275,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             ref={this._mergedRef(this.props.elementRef, this._root)}
             data-focuszone-id={this._id}
             // eslint-disable-next-line react/jsx-no-bind
-            onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme)}
+            onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme || getTheme())}
             onFocus={this._onFocus}
             onMouseDownCapture={this._onMouseDown}
           >
@@ -573,7 +574,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme?: Theme): boolean | undefined => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: Theme): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
