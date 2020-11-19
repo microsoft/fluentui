@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Button, Flex, Text } from '@fluentui/react-northstar';
+import { Flex, Text } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
+import { Button } from '@fluentui/react-button';
 
 const ButtonExampleIconOnly = () => (
   <div>

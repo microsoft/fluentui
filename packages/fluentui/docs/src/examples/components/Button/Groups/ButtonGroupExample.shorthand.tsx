@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-northstar';
 import { EmojiIcon, TranslationIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
+// TODO: converge Button.Group
 const ButtonGroupExampleShorthand = () => (
   <Button.Group
     buttons={[

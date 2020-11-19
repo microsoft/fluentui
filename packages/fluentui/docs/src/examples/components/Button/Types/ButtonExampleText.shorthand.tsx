@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-northstar';
+import { Button } from '@fluentui/react-button';
 import { CallVideoIcon, TeamCreateIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleTextShorthand = () => (

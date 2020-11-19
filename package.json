@@ -163,7 +163,9 @@
           "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-compose",
-          "stylis"
+          "stylis",
+          "@fluentui/react-theme-provider",
+          "@fluentui/react-button"
         ]
       }
     ]

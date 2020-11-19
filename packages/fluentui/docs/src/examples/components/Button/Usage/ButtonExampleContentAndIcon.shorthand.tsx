@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Button, Flex } from '@fluentui/react-northstar';
+import { Flex } from '@fluentui/react-northstar';
 import { CallVideoIcon } from '@fluentui/react-icons-northstar';
+import { Button } from '@fluentui/react-button';
 
 const ButtonExampleContentAndIcon = () => (
   <Flex gap="gap.large">

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Flex, Provider } from '@fluentui/react-northstar';
 
+// TODO: how to convert partial theme?
 const ButtonUsageExampleShorthand = () => (
   <div>
     <Provider
