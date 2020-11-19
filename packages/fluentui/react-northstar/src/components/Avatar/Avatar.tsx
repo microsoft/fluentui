@@ -11,13 +11,14 @@ import {
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { makeStyles, Styles } from '@material-ui/styles';
 
 import { Box, BoxProps } from '../Box/Box';
 import { Image, ImageProps } from '../Image/Image';
 import { Label, LabelProps } from '../Label/Label';
 import { Status, StatusProps } from '../Status/Status';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, pxToRem } from '../../utils';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -53,6 +54,61 @@ export interface AvatarProps extends UIComponentProps {
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 export const avatarClassName = 'ui-avatar';
 
+const avatarStyles: Styles<{}, {}> = {
+  Avatar: {
+    // Component variables
+    '--avatar-size-smallest': pxToRem(20),
+    '--avatar-size-smaller': pxToRem(24),
+    '--avatar-size-small': pxToRem(28),
+    '--avatar-size-medium': pxToRem(32),
+    '--avatar-size-large': pxToRem(44),
+    '--avatar-size-larger': pxToRem(64),
+    '--avatar-size-largest': pxToRem(96),
+    '--avatar-status-border-width': '2px',
+    '--avatar-status-border-color': '#f6f6f6', // siteVariables.bodyBackground
+
+    position: 'relative',
+    backgroundColor: 'inherit',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+
+    height: 'var(--avatar-size)',
+    width: 'var(--avatar-size)',
+  },
+
+  'Avatar--size_smallest': {
+    '--avatar-size': 'var(--avatar-size-smallest)',
+  },
+  'Avatar--size_smaller': {
+    '--avatar-size': 'var(--avatar-size-smaller)',
+  },
+  'Avatar--size_small': {
+    '--avatar-size': 'var(--avatar-size-small)',
+  },
+  'Avatar--size_medium': {
+    '--avatar-size': 'var(--avatar-size-medium)',
+  },
+  'Avatar--size_large': {
+    '--avatar-size': 'var(--avatar-size-large)',
+  },
+  'Avatar--size_larger': {
+    '--avatar-size': 'var(--avatar-size-larger)',
+  },
+  'Avatar--size_largest': {
+    '--avatar-size': 'var(--avatar-size-largest)',
+  },
+
+  // Slots
+  'Avatar-Status': {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    boxShadow: `0 0 0 var(--avatar-status-border-width) var(--avatar-status-border-color)`,
+  },
+};
+
+const useMUIStyles = makeStyles(avatarStyles);
+
 /**
  * An Avatar is a graphical representation of a user.
  */
@@ -81,7 +137,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
     debugName: Avatar.displayName,
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
+  const { /* classes, */ styles: resolvedStyles } = useStyles(Avatar.displayName, {
     className: avatarClassName,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
@@ -91,6 +147,14 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
       variables,
     }),
   });
+
+  const muiClasses = useMUIStyles();
+  const classes = {
+    root: [avatarClassName, className, muiClasses.Avatar, size && muiClasses[`Avatar--size_${size}`]]
+      .filter(Boolean)
+      .join(' '),
+    status: [muiClasses['Avatar-Status']],
+  };
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
@@ -133,7 +197,8 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
         defaultProps: () =>
           getA11Props('status', {
             size,
-            styles: resolvedStyles.status,
+            className: classes.status,
+            // styles: resolvedStyles.status,
           }),
       })}
     </ElementType>

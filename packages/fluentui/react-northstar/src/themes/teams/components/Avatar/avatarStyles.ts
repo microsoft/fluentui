@@ -24,18 +24,18 @@ const iconSizeToPxValue: Record<SizeValue, number> = {
 };
 
 export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
-  root: ({ props: { size } }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[size]);
-
-    return {
-      position: 'relative',
-      backgroundColor: 'inherit',
-      display: 'inline-block',
-      verticalAlign: 'middle',
-      height: sizeInRem,
-      width: sizeInRem,
-    };
-  },
+  // root: ({ props: { size } }): ICSSInJSStyle => {
+  //   const sizeInRem = pxToRem(sizeToPxValue[size]);
+  //
+  //   return {
+  //     position: 'relative',
+  //     backgroundColor: 'inherit',
+  //     display: 'inline-block',
+  //     verticalAlign: 'middle',
+  //     height: sizeInRem,
+  //     width: sizeInRem,
+  //   };
+  // },
   icon: ({ props: p, variables: v }) => {
     const sizeInRem = pxToRem(sizeToPxValue[p.size]);
     const iconsizeInRem = pxToRem(iconSizeToPxValue[p.size]);
@@ -92,10 +92,10 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       }),
     };
   },
-  status: ({ variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
-  }),
+  // status: ({ variables: v }): ICSSInJSStyle => ({
+  //   position: 'absolute',
+  //   bottom: 0,
+  //   right: 0,
+  //   boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
+  // }),
 };

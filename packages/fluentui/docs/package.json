@@ -21,6 +21,7 @@
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
     "@fluentui/react-telemetry": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
+    "@material-ui/styles": "^4.10.0",
     "@mdx-js/react": "^1.5.5",
     "@types/semver": "^5.5.0",
     "classnames": "^2.2.6",
