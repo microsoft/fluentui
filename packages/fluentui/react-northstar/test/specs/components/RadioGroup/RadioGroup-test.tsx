@@ -103,7 +103,6 @@ describe('RadioGroup', () => {
         .first()
         .simulate('click');
       wrapper.update();
-      const onChange = items[0].onChange || items[0].props.onChange;
       expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
 
       radioGroupItems
