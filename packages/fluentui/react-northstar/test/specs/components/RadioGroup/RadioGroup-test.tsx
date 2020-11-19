@@ -85,31 +85,23 @@ describe('RadioGroup', () => {
     it('calls onChange handler for item with updated checked state', () => {
       const onChange = jest.fn();
       const items = [
-          {
-             name: 'test-name',
-             key: 'test-key0',
-             label: 'test-label0',
-             value: 'test-value0',
-             onChange,
-           },
+        {
+          name: 'test-name',
+          key: 'test-key0',
+          label: 'test-label0',
+          value: 'test-value0',
+          onChange,
+        },
         ...getItems(),
-      ]
+      ];
       const wrapper = mountWithProvider(<RadioGroup items={items} />);
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
-      radioGroupItems
-        .first()
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.first().simulate('click');
       wrapper.update();
       expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
 
-      radioGroupItems
-        .last()
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.last().simulate('click');
       wrapper.update();
       expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
     });
