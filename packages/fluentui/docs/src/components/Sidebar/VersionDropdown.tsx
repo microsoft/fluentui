@@ -14,6 +14,14 @@ export function VersionDropdown(props: { width: number }) {
   const [versions, setVersions] = React.useState<string[]>([]);
   React.useEffect(() => {
     fetch('/manifest.json') // Assume that the manifest is hosted in the same blob storage
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        // No need to do anything apart from fail silently for now
+        return JSON.stringify({});
+      })
       .then(res => res.json())
       .then((manifest: VersionManifest) => {
         const availableVersions = Object.keys(manifest).reduce((versions, version) => {
