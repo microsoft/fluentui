@@ -94,7 +94,14 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       menuItems: (item, onTrigger) => [
         {
           key: 'copy',
-          text: 'Copy Selected',
+          text: 'Copy this Item',
+          onClick: () => {
+            _copyToClipboard(_getItemsCopyText([item]));
+          },
+        },
+        {
+          key: 'copy selected',
+          text: 'Copy All Selected',
           onClick: () => {
             _copyAllToClipboard(item);
           },
