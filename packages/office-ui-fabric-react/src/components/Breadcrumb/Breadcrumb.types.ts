@@ -54,6 +54,12 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Render a custom overflow icon in place of the default icon `...`
    */
   onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom component for the overflow button.
+   */
+  overflowButtonAs?: IComponentAs<IButtonProps>;
+
   /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.
