@@ -164,16 +164,36 @@ export const SRNC: Record<string, any> = {
   }, // End stateStrings
 
   // Element usage strings for each platform and definition name
+  // If there are more matching states, the last usage definition will be used
   usageStrings: {
     'Win/JAWS': {
       button: {
         '[default]': 'To activate press Enter.',
+        'aria-haspopup=true': '',
+        'aria-haspopup=menu': '',
+        'aria-haspopup=dialog': '',
+        'aria-haspopup=grid': '',
+        'aria-haspopup=listbox': '',
+        'aria-haspopup=tree': '',
         'aria-pressed=true': 'To toggle the state press spacebar.',
         'aria-pressed=false': 'To toggle the state press spacebar.',
       }, // End button
+      'role=button': {
+        '[default]': 'To activate press Enter.',
+        'aria-haspopup=true': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-haspopup=menu': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-haspopup=dialog': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-haspopup=grid': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-haspopup=listbox': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-haspopup=tree': 'Press space to activate the menu, then navigate with arrow keys',
+        'aria-pressed=true': 'To toggle the state press spacebar.',
+        'aria-pressed=false': 'To toggle the state press spacebar.',
+      }, // End role=button
       'input:text': {
         '[default]': 'Type in text.',
       }, // End input:text
+      'role=textbox': 'input:text',
+      'input:search': 'input:text',
       'role=searchbox': {
         '[default]': 'Type in text.',
       }, // End role=searchbox

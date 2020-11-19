@@ -212,19 +212,20 @@ export class NarrationComputer {
 
   // Computes and returns the screen reader narration for the given element using the previous element and platform.
   async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: string): Promise<string> {
-    let definitionName = this.getDefinitionName(element, platform, 'stateRules');
-
     // Retrieve the computed accessible node
     const node = await (window as any).getComputedAccessibleNode(element);
 
     // Compute and store all the narration parts
+    let definitionName = this.getDefinitionName(element, platform, 'stateRules');
     this.computeLandmarksAndGroups(element, prevElement, platform);
-    this.computeUsage(definitionName, element, platform);
     this.computeDescription(definitionName, element, platform);
     this.computeNameAndTitle(node, element);
     this.computeValue(node);
     this.computePositionAndLevel(platform);
     this.computeTypeAndState(node, definitionName, element, platform);
+
+    definitionName = this.getDefinitionName(element, platform, 'usageStrings');
+    this.computeUsage(definitionName, element, platform);
 
     definitionName = this.getDefinitionName(element, platform, 'readingOrder');
     const computedNarration = this.composeNarrationFromParts(definitionName, platform);
@@ -237,6 +238,7 @@ export class NarrationComputer {
     const definitionTypes: Record<string, any> = {
       readingOrder: SRNC.readingOrder[platform],
       stateRules: SRNC.stateRules[platform],
+      usageStrings: SRNC.usageStrings[platform],
     };
     const definitions = definitionTypes[definitionType];
 
@@ -289,6 +291,7 @@ export class NarrationComputer {
       this.computedParts.usage = usages['[default]'] || '';
 
       // Find the usage which matches the element's state
+      // If there are more matching states, the last usage definition will be used
       for (const usageName in usages) {
         // Begin for 1
         const [stateName, stateValue] = usageName.split('=');
@@ -391,7 +394,7 @@ export class NarrationComputer {
         }
 
         // We have found the matching rule, retrieve and store the element's type
-        this.computedParts.type = rule.elementType;
+        this.computedParts.type = SRNC.typeStrings[platform][rule.elementType];
 
         // Compute and store the element's state
         // But first, prepare some variables

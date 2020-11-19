@@ -4,59 +4,59 @@ SRNC.stateRules['Win/JAWS'] = {
   button: [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].button,
+      elementType: 'button',
     },
     {
       combination: ['aria-expanded'],
-      elementType: SRNC.typeStrings['Win/JAWS'].button,
+      elementType: 'button',
     },
     {
       combination: ['aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].button,
+      elementType: 'button',
     },
     {
       combination: ['aria-pressed'],
-      elementType: SRNC.typeStrings['Win/JAWS'].toggleButton,
+      elementType: 'toggleButton',
     },
     {
       combination: ['aria-expanded', 'aria-haspopup'],
       order: ['aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].button,
+      elementType: 'button',
     },
     {
       combination: ['aria-expanded', 'aria-pressed'],
       order: ['aria-pressed'],
-      elementType: SRNC.typeStrings['Win/JAWS'].toggleButton,
+      elementType: 'toggleButton',
     },
     {
       combination: ['aria-haspopup', 'aria-pressed'],
       order: ['aria-pressed', 'aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].toggleButton,
+      elementType: 'toggleButton',
     },
     {
       combination: ['aria-expanded', 'aria-haspopup', 'aria-pressed'],
       order: ['aria-pressed', 'aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].toggleButton,
+      elementType: 'toggleButton',
     },
   ], // End button
   'role=button': 'button',
   'input:text': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].textInput,
+      elementType: 'textInput',
     },
     {
       combination: ['aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textInput,
+      elementType: 'textInput',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textInput,
+      elementType: 'textInput',
     },
     {
       combination: ['aria-invalid', 'aria-required'],
       order: ['aria-required', 'aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textInput,
+      elementType: 'textInput',
     },
   ], // End input:text
   'role=textbox': 'input:text',
@@ -64,257 +64,257 @@ SRNC.stateRules['Win/JAWS'] = {
   'role=searchbox': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+      elementType: 'searchInput',
     },
     {
       combination: ['aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+      elementType: 'searchInput',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+      elementType: 'searchInput',
     },
     {
       combination: ['aria-invalid', 'aria-required'],
       order: ['aria-required', 'aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].searchInput,
+      elementType: 'searchInput',
     },
   ], // End role=searchbox
   'input:checkbox': [
     {
       combination: ['checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
     {
       combination: ['checked', 'aria-required'],
       order: ['checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
   ], // End input:checkbox
   'role=checkbox': [
     {
       combination: [],
       order: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
     {
       combination: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
     {
       combination: ['aria-required'],
       order: ['aria-checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
     {
       combination: ['aria-checked', 'aria-required'],
       order: ['aria-checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].checkboxInput,
+      elementType: 'checkboxInput',
     },
   ], // End role=checkbox
   'input:radio': [
     {
       combination: ['checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
     {
       combination: ['checked', 'aria-required'],
       order: ['checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
   ], // End input:radio
   'role=radio': [
     {
       combination: [],
       order: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
     {
       combination: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
     {
       combination: ['aria-required'],
       order: ['aria-checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
     {
       combination: ['aria-checked', 'aria-required'],
       order: ['aria-checked', 'aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].radioInput,
+      elementType: 'radioInput',
     },
   ], // End role=radio
   'role=combobox': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].combobox,
+      elementType: 'combobox',
     },
     {
       combination: ['aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].combobox,
+      elementType: 'combobox',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].combobox,
+      elementType: 'combobox',
     },
     {
       combination: ['aria-invalid', 'aria-required'],
       order: ['aria-required', 'aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].combobox,
+      elementType: 'combobox',
     },
   ], // End role=combobox
   textarea: [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].textarea,
+      elementType: 'textarea',
     },
     {
       combination: ['aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textarea,
+      elementType: 'textarea',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textarea,
+      elementType: 'textarea',
     },
     {
       combination: ['aria-invalid', 'aria-required'],
       order: ['aria-required', 'aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].textarea,
+      elementType: 'textarea',
     },
   ], // End textarea
   a: [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].link,
+      elementType: 'link',
     },
     {
       combination: ['aria-expanded'],
-      elementType: SRNC.typeStrings['Win/JAWS'].link,
+      elementType: 'link',
     },
     {
       combination: ['aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].link,
+      elementType: 'link',
     },
     {
       combination: ['aria-expanded', 'aria-haspopup'],
       order: ['aria-expanded', 'aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].link,
+      elementType: 'link',
     },
   ], // End a
   'role=link': 'a',
   'role=menuitem': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitem,
+      elementType: 'menuitem',
     },
     {
       combination: ['aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitem,
+      elementType: 'menuitem',
     },
   ], // End role=menuitem
   'role=menuitemcheckbox': [
     {
       combination: [],
       order: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitemcheckbox,
+      elementType: 'menuitemcheckbox',
     },
     {
       combination: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitemcheckbox,
+      elementType: 'menuitemcheckbox',
     },
   ], // End role=menuitemcheckbox
   'role=menuitemradio': [
     {
       combination: [],
       order: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitemradio,
+      elementType: 'menuitemradio',
     },
     {
       combination: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].menuitemradio,
+      elementType: 'menuitemradio',
     },
   ], // End role=menuitemradio
   select: [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].select,
+      elementType: 'select',
     },
     {
       combination: ['aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].select,
+      elementType: 'select',
     },
     {
       combination: ['aria-required'],
-      elementType: SRNC.typeStrings['Win/JAWS'].select,
+      elementType: 'select',
     },
     {
       combination: ['aria-invalid', 'aria-required'],
       order: ['aria-required', 'aria-invalid'],
-      elementType: SRNC.typeStrings['Win/JAWS'].select,
+      elementType: 'select',
     },
   ], // End select
   'role=switch': [
     {
       combination: [],
       order: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].switch,
+      elementType: 'switch',
     },
     {
       combination: ['aria-checked'],
-      elementType: SRNC.typeStrings['Win/JAWS'].switch,
+      elementType: 'switch',
     },
   ], // End role=switch
   'role=tab': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].tab,
+      elementType: 'tab',
     },
     {
       combination: ['aria-selected'],
-      elementType: SRNC.typeStrings['Win/JAWS'].tab,
+      elementType: 'tab',
     },
   ], // End role=tab
   'role=option': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].option,
+      elementType: 'option',
     },
   ], // End role=option
   'role=treeitem': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].treeitem,
+      elementType: 'treeitem',
     },
     {
       combination: ['aria-expanded'],
-      elementType: SRNC.typeStrings['Win/JAWS'].treeitem,
+      elementType: 'treeitem',
     },
   ], // End role=treeitem
   'role=gridcell': [
     {
       combination: [],
-      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+      elementType: 'gridcell',
     },
     {
       combination: ['aria-selected'],
-      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+      elementType: 'gridcell',
     },
     {
       combination: ['aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+      elementType: 'gridcell',
     },
     {
       combination: ['aria-selected', 'aria-haspopup'],
       order: ['aria-selected', 'aria-haspopup'],
-      elementType: SRNC.typeStrings['Win/JAWS'].gridcell,
+      elementType: 'gridcell',
     },
   ], // End role=gridcell
 };
