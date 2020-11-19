@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Mon, 16 Nov 2020 12:31:52 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Avoid React.Children traversal for early return cases",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "4a1eddf27492571a17d4934f34b613b33ee2fff4",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

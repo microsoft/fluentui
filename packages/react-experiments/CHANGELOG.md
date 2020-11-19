@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 10 Nov 2020 12:30:36 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Nov 2020 12:30:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.13)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.12..@fluentui/react-experiments_v8.0.0-beta.13)
+
+### Changes
+
+- Fix UPP ctrl+c copy ([PR #15874](https://github.com/microsoft/fluentui/pull/15874) by elvonspa@microsoft.com)
+- SelectedPersona: Fix hover/active states in normal and high contrast modes ([PR #15902](https://github.com/microsoft/fluentui/pull/15902) by chrp@microsoft.com)
 
 ## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.12)
 

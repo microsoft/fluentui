@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 10 Nov 2020 12:30:36 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Nov 2020 12:31:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.12)
+
+Mon, 16 Nov 2020 12:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.11..@fluentui/react-internal_v8.0.0-beta.12)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.11)
+
+Fri, 13 Nov 2020 12:33:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.10..@fluentui/react-internal_v8.0.0-beta.11)
+
+### Changes
+
+- Add support for ariaDescription in contextual menu items ([PR #15770](https://github.com/microsoft/fluentui/pull/15770) by sareiff@microsoft.com)
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.10)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.9..@fluentui/react-internal_v8.0.0-beta.10)
+
+### Changes
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #15880](https://github.com/microsoft/fluentui/pull/15880) by elvonspa@microsoft.com)
+- Add missing exports to API ([PR #15882](https://github.com/microsoft/fluentui/pull/15882) by dahajek@microsoft.com)
 
 ## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.9)
 

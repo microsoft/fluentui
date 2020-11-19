@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SelectedPersona: Fix hover/active states in normal and high contrast modes",
-  "packageName": "@fluentui/react-experiments",
-  "email": "chrp@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-10T19:24:56.067Z"
-}
