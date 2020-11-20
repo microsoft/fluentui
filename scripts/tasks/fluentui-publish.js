@@ -12,6 +12,8 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
       'publish',
       "--tag-version-prefix='fluentuizero_v'",
       '--no-git-reset',
+      '--force-publish',
+      '--dist-tag patch',
       '--registry',
       argv().registry,
       bumpType,
