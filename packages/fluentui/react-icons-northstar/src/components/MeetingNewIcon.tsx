@@ -20,7 +20,7 @@ export const MeetingNewIcon = createSvgIcon({
       </g>
       <g className={cx(iconClassNames.filled, classes.filledPart)}>
         <path d="M17 7V9.59971C16.2499 9.21628 15.4002 9 14.5 9C11.4624 9 9 11.4624 9 14.5C9 15.4002 9.21628 16.2499 9.59971 17H5.5C4.11929 17 3 15.8807 3 14.5V7H17Z" />
-        <path d="M14.5 3C15.8807 3 17 4.11929 17 5.5V6H3V5.5C3 4.11929 4.11929 3 5.5 3H14.5Z" fill="#212121" />
+        <path d="M14.5 3C15.8807 3 17 4.11929 17 5.5V6H3V5.5C3 4.11929 4.11929 3 5.5 3H14.5Z" />
         <path
           fillRule="evenodd"
           clipRule="evenodd"

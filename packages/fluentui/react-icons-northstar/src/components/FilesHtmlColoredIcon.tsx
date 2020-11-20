@@ -3,7 +3,7 @@ import { createSvgIcon } from '../utils/createSvgIcon';
 
 export const FilesHtmlColoredIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg fill="none" role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <path d="M16 7H13.5C12.673 7 12 6.327 12 5.5V2H4V18H16V7Z" fill="white" />
       <path d="M16 6.00003V5.70703L13 2.70703V5.50003C13 5.77503 13.225 6.00003 13.5 6.00003H16Z" fill="white" />
       <path
@@ -18,12 +18,14 @@ export const FilesHtmlColoredIcon = createSvgIcon({
         clipRule="evenodd"
         d="M10 15.5C11.933 15.5 13.5 13.933 13.5 12C13.5 10.067 11.933 8.5 10 8.5C8.067 8.5 6.5 10.067 6.5 12C6.5 13.933 8.067 15.5 10 15.5Z"
         stroke="#69AFE5"
+        fill="none"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M10 15.5C10.8284 15.5 11.5 13.933 11.5 12C11.5 10.067 10.8284 8.5 10 8.5C9.17157 8.5 8.5 10.067 8.5 12C8.5 13.933 9.17157 15.5 10 15.5Z"
         stroke="#69AFE5"
+        fill="none"
       />
       <path d="M7 11H13V10H7V11ZM7 14H13V13H7V14Z" fill="#69AFE5" />
     </svg>
