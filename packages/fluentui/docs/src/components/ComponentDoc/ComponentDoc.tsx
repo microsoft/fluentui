@@ -97,6 +97,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
   handleSidebarItemClick = (e, { examplePath }) => {
     const { history } = this.props
     const activePath = examplePathToHash(examplePath)
+
     history.replace({ ...history.location, hash: activePath })
     // set active hash path
     this.setState({ activePath }, scrollToAnchor)
