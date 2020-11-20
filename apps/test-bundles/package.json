@@ -13,7 +13,7 @@
   "dependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react": "^8.0.0-beta.17",
+    "@fluentui/react": "^8.0.0-beta.18",
     "@fluentui/react-button": "^1.0.0-beta.12",
     "@fluentui/react-compose": "^1.0.0-beta.7",
     "@fluentui/scripts": "^1.0.0",

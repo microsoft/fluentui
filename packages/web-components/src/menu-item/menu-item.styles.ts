@@ -67,7 +67,7 @@ export const MenuItemStyles = css`
     .end,
     ::slotted(svg) {
         ${
-          /* Glyph size and margin-left is temporary - 
+          /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
         } width: 16px;
         height: 16px;
@@ -90,6 +90,7 @@ export const MenuItemStyles = css`
   forcedColorsStylesheetBehavior(
     css`
             :host {
+                forced-color-adjust: none;
                 border-color: transparent;
                 color: ${SystemColors.ButtonText};
                 fill: ${SystemColors.ButtonText};
