@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Ensure display style of column drop targets is not overridden",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-20T01:49:33.243Z"
+}
