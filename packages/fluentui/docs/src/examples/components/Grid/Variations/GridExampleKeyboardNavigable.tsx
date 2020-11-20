@@ -32,14 +32,19 @@ const imageButtonStyles = {
 };
 const renderImages = () => {
   return _.map(imageNames, imageName => (
-    <Image key={imageName} fluid src={`public/images/avatar/large/${imageName}.jpg`} data-is-focusable="true" />
+    <Image
+      key={imageName}
+      fluid
+      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`}
+      data-is-focusable="true"
+    />
   ));
 };
 
 const renderImageButtons = () => {
   return _.map(imageNames, imageName => (
     <Button key={imageName} styles={imageButtonStyles} title={imageName}>
-      <Image fluid src={`public/images/avatar/large/${imageName}.jpg`} />
+      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`} />
     </Button>
   ));
 };
