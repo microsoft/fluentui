@@ -56,6 +56,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     onBlur: customOnBlur,
     onEscape,
     onSearch,
+    onKeyDown: customOnKeyDown,
     iconProps,
     role,
   } = props;
@@ -126,32 +127,35 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     setValue(ev.target.value);
   };
 
-  const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    switch (ev.which) {
-      case KeyCodes.escape:
-        onEscape?.(ev);
-        if (!ev.defaultPrevented) {
-          onClear(ev);
-        }
-        break;
-      case KeyCodes.enter:
-        if (onSearch) {
-          onSearch(value);
+  const onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLInputElement>) => {
+      switch (ev.which) {
+        case KeyCodes.escape:
+          onEscape?.(ev);
+          if (!ev.defaultPrevented) {
+            onClear(ev);
+          }
           break;
-        }
-        // if we don't handle the enter press then we shouldn't prevent default
-        return;
-      default:
-        onKeyDown?.(ev);
-        if (!ev.defaultPrevented) {
+        case KeyCodes.enter:
+          if (onSearch) {
+            onSearch(value);
+            break;
+          }
+          // if we don't handle the enter press then we shouldn't prevent default
           return;
-        }
-    }
-    // We only get here if the keypress has been handled,
-    // or preventDefault was called in case of default keyDown handler
-    ev.preventDefault();
-    ev.stopPropagation();
-  };
+        default:
+          customOnKeyDown?.(ev);
+          if (!ev.defaultPrevented) {
+            return;
+          }
+      }
+      // We only get here if the keypress has been handled,
+      // or preventDefault was called in case of default keyDown handler
+      ev.preventDefault();
+      ev.stopPropagation();
+    },
+    [onEscape, onClear, onSearch, customOnKeyDown],
+  );
 
   useDebugWarning(props);
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
