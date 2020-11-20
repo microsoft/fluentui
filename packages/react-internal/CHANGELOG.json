@@ -2,6 +2,27 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Fri, 20 Nov 2020 12:32:25 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Keyboard focus should be visible in selected footers in pickers in high contrast",
+            "author": "elvonspa@microsoft.com",
+            "commit": "07f9edb3f701781dd3439022520610c8cfba6d6e",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "ContextualMenu: remove unnecessary resize check",
+            "author": "joschect@microsoft.com",
+            "commit": "b785b12fbea640582e06ef34f97785664453465f",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Nov 2020 12:28:32 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.15",
       "version": "8.0.0-beta.15",

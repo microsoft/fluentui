@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 19 Nov 2020 12:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.18)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.17..@fluentui/react_v8.0.0-beta.18)
+
+### Changes
+
+- Fix display issue with Dropdown when using Chrome Translate ([PR #15984](https://github.com/microsoft/fluentui/pull/15984) by behowell@microsoft.com)
 
 ## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.17)
 
