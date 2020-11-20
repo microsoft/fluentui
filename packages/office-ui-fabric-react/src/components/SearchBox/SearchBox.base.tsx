@@ -201,6 +201,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     switch (ev.which) {
       case KeyCodes.escape:
         this.props.onEscape && this.props.onEscape(ev);
+        // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
+        // to propagate from the empty search box to a parent element such as a dialog, etc.
         if (this.state.value && !ev.defaultPrevented) {
           this._onClear(ev);
         }
@@ -216,6 +218,9 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
+        if (ev.defaultPrevented) {
+          ev.stopPropagation();
+        }
         break;
     }
   };
