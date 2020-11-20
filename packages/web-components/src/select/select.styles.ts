@@ -3,10 +3,8 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles/elevation';
 import {
-  accentFillFocusBehavior,
   accentFillHoverBehavior,
   accentForegroundCutRestBehavior,
-  accentForegroundFocusBehavior,
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
   neutralFillInputRestBehavior,
@@ -48,6 +46,7 @@ export const SelectStyles = css`
         position: absolute;
         width: 100%;
         z-index: 1;
+        margin: 1px 0;
     }
 
     .listbox[hidden] {
@@ -63,7 +62,7 @@ export const SelectStyles = css`
         font: inherit;
         line-height: var(--type-ramp-base-line-height);
         min-height: calc(${heightNumber} * 1px);
-        padding: calc(var(--design-unit) * 2.25px);
+        padding: 0 calc(var(--design-unit) * 2.25px);
         width: 100%;
     }
 
@@ -72,14 +71,18 @@ export const SelectStyles = css`
         border-color: ${neutralOutlineHoverBehavior.var};
     }
 
-    :host(:focus) .control {
-        border-color: ${accentFillFocusBehavior.var};
+    :host(:focus) {
+        border-color: ${neutralFocusBehavior.var};
+        outline: none;
+        box-shadow:
+            0 0 0 1px inset ${neutralFocusBehavior.var};
     }
 
     :host(:${focusVisible}) {
         border-color: ${neutralFocusBehavior.var};
+        outline: none;
         box-shadow:
-            0 0 0 1px ${neutralFocusBehavior.var},
+            0 0 0 1px inset ${neutralFocusBehavior.var};
     }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
@@ -174,8 +177,8 @@ export const SelectStyles = css`
     }
 
 `.withBehaviors(
+  accentFillHoverBehavior,
   accentForegroundCutRestBehavior,
-  accentForegroundFocusBehavior,
   neutralOutlineActiveBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
@@ -218,6 +221,7 @@ export const SelectStyles = css`
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
   neutralFillInputRestBehavior,
+  neutralFillStealthRestBehavior,
   neutralFocusBehavior,
   neutralFocusInnerAccentBehavior,
   neutralForegroundRestBehavior,
