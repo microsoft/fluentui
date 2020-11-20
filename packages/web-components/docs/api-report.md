@@ -21,10 +21,13 @@ import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
+import { Listbox } from '@microsoft/fast-foundation';
+import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
+import { Select } from '@microsoft/fast-foundation';
 import { Skeleton } from '@microsoft/fast-foundation';
 import { Slider } from '@microsoft/fast-foundation';
 import { SliderLabel } from '@microsoft/fast-foundation';
@@ -364,11 +367,19 @@ export class FluentFlipper extends Flipper {
 }
 
 // @public
+export class FluentListbox extends Listbox {
+}
+
+// @public
 export class FluentMenu extends Menu {
 }
 
 // @public
 export class FluentMenuItem extends MenuItem {
+}
+
+// @public
+export class FluentOption extends ListboxOption {
 }
 
 // @public
@@ -385,6 +396,10 @@ export class FluentRadio extends Radio {
 
 // @public
 export class FluentRadioGroup extends RadioGroup {
+}
+
+// @public
+export class FluentSelect extends Select {
 }
 
 // @public
@@ -459,6 +474,9 @@ export const inlineStartBehavior: CSSCustomPropertyBehavior;
 //
 // @internal (undocumented)
 export const LightweightButtonStyles: ElementStyles;
+
+// @public
+export const ListboxStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
@@ -592,6 +610,9 @@ export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
 
+// @public
+export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -611,6 +632,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SelectStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SkeletonStyles: import("@microsoft/fast-element").ElementStyles;
