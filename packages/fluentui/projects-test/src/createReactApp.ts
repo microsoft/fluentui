@@ -20,7 +20,7 @@ async function prepareApp(tmpDirectory: string, appName: string): Promise<string
 
   try {
     // restoring bits of create-react-app inside util project
-    await sh('yarn add create-react-app@3', tempUtilProjectPath);
+    await sh('yarn add create-react-app', tempUtilProjectPath);
 
     // create test project with util's create-react-app
     fs.mkdirSync(appProjectPath);
