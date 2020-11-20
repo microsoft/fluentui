@@ -393,18 +393,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which
     let key = ev.key;
     switch (key) {
-      case 'Tab':
       case 'Enter':
       case 'Spacebar':
       case ' ':
-      case 'ArrowUp':
-      case 'Up':
-      case 'ArrowDown':
-      case 'Down':
-      case 'ArrowLeft':
-      case 'Left':
-      case 'ArrowRight':
-      case 'Right':
         if (this.state.inKeytipMode) {
           this._keyHandled = true;
           this._exitKeytipMode(ev);
