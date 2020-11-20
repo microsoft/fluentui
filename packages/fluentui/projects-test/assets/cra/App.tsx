@@ -1,4 +1,3 @@
-/** @jsxRuntime classic */
 import {
   Accordion,
   Animation,
