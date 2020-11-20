@@ -1,3 +1,5 @@
+// NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
+
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -13,6 +15,9 @@ const calloutContent = (
 const defaultProps: ICalloutProps = {
   target: '#target',
   calloutWidth: 200,
+
+  // Try to stabilize tests by disabling layer and animation
+  // TODO: investigate and re-enable
   doNotLayer: true,
   styles: {
     root: {
