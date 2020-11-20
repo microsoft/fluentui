@@ -255,7 +255,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     return (
       <ThemeContext.Consumer>
-        {theme => (
+        {(theme) => (
           <Tag
             aria-labelledby={ariaLabelledBy}
             aria-describedby={ariaDescribedBy}
@@ -992,7 +992,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(theme?: Theme): boolean {
+  private _moveFocusLeft(theme: Theme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
@@ -1034,7 +1034,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(theme?: Theme): boolean {
+  private _moveFocusRight(theme: Theme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
