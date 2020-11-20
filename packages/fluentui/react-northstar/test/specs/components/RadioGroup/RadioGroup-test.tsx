@@ -81,6 +81,28 @@ describe('RadioGroup', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
+    it('calls onChange handler for item with updated checked state', () => {
+      const onChange = jest.fn();
+      const items = [
+        {
+          name: 'test-name',
+          key: 'test-key0',
+          label: 'test-label0',
+          value: 'test-value0',
+          onChange,
+        },
+        ...getItems(),
+      ];
+      const wrapper = mountWithProvider(<RadioGroup items={items} />);
+      const radioGroupItems = wrapper.find('RadioGroupItem');
+
+      radioGroupItems.first().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
+
+      radioGroupItems.last().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
+    });
+
     it('passes arbitrary props', () => {
       const radioGroupItems = mountWithProvider(<RadioGroup items={getItems()} />).find('RadioGroupItem');
 

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding borderStyle token to Card styles.",
-  "packageName": "@fluentui/react-cards",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-18T21:46:59.416Z"
-}
