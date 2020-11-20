@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 20 Nov 2020 12:27:53 GMT",
+      "tag": "office-ui-fabric-react_v7.152.1",
+      "version": "7.152.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Only attempt to handle keydown event for tooltip close if the tooltip is currently open",
+            "author": "stefhan@microsoft.com",
+            "commit": "cb2e970be0f4735a4e954c7b10639f95d04f9e93",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Nov 2020 12:26:02 GMT",
       "tag": "office-ui-fabric-react_v7.152.0",
       "version": "7.152.0",

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Nov 2020 12:26:02 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:27:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.152.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.1)
+
+Fri, 20 Nov 2020 12:27:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.152.0..office-ui-fabric-react_v7.152.1)
+
+### Patches
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #15990](https://github.com/microsoft/fluentui/pull/15990) by stefhan@microsoft.com)
 
 ## [7.152.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.0)
 
