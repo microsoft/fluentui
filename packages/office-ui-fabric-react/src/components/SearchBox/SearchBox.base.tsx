@@ -201,7 +201,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     switch (ev.which) {
       case KeyCodes.escape:
         this.props.onEscape && this.props.onEscape(ev);
-        if (!ev.defaultPrevented) {
+        if (this.state.value && !ev.defaultPrevented) {
           this._onClear(ev);
         }
         break;
@@ -209,22 +209,15 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
-          break;
+          ev.preventDefault();
+          ev.stopPropagation();
         }
-        // if we don't handle the enter press then we shouldn't prevent default
-        return;
+        break;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
-        if (!ev.defaultPrevented) {
-          return;
-        }
+        break;
     }
-
-    // We only get here if the keypress has been handled,
-    // or preventDefault was called in case of default keyDown handler
-    ev.preventDefault();
-    ev.stopPropagation();
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
