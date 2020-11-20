@@ -72,10 +72,7 @@ export const SelectStyles = css`
     }
 
     :host(:focus) {
-        border-color: ${neutralFocusBehavior.var};
         outline: none;
-        box-shadow:
-            0 0 0 1px inset ${neutralFocusBehavior.var};
     }
 
     :host(:${focusVisible}) {
@@ -84,6 +81,12 @@ export const SelectStyles = css`
         box-shadow:
             0 0 0 1px inset ${neutralFocusBehavior.var};
     }
+
+    :host([open]:${focusVisible}) {
+        border-color: ${neutralOutlineRestBehavior.var};
+        outline: none;
+        box-shadow: none;
+  }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
         box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var};
