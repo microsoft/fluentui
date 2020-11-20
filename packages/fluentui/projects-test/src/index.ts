@@ -1,4 +1,4 @@
-// import { createReactApp } from './createReactApp';
+import { createReactApp } from './createReactApp';
 import { nextjs } from './nextjs';
 import { rollup } from './rollup';
 import { typings } from './typings';
@@ -10,7 +10,7 @@ async function performTest() {
     await rollup();
     await typings();
 
-    // await createReactApp();
+    await createReactApp();
     await nextjs();
   } catch (e) {
     console.log(e);
