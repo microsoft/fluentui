@@ -25,7 +25,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),
-        ...(!fluid && !submenu && { width: 'fit-content' }),
+        ...(!fluid && !submenu && { width: ['fit-content', 'auto'], display: 'inline-block' }),
         ...(iconOnly && {
           display: 'inline-block',
           width: 'auto',
