@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Have Dropdown render the title as a string rather than a string inside a React Fragment, to work around a React bug when using Chrome's translation feature.",
+  "packageName": "office-ui-fabric-react",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-20T03:12:54.397Z"
+}
