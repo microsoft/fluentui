@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix display issue with Dropdown when using Chrome Translate",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-18T22:10:23.735Z"
-}

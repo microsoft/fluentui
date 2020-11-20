@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 19 Nov 2020 12:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.16)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.15..@fluentui/react-internal_v8.0.0-beta.16)
+
+### Changes
+
+- Keyboard focus should be visible in selected footers in pickers in high contrast ([PR #15985](https://github.com/microsoft/fluentui/pull/15985) by elvonspa@microsoft.com)
+- ContextualMenu: remove unnecessary resize check ([PR #15584](https://github.com/microsoft/fluentui/pull/15584) by joschect@microsoft.com)
 
 ## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.15)
 
