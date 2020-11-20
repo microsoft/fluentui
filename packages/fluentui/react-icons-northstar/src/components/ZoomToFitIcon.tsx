@@ -1,3 +1,4 @@
+import * as React from 'react';
 import cx from 'classnames';
 import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
