@@ -54,8 +54,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disableAnimation = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
-    onEscape: customOnEscape,
-    onSearch: customOnSearch,
+    onEscape,
+    onSearch,
     onKeyDown: customOnKeyDown,
     iconProps,
     role,
@@ -133,7 +133,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     (ev: React.KeyboardEvent<HTMLInputElement>) => {
       switch (ev.which) {
         case KeyCodes.escape:
-          customOnEscape?.(ev);
+          onEscape?.(ev);
           // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
           // to propagate from the empty search box to a parent element such as a dialog, etc.
           if (value && !ev.defaultPrevented) {
@@ -142,8 +142,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
           break;
 
         case KeyCodes.enter:
-          if (customOnSearch) {
-            customOnSearch(value);
+          if (onSearch) {
+            onSearch(value);
             ev.preventDefault();
             ev.stopPropagation();
           }
@@ -160,7 +160,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
           break;
       }
     },
-    [onClear, customOnEscape, customOnKeyDown, customOnSearch, value],
+    [customOnKeyDown, onClear, onEscape, onSearch, value],
   );
 
   useDebugWarning(props);
