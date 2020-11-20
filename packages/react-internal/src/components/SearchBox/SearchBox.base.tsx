@@ -54,8 +54,9 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disableAnimation = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
-    onEscape,
-    onSearch,
+    onEscape: customOnEscape,
+    onSearch: customOnSearch,
+    onKeyDown: customOnKeyDown,
     iconProps,
     role,
   } = props;
@@ -129,20 +130,20 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
       case KeyCodes.escape:
-        onEscape?.(ev);
+        customOnEscape?.(ev);
         if (!ev.defaultPrevented) {
           onClear(ev);
         }
         break;
       case KeyCodes.enter:
-        if (onSearch) {
-          onSearch(value);
+        if (customOnSearch) {
+          customOnSearch(value);
           break;
         }
         // if we don't handle the enter press then we shouldn't prevent default
         return;
       default:
-        onKeyDown?.(ev);
+        customOnKeyDown?.(ev);
         if (!ev.defaultPrevented) {
           return;
         }
