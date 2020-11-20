@@ -1,8 +1,8 @@
-import { Customizations, getWindow } from '@fluentui/utilities';
+import { Customizations, getDocument, getWindow, memoizeFunction } from '@fluentui/utilities';
 import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IRawStyle } from '@fluentui/merge-styles';
-import { createTheme } from '@fluentui/theme/lib/createTheme';
+import { IRawStyle, mergeStyles } from '@fluentui/merge-styles';
+import { createTheme, Theme, TokenSetType, getStyleObjectFromTokens } from '@fluentui/theme';
 
 export { createTheme } from '@fluentui/theme/lib/createTheme';
 
@@ -70,6 +70,9 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   _theme = createTheme(theme, depComments);
 
+  // register tokens / css variables defined in theme.
+  setTokensStyles(_theme);
+
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
 
@@ -108,4 +111,30 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
     }
   }
   return lines;
+}
+
+const createClassForTokens = memoizeFunction((tokens: TokenSetType | undefined) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mergeStyles(getStyleObjectFromTokens(tokens) as any),
+);
+
+let prevTokenClass: string | undefined;
+
+/**
+ * Register tokens styles (css variables) defined in theme.
+ */
+function setTokensStyles(theme: Theme) {
+  if (!theme.tokens) {
+    return;
+  }
+
+  const tokenClass = createClassForTokens(theme.tokens);
+  const doc = getDocument();
+  if (doc) {
+    if (prevTokenClass) {
+      doc.body.classList.remove(prevTokenClass);
+    }
+    doc.body.classList.add(tokenClass);
+    prevTokenClass = tokenClass;
+  }
 }

@@ -7,6 +7,7 @@
 import { IFontWeight } from '@fluentui/merge-styles';
 import { IRawStyle } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import * as React from 'react';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -184,6 +185,9 @@ export namespace FontWeights {
     const // (undocumented)
     bold: IFontWeight;
 }
+
+// @public (undocumented)
+export function getStyleObjectFromTokens(tokens?: TokenSetType | React.CSSProperties, prefix?: string, style?: React.CSSProperties | undefined): React.CSSProperties;
 
 // @public
 export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
