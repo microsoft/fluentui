@@ -28,6 +28,8 @@ import {
   createMergedRef,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
+import { ThemeContext, Theme } from '@fluentui/react-theme-provider';
+import { getTheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -252,30 +254,35 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._evaluateFocusBeforeRender();
 
     return (
-      <Tag
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
-        {...divProps}
-        {
-          // root props has been deprecated and should get removed.
-          // it needs to be marked as "any" since root props expects a div element, but really Tag can
-          // be any native element so typescript rightly flags this as a problem.
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...(rootProps as any)
-        }
-        // Once the getClassName correctly memoizes inputs this should
-        // be replaced so that className is passed to getRootClass and is included there so
-        // the class names will always be in the same order.
-        className={css(getRootClass(), className)}
-        // eslint-disable-next-line deprecation/deprecation
-        ref={this._mergedRef(this.props.elementRef, this._root)}
-        data-focuszone-id={this._id}
-        onKeyDown={this._onKeyDown}
-        onFocus={this._onFocus}
-        onMouseDownCapture={this._onMouseDown}
-      >
-        {this.props.children}
-      </Tag>
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Tag
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            {...divProps}
+            {
+              // root props has been deprecated and should get removed.
+              // it needs to be marked as "any" since root props expects a div element, but really Tag can
+              // be any native element so typescript rightly flags this as a problem.
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              ...(rootProps as any)
+            }
+            // Once the getClassName correctly memoizes inputs this should
+            // be replaced so that className is passed to getRootClass and is included there so
+            // the class names will always be in the same order.
+            className={css(getRootClass(), className)}
+            // eslint-disable-next-line deprecation/deprecation
+            ref={this._mergedRef(this.props.elementRef, this._root)}
+            data-focuszone-id={this._id}
+            // eslint-disable-next-line react/jsx-no-bind
+            onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme || getTheme())}
+            onFocus={this._onFocus}
+            onMouseDownCapture={this._onMouseDown}
+          >
+            {this.props.children}
+          </Tag>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 
@@ -567,7 +574,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: Theme): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
@@ -635,7 +642,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
-            if (this._moveFocusLeft()) {
+            if (this._moveFocusLeft(theme)) {
               break;
             }
           }
@@ -644,7 +651,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         case KeyCodes.right:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
-            if (this._moveFocusRight()) {
+            if (this._moveFocusRight(theme)) {
               break;
             }
           }
@@ -694,8 +701,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             ) {
               focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
             } else {
-              const tabWithDirection = getRTL() ? !ev.shiftKey : ev.shiftKey;
-              focusChanged = tabWithDirection ? this._moveFocusLeft() : this._moveFocusRight();
+              const tabWithDirection = getRTL(theme) ? !ev.shiftKey : ev.shiftKey;
+              focusChanged = tabWithDirection ? this._moveFocusLeft(theme) : this._moveFocusRight(theme);
             }
             this._processingTabKey = false;
             if (focusChanged) {
@@ -985,16 +992,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(): boolean {
+  private _moveFocusLeft(theme: Theme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
-        getRTL(),
+        getRTL(theme),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
 
-          if (getRTL()) {
+          if (getRTL(theme)) {
             // When in RTL, this comparison should be the same as the one in _moveFocusRight for LTR.
             // Going left at a leftmost rectangle will go down a line instead of up a line like in LTR.
             // This is important, because we want to be comparing the top of the target rect
@@ -1027,16 +1034,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(): boolean {
+  private _moveFocusRight(theme: Theme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
-        !getRTL(),
+        !getRTL(theme),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
 
-          if (getRTL()) {
+          if (getRTL(theme)) {
             // When in RTL, this comparison should be the same as the one in _moveFocusLeft for LTR.
             // Going right at a rightmost rectangle will go up a line instead of down a line like in LTR.
             // This is important, because we want to be comparing the bottom of the target rect
