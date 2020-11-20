@@ -1,4 +1,3 @@
-// TODO: This is a Fluent icon. It has the same size, only artboard is 16x16 instead of original 20x20. This icon needs to be updated when moving to full set Fluent icons.
 import * as React from 'react';
 import cx from 'classnames';
 import { createSvgIcon } from '../utils/createSvgIcon';
