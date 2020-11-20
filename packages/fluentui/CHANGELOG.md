@@ -17,6 +17,100 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.47.13 ]------------------------------- -->
+## [v0.47.13](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.13) (2020-10-26)
+
+### Fixes
+- Fix cursor's behavior inside `DropdownSearchInput` @layershifter ([#13800](https://github.com/microsoft/fluentui/pull/13800))
+
+<!--------------------------------[ v0.47.12 ]------------------------------- -->
+## [v0.47.12](https://github.com/microsoft/fluentui/tree/'fluentuizero_v'0.47.12) (2020-10-21)
+
+### Features
+- Add child behavior to `useAccessibility` hook @pompompon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
+
+<!--------------------------------[ v0.47.11 ]------------------------------- -->
+## [v0.47.11](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.11) (2020-10-15)
+
+### Fixes
+- Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15496](https://github.com/microsoft/fluentui/pull/15496))
+
+<!--------------------------------[ v0.47.10 ]------------------------------- -->
+## [v0.47.10](https://github.com/microsoft/fluentui/tree/'fluentuizero_v'0.47.10) (2020-09-24)
+
+### Fixes
+- Fix reported potential memory leaks in `mergeComponentStyles__PROD` and Fela renderer @layershifter ([#15210](https://github.com/microsoft/fluentui/pull/15210))
+
+<!--------------------------------[ v0.47.9 ]------------------------------- -->
+## [v0.47.9](https://github.com/microsoft/fluentui/tree/'fluentuizero_v'0.47.9) (2020-08-18)
+
+### Fixes
+- Avoid pass unhandled props to `Box` in `Slider` @assuncaocharles ([#13591](https://github.com/microsoft/fluentui/pull/13591))
+
+<!--------------------------------[ v0.47.8 ]------------------------------- -->
+## [v0.47.8](https://github.com/microsoft/fluentui/tree/'fluentuizero_v'0.47.8) (2020-08-07)
+
+### Features
+- `Icon` factory patch for supporting jsx icons in the shorthands @mnajdova ([#14404](https://github.com/microsoft/fluentui/pull/14404))
+
+<!--------------------------------[ v0.47.7 ]------------------------------- -->
+## [v0.47.7](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.7) (2020-07-15)
+
+### Fixes
+- Fix memory leak in `FocusZone` @miroslavstastny ([#14031](https://github.com/microsoft/fluentui/pull/14031))
+
+<!--------------------------------[ v0.47.6 ]------------------------------- -->
+## [v0.47.6](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.6) (2020-06-19)
+
+### Fixes
+- Fix the order of callbacks in `Dropdown` @layershifter ([#13707](https://github.com/microsoft/fluentui/pull/13707))
+- Fix merging of `inputRef` on `searchInput` shorthand in `Dropdown` @layershifter ([#13711](https://github.com/microsoft/fluentui/pull/13711))
+
+<!--------------------------------[ v0.47.5 ]------------------------------- -->
+## [v0.47.5](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.5) (2020-06-15)
+
+### Features
+- Add @fluentui/react-telemetry package with telemetry viewer @layershifter ([#13508](https://github.com/microsoft/fluentui/pull/13508))
+
+<!--------------------------------[ v0.47.3 ]------------------------------- -->
+## [v0.47.3](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.3) (2020-06-02)
+
+### Fixes
+- Fix broken caching when enableBooleanVariablesCaching:true and there is no variables @layershifter ([#13345](https://github.com/microsoft/fluentui/pull/#13345))
+
+### Features
+- Add cache hits to telemetry data & differentiate initial render @layershifter ([#13346](https://github.com/microsoft/fluentui/pull/#13346))
+
+<!--------------------------------[ v0.47.2 ]------------------------------- -->
+## [v0.47.2](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.2) (2020-05-14)
+
+### Fixes
+- Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
+- Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
+- Attach an element to `document.body` in `Provider` during render @layershifter ([#13001](https://github.com/microsoft/fluentui/pull/13001))
+- Fix Loading and No Matches background in `Dropdown` in Dark and HC theme @assuncaocharles ([#13108](https://github.com/microsoft/fluentui/pull/13108))
+- Render No Matches message in `Dropdown` if all items are selected @assuncaocharles ([#13109](https://github.com/microsoft/fluentui/pull/13109))
+- Stop propagation in `Dropdown` for keypress of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
+- Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
+- Wrapped `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
+
+<!--------------------------------[ v0.47.1 ]------------------------------- -->
+## [v0.47.1](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.1) (2020-04-15)
+
+### BREAKING CHANGES
+- Replace `ListItemProps` with `DropdownItemProps` for `Dropdown` slots `noResultsMessage` and `loadingMessage` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+
+### Fixes
+- Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
+- Give higher `zIndex` to `Tooltip` to make it appear on top of `Dialog` @silviuavram ([#12572](https://github.com/microsoft/fluentui/pull/12572))
+- Fix `Dropdown` close on outside click and its double rendering on open @silviuavram ([#12625](https://github.com/microsoft/fluentui/pull/12625))
+- Fix `Downshift` changes handler in `Dropdown` @silviuavram ([#12361](https://github.com/microsoft/fluentui/pull/12361))
+
+### Features
+- Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
+- Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12439](https://github.com/microsoft/fluentui/pull/12439))
+- Add `headerMessage` slot for `Dropdown` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.46.0..fluentuizero_v0.47.0)
