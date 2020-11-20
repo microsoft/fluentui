@@ -234,14 +234,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       panelProps,
       calloutProps,
       multiSelect,
-      onRenderTitle = this._onRenderTitle,
+      onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
     } = props;
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
     // eslint-disable-next-line deprecation/deprecation
-    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
+    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
     // If our cached options are out of date update our cache
     if (options !== this._sizePosCache.cachedOptions) {
@@ -434,10 +434,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
-  private get _placeholder(): string | undefined {
+  private _getPlaceholder = (): string | undefined => {
     // eslint-disable-next-line deprecation/deprecation
     return this.props.placeholder || this.props.placeHolder;
-  }
+  };
 
   private _copyArray(array: any[]): any[] {
     const newArray = [];
@@ -506,20 +506,23 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     return index;
   }
 
+  /** Get text in dropdown input as a string */
+  private _getTitle = (items: IDropdownOption[], _unused?: unknown): string => {
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return items.map(i => i.text).join(multiSelectDelimiter);
+  };
+
   /** Render text in dropdown input */
   private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
-    const { multiSelectDelimiter = ', ' } = this.props;
-
-    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <>{displayTxt}</>;
+    return <>{this._getTitle(items)}</>;
   };
 
   /** Render placeholder text in dropdown input */
   private _onRenderPlaceholder = (props: IDropdownProps): JSX.Element | null => {
-    if (!this._placeholder) {
+    if (!this._getPlaceholder()) {
       return null;
     }
-    return <>{this._placeholder}</>;
+    return <>{this._getPlaceholder()}</>;
   };
 
   /** Render Callout or Panel container and pass in list */
