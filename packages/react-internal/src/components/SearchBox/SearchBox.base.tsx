@@ -129,28 +129,31 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     setValue(ev.target.value);
   };
 
-  const _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    switch (ev.which) {
-      case KeyCodes.escape:
-        onEscape?.(ev);
-        if (value && !ev.defaultPrevented) {
-          _onClear(ev);
-        }
-        break;
+  const _onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLInputElement>) => {
+      switch (ev.which) {
+        case KeyCodes.escape:
+          onEscape?.(ev);
+          if (value && !ev.defaultPrevented) {
+            _onClear(ev);
+          }
+          break;
 
-      case KeyCodes.enter:
-        if (onSearch) {
-          onSearch(value);
-          ev.preventDefault();
-          ev.stopPropagation();
-        }
-        break;
+        case KeyCodes.enter:
+          if (onSearch) {
+            onSearch(value);
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+          break;
 
-      default:
-        onKeyDown?.(ev);
-        break;
-    }
-  };
+        default:
+          onKeyDown?.(ev);
+          break;
+      }
+    },
+    [_onClear, onEscape, onKeyDown, onSearch, value],
+  );
 
   useDebugWarning(props);
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
