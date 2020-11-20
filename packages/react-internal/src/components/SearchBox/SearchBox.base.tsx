@@ -150,7 +150,13 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
           break;
 
         default:
+          // REVIEW: Why aren't we calling the custom onKeyDown handler for Escape or Enter?
           customOnKeyDown?.(ev);
+          // REVIEW: Why are we calling stopPropagation if the custom onKeyDown handler called preventDefault?
+          // The custom handler should call that if it needs it.
+          if (ev.defaultPrevented) {
+            ev.stopPropagation();
+          }
           break;
       }
     },
