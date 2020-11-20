@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.17",
+      "version": "8.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add text to breacrumb overflow items",
+            "author": "pbelsal@gmail.com",
+            "commit": "b4f2f92f94b2ba78af154a77011ac3c14e8bb312",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Nov 2020 12:32:23 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.8",
       "version": "8.0.0-beta.8",
