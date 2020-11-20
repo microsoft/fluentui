@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TestImages } from '@fluentui/example-data';
-import { Image, ImageFit, Persona, PersonaPresence, Stack, Text } from '@fluentui/react';
+import { Image, ImageFit, Persona, PersonaPresence, Stack, IStackTokens, Text } from '@fluentui/react';
 import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
 import { Card, CardBody, CardFooter, CardHeader } from '@fluentui/react-cards/lib/next/index';
 
@@ -8,8 +8,12 @@ function onClick() {
   alert('Card was clicked');
 }
 
+const stackTokens: IStackTokens = {
+  maxWidth: 300,
+};
+
 export const TeamsCards = () => (
-  <Stack gap={40}>
+  <Stack gap={40} tokens={stackTokens}>
     <div>
       <Text variant="xLarge">Basic Card</Text>
       <Card onClick={onClick}>

@@ -60,6 +60,7 @@ export type ColorTokens = ColorTokenSet & {
   focused?: ColorTokenSet;
   hovered?: ColorTokenSet;
   pressed?: ColorTokenSet;
+  selected?: ColorTokenSet;
 };
 
 export type FontTokens = Partial<{
