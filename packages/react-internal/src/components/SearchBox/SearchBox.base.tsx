@@ -134,6 +134,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
       switch (ev.which) {
         case KeyCodes.escape:
           customOnEscape?.(ev);
+          // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
+          // to propagate from the empty search box to a parent element such as a dialog, etc.
           if (value && !ev.defaultPrevented) {
             onClear(ev);
           }
