@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 17 Nov 2020 12:36:24 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.12)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.11..@fluentui/react-button_v1.0.0-beta.12)
+
+### Changes
+
+- Updating button hooks to return state only; render function should be imported separately. ([PR #15961](https://github.com/microsoft/fluentui/pull/15961) by dzearing@hotmail.com)
 
 ## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.11)
 

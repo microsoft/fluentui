@@ -12,7 +12,7 @@ describe('ToolbarMenuRadioGroup', () => {
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarMenuRadioGroup, {
-      defaultRootRole: 'group',
+      defaultRootRole: 'presentation',
       partSelector: 'ul',
       usesWrapperSlot: true,
     });

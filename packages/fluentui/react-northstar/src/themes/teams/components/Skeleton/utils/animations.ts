@@ -9,7 +9,7 @@ import { skeletonAvatarClassName } from '../../../../../components/Skeleton/Skel
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',
   overflow: 'hidden',
-  animationDuration: '4.8s',
+  animationDuration: '4.5s',
   animationName: wave,
   animationIterationCount: 'infinite',
   backgroundColor: '#FFFFFF',

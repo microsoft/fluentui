@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-19T19:44:31.581Z"
+}

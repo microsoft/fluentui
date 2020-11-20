@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:30:07 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.12",
+      "version": "1.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating button hooks to return state only; render function should be imported separately.",
+            "author": "dzearing@hotmail.com",
+            "commit": "16bb581c41bc50a285f39791e21da71d1e6c0441",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Nov 2020 12:36:24 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.11",
       "version": "1.0.0-beta.11",

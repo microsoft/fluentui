@@ -1,3 +1,5 @@
+// NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
+
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -14,9 +16,14 @@ const defaultProps: ICalloutProps = {
   target: '#target',
   calloutWidth: 200,
 
-  // Layer is causing tests being unstable.
-  // TODO: investigate and re-enable using Layer.
+  // Try to stabilize tests by disabling layer and animation
+  // TODO: investigate and re-enable
   doNotLayer: true,
+  styles: {
+    root: {
+      animation: 'none',
+    },
+  },
 };
 
 storiesOf('Callout', module)

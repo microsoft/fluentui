@@ -1,5 +1,6 @@
 import { IStyle } from '@fluentui/merge-styles';
 import { Theme } from '@fluentui/theme';
+import { applyClasses } from './applyClasses';
 import { makeStyles, UseStylesOptions } from './makeStyles';
 
 /**
@@ -39,56 +40,7 @@ export const makeClasses = <TState extends {}>(
 
   return (state: TState, options?: UseStylesOptions) => {
     const classes = useStyles(options);
-    const slotNames = Object.keys(classes);
 
-    for (const slotName of slotNames) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const value = (classes as any)[slotName];
-
-      // If the renderer returns non-classNames (like subComponentStyles), ignore.
-      if (typeof value === 'string') {
-        const parts = slotName.split('_');
-
-        switch (parts.length) {
-          case 1:
-            if (slotName === 'root') {
-              _setClass(state, value);
-            } else {
-              _setClass(state, value, slotName);
-            }
-            break;
-
-          case 2:
-            const modifierName = parts[1];
-
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            if ((state as any)[modifierName] || (state as any).variant === modifierName) {
-              _setClass(state, value);
-            }
-            break;
-
-          case 3:
-            const enumName = parts[1];
-            const enumValue = parts[2];
-
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            if ((state as any)[enumName] === enumValue) {
-              _setClass(state, value);
-            }
-            break;
-        }
-      }
-    }
+    applyClasses(state, classes);
   };
 };
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function _setClass(state: Record<string, any>, className: string, slot?: string) {
-  const currentSlot = slot ? (state[slot] = state[slot] || {}) : state;
-
-  if (currentSlot.className) {
-    currentSlot.className += ' ' + className;
-  } else {
-    currentSlot.className = className;
-  }
-}
