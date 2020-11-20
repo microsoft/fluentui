@@ -87,8 +87,16 @@ export const BreadcrumbItemStyles = css`
   neutralFocusBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      .control:hover .content::before {
-        background: ${SystemColors.LinkText};
+      .control {
+        color: linktext;
+        fill: currentColor;
+      }
+      .control:hover,
+      .control:${focusVisible} {
+        forced-color-adjust: none;
+        background:  ${SystemColors.ButtonFace};
+        border-color: ${SystemColors.LinkText};
+        box-shadow: 0 0 0 1px inset  ${SystemColors.LinkText};
       }
     `,
   ),
