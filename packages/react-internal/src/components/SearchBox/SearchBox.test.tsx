@@ -202,7 +202,7 @@ describe('SearchBox', () => {
     expect(onSearch.mock.calls.length).toBe(1);
   });
 
-  it('invokes keydown callback event on keydown', () => {
+  it('invokes keydown callback on keydown', () => {
     const onKeyDown = jest.fn();
     const keyDownEvent = new CustomEvent('keydown');
 
