@@ -52,14 +52,16 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     theme,
     clearButtonProps = defaultClearButtonProps,
     disableAnimation = false,
-    onClear: customOnClear,
-    onBlur: customOnBlur,
-    onEscape: customOnEscape,
-    onSearch: customOnSearch,
-    onKeyDown: customOnKeyDown,
+    onClear,
+    onBlur,
+    onEscape,
+    onSearch,
+    onKeyDown,
     iconProps,
     role,
   } = props;
+
+  const { onClick: onClearClick } = clearButtonProps;
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
@@ -80,9 +82,9 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     'role',
   ]);
 
-  const onClear = React.useCallback(
+  const _onClear = React.useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) => {
-      customOnClear?.(ev);
+      onClear?.(ev);
       if (!ev.defaultPrevented) {
         setValue('');
         inputElementRef.current?.focus();
@@ -90,62 +92,62 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
         ev.preventDefault();
       }
     },
-    [customOnClear, setValue],
+    [onClear, setValue],
   );
 
-  const onClearClick = React.useCallback(
+  const _onClearClick = React.useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-      clearButtonProps?.onClick?.(ev);
+      onClearClick?.(ev);
       if (!ev.defaultPrevented) {
-        onClear(ev);
+        _onClear(ev);
       }
     },
-    [clearButtonProps, onClear],
+    [onClearClick, _onClear],
   );
 
-  const onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
+  const _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     setHasFocus(true);
     props.onFocus?.(ev as React.FocusEvent<HTMLInputElement>);
   };
 
-  const onClickFocus = () => {
+  const _onClickFocus = () => {
     if (inputElementRef.current) {
       inputElementRef.current.focus();
       inputElementRef.current.selectionStart = inputElementRef.current.selectionEnd = 0;
     }
   };
 
-  const onBlur = React.useCallback(
+  const _onBlur = React.useCallback(
     (ev: React.FocusEvent<HTMLInputElement>): void => {
       setHasFocus(false);
-      customOnBlur?.(ev);
+      onBlur?.(ev);
     },
-    [customOnBlur],
+    [onBlur],
   );
 
-  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setValue(ev.target.value);
   };
 
-  const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+  const _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
       case KeyCodes.escape:
-        customOnEscape?.(ev);
+        onEscape?.(ev);
         if (value && !ev.defaultPrevented) {
-          onClear(ev);
+          _onClear(ev);
         }
         break;
 
       case KeyCodes.enter:
-        if (customOnSearch) {
-          customOnSearch(value);
+        if (onSearch) {
+          onSearch(value);
           ev.preventDefault();
           ev.stopPropagation();
         }
         break;
 
       default:
-        customOnKeyDown?.(ev);
+        onKeyDown?.(ev);
         break;
     }
   };
@@ -154,8 +156,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div role={role} ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
-      <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
+    <div role={role} ref={mergedRootRef} className={classNames.root} onFocusCapture={_onFocusCapture}>
+      <div className={classNames.iconContainer} onClick={_onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
       <input
@@ -163,10 +165,10 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
         id={id}
         className={classNames.field}
         placeholder={placeholder}
-        onChange={onInputChange}
-        onInput={onInputChange}
-        onBlur={onBlur}
-        onKeyDown={onKeyDown}
+        onChange={_onInputChange}
+        onInput={_onInputChange}
+        onBlur={_onBlur}
+        onKeyDown={_onKeyDown}
         value={value}
         disabled={disabled}
         role="searchbox"
@@ -176,11 +178,11 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
       {value!.length > 0 && (
         <div className={classNames.clearButton}>
           <IconButton
-            onBlur={onBlur}
+            onBlur={_onBlur}
             styles={iconButtonStyles}
             iconProps={iconButtonProps}
             {...clearButtonProps}
-            onClick={onClearClick}
+            onClick={_onClearClick}
           />
         </div>
       )}
