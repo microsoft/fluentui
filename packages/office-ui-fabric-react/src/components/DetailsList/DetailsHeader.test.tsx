@@ -537,12 +537,12 @@ describe('DetailsHeader', () => {
     // dead zone : idx 2 and 3 -> no hint shown
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0)!.getAttribute('style')).not.toContain('display:');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toBe(null);
     expect(dropHintElementChildren.item(1)!.getAttribute('style')).toBe(null);
 
     dropHintElement = component.find('#columnDropHint_3').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0)!.getAttribute('style')).not.toContain('display:');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toBe(null);
     expect(dropHintElementChildren.item(1)!.getAttribute('style')).toBe(null);
 
     // dragover e
@@ -688,7 +688,7 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0)!.getAttribute('style')).not.toContain('display');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toBe(null);
     expect(dropHintElementChildren.item(1)!.getAttribute('style')).toBe(null);
 
     // drop on source column itself -> drophintindex should not be set and hence target index not updated
