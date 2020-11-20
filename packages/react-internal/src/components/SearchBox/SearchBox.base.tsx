@@ -131,27 +131,23 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     switch (ev.which) {
       case KeyCodes.escape:
         customOnEscape?.(ev);
-        if (!ev.defaultPrevented) {
+        if (value && !ev.defaultPrevented) {
           onClear(ev);
         }
         break;
+
       case KeyCodes.enter:
         if (customOnSearch) {
           customOnSearch(value);
-          break;
+          ev.preventDefault();
+          ev.stopPropagation();
         }
-        // if we don't handle the enter press then we shouldn't prevent default
-        return;
+        break;
+
       default:
         customOnKeyDown?.(ev);
-        if (!ev.defaultPrevented) {
-          return;
-        }
+        break;
     }
-    // We only get here if the keypress has been handled,
-    // or preventDefault was called in case of default keyDown handler
-    ev.preventDefault();
-    ev.stopPropagation();
   };
 
   useDebugWarning(props);
