@@ -36,13 +36,10 @@ export const NavPageProps: IDocPageProps = {
       view: <NavCustomGroupHeadersExample />,
     },
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')],
   overview: require<string>('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/docs/NavOverview.md'),
   bestPractices: require<
     string
   >('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/docs/NavBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/docs/NavDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/docs/NavDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
