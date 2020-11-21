@@ -111,6 +111,7 @@ export const OptionStyles = css`
     css`
       :host {
         border-color: transparent;
+        color: ${SystemColors.ButtonText};
         forced-color-adjust: none;
       }
 

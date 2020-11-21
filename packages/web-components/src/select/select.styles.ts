@@ -187,10 +187,6 @@ export const SelectStyles = css`
   neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
-            :host {
-              color: ${SystemColors.ButtonText};
-            }
-
             :host([disabled]) {
                 border-color: ${SystemColors.GrayText};
                 background-color: ${SystemColors.ButtonFace};
