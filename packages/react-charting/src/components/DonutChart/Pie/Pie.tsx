@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { IPieProps } from './Pie.types';
-import { Arc } from '../Arc/Arc';
-import { IArcData } from '../Arc/Arc.types';
+import { IPieProps } from './index';
+import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 
 export class Pie extends React.Component<IPieProps, {}> {
@@ -14,8 +13,10 @@ export class Pie extends React.Component<IPieProps, {}> {
       .value((d: any) => d.data)
       .padAngle(0.02),
   };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _pieForFocusRing: any;
+
   constructor(props: IPieProps) {
     super(props);
     this._hoverCallback = this._hoverCallback.bind(this);
@@ -53,13 +54,13 @@ export class Pie extends React.Component<IPieProps, {}> {
   };
 
   public render(): JSX.Element {
-    const { pie, data, width, height, href } = this.props;
+    const { pie, data } = this.props;
     const focusData = this._pieForFocusRing(data);
     const piechart = pie(data);
-    const translate = `translate(${width / 2}, ${height / 2})`;
+    const translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
     return (
       <g transform={translate}>
-        {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], href))}
+        {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], this.props.href))}
       </g>
     );
   }

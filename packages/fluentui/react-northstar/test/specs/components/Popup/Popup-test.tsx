@@ -293,7 +293,7 @@ describe('Popup', () => {
   });
   describe('PopupBehavior', () => {
     describe('trigger slot - tabbable - Button', () => {
-      const triggerWithoutTabIndex = <button id="trigger" />;
+      const triggerWithoutTabIndex = <button data-slotid="trigger" />;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
       expect(errors).toEqual([]);
@@ -301,7 +301,7 @@ describe('Popup', () => {
 
     describe('trigger slot - tabbable - Anchor', () => {
       const triggerWithoutTabIndex = (
-        <a href="" id="trigger">
+        <a href="" data-slotid="trigger">
           triggerLink
         </a>
       );
@@ -311,45 +311,45 @@ describe('Popup', () => {
     });
 
     describe('trigger slot - NO tabbabble - Anchor without href', () => {
-      const triggerAnchorWtihoutHref = <a id="trigger"> triggerLink </a>;
+      const triggerAnchorWtihoutHref = <a data-slotid="trigger"> triggerLink </a>;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerAnchorWtihoutHref, id: 'popup2' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('trigger slot - tabbable - Input', () => {
-      const triggerWithoutTabIndex = <input id="trigger" />;
+      const triggerWithoutTabIndex = <input data-slotid="trigger" />;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('trigger slot - NO tabbabble - Span', () => {
-      const triggerWithoutTabIndex = <span id="trigger"> text to trigger popup </span>;
+      const triggerWithoutTabIndex = <span data-slotid="trigger"> text to trigger popup </span>;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup2' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('trigger slot - tabbable - Box as button', () => {
-      const triggerWithoutTabIndex = <Box id="trigger" as="button" />;
+      const triggerWithoutTabIndex = <Box data-slotid="trigger" as="button" />;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup2' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotTabbable, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('trigger slot - doesnt override tabIndex if exists', () => {
-      const triggerWithoutTabIndex = <button id="trigger" tabIndex={-1} />;
+      const triggerWithoutTabIndex = <button data-slotid="trigger" tabIndex={-1} />;
       const testFacade = new ComponentTestFacade(Popup, { trigger: triggerWithoutTabIndex, id: 'popup1' });
       const errors = validateBehavior(popupBehaviorDefinitionTriggerSlotWithTabIndex, testFacade);
       expect(errors).toEqual([]);
     });
 
     describe('popup content slot ', () => {
-      const triggerWithoutTabIndex = <button id="trigger" tabIndex={-1} />;
+      const triggerWithoutTabIndex = <button tabIndex={-1} />;
       const testFacade = new ComponentTestFacade(Popup, {
         trigger: triggerWithoutTabIndex,
-        content: { content: triggerWithoutTabIndex, id: 'popup' },
+        content: { content: triggerWithoutTabIndex, 'data-slotid': 'popup' },
         open: true,
       });
       const errors = validateBehavior(popupBehaviorDefinitionPopupSlot, testFacade);

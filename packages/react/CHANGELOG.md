@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 30 Oct 2020 12:33:11 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.18)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.17..@fluentui/react_v8.0.0-beta.18)
+
+### Changes
+
+- Fix display issue with Dropdown when using Chrome Translate ([PR #15984](https://github.com/microsoft/fluentui/pull/15984) by behowell@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.17)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.8..@fluentui/react_v8.0.0-beta.17)
+
+### Changes
+
+- Add text to breacrumb overflow items ([PR #15977](https://github.com/microsoft/fluentui/pull/15977) by pbelsal@gmail.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.7..@fluentui/react_v8.0.0-beta.8)
+
+### Changes
+
+- Add aria-hidden to error section ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.7)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.6..@fluentui/react_v8.0.0-beta.7)
+
+### Changes
+
+- Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem ([PR #15791](https://github.com/microsoft/fluentui/pull/15791) by jspurlin@microsoft.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.6)
 

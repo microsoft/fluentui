@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { Stack, Text } from '@fluentui/react';
+import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
-const menuProps = {
+const menuProps: IContextualMenuProps = {
+  directionalHint: DirectionalHint.bottomRightEdge,
   items: [
     {
       key: 'a',
@@ -18,28 +19,28 @@ const menuProps = {
 
 const SplitButtonExamples = (props: SplitButtonProps) => (
   <div className={classes.hStack}>
-    <SplitButton {...props} menu={menuProps}>
+    <SplitButton {...props} menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} disabled menu={menuProps}>
+    <SplitButton {...props} disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary menu={menuProps}>
+    <SplitButton {...props} primary menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} primary disabled menu={menuProps}>
+    <SplitButton {...props} primary disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost menu={menuProps}>
+    <SplitButton {...props} ghost menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost disabled menu={menuProps}>
+    <SplitButton {...props} ghost disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent menu={menuProps}>
+    <SplitButton {...props} transparent menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} transparent disabled menu={menuProps}>
+    <SplitButton {...props} transparent disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
   </div>

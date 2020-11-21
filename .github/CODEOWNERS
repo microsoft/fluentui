@@ -38,17 +38,14 @@ sizeauditor.json @aftab-hassan
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @jurokapsiar
 packages/a11y-testing/ @kolaps33 @jurokapsiar
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar
+packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
-#### Deprecated API Files
-*.api.ts @natalieethell
-
 #### Apps
 # component-demo/
-public-docsite/ @ecraig12345 @Jahnp
+public-docsite/ @ecraig12345
 public-docsite-resources/ @ecraig12345
 perf-test/ @JasonGore @xugao
 # ssr-tests/
@@ -62,7 +59,7 @@ packages/react-date-time @lorejoh12 @evlevy @pompomon
 packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
 packages/react-docsite-components/ @ecraig12345
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation-legacy/ @dzearing @khmakoto
 # packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/
@@ -70,8 +67,11 @@ packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/style-utilities/ @dzearing
-packages/style-utilities/src/interfaces/ @phkuo
-packages/style-utilities/src/styles/ @phkuo
+packages/style-utilities/src/interfaces/ @phkuo @xugao
+packages/style-utilities/src/styles/ @phkuo @xugao
+packages/theme/ @dzearing @xugao
+packages/react-theme-provider/ @dzearing @xugao
+packages/react-stylesheets/ @dzearing @xugao
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
@@ -96,7 +96,7 @@ packages/react-toggle/ @xugao
 
 ## Components
 packages/react-internal/src/components/ActivityItem/ @xugao
-packages/react-internal/src/components/Announced/ @natalieethell
+packages/react-internal/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
 packages/react-internal/src/components/Button/ @khmakoto
 packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
@@ -118,7 +118,7 @@ packages/react-internal/src/components/Facepile/ @markionium @mtennoe
 packages/react-internal/src/components/FolderCover/ @ThomasMichon @bigbadcapers
 packages/react-internal/src/components/FocusTrapZone/ @khmakoto
 packages/react/src/components/GroupedList/  @aditima @dzearing
-packages/react-internal/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
+packages/react-internal/src/components/HoverCard/  @Jahnp @Vitalius1
 packages/react-internal/src/components/Icon/ @dzearing @ecraig12345
 packages/react-internal/src/components/Image/ @dzearing
 packages/react-internal/src/components/Label/ @khmakoto
@@ -141,14 +141,14 @@ packages/react-internal/src/components/ProgressIndicator/ @xugao
 packages/react-internal/src/components/Rating/ @jdhuntington
 packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
 packages/react-internal/src/components/SearchBox/ @ecraig12345
-packages/react-internal/src/components/Separator/ @natalieethell
-packages/react-internal/src/components/Shimmer/ @Vitalius1 @atneik
+packages/react-internal/src/components/Separator/ @joschemd @khmakoto
+packages/react-internal/src/components/Shimmer/ @Vitalius1
 packages/react-internal/src/components/SpinButton/ @khmakoto
 packages/react-internal/src/components/Spinner/ @xugao
 packages/react-internal/src/components/Stack/  @khmakoto
 packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
 packages/react-internal/src/components/TeachingBubble/ @micahgodbolt
-packages/react-internal/src/components/Text/ @natalieethell
+packages/react-internal/src/components/Text/ @khmakoto
 packages/react-internal/src/components/TextField/ @ecraig12345
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
 

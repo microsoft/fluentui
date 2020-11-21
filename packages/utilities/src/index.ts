@@ -69,6 +69,7 @@ export * from './styled';
 export * from './warn';
 export * from './ie11Detector';
 export * from './getPropsWithDefaults';
+// eslint-disable-next-line deprecation/deprecation
 export { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';

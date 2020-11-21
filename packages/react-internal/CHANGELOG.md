@@ -1,8 +1,93 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.16)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.15..@fluentui/react-internal_v8.0.0-beta.16)
+
+### Changes
+
+- Keyboard focus should be visible in selected footers in pickers in high contrast ([PR #15985](https://github.com/microsoft/fluentui/pull/15985) by elvonspa@microsoft.com)
+- ContextualMenu: remove unnecessary resize check ([PR #15584](https://github.com/microsoft/fluentui/pull/15584) by joschect@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.15)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.12..@fluentui/react-internal_v8.0.0-beta.15)
+
+### Changes
+
+- improve Text variant style inheritance ([PR #15942](https://github.com/microsoft/fluentui/pull/15942) by blaymist@gmail.com)
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.12)
+
+Mon, 16 Nov 2020 12:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.11..@fluentui/react-internal_v8.0.0-beta.12)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.11)
+
+Fri, 13 Nov 2020 12:33:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.10..@fluentui/react-internal_v8.0.0-beta.11)
+
+### Changes
+
+- Add support for ariaDescription in contextual menu items ([PR #15770](https://github.com/microsoft/fluentui/pull/15770) by sareiff@microsoft.com)
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.10)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.9..@fluentui/react-internal_v8.0.0-beta.10)
+
+### Changes
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #15880](https://github.com/microsoft/fluentui/pull/15880) by elvonspa@microsoft.com)
+- Add missing exports to API ([PR #15882](https://github.com/microsoft/fluentui/pull/15882) by dahajek@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.9)
+
+Tue, 10 Nov 2020 12:30:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.8..@fluentui/react-internal_v8.0.0-beta.9)
+
+### Changes
+
+- Updating Modal to a function component within react-internal. ([PR #15569](https://github.com/microsoft/fluentui/pull/15569) by czearing@outlook.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.8)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.7..@fluentui/react-internal_v8.0.0-beta.8)
+
+### Changes
+
+- ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.6..@fluentui/react-internal_v8.0.0-beta.7)
+
+### Changes
+
+- Layer: fix not rendering into targeted host element defined by hostId prop. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.6)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.5..@fluentui/react-internal_v8.0.0-beta.6)
+
+### Changes
+
+- Update SpinButton to inherit Fabric font styles. ([PR #15724](https://github.com/microsoft/fluentui/pull/15724) by lesliewilliams234@gmail.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+- SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers. ([PR #15797](https://github.com/microsoft/fluentui/pull/15797) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.5)
 

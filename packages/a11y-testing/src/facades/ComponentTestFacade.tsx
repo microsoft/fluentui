@@ -27,7 +27,7 @@ export class ComponentTestFacade implements TestFacade {
   }
 
   public slotExists(selector: string) {
-    return selector === 'root' || !!document.getElementById(selector);
+    return selector === 'root' || !!this._getElement(selector);
   }
 
   public attributeExists(selector: string, attributeName: string) {
@@ -35,7 +35,7 @@ export class ComponentTestFacade implements TestFacade {
       return this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null;
     }
 
-    const element = document.getElementById(selector);
+    const element = this._getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) !== undefined && element.getAttribute(attributeName) !== null;
     }
@@ -47,7 +47,7 @@ export class ComponentTestFacade implements TestFacade {
       return this.actual.getAttribute(attributeName) === value;
     }
 
-    const element = document.getElementById(selector);
+    const element = this._getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) === value;
     }
@@ -59,7 +59,7 @@ export class ComponentTestFacade implements TestFacade {
     if (selector === 'root') {
       return this.actual.getAttribute(attributeName) as PropValue;
     }
-    const element = document.getElementById(selector);
+    const element = this._getElement(selector);
     if (element) {
       return element.getAttribute(attributeName) as PropValue;
     }
@@ -100,4 +100,8 @@ export class ComponentTestFacade implements TestFacade {
   public forProps = (props: Props): TestFacade => {
     return new ComponentTestFacade(this.Component, { ...this.props, ...props });
   };
+
+  private _getElement(selector: string) {
+    return document.querySelector(`[data-slotid="${selector}"]`);
+  }
 }

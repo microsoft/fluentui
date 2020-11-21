@@ -1,11 +1,11 @@
 /** @jsx withSlots */
-import * as React from 'react';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
 export const TextView: ITextComponent['view'] = props => {
-  if (React.Children.count(props.children) === 0) {
+  // eslint-disable-next-line eqeqeq
+  if (props.children == null) {
     return null;
   }
 

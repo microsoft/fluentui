@@ -93,7 +93,7 @@ describe('UnifiedPeoplePicker', () => {
       />,
     );
 
-    const inputElement: InputElementWrapper = wrapper.find('input').last();
+    const inputElement: InputElementWrapper = wrapper.find('input');
     expect(inputElement).toHaveLength(1);
     inputElement.simulate('input', { target: { value: 'annie' } });
 

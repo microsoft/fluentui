@@ -17,6 +17,7 @@ import { ContextualMenuWithCustomMenuItemExample } from './ContextualMenu.Custom
 import { ContextualMenuWithCustomMenuListExample } from './ContextualMenu.CustomMenuList.Example';
 import { ContextualMenuHeaderExample } from './ContextualMenu.Header.Example';
 import { ContextualMenuPersistedExample } from './ContextualMenu.Persisted.Example';
+import { ContextualMenuScreenReaderExample } from './ContextualMenu.ScreenReader.Example';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuDefaultExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Default.Example.tsx') as string;
@@ -33,6 +34,7 @@ const ContextualMenuWithScrollBarExampleCode = require('!raw-loader!@fluentui/re
 const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomMenuItem.Example.tsx') as string;
 const ContextualMenuCustomMenuListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomMenuList.Example.tsx') as string;
 const ContextualMenuHeaderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
+const ContextualMenuScreenReaderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.ScreenReader.Example.tsx') as string;
 
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
@@ -114,6 +116,11 @@ export const ContextualMenuPageProps: IDocPageProps = {
       title: 'ContextualMenu with header',
       code: ContextualMenuHeaderExampleCode,
       view: <ContextualMenuHeaderExample />,
+    },
+    {
+      title: 'ContextualMenu with additional screen reader text',
+      code: ContextualMenuScreenReaderExampleCode,
+      view: <ContextualMenuScreenReaderExample />,
     },
   ],
   overview: require<

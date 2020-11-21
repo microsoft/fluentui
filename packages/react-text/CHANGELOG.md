@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Nov 2020 12:36:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3-6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.3-6)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.1.2..@fluentui/react-text_v0.1.3-6)
+
+### Changes
+
+- Updating api to match output of makeStyles. ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.2)
 
