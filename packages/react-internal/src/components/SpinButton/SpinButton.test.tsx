@@ -502,8 +502,8 @@ describe('SpinButton', () => {
     wrapper = mount(
       <SpinButton
         value={spinButtonValue}
-        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
-          spinButtonValue = newValue;
+        onChange={(ev, newValue) => {
+          spinButtonValue = newValue!;
         }}
       />,
     );
