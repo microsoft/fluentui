@@ -56,6 +56,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     onBlur: customOnBlur,
     onEscape,
     onSearch,
+    onKeyDown: customOnKeyDown,
     iconProps,
     role,
   } = props;
@@ -142,7 +143,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
         // if we don't handle the enter press then we shouldn't prevent default
         return;
       default:
-        onKeyDown?.(ev);
+        customOnKeyDown?.(ev);
         if (!ev.defaultPrevented) {
           return;
         }
