@@ -187,6 +187,10 @@ export const SelectStyles = css`
   neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
+            :host {
+              color: ${SystemColors.ButtonText};
+            }
+
             :host([disabled]) {
                 border-color: ${SystemColors.GrayText};
                 background-color: ${SystemColors.ButtonFace};
@@ -204,7 +208,26 @@ export const SelectStyles = css`
                 border-color: ${SystemColors.GrayText};
             }
 
-            :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]) {
+            :host(:not([disabled]):hover) {
+              background: ${SystemColors.ButtonFace};
+              border-color: ${SystemColors.Highlight};
+            }
+
+            :host(:${focusVisible}) {
+              forced-color-adjust: none;
+              background: ${SystemColors.ButtonFace};
+              border-color: ${SystemColors.Highlight};
+              box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
+              color: ${SystemColors.ButtonText};
+              fill: currentcolor;
+            }
+
+            :host([open]) .listbox {
+                background: ${SystemColors.ButtonFace};
+                border: 1px solid ${SystemColors.ButtonText};
+            }
+
+            :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
                 box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
