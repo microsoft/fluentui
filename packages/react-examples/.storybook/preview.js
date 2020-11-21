@@ -15,7 +15,6 @@ addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withKeytipLayer);
 if (
   [
-    'react-button',
     'react-cards',
     'react-checkbox',
     'react-image',
@@ -27,6 +26,10 @@ if (
   ].includes('PACKAGE_NAME')
 ) {
   addDecorator(withThemeProvider);
+  addDecorator(withStrictMode);
+}
+
+if (['react-button'].includes('PACKAGE_NAME')) {
   addDecorator(withStrictMode);
 }
 

@@ -7,11 +7,6 @@ import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
-// ensure default theme exists
-// TODO: this call should not be needed for button to be themed.
-import { loadTheme } from '@fluentui/style-utilities';
-loadTheme({});
-
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (

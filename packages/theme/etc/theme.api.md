@@ -866,8 +866,8 @@ export interface Tokens {
     [key: string]: TokenSetType;
     // (undocumented)
     color: {
-        body: ColorTokenSet & TokenSetType;
-        brand: ColorTokenSet & TokenSetType;
+        body: ColorTokens & TokenSetType;
+        brand: ColorTokens & TokenSetType;
         [key: string]: TokenSetType;
     };
 }
