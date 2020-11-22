@@ -8,18 +8,18 @@ import {
   classNamesFunction,
   precisionRound,
   getNativeProps,
+  getPropsWithDefaults,
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
-import { Position } from '../../utilities/positioning';
-import { useBoolean, useSetTimeout, useControllableValue, useWarnings, useId } from '@fluentui/react-hooks';
+import { Position } from '../../Positioning';
+import { useSetTimeout, useControllableValue, useWarnings, useId } from '@fluentui/react-hooks';
 
 interface ISpinButtonInternalState {
-  lastValidValue: string;
+  lastValidValue?: string;
   spinningByMouse: boolean;
-  valueToValidate: string | undefined;
-  precision: number;
+  valueToValidate?: string;
   currentStepFunctionHandle: number;
   initialStepDelay: number;
   stepDelay: number;
@@ -28,6 +28,17 @@ interface ISpinButtonInternalState {
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
 
 const COMPONENT_NAME = 'SpinButton';
+const DEFAULT_PROPS = {
+  disabled: false,
+  label: '',
+  min: 0,
+  max: 100,
+  step: 1,
+  labelPosition: Position.start,
+  incrementButtonIcon: { iconName: 'ChevronUpSmall' },
+  decrementButtonIcon: { iconName: 'ChevronDownSmall' },
+};
+type ISpinButtonPropsWithDefaults = ISpinButtonProps & Required<Pick<ISpinButtonProps, keyof typeof DEFAULT_PROPS>>;
 
 const useComponentRef = (
   props: ISpinButtonProps,
@@ -50,29 +61,43 @@ const useComponentRef = (
   );
 };
 
+const onChange = (): void => {
+  /**
+   * A noop input change handler. Using onInput instead of onChange was meant to address an issue
+   * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
+   * The no-op onChange handler was still needed because React gives console errors if an input
+   * doesn't have onChange.
+   *
+   * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
+   * ours or 3rd-party, which simulate entering text in a SpinButton)
+   */
+};
+
 export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.forwardRef<
   HTMLDivElement,
   ISpinButtonProps
->((props, ref) => {
+>((propsWithoutDefaults, ref) => {
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults) as ISpinButtonPropsWithDefaults;
   const {
-    disabled = false,
-    label = '',
-    min = 0,
-    max = 100,
-    step = 1,
+    disabled,
+    label,
+    min,
+    max,
+    step,
     defaultValue,
-    labelPosition = Position.start,
+    value: valueFromProps,
+    precision: precisionFromProps,
+    labelPosition,
     iconProps,
-    incrementButtonIcon = { iconName: 'ChevronUpSmall' },
+    incrementButtonIcon,
     incrementButtonAriaLabel,
-    decrementButtonIcon = { iconName: 'ChevronDownSmall' },
+    decrementButtonIcon,
     decrementButtonAriaLabel,
     ariaLabel,
     ariaDescribedBy,
     upArrowButtonStyles: customUpArrowButtonStyles,
     downArrowButtonStyles: customDownArrowButtonStyles,
     theme,
-    value: valueFromProps,
     ariaPositionInSet,
     ariaSetSize,
     ariaValueNow,
@@ -83,44 +108,30 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     onIncrement,
     iconButtonProps,
     onValidate,
-    onFocus,
-    onChange,
-    onBlur,
     styles,
-  } = props as ISpinButtonProps;
+  } = props;
 
   const input = React.useRef<HTMLInputElement>(null);
   const inputId = useId('input');
   const labelId = useId('Label');
 
-  const [isFocused, { setTrue: setTrueIsFocused, setFalse: setFalseIsFocused }] = useBoolean(false);
+  const [isFocused, setIsFocused] = React.useState(false);
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
   const { setTimeout, clearTimeout } = useSetTimeout();
-  const [value, setValue] = useControllableValue(
-    valueFromProps,
-    defaultValue !== undefined ? defaultValue : String(min || '0'),
-    onChange,
-  );
 
-  let { value: initialValue = defaultValue } = props;
-
-  if (initialValue === undefined) {
-    initialValue = typeof min === 'number' ? String(min) : '0';
-  }
+  const [value, setValue] = useControllableValue(valueFromProps, defaultValue ?? String(min));
 
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
-    lastValidValue: initialValue,
+    lastValidValue: value,
     spinningByMouse: false,
-    valueToValidate: undefined,
-    precision: props.precision ?? Math.max(calculatePrecision(step), 0),
     currentStepFunctionHandle: -1,
     initialStepDelay: 400,
     stepDelay: 75,
   });
 
-  if (valueFromProps !== undefined) {
-    internalState.lastValidValue = valueFromProps;
-  }
+  const precision = React.useMemo(() => {
+    return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
+  }, [precisionFromProps, step]);
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -137,24 +148,18 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     'className',
   ]);
 
-  const handleValidate = (valueProp: string, ev?: React.SyntheticEvent<HTMLElement>): string | void => {
+  /** Composed validation handler (uses `props.onValidate` or default) */
+  const handleValidate = (newValue: string, ev: React.SyntheticEvent<HTMLInputElement>) => {
     if (onValidate) {
-      return onValidate(valueProp, ev);
-    } else {
-      return defaultOnValidate(valueProp);
+      return onValidate(newValue, ev);
     }
-  };
-
-  /**
-   * The default validate function to use if it is not provided.
-   */
-  const defaultOnValidate = (valueProp: string) => {
-    if (valueProp === null || valueProp.trim().length === 0 || isNaN(Number(valueProp))) {
+    if (!newValue || newValue.trim().length === 0 || isNaN(Number(newValue))) {
       return internalState.lastValidValue;
     }
-    const newValue = Math.min(max as number, Math.max(min as number, Number(valueProp)));
-    return String(newValue);
+    return String(Math.min(max, Math.max(min, Number(newValue))));
   };
+
+  /** Validate function called on blur or enter keypress. */
 
   const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (
@@ -225,32 +230,35 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     [internalState, setValue, setTimeout, value],
   );
 
+  /** Composed increment handler (uses `props.onIncrement` or default) */
   const handleIncrement = React.useCallback(
-    (valueProp: string): string | void => {
+    (newValue: string): string | void => {
       if (onIncrement) {
-        return onIncrement(valueProp);
+        return onIncrement(newValue);
       } else {
-        let newValue: number = Math.min(Number(valueProp) + Number(step), max);
-        newValue = precisionRound(newValue, internalState.precision);
-        return String(newValue);
+        let numericValue: number = Math.min(Number(newValue) + Number(step), max);
+        numericValue = precisionRound(numericValue, precision);
+        return String(numericValue);
       }
     },
-    [internalState, max, onIncrement, step],
+    [precision, max, onIncrement, step],
   );
 
+  /** Composed decrement handler (uses `props.onDecrement` or default) */
   const handleDecrement = React.useCallback(
-    (valueProp: string): string | void => {
+    (newValue: string): string | void => {
       if (onDecrement) {
-        return onDecrement(valueProp);
+        return onDecrement(newValue);
       } else {
-        let newValue: number = Math.max(Number(valueProp) - Number(step), min);
-        newValue = precisionRound(newValue, internalState.precision);
-        return String(newValue);
+        let numericValue: number = Math.max(Number(newValue) - Number(step), min);
+        numericValue = precisionRound(numericValue, precision);
+        return String(numericValue);
       }
     },
-    [internalState, min, onDecrement, step],
+    [precision, min, onDecrement, step],
   );
 
+  /** Handles when the user types in the input */
   const handleInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = ev.target as HTMLInputElement;
     const elementValue: string = element.value;
@@ -258,30 +266,28 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     setValue(elementValue);
   };
 
-  const handleFocus = React.useCallback(
-    (ev: React.FocusEvent<HTMLInputElement>): void => {
-      // We can't set focus on a non-existing element
-      if (!input.current) {
-        return;
-      }
-      if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
-        stop();
-      }
-      input.current.select();
-      setTrueIsFocused();
-      onFocus?.(ev);
-    },
-    [internalState, keyboardSpinDirection, onFocus, setTrueIsFocused, stop],
-  );
-
-  const handleBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    validate(ev);
-    setFalseIsFocused();
-    onBlur?.(ev);
+  /** Composed focus handler (does internal stuff and calls `props.onFocus`) */
+  const handleFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    // We can't set focus on a non-existing element
+    if (!input.current) {
+      return;
+    }
+    if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
+      stop();
+    }
+    input.current.select();
+    setIsFocused(true);
+    props.onFocus?.(ev);
   };
 
-  //  Handle keydown on the text field. We need to update
-  //  the value when up or down arrow are depressed
+  /** Composed blur handler (does internal stuff and calls `props.onBlur`) */
+  const handleBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    validate(ev);
+    setIsFocused(false);
+    props.onBlur?.(ev);
+  };
+
+  /** Update value when arrow keys are pressed, commit on enter, or revert on escape */
   const handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
@@ -299,19 +305,17 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     switch (ev.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
-        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleIncrement!, ev);
+        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleIncrement, ev);
         break;
       case KeyCodes.down:
         spinDirection = KeyboardSpinDirection.down;
-        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleDecrement!, ev);
+        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleDecrement, ev);
         break;
       case KeyCodes.enter:
         validate(ev);
         break;
       case KeyCodes.escape:
-        if (value !== internalState.lastValidValue) {
-          setValue(internalState.lastValidValue);
-        }
+        setValue(internalState.lastValidValue);
         break;
       default:
         break;
@@ -323,8 +327,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     }
   };
 
-  // Make sure that we have stopped spinning on keyUp
-  // if the up or down arrow fired this event
+  /** Stop spinning on keyUp if the up or down arrow key fired this event */
   const handleKeyUp = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (disabled || ev.which === KeyCodes.up || ev.which === KeyCodes.down) {
@@ -337,16 +340,16 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const handleIncrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleIncrement!, ev);
+      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleIncrement, ev);
     },
-    [internalState.initialStepDelay, handleIncrement, updateValue],
+    [internalState, handleIncrement, updateValue],
   );
 
   const handleDecrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleDecrement!, ev);
+      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleDecrement, ev);
     },
-    [internalState.initialStepDelay, handleDecrement, updateValue],
+    [internalState, handleDecrement, updateValue],
   );
 
   useComponentRef(props, input, value);
@@ -375,7 +378,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         <input
           value={value}
           id={inputId}
-          onChange={handleInputChange}
+          onChange={onChange}
           onInput={handleInputChange}
           className={classNames.input}
           type="text"
@@ -450,7 +453,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 });
 SpinButtonBase.displayName = COMPONENT_NAME;
 
-function useDebugWarnings(props: ISpinButtonProps) {
+const useDebugWarnings = (props: ISpinButtonProps) => {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
@@ -459,4 +462,4 @@ function useDebugWarnings(props: ISpinButtonProps) {
       mutuallyExclusive: { value: 'defaultValue' },
     });
   }
-}
+};

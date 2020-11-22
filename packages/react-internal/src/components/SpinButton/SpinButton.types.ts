@@ -34,7 +34,7 @@ export enum KeyboardSpinDirection {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
@@ -117,11 +117,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement>
    * Props for an icon to display alongside the control's label.
    */
   iconProps?: IIconProps;
-
-  /**
-   * Callback function for when the value of SpinButton has changed.
-   */
-  onChange?: (ev?: React.FormEvent<HTMLInputElement>, newValue?: string) => void;
 
   /**
    * Callback for when the entered value should be validated.

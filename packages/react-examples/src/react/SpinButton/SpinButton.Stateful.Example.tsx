@@ -1,69 +1,59 @@
 import * as React from 'react';
 import { SpinButton } from '@fluentui/react/lib/SpinButton';
 
+const hasSuffix = (value: string, unitSuffix: string): Boolean => {
+  const subString = value.substr(value.length - unitSuffix.length);
+  return subString === unitSuffix;
+};
+
+const removeSuffix = (value: string, unitSuffix: string): string => {
+  if (!hasSuffix(value, unitSuffix)) {
+    return value;
+  }
+  return value.substr(0, value.length - suffix.length);
+};
+
 const suffix = ' cm';
-const min = 0;
-const max = 100;
 
-/** Remove the suffix or any other text after the numbers, or return undefined if not a number */
-const getNumericPart = (value: string): number | undefined => {
-  const valueRegex = /^(\d+(\.\d+)?).*/;
-  if (valueRegex.test(value)) {
-    const numericValue = Number(value.replace(valueRegex, '$1'));
-    return isNaN(numericValue) ? undefined : numericValue;
-  }
-  return undefined;
-};
-
-/** Increment the value (or return nothing to keep the previous value if invalid) */
-const onIncrement = (value: string) => {
-  const numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    return String(Math.min(numericValue + 2, max)) + suffix;
+const onSpinButtonIncrement = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) + 2 > 100) {
+    return String(+value) + suffix;
+  } else {
+    return String(+value + 2) + suffix;
   }
 };
 
-/** Decrement the value (or return nothing to keep the previous value if invalid) */
-const onDecrement = (value: string) => {
-  const numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    return String(Math.max(numericValue - 2, min)) + suffix;
+const onSpinButtonDecrement = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) - 2 < 0) {
+    return String(+value) + suffix;
+  } else {
+    return String(+value - 2) + suffix;
   }
 };
 
-/**
- * Clamp the value within the valid range (or return nothing to keep the previous value
- * if there's not valid numeric input)
- */
-const onValidate = (value: string) => {
-  let numericValue = getNumericPart(value);
-  if (numericValue !== undefined) {
-    numericValue = Math.min(numericValue, max);
-    numericValue = Math.max(numericValue, min);
-    return String(numericValue) + suffix;
+const onSpinButtonValidate = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) > 100 || Number(value) < 0 || value.trim().length === 0 || isNaN(+value)) {
+    return '0' + suffix;
   }
+
+  return String(value) + suffix;
 };
 
-export const SpinButtonStatefulExample: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState<string>('7' + suffix);
-
-  return (
-    <div style={{ width: '400px' }}>
-      <SpinButton
-        label="SpinButton with custom implementation:"
-        min={min}
-        max={max}
-        value={value}
-        onValidate={onValidate}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
-        // eslint-disable-next-line react/jsx-no-bind
-        onChange={(ev, newValue) => {
-          setValue(prevValue => newValue || prevValue); // revert to previous if empty
-        }}
-        incrementButtonAriaLabel="Increase value by 2"
-        decrementButtonAriaLabel="Decrease value by 2"
-      />
-    </div>
-  );
-};
+export const SpinButtonStatefulExample: React.FC = () => (
+  <div style={{ width: '400px' }}>
+    <SpinButton
+      label={'SpinButton with custom implementation:'}
+      min={0}
+      max={100}
+      value={'7' + suffix}
+      onValidate={onSpinButtonValidate}
+      onIncrement={onSpinButtonIncrement}
+      onDecrement={onSpinButtonDecrement}
+      incrementButtonAriaLabel={'Increase value by 2'}
+      decrementButtonAriaLabel={'Decrease value by 2'}
+    />
+  </div>
+);

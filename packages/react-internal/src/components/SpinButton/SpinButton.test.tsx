@@ -13,6 +13,47 @@ describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
   let wrapper: ReactWrapper<ISpinButtonProps> | undefined;
 
+  function verifyValue(value: string, valueText?: boolean) {
+    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    expect(ref.current!.value).toBe(value);
+    expect(inputDOM.value).toBe(value);
+    // aria-valuenow is used for fully numeric values
+    expect(inputDOM.getAttribute('aria-valuenow')).toBe(valueText ? null : value);
+    // aria-valuetext is used for values with suffixes or empty
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe(valueText ? value : null);
+  }
+
+  function simulateArrowButton(button: 'up' | 'down', expectedValue: string) {
+    const buttonDOM = wrapper!
+      .getDOMNode()
+      .getElementsByClassName(button === 'up' ? 'ms-UpButton' : 'ms-DownButton')[0];
+
+    expect(buttonDOM.tagName).toBe('BUTTON');
+
+    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+    ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
+
+    verifyValue(expectedValue);
+  }
+
+  function simulateArrowKey(which: KeyCodes, expectedValue: string) {
+    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which });
+    ReactTestUtils.Simulate.keyUp(inputDOM, { which });
+
+    verifyValue(expectedValue);
+  }
+
+  function simulateInput(enteredValue: string, expectedValue?: string) {
+    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(enteredValue));
+    ReactTestUtils.Simulate.blur(inputDOM);
+
+    verifyValue(expectedValue ?? enteredValue);
+  }
+
   beforeEach(() => {
     ref = React.createRef<ISpinButton>();
     resetIds();
@@ -31,9 +72,6 @@ describe('SpinButton', () => {
   isConformant({
     Component: SpinButton,
     displayName: 'SpinButton',
-    // Problem: Doesn’t handle ref.
-    // Solution: https://github.com/microsoft/fluentui/pull/15431
-    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   it('renders correctly', () => {
@@ -70,7 +108,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuemax')).toBe('100');
   });
 
-  it('respects min and max in DOM', () => {
+  it('respects min and max', () => {
     wrapper = mount(<SpinButton min={2} max={22} />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
@@ -82,23 +120,13 @@ describe('SpinButton', () => {
   it('respects defaultValue', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    expect(ref.current!.value).toBe('12');
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    verifyValue('12');
   });
 
   it('respects empty defaultValue', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="" />);
 
-    expect(ref.current!.value).toBe('');
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
+    verifyValue('', true);
   });
 
   // This is probably a behavior we should get rid of in the future (replace with custom rendering
@@ -106,12 +134,7 @@ describe('SpinButton', () => {
   it('respects non-numeric defaultValue', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12 pt" />);
 
-    expect(ref.current!.value).toBe('12 pt');
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('12 pt');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('12 pt');
+    verifyValue('12 pt', true);
   });
 
   it('ignores updates to defaultValue', () => {
@@ -130,12 +153,7 @@ describe('SpinButton', () => {
   it('respects value', () => {
     wrapper = mount(<SpinButton componentRef={ref} value="3" />);
 
-    expect(ref.current!.value).toBe('3');
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('3');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('3');
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    verifyValue('3');
   });
 
   it('respects updates to value', () => {
@@ -155,278 +173,157 @@ describe('SpinButton', () => {
   it('respects non-numeric value', () => {
     wrapper = mount(<SpinButton componentRef={ref} value="12 pt" />);
 
-    expect(ref.current!.value).toBe('12 pt');
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('12 pt');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('12 pt');
+    verifyValue('12 pt', true);
   });
 
   it('respects empty value', () => {
     wrapper = mount(<SpinButton componentRef={ref} value="" />);
 
-    expect(ref.current!.value).toBe('');
+    verifyValue('', true);
+  });
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    expect(inputDOM.value).toBe('');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
+  it('respects value even if invalid', () => {
+    // Per standard fully controlled behavior, props.value should NOT be validated
+    wrapper = mount(<SpinButton componentRef={ref} value="-1" min={0} max={100} />);
+
+    verifyValue('-1');
   });
 
   it('uses min as default if neither value nor defaultValue is provided', () => {
     wrapper = mount(<SpinButton componentRef={ref} min={2} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    expect(ref.current!.value).toBe('2');
-    expect(inputDOM.value).toBe('2');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('2');
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    verifyValue('2');
   });
 
   it('uses 0 as default if neither value, defaultValue nor min is provided', () => {
     wrapper = mount(<SpinButton componentRef={ref} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    expect(ref.current!.value).toBe('0');
-    expect(inputDOM.value).toBe('0');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('0');
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    verifyValue('0');
   });
 
   it('increments value when up button is pressed', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
-
-    expect(buttonDOM.tagName).toBe('BUTTON');
-
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-    ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
-
-    expect(ref.current!.value).toBe('13');
-    expect(inputDOM.value).toBe('13');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('13');
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    simulateArrowButton('up', '13');
+    // There was a bug where going twice didn't work
+    simulateArrowButton('up', '14');
   });
 
   it('decrements value when down button is pressed', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-DownButton')[0];
-
-    expect(buttonDOM.tagName).toBe('BUTTON');
-
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-    ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
-
-    expect(ref.current!.value).toBe('11');
-    expect(inputDOM.value).toBe('11');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('11');
+    simulateArrowButton('down', '11');
+    simulateArrowButton('down', '10');
   });
 
   it('increments value when up arrow key is pressed', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
-    ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.up });
-
-    expect(ref.current!.value).toBe('13');
-    expect(inputDOM.value).toBe('13');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('13');
+    simulateArrowKey(KeyCodes.up, '13');
+    simulateArrowKey(KeyCodes.up, '14');
   });
 
   it('decrements value when down arrow key is pressed', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.down });
-
-    expect(ref.current!.value).toBe('11');
-    expect(inputDOM.value).toBe('11');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('11');
+    simulateArrowKey(KeyCodes.down, '11');
+    simulateArrowKey(KeyCodes.down, '10');
   });
 
   it('respects step when incrementing value', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
-    ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.up });
-
-    expect(ref.current!.value).toBe('14');
-    expect(inputDOM.value).toBe('14');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('14');
+    simulateArrowKey(KeyCodes.up, '14');
+    simulateArrowKey(KeyCodes.up, '16');
   });
 
   it('respects step when decrementing value', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.down });
-
-    expect(ref.current!.value).toBe('10');
-    expect(inputDOM.value).toBe('10');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('10');
+    simulateArrowKey(KeyCodes.down, '10');
+    simulateArrowKey(KeyCodes.down, '8');
   });
 
   it('allows value updates when no props are defined', () => {
     wrapper = mount(<SpinButton componentRef={ref} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
-    expect(inputDOM.value).toBe('1');
-    expect(ref.current!.value).toBe('1');
+    simulateArrowKey(KeyCodes.up, '1');
   });
 
   it('accepts user-entered values when uncontrolled', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-      ReactTestUtils.Simulate.blur(inputDOM);
-    });
-
-    expect(ref.current!.value).toBe('21');
-    expect(inputDOM.value).toBe('21');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('21');
+    simulateInput('21');
   });
 
   it('does not accept user-entered values when controlled', () => {
     wrapper = mount(<SpinButton componentRef={ref} value="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.act(() => {
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-      ReactTestUtils.Simulate.blur(inputDOM);
-    });
-
-    expect(ref.current!.value).toBe('12');
-    expect(inputDOM.value).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
+    simulateInput('21', '12');
   });
 
   it('resets value when user entry is invalid', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('garbage'));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(ref.current!.value).toBe('12');
-    expect(inputDOM.value).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
+    simulateInput('garbage', '12');
   });
 
   it('resets value when input is cleared (empty)', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent());
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(ref.current!.value).toBe('12');
-    expect(inputDOM.value).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
+    simulateInput('', '12');
   });
 
   it('resets to max when user-entered value is too high', () => {
     wrapper = mount(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('23'));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(ref.current!.value).toBe('22');
-    expect(inputDOM.value).toBe('22');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('22');
+    simulateInput('23', '22');
   });
 
   it('resets to min when user-entered value is too low', () => {
     wrapper = mount(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('0'));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(ref.current!.value).toBe('2');
-    expect(inputDOM.value).toBe('2');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('2');
+    simulateInput('0', '2');
   });
 
   it('uses onValidate prop (with valid input)', () => {
-    const exampleMinValue = 2;
-    const exampleMaxValue = 22;
+    const min = 2;
+    const max = 22;
 
-    wrapper = mount(
-      <SpinButton
-        componentRef={ref}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue="12"
-        onValidate={(newValue: string): string | void => {
-          const numberValue: number = +newValue;
-          if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
-            return newValue;
-          }
-        }}
-      />,
-    );
+    const onValidate = jest.fn((newValue: string): string | void => {
+      const numberValue: number = +newValue;
+      if (!isNaN(numberValue) && numberValue >= min && numberValue <= max) {
+        return newValue;
+      }
+    });
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-    ReactTestUtils.Simulate.blur(inputDOM);
+    wrapper = mount(<SpinButton componentRef={ref} min={min} max={max} defaultValue="12" onValidate={onValidate} />);
 
-    expect(ref.current!.value).toBe('21');
-    expect(inputDOM.value).toBe('21');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('21');
+    simulateInput('21');
+    expect(onValidate).toHaveBeenCalledTimes(1);
   });
 
   it('uses onValidate prop', () => {
-    const exampleMinValue = 2;
-    const exampleMaxValue = 22;
+    const min = 2;
+    const max = 22;
 
-    wrapper = mount(
-      <SpinButton
-        componentRef={ref}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue="12"
-        onValidate={(newValue: string): string | void => {
-          const numberValue: number = Number(newValue);
-          if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
-            return newValue;
-          }
-        }}
-      />,
-    );
+    const onValidate = jest.fn((newValue: string): string | void => {
+      const numberValue: number = +newValue;
+      if (!isNaN(numberValue) && numberValue >= min && numberValue <= max) {
+        return newValue;
+      }
+    });
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('100'));
-    ReactTestUtils.Simulate.blur(inputDOM);
+    wrapper = mount(<SpinButton componentRef={ref} min={min} max={max} defaultValue="12" onValidate={onValidate} />);
 
-    expect(ref.current!.value).toBe('12');
-    expect(inputDOM.value).toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
+    simulateInput('100', '12');
+    expect(onValidate).toHaveBeenCalledTimes(1);
   });
 
   it('stops spinning if text field is focused while actively spinning', () => {
     jest.useFakeTimers();
 
-    wrapper = mount(<SpinButton defaultValue="12" />);
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     const buttonDOM: any = wrapper.getDOMNode().querySelector('.ms-UpButton');
@@ -448,36 +345,28 @@ describe('SpinButton', () => {
       jest.runAllTimers();
     });
 
-    const currentValue = inputDOM.value;
-    expect(currentValue).not.toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
+    verifyValue('13');
   });
 
   it('uses custom onIncrement handler', () => {
     const onIncrement: jest.Mock = jest.fn();
 
-    wrapper = mount(<SpinButton onIncrement={onIncrement} />);
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" onIncrement={onIncrement} />);
 
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
-
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-
-    expect(onIncrement).toBeCalled();
+    simulateArrowButton('up', '2'); // value doesn't change since handler returns nothing
+    expect(onIncrement).toHaveBeenCalledTimes(1);
   });
 
   it('uses custom onDecrement handler', () => {
     const onDecrement: jest.Mock = jest.fn();
 
-    wrapper = mount(<SpinButton onDecrement={onDecrement} />);
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" onDecrement={onDecrement} />);
 
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-DownButton')[0];
-
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-
-    expect(onDecrement).toBeCalled();
+    simulateArrowButton('down', '2'); // value doesn't change since handler returns nothing
+    expect(onDecrement).toHaveBeenCalledTimes(1);
   });
 
-  it(`passes KeyCode ${KeyCodes.enter} to onValidate handler`, () => {
+  it(`passes KeyCodes.enter to onValidate handler`, () => {
     let keyCode: number | undefined;
     const onValidate: jest.Mock = jest.fn((value: string, event?: React.SyntheticEvent) => {
       keyCode = (event as React.KeyboardEvent).which;
@@ -494,25 +383,6 @@ describe('SpinButton', () => {
     expect(keyCode).toBe(KeyCodes.enter);
     ReactTestUtils.Simulate.blur(inputDOM);
     expect(onValidate).toHaveBeenCalledTimes(1);
-  });
-
-  it('handles controlled scenarios', () => {
-    let spinButtonValue = '5';
-
-    wrapper = mount(
-      <SpinButton
-        value={spinButtonValue}
-        onChange={(ev, newValue) => {
-          spinButtonValue = newValue!;
-        }}
-      />,
-    );
-
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-DownButton')[0];
-
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-
-    expect(spinButtonValue).toBe('4');
   });
 
   it('does not call onValidate again on enter key press until the input changes', () => {
@@ -533,7 +403,7 @@ describe('SpinButton', () => {
     expect(onValidate).toHaveBeenCalledTimes(2);
   });
 
-  it('respects custom ariaDescribedBby id to the input', () => {
+  it('respects custom ariaDescribedBy id to the input', () => {
     const customId = 'customAriaDescriptionId';
     wrapper = mount(<SpinButton label="label" ariaDescribedBy={customId} />);
 
