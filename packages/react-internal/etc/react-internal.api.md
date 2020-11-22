@@ -4623,7 +4623,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement>
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onChange?: (ev?: React.FormEvent<HTMLInputElement>, newValue?: string) => void;
     onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
