@@ -72,7 +72,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     upArrowButtonStyles: customUpArrowButtonStyles,
     downArrowButtonStyles: customDownArrowButtonStyles,
     theme,
-    value,
+    value: valueFromProps,
     ariaPositionInSet,
     ariaSetSize,
     ariaValueNow,
@@ -96,8 +96,8 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   const [isFocused, { setTrue: setTrueIsFocused, setFalse: setFalseIsFocused }] = useBoolean(false);
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
   const { setTimeout, clearTimeout } = useSetTimeout();
-  const [spinButtonValue, setSpinButtonValue] = useControllableValue(
-    value,
+  const [value, setValue] = useControllableValue(
+    valueFromProps,
     defaultValue !== undefined ? defaultValue : String(min || '0'),
     onChange,
   );
@@ -108,23 +108,18 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
-    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
-    return precision;
-  };
-
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     lastValidValue: initialValue,
     spinningByMouse: false,
     valueToValidate: undefined,
-    precision: callCalculatePrecision(props as ISpinButtonProps),
+    precision: props.precision ?? Math.max(calculatePrecision(step), 0),
     currentStepFunctionHandle: -1,
     initialStepDelay: 400,
     stepDelay: 75,
   });
 
-  if (value !== undefined) {
-    internalState.lastValidValue = value;
+  if (valueFromProps !== undefined) {
+    internalState.lastValidValue = valueFromProps;
   }
 
   const classNames = getClassNames(styles, {
@@ -163,20 +158,20 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (
-      spinButtonValue !== undefined &&
+      value !== undefined &&
       internalState.valueToValidate !== undefined &&
       internalState.valueToValidate !== internalState.lastValidValue
     ) {
-      const newValue = handleValidate!(internalState.valueToValidate, ev);
+      const newValue = handleValidate(internalState.valueToValidate, ev);
 
       // Done validating this value, so clear it
       internalState.valueToValidate = undefined;
       if (newValue !== undefined) {
         internalState.lastValidValue = newValue;
-        setSpinButtonValue(newValue);
+        setValue(newValue);
       } else {
         // Value was invalid. Reset state to last valid value.
-        setSpinButtonValue(internalState.lastValidValue);
+        setValue(internalState.lastValidValue);
       }
     }
   };
@@ -212,9 +207,9 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       ) => string | void,
       ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
     ): void => {
-      const newValue: string | void = stepFunction(spinButtonValue || '', ev);
+      const newValue: string | void = stepFunction(value || '', ev);
       if (newValue !== undefined) {
-        setSpinButtonValue(newValue);
+        setValue(newValue);
       }
 
       if (internalState.spinningByMouse !== shouldSpin) {
@@ -227,7 +222,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         }, stepDelay);
       }
     },
-    [internalState, setSpinButtonValue, setTimeout, spinButtonValue],
+    [internalState, setValue, setTimeout, value],
   );
 
   const handleIncrement = React.useCallback(
@@ -260,7 +255,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     const element: HTMLInputElement = ev.target as HTMLInputElement;
     const elementValue: string = element.value;
     internalState.valueToValidate = elementValue;
-    setSpinButtonValue(elementValue);
+    setValue(elementValue);
   };
 
   const handleFocus = React.useCallback(
@@ -314,8 +309,8 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         validate(ev);
         break;
       case KeyCodes.escape:
-        if (spinButtonValue !== internalState.lastValidValue) {
-          setSpinButtonValue(internalState.lastValidValue);
+        if (value !== internalState.lastValidValue) {
+          setValue(internalState.lastValidValue);
         }
         break;
       default:
@@ -354,7 +349,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     [internalState.initialStepDelay, handleDecrement, updateValue],
   );
 
-  useComponentRef(props, input, spinButtonValue);
+  useComponentRef(props, input, value);
   useDebugWarnings(props);
 
   return (
@@ -378,7 +373,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         data-ktp-target={true}
       >
         <input
-          value={spinButtonValue}
+          value={value}
           id={inputId}
           onChange={handleInputChange}
           onInput={handleInputChange}
@@ -390,17 +385,11 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           aria-valuenow={
             typeof ariaValueNow === 'number'
               ? ariaValueNow
-              : spinButtonValue && !isNaN(Number(spinButtonValue)) // Number('') is 0 which may not be desirable
-              ? Number(spinButtonValue)
+              : value && !isNaN(Number(value)) // Number('') is 0 which may not be desirable
+              ? Number(value)
               : undefined
           }
-          aria-valuetext={
-            ariaValueText
-              ? ariaValueText
-              : !spinButtonValue || isNaN(Number(spinButtonValue))
-              ? spinButtonValue
-              : undefined
-          }
+          aria-valuetext={ariaValueText ? ariaValueText : !value || isNaN(Number(value)) ? value : undefined}
           aria-valuemin={min}
           aria-valuemax={max}
           aria-describedby={ariaDescribedBy}
