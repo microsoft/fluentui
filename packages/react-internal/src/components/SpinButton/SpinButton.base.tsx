@@ -129,6 +129,11 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     stepDelay: 75,
   });
 
+  if (typeof valueFromProps === 'string') {
+    // Ensure that we respect updates to props.value when determining the last valid value
+    internalState.lastValidValue = valueFromProps;
+  }
+
   const precision = React.useMemo(() => {
     return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
   }, [precisionFromProps, step]);
@@ -214,6 +219,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     ): void => {
       const newValue: string | void = stepFunction(value || '', ev);
       if (newValue !== undefined) {
+        internalState.lastValidValue = newValue;
         setValue(newValue);
       }
 

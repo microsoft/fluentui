@@ -216,6 +216,18 @@ describe('SpinButton', () => {
     simulateArrowButton('down', '10');
   });
 
+  it('does not go above max when up button is pressed', () => {
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" max={12} />);
+
+    simulateArrowButton('up', '12');
+  });
+
+  it('does not go below min when down button is pressed', () => {
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" min={12} />);
+
+    simulateArrowButton('down', '12');
+  });
+
   it('increments value when up arrow key is pressed', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
@@ -230,6 +242,18 @@ describe('SpinButton', () => {
     simulateArrowKey(KeyCodes.down, '10');
   });
 
+  it('does not go above max when up arrow is pressed', () => {
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" max={12} />);
+
+    simulateArrowKey(KeyCodes.up, '12');
+  });
+
+  it('does not go below min when down arrow is pressed', () => {
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" min={12} />);
+
+    simulateArrowKey(KeyCodes.down, '12');
+  });
+
   it('respects step when incrementing value', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
 
@@ -242,6 +266,22 @@ describe('SpinButton', () => {
 
     simulateArrowKey(KeyCodes.down, '10');
     simulateArrowKey(KeyCodes.down, '8');
+  });
+
+  it('does not step out of bounds', () => {
+    // In this case incrementing or decrementing by the full step takes the value out of bounds.
+    // The update should still be respected but clamped within valid range.
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} min={11} max={12} />);
+
+    simulateArrowKey(KeyCodes.down, '11');
+    simulateArrowKey(KeyCodes.up, '12');
+  });
+
+  it('supports decimal steps', () => {
+    wrapper = mount(<SpinButton componentRef={ref} step={0.1} />);
+
+    simulateArrowButton('up', '0.1');
+    simulateArrowButton('up', '0.2');
   });
 
   it('allows value updates when no props are defined', () => {
@@ -284,6 +324,14 @@ describe('SpinButton', () => {
     wrapper = mount(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" />);
 
     simulateInput('0', '2');
+  });
+
+  // Not sure if this behavior is correct. Adding a test to document it for now, but we
+  // could consider changing it later (to round user input as well as steps).
+  it('does not round user input even if precision is 0', () => {
+    wrapper = mount(<SpinButton componentRef={ref} step={1} precision={0} />);
+
+    simulateInput('1.7', '1.7');
   });
 
   it('uses onValidate prop (with valid input)', () => {
@@ -411,5 +459,13 @@ describe('SpinButton', () => {
 
     const ariaDescribedByAttribute = inputDOM.getAttribute('aria-describedby');
     expect(ariaDescribedByAttribute).toBe(customId);
+  });
+
+  it('resets to latest valid value if garbage is typed after valid updates', () => {
+    wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" />);
+
+    simulateArrowButton('up', '3');
+
+    simulateInput('garbage', '3');
   });
 });
