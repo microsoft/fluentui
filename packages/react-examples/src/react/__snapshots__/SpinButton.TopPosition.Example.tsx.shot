@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctly 1`] = `
+exports[`Component Examples renders SpinButton.TopPosition.Example.tsx correctly 1`] = `
 <div
   className=
 
@@ -21,9 +21,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         {
           align-items: center;
           display: inline-flex;
-          float: left;
-          height: 32px;
-          margin-right: 10px;
+          margin-bottom: -1px;
         }
   >
     <label
@@ -55,7 +53,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
       htmlFor="input0"
       id="Label1"
     >
-      Custom styled SpinButton
+      With label above
     </label>
   </div>
   <div
@@ -231,7 +229,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               color: Highlight;
             }
             &:active {
-              background-color: green;
+              background-color: #edebe9;
               color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
@@ -372,7 +370,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               color: Highlight;
             }
             &:active {
-              background-color: red;
+              background-color: #edebe9;
               color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
