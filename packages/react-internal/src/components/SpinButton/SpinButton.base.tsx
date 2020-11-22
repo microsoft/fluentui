@@ -18,11 +18,9 @@ import { useSetTimeout, useControllableValue, useWarnings, useId } from '@fluent
 
 interface ISpinButtonInternalState {
   lastValidValue?: string;
-  spinningByMouse: boolean;
+  spinningByMouse?: boolean;
   valueToValidate?: string;
-  currentStepFunctionHandle: number;
-  initialStepDelay: number;
-  stepDelay: number;
+  stepTimeoutHandle: number;
 }
 
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
@@ -39,6 +37,9 @@ const DEFAULT_PROPS = {
   decrementButtonIcon: { iconName: 'ChevronDownSmall' },
 };
 type ISpinButtonPropsWithDefaults = ISpinButtonProps & Required<Pick<ISpinButtonProps, keyof typeof DEFAULT_PROPS>>;
+
+const INITIAL_STEP_DELAY = 400;
+const STEP_DELAY = 75;
 
 const useComponentRef = (
   props: ISpinButtonProps,
@@ -123,10 +124,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     lastValidValue: value,
-    spinningByMouse: false,
-    currentStepFunctionHandle: -1,
-    initialStepDelay: 400,
-    stepDelay: 75,
+    stepTimeoutHandle: -1,
   });
 
   if (typeof valueFromProps === 'string') {
@@ -190,9 +188,9 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
   const stop = React.useCallback((): void => {
-    if (internalState.currentStepFunctionHandle >= 0) {
-      clearTimeout(internalState.currentStepFunctionHandle);
-      internalState.currentStepFunctionHandle = -1;
+    if (internalState.stepTimeoutHandle >= 0) {
+      clearTimeout(internalState.stepTimeoutHandle);
+      internalState.stepTimeoutHandle = -1;
     }
     if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       internalState.spinningByMouse = false;
@@ -202,38 +200,48 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   /**
    * Update the value with the given stepFunction
-   * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
-   * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    * @param event - The event that triggered the updateValue
+   * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
+   * when spinning in response to a mousedown. It doesn't need to be true for keyboard spinning since
+   * holding the key will automatically fire more keydown events.
    */
   const updateValue = React.useCallback(
     (
-      shouldSpin: boolean,
-      stepDelay: number,
       stepFunction: (
         value: string,
         event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
       ) => string | void,
       ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+      shouldSpin: boolean = false,
     ): void => {
-      const newValue: string | void = stepFunction(value || '', ev);
-      if (newValue !== undefined) {
-        internalState.lastValidValue = newValue;
-        setValue(newValue);
-      }
+      setValue(prevValue => {
+        // For spinning by mouse, where additional updateValue calls are triggered via setTimeout,
+        // we must access the current value in an updater callback (rather than referencing `value`
+        // directly) because otherwise we'd be reusing the stale captured value from the first call
+        // and spinning wouldn't work. (The other possible approach here is storing the value in
+        // internalState while spinning, then setting the actual state when spinning stops.)
+        const newValue = stepFunction(prevValue || '', ev);
+        if (newValue !== undefined) {
+          internalState.lastValidValue = newValue;
+          return newValue;
+        }
+        return prevValue;
+      });
 
-      if (internalState.spinningByMouse !== shouldSpin) {
-        internalState.spinningByMouse = shouldSpin;
-      }
+      const wasSpinning = internalState.spinningByMouse;
+      internalState.spinningByMouse = shouldSpin;
 
       if (shouldSpin) {
-        internalState.currentStepFunctionHandle = setTimeout(() => {
-          updateValue(shouldSpin, internalState.stepDelay, stepFunction, ev);
-        }, stepDelay);
+        internalState.stepTimeoutHandle = setTimeout(
+          () => {
+            updateValue(stepFunction, ev, true);
+          },
+          wasSpinning ? STEP_DELAY : INITIAL_STEP_DELAY,
+        );
       }
     },
-    [internalState, setValue, setTimeout, value],
+    [internalState, setValue, setTimeout],
   );
 
   /** Composed increment handler (uses `props.onIncrement` or default) */
@@ -266,8 +274,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   /** Handles when the user types in the input */
   const handleInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const element: HTMLInputElement = ev.target as HTMLInputElement;
-    const elementValue: string = element.value;
+    const elementValue = (ev.target as HTMLInputElement).value;
     internalState.valueToValidate = elementValue;
     setValue(elementValue);
   };
@@ -311,19 +318,17 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     switch (ev.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
-        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleIncrement, ev);
+        updateValue(handleIncrement, ev);
         break;
       case KeyCodes.down:
         spinDirection = KeyboardSpinDirection.down;
-        updateValue(false /* shouldSpin */, internalState.initialStepDelay, handleDecrement, ev);
+        updateValue(handleDecrement, ev);
         break;
       case KeyCodes.enter:
         validate(ev);
         break;
       case KeyCodes.escape:
         setValue(internalState.lastValidValue);
-        break;
-      default:
         break;
     }
     // style the increment/decrement button to look active
@@ -346,16 +351,16 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const handleIncrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleIncrement, ev);
+      updateValue(handleIncrement, ev, true /* shouldSpin */);
     },
-    [internalState, handleIncrement, updateValue],
+    [handleIncrement, updateValue],
   );
 
   const handleDecrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(true /* shouldSpin */, internalState.initialStepDelay, handleDecrement, ev);
+      updateValue(handleDecrement, ev, true /* shouldSpin */);
     },
-    [internalState, handleDecrement, updateValue],
+    [handleDecrement, updateValue],
   );
 
   useComponentRef(props, input, value);

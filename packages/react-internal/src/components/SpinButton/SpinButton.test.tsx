@@ -368,34 +368,6 @@ describe('SpinButton', () => {
     expect(onValidate).toHaveBeenCalledTimes(1);
   });
 
-  it('stops spinning if text field is focused while actively spinning', () => {
-    jest.useFakeTimers();
-
-    wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
-
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM: any = wrapper.getDOMNode().querySelector('.ms-UpButton');
-
-    expect(inputDOM.value).toBe('12');
-    expect(buttonDOM).toBeTruthy();
-
-    // start spinning
-    ReactTestUtils.act(() => {
-      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-
-      // spin again
-      jest.runOnlyPendingTimers();
-
-      // spin again
-      jest.runOnlyPendingTimers();
-
-      ReactTestUtils.Simulate.focus(inputDOM);
-      jest.runAllTimers();
-    });
-
-    verifyValue('13');
-  });
-
   it('uses custom onIncrement handler', () => {
     const onIncrement: jest.Mock = jest.fn();
 
@@ -449,6 +421,58 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('10'));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
     expect(onValidate).toHaveBeenCalledTimes(2);
+  });
+
+  it('continues spinning until mouseUp', () => {
+    jest.useFakeTimers();
+
+    const onIncrement = jest.fn(value => String(+value + 1));
+
+    wrapper = mount(<SpinButton componentRef={ref} onIncrement={onIncrement} />);
+
+    const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton') as HTMLButtonElement;
+
+    // start spinning (component will re-render after act() call)
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+    });
+    expect(onIncrement).toHaveBeenCalledTimes(1);
+    expect(onIncrement).toHaveBeenLastCalledWith('0');
+
+    // spin again (at one point subsequent spins were broken)
+    ReactTestUtils.act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(onIncrement).toHaveBeenCalledTimes(2);
+    expect(onIncrement).toHaveBeenLastCalledWith('1');
+
+    ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
+    jest.runAllTimers();
+
+    verifyValue('2');
+  });
+
+  it('stops spinning if text field is focused while actively spinning', () => {
+    jest.useFakeTimers();
+
+    wrapper = mount(<SpinButton componentRef={ref} />);
+
+    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+    const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton') as HTMLButtonElement;
+
+    // start spinning (component will re-render after act() call)
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+    });
+    // spin again
+    ReactTestUtils.act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    ReactTestUtils.Simulate.focus(inputDOM);
+    jest.runAllTimers();
+
+    verifyValue('2');
   });
 
   it('respects custom ariaDescribedBy id to the input', () => {
