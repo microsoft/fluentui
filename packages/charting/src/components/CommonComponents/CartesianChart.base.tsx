@@ -118,6 +118,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this._isRtl,
         this.props.xAxisType,
         this.props.barwidth!,
+        this.props.tickValues!,
       ),
       xAxisElement: this.xAxisElement!,
       showRoundOffXTickValues: true,
