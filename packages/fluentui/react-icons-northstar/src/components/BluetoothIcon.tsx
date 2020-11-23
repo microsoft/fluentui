@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const BluetoothIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         fillRule="evenodd"
