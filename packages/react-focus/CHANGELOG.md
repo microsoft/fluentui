@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 22 Sep 2020 12:25:45 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:25:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.19)
+
+Mon, 23 Nov 2020 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.8..@fluentui/react-focus_v7.16.19)
+
+### Patches
+
+- FocusZone: Consuming theme information from ThemeContext to provide it when calling RTL. ([PR #16016](https://github.com/microsoft/fluentui/pull/16016) by humbertomakotomorimoto@gmail.com)
 
 ## [7.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.6)
 

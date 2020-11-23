@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 23 Nov 2020 12:25:00 GMT",
+      "tag": "@fluentui/react-examples_v0.9.6",
+      "version": "0.9.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Nav documentation to correctly reflect current behavior",
+            "author": "elcraig@microsoft.com",
+            "commit": "e33e107f3ee9f5c34f5005403825cf5dba95e468",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "@fluentui/react-examples_v0.9.3",
       "version": "0.9.3",
