@@ -128,7 +128,7 @@ function flattenSubTree(
         selectedItemIds,
       );
       const selectableChildrenNum = (childrenItems as ObjectShorthandValue<TreeItemProps>[]).filter(
-        item => item?.selectable !== false,
+        item => item.selectable !== false,
       ).length;
       if (selectedChildrenNum === selectableChildrenNum) {
         flatTree[id].selected = true;
