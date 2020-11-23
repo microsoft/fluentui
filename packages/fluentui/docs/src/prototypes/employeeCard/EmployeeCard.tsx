@@ -19,13 +19,8 @@ class EmployeeCard extends React.Component<Extendable<EmployeeCardProps>, any> {
     const { firstName, lastName, status, position, team, location, email, avatar, phone, ...restProps } = this.props;
     return (
       <Grid
-        styles={{
-          gridTemplateColumns: '80% 20%',
-          msGridColumns: '80% 20%',
-          width: '320px',
-          padding: '10px 20px 10px 10px',
-          background: 'white',
-        }}
+        columns="80% 20%"
+        styles={{ width: '320px', padding: '10px 20px 10px 10px', background: 'white' }}
         {...restProps}
       >
         <div>
