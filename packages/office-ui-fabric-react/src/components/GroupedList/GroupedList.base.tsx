@@ -130,6 +130,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       styles,
       compact,
       focusZoneProps = {},
+      rootListProps = {},
     } = this.props;
     const { groups, version } = this.state;
 
@@ -165,6 +166,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
             version={version}
+            {...rootListProps}
           />
         )}
       </FocusZone>
