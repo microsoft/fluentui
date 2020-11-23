@@ -1550,17 +1550,17 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
-                  {search
-                    ? renderSearchInput(
-                        accessibilityRootPropsRest,
-                        highlightedIndex,
-                        getInputProps,
-                        selectItemAtIndex,
-                        toggleMenu,
-                        variables,
-                      )
-                    : renderTriggerButton(getToggleButtonProps)}
+                  {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
+                  {search &&
+                    renderSearchInput(
+                      accessibilityRootPropsRest,
+                      highlightedIndex,
+                      getInputProps,
+                      selectItemAtIndex,
+                      toggleMenu,
+                      variables,
+                    )}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
