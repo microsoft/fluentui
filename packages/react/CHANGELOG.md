@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.18)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.17..@fluentui/react_v8.0.0-beta.18)
+
+### Changes
+
+- Fix display issue with Dropdown when using Chrome Translate ([PR #15984](https://github.com/microsoft/fluentui/pull/15984) by behowell@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.17)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.8..@fluentui/react_v8.0.0-beta.17)
+
+### Changes
+
+- Add text to breacrumb overflow items ([PR #15977](https://github.com/microsoft/fluentui/pull/15977) by pbelsal@gmail.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
 

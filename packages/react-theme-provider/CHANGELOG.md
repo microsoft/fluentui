@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.9..@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+### Changes
+
+- Move getTokens logic out from ThemeProvider to mergeTheme/createTheme. ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
 
 ## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.9)
 

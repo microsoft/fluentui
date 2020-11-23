@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.18",
+      "version": "5.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Date x axis tick values customizations",
+            "author": "v-jasha@microsoft.com",
+            "commit": "075797bc0e914f49091551f79789dee009fd00af",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Nov 2020 12:30:44 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.14",
       "version": "5.0.0-beta.14",

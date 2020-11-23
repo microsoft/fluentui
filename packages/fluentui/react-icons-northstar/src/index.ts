@@ -247,6 +247,7 @@ export { UserPhoneIcon } from './components/UserPhoneIcon';
 export { VideoCameraEmphasisIcon } from './components/VideoCameraEmphasisIcon';
 export { VideoLoadingIcon } from './components/VideoLoadingIcon';
 export { VideomailIcon } from './components/VideomailIcon';
+export { VideoProhibitedIcon } from './components/VideoProhibitedIcon';
 export { VisioColorIcon } from './components/VisioColorIcon';
 export { VisioIcon } from './components/VisioIcon';
 export { VolumeIcon } from './components/VolumeIcon';

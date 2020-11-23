@@ -9,13 +9,9 @@ export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: I
 
   return {
     root: [
-      theme.fonts.medium,
+      variantObject,
       {
         display: block ? (as === 'td' ? 'table-cell' : 'block') : 'inline',
-        fontFamily: variantObject.fontFamily,
-        fontSize: variantObject.fontSize,
-        fontWeight: variantObject.fontWeight,
-        color: variantObject.color,
         mozOsxFontSmoothing: variantObject.MozOsxFontSmoothing,
         webkitFontSmoothing: variantObject.WebkitFontSmoothing,
       },

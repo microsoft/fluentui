@@ -177,4 +177,38 @@ describe('SearchBox', () => {
         .getAttribute('value'),
     ).toBe('0');
   });
+
+  it('invokes escape and clear callbacks on escape keydown', () => {
+    const onEscape = jest.fn();
+    const onClear = jest.fn();
+    const keyDownEvent = new CustomEvent('keydown');
+    (keyDownEvent as any).which = KeyCodes.escape;
+
+    wrapper = mount(<SearchBox onEscape={onEscape} onClear={onClear} />);
+    wrapper.find('input').simulate('keydown', keyDownEvent);
+
+    expect(onEscape.mock.calls.length).toBe(1);
+    expect(onClear.mock.calls.length).toBe(1);
+  });
+
+  it('invokes search callback on enter keydown', () => {
+    const onSearch = jest.fn();
+    const keyDownEvent = new CustomEvent('keydown');
+    (keyDownEvent as any).which = KeyCodes.enter;
+
+    wrapper = mount(<SearchBox onSearch={onSearch} />);
+    wrapper.find('input').simulate('keydown', keyDownEvent);
+
+    expect(onSearch.mock.calls.length).toBe(1);
+  });
+
+  it('invokes keydown callback on keydown', () => {
+    const onKeyDown = jest.fn();
+    const keyDownEvent = new CustomEvent('keydown');
+
+    wrapper = mount(<SearchBox onKeyDown={onKeyDown} />);
+    wrapper.find('input').simulate('keydown', keyDownEvent);
+
+    expect(onKeyDown.mock.calls.length).toBe(1);
+  });
 });

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 20 Nov 2020 12:32:25 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f48beb130378a63cae4b7e9f95f492d81fbb60bd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-focus_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",
