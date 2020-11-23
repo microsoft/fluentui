@@ -1,5 +1,5 @@
 import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/dateValues';
-import TimeConstants from '../dateValues/timeConstants';
+import { TimeConstants } from '../dateValues/timeConstants';
 
 /**
  * Returns a date offset from the given date by the specified number of days.
@@ -167,7 +167,7 @@ export function getDateRangeArray(
   workWeekDays?: DayOfWeek[],
   daysToSelectInDayView: number = 1,
 ): Date[] {
-  const datesArray = new Array<Date>();
+  const datesArray: Date[] = [];
   let startDate: Date;
   let endDate = null;
 
@@ -304,6 +304,22 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
 }
 
 /**
+ * Gets the date for the last day of the week based on the given date assuming
+ * the specified first day of the week.
+ * @param date - The date to find the beginning of the week date for.
+ * @returns A new date object representing the first day of the week containing the input date.
+ */
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+  const lastDayOfWeek = firstDayOfWeek - 1 >= 0 ? firstDayOfWeek - 1 : TimeConstants.DaysInOneWeek - 1;
+  let daysOffset = lastDayOfWeek - date.getDay();
+  if (daysOffset < 0) {
+    // If last day of week is < date, go 1 week forward, to ensure resulting date is in the future.
+    daysOffset += TimeConstants.DaysInOneWeek;
+  }
+  return addDays(date, daysOffset);
+}
+
+/**
  * Gets a new date with the time portion zeroed out, i.e., set to midnight
  * @param date - The origin date
  * @returns A new date with the time set to midnight
@@ -317,6 +333,7 @@ function getDatePart(date: Date): Date {
  */
 export function getDatePartHashValue(date: Date): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
+  // eslint-disable-next-line no-bitwise
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
 }
 

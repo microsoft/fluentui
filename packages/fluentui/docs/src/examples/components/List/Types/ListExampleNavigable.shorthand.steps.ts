@@ -1,4 +1,5 @@
 import { listItemClassName, listClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   list: `.${listClassName}`,

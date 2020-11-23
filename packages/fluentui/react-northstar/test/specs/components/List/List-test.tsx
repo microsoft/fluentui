@@ -11,6 +11,7 @@ const listImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('List', () => {
   isConformant(List, {
+    testPath: __filename,
     constructorName: 'List',
   });
   handlesAccessibility(List, { defaultRootRole: 'list' });

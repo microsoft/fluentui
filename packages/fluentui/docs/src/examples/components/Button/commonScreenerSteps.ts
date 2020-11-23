@@ -1,4 +1,5 @@
 import { buttonClassName } from '@fluentui/react-northstar';
+import { ScreenerSteps } from '@fluentui/scripts/screener';
 
 const button = `.${buttonClassName}`;
 

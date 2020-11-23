@@ -5,7 +5,7 @@ const CardExampleBody = () => (
   <Card aria-roledescription="card with image and text">
     <Card.Body fitted>
       <Flex column gap="gap.small">
-        <Image src="public/images/wireframe/square-image.png" />
+        <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
         <Text content="Citizens of distant epochs muse about at the edge of forever hearts of the..." />
       </Flex>
     </Card.Body>

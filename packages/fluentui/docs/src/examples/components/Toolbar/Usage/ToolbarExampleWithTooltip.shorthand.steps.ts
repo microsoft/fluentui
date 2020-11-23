@@ -1,4 +1,5 @@
 import { toolbarClassName, toolbarItemClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   item: (itemIndex: number) => `.${toolbarClassName} .${toolbarItemClassName}:nth-child(${itemIndex})`,

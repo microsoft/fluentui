@@ -1,6 +1,5 @@
 import { NodePlopAPI, AddManyActionConfig } from 'plop';
 import { Actions } from 'node-plop';
-import * as inquirer from 'inquirer'; // implicit dep for types only
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
@@ -25,7 +24,7 @@ module.exports = (plop: NodePlopAPI) => {
         type: 'input',
         name: 'packageName',
         message: 'Package name (do NOT include @fluentui prefix):',
-        validate: (input: string) => /^[a-z-]+$/.test(input) || 'Must enter a valid unscoped npm package name',
+        validate: (input: string) => /^[a-z\d-]+$/.test(input) || 'Must enter a valid unscoped npm package name',
       },
       {
         type: 'list',
@@ -50,7 +49,7 @@ module.exports = (plop: NodePlopAPI) => {
         default: true,
         when: answers => answers.target === 'node', // react always has tests
       },
-    ] as inquirer.Question<Partial<Answers>>[],
+    ],
 
     actions: (answers: Answers): Actions => {
       const { packageName, target, hasTests } = answers;
@@ -117,9 +116,9 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
 
   // Copy dep versions in package.json from actual current versions.
   // This is preferable over hardcoding dependency versions to keep things in sync.
-  // As of writing, @uifabric/experiments also depends on all the packages the React template needs,
-  // so we grab the current versions from there (or @uifabric/migration for the node template).
-  const referencePackage = target === 'node' ? 'migration' : 'experiments';
+  // As of writing, @fluentui/react-experiments also depends on all the packages the React template needs,
+  // so we grab the current versions from there (or @fluentui/codemods for the node template).
+  const referencePackage = target === 'node' ? 'codemods' : 'react-experiments';
   const referencePackageJson: PackageJson = fs.readJSONSync(
     path.join(root, 'packages', referencePackage, 'package.json'),
   );

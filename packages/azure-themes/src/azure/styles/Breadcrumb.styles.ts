@@ -1,5 +1,5 @@
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from '@fluentui/react/lib/Breadcrumb';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcrumbStyles> => {
   const { theme } = props;

@@ -49,8 +49,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 
   if (!baselineOnly) {
     urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
-      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test-northstar/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test-northstar/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script

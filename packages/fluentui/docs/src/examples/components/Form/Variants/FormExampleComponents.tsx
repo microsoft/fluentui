@@ -30,6 +30,7 @@ const FormExampleComponents = () => (
     <Form.RadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
     <Form.Slider label="Bid the price" />
     <Form.Checkbox label="I agree to the Terms and Conditions" />
+    <Form.Datepicker label="Select a date" />
     <Form.Button content="Submit" />
   </Form>
 );

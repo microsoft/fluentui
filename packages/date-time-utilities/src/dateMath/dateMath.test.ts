@@ -478,4 +478,18 @@ describe('DateMath', () => {
     // Last day of year
     expect(DateMath.compareDates(new Date('Dec 31 2017'), DateMath.getYearEnd(date))).toBe(true);
   });
+
+  it('can get start date of week', () => {
+    const date = new Date('Aug 2 2020');
+    expect(DateMath.compareDates(new Date('Jul 28 2020'), DateMath.getStartDateOfWeek(date, DayOfWeek.Tuesday))).toBe(
+      true,
+    );
+  });
+
+  it('can get end date of week', () => {
+    const date = new Date('Sep 29 2020');
+    expect(DateMath.compareDates(new Date('Oct 5 2020'), DateMath.getEndDateOfWeek(date, DayOfWeek.Tuesday))).toBe(
+      true,
+    );
+  });
 });

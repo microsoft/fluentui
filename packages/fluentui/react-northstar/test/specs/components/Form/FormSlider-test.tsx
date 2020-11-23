@@ -4,8 +4,9 @@ import { Slider } from 'src/components/Slider/Slider';
 
 describe('FormSlider', () => {
   isConformant(FormSlider, {
+    testPath: __filename,
     constructorName: 'FormSlider',
-    passesUnhandledPropsTo: Slider,
+    targetComponent: Slider,
     // TODO: point to correct once Slider will be using compose
     forwardsRefTo: false,
     eventTargets: {

@@ -1,4 +1,5 @@
 import { treeTitleClassName, treeItemClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   treeItem: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,

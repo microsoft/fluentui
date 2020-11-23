@@ -4,8 +4,9 @@ import { Dropdown } from 'src/components/Dropdown/Dropdown';
 
 describe('FormDropdown', () => {
   isConformant(FormDropdown, {
+    testPath: __filename,
     constructorName: 'FormDropdown',
     forwardsRefTo: false,
-    passesUnhandledPropsTo: Dropdown,
+    targetComponent: Dropdown,
   });
 });

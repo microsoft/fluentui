@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageBar } from 'office-ui-fabric-react';
+import { MessageBar } from '@fluentui/react';
 
 const Scenario = () => <MessageBar />;
 

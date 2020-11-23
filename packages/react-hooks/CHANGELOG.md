@@ -1,8 +1,52 @@
-# Change Log - @uifabric/react-hooks
+# Change Log - @fluentui/react-hooks
 
-This log was last generated on Tue, 25 Aug 2020 12:36:19 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.13.5..@fluentui/react-hooks_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Implementing useUnmount, useMount, and useMountSync hooks within react-hooks package. ([PR #15516](https://github.com/microsoft/fluentui/pull/15516) by czearing@outlook.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+- Improvement for `useBoolean` hook ([PR #15607](https://github.com/microsoft/fluentui/pull/15607) by fu.juntao358@gmail.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.13.0)
+
+Fri, 11 Sep 2020 12:27:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.12.0..@uifabric/react-hooks_v7.13.0)
+
+### Minor changes
+
+- Create useTarget hook for common Callout logic reuse ([PR #14513](https://github.com/microsoft/fluentui/pull/14513) by miclo@microsoft.com)
+
+### Patches
+
+- Deprecate useConstCallback ([PR #14990](https://github.com/microsoft/fluentui/pull/14990) by elcraig@microsoft.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.12.0)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.11.0..@uifabric/react-hooks_v7.12.0)
+
+### Minor changes
+
+- useMergedRefs now properly returns a more usable React.RefObject type. ([PR #14887](https://github.com/microsoft/fluentui/pull/14887) by dzearing@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.10.0..@uifabric/react-hooks_v7.11.0)
+
+### Patches
+
+- Fix useControllableValue onChange event typing. ([PR #14774](https://github.com/microsoft/fluentui/pull/14774) by xgao@microsoft.com)
 
 ## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.10.0)
 

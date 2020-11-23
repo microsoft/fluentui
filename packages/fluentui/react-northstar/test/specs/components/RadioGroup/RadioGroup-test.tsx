@@ -38,7 +38,11 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
 ];
 
 describe('RadioGroup', () => {
-  isConformant(RadioGroup, { constructorName: 'RadioGroup', autoControlledProps: ['checkedValue'] });
+  isConformant(RadioGroup, {
+    testPath: __filename,
+    constructorName: 'RadioGroup',
+    autoControlledProps: ['checkedValue'],
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroup, {
@@ -75,6 +79,28 @@ describe('RadioGroup', () => {
 
       const onClick = items[0].onClick || items[0].props.onClick;
       expect(onClick).toHaveBeenCalled();
+    });
+
+    it('calls onChange handler for item with updated checked state', () => {
+      const onChange = jest.fn();
+      const items = [
+        {
+          name: 'test-name',
+          key: 'test-key0',
+          label: 'test-label0',
+          value: 'test-value0',
+          onChange,
+        },
+        ...getItems(),
+      ];
+      const wrapper = mountWithProvider(<RadioGroup items={items} />);
+      const radioGroupItems = wrapper.find('RadioGroupItem');
+
+      radioGroupItems.first().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
+
+      radioGroupItems.last().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
     });
 
     it('passes arbitrary props', () => {

@@ -1,25 +1,21 @@
 import * as React from 'react';
-import { ChevronDownIcon } from '@fluentui/react-icons';
-import { ContextualMenu, useFocusRects } from 'office-ui-fabric-react';
+import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
-import * as classes from './MenuButton.scss';
-import { useButtonClasses } from '../Button/Button';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useMenuButtonClasses } from './useMenuButtonClasses';
+import { renderMenuButton } from './renderMenuButton';
 
-export const useMenuButtonClasses = makeClasses(classes);
-
+/**
+ * Define a styled MenuButton, using the `useMenuButton` hook.
+ * {@docCategory Button}
+ */
 export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props, ref) => {
-  const { state, render } = useMenuButton(props, ref, {
+  const state = useMenuButton(props, ref, {
     menuIcon: { as: ChevronDownIcon },
-    menu: { as: ContextualMenu },
   });
 
-  // Styling hooks.
-  useButtonClasses(state);
   useMenuButtonClasses(state);
-  useFocusRects(state.ref);
 
   // TODO remove any
   /**
@@ -30,7 +26,7 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useInlineTokens(state as any, '--button');
 
-  return render(state);
+  return renderMenuButton(state);
 });
 
 MenuButton.displayName = 'MenuButton';

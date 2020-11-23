@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Card.Horizontal.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    aria-label="Basic horizontal card"
+    className=
+        ms-Stack
+        ms-Card
+        {
+          align-items: flex-start;
+          border-radius: 2px;
+          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+          box-sizing: border-box;
+          cursor: default;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          justify-content: flex-start;
+          max-width: 500px;
+          min-width: 300px;
+          outline: none;
+          transition: box-shadow 0.5s ease;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+        }
+    onKeyDown={[Function]}
+    role="presentation"
+    tabIndex={-1}
+  >
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 12px;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 12px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Basic horizontal card
+      </span>
+    </div>
+  </div>
+  <div
+    aria-label="Clickable horizontal card "
+    className=
+        ms-Stack
+        ms-Card
+        {
+          align-items: flex-start;
+          border-radius: 2px;
+          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+          box-sizing: border-box;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          justify-content: flex-start;
+          max-width: 500px;
+          min-width: 300px;
+          outline: none;
+          transition: box-shadow 0.5s ease;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+        &:focus {
+          border: 1px solid black;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        &:hover {
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          box-shadow: 0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+        }
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <div
+      className=
+          ms-StackItem
+          ms-CardItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+    >
+      <div
+        className=
+            ms-Image
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              overflow: hidden;
+            }
+        style={
+          Object {
+            "height": undefined,
+            "width": undefined,
+          }
+        }
+      >
+        <img
+          alt="Placeholder image."
+          className=
+              ms-Image-image
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                opacity: 0;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          src="https://placehold.it/180x135"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 12px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 12px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #025F52;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 600;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Contoso
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Contoso Denver expansion design marketing hero guidelines
+      </span>
+      <span
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: inline;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              moz-osx-font-smoothing: grayscale;
+              webkit-font-smoothing: antialiased;
+            }
+      >
+        Is this recommendation helpful?
+      </span>
+    </div>
+    <div
+      className=
+          ms-Stack
+          ms-CardSection
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: stretch;
+            border-left: 1px solid #F3F2F1;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            height: auto;
+            margin-bottom: 12px;
+            margin-left: 0px;
+            margin-right: 12px;
+            margin-top: 12px;
+            padding-bottom: 0px;
+            padding-left: 12px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 12px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-1";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="RedEye"
+      >
+        
+      </i>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-7";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="SingleBookmark"
+      >
+        
+      </i>
+      <div
+        className=
+            ms-StackItem
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              flex-grow: 1;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              width: auto;
+            }
+      >
+        <span />
+      </div>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #0078D4;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              speak: none;
+            }
+        data-icon-name="MoreVertical"
+      >
+        
+      </i>
+    </div>
+  </div>
+</div>
+`;

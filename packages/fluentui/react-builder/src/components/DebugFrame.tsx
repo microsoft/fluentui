@@ -117,7 +117,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         userSelect: 'none',
       }}
     >
-      <div style={{ width: '100%', height: '100%' }} onMouseDown={handleMove} />
+      <div style={{ width: '100%', height: '100%' }} draggable={true} onDragStart={handleMove} />
       <div style={styles}>
         <span style={{ fontWeight: 'bold' }}>{componentName}</span>
         <LevelUpDebugButton onClick={handleGoToParent} />

@@ -17,7 +17,8 @@ const PopupInPopupExample = () => {
         setOpen(open);
       }}
       content={
-        <div id={selectors.popupContentId}>
+        <div>
+          <p id={selectors.popupContentId}>CLick Here</p>
           <Button
             id={selectors.popupCloseId}
             onClick={() => {

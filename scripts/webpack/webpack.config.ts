@@ -1,6 +1,6 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -115,6 +115,7 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
+      faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
     },
   },

@@ -79,6 +79,9 @@ const ArrowsAltSolidIcon = props => (
 export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => {
   return (
     <button
+      tabIndex={-1}
+      data-is-focusable={false}
+      aria-hidden={true}
       style={{
         border: 'none',
         background: 'none',

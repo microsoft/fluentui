@@ -1,8 +1,21 @@
-# Change Log - @uifabric/theme-samples
+# Change Log - @fluentui/theme-samples
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.1.20..@fluentui/theme-samples_v8.0.0-beta.0)
+
+### Changes
+
+- Rename theme packages ([PR #15454](https://github.com/microsoft/fluentui/pull/15454) by elcraig@microsoft.com)
+- Update Theme instances to contain components/scopedSettings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- rename @uifabric/variants to @fluentui/scheme-utilities ([PR #15598](https://github.com/microsoft/fluentui/pull/15598) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
 
 ## [7.0.126](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.126)
 

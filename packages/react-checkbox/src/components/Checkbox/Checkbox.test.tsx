@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
-import { IRefObject, resetIds } from '@uifabric/utilities';
+import { isConformant } from '../../common/isConformant';
+import { IRefObject, resetIds } from '@fluentui/utilities';
 import { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
@@ -60,6 +61,11 @@ describe('Checkbox', () => {
     renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  isConformant({
+    Component: Checkbox,
+    displayName: 'Checkbox',
   });
 
   it('respects id prop', () => {

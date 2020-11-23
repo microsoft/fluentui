@@ -14,7 +14,7 @@ const CardExampleFocusable = () => {
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
         </Flex>
       </Card.Body>
     </Card>

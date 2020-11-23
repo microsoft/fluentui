@@ -1,4 +1,4 @@
-import { IDocumentCardStyles, IDocumentCardStyleProps } from 'office-ui-fabric-react/lib/DocumentCard';
+import { IDocumentCardStyles, IDocumentCardStyleProps } from '@fluentui/react/lib/DocumentCard';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DocumentCardStyles = (props: IDocumentCardStyleProps): Partial<IDocumentCardStyles> => {

@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IRefObject } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -20,7 +20,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // (undocumented)
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(element: HTMLElement): boolean;
+    focusElement(element: HTMLElement, forceAlignment?: boolean): boolean;
     focusLast(): boolean;
     static getOuterZones(): number;
     // (undocumented)
@@ -49,7 +49,7 @@ export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof t
 // @public
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
+    focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
     focusLast(): boolean;
     setFocusAlignment(point: Point): void;
 }
@@ -74,6 +74,8 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     disabled?: boolean;
     // @deprecated
     doNotAllowFocusEventToPropagate?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLElement>;
     // @deprecated
     elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;

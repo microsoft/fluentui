@@ -1,4 +1,4 @@
-import { IDatePickerStyleProps, IDatePickerStyles } from 'office-ui-fabric-react';
+import { IDatePickerStyleProps, IDatePickerStyles } from '@fluentui/react';
 import { DarkTheme } from '../DarkCustomizations';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {

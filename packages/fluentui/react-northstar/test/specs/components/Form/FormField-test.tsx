@@ -18,7 +18,7 @@ const getFormField = (control: React.ComponentType<any> | string) =>
   mountWithProvider(<FormField control={{ as: control }} name="firstName" />).find('FormField');
 
 describe('FormField', () => {
-  isConformant(FormField, { constructorName: 'FormField' });
+  isConformant(FormField, { testPath: __filename, constructorName: 'FormField' });
   formFieldImplementsShorthandProp('label', Text);
   formFieldImplementsShorthandProp('message', Text);
   formFieldImplementsShorthandProp('control', Box, { mapsValueToProp: 'children' });
@@ -83,5 +83,26 @@ describe('FormField', () => {
     formField.find('input').simulate('change', { target: { value: 'abc' } });
     expect(formField.find('PresenceAvailableIcon').length).toBe(1);
     expect(formField.find('PresenceAvailableIcon').getDOMNode()).toBeVisible();
+  });
+
+  it('should pass id to control', () => {
+    const id = 'first-name-shorthand';
+    const formField = mountWithProvider(
+      <FormField
+        {...{
+          label: 'First name',
+          name: 'firstName',
+          id,
+          key: 'first-name',
+          required: true,
+          control: {
+            as: Input,
+            successIndicator: <PresenceAvailableIcon />,
+          },
+        }}
+      />,
+    );
+
+    expect(formField.find('input').prop('id')).toBe(id);
   });
 });

@@ -40,8 +40,8 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
 };
 
 describe('Toolbar', () => {
-  isConformant(Toolbar, { constructorName: 'Toolbar' });
   isConformant(Toolbar, {
+    testPath: __filename,
     constructorName: 'Toolbar',
     requiredProps: { overflow: true },
   });
@@ -60,6 +60,18 @@ describe('Toolbar', () => {
 
       expect(getRenderedAttribute(boldToolbarButton, 'aria-pressed', '')).toBe('true');
       expect(getRenderedAttribute(italicToolbarButton, 'aria-pressed', '')).toBe('false');
+    });
+  });
+
+  describe('overflowItem', () => {
+    it('popper props can be overriden', () => {
+      const wrapper = mountWithProvider(
+        <Toolbar items={[]} overflow overflowOpen overflowItem={{ menu: { popper: { position: 'below' } } }} />,
+      );
+
+      expect(wrapper.find('Popper').prop('positionFixed')).toBe(true);
+
+      expect(wrapper.find('Popper').prop('position')).toBe('below');
     });
   });
 });

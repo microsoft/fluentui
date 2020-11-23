@@ -1,0 +1,27 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+import * as React from 'react';
+import { SpinButton } from '@fluentui/react/lib/SpinButton';
+var SpinButtonBasicExample = /** @class */ (function (_super) {
+    __extends(SpinButtonBasicExample, _super);
+    function SpinButtonBasicExample() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    SpinButtonBasicExample.prototype.render = function () {
+        return (React.createElement("div", { style: { width: '400px' } },
+            React.createElement(SpinButton, { defaultValue: "0", label: 'Basic SpinButton:', min: 0, max: 100, step: 1, iconProps: { iconName: 'IncreaseIndentLegacy' }, incrementButtonAriaLabel: 'Increase value by 1', decrementButtonAriaLabel: 'Decrease value by 1' })));
+    };
+    return SpinButtonBasicExample;
+}(React.Component));
+export { SpinButtonBasicExample };

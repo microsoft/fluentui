@@ -24,6 +24,11 @@ const Usage = () => (
       description="A form can have a Slider as a field."
       examplePath="components/Form/Usage/FormExampleSlider"
     />
+    <ComponentExample
+      title="Datepicker"
+      description="A form can have a Datepicker as a field."
+      examplePath="components/Form/Usage/FormExampleDatepicker"
+    />
   </ExampleSection>
 );
 

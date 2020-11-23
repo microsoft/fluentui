@@ -5,13 +5,14 @@ import { ToolbarMenuRadioGroupWrapper } from 'src/components/Toolbar/ToolbarMenu
 
 describe('ToolbarMenuRadioGroup', () => {
   isConformant(ToolbarMenuRadioGroup, {
+    testPath: __filename,
     wrapperComponent: ToolbarMenuRadioGroupWrapper,
     constructorName: 'ToolbarMenuRadioGroup',
   });
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarMenuRadioGroup, {
-      defaultRootRole: 'group',
+      defaultRootRole: 'presentation',
       partSelector: 'ul',
       usesWrapperSlot: true,
     });

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.54.1..@fluentui/eslint-plugin_v1.0.0-beta.0)
+
+### Changes
+
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+
+## [0.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.1)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.54.0..@fluentui/eslint-plugin_v0.54.1)
+
+### Patches
+
+- Adding isConformant files to list of test files. ([PR #14853](https://github.com/microsoft/fluentui/pull/14853) by czearing@outlook.com)
 
 ## [0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.0)
 

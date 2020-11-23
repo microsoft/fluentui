@@ -4,10 +4,10 @@
 
 ```ts
 
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IRefObject } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -19,9 +19,7 @@ export interface ISlider {
 }
 
 // @public (undocumented)
-export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
-    'aria-label'?: string;
-    // @deprecated
+export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -74,7 +72,7 @@ export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export const SliderBase: React.ForwardRefExoticComponent<ISliderProps & React.RefAttributes<HTMLDivElement>>;
+export const SliderBase: React.FunctionComponent<ISliderProps>;
 
 
 // (No @packageDocumentation comment for this package)

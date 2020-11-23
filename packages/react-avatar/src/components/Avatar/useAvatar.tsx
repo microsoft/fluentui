@@ -1,39 +1,55 @@
 import * as React from 'react';
-import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState } from './Avatar.types';
-import { useMergedRefs } from '@uifabric/react-hooks';
-import { getInitials, nullRender } from '@uifabric/utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { AvatarProps, defaultAvatarSize } from './Avatar.types';
+import { calcAvatarStyleProps } from './calcAvatarStyleProps';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import { getInitials as defaultGetInitials, nullRender } from '@fluentui/utilities';
 import { Image } from '../Image/index';
+import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
 
-const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'status'];
+export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
-export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots(state, avatarShorthandProps);
-
-  return (
-    <slots.root {...slotProps.root}>
-      <slots.label {...slotProps.label} />
-      <slots.image {...slotProps.image} />
-      <slots.status {...slotProps.status} />
-    </slots.root>
-  );
-};
+const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
   const state = mergeProps(
     {
       as: 'span',
-      label: {
-        as: 'span',
-        children: props.getInitials ? props.getInitials(props.name || '', false) : getInitials(props.name || '', false),
-      },
-      image: { as: props.image ? Image : nullRender },
-      status: { as: 'span', size: props.size },
+      display: props.image ? 'image' : 'label',
+      label: { as: 'span' },
+      image: { as: Image },
+      badge: { as: nullRender },
+      activeDisplay: 'ring',
+      size: defaultAvatarSize,
+      getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
     },
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
-  return { state, render: renderAvatar };
+  // Add in props used for styling
+  mergeProps(state, calcAvatarStyleProps(state));
+
+  // Display the initials if there's no label
+  if (!state.label.children) {
+    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+    if (initials) {
+      state.label.children = initials;
+    } else if (state.display === 'label') {
+      state.display = 'icon'; // If there are no initials or image, fall back to the icon
+    }
+  }
+
+  // Display the icon if requested
+  if (state.display === 'icon') {
+    state.label.children = state.icon || <DefaultAvatarIcon />;
+  }
+
+  // Don't show the image if it's not supposed to be displayed
+  if (state.display !== 'image') {
+    state.image = { as: nullRender };
+  }
+
+  return state;
 };

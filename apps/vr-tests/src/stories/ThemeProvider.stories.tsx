@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { loadTheme, createTheme, Customizer } from 'office-ui-fabric-react';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { loadTheme, createTheme, Customizer } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { ThemeProvider } from '@fluentui/react';
 import { Button } from '@fluentui/react-button';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)
@@ -37,8 +37,10 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized theme 1</PrimaryButton>
       <ThemeProvider
         theme={{
+          palette: {
+            themePrimary: '#FFF',
+          },
           semanticColors: {
-            primaryButtonBackground: '#FFF',
             primaryButtonText: '#000',
           },
         }}
@@ -54,17 +56,37 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized styles</PrimaryButton>
     </ThemeProvider>
   ))
-  .addStory('Use tokens on new button', () => (
+  .addStory('Use variants on new button', () => (
     <ThemeProvider
       theme={{
-        tokens: {
-          button: {
-            background: 'yellow',
+        components: {
+          Button: {
+            variants: {
+              root: {
+                background: 'yellow',
+              },
+            },
           },
         },
       }}
     >
       <Button>New Button customized with tokens</Button>
+
+      <ThemeProvider
+        theme={{
+          components: {
+            Button: {
+              variants: {
+                root: {
+                  background: 'green',
+                },
+              },
+            },
+          },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ))
   .addStory('Use compat theme on new button', () => (
@@ -74,10 +96,21 @@ storiesOf('ThemeProvider', module)
       }}
     >
       <Button>New Button customized with compat theme</Button>
+
+      <ThemeProvider
+        theme={{
+          semanticColors: { buttonBackground: 'green' },
+        }}
+      >
+        <Button>Nested</Button>
+      </ThemeProvider>
     </ThemeProvider>
   ));
 
-const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
+const LoadThemeTestButton: React.FunctionComponent<{
+  buttonAs?: React.ElementType;
+  buttonProps?: any;
+}> = props => {
   const [isThemeCustomized, setIsThemeCustomized] = React.useState(false);
 
   // toggle between default theme and customized theme
@@ -93,10 +126,12 @@ const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
     }
   };
 
+  const Root = props.buttonAs || PrimaryButton;
+
   return (
-    <PrimaryButton className="testLoadTheme" onClick={onClick}>
+    <Root className="testLoadTheme" onClick={onClick} {...props.buttonProps}>
       {props.children}
-    </PrimaryButton>
+    </Root>
   );
 };
 
@@ -130,6 +165,11 @@ storiesOf('ThemeProvider with loadTheme', module)
   ))
   .addStory('Use updated global theme', () => (
     <LoadThemeTestButton>Customized global theme</LoadThemeTestButton>
+  ))
+  .addStory('Use updated global theme on new Button', () => (
+    <LoadThemeTestButton buttonAs={Button} buttonProps={{ primary: true }}>
+      Customized global theme
+    </LoadThemeTestButton>
   ));
 
 storiesOf('ThemeProvider with Customizer', module)

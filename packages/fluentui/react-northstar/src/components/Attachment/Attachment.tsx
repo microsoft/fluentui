@@ -105,6 +105,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
           }
         },
       },
+      mapPropsToBehavior: () => ({ actionable }),
       rtl: context.rtl,
     });
 

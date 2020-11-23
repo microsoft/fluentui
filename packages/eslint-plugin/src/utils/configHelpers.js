@@ -9,6 +9,7 @@ const testFiles = [
   '**/*.stories.tsx',
   '**/{test,tests,stories}/**',
   '**/testUtilities.{ts,tsx}',
+  '**/common/isConformant.{ts,tsx}',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];

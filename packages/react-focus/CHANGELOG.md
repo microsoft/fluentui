@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.7)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.0..@fluentui/react-focus_v8.0.0-beta.7)
+
+### Changes
+
+- FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL. ([PR #16007](https://github.com/microsoft/fluentui/pull/16007) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.8..@fluentui/react-focus_v8.0.0-beta.0)
+
+### Changes
+
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.2..@fluentui/react-focus_v7.16.6)
+
+### Patches
+
+- FocusZone: Moving custom onFocus call at the end of private onFocus logic. ([PR #15108](https://github.com/microsoft/fluentui/pull/15108) by humbertomakotomorimoto@gmail.com)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.0)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.1..@fluentui/react-focus_v7.16.0)
+
+### Minor changes
+
+- FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided. ([PR #14911](https://github.com/microsoft/fluentui/pull/14911) by humbertomakotomorimoto@gmail.com)
+
+## [7.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.1)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.0..@fluentui/react-focus_v7.15.1)
+
+### Patches
+
+- Fix typo in docs ([PR #14851](https://github.com/microsoft/fluentui/pull/14851) by elcraig@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.0)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.22..@fluentui/react-focus_v7.15.0)
+
+### Minor changes
+
+- Add temporary elementRef prop to FocusZone. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
 
 ## [7.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.22)
 

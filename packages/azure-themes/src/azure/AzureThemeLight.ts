@@ -1,8 +1,9 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme, Theme } from '@fluentui/react';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
+import { AzureStyleSettings } from './AzureStyleSettings';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
@@ -125,11 +126,14 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   linkBorderStyle: 'dashed',
 };
 
-export const AzureThemeLight: ITheme = createTheme({
+export const AzureThemeLight: Theme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
       fontSize: FontSizes.size13,
+    },
+    large: {
+      fontSize: FontSizes.size14,
     },
   },
   palette: {
@@ -145,3 +149,5 @@ export const AzureThemeLight: ITheme = createTheme({
   },
   semanticColors: lightExtendedSemanticColors,
 });
+
+AzureThemeLight.components = AzureStyleSettings(AzureThemeLight);

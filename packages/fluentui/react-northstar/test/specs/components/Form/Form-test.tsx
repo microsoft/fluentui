@@ -7,6 +7,6 @@ import { FormField } from 'src/components/Form/FormField';
 const formImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Form);
 
 describe('Form', () => {
-  isConformant(Form, { constructorName: 'Form' });
+  isConformant(Form, { testPath: __filename, constructorName: 'Form' });
   formImplementsCollectionShorthandProp('fields', FormField, { mapsValueToProp: 'label' });
 });

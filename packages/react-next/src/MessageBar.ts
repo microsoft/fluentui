@@ -1,1 +1,2 @@
-export * from './components/MessageBar/index';
+import './version';
+export * from '@fluentui/react/lib/MessageBar';

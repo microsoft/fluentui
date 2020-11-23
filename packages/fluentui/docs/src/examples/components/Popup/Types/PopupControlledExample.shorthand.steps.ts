@@ -1,4 +1,5 @@
 import { buttonClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   triggerButton: `.${buttonClassName}[title*="Open popup"]`,

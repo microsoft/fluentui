@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useConst } from './useConst';
-import { useConstCallback } from './useConstCallback';
 
-export type ChangeCallback<TElement extends HTMLElement, TValue> = (
-  ev: React.FormEvent<TElement> | undefined,
-  newValue: TValue | undefined,
-) => void;
+export type ChangeCallback<
+  TElement extends HTMLElement,
+  TValue,
+  TEvent extends React.SyntheticEvent<TElement> | undefined
+> = (ev: TEvent, newValue: TValue | undefined) => void;
 
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
@@ -25,19 +25,23 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined
+  TEvent extends React.SyntheticEvent<TElement> | undefined
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
-  onChange: TCallback,
+  onChange: ChangeCallback<TElement, TValue, TEvent> | undefined,
 ): Readonly<
   [TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]
 >;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined
->(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback) {
+  TEvent extends React.SyntheticEvent<TElement> | undefined
+>(
+  controlledValue: TValue | undefined,
+  defaultUncontrolledValue: TValue | undefined,
+  onChange?: ChangeCallback<TElement, TValue, TEvent>,
+) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
   const isControlled = useConst<boolean>(controlledValue !== undefined);
   const currentValue = isControlled ? controlledValue : value;
@@ -53,21 +57,19 @@ export function useControllableValue<
 
   // To match the behavior of the setter returned by React.useState, this callback's identity
   // should never change. This means it MUST NOT directly reference variables that can change.
-  const setValueOrCallOnChange = useConstCallback(
-    (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => {
-      // Assuming here that TValue is not a function, because a controllable value will typically
-      // be something a user can enter as input
-      const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
+  const setValueOrCallOnChange = useConst(() => (update: React.SetStateAction<TValue | undefined>, ev?: TEvent) => {
+    // Assuming here that TValue is not a function, because a controllable value will typically
+    // be something a user can enter as input
+    const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
 
-      if (onChangeRef.current) {
-        onChangeRef.current(ev!, newValue);
-      }
+    if (onChangeRef.current) {
+      onChangeRef.current(ev!, newValue);
+    }
 
-      if (!isControlled) {
-        setValue(newValue);
-      }
-    },
-  );
+    if (!isControlled) {
+      setValue(newValue);
+    }
+  });
 
   return [currentValue, setValueOrCallOnChange] as const;
 }

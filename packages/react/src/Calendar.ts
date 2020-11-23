@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Calendar';
+export * from '@fluentui/react-date-time/lib/Calendar';

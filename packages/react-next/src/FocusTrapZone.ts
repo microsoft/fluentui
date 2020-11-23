@@ -1,1 +1,2 @@
-export * from './components/FocusTrapZone/index';
+import './version';
+export * from '@fluentui/react/lib/FocusTrapZone';

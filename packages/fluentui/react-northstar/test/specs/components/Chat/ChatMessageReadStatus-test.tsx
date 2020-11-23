@@ -3,6 +3,7 @@ import { isConformant } from 'test/specs/commonTests';
 
 describe('ChatMessageReadStatus', () => {
   isConformant(ChatMessageReadStatus, {
+    testPath: __filename,
     constructorName: 'ChatMessageReadStatus',
   });
 });

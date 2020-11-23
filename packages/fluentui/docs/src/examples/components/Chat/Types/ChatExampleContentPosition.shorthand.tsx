@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const [janeAvatar, johnAvatar] = ['public/images/avatar/small/ade.jpg', 'public/images/avatar/small/joe.jpg'].map(
-  src => ({
-    image: src,
-    status: { color: 'green', icon: <AcceptIcon /> },
-  }),
-);
+const [janeAvatar, johnAvatar] = [
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/joe.jpg',
+].map(src => ({
+  image: src,
+  status: { color: 'green', icon: <AcceptIcon /> },
+}));
 
 const items: ShorthandCollection<ChatItemProps> = [
   {

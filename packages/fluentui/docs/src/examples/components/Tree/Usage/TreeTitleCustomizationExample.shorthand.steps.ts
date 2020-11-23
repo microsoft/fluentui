@@ -1,3 +1,4 @@
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 import { treeItemClassName, treeTitleClassName } from '@fluentui/react-northstar';
 
 const selectors = {

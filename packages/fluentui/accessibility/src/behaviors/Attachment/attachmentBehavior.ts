@@ -24,4 +24,4 @@ export const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => 
   },
 });
 
-export type AttachmentBehaviorProps = never;
+export declare type AttachmentBehaviorProps = { actionable?: boolean };

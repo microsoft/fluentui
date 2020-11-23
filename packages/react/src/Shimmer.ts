@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Shimmer';
+export * from '@fluentui/react-internal/lib/Shimmer';

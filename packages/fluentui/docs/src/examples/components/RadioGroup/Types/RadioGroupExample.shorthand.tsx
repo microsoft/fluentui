@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, RadioGroup, Input, Text } from '@fluentui/react-northstar';
+import { Divider, RadioGroup } from '@fluentui/react-northstar';
 
 class RadioGroupVerticalExample extends React.Component {
   state = { selectedValue: '', inputTabIndex: '-1' };
@@ -28,17 +28,6 @@ class RadioGroupVerticalExample extends React.Component {
         label: 'Prosciutto',
         value: 'prosciutto',
         disabled: true,
-      },
-      {
-        name: 'pizza',
-        key: 'Custom',
-        label: (
-          <Text>
-            Choose your own <Input input={{ tabIndex: this.state.inputTabIndex }} inline placeholder="flavour" />
-          </Text>
-        ),
-        value: 'custom',
-        'aria-label': 'Press Tab to change flavour',
       },
     ];
   }

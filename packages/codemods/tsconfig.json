@@ -18,7 +18,8 @@
     "preserveConstEnums": true,
     "esModuleInterop": true,
     "lib": ["dom", "es2015.promise", "es2017"],
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "resolveJsonModule": true
   },
   "include": ["src"]
 }

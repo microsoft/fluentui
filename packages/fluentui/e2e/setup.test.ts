@@ -1,9 +1,9 @@
 import puppeteer from 'puppeteer';
 
-import { safeLaunchOptions } from '@uifabric/build/puppeteer/puppeteer.config';
+import { safeLaunchOptions } from '@fluentui/scripts/puppeteer/puppeteer.config';
 import { E2EApi } from './e2eApi';
 
-jest.setTimeout(10000);
+jest.setTimeout(30000);
 
 let browser: puppeteer.Browser;
 let page: puppeteer.Page;
@@ -12,7 +12,7 @@ let consoleErrors: string[] = [];
 const launchOptions: puppeteer.LaunchOptions = safeLaunchOptions({
   headless: true,
   dumpio: false,
-  slowMo: 10,
+  slowMo: 0,
 });
 
 beforeAll(async () => {
@@ -41,5 +41,8 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
-  await browser.close();
+  // Sometimes in CI this is undefined, not sure how
+  if (browser) {
+    await browser.close();
+  }
 });

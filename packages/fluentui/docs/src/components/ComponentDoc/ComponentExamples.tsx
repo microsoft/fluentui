@@ -2,7 +2,8 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { exampleIndexContext, exampleSourcesContext } from '../../utils';
+import { exampleIndexContext } from '../../contexts/exampleIndexContext';
+import { exampleSourcesContext } from '../../contexts/exampleSourcesContext';
 import { List, Segment } from '@fluentui/react-northstar';
 import { componentAPIs } from './ComponentSourceManager';
 

@@ -33,6 +33,7 @@ import { FormButton } from './FormButton';
 import { FormRadioGroup } from './FormRadioGroup';
 import { FormSlider } from './FormSlider';
 import { FormFieldCustom } from './FormFieldCustom';
+import { FormDatepicker } from './FormDatepicker';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -73,6 +74,7 @@ export const Form: ComponentWithAs<'form', FormProps> &
     RadioGroup: typeof FormRadioGroup;
     Slider: typeof FormSlider;
     FieldCustom: typeof FormFieldCustom;
+    Datepicker: typeof FormDatepicker;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
@@ -159,3 +161,4 @@ Form.Dropdown = FormDropdown;
 Form.Button = FormButton;
 Form.RadioGroup = FormRadioGroup;
 Form.Slider = FormSlider;
+Form.Datepicker = FormDatepicker;

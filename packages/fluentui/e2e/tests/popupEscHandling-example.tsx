@@ -7,6 +7,7 @@ export const selectors = {
   popupTriggerId: 'trigger',
   popupContentClass: popupContentClassName,
   dropdownTriggerClass: dropdownSlotClassNames.triggerButton,
+  dropdownListClass: dropdownSlotClassNames.itemsList,
 };
 
 const PopupEscHandlingExample = () => (

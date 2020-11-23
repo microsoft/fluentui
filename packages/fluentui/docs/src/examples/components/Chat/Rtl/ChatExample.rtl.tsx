@@ -11,7 +11,12 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
-    gutter: <Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
+    gutter: (
+      <Avatar
+        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg"
+        status={{ color: 'green', icon: <AcceptIcon /> }}
+      />
+    ),
     message: <Chat.Message content="تأكد منJohn. دعونا جدولة اجتماع." author="Jane Doe" timestamp="بالأمس ، 10:15" />,
     attached: 'top',
     key: 'message-id-2',

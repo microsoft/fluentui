@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerType } from '@fluentui/react/lib/Spinner';
 import { ITodoProps, ITodoState } from '../types/index';
 
 import TodoForm from './TodoForm';
@@ -13,7 +13,7 @@ import strings from '../strings';
  * Todo component is the top level react component of this web part.
  * It uses fabric-react component <Spinner>
  *
- * Link of Spinner: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/spinner
+ * Link of Spinner: https://developer.microsoft.com/en-us/fluentui#/controls/web/spinner
  */
 export default class Todo extends React.Component<ITodoProps, ITodoState> {
   constructor(props: ITodoProps) {

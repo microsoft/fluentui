@@ -7,13 +7,14 @@ import {
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
+import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
 import { MenuItem } from 'src/components/Menu/MenuItem';
 import { Menu } from 'src/components/Menu/Menu';
 import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
+    testPath: __filename,
     constructorName: 'MenuItem',
     eventTargets: {
       onClick: `.${menuItemWrapperClassName}`,
@@ -21,15 +22,6 @@ describe('MenuItem', () => {
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
-
-  sharedIsConformant(
-    {
-      Component: MenuItem,
-      displayName: 'MenuItem',
-      wrapperComponent: MenuItemWrapper,
-    },
-    __filename,
-  );
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
     implementsPopper: true,
@@ -66,6 +58,16 @@ describe('MenuItem', () => {
         .exists(),
     ).toBe(false);
     expect(menuItem.text()).toBe('Home');
+  });
+
+  describe('wrapper', () => {
+    it('onClick should be called', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithProvider(<MenuItem wrapper={{ onClick }}>Home</MenuItem>);
+
+      wrapper.find('MenuItemWrapper').simulate('click');
+      expect(onClick).toHaveBeenCalled();
+    });
   });
 
   describe('accessibility', () => {

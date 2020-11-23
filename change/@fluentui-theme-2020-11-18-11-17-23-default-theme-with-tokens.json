@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Move getTokens logic out from ThemeProvider to mergeTheme/createTheme.",
+  "packageName": "@fluentui/theme",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-18T19:17:23.909Z"
+}

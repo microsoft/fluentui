@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/SwatchColorPicker';
+export * from '@fluentui/react-internal/lib/SwatchColorPicker';
