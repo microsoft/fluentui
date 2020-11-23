@@ -17,6 +17,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.47.14 ]------------------------------- -->
+## [v0.47.14](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.14) (2020-11-23)
+
+### Features
+- Update icons to Fluent Design style @notandrew, @miroslavstastny ([#16046](https://github.com/microsoft/fluentui/pull/16046))
+
 <!--------------------------------[ v0.47.13 ]------------------------------- -->
 ## [v0.47.13](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.13) (2020-10-26)
 
