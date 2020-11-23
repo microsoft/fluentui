@@ -54,8 +54,8 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disableAnimation = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
-    onEscape,
-    onSearch,
+    onEscape: customOnEscape,
+    onSearch: customOnSearch,
     onKeyDown: customOnKeyDown,
     iconProps,
     role,
@@ -129,39 +129,36 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     setValue(ev.target.value);
   };
 
-  const onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLInputElement>) => {
-      switch (ev.which) {
-        case KeyCodes.escape:
-          onEscape?.(ev);
-          // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
-          // to propagate from the empty search box to a parent element such as a dialog, etc.
-          if (value && !ev.defaultPrevented) {
-            onClear(ev);
-          }
-          break;
+  const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    switch (ev.which) {
+      case KeyCodes.escape:
+        customOnEscape?.(ev);
+        // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
+        // to propagate from the empty search box to a parent element such as a dialog, etc.
+        if (value && !ev.defaultPrevented) {
+          onClear(ev);
+        }
+        break;
 
-        case KeyCodes.enter:
-          if (onSearch) {
-            onSearch(value);
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-          break;
+      case KeyCodes.enter:
+        if (customOnSearch) {
+          customOnSearch(value);
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
+        break;
 
-        default:
-          // REVIEW: Why aren't we calling the custom onKeyDown handler for Escape or Enter?
-          customOnKeyDown?.(ev);
-          // REVIEW: Why are we calling stopPropagation if the custom onKeyDown handler called preventDefault?
-          // The custom handler should call that if it needs it.
-          if (ev.defaultPrevented) {
-            ev.stopPropagation();
-          }
-          break;
-      }
-    },
-    [customOnKeyDown, onClear, onEscape, onSearch, value],
-  );
+      default:
+        // REVIEW: Why aren't we calling customOnKeyDown for Escape or Enter?
+        customOnKeyDown?.(ev);
+        // REVIEW: Why are we calling stopPropagation if customOnKeyDown called preventDefault?
+        // customOnKeyDown should call stopPropagation if it needs it.
+        if (ev.defaultPrevented) {
+          ev.stopPropagation();
+        }
+        break;
+    }
+  };
 
   useDebugWarning(props);
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
