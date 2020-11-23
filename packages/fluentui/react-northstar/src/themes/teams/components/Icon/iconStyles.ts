@@ -147,6 +147,10 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
   path: getSvgStyle('path'),
 
   secondaryPath: getSvgStyle('secondaryPath'),
+
+  redPath: ({ variables: v }) => ({
+    fill: v.redColor,
+  }),
 };
 
 export default iconStyles;
