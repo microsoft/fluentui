@@ -101,8 +101,9 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       return;
     } // End if 1
 
-    // Compute and save the narration text for the current and previous elements
-    computer.getNarration(narrationElement, prevNarrationElement, 'Win/JAWS').then(text => {
+    // Compute and save the narration text for the current and previous elements and platform
+    const platform = node ? 'Win/JAWS/VPC' : 'Win/JAWS';
+    computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration
   }); // End useEffect
@@ -121,6 +122,11 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
+      <a href="#" aria-haspopup="true" aria-label="test">
+        Test hypertext
+      </a>
+      <textarea aria-label="Write here" />
+      <p tabIndex={0}>Here is some paragraph.</p>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}

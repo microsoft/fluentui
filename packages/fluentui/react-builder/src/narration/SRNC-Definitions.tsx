@@ -4,26 +4,36 @@ export const SRNC: Record<string, any> = {
   STATES_SEPARATOR: ' ',
   DESCBY_AND_LABBY_SEPARATOR: ' ',
 
-  // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
-  narrateOnlyWhenLabelled: {
-    'Win/JAWS': ['role=radiogroup'],
-  },
+  // Platforms inheritance definitions
+  inheritance: {
+    'Win/JAWS/VPC': 'Win/JAWS',
+  }, // End inheritance
 
   // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
   narrateLabelIfNoRole: ['Win/JAWS'],
 
-  // Platforms on which the [containsText] string in case of <textarea> element overrides the description when the <textarea> contains text
-  stringOverridesDescription: [],
+  // Platforms on which the "contains text" string in case of <textarea> element overrides the description when the <textarea> contains text
+  stringOverridesDescription: ['Win/JAWS'],
 
-  // Positions definitions for each platform
+  // [contains text" string definitions for each platform
+  containsText: {
+    'Win/JAWS': 'Contains text',
+  }, // End containsText
+
+  // Positions string definitions for each platform
   positions: {
     'Win/JAWS': 'X of Y',
   }, // End position
 
-  // Levels definitions for each platform
+  // Levels string definitions for each platform
   levels: {
     'Win/JAWS': 'level',
   }, // End level
+
+  // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
+  narrateOnlyWhenLabelled: {
+    'Win/JAWS': ['role=radiogroup'],
+  }, // End narrateOnlyWhenLabelled
 
   // Landmarks and groups (the definitions are stored in a separate file per each platform)
   landmarksAndGroups: {

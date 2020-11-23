@@ -34,20 +34,9 @@ SRNC.elementStates['Win/JAWS'] = {
     'checked=false': 'not checked',
     'aria-required=true': 'Required',
   }, // End input:radio
-  'role=radio': {
-    'aria-checked=true': 'checked',
-    'aria-checked=false': 'not checked',
-    'aria-required=true': 'Required',
-  }, // End role=radio
-  'role=combobox': {
-    'aria-invalid=true': 'invalid entry',
-    'aria-required=true': 'Required',
-  }, // End role=combobox
-  textarea: {
-    'aria-invalid=true': 'invalid entry',
-    'aria-required=true': 'Required',
-    '[containsText]': 'Contains text',
-  }, // End textarea
+  'role=radio': 'input:radio',
+  'role=combobox': 'input:text',
+  textarea: 'input:text',
   a: {
     'aria-expanded=true': 'expanded',
     'aria-expanded=false': 'collapsed',
@@ -72,14 +61,8 @@ SRNC.elementStates['Win/JAWS'] = {
     'aria-checked=true': 'checked',
     'aria-checked=false': 'not checked',
   }, // End role=menuitemcheckbox
-  'role=menuitemradio': {
-    'aria-checked=true': 'checked',
-    'aria-checked=false': 'not checked',
-  }, // End role=menuitemradio
-  select: {
-    'aria-invalid=true': 'invalid entry',
-    'aria-required=true': 'Required',
-  }, // End select
+  'role=menuitemradio': 'role=menuitemcheckbox',
+  select: 'input:text',
   'role=switch': {
     'aria-checked=true': 'Pressed On',
     'aria-checked=false': 'Off',
@@ -88,7 +71,7 @@ SRNC.elementStates['Win/JAWS'] = {
     'aria-selected=true': 'Selected',
     'aria-selected=false': '',
   }, // End role=tab
-  'role=option': {}, // End role=option
+  'role=option': {},
   'role=treeitem': {
     'aria-expanded=true': 'open',
     'aria-expanded=false': 'closed',
