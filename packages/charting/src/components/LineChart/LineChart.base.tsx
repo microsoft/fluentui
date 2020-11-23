@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
-import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CartesianChart,
   IBasestate,
@@ -13,12 +13,15 @@ import {
   IMargins,
   IRefArrayData,
   IColorFillBarsProps,
+  ILineChartStyleProps,
+  ILineChartStyles,
 } from '../../index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
+import { calloutData, ChartTypes, getXAxisType, XAxisTypes, tooltipOfXAxislabels } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
+const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 export interface IContainerValues {
   width: number;
@@ -60,6 +63,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
   private _colorFillBarsOpacity: number;
+  private _tooltipId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -83,6 +87,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
+    this._tooltipId = getId('LineChartTooltipId_');
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -198,11 +203,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     yScale: NumericAxis,
     containerHeight: number,
     containerWidth: number,
+    xElement: SVGElement | null,
   ) => {
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines();
+    this.lines = this._createLines(xElement!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: ILineChartPoints | IColorFillBarsProps) => {
@@ -292,7 +298,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return legends;
   }
 
-  private _createLines(): JSX.Element[] {
+  private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -419,6 +425,30 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           );
         }
       }
+    }
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(this._xAxisScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return lines;
   }
