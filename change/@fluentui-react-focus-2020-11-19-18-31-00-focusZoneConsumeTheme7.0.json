@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Consuming theme information from ThemeContext to provide it when calling RTL.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-20T02:31:00.831Z"
+}

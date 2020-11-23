@@ -1891,6 +1891,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
+    overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowIndex?: number;
     // (undocumented)
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
@@ -8501,6 +8502,7 @@ export interface IWindowWithSegments extends Window {
 
 // @public
 export interface IWithViewportProps {
+    disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
 

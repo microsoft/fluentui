@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 18 Nov 2020 12:26:33 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.21",
+      "version": "7.6.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments.",
+            "author": "arkgupta@microsoft.com",
+            "commit": "fef6e99987f44a41ee46faf1db217d9c6d44109a",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 12:21:51 GMT",
       "tag": "@uifabric/file-type-icons_v7.6.15",
       "version": "7.6.15",

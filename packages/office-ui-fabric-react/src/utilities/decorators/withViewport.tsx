@@ -29,14 +29,29 @@ export interface IWithViewportState {
  */
 export interface IWithViewportProps {
   /**
-   * Whether or not to use ResizeObserver (if available) to detect
-   * and measure viewport on 'resize' events.
+   * Whether or not `withViewport` should disable its viewport measurements, effectively making this decorator
+   * pass-through with no impact on the rendered component.
    *
-   * Falls back to window 'resize' event.
+   * Since `withViewport` measures the `viewport` on mount, after each React update, and in response to events,
+   * it may cause a component which does not currently need this information due to its configuration to re-render
+   * too often. `skipViewportMeasures` may be toggled on and off based on current state, and will suspend and resume
+   * measurement as-needed.
    *
-   * @defaultValue false
+   * For example, when this wraps `DetailsList`, set `skipViewportMeasures` to `true` when the `layoutMode` is
+   * `fixedColumns`, since the `DetailsList` does not use the viewport size in any calculations.
+   *
+   * In addition, consider setting `skipViewportMeasures` to `true` when running within a React test renderer, to avoid
+   * direct DOM dependencies.
    */
   skipViewportMeasures?: boolean;
+  /**
+   * Whether or not to explicitly disable usage of the `ResizeObserver` in favor of a `'resize'` event on `window`,
+   * even if the browser supports `ResizeObserver`. This may be necessary if use of `ResizeObserver` results in too
+   * many re-renders of the wrapped component due to the frequency at which events are fired.
+   *
+   * This has no impact if `skipViewportMeasures` is `true`, as no viewport measurement strategy is used.
+   */
+  disableResizeObserver?: boolean;
 }
 
 const RESIZE_DELAY = 500;
@@ -73,45 +88,44 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false,
       });
 
-      // ResizeObserver seems always fire even window is not resized. This is
-      // particularly bad when skipViewportMeasures is set when optimizing fixed layout lists.
-      // It will measure and update and re-render the entire list after list is fully rendered.
-      // So fallback to listen to resize event when skipViewportMeasures is set.
-      if (!skipViewportMeasures && this._isResizeObserverAvailable()) {
-        this._registerResizeObserver();
-      } else {
-        this._events.on(win, 'resize', this._onAsyncResize);
-      }
-
       if (!skipViewportMeasures) {
+        if (!disableResizeObserver && this._isResizeObserverAvailable()) {
+          this._registerResizeObserver();
+        } else {
+          this._events.on(win, 'resize', this._onAsyncResize);
+        }
+
         this._updateViewport();
       }
     }
 
-    public componentDidUpdate(newProps: TProps) {
-      const { skipViewportMeasures: oldSkipViewportMeasures } = this.props as IWithViewportProps;
-      const { skipViewportMeasures: newSkipViewportMeasures } = newProps as IWithViewportProps;
+    public componentDidUpdate(previousProps: TProps) {
+      const { skipViewportMeasures: previousSkipViewportMeasures } = previousProps as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
-      if (oldSkipViewportMeasures !== newSkipViewportMeasures) {
-        if (newSkipViewportMeasures) {
-          this._unregisterResizeObserver();
-          this._events.on(win, 'resize', this._onAsyncResize);
-        } else if (!newSkipViewportMeasures && this._isResizeObserverAvailable()) {
-          this._events.off(win, 'resize', this._onAsyncResize);
-          this._registerResizeObserver();
-        }
-      }
+      if (skipViewportMeasures !== previousSkipViewportMeasures) {
+        if (!skipViewportMeasures) {
+          if (!disableResizeObserver && this._isResizeObserverAvailable()) {
+            if (!this._viewportResizeObserver) {
+              this._registerResizeObserver();
+            }
+          } else {
+            this._events.on(win, 'resize', this._onAsyncResize);
+          }
 
-      if (newSkipViewportMeasures) {
-        this._updateViewport();
+          this._updateViewport();
+        } else {
+          this._unregisterResizeObserver();
+          this._events.off(win, 'resize', this._onAsyncResize);
+        }
       }
     }
 

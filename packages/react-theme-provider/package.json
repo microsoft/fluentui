@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -46,7 +46,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.11",
+    "@fluentui/react-compose": "^0.19.12",
     "@fluentui/react-stylesheets": "^0.2.4",
     "@fluentui/theme": "^1.7.0",
     "@fluentui/react-window-provider": "^1.0.1",

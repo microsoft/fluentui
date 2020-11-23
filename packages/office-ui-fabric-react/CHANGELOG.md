@@ -1,8 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Nov 2020 16:51:16 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Nov 2020 12:27:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.152.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.1)
+
+Fri, 20 Nov 2020 12:27:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.152.0..office-ui-fabric-react_v7.152.1)
+
+### Patches
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #15990](https://github.com/microsoft/fluentui/pull/15990) by stefhan@microsoft.com)
+
+## [7.152.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.0)
+
+Thu, 19 Nov 2020 12:26:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.151.0..office-ui-fabric-react_v7.152.0)
+
+### Minor changes
+
+- Add text to breacrumb overflow items ([PR #15987](https://github.com/microsoft/fluentui/pull/15987) by pbelsal@gmail.com)
+- Fully disable viewport measurement with 'skipViewportMeasures' ([PR #15963](https://github.com/microsoft/fluentui/pull/15963) by tmichon@microsoft.com)
+
+## [7.151.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.151.0)
+
+Wed, 18 Nov 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.150.0..office-ui-fabric-react_v7.151.0)
+
+### Minor changes
+
+- Update ColorPicker to annouce changes to RGBA and hex fields via aria-live ([PR #15855](https://github.com/microsoft/fluentui/pull/15855) by jslone@microsoft.com)
 
 ## [7.150.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.150.0)
 

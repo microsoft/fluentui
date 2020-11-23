@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 23 Oct 2020 12:21:51 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.21](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.21)
+
+Wed, 18 Nov 2020 12:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.15..@uifabric/file-type-icons_v7.6.21)
+
+### Patches
+
+- Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments. ([PR #15405](https://github.com/microsoft/fluentui/pull/15405) by arkgupta@microsoft.com)
 
 ## [7.6.15](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.15)
 
