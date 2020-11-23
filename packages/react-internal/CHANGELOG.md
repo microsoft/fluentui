@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.17)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.16..@fluentui/react-internal_v8.0.0-beta.17)
+
+### Changes
+
+- Fixed SearchBox maximum call stack size on keydown ([PR #16028](https://github.com/microsoft/fluentui/pull/16028) by richardkooiman@hotmail.com)
 
 ## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.16)
 
