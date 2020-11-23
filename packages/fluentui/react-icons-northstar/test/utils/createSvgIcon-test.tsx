@@ -22,6 +22,9 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
       value={{
         performance: {},
         theme,
+        renderer: {
+          renderRule: () => '',
+        },
       }}
     >
       {children}
