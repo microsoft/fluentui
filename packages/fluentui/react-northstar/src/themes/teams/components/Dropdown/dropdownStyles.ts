@@ -145,17 +145,26 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
     ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),
+    ...(p.multiple &&
+      p.hasItemsSelected && {
+        paddingBottom: pxToRem(4),
+      }),
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       overflow: 'hidden',
       boxShadow: 'none',
+      minHeight: pxToRem(32),
       ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
-      ...(p.multiple && { minWidth: 0, flex: 1 }),
+      ...(p.multiple && {
+        minWidth: 0,
+        flex: 1,
+        ...(p.hasItemsSelected && { position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, height: '100%' }),
+      }),
       ...transparentColorStyleObj,
       ':focus': {
         color: v.color,

@@ -269,6 +269,7 @@ export type DropdownStylesProps = Required<
   hasToggleIndicator: boolean;
   isFromKeyboard: boolean;
   search: boolean;
+  hasItemsSelected: boolean;
 };
 
 type DropdownStateForInvoke = {
@@ -480,6 +481,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       open,
       position,
       search: !!search,
+      hasItemsSelected: value.length > 0,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -1548,7 +1550,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
-                  {multiple && renderSelectedItems()}
                   {search
                     ? renderSearchInput(
                         accessibilityRootPropsRest,
@@ -1559,6 +1560,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         variables,
                       )
                     : renderTriggerButton(getToggleButtonProps)}
+                  {multiple && renderSelectedItems()}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
