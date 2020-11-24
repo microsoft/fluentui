@@ -1341,7 +1341,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: IPopupRestoreFocusParams) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
     // @deprecated
@@ -2078,7 +2078,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
-    onRestoreFocus?: (options: IPopupRestoreFocusParams) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
