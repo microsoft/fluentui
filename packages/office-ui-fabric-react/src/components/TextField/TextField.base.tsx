@@ -235,11 +235,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {onRenderDescription(this.props, this._onRenderDescription)}
             {errorMessage && (
               <div role="alert">
-                <DelayedRender>
-                  <p className={this._classNames.errorMessage}>
-                    <span data-automation-id="error-message">{errorMessage}</span>
-                  </p>
-                </DelayedRender>
+                <DelayedRender>{this._renderErrorMessage()}</DelayedRender>
               </div>
             )}
           </span>
@@ -416,6 +412,26 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private get _errorMessage(): string | JSX.Element {
     const { errorMessage = this.state.errorMessage } = this.props;
     return errorMessage || '';
+  }
+
+  /**
+   * Renders error message based on the type of the message.
+   *
+   * - If error message is string, it will render using the built in styles.
+   * - If error message is an element, user has full control over how it's rendered.
+   */
+  private _renderErrorMessage(): JSX.Element | null {
+    const errorMessage = this._errorMessage;
+
+    return errorMessage ? (
+      typeof errorMessage === 'string' ? (
+        <p className={this._classNames.errorMessage}>
+          <span data-automation-id="error-message">{errorMessage}</span>
+        </p>
+      ) : (
+        errorMessage
+      )
+    ) : null;
   }
 
   /**

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 export interface ITextFieldErrorMessageExampleState {
   /**
@@ -86,6 +88,11 @@ export class TextFieldErrorMessageExample extends React.Component<{}, ITextField
               placeholder="This field always has an error"
               errorMessage="This is a statically set error message"
             />
+            <TextField
+              label="Custom rich error message"
+              defaultValue="This value is too long"
+              onGetErrorMessage={this._getRichErrorMessage}
+            />
           </>
         )}
       </Stack>
@@ -98,6 +105,21 @@ export class TextFieldErrorMessageExample extends React.Component<{}, ITextField
 
   private _getErrorMessage = (value: string): string => {
     return value.length < 3 ? '' : `Input value length must be less than 3. Actual length is ${value.length}.`;
+  };
+
+  private _getRichErrorMessage = (value: string) => {
+    return (
+      <div>
+        {value.length < 3 ? (
+          ''
+        ) : (
+          <Stack styles={{ root: { height: 24 } }} verticalAlign="center" horizontal tokens={{ childrenGap: 8 }}>
+            <Icon iconName="Error" styles={{ root: { color: 'red' } }} />
+            <Text variant="smallPlus">Input value length must be less than 3. Actual length is ${value.length}.</Text>
+          </Stack>
+        )}
+      </div>
+    );
   };
 
   private _getErrorMessagePromise = (value: string): Promise<string> => {
