@@ -109,16 +109,11 @@ describe('PeoplePicker', () => {
     // component-handles-ref, component-has-root-ref
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    //
-    // consistent-callback-names
-    // Problem: Contains onItemSelected type.
-    // Solution: Remove the inconsistent callback name.
-    disabledTests: [
-      'component-has-root-ref',
-      'component-handles-ref',
-      'has-top-level-file',
-      'name-matches-filename',
-      'consistent-callback-names',
-    ],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file', 'name-matches-filename'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onItemSelected'],
+      },
+    },
   });
 });

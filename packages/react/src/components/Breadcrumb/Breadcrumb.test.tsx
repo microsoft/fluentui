@@ -98,11 +98,12 @@ describe('Breadcrumb', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    //
-    // consistent-callback-names
-    // Problem: Contains onEmptied, onEncrypted, onEnded, onSeeked, and onStalled types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['consistent-callback-names', 'component-has-root-ref', 'component-handles-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onEmptied', 'onEncrypted', 'onEnded', 'onSeeked', 'onStalled'],
+      },
+    },
   });
 
   it('renders items with expected element type', () => {
@@ -173,9 +174,9 @@ describe('Breadcrumb', () => {
     // without hostNodes it returns the same element x4
     overflowButton.hostNodes().simulate('click');
 
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
-    expect(overfowItems).toHaveLength(2);
-    expect(overfowItems[0].textContent).toEqual('TestText1');
-    expect(overfowItems[1].textContent).toEqual('TestText2');
+    const overflowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    expect(overflowItems).toHaveLength(2);
+    expect(overflowItems[0].textContent).toEqual('TestText1');
+    expect(overflowItems[1].textContent).toEqual('TestText2');
   });
 });

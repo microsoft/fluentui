@@ -110,16 +110,12 @@ describe('BasePicker', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
-    //
-    // consistent-callback-names
-    // Problem: Contains onItemSelected type.
-    // Solution: Remove the inconsistent callback name.
-    disabledTests: [
-      'component-has-root-ref',
-      'component-handles-ref',
-      'has-top-level-file',
-      'consistent-callback-names',
-    ],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onItemSelected'],
+      },
+    },
   });
 
   it('can provide custom renderers', () => {

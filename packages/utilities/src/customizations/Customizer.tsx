@@ -18,7 +18,8 @@ import { ICustomizerProps } from './Customizer.types';
  *
  * @public
  *
- * @deprecated This component is deprecated as of `@fluentui/react` version 8. Use `ThemeProvider` instead.
+ * @deprecated This component is deprecated for purpose of applying theme to components
+ * as of `@fluentui/react` version 8. Use `ThemeProvider` for applying theme instead.
  */
 export class Customizer extends React.Component<ICustomizerProps> {
   public componentDidMount(): void {

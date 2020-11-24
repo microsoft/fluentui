@@ -93,17 +93,20 @@ describe('ComboBox', () => {
     // Problem: Currently doesn’t work with mount.
     // Solution: Further investigate why ComboBox only works with create or fix customMount type
     // in isConformant to work with other testing mount utilities such as create.
-    //
-    // consistent-callback-names
-    // Problem: Contains onPendingValueChanged, onMenuDismissed, onEmptied, onEncrypted, onEnded, onSeeked,
-    // and onStalled types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: [
-      'consistent-callback-names',
-      'component-renders',
-      'component-handles-ref',
-      'component-has-root-ref',
-    ],
+    disabledTests: ['component-renders', 'component-handles-ref', 'component-has-root-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: [
+          'onPendingValueChanged',
+          'onMenuDismissed',
+          'onEmptied',
+          'onEncrypted',
+          'onEnded',
+          'onSeeked',
+          'onStalled',
+        ],
+      },
+    },
   });
 
   it('Can flip between enabled and disabled.', () => {

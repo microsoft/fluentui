@@ -1,8 +1,47 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Sat, 21 Nov 2020 02:00:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.1)
+
+Sat, 21 Nov 2020 02:00:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.0..@fluentui/web-components_v0.8.1)
+
+### Patches
+
+- add forced color adjust to host selector ([PR #16009](https://github.com/microsoft/fluentui/pull/16009) by khamu@microsoft.com)
+- update fast packages to latest minor versions ([PR #16012](https://github.com/microsoft/fluentui/pull/16012) by chhol@microsoft.com)
+- ensure all web components leverage the body font design token ([PR #16013](https://github.com/microsoft/fluentui/pull/16013) by chhol@microsoft.com)
+- feat: add select and related styles ([PR #16021](https://github.com/microsoft/fluentui/pull/16021) by jes@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.0)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.2..@fluentui/web-components_v0.8.0)
+
+### Minor changes
+
+- fix: radio group orientation vertical broken ([PR #15953](https://github.com/microsoft/fluentui/pull/15953) by jes@microsoft.com)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.2)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.1..@fluentui/web-components_v0.7.2)
+
+### Patches
+
+- moved high contrast work into common button styles file ([PR #15916](https://github.com/microsoft/fluentui/pull/15916) by khamu@microsoft.com)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.0..@fluentui/web-components_v0.7.1)
+
+### Patches
+
+- flipper cursor should be pointer on hover ([PR #15824](https://github.com/microsoft/fluentui/pull/15824) by chhol@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.0)
 

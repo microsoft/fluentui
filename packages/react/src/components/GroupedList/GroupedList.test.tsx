@@ -29,11 +29,12 @@ describe('GroupedList', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    //
-    // consistent-callback-names
-    // Problem: Contains onEmptied, onEncrypted, onEnded, onSeeked, and onStalled types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['consistent-callback-names', 'component-has-root-ref', 'component-handles-ref'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onEmptied', 'onEncrypted', 'onEnded', 'onSeeked', 'onStalled'],
+      },
+    },
   });
 
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {

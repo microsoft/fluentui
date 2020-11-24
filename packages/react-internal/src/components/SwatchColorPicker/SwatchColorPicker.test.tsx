@@ -37,12 +37,11 @@ describe('SwatchColorPicker', () => {
     Component: SwatchColorPicker,
     displayName: 'SwatchColorPicker',
     requiredProps: { colorCells: DEFAULT_OPTIONS, columnCount: 4 },
-    // Disabled Tests:
-    //
-    // consistent-callback-names
-    // Problem: Contains onColorChanged, onCellHovered, and onCellFocused types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['consistent-callback-names'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onColorChanged', 'onCellHovered', 'onCellFocused'],
+      },
+    },
   });
 
   it('Can render in full without being parented to a button', () => {

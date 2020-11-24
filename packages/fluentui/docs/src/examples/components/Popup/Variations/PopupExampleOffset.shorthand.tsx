@@ -3,13 +3,7 @@ import { Button, Grid, Popup } from '@fluentui/react-northstar';
 import { ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const PopupExampleOffset = () => (
-  <Grid
-    styles={{
-      gridTemplateColumns: '80px',
-      msGridColumns: '80px',
-    }}
-    variables={{ padding: '30px' }}
-  >
+  <Grid columns="1, 80px" variables={{ padding: '30px' }}>
     <Popup
       align="start"
       position="above"

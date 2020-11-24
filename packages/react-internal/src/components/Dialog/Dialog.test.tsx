@@ -70,11 +70,12 @@ describe('Dialog', () => {
     // component-handles-ref, component-has-root-ref
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    //
-    // consistent-callback-names
-    // Problem: Contains onDismissed and onLayerMounted types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'consistent-callback-names'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onDismissed', 'onLayerMounted'],
+      },
+    },
   });
 
   it('Fires dismissed after closing', () => {
@@ -132,7 +133,6 @@ describe('Dialog', () => {
     act(() => {
       wrapper.unmount();
     });
-
     setWarningCallback();
   });
 

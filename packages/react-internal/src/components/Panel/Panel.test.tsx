@@ -194,11 +194,12 @@ describe('Panel', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Ref doesn't match DOM node.
     // Solution: Ensure ref is passed correctly to the root element.
-    //
-    // consistent-callback-names
-    // Problem: Contains onOpened and onDismissed types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onOpened', 'onDismissed'],
+      },
+    },
   });
 
   describe('onClose', () => {

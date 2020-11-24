@@ -45,11 +45,12 @@ describe('ContextualMenu', () => {
     // expect(rootRef.current?.getAttribute).toBeDefined();
     // This test failure likely stems from Callout as it experiences the same error. The failing test should be
     // further investigated and re-enabled in a future pull request.
-    //
-    // consistent-callback-names
-    // Problem: Contains onMenuOpened and onMenuDismissed types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['component-handles-ref', 'consistent-callback-names'],
+    disabledTests: ['component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onMenuOpened', 'onMenuDismissed'],
+      },
+    },
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {

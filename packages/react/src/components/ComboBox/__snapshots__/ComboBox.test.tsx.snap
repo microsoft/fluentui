@@ -355,8 +355,8 @@ exports[`ComboBox Renders correctly 1`] = `
   </div>
   <div
     aria-atomic="true"
+    aria-hidden={true}
     aria-live="polite"
-    className=""
     id="ComboBox0-error"
     role="region"
   >
@@ -699,8 +699,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
   </div>
   <div
     aria-atomic="true"
+    aria-hidden="true"
     aria-live="polite"
-    class=""
     id="ComboBox4-error"
     role="region"
   />

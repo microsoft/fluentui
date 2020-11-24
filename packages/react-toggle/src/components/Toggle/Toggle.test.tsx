@@ -55,12 +55,11 @@ describe('Toggle', () => {
     Component: Toggle,
     displayName: 'Toggle',
     targetComponent: Toggle,
-    // Disabled Tests:
-    //
-    // consistent-callback-names
-    // Problem: Contains onChanged type.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['consistent-callback-names'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onChanged'],
+      },
+    },
   });
 
   it('renders aria-label', () => {

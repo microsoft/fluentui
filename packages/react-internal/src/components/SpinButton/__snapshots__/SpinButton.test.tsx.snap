@@ -5,7 +5,11 @@ exports[`SpinButton renders correctly 1`] = `
   className=
 
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
+        font-weight: 400;
         min-width: 86px;
         outline: none;
         width: 100%;
@@ -444,7 +448,11 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
   className=
 
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
+        font-weight: 400;
         min-width: 86px;
         outline: none;
         width: 100%;

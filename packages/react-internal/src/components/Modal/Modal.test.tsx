@@ -4,24 +4,28 @@ import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@fluentui/test-utilities';
+import { resetIds } from '../../Utilities';
 
 describe('Modal', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+  afterAll(() => {
+    resetIds();
+  });
+
   isConformant({
     Component: Modal,
     displayName: 'Modal',
     requiredProps: { isOpen: true },
     componentPath: path.join(__dirname, 'Modal.ts'),
-    // Disabled Tests:
-    //
-    // component-has-root-ref, component-handles-ref
-    // Problem: Doesn’t currently handle a ref.
-    // Solution: Add a ref.
-    //
-    // consistent-callback-names
-    // Problem: Contains onDismissed type.
-    // Solution: Remove the inconsistent callback name.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onDismissed'],
+      },
+    },
   });
+
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');

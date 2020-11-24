@@ -2,6 +2,84 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Sat, 21 Nov 2020 02:00:44 GMT",
+      "tag": "@fluentui/web-components_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forced color adjust to host selector",
+            "author": "khamu@microsoft.com",
+            "commit": "cfd0cc90fb22c5d24d9646b7eb325c7a41bd6c68",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update fast packages to latest minor versions",
+            "author": "chhol@microsoft.com",
+            "commit": "2b7e56297be7f7d6e1920df0f202277c17644a5d",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "ensure all web components leverage the body font design token",
+            "author": "chhol@microsoft.com",
+            "commit": "b3be4d7dfb1392d5b315bb728bb24df8fb500271",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "feat: add select and related styles",
+            "author": "jes@microsoft.com",
+            "commit": "66916eef3d325b8e8104c56f8557246b4824a5ca",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Nov 2020 12:30:07 GMT",
+      "tag": "@fluentui/web-components_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: radio group orientation vertical broken",
+            "author": "jes@microsoft.com",
+            "commit": "5467837e6426d68375fe3832f5448ebed678e704",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Nov 2020 12:36:24 GMT",
+      "tag": "@fluentui/web-components_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "moved high contrast work into common button styles file",
+            "author": "khamu@microsoft.com",
+            "commit": "68628df80d364aff4bba014ddcd4455d6b20a660",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Nov 2020 12:29:43 GMT",
+      "tag": "@fluentui/web-components_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "flipper cursor should be pointer on hover",
+            "author": "chhol@microsoft.com",
+            "commit": "70498e155281bad717091ac140ba79d9fdcce323",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2020 12:34:59 GMT",
       "tag": "@fluentui/web-components_v0.7.0",
       "version": "0.7.0",

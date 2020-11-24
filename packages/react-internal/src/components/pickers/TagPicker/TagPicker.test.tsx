@@ -65,16 +65,12 @@ describe('TagPicker', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
-    //
-    // consistent-callback-names
-    // Problem: Contains onItemSelected type.
-    // Solution: Remove the inconsistent callback name.
-    disabledTests: [
-      'has-top-level-file',
-      'consistent-callback-names',
-      'component-has-root-ref',
-      'component-handles-ref',
-    ],
+    disabledTests: ['has-top-level-file', 'component-has-root-ref', 'component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onItemSelected'],
+      },
+    },
   });
 
   it('can search for and select tags', () => {

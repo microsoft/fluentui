@@ -37,16 +37,12 @@ describe('SelectedItemsList', () => {
       // component-has-root-ref, component-handles-ref
       // Problem: Ref is not supported
       // Solution: Convert to FunctionComponent and support using forwardRef
-      //
-      // consistent-callback-names
-      // Problem: Contains onItemSelected, onItemDeleted, and onItemsDeleted types.
-      // Solution: Remove the inconsistent callback names.
-      disabledTests: [
-        'has-top-level-file',
-        'component-handles-ref',
-        'component-has-root-ref',
-        'consistent-callback-names',
-      ],
+      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+      testOptions: {
+        'consistent-callback-names': {
+          ignoreProps: ['onItemSelected', 'onItemDeleted', 'onItemsDeleted'],
+        },
+      },
     });
 
     it('can remove items', () => {

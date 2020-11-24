@@ -122,6 +122,26 @@ export interface IButton {
 }
 
 // @public (undocumented)
+export interface IButtonClassNames {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    flexContainer?: string;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    label?: string;
+    // (undocumented)
+    menuIcon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    screenReaderText?: string;
+    // (undocumented)
+    textContainer?: string;
+}
+
+// @public (undocumented)
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
     allowDisabledFocus?: boolean;
     ariaDescription?: string;
@@ -139,7 +159,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     disabled?: boolean;
     // @deprecated
     elementRef?: React.Ref<HTMLElement>;
-    // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
     href?: string;

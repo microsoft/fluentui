@@ -21,6 +21,8 @@ export const PersonaInitialsExample: React.FunctionComponent = () => {
       <Persona {...examplePersona} text="Annie" size={PersonaSize.size24} />
       <Persona {...examplePersona} text="Annie Lind" size={PersonaSize.size32} />
       <Persona {...examplePersona} text="Annie Boyl Lind" size={PersonaSize.size32} />
+      <Persona {...examplePersona} text="David (The man) Goff" size={PersonaSize.size32} />
+      <Persona {...examplePersona} text="David Goff [The man]" size={PersonaSize.size32} />
       <Persona {...examplePersona} text="Annie Boyl Carrie Lindqvist" size={PersonaSize.size40} />
       <Persona {...examplePersona} text="+1 (111) 123-4567 X4567" size={PersonaSize.size40} />
       <Persona {...examplePersona} text="+1 (555) 123-4567 X4567" size={PersonaSize.size48} allowPhoneInitials={true} />

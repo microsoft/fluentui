@@ -44,11 +44,12 @@ describe('List', () => {
     // component-has-root-ref, component-handles-ref
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
-    //
-    // consistent-callback-names
-    // Problem: Contains onPagesUpdated, onPageAdded, and onPageRemoved types.
-    // Solution: Remove the inconsistent callback names.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'consistent-callback-names'],
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onPagesUpdated', 'onPageAdded', 'onPageRemoved'],
+      },
+    },
   });
 
   it('can complete rendering', done => {

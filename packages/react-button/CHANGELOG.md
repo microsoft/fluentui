@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 28 Oct 2020 12:32:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.13)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.12..@fluentui/react-button_v1.0.0-beta.13)
+
+### Changes
+
+- Update variants to not use css variables for global tokens so button is themed without ThemeProvider ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
+
+## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.12)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.11..@fluentui/react-button_v1.0.0-beta.12)
+
+### Changes
+
+- Updating button hooks to return state only; render function should be imported separately. ([PR #15961](https://github.com/microsoft/fluentui/pull/15961) by dzearing@hotmail.com)
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.11)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.9..@fluentui/react-button_v1.0.0-beta.11)
+
+### Changes
+
+- Updating arguments of style hook.  ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
+- Updating classes hooks derived from Button to actually derive from Button. ([PR #15955](https://github.com/microsoft/fluentui/pull/15955) by xgao@microsoft.com)
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.9)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.8..@fluentui/react-button_v1.0.0-beta.9)
+
+### Changes
+
+- Moving MenuContext outside of @fluentui/react-button and into @fluentui/react-shared-contexts. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.8)
+
+Thu, 05 Nov 2020 12:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.7..@fluentui/react-button_v1.0.0-beta.8)
+
+### Changes
+
+- Button: Removing unused scss files. ([PR #15835](https://github.com/microsoft/fluentui/pull/15835) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.7)
+
+Wed, 04 Nov 2020 12:34:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.4..@fluentui/react-button_v1.0.0-beta.7)
+
+### Changes
+
+- Button: Extrapolating expanded functionality in MenuButton to be provided via Context. ([PR #15780](https://github.com/microsoft/fluentui/pull/15780) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.4)
 

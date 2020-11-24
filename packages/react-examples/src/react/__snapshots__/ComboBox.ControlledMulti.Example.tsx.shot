@@ -410,8 +410,8 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
   </div>
   <div
     aria-atomic="true"
+    aria-hidden={true}
     aria-live="polite"
-    className=""
     id="ComboBox0-error"
     role="region"
   >

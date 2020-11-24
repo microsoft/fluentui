@@ -186,6 +186,9 @@ export namespace FontWeights {
 }
 
 // @public
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
+
+// @public
 export interface IAnimationStyles {
     // (undocumented)
     fadeIn100: IRawStyle;
@@ -749,7 +752,7 @@ export interface PartialTheme {
     //
     // (undocumented)
     spacing?: Partial<ISpacing>;
-    // (undocumented)
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -847,6 +850,7 @@ export interface Theme extends IScheme {
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -858,8 +862,8 @@ export interface Tokens {
     [key: string]: TokenSetType;
     // (undocumented)
     color: {
-        body: ColorTokenSet & TokenSetType;
-        brand: ColorTokenSet & TokenSetType;
+        body: ColorTokens & TokenSetType;
+        brand: ColorTokens & TokenSetType;
         [key: string]: TokenSetType;
     };
 }

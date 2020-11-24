@@ -39,7 +39,6 @@ import { ITheme } from '@fluentui/react-internal/lib/Styling';
 import { ITooltipHostProps } from '@fluentui/react-internal/lib/Tooltip';
 import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
 import { IWithViewportProps } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
-import { Omit } from '@fluentui/react-internal/lib/Utilities';
 import { PersonaInitialsColor } from '@fluentui/react-internal/lib/Persona';
 import * as React from 'react';
 import { RectangleEdge } from '@fluentui/react-internal/lib/Positioning';
@@ -384,6 +383,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
+    overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowIndex?: number;
     // (undocumented)
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
@@ -1616,6 +1616,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
     onShouldVirtualize?: (props: IListProps) => boolean;
     role?: string;
+    rootListProps?: IListProps;
     selection?: ISelection;
     selectionMode?: SelectionMode;
     styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
@@ -1881,7 +1882,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
+    get selectedOptions(): IComboBoxOption[];
 }
 
 
