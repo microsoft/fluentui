@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "office-ui-fabric-react_v7.153.0",
+      "version": "7.153.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Have Dropdown render the title as a string rather than a string inside a React Fragment, to work around a React bug when using Chrome's translation feature.",
+            "author": "behowell@microsoft.com",
+            "commit": "619dbd44312fa9fc85382f8213e77c1b2a392f91",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allow GroupedList to receive rootListProps",
+            "author": "noloyola@microsoft.com",
+            "commit": "9999a3402a63554c482ceb85e766fdc86df88d58",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add re-exports for date-time-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "7545cafc5d03ed4564ff4856b53a9adce6fd40aa",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Nov 2020 12:27:53 GMT",
       "tag": "office-ui-fabric-react_v7.152.1",
       "version": "7.152.1",

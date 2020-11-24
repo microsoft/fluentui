@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 23 Nov 2020 12:25:00 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.9.7)
+
+Tue, 24 Nov 2020 12:26:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.9.6..@fluentui/react-examples_v0.9.7)
+
+### Patches
+
+- Fix typings in DatePicker example ([PR #16054](https://github.com/microsoft/fluentui/pull/16054) by elcraig@microsoft.com)
 
 ## [0.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.9.6)
 

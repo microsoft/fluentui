@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.18.0)
+
+Tue, 24 Nov 2020 12:26:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.17.21..@uifabric/date-time_v7.18.0)
+
+### Minor changes
+
+- Add re-exports for date-time-utilities ([PR #16054](https://github.com/microsoft/fluentui/pull/16054) by elcraig@microsoft.com)
 
 ## [7.17.21](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.17.21)
 

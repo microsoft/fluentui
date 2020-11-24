@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "@fluentui/react-examples_v0.9.7",
+      "version": "0.9.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Modify UnifiedPicker example to have a context menu with copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "21477260e54f7cab0d07038d0869f506651b7fa0",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix typings in DatePicker example",
+            "author": "elcraig@microsoft.com",
+            "commit": "7545cafc5d03ed4564ff4856b53a9adce6fd40aa",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Nov 2020 12:25:00 GMT",
       "tag": "@fluentui/react-examples_v0.9.6",
       "version": "0.9.6",

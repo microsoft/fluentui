@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Nov 2020 12:25:33 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.16](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.16)
+
+Tue, 24 Nov 2020 12:26:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.36.10..@uifabric/experiments_v7.36.16)
+
+### Patches
+
+- Add function so consumers of UnifiedPicker can access selected items ([PR #16052](https://github.com/microsoft/fluentui/pull/16052) by elvonspa@microsoft.com)
 
 ## [7.36.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.10)
 

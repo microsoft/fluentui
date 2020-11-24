@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Modify UnifiedPicker example to have a context menu with copy",
-  "packageName": "@fluentui/react-examples",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-11-20T19:10:30.221Z"
-}

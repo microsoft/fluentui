@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Allow GroupedList to receive rootListProps",
-  "packageName": "office-ui-fabric-react",
-  "email": "noloyola@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-23T21:17:13.497Z"
-}

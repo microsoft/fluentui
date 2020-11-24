@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "@uifabric/experiments_v7.36.16",
+      "version": "7.36.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add function so consumers of UnifiedPicker can access selected items",
+            "author": "elvonspa@microsoft.com",
+            "commit": "21477260e54f7cab0d07038d0869f506651b7fa0",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Nov 2020 12:25:33 GMT",
       "tag": "@uifabric/experiments_v7.36.10",
       "version": "7.36.10",
