@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 11 Nov 2020 12:30:44 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.20)
+
+Tue, 24 Nov 2020 12:29:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.13..@fluentui/react-experiments_v8.0.0-beta.20)
+
+### Changes
+
+- Add function to UnifiedPicker so consumers can access which items are selected ([PR #16006](https://github.com/microsoft/fluentui/pull/16006) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.13)
 

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add function to UnifiedPicker so consumers can access which items are selected",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-20T18:23:34.923Z"
-}

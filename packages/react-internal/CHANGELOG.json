@@ -2,6 +2,27 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:29:52 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add interface for onRestoreFocus params",
+            "author": "elcraig@microsoft.com",
+            "commit": "5adfeff3d1ef72ab3621b8de323185b4855816b7",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "SearchBox: Don't prevent Esc from propagating if the box is empty. Also fix infinite recursion in onKeyDown.",
+            "author": "behowell@microsoft.com",
+            "commit": "6629dd0f9847553a1cace45ff1331b9b56672a6c",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Nov 2020 12:31:40 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.17",
       "version": "8.0.0-beta.17",

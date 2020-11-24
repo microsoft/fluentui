@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:29:52 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.20",
+      "version": "8.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add function to UnifiedPicker so consumers can access which items are selected",
+            "author": "elvonspa@microsoft.com",
+            "commit": "20b98240204580f3fbe59266467fcd5d5354a84b",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Nov 2020 12:30:44 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.13",
       "version": "8.0.0-beta.13",
