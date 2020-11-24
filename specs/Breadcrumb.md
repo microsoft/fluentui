@@ -20,7 +20,7 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 ## &lt;Breadcrumb&gt; Properties <a href="#breadcrumb-divider-properties" id="breadcrumb-divider-properties"></a>
 
-| Property Name | Type            | Default Value | Description                                         |
+| Property Name | Type             | Default Value | Description                                          |
 | ------------- | ------ | ------------- | ------------------- |
 | `size`        | `enum` | `medium`      | The Breadcrumb size |
 
