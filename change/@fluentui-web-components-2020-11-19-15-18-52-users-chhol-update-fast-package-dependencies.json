@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update fast packages to latest minor versions",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-19T23:18:52.883Z"
-}

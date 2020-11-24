@@ -6,12 +6,7 @@ const TooltipExampleTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement>(null);
 
   return (
-    <Grid
-      styles={{
-        gridTemplateColumns: 'auto 1fr',
-        msGridColumns: 'auto 1fr',
-      }}
-    >
+    <Grid columns="auto 1fr">
       {/* CUSTOM DOM ELEMENT is used as target for Tooltip */}
       <Tooltip target={target} content="well, yes, I am just a garbish text ¯\_(ツ)_/¯" position="below">
         <Button icon={<QnaIcon />} circular styles={{ cursor: 'pointer' }} />

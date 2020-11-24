@@ -1616,6 +1616,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
     onShouldVirtualize?: (props: IListProps) => boolean;
     role?: string;
+    rootListProps?: IListProps;
     selection?: ISelection;
     selectionMode?: SelectionMode;
     styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;

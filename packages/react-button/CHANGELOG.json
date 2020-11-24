@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 23 Nov 2020 12:31:40 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.13",
+      "version": "1.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update variants to not use css variables for global tokens so button is themed without ThemeProvider",
+            "author": "xgao@microsoft.com",
+            "commit": "8f026356eb3228e0a156aa7a54aa35f06f55b7f2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:30:07 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.12",
       "version": "1.0.0-beta.12",

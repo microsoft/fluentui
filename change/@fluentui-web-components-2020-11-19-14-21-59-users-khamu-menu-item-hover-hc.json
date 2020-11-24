@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add forced color adjust to host selector",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-19T22:21:59.223Z"
-}

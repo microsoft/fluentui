@@ -51,6 +51,7 @@ import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useMergedRefs } from '@fluentui/react-hooks';
 import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -484,11 +485,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   }
 
-  private _tryFocusPreviousActiveElement = (options: {
-    containsFocus: boolean;
-    documentContainsFocus: boolean;
-    originalElement: HTMLElement | Window | undefined;
-  }) => {
+  private _tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
     if (options && options.containsFocus && this._previousActiveElement) {
       // Make sure that the focus method actually exists
       // In some cases the object might exist but not be a real element.
