@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix typings in DatePicker example",
+  "packageName": "@fluentui/react-examples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-24T01:11:08.007Z"
+}
