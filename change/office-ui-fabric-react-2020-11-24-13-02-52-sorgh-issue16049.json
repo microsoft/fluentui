@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fixes TextField custom error message rendering",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "commit": "19e01f57155f984d2e0be14f84f0de7ed9573b5a",
+  "dependentChangeType": "patch",
+  "date": "2020-11-24T21:02:52.692Z"
+}
