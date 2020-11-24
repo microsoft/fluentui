@@ -5,6 +5,7 @@ import { NarrationComputer, IAriaElement } from './../narration/NarrationCompute
 const computer = new NarrationComputer();
 let prevSelector = null;
 let prevNode = null;
+let allowVpc = true;
 let focusableElements = {};
 let elementsPaths = [];
 let selectedElementPath = null;
@@ -37,6 +38,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   // Handles the "focusin" event by updating the current and previous narration elements.
   const handleFocusIn = React.useCallback(
     event => {
+      allowVpc = false;
       prevNarrationElement = narrationElement;
       setNarrationElement(event.target as IAriaElement);
     },
@@ -84,6 +86,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
     // Update the current and previous narration elements upon every node change
     if (node !== prevNode) {
+      allowVpc = true;
       // Begin if 1
       prevNarrationElement = narrationElement;
       setNarrationElement(node as IAriaElement);
@@ -102,7 +105,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     } // End if 1
 
     // Compute and save the narration text for the current and previous elements and platform
-    const platform = node ? 'Win/JAWS/VPC' : 'Win/JAWS';
+    const platform = node && allowVpc ? 'Win/JAWS/VPC' : 'Win/JAWS';
     computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration
@@ -122,11 +125,20 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
-      <a href="#" aria-haspopup="true" aria-label="test">
-        Test hypertext
+      <p tabIndex={0} aria-label="no content here" aria-haspopup="true" />
+      <p id="p" tabIndex={0} aria-label="paragraph here" aria-haspopup="true">
+        Here is some not so long paragraph.
+      </p>
+      <p tabIndex={0} aria-haspopup="true">
+        This is not so long too.
+      </p>
+      <textarea aria-label="write here" aria-describedby="p" />
+      <a href="#" aria-haspopup="true" aria-label="test" aria-describedby="p">
+        hypertext here
       </a>
-      <textarea aria-label="Write here" />
-      <p tabIndex={0}>Here is some paragraph.</p>
+      <a href="#" aria-haspopup="true" aria-describedby="p">
+        hypertext here
+      </a>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}

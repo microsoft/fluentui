@@ -1,6 +1,6 @@
 /*
 TODO:
-* Create a new definition for textContent which will be used in for static text like paragraphs.
+* Replace if with ternary and test title as description.
 * Make a list of platforms that create landmarks when entering header or footer in sectioning roles.
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * Should we also consider the "disabled" state?
@@ -31,8 +31,8 @@ export type FocusableElement = {
 export class NarrationComputer {
   computedParts: Record<string, string> = {
     landmarksAndGroups: undefined,
-    value: undefined,
     name: undefined,
+    content: undefined,
     description: undefined,
     type: undefined,
     state: undefined,
@@ -119,8 +119,7 @@ export class NarrationComputer {
     // Compute and store all the narration parts
     this.computeLandmarksAndGroups(element, prevElement, inheritance);
     this.computeDescription(element, inheritance);
-    this.computeNameAndTitle(node, element);
-    this.computeValue(node);
+    this.computeNameTitleAndContent(node, element);
     this.computePositionAndLevel(inheritance);
     this.computeTypeAndState(node, element, inheritance);
     this.computeUsage(element, inheritance);
@@ -402,8 +401,8 @@ export class NarrationComputer {
     } // End if 1
   } // End computeDescription
 
-  // Computes and stores the accessible name and title parts of the narration for the given element using the given computed node.
-  computeNameAndTitle(node: any, element: HTMLElement) {
+  // Computes and stores the accessible name, title and content parts of the narration for the given element using the given computed node.
+  computeNameTitleAndContent(node: any, element: HTMLElement) {
     this.computedParts.name = node.name;
 
     // If the title attribute is present, set its value as the description part of the narration if it was not computed as accessible name and if no accessible description was computed before
@@ -411,12 +410,9 @@ export class NarrationComputer {
       // Begin if 1
       this.computedParts.description = element.title;
     } // End if 1
-  } // End computeNameAndTitle
 
-  // Computes the value part of the narration using the given computed node.
-  computeValue(node: any) {
-    this.computedParts.value = node.valueText;
-  } // End computeValue
+    this.computedParts.content = node.valueText || element.textContent;
+  } // End computeNameTitleAndContent
 
   // Sets the position and level narration parts as constant strings because the real computation of the position in set and level would be too difficult.
   computePositionAndLevel(inheritance: string[]) {
