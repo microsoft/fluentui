@@ -429,7 +429,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
           <span data-automation-id="error-message">{errorMessage}</span>
         </p>
       ) : (
-        errorMessage
+        <div data-automation-id="error-message">{errorMessage}</div>
       )
     ) : null;
   }
