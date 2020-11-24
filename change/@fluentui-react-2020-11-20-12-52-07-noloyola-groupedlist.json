@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "GroupedList: Allow passing of rootListProps to allow passing attributes to parent list (#15772)",
+  "packageName": "@fluentui/react",
+  "email": "noloyola@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-20T20:52:07.580Z"
+}

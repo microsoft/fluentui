@@ -1,4 +1,4 @@
-import { Tokens, Theme, RecursivePartial } from '@fluentui/theme';
+import { Tokens, Theme, RecursivePartial } from '../types/Theme';
 import { merge } from '@fluentui/utilities';
 
 /**
@@ -29,32 +29,32 @@ export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): 
             background: semanticColors.primaryButtonBackgroundHovered,
             contentColor: semanticColors.primaryButtonTextHovered,
             secondaryContentColor: palette.white,
-            borderColor: 'var(--color-brand-borderColor)',
+            borderColor: semanticColors.primaryButtonBorder,
           },
 
           pressed: {
             background: semanticColors.primaryButtonBackgroundPressed,
             contentColor: semanticColors.primaryButtonTextPressed,
             secondaryContentColor: semanticColors.primaryButtonTextPressed,
-            borderColor: 'var(--color-brand-borderColor)',
-            iconColor: 'var(--color-brand-iconColor)',
+            borderColor: semanticColors.primaryButtonBorder,
+            iconColor: palette.white,
           },
 
           focused: {
-            background: 'var(--color-brand-background)',
-            borderColor: 'var(--color-brand-borderColor)',
-            contentColor: 'var(--color-brand-contentColor)',
-            iconColor: 'var(--color-brand-iconColor)',
-            secondaryContentColor: 'var(--color-brand-focused-contentColor)',
+            background: semanticColors.primaryButtonBackground,
+            borderColor: semanticColors.primaryButtonBorder,
+            contentColor: semanticColors.primaryButtonText,
+            iconColor: palette.white,
+            secondaryContentColor: semanticColors.primaryButtonText,
           },
 
           disabled: {
             background: semanticColors.primaryButtonBackgroundDisabled,
             contentColor: semanticColors.buttonTextDisabled,
             dividerColor: palette.neutralTertiaryAlt,
-            secondaryContentColor: 'var(--color-brand-disabled-contentColor)',
-            borderColor: 'var(--color-brand-disabled-background)',
-            iconColor: 'var(--color-brand-disabled-contentColor)',
+            secondaryContentColor: semanticColors.buttonTextDisabled,
+            borderColor: semanticColors.primaryButtonBackgroundDisabled,
+            iconColor: semanticColors.buttonTextDisabled,
           },
 
           checked: {

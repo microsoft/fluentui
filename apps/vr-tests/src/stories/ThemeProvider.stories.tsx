@@ -107,7 +107,10 @@ storiesOf('ThemeProvider', module)
     </ThemeProvider>
   ));
 
-const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
+const LoadThemeTestButton: React.FunctionComponent<{
+  buttonAs?: React.ElementType;
+  buttonProps?: any;
+}> = props => {
   const [isThemeCustomized, setIsThemeCustomized] = React.useState(false);
 
   // toggle between default theme and customized theme
@@ -123,10 +126,12 @@ const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
     }
   };
 
+  const Root = props.buttonAs || PrimaryButton;
+
   return (
-    <PrimaryButton className="testLoadTheme" onClick={onClick}>
+    <Root className="testLoadTheme" onClick={onClick} {...props.buttonProps}>
       {props.children}
-    </PrimaryButton>
+    </Root>
   );
 };
 
@@ -160,6 +165,11 @@ storiesOf('ThemeProvider with loadTheme', module)
   ))
   .addStory('Use updated global theme', () => (
     <LoadThemeTestButton>Customized global theme</LoadThemeTestButton>
+  ))
+  .addStory('Use updated global theme on new Button', () => (
+    <LoadThemeTestButton buttonAs={Button} buttonProps={{ primary: true }}>
+      Customized global theme
+    </LoadThemeTestButton>
   ));
 
 storiesOf('ThemeProvider with Customizer', module)

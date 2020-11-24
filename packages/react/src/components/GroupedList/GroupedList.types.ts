@@ -87,6 +87,9 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
 
+  /** Optional properties to pass through to the root list component being rendered. */
+  rootListProps?: IListProps;
+
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 23 Nov 2020 12:31:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.10",
+      "version": "1.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move getTokens logic out from ThemeProvider to mergeTheme/createTheme.",
+            "author": "xgao@microsoft.com",
+            "commit": "8f026356eb3228e0a156aa7a54aa35f06f55b7f2",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:30:07 GMT",
       "tag": "@fluentui/react-theme-provider_v1.0.0-beta.9",
       "version": "1.0.0-beta.9",

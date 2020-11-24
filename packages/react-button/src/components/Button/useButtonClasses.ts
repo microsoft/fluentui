@@ -234,7 +234,8 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
   },
 
   variants: (theme: Theme): ButtonVariants => {
-    const { fonts, effects, palette, semanticColors } = theme;
+    const { fonts, effects, palette, semanticColors, tokens } = theme;
+    const brand = tokens?.color?.brand;
 
     return {
       root: {
@@ -338,22 +339,22 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
       },
 
       primary: {
-        background: 'var(--color-brand-background)',
-        borderColor: 'var(--color-brand-borderColor)',
-        contentColor: 'var(--color-brand-contentColor)',
+        background: brand?.background,
+        borderColor: brand?.borderColor,
+        contentColor: brand?.contentColor,
         iconColor: 'inherit',
         forcedColorAdjust: 'none',
 
         hovered: {
-          background: 'var(--color-brand-hovered-background)',
-          borderColor: 'var(--color-brand-hovered-borderColor)',
-          contentColor: 'var(--color-brand-hovered-contentColor)',
+          background: brand?.hovered?.background,
+          borderColor: brand?.hovered?.borderColor,
+          contentColor: brand?.hovered?.contentColor,
         },
 
         pressed: {
-          background: 'var(--color-brand-pressed-background)',
-          borderColor: 'var(--color-brand-pressed-borderColor)',
-          contentColor: 'var(--color-brand-pressed-contentColor)',
+          background: brand?.pressed?.background,
+          borderColor: brand?.pressed?.borderColor,
+          contentColor: brand?.pressed?.contentColor,
         },
 
         highContrast: {

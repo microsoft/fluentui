@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.13)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.12..@fluentui/react-button_v1.0.0-beta.13)
+
+### Changes
+
+- Update variants to not use css variables for global tokens so button is themed without ThemeProvider ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
 
 ## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.12)
 

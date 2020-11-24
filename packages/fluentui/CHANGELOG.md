@@ -26,6 +26,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `selectableParent` prop in favor of `selectable` in `TreeItem` and make `selectionIndicator` visible only on focus or hover @assuncaocharles ([#15133](https://github.com/microsoft/fluentui/pull/15133))
 
 ### Fixes
+- Fix `Attachment` to pass `actionable` to accessibility behaviors @layershifter ([#16023](https://github.com/microsoft/fluentui/pull/16023))
+- Fix `Embed` throws when no style `variables` are passed in @yuanboxue-amber ([#16000](https://github.com/microsoft/fluentui/pull/16000))
 - Fix screen reader narrates incorrect items count for `toolbar` menu with radio group @yuanboxue-amber ([#15951](https://github.com/microsoft/fluentui/pull/15951))
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
 - Fix `Tree` to have prop `onFocusParent` triggered on `ArrowLeft` for leaf node @yuanboxue-amber ([#15442](https://github.com/microsoft/fluentui/pull/15442))
@@ -51,6 +53,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
 - Fix `SplitButton` focus outline @assuncaocharles ([#15873](https://github.com/microsoft/fluentui/pull/15873))
 - Add `selectedItemMaxWidth` to fix item not getting truncated @assuncaocharles ([#15891](https://github.com/microsoft/fluentui/pull/15891))
+- Fix shorthand `id` prop not being passed to control in `FormField` component @assuncaocharles ([#16003](https://github.com/microsoft/fluentui/pull/16003))
+- Fix outdated `onChange` call in `RadioGroupItem` @assuncaocharles ([#15997](https://github.com/microsoft/fluentui/pull/15997))
 - Fix `Dropdown` to not break new lines for button trigger after listbox was introduced wrapping selected items @assuncaocharles ([#15898](https://github.com/microsoft/fluentui/pull/15898))
 
 ### Features
@@ -80,6 +84,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 - Added `SaveIcon`, `LocationIcon`, `ArrowSortIcon`, `TeamsMonochromeIcon` and `MegaphoneIcon`. @TanelVari ([#15830](https://github.com/microsoft/fluentui/pull/15830))
+- Added `VideoProhibitedIcon`. @TanelVari ([#16025](https://github.com/microsoft/fluentui/pull/16025))
 
 ### Documentation
 - AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))
@@ -111,6 +116,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
 - Fixed category color scheme dropdown to show all available colors @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 - Added support to serve different docsite versions @ling1726 ([#15692](https://github.com/microsoft/fluentui/pull/15692))
+- Added support to silently fail the version dropdown @ling1726 ([#16002](https://github.com/microsoft/fluentui/pull/16002))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)

@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Mon, 23 Nov 2020 12:31:40 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.7",
+      "version": "2.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move getTokens logic out from ThemeProvider to mergeTheme/createTheme.",
+            "author": "xgao@microsoft.com",
+            "commit": "8f026356eb3228e0a156aa7a54aa35f06f55b7f2",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Nov 2020 12:32:23 GMT",
       "tag": "@fluentui/theme_v2.0.0-beta.5",
       "version": "2.0.0-beta.5",

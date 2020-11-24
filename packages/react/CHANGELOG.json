@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 20 Nov 2020 12:32:25 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix display issue with Dropdown when using Chrome Translate",
+            "author": "behowell@microsoft.com",
+            "commit": "29c26bf4eb2d736cd0891c332d534c8c105f768d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Nov 2020 12:28:32 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.17",
       "version": "8.0.0-beta.17",
