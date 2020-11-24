@@ -21,12 +21,11 @@ describe('MenuItem', () => {
     },
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
-    // Disabled Tests:
-    //
-    // consistent-callback-names
-    // Problem: Contains onActiveChanged type.
-    // Solution: Remove the inconsistent callback name.
-    disabledTests: ['consistent-callback-names'],
+    testOptions: {
+      'consistent-callback-names': {
+        ignoreProps: ['onActiveChanged'],
+      },
+    },
   });
 
   implementsShorthandProp(MenuItem)('menu', Menu, {

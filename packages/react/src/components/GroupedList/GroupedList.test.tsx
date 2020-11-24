@@ -32,7 +32,7 @@ describe('GroupedList', () => {
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],
     testOptions: {
       'consistent-callback-names': {
-        ignoreProps: ['onEmptied', 'onEncrypted', 'onEnded', 'onSeeked', 'onStalled'],
+        ignoreProps: ['onEmptied', 'onEncrypted', 'onEnded', 'onSeeked', 'onStalled', 'onGroupExpandStateChanged'],
       },
     },
   });
