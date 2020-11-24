@@ -125,20 +125,6 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
-      <p tabIndex={0} aria-label="no content here" aria-haspopup="true" />
-      <p id="p" tabIndex={0} aria-label="paragraph here" aria-haspopup="true">
-        Here is some not so long paragraph.
-      </p>
-      <p tabIndex={0} aria-haspopup="true">
-        This is not so long too.
-      </p>
-      <textarea aria-label="write here" aria-describedby="p" />
-      <a href="#" aria-haspopup="true" aria-label="test" aria-describedby="p">
-        hypertext here
-      </a>
-      <a href="#" aria-haspopup="true" aria-describedby="p">
-        hypertext here
-      </a>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}
