@@ -363,6 +363,7 @@ export const WeeklyDayPicker: import("react").FunctionComponent<import("./Weekly
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";
 export * from "@fluentui/date-time-utilities/lib/dateValues/dateValues";
+export * from "@fluentui/date-time-utilities/lib/dateValues/timeConstants";
 
 // (No @packageDocumentation comment for this package)
 

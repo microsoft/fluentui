@@ -10254,6 +10254,9 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
+export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";
+export * from "@fluentui/date-time-utilities/lib/dateValues/dateValues";
+export * from "@fluentui/date-time-utilities/lib/dateValues/timeConstants";
 export * from "@fluentui/react-focus";
 export * from "@fluentui/react-window-provider";
 export * from "@uifabric/icons";

@@ -46,8 +46,8 @@ const controlClass = mergeStyleSets({
   },
 });
 
-const onFormatDate = (date: Date): string => {
-  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+const onFormatDate = (date?: Date): string => {
+  return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
 };
 
 const desc = 'This field is required. One of the support input formats is year dash month dash day.';

@@ -54,8 +54,8 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
     this.setState({ value: null });
   };
 
-  private _onFormatDate = (date: Date): string => {
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+  private _onFormatDate = (date?: Date): string => {
+    return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
   };
 
   private _onParseDateFromString = (value: string): Date => {
