@@ -1550,6 +1550,9 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
+                  {/* We previously were rendering the trigger button after selected items list,
+                  after listbox wrapper was introduced we moved it to before and
+                   set as absolute to avoid visual regressions   */}
                   {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
                   {search &&
