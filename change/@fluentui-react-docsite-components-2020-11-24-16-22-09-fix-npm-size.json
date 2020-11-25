@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Removing dist-storybook from npm packages.",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-25T00:21:37.914Z"
+}

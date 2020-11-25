@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Removing dist-storybook from npm packages.",
+  "packageName": "@fluentui/theme-samples",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-25T00:22:07.270Z"
+}
