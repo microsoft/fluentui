@@ -17,6 +17,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.47.15 ]------------------------------- -->
+## [v0.47.15](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.15) (2020-11-25)
+
+### Fixes
+- Update viewBox for Fluent Design icons @notandrew, @miroslavstastny ([#16071](https://github.com/microsoft/fluentui/pull/16071))
+
 <!--------------------------------[ v0.47.14 ]------------------------------- -->
 ## [v0.47.14](https://github.com/microsoft/fluentui/tree/fluentuizero_v0.47.14) (2020-11-23)
 
