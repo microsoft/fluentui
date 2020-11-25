@@ -1,6 +1,5 @@
 /*
 TODO:
-* Make a definition of platforms that create landmarks when entering header or footer in sectioning roles.
 * Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * Should we also consider the "disabled" state?
 */
@@ -141,14 +140,15 @@ export class NarrationComputer {
       // Begin while 1
       let skipParent = false;
 
-      // The "<footer>" and "<headr>" elements don't create a landmark if they are a descendant of a sectioning element.
-      // Note: According to MDN, they should not create a landmark if they are descendants also of of sectioning roles (e.g. article or main), but using both JAWS and NVDA they actually do. However, they do only when tabbed into, not when entered with virtual cursor. Therefore, in this code, we don't follow MDN, but follow how JAWS and NVDA actually behave.
+      // The "<header>" and "<footer>" elements don't create a landmark if they are a descendant of a sectioning element.
+      // Note: According to MDN, they should not create a landmark if they are descendants also of of sectioning roles (e.g. article or main), but using all JAWS, NVDA and VoiceOver they actually do. However, they do only when tabbed into, not when entered with virtual cursor. Therefore, in this code, we don't follow MDN, but follow how screen readers actually behave.
       // See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
-      if (['footer', 'header'].includes(parent.tagName.toLowerCase())) {
+      if (['header', 'footer'].includes(parent.tagName.toLowerCase())) {
         // Begin if 1
         const sectionElements = ['article', 'aside', 'main', 'nav', 'section'];
-        // const sectionRoles = ['article', 'complementary', 'main', 'navigation', 'region'];
-        const sectionRoles = [];
+        const sectionRoles = SRNC.headerAndFooterLandmarkInSectionRole.includes(inheritance[0])
+          ? []
+          : ['article', 'complementary', 'main', 'navigation', 'region'];
         let ancestor = parent.parentElement as IAriaElement;
         while (ancestor !== element.ownerDocument.body) {
           // Begin while 2
