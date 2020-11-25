@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2020 12:26:27 GMT",
+      "tag": "office-ui-fabric-react_v7.153.1",
+      "version": "7.153.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Don't prevent Esc from propagating if the box is empty",
+            "author": "behowell@microsoft.com",
+            "commit": "64f3aeffc97024407fc06b1134e3aa95f6b0761d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:26:56 GMT",
       "tag": "office-ui-fabric-react_v7.153.0",
       "version": "7.153.0",
