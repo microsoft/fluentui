@@ -11,6 +11,7 @@
 .gitignore
 .vscode
 coverage
+dist/storybook
 dist/*.stats.html
 dist/*.stats.json
 dist/demo
