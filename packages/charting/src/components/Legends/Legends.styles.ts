@@ -42,7 +42,6 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     rect: {
       selectors: {
         [HighContrastSelector]: {
-          // background property won't support in HC mode
           content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
           opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
         },
