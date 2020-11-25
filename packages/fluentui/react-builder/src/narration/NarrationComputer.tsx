@@ -4,11 +4,13 @@ TODO:
 * Should we also consider the "disabled" state?
 */
 import { SRNC } from './SRNC-Definitions';
-import './SRNC-StateRules-Win_JAWS';
 import './SRNC-LandmarksAndGroups-Win_JAWS';
 import './SRNC-ElementTypes-Win_JAWS';
+import './SRNC-ElementTypes-Win_JAWS_VPC';
 import './SRNC-ElementStates-Win_JAWS';
 import './SRNC-Usages-Win_JAWS';
+import './SRNC-StateRules-Win_JAWS';
+import './SRNC-StateRules-Win_JAWS_VPC';
 import './SRNC-ReadingOrder-Win_JAWS';
 import './SRNC-ReadingOrder-Win_JAWS_VPC';
 
@@ -438,7 +440,8 @@ export class NarrationComputer {
       for (let i = 0; i < rules.length; i++) {
         // Begin for 1
         const rule = rules[i];
-        const possibleStates = SRNC.possibleStates[definitionName];
+        const combination = rule.combination || [];
+        const possibleStates = SRNC.possibleStates[definitionName] || [];
         const skipRule = possibleStates.some((possibleState: string) => {
           // Begin some 1
           const stateValue = element.getAttribute(possibleState);
@@ -452,7 +455,7 @@ export class NarrationComputer {
             possibleState === 'checked' && (element as HTMLInputElement).checked !== undefined;
 
           const elementHasStateOrCheckedProp = elementHasState || elementHasCheckedProp;
-          const combinationHasState = rule.combination.includes(possibleState);
+          const combinationHasState = combination.includes(possibleState);
 
           // Check if the presence of the state on the element matches its presence in the combination list. If not, continue with the next rule
           if (elementHasStateOrCheckedProp !== combinationHasState) {
@@ -485,7 +488,7 @@ export class NarrationComputer {
         const elementStates = SRNC.elementStates[platform][definitionName];
 
         // If there is just one or no state in the combination list, the order does not have to be specified, an therefore the combination can be used as the order. But if the order is specified explicitly, use that order
-        const order = rule.combination.length <= 1 && !rule.order ? rule.combination : rule.order;
+        const order = combination.length <= 1 && !rule.order ? combination : rule.order;
 
         // Determine the state narration for each state in the order list by looking if corresponding state and its value exist in the state strings definitions
         order.forEach((stateName: string) => {

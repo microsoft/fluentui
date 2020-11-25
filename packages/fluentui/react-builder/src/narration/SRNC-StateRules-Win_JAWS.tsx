@@ -3,7 +3,6 @@ import { SRNC } from './SRNC-Definitions';
 SRNC.stateRules['Win/JAWS'] = {
   button: [
     {
-      combination: [],
       elementType: 'button',
     },
     {
@@ -42,7 +41,6 @@ SRNC.stateRules['Win/JAWS'] = {
   'role=button': 'button',
   'input:text': [
     {
-      combination: [],
       elementType: 'textInput',
     },
     {
@@ -63,7 +61,6 @@ SRNC.stateRules['Win/JAWS'] = {
   'input:search': 'input:text',
   'role=searchbox': [
     {
-      combination: [],
       elementType: 'searchInput',
     },
     {
@@ -97,7 +94,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End input:checkbox
   'role=checkbox': [
     {
-      combination: [],
       order: ['aria-checked'],
       elementType: 'checkboxInput',
     },
@@ -133,7 +129,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End input:radio
   'role=radio': [
     {
-      combination: [],
       order: ['aria-checked'],
       elementType: 'radioInput',
     },
@@ -154,7 +149,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=radio
   'role=combobox': [
     {
-      combination: [],
       elementType: 'combobox',
     },
     {
@@ -173,7 +167,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=combobox
   textarea: [
     {
-      combination: [],
       elementType: 'textarea',
     },
     {
@@ -192,7 +185,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End textarea
   a: [
     {
-      combination: [],
       elementType: 'link',
     },
     {
@@ -212,7 +204,6 @@ SRNC.stateRules['Win/JAWS'] = {
   'role=link': 'a',
   'role=menuitem': [
     {
-      combination: [],
       elementType: 'menuitem',
     },
     {
@@ -222,7 +213,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=menuitem
   'role=menuitemcheckbox': [
     {
-      combination: [],
       order: ['aria-checked'],
       elementType: 'menuitemcheckbox',
     },
@@ -233,7 +223,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=menuitemcheckbox
   'role=menuitemradio': [
     {
-      combination: [],
       order: ['aria-checked'],
       elementType: 'menuitemradio',
     },
@@ -244,7 +233,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=menuitemradio
   select: [
     {
-      combination: [],
       elementType: 'select',
     },
     {
@@ -263,7 +251,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End select
   'role=switch': [
     {
-      combination: [],
       order: ['aria-checked'],
       elementType: 'switch',
     },
@@ -274,7 +261,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=switch
   'role=tab': [
     {
-      combination: [],
       elementType: 'tab',
     },
     {
@@ -284,13 +270,11 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=tab
   'role=option': [
     {
-      combination: [],
       elementType: 'option',
     },
   ], // End role=option
   'role=treeitem': [
     {
-      combination: [],
       elementType: 'treeitem',
     },
     {
@@ -300,7 +284,6 @@ SRNC.stateRules['Win/JAWS'] = {
   ], // End role=treeitem
   'role=gridcell': [
     {
-      combination: [],
       elementType: 'gridcell',
     },
     {
