@@ -201,7 +201,9 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     switch (ev.which) {
       case KeyCodes.escape:
         this.props.onEscape && this.props.onEscape(ev);
-        if (!ev.defaultPrevented) {
+        // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
+        // to propagate from the empty search box to a parent element such as a dialog, etc.
+        if (this.state.value && !ev.defaultPrevented) {
           this._onClear(ev);
         }
         break;
@@ -209,22 +211,18 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
-          break;
+          ev.preventDefault();
+          ev.stopPropagation();
         }
-        // if we don't handle the enter press then we shouldn't prevent default
-        return;
+        break;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
-        if (!ev.defaultPrevented) {
-          return;
+        if (ev.defaultPrevented) {
+          ev.stopPropagation();
         }
+        break;
     }
-
-    // We only get here if the keypress has been handled,
-    // or preventDefault was called in case of default keyDown handler
-    ev.preventDefault();
-    ev.stopPropagation();
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
