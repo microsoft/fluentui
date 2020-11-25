@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Removing dist/storybook from the npm output.",
+  "packageName": "@fluentui/react-focus",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-25T01:15:45.708Z"
+}
