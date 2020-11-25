@@ -13,6 +13,7 @@ coverage
 temp
 images
 results
+dist-storybook
 dist/storybook
 dist/*.stats.html
 dist/*.stats.json
