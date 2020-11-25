@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const UserBlurIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M6.20712 4L2 8.20712V6.79291L4.79291 4H6.20712Z" />
         <path d="M3.5 16H5V14.2929L3.30542 15.9875C3.36911 15.9957 3.43406 16 3.5 16Z" />

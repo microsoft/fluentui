@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ComputerAudioOffIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg
+      style={{ overflow: 'visible' }}
+      role="presentation"
+      focusable="false"
+      viewBox="2 2 16 16"
+      className={classes.svg}
+    >
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M2.85355 2.1464C2.65829 1.95114 2.34171 1.95114 2.14645 2.1464C1.95118 2.34166 1.95118 2.65825 2.14645 2.85351L17.1464 17.8535C17.3417 18.0488 17.6583 18.0488 17.8536 17.8535C18.0488 17.6582 18.0488 17.3417 17.8536 17.1464L2.85355 2.1464Z" />
         <path d="M2 4C2 3.62909 2.10097 3.28177 2.27692 2.98401L3.03388 3.74097C3.01178 3.82358 3 3.91042 3 4V13C3 13.5523 3.44772 14 4 14H9V15H8V17H10.485L10.5 17.0001H10.8787L11.8786 18H5.5C5.22386 18 5 17.7761 5 17.5C5 17.2239 5.22386 17 5.5 17H7V15H4C2.89543 15 2 14.1046 2 13V4Z" />

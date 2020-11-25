@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const MicrophoneDisabledIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg
+      style={{ overflow: 'visible' }}
+      role="presentation"
+      focusable="false"
+      viewBox="2 2 16 16"
+      className={classes.svg}
+    >
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M9 13C9.07028 13 9.14 12.9976 9.20907 12.9928C9.31908 12.6059 9.47039 12.2363 9.65793 11.8892C9.45189 11.961 9.2305 12 9 12C7.89543 12 7 11.1046 7 9.99998V5C7 3.89543 7.89543 3 9 3C10.1046 3 11 3.89543 11 5V9.99998C11 10.0924 10.9937 10.1833 10.9816 10.2724C11.2937 10.0124 11.6351 9.78627 12 9.59971V5C12 3.34315 10.6569 2 9 2C7.34315 2 6 3.34315 6 5V9.99998C6 11.6568 7.34315 13 9 13Z" />
         <path d="M4.5 9.99998C4.5 12.4853 6.51472 14.5 9 14.5C9 15.3189 9.179 16.0961 9.5 16.7945V17.5C9.5 17.7761 9.27614 18 9 18C8.72386 18 8.5 17.7761 8.5 17.5V15.4776C5.69675 15.2249 3.5 12.869 3.5 9.99998C3.5 9.72384 3.72386 9.49998 4 9.49998C4.27614 9.49998 4.5 9.72384 4.5 9.99998Z" />

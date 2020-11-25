@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const BreakoutRoomIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M12.485 10C12.485 10.4142 12.1492 10.75 11.735 10.75C11.3208 10.75 10.985 10.4142 10.985 10C10.985 9.58579 11.3208 9.25 11.735 9.25C12.1492 9.25 12.485 9.58579 12.485 10Z" />
         <path

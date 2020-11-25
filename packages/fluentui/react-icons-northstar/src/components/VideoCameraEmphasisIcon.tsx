@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const VideoCameraEmphasisIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg
+      style={{ overflow: 'visible' }}
+      role="presentation"
+      focusable="false"
+      viewBox="2 2 16 16"
+      className={classes.svg}
+    >
       <g>
         <g className={cx(iconClassNames.outline, classes.outlinePart)}>
           <path d="M5 5C3.89543 5 3 5.89543 3 7V13C3 14.1046 3.89543 15 5 15H11C12.1046 15 13 14.1046 13 13V11.9713L15.8413 13.8182C16.3402 14.1425 17 13.7844 17 13.1893V6.81097C17 6.21571 16.3398 5.85768 15.8409 6.18236L13 8.03118V7C13 5.89543 12.1046 5 11 5H5ZM13 9.22429L16 7.27195V12.7287L13 10.7787V9.22429ZM12 7V13C12 13.5523 11.5523 14 11 14H5C4.44772 14 4 13.5523 4 13V7C4 6.44772 4.44772 6 5 6H11C11.5523 6 12 6.44772 12 7Z" />

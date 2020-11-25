@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const MoreIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.filled, classes.filledPart)}>
         <path d="M6.5 10C6.5 10.9665 5.7165 11.75 4.75 11.75C3.7835 11.75 3 10.9665 3 10C3 9.0335 3.7835 8.25 4.75 8.25C5.7165 8.25 6.5 9.0335 6.5 10Z" />
         <path d="M17 10C17 10.9665 16.2165 11.75 15.25 11.75C14.2835 11.75 13.5 10.9665 13.5 10C13.5 9.0335 14.2835 8.25 15.25 8.25C16.2165 8.25 17 9.0335 17 10Z" />

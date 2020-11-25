@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const OpenOutsideIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         {' '}
         <path d="M16.9621 3.30861C16.9377 3.24964 16.9015 3.19439 16.8536 3.14645C16.8056 3.09851 16.7504 3.06234 16.6914 3.03794C16.6324 3.01349 16.5678 3 16.5 3H10.5C10.2239 3 10 3.22386 10 3.5C10 3.77614 10.2239 4 10.5 4H15.2929L9.14645 10.1464C8.95118 10.3417 8.95118 10.6583 9.14645 10.8536C9.34171 11.0488 9.65829 11.0488 9.85355 10.8536L16 4.70711V9.5C16 9.77614 16.2239 10 16.5 10C16.7761 10 17 9.77614 17 9.5V3.50049C17 3.49949 17 3.498 17 3.497C16.9996 3.4303 16.9861 3.36669 16.9621 3.30861Z" />

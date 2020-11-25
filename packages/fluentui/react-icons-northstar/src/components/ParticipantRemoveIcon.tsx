@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ParticipantRemoveIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg
+      style={{ overflow: 'visible' }}
+      role="presentation"
+      focusable="false"
+      viewBox="2 2 16 16"
+      className={classes.svg}
+    >
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M5 6C5 3.79086 6.79086 2 9 2C11.2091 2 13 3.79086 13 6C13 8.20914 11.2091 10 9 10C6.79086 10 5 8.20914 5 6ZM9 3C7.34315 3 6 4.34315 6 6C6 7.65685 7.34315 9 9 9C10.6569 9 12 7.65685 12 6C12 4.34315 10.6569 3 9 3Z" />
         <path d="M2 13C2 11.8869 2.90315 11 4.00873 11L10.2572 11C10.0035 11.3071 9.7826 11.6422 9.59971 12L4.00873 12C3.44786 12 3 12.4467 3 13C3 14.3088 3.62226 15.2837 4.67262 15.9534C5.74318 16.636 7.26489 17 9 17C9.20041 17 9.39798 16.9951 9.59233 16.9855C9.7654 17.3266 9.97298 17.6472 10.2105 17.9427C9.8155 17.9811 9.41085 18 9 18C7.14526 18 5.41697 17.614 4.13499 16.7966C2.83281 15.9663 2 14.6912 2 13Z" />

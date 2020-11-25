@@ -5,7 +5,7 @@ import { createSvgIcon } from '../utils/createSvgIcon';
 
 export const PlayIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" className={classes.svg} viewBox="0 0 20 20">
+    <svg role="presentation" focusable="false" className={classes.svg} viewBox="2 2 16 16">
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         fillRule="evenodd"

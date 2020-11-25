@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ContactGroupCallIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg className={classes.svg} viewBox="0 0 20 20" role="presentation" focusable="false">
+    <svg
+      style={{ overflow: 'visible' }}
+      className={classes.svg}
+      viewBox="2 2 16 16"
+      role="presentation"
+      focusable="false"
+    >
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M11 10C12.1046 10 13 10.8954 13 12V13.5C13 15.5544 10.912 17 7.5 17C4.08805 17 2 15.5544 2 13.5V12C2 10.8954 2.89543 10 4 10H11ZM4 11C3.44772 11 3 11.4477 3 12V13.5C3 14.9071 4.57862 16 7.5 16C10.4214 16 12 14.9071 12 13.5V12C12 11.4477 11.5523 11 11 11H4Z" />
         <path d="M15.1615 14.8399L15.0865 14.8148C15.1314 14.8027 15.1754 14.79 15.2186 14.7767C15.1998 14.7981 15.1808 14.8192 15.1615 14.8399Z" />

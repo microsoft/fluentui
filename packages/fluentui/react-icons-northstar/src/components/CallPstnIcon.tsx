@@ -5,7 +5,13 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const CallPstnIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg
+      style={{ overflow: 'visible' }}
+      role="presentation"
+      focusable="false"
+      viewBox="2 2 16 16"
+      className={classes.svg}
+    >
       <g className={cx(iconClassNames.filled, classes.filledPart)}>
         <path d="M9 2C6.79086 2 5 3.79086 5 6C5 8.20914 6.79086 10 9 10C11.2091 10 13 8.20914 13 6C13 3.79086 11.2091 2 9 2Z" />
         <path d="M4.00873 11C2.90315 11 2 11.8869 2 13C2 14.6912 2.83281 15.9663 4.13499 16.7966C5.41697 17.614 7.14526 18 9 18C9.87991 18 10.7314 17.9131 11.5202 17.7345C11.4602 17.3019 11.5355 16.8523 11.7481 16.4582L11.7603 16.4356L11.8431 16.2995L12.4297 15.4376C12.8741 14.7847 13.6617 14.4469 14.4461 14.614L14.4736 14.6199L14.6283 14.6621L15.1615 14.8399C15.3177 14.6721 15.4588 14.4811 15.5847 14.2646C15.7098 14.0495 15.8014 13.8408 15.8641 13.6376L15.3848 13.1827C14.8337 12.6597 14.6333 11.8805 14.8135 11.1724C14.565 11.0616 14.2897 11 14 11L4.00873 11Z" />
