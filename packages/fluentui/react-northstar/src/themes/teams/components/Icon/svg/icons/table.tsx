@@ -5,7 +5,7 @@ import { teamsIconClassNames } from '../teamsIconClassNames';
 
 export default {
   icon: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <path
         className={cx(teamsIconClassNames.outline, classes.outlinePart)}
         fillRule="evenodd"

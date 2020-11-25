@@ -5,7 +5,13 @@ import { teamsIconClassNames } from '../teamsIconClassNames';
 
 export default {
   icon: ({ classes }) => (
-    <svg className={classes.svg} viewBox="0 0 20 20" role="presentation" focusable="false">
+    <svg
+      style={{ overflow: 'visible' }}
+      className={classes.svg}
+      viewBox="2 2 16 16"
+      role="presentation"
+      focusable="false"
+    >
       <g className={cx(teamsIconClassNames.outline, classes.outlinePart)}>
         <path d="M12.4735 8.01431C12.9863 8.01431 13.409 8.40035 13.4668 8.89769L13.4735 9.01431V9.09544C13.1276 9.16066 12.7932 9.25827 12.4735 9.38498V9.01431H7.50494V13.3817C7.50494 14.453 8.18312 15.366 9.13361 15.7147C9.22165 16.1053 9.35125 16.4801 9.51752 16.8343C7.87815 16.6124 6.60081 15.2504 6.51009 13.5728L6.50494 13.3817V9.01431C6.50494 8.50148 6.89098 8.0788 7.38832 8.02104L7.50494 8.01431H12.4735Z" />
         <path d="M14.499 9C14.6335 9 14.7668 9.00483 14.8989 9.01431H16.99V9.59509C17.3476 9.77709 17.6827 9.99706 17.99 10.2497V9.01431L17.9832 8.89769C17.9255 8.40035 17.5028 8.01431 16.99 8.01431L14.2056 8.01372C14.3525 8.26749 14.4453 8.55654 14.468 8.86505L14.473 9.00006L14.499 9Z" />
