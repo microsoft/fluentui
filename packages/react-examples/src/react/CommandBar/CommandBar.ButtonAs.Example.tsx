@@ -46,9 +46,13 @@ const CustomButton: React.FunctionComponent<IButtonProps> = props => {
 // It's also okay to custom render only the command bar items without changing the menu items.
 const CustomMenuItem: React.FunctionComponent<IContextualMenuItemProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.item.text} clicked`);
-  // Due to ContextualMenu implementation quirks, passing styles here doesn't work
-  // eslint-disable-next-line react/jsx-no-bind
-  return <ContextualMenuItem {...props} onClick={buttonOnMouseClick} />;
+  // Due to ContextualMenu implementation quirks, passing styles here doesn't work,
+  // and the onClick handler must be on a wrapping element
+  return (
+    <span onClick={buttonOnMouseClick}>
+      <ContextualMenuItem {...props} />
+    </span>
+  );
 };
 
 const overflowProps: IButtonProps = {
