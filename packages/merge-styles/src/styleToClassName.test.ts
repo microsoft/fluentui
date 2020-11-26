@@ -544,4 +544,27 @@ describe('styleToClassName with specificityMultiplier', () => {
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.class1{background:red;}');
   });
+
+  it('handles calc(...) in props with shorthand syntax (margin, padding)', () => {
+    styleToClassName(
+      {},
+      {
+        padding: 'calc(24px / 2) 0',
+        margin: '0 2px  calc(2 * (var(--a) + var(--b))) ',
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{' +
+        'padding-top:calc(24px / 2);' +
+        'padding-right:0;' +
+        'padding-bottom:calc(24px / 2);' +
+        'padding-left:0;' +
+        'margin-top:0;' +
+        'margin-right:2px;' +
+        'margin-bottom:calc(2 * (var(--a) + var(--b)));' +
+        'margin-left:2px;' +
+        '}',
+    );
+  });
 });
