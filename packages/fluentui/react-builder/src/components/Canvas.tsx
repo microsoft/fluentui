@@ -104,9 +104,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const handleKeyDown = React.useCallback(
     e => {
+      if (enabledVirtualCursor && [40, 38, 13, 121].includes(e.keyCode)) {
+        // Begin if 1
+        e.preventDefault();
+      } // End if 1
       switch (e.keyCode) {
-        case 40:
-        case 38:
+        case 40: // Down arrow
+        case 38: // Up arrow
           focusableElements[currentIndex].classList.remove('virtual-focused');
           setIndex(idx => {
             const modifier = e.keyCode === 40 ? 1 : -1;
@@ -121,10 +125,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             return newIndex;
           });
           break;
-        case 13:
+        case 13: // Enter
           focusableElements[currentIndex].click();
           return;
-        case 121:
+        case 121: // F10
           if (e.shiftKey) {
             const eve = document.createEvent('MouseEvents');
             eve.initMouseEvent('contextmenu', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 2, null);
@@ -136,7 +140,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           break;
       }
     },
-    [currentIndex, focusableElements],
+    [enabledVirtualCursor, currentIndex, focusableElements],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -206,19 +210,21 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               'h6',
               'input',
               'marquee',
-              'option',
+              // 'option',
               'p',
               'select',
               'textarea',
               '[role="button"]',
               '[role="checkbox"]',
+              // '[role="dialog"]',
               '[role="gridcell"]',
               '[role="link"]',
+              '[role="listbox"]',
               '[role="log"]',
               '[role="menuitem"]',
               '[role="menuitemcheckbox"]',
               '[role="menuitemradio"]',
-              '[role="option"]',
+              // '[role="option"]',
               '[role="progressbar"]',
               '[role="radio"]',
               '[role="scrollbar"]',
@@ -233,8 +239,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               '[role="textbox"]',
               '[role="timer"]',
               '[role="tooltip"]',
+              '[role="tree"]',
               '[role="treeitem"]',
-              '[tabindex]',
+              '.ui-text',
             ]
               .map(selector => `*:not([aria-hidden]) >  ${selector}`)
               .join(','),

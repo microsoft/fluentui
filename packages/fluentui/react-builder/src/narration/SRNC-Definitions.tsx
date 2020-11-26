@@ -25,7 +25,7 @@ export const SRNC: Record<string, any> = {
 
   // Positions string definitions for each platform
   positions: {
-    'Win/JAWS': 'X of Y',
+    'Win/JAWS': '[X] of [Y]',
   }, // End position
 
   // Levels string definitions for each platform
@@ -65,7 +65,6 @@ export const SRNC: Record<string, any> = {
     'role=menuitemradio': ['aria-checked'],
     select: ['aria-invalid', 'aria-required'],
     'role=switch': ['aria-checked'],
-    'role=option': [],
     'role=treeitem': ['aria-expanded'],
     'role=tab': ['aria-selected'],
     'role=gridcell': ['aria-selected', 'aria-haspopup'],

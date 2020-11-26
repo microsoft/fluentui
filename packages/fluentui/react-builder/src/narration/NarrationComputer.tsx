@@ -1,16 +1,24 @@
 /*
 TODO:
-* Add the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
+* Define platform wich ignore usage part, e.g. VPC.
+* Define aria-invalid for radio and checkbox.
+* Define the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
 * Should we also consider the "disabled" state?
 */
 import { SRNC } from './SRNC-Definitions';
 import './SRNC-LandmarksAndGroups-Win_JAWS';
+import './SRNC-LandmarksAndGroups-Win_JAWS_VPC';
+
 import './SRNC-ElementTypes-Win_JAWS';
 import './SRNC-ElementTypes-Win_JAWS_VPC';
+
 import './SRNC-ElementStates-Win_JAWS';
+
 import './SRNC-Usages-Win_JAWS';
+
 import './SRNC-StateRules-Win_JAWS';
 import './SRNC-StateRules-Win_JAWS_VPC';
+
 import './SRNC-ReadingOrder-Win_JAWS';
 import './SRNC-ReadingOrder-Win_JAWS_VPC';
 
@@ -433,10 +441,17 @@ export class NarrationComputer {
     this.computedParts.type = `[${node.role}]`;
     this.computedParts.state = undefined;
 
-    // Find the rule with the state combination that matches the states present on the element
     const rules = SRNC.stateRules[platform] ? SRNC.stateRules[platform][definitionName] : undefined;
     if (rules) {
       // Begin if 1
+      // If the definition name has no states (i.e. is not a widget, like <h1>), the definition doesn't actually consist of  state rules, but is just an object with a reference to the element type
+      if (typeof rules === 'object' && rules.constructor === Object) {
+        // Begin if 2ė
+        this.computedParts.type = this.getDefinitionByKey(rules.elementType, inheritance, 'elementTypes');
+        return;
+      } // End if 2
+
+      // Find the rule with the state combination that matches the states present on the element
       for (let i = 0; i < rules.length; i++) {
         // Begin for 1
         const rule = rules[i];

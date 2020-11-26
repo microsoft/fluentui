@@ -34,7 +34,11 @@ SRNC.elementStates['Win/JAWS'] = {
     'checked=false': 'not checked',
     'aria-required=true': 'Required',
   }, // End input:radio
-  'role=radio': 'input:radio',
+  'role=radio': {
+    'aria-checked=true': 'checked',
+    'aria-checked=false': 'not checked',
+    'aria-required=true': 'Required',
+  }, // End role=radio
   'role=combobox': 'input:text',
   textarea: 'input:text',
   a: {

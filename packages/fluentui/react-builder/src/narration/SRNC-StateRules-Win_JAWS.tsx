@@ -268,11 +268,7 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: 'tab',
     },
   ], // End role=tab
-  'role=option': [
-    {
-      elementType: 'option',
-    },
-  ], // End role=option
+  'role=option': { elementType: 'option' },
   'role=treeitem': [
     {
       elementType: 'treeitem',
