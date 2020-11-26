@@ -59,6 +59,8 @@ export type RadioGrouptStylesProps = never;
  *
  * @accessibility
  * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
+ * @accessibilityIssues
+ * [JAWS narrates instruction message on each radio in radiogroup](https://github.com/FreedomScientific/VFO-standards-support/issues/473)
  */
 export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
