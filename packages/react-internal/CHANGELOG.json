@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Thu, 26 Nov 2020 12:28:18 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.19",
+      "version": "8.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Only attempt to handle keydown event for tooltip close if the tooltip is currently open",
+            "author": "stefhan@microsoft.com",
+            "commit": "dcab0200c5ffcc731dfd40e1276e9146a582b5b2",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:29:52 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.18",
       "version": "8.0.0-beta.18",
