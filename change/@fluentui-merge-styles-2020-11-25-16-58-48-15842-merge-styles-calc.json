@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fix mergeStyles handling of calc() in margin and padding properties",
+  "packageName": "@fluentui/merge-styles",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-26T00:58:48.592Z"
+}
