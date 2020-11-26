@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Nov 2020 12:26:27 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Nov 2020 12:29:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.153.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.2)
+
+Thu, 26 Nov 2020 12:29:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.1..office-ui-fabric-react_v7.153.2)
+
+### Patches
+
+- Ensure display style of column drop targets is not overridden ([PR #16014](https://github.com/microsoft/fluentui/pull/16014) by tmichon@microsoft.com)
 
 ## [7.153.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.1)
 

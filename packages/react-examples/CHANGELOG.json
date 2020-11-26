@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 26 Nov 2020 12:29:51 GMT",
+      "tag": "@fluentui/react-examples_v0.9.9",
+      "version": "0.9.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "tmichon@microsoft.com",
+            "commit": "22ff232552a56ca479e42ab161d301428a11e61a",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:26:56 GMT",
       "tag": "@fluentui/react-examples_v0.9.7",
       "version": "0.9.7",
