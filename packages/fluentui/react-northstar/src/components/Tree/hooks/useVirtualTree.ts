@@ -89,10 +89,6 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
     }
   }, [getItemRef, visibleItemIds]);
 
-  React.useLayoutEffect(() => {
-    (listRef.current as any)?.resetAfterIndex(0);
-  }, [listRef, visibleItemIds]); // when item collapsed/expanded (visibleItemIds change), refresh react-window itemSize cache
-
   return {
     ...baseTree,
     registerItemRef,
