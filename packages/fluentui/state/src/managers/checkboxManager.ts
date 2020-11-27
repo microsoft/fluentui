@@ -3,10 +3,12 @@ import { Manager, ManagerConfig } from '../types';
 
 export type CheckboxActions = {
   toggle: (checked: boolean) => void;
+  offIndeterminate: () => void;
 };
 
 export type CheckboxState = {
   checked: boolean;
+  indeterminate: boolean;
 };
 
 export type CheckboxManager = Manager<CheckboxState, CheckboxActions>;
@@ -22,6 +24,7 @@ export const createCheckboxManager = (
     },
     actions: {
       toggle: checked => () => ({ checked }),
+      offIndeterminate: () => () => ({ indeterminate: false }),
       ...config.actions,
     },
   });

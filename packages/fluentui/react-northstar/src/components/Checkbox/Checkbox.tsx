@@ -36,6 +36,12 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   /** A checkbox's checked state can be controlled. */
   checked?: SupportedIntrinsicInputProps['checked'];
 
+  defaultIndeterminate?: boolean;
+
+  indeterminate?: boolean;
+
+  controlsIds?: string;
+
   /** A checkbox can appear disabled and be unable to change states. */
   disabled?: SupportedIntrinsicInputProps['disabled'];
 
@@ -66,7 +72,10 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   toggle?: boolean;
 }
 
-export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+export type CheckboxStylesProps = Pick<
+  CheckboxProps,
+  'checked' | 'disabled' | 'labelPosition' | 'toggle' | 'indeterminate'
+>;
 export const checkboxClassName = 'ui-checkbox';
 export const checkboxSlotClassNames: CheckboxSlotClassNames = {
   label: `${checkboxClassName}__label`,
@@ -96,17 +105,23 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     styles,
     toggle,
     variables,
+    defaultIndeterminate,
+    indeterminate,
+    controlsIds,
   } = props;
 
   const { state, actions } = useStateManager(createCheckboxManager, {
-    mapPropsToInitialState: () => ({ checked: defaultChecked }),
-    mapPropsToState: () => ({ checked }),
+    mapPropsToInitialState: () => ({ checked: defaultChecked, indeterminate: defaultIndeterminate }),
+    mapPropsToState: () => ({ checked, indeterminate }),
   });
+
   const getA11Props = useAccessibility(props.accessibility, {
     debugName: Checkbox.displayName,
     mapPropsToBehavior: () => ({
       checked: state.checked,
       disabled,
+      indeterminate: state.indeterminate,
+      controlsIds,
     }),
     actionHandlers: {
       performClick: (e: React.KeyboardEvent) => {
@@ -116,10 +131,12 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     },
     rtl: context.rtl,
   });
+
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: checkboxClassName,
     mapPropsToStyles: () => ({
       checked: state.checked,
+      indeterminate: state.indeterminate,
       disabled,
       labelPosition,
       toggle,
@@ -151,6 +168,10 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     if (!disabled) {
       const checked = !state.checked;
       actions.toggle(checked);
+
+      if (defaultIndeterminate) {
+        actions.offIndeterminate();
+      }
 
       _.invoke(props, 'onClick', e, { ...props, checked });
       _.invoke(props, 'onChange', e, { ...props, checked });
@@ -203,6 +224,9 @@ Checkbox.propTypes = {
   }),
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
+  indeterminate: PropTypes.bool,
+  defaultIndeterminate: PropTypes.bool,
+  controlsIds: PropTypes.string,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
