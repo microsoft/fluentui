@@ -77,13 +77,12 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: 'searchInput',
     },
   ], // End role=searchbox
+
+  // Note: <input type="checkbox"> always has the "checked" DOM property, so not all state combinations are needed to be defined here""
+  // Note: The checked state is narrated even when the "checked" attribute is not present""""
   'input:checkbox': [
     {
       combination: ['checked'],
-      elementType: 'checkboxInput',
-    },
-    {
-      combination: ['aria-required'],
       elementType: 'checkboxInput',
     },
     {
@@ -91,7 +90,19 @@ SRNC.stateRules['Win/JAWS'] = {
       order: ['checked', 'aria-required'],
       elementType: 'checkboxInput',
     },
+    {
+      combination: ['checked', 'aria-invalid'],
+      order: ['checked', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
+    {
+      combination: ['checked', 'aria-required', 'aria-invalid'],
+      order: ['checked', 'aria-required', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
   ], // End input:checkbox
+
+  // Note: The "aria-checked" state is narrated even when the "aria-checked" attribute is not present""""
   'role=checkbox': [
     {
       order: ['aria-checked'],
@@ -107,18 +118,37 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: 'checkboxInput',
     },
     {
+      combination: ['aria-invalid'],
+      order: ['aria-checked', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
+    {
       combination: ['aria-checked', 'aria-required'],
       order: ['aria-checked', 'aria-required'],
       elementType: 'checkboxInput',
     },
+    {
+      combination: ['aria-checked', 'aria-invalid'],
+      order: ['aria-checked', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
+    {
+      combination: ['aria-required', 'aria-invalid'],
+      order: ['aria-checked', 'aria-required', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
+    {
+      combination: ['aria-checked', 'aria-required', 'aria-invalid'],
+      order: ['aria-checked', 'aria-required', 'aria-invalid'],
+      elementType: 'checkboxInput',
+    },
   ], // End role=checkbox
+
+  // Note: <input type="radio"> always has the "checked" DOM property, so not all state combinations are needed to be defined here""
+  // Note: The "checked" state is narrated even when the "checked" attribute is not present""""
   'input:radio': [
     {
       combination: ['checked'],
-      elementType: 'radioInput',
-    },
-    {
-      combination: ['aria-required'],
       elementType: 'radioInput',
     },
     {
@@ -126,7 +156,19 @@ SRNC.stateRules['Win/JAWS'] = {
       order: ['checked', 'aria-required'],
       elementType: 'radioInput',
     },
+    {
+      combination: ['checked', 'aria-invalid'],
+      order: ['checked', 'aria-invalid'],
+      elementType: 'radioInput',
+    },
+    {
+      combination: ['checked', 'aria-required', 'aria-invalid'],
+      order: ['checked', 'aria-required', 'aria-invalid'],
+      elementType: 'radioInput',
+    },
   ], // End input:radio
+
+  // Note: The checked state is narrated even when the "aria-checked" attribute is not present""""
   'role=radio': [
     {
       order: ['aria-checked'],
@@ -142,8 +184,28 @@ SRNC.stateRules['Win/JAWS'] = {
       elementType: 'radioInput',
     },
     {
+      combination: ['aria-invalid'],
+      order: ['aria-checked', 'aria-invalid'],
+      elementType: 'radioInput',
+    },
+    {
       combination: ['aria-checked', 'aria-required'],
       order: ['aria-checked', 'aria-required'],
+      elementType: 'radioInput',
+    },
+    {
+      combination: ['aria-checked', 'aria-invalid'],
+      order: ['aria-checked', 'aria-invalid'],
+      elementType: 'radioInput',
+    },
+    {
+      combination: ['aria-required', 'aria-invalid'],
+      order: ['aria-required', 'aria-invalid'],
+      elementType: 'radioInput',
+    },
+    {
+      combination: ['aria-checked', 'aria-required', 'aria-invalid'],
+      order: ['aria-checked', 'aria-required', 'aria-invalid'],
       elementType: 'radioInput',
     },
   ], // End role=radio

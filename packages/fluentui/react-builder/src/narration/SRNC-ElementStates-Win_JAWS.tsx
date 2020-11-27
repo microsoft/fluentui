@@ -21,22 +21,26 @@ SRNC.elementStates['Win/JAWS'] = {
   'input:checkbox': {
     'checked=true': 'checked',
     'checked=false': 'not checked',
+    'aria-invalid=true': 'invalid entry',
     'aria-required=true': 'Required',
   }, // End input:checkbox
   'role=checkbox': {
     'aria-checked=true': 'checked',
     'aria-checked=false': 'not checked',
     'aria-checked=mixed': 'partially checked',
+    'aria-invalid=true': 'invalid entry',
     'aria-required=true': 'Required',
   }, // End role=checkbox
   'input:radio': {
     'checked=true': 'checked',
     'checked=false': 'not checked',
+    'aria-invalid=true': 'invalid entry',
     'aria-required=true': 'Required',
   }, // End input:radio
   'role=radio': {
     'aria-checked=true': 'checked',
     'aria-checked=false': 'not checked',
+    'aria-invalid=true': 'invalid entry',
     'aria-required=true': 'Required',
   }, // End role=radio
   'role=combobox': 'input:text',
