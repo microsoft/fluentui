@@ -125,11 +125,6 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   return (
     <>
-      <select>
-        <option>First</option>
-        <option>Second</option>
-        <option>Third</option>
-      </select>
       {!inUseMode && elementsPaths.length >= 2 && (
         <Dropdown
           items={elementsPaths}
