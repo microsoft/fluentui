@@ -36,10 +36,13 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   /** A checkbox's checked state can be controlled. */
   checked?: SupportedIntrinsicInputProps['checked'];
 
+  /** A checkbox's can be indeterminate by default. */
   defaultIndeterminate?: boolean;
 
+  /** A checkbox's can be indeterminate. */
   indeterminate?: boolean;
 
+  /** A indeterminate checkbox can have reference to ids which depends on. */
   controlsIds?: string;
 
   /** A checkbox can appear disabled and be unable to change states. */
