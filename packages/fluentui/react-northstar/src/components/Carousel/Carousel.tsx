@@ -364,6 +364,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   };
 
   const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
+    variables,
     onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {
