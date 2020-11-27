@@ -9,7 +9,7 @@ type GetItemById = (id: string) => FlatTreeItem;
 
 /**
  * This hook returns a stable `getItemById()` function that will lookup in latest `flatTree`.
- * This is used used to have stable callbacks that can be passed to React's Context.
+ * This is used to have stable callbacks that can be passed to React's Context.
  */
 function useGetItemById(flatTree: FlatTree): GetItemById {
   // An exception is thrown there to ensure that a proper callback will assigned to ref
