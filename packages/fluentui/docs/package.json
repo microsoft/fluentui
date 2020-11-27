@@ -46,6 +46,7 @@
     "react-textarea-autosize": "7.0.0",
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6",
+    "react-window": "^1.8.6",
     "semver": "^6.2.0"
   },
   "devDependencies": {
@@ -61,6 +62,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
+    "@types/react-window": "^1.8.2",
     "@types/webpack-env": "1.15.1",
     "gulp": "^4.0.2",
     "typescript": "3.7.2"
