@@ -1136,7 +1136,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget);
 
       if (isBlurFromComboBoxTitle || isBlurFromComboBoxMenu || isBlurFromComboBoxMenuAncestor) {
-        if (isBlurFromComboBoxMenuAncestor && (!this.props.multiSelect || this.props.allowFreeform)) {
+        if (
+          isBlurFromComboBoxMenuAncestor &&
+          this._hasFocus() &&
+          (!this.props.multiSelect || this.props.allowFreeform)
+        ) {
           this._submitPendingValue(event);
         }
         event.preventDefault();
