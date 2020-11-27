@@ -366,6 +366,13 @@ export class NarrationComputer {
       'usages',
     );
     this.computedParts.usage = undefined;
+
+    // On some platforms the usage part is not narrated
+    if (SRNC.ignoreUsage.includes(inheritance[0])) {
+      // Begin if 1
+      return;
+    } // End if 1
+
     const usages = SRNC.usages[platform] ? SRNC.usages[platform][definitionName] : undefined;
     if (usages) {
       // Begin if 1

@@ -15,6 +15,9 @@ export const SRNC: Record<string, any> = {
   // Platforms on which "the "<header>" and "<footer>" elements create a landmark even if they are a descendant of a sectioning role, e.g., role="article"
   headerAndFooterLandmarkInSectionRole: ['Win/JAWS'],
 
+  // Platforms on which "the usage part of the narration is not narrated
+  ignoreUsage: ['Win/JAWS/VPC'],
+
   // Platforms on which the "contains text" string in case of <textarea> element overrides the description when the <textarea> contains text
   stringOverridesDescription: ['Win/JAWS'],
 
