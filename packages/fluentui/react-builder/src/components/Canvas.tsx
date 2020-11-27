@@ -334,6 +334,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             outline-offset: -1px;
           }
           `,
+        inUseMode &&
+          ė`
+            .virtual-focused {
+              border: 2px dashed black;
+            }
+          `,
         elementStyles,
       ]
         .filter(Boolean)
