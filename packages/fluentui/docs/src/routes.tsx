@@ -60,6 +60,7 @@ import {
   CopyToClipboardPrototype,
   TextAreaAutoSize,
   MenuList,
+  VirtualizedStickyTreePrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(() =>
@@ -125,6 +126,7 @@ const Routes = () => (
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+                <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />

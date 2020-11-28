@@ -5,7 +5,7 @@ import { TreeItemProps } from '../TreeItem';
 import { FlatTreeItem, flattenTree, FlatTree } from './flattenTree';
 import * as _ from 'lodash';
 
-type GetItemById = (id: string) => FlatTreeItem;
+export type GetItemById = (id: string) => FlatTreeItem;
 
 /**
  * This hook returns a stable `getItemById()` function that will lookup in latest `flatTree`.
