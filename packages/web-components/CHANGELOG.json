@@ -2,6 +2,39 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Sat, 21 Nov 2020 02:00:44 GMT",
+      "tag": "@fluentui/web-components_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forced color adjust to host selector",
+            "author": "khamu@microsoft.com",
+            "commit": "cfd0cc90fb22c5d24d9646b7eb325c7a41bd6c68",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update fast packages to latest minor versions",
+            "author": "chhol@microsoft.com",
+            "commit": "2b7e56297be7f7d6e1920df0f202277c17644a5d",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "ensure all web components leverage the body font design token",
+            "author": "chhol@microsoft.com",
+            "commit": "b3be4d7dfb1392d5b315bb728bb24df8fb500271",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "feat: add select and related styles",
+            "author": "jes@microsoft.com",
+            "commit": "66916eef3d325b8e8104c56f8557246b4824a5ca",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:30:07 GMT",
       "tag": "@fluentui/web-components_v0.8.0",
       "version": "0.8.0",

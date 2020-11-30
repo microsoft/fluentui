@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.7)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.5..@fluentui/theme_v2.0.0-beta.7)
+
+### Changes
+
+- Move getTokens logic out from ThemeProvider to mergeTheme/createTheme. ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
 
 ## [2.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.5)
 

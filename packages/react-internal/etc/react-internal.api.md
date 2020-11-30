@@ -1341,11 +1341,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
     // @deprecated
@@ -2082,11 +2078,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -3275,8 +3267,10 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
+    // (undocumented)
+    children?: React.ReactNode;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -3910,14 +3904,17 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
+}
+
+// @public
+export interface IPopupRestoreFocusParams {
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+    originalElement?: HTMLElement | Window;
 }
 
 // @public

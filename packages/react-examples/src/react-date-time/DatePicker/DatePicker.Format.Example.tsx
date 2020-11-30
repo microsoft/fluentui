@@ -8,8 +8,8 @@ const styles = mergeStyleSets({
   control: { maxWidth: 300, marginBottom: 15 },
 });
 
-const onFormatDate = (date: Date): string => {
-  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+const onFormatDate = (date?: Date): string => {
+  return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
 };
 
 export const DatePickerFormatExample: React.FunctionComponent = () => {
@@ -49,8 +49,8 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         label="Start date"
         allowTextInput
         ariaLabel="Select a date. Input format is day slash month slash year."
-        value={value as Date | undefined}
-        onSelectDate={setValue as (date: Date | null | undefined) => void}
+        value={value}
+        onSelectDate={setValue as (date?: Date) => void}
         formatDate={onFormatDate}
         parseDateFromString={onParseDateFromString}
         className={styles.control}

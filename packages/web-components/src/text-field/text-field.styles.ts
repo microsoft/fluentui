@@ -43,6 +43,7 @@ export const TextFieldStyles = css`
         border: none;
         padding: 0 calc(var(--design-unit) * 2px + 1px);
         color: ${neutralForegroundRestBehavior.var};
+        font-family: inherit;
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
     }
