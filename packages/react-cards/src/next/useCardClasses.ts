@@ -56,6 +56,21 @@ export const CardSizeVariants = {
   },
 };
 
+const smallCard = {
+  borderRadius: '4px',
+  height: 'auto',
+  margin: '0',
+  padding: '8px',
+  width: 'auto',
+};
+const largeCard = {
+  borderRadius: '6px',
+  height: 'auto',
+  margin: '0',
+  padding: '16px',
+  width: 'auto',
+};
+
 export const useCardClasses = makeVariantClasses<CardState, CardVariants>({
   name: 'Card',
   prefix: '--card',
@@ -139,27 +154,9 @@ export const useCardClasses = makeVariantClasses<CardState, CardVariants>({
     return {
       root: {
         size: {
-          smallest: {
-            borderRadius: '4px',
-            height: 'auto',
-            margin: '0',
-            padding: '8px',
-            width: 'auto',
-          },
-          smaller: {
-            borderRadius: '4px',
-            height: 'auto',
-            margin: '0',
-            padding: '8px',
-            width: 'auto',
-          },
-          small: {
-            borderRadius: '4px',
-            height: 'auto',
-            margin: '0',
-            padding: '8px',
-            width: 'auto',
-          },
+          smallest: smallCard,
+          smaller: smallCard,
+          small: smallCard,
           medium: {
             borderRadius: '4px',
             height: 'auto',
@@ -167,27 +164,9 @@ export const useCardClasses = makeVariantClasses<CardState, CardVariants>({
             padding: '16px',
             width: 'auto',
           },
-          large: {
-            borderRadius: '6px',
-            height: 'auto',
-            margin: '0',
-            padding: '16px',
-            width: 'auto',
-          },
-          larger: {
-            borderRadius: '6px',
-            height: 'auto',
-            margin: '0',
-            padding: '16px',
-            width: 'auto',
-          },
-          largest: {
-            borderRadius: '6px',
-            height: 'auto',
-            margin: '0',
-            padding: '16px',
-            width: 'auto',
-          },
+          large: largeCard,
+          larger: largeCard,
+          largest: largeCard,
         },
 
         background: '#ffffff',
