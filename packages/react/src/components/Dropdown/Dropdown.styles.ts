@@ -13,6 +13,7 @@ import {
   ScreenWidthMinMedium,
   getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
+import { IButtonStyles } from '../../compat/index';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',
@@ -422,4 +423,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       },
     },
   };
+};
+
+export const commandButtonFlexContainerStyle: IButtonStyles = {
+  flexContainer: {
+    width: '100%',
+  },
 };

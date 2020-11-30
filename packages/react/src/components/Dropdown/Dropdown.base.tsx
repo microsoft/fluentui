@@ -50,6 +50,7 @@ import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
+import { commandButtonFlexContainerStyle } from './Dropdown.styles';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -788,6 +789,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         disabled={item.disabled}
         className={itemClassName}
         onClick={this._onItemClick(item)}
+        styles={commandButtonFlexContainerStyle}
         // eslint-disable-next-line react/jsx-no-bind
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
         // eslint-disable-next-line react/jsx-no-bind
