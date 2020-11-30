@@ -161,10 +161,14 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
 function expandQuads(currentRules: IDictionary, name: string, value: string): void {
   const parts = typeof value === 'string' ? tokenizeWithParentheses(value) : [value];
 
-  currentRules[name + 'Top'] = parts[0] || '';
-  currentRules[name + 'Right'] = parts[1] || parts[0] || '';
-  currentRules[name + 'Bottom'] = parts[2] || parts[0] || '';
-  currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0] || '';
+  if (parts.length === 0) {
+    parts.push(value);
+  }
+
+  currentRules[name + 'Top'] = parts[0];
+  currentRules[name + 'Right'] = parts[1] || parts[0];
+  currentRules[name + 'Bottom'] = parts[2] || parts[0];
+  currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
 function getKeyForRules(options: IStyleOptions, rules: IRuleSet): string | undefined {

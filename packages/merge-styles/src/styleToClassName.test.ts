@@ -545,6 +545,19 @@ describe('styleToClassName with specificityMultiplier', () => {
     expect(_stylesheet.getRules()).toEqual('.class1{background:red;}');
   });
 
+  it('handles numeric 0 in props with shorthand syntax (margin, padding)', () => {
+    styleToClassName(
+      {},
+      {
+        margin: 0,
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}',
+    );
+  });
+
   it('handles calc(...) in props with shorthand syntax (margin, padding)', () => {
     styleToClassName(
       {},
