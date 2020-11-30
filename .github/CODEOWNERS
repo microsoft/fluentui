@@ -43,9 +43,6 @@ packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @po
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
-#### Deprecated API Files
-*.api.ts @natalieethell
-
 #### Apps
 # component-demo/
 public-docsite/ @ecraig12345
@@ -99,7 +96,7 @@ packages/react-toggle/ @xugao
 
 ## Components
 packages/react-internal/src/components/ActivityItem/ @xugao
-packages/react-internal/src/components/Announced/ @natalieethell
+packages/react-internal/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
 packages/react-internal/src/components/Button/ @khmakoto
 packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
@@ -144,14 +141,14 @@ packages/react-internal/src/components/ProgressIndicator/ @xugao
 packages/react-internal/src/components/Rating/ @jdhuntington
 packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
 packages/react-internal/src/components/SearchBox/ @ecraig12345
-packages/react-internal/src/components/Separator/ @natalieethell
+packages/react-internal/src/components/Separator/ @joschemd @khmakoto
 packages/react-internal/src/components/Shimmer/ @Vitalius1
 packages/react-internal/src/components/SpinButton/ @khmakoto
 packages/react-internal/src/components/Spinner/ @xugao
 packages/react-internal/src/components/Stack/  @khmakoto
 packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
 packages/react-internal/src/components/TeachingBubble/ @micahgodbolt
-packages/react-internal/src/components/Text/ @natalieethell
+packages/react-internal/src/components/Text/ @khmakoto
 packages/react-internal/src/components/TextField/ @ecraig12345
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
 

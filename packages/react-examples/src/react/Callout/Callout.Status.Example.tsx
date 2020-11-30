@@ -1,58 +1,46 @@
 import * as React from 'react';
-import { getTheme, FontWeights, mergeStyleSets, DelayedRender, Callout } from '@fluentui/react';
-import { useBoolean } from '@fluentui/react-hooks';
+import { mergeStyleSets, DelayedRender, Callout, Text } from '@fluentui/react';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
-
-const theme = getTheme();
-const styles = mergeStyleSets({
-  buttonArea: {
-    verticalAlign: 'top',
-    display: 'inline-block',
-    textAlign: 'center',
-    margin: '0 100px',
-    minWidth: 130,
-    height: 32,
-  },
-  callout: {
-    maxWidth: 300,
-  },
-  subtext: [
-    theme.fonts.small,
-    {
-      margin: 0,
-      height: '100%',
-      padding: '24px 20px',
-      fontWeight: FontWeights.semilight,
-    },
-  ],
-});
 
 export const StatusCalloutExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  const buttonId = useId('callout-button');
+
   return (
     <>
-      <div className={styles.buttonArea}>
-        <DefaultButton
-          onClick={toggleIsCalloutVisible}
-          text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'}
-        />
-      </div>
+      <DefaultButton
+        id={buttonId}
+        onClick={toggleIsCalloutVisible}
+        text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
+        className={styles.button}
+      />
       {isCalloutVisible && (
         <Callout
           className={styles.callout}
-          target={`.${styles.buttonArea}`}
+          target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
           role="status"
           aria-live="assertive"
         >
           <DelayedRender>
-            <p className={styles.subtext}>
+            <Text variant="small">
               This message is treated as an aria-live assertive status message, and will be read by a screen reader
               regardless of focus.
-            </p>
+            </Text>
           </DelayedRender>
         </Callout>
       )}
     </>
   );
 };
+
+const styles = mergeStyleSets({
+  button: {
+    width: 130,
+  },
+  callout: {
+    width: 320,
+    padding: '20px 24px',
+  },
+});

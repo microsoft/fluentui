@@ -41,6 +41,17 @@
   &:hover {
     background-color: $ms-color-themeLight;
     cursor: pointer;
+
+    @include high-contrast {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+
+  @include high-contrast {
+    background-color: Highlight;
+    color: HighlightText;
+    -ms-high-contrast-adjust: none;
   }
 }
 

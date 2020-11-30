@@ -1,7 +1,8 @@
+// NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
+
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 
 const calloutContent = (
@@ -14,6 +15,15 @@ const calloutContent = (
 const defaultProps: ICalloutProps = {
   target: '#target',
   calloutWidth: 200,
+
+  // Try to stabilize tests by disabling layer and animation
+  // TODO: investigate and re-enable
+  doNotLayer: true,
+  styles: {
+    root: {
+      animation: 'none',
+    },
+  },
 };
 
 storiesOf('Callout', module)
@@ -31,7 +41,6 @@ storiesOf('Callout', module)
       {story()}
     </div>
   ))
-  .addDecorator(FabricDecoratorTall)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

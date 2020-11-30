@@ -383,6 +383,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
+    overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowIndex?: number;
     // (undocumented)
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
@@ -1615,6 +1616,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
     onShouldVirtualize?: (props: IListProps) => boolean;
     role?: string;
+    rootListProps?: IListProps;
     selection?: ISelection;
     selectionMode?: SelectionMode;
     styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;

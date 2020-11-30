@@ -14,6 +14,7 @@ import {
   EditableItem,
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
+  ItemWithContextMenu,
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
 import { SuggestionsStore } from '@fluentui/react-experiments/lib/FloatingSuggestions';
@@ -79,7 +80,6 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
    * Build a custom selected item capable of being edited when the item is right clicked
    */
   const SelectedItem = EditableItem({
-    itemComponent: TriggerOnContextMenu(SelectedPersona),
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: persona => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
@@ -90,7 +90,45 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         />
       ),
     }),
+    itemComponent: ItemWithContextMenu<IPersona>({
+      menuItems: (item, onTrigger) => [
+        {
+          key: 'copy',
+          text: 'copy',
+          onClick: () => {
+            _copyToClipboardWrapper(item);
+          },
+        },
+        {
+          key: 'edit',
+          text: 'Edit',
+          onClick: () => onTrigger && onTrigger(),
+        },
+      ],
+      itemComponent: TriggerOnContextMenu(SelectedPersona),
+    }),
   });
+
+  const _copyToClipboardWrapper = (item: IPersona) => {
+    const selectedItems = ref.current?.getSelectedItems();
+    if (selectedItems && selectedItems.length > 1) {
+      _copyToClipboard(_getItemsCopyText(selectedItems));
+    } else {
+      _copyToClipboard(_getItemsCopyText([item]));
+    }
+  };
+
+  const _copyToClipboard = (copyString: string): void => {
+    navigator.clipboard.writeText(copyString).then(
+      () => {
+        /* clipboard successfully set */
+      },
+      () => {
+        /* clipboard write failed */
+        throw new Error();
+      },
+    );
+  };
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,

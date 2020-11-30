@@ -32,8 +32,11 @@ export class SlotRule implements Rule {
     return this;
   };
 
-  public hasAttribute = (expectedAttribute: string, expectedValue?: PropValue) => {
+  public hasAttribute = (expectedAttribute: string, expectedValue?: PropValue, overrideId?: boolean) => {
     this.data.expectedAttribute = expectedAttribute;
+    if (overrideId) {
+      this.data.overrideId = overrideId;
+    }
     if (expectedValue) {
       this.data.expectedValue = expectedValue;
     }
@@ -105,7 +108,9 @@ export class SlotRule implements Rule {
     expectedAttribute: string,
     expectedValue: PropValue,
   ) => {
-    if (expectAttribute) {
+    if (expectAttribute && this.data.overrideId) {
+      return `'ID reference' for '${expectedAttribute}' attribute`;
+    } else if (expectAttribute) {
       return expectedValue ? `'${expectedAttribute}=${expectedValue}'` : `'${expectedAttribute}'`;
     } else {
       return `'${this.data.expectedAttribute}'`;

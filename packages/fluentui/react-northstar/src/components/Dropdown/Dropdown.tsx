@@ -269,6 +269,7 @@ export type DropdownStylesProps = Required<
   hasToggleIndicator: boolean;
   isFromKeyboard: boolean;
   search: boolean;
+  hasItemsSelected: boolean;
 };
 
 type DropdownStateForInvoke = {
@@ -480,6 +481,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       open,
       position,
       search: !!search,
+      hasItemsSelected: value.length > 0,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -1548,17 +1550,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
+                  {/* We previously were rendering the trigger button after selected items list,
+                  after listbox wrapper was introduced we moved it to before and
+                   set as absolute to avoid visual regressions   */}
+                  {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
-                  {search
-                    ? renderSearchInput(
-                        accessibilityRootPropsRest,
-                        highlightedIndex,
-                        getInputProps,
-                        selectItemAtIndex,
-                        toggleMenu,
-                        variables,
-                      )
-                    : renderTriggerButton(getToggleButtonProps)}
+                  {search &&
+                    renderSearchInput(
+                      accessibilityRootPropsRest,
+                      highlightedIndex,
+                      getInputProps,
+                      selectItemAtIndex,
+                      toggleMenu,
+                      variables,
+                    )}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
