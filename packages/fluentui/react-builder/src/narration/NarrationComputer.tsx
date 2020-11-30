@@ -1,8 +1,3 @@
-/*
-TODO:
-* Define the missing and not so obvious attributes (e.g. "aria-haspopup" or "aria-expanded") for the already defined roles (e.g. "menuitem" or "checkbox") according to the specification.
-* Should we also consider the "disabled" state?
-*/
 import { SRNC } from './SRNC-Definitions';
 import './SRNC-LandmarksAndGroups-Win_JAWS';
 import './SRNC-LandmarksAndGroups-Win_JAWS_VPC';
