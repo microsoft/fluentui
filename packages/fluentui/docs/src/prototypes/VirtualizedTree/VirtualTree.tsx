@@ -19,13 +19,19 @@ import {
   treeClassName,
   TreeStylesProps,
   useVirtualTree,
+  ObjectShorthandCollection,
 } from '@fluentui/react-northstar';
 import { TreeContext, TreeRenderContextValue } from '@fluentui/react-northstar/src/components/Tree/context';
 import { VariableSizeList, VariableSizeListProps, ListChildComponentProps } from 'react-window';
 
 export interface VirtualTreeProps
-  extends Omit<TreeProps, 'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable'>,
-    Pick<VariableSizeListProps, 'itemSize' | 'estimatedItemSize' | 'height'> {}
+  extends Omit<
+      TreeProps,
+      'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable' | 'items'
+    >,
+    Pick<VariableSizeListProps, 'estimatedItemSize' | 'height'> {
+  items?: ObjectShorthandCollection<TreeItemProps & { itemSize: number }>;
+}
 
 export interface VirtualItemData {
   visibleItemIds: string[];
@@ -37,7 +43,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const { setStart, setEnd } = useTelemetry(VirtualTree.displayName, context.telemetry);
   setStart();
 
-  const { children, className, design, styles, variables, height, estimatedItemSize, itemSize } = props;
+  const { children, className, design, styles, variables, height, estimatedItemSize } = props;
 
   const ElementType = getElementType(props);
 
@@ -83,6 +89,14 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
 
   const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
 
+  const getItemSize = (index: number) => {
+    const id = visibleItemIds[index];
+    return getItemById(id).item.itemSize || estimatedItemSize;
+  };
+  React.useLayoutEffect(() => {
+    (listRef.current as any)?.resetAfterIndex(0);
+  }, [listRef, visibleItemIds]); // when item collapsed/expanded (visibleItemIds change), refresh react-window itemSize cache
+
   const createTreeItem = React.useCallback(
     (id, style) => {
       const item = getItemById(id);
@@ -125,7 +139,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
             ref={listRef}
             height={height}
             estimatedItemSize={estimatedItemSize}
-            itemSize={itemSize}
+            itemSize={getItemSize}
             itemKey={getItemKey}
             itemData={{ visibleItemIds, createTreeItem }}
             itemCount={visibleItemIds.length}

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TriangleDownIcon, TreeTitleProps, TriangleEndIcon } from '@fluentui/react-northstar';
-import getItems from './itemsGenerator';
+import getItemsWithHeight from './itemsGenerator';
 import { VirtualTree } from './VirtualTree';
 
-const items = getItems();
+const items = getItemsWithHeight(20, 40, 2, (level: number): number => (level === 1 ? 30 : 40));
 
 const CustomTreeTitle = (
   Component: React.ElementType<TreeTitleProps>,
@@ -16,17 +16,7 @@ const CustomTreeTitle = (
 );
 
 const VirtualizedTreePrototype = () => {
-  const getItemSize = React.useCallback(index => 20, []);
-
-  return (
-    <VirtualTree
-      items={items}
-      renderItemTitle={CustomTreeTitle}
-      itemSize={getItemSize}
-      estimatedItemSize={20}
-      height={300}
-    />
-  );
+  return <VirtualTree items={items} renderItemTitle={CustomTreeTitle} estimatedItemSize={20} height={500} />;
 };
 
 export default VirtualizedTreePrototype;
