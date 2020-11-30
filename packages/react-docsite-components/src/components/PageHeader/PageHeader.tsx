@@ -80,7 +80,7 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
         <ActionButton
           allowDisabledFocus={true}
           styles={{
-            root: { height: '1em', padding: '12px 0' },
+            root: { color: theme?.palette.neutralSecondary, height: '1em', marginBottom: -4, padding: '12px 0' },
             rootHovered: { borderBottom: '1px solid black' },
           }}
           menuProps={{
