@@ -30,6 +30,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useStateManager,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 
