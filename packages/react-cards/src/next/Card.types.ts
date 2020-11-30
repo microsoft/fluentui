@@ -23,7 +23,7 @@ export type CardProps = ComponentProps &
     size?: SizeValue;
 
     /** A card can take up the width and height of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A card can show that it cannot be interacted with. */
     disabled?: boolean;
@@ -112,5 +112,5 @@ export type CardVariants<TTokens = CardTokens> = {
   root?: TTokens;
   onClick?: TTokens;
   compact?: TTokens;
-  fluid?: TTokens;
+  block?: TTokens;
 };

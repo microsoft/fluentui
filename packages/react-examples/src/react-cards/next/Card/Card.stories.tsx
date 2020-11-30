@@ -35,7 +35,7 @@ export const DisabledCard = () => <ExampleCard disabled onClick={onClick} />;
 
 export const SelectedCard = () => <ExampleCard selected onClick={onClick} />;
 
-export const FluidCard = () => <ExampleCard fluid onClick={onClick} />;
+export const BlockCard = () => <ExampleCard block onClick={onClick} />;
 
 export const CardSizes = () => (
   <Stack>

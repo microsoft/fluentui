@@ -259,7 +259,7 @@ export const useCardClasses = makeVariantClasses<CardState, CardVariants>({
         padding: '0',
       },
 
-      fluid: {
+      block: {
         height: '100%',
         width: '100%',
       },
