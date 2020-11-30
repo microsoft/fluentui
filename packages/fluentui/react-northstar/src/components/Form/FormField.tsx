@@ -148,6 +148,7 @@ export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponent
       getA11yProps('control', {
         required,
         name,
+        id,
         type,
         error: !!errorMessage || null,
         styles: resolvedStyles.control,

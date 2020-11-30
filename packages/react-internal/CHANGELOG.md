@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 19 Nov 2020 12:28:32 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Nov 2020 12:28:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.19)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.18..@fluentui/react-internal_v8.0.0-beta.19)
+
+### Changes
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #16011](https://github.com/microsoft/fluentui/pull/16011) by stefhan@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.18)
+
+Tue, 24 Nov 2020 12:29:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.17..@fluentui/react-internal_v8.0.0-beta.18)
+
+### Changes
+
+- Add interface for onRestoreFocus params ([PR #15941](https://github.com/microsoft/fluentui/pull/15941) by elcraig@microsoft.com)
+- SearchBox: Don't prevent Esc from propagating if the box is empty. Also fix infinite recursion in onKeyDown. ([PR #16018](https://github.com/microsoft/fluentui/pull/16018) by behowell@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.17)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.16..@fluentui/react-internal_v8.0.0-beta.17)
+
+### Changes
+
+- Fixed SearchBox maximum call stack size on keydown ([PR #16028](https://github.com/microsoft/fluentui/pull/16028) by richardkooiman@hotmail.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.16)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.15..@fluentui/react-internal_v8.0.0-beta.16)
+
+### Changes
+
+- Keyboard focus should be visible in selected footers in pickers in high contrast ([PR #15985](https://github.com/microsoft/fluentui/pull/15985) by elvonspa@microsoft.com)
+- ContextualMenu: remove unnecessary resize check ([PR #15584](https://github.com/microsoft/fluentui/pull/15584) by joschect@microsoft.com)
 
 ## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.15)
 

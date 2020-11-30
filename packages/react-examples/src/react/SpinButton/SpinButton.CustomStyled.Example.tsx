@@ -6,13 +6,13 @@ import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 const styles: IStyleFunction<ISpinButtonStyleProps, ISpinButtonStyles> = (props: ISpinButtonStyleProps) => {
   const { isFocused, theme } = props;
   return {
-    root: {
-      width: '400px',
-    },
-    // Example of conditional styling based on component state
-    spinButtonWrapper: isFocused && {
-      outline: '5px solid ' + theme.palette.yellow,
-    },
+    spinButtonWrapper: [
+      { width: 75 },
+      // Example of conditional styling based on component state
+      isFocused && {
+        outline: '5px solid ' + theme.palette.yellow,
+      },
+    ],
   };
 };
 
@@ -34,19 +34,19 @@ const downArrowButtonStyles: Partial<IButtonStyles> = {
   },
 };
 
-export const SpinButtonCustomStyledExample: React.FC = () => (
-  <div>
+export const SpinButtonCustomStyledExample: React.FunctionComponent = () => {
+  return (
     <SpinButton
       styles={styles}
       upArrowButtonStyles={upArrowButtonStyles}
       downArrowButtonStyles={downArrowButtonStyles}
       defaultValue="0"
-      label="Custom styled SpinButton:"
+      label="Custom styled SpinButton"
       min={0}
       max={100}
       step={1}
       incrementButtonAriaLabel="Increase value by 1"
       decrementButtonAriaLabel="Decrease value by 1"
     />
-  </div>
-);
+  );
+};

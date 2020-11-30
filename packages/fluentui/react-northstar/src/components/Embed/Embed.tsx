@@ -241,6 +241,7 @@ Embed.defaultProps = {
   as: 'span',
   accessibility: embedBehavior,
   control: {},
+  variables: {},
 };
 
 Embed.handledProps = Object.keys(Embed.propTypes) as any;

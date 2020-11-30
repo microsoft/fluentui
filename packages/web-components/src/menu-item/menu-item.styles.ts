@@ -26,6 +26,7 @@ export const MenuItemStyles = css`
         color: ${neutralForegroundRestBehavior.var};
         fill: ${neutralForegroundRestBehavior.var};
         cursor: pointer;
+        font-family: var(--body-font);
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
         border-radius: calc(var(--corner-radius) * 1px);
@@ -67,7 +68,7 @@ export const MenuItemStyles = css`
     .end,
     ::slotted(svg) {
         ${
-          /* Glyph size and margin-left is temporary - 
+          /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
         } width: 16px;
         height: 16px;
@@ -90,6 +91,7 @@ export const MenuItemStyles = css`
   forcedColorsStylesheetBehavior(
     css`
             :host {
+                forced-color-adjust: none;
                 border-color: transparent;
                 color: ${SystemColors.ButtonText};
                 fill: ${SystemColors.ButtonText};

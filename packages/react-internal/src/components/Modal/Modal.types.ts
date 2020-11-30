@@ -54,13 +54,12 @@ export interface IModal {
 /**
  * {@docCategory Modal}
  */
-export interface IModalProps
-  extends React.HTMLAttributes<HTMLElement>,
-    React.RefAttributes<HTMLDivElement>,
-    IAccessiblePopupProps {
+export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+  children?: React.ReactNode;
+
   /**
-   * Optional callback to access the IDialog interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Optional ref to access the `IModal` interface. Use this instead of `ref` for accessing
+   * public API of the component.
    */
   componentRef?: IRefObject<IModal>;
 
@@ -70,7 +69,7 @@ export interface IModalProps
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
 
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme?: ITheme;
 
