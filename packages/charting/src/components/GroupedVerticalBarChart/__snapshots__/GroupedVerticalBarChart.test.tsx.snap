@@ -352,7 +352,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -441,7 +441,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -530,7 +530,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -896,7 +896,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #0078d4, #0078d4);
+                    content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
             />
@@ -985,7 +985,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #00188f, #00188f);
+                    content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
             />
@@ -1074,7 +1074,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                    content: linear-gradient(to right, #00bcf2, #00bcf2);
                     opacity: ;
                   }
             />
@@ -1685,7 +1685,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -1774,7 +1774,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -1863,7 +1863,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -2246,7 +2246,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2335,7 +2335,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2424,7 +2424,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -2807,7 +2807,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2896,7 +2896,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2985,7 +2985,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -3368,7 +3368,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -3457,7 +3457,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -3546,7 +3546,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />

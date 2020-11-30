@@ -42,7 +42,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     rect: {
       selectors: {
         [HighContrastSelector]: {
-          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
+          content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
           opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
         },
       },
@@ -73,7 +73,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
           height: '10.4px',
           width: '10.4px',
           clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
-          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
+          content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
         } as IStyle,
       },
     },

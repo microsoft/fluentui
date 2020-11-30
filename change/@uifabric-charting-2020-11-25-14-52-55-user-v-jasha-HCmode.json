@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "HC mode for legends",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-25T09:22:55.615Z"
+}

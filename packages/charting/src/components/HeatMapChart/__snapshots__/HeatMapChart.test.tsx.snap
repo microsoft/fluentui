@@ -288,7 +288,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                          content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }
                   />
@@ -607,7 +607,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));
+                          content: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));
                           opacity: ;
                         }
                   />
@@ -696,7 +696,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));
+                          content: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));
                           opacity: ;
                         }
                   />
@@ -1182,7 +1182,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                          content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }
                   />
@@ -1501,7 +1501,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                          content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }
                   />
