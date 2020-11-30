@@ -3,7 +3,7 @@ import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../compone
 import { CheckboxVariables } from './checkboxVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { checkboxIndicatorUrl } from './checkboxIndicatorUrl';
-import { checkboxIndicatorIndeterminatedUrl } from './checkboxIndeterminateIndicatorUrl';
+import { checkboxIndicatorIndeterminateUrl } from './checkboxIndeterminateIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
 const commonToggleBeforeStyles = v => ({
@@ -125,7 +125,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
     ...(p.indeterminate && {
       borderColor: v.checkedBorderColor,
-      backgroundImage: checkboxIndicatorIndeterminatedUrl(v.checkedIndicatorColor, v.checkedBackground),
+      backgroundImage: checkboxIndicatorIndeterminateUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
     ...(p.disabled && {
@@ -145,7 +145,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
       p.indeterminate && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
-        backgroundImage: checkboxIndicatorIndeterminatedUrl(
+        backgroundImage: checkboxIndicatorIndeterminateUrl(
           v.disabledCheckedIndicatorColor,
           v.disabledBackgroundChecked,
         ),
