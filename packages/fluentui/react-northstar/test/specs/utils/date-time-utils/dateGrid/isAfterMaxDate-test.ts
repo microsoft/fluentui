@@ -1,5 +1,5 @@
-import { IRestrictedDatesOptions } from './dateGrid.types';
-import * as DateGrid from './isAfterMaxDate';
+import { IRestrictedDatesOptions } from '../../../../../src/utils/date-time-utilities/dateGrid/dateGrid.types';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateGrid/isAfterMaxDate';
 
 enum Months {
   Jan = 0,

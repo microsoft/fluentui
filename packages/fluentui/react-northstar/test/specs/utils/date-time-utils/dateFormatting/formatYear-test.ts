@@ -1,4 +1,4 @@
-import * as DateGrid from './formatDay';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateFormatting/formatYear';
 
 enum Months {
   Jan = 0,
@@ -15,10 +15,10 @@ enum Months {
   Dec = 11,
 }
 
-describe('formatDay', () => {
+describe('formatYear', () => {
   const date = new Date(2016, Months.Apr, 1);
   it('returns default format', () => {
-    const result = DateGrid.formatDay(date);
-    expect(result).toBe('1');
+    const result = DateGrid.formatYear(date);
+    expect(result).toBe('2016');
   });
 });

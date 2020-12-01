@@ -1,5 +1,5 @@
-import { IAvailableDateOptions } from './dateGrid.types';
-import * as DateGrid from './findAvailableDate';
+import { IAvailableDateOptions } from '../../../../../src/utils/date-time-utilities/dateGrid/dateGrid.types';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateGrid/findAvailableDate';
 
 enum Months {
   Jan = 0,

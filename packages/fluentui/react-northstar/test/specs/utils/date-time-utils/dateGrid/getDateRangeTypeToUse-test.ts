@@ -1,5 +1,5 @@
-import { DateRangeType, DayOfWeek } from '../dateValues/dateValues';
-import * as DateGrid from './getDateRangeTypeToUse';
+import { DateRangeType, DayOfWeek } from '../../../../../src/utils/date-time-utilities/dateValues/dateValues';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateGrid/getDateRangeTypeToUse';
 
 describe('getDateRangeTypeToUse', () => {
   it('returns incoming range type if working days are empty', () => {

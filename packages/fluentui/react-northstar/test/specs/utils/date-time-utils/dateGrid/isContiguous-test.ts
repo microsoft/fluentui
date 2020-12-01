@@ -1,5 +1,5 @@
-import { DayOfWeek } from '../dateValues/dateValues';
-import { isContiguous } from './isContiguous';
+import { DayOfWeek } from '../../../../../src/utils/date-time-utilities/dateValues/dateValues';
+import { isContiguous } from '../../../../../src/utils/date-time-utilities/dateGrid/isContiguous';
 
 describe('isContiguous', () => {
   it('returns false if non-consecutive days', () => {

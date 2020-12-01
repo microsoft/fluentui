@@ -1,5 +1,5 @@
-import { IDateGridStrings } from './dateFormatting.types';
-import * as DateGrid from './formatMonthDayYear';
+import { IDateGridStrings } from '../../../../../src/utils/date-time-utilities';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateFormatting/formatMonthYear';
 
 enum Months {
   Jan = 0,
@@ -36,10 +36,10 @@ const strings: IDateGridStrings = {
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 };
 
-describe('formatMonthDayYear', () => {
+describe('formatMonthYear', () => {
   const date = new Date(2016, Months.Apr, 1);
   it('returns default format', () => {
-    const result = DateGrid.formatMonthDayYear(date, strings);
-    expect(result).toBe('April 1, 2016');
+    const result = DateGrid.formatMonthYear(date, strings);
+    expect(result).toBe('April 2016');
   });
 });

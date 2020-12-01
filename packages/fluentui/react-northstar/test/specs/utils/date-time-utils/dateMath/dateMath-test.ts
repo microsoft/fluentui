@@ -1,5 +1,5 @@
-import { DayOfWeek, DateRangeType } from '../dateValues/dateValues';
-import * as DateMath from './dateMath';
+import { DayOfWeek, DateRangeType } from '../../../../../src/utils/date-time-utilities/dateValues/dateValues';
+import * as DateMath from '../../../../../src/utils/date-time-utilities/dateMath/dateMath';
 
 enum Months {
   Jan = 0,

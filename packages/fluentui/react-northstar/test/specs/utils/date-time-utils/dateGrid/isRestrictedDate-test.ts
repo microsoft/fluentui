@@ -1,5 +1,5 @@
-import * as DateGrid from './isRestrictedDate';
-import { IRestrictedDatesOptions } from './dateGrid.types';
+import * as DateGrid from '../../../../../src/utils/date-time-utilities/dateGrid/isRestrictedDate';
+import { IRestrictedDatesOptions } from '../../../../../src/utils/date-time-utilities/dateGrid/dateGrid.types';
 
 enum Months {
   Jan = 0,
