@@ -1,10 +1,10 @@
-import { IDateGridStrings, IDateFormatting, IDatepickerStrings, ICalendarStrings } from './dateFormatting.types';
+import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
 import { formatDay } from './formatDay';
 import { formatYear } from './formatYear';
 import { formatMonthDayYear } from './formatMonthDayYear';
 import { formatMonthYear } from './formatMonthYear';
 
-export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
+export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
   months: [
     'January',
     'February',
@@ -29,12 +29,23 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
   formatYear,
   formatMonthDayYear,
   formatMonthYear,
+  parseDate: (dateStr: string) => {
+    const date = Date.parse(dateStr);
+    if (date) {
+      return new Date(date);
+    }
+
+    return null;
+  },
+  ...DEFAULT_LOCALIZED_STRINGS,
 };
 
 export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
-  ...DEFAULT_DATE_GRID_STRINGS,
+  ...DEFAULT_DATE_FORMATTING,
 
   goToToday: 'Go to today',
+  openCalendarTitle: 'Open calendar',
+  inputPlaceholder: 'Select a date...',
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',
@@ -47,27 +58,6 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   todayDateFormatString: "Today's date {0}",
   monthPickerHeaderAriaLabel: '{0}, select to change the year',
   yearPickerHeaderAriaLabel: '{0}, select to change the month',
-  dayMarkedAriaLabel: 'marked',
-};
-
-/**
- * Default strings for the `@fluentui/react-northstar` Datepicker.
- */
-export const DEFAULT_DATEPICKER_STRINGS: IDatepickerStrings = {
-  ...DEFAULT_CALENDAR_STRINGS,
-  ...DEFAULT_DATE_FORMATTING,
-
-  parseDate: (dateStr: string) => {
-    const date = Date.parse(dateStr);
-    if (date) {
-      return new Date(date);
-    }
-
-    return null;
-  },
-
-  openCalendarTitle: 'Open calendar',
-  inputPlaceholder: 'Select a date...',
   isRequiredErrorMessage: 'A date selection is required',
   invalidInputErrorMessage: 'Manually entered date is not in correct format.',
   isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',

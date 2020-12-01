@@ -1,3 +1,6 @@
+/**
+ * Common constants and methods
+ */
 export const TimeConstants = {
   MillisecondsInOneDay: 86400000,
   MillisecondsIn1Sec: 1000,
