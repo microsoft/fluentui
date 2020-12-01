@@ -366,18 +366,20 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   useComponentRef(props, input, value);
   useDebugWarnings(props);
 
+  const labelContent = (iconProps || label) && (
+    <div className={classNames.labelWrapper}>
+      {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
+      {label && (
+        <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
+          {label}
+        </Label>
+      )}
+    </div>
+  );
+
   return (
     <div className={classNames.root} ref={ref}>
-      {labelPosition !== Position.bottom && (iconProps || label) && (
-        <div className={classNames.labelWrapper}>
-          {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
-          {label && (
-            <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-        </div>
-      )}
+      {labelPosition !== Position.bottom && labelContent}
       <div
         {...nativeProps}
         className={classNames.spinButtonWrapper}
@@ -449,16 +451,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           />
         </span>
       </div>
-      {labelPosition === Position.bottom && (iconProps || label) && (
-        <div className={classNames.labelWrapper}>
-          {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
-          {label && (
-            <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-        </div>
-      )}
+      {labelPosition === Position.bottom && labelContent}
     </div>
   );
 });
