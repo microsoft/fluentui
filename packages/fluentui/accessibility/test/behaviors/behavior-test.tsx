@@ -93,6 +93,10 @@ import {
   datepickerBehavior,
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
+  datepickerCalendarGridBehavior,
+  datepickerCalendarGridRowBehavior,
+  datepickerCalendarCellBehavior,
+  datepickerCalendarCellButtonBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -190,5 +194,9 @@ testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehav
 testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
+testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
+testHelper.addBehavior('datepickerCalendarGridRowBehavior', datepickerCalendarGridRowBehavior);
+testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
+testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalendarCellButtonBehavior);
 
 testHelper.run(behaviorMenuItems);
