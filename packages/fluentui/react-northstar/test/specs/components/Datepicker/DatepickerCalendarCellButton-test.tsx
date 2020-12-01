@@ -1,10 +1,10 @@
 import { isConformant } from 'test/specs/commonTests';
-import { DatepickerCalendarCell } from 'src/components/Datepicker/DatepickerCalendarCell';
+import { DatepickerCalendarCellButton } from 'src/components/Datepicker/DatepickerCalendarCellButton';
 
-describe('DatepickerCalendarCell', () => {
-  isConformant(DatepickerCalendarCell, {
+describe('DatepickerCalendarCellButton', () => {
+  isConformant(DatepickerCalendarCellButton, {
     testPath: __filename,
-    constructorName: 'DatepickerCalendarCell',
+    constructorName: 'DatepickerCalendarCellButton',
     // Normally renders a native table element which should not be mounted to a div.
     // Thus converting to a div for testing purposes.
     requiredProps: { as: 'div' },
