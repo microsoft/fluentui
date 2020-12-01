@@ -58,14 +58,12 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
   value?: string;
 
   /**
-   * Min value of the control.
-   * @defaultvalue 0
+   * Min value of the control. If not provided, the control has no minimum value.
    */
   min?: number;
 
   /**
-   * Max value of the control.
-   * @defaultvalue 100
+   * Max value of the control. If not provided, the control has no maximum value.
    */
   max?: number;
 

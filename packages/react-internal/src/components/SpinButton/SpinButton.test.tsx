@@ -76,14 +76,14 @@ describe('SpinButton', () => {
 
   describe('snapshots', () => {
     it('renders correctly', () => {
-      const component = create(<SpinButton label="label" />);
+      const component = create(<SpinButton min={0} max={100} label="label" />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders correctly with user-provided values', () => {
       const component = create(
-        <SpinButton label="label" value="0" ariaValueNow={0} ariaValueText="0 pt" data-test="test" />,
+        <SpinButton min={0} max={100} label="label" value="0" ariaValueNow={0} ariaValueText="0 pt" data-test="test" />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -102,21 +102,30 @@ describe('SpinButton', () => {
       expect(inputDOM.getAttribute('aria-labelledby')).toBe(labelDOM.id);
     });
 
-    it('uses default min and max', () => {
+    it('leaves min and max unset by default', () => {
       wrapper = mount(<SpinButton />);
 
       const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-      expect(inputDOM.getAttribute('aria-valuemin')).toBe('0');
-      expect(inputDOM.getAttribute('aria-valuemax')).toBe('100');
+      expect(inputDOM.getAttribute('aria-valuemin')).toBe(null);
+      expect(inputDOM.getAttribute('aria-valuemax')).toBe(null);
     });
 
-    it('respects min and max', () => {
-      wrapper = mount(<SpinButton min={2} max={22} />);
+    it('respects min', () => {
+      wrapper = mount(<SpinButton min={-1} />);
 
       const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-      expect(inputDOM.getAttribute('aria-valuemin')).toBe('2');
+      expect(inputDOM.getAttribute('aria-valuemin')).toBe('-1');
+      expect(inputDOM.getAttribute('aria-valuemax')).toBe(null);
+    });
+
+    it('respects max', () => {
+      wrapper = mount(<SpinButton max={22} />);
+
+      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+
+      expect(inputDOM.getAttribute('aria-valuemin')).toBe(null);
       expect(inputDOM.getAttribute('aria-valuemax')).toBe('22');
     });
 
@@ -292,6 +301,12 @@ describe('SpinButton', () => {
 
       simulateArrowKey(KeyCodes.down, '11');
       simulateArrowKey(KeyCodes.up, '12');
+    });
+
+    it('can step below 0 if min is unspecified', () => {
+      wrapper = mount(<SpinButton componentRef={ref} />);
+
+      simulateArrowKey(KeyCodes.down, '-1');
     });
 
     it('supports decimal steps', () => {
