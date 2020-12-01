@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 01 Dec 2020 12:24:02 GMT",
+      "tag": "@uifabric/charting_v4.10.9",
+      "version": "4.10.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HC mode for legends",
+            "author": "v-jasha@microsoft.com",
+            "commit": "40922e4661ee1c7b5c7c06f0ae507043cb27433c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Nov 2020 12:27:20 GMT",
       "tag": "@uifabric/charting_v4.10.0",
       "version": "4.10.0",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 11 Nov 2020 12:27:20 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Dec 2020 12:24:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.10.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.10.9)
+
+Tue, 01 Dec 2020 12:24:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.10.0..@uifabric/charting_v4.10.9)
+
+### Patches
+
+- HC mode for legends ([PR #16067](https://github.com/microsoft/fluentui/pull/16067) by v-jasha@microsoft.com)
 
 ## [4.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.10.0)
 
