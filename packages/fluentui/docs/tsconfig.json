@@ -9,7 +9,8 @@
       "@uifabric/merge-styles": ["packages/merge-styles/src"],
       "@uifabric/set-version": ["packages/set-version/src"],
       "@uifabric/utilities": ["packages/utilities/src"],
-      "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"],
+      // This is commented so type check will look into node_modules/@fluentui/date-time-utils
+      // "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
