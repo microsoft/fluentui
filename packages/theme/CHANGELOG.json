@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 01 Dec 2020 12:38:05 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.8",
+      "version": "2.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Added selected as a possible key in ColorTokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "73da5f7dff44cd57a23c12f91c5210399a9f054e",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Nov 2020 12:31:40 GMT",
       "tag": "@fluentui/theme_v2.0.0-beta.7",
       "version": "2.0.0-beta.7",

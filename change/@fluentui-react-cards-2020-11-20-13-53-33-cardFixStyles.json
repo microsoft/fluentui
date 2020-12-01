@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Card: Fixing styling after round of changes in theme.",
-  "packageName": "@fluentui/react-cards",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-20T21:53:07.016Z"
-}
