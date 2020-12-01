@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme",
-  "version": "2.0.0-beta.7",
+  "version": "2.0.0-beta.8",
   "description": "Basic building blocks for Fluent UI React Component themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

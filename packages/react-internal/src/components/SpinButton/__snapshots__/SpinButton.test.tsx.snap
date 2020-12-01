@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinButton renders correctly 1`] = `
+exports[`SpinButton snapshots renders correctly 1`] = `
 <div
   className=
 
@@ -443,7 +443,7 @@ exports[`SpinButton renders correctly 1`] = `
 </div>
 `;
 
-exports[`SpinButton renders correctly with user-provided values 1`] = `
+exports[`SpinButton snapshots renders correctly with user-provided values 1`] = `
 <div
   className=
 

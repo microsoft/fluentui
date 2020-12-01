@@ -1,21 +1,18 @@
 import * as React from 'react';
-import { SpinButtonBasicExample } from './SpinButton.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
-import { SpinButtonBasicDisabledExample } from './SpinButton.BasicDisabled.Example';
-import { SpinButtonStatefulExample } from './SpinButton.Stateful.Example';
-import { SpinButtonBasicWithIconExample } from './SpinButton.BasicWithIcon.Example';
-import { SpinButtonBasicWithIconDisabledExample } from './SpinButton.BasicWithIconDisabled.Example';
-import { SpinButtonBasicWithEndPositionExample } from './SpinButton.BasicWithEndPosition.Example';
+
+import { SpinButtonBasicExample } from './SpinButton.Basic.Example';
 import { SpinButtonCustomStyledExample } from './SpinButton.CustomStyled.Example';
+import { SpinButtonIconExample } from './SpinButton.Icon.Example';
+import { SpinButtonSuffixExample } from './SpinButton.Suffix.Example';
+import { SpinButtonTopPositionExample } from './SpinButton.TopPosition.Example';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.Basic.Example.tsx') as string;
-const SpinButtonBasicDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.BasicDisabled.Example.tsx') as string;
-const SpinButtonStatefulExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.Stateful.Example.tsx') as string;
-const SpinButtonBasicWithIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.BasicWithIcon.Example.tsx') as string;
-const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
-const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.BasicWithEndPosition.Example.tsx') as string;
 const SpinButtonCustomStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.CustomStyled.Example.tsx') as string;
+const SpinButtonIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.Icon.Example.tsx') as string;
+const SpinButtonSuffixExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.Suffix.Example.tsx') as string;
+const SpinButtonTopPositionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SpinButton/SpinButton.TopPosition.Example.tsx') as string;
 
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
@@ -28,32 +25,22 @@ export const SpinButtonPageProps: IDocPageProps = {
       view: <SpinButtonBasicExample />,
     },
     {
-      title: 'Basic Disabled SpinButton',
-      code: SpinButtonBasicDisabledExampleCode,
-      view: <SpinButtonBasicDisabledExample />,
+      title: 'SpinButton with icon',
+      code: SpinButtonIconExampleCode,
+      view: <SpinButtonIconExample />,
     },
     {
-      title: 'Stateful SpinButton',
-      code: SpinButtonStatefulExampleCode,
-      view: <SpinButtonStatefulExample />,
+      title: 'SpinButton with label above',
+      code: SpinButtonTopPositionExampleCode,
+      view: <SpinButtonTopPositionExample />,
     },
     {
-      title: 'Basic SpinButton With Icon',
-      code: SpinButtonBasicWithIconExampleCode,
-      view: <SpinButtonBasicWithIconExample />,
+      title: 'SpinButton with suffix',
+      code: SpinButtonSuffixExampleCode,
+      view: <SpinButtonSuffixExample />,
     },
     {
-      title: 'Basic SpinButton With Icon Disabled',
-      code: SpinButtonBasicWithIconDisabledExampleCode,
-      view: <SpinButtonBasicWithIconDisabledExample />,
-    },
-    {
-      title: 'Basic SpinButton With Icon and Positioned at the End',
-      code: SpinButtonBasicWithEndPositionExampleCode,
-      view: <SpinButtonBasicWithEndPositionExample />,
-    },
-    {
-      title: 'Custom Styled SpinButton',
+      title: 'Custom styled SpinButton',
       code: SpinButtonCustomStyledExampleCode,
       view: <SpinButtonCustomStyledExample />,
     },
