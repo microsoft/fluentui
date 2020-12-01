@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "SpinButton: remove defaults for min and max",
+  "packageName": "@fluentui/react-internal",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-01T22:40:15.969Z"
+}
