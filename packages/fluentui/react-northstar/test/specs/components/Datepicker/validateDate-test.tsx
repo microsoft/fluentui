@@ -1,5 +1,5 @@
 import { validateDate } from 'src/components/Datepicker/validateDate';
-import { DEFAULT_CALENDAR_STRINGS, IRestrictedDatesOptions } from '@fluentui/date-time-utilities';
+import { DEFAULT_CALENDAR_STRINGS, IRestrictedDatesOptions } from 'src/utils/date-time-utilities';
 
 describe('validateDate', () => {
   const referenceDate = new Date(2020, 0, 1);
