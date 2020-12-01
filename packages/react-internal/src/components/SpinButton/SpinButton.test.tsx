@@ -13,14 +13,18 @@ describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
   let wrapper: ReactWrapper<ISpinButtonProps> | undefined;
 
-  function verifyValue(value: string, valueText?: boolean) {
-    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+  function verifyValue(value: string, intermediateValue?: string) {
     expect(ref.current!.value).toBe(value);
-    expect(inputDOM.value).toBe(value);
+
+    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    expect(inputDOM.value).toBe(intermediateValue ?? value);
+
+    // These don't update until editing is complete
+    const isNumeric = !!value && !isNaN(Number(value));
     // aria-valuenow is used for fully numeric values
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(valueText ? null : value);
+    expect(inputDOM.getAttribute('aria-valuenow')).toBe(isNumeric ? value : null);
     // aria-valuetext is used for values with suffixes or empty
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(valueText ? value : null);
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe(isNumeric ? null : value);
   }
 
   function simulateArrowButton(button: 'up' | 'down', expectedValue: string) {
@@ -47,10 +51,14 @@ describe('SpinButton', () => {
 
   function simulateInput(enteredValue: string, expectedValue?: string) {
     const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    const oldValue = inputDOM.value;
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(enteredValue));
-    ReactTestUtils.Simulate.blur(inputDOM);
+    // Verify the intermediate value is correctly handled
+    verifyValue(oldValue, enteredValue);
 
+    ReactTestUtils.Simulate.blur(inputDOM);
+    // Verify the committed value is correctly handled
     verifyValue(expectedValue ?? enteredValue);
   }
 
@@ -150,7 +158,7 @@ describe('SpinButton', () => {
     it('respects empty defaultValue', () => {
       wrapper = mount(<SpinButton componentRef={ref} defaultValue="" />);
 
-      verifyValue('', true);
+      verifyValue('');
     });
 
     // This is probably a behavior we should get rid of in the future (replace with custom rendering
@@ -158,7 +166,7 @@ describe('SpinButton', () => {
     it('respects non-numeric defaultValue', () => {
       wrapper = mount(<SpinButton componentRef={ref} defaultValue="12 pt" />);
 
-      verifyValue('12 pt', true);
+      verifyValue('12 pt');
     });
 
     it('ignores updates to defaultValue', () => {
@@ -197,13 +205,13 @@ describe('SpinButton', () => {
     it('respects non-numeric value', () => {
       wrapper = mount(<SpinButton componentRef={ref} value="12 pt" />);
 
-      verifyValue('12 pt', true);
+      verifyValue('12 pt');
     });
 
     it('respects empty value', () => {
       wrapper = mount(<SpinButton componentRef={ref} value="" />);
 
-      verifyValue('', true);
+      verifyValue('');
     });
 
     it('respects value even if invalid', () => {
