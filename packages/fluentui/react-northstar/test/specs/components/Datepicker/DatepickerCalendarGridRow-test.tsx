@@ -3,7 +3,6 @@ import { DatepickerCalendarGridRow } from 'src/components/Datepicker/DatepickerC
 
 describe('DatepickerCalendarGridRow', () => {
   isConformant(DatepickerCalendarGridRow, {
-    testPath: __filename,
     constructorName: 'DatepickerCalendarGridRow',
     // Normally renders a native table element which should not be mounted to a div.
     // Thus converting to a div for testing purposes.

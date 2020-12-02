@@ -3,7 +3,6 @@ import { DatepickerCalendarGrid } from 'src/components/Datepicker/DatepickerCale
 
 describe('DatepickerCalendarGrid', () => {
   isConformant(DatepickerCalendarGrid, {
-    testPath: __filename,
     constructorName: 'DatepickerCalendarGrid',
   });
 });

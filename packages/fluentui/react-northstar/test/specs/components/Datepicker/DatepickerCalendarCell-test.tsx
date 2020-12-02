@@ -3,7 +3,6 @@ import { DatepickerCalendarCell } from 'src/components/Datepicker/DatepickerCale
 
 describe('DatepickerCalendarCell', () => {
   isConformant(DatepickerCalendarCell, {
-    testPath: __filename,
     constructorName: 'DatepickerCalendarCell',
     // Normally renders a native table element which should not be mounted to a div.
     // Thus converting to a div for testing purposes.
