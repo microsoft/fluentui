@@ -580,4 +580,27 @@ describe('styleToClassName with specificityMultiplier', () => {
         '}',
     );
   });
+
+  it('handles !important in props with shorthand syntax (margin, padding)', () => {
+    styleToClassName(
+      {},
+      {
+        padding: '42px !important',
+        margin: ' 0 2px calc(2 * (var(--a) + var(--b)))  !important ',
+      },
+    );
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{' +
+        'padding-top:42px !important;' +
+        'padding-right:42px !important;' +
+        'padding-bottom:42px !important;' +
+        'padding-left:42px !important;' +
+        'margin-top:0 !important;' +
+        'margin-right:2px !important;' +
+        'margin-bottom:calc(2 * (var(--a) + var(--b))) !important;' +
+        'margin-left:2px !important;' +
+        '}',
+    );
+  });
 });
