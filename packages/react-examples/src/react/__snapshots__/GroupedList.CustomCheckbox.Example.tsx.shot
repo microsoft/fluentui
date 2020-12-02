@@ -441,7 +441,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection2"
-                    role="presentation"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"
@@ -2430,7 +2430,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection4"
-                    role="presentation"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"
@@ -4419,7 +4419,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   <div
                     className="ms-List"
                     id="GroupedListSection6"
-                    role="presentation"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"

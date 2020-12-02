@@ -907,7 +907,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                       <div
                         className="ms-List"
                         id="GroupedListSection3"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
