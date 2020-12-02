@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.151.0",
+  "version": "7.153.3",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^7.9.0",
-    "@fluentui/react-focus": "^7.16.18",
+    "@fluentui/react-focus": "^7.16.19",
     "@fluentui/react-window-provider": "^1.0.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/foundation": "^7.9.20",

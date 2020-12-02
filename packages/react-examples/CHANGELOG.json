@@ -2,6 +2,59 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 26 Nov 2020 12:29:51 GMT",
+      "tag": "@fluentui/react-examples_v0.9.9",
+      "version": "0.9.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "tmichon@microsoft.com",
+            "commit": "22ff232552a56ca479e42ab161d301428a11e61a",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "@fluentui/react-examples_v0.9.7",
+      "version": "0.9.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Modify UnifiedPicker example to have a context menu with copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "21477260e54f7cab0d07038d0869f506651b7fa0",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix typings in DatePicker example",
+            "author": "elcraig@microsoft.com",
+            "commit": "7545cafc5d03ed4564ff4856b53a9adce6fd40aa",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Nov 2020 12:25:00 GMT",
+      "tag": "@fluentui/react-examples_v0.9.6",
+      "version": "0.9.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Nav documentation to correctly reflect current behavior",
+            "author": "elcraig@microsoft.com",
+            "commit": "e33e107f3ee9f5c34f5005403825cf5dba95e468",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "@fluentui/react-examples_v0.9.3",
       "version": "0.9.3",

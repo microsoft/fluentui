@@ -2,6 +2,116 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 02 Dec 2020 12:24:45 GMT",
+      "tag": "office-ui-fabric-react_v7.153.3",
+      "version": "7.153.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix option text truncation for single-select.",
+            "author": "xgao@microsoft.com",
+            "commit": "896cc550611491a0ed9682cde41238987ef0ee0c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Nov 2020 12:29:51 GMT",
+      "tag": "office-ui-fabric-react_v7.153.2",
+      "version": "7.153.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure display style of column drop targets is not overridden",
+            "author": "tmichon@microsoft.com",
+            "commit": "22ff232552a56ca479e42ab161d301428a11e61a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Nov 2020 12:26:27 GMT",
+      "tag": "office-ui-fabric-react_v7.153.1",
+      "version": "7.153.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Don't prevent Esc from propagating if the box is empty",
+            "author": "behowell@microsoft.com",
+            "commit": "64f3aeffc97024407fc06b1134e3aa95f6b0761d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "office-ui-fabric-react_v7.153.0",
+      "version": "7.153.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Have Dropdown render the title as a string rather than a string inside a React Fragment, to work around a React bug when using Chrome's translation feature.",
+            "author": "behowell@microsoft.com",
+            "commit": "619dbd44312fa9fc85382f8213e77c1b2a392f91",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allow GroupedList to receive rootListProps",
+            "author": "noloyola@microsoft.com",
+            "commit": "9999a3402a63554c482ceb85e766fdc86df88d58",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add re-exports for date-time-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "7545cafc5d03ed4564ff4856b53a9adce6fd40aa",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Nov 2020 12:27:53 GMT",
+      "tag": "office-ui-fabric-react_v7.152.1",
+      "version": "7.152.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Only attempt to handle keydown event for tooltip close if the tooltip is currently open",
+            "author": "stefhan@microsoft.com",
+            "commit": "cb2e970be0f4735a4e954c7b10639f95d04f9e93",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Nov 2020 12:26:02 GMT",
+      "tag": "office-ui-fabric-react_v7.152.0",
+      "version": "7.152.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add text to breacrumb overflow items",
+            "author": "pbelsal@gmail.com",
+            "commit": "82b01a8b4f2acf60efaf3673d7f95b29e9e81c43",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
+            "author": "tmichon@microsoft.com",
+            "commit": "ffb733fcb71034eb92a2145e2618d2d969445c1c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "office-ui-fabric-react_v7.151.0",
       "version": "7.151.0",

@@ -17,6 +17,7 @@ export * from './ComboBox';
 export * from './CommandBar';
 export * from './ContextualMenu';
 export * from './DatePicker';
+export * from './DateTimeUtilities';
 export * from './DetailsList';
 export * from './Dialog';
 export * from './Divider';

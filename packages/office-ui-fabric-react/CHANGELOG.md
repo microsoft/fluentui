@@ -1,8 +1,68 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Dec 2020 12:24:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.153.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.3)
+
+Wed, 02 Dec 2020 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.2..office-ui-fabric-react_v7.153.3)
+
+### Patches
+
+- Dropdown: fix option text truncation for single-select. ([PR #16113](https://github.com/microsoft/fluentui/pull/16113) by xgao@microsoft.com)
+
+## [7.153.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.2)
+
+Thu, 26 Nov 2020 12:29:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.1..office-ui-fabric-react_v7.153.2)
+
+### Patches
+
+- Ensure display style of column drop targets is not overridden ([PR #16014](https://github.com/microsoft/fluentui/pull/16014) by tmichon@microsoft.com)
+
+## [7.153.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.1)
+
+Wed, 25 Nov 2020 12:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.0..office-ui-fabric-react_v7.153.1)
+
+### Patches
+
+- SearchBox: Don't prevent Esc from propagating if the box is empty ([PR #16017](https://github.com/microsoft/fluentui/pull/16017) by behowell@microsoft.com)
+
+## [7.153.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.0)
+
+Tue, 24 Nov 2020 12:26:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.152.1..office-ui-fabric-react_v7.153.0)
+
+### Minor changes
+
+- Allow GroupedList to receive rootListProps ([PR #16050](https://github.com/microsoft/fluentui/pull/16050) by noloyola@microsoft.com)
+- Add re-exports for date-time-utilities ([PR #16054](https://github.com/microsoft/fluentui/pull/16054) by elcraig@microsoft.com)
+
+### Patches
+
+- Have Dropdown render the title as a string rather than a string inside a React Fragment, to work around a React bug when using Chrome's translation feature. ([PR #16020](https://github.com/microsoft/fluentui/pull/16020) by behowell@microsoft.com)
+
+## [7.152.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.1)
+
+Fri, 20 Nov 2020 12:27:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.152.0..office-ui-fabric-react_v7.152.1)
+
+### Patches
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #15990](https://github.com/microsoft/fluentui/pull/15990) by stefhan@microsoft.com)
+
+## [7.152.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.152.0)
+
+Thu, 19 Nov 2020 12:26:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.151.0..office-ui-fabric-react_v7.152.0)
+
+### Minor changes
+
+- Add text to breacrumb overflow items ([PR #15987](https://github.com/microsoft/fluentui/pull/15987) by pbelsal@gmail.com)
+- Fully disable viewport measurement with 'skipViewportMeasures' ([PR #15963](https://github.com/microsoft/fluentui/pull/15963) by tmichon@microsoft.com)
 
 ## [7.151.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.151.0)
 

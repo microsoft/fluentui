@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2020 12:26:56 GMT",
+      "tag": "@fluentui/react_v7.153.0",
+      "version": "7.153.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add re-exports for date-time-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "7545cafc5d03ed4564ff4856b53a9adce6fd40aa",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/react_v7.141.0",
       "version": "7.141.0",
