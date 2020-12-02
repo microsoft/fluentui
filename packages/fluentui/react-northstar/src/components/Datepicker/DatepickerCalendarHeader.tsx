@@ -6,7 +6,7 @@ import {
   datepickerCalendarHeaderBehavior,
   DatepickerCalendarHeaderBehaviorProps,
 } from '@fluentui/accessibility';
-import { IDateGridStrings } from '@fluentui/date-time-utilities';
+import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,
@@ -29,15 +29,15 @@ import {
 import { DatepickerCalendarHeaderAction, DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
 import { Text, TextProps } from '../Text/Text';
 
-export interface DatepickerCalendarHeaderProps extends UIComponentProps, ContentComponentProps {
+export interface DatepickerCalendarHeaderProps
+  extends UIComponentProps,
+    ContentComponentProps,
+    Pick<ICalendarStrings, 'prevMonthAriaLabel' | 'nextMonthAriaLabel'> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarHeaderBehaviorProps>;
 
   /** Shorthand for text label. */
   label?: ShorthandValue<TextProps>;
-
-  /** Localized labels */
-  localizedStrings?: IDateGridStrings;
 
   /** Action to happen on click on the previous button */
   onPreviousClick?: ComponentEventHandler<DatepickerCalendarHeaderActionProps>;
@@ -50,6 +50,12 @@ export interface DatepickerCalendarHeaderProps extends UIComponentProps, Content
 
   /** Shorthand for the button that navigates to the next calendar screen. */
   nextButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
+
+  /** Decides whether next button is actionable._align_baseline. */
+  disabledNextButton?: boolean;
+
+  /** Decides whether previous button is actionable._align_baseline. */
+  disabledPreviousButton?: boolean;
 }
 
 export type DatepickerCalendarHeaderStylesProps = never;
@@ -58,7 +64,6 @@ export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader'
 
 /**
  * A DatepickerCalendarHeader is used to display header block above calendar grid.
- * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendarHeaderProps> &
   FluentComponentStaticProps<DatepickerCalendarHeaderProps> = props => {
@@ -103,35 +108,44 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      {createShorthand(Text, label)}
+      {createShorthand(Text, label, {
+        defaultProps: () =>
+          getA11yProps('label', {
+            className: classes.label,
+          }),
+      })}
 
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
-            icon: {},
-            // TODO: use value from `localizationStrings` after #14058 implements needed values
-            title: 'Previous Month',
+            title: props.prevMonthAriaLabel,
             direction: 'previous',
+            'aria-disabled': props.disabledPreviousButton,
+            disabledNavigatableButton: props.disabledPreviousButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
-            onPreviousClick(e, data);
-            _.invoke(predefinedProps, 'onClick', e, data);
+            if (!props.disabledPreviousButton) {
+              onPreviousClick(e, data);
+              _.invoke(predefinedProps, 'onClick', e, data);
+            }
           },
         }),
       })}
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
-            icon: {},
-            // TODO: use value from `localizationStrings` after #14058 implements needed values
-            title: 'Next Month',
+            title: props.nextMonthAriaLabel,
             direction: 'next',
+            'aria-disabled': props.disabledNextButton,
+            disabledNavigatableButton: props.disabledNextButton,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
-            onNextClick(e, data);
-            _.invoke(predefinedProps, 'onClick', e, data);
+            if (!props.disabledNextButton) {
+              onNextClick(e, data);
+              _.invoke(predefinedProps, 'onClick', e, data);
+            }
           },
         }),
       })}
@@ -146,11 +160,15 @@ DatepickerCalendarHeader.displayName = 'DatepickerCalendarHeader';
 DatepickerCalendarHeader.propTypes = {
   ...commonPropTypes.createCommon(),
   label: customPropTypes.itemShorthand,
-  localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   nextButton: customPropTypes.itemShorthand,
   previousButton: customPropTypes.itemShorthand,
   onPreviousClick: PropTypes.func,
   onNextClick: PropTypes.func,
+  disabledNextButton: PropTypes.bool,
+  disabledPreviousButton: PropTypes.bool,
+
+  prevMonthAriaLabel: PropTypes.string,
+  nextMonthAriaLabel: PropTypes.string,
 };
 
 DatepickerCalendarHeader.defaultProps = {
@@ -158,6 +176,9 @@ DatepickerCalendarHeader.defaultProps = {
   nextButton: {},
   previousButton: {},
   label: {},
+
+  prevMonthAriaLabel: DEFAULT_CALENDAR_STRINGS.prevMonthAriaLabel,
+  nextMonthAriaLabel: DEFAULT_CALENDAR_STRINGS.nextMonthAriaLabel,
 };
 
 DatepickerCalendarHeader.handledProps = Object.keys(DatepickerCalendarHeader.propTypes) as any;

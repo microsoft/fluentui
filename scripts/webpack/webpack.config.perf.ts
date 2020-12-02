@@ -1,6 +1,6 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import { argv } from 'yargs';
 import webpack from 'webpack';
 
