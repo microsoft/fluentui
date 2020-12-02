@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { FloatingPeoplePickerTypesExample } from './FloatingPeoplePicker.Basic.Example';
+import { FloatingPeoplePickerTypesSelectableFooterExample } from './FloatingPeoplePicker.SelectableFooter.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/FloatingPeoplePicker/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerSelectableFooterExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/FloatingPeoplePicker/FloatingPeoplePicker.SelectableFooter.Example.tsx') as string;
 
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
@@ -15,6 +17,11 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
       title: 'Floating People Picker',
       code: FloatingPeoplePickerBasicExampleCode,
       view: <FloatingPeoplePickerTypesExample />,
+    },
+    {
+      title: 'Floating People Picker',
+      code: FloatingPeoplePickerSelectableFooterExampleCode,
+      view: <FloatingPeoplePickerTypesSelectableFooterExample />,
     },
   ],
   propertiesTablesSources: [

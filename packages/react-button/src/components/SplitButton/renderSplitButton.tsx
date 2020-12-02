@@ -6,7 +6,6 @@ import { splitButtonShorthandProps } from './useSplitButton';
 /**
  * Redefine the render function to add slots. Reuse the button structure but add
  * slots to children.
- * @param state
  */
 export const renderSplitButton = (state: SplitButtonState) => {
   const { slots, slotProps } = getSlots(state, splitButtonShorthandProps);

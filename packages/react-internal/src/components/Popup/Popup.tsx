@@ -7,7 +7,7 @@ import {
   getNativeProps,
   getWindow,
 } from '../../Utilities';
-import { IPopupProps } from './Popup.types';
+import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
@@ -48,11 +48,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
   return needsVerticalScrollBarState;
 }
 
-function defaultFocusRestorer(options: {
-  originalElement?: HTMLElement | Window;
-  containsFocus: boolean;
-  documentContainsFocus: boolean;
-}) {
+function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   const { originalElement, containsFocus } = options;
 
   if (originalElement && containsFocus && originalElement !== getWindow()) {

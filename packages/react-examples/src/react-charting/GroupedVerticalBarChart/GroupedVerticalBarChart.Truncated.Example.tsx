@@ -1,10 +1,37 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart } from '@fluentui/react-charting';
+import {
+  ChartHoverCard,
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  IGVBarChartSeriesPoint,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
+interface IGroupedBarChartState {
+  width: number;
+  height: number;
+}
 
-export class GroupedVerticalBarChartTruncatedExample extends React.Component<Readonly<{}>, {}> {
-  public render(): React.ReactNode {
+export class GroupedVerticalBarChartTruncatedExample extends React.Component<{}, IGroupedBarChartState> {
+  constructor(props: IGroupedVerticalBarChartProps) {
+    super(props);
+    this.state = {
+      width: 700,
+      height: 400,
+    };
+  }
+
+  public render(): JSX.Element {
+    return <div>{this._basicExample()}</div>;
+  }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
+
+  private _basicExample(): JSX.Element {
     const data = [
       {
         name: 'Data (Text that exceeds the maximum number of characters is truncated)',
@@ -50,19 +77,35 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<Rea
       },
     ];
 
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
-
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <div className={rootStyle}>
-        <GroupedVerticalBarChart
-          data={data}
-          height={400}
-          width={650}
-          showYAxisGridLines
-          showXAxisLablesTooltip
-          noOfCharsToTruncate={4}
-        />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <GroupedVerticalBarChart
+            data={data}
+            height={this.state.height}
+            width={this.state.width}
+            showYAxisGridLines
+            showXAxisLablesTooltip
+            noOfCharsToTruncate={6}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCalloutPerDataPoint={(props: IGVBarChartSeriesPoint) =>
+              props ? (
+                <ChartHoverCard
+                  XValue={props.xAxisCalloutData}
+                  Legend={'Custom legend'}
+                  YValue={`${props.data} h`}
+                  color={'red'}
+                />
+              ) : null
+            }
+          />
+        </div>
+      </>
     );
   }
 }

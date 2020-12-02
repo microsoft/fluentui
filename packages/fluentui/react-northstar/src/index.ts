@@ -3,7 +3,6 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
-export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -191,6 +190,7 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/hooks/useTree';
 
 export * from './components/Reaction/Reaction';
 export * from './components/Reaction/ReactionGroup';
@@ -236,6 +236,7 @@ export * from './components/Datepicker/DatepickerCalendarGridRow';
 // Utilities
 //
 export * from './utils/createComponent';
+export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';
 export { Popper as UNSTABLE_Popper } from './utils/positioner';

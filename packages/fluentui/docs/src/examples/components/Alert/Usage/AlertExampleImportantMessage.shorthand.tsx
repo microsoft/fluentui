@@ -9,6 +9,7 @@ const AlertExampleImportantMessage = () => (
     header="Your password may have been compromised"
     content="Please change your password"
     dismissible
+    dismissAction={{ 'aria-label': 'close' }}
   />
 );
 

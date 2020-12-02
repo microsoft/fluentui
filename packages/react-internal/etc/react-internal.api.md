@@ -423,6 +423,12 @@ export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButt
 // @public (undocumented)
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
+// @public (undocumented)
+export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
+
+// @public (undocumented)
+export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;
+
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
@@ -1335,11 +1341,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
     // @deprecated
@@ -1885,9 +1887,27 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 export interface IContextualMenu {
 }
 
+// @public @deprecated (undocumented)
+export interface IContextualMenuClassNames {
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    list: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    subComponentStyles?: IContextualMenuSubComponentStyles;
+    // (undocumented)
+    title: string;
+}
+
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
+    ariaDescribedBy?: string;
+    ariaDescription?: string;
     ariaLabel?: string;
     canCheck?: boolean;
     checked?: boolean;
@@ -1896,8 +1916,6 @@ export interface IContextualMenuItem {
     customOnRenderListLength?: number;
     data?: any;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2002,6 +2020,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
     linkContent: IStyle;
     linkContentMenu: IStyle;
     root: IStyle;
+    screenReaderText: IStyle;
     secondaryText: IStyle;
     splitContainer: IStyle;
     splitMenu: IStyle;
@@ -2045,8 +2064,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
-    // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -2061,11 +2078,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -2277,30 +2290,6 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     topButtonsProps?: IButtonProps[];
     // @deprecated
     type?: DialogType;
-}
-
-// @public (undocumented)
-export interface IDialogState {
-    // (undocumented)
-    hasBeenOpened?: boolean;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isInKeyboardMoveMode?: boolean;
-    // (undocumented)
-    isModalMenuOpen?: boolean;
-    // (undocumented)
-    isOpen?: boolean;
-    // (undocumented)
-    isVisible?: boolean;
-    // (undocumented)
-    isVisibleClose?: boolean;
-    // (undocumented)
-    modalRectangleTop?: number;
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
 }
 
 // @public (undocumented)
@@ -3177,6 +3166,38 @@ export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttribu
     };
 }
 
+// @public @deprecated (undocumented)
+export interface IMenuItemClassNames {
+    // (undocumented)
+    checkmarkIcon: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    item: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    linkContent: string;
+    // (undocumented)
+    linkContentMenu: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+    // (undocumented)
+    secondaryText: string;
+    // (undocumented)
+    splitContainer: string;
+    // (undocumented)
+    splitMenu: string;
+    // (undocumented)
+    splitPrimary: string;
+    // (undocumented)
+    subMenuIcon: string;
+}
+
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
     anchorLink: IStyle;
@@ -3246,8 +3267,10 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
+    // (undocumented)
+    children?: React.ReactNode;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -3263,6 +3286,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
@@ -3279,6 +3303,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     modalRectangleTop?: number;
     layerClassName?: string;
     isDefaultDragHandle?: boolean;
+    windowInnerHeight?: number;
 };
 
 // @public (undocumented)
@@ -3531,8 +3556,6 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
@@ -3881,14 +3904,17 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
+}
+
+// @public
+export interface IPopupRestoreFocusParams {
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+    originalElement?: HTMLElement | Window;
 }
 
 // @public
@@ -5663,23 +5689,7 @@ export const MIN_RGBA_LENGTH = 1;
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
-export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
-    constructor(props: IModalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IModalProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
-}
+export const ModalBase: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
 export const Nav: React.FunctionComponent<INavProps>;
@@ -5744,6 +5754,32 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
 
 // @public
 export const Panel: React.FunctionComponent<IPanelProps>;
+
+// Warning: (ae-forgotten-export) The symbol "IPanelState" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class PanelBase extends React.Component<IPanelProps, IPanelState> implements IPanel {
+    constructor(props: IPanelProps);
+    // (undocumented)
+    close(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPanelProps;
+    // (undocumented)
+    dismiss: (ev?: KeyboardEvent | React.SyntheticEvent<HTMLElement, Event> | undefined) => void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null;
+    get isActive(): boolean;
+    // (undocumented)
+    open(): void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export enum PanelType {

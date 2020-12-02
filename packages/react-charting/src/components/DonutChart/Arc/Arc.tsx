@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { IArcProps, IArcStyles } from './Arc.types';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
+import { IArcProps, IArcStyles } from './index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -13,6 +13,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc(),
   };
+
+  public state: {} = {};
 
   private currentRef = React.createRef<SVGPathElement>();
 
@@ -26,9 +28,13 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { color, arc, href, valueInsideDonut, theme, focusedArcId } = this.props;
+    const { arc, href, focusedArcId } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    const classNames = getClassNames(getStyles, { color, href, theme });
+    const classNames = getClassNames(getStyles, {
+      color: this.props.color,
+      href: href!,
+      theme: this.props.theme!,
+    });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
@@ -52,7 +58,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-labelledby={this.props.calloutId}
         />
         <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
-          {valueInsideDonut}
+          {this.props.valueInsideDonut!}
         </text>
       </g>
     );
