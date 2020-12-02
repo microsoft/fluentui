@@ -68,10 +68,7 @@ export const BaseButtonStyles: ElementStyles = css`
 
     .control.icon-only {
         padding: 0;
-    }
-
-    .control.icon-only span {
-        display: inline-flex;
+        line-height: 0;
     }
 
     :host(:hover) {
