@@ -261,7 +261,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
 
     actions.setIndexes(nextActiveIndex, lastActiveIndex);
 
-    _.invoke(props, 'onActiveIndexChange', e, props);
+    _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex: index });
 
     if (focusItem) {
       focusItemAtIndex(nextActiveIndex);
