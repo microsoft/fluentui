@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.20)
+
+Tue, 24 Nov 2020 12:29:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.13..@fluentui/react-experiments_v8.0.0-beta.20)
+
+### Changes
+
+- Add function to UnifiedPicker so consumers can access which items are selected ([PR #16006](https://github.com/microsoft/fluentui/pull/16006) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.13)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.12..@fluentui/react-experiments_v8.0.0-beta.13)
+
+### Changes
+
+- Fix UPP ctrl+c copy ([PR #15874](https://github.com/microsoft/fluentui/pull/15874) by elvonspa@microsoft.com)
+- SelectedPersona: Fix hover/active states in normal and high contrast modes ([PR #15902](https://github.com/microsoft/fluentui/pull/15902) by chrp@microsoft.com)
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.12)
+
+Tue, 10 Nov 2020 12:30:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.8..@fluentui/react-experiments_v8.0.0-beta.12)
+
+### Changes
+
+- Fix keyboard selection in UPP on initial load with recipients, group expansion ([PR #15872](https://github.com/microsoft/fluentui/pull/15872) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.8)
 

@@ -184,23 +184,8 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
             }
       >
         <div
-          onFocus={[Function]}
           role="list"
         >
-          <input
-            aria-hidden={true}
-            className=
-                ms-SelectedItemsList-copyInput
-                {
-                  border: none;
-                  height: 0px;
-                  outline: none;
-                  width: 0px;
-                }
-            data-is-focusable={false}
-            hidden={true}
-            tabIndex={-1}
-          />
           <div>
              
             red

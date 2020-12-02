@@ -1384,14 +1384,6 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@fluentui/date-time-utilities@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/date-time-utilities/-/date-time-utilities-7.9.0.tgz#4c8570b3af8bc654963ecb034d0fd100010e7d6d"
-  integrity sha512-D8p5WWeonqRO1EgIvo7WSlX1rcm87r2VQd62zTJPQImx8rpwc77CRI+iAvfxyVHRZMdt4Qk6Jq99dUaudPWaZw==
-  dependencies:
-    "@uifabric/set-version" "^7.0.23"
-    tslib "^1.10.0"
-
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
@@ -2422,17 +2414,17 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.19.1":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.19.1.tgz#7b7cddc844168eb168f75e41ea63d23d942667cb"
-  integrity sha512-qfEqj4s7E3B0qsNRoiQyKF682fdpEbCINV/GS6tE/ZOFC/B0CKpcZjk3mWyw8XAfsLA50E4YuR9Hn8SuMc2sFg==
+"@microsoft/fast-element@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.21.0.tgz#40689eec6e77f3cdc664a18501ea72febc735ed4"
+  integrity sha512-SzqDjcVTXqOjEaZwcDZR1/3KD99/54pXq5ho53x/7BPSzT7o8tQoUqRZiJ5WqduAtX7/rtB52etffumHkbyLUw==
 
-"@microsoft/fast-foundation@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.8.1.tgz#9123a0f0dc0420ccff9554789b16f844ca0e9c8d"
-  integrity sha512-eWgp/RsSwCsJHfE/ljS0eTFLlnK0xCaJkjRIzjZN1cdBMDP7EJ+3XfxLsJBQ8tPLKlTjDfIrgnCGfO4GVe6Ggg==
+"@microsoft/fast-foundation@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.10.0.tgz#43569725a2f5cd4a78edc20206c7d445e797cbab"
+  integrity sha512-8FUeHDn8blZRTmt3cVPvf6JXu3z0Jdhak5yx9yVTZttv9ACEQ1TXQfD4F0/BwYgA3ni7ORWHSXu68iJdGofRsQ==
   dependencies:
-    "@microsoft/fast-element" "^0.19.1"
+    "@microsoft/fast-element" "^0.21.0"
     "@microsoft/fast-web-utilities" "^4.6.1"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
@@ -5852,6 +5844,11 @@ axe-core@3.4.1, axe-core@^3.0.3, axe-core@^3.1.2, axe-core@^3.2.2, axe-core@^3.3
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.4.1.tgz#e42623918bb85b5ef674633852cb9029db0309c5"
   integrity sha512-+EhIdwR0hF6aeMx46gFDUy6qyCfsL0DmBrV3Z+LxYbsOd8e1zBaPHa3f9Rbjsz2dEwSBkLw6TwML/CAIIAqRpw==
+
+axe-core@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.0.tgz#161b17fc6ce07a5470ff179e0703957c422b2220"
+  integrity sha512-wJqOIreoFiGjvZ1UZvGLAUs8H3QQ3cS833+6ctFcCdr/xFd5oB66mmwGWnwQlBXFFaefRt+KR+m2dY9em2RxVg==
 
 axe-puppeteer@^1.0.0:
   version "1.0.0"

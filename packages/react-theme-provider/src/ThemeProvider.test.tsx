@@ -6,7 +6,6 @@ import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
-import { getTokens } from './getTokens';
 
 const lightTheme = {
   stylesheets: [],
@@ -119,7 +118,6 @@ describe('ThemeProvider', () => {
     );
 
     const expectedTheme: Theme = createTheme(lightTheme);
-    expectedTheme.tokens = getTokens(expectedTheme, lightTheme.tokens);
     expectedTheme.id = '0-1';
 
     expect(resolvedTheme).toEqual(expectedTheme);

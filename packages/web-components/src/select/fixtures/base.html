@@ -1,0 +1,117 @@
+<fluent-design-system-provider use-defaults>
+  <h1>Select</h1>
+
+  <h2>Default</h2>
+  <fluent-select>
+    <fluent-option>This option has no value</fluent-option>
+    <fluent-option disabled>This option is disabled</fluent-option>
+    <fluent-option value="hi">This option has a value</fluent-option>
+    <fluent-option selected>This option is selected by default</fluent-option>
+  </fluent-select>
+
+  <h2>With Label</h2>
+  <label for="shirt-size">Choose a T-Shirt size:</label>
+  <fluent-select id="shirt-size">
+    <fluent-option value="s">Small</fluent-option>
+    <fluent-option value="m">Medium</fluent-option>
+    <fluent-option value="l">Large</fluent-option>
+    <fluent-option value="xl">Extra Large</fluent-option>
+  </fluent-select>
+
+  <h2>Disabled</h2>
+  <fluent-select disabled>
+    <fluent-option>This option is not selectable</fluent-option>
+  </fluent-select>
+
+  <fluent-select>
+    <fluent-option disabled>This option is disabled</fluent-option>
+    <fluent-option>This option is not disabled</fluent-option>
+    <fluent-option>This option is not disabled</fluent-option>
+  </fluent-select>
+
+  <h2>Selected Option</h2>
+  <fluent-select>
+    <fluent-option>Option One</fluent-option>
+    <fluent-option selected>Option Two</fluent-option>
+    <fluent-option>Option Three</fluent-option>
+    <fluent-option>Option Four</fluent-option>
+  </fluent-select>
+
+  <h2>Custom Indicator</h2>
+  <fluent-select>
+    <svg slot="indicator" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M6.5 7.7h-1v-1h1v1zm4.1 0h-1v-1h1v1zm4.1-1v2.1h-1v2.6l-.1.6-.3.5c-.1.1-.3.3-.5.3l-.6.1H10l-3.5 3v-3H3.9l-.6-.1-.5-.3c-.1-.1-.3-.3-.3-.5l-.1-.6V8.8h-1V6.7h1V5.2l.1-.6.3-.5c.1-.1.3-.3.5-.3l.6-.1h3.6V1.9a.8.8 0 01-.4-.4L7 1V.6l.2-.3.3-.2L8 0l.4.1.3.2.3.3V1l-.1.5-.4.4v1.7h3.6l.6.1.5.3c.1.1.3.3.3.5l.1.6v1.5h1.1zm-2.1-1.5l-.2-.4-.4-.2H3.9l-.4.2-.1.4v6.2l.2.4.4.2h3.6v1.8L9.7 12h2.5l.4-.2.2-.4V5.2zM5.8 8.9l1 .7 1.2.2a5 5 0 001.2-.2l1-.7.7.7c-.4.4-.8.7-1.4.9-.5.2-1 .3-1.6.3s-1.1-.1-1.6-.3A3 3 0 015 9.6l.8-.7z"
+      />
+    </svg>
+    <fluent-option>Option One</fluent-option>
+    <fluent-option>Option Two</fluent-option>
+    <fluent-option>Option Three</fluent-option>
+    <fluent-option>Option Four</fluent-option>
+  </fluent-select>
+
+  <h2>Long list</h2>
+  <fluent-select id="state" name="state">
+    <fluent-option value="AL">Alabama</fluent-option>
+    <fluent-option value="AK">Alaska</fluent-option>
+    <fluent-option value="AZ">Arizona</fluent-option>
+    <fluent-option value="AR">Arkansas</fluent-option>
+    <fluent-option value="CA">California</fluent-option>
+    <fluent-option value="CO">Colorado</fluent-option>
+    <fluent-option value="CT">Connecticut</fluent-option>
+    <fluent-option value="DE">Delaware</fluent-option>
+    <fluent-option value="FL">Florida</fluent-option>
+    <fluent-option value="GA">Georgia</fluent-option>
+    <fluent-option value="HI">Hawaii</fluent-option>
+    <fluent-option value="ID">Idaho</fluent-option>
+    <fluent-option value="IL">Illinois</fluent-option>
+    <fluent-option value="IN">Indiana</fluent-option>
+    <fluent-option value="IA">Iowa</fluent-option>
+    <fluent-option value="KS">Kansas</fluent-option>
+    <fluent-option value="KY">Kentucky</fluent-option>
+    <fluent-option value="LA">Louisiana</fluent-option>
+    <fluent-option value="ME">Maine</fluent-option>
+    <fluent-option value="MD">Maryland</fluent-option>
+    <fluent-option value="MA">Massachussets</fluent-option>
+    <fluent-option value="MI">Michigain</fluent-option>
+    <fluent-option value="MN">Minnesota</fluent-option>
+    <fluent-option value="MS">Mississippi</fluent-option>
+    <fluent-option value="MO">Missouri</fluent-option>
+    <fluent-option value="MT">Montana</fluent-option>
+    <fluent-option value="NE">Nebraska</fluent-option>
+    <fluent-option value="NV">Nevada</fluent-option>
+    <fluent-option value="NH">New Hampshire</fluent-option>
+    <fluent-option value="NJ">New Jersey</fluent-option>
+    <fluent-option value="NM">New Mexico</fluent-option>
+    <fluent-option value="NY">New York</fluent-option>
+    <fluent-option value="NC">North Carolina</fluent-option>
+    <fluent-option value="ND">North Dakota</fluent-option>
+    <fluent-option value="OH">Ohio</fluent-option>
+    <fluent-option value="OK">Oklahoma</fluent-option>
+    <fluent-option value="OR">Oregon</fluent-option>
+    <fluent-option value="PA">Pennsylvania</fluent-option>
+    <fluent-option value="RI">Rhode Island</fluent-option>
+    <fluent-option value="SC">South Carolina</fluent-option>
+    <fluent-option value="SD">South Dakota</fluent-option>
+    <fluent-option value="TX">Texas</fluent-option>
+    <fluent-option value="TN">Tennessee</fluent-option>
+    <fluent-option value="UT">Utah</fluent-option>
+    <fluent-option value="VT">Vermont</fluent-option>
+    <fluent-option value="VA">Virginia</fluent-option>
+    <fluent-option value="WA">Washington</fluent-option>
+    <fluent-option value="WI">Wisconsin</fluent-option>
+    <fluent-option value="WV">West Virginia</fluent-option>
+    <fluent-option value="WY">Wyoming</fluent-option>
+  </fluent-select>
+
+  <h2>Forced positions</h2>
+  <fluent-select position="above">
+    <fluent-option>Position forced above</fluent-option>
+    <fluent-option>Option Two</fluent-option>
+  </fluent-select>
+
+  <fluent-select position="below">
+    <fluent-option>Position forced below</fluent-option>
+    <fluent-option>Option Two</fluent-option>
+  </fluent-select>
+</fluent-design-system-provider>

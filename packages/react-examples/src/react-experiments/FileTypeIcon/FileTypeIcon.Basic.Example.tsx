@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
-import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@fluentui/file-type-icons';
+import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
 
 initializeFileTypeIcons(undefined);
 

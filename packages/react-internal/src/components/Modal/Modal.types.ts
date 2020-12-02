@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
+import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IOverlayProps } from '../../Overlay';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export interface IDragOptions {
   /**
@@ -55,10 +54,12 @@ export interface IModal {
 /**
  * {@docCategory Modal}
  */
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+  children?: React.ReactNode;
+
   /**
-   * Optional callback to access the IDialog interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Optional ref to access the `IModal` interface. Use this instead of `ref` for accessing
+   * public API of the component.
    */
   componentRef?: IRefObject<IModal>;
 
@@ -68,7 +69,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
 
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme?: ITheme;
 
@@ -93,6 +94,12 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
   onDismissed?: () => any;
+
+  /**
+   * The specified responsiveMode value for Modal to use.
+   * @defaultvalue ResponsiveMode.small
+   */
+  responsiveMode?: ResponsiveMode;
 
   /**
    * Defines an optional set of props to be passed through to Layer
@@ -193,6 +200,8 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     layerClassName?: string;
     /** Whether this modal is draggable and using the default handler */
     isDefaultDragHandle?: boolean;
+    /** The windows inner height */
+    windowInnerHeight?: number;
   };
 
 /**

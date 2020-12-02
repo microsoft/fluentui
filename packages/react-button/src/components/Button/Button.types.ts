@@ -110,7 +110,6 @@ export interface ButtonState extends ButtonProps {
  */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
-    /* sizing */
     paddingLeft?: string;
     paddingRight?: string;
     paddingTop?: string;
@@ -136,6 +135,7 @@ export type ButtonTokens = ColorTokens &
     transform?: string;
     transition?: string;
 
+    /* sizing */
     size?: {
       smallest?: string;
       smaller?: string;

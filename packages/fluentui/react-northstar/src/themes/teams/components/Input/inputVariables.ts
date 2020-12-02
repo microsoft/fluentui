@@ -34,7 +34,7 @@ export const inputVariables = (siteVars): InputVariables => ({
   iconLeft: pxToRem(6),
 
   inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(24)}`,
-  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(24)} ${pxToRem(5)} ${pxToRem(12)}`,
+  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(39)} ${pxToRem(5)} ${pxToRem(12)}`,
   inputPadding: `${pxToRem(5)} ${pxToRem(12)}`,
   inputInsideLabelPaddingTop: pxToRem(14),
 
