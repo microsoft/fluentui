@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Support !important for margin and padding",
+  "comment": "Fix mergeStyles handling of !important for margin and padding",
   "packageName": "@fluentui/merge-styles",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
