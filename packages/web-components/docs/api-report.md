@@ -189,6 +189,7 @@ export class FluentButton extends Button {
     appearanceChanged(oldValue: ButtonAppearance, newValue: ButtonAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+    defaultSlottedContentChanged(): void;
 }
 
 // @public
