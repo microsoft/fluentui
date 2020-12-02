@@ -335,7 +335,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           }
           `,
         inUseMode &&
-          ė`
+          `
             .virtual-focused {
               border: 2px dashed black;
             }
