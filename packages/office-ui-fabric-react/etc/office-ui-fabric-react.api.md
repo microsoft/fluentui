@@ -3178,7 +3178,6 @@ export interface IContextualMenuClassNames {
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
-    ariaDescribedBy?: string;
     ariaDescription?: string;
     ariaLabel?: string;
     canCheck?: boolean;

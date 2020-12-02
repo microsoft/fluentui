@@ -97,7 +97,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-expanded={itemHasSubmenu ? item.key === expandedMenuItemKey : undefined}
             aria-haspopup={true}
             aria-describedby={mergeAriaAttributeValues(
-              item.ariaDescribedBy,
               ariaDescription ? this._ariaDescriptionId : undefined,
               keytipAttributes['aria-describedby'],
             )}

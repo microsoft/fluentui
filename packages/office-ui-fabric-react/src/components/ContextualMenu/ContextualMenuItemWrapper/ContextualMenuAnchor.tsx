@@ -80,7 +80,6 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               aria-setsize={totalItemCount}
               aria-disabled={isItemDisabled(item)}
               aria-describedby={mergeAriaAttributeValues(
-                item.ariaDescribedBy,
                 ariaDescription ? this._ariaDescriptionId : undefined,
                 keytipAttributes ? keytipAttributes['aria-describedby'] : undefined,
               )}

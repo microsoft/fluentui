@@ -57,10 +57,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     if (ariaDescription) {
       this._ariaDescriptionId = getId();
     }
-    const ariaDescribedByIds = mergeAriaAttributeValues(
-      item.ariaDescribedBy,
-      ariaDescription ? this._ariaDescriptionId : undefined,
-    );
+    const ariaDescribedByIds = ariaDescription ? this._ariaDescriptionId : undefined;
 
     const itemButtonProperties = {
       className: classNames.root,
