@@ -124,6 +124,15 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     [getA11yProps, getItemById, props.renderItemTitle],
   );
 
+  const innerElementType = React.useMemo(
+    () => React.forwardRef((props, ref) => <div ref={ref as React.RefObject<HTMLDivElement>} {...props} role="none" />),
+    [],
+  );
+  const outerElementType = React.useMemo(
+    () => React.forwardRef((props, ref) => <div ref={ref as React.RefObject<HTMLDivElement>} {...props} role="none" />),
+    [],
+  );
+
   const element = (
     <TreeContext.Provider value={contextValue}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -143,6 +152,8 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
             itemKey={getItemKey}
             itemData={{ visibleItemIds, createTreeItem }}
             itemCount={visibleItemIds.length}
+            outerElementType={outerElementType}
+            innerElementType={innerElementType}
           >
             {ItemWrapper}
           </VariableSizeList>
