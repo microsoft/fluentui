@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 02 Dec 2020 12:24:45 GMT",
+      "tag": "office-ui-fabric-react_v7.153.3",
+      "version": "7.153.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix option text truncation for single-select.",
+            "author": "xgao@microsoft.com",
+            "commit": "896cc550611491a0ed9682cde41238987ef0ee0c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Nov 2020 12:29:51 GMT",
       "tag": "office-ui-fabric-react_v7.153.2",
       "version": "7.153.2",

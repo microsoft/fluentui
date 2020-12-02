@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Nov 2020 12:29:51 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Dec 2020 12:24:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.153.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.3)
+
+Wed, 02 Dec 2020 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.2..office-ui-fabric-react_v7.153.3)
+
+### Patches
+
+- Dropdown: fix option text truncation for single-select. ([PR #16113](https://github.com/microsoft/fluentui/pull/16113) by xgao@microsoft.com)
 
 ## [7.153.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.2)
 
