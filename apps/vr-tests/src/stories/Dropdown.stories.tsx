@@ -44,6 +44,7 @@ storiesOf('Dropdown', module)
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
           { key: 'F', text: 'Option f', disabled: true },
           { key: 'G', text: 'Option g' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
@@ -80,6 +81,7 @@ storiesOf('Dropdown', module)
           { key: 'Banana', text: 'banana', disabled: true },
           { key: 'Lemon', text: 'lemon', disabled: true },
           { key: 'Orange', text: 'orange' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
