@@ -37,7 +37,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
       <Pivot>
         <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
           <Stack tokens={stackTokens}>
-            <SpinButton ref={spinButtonRef} label="Spin Button" styles={spinButtonStyles} />
+            <SpinButton ref={spinButtonRef} label="Spin Button" min={0} max={100} styles={spinButtonStyles} />
             <Toggle ref={toggleRef} onText="Yes" offText="No" />
             <span>
               Go to{' '}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Wed, 02 Dec 2020 12:37:40 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.21",
+      "version": "8.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SpinButton: remove defaults for min and max",
+            "author": "elcraig@microsoft.com",
+            "commit": "71b6253e69d5faafeda96bf623f07bb7cd054464",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Dec 2020 12:38:05 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.20",
       "version": "8.0.0-beta.20",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.23)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.20..@fluentui/react_v8.0.0-beta.23)
+
+### Changes
+
+- Dropdown: fix option text truncation for single-select. ([PR #16096](https://github.com/microsoft/fluentui/pull/16096) by xgao@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.20)
 

@@ -26,17 +26,20 @@ interface ISpinButtonInternalState {
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
 
 const COMPONENT_NAME = 'SpinButton';
-const DEFAULT_PROPS = {
+const DEFAULT_PROPS: Required<Pick<
+  ISpinButtonProps,
+  // These are explicitly specified so that the only the things which actually have defaults
+  // get marked as required in ISpinButtonPropsWithDefaults below
+  'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
+>> = {
   disabled: false,
   label: '',
-  min: 0,
-  max: 100,
   step: 1,
   labelPosition: Position.start,
   incrementButtonIcon: { iconName: 'ChevronUpSmall' },
   decrementButtonIcon: { iconName: 'ChevronDownSmall' },
 };
-type ISpinButtonPropsWithDefaults = ISpinButtonProps & Required<Pick<ISpinButtonProps, keyof typeof DEFAULT_PROPS>>;
+type ISpinButtonPropsWithDefaults = ISpinButtonProps & typeof DEFAULT_PROPS;
 
 const INITIAL_STEP_DELAY = 400;
 const STEP_DELAY = 75;
@@ -120,7 +123,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
   const { setTimeout, clearTimeout } = useSetTimeout();
 
-  const [value, setValue] = useControllableValue(valueFromProps, defaultValue ?? String(min));
+  const [value, setValue] = useControllableValue(valueFromProps, defaultValue ?? String(min || 0));
 
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     lastValidValue: value,
@@ -156,14 +159,20 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     if (onValidate) {
       return onValidate(newValue, ev);
     }
-    if (!newValue || newValue.trim().length === 0 || isNaN(Number(newValue))) {
-      return internalState.lastValidValue;
+    // default validation handling
+    let newNumber = Number(newValue);
+    if (newValue && newValue.trim().length && !isNaN(newNumber)) {
+      if (typeof min === 'number') {
+        newNumber = Math.max(min, newNumber);
+      }
+      if (typeof max === 'number') {
+        newNumber = Math.min(max, newNumber);
+      }
+      return String(newNumber);
     }
-    return String(Math.min(max, Math.max(min, Number(newValue))));
   };
 
   /** Validate function called on blur or enter keypress. */
-
   const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (
       value !== undefined &&
@@ -250,7 +259,10 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       if (onIncrement) {
         return onIncrement(newValue);
       } else {
-        let numericValue: number = Math.min(Number(newValue) + Number(step), max);
+        let numericValue = Number(newValue) + Number(step);
+        if (typeof max === 'number') {
+          numericValue = Math.min(numericValue, max);
+        }
         numericValue = precisionRound(numericValue, precision);
         return String(numericValue);
       }
@@ -264,7 +276,10 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       if (onDecrement) {
         return onDecrement(newValue);
       } else {
-        let numericValue: number = Math.max(Number(newValue) - Number(step), min);
+        let numericValue = Number(newValue) - Number(step);
+        if (typeof min === 'number') {
+          numericValue = Math.max(numericValue, min);
+        }
         numericValue = precisionRound(numericValue, precision);
         return String(numericValue);
       }
@@ -366,18 +381,20 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   useComponentRef(props, input, value);
   useDebugWarnings(props);
 
+  const labelContent = (iconProps || label) && (
+    <div className={classNames.labelWrapper}>
+      {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
+      {label && (
+        <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
+          {label}
+        </Label>
+      )}
+    </div>
+  );
+
   return (
     <div className={classNames.root} ref={ref}>
-      {labelPosition !== Position.bottom && (iconProps || label) && (
-        <div className={classNames.labelWrapper}>
-          {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
-          {label && (
-            <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-        </div>
-      )}
+      {labelPosition !== Position.bottom && labelContent}
       <div
         {...nativeProps}
         className={classNames.spinButtonWrapper}
@@ -449,16 +466,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           />
         </span>
       </div>
-      {labelPosition === Position.bottom && (iconProps || label) && (
-        <div className={classNames.labelWrapper}>
-          {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
-          {label && (
-            <Label id={labelId} htmlFor={inputId} className={classNames.label} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-        </div>
-      )}
+      {labelPosition === Position.bottom && labelContent}
     </div>
   );
 });

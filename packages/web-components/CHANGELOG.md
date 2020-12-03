@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Sat, 21 Nov 2020 02:00:44 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.0)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.1..@fluentui/web-components_v0.9.0)
+
+### Minor changes
+
+- add a class to button in shadow DOM when default slotted content is only an svg icon ([PR #16112](https://github.com/microsoft/fluentui/pull/16112) by chhol@microsoft.com)
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.1)
 

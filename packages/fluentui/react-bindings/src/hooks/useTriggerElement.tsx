@@ -33,7 +33,8 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
   const element = trigger ? (React.Children.only(trigger) as React.ReactElement) : null;
 
-  if (process.env.NODE_ENV !== 'production') {
+  // An exception should not be thrown in tests as components might be rendered without styles
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     if (ReactIs.isFragment(element)) {
       throw new Error(
         'useTriggerElement(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
