@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 01 Dec 2020 12:38:05 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Moving comment to correct place.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "73da5f7dff44cd57a23c12f91c5210399a9f054e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Nov 2020 12:31:40 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.13",
       "version": "1.0.0-beta.13",

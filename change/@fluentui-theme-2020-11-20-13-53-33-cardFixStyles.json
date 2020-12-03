@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added selected as a possible key in ColorTokens.",
-  "packageName": "@fluentui/theme",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-20T21:53:33.456Z"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/foundation-legacy",
-  "version": "8.0.0-beta.7",
+  "version": "8.0.0-beta.10",
   "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,7 @@
     "@types/react": "16.8.25",
     "@types/react-test-renderer": "^16.0.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.1",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.3",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -43,10 +43,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.0.0-beta.1",
+    "@fluentui/merge-styles": "^8.0.0-beta.3",
     "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.7",
-    "@fluentui/utilities": "^8.0.0-beta.6",
+    "@fluentui/style-utilities": "^8.0.0-beta.10",
+    "@fluentui/utilities": "^8.0.0-beta.8",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

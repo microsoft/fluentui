@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 02 Dec 2020 12:37:40 GMT",
+      "tag": "@fluentui/web-components_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add a class to button in shadow DOM when default slotted content is only an svg icon",
+            "author": "chhol@microsoft.com",
+            "commit": "158a6480c3dcf802a5fb4dbf045f0bf18ab20b3c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 21 Nov 2020 02:00:44 GMT",
       "tag": "@fluentui/web-components_v0.8.1",
       "version": "0.8.1",

@@ -143,7 +143,7 @@ packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
 packages/react-internal/src/components/SearchBox/ @ecraig12345
 packages/react-internal/src/components/Separator/ @joschemd @khmakoto
 packages/react-internal/src/components/Shimmer/ @Vitalius1
-packages/react-internal/src/components/SpinButton/ @khmakoto
+packages/react-internal/src/components/SpinButton/ @ecraig12345
 packages/react-internal/src/components/Spinner/ @xugao
 packages/react-internal/src/components/Stack/  @khmakoto
 packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
