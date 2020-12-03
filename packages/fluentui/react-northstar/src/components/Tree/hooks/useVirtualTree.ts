@@ -84,7 +84,7 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
     if (focusIdRef.current != null && getItemRef(focusIdRef.current) == null) {
       const focusIndex = visibleItemIds.indexOf(focusIdRef.current);
       if (focusIndex >= 0) {
-        (listRef.current as any)?.scrollToItem(focusIndex, 'center');
+        listRef.current?.scrollToItem(focusIndex, 'center');
       }
     }
   }, [getItemRef, visibleItemIds]);
