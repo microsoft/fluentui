@@ -46,7 +46,6 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const { children, className, design, styles, variables, height, estimatedItemSize } = props;
 
   const ElementType = getElementType(props);
-
   const unhandledProps = useUnhandledProps([...Tree.handledProps, 'estimatedItemSize', 'itemSize'], props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
