@@ -121,6 +121,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added support to silently fail the version dropdown @ling1726 ([#16002](https://github.com/microsoft/fluentui/pull/16002))
 - Adding JAWS bug for radiogroup @kolaps33 ([#16076](https://github.com/microsoft/fluentui/pull/16076))
 - `Alert` - labelling dismiss action, to prevent narrate "unlabeled" button @kolaps33 ([#16092](https://github.com/microsoft/fluentui/pull/16092))
+- Add new sample images for use in Avatar examples ([#16129](https://github.com/microsoft/fluentui/pull/16129))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
