@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
+import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette } from '@fluentui/react/lib/Styling';
@@ -22,12 +23,11 @@ import {
   IModifiedCartesianChartProps,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
+import { ChartTypes, XAxisTypes, getTypeOfAxis, tooltipOfXAxislabels } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
-type StringScale = D3ScaleLinear<string, string>;
 const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 
 // When displaying gaps between bars, the max height of the gap is given in the
@@ -74,6 +74,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _isRtl: boolean = getRTL();
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
+  private _tooltipId: string;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -97,6 +98,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
+    this._tooltipId = getId('VSBCTooltipId_');
     this._adjustProps();
     this._dataset = this._createDataSetLayer();
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
@@ -645,9 +647,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _createBar = (
-    xBarScale: NumericScale | StringScale,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xBarScale: any,
     yBarScale: NumericScale,
     containerHeight: number,
+    xElement: SVGElement,
   ): JSX.Element[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
@@ -761,7 +765,30 @@ export class VerticalStackedBarChartBase extends React.Component<
         </g>
       );
     });
-
+    const className = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xBarScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: className.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
     return bars.filter((bar): bar is JSX.Element => !!bar);
   };
 
@@ -791,23 +818,38 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
   };
 
-  private _createNumericBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {
+  private _createNumericBars = (
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+  ): JSX.Element[] => {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
 
-    return this._createBar(xBarScale, yBarScale, containerHeight);
+    return this._createBar(xBarScale, yBarScale, containerHeight, xElement);
   };
 
-  private _createStringBars = (containerHeight: number, containerWidth: number): JSX.Element[] => {
+  private _createStringBars = (
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+  ): JSX.Element[] => {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
 
-    return this._createBar(xBarScale, yBarScale, containerHeight);
+    return this._createBar(xBarScale, yBarScale, containerHeight, xElement);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getGraphData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
+  private _getGraphData = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScale: NumericAxis,
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement | null,
+  ) => {
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth)
-        : this._createStringBars(containerHeight, containerWidth));
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+        : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 }

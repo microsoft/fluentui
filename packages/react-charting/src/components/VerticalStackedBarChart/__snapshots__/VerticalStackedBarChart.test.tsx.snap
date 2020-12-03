@@ -16,7 +16,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         overflow: hidden;
         width: 100%;
       }
-  id="chart_1"
+  id="chart_2"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -65,7 +65,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             & path {
               display: none;
             }
-        id="xAxisGElementchart_1"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -93,7 +93,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_1"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g />
@@ -352,7 +352,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_14"
   role="presentation"
 >
   <div
@@ -361,7 +361,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -401,7 +401,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             & path {
               display: none;
             }
-        id="xAxisGElementchart_10"
+        id="xAxisGElementchart_14"
         transform="translate(0, -35)"
       />
       <g
@@ -429,7 +429,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_10"
+        id="yAxisGElementchart_14"
         transform="translate(40, 0)"
       />
       <g />
@@ -668,7 +668,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_4"
+  id="chart_6"
   role="presentation"
 >
   <div
@@ -677,7 +677,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone7"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -717,7 +717,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_4"
+        id="xAxisGElementchart_6"
         transform="translate(0, -35)"
       />
       <g
@@ -745,7 +745,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_4"
+        id="yAxisGElementchart_6"
         transform="translate(40, 0)"
       />
       <g />
@@ -771,7 +771,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_10"
   role="presentation"
 >
   <div
@@ -780,7 +780,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -820,7 +820,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
+        id="xAxisGElementchart_10"
         transform="translate(0, -35)"
       />
       <g
@@ -848,7 +848,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
+        id="yAxisGElementchart_10"
         transform="translate(40, 0)"
       />
       <g />
@@ -1107,7 +1107,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         overflow: hidden;
         width: 100%;
       }
-  id="chart_19"
+  id="chart_26"
   role="presentation"
 >
   <div
@@ -1116,7 +1116,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1156,7 +1156,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_19"
+        id="xAxisGElementchart_26"
         transform="translate(0, -35)"
       />
       <g
@@ -1184,7 +1184,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_19"
+        id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
       <g />
@@ -1443,7 +1443,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         overflow: hidden;
         width: 100%;
       }
-  id="chart_13"
+  id="chart_18"
   role="presentation"
 >
   <div
@@ -1452,7 +1452,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1492,7 +1492,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             & path {
               display: none;
             }
-        id="xAxisGElementchart_13"
+        id="xAxisGElementchart_18"
         transform="translate(0, -35)"
       />
       <g
@@ -1520,7 +1520,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_13"
+        id="yAxisGElementchart_18"
         transform="translate(40, 0)"
       />
       <g />
@@ -1779,7 +1779,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_22"
   role="presentation"
 >
   <div
@@ -1788,7 +1788,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone23"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1828,7 +1828,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_22"
         transform="translate(0, -35)"
       />
       <g
@@ -1856,7 +1856,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_22"
         transform="translate(40, 0)"
       />
       <g />
@@ -2115,7 +2115,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_22"
+  id="chart_30"
   role="presentation"
 >
   <div
@@ -2124,7 +2124,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone31"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2164,7 +2164,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_22"
+        id="xAxisGElementchart_30"
         transform="translate(0, -35)"
       />
       <g
@@ -2192,7 +2192,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_22"
+        id="yAxisGElementchart_30"
         transform="translate(40, 0)"
       />
       <g />
