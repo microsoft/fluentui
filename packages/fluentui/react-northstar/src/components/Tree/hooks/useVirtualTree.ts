@@ -8,6 +8,15 @@ export interface UseVirtualTreeResult extends UseTreeResult {
   listRef: React.MutableRefObject<any>;
 }
 
+// export our own interface that is similar to react-window VariableSizeList,
+//  to avoid dependency to react-window
+export interface VariableSizeListRef extends React.Component<any> {
+  scrollTo(scrollOffset: number): void;
+  scrollToItem(index: number, align?: 'auto' | 'smart' | 'center' | 'end' | 'start'): void;
+
+  resetAfterIndex(index: number, shouldForceUpdate?: boolean): void;
+}
+
 export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResult {
   const baseTree = useTree(props);
   const {
@@ -18,7 +27,7 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
     visibleItemIds,
   } = baseTree;
 
-  const listRef = React.useRef();
+  const listRef = React.useRef<VariableSizeListRef>();
   const focusIdRef = React.useRef<string>();
 
   const focusItemById = React.useCallback(

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { treeBehavior } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
-  useTelemetry,
   useUnhandledProps,
   getElementType,
   useAccessibility,
@@ -40,8 +39,6 @@ export interface VirtualItemData {
 
 export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(VirtualTree.displayName, context.telemetry);
-  setStart();
 
   const { children, className, design, styles, variables, height, estimatedItemSize } = props;
 
@@ -86,6 +83,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings],
   );
 
+  // always use item id as key instead of index (react-window's default)
   const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
 
   const getItemSize = (index: number) => {
@@ -123,15 +121,6 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     [getA11yProps, getItemById, props.renderItemTitle],
   );
 
-  const innerElementType = React.useMemo(
-    () => React.forwardRef((props, ref) => <div ref={ref as React.RefObject<HTMLDivElement>} {...props} role="none" />),
-    [],
-  );
-  const outerElementType = React.useMemo(
-    () => React.forwardRef((props, ref) => <div ref={ref as React.RefObject<HTMLDivElement>} {...props} role="none" />),
-    [],
-  );
-
   const element = (
     <TreeContext.Provider value={contextValue}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -151,8 +140,8 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
             itemKey={getItemKey}
             itemData={{ visibleItemIds, createTreeItem }}
             itemCount={visibleItemIds.length}
-            outerElementType={outerElementType}
-            innerElementType={innerElementType}
+            outerElementType={OuterElementType}
+            innerElementType={InnerElementType}
           >
             {ItemWrapper}
           </VariableSizeList>
@@ -160,10 +149,14 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
       )}
     </TreeContext.Provider>
   );
-  setEnd();
   return element;
 };
 
+const InnerElementType = React.forwardRef<HTMLDivElement>((props, ref) => <div ref={ref} {...props} role="none" />);
+const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => <div ref={ref} {...props} role="none" />);
+
+// memorize to avoid unnecessary re-renders, for example on scrolling
+// recommended approach by react-window: https://react-window.now.sh/#/api/FixedSizeList
 const ItemWrapper = React.memo<ListChildComponentProps & { data: VirtualItemData }>(({ index, style, data }) => {
   const { visibleItemIds, createTreeItem } = data;
   return createTreeItem(visibleItemIds[index], style);
