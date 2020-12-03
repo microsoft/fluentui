@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove focus for horizental bar chart grey area",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-gorraj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-16T14:37:06.066Z"
-}
