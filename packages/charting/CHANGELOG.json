@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:30:04 GMT",
+      "tag": "@uifabric/charting_v4.11.0",
+      "version": "4.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "showing tooltip at x axis labels when large data provided - enabled for vertical bar chart and vertical stacked bar chart.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5c631ef29d82166e49113e147053c8b33b9867f4",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Dec 2020 12:24:02 GMT",
       "tag": "@uifabric/charting_v4.10.9",
       "version": "4.10.9",

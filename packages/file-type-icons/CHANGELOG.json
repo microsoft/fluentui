@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:30:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.22",
+      "version": "7.6.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pointing to the new CDN that has the on-brand PowerBI filetype icons. Adding support for .mcworld Minecraft distinct file icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "068fa3f271d384b1c512289e55905f4956ae656d",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "@uifabric/file-type-icons_v7.6.21",
       "version": "7.6.21",

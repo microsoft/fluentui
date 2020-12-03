@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:30:04 GMT",
+      "tag": "@fluentui/react-examples_v0.9.12",
+      "version": "0.9.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "showing tooltip at x axis labels when large data provided - enabled for vertical bar chart and vertical stacked bar chart. A new example added.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5c631ef29d82166e49113e147053c8b33b9867f4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Nov 2020 12:29:51 GMT",
       "tag": "@fluentui/react-examples_v0.9.9",
       "version": "0.9.9",

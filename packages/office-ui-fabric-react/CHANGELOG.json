@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:30:04 GMT",
+      "tag": "office-ui-fabric-react_v7.153.4",
+      "version": "7.153.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle: Update toggle pill background color on hover to use semanticColors from theme.",
+            "author": "xgao@microsoft.com",
+            "commit": "8ad1e28d6c3842f22098d0c9b6d4a85a16ae432f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Dec 2020 12:24:45 GMT",
       "tag": "office-ui-fabric-react_v7.153.3",
       "version": "7.153.3",

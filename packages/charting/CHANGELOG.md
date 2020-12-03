@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 01 Dec 2020 12:24:02 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:30:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.11.0)
+
+Thu, 03 Dec 2020 12:30:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.10.9..@uifabric/charting_v4.11.0)
+
+### Minor changes
+
+- showing tooltip at x axis labels when large data provided - enabled for vertical bar chart and vertical stacked bar chart. ([PR #15993](https://github.com/microsoft/fluentui/pull/15993) by v-jasha@microsoft.com)
 
 ## [4.10.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.10.9)
 

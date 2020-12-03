@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 26 Nov 2020 12:29:51 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:30:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.9.12)
+
+Thu, 03 Dec 2020 12:30:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.9.9..@fluentui/react-examples_v0.9.12)
+
+### Patches
+
+- showing tooltip at x axis labels when large data provided - enabled for vertical bar chart and vertical stacked bar chart. A new example added. ([PR #15993](https://github.com/microsoft/fluentui/pull/15993) by v-jasha@microsoft.com)
 
 ## [0.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.9.9)
 

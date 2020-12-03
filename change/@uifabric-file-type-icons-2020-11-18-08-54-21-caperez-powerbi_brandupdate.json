@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pointing to the new CDN that has the on-brand PowerBI filetype icons. Adding support for .mcworld Minecraft distinct file icons.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-18T16:54:21.305Z"
-}

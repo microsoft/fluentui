@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 Dec 2020 12:24:45 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:30:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.153.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.4)
+
+Thu, 03 Dec 2020 12:30:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.153.3..office-ui-fabric-react_v7.153.4)
+
+### Patches
+
+- Toggle: Update toggle pill background color on hover to use semanticColors from theme. ([PR #16114](https://github.com/microsoft/fluentui/pull/16114) by xgao@microsoft.com)
 
 ## [7.153.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.153.3)
 
