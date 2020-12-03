@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Adding new FileIconType to differentiate List from ListItem. Existing enum called listitem has been reassigned to bring back the right listitem icon.",
   "packageName": "@uifabric/file-type-icons",
   "email": "caperez@microsoft.com",
