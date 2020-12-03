@@ -94,7 +94,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     listRef.current.resetAfterIndex(0);
   }, [listRef, visibleItemIds]); // when item collapsed/expanded (visibleItemIds change), refresh react-window itemSize cache
 
-  const createTreeItem = React.useCallback<VirtualItemData["createTreeItem"]>(
+  const createTreeItem = React.useCallback<VirtualItemData['createTreeItem']>(
     (id, style) => {
       const item = getItemById(id);
       if (item) {
