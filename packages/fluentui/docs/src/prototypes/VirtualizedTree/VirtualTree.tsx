@@ -93,7 +93,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     return getItemById(id).item.itemSize || estimatedItemSize;
   };
   React.useLayoutEffect(() => {
-    (listRef.current as any)?.resetAfterIndex(0);
+    listRef.current.resetAfterIndex(0);
   }, [listRef, visibleItemIds]); // when item collapsed/expanded (visibleItemIds change), refresh react-window itemSize cache
 
   const createTreeItem = React.useCallback(
