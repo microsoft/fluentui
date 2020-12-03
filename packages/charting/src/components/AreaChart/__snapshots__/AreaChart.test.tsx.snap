@@ -16,7 +16,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_4"
+  id="chart_5"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -65,7 +65,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_4"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -93,7 +93,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_4"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
@@ -227,7 +227,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -347,7 +347,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_24"
+  id="chart_28"
   role="presentation"
 >
   <div
@@ -356,7 +356,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone29"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -396,7 +396,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_24"
+        id="xAxisGElementchart_28"
         transform="translate(0, -35)"
       />
       <g
@@ -424,14 +424,14 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_24"
+        id="yAxisGElementchart_28"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle23"
+          id="rectangle26"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -442,7 +442,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_20"
+          id="0-line-areaChart_23"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -454,7 +454,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_20"
+          id="0-graph-areaChart_23"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -468,7 +468,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle22_0"
+            id="circle25_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -482,7 +482,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle22_1"
+            id="circle25_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -493,7 +493,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           />
         </g>
         <line
-          id="verticalLine_21"
+          id="verticalLine_24"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -541,7 +541,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               justify-content: unset;
               position: relative;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone30"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -658,7 +658,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_13"
   role="presentation"
 >
   <div
@@ -667,7 +667,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone14"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -707,7 +707,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
+        id="xAxisGElementchart_13"
         transform="translate(0, -35)"
       />
       <g
@@ -735,14 +735,14 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_13"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle10"
+          id="rectangle11"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -753,7 +753,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_7"
+          id="0-line-areaChart_8"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -765,7 +765,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_7"
+          id="0-graph-areaChart_8"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -779,7 +779,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle9_0"
+            id="circle10_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -793,7 +793,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle9_1"
+            id="circle10_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -804,7 +804,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_8"
+          id="verticalLine_9"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -837,7 +837,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_17"
+  id="chart_20"
   role="presentation"
 >
   <div
@@ -846,7 +846,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone18"
+    data-focuszone-id="FocusZone21"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -886,7 +886,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_17"
+        id="xAxisGElementchart_20"
         transform="translate(0, -35)"
       />
       <g
@@ -914,14 +914,14 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_17"
+        id="yAxisGElementchart_20"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle16"
+          id="rectangle18"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -932,7 +932,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_13"
+          id="0-line-areaChart_15"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -944,7 +944,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_13"
+          id="0-graph-areaChart_15"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -958,7 +958,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle15_0"
+            id="circle17_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -972,7 +972,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle15_1"
+            id="circle17_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -983,7 +983,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_14"
+          id="verticalLine_16"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -1048,7 +1048,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone19"
+              data-focuszone-id="FocusZone22"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1168,7 +1168,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_31"
+  id="chart_36"
   role="presentation"
 >
   <div
@@ -1177,7 +1177,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1217,7 +1217,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_31"
+        id="xAxisGElementchart_36"
         transform="translate(0, -35)"
       />
       <g
@@ -1245,14 +1245,14 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_31"
+        id="yAxisGElementchart_36"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle30"
+          id="rectangle34"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1263,7 +1263,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_27"
+          id="0-line-areaChart_31"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1275,7 +1275,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_27"
+          id="0-graph-areaChart_31"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1289,7 +1289,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle29_0"
+            id="circle33_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1303,7 +1303,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle29_1"
+            id="circle33_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1314,7 +1314,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           />
         </g>
         <line
-          id="verticalLine_28"
+          id="verticalLine_32"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -1379,7 +1379,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone38"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1499,7 +1499,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_38"
+  id="chart_44"
   role="presentation"
 >
   <div
@@ -1508,7 +1508,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone45"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1548,7 +1548,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_38"
+        id="xAxisGElementchart_44"
         transform="translate(0, -35)"
       />
       <g
@@ -1576,14 +1576,14 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_38"
+        id="yAxisGElementchart_44"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle37"
+          id="rectangle42"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1594,7 +1594,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_34"
+          id="0-line-areaChart_39"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1606,7 +1606,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_34"
+          id="0-graph-areaChart_39"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1620,7 +1620,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle36_0"
+            id="circle41_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1634,7 +1634,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle36_1"
+            id="circle41_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1645,7 +1645,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_35"
+          id="verticalLine_40"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -1710,7 +1710,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone46"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1830,7 +1830,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_45"
+  id="chart_52"
   role="presentation"
 >
   <div
@@ -1839,7 +1839,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone46"
+    data-focuszone-id="FocusZone53"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1879,7 +1879,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_45"
+        id="xAxisGElementchart_52"
         transform="translate(0, -35)"
       />
       <g
@@ -1907,14 +1907,14 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_45"
+        id="yAxisGElementchart_52"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
           height={-20}
-          id="rectangle44"
+          id="rectangle50"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1925,7 +1925,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         <path
           d="M40,-0.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_41"
+          id="0-line-areaChart_47"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1937,7 +1937,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_41"
+          id="0-graph-areaChart_47"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1951,7 +1951,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             cy={-0.625}
             data-is-focusable={true}
             fill="red"
-            id="circle43_0"
+            id="circle49_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1965,7 +1965,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle43_1"
+            id="circle49_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1976,7 +1976,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_42"
+          id="verticalLine_48"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -2041,7 +2041,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              data-focuszone-id="FocusZone47"
+              data-focuszone-id="FocusZone54"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

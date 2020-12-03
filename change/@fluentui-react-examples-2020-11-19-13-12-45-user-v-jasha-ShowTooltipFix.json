@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "showing tooltip at x axis labels when large data provided - enabled for vertical bar chart and vertical stacked bar chart. A new example added.",
+  "packageName": "@fluentui/react-examples",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-19T07:42:45.725Z"
+}

@@ -117,9 +117,9 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
-    xAxistickSize = 10,
+    xAxistickSize = 6,
     tickPadding = 10,
-    xAxisCount = 10,
+    xAxisCount = 6,
     xAxisElement,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
@@ -147,13 +147,14 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
  * @param {ITickParams} tickParams
  */
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
-  const { domainNRangeValues, xAxisElement } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(10)
-    .tickPadding(10);
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
@@ -174,7 +175,7 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @returns
  */
 export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
-  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
+  const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
@@ -409,7 +410,8 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
       .attr('x', 0)
       .attr('y', y)
       .attr('id', 'BaseSpan')
-      .attr('dy', dy + 'em');
+      .attr('dy', dy + 'em')
+      .attr('data-', totalWord);
 
     if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
       tspan = text
@@ -455,7 +457,17 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
           maxHeight = boxHeight;
         }
       });
-      removeVal = (maxDigit - 3) * maxHeight; // we are getting more height if take direclty
+      // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
+      // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
+      let removeDigit: number = 4;
+      if (maxDigit <= 2) {
+        removeDigit = 1;
+      } else if (maxDigit > 2 && maxDigit <= 6) {
+        removeDigit = 2;
+      } else if (maxDigit > 6 && maxDigit <= 9) {
+        removeDigit = 3;
+      }
+      removeVal = (maxDigit - removeDigit) * maxHeight;
     }
   });
   return removeVal > 0 ? removeVal : 0;
@@ -469,22 +481,30 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
+  if (xAxis === null) {
+    return null;
+  }
   const div = d3Select('body')
     .append('div')
     .attr('id', id)
     .attr('class', tooltipCls)
     .style('opacity', 0);
+  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
+  const baseSpanLength = aa && Object.keys(aa)!.length;
+  const originalDataArray: string[] = [];
+  for (let i = 0; i < baseSpanLength; i++) {
+    const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
+    originalDataArray.push(originalData);
+  }
   const tickObject = xAxis!.selectAll('.tick')._groups[0];
   const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const data: any = d3Select(d1).data();
     d3Select(d1)
       .on('mouseover', d => {
         div.style('opacity', 0.9);
         div
-          .html(data)
+          .html(originalDataArray[i])
           .style('left', d3Event.pageX + 'px')
           .style('top', d3Event.pageY - 28 + 'px');
       })
@@ -519,6 +539,7 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
+ * @param {Date[]} tickValues
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaChart(
@@ -526,29 +547,30 @@ export function domainRangeOfDateForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  tickValues: Date[] = [],
 ): IDomainNRange {
-  let sDate = new Date();
-  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-  let lDate = new Date(-8640000000000000);
-  const xAxisData: Date[] = [];
-  points.forEach((singleLineChartData: ILineChartPoints) => {
-    singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-      xAxisData.push(point.x as Date);
-      if (point.x < sDate) {
-        sDate = point.x as Date;
-      }
-      if (point.x > lDate) {
-        lDate = point.x as Date;
-      }
+  const sDate = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
     });
-  });
+  })!;
+  const lDate = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
 
+  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  const smallestDate = d3Min([...tickValues, sDate])!;
+  const largestDate = d3Max([...tickValues, lDate])!;
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
-    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
+    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
 }
 
 /**
@@ -680,7 +702,8 @@ export function getDomainNRangeValues(
   chartType: ChartTypes,
   isRTL: boolean,
   xAxisType: XAxisTypes,
-  barWidth?: number,
+  barWidth: number,
+  tickValues: Date[] | number[] = [],
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -702,7 +725,7 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL, tickValues! as Date[]);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
