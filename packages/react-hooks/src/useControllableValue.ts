@@ -22,6 +22,22 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
 ): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+/**
+ * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
+ * text box string.
+ * @param controlledValue - The controlled value passed in the props. This value will always be used if provided,
+ * and the internal state will be updated to reflect it.
+ * @param defaultUncontrolledValue - Initial value for the internal state in the uncontrolled case.
+ * @param onChange - Callback for when the value changes. This will be called automatically within
+ * the returned updater callback.
+ * @param alwaysCallOnChange - If false (the default), `onChange` will only be called (within the
+ * update callback) when the value actually changes. If true, `onChange` will always be called.
+ * @returns An array of the current value and an updater callback. Like `React.useState`, the updater
+ * callback always has the same identity, and it can take either a new value, or a function which
+ * is passed the previous value and returns the new value. The updater callback also handles calling
+ * `onChange` internally.
+ * @see https://reactjs.org/docs/uncontrolled-components.html
+ */
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
@@ -30,6 +46,7 @@ export function useControllableValue<
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
   onChange: ChangeCallback<TElement, TValue, TEvent> | undefined,
+  alwaysCallOnChange?: boolean,
 ): Readonly<
   [TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]
 >;
@@ -41,6 +58,7 @@ export function useControllableValue<
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
+  alwaysCallOnChange?: boolean,
 ) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
   const isControlled = useConst<boolean>(controlledValue !== undefined);
@@ -63,7 +81,7 @@ export function useControllableValue<
     const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
 
     // To match behavior of native inputs, onChange is only called if the value changed
-    if (onChangeRef.current && newValue !== valueRef.current) {
+    if (onChangeRef.current && (alwaysCallOnChange || newValue !== valueRef.current)) {
       onChangeRef.current(ev!, newValue);
     }
 

@@ -32,7 +32,12 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     const mergedRootRefs: React.Ref<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
     const inputRef = React.useRef<HTMLInputElement>(null);
 
-    const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
+    const [isChecked, setIsChecked] = useControllableValue(
+      props.checked,
+      props.defaultChecked,
+      props.onChange,
+      true /*alwaysCallOnChange*/,
+    );
     const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
 
     useFocusRects(rootRef);
