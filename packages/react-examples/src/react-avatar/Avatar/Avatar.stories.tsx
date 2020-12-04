@@ -3,7 +3,7 @@ import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { GroupIcon, IDBadgeIcon, ChatBotIcon, SkypeCheckIcon } from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarCustomSizeExampleList, AvatarExampleList } from './AvatarExampleList';
+import { AvatarExampleList } from './AvatarExampleList';
 import { avatarExamples as examples, svgHexagonDataUrl } from './avatarExamples';
 import { useBoolean } from '@fluentui/react-hooks';
 
