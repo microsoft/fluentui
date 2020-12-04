@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Add callback ref to modal props to access the modal main shell",
+  "packageName": "@fluentui/react-internal",
+  "email": "catalina@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-04T02:26:16.002Z"
+}
