@@ -124,7 +124,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const rootRef = React.useRef<HTMLDivElement>(null);
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
-    const focusTrapZoneElm = useMergedRefs(React.useRef<HTMLDivElement>(null), props.modalContainerRef);
+    const focusTrapZoneElm = useMergedRefs(React.useRef<HTMLDivElement>(null), props.containerRef);
     const mergedRef = useMergedRefs(rootRef, ref);
 
     const modalResponsiveMode = useResponsiveMode(mergedRef);

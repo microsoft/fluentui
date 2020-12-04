@@ -35,20 +35,10 @@ export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
     setOptionSelected(option.key);
   };
 
-  const modalContainerCallback = React.useCallback((modalContainer: HTMLDivElement | null): void => {
-    if (modalContainer) {
-      modalContainer.style.top = '10px';
-    }
-  }, []);
-
   return (
     <>
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
-      <Dialog
-        hidden={hideDialog}
-        onDismiss={toggleHideDialog}
-        modalProps={{ modalContainerRef: modalContainerCallback, ...modalProps }}
-      >
+      <Dialog hidden={hideDialog} onDismiss={toggleHideDialog} modalProps={modalProps}>
         <ChoiceGroup
           label="Pick one icon"
           options={options}

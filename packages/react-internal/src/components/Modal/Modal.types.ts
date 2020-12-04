@@ -64,10 +64,10 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
   componentRef?: IRefObject<IModal>;
 
   /**
-   * Optional ref to access the modal container. Use this to access the container div element
-   * properties of the modal.
+   * Optional callback ref to access the modal container. Use this to access the properties
+   * of the modal rectangle container.
    */
-  modalContainerRef?: (container: HTMLDivElement | null) => void;
+  containerRef?: (container: HTMLDivElement | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
