@@ -1,5 +1,6 @@
 {
-  "type": "patch",
+  "type": "none",
+  "comment": "Update ColorPicker RGB fields to use aria-atomic",
   "packageName": "@fluentui/react-examples",
   "email": "jslone@microsoft.com",
   "dependentChangeType": "patch",
