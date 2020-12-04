@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { useControllableValue } from './useControllableValue';
 import { validateHookValueNotChanged } from './testUtilities';
@@ -57,26 +56,6 @@ describe('useControllableValue', () => {
 
     wrapper.setProps({ defaultValue: false });
     expect(resultValue!).toBe(true);
-  });
-
-  it('does not call onChange if value passed to setValue is same as previous', () => {
-    const onChangeMock = jest.fn();
-    let setValue: ((value: boolean) => void) | undefined;
-    const TestComponent: React.FunctionComponent<{
-      defaultValue: boolean;
-      onChange: Parameters<typeof useControllableValue>[2];
-    }> = ({ defaultValue, onChange }) => {
-      [, setValue] = useControllableValue(undefined, defaultValue, onChange);
-      return <div />;
-    };
-
-    mount(<TestComponent defaultValue={true} onChange={onChangeMock} />);
-
-    ReactTestUtils.act(() => setValue!(false));
-    expect(onChangeMock).toHaveBeenCalledTimes(1);
-    // set to same value => onChange not called
-    ReactTestUtils.act(() => setValue!(false));
-    expect(onChangeMock).toHaveBeenCalledTimes(1);
   });
 
   validateHookValueNotChanged('returns the same setter callback', () => {
