@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
+import {
+  Button,
+  Checkbox,
+  Image,
+  RadioGroup,
+  RadioGroupItemProps,
+  Toolbar as FUIToolbar,
+} from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
 import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
@@ -41,57 +48,108 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       display: 'flex',
       padding: '0 1rem',
       alignItems: 'center',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
+      borderBottom: '1px solid #E1DFDD', //TODO: replace with `Default Border 2` color scheme token
+      background: '#FAF9F8', //TODO: replace with `Default Background 1` color scheme token
       ...style,
     }}
   >
     <Image
-      styles={{ height: '1.5rem', marginRight: '0.25rem' }}
+      styles={{ height: '1.5rem' }}
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png"
     />
-    <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
-      FluentUI
-      <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
+    <div style={{ position: 'relative', padding: '0 .8rem', fontSize: '14px', lineHeight: 1, fontWeight: 'bold' }}>
+      FluentUI <span style={{ fontWeight: 'normal' }}>Builder</span>
     </div>
-    <div>
-      <strong>Mode:</strong>
-      &emsp;
-      <RadioGroup
-        style={{ display: 'inline-block' }}
-        checkedValue={mode}
-        onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
-          onModeChange(data.value);
-        }}
+    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      <div>
+        <strong>Mode:</strong>
+        &emsp;
+        <RadioGroup
+          style={{ display: 'inline-block' }}
+          checkedValue={mode}
+          onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
+            onModeChange(data.value);
+          }}
+          items={[
+            {
+              key: 'build',
+              label: 'Build',
+              value: 'build',
+            },
+            {
+              key: 'design',
+              label: 'Design',
+              value: 'design',
+            },
+            {
+              key: 'use',
+              label: 'Use',
+              value: 'use',
+            },
+          ]}
+        />
+      </div>
+      <FUIToolbar
+        aria-label="Builder toolbar"
         items={[
           {
-            key: 'build',
-            label: 'Build',
-            value: 'build',
+            key: 'divider-1',
+            kind: 'divider',
           },
           {
-            key: 'design',
-            label: 'Design',
-            value: 'design',
+            icon: (
+              <UndoIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'undo',
+            // kind: 'toggle',
+            disabled: !canUndo,
+            title: 'Undo',
+            onClick: () => {
+              onUndo;
+            },
           },
           {
-            key: 'use',
-            label: 'Use',
-            value: 'use',
+            icon: (
+              <RedoIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'redo',
+            // kind: 'toggle',
+            disabled: !canRedo,
+            title: 'Redo',
+            onClick: () => {
+              onRedo;
+            },
+          },
+          {
+            key: 'divider-2',
+            kind: 'divider',
+          },
+          {
+            icon: (
+              <TrashCanIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'delete',
+            // kind: 'toggle',
+            title: 'Start over',
+            onClick: () => {
+              onReset;
+            },
           },
         ]}
       />
     </div>
-    &nbsp; &nbsp;
-    <Button
-      text
-      icon={<OpenOutsideIcon />}
-      content="Popout"
-      onClick={() => {
-        window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
-      }}
-    />
-    <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
-    <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
@@ -102,7 +160,14 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         onChange={(e, data) => onShowJSONTreeChange(data.checked)}
       />
       &emsp;
-      <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
+      <Button
+        iconOnly
+        icon={<OpenOutsideIcon />}
+        aria-label="Popout"
+        onClick={() => {
+          window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
+        }}
+      />
     </div>
   </div>
 );
