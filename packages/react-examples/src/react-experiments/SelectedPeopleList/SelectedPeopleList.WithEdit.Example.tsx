@@ -37,44 +37,35 @@ export const SelectedPeopleListWithEditExample = (): JSX.Element => {
     }),
   });
 
-  const _renderExtendedPicker = (): JSX.Element => {
-    return (
-      <div>
-        <SelectedPeopleList
-          key={'normal'}
-          removeButtonAriaLabel={'Remove'}
-          selectedItems={[...currentSelectedItems]}
-          onRenderItem={SelectedItem}
-          onItemsRemoved={_onItemsRemoved}
-          replaceItem={_replaceItem}
-        />
-      </div>
-    );
-  };
-
   const _onAddItemButtonClicked = React.useCallback(() => {
     const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
     setCurrentSelectedItems([...currentSelectedItems, randomPerson]);
   }, [currentSelectedItems]);
 
-  const _onItemsRemoved = (items: IPersona[]): void => {
-    const currentSelectedItemsCopy = [...currentSelectedItems];
-    items.forEach(item => {
-      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
-      currentSelectedItemsCopy.splice(indexToRemove, 1);
-      setCurrentSelectedItems([...currentSelectedItemsCopy]);
-    });
-  };
+  const _onItemsRemoved = React.useCallback(
+    (items: IPersona[]): void => {
+      const currentSelectedItemsCopy = [...currentSelectedItems];
+      items.forEach(item => {
+        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        currentSelectedItemsCopy.splice(indexToRemove, 1);
+        setCurrentSelectedItems([...currentSelectedItemsCopy]);
+      });
+    },
+    [currentSelectedItems],
+  );
 
-  const _replaceItem = (newItem: IPersonaProps | IPersona[], index: number): void => {
-    const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+  const _replaceItem = React.useCallback(
+    (newItem: IPersonaProps | IPersona[], index: number): void => {
+      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
-    if (index >= 0) {
-      const newItems: IPersonaProps[] = [...currentSelectedItems];
-      newItems.splice(index, 1, ...newItemsArray);
-      setCurrentSelectedItems(newItems);
-    }
-  };
+      if (index >= 0) {
+        const newItems: IPersonaProps[] = [...currentSelectedItems];
+        newItems.splice(index, 1, ...newItemsArray);
+        setCurrentSelectedItems(newItems);
+      }
+    },
+    [currentSelectedItems],
+  );
 
   return (
     <>
@@ -82,7 +73,16 @@ export const SelectedPeopleListWithEditExample = (): JSX.Element => {
         Right click any persona to edit it
         <br />
         <PrimaryButton text="Add another item" onClick={_onAddItemButtonClicked} />
-        {_renderExtendedPicker()}
+        <div>
+          <SelectedPeopleList
+            key={'normal'}
+            removeButtonAriaLabel={'Remove'}
+            selectedItems={[...currentSelectedItems]}
+            onRenderItem={SelectedItem}
+            onItemsRemoved={_onItemsRemoved}
+            replaceItem={_replaceItem}
+          />
+        </div>
       </div>
     </>
   );
