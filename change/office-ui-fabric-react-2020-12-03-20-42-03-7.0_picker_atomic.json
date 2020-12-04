@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update ColorPicker RGB fields to use aria-atomic",
+  "packageName": "office-ui-fabric-react",
+  "email": "jslone@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-04T04:42:03.248Z"
+}
