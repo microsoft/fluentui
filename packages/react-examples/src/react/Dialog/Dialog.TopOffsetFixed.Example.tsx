@@ -4,7 +4,7 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button'
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { useBoolean } from '@fluentui/react-hooks';
 
-const modelProps = {
+const modalProps = {
   isBlocking: true,
   topOffsetFixed: true,
 };
