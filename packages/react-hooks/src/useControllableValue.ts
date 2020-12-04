@@ -62,7 +62,8 @@ export function useControllableValue<
     // be something a user can enter as input
     const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
 
-    if (onChangeRef.current) {
+    // To match behavior of native inputs, onChange is only called if the value changed
+    if (onChangeRef.current && newValue !== valueRef.current) {
       onChangeRef.current(ev!, newValue);
     }
 
