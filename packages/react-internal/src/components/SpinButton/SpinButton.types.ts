@@ -12,7 +12,9 @@ import { IButtonProps } from '../../compat/Button';
  */
 export interface ISpinButton {
   /**
-   * Current value of the control.
+   * Current committed/validated value of the control. Note that this does *not* update on every
+   * keystroke while the user is editing text in the input field.
+   * "committed" the edit yet by focusing away (blurring) or pressing enter,
    */
   value?: string;
 
@@ -41,19 +43,20 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
   componentRef?: IRefObject<ISpinButton>;
 
   /**
-   * Initial value of the control. Updates to this prop will not be respected.
+   * Initial value of the control (assumed to be valid). Updates to this prop will not be respected.
    *
-   * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its own value.
-   * Mutually exclusive with `value`.
+   * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its
+   * own value. For a controlled component, use `value` instead. (Mutually exclusive with `value`.)
    * @defaultvalue 0
    */
   defaultValue?: string;
 
   /**
-   * Current value of the control.
+   * Current value of the control (assumed to be valid).
    *
-   * Use this if you intend to pass in a new value as a result of change events.
-   * Mutually exclusive with `defaultValue`.
+   * Only provide this if the SpinButton is a controlled component where you are maintaining its
+   * current state and passing updates based on change events; otherwise, use the `defaultValue`
+   * property. (Mutually exclusive with `defaultValue`.)
    */
   value?: string;
 
@@ -115,6 +118,16 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
    * Props for an icon to display alongside the control's label.
    */
   iconProps?: IIconProps;
+
+  /**
+   * Callback for when the committed/validated value changes. This is called *after* `onIncrement`,
+   * `onDecrement`, or `onValidate`, on the following events:
+   * - User presses the up/down buttons (on single press or every spin)
+   * - User presses the up/down arrow keys (on single press or every spin)
+   * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
+   *   Note that this is NOT called for every key press while the user is editing.
+   */
+  onChange?: (event: React.SyntheticEvent<HTMLElement>, newValue?: string) => void;
 
   /**
    * Callback for when the entered value should be validated.

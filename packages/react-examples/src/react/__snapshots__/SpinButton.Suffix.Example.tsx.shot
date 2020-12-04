@@ -15,7 +15,12 @@ exports[`Component Examples renders SpinButton.Suffix.Example.tsx correctly 1`] 
   <code>
     onValidate
   </code>
-   handlers which work with the suffix.
+   handlers which work with the suffix. It also has an
+   
+  <code>
+    onChange
+  </code>
+   handler.)
   <br />
   <br />
   <div
@@ -106,6 +111,7 @@ exports[`Component Examples renders SpinButton.Suffix.Example.tsx correctly 1`] 
             border-color: Highlight;
           }
       data-ktp-target={true}
+      onChange={[Function]}
     >
       <input
         aria-disabled={false}

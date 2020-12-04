@@ -18,7 +18,7 @@ const getNumericPart = (value: string): number | undefined => {
 };
 
 /** Increment the value (or return nothing to keep the previous value if invalid) */
-const onIncrement = (value: string) => {
+const onIncrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
   const numericValue = getNumericPart(value);
   if (numericValue !== undefined) {
     return String(Math.min(numericValue + 2, max)) + suffix;
@@ -26,7 +26,7 @@ const onIncrement = (value: string) => {
 };
 
 /** Decrement the value (or return nothing to keep the previous value if invalid) */
-const onDecrement = (value: string) => {
+const onDecrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
   const numericValue = getNumericPart(value);
   if (numericValue !== undefined) {
     return String(Math.max(numericValue - 2, min)) + suffix;
@@ -37,7 +37,7 @@ const onDecrement = (value: string) => {
  * Clamp the value within the valid range (or return nothing to keep the previous value
  * if there's not valid numeric input)
  */
-const onValidate = (value: string) => {
+const onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
   let numericValue = getNumericPart(value);
   if (numericValue !== undefined) {
     numericValue = Math.min(numericValue, max);
@@ -46,11 +46,17 @@ const onValidate = (value: string) => {
   }
 };
 
+/** This will be called after each change */
+const onChange = (event: React.SyntheticEvent<HTMLElement>, value?: string): void => {
+  console.log('Value changed to ' + value);
+};
+
 export const SpinButtonSuffixExample: React.FunctionComponent = () => {
   return (
     <div>
       This SpinButton includes a suffix in the value and defines custom <code>onIncrement</code>,{' '}
-      <code>onDecrement</code>, and <code>onValidate</code> handlers which work with the suffix.
+      <code>onDecrement</code>, and <code>onValidate</code> handlers which work with the suffix. It also has an{' '}
+      <code>onChange</code> handler.)
       <br />
       <br />
       <SpinButton
@@ -61,6 +67,7 @@ export const SpinButtonSuffixExample: React.FunctionComponent = () => {
         onValidate={onValidate}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
+        onChange={onChange}
         incrementButtonAriaLabel="Increase value by 2"
         decrementButtonAriaLabel="Decrease value by 2"
         styles={styles}
