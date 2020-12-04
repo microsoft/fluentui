@@ -29,6 +29,7 @@ export interface VirtualTreeProps
       'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable' | 'items'
     >,
     Pick<VariableSizeListProps, 'estimatedItemSize' | 'height'> {
+  // Where itemSize is in px
   items?: ObjectShorthandCollection<TreeItemProps & { itemSize: number }>;
 }
 
