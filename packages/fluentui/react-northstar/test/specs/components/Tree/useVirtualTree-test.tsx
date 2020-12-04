@@ -178,8 +178,6 @@ const testHook = callback => {
   mountWithProvider(<TestHook callback={callback} />);
 };
 
-// UTs on useVirtualTree does not have any test on focus handling.
-// Focus handling is tested by e2e test
 describe('useVirtualTree', () => {
   let useVirtualTreeResult;
   beforeAll(() => {
@@ -206,9 +204,9 @@ describe('useVirtualTree', () => {
   });
 
   test('should return registerItemRef and getItemRef', () => {
-    const fakeRef = {};
-    useVirtualTreeResult.registerItemRef('1', fakeRef as HTMLElement);
-    expect(useVirtualTreeResult.getItemRef('1')).toBe(fakeRef);
+    const dummyElement = document.createElement('div');
+    useVirtualTreeResult.registerItemRef('1', dummyElement);
+    expect(useVirtualTreeResult.getItemRef('1')).toBe(dummyElement);
   });
 
   test('should return ref to be assigned to virtual list', () => {
