@@ -3281,6 +3281,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
     isModeless?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
+    modalContainerRef?: (container: HTMLDivElement | null) => void;
     onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
     onDismissed?: () => any;
     // @deprecated
