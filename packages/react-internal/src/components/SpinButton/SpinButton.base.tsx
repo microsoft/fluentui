@@ -14,11 +14,15 @@ import {
 import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../Positioning';
-import { useSetTimeout, useControllableValue, useWarnings, useId } from '@fluentui/react-hooks';
+import { useAsync, useControllableValue, useWarnings, useId, usePrevious } from '@fluentui/react-hooks';
 
 interface ISpinButtonInternalState {
   spinningByMouse?: boolean;
   stepTimeoutHandle: number;
+  /** Allows access to the latest `value` inside reused callbacks (to avoid stale capture issues) */
+  latestValue: string | undefined;
+  /** Allows access to the latest `intermediateValue` inside reused callbacks (to avoid stale capture issues) */
+  latestIntermediateValue: string | undefined;
 }
 
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
@@ -26,7 +30,7 @@ const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyle
 const COMPONENT_NAME = 'SpinButton';
 const DEFAULT_PROPS: Required<Pick<
   ISpinButtonProps,
-  // These are explicitly specified so that the only the things which actually have defaults
+  // These are explicitly specified so that only the things which actually have defaults
   // get marked as required in ISpinButtonPropsWithDefaults below
   'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
 >> = {
@@ -63,7 +67,7 @@ const useComponentRef = (
   );
 };
 
-const onChange = (): void => {
+const noOp = (): void => {
   /**
    * A noop input change handler. Using onInput instead of onChange was meant to address an issue
    * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
@@ -73,6 +77,17 @@ const onChange = (): void => {
    * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
    * ours or 3rd-party, which simulate entering text in a SpinButton)
    */
+};
+
+/** Clamp the value to the provided min and/or max */
+const clampValue = (value: number, { min, max }: { max?: number; min?: number }) => {
+  if (typeof max === 'number') {
+    value = Math.min(value, max);
+  }
+  if (typeof min === 'number') {
+    value = Math.max(value, min);
+  }
+  return value;
 };
 
 export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.forwardRef<
@@ -110,6 +125,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     onIncrement,
     iconButtonProps,
     onValidate,
+    onChange,
     styles,
   } = props;
 
@@ -119,7 +135,11 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const [isFocused, setIsFocused] = React.useState(false);
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
-  const { setTimeout, clearTimeout } = useSetTimeout();
+  const async = useAsync();
+
+  const precision = React.useMemo(() => {
+    return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
+  }, [precisionFromProps, step]);
 
   /**
    * Actual current value. If `props.value` is provided (controlled), it will always be used.
@@ -127,7 +147,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
    * Note that while the user is editing text in the field, this will not be updated until "commit"
    * (blur or press enter).
    */
-  const [value, setValue] = useControllableValue(valueFromProps, defaultValue ?? String(min || 0));
+  const [value, setValue] = useControllableValue(valueFromProps, defaultValue ?? String(min || 0), onChange);
   /**
    * "Uncommitted" internal value while the user is editing text in the field. This lets us wait to
    * call `onChange` (and possibly update the real value) until the user "commits" the value by
@@ -137,11 +157,21 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const { current: internalState } = React.useRef<ISpinButtonInternalState>({
     stepTimeoutHandle: -1,
+    latestValue: undefined,
+    latestIntermediateValue: undefined,
   });
+  // On each render, update this saved value used by callbacks. (This should be safe even if render
+  // is called multiple times, because an event handler or timeout callback will only run once.)
+  internalState.latestValue = value;
+  internalState.latestIntermediateValue = intermediateValue;
 
-  const precision = React.useMemo(() => {
-    return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
-  }, [precisionFromProps, step]);
+  const previousValueFromProps = usePrevious(valueFromProps);
+  React.useEffect(() => {
+    // If props.value changes while editing, clear the intermediate value
+    if (valueFromProps !== previousValueFromProps && intermediateValue !== undefined) {
+      setIntermediateValue(undefined);
+    }
+  }, [valueFromProps, previousValueFromProps, intermediateValue]);
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -159,86 +189,98 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   ]);
 
   /** Validate (commit) function called on blur or enter keypress. */
-  const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
-    if (value !== undefined && intermediateValue !== undefined && intermediateValue !== value) {
-      let newValue: string | undefined;
-      if (onValidate) {
-        newValue = onValidate(intermediateValue, ev) as string | undefined;
-      } else {
-        // default validation handling
-        let newNumber = Number(intermediateValue);
-        if (intermediateValue && intermediateValue.trim().length && !isNaN(newNumber)) {
-          if (typeof min === 'number') {
-            newNumber = Math.max(min, newNumber);
-          }
-          if (typeof max === 'number') {
-            newNumber = Math.min(max, newNumber);
-          }
-          newValue = String(newNumber);
+  const validate = React.useCallback(
+    (ev: React.SyntheticEvent<HTMLElement>): void => {
+      // Only run validation if the value changed
+      const enteredValue = internalState.latestIntermediateValue;
+      if (enteredValue !== undefined && enteredValue !== internalState.latestValue) {
+        let newValue: string | undefined;
+        if (onValidate) {
+          newValue = onValidate(enteredValue, ev) as string | undefined;
+        } else if (enteredValue && enteredValue.trim().length && !isNaN(Number(enteredValue))) {
+          // default validation handling
+          newValue = String(clampValue(Number(enteredValue), { min, max }));
+        }
+        if (newValue !== undefined && newValue !== internalState.latestValue) {
+          // Commit the value if it changed
+          setValue(newValue);
         }
       }
-      if (newValue !== undefined && newValue !== value) {
-        // Commit the value if it changed
-        setValue(newValue);
-      }
-    }
 
-    // Done validating, so clear the intermediate typed value (if any)
-    setIntermediateValue(undefined);
-  };
+      // Done validating, so clear the intermediate typed value (if any)
+      setIntermediateValue(undefined);
+    },
+    [internalState, max, min, onValidate, setValue],
+  );
 
   /**
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
   const stop = React.useCallback((): void => {
     if (internalState.stepTimeoutHandle >= 0) {
-      clearTimeout(internalState.stepTimeoutHandle);
+      async.clearTimeout(internalState.stepTimeoutHandle);
       internalState.stepTimeoutHandle = -1;
     }
     if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       internalState.spinningByMouse = false;
       setKeyboardSpinDirection(KeyboardSpinDirection.notSpinning);
     }
-  }, [internalState, keyboardSpinDirection, clearTimeout]);
+  }, [internalState, keyboardSpinDirection, async]);
 
   /**
-   * Update the value with the given stepFunction
+   * Update the value with the given stepFunction.
+   * Also starts spinning for mousedown events by scheduling another update with setTimeout.
    * @param stepFunction - function to use to step by
    * @param event - The event that triggered the updateValue
-   * @param spinningByMouse - Lets the handler know that the update is in response to a mousedown,
-   * which means it should schedule another update with setTimeout. (If there's a mouseup before
-   * the update timeout runs, the update will be canceled.) This special handling isn't needed
-   * for keyboard spinning since holding the key will automatically fire more events.
    */
   const updateValue = React.useCallback(
     (
       stepFunction: Required<ISpinButtonProps>['onIncrement'],
-      ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-      spinningByMouse: boolean = false,
+      ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLInputElement>,
     ): void => {
-      setValue(prevValue => {
-        // For spinning by mouse, where additional updateValue calls are triggered via setTimeout,
-        // we must access the current value in an updater callback (rather than referencing `value`
-        // directly) because otherwise we'd be reusing the stale captured value from the first call
-        // and spinning wouldn't work. (The other possible approach here is storing the value in
-        // internalState while spinning, then setting the actual state when spinning stops.)
-        const newValue = stepFunction(prevValue || '', ev) as string | undefined;
-        return newValue ?? prevValue;
-      });
+      ev.persist();
 
+      if (internalState.latestIntermediateValue !== undefined) {
+        // Edge case: if intermediateValue is set, this means that the user was editing the input
+        // text and then started spinning (either with mouse or keyboard). We need to validate and
+        // call onChange before starting to spin.
+        if (ev.type === 'keydown') {
+          // For the arrow keys, we have to manually trigger validation.
+          // (For the buttons, validation will happen automatically since the input's onBlur will
+          // be triggered after mousedown on the button completes.)
+          validate(ev);
+        }
+        async.requestAnimationFrame(() => {
+          // After handling any value updates, do the spinning update
+          updateValue(stepFunction, ev);
+        });
+        return;
+      }
+
+      // Call the step function and update the value.
+      // (Note: we access the latest value via internalState (not directly) to ensure we don't use
+      // a stale captured value. This is mainly important for spinning by mouse, where we trigger
+      // additional calls to the original updateValue function via setTimeout. It also lets us
+      // avoid useCallback deps on frequently changing values.)
+      const newValue = stepFunction(internalState.latestValue || '', ev) as string | undefined;
+      if (newValue !== undefined && newValue !== internalState.latestValue) {
+        setValue(newValue);
+      }
+
+      // Schedule the next spin if applicable
+      // (will be canceled if there's a mouseup before the timeout runs)
       const wasSpinning = internalState.spinningByMouse;
-      internalState.spinningByMouse = spinningByMouse;
-
-      if (spinningByMouse) {
-        internalState.stepTimeoutHandle = setTimeout(
+      internalState.spinningByMouse = ev.type === 'mousedown';
+      if (internalState.spinningByMouse) {
+        internalState.stepTimeoutHandle = async.setTimeout(
           () => {
-            updateValue(stepFunction, ev, true);
+            updateValue(stepFunction, ev);
           },
-          wasSpinning ? STEP_DELAY : INITIAL_STEP_DELAY,
+          wasSpinning ? STEP_DELAY : INITIAL_STEP_DELAY, // the first step is slower
         );
       }
     },
-    [internalState, setValue, setTimeout],
+    [internalState, async, validate, setValue],
   );
 
   /** Composed increment handler (uses `props.onIncrement` or default) */
@@ -247,10 +289,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       if (onIncrement) {
         return onIncrement(newValue);
       } else {
-        let numericValue = Number(newValue) + Number(step);
-        if (typeof max === 'number') {
-          numericValue = Math.min(numericValue, max);
-        }
+        let numericValue = clampValue(Number(newValue) + Number(step), { max });
         numericValue = precisionRound(numericValue, precision);
         return String(numericValue);
       }
@@ -264,10 +303,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       if (onDecrement) {
         return onDecrement(newValue);
       } else {
-        let numericValue = Number(newValue) - Number(step);
-        if (typeof min === 'number') {
-          numericValue = Math.max(numericValue, min);
-        }
+        let numericValue = clampValue(Number(newValue) - Number(step), { min });
         numericValue = precisionRound(numericValue, precision);
         return String(numericValue);
       }
@@ -354,14 +390,14 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
   const handleIncrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(handleIncrement, ev, true /* shouldSpin */);
+      updateValue(handleIncrement, ev);
     },
     [handleIncrement, updateValue],
   );
 
   const handleDecrementMouseDown = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>): void => {
-      updateValue(handleDecrement, ev, true /* shouldSpin */);
+      updateValue(handleDecrement, ev);
     },
     [handleDecrement, updateValue],
   );
@@ -397,7 +433,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           // Display intermediateValue while editing the text (before commit)
           value={intermediateValue ?? value}
           id={inputId}
-          onChange={onChange}
+          onChange={noOp}
           onInput={handleInputChange}
           className={classNames.input}
           type="text"
