@@ -13,10 +13,16 @@ export const SRNC: Record<string, any> = {
   narrateLabelIfNoRole: ['Win/JAWS'],
 
   // Platforms on which "the "<header>" and "<footer>" elements create a landmark even if they are a descendant of a sectioning role, e.g., role="article"
-  headerAndFooterLandmarkInSectionRole: ['Win/JAWS'],
+  hfLandmarkInSectionRole: ['Win/JAWS'],
+
+  // Platforms on which "the description part of the narration is not narrated
+  ignoreDescription: ['Win/JAWS/VPC'],
 
   // Platforms on which "the usage part of the narration is not narrated
   ignoreUsage: ['Win/JAWS/VPC'],
+
+  // Platforms on which "the position and level parts of the narration are not narrated
+  ignorePositionAndLevel: ['Win/JAWS/VPC'],
 
   // Platforms on which the "contains text" string in case of <textarea> element overrides the description when the <textarea> contains text
   stringOverridesDescription: ['Win/JAWS'],
@@ -33,12 +39,36 @@ export const SRNC: Record<string, any> = {
 
   // Levels string definitions for each platform
   levels: {
-    'Win/JAWS': 'level',
+    'Win/JAWS': '[level]',
   }, // End level
 
   // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
   narrateOnlyWhenLabelled: {
-    'Win/JAWS': ['role=radiogroup'],
+    'Win/JAWS': ['role=radiogroup', 'role=tablist'],
+  }, // End narrateOnlyWhenLabelled
+
+  // Landmark, group, composite and other element names and roles which are ignored together with their label
+  ignoredLandmarksAndGroups: {
+    'Win/JAWS/VPC': [
+      'aside',
+      'footer',
+      'header',
+      'role=banner',
+      'role=complementary',
+      'role=contentinfo',
+      'role=form',
+      'role=region',
+      'role=search',
+      'role=grid',
+      'role=menu',
+      'role=menubar',
+      'role=treegrid',
+    ],
+  }, // End narrateOnlyWhenLabelled
+
+  // Element names and roles which ignore the "aria-label" and "aria-labelledby" attributes
+  ignoreLabel: {
+    'Win/JAWS/VPC': ['role=listbox', 'role=toolbar'],
   }, // End narrateOnlyWhenLabelled
 
   // Landmarks and groups (the definitions are stored in a separate file per each platform)

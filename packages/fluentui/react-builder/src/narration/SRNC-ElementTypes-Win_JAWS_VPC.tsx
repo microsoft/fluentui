@@ -8,4 +8,8 @@ SRNC.elementTypes['Win/JAWS/VPC'] = {
   h5: 'heading level 5',
   h6: 'heading level 6',
   listbox: 'List box',
+  tree: 'Tree view',
+  menuitem: 'menu',
+  menuitemcheckbox: 'menu',
+  menuitemradio: 'menu',
 };

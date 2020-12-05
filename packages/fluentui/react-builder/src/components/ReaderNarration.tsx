@@ -104,6 +104,12 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       return;
     } // End if 1
 
+    // The following condition is a fix for the repeated narration
+    if (narrationElement === prevNarrationElement) {
+      // Begin if 1
+      return;
+    } // End if 1
+
     // Compute and save the narration text for the current and previous elements and platform
     const platform = node && allowVpc ? 'Win/JAWS/VPC' : 'Win/JAWS';
     computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {

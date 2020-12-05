@@ -17,6 +17,6 @@ SRNC.readingOrder['Win/JAWS'] = {
   select: 'input:text',
   'role=tab': 'input:radio',
   'role=option': 'input:radio',
-  'role=treeitem': ['landmarksAndGroups', 'level', 'name', 'type', 'state', 'description', 'usage'],
+  'role=treeitem': ['landmarksAndGroups', 'level', 'name', 'type', 'state', 'position', 'description', 'usage'],
   'role=gridcell': ['landmarksAndGroups', 'type', 'name', 'state', 'description'],
 };

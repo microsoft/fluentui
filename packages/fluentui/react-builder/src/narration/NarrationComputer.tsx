@@ -146,10 +146,10 @@ export class NarrationComputer {
       // The "<header>" and "<footer>" elements don't create a landmark if they are a descendant of a sectioning element.
       // Note: According to MDN, they should not create a landmark if they are descendants also of of sectioning roles (e.g. article or main), but using all JAWS, NVDA and VoiceOver they actually do. However, they do only when tabbed into, not when entered with virtual cursor. Therefore, in this code, we don't follow MDN, but follow how screen readers actually behave.
       // See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
-      if (['header', 'footer'].includes(parent.tagName.toLowerCase())) {
+      if (!parent.role && ['header', 'footer'].includes(parent.tagName.toLowerCase())) {
         // Begin if 1
         const sectionElements = ['article', 'aside', 'main', 'nav', 'section'];
-        const sectionRoles = SRNC.headerAndFooterLandmarkInSectionRole.includes(inheritance[0])
+        const sectionRoles = SRNC.hfLandmarkInSectionRole.includes(inheritance[0])
           ? []
           : ['article', 'complementary', 'main', 'navigation', 'region'];
         let ancestor = parent.parentElement as IAriaElement;
@@ -181,8 +181,20 @@ export class NarrationComputer {
           definition = this.getDefinitionByKey(testedName, inheritance, 'landmarksAndGroups');
         } // End if 2
 
+        // Skip the definition if landmark or group should be ignored
+        const ignoredLandmarksAndGroups = this.getDefinition(inheritance, 'ignoredLandmarksAndGroups');
+        if (ignoredLandmarksAndGroups && ignoredLandmarksAndGroups.includes(testedName)) {
+          // Begin if 2
+          definition = undefined;
+        } // End if 2
+
         // If the "aria-label" or "aria-labelledby" attribute exists together with a landmark or group element or role, or if it is the "narrateLabelIfNoRole" exception, add its value to the narration
-        if (definition || SRNC.narrateLabelIfNoRole.includes(inheritance[0])) {
+        // However, don't add its value to the narration if it is an exception that "aria-label" and "aria-labelledby" should be ignored""""
+        const ignoreLabel = this.getDefinition(inheritance, 'ignoreLabel');
+        if (
+          (definition || SRNC.narrateLabelIfNoRole.includes(inheritance[0])) &&
+          (!ignoreLabel || !ignoreLabel.includes(testedName))
+        ) {
           // Begin if 2
           const label =
             parent.ariaLabelledByElements
@@ -220,8 +232,12 @@ export class NarrationComputer {
     let parent2 = element2.parentElement;
     while (parent1 !== parent2 && parent1 !== element1.ownerDocument.body) {
       // Begin while 1
-      while (parent1 !== parent2 && parent2 !== element2.ownerDocument.body) {
+      while (parent2 !== element2.ownerDocument.body) {
         // Begin while 2
+        if (parent1 === parent2) {
+          // Begin if 1
+          return parent1;
+        } // End if 1
         // If the element1 is an ancestor of the element2, return
         if (parent2 === element1) {
           // Begin if 1
@@ -256,7 +272,7 @@ export class NarrationComputer {
   getDefinitionByKey(key: string, inheritance: string[], type: string): string {
     const definitions = SRNC[type];
 
-    // Loop through the platform inheratance list to find the platform which has the   searched key
+    // Loop through the platform inheratance list to find the platform which has the searched key
     const platform = inheritance.find(testedPlatform => {
       // Begin find 1
       return definitions[testedPlatform] && definitions[testedPlatform][key] !== undefined;
@@ -311,9 +327,9 @@ export class NarrationComputer {
         testedName += `:${element.type}`;
       } // End if 2
       definition = definitions[testedPlatform] ? definitions[testedPlatform][testedName] : undefined;
-      if (definition) {
+      if (definition && !element.role) {
         // Begin if 2
-        // A definition exists for the element tag name
+        // A definition exists for the element tag name and element has no role
         // Handle the situation when the definition is a reference to another definition
         definitionName = typeof definition === 'string' ? definition : testedName;
         platform = testedPlatform;
@@ -328,7 +344,7 @@ export class NarrationComputer {
   getDefinitionNameAndPlatformByKey(key: string, inheritance: string[], type: string): string[] {
     const definitions = SRNC[type];
 
-    // Loop through the platform inheratance list to find the platform which has the   searched key
+    // Loop through the platform inheratance list to find the platform which has the searched key
     const platform = inheritance.find(testedPlatform => {
       // Begin find 1
       return definitions[testedPlatform] && definitions[testedPlatform][key] !== undefined;
@@ -389,8 +405,15 @@ export class NarrationComputer {
 
   // Computes and stores the accessible description part of the narration for the given definitionName, element and platform inheritance list.
   computeDescription(element: HTMLElement, inheritance: string[]) {
-    // First, handle some special case conditions
-    // Note: Actually, this special case condition is currently not in use by any platform, but we are keeping it here for a potential use in future
+    this.computedParts.description = undefined;
+
+    // On some platforms the description part is not narrated
+    if (SRNC.ignoreDescription.includes(inheritance[0])) {
+      // Begin if 1
+      return;
+    } // End if 1
+
+    // Handle some special cases
     const elementName = element.tagName.toLowerCase();
     if (
       elementName === 'textarea' &&
@@ -399,15 +422,14 @@ export class NarrationComputer {
     ) {
       // Begin if 1
       this.computedParts.description = this.getDefinition(inheritance, 'containsText');
-    } else {
-      // Else if 1
-      this.computedParts.description =
-        (element as IAriaElement).ariaDescribedByElements
-          ?.map((descElement: HTMLElement) => {
-            return descElement.textContent;
-          })
-          .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) || undefined;
+      return;
     } // End if 1
+    this.computedParts.description =
+      (element as IAriaElement).ariaDescribedByElements
+        ?.map((descElement: HTMLElement) => {
+          return descElement.textContent;
+        })
+        .join(SRNC.DESCBY_AND_LABBY_SEPARATOR) || undefined;
   } // End computeDescription
 
   // Computes and stores the accessible name, content and title parts of the narration for the given element using the given computed node.
@@ -424,6 +446,15 @@ export class NarrationComputer {
 
   // Sets the position and level narration parts as constant strings because the real computation of the position in set and level would be too difficult.
   computePositionAndLevel(inheritance: string[]) {
+    this.computedParts.position = undefined;
+    this.computedParts.level = undefined;
+
+    // On some platforms the position and level parts are not narrated
+    if (SRNC.ignorePositionAndLevel.includes(inheritance[0])) {
+      // Begin if 1
+      return;
+    } // End if 1
+
     // We can set the position and level parts for all elements regardless of the definition name because whether it will eventually be included in the final narration will be determined by the reading order definition
     this.computedParts.position = this.getDefinition(inheritance, 'positions');
     this.computedParts.level = this.getDefinition(inheritance, 'levels');
@@ -444,7 +475,7 @@ export class NarrationComputer {
     const rules = SRNC.stateRules[platform] ? SRNC.stateRules[platform][definitionName] : undefined;
     if (rules) {
       // Begin if 1
-      // If the definition name has no states (i.e. is not a widget, like <h1>), the definition doesn't actually consist of  state rules, but is just an object with a reference to the element type
+      // If the definition name has no states (i.e. is not a widget, like <h1>), the definition doesn't actually consist of state rules, but is just an object with a reference to the element type
       if (typeof rules === 'object' && rules.constructor === Object) {
         // Begin if 2ė
         this.computedParts.type = this.getDefinitionByKey(rules.elementType, inheritance, 'elementTypes');

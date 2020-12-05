@@ -69,7 +69,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   );
 
   const [focusableElements, setFocusableElements] = React.useState([]);
-  const [currentIndex, setIndex] = React.useState(0);
+  const [nodeIndex, setNodeIndex] = React.useState(0);
   const [currentFocusedNode, setCurrentFocusedNode] = React.useState(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
@@ -107,45 +107,63 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   );
 
   const handleKeyDown = React.useCallback(
-    e => {
-      if (enabledVirtualCursor && [40, 38, 13, 121].includes(e.keyCode)) {
-        // Begin if 1
-        e.preventDefault();
-      } // End if 1
-      switch (e.keyCode) {
-        case 40: // Down arrow
-        case 38: // Up arrow
-          focusableElements[currentIndex].classList.remove('virtual-focused');
-          setIndex(idx => {
-            const modifier = e.keyCode === 40 ? 1 : -1;
-            const nextIndex = idx + modifier;
-            // if nextIndex is bigger than number of elements move it to 0
-            // if nextIndex is smaller than 0 move it to the lastElement
-            // otherwise move to the nextIndex
+    event => {
+      switch (
+        event.keyCode // Begin switch 1
+      ) {
+        case 190: // "." (dot) key - Moves to the next element
+        case 188: // "," (comma) key - Moves to the previous element
+          // if (event.ctrlKey) { // Begin if 1
+          focusableElements[nodeIndex].classList.remove('virtual-focused');
+          setNodeIndex(index => {
+            const step = event.keyCode === 190 ? 1 : -1;
+            const nextIndex = index + step;
+
+            // If nextIndex is bigger than number of elements move it to 0
+            // If nextIndex is smaller than 0 move it to the lastElement
+            // Otherwise move to the nextIndex
             const newIndex =
               nextIndex >= focusableElements.length ? 0 : nextIndex < 0 ? focusableElements.length - 1 : nextIndex;
+
             focusableElements[newIndex].classList.add('virtual-focused');
             setCurrentFocusedNode(focusableElements[newIndex]);
             return newIndex;
-          });
-          break;
-        case 13: // Enter
-          focusableElements[currentIndex].click();
+          }); // End setNodeIndex
+          // } // End if 1
           return;
-        case 121: // F10
-          if (e.shiftKey) {
-            const eve = document.createEvent('MouseEvents');
-            eve.initMouseEvent('contextmenu', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 2, null);
-            focusableElements[currentIndex].dispatchEvent(eve);
+        case 13: // Enter key - Clicks the current element
+          focusableElements[nodeIndex].click();
+          return;
+        case 121: // F10 key
+          if (event.shiftKey) {
+            // Begin if 1
+            const mouseEvent = document.createEvent('MouseEvents');
+            mouseEvent.initMouseEvent(
+              'contextmenu',
+              true,
+              true,
+              window,
+              1,
+              0,
+              0,
+              0,
+              0,
+              false,
+              false,
+              false,
+              false,
+              2,
+              null,
+            );
+            focusableElements[nodeIndex].dispatchEvent(mouseEvent);
             return;
-          }
+          } // End if 1
         default:
-          focusableElements[currentIndex].focus();
-          break;
-      }
+          return;
+      } // End switch 1
     },
-    [enabledVirtualCursor, currentIndex, focusableElements],
-  );
+    [nodeIndex, focusableElements],
+  ); // End handleKeyDown
 
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
@@ -213,18 +231,25 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               'h5',
               'h6',
               'input',
+              // 'li',
               'marquee',
+              // 'ol',
               // 'option',
-              'p',
+              // 'p',
               'select',
               'textarea',
+              // 'ul',
               '[role="button"]',
               '[role="checkbox"]',
               // '[role="dialog"]',
               '[role="gridcell"]',
               '[role="link"]',
+              // '[role="list"]',
               '[role="listbox"]',
+              '[role="listitem"]',
               '[role="log"]',
+              // '[role="menu"]',
+              // '[role="menubar"]',
               '[role="menuitem"]',
               '[role="menuitemcheckbox"]',
               '[role="menuitemradio"]',
@@ -244,8 +269,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               '[role="timer"]',
               '[role="tooltip"]',
               '[role="tree"]',
-              '[role="treeitem"]',
-              '.ui-text',
+              // '[role="treeitem"]',
+              '.ui-text:not(.ui-checkbox__label)',
             ]
               .map(selector => `*:not([aria-hidden]) >  ${selector}`)
               .join(','),

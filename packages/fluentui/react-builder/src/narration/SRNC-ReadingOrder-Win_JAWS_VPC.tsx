@@ -9,7 +9,9 @@ SRNC.readingOrder['Win/JAWS/VPC'] = {
   h4: 'h1',
   h5: 'h1',
   h6: 'h1',
-  p: ['landmarksAndGroups', 'content', 'state'],
-  span: 'p',
+  span: ['landmarksAndGroups', 'content', 'state'],
+  'role=listitem': 'span',
   textarea: ['landmarksAndGroups', 'name', 'content', 'type', 'state'],
+  'role=menuitemcheckbox': 'a',
+  'role=menuitemradio': 'a',
 };

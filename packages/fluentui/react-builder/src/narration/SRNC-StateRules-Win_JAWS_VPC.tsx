@@ -8,4 +8,5 @@ SRNC.stateRules['Win/JAWS/VPC'] = {
   h5: { elementType: 'h5' },
   h6: { elementType: 'h6' },
   'role=listbox': { elementType: 'listbox' },
+  'role=tree': { elementType: 'tree' },
 };
