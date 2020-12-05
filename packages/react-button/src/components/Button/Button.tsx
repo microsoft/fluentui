@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useButtonClasses } from './useButtonClasses';
+import { useButtonClasses, useButtonStyles } from './useButtonClasses';
 import { renderButton } from './renderButton';
 
 /**
@@ -12,7 +12,8 @@ import { renderButton } from './renderButton';
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const state = useButton(props, ref);
 
-  useButtonClasses(state);
+  state.className = useButtonStyles(state);
+  // useButtonClasses(state);
   useInlineTokens(state, '--button');
 
   return renderButton(state);

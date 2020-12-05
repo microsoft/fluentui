@@ -39,17 +39,19 @@ export { IStyleFunctionOrObject }
 export type KeyFrames = IKeyframes;
 
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: UseStylesOptions | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: any) => void;
 
 // @public
-export function makeStyles<TStyleSet extends {
-    [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
-    [key in keyof TStyleSet]: string;
-};
+export function makeNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
+
+// @public (undocumented)
+export function makeNStyles(styles: any): (selectors?: any, ...classNames: string[]) => string;
+
+// @public (undocumented)
+export function makeStyles(styles: any): (selectors?: any, ...classNames: string[]) => string;
 
 // @public
-export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: import("./makeStyles").UseStylesOptions | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: any) => void;
 
 // @public
 export type MakeVariantClassesOptions<TVariants = Variants> = {
@@ -138,12 +140,6 @@ export const useInlineTokens: (draftState: {
 
 // @public (undocumented)
 export const useStyleRenderer: () => StyleRenderer;
-
-// @public
-export type UseStylesOptions = {
-    theme?: Theme;
-    renderer?: StyleRenderer;
-};
 
 // @public
 export const useTheme: () => Theme;
