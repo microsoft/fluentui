@@ -1,14 +1,7 @@
 import * as React from 'react';
-import {
-  Button,
-  Checkbox,
-  Image,
-  RadioGroup,
-  RadioGroupItemProps,
-  Toolbar as FUIToolbar,
-} from '@fluentui/react-northstar';
+import { Button, Image, MenuButton, Toolbar as FUIToolbar } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
+import { CodeSnippetIcon, OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
@@ -62,31 +55,32 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
       <div>
-        <strong>Mode:</strong>
-        &emsp;
-        <RadioGroup
-          style={{ display: 'inline-block' }}
-          checkedValue={mode}
-          onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
-            onModeChange(data.value);
-          }}
-          items={[
+        <MenuButton
+          trigger={<Button text iconOnly content={mode} aria-label="Select mode" />}
+          menu={[
             {
               key: 'build',
-              label: 'Build',
-              value: 'build',
+              content: 'Build',
+              onClick: () => {
+                onModeChange('build');
+              },
             },
             {
               key: 'design',
-              label: 'Design',
-              value: 'design',
+              content: 'Design',
+              onClick: () => {
+                onModeChange('design');
+              },
             },
             {
               key: 'use',
-              label: 'Use',
-              value: 'use',
+              content: 'Use',
+              onClick: () => {
+                onModeChange('use');
+              },
             },
           ]}
+          on="click"
         />
       </div>
       <FUIToolbar
@@ -151,18 +145,29 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       />
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-      <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
-      &emsp;
-      <Checkbox
-        label="Show JSON"
-        toggle
-        checked={!!showJSONTree}
-        onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+      <MenuButton
+        trigger={<Button iconOnly icon={<CodeSnippetIcon outline />} aria-label="Show code" />}
+        menu={[
+          {
+            key: 'code',
+            content: 'Show code',
+            onClick: () => {
+              onShowCodeChange(!showCode);
+            },
+          },
+          {
+            key: 'json',
+            content: 'Show JSON',
+            onClick: () => {
+              onShowJSONTreeChange(!showJSONTree);
+            },
+          },
+        ]}
       />
-      &emsp;
       <Button
+        style={{ marginLeft: '.8rem' }}
         iconOnly
-        icon={<OpenOutsideIcon />}
+        icon={<OpenOutsideIcon outline />}
         aria-label="Popout"
         onClick={() => {
           window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
