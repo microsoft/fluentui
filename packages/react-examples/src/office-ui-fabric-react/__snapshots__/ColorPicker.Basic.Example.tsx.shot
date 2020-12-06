@@ -614,7 +614,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         }
                   >
                     <input
-                      aria-atomic="true"
+                      aria-atomic={true}
                       aria-invalid={false}
                       aria-label="Red"
                       aria-live="assertive"
@@ -788,7 +788,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         }
                   >
                     <input
-                      aria-atomic="true"
+                      aria-atomic={true}
                       aria-invalid={false}
                       aria-label="Green"
                       aria-live="assertive"
@@ -962,7 +962,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         }
                   >
                     <input
-                      aria-atomic="true"
+                      aria-atomic={true}
                       aria-invalid={false}
                       aria-label="Blue"
                       aria-live="assertive"
@@ -1136,7 +1136,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         }
                   >
                     <input
-                      aria-atomic="true"
+                      aria-atomic={true}
                       aria-invalid={false}
                       aria-label="Alpha"
                       aria-live="assertive"

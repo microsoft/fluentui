@@ -578,7 +578,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Red"
                     aria-live="assertive"
@@ -752,7 +752,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Green"
                     aria-live="assertive"
@@ -926,7 +926,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Blue"
                     aria-live="assertive"
@@ -1100,7 +1100,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Alpha"
                     aria-live="assertive"
@@ -1810,7 +1810,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Red"
                     aria-live="assertive"
@@ -1984,7 +1984,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Green"
                     aria-live="assertive"
@@ -2158,7 +2158,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Blue"
                     aria-live="assertive"
@@ -2332,7 +2332,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Alpha"
                     aria-live="assertive"
@@ -3019,7 +3019,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Red"
                     aria-live="assertive"
@@ -3193,7 +3193,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Green"
                     aria-live="assertive"
@@ -3367,7 +3367,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Blue"
                     aria-live="assertive"
@@ -3541,7 +3541,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                       }
                 >
                   <input
-                    aria-atomic="true"
+                    aria-atomic={true}
                     aria-invalid={false}
                     aria-label="Transparency"
                     aria-live="assertive"
