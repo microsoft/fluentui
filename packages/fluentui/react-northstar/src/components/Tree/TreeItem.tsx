@@ -30,7 +30,7 @@ import {
   ShorthandCollection,
   FluentComponentStaticProps,
 } from '../../types';
-import { TreeTitle, TreeTitleProps } from './TreeTitle';
+import { TreeTitle, TreeTitleProps, treeTitleSlotClassNames } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { TreeContext } from './context';
 
@@ -226,13 +226,24 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleTitleClick = e => {
-    if (hasSubtree && e.target === e.currentTarget) {
+    if (selectable) {
+      if (hasSubtree) {
+        // need to know if click happened on selection indicator or title itself
+        if (e?.target?.className?.includes(treeTitleSlotClassNames.indicator)) {
+          toggleItemSelect(e, id);
+        } else {
+          toggleItemActive(e, id);
+        }
+      } else {
+        toggleItemSelect(e, id);
+      }
+    } else if (hasSubtree) {
       toggleItemActive(e, id);
-    } else if (selectable) {
-      toggleItemSelect(e, id);
     }
+
     _.invoke(props, 'onTitleClick', e, props);
   };
+
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
     focusItemById(childrenIds?.[0]);
