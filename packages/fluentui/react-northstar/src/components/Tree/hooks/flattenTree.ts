@@ -98,7 +98,8 @@ function flattenSubTree(
   let selectableNum = 0;
 
   items.forEach((item, indexAmongSiblings) => {
-    const { id, selectable, items: childrenItems } = item;
+    const { id, items: childrenItems } = item;
+    const selectable = item.selectable !== false; // by default item is selectable, unless selectable=false specified
     const hasSubtree = childrenItems ? !!childrenItems.length : false;
     const expanded = hasSubtree && activeItemIds.indexOf(id) !== -1;
 
@@ -129,20 +130,21 @@ function flattenSubTree(
         selectedItemIds,
       );
 
-      if (selectedChildrenNum === selectableChildrenNum) {
-        flatTree[id].selected = true;
-        selectedNum++;
-      } else if (selectedChildrenNum > 0) {
-        flatTree[id].selected = 'indeterminate';
-        selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
+      if (selectable) {
+        if (selectedChildrenNum === selectableChildrenNum) {
+          flatTree[id].selected = true;
+          selectedNum++;
+        } else if (selectedChildrenNum > 0) {
+          flatTree[id].selected = 'indeterminate';
+          selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
+        }
       }
-    } else if (selectedItemIds.indexOf(id) >= 0) {
+    } else if (selectable && selectedItemIds.indexOf(id) >= 0) {
       flatTree[id].selected = true;
       selectedNum++;
     }
 
-    if (selectable !== false) {
-      // by default item is selectable, unless selectable=false specified
+    if (selectable) {
       selectableNum++;
     }
 
