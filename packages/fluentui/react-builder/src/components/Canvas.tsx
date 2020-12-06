@@ -68,9 +68,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [],
   );
 
-  const [focusableElements, setFocusableElements] = React.useState([]);
-  const [nodeIndex, setNodeIndex] = React.useState(0);
-  const [currentFocusedNode, setCurrentFocusedNode] = React.useState(null);
+  const [virtualCursorElements, setVirtualCursorElements] = React.useState([]);
+  const [vcIndex, setVcIndex] = React.useState(0);
+  const [focusedVcElement, setFocusedVcElement] = React.useState(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -114,8 +114,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         case 190: // "." (dot) key - Moves to the next element
         case 188: // "," (comma) key - Moves to the previous element
           // if (event.ctrlKey) { // Begin if 1
-          focusableElements[nodeIndex].classList.remove('virtual-focused');
-          setNodeIndex(index => {
+          virtualCursorElements[vcIndex].classList.remove('virtual-focused');
+          setVcIndex(index => {
             const step = event.keyCode === 190 ? 1 : -1;
             const nextIndex = index + step;
 
@@ -123,16 +123,20 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             // If nextIndex is smaller than 0 move it to the lastElement
             // Otherwise move to the nextIndex
             const newIndex =
-              nextIndex >= focusableElements.length ? 0 : nextIndex < 0 ? focusableElements.length - 1 : nextIndex;
+              nextIndex >= virtualCursorElements.length
+                ? 0
+                : nextIndex < 0
+                ? virtualCursorElements.length - 1
+                : nextIndex;
 
-            focusableElements[newIndex].classList.add('virtual-focused');
-            setCurrentFocusedNode(focusableElements[newIndex]);
+            virtualCursorElements[newIndex].classList.add('virtual-focused');
+            setFocusedVcElement(virtualCursorElements[newIndex]);
             return newIndex;
-          }); // End setNodeIndex
+          }); // End setVcIndex
           // } // End if 1
           return;
         case 13: // Enter key - Clicks the current element
-          focusableElements[nodeIndex].click();
+          virtualCursorElements[vcIndex].click();
           return;
         case 121: // F10 key
           if (event.shiftKey) {
@@ -155,14 +159,14 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               2,
               null,
             );
-            focusableElements[nodeIndex].dispatchEvent(mouseEvent);
+            virtualCursorElements[vcIndex].dispatchEvent(mouseEvent);
             return;
           } // End if 1
         default:
           return;
       } // End switch 1
     },
-    [nodeIndex, focusableElements],
+    [vcIndex, virtualCursorElements],
   ); // End handleKeyDown
 
   const handleSelectComponent = React.useCallback(
@@ -218,7 +222,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
 
-      setFocusableElements(
+      setVirtualCursorElements(
         Array.from(
           iframeDocument.querySelectorAll(
             [
@@ -472,7 +476,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               )}
               <div style={{ bottom: '0', position: 'absolute' }}>
                 <ReaderNarration
-                  node={currentFocusedNode}
+                  vcElement={focusedVcElement}
                   selector={selectedComponent ? `[data-builder-id="${selectedComponent.uuid}"]` : null}
                   inUseMode={inUseMode}
                 />

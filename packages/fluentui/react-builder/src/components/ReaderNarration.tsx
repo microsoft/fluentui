@@ -4,8 +4,8 @@ import { NarrationComputer, IAriaElement } from './../narration/NarrationCompute
 
 const computer = new NarrationComputer();
 let prevSelector = null;
-let prevNode = null;
-let allowVpc = true;
+let prevVcElement = null;
+let allowVirtualCursor = true;
 let focusableElements = {};
 let elementsPaths = [];
 let selectedElementPath = null;
@@ -13,12 +13,12 @@ let prevNarrationElement = null;
 const aomMissing = !window.hasOwnProperty('getComputedAccessibleNode');
 
 export type ReaderNarrationProps = {
-  node: HTMLElement;
+  vcElement: HTMLElement;
   selector: string;
   inUseMode: boolean;
 };
 
-export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ node, selector, inUseMode }) => {
+export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ vcElement, selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
   const [narrationElement, setNarrationElement] = React.useState<IAriaElement>(null);
   const [narrationText, setNarrationText] = React.useState('');
@@ -38,7 +38,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   // Handles the "focusin" event by updating the current and previous narration elements.
   const handleFocusIn = React.useCallback(
     event => {
-      allowVpc = false;
+      allowVirtualCursor = false;
       prevNarrationElement = narrationElement;
       setNarrationElement(event.target as IAriaElement);
     },
@@ -84,13 +84,13 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       prevSelector = selector;
     } // End if 1
 
-    // Update the current and previous narration elements upon every node change
-    if (node !== prevNode) {
-      allowVpc = true;
+    // Update the current and previous narration elements upon every virtual cursor element change
+    if (vcElement !== prevVcElement) {
+      allowVirtualCursor = true;
       // Begin if 1
       prevNarrationElement = narrationElement;
-      setNarrationElement(node as IAriaElement);
-      prevNode = node;
+      setNarrationElement(vcElement as IAriaElement);
+      prevVcElement = vcElement;
     } // End if 1
 
     // The null value of the narration element means no focusable element has been found
@@ -111,7 +111,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     } // End if 1
 
     // Compute and save the narration text for the current and previous elements and platform
-    const platform = node && allowVpc ? 'Win/JAWS/VPC' : 'Win/JAWS';
+    const platform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
     computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration
