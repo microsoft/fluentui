@@ -235,7 +235,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     if (!shouldSelect && hasSubtree) {
       toggleItemActive(e, id);
     }
-    }
 
     _.invoke(props, 'onTitleClick', e, props);
   };
