@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
-import { people, mru } from '@fluentui/example-data';
+import { people } from '@fluentui/example-data';
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -16,51 +16,21 @@ import {
   IFloatingSuggestionItem,
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 
-const _suggestions = [
-  {
-    key: '1',
-    id: '1',
-    displayText: 'Suggestion 1',
-    item: mru[0],
-    isSelected: true,
-    showRemoveButton: true,
-  },
-  {
-    key: '2',
-    id: '2',
-    displayText: 'Suggestion 2',
-    item: mru[1],
-    isSelected: false,
-    showRemoveButton: true,
-  },
-  {
-    key: '3',
-    id: '3',
-    displayText: 'Suggestion 3',
-    item: mru[2],
-    isSelected: false,
-    showRemoveButton: true,
-  },
-  {
-    key: '4',
-    id: '4',
-    displayText: 'Suggestion 4',
-    item: mru[3],
-    isSelected: false,
-    showRemoveButton: true,
-  },
-  {
-    key: '5',
-    id: '5',
-    displayText: 'Suggestion 5',
-    item: mru[4],
-    isSelected: false,
-    showRemoveButton: true,
-  },
-] as IFloatingSuggestionItem<IPersonaProps>[];
-
 export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
+
+  const _startsWith = (text: string, filterText: string): boolean => {
+    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+  };
+
+  const _getSuggestions = (value: string) => {
+    const allPeople = people;
+    const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
+    const suggestionList = suggestions.map(item => {
+      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+    });
+    return suggestionList;
+  };
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and capable of editing
@@ -69,8 +39,9 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: (persona: IPersonaProps) => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
-        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} suggestions={_suggestions} />
+        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} />
       ),
+      getSuggestions: _getSuggestions,
     }),
     itemComponent: ItemWithContextMenu<IPersona>({
       menuItems: (item, onTrigger) => [

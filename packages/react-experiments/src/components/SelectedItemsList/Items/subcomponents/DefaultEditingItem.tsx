@@ -41,11 +41,18 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
    * Callback used by the EditingItem to populate the initial value of the editing item
    */
   getEditingItemText: (item: TItem) => string;
+
+  getSuggestions: (value: string) => IFloatingSuggestionItemProps<TItem>[];
 }
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
   IBaseFloatingSuggestionsProps<T>,
-  'componentRef' | 'onSuggestionSelected' | 'targetElement' | 'onRemoveSuggestion' | 'onFloatingSuggestionsDismiss'
+  | 'componentRef'
+  | 'suggestions'
+  | 'onSuggestionSelected'
+  | 'targetElement'
+  | 'onRemoveSuggestion'
+  | 'onFloatingSuggestionsDismiss'
 >;
 
 /**
@@ -57,11 +64,12 @@ export const DefaultEditingItemInner = <TItem extends any>(
 ): JSX.Element => {
   let editingInput: HTMLInputElement;
   const editingFloatingPicker = React.createRef<any>();
+  const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
 
   React.useEffect(() => {
     const itemText: string = props.getEditingItemText(props.item);
 
-    //editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(itemText);
+    setEditingSuggestions(props.getSuggestions(itemText));
     editingInput.value = itemText;
     editingInput.focus();
   }, []);
@@ -78,6 +86,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
         targetElement={editingInput}
         onRemoveSuggestion={_onRemoveItem}
         onFloatingSuggestionsDismiss={props.onDismiss}
+        suggestions={editingSuggestions}
       />
     );
   };
@@ -109,9 +118,9 @@ export const DefaultEditingItemInner = <TItem extends any>(
       if (props.onRemoveItem) {
         props.onRemoveItem(props.item);
       }
-    } /*else {
-      editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(value);
-    }*/
+    } else {
+      setEditingSuggestions(props.getSuggestions(value));
+    }
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
