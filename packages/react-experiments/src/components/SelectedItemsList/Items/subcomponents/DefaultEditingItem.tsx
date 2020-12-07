@@ -127,7 +127,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
   };
 
   const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (editingFloatingPicker.current && ev.relatedTarget !== null) {
+    /*if (editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
       if (
         target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
@@ -135,7 +135,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
       ) {
         editingFloatingPicker.current.forceResolveSuggestion();
       }
-    }
+    }*/
   };
 
   const _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
