@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
-import { people } from '@fluentui/example-data';
+import { people, mru } from '@fluentui/example-data';
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -11,15 +11,56 @@ import {
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
-import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestions';
-import { SuggestionsStore } from '@fluentui/react-experiments/lib/FloatingSuggestions';
+import {
+  FloatingPeopleSuggestions,
+  IFloatingSuggestionItem,
+} from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
+
+const _suggestions = [
+  {
+    key: '1',
+    id: '1',
+    displayText: 'Suggestion 1',
+    item: mru[0],
+    isSelected: true,
+    showRemoveButton: true,
+  },
+  {
+    key: '2',
+    id: '2',
+    displayText: 'Suggestion 2',
+    item: mru[1],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+  {
+    key: '3',
+    id: '3',
+    displayText: 'Suggestion 3',
+    item: mru[2],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+  {
+    key: '4',
+    id: '4',
+    displayText: 'Suggestion 4',
+    item: mru[3],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+  {
+    key: '5',
+    id: '5',
+    displayText: 'Suggestion 5',
+    item: mru[4],
+    isSelected: false,
+    showRemoveButton: true,
+  },
+] as IFloatingSuggestionItem<IPersonaProps>[];
 
 export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
-
-  // Used to resolve suggestions on the editableItem
-  const model = new ExampleSuggestionsModel<IPersonaProps>(people);
-  const suggestionsStore = new SuggestionsStore<IPersonaProps>();
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and capable of editing
@@ -28,11 +69,7 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: (persona: IPersonaProps) => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
-        <FloatingPeopleSuggestions
-          {...props}
-          suggestionsStore={suggestionsStore}
-          onResolveSuggestions={model.resolveSuggestions}
-        />
+        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} suggestions={_suggestions} />
       ),
     }),
     itemComponent: ItemWithContextMenu<IPersona>({
@@ -134,60 +171,3 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
     </div>
   );
 };
-
-type IBaseExampleType = {
-  text?: string;
-  name?: string;
-};
-
-class ExampleSuggestionsModel<T extends IBaseExampleType> {
-  private suggestionsData: T[];
-
-  public constructor(data: T[]) {
-    this.suggestionsData = [...data];
-  }
-
-  public resolveSuggestions = (filterText: string, currentItems?: T[]): Promise<T[]> => {
-    let filteredItems: T[] = [];
-    if (filterText) {
-      filteredItems = this._filterItemsByText(filterText);
-      filteredItems = this._removeDuplicates(filteredItems, currentItems || []);
-    }
-
-    return this._convertResultsToPromise(filteredItems);
-  };
-
-  public removeSuggestion(item: T) {
-    const index = this.suggestionsData.indexOf(item);
-    console.log('removing', item, 'at', index);
-    if (index !== -1) {
-      this.suggestionsData.splice(index, 1);
-    }
-  }
-
-  private _filterItemsByText(filterText: string): T[] {
-    return this.suggestionsData.filter((item: T) => {
-      const itemText = item.text || item.name;
-      return itemText ? this._doesTextStartWith(itemText, filterText) : false;
-    });
-  }
-
-  private _doesTextStartWith(text: string, filterText: string): boolean {
-    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-  }
-
-  private _removeDuplicates(items: T[], possibleDupes: T[]): T[] {
-    return items.filter((item: T) => !this._listContainsItem(item, possibleDupes));
-  }
-
-  private _listContainsItem(item: T, Items: T[]): boolean {
-    if (!Items || !Items.length || Items.length === 0) {
-      return false;
-    }
-    return Items.filter((i: T) => (i.text || i.name) === (item.text || item.name)).length > 0;
-  }
-
-  private _convertResultsToPromise(results: T[]): Promise<T[]> {
-    return new Promise<T[]>(resolve => setTimeout(() => resolve(results), 150));
-  }
-}

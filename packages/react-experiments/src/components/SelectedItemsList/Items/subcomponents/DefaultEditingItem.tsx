@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui/react/lib/Utilities';
-import { FloatingSuggestions } from '../../../FloatingSuggestions/FloatingSuggestions';
-import { IFloatingSuggestionsProps } from '../../../FloatingSuggestions/FloatingSuggestions.types';
+import { IBaseFloatingSuggestionsProps } from '../../../FloatingSuggestionsComposite';
+import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
 
 import * as styles from './DefaultEditingItem.scss';
@@ -44,8 +44,8 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
 }
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
-  IFloatingSuggestionsProps<T>,
-  'componentRef' | 'onSuggestionSelected' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
+  IBaseFloatingSuggestionsProps<T>,
+  'componentRef' | 'onSuggestionSelected' | 'targetElement' | 'onRemoveSuggestion' | 'onFloatingSuggestionsDismiss'
 >;
 
 /**
@@ -56,12 +56,12 @@ export const DefaultEditingItemInner = <TItem extends any>(
   props: IDefaultEditingItemInnerProps<TItem>,
 ): JSX.Element => {
   let editingInput: HTMLInputElement;
-  const editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
+  const editingFloatingPicker = React.createRef<any>();
 
   React.useEffect(() => {
     const itemText: string = props.getEditingItemText(props.item);
 
-    editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(itemText);
+    //editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(itemText);
     editingInput.value = itemText;
     editingInput.focus();
   }, []);
@@ -75,9 +75,9 @@ export const DefaultEditingItemInner = <TItem extends any>(
       <FloatingPicker
         componentRef={editingFloatingPicker}
         onSuggestionSelected={_onSuggestionSelected}
-        inputElement={editingInput}
-        onRemoveSuggestion={props.onRemoveItem}
-        onSuggestionsHidden={props.onDismiss}
+        targetElement={editingInput}
+        onRemoveSuggestion={_onRemoveItem}
+        onFloatingSuggestionsDismiss={props.onDismiss}
       />
     );
   };
@@ -109,9 +109,9 @@ export const DefaultEditingItemInner = <TItem extends any>(
       if (props.onRemoveItem) {
         props.onRemoveItem(props.item);
       }
-    } else {
+    } /*else {
       editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(value);
-    }
+    }*/
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -120,8 +120,14 @@ export const DefaultEditingItemInner = <TItem extends any>(
     }
   };
 
-  const _onSuggestionSelected = (item: TItem): void => {
-    props.onEditingComplete(props.item, item);
+  const _onSuggestionSelected = (ev: React.MouseEvent<HTMLElement>, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    props.onEditingComplete(props.item, itemProps.item);
+  };
+
+  const _onRemoveItem = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    if (props.onRemoveItem) {
+      props.onRemoveItem(itemProps.item);
+    }
   };
 
   const itemId = getId();
