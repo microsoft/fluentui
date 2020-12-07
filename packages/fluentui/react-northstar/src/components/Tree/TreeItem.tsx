@@ -226,19 +226,15 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleTitleClick = e => {
-    if (selectable) {
-      if (hasSubtree) {
-        // need to know if click happened on selection indicator or title itself
-        if (e?.target?.className?.includes(treeTitleSlotClassNames.indicator)) {
-          toggleItemSelect(e, id);
-        } else {
-          toggleItemActive(e, id);
-        }
-      } else {
-        toggleItemSelect(e, id);
-      }
-    } else if (hasSubtree) {
+    // need to know if click happened on selection indicator or title itself
+    const shouldSelect =
+      (selectable && !hasSubtree) || (hasSubtree && e?.target?.className?.includes(treeTitleSlotClassNames.indicator));
+    if (shouldSelect) {
+      toggleItemSelect(e, id);
+    }
+    if (!shouldSelect && hasSubtree) {
       toggleItemActive(e, id);
+    }
     }
 
     _.invoke(props, 'onTitleClick', e, props);
