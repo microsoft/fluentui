@@ -100,10 +100,6 @@ export const DefaultEditingItemInner = <TItem extends any>(
     editingInput = ref;
   };
 
-  const _onInputClick = (): void => {
-    editingFloatingPicker.current && editingFloatingPicker.current.showPicker(true /*updatevalue*/);
-  };
-
   const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     if (editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
@@ -208,7 +204,6 @@ export const DefaultEditingItemInner = <TItem extends any>(
         onChange={_onInputChange}
         onKeyDown={_onInputKeyDown}
         onBlur={_onInputBlur}
-        onClick={_onInputClick}
         data-lpignore={true}
         className={styles.editingInput}
         id={itemId}
