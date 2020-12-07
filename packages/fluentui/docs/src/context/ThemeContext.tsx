@@ -6,7 +6,7 @@ export type ThemeName =
   | 'teamsHighContrastTheme'
   | 'teamsV2Theme'
   | 'teamsDarkV2Theme';
-type ThemeOption = { text: string; value: ThemeName };
+export type ThemeOption = { text: string; value: ThemeName };
 
 export type ThemeContextData = {
   themeName: ThemeName;
