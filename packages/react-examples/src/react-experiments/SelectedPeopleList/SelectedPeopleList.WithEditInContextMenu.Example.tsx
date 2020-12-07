@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
@@ -15,29 +14,24 @@ import {
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@fluentui/react-experiments/lib/FloatingSuggestions';
 
-export interface IPeopleSelectedItemsListExampleState {
-  currentSelectedItems: IPersonaProps[];
-}
+export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element => {
+  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
 
-export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<
-  {},
-  IPeopleSelectedItemsListExampleState
-> {
   // Used to resolve suggestions on the editableItem
-  private model = new ExampleSuggestionsModel<IPersonaProps>(people);
-  private suggestionsStore = new SuggestionsStore<IPersonaProps>();
+  const model = new ExampleSuggestionsModel<IPersonaProps>(people);
+  const suggestionsStore = new SuggestionsStore<IPersonaProps>();
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and capable of editing
    */
-  private EditableItemWithContextMenu = EditableItem({
+  const EditableItemWithContextMenu = EditableItem({
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: (persona: IPersonaProps) => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
         <FloatingPeopleSuggestions
           {...props}
-          suggestionsStore={this.suggestionsStore}
-          onResolveSuggestions={this.model.resolveSuggestions}
+          suggestionsStore={suggestionsStore}
+          onResolveSuggestions={model.resolveSuggestions}
         />
       ),
     }),
@@ -47,14 +41,14 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           key: 'remove',
           text: 'Remove',
           onClick: () => {
-            this._onItemsRemoved([item]);
+            _onItemsRemoved([item]);
           },
         },
         {
           key: 'copy',
           text: 'Copy',
           onClick: () => {
-            this._copyToClipboard(this._getCopyItemsText([item]));
+            _copyToClipboard(_getCopyItemsText([item]));
           },
         },
         {
@@ -67,53 +61,37 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     }),
   });
 
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      currentSelectedItems: [people[40]],
-    };
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className={'ms-BasePicker-text'}>
-        Right click any persona to open the context menu
-        <br />
-        <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
-        {this._renderExtendedPicker()}
-      </div>
-    );
-  }
-  private _renderExtendedPicker(): JSX.Element {
-    return (
-      <div>
-        <SelectedPeopleList
-          key={'normal'}
-          removeButtonAriaLabel={'Remove'}
-          selectedItems={[...this.state.currentSelectedItems]}
-          onRenderItem={this.EditableItemWithContextMenu}
-          onItemsRemoved={this._onItemsRemoved}
-        />
-      </div>
-    );
-  }
-
-  private _onAddItemButtonClicked = (): void => {
+  const _onAddItemButtonClicked = React.useCallback(() => {
     const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
-    this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, randomPerson] });
-  };
+    setCurrentSelectedItems([...currentSelectedItems, randomPerson]);
+  }, [currentSelectedItems]);
 
-  private _onItemsRemoved = (items: IPersona[]): void => {
-    const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
-    items.forEach(item => {
-      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
-      currentSelectedItemsCopy.splice(indexToRemove, 1);
-      this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
-    });
-  };
+  const _onItemsRemoved = React.useCallback(
+    (items: IPersona[]): void => {
+      const currentSelectedItemsCopy = [...currentSelectedItems];
+      items.forEach(item => {
+        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        currentSelectedItemsCopy.splice(indexToRemove, 1);
+        setCurrentSelectedItems([...currentSelectedItemsCopy]);
+      });
+    },
+    [currentSelectedItems],
+  );
 
-  private _copyToClipboard = (copyString: string): void => {
+  const _replaceItem = React.useCallback(
+    (newItem: IPersonaProps | IPersona[], index: number): void => {
+      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+
+      if (index >= 0) {
+        const newItems: IPersonaProps[] = [...currentSelectedItems];
+        newItems.splice(index, 1, ...newItemsArray);
+        setCurrentSelectedItems(newItems);
+      }
+    },
+    [currentSelectedItems],
+  );
+
+  const _copyToClipboard = (copyString: string): void => {
     navigator.clipboard.writeText(copyString).then(
       () => {
         /* clipboard successfully set */
@@ -125,7 +103,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     );
   };
 
-  private _getCopyItemsText(items: IPersonaProps[]): string {
+  const _getCopyItemsText = (items: IPersonaProps[]): string => {
     let copyText = '';
     items.forEach((item: IPersonaProps, index: number) => {
       copyText += item.text;
@@ -136,8 +114,26 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     });
 
     return copyText;
-  }
-}
+  };
+
+  return (
+    <div className={'ms-BasePicker-text'}>
+      Right click any persona to open the context menu
+      <br />
+      <PrimaryButton text="Add another item" onClick={_onAddItemButtonClicked} />
+      <div>
+        <SelectedPeopleList
+          key={'normal'}
+          removeButtonAriaLabel={'Remove'}
+          selectedItems={[...currentSelectedItems]}
+          onRenderItem={EditableItemWithContextMenu}
+          onItemsRemoved={_onItemsRemoved}
+          replaceItem={_replaceItem}
+        />
+      </div>
+    </div>
+  );
+};
 
 type IBaseExampleType = {
   text?: string;

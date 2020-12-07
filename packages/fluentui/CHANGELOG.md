@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ## BREAKING CHANGES
+- `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
 - Close `Menu` at page scroll @assuncaocharles ([#14755](https://github.com/microsoft/fluentui/pull/14755))
@@ -26,6 +27,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `selectableParent` prop in favor of `selectable` in `TreeItem` and make `selectionIndicator` visible only on focus or hover @assuncaocharles ([#15133](https://github.com/microsoft/fluentui/pull/15133))
 
 ### Fixes
+- Fix `Attachment` to pass `actionable` to accessibility behaviors @layershifter ([#16023](https://github.com/microsoft/fluentui/pull/16023))
+- Fix `Embed` throws when no style `variables` are passed in @yuanboxue-amber ([#16000](https://github.com/microsoft/fluentui/pull/16000))
+- Fix screen reader narrates incorrect items count for `toolbar` menu with radio group @yuanboxue-amber ([#15951](https://github.com/microsoft/fluentui/pull/15951))
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
 - Fix `Tree` to have prop `onFocusParent` triggered on `ArrowLeft` for leaf node @yuanboxue-amber ([#15442](https://github.com/microsoft/fluentui/pull/15442))
 - Use `aria-checked` for multi-select tree instead of `aria-selected` @yuanboxue-amber ([#15142](https://github.com/microsoft/fluentui/pull/15142))
@@ -49,9 +53,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Memoize context value in `Provider` to avoid rerenders @layershifter ([#15358](https://github.com/microsoft/fluentui/pull/15380))
 - Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
 - Fix `SplitButton` focus outline @assuncaocharles ([#15873](https://github.com/microsoft/fluentui/pull/15873))
+- Add `selectedItemMaxWidth` to fix item not getting truncated @assuncaocharles ([#15891](https://github.com/microsoft/fluentui/pull/15891))
+- Fix shorthand `id` prop not being passed to control in `FormField` component @assuncaocharles ([#16003](https://github.com/microsoft/fluentui/pull/16003))
+- Fix outdated `onChange` call in `RadioGroupItem` @assuncaocharles ([#15997](https://github.com/microsoft/fluentui/pull/15997))
+- Fix `Dropdown` to not break new lines for button trigger after listbox was introduced wrapping selected items @assuncaocharles ([#15898](https://github.com/microsoft/fluentui/pull/15898))
+- Fix `Input` content overlaping with `Icon` @assuncaocharles ([#16083](https://github.com/microsoft/fluentui/pull/16083))
+- Fix `variables` not being propagated in `Carousel` @assuncaocharles ([#16084](https://github.com/microsoft/fluentui/pull/16084))
+- Fix `Carousel` `onActiveIndexChange` to contain `activeIndex` @assuncaocharles ([#16118](https://github.com/microsoft/fluentui/pull/16118))
+- Fix `Tree` behavior adding `shouldFocusInnerElementWhenReceivedFocus` to avoid root element to be focused @assuncaocharles ([#16145](https://github.com/microsoft/fluentui/pull/16145))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
+- `Tree`: added `useTree` hook @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
 - Add `onDateChange` handler to `Datepicker.Input` field @karymes ([#14167](https://github.com/microsoft/fluentui/pull/14167))
 - Add base `Skeleton` component @assuncaocharles ([#14354](https://github.com/microsoft/fluentui/pull/14354))
@@ -78,6 +91,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `LiveIcon` and `LiveOffIcon`. @TanelVari ([#15239](https://github.com/microsoft/fluentui/pull/15239))
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 - Added `SaveIcon`, `LocationIcon`, `ArrowSortIcon`, `TeamsMonochromeIcon` and `MegaphoneIcon`. @TanelVari ([#15830](https://github.com/microsoft/fluentui/pull/15830))
+- Added `VideoProhibitedIcon`. @TanelVari ([#16025](https://github.com/microsoft/fluentui/pull/16025))
 
 ### Documentation
 - AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))
@@ -109,6 +123,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding screen reader labeling examples @kolaps33 ([#15146](https://github.com/microsoft/fluentui/pull/15146))
 - Fixed category color scheme dropdown to show all available colors @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 - Added support to serve different docsite versions @ling1726 ([#15692](https://github.com/microsoft/fluentui/pull/15692))
+- Added support to silently fail the version dropdown @ling1726 ([#16002](https://github.com/microsoft/fluentui/pull/16002))
+- Adding JAWS bug for radiogroup @kolaps33 ([#16076](https://github.com/microsoft/fluentui/pull/16076))
+- `Alert` - labelling dismiss action, to prevent narrate "unlabeled" button @kolaps33 ([#16092](https://github.com/microsoft/fluentui/pull/16092))
+- Update `Popup` best practices to describe how to pass `aria-labelledby` when `trapFocus` is `true` @assuncaocharles ([#16119](https://github.com/microsoft/fluentui/pull/16119))
+- Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)

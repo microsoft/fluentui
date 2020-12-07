@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toggle",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:32:57 GMT",
+      "tag": "@fluentui/react-toggle_v1.0.0-beta.21",
+      "version": "1.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update toggle pill background color on hover to use semanticColors from theme.",
+            "author": "xgao@microsoft.com",
+            "commit": "9766a7d19f73f60cc5f1062bed502d2cfff8ecfe",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-toggle_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
+import { DAYS_IN_WEEK } from '../../../../utils/date-time-utilities';
 
 export interface DatepickerVariables {
   calendarCellBorder: string;

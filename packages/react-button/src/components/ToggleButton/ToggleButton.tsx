@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ToggleButtonProps } from './ToggleButton.types';
 import { useToggleButton } from './useToggleButton';
+import { renderToggleButton } from './renderToggleButton';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useButtonClasses } from '../Button/useButtonClasses';
 import { useToggleButtonClasses } from './useToggleButtonClasses';
 
 /**
@@ -10,13 +10,12 @@ import { useToggleButtonClasses } from './useToggleButtonClasses';
  * {@docCategory Button}
  */
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
-  const { render, state } = useToggleButton(props, ref);
+  const state = useToggleButton(props, ref);
 
-  useButtonClasses(state);
   useToggleButtonClasses(state);
   useInlineTokens(state, '--button');
 
-  return render(state);
+  return renderToggleButton(state);
 });
 
 ToggleButton.displayName = 'ToggleButton';

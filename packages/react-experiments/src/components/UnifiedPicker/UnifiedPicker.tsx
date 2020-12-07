@@ -106,6 +106,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         input.current.focus();
       }
     },
+    getSelectedItems: () => {
+      return getSelectedItems() as T[];
+    },
   }));
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
@@ -244,8 +247,27 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.onKeyDown(ev);
     }
 
+    // Handle copy if focus is in the selected items list
+    // This is a temporary work around, it has localization issues
+    // we plan on rewriting how this works in the future
+    if (ev.ctrlKey && ev.which === KeyCodes.c) {
+      if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
+        ev.preventDefault();
+        const copyItems = selection.getSelection() as T[];
+        const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
+        navigator.clipboard.writeText(copyString).then(
+          () => {
+            /* clipboard successfully set */
+          },
+          () => {
+            /* clipboard write failed */
+            // Swallow the error
+          },
+        );
+      }
+    }
     // Handle delete of items via backspace
-    if (ev.which === KeyCodes.backspace && selectedItems.length) {
+    else if (ev.which === KeyCodes.backspace && selectedItems.length) {
       if (
         focusedItemIndices.length === 0 &&
         input &&

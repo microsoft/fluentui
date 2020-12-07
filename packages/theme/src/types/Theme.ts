@@ -60,6 +60,7 @@ export type ColorTokens = ColorTokenSet & {
   focused?: ColorTokenSet;
   hovered?: ColorTokenSet;
   pressed?: ColorTokenSet;
+  selected?: ColorTokenSet;
 };
 
 export type FontTokens = Partial<{
@@ -82,8 +83,8 @@ export type RecursivePartial<T> = {
 
 export interface Tokens {
   color: {
-    body: ColorTokenSet & TokenSetType;
-    brand: ColorTokenSet & TokenSetType;
+    body: ColorTokens & TokenSetType;
+    brand: ColorTokens & TokenSetType;
     [key: string]: TokenSetType;
   };
 

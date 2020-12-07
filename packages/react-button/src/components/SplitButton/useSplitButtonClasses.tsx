@@ -89,7 +89,8 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
     },
   },
   variants: (theme: Theme): SplitButtonVariants => {
-    const { palette, semanticColors } = theme;
+    const { palette, semanticColors, tokens } = theme;
+    const body = tokens?.color?.body;
 
     return {
       root: {
@@ -107,7 +108,7 @@ export const useSplitButtonClasses = makeVariantClasses<SplitButtonState, SplitB
         disabled: {
           dividerColor: semanticColors.disabledText,
         },
-        menuIconColor: 'var(--body-menuIconColor)',
+        menuIconColor: body?.menuIconColor,
         menuIconSize: '12px',
 
         highContrast: {

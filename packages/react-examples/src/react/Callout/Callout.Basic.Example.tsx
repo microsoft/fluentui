@@ -1,66 +1,22 @@
 import * as React from 'react';
-import { Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from '@fluentui/react';
+import { Callout, Link, mergeStyleSets, Text, FontWeights } from '@fluentui/react';
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
-const theme = getTheme();
-const styles = mergeStyleSets({
-  buttonArea: {
-    verticalAlign: 'top',
-    display: 'inline-block',
-    textAlign: 'center',
-    margin: '0 100px',
-    minWidth: 130,
-    height: 32,
-  },
-  callout: {
-    maxWidth: 300,
-  },
-  header: {
-    padding: '18px 24px 12px',
-  },
-  title: [
-    theme.fonts.xLarge,
-    {
-      margin: 0,
-      fontWeight: FontWeights.semilight,
-    },
-  ],
-  inner: {
-    height: '100%',
-    padding: '0 24px 20px',
-  },
-  actions: {
-    position: 'relative',
-    marginTop: 20,
-    width: '100%',
-    whiteSpace: 'nowrap',
-  },
-  subtext: [
-    theme.fonts.small,
-    {
-      margin: 0,
-      fontWeight: FontWeights.semilight,
-    },
-  ],
-  link: [
-    theme.fonts.medium,
-    {
-      color: theme.palette.neutralPrimary,
-    },
-  ],
-});
-
 export const CalloutBasicExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  const buttonId = useId('callout-button');
+  const labelId = useId('callout-label');
+  const descriptionId = useId('callout-description');
 
-  const labelId: string = useId('callout-label');
-  const descriptionId: string = useId('callout-description');
   return (
     <>
-      <div className={styles.buttonArea}>
-        <DefaultButton onClick={toggleIsCalloutVisible} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
-      </div>
+      <DefaultButton
+        id={buttonId}
+        onClick={toggleIsCalloutVisible}
+        text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
+        className={styles.button}
+      />
       {isCalloutVisible && (
         <Callout
           className={styles.callout}
@@ -68,28 +24,40 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           ariaDescribedBy={descriptionId}
           role="alertdialog"
           gapSpace={0}
-          target={`.${styles.buttonArea}`}
+          target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
         >
-          <div className={styles.header}>
-            <Text className={styles.title} id={labelId}>
-              All of your favorite people
-            </Text>
-          </div>
-          <div className={styles.inner}>
-            <Text className={styles.subtext} id={descriptionId}>
-              Message body is optional. If help documentation is available, consider adding a link to learn more at the
-              bottom.
-            </Text>
-            <div className={styles.actions}>
-              <Link className={styles.link} href="http://microsoft.com" target="_blank">
-                Go to microsoft
-              </Link>
-            </div>
-          </div>
+          <Text block variant="xLarge" className={styles.title} id={labelId}>
+            Callout title here
+          </Text>
+          <Text block variant="small" id={descriptionId}>
+            Message body is optional. If help documentation is available, consider adding a link to learn more at the
+            bottom.
+          </Text>
+          <Link href="http://microsoft.com" target="_blank" className={styles.link}>
+            Sample link
+          </Link>
         </Callout>
       )}
     </>
   );
 };
+
+const styles = mergeStyleSets({
+  button: {
+    width: 130,
+  },
+  callout: {
+    width: 320,
+    padding: '20px 24px',
+  },
+  title: {
+    marginBottom: 12,
+    fontWeight: FontWeights.semilight,
+  },
+  link: {
+    display: 'block',
+    marginTop: 20,
+  },
+});
