@@ -1,46 +1,45 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import { GroupIcon, IDBadgeIcon, ChatBotIcon, SkypeCheckIcon } from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarExampleList } from './AvatarExampleList';
-import { avatarExamples as examples, svgHexagonDataUrl } from './avatarExamples';
+import { AvatarExamples as examples } from './AvatarExamples';
 import { useBoolean } from '@fluentui/react-hooks';
 
 export const Basic = () => (
   <>
     <StoryExample title="Simple examples">
       <Avatar />
-      <Avatar name={examples.person[0].name} />
+      <Avatar name={examples.name[0]} />
       <Avatar size={40} icon={<IDBadgeIcon />} />
-      <Avatar size={72} name={examples.person[0].name} image={examples.person[0].image} />
+      <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
     </StoryExample>
     <StoryExample title="Square">
       <Avatar square name="Group" />
       <Avatar square icon={<GroupIcon />} />
     </StoryExample>
     <StoryExample title="Badges">
-      <Avatar name={examples.person[1].name} badge="warning" />
-      <Avatar name={examples.person[2].name} badge="success" />
+      <Avatar name={examples.name[1]} badge="warning" />
+      <Avatar name={examples.name[2]} badge="success" />
       <Avatar
-        name={examples.person[3].name}
-        image={examples.person[3].image}
+        name={examples.name[3]}
+        image={examples.image[3]}
         badge={{ state: 'success', icon: { as: SkypeCheckIcon } }}
       />
     </StoryExample>
     <StoryExample title="Size">
-      <Avatar size={20} name={examples.person[4].name} image={examples.person[4].image} badge="info" />
-      <Avatar size={48} name={examples.person[5].name} image={examples.person[5].image} badge="success" />
-      <Avatar size={96} name={examples.person[6].name} image={examples.person[6].image} badge="warning" />
+      <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="info" />
+      <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="success" />
+      <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
-        <Avatar name={examples.person[7].name} active={true} />
-        <Avatar image={examples.person[8].image} active={true} activeDisplay="shadow" />
-        <Avatar image={examples.person[9].image} active={true} activeDisplay="glow" />
-        <Avatar image={examples.person[10].image} active={true} activeDisplay="ring-shadow" />
-        <Avatar image={examples.person[11].image} active={true} activeDisplay="ring-glow" />
-        <Avatar image={examples.person[12].image} active={false} />
+        <Avatar name={examples.name[7]} active={true} />
+        <Avatar image={examples.image[8]} active={true} activeDisplay="shadow" />
+        <Avatar image={examples.image[9]} active={true} activeDisplay="glow" />
+        <Avatar image={examples.image[10]} active={true} activeDisplay="ring-shadow" />
+        <Avatar image={examples.image[11]} active={true} activeDisplay="ring-glow" />
+        <Avatar image={examples.image[12]} active={false} />
       </Stack>
     </StoryExample>
   </>
@@ -94,7 +93,7 @@ export const Active = () => (
 
 export const ActiveAnimation = () => {
   const [active, setActive] = React.useState(false);
-  const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
+  const [size, nextSize, prevSize] = useValueSelectorState(avatarSizeValues, 96);
   const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
   const [display, nextDisplay, prevDisplay] = useValueSelectorState(examples.display, 'image');
 
@@ -112,8 +111,8 @@ export const ActiveAnimation = () => {
             display={display}
             active={active}
             activeDisplay={activeDisplay}
-            name={examples.person[10].name}
-            image={examples.person[10].image}
+            name={examples.name[10]}
+            image={examples.image[10]}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
@@ -136,12 +135,12 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.person[11].name} badge="success" customSize={13} />
-    <Avatar image={examples.person[12].image} badge="warning" customSize={21} />
-    <Avatar name={examples.person[13].name} badge="error" customSize={34} />
-    <Avatar image={examples.person[14].image} badge="info" customSize={55} />
-    <Avatar name={examples.person[15].name} badge="warning" customSize={89} />
-    <Avatar image={examples.person[16].image} badge="success" customSize={144} />
+    <Avatar name={examples.name[11]} badge="success" customSize={13} />
+    <Avatar image={examples.image[12]} badge="warning" customSize={21} />
+    <Avatar name={examples.name[13]} badge="error" customSize={34} />
+    <Avatar image={examples.image[14]} badge="info" customSize={55} />
+    <Avatar name={examples.name[15]} badge="warning" customSize={89} />
+    <Avatar image={examples.image[16]} badge="success" customSize={144} />
   </StoryExample>
 );
 
@@ -154,7 +153,7 @@ export const CustomShape = () => {
           display="icon"
           tokens={{
             width: 'calc(var(--avatar-height) * 1.125)',
-            background: `url('${svgHexagonDataUrl}') 0px/contain no-repeat`,
+            background: `url('${examples.hexagon}') 0px/contain no-repeat`,
             borderRadius: '0',
           }}
         />
@@ -164,15 +163,15 @@ export const CustomShape = () => {
 };
 
 export const AvatarPlayground = () => {
-  const [person, nextPerson, prevPerson] = useValueSelectorState(examples.person);
+  const [nameAndImage, nextNameAndImage, prevNameAndImage] = useValueSelectorState(examples.nameAndImage);
 
   const propSelectors = [
-    useValueSelector('size', useValueSelectorState(examples.size, 96), true),
+    useValueSelector('size', useValueSelectorState(avatarSizeValues, 96), true),
     useValueSelector('customSize', useValueSelectorState(examples.customSize)),
     useValueSelector('square', useValueSelectorState([true, false])),
     useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
-    useValueSelector('name', [person.name, nextPerson, prevPerson], true),
-    useValueSelector('image', [person.image, nextPerson, prevPerson], true, getFilenameFromUrl),
+    useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
+    useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
     useValueSelector('display', useValueSelectorState(examples.display)),
     useValueSelector('active', useValueSelectorState([true, false])),
@@ -203,6 +202,30 @@ export const AvatarPlayground = () => {
 //
 // Helpers
 //
+
+/**
+ * Generate a list of Avatars with sample properties
+ */
+const AvatarExampleList: React.FC<AvatarProps & { exampleIndex?: number }> = props => {
+  const { exampleIndex = 0 } = props;
+  const offset = exampleIndex * avatarSizeValues.length;
+
+  return (
+    <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+      {avatarSizeValues.map((size, i) => (
+        <Avatar
+          key={size}
+          size={size}
+          name={examples.name[(i + offset) % examples.name.length]}
+          image={examples.image[(i + offset) % examples.image.length]}
+          badge={examples.badge[(i + offset) % examples.badge.length]}
+          icon={examples.icon[(i + offset) % examples.icon.length]}
+          {...props}
+        />
+      ))}
+    </Stack>
+  );
+};
 
 const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>

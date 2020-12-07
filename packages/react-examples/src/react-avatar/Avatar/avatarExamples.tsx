@@ -11,12 +11,11 @@ import {
   SkypeMinusIcon,
   SkypeArrowIcon,
 } from '@fluentui/react-icons-mdl2';
-import { avatarSizeValues } from '@fluentui/react-avatar';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
 /** Sample names and images for use in Avatar examples */
-const peopleExamples = [
+const nameAndImage = [
   { name: 'Katri Athokas', image: `${imageRoot}/KatriAthokas.jpg` },
   { name: 'Elvia Atkins', image: `${imageRoot}/ElviaAtkins.jpg` },
   { name: 'Mauricio August', image: `${imageRoot}/MauricioAugust.jpg` },
@@ -49,11 +48,10 @@ const peopleExamples = [
 ];
 
 /** Arrays of example values for each Avatar prop */
-export const avatarExamples = {
-  size: avatarSizeValues,
-  person: peopleExamples,
-  name: peopleExamples.map(p => p.name),
-  image: peopleExamples.map(p => p.image),
+export const AvatarExamples = {
+  nameAndImage: nameAndImage,
+  name: nameAndImage.map(p => p.name),
+  image: nameAndImage.map(p => p.image),
   icon: [
     /* eslint-disable react/jsx-key */
     <GroupIcon />,
@@ -77,13 +75,13 @@ export const avatarExamples = {
   display: ['label', 'image', 'icon'],
   activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
   customSize: [13, 21, 34, 55, 89, 144],
+  /** A SVG hexagon data URL used by the CustomShape example */
+  hexagon:
+    'data:image/svg+xml;utf8,' +
+    '<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472' +
+    'L7.91541 1.46793C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793' +
+    'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321' +
+    'C27.5592 31.4421 26.6056 32 25.5755 32H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/>' +
+    '</svg>',
 } as const;
-
-/** The hexagon background for the CustomShape example */
-export const svgHexagonDataUrl =
-  'data:image/svg+xml;utf8,' +
-  '<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-  '<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472' +
-  'L7.91541 1.46793C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793' +
-  'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321C27.5592 31.4421 26.6056 32 25.5755 32' +
-  'H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/></svg>';
