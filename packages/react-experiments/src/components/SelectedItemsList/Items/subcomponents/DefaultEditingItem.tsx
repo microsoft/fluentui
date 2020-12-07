@@ -52,107 +52,99 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
  * Wrapper around an item in a selection well that renders an item with a context menu for
  * replacing that item with another item.
  */
-export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefaultEditingItemInnerProps<TItem>> {
-  private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
+export const DefaultEditingItemInner = <TItem extends any>(
+  props: IDefaultEditingItemInnerProps<TItem>,
+): JSX.Element => {
+  let editingInput: HTMLInputElement;
+  const editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
 
-  constructor(props: IDefaultEditingItemInnerProps<TItem>) {
-    super(props);
-  }
+  React.useEffect(() => {
+    const itemText: string = props.getEditingItemText(props.item);
 
-  public componentDidMount(): void {
-    const itemText: string = this.props.getEditingItemText(this.props.item);
+    editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(itemText);
+    editingInput.value = itemText;
+    editingInput.focus();
+  }, []);
 
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
-    this._editingInput.value = itemText;
-    this._editingInput.focus();
-  }
-
-  public render(): JSX.Element {
-    const itemId = getId();
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
-    return (
-      <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
-        <input
-          {...nativeProps}
-          ref={this._resolveInputRef}
-          autoCapitalize={'off'}
-          autoComplete={'off'}
-          onChange={this._onInputChange}
-          onKeyDown={this._onInputKeyDown}
-          onBlur={this._onInputBlur}
-          onClick={this._onInputClick}
-          data-lpignore={true}
-          className={styles.editingInput}
-          id={itemId}
-        />
-        {this._renderEditingSuggestions()}
-      </span>
-    );
-  }
-
-  private _renderEditingSuggestions = (): JSX.Element => {
-    const FloatingPicker = this.props.onRenderFloatingPicker;
+  const _renderEditingSuggestions = (): JSX.Element => {
+    const FloatingPicker = props.onRenderFloatingPicker;
     if (!FloatingPicker) {
       return <></>;
     }
     return (
       <FloatingPicker
-        componentRef={this._editingFloatingPicker}
-        onSuggestionSelected={this._onSuggestionSelected}
-        inputElement={this._editingInput}
-        onRemoveSuggestion={this.props.onRemoveItem}
-        onSuggestionsHidden={this.props.onDismiss}
+        componentRef={editingFloatingPicker}
+        onSuggestionSelected={_onSuggestionSelected}
+        inputElement={editingInput}
+        onRemoveSuggestion={props.onRemoveItem}
+        onSuggestionsHidden={props.onDismiss}
       />
     );
   };
 
-  private _resolveInputRef = (ref: HTMLInputElement): void => {
-    this._editingInput = ref;
-
-    this.forceUpdate(() => {
-      this._editingInput.focus();
-    });
+  const _resolveInputRef = (ref: HTMLInputElement): void => {
+    editingInput = ref;
   };
 
-  private _onInputClick = (): void => {
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.showPicker(true /*updatevalue*/);
+  const _onInputClick = (): void => {
+    editingFloatingPicker.current && editingFloatingPicker.current.showPicker(true /*updatevalue*/);
   };
 
-  private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
+  const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
+    if (editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
       if (
         target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
         target.className.indexOf('ms-Suggestions-sectionButton') === -1
       ) {
-        this._editingFloatingPicker.current.forceResolveSuggestion();
+        editingFloatingPicker.current.forceResolveSuggestion();
       }
     }
   };
 
-  private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
+  const _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
     const value: string = (ev.target as HTMLInputElement).value;
 
     if (value === '') {
-      if (this.props.onRemoveItem) {
-        this.props.onRemoveItem(this.props.item);
+      if (props.onRemoveItem) {
+        props.onRemoveItem(props.item);
       }
     } else {
-      this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(value);
+      editingFloatingPicker.current && editingFloatingPicker.current.onQueryStringChanged(value);
     }
   };
 
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLInputElement>): void {
+  const _onInputKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
     if (ev.which === KeyCodes.backspace || ev.which === KeyCodes.del) {
       ev.stopPropagation();
     }
-  }
-
-  private _onSuggestionSelected = (item: TItem): void => {
-    this.props.onEditingComplete(this.props.item, item);
   };
-}
+
+  const _onSuggestionSelected = (item: TItem): void => {
+    props.onEditingComplete(props.item, item);
+  };
+
+  const itemId = getId();
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties);
+  return (
+    <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
+      <input
+        {...nativeProps}
+        ref={_resolveInputRef}
+        autoCapitalize={'off'}
+        autoComplete={'off'}
+        onChange={_onInputChange}
+        onKeyDown={_onInputKeyDown}
+        onBlur={_onInputBlur}
+        onClick={_onInputClick}
+        data-lpignore={true}
+        className={styles.editingInput}
+        id={itemId}
+      />
+      {_renderEditingSuggestions()}
+    </span>
+  );
+};
 
 type EditingItemProps<T> = Pick<
   IDefaultEditingItemInnerProps<T>,
