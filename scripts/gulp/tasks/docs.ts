@@ -19,7 +19,7 @@ import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
 import gulpExampleSource from '../plugins/gulp-example-source';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
-import { getRelativePathToSourceFile } from '../plugins/util';
+import { getComponentInfo, getRelativePathToSourceFile } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Server } from 'http';
 import { findGitRoot, getAllPackageInfo } from '../../monorepo';
@@ -205,6 +205,18 @@ task('serve:docs:hot', async () => {
 });
 
 task('serve:docs:stop', () => forceClose(server));
+
+task('component-info:debug', done => {
+  const componentInfo = getComponentInfo({
+    tsconfigPath: paths.docs('tsconfig.json'),
+    filePath: paths.packageSrc('react-northstar', 'components/Box/Box.tsx'),
+    ignoredParentInterfaces: [], // can be omitted?
+  });
+
+  // console.log(JSON.stringify(componentInfo, null, 2));
+  fs.writeFileSync('box.mxinfo.json', JSON.stringify(componentInfo, null, 2));
+  done();
+});
 
 // ----------------------------------------
 // Watch

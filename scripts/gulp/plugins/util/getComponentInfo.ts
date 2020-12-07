@@ -144,6 +144,7 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
         defaultValue: defaultProps[propName],
         tags,
         types,
+        resolvedType: (propDef as any).resolvedType,
         name: propName,
         required: propDef.required,
       });
