@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove northstar-specific types and utilities",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-04T04:39:57.015Z"
-}
