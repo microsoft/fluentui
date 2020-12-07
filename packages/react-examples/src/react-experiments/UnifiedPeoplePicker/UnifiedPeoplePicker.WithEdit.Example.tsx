@@ -132,8 +132,9 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: persona => persona.text || '',
       getSuggestions: _getSuggestions,
+      pickerSuggestionsProps: suggestionProps,
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
-        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} pickerSuggestionsProps={suggestionProps} />
+        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} />
       ),
     }),
     itemComponent: ItemWithContextMenu<IPersona>({

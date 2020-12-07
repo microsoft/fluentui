@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui/react/lib/Utilities';
-import { IBaseFloatingSuggestionsProps } from '../../../FloatingSuggestionsComposite';
+import {
+  IBaseFloatingSuggestionsProps,
+  IBaseFloatingPickerHeaderFooterProps,
+} from '../../../FloatingSuggestionsComposite';
 import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
 import { useFloatingSuggestionItems } from '../../../UnifiedPicker';
 
 import * as styles from './DefaultEditingItem.scss';
+import { header } from '@fluentui/react-experiments/src/components/TilesList/TilesList.scss';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
@@ -44,6 +48,8 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
   getEditingItemText: (item: TItem) => string;
 
   getSuggestions: (value: string) => IFloatingSuggestionItemProps<TItem>[];
+
+  pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
 }
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
@@ -58,6 +64,7 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
   | 'selectedSuggestionIndex'
   | 'selectedHeaderIndex'
   | 'selectedFooterIndex'
+  | 'pickerSuggestionsProps'
 >;
 
 /**
@@ -80,7 +87,11 @@ export const DefaultEditingItemInner = <TItem extends any>(
     headerItems,
     selectPreviousSuggestion,
     selectNextSuggestion,
-  } = useFloatingSuggestionItems(editingSuggestions);
+  } = useFloatingSuggestionItems(
+    editingSuggestions,
+    props.pickerSuggestionsProps?.footerItemsProps,
+    props.pickerSuggestionsProps?.headerItemsProps,
+  );
 
   React.useEffect(() => {
     const itemText: string = props.getEditingItemText(props.item);
@@ -95,8 +106,6 @@ export const DefaultEditingItemInner = <TItem extends any>(
     if (!FloatingPicker) {
       return <></>;
     }
-    //setHeaderItems(editingFloatingPicker.current.pickerSuggestionsProps.headerItemProps);
-    //setFooterItems(editingFloatingPicker.current.pickerSuggestionsProps.footerItemProps);
     return (
       <FloatingPicker
         componentRef={editingFloatingPicker}
@@ -108,6 +117,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
         selectedSuggestionIndex={focusItemIndex}
         selectedHeaderIndex={headerItemIndex}
         selectedFooterIndex={footerItemIndex}
+        pickerSuggestionsProps={props.pickerSuggestionsProps}
       />
     );
   };
@@ -149,7 +159,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
         break;
       case KeyCodes.enter:
       case KeyCodes.tab:
-        if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
+        if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
           ev.preventDefault();
           ev.stopPropagation();
           if (focusItemIndex >= 0) {
