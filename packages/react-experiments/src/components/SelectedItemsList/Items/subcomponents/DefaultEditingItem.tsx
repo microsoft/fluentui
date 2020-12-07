@@ -3,6 +3,7 @@ import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui
 import { IBaseFloatingSuggestionsProps } from '../../../FloatingSuggestionsComposite';
 import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
+import { useFloatingSuggestionItems } from '../../../UnifiedPicker';
 
 import * as styles from './DefaultEditingItem.scss';
 
@@ -55,6 +56,8 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
   | 'onFloatingSuggestionsDismiss'
   | 'onKeyDown'
   | 'selectedSuggestionIndex'
+  | 'selectedHeaderIndex'
+  | 'selectedFooterIndex'
 >;
 
 /**
@@ -66,9 +69,18 @@ export const DefaultEditingItemInner = <TItem extends any>(
 ): JSX.Element => {
   let editingInput: HTMLInputElement;
   const editingFloatingPicker = React.createRef<any>();
-
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
-  const [focusItemIndex, setFocusItemIndex] = React.useState<number>(-1);
+
+  const {
+    focusItemIndex,
+    suggestionItems,
+    footerItemIndex,
+    footerItems,
+    headerItemIndex,
+    headerItems,
+    selectPreviousSuggestion,
+    selectNextSuggestion,
+  } = useFloatingSuggestionItems(editingSuggestions);
 
   React.useEffect(() => {
     const itemText: string = props.getEditingItemText(props.item);
@@ -83,6 +95,8 @@ export const DefaultEditingItemInner = <TItem extends any>(
     if (!FloatingPicker) {
       return <></>;
     }
+    //setHeaderItems(editingFloatingPicker.current.pickerSuggestionsProps.headerItemProps);
+    //setFooterItems(editingFloatingPicker.current.pickerSuggestionsProps.footerItemProps);
     return (
       <FloatingPicker
         componentRef={editingFloatingPicker}
@@ -90,8 +104,10 @@ export const DefaultEditingItemInner = <TItem extends any>(
         targetElement={editingInput}
         onRemoveSuggestion={_onRemoveItem}
         onFloatingSuggestionsDismiss={props.onDismiss}
-        suggestions={editingSuggestions}
+        suggestions={suggestionItems}
         selectedSuggestionIndex={focusItemIndex}
+        selectedHeaderIndex={headerItemIndex}
+        selectedFooterIndex={footerItemIndex}
       />
     );
   };
@@ -136,53 +152,32 @@ export const DefaultEditingItemInner = <TItem extends any>(
         if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
           ev.preventDefault();
           ev.stopPropagation();
-          // Get the focused element and add it to selectedItemsList
-          props.onEditingComplete(props.item, editingSuggestions[focusItemIndex].item);
+          if (focusItemIndex >= 0) {
+            // Get the focused element and add it to selectedItemsList
+            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+          } else if (footerItemIndex >= 0) {
+            // execute the footer action
+            footerItems![footerItemIndex].onExecute!();
+          } else if (headerItemIndex >= 0) {
+            // execute the header action
+            headerItems![headerItemIndex].onExecute!();
+          }
         }
         break;
       case KeyCodes.up:
         ev.preventDefault();
         ev.stopPropagation();
-        _selectPreviousSuggestion();
+        selectPreviousSuggestion();
         break;
       case KeyCodes.down:
         ev.preventDefault();
         ev.stopPropagation();
-        _selectNextSuggestion();
+        selectNextSuggestion();
         break;
     }
   };
 
-  const _selectNextSuggestion = (): void => {
-    const length = editingSuggestions.length;
-    if (length > 0) {
-      if (focusItemIndex === -1) {
-        setFocusItemIndex(0);
-      } else if (focusItemIndex < length - 1) {
-        setFocusItemIndex(focusItemIndex + 1);
-      } else if (focusItemIndex === length - 1) {
-        setFocusItemIndex(0);
-      }
-    }
-    if (length > focusItemIndex + 1) {
-      setFocusItemIndex(focusItemIndex + 1);
-    }
-  };
-
-  const _selectPreviousSuggestion = (): void => {
-    const length = editingSuggestions.length;
-    if (length > 0) {
-      if (focusItemIndex === -1) {
-        setFocusItemIndex(length - 1);
-      } else if (focusItemIndex > 0) {
-        setFocusItemIndex(focusItemIndex - 1);
-      } else if (focusItemIndex === 0) {
-        setFocusItemIndex(length - 1);
-      }
-    }
-  };
-
-  const _onSuggestionSelected = (ev: React.MouseEvent<HTMLElement>, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+  const _onSuggestionSelected = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
     props.onEditingComplete(props.item, itemProps.item);
   };
 

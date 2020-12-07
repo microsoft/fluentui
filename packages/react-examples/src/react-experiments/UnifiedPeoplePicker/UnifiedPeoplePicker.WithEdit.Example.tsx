@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useConst } from '@fluentui/react-hooks';
 import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
@@ -71,6 +72,50 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const ref = React.useRef<any>();
 
+  const suggestionProps = useConst(() => {
+    return {
+      // uncomment below section to see any example of a selectable header item
+      headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          /*onExecute: () => {
+            alert('People suggestions selected');
+          },*/
+        },
+      ],
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {peopleSuggestions.length} results</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          // uncomment to see an example of multiple selectable footer items
+          /*onExecute: () => {
+            alert('Showing people suggestions executed');
+          },*/
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
+          },
+        },
+      ],
+    };
+  });
+
   const _getSuggestions = (value: string): IFloatingSuggestionItemProps<IPersonaProps>[] => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
@@ -88,7 +133,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       getEditingItemText: persona => persona.text || '',
       getSuggestions: _getSuggestions,
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
-        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} />
+        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} pickerSuggestionsProps={suggestionProps} />
       ),
     }),
     itemComponent: ItemWithContextMenu<IPersona>({
