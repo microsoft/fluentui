@@ -61,6 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `variables` not being propagated in `Carousel` @assuncaocharles ([#16084](https://github.com/microsoft/fluentui/pull/16084))
 - Fix `Carousel` `onActiveIndexChange` to contain `activeIndex` @assuncaocharles ([#16118](https://github.com/microsoft/fluentui/pull/16118))
 - Fix `Tree` behavior adding `shouldFocusInnerElementWhenReceivedFocus` to avoid root element to be focused @assuncaocharles ([#16145](https://github.com/microsoft/fluentui/pull/16145))
+- Fix `Toolbar` throws error cancelAnimationFrame of null @petr-duda ([#16163](https://github.com/microsoft/fluentui/pull/16163))
 
 ### Features
 - `Tree`: added `useTree` hook @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
