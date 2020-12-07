@@ -53,6 +53,8 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
   | 'targetElement'
   | 'onRemoveSuggestion'
   | 'onFloatingSuggestionsDismiss'
+  | 'onKeyDown'
+  | 'selectedSuggestionIndex'
 >;
 
 /**
@@ -64,7 +66,9 @@ export const DefaultEditingItemInner = <TItem extends any>(
 ): JSX.Element => {
   let editingInput: HTMLInputElement;
   const editingFloatingPicker = React.createRef<any>();
+
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
+  const [focusItemIndex, setFocusItemIndex] = React.useState<number>(-1);
 
   React.useEffect(() => {
     const itemText: string = props.getEditingItemText(props.item);
@@ -87,6 +91,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
         onRemoveSuggestion={_onRemoveItem}
         onFloatingSuggestionsDismiss={props.onDismiss}
         suggestions={editingSuggestions}
+        selectedSuggestionIndex={focusItemIndex}
       />
     );
   };
@@ -124,8 +129,60 @@ export const DefaultEditingItemInner = <TItem extends any>(
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (ev.which === KeyCodes.backspace || ev.which === KeyCodes.del) {
-      ev.stopPropagation();
+    const keyCode = ev.which;
+    switch (keyCode) {
+      case KeyCodes.backspace:
+      case KeyCodes.del:
+        ev.stopPropagation();
+        break;
+      case KeyCodes.enter:
+      case KeyCodes.tab:
+        if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          // Get the focused element and add it to selectedItemsList
+          props.onEditingComplete(props.item, editingSuggestions[focusItemIndex].item);
+        }
+        break;
+      case KeyCodes.up:
+        ev.preventDefault();
+        ev.stopPropagation();
+        _selectPreviousSuggestion();
+        break;
+      case KeyCodes.down:
+        ev.preventDefault();
+        ev.stopPropagation();
+        _selectNextSuggestion();
+        break;
+    }
+  };
+
+  const _selectNextSuggestion = (): void => {
+    const length = editingSuggestions.length;
+    if (length > 0) {
+      if (focusItemIndex === -1) {
+        setFocusItemIndex(0);
+      } else if (focusItemIndex < length - 1) {
+        setFocusItemIndex(focusItemIndex + 1);
+      } else if (focusItemIndex === length - 1) {
+        setFocusItemIndex(0);
+      }
+    }
+    if (length > focusItemIndex + 1) {
+      setFocusItemIndex(focusItemIndex + 1);
+    }
+  };
+
+  const _selectPreviousSuggestion = (): void => {
+    const length = editingSuggestions.length;
+    if (length > 0) {
+      if (focusItemIndex === -1) {
+        setFocusItemIndex(length - 1);
+      } else if (focusItemIndex > 0) {
+        setFocusItemIndex(focusItemIndex - 1);
+      } else if (focusItemIndex === 0) {
+        setFocusItemIndex(length - 1);
+      }
     }
   };
 
