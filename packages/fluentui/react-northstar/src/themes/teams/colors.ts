@@ -359,7 +359,9 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
   }),
   black: {
     foreground: colors.black,
+    foreground1: colors.white,
     background: colors.white,
+    background1: colors.grey[750],
     border: colors.black,
     shadow: colors.black,
 
@@ -390,7 +392,9 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
   },
   white: {
     foreground: colors.white,
+    foreground1: colors.grey[750],
     background: colors.black,
+    background1: colors.white,
     border: colors.white,
     shadow: colors.white,
 
@@ -424,10 +428,12 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground1: colors.white,
     foreground2: colors.green[400],
     background: colors.green[300],
+    background1: colors.green[600],
   }),
   orange: createColorScheme({
     foreground: colors.orange[400],
     foreground1: colors.orange[300],
+    foreground2: colors.white,
     background: colors.orange[400],
     border: colors.orange[200],
   }),
@@ -458,6 +464,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.yellow[300],
     foreground1: colors.grey[800],
     foreground2: colors.white,
+    foreground3: colors.grey[750],
     background: colors.yellow[600],
     background1: colors.yellow[100],
     background2: colors.yellow[500],

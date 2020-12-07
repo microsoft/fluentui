@@ -20,14 +20,40 @@ export interface LabelVariables {
 export const labelVariables = (siteVars: SiteVariablesPrepared): LabelVariables => {
   const colorScheme = extendColorScheme(siteVars.colorScheme, {
     default: {
-      background: 'rgba(0, 0, 0, 0.6)',
-      foreground: 'rgb(232, 232, 232)',
+      background: 'rgb(232, 232, 232)',
+      foreground: 'rgba(0, 0, 0, 0.6)',
+    },
+    black: {
+      foreground: siteVars.colorScheme.black.foreground1,
+      background: siteVars.colorScheme.black.background1,
+    },
+    white: {
+      foreground: siteVars.colorScheme.white.foreground1,
+      background: siteVars.colorScheme.white.background1,
     },
     brand: {
-      background: siteVars.colorScheme.brand.foreground4,
+      foreground: siteVars.colorScheme.brand.foreground4,
+      background: siteVars.colorScheme.brand.background,
+    },
+    grey: {
+      foreground: siteVars.colorScheme.grey.foreground2,
+      background: siteVars.colorScheme.grey.background3,
+    },
+    orange: {
+      foreground: siteVars.colorScheme.orange.foreground2,
+      background: siteVars.colorScheme.orange.background,
     },
     red: {
-      background: siteVars.colorScheme.red.foreground1,
+      foreground: siteVars.colorScheme.red.foreground1,
+      background: siteVars.colorScheme.red.background,
+    },
+    green: {
+      foreground: siteVars.colorScheme.green.foreground1,
+      background: siteVars.colorScheme.green.background,
+    },
+    yellow: {
+      foreground: siteVars.colorScheme.yellow.foreground3,
+      background: siteVars.colorScheme.yellow.background,
     },
   });
 

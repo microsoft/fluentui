@@ -12,7 +12,9 @@ export const red = '#f00';
 const createColorScheme = (customValues = {}) => {
   return {
     foreground: colors.white,
+    foreground1: colors.black,
     background: colors.black,
+    background1: colors.white,
     border: colors.white,
     shadow: colors.white,
 
@@ -224,7 +226,9 @@ export const colorScheme: ColorSchemeMapping = {
   orange: createEmptyColorScheme({
     foreground: accessibleYellow,
     foreground1: accessibleYellow,
+    foreground2: colors.black,
     background: accessibleYellow,
+    background1: colors.white,
     border: accessibleCyan,
   }),
   pink: createEmptyColorScheme({
