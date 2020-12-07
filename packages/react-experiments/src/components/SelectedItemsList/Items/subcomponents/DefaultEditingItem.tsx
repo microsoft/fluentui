@@ -74,7 +74,7 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
 export const DefaultEditingItemInner = <TItem extends any>(
   props: IDefaultEditingItemInnerProps<TItem>,
 ): JSX.Element => {
-  let editingInput: HTMLInputElement;
+  const editingInput = React.useRef<any>();
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
 
@@ -97,8 +97,10 @@ export const DefaultEditingItemInner = <TItem extends any>(
     const itemText: string = props.getEditingItemText(props.item);
 
     setEditingSuggestions(props.getSuggestions(itemText));
-    editingInput.value = itemText;
-    editingInput.focus();
+    if (editingInput.current) {
+      editingInput.current.value = itemText;
+      editingInput.current.focus();
+    }
   }, []);
 
   const _renderEditingSuggestions = (): JSX.Element => {
@@ -110,7 +112,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
       <FloatingPicker
         componentRef={editingFloatingPicker}
         onSuggestionSelected={_onSuggestionSelected}
-        targetElement={editingInput}
+        targetElement={editingInput.current}
         onRemoveSuggestion={_onRemoveItem}
         onFloatingSuggestionsDismiss={props.onDismiss}
         suggestions={suggestionItems}
@@ -120,10 +122,6 @@ export const DefaultEditingItemInner = <TItem extends any>(
         pickerSuggestionsProps={props.pickerSuggestionsProps}
       />
     );
-  };
-
-  const _resolveInputRef = (ref: HTMLInputElement): void => {
-    editingInput = ref;
   };
 
   const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
@@ -203,7 +201,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
     <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
       <input
         {...nativeProps}
-        ref={_resolveInputRef}
+        ref={editingInput}
         autoCapitalize={'off'}
         autoComplete={'off'}
         onChange={_onInputChange}
