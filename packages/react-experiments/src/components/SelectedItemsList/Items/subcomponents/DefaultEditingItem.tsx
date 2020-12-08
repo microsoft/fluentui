@@ -3,13 +3,12 @@ import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui
 import {
   IBaseFloatingSuggestionsProps,
   IBaseFloatingPickerHeaderFooterProps,
-} from '../../../FloatingSuggestionsComposite';
+} from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
-import { useFloatingSuggestionItems } from '../../../UnifiedPicker';
+import { useFloatingSuggestionItems } from '../../../UnifiedPicker/hooks/useFloatingSuggestionItems';
 
 import * as styles from './DefaultEditingItem.scss';
-import { header } from '@fluentui/react-experiments/src/components/TilesList/TilesList.scss';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
@@ -47,8 +46,15 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
    */
   getEditingItemText: (item: TItem) => string;
 
+  /**
+   * Callback used to retrieve the suggestions to show in the floating suggestions
+   */
   getSuggestions: (value: string) => IFloatingSuggestionItemProps<TItem>[];
 
+  /**
+   * The header and footer props for the floating picker
+   * This should be set here instead of in onRenderFloatingPicker if you want them to be keyboard selectable
+   */
   pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
 }
 
@@ -78,6 +84,8 @@ export const DefaultEditingItemInner = <TItem extends any>(
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
 
+  const { item, onEditingComplete, getSuggestions, getEditingItemText, pickerSuggestionsProps } = props;
+
   const {
     focusItemIndex,
     suggestionItems,
@@ -89,19 +97,20 @@ export const DefaultEditingItemInner = <TItem extends any>(
     selectNextSuggestion,
   } = useFloatingSuggestionItems(
     editingSuggestions,
-    props.pickerSuggestionsProps?.footerItemsProps,
-    props.pickerSuggestionsProps?.headerItemsProps,
+    pickerSuggestionsProps?.footerItemsProps,
+    pickerSuggestionsProps?.headerItemsProps,
   );
 
   React.useEffect(() => {
-    const itemText: string = props.getEditingItemText(props.item);
+    const itemText: string = getEditingItemText(props.item);
 
-    setEditingSuggestions(props.getSuggestions(itemText));
+    setEditingSuggestions(getSuggestions(itemText));
     if (editingInput.current) {
       editingInput.current.value = itemText;
       editingInput.current.focus();
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // We only want to run this once
 
   const _renderEditingSuggestions = (): JSX.Element => {
     const FloatingPicker = props.onRenderFloatingPicker;
@@ -119,7 +128,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
         selectedSuggestionIndex={focusItemIndex}
         selectedHeaderIndex={headerItemIndex}
         selectedFooterIndex={footerItemIndex}
-        pickerSuggestionsProps={props.pickerSuggestionsProps}
+        pickerSuggestionsProps={pickerSuggestionsProps}
       />
     );
   };
@@ -141,10 +150,10 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
     if (value === '') {
       if (props.onRemoveItem) {
-        props.onRemoveItem(props.item);
+        props.onRemoveItem(item);
       }
     } else {
-      setEditingSuggestions(props.getSuggestions(value));
+      setEditingSuggestions(getSuggestions(value));
     }
   };
 
@@ -186,7 +195,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
   };
 
   const _onSuggestionSelected = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
-    props.onEditingComplete(props.item, itemProps.item);
+    onEditingComplete(item, itemProps.item);
   };
 
   const _onRemoveItem = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
