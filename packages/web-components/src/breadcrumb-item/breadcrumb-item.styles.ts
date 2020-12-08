@@ -79,6 +79,10 @@ export const BreadcrumbItemStyles = css`
     .end {
         margin-inline-start: 6px;
     }
+
+    .separator {
+      display: flex;
+    }
 `.withBehaviors(
   neutralForegroundRestBehavior,
   neutralFillStealthRestBehavior,
