@@ -6,15 +6,30 @@ interface DocPageProps {
   title: string;
   description?: string;
   children: React.ReactNode;
+  themeSwitcher?: React.ReactNode;
 }
 
-const DocPage = ({ title, description, children }: DocPageProps) => (
-  <DocumentTitle title={`Fluent UI - ${title}`}>
-    <div style={{ padding: '2rem', fontSize: '1.15rem', maxWidth: '100ch' }}>
-      <Header as="h1" aria-level={2} content={title} description={description} align="center" />
-      {children}
+const PAGE_PADDING = '20px';
+const DocPage = ({ title, themeSwitcher, children }: DocPageProps) => (
+  <>
+    <div
+      id="docs-sticky-header"
+      style={{
+        position: 'sticky',
+        padding: `${PAGE_PADDING} ${PAGE_PADDING} 10px ${PAGE_PADDING}`,
+        top: 0,
+        background: '#DDDDDD88',
+        borderBottom: '1px solid #00000022',
+        backdropFilter: 'blur(10px)',
+        zIndex: 1000,
+      }}
+    >
+      {themeSwitcher}
+      <Header as="h1" aria-level={2} content={title} style={{ margin: 0 }} variables={{ color: 'black' }} />
+      <DocumentTitle title={`Fluent UI - ${title}`} />
     </div>
-  </DocumentTitle>
+    <div style={{ padding: '2rem', fontSize: '1.15rem', maxWidth: '100ch' }}>{children}</div>
+  </>
 );
 
 export default DocPage;

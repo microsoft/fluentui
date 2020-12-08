@@ -10,6 +10,8 @@ export * from '@fluentui/styles';
 export { teamsTheme } from './themes/teams';
 export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
+export { teamsV2Theme } from './themes/teams-v2';
+export { teamsDarkV2Theme } from './themes/teams-dark-v2';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
