@@ -20,6 +20,7 @@ import {
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
+import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
 
 const _suggestions = [
   {
@@ -70,6 +71,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   ]);
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+  const [inputText, setInputText] = React.useState<string>('');
 
   const ref = React.useRef<any>();
 
@@ -280,6 +282,12 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return { text: input };
   };
 
+  const _addGenericItem = (text: string) => {
+    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(text)]);
+    ref.current?.clearInput();
+    setInputText('');
+  };
+
   const _onInputChange = (filterText: string): void => {
     // Add a generic item to the end of the list
     // and clear the input if the user types a semicolon or comma
@@ -287,8 +295,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     const lastChar = filterText[lastCharIndex];
     if (lastChar === ';' || lastChar === ',') {
       const itemText = filterText.slice(0, filterText.length - 1);
-      setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(itemText)]);
-      ref.current?.clearInput();
+      _addGenericItem(itemText);
+    } else {
+      // Save the input text for force resolve
+      setInputText(filterText);
     }
 
     const allPeople = people;
@@ -303,6 +313,25 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   function _startsWith(text: string, filterText: string): boolean {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
+
+  const _forceResolve = () => {
+    // If the input has text, resolve that
+    if (inputText !== undefined && inputText !== '' && inputText !== null) {
+      // try force resolving, then if that doesn't work, add a generic item
+      if (!ref.current?.forceResolve()) {
+        _addGenericItem(inputText);
+      }
+    } else {
+      // put invalid items into edit mode
+    }
+  };
+
+  const _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    if (ev.ctrlKey && ev.which === KeyCodes.k) {
+      ev.preventDefault();
+      _forceResolve();
+    }
+  };
 
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
@@ -343,6 +372,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
         defaultDragDropEnabled={false}
+        onKeyDown={_onKeyDown}
       />
     </>
   );
