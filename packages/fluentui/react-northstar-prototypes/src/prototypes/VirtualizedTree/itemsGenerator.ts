@@ -16,7 +16,7 @@ function getItemsWithHeight(
       const item = {
         id: `${parent}${parent ? '-' : ''}${index}`,
         title: `Tree-Item-${parent}${parent ? '-' : ''}${index}`,
-        itemSize: getItemHeight(level),
+        'item-size': getItemHeight(level),
         ...(level < maxLevel && { items: generateLevel(level + 1, `${parent}${index}`) }),
       };
       result.push(item);
