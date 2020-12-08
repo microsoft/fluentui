@@ -138,7 +138,10 @@ export class E2EApi {
     modifier?: 'Control' | 'Shift',
   ): Promise<void> => {
     await this.getElement(selector);
+    await this.pressKey(key, modifier);
+  };
 
+  public pressKey = async (key: E2EKeys, modifier?: 'Control' | 'Shift'): Promise<void> => {
     if (modifier) {
       await this.page.keyboard.down(modifier);
     }
