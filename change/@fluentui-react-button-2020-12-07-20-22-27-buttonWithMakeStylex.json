@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Using makeStyles to power styling of Button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-08T04:21:43.381Z"
+}

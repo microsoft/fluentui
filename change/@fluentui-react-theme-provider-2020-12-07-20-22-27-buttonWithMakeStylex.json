@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Modifying makeStyles to power styling of components solving specificity issues.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-08T04:22:27.113Z"
+}
