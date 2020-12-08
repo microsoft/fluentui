@@ -530,7 +530,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   vstx: {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
-  whiteboard: {},
+  whiteboard: {
+    extensions: ['whiteboard'],
+  },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
   },
