@@ -61,7 +61,6 @@
   },
   "dependencies": {
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.10",
-    "@fluentui/react-button": "^1.0.0-beta.16",
     "@fluentui/react-checkbox": "^1.0.0-beta.22",
     "@fluentui/react-date-time": "^8.0.0-beta.22",
     "@fluentui/react-hooks": "^8.0.0-beta.8",
