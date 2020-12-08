@@ -277,6 +277,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           direction={FocusZoneDirection.bidirectional}
           shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
           role={'combobox'}
+          aria-label={this.props['aria-label']}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
           // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
@@ -306,6 +307,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-activedescendant={this.getActiveDescendant()}
+                  aria-labelledby={this.props['aria-label']}
                   role={'textbox'}
                   disabled={disabled}
                   onInputChange={this.props.onInputChange}
