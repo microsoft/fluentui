@@ -19,7 +19,7 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <h3>Size 48 csv icon as .png</h3>
         <Icon {...getFileTypeIconProps({ extension: 'csv', size: 48, imageFileType: 'png' })} />
         <h3>Size 64 model icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'blend', size: 64, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'whiteboard', size: 64, imageFileType: 'png' })} />
         <h3>Size 96 docx icon as .png</h3>
         <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'png' })} />
         <h3>Size 16 dotx icon as .svg</h3>
