@@ -1,5 +1,7 @@
-pr:
-  - 7.0
+# Disabling perf-test until Github account issue is resolved.
+# pr:
+#   - 7.0
+pr: none
 
 trigger: none
 
