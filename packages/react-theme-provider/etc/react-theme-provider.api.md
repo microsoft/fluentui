@@ -22,6 +22,9 @@ import { Variants } from '@fluentui/theme';
 export const applyClasses: <TState extends {}>(state: TState, classMap: Record<string, string>) => void;
 
 // @public (undocumented)
+export function createTarget(targetDocument: Document): Renderer;
+
+// @public (undocumented)
 export type FontFace = IFontFace;
 
 // @public (undocumented)
@@ -67,6 +70,13 @@ export const MergeStylesProvider: ({ children }: {
 export const mergeStylesRenderer: StyleRenderer;
 
 export { PartialTheme }
+
+// @public (undocumented)
+export type Renderer = {
+    cache: Record<string, [string, string]>;
+    node: HTMLStyleElement;
+    index: number;
+};
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {

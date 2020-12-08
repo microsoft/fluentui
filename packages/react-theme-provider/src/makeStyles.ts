@@ -1,8 +1,7 @@
 import hashString from '@emotion/hash';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-// import { useFluentContext } from '@fluentui/react-bindings';
-import * as CSS from 'csstype';
+import { Properties as CSSProperties } from 'csstype';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { expand } from 'inline-style-expand-shorthand';
@@ -15,6 +14,40 @@ import { cssifyDeclaration } from './cssifyDeclaration';
 import { insertStyles } from './insertStyles';
 import { useTheme } from './useTheme';
 
+//
+//
+//
+
+export type Renderer = {
+  cache: Record<string, [string, string]>;
+  node: HTMLStyleElement;
+  index: number;
+};
+const targets = new WeakMap<Document, Renderer>();
+
+export function createTarget(targetDocument: Document): Renderer {
+  let target = targets.get(targetDocument);
+
+  if (target) {
+    return target;
+  }
+
+  const node = targetDocument.createElement('style');
+
+  node.setAttribute('FCSS', 'RULE');
+  targetDocument.head.appendChild(node);
+
+  target = { cache: {}, node, index: 0 };
+
+  targets.set(targetDocument, target);
+
+  return target;
+}
+
+//
+//
+//
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isObject(val: any) {
   // eslint-disable-next-line eqeqeq
@@ -24,6 +57,47 @@ function isObject(val: any) {
 //
 //
 //
+
+const canUseCSSVariables = window.CSS && CSS.supports('color', 'var(--c)');
+
+//
+// IE11 specific
+//
+
+// Create graph of inputs to map to output.
+const graph = new Map();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
+  for (const key of path) {
+    graphNode = graphNode.get(key);
+
+    if (!graphNode) {
+      return;
+    }
+  }
+
+  return graphNode;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
+  for (let i = 0; i < path.length - 1; i++) {
+    const key = path[i];
+
+    let current = graphNode.get(key);
+
+    if (!current) {
+      current = new Map();
+
+      graphNode.set(key, current);
+    }
+
+    graphNode = current;
+  }
+
+  graphNode.set(path[path.length - 1], value);
+};
 
 //
 //
@@ -59,18 +133,18 @@ function normalizeNestedProperty(nestedProperty: string): string {
   return nestedProperty;
 }
 
-// function createTokensProxy(tokens: any) {
+// function createCSSVariablesProxy(tokens: any) {
 //   const g = {
 //     // @ts-ignore
 //     get(target: any, key: any) {
 //       if (isObject(target[key])) {
 //         return new Proxy({ ...target[key], value: (target.value ?? '') + '-' + key }, g);
 //       }
-
+//
 //       return `var(--theme${target.value ?? ''}-${key})`;
 //     },
 //   };
-
+//
 //   return new Proxy(tokens, g);
 // }
 
@@ -83,7 +157,7 @@ const HASH_PREFIX = 'a';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function resolveStyles(styles: any[], selector = '', result: any = {}): any {
   const expandedStyles = expand(styles);
-  const properties = Object.keys(expandedStyles) as (keyof CSS.Properties)[];
+  const properties = Object.keys(expandedStyles) as (keyof CSSProperties)[];
 
   properties.forEach(propName => {
     const propValue = expandedStyles[propName];
@@ -118,7 +192,8 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
         declaration = cssifyDeclaration(rtl.key, rtl.value);
         const rtlCSS = stylis('', `.r${className}${selector}{${declaration}}`);
 
-        result[key] = [className, css, 'r' + className, rtlCSS];
+        // There is no sense to store RTL className as it's "r" + regular className
+        result[key] = [className, css, rtlCSS];
       } else {
         result[key] = [className, css];
       }
@@ -134,48 +209,84 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
   return result;
 }
 
-// function resolveMatches(styles, selectors) {
-//   const matchedStyles = styles.reduce((acc, definition) => {
-//
-//   })
-// }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function matchesSelectors(matcher: any, selectors: any): boolean {
+function matchesSelectors(matchers: any, selectors: any): boolean {
+  if (matchers === null) {
+    return true;
+  }
+
   let matches = true;
 
-  if (isObject(matcher)) {
-    Object.keys(matcher).forEach(matcherName => {
-      const matcherValue = matcher[matcherName];
-      const matchesSelector =
-        // eslint-disable-next-line eqeqeq
-        matcherValue == selectors[matcherName] ||
-        // https://stackoverflow.com/a/19277873/6488546
-        // find less tricky way
-        // eslint-disable-next-line eqeqeq
-        (matcherValue === false && selectors[matcherName] == null);
+  // eslint-disable-next-line guard-for-in
+  for (const matcherName in matchers) {
+    const matcherValue = matchers[matcherName];
+    const matchesSelector =
+      // eslint-disable-next-line eqeqeq
+      matcherValue == selectors[matcherName] ||
+      // https://stackoverflow.com/a/19277873/6488546
+      // find less tricky way
+      // eslint-disable-next-line eqeqeq
+      (matcherValue === false && selectors[matcherName] == null);
 
-      if (!matchesSelector) {
-        matches = false;
-      }
-    });
+    if (!matchesSelector) {
+      matches = false;
+      break;
+    }
   }
 
   return matches;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function resolveStylesToClasses(styles: any[], tokens: any) {
-  return styles.map(definition => {
-    return [
-      definition[0],
-      resolveStyles(
-        typeof definition[1] === 'function' ? definition[1](tokens /*createTokensProxy(tokens)*/) : definition[1],
-      ),
-    ];
+function resolveStylesToClasses(definitions: any[], tokens: any) {
+  return definitions.map(definition => {
+    const matchers = definition[0];
+    const styles = definition[1];
+    const resolvedStyles = definition[2];
+
+    const areTokenDependantStyles = typeof styles === 'function';
+
+    if (canUseCSSVariables) {
+      // we can always use prebuilt styles in this case and static cache in runtime
+
+      if (resolvedStyles) {
+        return [matchers, resolvedStyles];
+      }
+
+      // if static cache is not present, eval it and mutate original object
+
+      definition[2] = resolveStyles(areTokenDependantStyles ? styles(tokens) : styles);
+
+      return [matchers, definition[2]];
+    }
+
+    // if CSS variables are not supported we have to re-eval only functions, otherwise static cache can be reused
+
+    if (areTokenDependantStyles) {
+      // An additional level of cache based on tokens to avoid style computation for IE11
+
+      const path = [tokens, styles];
+      const resolvedStyles1 = graphGet(graph, path);
+
+      if (resolvedStyles1) {
+        return [matchers, resolvedStyles1];
+      }
+
+      const resolveStyles2 = resolveStyles(styles(tokens));
+      graphSet(graph, path, resolveStyles2);
+
+      return [matchers, resolveStyles2];
+    }
+
+    if (resolvedStyles) {
+      return [matchers, resolvedStyles];
+    }
+
+    definition[2] = resolveStyles(styles);
+
+    return [matchers, definition[2]];
   });
 }
-
-const DEFINITION_CACHE: Record<string, [string, string]> = {};
 
 /**
  * TODO: Update it with something proper...
@@ -185,8 +296,9 @@ const DEFINITION_CACHE: Record<string, [string, string]> = {};
 export function makeNonReactStyles(styles: any) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
   return function ___(selectors: any, options: any, ...classNames: (string | undefined)[]): string {
-    // console.log(options.tokens);
-    const resolvedClasses = resolveStylesToClasses(styles, options.tokens);
+    // If CSS variables are present we can use CSS variables proxy like in build time
+    const tokens = options.tokens; // canUseCSSVariables ? createCSSVariablesProxy(options.tokens) : options.tokens;
+    const resolvedStyles = resolveStylesToClasses(styles, tokens);
 
     const nonMakeClasses: string[] = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -198,8 +310,8 @@ export function makeNonReactStyles(styles: any) {
     classNames.forEach(className => {
       if (typeof className === 'string') {
         className.split(' ').forEach(cName => {
-          if (DEFINITION_CACHE[cName] !== undefined) {
-            overrides[DEFINITION_CACHE[cName][0]] = DEFINITION_CACHE[cName][1];
+          if (options.target.cache[cName] !== undefined) {
+            overrides[options.target.cache[cName][0]] = options.target.cache[cName][1];
           } else {
             nonMakeClasses.push(cName);
           }
@@ -215,18 +327,20 @@ export function makeNonReactStyles(styles: any) {
 
     // TODO: make me faster???
 
-    const matchedDefinitions = resolvedClasses.reduce((acc, definition) => {
+    const matchedDefinitions = resolvedStyles.reduce((acc, definition) => {
       if (matchesSelectors(definition[0], selectors)) {
-        return Object.assign(acc, definition[1]);
+        acc.push(definition[1]);
       }
 
       return acc;
-    }, {});
-    const resultDefinitions = { ...matchedDefinitions, ...overrides };
+    }, []);
+    const resultDefinitions = Object.assign({}, ...matchedDefinitions, overrides);
 
-    return nonMakeClasses.join(' ') + insertStyles(resultDefinitions, DEFINITION_CACHE, options.rtl, options.target);
+    return nonMakeClasses.join(' ') + insertStyles(resultDefinitions, options.rtl, options.target);
   };
 }
+
+const defaultTarget = createTarget(document);
 
 /*
  * A wrapper to connect to a React context. SHOULD USE unified context!!!
@@ -241,7 +355,7 @@ export function makeStyles(styles: any) {
 
     return result(
       selectors,
-      { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens } },
+      { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
       ...classNames,
     );
   };
