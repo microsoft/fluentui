@@ -16,6 +16,7 @@ import {
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
   ItemWithContextMenu,
+  ISelectedItemProps,
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
@@ -125,6 +126,19 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return suggestionList;
   };
 
+  const _isValid = (item: IPersonaProps): boolean => {
+    if (item.secondaryText) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
+    <SelectedPersona isValid={_isValid} {...props} />
+  );
+
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
    */
@@ -152,7 +166,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
           onClick: () => onTrigger && onTrigger(),
         },
       ],
-      itemComponent: TriggerOnContextMenu(SelectedPersona),
+      itemComponent: TriggerOnContextMenu(SelectedItemInternal),
     }),
   });
 
@@ -267,12 +281,13 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
-    // Clear the input if the user types a semicolon or comma
-    // This is meant to be an example of using the forward ref,
-    // feel free to comment out if it impacts your testing
+    // Add a generic item to the end of the list
+    // and clear the input if the user types a semicolon or comma
     const lastCharIndex = filterText.length - 1;
     const lastChar = filterText[lastCharIndex];
     if (lastChar === ';' || lastChar === ',') {
+      const itemText = filterText.slice(0, filterText.length - 1);
+      setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(itemText)]);
       ref.current?.clearInput();
     }
 
