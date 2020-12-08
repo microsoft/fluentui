@@ -479,7 +479,7 @@ export const useButtonStyles = makeStyles([
 
 const staticButtonStyles = [
   [
-    null,
+    0,
     null,
     {
       cursor: ['a1k6fduh', '.a1k6fduh{cursor:pointer;}'],
@@ -674,7 +674,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    null,
+    0,
     null,
     {
       '--button-size-smallest': ['a1cz6fjg', '.a1cz6fjg{--button-size-smallest:24px;}'],
@@ -711,9 +711,9 @@ const staticButtonStyles = [
       '--button-pressed-content-color': ['a1cef4xo', '.a1cef4xo{--button-pressed-content-color:#201f1e;}'],
     },
   ],
-  [{ circular: true }, null, { '--button-border-radius': ['a18swz6d', '.a18swz6d{--button-border-radius:50000px;}'] }],
+  [1, null, { '--button-border-radius': ['a18swz6d', '.a18swz6d{--button-border-radius:50000px;}'] }],
   [
-    { block: true },
+    2,
     null,
     {
       '--button-max-width': ['a1nh3o6k', '.a1nh3o6k{--button-max-width:none;}'],
@@ -721,7 +721,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { iconOnly: true },
+    4,
     null,
     {
       '--button-min-width': ['agacytd', '.agacytd{--button-min-width:var(--button-height);}'],
@@ -733,7 +733,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { primary: true },
+    8,
     null,
     {
       '--button-background': ['a1bnvck0', '.a1bnvck0{--button-background:#0078d4;}'],
@@ -748,7 +748,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { ghost: true },
+    256,
     null,
     {
       '--button-background': ['a14qiakg', '.a14qiakg{--button-background:transparent;}'],
@@ -762,7 +762,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { transparent: true },
+    1024,
     null,
     {
       '--button-background': ['a14qiakg', '.a14qiakg{--button-background:transparent;}'],
@@ -776,7 +776,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { disabled: true },
+    512,
     null,
     {
       pointerEvents: ['a1aehjj5', '.a1aehjj5{pointer-events:none;}'],
@@ -786,7 +786,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { disabled: true, ghost: true },
+    768,
     null,
     {
       '--button-background': ['a1ueb7ur', '.a1ueb7ur{--button-background:#f3f2f1;}'],
@@ -794,7 +794,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { disabled: true, transparent: true },
+    1536,
     null,
     {
       '--button-background': ['a14qiakg', '.a14qiakg{--button-background:transparent;}'],
@@ -803,7 +803,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'smallest' },
+    2048,
     null,
     {
       '--button-height': ['a1q1gjpc', '.a1q1gjpc{--button-height:var(--button-size-smallest);}'],
@@ -811,7 +811,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'smaller' },
+    4096,
     null,
     {
       '--button-height': ['a61vcxr', '.a61vcxr{--button-height:var(--button-size-smaller);}'],
@@ -819,7 +819,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'small' },
+    8192,
     null,
     {
       '--button-height': ['a11cfhhr', '.a11cfhhr{--button-height:var(--button-size-small);}'],
@@ -827,7 +827,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'large' },
+    16384,
     null,
     {
       '--button-height': ['a7xv9lr', '.a7xv9lr{--button-height:var(--button-size-large);}'],
@@ -835,7 +835,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'larger' },
+    32768,
     null,
     {
       '--button-height': ['a1gv5n59', '.a1gv5n59{--button-height:var(--button-size-larger);}'],
@@ -843,7 +843,7 @@ const staticButtonStyles = [
     },
   ],
   [
-    { size: 'largest' },
+    65536,
     null,
     {
       '--button-height': ['a18cyma4', '.a18cyma4{--button-height:var(--button-size-largest);}'],
@@ -851,6 +851,23 @@ const staticButtonStyles = [
     },
   ],
 ];
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+staticButtonStyles.mapping = {
+  circulartrue: 1,
+  blocktrue: 2,
+  iconOnlytrue: 4,
+  primarytrue: 8,
+  ghosttrue: 256,
+  transparenttrue: 1024,
+  disabledtrue: 512,
+  sizesmallest: 2048,
+  sizesmaller: 4096,
+  sizesmall: 8192,
+  sizelarge: 16384,
+  sizelarger: 32768,
+  sizelargest: 65536,
+};
 export const useStaticButtonStyles = makeStyles(staticButtonStyles);
 
 export const useButtonIconStyles = makeStyles([
@@ -922,7 +939,7 @@ export const useButtonIconStyles = makeStyles([
 
 const staticButtonIconStyles = [
   [
-    null,
+    0,
     null,
     {
       alignItems: [
@@ -943,16 +960,16 @@ const staticButtonIconStyles = [
     },
   ],
   [
-    null,
+    0,
     null,
     {
       '--button-icon-color': ['a7i9xs0', '.a7i9xs0{--button-icon-color:inherit;}'],
       '--button-icon-size': ['a1mdaal6', '.a1mdaal6{--button-icon-size:16px;}'],
     },
   ],
-  [{ primary: true }, null, { '--button-icon-color': ['a7i9xs0', '.a7i9xs0{--button-icon-color:inherit;}'] }],
+  [1, null, { '--button-icon-color': ['a7i9xs0', '.a7i9xs0{--button-icon-color:inherit;}'] }],
   [
-    { ghost: true },
+    2,
     null,
     {
       '--button-icon-color': ['adarsur', '.adarsur{--button-icon-color:#106ebe;}'],
@@ -961,7 +978,7 @@ const staticButtonIconStyles = [
     },
   ],
   [
-    { transparent: true },
+    4,
     null,
     {
       '--button-icon-color': ['adarsur', '.adarsur{--button-icon-color:#106ebe;}'],
@@ -969,8 +986,11 @@ const staticButtonIconStyles = [
       '--button-pressed-icon-color': ['a15jls3h', '.a15jls3h{--button-pressed-icon-color:#004578;}'],
     },
   ],
-  [{ disabled: true }, null, { '--button-icon-color': ['a7i9xs0', '.a7i9xs0{--button-icon-color:inherit;}'] }],
+  [8, null, { '--button-icon-color': ['a7i9xs0', '.a7i9xs0{--button-icon-color:inherit;}'] }],
 ];
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+staticButtonIconStyles.mapping = { primarytrue: 1, ghosttrue: 2, transparenttrue: 4, disabledtrue: 8 };
 
 export const useStaticButtonIconStyles = makeStyles(staticButtonIconStyles);
 
@@ -979,7 +999,10 @@ export const useButtonContentStyles = makeStyles([
   [null, { lineHeight: '1' }],
 ]);
 
-const staticButtonContentStyles = [[null, null, { lineHeight: ['ap6vxd', '.ap6vxd{line-height:1;}'] }]];
+const staticButtonContentStyles = [[0, null, { lineHeight: ['ap6vxd', '.ap6vxd{line-height:1;}'] }]];
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+staticButtonContentStyles.mapping = {};
 
 export const useStaticButtonContentStyles = makeStyles(staticButtonContentStyles);
 

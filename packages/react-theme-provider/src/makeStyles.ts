@@ -210,38 +210,61 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function matchesSelectors(matchers: any, selectors: any): boolean {
-  if (matchers === null) {
-    return true;
+function strinfigyMatcher(matcherName: any, matcherValue: any): string {
+  // eslint-disable-next-line eqeqeq
+  return matcherName + '' + (matcherValue == null ? false : matcherValue);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function matchersToBits(definitions: any, matchers: any) {
+  if (!definitions.mapping) {
+    let i = 0;
+    definitions.mapping = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    definitions.forEach((definition: any) => {
+      const definitionMatchers = definition[0];
+
+      if (definitionMatchers === null) {
+        return null;
+      }
+
+      Object.keys(definitionMatchers).forEach(matcherName => {
+        const maskKey = strinfigyMatcher(matcherName, definitionMatchers[matcherName]);
+
+        // eslint-disable-next-line no-bitwise
+        definitions.mapping[maskKey] = 1 << i;
+        i++;
+      });
+    }, {});
   }
 
-  let matches = true;
+  if (matchers === null) {
+    return 0;
+  }
+
+  return selectorsToBits(definitions.mapping, matchers);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function selectorsToBits(mapping: any, selectors: any): number {
+  let mask = 0;
 
   // eslint-disable-next-line guard-for-in
-  for (const matcherName in matchers) {
-    const matcherValue = matchers[matcherName];
-    const matchesSelector =
-      // eslint-disable-next-line eqeqeq
-      matcherValue == selectors[matcherName] ||
-      // https://stackoverflow.com/a/19277873/6488546
-      // find less tricky way
-      // eslint-disable-next-line eqeqeq
-      (matcherValue === false && selectors[matcherName] == null);
+  for (const selectorName in selectors) {
+    const selectorInBits = mapping[strinfigyMatcher(selectorName, selectors[selectorName])];
 
-    if (!matchesSelector) {
-      matches = false;
-      break;
-    }
+    mask += selectorInBits || 0; // can be undefined
   }
 
-  return matches;
+  return mask;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function resolveStylesToClasses(definitions: any[], tokens: any) {
-  return definitions.map(definition => {
+  const resolvedStyles = definitions.map((definition, i) => {
     const matchers = definition[0];
     const styles = definition[1];
+    // eslint-disable-next-line no-shadow
     const resolvedStyles = definition[2];
 
     const areTokenDependantStyles = typeof styles === 'function';
@@ -253,11 +276,13 @@ function resolveStylesToClasses(definitions: any[], tokens: any) {
         return [matchers, resolvedStyles];
       }
 
+      // matchers should be also converted to bit masks
+      definitions[i][0] = matchersToBits(definitions, matchers);
+
       // if static cache is not present, eval it and mutate original object
+      definitions[i][2] = resolveStyles(areTokenDependantStyles ? styles(tokens) : styles);
 
-      definition[2] = resolveStyles(areTokenDependantStyles ? styles(tokens) : styles);
-
-      return [matchers, definition[2]];
+      return [definition[0], definition[2]];
     }
 
     // if CSS variables are not supported we have to re-eval only functions, otherwise static cache can be reused
@@ -286,6 +311,12 @@ function resolveStylesToClasses(definitions: any[], tokens: any) {
 
     return [matchers, definition[2]];
   });
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  resolvedStyles.mapping = definitions.mapping;
+
+  return resolvedStyles;
 }
 
 /**
@@ -294,6 +325,8 @@ function resolveStylesToClasses(definitions: any[], tokens: any) {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function makeNonReactStyles(styles: any) {
+  const cxCache: Record<string, string> = {};
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
   return function ___(selectors: any, options: any, ...classNames: (string | undefined)[]): string {
     // If CSS variables are present we can use CSS variables proxy like in build time
@@ -302,10 +335,12 @@ export function makeNonReactStyles(styles: any) {
 
     // Dumper for static styles
     // console.log(JSON.stringify(styles.map(d => [d[0], null, d[2]])));
+    // console.log(styles, JSON.stringify(resolvedStyles.mapping));
 
-    const nonMakeClasses: string[] = [];
+    let nonMakeClasses: string = '';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const overrides: any = {};
+    let overridesCx = '';
 
     // overrides?.__styles ? styles.concat(overrides?.__styles) : styles,
     // tokens,
@@ -315,31 +350,42 @@ export function makeNonReactStyles(styles: any) {
         className.split(' ').forEach(cName => {
           if (options.target.cache[cName] !== undefined) {
             overrides[options.target.cache[cName][0]] = options.target.cache[cName][1];
+            overridesCx += cName;
           } else {
-            nonMakeClasses.push(cName);
+            nonMakeClasses += cName;
           }
         });
       }
     });
 
-    // console.log('classNames', classNames);
-    // console.log('overrides', overrides);
-    // console.log('resolvedClasses', resolvedClasses);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const selectorsMask = selectorsToBits(resolvedStyles.mapping, selectors);
 
-    // console.log(classNames, resolvedClasses, overrides);
+    const overridesHash = overridesCx === '' ? '' : overridesCx;
+    const cxCacheKey = selectorsMask + '' + overridesHash;
 
-    // TODO: make me faster???
+    if (cxCache[cxCacheKey] !== undefined) {
+      return nonMakeClasses + cxCache[cxCacheKey];
+    }
 
     const matchedDefinitions = resolvedStyles.reduce((acc, definition) => {
-      if (matchesSelectors(definition[0], selectors)) {
+      const matchersInBits = definition[0];
+
+      // eslint-disable-next-line no-bitwise
+      if (matchersInBits === 0 || !!(matchersInBits & selectorsMask)) {
         acc.push(definition[1]);
       }
 
       return acc;
     }, []);
-    const resultDefinitions = Object.assign({}, ...matchedDefinitions, overrides);
 
-    return nonMakeClasses.join(' ') + insertStyles(resultDefinitions, options.rtl, options.target);
+    const resultDefinitions = Object.assign({}, ...matchedDefinitions, overrides);
+    const resultClasses = nonMakeClasses + insertStyles(resultDefinitions, options.rtl, options.target);
+
+    cxCache[cxCacheKey] = resultClasses;
+
+    return resultClasses;
   };
 }
 
@@ -356,10 +402,13 @@ export function makeStyles(styles: any) {
   return function ___(selectors: any = {}, ...classNames: (string | undefined)[]): string {
     const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
 
-    return result(
-      selectors,
-      { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
-      ...classNames,
+    // eslint-disable-next-line prefer-spread
+    return result.apply(
+      undefined,
+      [
+        selectors,
+        { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
+      ].concat(classNames),
     );
   };
 }
