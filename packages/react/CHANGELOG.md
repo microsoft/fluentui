@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Dec 2020 12:30:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.25)
+
+Fri, 04 Dec 2020 12:30:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.23..@fluentui/react_v8.0.0-beta.25)
+
+### Changes
+
+- Add combo box exports ([PR #16133](https://github.com/microsoft/fluentui/pull/16133) by dahajek@microsoft.com)
 
 ## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.23)
 

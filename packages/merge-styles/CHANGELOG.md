@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.3)
+
+Thu, 03 Dec 2020 12:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.0.0-beta.2..@fluentui/merge-styles_v8.0.0-beta.3)
+
+### Changes
+
+- Fix mergeStyles handling of !important for margin and padding ([PR #16111](https://github.com/microsoft/fluentui/pull/16111) by behowell@microsoft.com)
 
 ## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.2)
 

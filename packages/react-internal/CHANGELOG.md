@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Dec 2020 12:29:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.23)
+
+Mon, 07 Dec 2020 12:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.21..@fluentui/react-internal_v8.0.0-beta.23)
+
+### Changes
+
+- SpinButton: Add onChange ([PR #16137](https://github.com/microsoft/fluentui/pull/16137) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.21)
 

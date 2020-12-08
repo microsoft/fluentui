@@ -55,8 +55,8 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/react-charting/ @Raghurk
-packages/react-date-time @lorejoh12 @evlevy @pompomon
-packages/date-time-utilities @lorejoh12 @evlevy @pompomon
+packages/react-date-time @lorejoh12 @evlevy
+packages/date-time-utilities @lorejoh12 @evlevy
 packages/eslint-plugin/ @ecraig12345
 packages/react-docsite-components/ @ecraig12345
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers

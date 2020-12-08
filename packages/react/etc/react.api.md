@@ -514,9 +514,45 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
+export interface IComboBoxClassNames {
+    // (undocumented)
+    callout: string;
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    errorMessage: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    optionsContainer: string;
+    // (undocumented)
+    optionsContainerWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+}
+
+// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionClassNames {
+    // (undocumented)
+    optionText: string;
+    // (undocumented)
+    optionTextWrapper: string;
+    // (undocumented)
+    root: string;
 }
 
 // @public (undocumented)
@@ -537,7 +573,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
