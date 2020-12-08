@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPickerItemProps, ISuggestionModel, ValidationState } from '@fluentui/react/lib/Pickers';
+import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
 export interface ISelectedItemsList<T> {
