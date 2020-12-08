@@ -22,6 +22,9 @@ import { Variants } from '@fluentui/theme';
 export const applyClasses: <TState extends {}>(state: TState, classMap: Record<string, string>) => void;
 
 // @public (undocumented)
+export function createTarget(targetDocument: Document): Renderer;
+
+// @public (undocumented)
 export type FontFace = IFontFace;
 
 // @public (undocumented)
@@ -45,7 +48,7 @@ export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IS
 export function makeNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
 
 // @public (undocumented)
-export function makeStyles(styles: any): (selectors?: any, ...classNames: string[]) => string;
+export function makeStyles(styles: any): (selectors?: any, ...classNames: (string | undefined)[]) => string;
 
 // @public
 export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: any) => void;
@@ -67,6 +70,13 @@ export const MergeStylesProvider: ({ children }: {
 export const mergeStylesRenderer: StyleRenderer;
 
 export { PartialTheme }
+
+// @public (undocumented)
+export type Renderer = {
+    cache: Record<string, [string, string]>;
+    node: HTMLStyleElement;
+    index: number;
+};
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {

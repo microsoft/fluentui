@@ -1,46 +1,33 @@
-const styleNode = typeof document === 'object' ? document.createElement('style') : null;
+import { Renderer } from './makeStyles';
 
-if (styleNode) {
-  styleNode.setAttribute('fcss', 'rule');
-  document.head.appendChild(styleNode);
-}
-
-let index = 0;
-
-// console.log('styleSheet', styleNode);
-
-export function insertStyles(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  definitions: any,
-  cache: Record<string, [string, string]>,
-  rtl: boolean,
-  target: Document,
-): string {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function insertStyles(definitions: any, rtl: boolean, target: Renderer): string {
   let classes = '';
 
   // eslint-disable-next-line guard-for-in
   for (const propName in definitions) {
     const definition = definitions[propName];
-    const ruleClassName = rtl ? definition[2] || definition[0] : definition[0];
+    // className || css || rtlCSS
+
+    const className = definition[0];
+    const rtlCSS = definition[2];
+
+    const ruleClassName = rtl ? (rtlCSS ? 'r' + className : className) : className;
 
     // Should be done always to return classes
     classes += ' ' + ruleClassName; // adds useless empty string on beginning
 
-    if (cache[ruleClassName]) {
+    if (target.cache[ruleClassName]) {
       continue;
     }
 
-    const ruleCSS = rtl ? definition[3] || definition[1] : definition[1];
+    const css = definition[1];
+    const ruleCSS = rtl ? rtlCSS || css : css;
 
-    // console.log('insertStyles:definitions', definitions[propertyName][1]);
+    target.cache[ruleClassName] = [propName, definition];
 
-    cache[ruleClassName] = [propName, definition];
-
-    if (styleNode) {
-      (styleNode.sheet as CSSStyleSheet).insertRule(ruleCSS, index); // TODO: index can't be global, should be per node
-    }
-
-    index++;
+    (target.node.sheet as CSSStyleSheet).insertRule(ruleCSS, target.index);
+    target.index++;
   }
 
   // console.log('insertStyles:classes', classes);
