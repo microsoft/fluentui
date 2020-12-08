@@ -4,7 +4,6 @@ import { css } from '@fluentui/utilities';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButton } from './useCompoundButton';
 import {
-  /*useCompoundButtonClasses*/
   useCompoundButtonStyles,
   useCompoundButtonContentStyles,
   useCompoundButtonContentContainerStyles,
@@ -44,7 +43,7 @@ export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>
     useCompoundButtonSecondaryContentStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
-  // useCompoundButtonClasses(state);
+
   useInlineTokens(state, '--button');
 
   return renderCompoundButton(state);

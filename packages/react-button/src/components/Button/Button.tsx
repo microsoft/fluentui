@@ -4,13 +4,7 @@ import { css } from '@fluentui/utilities';
 import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
 import { useButton } from './useButton';
-import {
-  /*useButtonClasses,*/
-  useButtonStyles,
-  useButtonContentStyles,
-  useButtonIconStyles,
-  ButtonClassNames,
-} from './useButtonClasses';
+import { useButtonStyles, useButtonContentStyles, useButtonIconStyles, ButtonClassNames } from './useButtonClasses';
 
 /**
  * Define a styled Button, using the `useButton` hook.
@@ -28,7 +22,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   );
   (state.icon as any).className = css(ButtonClassNames.icon, (state.icon as any).className, useButtonIconStyles(state));
   /* eslint-enable @typescript-eslint/no-explicit-any */
-  // useButtonClasses(state);
+
   useInlineTokens(state, '--button');
 
   return renderButton(state);

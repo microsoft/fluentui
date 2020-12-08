@@ -5,7 +5,6 @@ import { css } from '@fluentui/utilities';
 import { SplitButtonProps } from './SplitButton.types';
 import { useSplitButton } from './useSplitButton';
 import {
-  /*useSplitButtonClasses*/
   useSplitButtonStyles,
   useSplitButtonButtonStyles,
   useSplitButtonDividerStyles,
@@ -44,7 +43,6 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
     useSplitButtonMenuButtonStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
-  // useSplitButtonClasses(state);
 
   /**
    * Type 'SplitButtonState' has no properties in common with type '{

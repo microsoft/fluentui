@@ -5,7 +5,6 @@ import { css } from '@fluentui/utilities';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
 import {
-  /*useMenuButtonClasses*/
   useMenuButtonStyles,
   useMenuButtonContentStyles,
   useMenuButtonIconStyles,
@@ -41,7 +40,6 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
     useMenuButtonMenuIconStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
-  // useMenuButtonClasses(state);
 
   // TODO remove any
   /**

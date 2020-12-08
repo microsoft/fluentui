@@ -5,7 +5,6 @@ import { ToggleButtonProps } from './ToggleButton.types';
 import { renderToggleButton } from './renderToggleButton';
 import { useToggleButton } from './useToggleButton';
 import {
-  /*useToggleButtonClasses*/
   useToggleButtonStyles,
   useToggleButtonContentStyles,
   useToggleButtonIconStyles,
@@ -32,7 +31,7 @@ export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((pr
     useToggleButtonIconStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
-  // useToggleButtonClasses(state);
+
   useInlineTokens(state, '--button');
 
   return renderToggleButton(state);
