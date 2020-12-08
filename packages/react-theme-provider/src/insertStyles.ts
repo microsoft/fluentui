@@ -7,9 +7,10 @@ if (styleNode) {
 
 let index = 0;
 
-console.log('styleSheet', styleNode);
+// console.log('styleSheet', styleNode);
 
 export function insertStyles(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   definitions: any,
   cache: Record<string, [string, string]>,
   rtl: boolean,
@@ -17,6 +18,7 @@ export function insertStyles(
 ): string {
   let classes = '';
 
+  // eslint-disable-next-line guard-for-in
   for (const propName in definitions) {
     const definition = definitions[propName];
     const ruleClassName = rtl ? definition[2] || definition[0] : definition[0];

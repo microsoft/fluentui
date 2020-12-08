@@ -1,9 +1,12 @@
 import hashString from '@emotion/hash';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // import { useFluentContext } from '@fluentui/react-bindings';
 import * as CSS from 'csstype';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { expand } from 'inline-style-expand-shorthand';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import * as _Stylis from 'stylis';
 import { convertProperty } from 'rtl-css-js/core';
@@ -12,7 +15,9 @@ import { cssifyDeclaration } from './cssifyDeclaration';
 import { insertStyles } from './insertStyles';
 import { useTheme } from './useTheme';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isObject(val: any) {
+  // eslint-disable-next-line eqeqeq
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
 }
 
@@ -24,6 +29,7 @@ function isObject(val: any) {
 //
 //
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Stylis = (_Stylis as any).default || _Stylis;
 
 const stylis = new Stylis({
@@ -53,20 +59,20 @@ function normalizeNestedProperty(nestedProperty: string): string {
   return nestedProperty;
 }
 
-function createTokensProxy(tokens: any) {
-  const g = {
-    // @ts-ignore
-    get(target: any, key: any) {
-      if (isObject(target[key])) {
-        return new Proxy({ ...target[key], value: (target.value ?? '') + '-' + key }, g);
-      }
+// function createTokensProxy(tokens: any) {
+//   const g = {
+//     // @ts-ignore
+//     get(target: any, key: any) {
+//       if (isObject(target[key])) {
+//         return new Proxy({ ...target[key], value: (target.value ?? '') + '-' + key }, g);
+//       }
 
-      return `var(--theme${target.value ?? ''}-${key})`;
-    },
-  };
+//       return `var(--theme${target.value ?? ''}-${key})`;
+//     },
+//   };
 
-  return new Proxy(tokens, g);
-}
+//   return new Proxy(tokens, g);
+// }
 
 const HASH_PREFIX = 'a';
 
@@ -74,6 +80,7 @@ const HASH_PREFIX = 'a';
 //
 //
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function resolveStyles(styles: any[], selector = '', result: any = {}): any {
   const expandedStyles = expand(styles);
   const properties = Object.keys(expandedStyles) as (keyof CSS.Properties)[];
@@ -81,6 +88,7 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
   properties.forEach(propName => {
     const propValue = expandedStyles[propName];
 
+    // eslint-disable-next-line eqeqeq, no-empty
     if (propValue == null) {
     } else if (isObject(propValue)) {
       if (isNestedSelector(propName)) {
@@ -96,7 +104,7 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
       const className = HASH_PREFIX + hashString(selector + propName + propValue);
 
       // cssfied union of property & value, i.e. `{ color: "red" }`
-      const declaration = cssifyDeclaration(propName, propValue);
+      let declaration = cssifyDeclaration(propName, propValue);
       const css = stylis('', `.${className}${selector}{${declaration}}`);
 
       // uniq key based on property & selector, used for merging later
@@ -107,7 +115,7 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
       const flippedInRtl = rtl.key !== propName || rtl.value !== propValue;
 
       if (flippedInRtl) {
-        const declaration = cssifyDeclaration(rtl.key, rtl.value);
+        declaration = cssifyDeclaration(rtl.key, rtl.value);
         const rtlCSS = stylis('', `.r${className}${selector}{${declaration}}`);
 
         result[key] = [className, css, 'r' + className, rtlCSS];
@@ -131,7 +139,7 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
 //
 //   })
 // }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function matchesSelectors(matcher: any, selectors: any): boolean {
   let matches = true;
 
@@ -139,9 +147,11 @@ function matchesSelectors(matcher: any, selectors: any): boolean {
     Object.keys(matcher).forEach(matcherName => {
       const matcherValue = matcher[matcherName];
       const matchesSelector =
+        // eslint-disable-next-line eqeqeq
         matcherValue == selectors[matcherName] ||
         // https://stackoverflow.com/a/19277873/6488546
         // find less tricky way
+        // eslint-disable-next-line eqeqeq
         (matcherValue === false && selectors[matcherName] == null);
 
       if (!matchesSelector) {
@@ -153,6 +163,7 @@ function matchesSelectors(matcher: any, selectors: any): boolean {
   return matches;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function resolveStylesToClasses(styles: any[], tokens: any) {
   return styles.map(definition => {
     return [
@@ -170,12 +181,15 @@ const DEFINITION_CACHE: Record<string, [string, string]> = {};
  * TODO: Update it with something proper...
  * CAN WORK WITHOUT REACT!
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function makeNonReactStyles(styles: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
   return function ___(selectors: any, options: any, ...classNames: (string | undefined)[]): string {
-    console.log(options.tokens);
+    // console.log(options.tokens);
     const resolvedClasses = resolveStylesToClasses(styles, options.tokens);
 
     const nonMakeClasses: string[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const overrides: any = {};
 
     // overrides?.__styles ? styles.concat(overrides?.__styles) : styles,
@@ -183,11 +197,11 @@ export function makeNonReactStyles(styles: any) {
 
     classNames.forEach(className => {
       if (typeof className === 'string') {
-        className.split(' ').forEach(className => {
-          if (DEFINITION_CACHE[className] !== undefined) {
-            overrides[DEFINITION_CACHE[className][0]] = DEFINITION_CACHE[className][1];
+        className.split(' ').forEach(cName => {
+          if (DEFINITION_CACHE[cName] !== undefined) {
+            overrides[DEFINITION_CACHE[cName][0]] = DEFINITION_CACHE[cName][1];
           } else {
-            nonMakeClasses.push(className);
+            nonMakeClasses.push(cName);
           }
         });
       }
@@ -217,9 +231,11 @@ export function makeNonReactStyles(styles: any) {
 /*
  * A wrapper to connect to a React context. SHOULD USE unified context!!!
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function makeStyles(styles: any) {
   const result = makeNonReactStyles(styles);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
   return function ___(selectors: any = {}, ...classNames: string[]): string {
     const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
 

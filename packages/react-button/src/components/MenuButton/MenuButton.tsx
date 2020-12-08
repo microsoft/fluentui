@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { css } from '@fluentui/utilities';
 import { useMenuButton } from './useMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
-import { useMenuButtonClasses } from './useMenuButtonClasses';
+import {
+  /*useMenuButtonClasses*/
+  useMenuButtonStyles,
+  useMenuButtonContentStyles,
+  useMenuButtonIconStyles,
+  useMenuButtonMenuIconStyles,
+  MenuButtonClassNames,
+} from './useMenuButtonClasses';
 import { renderMenuButton } from './renderMenuButton';
 
 /**
@@ -15,7 +23,25 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
     menuIcon: { as: ChevronDownIcon },
   });
 
-  useMenuButtonClasses(state);
+  state.className = css(MenuButtonClassNames.root, state.className, useMenuButtonStyles(state));
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  (state.content as any).className = css(
+    MenuButtonClassNames.content,
+    (state.content as any).className,
+    useMenuButtonContentStyles(state),
+  );
+  (state.icon as any).className = css(
+    MenuButtonClassNames.icon,
+    (state.icon as any).className,
+    useMenuButtonIconStyles(state),
+  );
+  (state.menuIcon as any).className = css(
+    MenuButtonClassNames.menuIcon,
+    (state.menuIcon as any).className,
+    useMenuButtonMenuIconStyles(state),
+  );
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+  // useMenuButtonClasses(state);
 
   // TODO remove any
   /**

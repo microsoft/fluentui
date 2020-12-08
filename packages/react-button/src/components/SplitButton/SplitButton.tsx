@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { css } from '@fluentui/utilities';
 import { SplitButtonProps } from './SplitButton.types';
 import { useSplitButton } from './useSplitButton';
-import { useSplitButtonClasses } from './useSplitButtonClasses';
+import {
+  /*useSplitButtonClasses*/
+  useSplitButtonStyles,
+  useSplitButtonButtonStyles,
+  useSplitButtonDividerStyles,
+  useSplitButtonMenuButtonStyles,
+  SplitButtonClassNames,
+} from './useSplitButtonClasses';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
 import { renderSplitButton } from './renderSplitButton';
@@ -18,7 +26,25 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
     menuButton: { as: MenuButton, iconOnly: true, icon: <ChevronDownIcon /> },
   });
 
-  useSplitButtonClasses(state);
+  state.className = css(SplitButtonClassNames.root, state.className, useSplitButtonStyles(state));
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  (state.button as any).className = css(
+    SplitButtonClassNames.button,
+    (state.button as any).className,
+    useSplitButtonButtonStyles(state),
+  );
+  (state.divider as any).className = css(
+    SplitButtonClassNames.divider,
+    (state.divider as any).className,
+    useSplitButtonDividerStyles(state),
+  );
+  (state.menuButton as any).className = css(
+    SplitButtonClassNames.menuButton,
+    (state.menuButton as any).className,
+    useSplitButtonMenuButtonStyles(state),
+  );
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+  // useSplitButtonClasses(state);
 
   /**
    * Type 'SplitButtonState' has no properties in common with type '{

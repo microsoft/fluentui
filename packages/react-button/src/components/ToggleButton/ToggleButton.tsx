@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { ToggleButtonProps } from './ToggleButton.types';
-import { useToggleButton } from './useToggleButton';
-import { renderToggleButton } from './renderToggleButton';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useToggleButtonClasses } from './useToggleButtonClasses';
+import { css } from '@fluentui/utilities';
+import { ToggleButtonProps } from './ToggleButton.types';
+import { renderToggleButton } from './renderToggleButton';
+import { useToggleButton } from './useToggleButton';
+import {
+  /*useToggleButtonClasses*/
+  useToggleButtonStyles,
+  useToggleButtonContentStyles,
+  useToggleButtonIconStyles,
+  ToggleButtonClassNames,
+} from './useToggleButtonClasses';
 
 /**
  * Define a styled ToggleButton, using the `useToggleButton` hook.
@@ -12,7 +19,20 @@ import { useToggleButtonClasses } from './useToggleButtonClasses';
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const state = useToggleButton(props, ref);
 
-  useToggleButtonClasses(state);
+  state.className = css(ToggleButtonClassNames.root, state.className, useToggleButtonStyles(state));
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  (state.content as any).className = css(
+    ToggleButtonClassNames.content,
+    (state.content as any).className,
+    useToggleButtonContentStyles(state),
+  );
+  (state.icon as any).className = css(
+    ToggleButtonClassNames.icon,
+    (state.icon as any).className,
+    useToggleButtonIconStyles(state),
+  );
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+  // useToggleButtonClasses(state);
   useInlineTokens(state, '--button');
 
   return renderToggleButton(state);
