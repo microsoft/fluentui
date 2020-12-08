@@ -165,32 +165,55 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     [getItemRef, listRef, stickyItemIds, visibleItemIds],
   );
 
+  // When using keyboard, and navigate to stickyItems, arrow up/down should navigate to previous item's last child/current Item's first child.
+  // But because of virtualization, the destination item is not always rendered, so we scroll to them to force rendering
+  const handleArrowUpDownOnSticky = React.useCallback(
+    (stickyId, stickyItem) => (e: React.KeyboardEvent) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        focusItemById(stickyItem.childrenIds[0]);
+      }
+      if (e.key === 'ArrowUp' && stickyItem.index !== 1) {
+        const indexAmongVisible = visibleItemIds.indexOf(stickyId);
+        if (indexAmongVisible > 0) {
+          e.preventDefault();
+          focusItemById(visibleItemIds[indexAmongVisible - 1]);
+        }
+      }
+    },
+    [focusItemById, visibleItemIds],
+  );
+
   const createTreeItem = React.useCallback(
     (id, style) => {
       const item = getItemById(id);
       if (item) {
-        const { expanded, parent, level, index, treeSize } = item;
+        const { expanded, parent, level, index, treeSize, childrenIds } = item;
+        const overrideProps = {
+          style, // came from react-window
+          expanded,
+          parent,
+          key: id,
+          level,
+          index,
+          treeSize,
+          selectable: false,
+          onFocus: () => makeVisibleOnFocus(id, level),
+        };
+        if (level === 1 && expanded && childrenIds.length) {
+          (overrideProps as any).onKeyDown = handleArrowUpDownOnSticky(id, item);
+        }
         return TreeItem.create(item.item, {
           defaultProps: () =>
             getA11yProps('item', {
               renderItemTitle: props.renderItemTitle,
             }),
-          overrideProps: {
-            style, // came from react-window
-            expanded,
-            parent,
-            key: id,
-            level,
-            index,
-            treeSize,
-            selectable: false,
-            onFocus: () => makeVisibleOnFocus(id, level),
-          },
+          overrideProps,
         });
       }
       return null;
     },
-    [getA11yProps, getItemById, makeVisibleOnFocus, props.renderItemTitle],
+    [getA11yProps, getItemById, handleArrowUpDownOnSticky, makeVisibleOnFocus, props.renderItemTitle],
   );
 
   const innerElementContextValue: InnerElementContextType = React.useMemo(
