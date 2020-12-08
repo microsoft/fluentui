@@ -1,8 +1,6 @@
-# Disabling perf-test until Github account issue is resolved.
-# pr:
-#   - master
-#   - website-content
-pr: none
+pr:
+  - master
+  - website-content
 
 trigger: none
 
