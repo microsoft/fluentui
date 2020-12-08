@@ -56,6 +56,11 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
    * This should be set here instead of in onRenderFloatingPicker if you want them to be keyboard selectable
    */
   pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
+
+  /**
+   * Function that specifies how arbitrary text entered into the edit input is handled.
+   */
+  createGenericItem?: (input: string) => TItem;
 }
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
@@ -83,6 +88,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
   const editingInput = React.useRef<any>();
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
+  const [inputValue, setInputValue] = React.useState<string>('');
 
   const { item, onEditingComplete, getSuggestions, getEditingItemText, pickerSuggestionsProps } = props;
 
@@ -107,6 +113,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
     setEditingSuggestions(getSuggestions(itemText));
     if (editingInput.current) {
       editingInput.current.value = itemText;
+      setInputValue(itemText);
       editingInput.current.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -134,19 +141,17 @@ export const DefaultEditingItemInner = <TItem extends any>(
   };
 
   const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    /*if (editingFloatingPicker.current && ev.relatedTarget !== null) {
-      const target = ev.relatedTarget as HTMLElement;
-      if (
-        target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
-        target.className.indexOf('ms-Suggestions-sectionButton') === -1
-      ) {
-        editingFloatingPicker.current.forceResolveSuggestion();
-      }
-    }*/
+    if (focusItemIndex >= 0) {
+      _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+    } else if (props.createGenericItem) {
+      onEditingComplete(item, props.createGenericItem(inputValue));
+    }
+    // else, we come out of editing mode
   };
 
   const _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
     const value: string = (ev.target as HTMLInputElement).value;
+    setInputValue(value);
 
     if (value === '') {
       if (props.onRemoveItem) {

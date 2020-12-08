@@ -262,6 +262,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }
   };
 
+  const _createGenericItem = (input: string): IPersona => {
+    return { text: input };
+  };
+
   const _onInputChange = (filterText: string): void => {
     // Clear the input if the user types a semicolon or comma
     // This is meant to be an example of using the forward ref,
@@ -305,6 +309,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     getItemCopyText: _getItemsCopyText,
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
+    createGenericItem: _createGenericItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
