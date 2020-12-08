@@ -300,6 +300,9 @@ export function makeNonReactStyles(styles: any) {
     const tokens = options.tokens; // canUseCSSVariables ? createCSSVariablesProxy(options.tokens) : options.tokens;
     const resolvedStyles = resolveStylesToClasses(styles, tokens);
 
+    // Dumper for static styles
+    // console.log(JSON.stringify(styles.map(d => [d[0], null, d[2]])));
+
     const nonMakeClasses: string[] = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const overrides: any = {};
@@ -350,7 +353,7 @@ export function makeStyles(styles: any) {
   const result = makeNonReactStyles(styles);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
-  return function ___(selectors: any = {}, ...classNames: string[]): string {
+  return function ___(selectors: any = {}, ...classNames: (string | undefined)[]): string {
     const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
 
     return result(
