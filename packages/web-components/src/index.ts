@@ -27,6 +27,7 @@ export * from './switch/';
 export * from './tabs/';
 export * from './text-area/';
 export * from './text-field/';
+export * from './tooltip';
 export * from './tree-item/';
 export * from './tree-view/';
 
