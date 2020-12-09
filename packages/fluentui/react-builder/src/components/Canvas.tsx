@@ -116,18 +116,15 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           // if (event.ctrlKey) { // Begin if 1
           virtualCursorElements[vcIndex].classList.remove('virtual-focused');
           setVcIndex(index => {
-            const step = event.keyCode === 190 ? 1 : -1;
-            const nextIndex = index + step;
+            const tempIndex = index + (event.code === 'Period' ? 1 : -1);
 
-            // If nextIndex is bigger than number of elements move it to 0
-            // If nextIndex is smaller than 0 move it to the lastElement
-            // Otherwise move to the nextIndex
+            // Ensure looping, i.e., that the next element of the last element is the first element, and that the previous element of the first element is the last element
             const newIndex =
-              nextIndex >= virtualCursorElements.length
+              tempIndex >= virtualCursorElements.length
                 ? 0
-                : nextIndex < 0
+                : tempIndex < 0
                 ? virtualCursorElements.length - 1
-                : nextIndex;
+                : tempIndex;
 
             virtualCursorElements[newIndex].classList.add('virtual-focused');
             setFocusedVcElement(virtualCursorElements[newIndex]);
