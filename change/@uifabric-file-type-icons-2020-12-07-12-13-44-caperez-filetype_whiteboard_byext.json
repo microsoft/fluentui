@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "changing .whiteboard to be by-extension instead of special enum based.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-07T20:13:44.573Z"
-}

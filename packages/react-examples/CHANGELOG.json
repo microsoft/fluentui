@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 09 Dec 2020 12:28:21 GMT",
+      "tag": "@fluentui/react-examples_v0.9.13",
+      "version": "0.9.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaking test file for FileTypeIcon example",
+            "author": "caperez@microsoft.com",
+            "commit": "0094b6560331f0ec957948cb44c453eb03c56c79",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Dec 2020 12:30:04 GMT",
       "tag": "@fluentui/react-examples_v0.9.12",
       "version": "0.9.12",

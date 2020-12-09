@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 03 Dec 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Dec 2020 12:28:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.23](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.23)
+
+Wed, 09 Dec 2020 12:28:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.22..@uifabric/file-type-icons_v7.6.23)
+
+### Patches
+
+- changing .whiteboard to be by-extension instead of special enum based. ([PR #16166](https://github.com/microsoft/fluentui/pull/16166) by caperez@microsoft.com)
 
 ## [7.6.22](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.22)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tweaking test file for FileTypeIcon example",
-  "packageName": "@fluentui/react-examples",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-08T19:09:14.344Z"
-}
