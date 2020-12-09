@@ -3,6 +3,7 @@
   "description": "A set of prototypes built using @fluentui/react-northstar",
   "version": "0.51.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "private": true,
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.51.0",
