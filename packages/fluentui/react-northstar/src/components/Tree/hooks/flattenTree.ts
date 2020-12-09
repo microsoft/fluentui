@@ -141,6 +141,7 @@ function flattenSubTree(
           selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
         }
       } else if (selectedItemIds.indexOf(id) >= 0) {
+        // selectedItemIds only make sense for leaf nodes
         flatTree[id].selected = true;
         selectedNum++;
       }
