@@ -132,10 +132,7 @@ function flattenSubTree(
     if (selectable) {
       selectableNum++;
 
-      if (selectedItemIds.indexOf(id) >= 0) {
-        flatTree[id].selected = true;
-        selectedNum++;
-      } else if (hasSubtree) {
+      if (hasSubtree) {
         if (selectedChildrenNum === selectableChildrenNum) {
           flatTree[id].selected = true;
           selectedNum++;
@@ -143,6 +140,9 @@ function flattenSubTree(
           flatTree[id].selected = 'indeterminate';
           selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
         }
+      } else if (selectedItemIds.indexOf(id) >= 0) {
+        flatTree[id].selected = true;
+        selectedNum++;
       }
     }
 
