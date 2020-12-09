@@ -118,19 +118,24 @@ function flattenSubTree(
       visibleItemIds.push(id);
     }
 
-    if (hasSubtree) {
-      const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
-        childrenItems as ObjectShorthandValue<TreeItemProps>[],
-        level + 1,
-        id,
-        flatTree,
-        isParentVisible && expanded, // parent being visible and expanded means subtree is visible
-        activeItemIds,
-        visibleItemIds,
-        selectedItemIds,
-      );
+    const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
+      childrenItems as ObjectShorthandValue<TreeItemProps>[],
+      level + 1,
+      id,
+      flatTree,
+      isParentVisible && expanded, // parent being visible and expanded means subtree is visible
+      activeItemIds,
+      visibleItemIds,
+      selectedItemIds,
+    );
 
-      if (selectable) {
+    if (selectable) {
+      selectableNum++;
+
+      if (selectedItemIds.indexOf(id) >= 0) {
+        flatTree[id].selected = true;
+        selectedNum++;
+      } else if (hasSubtree) {
         if (selectedChildrenNum === selectableChildrenNum) {
           flatTree[id].selected = true;
           selectedNum++;
@@ -139,13 +144,6 @@ function flattenSubTree(
           selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
         }
       }
-    } else if (selectable && selectedItemIds.indexOf(id) >= 0) {
-      flatTree[id].selected = true;
-      selectedNum++;
-    }
-
-    if (selectable) {
-      selectableNum++;
     }
 
     if (flatTree[parent].childrenIds) {
