@@ -206,6 +206,10 @@ export const SwitchStyles = css`
                 background: ${SystemColors.Field};
                 border-color: ${SystemColors.GrayText};
             }
+            .status-message,
+            .label {
+              color: ${SystemColors.FieldText};
+          }
         `,
   ),
 );

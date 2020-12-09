@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Porting filetype icon changes to v8 from PR #15974",
+            "author": "caperez@microsoft.com",
+            "commit": "b949fcd3be56218556fdd8c976e846d845f024a6",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Nov 2020 12:28:12 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.7",
       "version": "8.0.0-beta.7",

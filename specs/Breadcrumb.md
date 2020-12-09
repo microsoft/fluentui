@@ -18,12 +18,11 @@ A Breadcrumb trail consists of a list of links to the parent pages of the curren
 
 ## Props
 
-
 ## &lt;Breadcrumb&gt; Properties <a href="#breadcrumb-divider-properties" id="breadcrumb-divider-properties"></a>
 
-| Property Name | Type             | Default Value | Description                                          |
-| ------------- | ---------------- | ------------- | ---------------------------------------------------- |
-| `size`        | `enum`           | `medium`      | The Breadcrumb size                                  |
+| Property Name | Type   | Default Value | Description         |
+| ------------- | ------ | ------------- | ------------------- |
+| `size`        | `enum` | `medium`      | The Breadcrumb size |
 
 ## &lt;Breadcrumb.Divider&gt; Properties <a href="#breadcrumb-divider-properties" id="breadcrumb-divider-properties"></a>
 

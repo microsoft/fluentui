@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/web-components_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set FieldText color on label and status-message",
+            "author": "khamu@microsoft.com",
+            "commit": "2bba2c2d957c8df676d9d34bf1b0f3ccbdcd28d1",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Dec 2020 12:37:40 GMT",
       "tag": "@fluentui/web-components_v0.9.0",
       "version": "0.9.0",
