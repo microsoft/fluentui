@@ -3861,6 +3861,7 @@ export type IPickerAriaIds = {
     selectedSuggestionAlert: string;
     selectedItems: string;
     suggestionList: string;
+    combobox: string;
 };
 
 // @public
