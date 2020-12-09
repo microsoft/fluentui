@@ -29,8 +29,8 @@ export interface VirtualTreeProps
       'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable' | 'items'
     >,
     Pick<VariableSizeListProps, 'estimatedItemSize' | 'height'> {
-  // Where 'item-size' is in px
-  items?: ObjectShorthandCollection<TreeItemProps & { 'item-size': number }>;
+  // Where itemSize is in px
+  items?: ObjectShorthandCollection<TreeItemProps & { itemSize: number }>;
 }
 
 export interface VirtualItemData {
@@ -44,7 +44,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const { children, className, design, styles, variables, height, estimatedItemSize } = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps([...Tree.handledProps, 'estimatedItemSize', 'item-size'], props);
+  const unhandledProps = useUnhandledProps([...Tree.handledProps, 'estimatedItemSize', 'itemSize'], props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: VirtualTree.displayName,
@@ -89,7 +89,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
 
   const getItemSize = (index: number) => {
     const id = visibleItemIds[index];
-    return getItemById(id).item['item-size'] || estimatedItemSize;
+    return getItemById(id).item.itemSize || estimatedItemSize;
   };
   React.useLayoutEffect(() => {
     listRef.current.resetAfterIndex(0);
@@ -100,7 +100,8 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
       const item = getItemById(id);
       if (item) {
         const { expanded, parent, level, index, treeSize } = item;
-        return TreeItem.create(item.item, {
+        const { itemSize, ...rest } = item.item;
+        return TreeItem.create(rest, {
           defaultProps: () =>
             getA11yProps('item', {
               renderItemTitle: props.renderItemTitle,
