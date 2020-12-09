@@ -158,7 +158,6 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
         string: '',
         'React.ElementType': prop.defaultValue,
       };
-      console.log(prop.name, propValue, types);
       const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
       return { types, options, value };
     },
