@@ -3,7 +3,7 @@ import { Popup, FocusZone, FocusZoneDirection } from '@fluentui/react-northstar'
 import { useMenuContext } from './menuContext';
 import { MenuListProvider } from './menuListContext';
 
-export function MenuList({ children }) {
+function MenuList({ children }) {
   const { triggerRef, open, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
 
   return (
@@ -34,3 +34,4 @@ export function MenuList({ children }) {
     />
   );
 }
+export default MenuList;

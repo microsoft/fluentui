@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuList } from './MenuList';
+import MenuList from './MenuList';
 import { MenuItem } from './MenuItem';
 import { Menu } from './Menu';
 import { MenuTrigger } from './MenuTrigger';
