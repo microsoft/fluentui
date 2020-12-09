@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "set FieldText color on label and status-message",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-02T18:03:53.521Z"
+}

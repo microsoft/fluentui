@@ -60,8 +60,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Input` content overlaping with `Icon` @assuncaocharles ([#16083](https://github.com/microsoft/fluentui/pull/16083))
 - Fix `variables` not being propagated in `Carousel` @assuncaocharles ([#16084](https://github.com/microsoft/fluentui/pull/16084))
 - Fix `Carousel` `onActiveIndexChange` to contain `activeIndex` @assuncaocharles ([#16118](https://github.com/microsoft/fluentui/pull/16118))
+- Fix `Tree` behavior adding `shouldFocusInnerElementWhenReceivedFocus` to avoid root element to be focused @assuncaocharles ([#16145](https://github.com/microsoft/fluentui/pull/16145))
 
 ### Features
+- Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
+- `Tree`: added `useVirtualTree` hook @yuanboxue-amber ([#16080](https://github.com/microsoft/fluentui/pull/16080))
 - `Tree`: added `useTree` hook @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
 - Add `onDateChange` handler to `Datepicker.Input` field @karymes ([#14167](https://github.com/microsoft/fluentui/pull/14167))
@@ -92,6 +95,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `VideoProhibitedIcon`. @TanelVari ([#16025](https://github.com/microsoft/fluentui/pull/16025))
 
 ### Documentation
+- `VirtualizdedTreePrototype`: change to use `useVirtualTree` hook and `react-window` @yuanboxue-amber ([#16080](https://github.com/microsoft/fluentui/pull/16080))
 - AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))
 - UIBuilder: Add accessibility props panel @jurokapsiar ([#15820](https://github.com/microsoft/fluentui/pull/15820))
 - Add VoiceOver issue in known `accessibilityIssues` for `Toolbar` on `menuitemradio` @yuanboxue-amber ([#15203](https://github.com/microsoft/fluentui/pull/15203))

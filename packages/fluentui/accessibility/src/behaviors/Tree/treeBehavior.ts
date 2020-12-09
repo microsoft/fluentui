@@ -35,6 +35,7 @@ export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
     focusZone: {
       props: {
         direction: FocusZoneDirection.vertical,
+        shouldFocusInnerElementWhenReceivedFocus: true,
       },
     },
     childBehaviors: {
