@@ -222,6 +222,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
 
+      // The comments before some selectors below are intentionally there so that the matched elements are not focusable by the virtual cursor. These elements are instead narrated as the landmarks or groups narration part of a focusable element when entering the element. But let's keep them here in case it will change in the future, and so that it's clear that they are not missed out but that they are not focusable intentionally
       setVirtualCursorElements(
         Array.from(
           iframeDocument.querySelectorAll(
