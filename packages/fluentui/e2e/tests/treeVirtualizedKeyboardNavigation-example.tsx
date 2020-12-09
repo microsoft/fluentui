@@ -3,7 +3,7 @@ import { VirtualizedTreePrototype } from '@fluentui/react-northstar-prototypes';
 import { Loader } from '@fluentui/react-northstar';
 
 const treeVirtualizedKeyboardNavigation = () => (
-  <React.Suspense fallback={<Loader />}>
+  <React.Suspense fallback={<div />}>
     <VirtualizedTreePrototype />
   </React.Suspense>
 );
