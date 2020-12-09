@@ -129,19 +129,17 @@ function flattenSubTree(
       selectedItemIds,
     );
 
-   if (selectable) {
+    if (selectable) {
       selectableNum++;
       if (
-        (hasSubtree && selectedChildrenNum === selectableChildrenNum)
-        || (!hasSubtree && selectedItemIds.indexOf(id) >= 0) // selectedItemIds only make sense for leaf nodes
+        (hasSubtree && selectedChildrenNum === selectableChildrenNum) ||
+        (!hasSubtree && selectedItemIds.indexOf(id) >= 0) // selectedItemIds only make sense for leaf nodes
       ) {
         flatTree[id].selected = true;
         selectedNum++;
       } else if (selectedChildrenNum > 0) {
         flatTree[id].selected = 'indeterminate';
         selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
-      }
-    }
       }
     }
 
