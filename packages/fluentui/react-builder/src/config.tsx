@@ -37,6 +37,7 @@ export const COMPONENT_GROUP = {
     'Status',
     'Tooltip',
     'Video',
+    'Skeleton',
   ],
   Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
@@ -778,8 +779,8 @@ export const MultiTypeKnob: React.FunctionComponent<{
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
   onChange: (value: any) => void;
-  literalOptions: string[];
-}> = ({ label, types, value, onChange, literalOptions }) => {
+  options: string[];
+}> = ({ label, types, value, onChange, options }) => {
   const valueType = typeof value;
   const defaultType = valueType !== 'undefined' ? valueType : types[0];
   const [type, setType] = React.useState(defaultType);
@@ -807,7 +808,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options: literalOptions, value, onChange, id: propId })}
+      {knob && knob({ options, value, onChange, id: propId })}
       {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
     </div>
   );

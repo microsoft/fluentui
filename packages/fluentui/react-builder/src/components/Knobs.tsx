@@ -144,6 +144,27 @@ type DesignKnobProps = {
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
+  const getValues = React.useCallback(
+    prop => {
+      const propValue = jsonTreeElement.props?.[prop.name];
+      const types = _.uniq(_.map(prop.types, 'name'));
+      const isLiteral = _.every(types, name => name === 'literal');
+
+      const options = isLiteral ? _.map(prop.types, 'value') : null;
+
+      const defaultValues = {
+        boolean: false,
+        number: 0,
+        string: '',
+        'React.ElementType': prop.defaultValue,
+      };
+      console.log(prop.name, propValue, types);
+      const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+      return { types, options, value };
+    },
+    [jsonTreeElement],
+  );
+
   return (
     <div>
       <Menu
@@ -170,25 +191,14 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
           // only allow knobs for regular props, not default props
           .filter(prop => !/default[A-Z]/.test(prop.name))
           .map(prop => {
-            const propValue = jsonTreeElement.props?.[prop.name];
-            const types = _.uniq(_.map(prop.types, 'name'));
-            const isLiteral = _.every(types, name => name === 'literal');
-            const options = isLiteral ? _.map(prop.types, 'value') : null;
-
-            const defaultValues = {
-              boolean: false,
-              number: 0,
-              string: '',
-            };
-
-            const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+            const { types, options, value } = getValues(prop);
 
             return (
               <MultiTypeKnob
                 key={prop.name}
                 label={prop.name}
                 types={types as any}
-                literalOptions={options}
+                options={options}
                 value={value}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
@@ -199,22 +209,14 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
 
       {menuActivePane === 'accessibility' &&
         A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
-          const propValue = jsonTreeElement.props?.[prop.name];
-          const types = _.uniq(_.map(prop.types, 'name'));
-          const isLiteral = _.every(types, name => name === 'literal');
-          const options = isLiteral ? _.map(prop.types, 'value') : null;
-          const defaultValues = {
-            boolean: false,
-            number: 0,
-            string: '',
-          };
-          const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+          const { types, options, value } = getValues(prop);
+
           return (
             <MultiTypeKnob
               key={prop.name}
               label={prop.name}
               types={types as any}
-              literalOptions={options}
+              options={options}
               value={value}
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
