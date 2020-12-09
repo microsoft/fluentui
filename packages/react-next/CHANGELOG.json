@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/react-next_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Re-exporting from @fluentui/react-button instead of from @fluentui/react.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b674aaef71260e834910e4c547e7a5c6024894ff",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2020 12:39:59 GMT",
       "tag": "@fluentui/react-next_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

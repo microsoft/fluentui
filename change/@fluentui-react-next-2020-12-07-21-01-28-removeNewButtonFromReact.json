@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Re-exporting from @fluentui/react-button instead of from @fluentui/react.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-08T05:01:28.915Z"
-}
