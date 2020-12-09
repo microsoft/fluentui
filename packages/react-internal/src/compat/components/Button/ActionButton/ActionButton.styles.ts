@@ -48,6 +48,12 @@ export const getStyles = memoizeFunction(
         color: theme.palette.neutralTertiary,
         backgroundColor: 'transparent',
         borderColor: 'transparent',
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText',
+            color: 'GrayText',
+          },
+        },
       },
 
       rootChecked: {

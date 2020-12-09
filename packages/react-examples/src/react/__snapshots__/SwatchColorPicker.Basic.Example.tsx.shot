@@ -4826,6 +4826,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: GrayText;
+                    color: GrayText;
+                  }
               data-index={0}
               data-is-focusable={false}
               disabled={true}
@@ -4997,6 +5001,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-left: 2px;
                     padding-right: 2px;
                     padding-top: 2px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: GrayText;
+                    color: GrayText;
                   }
               data-index={1}
               data-is-focusable={false}
@@ -5170,6 +5178,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: GrayText;
+                    color: GrayText;
+                  }
               data-index={2}
               data-is-focusable={false}
               disabled={true}
@@ -5342,6 +5354,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: GrayText;
+                    color: GrayText;
+                  }
               data-index={3}
               data-is-focusable={false}
               disabled={true}
@@ -5513,6 +5529,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-left: 2px;
                     padding-right: 2px;
                     padding-top: 2px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: GrayText;
+                    color: GrayText;
                   }
               data-index={4}
               data-is-focusable={false}
