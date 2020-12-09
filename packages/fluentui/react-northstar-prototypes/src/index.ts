@@ -54,6 +54,6 @@ export const FormValidationPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidation'),
 );
 export const TextAreaAutoSize = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/TextAreaAutoSize/index'),
+  import(/* webpackChunkName: "prototypes" */ './prototypes/TextAreaAutoSize'),
 );
-export const MenuList = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/MenuList/index'));
+export const MenuList = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/MenuList'));
