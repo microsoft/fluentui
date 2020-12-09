@@ -22,11 +22,11 @@ describe('Virtual Tree keyboard navigation', () => {
 
     // navigate to 20th child of item 1 by arrow down
     for (let i = 0; i < 19; ++i) {
-      await e2e.pressKey('ArrowDown');
+      await e2e.waitForSelectorAndPressKey(selectors.tree, 'ArrowDown');
     }
 
     // press arrow left on the 20th child of item 1
-    await e2e.pressKey('ArrowLeft');
+    await e2e.waitForSelectorAndPressKey(selectors.tree, 'ArrowLeft');
     // expect focus to be on item 1
     await e2e.isFocused(selectors.treeItemAt(1));
   });
