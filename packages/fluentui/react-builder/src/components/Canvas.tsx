@@ -68,9 +68,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [],
   );
 
-  const [virtualCursorElements, setVirtualCursorElements] = React.useState([]);
+  const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
   const [vcIndex, setVcIndex] = React.useState(0);
-  const [focusedVcElement, setFocusedVcElement] = React.useState(null);
+  const [focusedVcElement, setFocusedVcElement] = React.useState<HTMLElement>(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -109,10 +109,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   const handleKeyDown = React.useCallback(
     event => {
       switch (
-        event.keyCode // Begin switch 1
+        event.code // Begin switch 1
       ) {
-        case 190: // "." (dot) key - Moves to the next element
-        case 188: // "," (comma) key - Moves to the previous element
+        case 'Period': // Moves to the next element
+        case 'Comma': // Moves to the previous element
           // if (event.ctrlKey) { // Begin if 1
           virtualCursorElements[vcIndex].classList.remove('virtual-focused');
           setVcIndex(index => {
@@ -135,10 +135,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           }); // End setVcIndex
           // } // End if 1
           return;
-        case 13: // Enter key - Clicks the current element
+        case 'Enter': // Clicks the current element
           virtualCursorElements[vcIndex].click();
           return;
-        case 121: // F10 key
+        case 'F10': // When combined with the Shift key, opens the context menu
           if (event.shiftKey) {
             // Begin if 1
             const mouseEvent = document.createEvent('MouseEvents');
