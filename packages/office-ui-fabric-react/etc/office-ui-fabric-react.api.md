@@ -3178,6 +3178,7 @@ export interface IContextualMenuClassNames {
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
+    ariaDescription?: string;
     ariaLabel?: string;
     canCheck?: boolean;
     checked?: boolean;
@@ -3290,6 +3291,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
     linkContent: IStyle;
     linkContentMenu: IStyle;
     root: IStyle;
+    screenReaderText: IStyle;
     secondaryText: IStyle;
     splitContainer: IStyle;
     splitMenu: IStyle;
@@ -5906,6 +5908,8 @@ export interface IMenuItemClassNames {
     linkContentMenu: string;
     // (undocumented)
     root: string;
+    // (undocumented)
+    screenReaderText: string;
     // (undocumented)
     secondaryText: string;
     // (undocumented)

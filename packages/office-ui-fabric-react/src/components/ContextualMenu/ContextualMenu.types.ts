@@ -540,6 +540,11 @@ export interface IContextualMenuItem {
   [propertyName: string]: any;
 
   /**
+   * Detailed description of the menu item for the benefit of screen readers.
+   */
+  ariaDescription?: string;
+
+  /**
    * This prop is no longer used. All contextual menu items are now focusable when disabled.
    * @deprecated in 6.38.2 will be removed in 7.0.0
    */
