@@ -142,15 +142,22 @@ type DesignKnobProps = {
   jsonTreeElement: JSONTreeElement;
 };
 
+const isHandledType = (type: string): boolean => {
+  return ['boolean', 'string', 'literal', 'React.ElementType', 'number'].includes(type);
+};
+
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
     prop => {
       const propValue = jsonTreeElement.props?.[prop.name];
-      const types = _.uniq(_.map(prop.types, 'name'));
+      const tempTypes = _.uniq(_.map(prop.types, 'name'));
+      const types = isHandledType(tempTypes[0]) ? tempTypes : _.uniq(_.map(prop.resolvedType, 'name'));
       const isLiteral = _.every(types, name => name === 'literal');
-
-      const options = isLiteral ? _.map(prop.types, 'value') : null;
+      console.log(prop.name, types, prop.resolvedType);
+      const options = isLiteral
+        ? _.map(Array.isArray(prop.resolvedType) ? prop.resolvedType : prop.types, 'value')
+        : null;
 
       const defaultValues = {
         boolean: false,
@@ -158,7 +165,9 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
         string: '',
         'React.ElementType': prop.defaultValue,
       };
+
       const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+      console.log('getValues: ', prop.name, prop.defaultValue, value);
       return { types, options, value };
     },
     [jsonTreeElement],

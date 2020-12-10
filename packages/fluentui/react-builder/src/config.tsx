@@ -781,16 +781,17 @@ export const MultiTypeKnob: React.FunctionComponent<{
   onChange: (value: any) => void;
   options: string[];
 }> = ({ label, types, value, onChange, options }) => {
-  const valueType = typeof value;
-  const defaultType = valueType !== 'undefined' ? valueType : types[0];
+  // const valueType = typeof value;
+  const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
+  // console.log(type, types, label, value);
   const knob = knobs[type];
   const handleChangeType = React.useCallback(
     e => setType(e.target.value), // @ts-ignore
     [],
   );
 
-  // console.log('MultiTypeKnob', { label, value, type, types });
+  console.log('MultiTypeKnob', { label, value, type, types });
 
   const propId = `prop-${label}`;
 
@@ -845,6 +846,6 @@ export const knobs = {
     </select>
   ),
 
-  ReactText: (value, onChange, id) => knobs.string({ value, onChange, id }),
-  'React.ElementType': (value, onChange, id) => knobs.string({ value, onChange, id }),
+  ReactText: ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
+  'React.ElementType': ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
 };

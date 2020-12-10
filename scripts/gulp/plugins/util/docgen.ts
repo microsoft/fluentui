@@ -411,35 +411,54 @@ export class Parser {
       };
     }
 
-    if (typeNode.flags & TypeFlags.Any) {
-      return { type: 'any', name };
-    } else if (typeNode.flags & TypeFlags.String) {
-      return { type: 'string', name };
-    } else if (typeNode.flags & TypeFlags.Number) {
-      return { type: 'number', name };
-    } else if (typeNode.flags & TypeFlags.Boolean) {
-      return { type: 'boolean', name };
-    } else if (typeNode.flags & TypeFlags.Enum) {
-      debugger; // FIXME
-      return { type: 'enum', name };
-    } else if (typeNode.flags & TypeFlags.StringLiteral) {
+    const typeMap = {
+      [TypeFlags.Object]: () => {
+        // Function
+        if (typeNode.getCallSignatures().length > 0) {
+          return { type: 'function', name };
+        }
+
+        // Array
+        const numberIndexedType = typeNode.getNumberIndexType();
+        if (numberIndexedType) {
+          return {
+            type: 'array',
+            indexedType: this.resolveType(numberIndexedType, depth + 1),
+            name,
+          } as RTArray;
+        }
+
+        // Object
+        const props: RTObject['props'] = {};
+        typeNode.getProperties().forEach(prop => {
+          const childType = this.checker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
+
+          props[prop.getName()] = this.resolveType(childType, depth + 1);
+        });
+        return {
+          type: 'object',
+          props,
+          name,
+        } as RTObject;
+      },
+      [TypeFlags.Any]: () => ({ type: 'any', name }),
+      [TypeFlags.String]: () => ({ type: 'string', name }),
+      [TypeFlags.Number]: () => ({ type: 'number', name }),
+      [TypeFlags.Boolean]: () => ({ type: 'boolean', name }),
+      [TypeFlags.Enum]: () => ({ type: 'enum', name }), // FIXME
+      [TypeFlags.StringLiteral]: () => ({ type: 'StringLiteral', name, value: typeNode.value }),
+      [TypeFlags.NumberLiteral]: () => ({ type: 'NumberLiteral', name, value: typeNode.value }),
+      [TypeFlags.BooleanLiteral]: () => ({ type: 'BooleanLiteral', name, value: name === 'true' }),
+    };
+
+    if (typeMap[typeNode.flags]) {
+      return typeMap[typeNode.flags]();
+    } else if (typeNode.isIntersection()) {
       return {
-        type: 'StringLiteral',
+        type: 'intersection',
+        types: typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1)),
         name,
-        value: typeNode.value,
-      } as RTLiteral;
-    } else if (typeNode.flags & TypeFlags.NumberLiteral) {
-      return {
-        type: 'NumberLiteral',
-        name,
-        value: typeNode.value,
-      } as RTLiteral;
-    } else if (typeNode.flags & TypeFlags.BooleanLiteral) {
-      return {
-        type: 'BooleanLiteral',
-        name,
-        value: name === 'true',
-      } as RTLiteral;
+      } as RTIntersection;
     } else if (typeNode.isUnion()) {
       const subTypes: any[] = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
       const allSubTypesAreLiterals = subTypes.filter(Parser.isLiteral).length === subTypes.length;
@@ -467,43 +486,8 @@ export class Parser {
         types: subTypes,
         name,
       } as RTUnion;
-    } else if (typeNode.isIntersection()) {
-      return {
-        type: 'intersection',
-        types: typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1)),
-        name,
-      } as RTIntersection;
-    } else if (typeNode.flags & TypeFlags.Object) {
-      // Function
-      if (typeNode.getCallSignatures().length > 0) {
-        return { type: 'function', name };
-      }
-
-      // Array
-      const numberIndexedType = typeNode.getNumberIndexType();
-      if (numberIndexedType) {
-        return {
-          type: 'array',
-          indexedType: this.resolveType(numberIndexedType, depth + 1),
-          name,
-        } as RTArray;
-      }
-
-      // Object
-      const props: RTObject['props'] = {};
-      typeNode.getProperties().forEach(prop => {
-        const childType = this.checker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
-
-        props[prop.getName()] = this.resolveType(childType, depth + 1);
-      });
-      return {
-        type: 'object',
-        props,
-        name,
-      } as RTObject;
     }
 
-    // Fallback
     return { type: 'unknown', name };
   }
 
