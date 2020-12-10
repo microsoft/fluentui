@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Alert, Ref, Dropdown, DropdownProps } from '@fluentui/react-northstar';
 import { NarrationComputer, IAriaElement, SRNCPlatform } from './../narration/NarrationComputer';
 
-const computer = new NarrationComputer();
-let prevSelector = null;
-let prevVcElement = null;
-let allowVirtualCursor = true;
-let focusableElements = {};
-let elementsPaths = [];
-let selectedElementPath = null;
-let prevNarrationElement = null;
-const aomMissing = !window.hasOwnProperty('getComputedAccessibleNode');
+const computer: NarrationComputer = new NarrationComputer();
+let prevSelector: string = null;
+let prevVcElement: HTMLElement = null;
+let allowVirtualCursor: boolean = true;
+let focusableElements: Record<string, IAriaElement> = {};
+let elementsPaths: string[] = [];
+let selectedElementPath: string = null;
+let prevNarrationElement: IAriaElement = null;
+const aomMissing: boolean = !window.hasOwnProperty('getComputedAccessibleNode');
 
 export type ReaderNarrationProps = {
   vcElement: HTMLElement;
