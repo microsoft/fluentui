@@ -48,7 +48,7 @@ export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IS
 export function makeNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
 
 // @public (undocumented)
-export function makeStyles(styles: any): (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export function makeStyles(styles: any): (selectors?: any, ...classNames: string[]) => string;
 
 // @public
 export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: any) => void;

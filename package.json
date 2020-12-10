@@ -161,7 +161,8 @@
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose"
+          "@fluentui/react-compose",
+          "stylis"
         ]
       }
     ]
