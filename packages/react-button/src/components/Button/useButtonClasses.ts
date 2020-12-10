@@ -250,6 +250,13 @@ export const useButtonStyles = makeStyles([
       '--button-pressed-content-color': tokens.buttonPressedContentColor || tokens.semanticColors?.buttonTextPressed,
       '--button-pressed-transform': tokens.buttonPressedTransform,
       '--button-pressed-transition': tokens.buttonPressedTransition,
+
+      // icon styling
+      '--button-icon-color': tokens.buttonIconColor || 'inherit',
+      '--button-hovered-icon-color': tokens.buttonHoveredIconColor,
+      '--button-pressed-icon-color': tokens.buttonPressedIconColor,
+
+      '--button-icon-size': tokens.buttonIconSize || (tokens.fonts?.mediumPlus?.fontSize as string),
     }),
   ],
   /* --- Circular state --- */
@@ -305,6 +312,9 @@ export const useButtonStyles = makeStyles([
         tokens.buttonPrimaryPressedBorderColor || tokens.color?.brand?.pressed?.borderColor,
       '--button-pressed-content-color':
         tokens.buttonPrimaryPressedContentColor || tokens.color?.brand?.pressed?.contentColor,
+
+      // icon styling
+      '--button-icon-color': tokens.buttonPrimaryIconColor || 'inherit',
     }),
   ],
   /* --- Ghost state --- */
@@ -324,6 +334,11 @@ export const useButtonStyles = makeStyles([
       // pressed state
       '--button-pressed-background': tokens.buttonGhostPressedBackground || tokens.palette?.neutralLight,
       '--button-pressed-content-color': tokens.buttonGhostPressedContentColor || tokens.palette?.black,
+
+      // icon styling
+      '--button-icon-color': tokens.buttonGhostIconColor || tokens.palette?.themeDarkAlt,
+      '--button-hovered-icon-color': tokens.buttonGhostHoveredIconColor || tokens.palette?.themePrimary,
+      '--button-pressed-icon-color': tokens.buttonGhostPressedIconColor || tokens.palette?.themeDarker,
     }),
   ],
   /* --- Transparent state --- */
@@ -343,6 +358,11 @@ export const useButtonStyles = makeStyles([
       // pressed state
       '--button-pressed-background': tokens.buttonTransparentPressedBackground || 'transparent',
       '--button-pressed-content-color': tokens.buttonTransparentPressedContentColor || tokens.palette?.black,
+
+      // icon styling
+      '--button-icon-color': tokens.buttonTransparentIconColor || tokens.palette?.themeDarkAlt,
+      '--button-hovered-icon-color': tokens.buttonTransparentHoveredIconColor || tokens.palette?.themePrimary,
+      '--button-pressed-icon-color': tokens.buttonTransparentPressedIconColor || tokens.palette?.themeDarker,
     }),
   ],
   /* --- Disabled state --- */
@@ -354,6 +374,9 @@ export const useButtonStyles = makeStyles([
       '--button-background': tokens.buttonDisabledBackground || tokens.semanticColors?.buttonBackgroundDisabled,
       '--button-border-color': tokens.buttonDisabledBorderColor || tokens.semanticColors?.buttonBorderDisabled,
       '--button-content-color': tokens.buttonDisabledContentColor || tokens.semanticColors?.buttonTextDisabled,
+
+      // icon styling
+      '--button-icon-color': tokens.buttonDisabledIconColor || 'inherit',
     }),
   ],
   /* --- Ghost and disabled states --- */
@@ -840,54 +863,6 @@ export const useButtonIconStyles = makeStyles([
       height: 'var(--button-icon-size)',
       width: 'var(--button-icon-size)',
     },
-  ],
-  /* --- Default state --- */
-  [
-    null,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-icon-color': tokens.buttonIconColor || 'inherit',
-      '--button-hovered-icon-color': tokens.buttonHoveredIconColor,
-      '--button-pressed-icon-color': tokens.buttonPressedIconColor,
-
-      '--button-icon-size': tokens.buttonIconSize || (tokens.fonts?.mediumPlus?.fontSize as string),
-    }),
-  ],
-  /* --- Primary state --- */
-  [
-    { primary: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-icon-color': tokens.buttonPrimaryIconColor || 'inherit',
-    }),
-  ],
-  /* --- Ghost state --- */
-  [
-    { ghost: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-icon-color': tokens.buttonGhostIconColor || tokens.palette?.themeDarkAlt,
-      '--button-hovered-icon-color': tokens.buttonGhostHoveredIconColor || tokens.palette?.themePrimary,
-      '--button-pressed-icon-color': tokens.buttonGhostPressedIconColor || tokens.palette?.themeDarker,
-    }),
-  ],
-  /* --- Transparent state --- */
-  [
-    { transparent: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-icon-color': tokens.buttonTransparentIconColor || tokens.palette?.themeDarkAlt,
-      '--button-hovered-icon-color': tokens.buttonTransparentHoveredIconColor || tokens.palette?.themePrimary,
-      '--button-pressed-icon-color': tokens.buttonTransparentPressedIconColor || tokens.palette?.themeDarker,
-    }),
-  ],
-  /* --- Disabled state --- */
-  [
-    { disabled: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-icon-color': tokens.buttonDisabledIconColor || 'inherit',
-    }),
   ],
 ]);
 

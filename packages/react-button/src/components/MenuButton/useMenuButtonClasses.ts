@@ -43,6 +43,19 @@ const useMenuButtonBaseStyles = makeStyles([
       },
     },
   ],
+  /* --- Default state --- */
+  [
+    null,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // menu icon styling
+      '--button-menu-icon-color': tokens.buttonMenuIconColor || tokens.color?.body?.menuIconColor,
+      '--button-hovered-menu-icon-color': tokens.buttonHoveredMenuIconColor,
+      '--button-pressed-menu-icon-color': tokens.buttonPressedMenuIconColor,
+
+      '--button-menu-icon-size': tokens.buttonMenuIconSize || '12px',
+    }),
+  ],
   /* --- Icon-only state --- */
   [
     { iconOnly: true },
@@ -52,6 +65,35 @@ const useMenuButtonBaseStyles = makeStyles([
         marginLeft: 0,
       },
     },
+  ],
+  /* --- Ghost state --- */
+  [
+    { ghost: true },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // menu icon styling
+      '--button-menu-icon-color': tokens.buttonGhostMenuIconColor || tokens.palette?.neutralSecondary,
+      '--button-hovered-menu-icon-color': tokens.buttonGhostHoveredMenuIconColor || tokens.palette?.themePrimary,
+      '--button-pressed-menu-icon-color': tokens.buttonGhostPressedMenuIconColor || tokens.palette?.black,
+    }),
+  ],
+  /* --- Transparent state --- */
+  [
+    { transparent: true },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // menu icon styling
+      '--button-menu-icon-color': tokens.buttonTransparentMenuIconColor || tokens.palette?.neutralSecondary,
+    }),
+  ],
+  /* --- Disabled state --- */
+  [
+    { disabled: true },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // menu icon styling
+      '--button-menu-icon-color': tokens.buttonDisabledMenuIconColor || 'inherit',
+    }),
   ],
 ]);
 export const useMenuButtonStyles = (state: MenuButtonState) => {
@@ -64,42 +106,4 @@ export const useMenuButtonIconStyles = useButtonIconStyles;
 export const useMenuButtonMenuIconStyles = makeStyles([
   /* --- CSS definition --- */
   [null, { fontSize: 'var(--button-menu-icon-size)' }],
-  /* --- Default state --- */
-  [
-    null,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-menu-icon-color': tokens.buttonMenuIconColor || tokens.color?.body?.menuIconColor,
-      '--button-hovered-menu-icon-color': tokens.buttonHoveredMenuIconColor,
-      '--button-pressed-menu-icon-color': tokens.buttonPressedMenuIconColor,
-
-      '--button-menu-icon-size': tokens.buttonMenuIconSize || '12px',
-    }),
-  ],
-  /* --- Ghost state --- */
-  [
-    { ghost: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-menu-icon-color': tokens.buttonGhostMenuIconColor || tokens.palette?.neutralSecondary,
-      '--button-hovered-menu-icon-color': tokens.buttonGhostHoveredMenuIconColor || tokens.palette?.themePrimary,
-      '--button-pressed-menu-icon-color': tokens.buttonGhostPressedMenuIconColor || tokens.palette?.black,
-    }),
-  ],
-  /* --- Transparent state --- */
-  [
-    { transparent: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-menu-icon-color': tokens.buttonTransparentMenuIconColor || tokens.palette?.neutralSecondary,
-    }),
-  ],
-  /* --- Disabled state --- */
-  [
-    { disabled: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-menu-icon-color': tokens.buttonDisabledMenuIconColor || 'inherit',
-    }),
-  ],
 ]);

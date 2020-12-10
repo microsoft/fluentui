@@ -22,6 +22,16 @@ export const useSplitButtonStyles = makeStyles([
       position: 'relative',
     },
   ],
+  /* --- Default state --- */
+  [
+    null,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // divider styling
+      '--button-divider-color': tokens.buttonDividerColor || tokens.palette?.neutralTertiaryAlt,
+      '--button-divider-thickness': tokens.buttonDividerThickness || '1px',
+    }),
+  ],
   /* --- Block state --- */
   [
     { block: true },
@@ -29,6 +39,24 @@ export const useSplitButtonStyles = makeStyles([
       maxWidth: '100%',
       width: '100%',
     },
+  ],
+  /* --- Primary state --- */
+  [
+    { primary: true },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // divider styling
+      '--button-divider-color': tokens.buttonPrimaryDividerColor || tokens.palette?.white,
+    }),
+  ],
+  /* --- Disabled state --- */
+  [
+    { disabled: true },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tokens: any) => ({
+      // divider styling
+      '--button-divider-color': tokens.buttonDisabledDividerColor || tokens.semanticColors?.disabledText,
+    }),
   ],
 ]);
 
@@ -112,30 +140,5 @@ export const useSplitButtonDividerStyles = makeStyles([
       top: 'calc(100% - var(--button-divider-length, 100% + 8px))',
       width: 'var(--button-divider-thickness)',
     },
-  ],
-  /* --- Default state --- */
-  [
-    null,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-divider-color': tokens.buttonDividerColor || tokens.palette?.neutralTertiaryAlt,
-      '--button-divider-thickness': tokens.buttonDividerThickness || '1px',
-    }),
-  ],
-  /* --- Primary state --- */
-  [
-    { primary: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-divider-color': tokens.buttonPrimaryDividerColor || tokens.palette?.white,
-    }),
-  ],
-  /* --- Disabled state --- */
-  [
-    { disabled: true },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (tokens: any) => ({
-      '--button-divider-color': tokens.buttonDisabledDividerColor || tokens.semanticColors?.disabledText,
-    }),
   ],
 ]);

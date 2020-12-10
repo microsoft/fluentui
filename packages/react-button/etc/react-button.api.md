@@ -318,7 +318,7 @@ export const useCompoundButtonContentContainerStyles: (selectors?: any, ...class
 export const useCompoundButtonContentStyles: (selectors?: any, ...classNames: string[]) => string;
 
 // @public (undocumented)
-export const useCompoundButtonIconStyles: (state: CompoundButtonState) => string;
+export const useCompoundButtonIconStyles: (selectors?: any, ...classNames: string[]) => string;
 
 // @public (undocumented)
 export const useCompoundButtonSecondaryContentStyles: (selectors?: any, ...classNames: string[]) => string;
