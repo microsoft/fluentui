@@ -363,15 +363,6 @@ export const useSplitButtonMenuButtonStyles: (selectors?: any, ...classNames: st
 export const useSplitButtonStyles: (selectors?: any, ...classNames: string[]) => string;
 
 // @public (undocumented)
-export const useStaticButtonContentStyles: (selectors?: any, ...classNames: string[]) => string;
-
-// @public (undocumented)
-export const useStaticButtonIconStyles: (selectors?: any, ...classNames: string[]) => string;
-
-// @public (undocumented)
-export const useStaticButtonStyles: (selectors?: any, ...classNames: string[]) => string;
-
-// @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
