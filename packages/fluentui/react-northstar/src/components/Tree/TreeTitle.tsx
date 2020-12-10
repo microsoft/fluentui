@@ -228,6 +228,7 @@ TreeTitle.propTypes = {
   selectable: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  onSelectionIndicatorClick: PropTypes.func,
   indeterminate: PropTypes.bool,
   parent: PropTypes.string,
 };
