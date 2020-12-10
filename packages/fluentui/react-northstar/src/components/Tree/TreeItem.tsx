@@ -100,9 +100,6 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
-
-  /** Called when the item is selectable and the checkbox is clicked */
-  onSelectionIndicatorClick?: (e: React.SyntheticEvent) => void;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -159,7 +156,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
           e.preventDefault();
         }
         e.stopPropagation();
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusParent: e => {
         e.preventDefault();
@@ -170,14 +167,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       collapse: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       expand: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusFirstChild: e => {
         e.preventDefault();
@@ -228,14 +223,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onTitleClick', e, props);
   };
 
-  const handleTitleClick = e => {
-    if (hasSubtree) {
-      toggleItemActive(e, id);
-    }
-
-    _.invoke(props, 'onTitleClick', e, props);
-  };
-
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
     focusItemById(childrenIds?.[0]);
@@ -252,16 +239,10 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
+    id,
     onClick: (e, titleProps) => {
-      handleTitleClick(e);
+      _.invoke(props, 'onTitleClick', e, props);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
-    },
-    onSelectionIndicatorClick: e => {
-      if (selectable) {
-        e.stopPropagation(); // otherwise onClick on title will also be executed
-        toggleItemSelect(e, id);
-        _.invoke(props, 'onSelectionIndicatorClick', e);
-      }
     },
   });
 

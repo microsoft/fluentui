@@ -36,6 +36,9 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<TreeTitleBehaviorProps>;
 
+  /** Id needed to identify this item inside the Tree. */
+  id?: string;
+
   /** Whether or not the title has a subtree. */
   hasSubtree?: boolean;
 
@@ -61,9 +64,6 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
-
-  /** Called when the item is selectable and the checkbox is clicked */
-  onSelectionIndicatorClick?: ComponentEventHandler<BoxProps>;
 
   /** A selection indicator can appear disabled and be unable to change states. */
   disabled?: SupportedIntrinsicInputProps['disabled'];
@@ -101,9 +101,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-  const { focusItemById } = React.useContext(TreeContext);
+  const { focusItemById, toggleItemActive, toggleItemSelect } = React.useContext(TreeContext);
   const {
     accessibility,
+    id,
     children,
     className,
     content,
@@ -135,11 +136,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       focusParent: e => {
         // allow bubbling up to parent treeItem
         focusItemById(props.parent);
-      },
-      performSelection: e => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleClick(e);
       },
     },
     mapPropsToBehavior: () => ({
@@ -174,13 +170,23 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
+
   const handleClick = e => {
+    if (hasSubtree) {
+      toggleItemActive(e, id);
+    } else {
+      toggleItemSelect(e, id);
+    }
     _.invoke(props, 'onClick', e, props);
   };
 
   const selectionIndicatorOverrideProps = (predefinedProps: BoxProps) => ({
     onClick: (e: React.SyntheticEvent) => {
-      _.invoke(props, 'onSelectionIndicatorClick', e);
+      e.stopPropagation(); // otherwise onClick on title will also be executed
+      if (selectable) {
+        toggleItemSelect(e, id);
+      }
+
       _.invoke(predefinedProps, 'onClick', e);
     },
   });
@@ -220,6 +226,7 @@ TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.propTypes = {
   ...commonPropTypes.createCommon(),
+  id: PropTypes.string,
   hasSubtree: PropTypes.bool,
   index: PropTypes.number,
   level: PropTypes.number,
@@ -229,7 +236,6 @@ TreeTitle.propTypes = {
   selectable: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
-  onSelectionIndicatorClick: PropTypes.func,
   indeterminate: PropTypes.bool,
   parent: PropTypes.string,
 };
