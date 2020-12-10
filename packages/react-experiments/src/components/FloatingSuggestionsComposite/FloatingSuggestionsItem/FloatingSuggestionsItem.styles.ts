@@ -86,6 +86,11 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
           ':hover, :active': {
             background: neutralLight,
             color: neutralDark,
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'HighlightText',
+              MsHighContrastAdjust: 'none',
+            },
           },
           [HighContrastSelector]: {
             color: 'WindowText',
