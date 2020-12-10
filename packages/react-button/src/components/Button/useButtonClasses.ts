@@ -149,30 +149,30 @@ export const useButtonStyles = makeStyles([
       },
 
       // focused state
-      ':global(.ms-Fabric--isFocusVisible)': {
-        '> div': {
-          content: '"whatevs"',
-          position: 'absolute',
-          left: -1,
-          right: -1,
-          top: -1,
-          bottom: -1,
-          borderWidth: 'var(--button-focus-width, 2px)',
-          borderStyle: 'solid',
-          borderColor: 'var(--button-focus-color, black)',
-          borderTopLeftRadius: 'var(--button-border-top-left-radius, var(--button-border-radius))',
-          borderTopRightRadius: 'var(--button-border-top-right-radius, var(--button-border-radius))',
-          borderBottomLeftRadius: 'var(--button-border-bottom-left-radius, var(--button-border-radius))',
-          borderBottomRightRadius: 'var(--button-border-bottom-right-radius, var(--button-border-radius))',
-          boxShadow: '0 0 0 var(--button-focus-inner-width, 1px) var(--button-focusInnerColor, white) inset',
-          zIndex: 1,
-        },
+      // ':global(.ms-Fabric--isFocusVisible)': {
+      //   '> div': {
+      //     content: '"whatevs"',
+      //     position: 'absolute',
+      //     left: -1,
+      //     right: -1,
+      //     top: -1,
+      //     bottom: -1,
+      //     borderWidth: 'var(--button-focus-width, 2px)',
+      //     borderStyle: 'solid',
+      //     borderColor: 'var(--button-focus-color, black)',
+      //     borderTopLeftRadius: 'var(--button-border-top-left-radius, var(--button-border-radius))',
+      //     borderTopRightRadius: 'var(--button-border-top-right-radius, var(--button-border-radius))',
+      //     borderBottomLeftRadius: 'var(--button-border-bottom-left-radius, var(--button-border-radius))',
+      //     borderBottomRightRadius: 'var(--button-border-bottom-right-radius, var(--button-border-radius))',
+      //     boxShadow: '0 0 0 var(--button-focus-inner-width, 1px) var(--button-focusInnerColor, white) inset',
+      //     zIndex: 1,
+      //   },
 
-        // [EdgeChromiumHighContrastSelector]: {
-        //   borderColor: 'var(--button-highContrast-focusColor)',
-        //   boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
-        // },
-      },
+      //   [EdgeChromiumHighContrastSelector]: {
+      //     borderColor: 'var(--button-highContrast-focusColor)',
+      //     boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
+      //   },
+      // },
     },
   ],
   /* --- Default state --- */

@@ -5,6 +5,7 @@ import { Properties as CSSProperties } from 'csstype';
 import { expand } from 'inline-style-expand-shorthand';
 import { convertProperty } from 'rtl-css-js/core';
 
+import { getDocument, getWindow } from '@fluentui/utilities';
 import { compileCSS } from './runtime/compileCSS';
 import { insertStyles } from './insertStyles';
 import { useTheme } from './useTheme';
@@ -53,7 +54,12 @@ function isObject(val: any) {
 //
 //
 
-const canUseCSSVariables = window.CSS && CSS.supports('color', 'var(--c)');
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let window: any;
+if (window === undefined) {
+  window = getWindow();
+}
+const canUseCSSVariables = window && window.CSS && CSS.supports('color', 'var(--c)');
 
 //
 // IE11 specific
@@ -380,7 +386,14 @@ export function makeNonReactStyles(styles: any) {
   };
 }
 
-const defaultTarget = createTarget(document);
+let document: Document | undefined;
+if (document === undefined) {
+  document = getDocument();
+}
+let defaultTarget: Renderer;
+if (document) {
+  defaultTarget = createTarget(document);
+}
 
 /*
  * A wrapper to connect to a React context. SHOULD USE unified context!!!
