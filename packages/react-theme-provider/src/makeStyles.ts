@@ -7,6 +7,7 @@ import { convertProperty } from 'rtl-css-js/core';
 
 import { compileCSS } from './runtime/compileCSS';
 import { insertStyles } from './insertStyles';
+import { useTheme } from './useTheme';
 
 //
 //
@@ -236,6 +237,7 @@ function selectorsToBits(mapping: any, selectors: any): number {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function resolveStylesToClasses(definitions: any[], tokens: any) {
   const resolvedStylesToClasses = definitions.map((definition, i) => {
+    // console.log(definition);
     const matchers = definition[0];
     const styles = definition[1];
     const resolvedStyles = definition[2];
@@ -362,7 +364,7 @@ export function makeNonReactStyles(styles: any) {
       const matchersInBits = definition[0];
 
       // eslint-disable-next-line no-bitwise
-      if (matchersInBits === 0 || !!(matchersInBits & selectorsMask)) {
+      if (matchersInBits === 0 || (!!(matchersInBits & selectorsMask) && selectorsMask >= matchersInBits)) {
         acc.push(definition[2]);
       }
 
@@ -389,6 +391,11 @@ export function makeStyles(styles: any) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
   return function ___(selectors: any = {}, ...classNames: string[]): string {
-    return result(selectors, { rtl: false, tokens: {}, target: defaultTarget }, ...classNames);
+    const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
+    return result(
+      selectors,
+      { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
+      ...classNames,
+    );
   };
 }
