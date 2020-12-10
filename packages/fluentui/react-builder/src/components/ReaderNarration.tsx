@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, Ref, Dropdown, DropdownProps } from '@fluentui/react-northstar';
-import { NarrationComputer, IAriaElement } from './../narration/NarrationComputer';
+import { NarrationComputer, IAriaElement, SRNCPlatform } from './../narration/NarrationComputer';
 
 const computer = new NarrationComputer();
 let prevSelector = null;
@@ -111,7 +111,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     } // End if 1
 
     // Compute and save the narration text for the current and previous elements and platform
-    const platform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
+    const platform: SRNCPlatform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
     computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration

@@ -135,30 +135,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         case 'Enter': // Clicks the current element
           virtualCursorElements[vcIndex].click();
           return;
-        case 'F10': // When combined with the Shift key, opens the context menu
-          if (event.shiftKey) {
-            // Begin if 1
-            const mouseEvent = document.createEvent('MouseEvents');
-            mouseEvent.initMouseEvent(
-              'contextmenu',
-              true,
-              true,
-              window,
-              1,
-              0,
-              0,
-              0,
-              0,
-              false,
-              false,
-              false,
-              false,
-              2,
-              null,
-            );
-            virtualCursorElements[vcIndex].dispatchEvent(mouseEvent);
-            return;
-          } // End if 1
         default:
           return;
       } // End switch 1

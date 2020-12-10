@@ -29,6 +29,8 @@ export type FocusableElement = {
   element: IAriaElement;
 };
 
+export type SRNCPlatform = 'Win/JAWS' | 'Win/JAWS/VPC';
+
 export class NarrationComputer {
   computedParts: Record<string, string> = {
     landmarksAndGroups: undefined,
@@ -111,7 +113,7 @@ export class NarrationComputer {
   } // End findFocusableElements
 
   // Computes and returns the screen reader narration for the given element using the previous element and platform.
-  async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: string): Promise<string> {
+  async getNarration(element: IAriaElement, prevElement: IAriaElement, platform: SRNCPlatform): Promise<string> {
     // Retrieve the computed accessible node
     const node = await (window as any).getComputedAccessibleNode(element);
 
@@ -257,7 +259,7 @@ export class NarrationComputer {
   } // End getCommonAncestor
 
   // Returns the platform inheritance list for the given platform
-  getPlatformInheritance(platform: string): string[] {
+  getPlatformInheritance(platform: SRNCPlatform): string[] {
     const inheritance = [platform];
     let inheritedPlatform = platform;
     while (SRNC.inheritance[inheritedPlatform]) {
