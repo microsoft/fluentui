@@ -62,6 +62,9 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
 
+  /** Called when the item is selectable and the checkbox is clicked */
+  onSelectionIndicatorClick?: ComponentEventHandler<BoxProps>;
+
   /** A selection indicator can appear disabled and be unable to change states. */
   disabled?: SupportedIntrinsicInputProps['disabled'];
 
@@ -175,6 +178,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     _.invoke(props, 'onClick', e, props);
   };
 
+  const handleSelectionIndicatorClick = e => {
+    _.invoke(props, 'onSelectionIndicatorClick', e, props);
+  };
+
   const selectIndicator = Box.create(selectionIndicator, {
     defaultProps: () => ({
       as: 'span',
@@ -184,6 +191,9 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         styles: resolvedStyles.selectionIndicator,
       }),
     }),
+    overrideProps: {
+      onClick: handleSelectionIndicatorClick,
+    },
   });
 
   const element = (

@@ -30,7 +30,7 @@ import {
   ShorthandCollection,
   FluentComponentStaticProps,
 } from '../../types';
-import { TreeTitle, TreeTitleProps, treeTitleSlotClassNames } from './TreeTitle';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { TreeContext } from './context';
 
@@ -100,6 +100,9 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** Called when the item is selectable and the checkbox is clicked */
+  onSelectionIndicatorClick?: ComponentEventHandler<BoxProps>;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -226,13 +229,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleTitleClick = e => {
-    // need to know if click happened on selection indicator or title itself
-    const shouldSelect =
-      (selectable && !hasSubtree) || (hasSubtree && e?.target?.className?.includes(treeTitleSlotClassNames.indicator));
-    if (shouldSelect) {
-      toggleItemSelect(e, id);
-    }
-    if (!shouldSelect && hasSubtree) {
+    if (hasSubtree) {
       toggleItemActive(e, id);
     }
 
@@ -259,7 +256,15 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       handleTitleClick(e);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
+    onSelectionIndicatorClick: (e, boxProps) => {
+      e.stopPropagation(); // otherwise onClick on title will also be executed
+      if (selectable) {
+        toggleItemSelect(e, id);
+      }
+      _.invoke(predefinedProps, 'onSelectionIndicatorClick', e, boxProps);
+    },
   });
+
   const handleClick = (e: React.SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       // onClick listener for mouse click on treeItem DOM only,
