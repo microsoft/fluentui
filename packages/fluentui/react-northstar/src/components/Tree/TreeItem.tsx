@@ -102,7 +102,7 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   selectionIndicator?: ShorthandValue<BoxProps>;
 
   /** Called when the item is selectable and the checkbox is clicked */
-  onSelectionIndicatorClick?: ComponentEventHandler<BoxProps>;
+  onSelectionIndicatorClick?: (e: React.SyntheticEvent) => void;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -256,12 +256,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       handleTitleClick(e);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
-    onSelectionIndicatorClick: (e, boxProps) => {
-      e.stopPropagation(); // otherwise onClick on title will also be executed
+    onSelectionIndicatorClick: e => {
       if (selectable) {
+        e.stopPropagation(); // otherwise onClick on title will also be executed
         toggleItemSelect(e, id);
+        _.invoke(props, 'onSelectionIndicatorClick', e);
       }
-      _.invoke(predefinedProps, 'onSelectionIndicatorClick', e, boxProps);
     },
   });
 
