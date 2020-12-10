@@ -93,6 +93,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 - Added `SaveIcon`, `LocationIcon`, `ArrowSortIcon`, `TeamsMonochromeIcon` and `MegaphoneIcon`. @TanelVari ([#15830](https://github.com/microsoft/fluentui/pull/15830))
 - Added `VideoProhibitedIcon`. @TanelVari ([#16025](https://github.com/microsoft/fluentui/pull/16025))
+- Added `WhiteboardIcon`. @TanelVari ([#16164](https://github.com/microsoft/fluentui/pull/16164))
 
 ### Documentation
 - `VirtualizdedTreePrototype`: change to use `useVirtualTree` hook and `react-window` @yuanboxue-amber ([#16080](https://github.com/microsoft/fluentui/pull/16080))

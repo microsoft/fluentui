@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.24",
+      "version": "8.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix narrator scan mode navigation for picker",
+            "author": "kuanubha@microsoft.com",
+            "commit": "d23cb36a3138a54a2286f0da38e0e8bde935187a",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Dec 2020 12:29:34 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.23",
       "version": "8.0.0-beta.23",
