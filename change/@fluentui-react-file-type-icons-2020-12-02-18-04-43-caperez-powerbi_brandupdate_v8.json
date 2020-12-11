@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Porting filetype icon changes to v8 from PR #15974",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-03T02:04:42.991Z"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 07 Dec 2020 12:29:34 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Dec 2020 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.24)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.23..@fluentui/react-internal_v8.0.0-beta.24)
+
+### Changes
+
+- fix narrator scan mode navigation for picker ([PR #16177](https://github.com/microsoft/fluentui/pull/16177) by kuanubha@microsoft.com)
 
 ## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.23)
 

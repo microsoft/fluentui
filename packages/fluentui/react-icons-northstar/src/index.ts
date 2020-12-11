@@ -253,6 +253,7 @@ export { VisioIcon } from './components/VisioIcon';
 export { VolumeIcon } from './components/VolumeIcon';
 export { VolumeDownIcon } from './components/VolumeDownIcon';
 export { VolumeUpIcon } from './components/VolumeUpIcon';
+export { WhiteboardIcon } from './components/WhiteboardIcon';
 export { WindowMaximizeIcon } from './components/WindowMaximizeIcon';
 export { WindowMinimizeIcon } from './components/WindowMinimizeIcon';
 export { WindowRestoreIcon } from './components/WindowRestoreIcon';
