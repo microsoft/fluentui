@@ -10,4 +10,4 @@ export default {
   title: 'Breadcrumb Item',
 };
 
-export const BreadcrumbItem = () => BreadcrumbItemTemplate;
+export const BreadcrumbItem = (): string => BreadcrumbItemTemplate;

@@ -1,5 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentForegroundActiveBehavior,
   accentForegroundHoverBehavior,
@@ -7,7 +8,6 @@ import {
   heightNumber,
   neutralForegroundRestBehavior,
 } from '../styles/index';
-import { SystemColors } from '@microsoft/fast-web-utilities';
 
 export const BreadcrumbItemStyles = css`
     ${display('inline-flex')} :host {

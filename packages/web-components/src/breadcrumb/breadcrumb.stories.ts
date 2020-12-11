@@ -12,4 +12,4 @@ export default {
   title: 'Breadcrumb',
 };
 
-export const Breadcrumb = () => BreadcrumbTemplate;
+export const Breadcrumb = (): string => BreadcrumbTemplate;
