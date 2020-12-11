@@ -1,23 +1,24 @@
 import { css } from '@microsoft/fast-element';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
-  neutralForegroundRestBehavior,
+  accentForegroundActiveBehavior,
+  accentForegroundHoverBehavior,
+  accentForegroundRestBehavior,
   heightNumber,
-  neutralFillStealthRestBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFocusBehavior,
+  neutralForegroundRestBehavior,
 } from '../styles/index';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 
 export const BreadcrumbItemStyles = css`
     ${display('inline-flex')} :host {
-        font-family: var(--body-font);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        color: ${neutralForegroundRestBehavior.var};
-        fill: ${neutralForegroundRestBehavior.var};
-        outline: none;
+      background: transparent;
+      box-sizing: border-box;
+      fill: currentcolor;
+      font-family: var(--body-font);
+      font-size: var(--type-ramp-base-font-size);
+      line-height: var(--type-ramp-base-line-height);
+      min-width: calc(${heightNumber} * 1px);
+      outline: none;
     }
 
     .listitem {
@@ -26,48 +27,57 @@ export const BreadcrumbItemStyles = css`
     }
 
     .control {
-        flex-grow: 1;
-        box-sizing: border-box;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 calc((10 + (var(--design-unit) * 2 * var(--density))) * 1px);
-        white-space: nowrap;
-        outline: none;
-        text-decoration: none;
-        background-color: ${neutralFillStealthRestBehavior.var};
-        border: calc(var(--outline-width) * 1px) solid transparent;
-        border-radius: calc(var(--corner-radius) * 1px);
-        color: ${neutralForegroundRestBehavior.var};
-        fill: ${neutralForegroundRestBehavior.var};
-        cursor: pointer;
-        height: calc(${heightNumber} * 1px);
-        min-width: calc(${heightNumber} * 1px);
-    }
+      align-items: center;
+      box-sizing: border-box;
+      color: ${accentForegroundRestBehavior.var};
+      cursor: pointer;
+      display: flex;
+      fill: inherit;
+      outline: none;
+      text-decoration: none;
+      white-space: nowrap;
+  }
 
     .control:hover {
-        background: ${neutralFillStealthHoverBehavior.var};
+        color: ${accentForegroundHoverBehavior.var};
     }
 
     .control:active {
-        background: ${neutralFillStealthActiveBehavior.var};
-    }
-
-    .control:${focusVisible} {
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
-    }
-
-    .control::-moz-focus-inner {
-        border: 0;
+        color: ${accentForegroundActiveBehavior.var};
     }
 
     .control .content {
         position: relative;
     }
 
+    .control .content::before {
+        content: "";
+        display: block;
+        height: calc(var(--outline-width) * 1px);
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: calc(1em + 4px);
+        width: 100%;
+    }
+
+    .control:hover .content::before {
+        background: ${accentForegroundHoverBehavior.var};
+    }
+
+    .control:active .content::before {
+        background: ${accentForegroundActiveBehavior.var};
+    }
+
+    .control:${focusVisible} .content::before {
+        background: ${neutralForegroundRestBehavior.var};
+        height: calc(var(--focus-outline-width) * 1px);
+    }
+
     :host(:not([href])) {
         font-weight: 600;
+        color: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
         margin-inline-start: 11px;
         cursor: default;
     }
@@ -82,25 +92,25 @@ export const BreadcrumbItemStyles = css`
 
     .separator {
       display: flex;
+      fill: ${neutralForegroundRestBehavior.var};
     }
 `.withBehaviors(
+  accentForegroundActiveBehavior,
+  accentForegroundHoverBehavior,
+  accentForegroundRestBehavior,
   neutralForegroundRestBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFocusBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      .control {
-        color: linktext;
-        fill: currentColor;
+      :host(:not([href])) {
+          color: ${SystemColors.ButtonText};
+          fill: currentcolor;
       }
-      .control:hover,
-      .control:${focusVisible} {
-        forced-color-adjust: none;
-        background:  ${SystemColors.ButtonFace};
-        border-color: ${SystemColors.LinkText};
-        box-shadow: 0 0 0 1px inset  ${SystemColors.LinkText};
+      .control:hover .content::before,
+      .control:${focusVisible} .content::before {
+        background: ${SystemColors.LinkText};
+      }
+      .separator {
+        fill: ${SystemColors.ButtonText};
       }
     `,
   ),
