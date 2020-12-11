@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useConst } from '@fluentui/react-hooks';
 import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
@@ -17,8 +18,7 @@ import {
   ItemWithContextMenu,
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
-import { SuggestionsStore } from '@fluentui/react-experiments/lib/FloatingSuggestions';
-import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestions';
+import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 
 const _suggestions = [
   {
@@ -72,9 +72,58 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const ref = React.useRef<any>();
 
-  // Used to resolve suggestions on the editableItem
-  const model = new ExampleSuggestionsModel<IPersonaProps>(people);
-  const suggestionsStore = new SuggestionsStore<IPersonaProps>();
+  const suggestionProps = useConst(() => {
+    return {
+      // uncomment below section to see any example of a selectable header item
+      headerItemsProps: [
+        {
+          renderItem: () => {
+            return <>People Suggestions</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          /*onExecute: () => {
+            alert('People suggestions selected');
+          },*/
+        },
+      ],
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {peopleSuggestions.length} results</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          // uncomment to see an example of multiple selectable footer items
+          /*onExecute: () => {
+            alert('Showing people suggestions executed');
+          },*/
+        },
+        {
+          renderItem: () => {
+            return <>Select to log out to console</>;
+          },
+          shouldShow: () => {
+            return peopleSuggestions.length > 0;
+          },
+          onExecute: () => {
+            console.log(peopleSuggestions);
+          },
+        },
+      ],
+    };
+  });
+
+  const _getSuggestions = (value: string): IFloatingSuggestionItemProps<IPersonaProps>[] => {
+    const allPeople = people;
+    const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
+    const suggestionList = suggestions.map(item => {
+      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+    });
+    return suggestionList;
+  };
 
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
@@ -82,12 +131,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   const SelectedItem = EditableItem({
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: persona => persona.text || '',
+      getSuggestions: _getSuggestions,
+      pickerSuggestionsProps: suggestionProps,
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
-        <FloatingPeopleSuggestions
-          {...props}
-          suggestionsStore={suggestionsStore}
-          onResolveSuggestions={model.resolveSuggestions}
-        />
+        <FloatingPeopleSuggestions {...props} isSuggestionsVisible={true} />
       ),
     }),
     itemComponent: ItemWithContextMenu<IPersona>({
@@ -215,6 +262,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }
   };
 
+  const _createGenericItem = (input: string): IPersona => {
+    return { text: input };
+  };
+
   const _onInputChange = (filterText: string): void => {
     // Clear the input if the user types a semicolon or comma
     // This is meant to be an example of using the forward ref,
@@ -258,6 +309,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     getItemCopyText: _getItemsCopyText,
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
+    createGenericItem: _createGenericItem,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
@@ -280,60 +332,3 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     </>
   );
 };
-
-type IBaseExampleType = {
-  text?: string;
-  name?: string;
-};
-
-class ExampleSuggestionsModel<T extends IBaseExampleType> {
-  private suggestionsData: T[];
-
-  public constructor(data: T[]) {
-    this.suggestionsData = [...data];
-  }
-
-  public resolveSuggestions = (filterText: string, currentItems?: T[]): Promise<T[]> => {
-    let filteredItems: T[] = [];
-    if (filterText) {
-      filteredItems = this._filterItemsByText(filterText);
-      filteredItems = this._removeDuplicates(filteredItems, currentItems || []);
-    }
-
-    return this._convertResultsToPromise(filteredItems);
-  };
-
-  public removeSuggestion(item: T) {
-    const index = this.suggestionsData.indexOf(item);
-    console.log('removing', item, 'at', index);
-    if (index !== -1) {
-      this.suggestionsData.splice(index, 1);
-    }
-  }
-
-  private _filterItemsByText(filterText: string): T[] {
-    return this.suggestionsData.filter((item: T) => {
-      const itemText = item.text || item.name;
-      return itemText ? this._doesTextStartWith(itemText, filterText) : false;
-    });
-  }
-
-  private _doesTextStartWith(text: string, filterText: string): boolean {
-    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-  }
-
-  private _removeDuplicates(items: T[], possibleDupes: T[]): T[] {
-    return items.filter((item: T) => !this._listContainsItem(item, possibleDupes));
-  }
-
-  private _listContainsItem(item: T, Items: T[]): boolean {
-    if (!Items || !Items.length || Items.length === 0) {
-      return false;
-    }
-    return Items.filter((i: T) => (i.text || i.name) === (item.text || item.name)).length > 0;
-  }
-
-  private _convertResultsToPromise(results: T[]): Promise<T[]> {
-    return new Promise<T[]>(resolve => setTimeout(() => resolve(results), 150));
-  }
-}

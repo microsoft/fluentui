@@ -14,7 +14,7 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@fluentui/keyboard-key": "^0.2.12",
     "@fluentui/react": "^8.0.0-beta.27",
-    "@fluentui/react-button": "^1.0.0-beta.16",
+    "@fluentui/react-button": "^1.0.0-beta.17",
     "@fluentui/react-compose": "^1.0.0-beta.9",
     "@fluentui/scripts": "^1.0.0",
     "parallel-webpack": "^2.4.0",
