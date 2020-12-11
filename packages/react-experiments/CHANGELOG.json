@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 11 Dec 2020 12:28:01 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.28",
+      "version": "8.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Fix color contrast in UPP suggestion item close button",
+            "author": "chrp@microsoft.com",
+            "commit": "cbdb48456d9b71f0f4d7859705756e62ac17c93d",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:29:52 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.20",
       "version": "8.0.0-beta.20",
