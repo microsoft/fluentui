@@ -214,7 +214,7 @@ describe('Tree', () => {
       );
     });
 
-    it("should contain index of item open at clicking the title's children", () => {
+    it("should expand on click when TreeTitle renders children components ", () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
       getTitles(wrapper)
