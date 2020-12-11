@@ -128,16 +128,15 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return suggestionList;
   };
 
-  const _isValid = (item: IPersonaProps): boolean => {
+  const _isValid = React.useCallback((item: IPersonaProps): boolean => {
     if (item.secondaryText) {
       return true;
     } else {
       return false;
     }
-  };
+  }, []);
 
   const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
-    // eslint-disable-next-line react/jsx-no-bind
     <SelectedPersona isValid={_isValid} {...props} />
   );
 
