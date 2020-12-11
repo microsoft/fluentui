@@ -36,7 +36,7 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<TreeTitleBehaviorProps>;
 
-  /** Id needed to identify this item inside the Tree. */
+  /** Internal usage only -  Id needed to identify this item inside the Tree, passed down from TreeItem .*/
   id?: string;
 
   /** Whether or not the title has a subtree. */
