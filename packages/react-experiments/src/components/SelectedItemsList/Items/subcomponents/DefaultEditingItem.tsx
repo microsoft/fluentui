@@ -90,7 +90,15 @@ export const DefaultEditingItemInner = <TItem extends any>(
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
   const [inputValue, setInputValue] = React.useState<string>('');
 
-  const { item, onEditingComplete, getSuggestions, getEditingItemText, pickerSuggestionsProps } = props;
+  const {
+    item,
+    onEditingComplete,
+    getSuggestions,
+    onRemoveItem,
+    createGenericItem,
+    getEditingItemText,
+    pickerSuggestionsProps,
+  } = props;
 
   const {
     focusItemIndex,
@@ -140,74 +148,91 @@ export const DefaultEditingItemInner = <TItem extends any>(
     );
   };
 
-  const _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (focusItemIndex >= 0) {
-      _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
-    } else if (props.createGenericItem) {
-      onEditingComplete(item, props.createGenericItem(inputValue));
-    }
-    // else, we come out of editing mode
-  };
-
-  const _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const value: string = (ev.target as HTMLInputElement).value;
-    setInputValue(value);
-
-    if (value === '') {
-      if (props.onRemoveItem) {
-        props.onRemoveItem(item);
+  const _onInputBlur = React.useCallback(
+    (ev: React.FocusEvent<HTMLElement>): void => {
+      if (focusItemIndex >= 0) {
+        _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+      } else if (createGenericItem) {
+        onEditingComplete(item, createGenericItem(inputValue));
       }
-    } else {
-      setEditingSuggestions(getSuggestions(value));
-    }
-  };
+      // else, we come out of editing mode
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
+    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete],
+  );
 
-  const _onInputKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
-    const keyCode = ev.which;
-    switch (keyCode) {
-      case KeyCodes.backspace:
-      case KeyCodes.del:
-        ev.stopPropagation();
-        break;
-      case KeyCodes.enter:
-      case KeyCodes.tab:
-        if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
+  const _onInputChange = React.useCallback(
+    (ev: React.FormEvent<HTMLElement>): void => {
+      const value: string = (ev.target as HTMLInputElement).value;
+      setInputValue(value);
+
+      if (value === '') {
+        if (onRemoveItem) {
+          onRemoveItem(item);
+        }
+      } else {
+        setEditingSuggestions(getSuggestions(value));
+      }
+    },
+    [onRemoveItem, getSuggestions, item],
+  );
+
+  const _onInputKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLInputElement>): void => {
+      const keyCode = ev.which;
+      switch (keyCode) {
+        case KeyCodes.backspace:
+        case KeyCodes.del:
+          ev.stopPropagation();
+          break;
+        case KeyCodes.enter:
+        case KeyCodes.tab:
+          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (focusItemIndex >= 0) {
+              // Get the focused element and add it to selectedItemsList
+              _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+            } else if (footerItemIndex >= 0) {
+              // execute the footer action
+              footerItems![footerItemIndex].onExecute!();
+            } else if (headerItemIndex >= 0) {
+              // execute the header action
+              headerItems![headerItemIndex].onExecute!();
+            }
+          }
+          break;
+        case KeyCodes.up:
           ev.preventDefault();
           ev.stopPropagation();
-          if (focusItemIndex >= 0) {
-            // Get the focused element and add it to selectedItemsList
-            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
-          } else if (footerItemIndex >= 0) {
-            // execute the footer action
-            footerItems![footerItemIndex].onExecute!();
-          } else if (headerItemIndex >= 0) {
-            // execute the header action
-            headerItems![headerItemIndex].onExecute!();
-          }
-        }
-        break;
-      case KeyCodes.up:
-        ev.preventDefault();
-        ev.stopPropagation();
-        selectPreviousSuggestion();
-        break;
-      case KeyCodes.down:
-        ev.preventDefault();
-        ev.stopPropagation();
-        selectNextSuggestion();
-        break;
-    }
-  };
+          selectPreviousSuggestion();
+          break;
+        case KeyCodes.down:
+          ev.preventDefault();
+          ev.stopPropagation();
+          selectNextSuggestion();
+          break;
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
+    [suggestionItems, focusItemIndex, footerItems, footerItemIndex, headerItems, headerItemIndex],
+  );
 
-  const _onSuggestionSelected = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
-    onEditingComplete(item, itemProps.item);
-  };
+  const _onSuggestionSelected = React.useCallback(
+    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+      onEditingComplete(item, itemProps.item);
+    },
+    [onEditingComplete, item],
+  );
 
-  const _onRemoveItem = (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
-    if (props.onRemoveItem) {
-      props.onRemoveItem(itemProps.item);
-    }
-  };
+  const _onRemoveItem = React.useCallback(
+    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+      if (onRemoveItem) {
+        onRemoveItem(itemProps.item);
+      }
+    },
+    [onRemoveItem],
+  );
 
   const itemId = getId();
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties);

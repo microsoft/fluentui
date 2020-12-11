@@ -16,6 +16,7 @@ export * from './Color';
 export * from './ColorPicker';
 export * from './ComboBox';
 export * from './CommandBar';
+export * from './CompoundButton';
 export * from './ContextualMenu';
 export * from './DatePicker';
 export * from './DetailsList';

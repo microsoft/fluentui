@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Dec 2020 12:28:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.28)
+
+Fri, 11 Dec 2020 12:28:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.20..@fluentui/react-experiments_v8.0.0-beta.28)
+
+### Changes
+
+- [UPP] Fix color contrast in UPP suggestion item close button ([PR #16196](https://github.com/microsoft/fluentui/pull/16196) by chrp@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.20)
 

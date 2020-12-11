@@ -98,7 +98,7 @@ packages/react-toggle/ @xugao
 packages/react-internal/src/components/ActivityItem/ @xugao
 packages/react-internal/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
-packages/react-internal/src/components/Button/ @khmakoto
+packages/react-internal/src/compat/components/Button/ @khmakoto
 packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react-internal/src/components/Callout/ @joschect
 packages/react-internal/src/components/Check/ @dzearing @xugao
