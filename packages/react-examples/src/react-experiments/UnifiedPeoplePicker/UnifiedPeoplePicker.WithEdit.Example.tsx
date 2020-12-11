@@ -136,8 +136,8 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
+    // eslint-disable-next-line react/jsx-no-bind
     <SelectedPersona isValid={_isValid} {...props} />
   );
 
@@ -314,24 +314,24 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
-  const _forceResolve = () => {
-    // If the input has text, resolve that
-    if (inputText !== undefined && inputText !== '' && inputText !== null) {
-      // try force resolving, then if that doesn't work, add a generic item
-      if (!ref.current?.forceResolve()) {
-        _addGenericItem(inputText);
+  const _onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      if (ev.ctrlKey && ev.which === KeyCodes.k) {
+        ev.preventDefault();
+        // If the input has text, resolve that
+        if (inputText !== undefined && inputText !== '' && inputText !== null) {
+          // try force resolving, then if that doesn't work, add a generic item
+          if (!ref.current?.forceResolve()) {
+            _addGenericItem(inputText);
+          }
+        } else {
+          // put invalid items into edit mode
+        }
       }
-    } else {
-      // put invalid items into edit mode
-    }
-  };
-
-  const _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
-    if (ev.ctrlKey && ev.which === KeyCodes.k) {
-      ev.preventDefault();
-      _forceResolve();
-    }
-  };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [inputText, ref],
+  );
 
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
