@@ -5,10 +5,11 @@ import { Properties as CSSProperties } from 'csstype';
 import { expand } from 'inline-style-expand-shorthand';
 import { convertProperty } from 'rtl-css-js/core';
 
-import { getDocument, getWindow } from '@fluentui/utilities';
+import { css, getDocument, getWindow } from '@fluentui/utilities';
 import { compileCSS } from './runtime/compileCSS';
 import { insertStyles } from './insertStyles';
 import { useTheme } from './useTheme';
+import { tokensToStyleObject } from './tokensToStyleObject';
 
 //
 //
@@ -165,7 +166,7 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
       // TODO: support support queries
     } else if (typeof propValue === 'string' || typeof propValue === 'number') {
       const className = HASH_PREFIX + hashString(selector + propName + propValue);
-      const css = compileCSS(className, selector, propName, propValue);
+      const compiledCss = compileCSS(className, selector, propName, propValue);
 
       // uniq key based on property & selector, used for merging later
       const key = selector + propName;
@@ -178,9 +179,9 @@ function resolveStyles(styles: any[], selector = '', result: any = {}): any {
         const rtlCSS = compileCSS('r' + className, selector, rtl.key, rtl.value);
 
         // There is no sense to store RTL className as it's "r" + regular className
-        result[key] = [className, css, rtlCSS];
+        result[key] = [className, compiledCss, rtlCSS];
       } else {
-        result[key] = [className, css];
+        result[key] = [className, compiledCss];
       }
 
       // console.log('EVAL', selector, propName, propValue);
@@ -395,20 +396,54 @@ if (document) {
   defaultTarget = createTarget(document);
 }
 
+export interface MakeStylesOptions {
+  classNames?: (string | undefined)[];
+  componentName?: string;
+}
+
 /*
  * A wrapper to connect to a React context. SHOULD USE unified context!!!
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function makeStyles(styles: any) {
-  const result = makeNonReactStyles(styles);
+  const resolvedStyles = makeNonReactStyles(styles);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
-  return function ___(selectors: any = {}, ...classNames: (string | undefined)[]): string {
-    const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
-    return result(
-      selectors,
-      { rtl, tokens: { components, effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
-      ...classNames,
+  return function ___(selectors: any = {}, styleOptions: MakeStylesOptions = {}): string {
+    const { components = {}, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
+    const { classNames = [], componentName } = styleOptions;
+    let resolvedVariantStyles;
+
+    // Evaluate variants if they exist for the current component
+    if (componentName && components[componentName]) {
+      const { variants } = components[componentName];
+      if (variants) {
+        const prefix = '--' + componentName.toLowerCase();
+        const variantStyles = [];
+
+        // eslint-disable-next-line guard-for-in
+        for (const variant in variants) {
+          variantStyles.push([{ variant: variant }, tokensToStyleObject(variants[variant], prefix)]);
+        }
+
+        resolvedVariantStyles = makeNonReactStyles(variantStyles);
+      }
+    }
+
+    const result = css(
+      resolvedStyles(
+        selectors,
+        { rtl, tokens: { effects, fonts, palette, semanticColors, ...tokens }, target: defaultTarget },
+        ...(classNames || []),
+      ),
+      resolvedVariantStyles &&
+        resolvedVariantStyles(selectors, {
+          rtl,
+          tokens: { effects, fonts, palette, semanticColors, ...tokens },
+          target: defaultTarget,
+        }),
     );
+
+    return result;
   };
 }

@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-theme-provider';
+import { makeStyles, MakeStylesOptions } from '@fluentui/react-theme-provider';
 import { css } from '@fluentui/utilities';
 import { CompoundButtonState } from './CompoundButton.types';
 import {
@@ -143,8 +143,8 @@ const useCompoundButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useCompoundButtonStyles = (state: CompoundButtonState, ...classNames: (string | undefined)[]) => {
-  return css(useButtonStyles(state, ...classNames), useCompoundButtonBaseStyles(state, ...classNames));
+export const useCompoundButtonStyles = (state: CompoundButtonState, styleOptions: MakeStylesOptions) => {
+  return css(useButtonStyles(state, styleOptions), useCompoundButtonBaseStyles(state, styleOptions));
 };
 
 export const useCompoundButtonContentStyles = useButtonContentStyles;

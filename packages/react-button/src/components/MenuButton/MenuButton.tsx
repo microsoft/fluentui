@@ -21,23 +21,20 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
     menuIcon: { as: ChevronDownIcon },
   });
 
-  state.className = useMenuButtonStyles(state, MenuButtonClassNames.root, state.className);
+  state.className = useMenuButtonStyles(state, {
+    componentName: 'Button',
+    classNames: [MenuButtonClassNames.root, state.className],
+  });
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = useMenuButtonContentStyles(
-    state,
-    MenuButtonClassNames.content,
-    (state.content as any).className,
-  );
-  (state.icon as any).className = useMenuButtonIconStyles(
-    state,
-    MenuButtonClassNames.icon,
-    (state.icon as any).className,
-  );
-  (state.menuIcon as any).className = useMenuButtonMenuIconStyles(
-    state,
-    MenuButtonClassNames.menuIcon,
-    (state.menuIcon as any).className,
-  );
+  (state.content as any).className = useMenuButtonContentStyles(state, {
+    classNames: [MenuButtonClassNames.content, (state.content as any).className],
+  });
+  (state.icon as any).className = useMenuButtonIconStyles(state, {
+    classNames: [MenuButtonClassNames.icon, (state.icon as any).className],
+  });
+  (state.menuIcon as any).className = useMenuButtonMenuIconStyles(state, {
+    classNames: [MenuButtonClassNames.menuIcon, (state.menuIcon as any).className],
+  });
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   // TODO remove any

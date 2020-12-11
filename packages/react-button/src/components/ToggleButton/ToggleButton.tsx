@@ -17,18 +17,17 @@ import {
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const state = useToggleButton(props, ref);
 
-  state.className = useToggleButtonStyles(state, ToggleButtonClassNames.root, state.className);
+  state.className = useToggleButtonStyles(state, {
+    componentName: 'Button',
+    classNames: [ToggleButtonClassNames.root, state.className],
+  });
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = useToggleButtonContentStyles(
-    state,
-    ToggleButtonClassNames.content,
-    (state.content as any).className,
-  );
-  (state.icon as any).className = useToggleButtonIconStyles(
-    state,
-    ToggleButtonClassNames.icon,
-    (state.icon as any).className,
-  );
+  (state.content as any).className = useToggleButtonContentStyles(state, {
+    classNames: [ToggleButtonClassNames.content, (state.content as any).className],
+  });
+  (state.icon as any).className = useToggleButtonIconStyles(state, {
+    classNames: [ToggleButtonClassNames.icon, (state.icon as any).className],
+  });
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   useInlineTokens(state, '--button');

@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-theme-provider';
+import { makeStyles, MakeStylesOptions } from '@fluentui/react-theme-provider';
 import { css } from '@fluentui/utilities';
 import {
   useButtonStyles,
@@ -96,8 +96,8 @@ const useMenuButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useMenuButtonStyles = (state: MenuButtonState, ...classNames: (string | undefined)[]) => {
-  return css(useButtonStyles(state, ...classNames), useMenuButtonBaseStyles(state, ...classNames));
+export const useMenuButtonStyles = (state: MenuButtonState, styleOptions: MakeStylesOptions) => {
+  return css(useButtonStyles(state, styleOptions), useMenuButtonBaseStyles(state, styleOptions));
 };
 
 export const useMenuButtonContentStyles = useButtonContentStyles;

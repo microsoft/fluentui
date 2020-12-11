@@ -7,6 +7,7 @@
 import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { FontTokens } from '@fluentui/theme';
+import { MakeStylesOptions } from '@fluentui/react-theme-provider';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
@@ -294,16 +295,16 @@ export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public (undocumented)
-export const useButtonContentStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useButtonContentStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useButtonIconStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useButtonIconStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
 
 // @public (undocumented)
-export const useButtonStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useButtonStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
@@ -312,19 +313,19 @@ export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftSt
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
-export const useCompoundButtonContentContainerStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useCompoundButtonContentContainerStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useCompoundButtonContentStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useCompoundButtonContentStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useCompoundButtonIconStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useCompoundButtonIconStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useCompoundButtonSecondaryContentStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useCompoundButtonSecondaryContentStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useCompoundButtonStyles: (state: CompoundButtonState, ...classNames: (string | undefined)[]) => string;
+export const useCompoundButtonStyles: (state: CompoundButtonState, styleOptions: MakeStylesOptions) => string;
 
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
@@ -333,46 +334,46 @@ export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraft
 export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
 
 // @public (undocumented)
-export const useMenuButtonContentStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useMenuButtonContentStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useMenuButtonIconStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useMenuButtonIconStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useMenuButtonMenuIconStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useMenuButtonMenuIconStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
 
 // @public (undocumented)
-export const useMenuButtonStyles: (state: MenuButtonState, ...classNames: (string | undefined)[]) => string;
+export const useMenuButtonStyles: (state: MenuButtonState, styleOptions: MakeStylesOptions) => string;
 
 // @public
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
 
 // @public (undocumented)
-export const useSplitButtonButtonStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useSplitButtonButtonStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useSplitButtonDividerStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useSplitButtonDividerStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useSplitButtonMenuButtonStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useSplitButtonMenuButtonStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useSplitButtonStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useSplitButtonStyles: (selectors?: any, styleOptions?: import("@fluentui/react-theme-provider").MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
-export const useToggleButtonContentStyles: (selectors?: any, ...classNames: (string | undefined)[]) => string;
+export const useToggleButtonContentStyles: (selectors?: any, styleOptions?: MakeStylesOptions | undefined) => string;
 
 // @public (undocumented)
-export const useToggleButtonIconStyles: (state: ToggleButtonState, ...classNames: (string | undefined)[]) => string;
+export const useToggleButtonIconStyles: (state: ToggleButtonState, styleOptions: MakeStylesOptions) => string;
 
 // @public (undocumented)
-export const useToggleButtonStyles: (state: ToggleButtonState, ...classNames: (string | undefined)[]) => string;
+export const useToggleButtonStyles: (state: ToggleButtonState, styleOptions: MakeStylesOptions) => string;
 
 
 // (No @packageDocumentation comment for this package)

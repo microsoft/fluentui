@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-theme-provider';
+import { makeStyles, MakeStylesOptions } from '@fluentui/react-theme-provider';
 import { css } from '@fluentui/utilities';
 import { ToggleButtonState } from './ToggleButton.types';
 import {
@@ -70,8 +70,8 @@ const useToggleButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonStyles = (state: ToggleButtonState, ...classNames: (string | undefined)[]) => {
-  return css(useButtonStyles(state, ...classNames), useToggleButtonBaseStyles(state, ...classNames));
+export const useToggleButtonStyles = (state: ToggleButtonState, styleOptions: MakeStylesOptions) => {
+  return css(useButtonStyles(state, styleOptions), useToggleButtonBaseStyles(state, styleOptions));
 };
 
 export const useToggleButtonContentStyles = useButtonContentStyles;
@@ -106,6 +106,6 @@ const useToggleButtonIconBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonIconStyles = (state: ToggleButtonState, ...classNames: (string | undefined)[]) => {
-  return css(useButtonIconStyles(state, ...classNames), useToggleButtonIconBaseStyles(state, ...classNames));
+export const useToggleButtonIconStyles = (state: ToggleButtonState, styleOptions: MakeStylesOptions) => {
+  return css(useButtonIconStyles(state, styleOptions), useToggleButtonIconBaseStyles(state, styleOptions));
 };
