@@ -70,8 +70,8 @@ const useToggleButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonStyles = (state: ToggleButtonState) => {
-  return css(useButtonStyles(state), useToggleButtonBaseStyles(state));
+export const useToggleButtonStyles = (state: ToggleButtonState, ...classNames: (string | undefined)[]) => {
+  return css(useButtonStyles(state, ...classNames), useToggleButtonBaseStyles(state, ...classNames));
 };
 
 export const useToggleButtonContentStyles = useButtonContentStyles;
@@ -106,6 +106,6 @@ const useToggleButtonIconBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonIconStyles = (state: ToggleButtonState) => {
-  return css(useButtonIconStyles(state), useToggleButtonIconBaseStyles(state));
+export const useToggleButtonIconStyles = (state: ToggleButtonState, ...classNames: (string | undefined)[]) => {
+  return css(useButtonIconStyles(state, ...classNames), useToggleButtonIconBaseStyles(state, ...classNames));
 };

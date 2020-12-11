@@ -96,8 +96,8 @@ const useMenuButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useMenuButtonStyles = (state: MenuButtonState) => {
-  return css(useButtonStyles(state), useMenuButtonBaseStyles(state));
+export const useMenuButtonStyles = (state: MenuButtonState, ...classNames: (string | undefined)[]) => {
+  return css(useButtonStyles(state, ...classNames), useMenuButtonBaseStyles(state, ...classNames));
 };
 
 export const useMenuButtonContentStyles = useButtonContentStyles;

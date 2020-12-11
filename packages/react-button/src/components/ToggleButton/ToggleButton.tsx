@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { css } from '@fluentui/utilities';
 import { ToggleButtonProps } from './ToggleButton.types';
 import { renderToggleButton } from './renderToggleButton';
 import { useToggleButton } from './useToggleButton';
@@ -18,17 +17,17 @@ import {
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const state = useToggleButton(props, ref);
 
-  state.className = css(ToggleButtonClassNames.root, state.className, useToggleButtonStyles(state));
+  state.className = useToggleButtonStyles(state, ToggleButtonClassNames.root, state.className);
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = css(
+  (state.content as any).className = useToggleButtonContentStyles(
+    state,
     ToggleButtonClassNames.content,
     (state.content as any).className,
-    useToggleButtonContentStyles(state),
   );
-  (state.icon as any).className = css(
+  (state.icon as any).className = useToggleButtonIconStyles(
+    state,
     ToggleButtonClassNames.icon,
     (state.icon as any).className,
-    useToggleButtonIconStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
 

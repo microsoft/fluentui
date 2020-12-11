@@ -85,9 +85,9 @@ export const useSplitButtonMenuButtonStyles = makeStyles([
   [
     null,
     {
-      '--button-border-left-width': 0,
-      '--button-border-bottom-left-radius': 0,
-      '--button-border-top-left-radius': 0,
+      '--button-border-left-width': '0',
+      '--button-border-bottom-left-radius': '0',
+      '--button-border-top-left-radius': '0',
       '--button-min-width': menuButtonWidth,
       '--button-width': menuButtonWidth,
 

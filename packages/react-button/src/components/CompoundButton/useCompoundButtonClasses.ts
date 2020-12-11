@@ -143,8 +143,8 @@ const useCompoundButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useCompoundButtonStyles = (state: CompoundButtonState) => {
-  return css(useButtonStyles(state), useCompoundButtonBaseStyles(state));
+export const useCompoundButtonStyles = (state: CompoundButtonState, ...classNames: (string | undefined)[]) => {
+  return css(useButtonStyles(state, ...classNames), useCompoundButtonBaseStyles(state, ...classNames));
 };
 
 export const useCompoundButtonContentStyles = useButtonContentStyles;

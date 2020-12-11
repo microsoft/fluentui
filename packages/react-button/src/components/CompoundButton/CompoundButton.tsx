@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { css } from '@fluentui/utilities';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButton } from './useCompoundButton';
 import {
@@ -20,27 +19,27 @@ import { renderCompoundButton } from './renderCompoundButton';
 export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
   const state = useCompoundButton(props, ref);
 
-  state.className = css(CompoundButtonClassNames.root, state.className, useCompoundButtonStyles(state));
+  state.className = useCompoundButtonStyles(state, CompoundButtonClassNames.root, state.className);
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = css(
+  (state.content as any).className = useCompoundButtonContentStyles(
+    state,
     CompoundButtonClassNames.content,
     (state.content as any).className,
-    useCompoundButtonContentStyles(state),
   );
-  (state.contentContainer as any).className = css(
+  (state.contentContainer as any).className = useCompoundButtonContentContainerStyles(
+    state,
     CompoundButtonClassNames.contentContainer,
     (state.contentContainer as any).className,
-    useCompoundButtonContentContainerStyles(state),
   );
-  (state.icon as any).className = css(
+  (state.icon as any).className = useCompoundButtonIconStyles(
+    state,
     CompoundButtonClassNames.icon,
     (state.icon as any).className,
-    useCompoundButtonIconStyles(state),
   );
-  (state.secondaryContent as any).className = css(
+  (state.secondaryContent as any).className = useCompoundButtonSecondaryContentStyles(
+    state,
     CompoundButtonClassNames.secondaryContent,
     (state.secondaryContent as any).className,
-    useCompoundButtonSecondaryContentStyles(state),
   );
   /* eslint-enable @typescript-eslint/no-explicit-any */
 

@@ -345,9 +345,9 @@ export function makeNonReactStyles(styles: any) {
         className.split(' ').forEach(cName => {
           if (options.target.cache[cName] !== undefined) {
             overrides[options.target.cache[cName][0]] = options.target.cache[cName][1];
-            overridesCx += cName;
+            overridesCx += ' ' + cName;
           } else {
-            nonMakeClasses += cName;
+            nonMakeClasses += ' ' + cName;
           }
         });
       }
@@ -362,7 +362,7 @@ export function makeNonReactStyles(styles: any) {
 
     if (canUseCSSVariables && cxCache[cxCacheKey] !== undefined) {
       // TODO: OOPS, Does not support MW
-      return nonMakeClasses + cxCache[cxCacheKey];
+      return nonMakeClasses + ' ' + cxCache[cxCacheKey];
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -403,7 +403,7 @@ export function makeStyles(styles: any) {
   const result = makeNonReactStyles(styles);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
-  return function ___(selectors: any = {}, ...classNames: string[]): string {
+  return function ___(selectors: any = {}, ...classNames: (string | undefined)[]): string {
     const { components, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
     return result(
       selectors,
