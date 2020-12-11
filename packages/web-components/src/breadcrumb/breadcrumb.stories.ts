@@ -1,7 +1,7 @@
 import { FluentDesignSystemProvider } from '../design-system-provider';
+import { FluentBreadcrumbItem } from '../breadcrumb-item';
 import BreadcrumbTemplate from './fixtures/breadcrumb.html';
 import { FluentBreadcrumb } from '.';
-import { FluentBreadcrumbItem } from '../breadcrumb-item';
 
 // Prevent tree-shaking
 FluentBreadcrumb;
