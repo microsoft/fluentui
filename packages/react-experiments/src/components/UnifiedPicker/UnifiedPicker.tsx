@@ -47,11 +47,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectNextSuggestion,
   } = useFloatingSuggestionItems(
     suggestions,
+    pickerSuggestionsProps?.footerItemsProps,
+    pickerSuggestionsProps?.headerItemsProps,
     selectedSuggestionIndex,
     selectedFooterIndex,
-    pickerSuggestionsProps?.footerItemsProps,
     selectedHeaderIndex,
-    pickerSuggestionsProps?.headerItemsProps,
     isSuggestionsVisible,
   );
 
