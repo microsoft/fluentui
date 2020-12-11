@@ -38,6 +38,16 @@ export interface IUnifiedPickerProps<T> {
   floatingSuggestionProps: IBaseFloatingSuggestionsProps<T>;
 
   /**
+   * A callback for when the floating suggestions are shown
+   */
+  onSuggestionsShown?: () => void;
+
+  /**
+   * A callback for when the floating suggestions are hidden (on dismiss or selection)
+   */
+  onSuggestionsHidden?: () => void;
+
+  /**
    * Current query string to show in input component
    */
   currentRenderedQuerystring?: string;

@@ -83,6 +83,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     floatingSuggestionProps,
     headerComponent,
     onInputChange,
+    onSuggestionsShown,
+    onSuggestionsHidden,
   } = props;
 
   const defaultDragDropEnabled = React.useMemo(
@@ -110,6 +112,20 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       return getSelectedItems() as T[];
     },
   }));
+
+  // Picker shown/hidden callback logic
+  // Ref gate to prevent the onHidden callback from being called the first time
+  const suggestionsCallbackGate = React.useRef(false);
+  React.useEffect(() => {
+    if (suggestionsCallbackGate.current || isSuggestionsShown) {
+      if (isSuggestionsShown) {
+        onSuggestionsShown?.();
+      } else {
+        onSuggestionsHidden?.();
+      }
+    }
+    suggestionsCallbackGate.current = true;
+  }, [isSuggestionsShown, onSuggestionsShown, onSuggestionsHidden]);
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
   const theme = getTheme();
