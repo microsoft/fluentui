@@ -83,10 +83,12 @@ export const BreadcrumbItemStyles = css`
     }
 
     .start {
+        display: flex;
         margin-inline-end: 6px;
     }
 
     .end {
+        display: flex;
         margin-inline-start: 6px;
     }
 
