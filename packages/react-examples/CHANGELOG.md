@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 09 Dec 2020 12:28:21 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Dec 2020 12:27:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.10.0)
+
+Fri, 11 Dec 2020 12:27:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.9.13..@fluentui/react-examples_v0.10.0)
+
+### Minor changes
+
+- Add support for ariaDescription in context menu items ([PR #15973](https://github.com/microsoft/fluentui/pull/15973) by sareiff@microsoft.com)
 
 ## [0.9.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.9.13)
 

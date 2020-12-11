@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 11 Dec 2020 12:27:18 GMT",
+      "tag": "@fluentui/react-examples_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for ariaDescription in context menu items",
+            "author": "sareiff@microsoft.com",
+            "commit": "471b6af61bd2a6128d52d0bec3b1bb5e863beda5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Dec 2020 12:28:21 GMT",
       "tag": "@fluentui/react-examples_v0.9.13",
       "version": "0.9.13",

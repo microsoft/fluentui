@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add support for ariaDescription in context menu items",
-  "packageName": "office-ui-fabric-react",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-18T16:43:27.009Z"
-}
