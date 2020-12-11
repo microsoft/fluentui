@@ -214,7 +214,7 @@ describe('Tree', () => {
       );
     });
 
-    it("should expand on click when TreeTitle renders children components ", () => {
+    it('should expand on click when TreeTitle renders children components ', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
       getTitles(wrapper)
