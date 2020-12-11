@@ -217,10 +217,10 @@ describe('Tree', () => {
     it('should expand on click when TreeTitle renders children components ', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
+      // open title '2'
       getTitles(wrapper)
-        .at(1) // title '2'
+        .at(1)
         .simulate('click');
-      checkOpenTitles(wrapper, ['1', '2', '21', '22', '3']);
 
       // click on icon of title '21'
       const icon = wrapper.find(`.${svgIconClassName}`).filterWhere(n => typeof n.type() === 'string');
