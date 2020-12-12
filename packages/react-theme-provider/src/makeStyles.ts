@@ -423,7 +423,12 @@ export function makeStyles(styles: any) {
 
         // eslint-disable-next-line guard-for-in
         for (const variant in variants) {
-          variantStyles.push([{ variant: variant }, tokensToStyleObject(variants[variant], prefix)]);
+          // Account for changing default variant
+          if (variant === 'root') {
+            variantStyles.push([null, tokensToStyleObject(variants[variant], prefix)]);
+          } else {
+            variantStyles.push([{ variant: variant }, tokensToStyleObject(variants[variant], prefix)]);
+          }
         }
 
         resolvedVariantStyles = makeNonReactStyles(variantStyles);
