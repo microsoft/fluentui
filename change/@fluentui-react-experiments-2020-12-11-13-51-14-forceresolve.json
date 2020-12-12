@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Add a force resolve function to the UnifiedPicker",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-11T21:51:14.546Z"
+}

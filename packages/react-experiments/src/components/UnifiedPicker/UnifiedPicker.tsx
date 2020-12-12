@@ -109,6 +109,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     getSelectedItems: () => {
       return getSelectedItems() as T[];
     },
+    forceResolve: () => {
+      if (focusItemIndex >= 0) {
+        _onSuggestionSelected(undefined, suggestionItems[focusItemIndex]);
+        return true;
+      } else {
+        return false;
+      }
+    },
   }));
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
