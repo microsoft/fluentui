@@ -297,7 +297,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         return;
       }
 
-      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      if (treeItemHasSubtree && !executeSelection) {
         expandItems(e, treeItemProps);
       }
 
@@ -307,8 +307,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
           return;
         }
 
-        // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-        if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
+        if (treeItemHasSubtree && !executeSelection) {
           return;
         }
 

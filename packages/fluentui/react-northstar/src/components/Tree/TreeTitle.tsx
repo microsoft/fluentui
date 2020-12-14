@@ -165,6 +165,14 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     _.invoke(props, 'onClick', e, props);
   };
 
+  const selectionIndicatorOverrideProps = (predefinedProps: BoxProps) => ({
+    onClick: (e: React.SyntheticEvent) => {
+      e.stopPropagation(); // otherwise onClick on title will also be executed
+      handleClick(e);
+      _.invoke(predefinedProps, 'onClick', e);
+    },
+  });
+
   const selectIndicator = Box.create(selectionIndicator, {
     defaultProps: () => ({
       as: 'span',
@@ -178,6 +186,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
           }),
       }),
     }),
+    overrideProps: selectionIndicatorOverrideProps,
   });
 
   const element = (
