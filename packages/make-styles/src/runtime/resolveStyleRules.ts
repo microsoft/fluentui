@@ -23,8 +23,8 @@ export function resolveStyleRules(
   properties.forEach(propName => {
     const propValue = expandedStyles[propName];
 
+    // eslint-disable-next-line eqeqeq
     if (propValue == null) {
-      // eslint-disable-line eqeqeq
       return;
     } else if (typeof propValue === 'string' || typeof propValue === 'number') {
       // uniq key based on property & selector, used for merging later
