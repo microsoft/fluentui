@@ -269,6 +269,18 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           },
         },
 
+        /**
+         * This modifier is necessary to retain behaviour from popper v1 where untethered poppers are allowed by
+         * default. i.e. popper is still rendered fully in the viewport even if anchor element is no longer in the
+         * viewport
+         */
+        {
+          name: 'preventOverflow',
+          options: {
+            tether: false,
+          },
+        },
+
         flipBoundary && {
           name: 'flip',
           options: {
