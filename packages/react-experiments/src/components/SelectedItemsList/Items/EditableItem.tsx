@@ -7,6 +7,7 @@ export type EditingItemComponentProps<T> = {
   item: T;
   onEditingComplete: (oldItem: T, newItem: T) => void;
   onDismiss?: () => void;
+  createGenericItem?: (input: string) => T;
 };
 
 /**
@@ -39,6 +40,7 @@ export const EditableItem = <T extends any>(editableItemProps: EditableItemProps
         item={selectedItemProps.item}
         onEditingComplete={onItemEdited}
         onDismiss={setEditingFalse}
+        createGenericItem={selectedItemProps.createGenericItem}
       />
     ) : (
       <ItemComponent {...selectedItemProps} onTrigger={setEditingTrue} />

@@ -47,11 +47,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectNextSuggestion,
   } = useFloatingSuggestionItems(
     suggestions,
+    pickerSuggestionsProps?.footerItemsProps,
+    pickerSuggestionsProps?.headerItemsProps,
     selectedSuggestionIndex,
     selectedFooterIndex,
-    pickerSuggestionsProps?.footerItemsProps,
     selectedHeaderIndex,
-    pickerSuggestionsProps?.headerItemsProps,
     isSuggestionsVisible,
   );
 
@@ -108,6 +108,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     },
     getSelectedItems: () => {
       return getSelectedItems() as T[];
+    },
+    forceResolve: () => {
+      if (focusItemIndex >= 0) {
+        _onSuggestionSelected(undefined, suggestionItems[focusItemIndex]);
+        return true;
+      } else {
+        return false;
+      }
     },
   }));
 

@@ -1100,6 +1100,7 @@ export interface IBasePicker<T> {
 
 // @public
 export interface IBasePickerProps<T> extends React.Props<any> {
+    ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
@@ -3860,6 +3861,7 @@ export type IPickerAriaIds = {
     selectedSuggestionAlert: string;
     selectedItems: string;
     suggestionList: string;
+    combobox: string;
 };
 
 // @public

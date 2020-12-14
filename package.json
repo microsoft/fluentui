@@ -153,6 +153,7 @@
           "@fluentui/react-bindings",
           "@fluentui/react-builder",
           "@fluentui/react-northstar",
+          "@fluentui/react-northstar-prototypes",
           "@fluentui/state",
           "@fluentui/styles"
         ],
