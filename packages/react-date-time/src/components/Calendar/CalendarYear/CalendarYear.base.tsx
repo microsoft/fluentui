@@ -267,8 +267,8 @@ const CalendarYearNavArrow = React.forwardRef(
         <Icon
           iconName={
             (direction === CalendarYearNavDirection.Previous) !== getRTL()
-              ? navigationIcons.rightNavigation
-              : navigationIcons.leftNavigation
+              ? navigationIcons.leftNavigation
+              : navigationIcons.rightNavigation
           }
         />
       </button>
