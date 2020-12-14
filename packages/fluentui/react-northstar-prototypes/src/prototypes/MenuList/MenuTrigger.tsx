@@ -7,7 +7,7 @@ export function MenuTrigger({ children }) {
 
   const listener = React.useCallback(
     e => {
-      if (e.keyCode !== 37) {
+      if (e.key !== 'ArrowLeft') {
         setOpen(true);
       }
     },

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Wed, 09 Dec 2020 12:27:00 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Dec 2020 12:27:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.25)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.24..@fluentui/react-internal_v8.0.0-beta.25)
+
+### Changes
+
+- Pickers: add aria-label as an option to apply to the root combobox ([PR #16187](https://github.com/microsoft/fluentui/pull/16187) by joschect@microsoft.com)
 
 ## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.24)
 

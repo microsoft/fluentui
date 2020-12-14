@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-08T00:16:33.783Z"
-}

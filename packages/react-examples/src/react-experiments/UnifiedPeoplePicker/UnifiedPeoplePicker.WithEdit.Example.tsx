@@ -16,9 +16,11 @@ import {
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
   ItemWithContextMenu,
+  ISelectedItemProps,
 } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
+import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
 
 const _suggestions = [
   {
@@ -69,6 +71,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   ]);
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+  const [inputText, setInputText] = React.useState<string>('');
 
   const ref = React.useRef<any>();
 
@@ -125,6 +128,18 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return suggestionList;
   };
 
+  const _isValid = React.useCallback((item: IPersonaProps): boolean => {
+    if (item.secondaryText) {
+      return true;
+    } else {
+      return false;
+    }
+  }, []);
+
+  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
+    <SelectedPersona isValid={_isValid} {...props} />
+  );
+
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
    */
@@ -152,7 +167,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
           onClick: () => onTrigger && onTrigger(),
         },
       ],
-      itemComponent: TriggerOnContextMenu(SelectedPersona),
+      itemComponent: TriggerOnContextMenu(SelectedItemInternal),
     }),
   });
 
@@ -266,14 +281,23 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return { text: input };
   };
 
+  const _addGenericItem = (text: string) => {
+    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(text)]);
+    ref.current?.clearInput();
+    setInputText('');
+  };
+
   const _onInputChange = (filterText: string): void => {
-    // Clear the input if the user types a semicolon or comma
-    // This is meant to be an example of using the forward ref,
-    // feel free to comment out if it impacts your testing
+    // Add a generic item to the end of the list
+    // and clear the input if the user types a semicolon or comma
     const lastCharIndex = filterText.length - 1;
     const lastChar = filterText[lastCharIndex];
     if (lastChar === ';' || lastChar === ',') {
-      ref.current?.clearInput();
+      const itemText = filterText.slice(0, filterText.length - 1);
+      _addGenericItem(itemText);
+    } else {
+      // Save the input text for force resolve
+      setInputText(filterText);
     }
 
     const allPeople = people;
@@ -288,6 +312,25 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   function _startsWith(text: string, filterText: string): boolean {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
+
+  const _onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      if (ev.ctrlKey && ev.which === KeyCodes.k) {
+        ev.preventDefault();
+        // If the input has text, resolve that
+        if (inputText !== undefined && inputText !== '' && inputText !== null) {
+          // try force resolving, then if that doesn't work, add a generic item
+          if (!ref.current?.forceResolve()) {
+            _addGenericItem(inputText);
+          }
+        } else {
+          // put invalid items into edit mode
+        }
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [inputText, ref],
+  );
 
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
@@ -328,6 +371,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
         defaultDragDropEnabled={false}
+        onKeyDown={_onKeyDown}
       />
     </>
   );

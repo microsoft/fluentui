@@ -17,6 +17,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
       color: v.color,
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
+
       ...(iconOnly && { alignItems: 'center' }),
       ...(vertical && {
         flexDirection: 'column',
@@ -25,7 +26,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),
-        ...(!fluid && !submenu && { width: ['fit-content', 'auto'], display: 'inline-block' }),
+        ...(!fluid && !submenu && { width: 'fit-content' }),
         ...(iconOnly && {
           display: 'inline-block',
           width: 'auto',
