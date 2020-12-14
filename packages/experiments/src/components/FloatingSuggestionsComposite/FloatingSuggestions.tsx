@@ -34,11 +34,30 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     pickerSuggestionsProps,
     selectedFooterIndex,
     selectedHeaderIndex,
+    onSuggestionsShown,
+    onSuggestionsHidden,
   } = props;
 
-  const hidePicker = (ev: React.MouseEvent): void => {
-    onFloatingSuggestionsDismiss ? onFloatingSuggestionsDismiss(ev) : null;
-  };
+  // Picker shown/hidden callback logic
+  // Ref gate to prevent the onHidden callback from being called the first time
+  const suggestionsCallbackGate = React.useRef(false);
+  React.useEffect(() => {
+    if (suggestionsCallbackGate.current || isSuggestionsVisible) {
+      if (isSuggestionsVisible) {
+        onSuggestionsShown?.();
+      } else {
+        onSuggestionsHidden?.();
+      }
+    }
+    suggestionsCallbackGate.current = true;
+  }, [isSuggestionsVisible, onSuggestionsShown, onSuggestionsHidden]);
+
+  const hidePicker = React.useCallback(
+    (ev?: React.MouseEvent): void => {
+      onFloatingSuggestionsDismiss?.(ev);
+    },
+    [onFloatingSuggestionsDismiss],
+  );
 
   return (
     <div
@@ -51,7 +70,6 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
           isBeakVisible={false}
           gapSpace={5}
           target={targetElement}
-          // eslint-disable-next-line react/jsx-no-bind
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}
           directionalHint={DirectionalHint.bottomLeftEdge}
