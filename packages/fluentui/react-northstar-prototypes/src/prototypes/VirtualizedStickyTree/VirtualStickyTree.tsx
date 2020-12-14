@@ -283,7 +283,6 @@ const InnerElementType = ({ children, style }, ref) => {
   const context = React.useContext(InnerElementContext);
   const { stickyItemIds, stickyItemPusherHeights, stickyItemSize, getItemById } = context;
 
-  // add pusher div after each sticky item
   const renderContent = React.useCallback(
     (virtualItems: React.ReactElement<ListChildComponentProps>[]) => {
       const createTreeItem = virtualItems[0]?.props.data?.createTreeItem;
@@ -343,7 +342,11 @@ const InnerElementType = ({ children, style }, ref) => {
     [getItemById, stickyItemIds, stickyItemPusherHeights, stickyItemSize],
   );
 
-  return <div style={style}>{renderContent(children)}</div>;
+  return (
+    <div style={style} role="none">
+      {renderContent(children)}
+    </div>
+  );
 };
 
 const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => <div ref={ref} {...props} role="none" />);
