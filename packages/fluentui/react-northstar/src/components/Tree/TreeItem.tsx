@@ -30,7 +30,7 @@ import {
   ShorthandCollection,
   FluentComponentStaticProps,
 } from '../../types';
-import { TreeTitle, TreeTitleProps } from './TreeTitle';
+import { TreeTitle, TreeTitleProps, treeTitleSlotClassNames } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
@@ -230,8 +230,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     onSiblingsExpand(e, props);
   };
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
-    onClick: (e, titleProps) => {
-      handleTitleClick(e);
+    onClick: (e: React.SyntheticEvent, titleProps) => {
+      if (selectable && (e?.target as HTMLElement)?.className?.includes(treeTitleSlotClassNames.indicator)) {
+        handleSelection(e);
+      } else {
+        handleTitleClick(e);
+      }
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
   });
