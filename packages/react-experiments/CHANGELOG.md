@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 11 Dec 2020 12:28:01 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Dec 2020 12:27:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.29)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.28..@fluentui/react-experiments_v8.0.0-beta.29)
+
+### Changes
+
+- Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite ([PR #16168](https://github.com/microsoft/fluentui/pull/16168) by elvonspa@microsoft.com)
+- Add a force resolve function to the UnifiedPicker ([PR #16209](https://github.com/microsoft/fluentui/pull/16209) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.28)
 
