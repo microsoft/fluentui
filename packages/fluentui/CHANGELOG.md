@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tree` cannot expand/collapse when treeTitle has children @yuanboxue-amber ([#16199](https://github.com/microsoft/fluentui/pull/16199))
 - Export missing type `SplitButtonToggleStyleProps` @ling1726 ([#16215](https://github.com/microsoft/fluentui/pull/16215))
 - Fix wrong grid template in `Checkbox` for `label` end @jurokapsiar ([#16208](https://github.com/microsoft/fluentui/pull/16208))
+- Remove `inline-block` from `Menu` root slot @assuncaocharles ([#16222](https://github.com/microsoft/fluentui/pull/16222))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
