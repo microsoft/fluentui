@@ -293,7 +293,11 @@ const InnerElementType = ({ children, style }, ref) => {
 
       const result: Record<
         string,
-        { stickyItem: React.ReactElement; pusher: React.ReactElement; children: React.ReactElement[] }
+        {
+          stickyItem: React.ReactElement; // the sticky item itself
+          pusher: React.ReactElement; // the div pusher with height being the same as all descendents of this sticky item
+          children: React.ReactElement[]; // all descendents of this sticky item
+        }
       > = {};
 
       stickyItemIds.forEach((id, index) => {
@@ -312,6 +316,7 @@ const InnerElementType = ({ children, style }, ref) => {
 
       virtualItems.forEach(virtualItem => {
         const virtualItemId = virtualItem.key as string; // our `getItemKey` makes virtual item's key the same as its corresponding tree item's id
+        // get the sticky id to which the current virtualItem belongs to
         let parentId = getItemById(virtualItemId)?.parent;
         let parentItem = getItemById(parentId);
         while (parentItem && parentItem.level > 1) {
