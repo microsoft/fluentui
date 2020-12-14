@@ -2,7 +2,6 @@ import * as React from 'react';
 import { treeBehavior } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
-  useTelemetry,
   useUnhandledProps,
   getElementType,
   useAccessibility,
@@ -52,13 +51,10 @@ export const VirtualStickyTreeClassName = 'ui-virtualstickytree';
 
 export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(VirtualStickyTree.displayName, context.telemetry);
-  setStart();
 
   const { children, className, design, styles, variables, items, height, itemSize, stickyItemSize } = props;
 
   const ElementType = getElementType(props);
-
   const unhandledProps = useUnhandledProps([...Tree.handledProps, 'stickyItemSize', 'itemSize'], props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -189,26 +185,23 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       const item = getItemById(id);
       if (item) {
         const { expanded, parent, level, index, treeSize, childrenIds } = item;
-        const overrideProps = {
-          style, // came from react-window
-          expanded,
-          parent,
-          key: id,
-          level,
-          index,
-          treeSize,
-          selectable: false,
-          onFocus: () => makeVisibleOnFocus(id, level),
-        };
-        if (level === 1 && expanded && childrenIds.length) {
-          (overrideProps as any).onKeyDown = handleArrowUpDownOnSticky(id, item);
-        }
         return TreeItem.create(item.item, {
           defaultProps: () =>
             getA11yProps('item', {
               renderItemTitle: props.renderItemTitle,
             }),
-          overrideProps,
+          overrideProps: {
+            style, // came from react-window
+            expanded,
+            parent,
+            key: id,
+            level,
+            index,
+            treeSize,
+            selectable: false,
+            onFocus: () => makeVisibleOnFocus(id, level),
+            ...(level === 1 && expanded && childrenIds.length && { onKeyDown: handleArrowUpDownOnSticky(id, item) }),
+          },
         });
       }
       return null;
@@ -242,8 +235,8 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   );
 
   React.useLayoutEffect(() => {
-    (listRef.current as any)?.resetAfterIndex(0);
-  }, [listRef, visibleItemIds]); // when item collapsed/expanded, refresh react-window itemSize cache
+    listRef.current.resetAfterIndex(0);
+  }, [listRef, visibleItemIds]); // when item collapsed/expanded (visibleItemIds change), refresh react-window itemSize cache
 
   const element = (
     <TreeContext.Provider value={contextValue}>
@@ -264,6 +257,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
               itemKey={getItemKey}
               itemData={{ visibleItemIds, createTreeItem }}
               itemCount={visibleItemIds.length}
+              outerElementType={OuterElementType}
               innerElementType={InnerElementType}
             >
               {ItemWrapper}
@@ -273,7 +267,6 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       )}
     </TreeContext.Provider>
   );
-  setEnd();
   return element;
 };
 
@@ -286,10 +279,11 @@ const getStickyItemStyle = (indexAmoungStickyItems: number, stickyItemNums: numb
   backgroundColor: teamsTheme.siteVariables.colorScheme.default.background3,
 });
 
-const InnerElementType = ({ children, style }) => {
+const InnerElementType = ({ children, style }, ref) => {
   const context = React.useContext(InnerElementContext);
   const { stickyItemIds, stickyItemPusherHeights, stickyItemSize, getItemById } = context;
 
+  // add pusher div after each sticky item
   const renderContent = React.useCallback(
     (virtualItems: React.ReactElement<ListChildComponentProps>[]) => {
       const createTreeItem = virtualItems[0]?.props.data?.createTreeItem;
@@ -301,6 +295,7 @@ const InnerElementType = ({ children, style }) => {
         string,
         { stickyItem: React.ReactElement; pusher: React.ReactElement; children: React.ReactElement[] }
       > = {};
+
       stickyItemIds.forEach((id, index) => {
         result[id] = {
           stickyItem: createTreeItem(id, getStickyItemStyle(index, stickyItemIds.length, stickyItemSize)),
@@ -308,12 +303,13 @@ const InnerElementType = ({ children, style }) => {
             <div
               key={`${id}-pusher`}
               style={{ height: stickyItemPusherHeights[index], zIndex: -1 }}
-              aria-hidden="true"
+              role="presentation"
             />
           ),
           children: [],
         };
       });
+
       virtualItems.forEach(virtualItem => {
         const virtualItemId = virtualItem.key as string; // our `getItemKey` makes virtual item's key the same as its corresponding tree item's id
         let parentId = getItemById(virtualItemId)?.parent;
@@ -345,6 +341,10 @@ const InnerElementType = ({ children, style }) => {
   return <div style={style}>{renderContent(children)}</div>;
 };
 
+const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => <div ref={ref} {...props} role="none" />);
+
+// memorize to avoid unnecessary re-renders, for example on scrolling
+// recommended approach by react-window: https://react-window.now.sh/#/api/FixedSizeList
 const ItemWrapper = React.memo<ListChildComponentProps & { data: VirtualItemData }>(({ index, style, data }) => {
   const { visibleItemIds, createTreeItem } = data;
   return createTreeItem(visibleItemIds[index], style);
