@@ -100,7 +100,8 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
       const item = getItemById(id);
       if (item) {
         const { expanded, parent, level, index, treeSize } = item;
-        return TreeItem.create(item.item, {
+        const { itemSize, ...rest } = item.item;
+        return TreeItem.create(rest, {
           defaultProps: () =>
             getA11yProps('item', {
               renderItemTitle: props.renderItemTitle,

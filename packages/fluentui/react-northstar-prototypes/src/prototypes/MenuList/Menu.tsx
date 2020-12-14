@@ -12,7 +12,7 @@ export const Menu = props => {
     type: 'keydown',
     target: document,
     listener: e => {
-      if (e.keyCode === 27) {
+      if (e.key === 'Escape') {
         setOpen(false);
       }
     },

@@ -238,6 +238,7 @@ export { TrashCanIcon } from './components/TrashCanIcon';
 export { TriangleEndIcon } from './components/TriangleEndIcon';
 export { TriangleDownIcon } from './components/TriangleDownIcon';
 export { TriangleUpIcon } from './components/TriangleUpIcon';
+export { TvIcon } from './components/TvIcon';
 export { UnderlineIcon } from './components/UnderlineIcon';
 export { UndoIcon } from './components/UndoIcon';
 export { UrgentIcon } from './components/UrgentIcon';

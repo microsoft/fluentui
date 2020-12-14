@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { List, Avatar, Flex, Text, MenuButton } from '@fluentui/react-northstar';
 import { MoreIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';

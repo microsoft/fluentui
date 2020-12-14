@@ -259,7 +259,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of eidting
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   const SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
     <SelectedPersona canExpand={_canExpandItem} getExpandedItems={_getExpandedGroupItems} {...props} />
   );

@@ -12,16 +12,6 @@ const items = [
         id: '11',
         title: '11',
       },
-      {
-        id: '12',
-        title: '12',
-        items: [
-          {
-            id: '121',
-            title: '121',
-          },
-        ],
-      },
     ],
   },
   {
@@ -47,6 +37,21 @@ const items = [
   {
     id: '3',
     title: '3',
+    items: [
+      {
+        id: '31',
+        title: '31',
+      },
+      {
+        id: '32',
+        title: '32',
+        selectable: false,
+      },
+      {
+        id: '33',
+        title: '33',
+      },
+    ],
   },
 ];
 
@@ -68,29 +73,48 @@ describe('useTree', () => {
       useTreeResult = useTree({
         items,
         defaultActiveItemIds: ['1'],
-        defaultSelectedItemIds: ['211', '22'],
+        defaultSelectedItemIds: ['211', '22'], // all leaves under '2'
       });
     });
   });
 
-  test('should return getItemById and set item select state correctly', () => {
+  test('should set item select state correctly according to defaultSelectedItemIds', () => {
     expect(useTreeResult.getItemById('1').selected).toBe(false);
     expect(useTreeResult.getItemById('11').selected).toBe(false);
-    expect(useTreeResult.getItemById('12').selected).toBe(false);
-    expect(useTreeResult.getItemById('121').selected).toBe(false);
     expect(useTreeResult.getItemById('2').selected).toBe(true);
     expect(useTreeResult.getItemById('21').selected).toBe(true);
     expect(useTreeResult.getItemById('211').selected).toBe(true);
     expect(useTreeResult.getItemById('22').selected).toBe(true);
     expect(useTreeResult.getItemById('3').selected).toBe(false);
+    expect(useTreeResult.getItemById('31').selected).toBe(false);
+    expect(useTreeResult.getItemById('32').selected).toBe(false);
+    expect(useTreeResult.getItemById('33').selected).toBe(false);
   });
 
-  test('should update item select state when is called', () => {
+  test('should update item select state when toggleItemSelect is called from parent node', () => {
     act(() => {
-      useTreeResult.toggleItemSelect({} as React.SyntheticEvent, '2');
+      useTreeResult.toggleItemSelect({} as React.SyntheticEvent, '2'); // all items under 2 should become unselected
     });
-    ['1', '11', '12', '121', '2', '21', '211', '22', '3'].forEach(id => {
+    ['2', '21', '211', '22'].forEach(id => {
       expect(useTreeResult.getItemById(id).selected).toBe(false);
     });
+  });
+
+  test('should update item select state correctly when unselectable items present', () => {
+    act(() => {
+      useTreeResult.toggleItemSelect({} as React.SyntheticEvent, '31');
+    });
+    expect(useTreeResult.getItemById('31').selected).toBe(true);
+    expect(useTreeResult.getItemById('32').selected).toBe(false);
+    expect(useTreeResult.getItemById('33').selected).toBe(false);
+    expect(useTreeResult.getItemById('3').selected).toBe('indeterminate');
+
+    act(() => {
+      useTreeResult.toggleItemSelect({} as React.SyntheticEvent, '33');
+    });
+    expect(useTreeResult.getItemById('31').selected).toBe(true);
+    expect(useTreeResult.getItemById('32').selected).toBe(false);
+    expect(useTreeResult.getItemById('33').selected).toBe(true);
+    expect(useTreeResult.getItemById('3').selected).toBe(true);
   });
 });

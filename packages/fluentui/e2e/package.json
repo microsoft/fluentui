@@ -7,6 +7,7 @@
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
+    "@fluentui/react-northstar-prototypes": "^0.51.0",
     "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.8.25",
