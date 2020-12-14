@@ -99,6 +99,7 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 import { CarouselStylesProps } from '../../components/Carousel/Carousel';
+import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -164,6 +165,7 @@ export type TeamsThemeStylesProps = {
   Segment: SegmentStylesProps;
   Slider: SliderStylesProps;
   SplitButton: SplitButtonStylesProps;
+  SplitButtonToggle: SplitButtonToggleStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
