@@ -29,7 +29,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const componentsBlackList = ['Debug', 'Design'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarState {
@@ -432,11 +432,6 @@ class Sidebar extends React.Component<SidebarProps & RouteComponentProps, Sideba
       {
         key: 'virtualized-table',
         title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
-        public: true,
-      },
-      {
-        key: 'unstable-datepicker',
-        title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
         public: true,
       },
     ];
