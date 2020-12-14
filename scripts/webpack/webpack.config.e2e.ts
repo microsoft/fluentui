@@ -28,7 +28,10 @@ const webpackConfig: webpack.Configuration = {
     readline: 'empty',
   },
   module: {
-    noParse: [/anchor-js/],
+    noParse: [
+      /anchor-js/,
+      /prettier\/parser-typescript/, // prettier issue, should be solved after upgrade prettier to version 2 https://github.com/prettier/prettier/issues/6903
+    ],
     rules: [
       {
         test: /\.(js|ts|tsx)$/,

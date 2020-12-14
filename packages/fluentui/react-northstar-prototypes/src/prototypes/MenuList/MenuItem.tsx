@@ -13,7 +13,7 @@ export function MenuItem({ children, index, submenu = null }) {
 
   const listenerKeyboard = React.useCallback(
     e => {
-      if (e.keyCode === 37) {
+      if (e.key === 'ArrowLeft') {
         setOpen(false);
         triggerRef.current.focus();
       }
