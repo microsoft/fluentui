@@ -48,7 +48,6 @@
     "dist"
   ],
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-prototypes",
-  "jsnext:main": "dist/es/index.js",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
