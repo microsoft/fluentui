@@ -30,9 +30,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     isSuggestionsVisible,
   } = props.floatingSuggestionProps;
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
-  const dragDropHelper = new DragDropHelper({
-    selection: selection,
-  });
+  const dragDropHelper = React.useMemo(() => new DragDropHelper({ selection }), [selection]);
 
   const {
     focusItemIndex,
@@ -239,7 +237,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(-1);
   };
 
-  const defaultDragDropEvents: IDragDropEvents = {
+  const defaultDragDropEvents = React.useRef<IDragDropEvents>({
     canDrop: _canDrop,
     canDrag: () => defaultDragDropEnabled,
     onDragEnter: _onDragEnter,
@@ -247,204 +245,269 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDrop: _onDropList,
     onDragStart: _onDragStart,
     onDragEnd: _onDragEnd,
-  };
+  });
 
-  const _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
-    // Allow the caller to handle the key down
-    if (props.onKeyDown) {
-      props.onKeyDown(ev);
-    }
-
-    // Handle copy if focus is in the selected items list
-    // This is a temporary work around, it has localization issues
-    // we plan on rewriting how this works in the future
-    if (ev.ctrlKey && ev.which === KeyCodes.c) {
-      if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
-        ev.preventDefault();
-        const copyItems = selection.getSelection() as T[];
-        const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
-        navigator.clipboard.writeText(copyString).then(
-          () => {
-            /* clipboard successfully set */
-          },
-          () => {
-            /* clipboard write failed */
-            // Swallow the error
-          },
-        );
+  const _onSuggestionSelected = React.useCallback(
+    (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+      addItems([item.item]);
+      if (props.floatingSuggestionProps.onSuggestionSelected) {
+        props.floatingSuggestionProps.onSuggestionSelected(ev, item);
       }
-    }
-    // Handle delete of items via backspace
-    else if (ev.which === KeyCodes.backspace && selectedItems.length) {
-      if (
-        focusedItemIndices.length === 0 &&
-        input &&
-        input.current &&
-        !input.current.isValueSelected &&
-        input.current.inputElement === document.activeElement &&
-        (input.current as Autofill).cursorLocation === 0
-      ) {
-        showPicker(false);
-        ev.preventDefault();
-        if (props.selectedItemsListProps.onItemsRemoved) {
-          props.selectedItemsListProps.onItemsRemoved([selectedItems[selectedItems.length - 1]]);
-        }
-        removeItemAt(selectedItems.length - 1);
-      } else if (focusedItemIndices.length > 0) {
-        showPicker(false);
-        ev.preventDefault();
-        if (props.selectedItemsListProps.onItemsRemoved) {
-          props.selectedItemsListProps.onItemsRemoved(getSelectedItems());
-        }
-        removeSelectedItems();
-        input.current?.focus();
+      if (input.current) {
+        input.current.clear();
       }
-    }
-  };
+      showPicker(false);
+    },
+    [addItems, props.floatingSuggestionProps, showPicker],
+  );
 
-  const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
-    if (isSuggestionsShown) {
-      const keyCode = ev.which;
-      switch (keyCode) {
-        case KeyCodes.escape:
+  const _onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      // Allow the caller to handle the key down
+      if (props.onKeyDown) {
+        props.onKeyDown(ev);
+      }
+
+      // Handle copy if focus is in the selected items list
+      // This is a temporary work around, it has localization issues
+      // we plan on rewriting how this works in the future
+      if (ev.ctrlKey && ev.which === KeyCodes.c) {
+        if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
+          ev.preventDefault();
+          const copyItems = selection.getSelection() as T[];
+          const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
+          navigator.clipboard.writeText(copyString).then(
+            () => {
+              /* clipboard successfully set */
+            },
+            () => {
+              /* clipboard write failed */
+              // Swallow the error
+            },
+          );
+        }
+      }
+      // Handle delete of items via backspace
+      else if (ev.which === KeyCodes.backspace && selectedItems.length) {
+        if (
+          focusedItemIndices.length === 0 &&
+          input &&
+          input.current &&
+          !input.current.isValueSelected &&
+          input.current.inputElement === document.activeElement &&
+          (input.current as Autofill).cursorLocation === 0
+        ) {
           showPicker(false);
           ev.preventDefault();
-          ev.stopPropagation();
-          break;
-        case KeyCodes.enter:
-        case KeyCodes.tab:
-          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
+          if (props.selectedItemsListProps.onItemsRemoved) {
+            props.selectedItemsListProps.onItemsRemoved([selectedItems[selectedItems.length - 1]]);
+          }
+          removeItemAt(selectedItems.length - 1);
+        } else if (focusedItemIndices.length > 0) {
+          showPicker(false);
+          ev.preventDefault();
+          if (props.selectedItemsListProps.onItemsRemoved) {
+            props.selectedItemsListProps.onItemsRemoved(getSelectedItems());
+          }
+          removeSelectedItems();
+          input.current?.focus();
+        }
+      }
+    },
+    [
+      focusedItemIndices.length,
+      getSelectedItems,
+      props,
+      removeItemAt,
+      removeSelectedItems,
+      selectedItems,
+      selection,
+      showPicker,
+    ],
+  );
+
+  const _onInputKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
+      if (isSuggestionsShown) {
+        const keyCode = ev.which;
+        switch (keyCode) {
+          case KeyCodes.escape:
+            showPicker(false);
             ev.preventDefault();
             ev.stopPropagation();
-            if (focusItemIndex >= 0) {
-              // Get the focused element and add it to selectedItemsList
-              showPicker(false);
-              _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
-            } else if (footerItemIndex >= 0) {
-              // execute the footer action
-              footerItems![footerItemIndex].onExecute!();
-            } else if (headerItemIndex >= 0) {
-              // execute the header action
-              headerItems![headerItemIndex].onExecute!();
+            break;
+          case KeyCodes.enter:
+          case KeyCodes.tab:
+            if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              if (focusItemIndex >= 0) {
+                // Get the focused element and add it to selectedItemsList
+                showPicker(false);
+                _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+              } else if (footerItemIndex >= 0) {
+                // execute the footer action
+                footerItems![footerItemIndex].onExecute!();
+              } else if (headerItemIndex >= 0) {
+                // execute the header action
+                headerItems![headerItemIndex].onExecute!();
+              }
             }
-          }
-          break;
-        case KeyCodes.up:
-          ev.preventDefault();
-          ev.stopPropagation();
-          selectPreviousSuggestion();
-          break;
-        case KeyCodes.down:
-          ev.preventDefault();
-          ev.stopPropagation();
-          selectNextSuggestion();
-          break;
+            break;
+          case KeyCodes.up:
+            ev.preventDefault();
+            ev.stopPropagation();
+            selectPreviousSuggestion();
+            break;
+          case KeyCodes.down:
+            ev.preventDefault();
+            ev.stopPropagation();
+            selectNextSuggestion();
+            break;
+        }
       }
-    }
-  };
+    },
+    [
+      _onSuggestionSelected,
+      focusItemIndex,
+      footerItemIndex,
+      footerItems,
+      headerItemIndex,
+      headerItems,
+      isSuggestionsShown,
+      selectNextSuggestion,
+      selectPreviousSuggestion,
+      showPicker,
+      suggestionItems,
+    ],
+  );
 
-  const _onCopy = (ev: React.ClipboardEvent<HTMLInputElement>) => {
-    if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
-      const copyItems = selection.getSelection() as T[];
-      const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
-      ev.clipboardData.setData('text/plain', copyString);
-      ev.preventDefault();
-    }
-  };
-  const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    unselectAll();
-    if (props.inputProps && props.inputProps.onFocus) {
-      props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
-    }
-  };
-  const _onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
-    unselectAll();
-    showPicker(true);
-    if (props.inputProps && props.inputProps.onClick) {
-      props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
-    }
-  };
-  const _onInputChange = (value: string, composing?: boolean, resultItemsList?: T[]) => {
-    if (!composing) {
-      // update query string
-      setQueryString(value);
-      !isSuggestionsShown ? showPicker(true) : null;
-      if (!resultItemsList) {
-        resultItemsList = [];
+  const _onCopy = React.useCallback(
+    (ev: React.ClipboardEvent<HTMLInputElement>) => {
+      if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
+        const copyItems = selection.getSelection() as T[];
+        const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
+        ev.clipboardData.setData('text/plain', copyString);
+        ev.preventDefault();
       }
-      if (onInputChange) {
-        onInputChange(value, composing, resultItemsList);
-        clearQueryString();
-        if (resultItemsList && resultItemsList.length > 0) {
-          addItems(resultItemsList);
-          showPicker(false);
-          // Clear the input
-          if (input.current) {
-            input.current.clear();
+    },
+    [focusedItemIndices.length, props.selectedItemsListProps, selection],
+  );
+
+  const _onInputFocus = React.useCallback(
+    (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
+      unselectAll();
+      if (props.inputProps && props.inputProps.onFocus) {
+        props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+      }
+    },
+    [props.inputProps, unselectAll],
+  );
+
+  const _onInputClick = React.useCallback(
+    (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
+      unselectAll();
+      showPicker(true);
+      if (props.inputProps && props.inputProps.onClick) {
+        props.inputProps.onClick(ev as React.MouseEvent<HTMLInputElement>);
+      }
+    },
+    [props.inputProps, showPicker, unselectAll],
+  );
+
+  const _onInputChange = React.useCallback(
+    (value: string, composing?: boolean, resultItemsList?: T[]) => {
+      if (!composing) {
+        // update query string
+        setQueryString(value);
+        !isSuggestionsShown ? showPicker(true) : null;
+        if (!resultItemsList) {
+          resultItemsList = [];
+        }
+        if (onInputChange) {
+          onInputChange(value, composing, resultItemsList);
+          clearQueryString();
+          if (resultItemsList && resultItemsList.length > 0) {
+            addItems(resultItemsList);
+            showPicker(false);
+            // Clear the input
+            if (input.current) {
+              input.current.clear();
+            }
           }
         }
       }
-    }
-  };
-  const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
-    if (props.onPaste) {
-      const inputText = ev.clipboardData.getData('Text');
-      ev.preventDefault();
-      // Pass current selected items
-      props.onPaste(inputText, selectedItems);
-      setSelectedItems(selectedItems);
-      selection.setItems(selectedItems);
-    }
-  };
+    },
+    [addItems, clearQueryString, isSuggestionsShown, onInputChange, setQueryString, showPicker],
+  );
 
-  const _renderSelectedItemsList = (): JSX.Element => {
-    return onRenderSelectedItems({
+  const _onPaste = React.useCallback(
+    (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
+      if (props.onPaste) {
+        const inputText = ev.clipboardData.getData('Text');
+        ev.preventDefault();
+        // Pass current selected items
+        props.onPaste(inputText, selectedItems);
+        setSelectedItems(selectedItems);
+        selection.setItems(selectedItems);
+      }
+    },
+    [props, selectedItems, selection, setSelectedItems],
+  );
+
+  const _renderSelectedItemsList = (): JSX.Element =>
+    onRenderSelectedItems({
       ...selectedItemsListProps,
       selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
       replaceItem: _replaceItem,
       dragDropHelper: dragDropHelper,
-      dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents,
+      dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents.current,
     });
-  };
-  const _canAddItems = () => true;
-  const _onFloatingSuggestionsDismiss = (ev: React.MouseEvent): void => {
-    if (props.floatingSuggestionProps.onFloatingSuggestionsDismiss) {
-      props.floatingSuggestionProps.onFloatingSuggestionsDismiss();
-    }
-    showPicker(false);
-  };
-  const _onFloatingSuggestionRemoved = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
-    if (props.floatingSuggestionProps.onRemoveSuggestion) {
-      props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
-    }
-    // We want to keep showing the picker to show the user that the entry has been removed from the list.
-    showPicker(true);
-  };
-  const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
-    addItems([item.item]);
-    if (props.floatingSuggestionProps.onSuggestionSelected) {
-      props.floatingSuggestionProps.onSuggestionSelected(ev, item);
-    }
-    if (input.current) {
-      input.current.clear();
-    }
-    showPicker(false);
-  };
-  const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
-    removeItems(itemsToRemove);
-    if (props.selectedItemsListProps.onItemsRemoved) {
-      props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
-    }
-  };
-  const _replaceItem = (newItem: T | T[], index: number) => {
-    const newItems = Array.isArray(newItem) ? newItem : [newItem];
-    dropItemsAt(index, newItems, [index]);
-    if (props.selectedItemsListProps.replaceItem) {
-      props.selectedItemsListProps.replaceItem(newItem, index);
-    }
-  };
+
+  const _onFloatingSuggestionsDismiss = React.useCallback(
+    (ev: React.MouseEvent): void => {
+      if (props.floatingSuggestionProps.onFloatingSuggestionsDismiss) {
+        props.floatingSuggestionProps.onFloatingSuggestionsDismiss();
+      }
+      showPicker(false);
+    },
+    [props.floatingSuggestionProps, showPicker],
+  );
+
+  const _onFloatingSuggestionRemoved = React.useCallback(
+    (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+      if (props.floatingSuggestionProps.onRemoveSuggestion) {
+        props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
+      }
+      // We want to keep showing the picker to show the user that the entry has been removed from the list.
+      showPicker(true);
+    },
+    [props.floatingSuggestionProps, showPicker],
+  );
+
+  const _onRemoveSelectedItems = React.useCallback(
+    (itemsToRemove: T[]) => {
+      removeItems(itemsToRemove);
+      if (props.selectedItemsListProps.onItemsRemoved) {
+        props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
+      }
+    },
+    [props.selectedItemsListProps, removeItems],
+  );
+
+  const _replaceItem = React.useCallback(
+    (newItem: T | T[], index: number) => {
+      const newItems = Array.isArray(newItem) ? newItem : [newItem];
+      dropItemsAt(index, newItems, [index]);
+      if (props.selectedItemsListProps.replaceItem) {
+        props.selectedItemsListProps.replaceItem(newItem, index);
+      }
+    },
+    [dropItemsAt, props.selectedItemsListProps],
+  );
+
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
@@ -461,6 +524,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onKeyDown: _onInputKeyDown,
       onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
+
+  const _canAddItems = () => true;
 
   return (
     <div
@@ -496,11 +561,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   {...(inputProps as IInputProps)}
                   className={css('ms-BasePicker-input', classNames.pickerInput)}
                   ref={input}
-                  /* eslint-disable react/jsx-no-bind */
                   onFocus={_onInputFocus}
                   onClick={_onInputClick}
                   onInputValueChange={_onInputChange}
-                  /* eslint-enable react/jsx-no-bind */
                   aria-autocomplete="list"
                   aria-activedescendant={
                     isSuggestionsShown && focusItemIndex >= 0
@@ -508,10 +571,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                       : undefined
                   }
                   disabled={false}
-                  /* eslint-disable react/jsx-no-bind */
                   onPaste={_onPaste}
                   onKeyDown={_onInputKeyDown}
-                  /* eslint-enable react/jsx-no-bind */
                 />
               </div>
             )}
