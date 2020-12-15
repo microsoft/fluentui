@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import { ICheckboxProps } from './Checkbox.types';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
+import { useFocusRects } from '@fluentui/utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
-
-const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
+import { useStyles } from './Checkbox.styles';
 
 export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwardRef<HTMLDivElement, ICheckboxProps>(
   (props, forwardedRef) => {
@@ -20,7 +19,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       title,
       label,
       checkmarkIconProps,
-      styles,
       theme,
       className,
       boxSide = 'start',
@@ -39,7 +37,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     useDebugWarning(props);
     useComponentRef(props, isChecked, isIndeterminate, inputRef);
 
-    const classNames = getClassNames(styles!, {
+    const styleProps = {
       theme: theme!,
       className,
       disabled,
@@ -47,7 +45,9 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       checked: isChecked,
       reversed: boxSide !== 'start',
       isUsingCustomLabelRender: !!props.onRenderLabel,
-    });
+    };
+
+    const classNames = useStyles(styleProps);
 
     const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
       if (isIndeterminate) {

@@ -1,11 +1,9 @@
-import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import {
-  HighContrastSelector,
-  getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-  IStyle,
-} from '@fluentui/style-utilities';
+import { ICheckboxStyleProps } from './Checkbox.types';
+import { HighContrastSelector, getEdgeChromiumNoHighContrastAdjustSelector } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import { makeStyles, createDOMRenderer } from '@fluentui/make-styles';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTheme, Theme } from '@fluentui/react-theme-provider';
 
 const GlobalClassNames = {
   root: 'ms-Checkbox',
@@ -19,268 +17,333 @@ const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
-export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
-  const { className, theme, reversed, checked, disabled, isUsingCustomLabelRender, indeterminate } = props;
-  const { semanticColors, effects, palette, fonts } = theme;
+const useRootStylesImpl = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => ({
+      position: 'relative',
+      display: 'flex',
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+      [`:hover .${GlobalClassNames.checkbox}`]: {
+        borderColor: tokens.semanticColors.inputBorderHovered,
+        // [HighContrastSelector]: {
+        //   borderColor: 'Highlight',
+        // },
+      },
+      [`:focus .${GlobalClassNames.checkbox}`]: { borderColor: tokens.semanticColors.inputBorderHovered },
+      [`:hover .${GlobalClassNames.checkmark}`]: {
+        color: tokens.palette.neutralSecondary,
+        opacity: '1',
+        // [HighContrastSelector]: {
+        //   color: 'Highlight',
+        // },
+      },
 
-  const checkmarkFontColor = semanticColors.inputForegroundChecked;
-  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBorder
-  const checkmarkFontColorHovered = palette.neutralSecondary;
-  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.smallInputBorder
-  const checkboxBorderColor = palette.neutralPrimary;
-  const checkboxBorderIndeterminateColor = semanticColors.inputBackgroundChecked;
-  const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
-  const checkboxBorderColorDisabled = semanticColors.disabledBodySubtext;
-  const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
-  const checkboxBorderIndeterminateHoveredColor = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
-  // TODO: after updating the semanticColors slots mapping the following 2 tokens need to be
-  // semanticColors.inputBackgroundCheckedHovered
-  const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxHoveredTextColor = semanticColors.inputTextHovered;
-  const checkboxBackgroundDisabledChecked = semanticColors.disabledBodySubtext;
-  const checkboxTextColor = semanticColors.bodyText;
-  const checkboxTextColorDisabled = semanticColors.disabledText;
-
-  const indeterminateDotStyles: IStyle = [
-    {
-      content: '""',
-      borderRadius: effects.roundedCorner2,
-      position: 'absolute',
-      width: 10,
-      height: 10,
-      top: 4,
-      left: 4,
-      boxSizing: 'border-box',
-      borderWidth: 5,
-      borderStyle: 'solid',
-      borderColor: disabled ? checkboxBorderColorDisabled : checkboxBorderIndeterminateColor,
-      transitionProperty: 'border-width, border, border-color',
-      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
-      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+      [`:hover .${GlobalClassNames.text}`]: {
+        color: tokens.semanticColors.inputTextHovered,
+        // [HighContrastSelector]: {
+        //   color: disabled ? 'GrayText' : 'WindowText',
+        // },
+      },
+      [`:focus .${GlobalClassNames.text}`]: {
+        color: tokens.semanticColors.inputTextHovered,
+        // [HighContrastSelector]: {
+        //   color: disabled ? 'GrayText' : 'WindowText',
+        // },
+      },
+    }),
+  ],
+  [
+    s => s.checked,
+    tokens => ({
+      [`:hover .${GlobalClassNames.checkbox}`]: {
+        background: tokens.semanticColors.inputBackgroundCheckedHovered,
+        borderColor: tokens.semanticColors.inputBackgroundCheckedHovered,
+      },
+      [`:focus .${GlobalClassNames.checkbox}`]: {
+        background: tokens.semanticColors.inputBackgroundCheckedHovered,
+        borderColor: tokens.semanticColors.inputBackgroundCheckedHovered,
+      },
       [HighContrastSelector]: {
-        borderColor: 'WindowText',
+        [`:hover .${GlobalClassNames.checkbox}`]: {
+          background: 'Highlight',
+          borderColor: 'Highlight',
+        },
+        [`:focus .${GlobalClassNames.checkbox}`]: {
+          background: 'Highlight',
+        },
+        [`:focus:hover .${GlobalClassNames.checkbox}`]: {
+          background: 'Highlight',
+        },
+        [`:focus:hover .${GlobalClassNames.checkmark}`]: {
+          color: 'Window',
+        },
+        [`:hover .${GlobalClassNames.checkmark}`]: {
+          color: 'Window',
+        },
+      },
+    }),
+  ],
+  [
+    s => s.indeterminate,
+    tokens => ({
+      [`:hover .${GlobalClassNames.checkbox}`]: {
+        borderColor: tokens.semanticColors.inputBackgroundCheckedHovered,
+        // [HighContrastSelector]: {
+        //   borderColor: 'WindowText',
+        // },
+      },
+      [`:hover .${GlobalClassNames.checkbox}::after`]: {
+        borderColor: tokens.semanticColors.inputBackgroundCheckedHovered,
+        // [HighContrastSelector]: {
+        //   borderColor: 'WindowText',
+        // },
+      },
+      [`:focus .${GlobalClassNames.checkbox}`]: {
+        borderColor: tokens.semanticColors.inputBackgroundCheckedHovered,
+      },
+      [`:hover .${GlobalClassNames.checkmark}`]: {
+        opacity: '0',
+      },
+    }),
+  ],
+]);
+
+const useCheckmarkStylesImpl = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => {
+      return {
+        opacity: 0,
+        color: tokens.semanticColors.inputForegroundChecked,
+        [HighContrastSelector]: {
+          color: 'Window',
+          MsHighContrastAdjust: 'none',
+        },
+      };
+    },
+  ],
+  [
+    (selectors: ICheckboxStyleProps) => selectors.checked,
+    {
+      opacity: 1,
+    },
+  ],
+  [
+    (selectors: ICheckboxStyleProps) => selectors.disabled,
+    {
+      [HighContrastSelector]: {
+        color: 'GrayText',
       },
     },
-  ];
+  ],
+]);
 
-  return {
-    root: [
-      classNames.root,
-      {
-        position: 'relative',
-        display: 'flex',
-      },
-      reversed && 'reversed',
-      checked && 'is-checked',
-      !disabled && 'is-enabled',
-      disabled && 'is-disabled',
-      !disabled && [
-        !checked && {
-          [`:hover .${classNames.checkbox}`]: {
-            borderColor: checkboxBorderHoveredColor,
-            [HighContrastSelector]: {
-              borderColor: 'Highlight',
-            },
-          },
-          [`:focus .${classNames.checkbox}`]: { borderColor: checkboxBorderHoveredColor },
-          [`:hover .${classNames.checkmark}`]: {
-            color: checkmarkFontColorHovered,
-            opacity: '1',
-            [HighContrastSelector]: {
-              color: 'Highlight',
-            },
-          },
-        },
-        checked &&
-          !indeterminate && {
-            [`:hover .${classNames.checkbox}`]: {
-              background: checkboxBackgroundCheckedHovered,
-              borderColor: checkboxBorderColorCheckedHovered,
-            },
-            [`:focus .${classNames.checkbox}`]: {
-              background: checkboxBackgroundCheckedHovered,
-              borderColor: checkboxBorderColorCheckedHovered,
-            },
-            [HighContrastSelector]: {
-              [`:hover .${classNames.checkbox}`]: {
-                background: 'Highlight',
-                borderColor: 'Highlight',
-              },
-              [`:focus .${classNames.checkbox}`]: {
-                background: 'Highlight',
-              },
-              [`:focus:hover .${classNames.checkbox}`]: {
-                background: 'Highlight',
-              },
-              [`:focus:hover .${classNames.checkmark}`]: {
-                color: 'Window',
-              },
-              [`:hover .${classNames.checkmark}`]: {
-                color: 'Window',
-              },
-            },
-          },
-        indeterminate && {
-          [`:hover .${classNames.checkbox}, :hover .${classNames.checkbox}:after`]: {
-            borderColor: checkboxBorderIndeterminateHoveredColor,
-            [HighContrastSelector]: {
-              borderColor: 'WindowText',
-            },
-          },
-          [`:focus .${classNames.checkbox}`]: {
-            borderColor: checkboxBorderIndeterminateHoveredColor,
-          },
-          [`:hover .${classNames.checkmark}`]: {
-            opacity: '0',
-          },
-        },
-        {
-          [`:hover .${classNames.text}, :focus .${classNames.text}`]: {
-            color: checkboxHoveredTextColor,
-            [HighContrastSelector]: {
-              color: disabled ? 'GrayText' : 'WindowText',
-            },
-          },
-        },
-      ],
-      className,
-    ],
-    input: {
+const useInputStylesImpl = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => ({
       position: 'absolute',
       background: 'none',
 
       opacity: 0,
       [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-        outline: '1px solid ' + theme.palette.neutralSecondary,
+        outline: '1px solid ' + tokens.palette.neutralSecondary,
         outlineOffset: '2px',
         [HighContrastSelector]: {
           outline: '1px solid ActiveBorder',
         },
       },
+    }),
+  ],
+]);
+
+const useTextStylesImpl = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => ({
+      color: tokens.semanticColors.bodyText,
+      fontSize: tokens.fonts.medium.fontSize,
+      lineHeight: '20px',
+      marginLeft: '4px',
+      [HighContrastSelector]: {
+        color: 'WindowText',
+      },
+      ...getEdgeChromiumNoHighContrastAdjustSelector(),
+    }),
+  ],
+  [
+    selectors => selectors.disabled,
+    tokens => ({
+      color: tokens.semanticColors.disabledText,
+      [HighContrastSelector]: {
+        color: 'GrayText',
+      },
+    }),
+  ],
+  [
+    selectors => selectors.reversed,
+    {
+      marginRight: '4px',
     },
-    label: [
-      classNames.label,
-      theme.fonts.medium,
-      {
-        display: 'flex',
-        alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',
-        cursor: disabled ? 'default' : 'pointer',
-        position: 'relative',
-        userSelect: 'none',
+  ],
+]);
+
+const useLabelStylesImpl = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => ({
+      fontSize: tokens.fonts.medium.fontSize,
+      fontFamily: tokens.fonts.medium.fontFamily,
+      fontWeight: tokens.fonts.medium.fontWeight,
+
+      display: 'flex',
+      alignItems: 'flex-start',
+      cursor: 'pointer',
+      position: 'relative',
+      userSelect: 'none',
+
+      '::before': {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        content: '""',
+        pointerEvents: 'none',
       },
-      reversed && {
-        flexDirection: 'row-reverse',
-        justifyContent: 'flex-end',
+    }),
+  ],
+  [
+    selectors => selectors.disabled,
+    {
+      cursor: 'default',
+    },
+  ],
+  [
+    selectors => selectors.isUsingCustomLabelRender,
+    {
+      alignItems: 'center',
+    },
+  ],
+  [
+    selectors => selectors.reversed,
+    {
+      flexDirection: 'row-reverse',
+      justifyContent: 'flex-end',
+    },
+  ],
+]);
+
+const useCheckboxStylesImp = makeStyles<ICheckboxStyleProps, Theme>([
+  [
+    null,
+    tokens => ({
+      position: 'relative',
+      display: 'flex',
+      flexShrink: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: MS_CHECKBOX_LABEL_SIZE,
+      width: MS_CHECKBOX_LABEL_SIZE,
+      border: `1px solid ${tokens.palette.neutralPrimary}`,
+      borderRadius: tokens.effects.roundedCorner2,
+      boxSizing: 'border-box',
+      transitionProperty: 'background, border, border-color',
+      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
+      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+
+      /* in case the icon is bigger than the box */
+      overflow: 'hidden',
+      [HighContrastSelector]: {
+        borderColor: 'WindowText',
       },
-      {
-        '&::before': {
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          content: '""',
-          pointerEvents: 'none',
-        },
+      ...getEdgeChromiumNoHighContrastAdjustSelector(),
+
+      marginRight: '4px',
+    }),
+  ],
+  [
+    selectors => selectors.indeterminate && selectors.disabled,
+    tokens => ({
+      borderColor: tokens.semanticColors.disabledBodySubtext,
+    }),
+  ],
+  [
+    selectors => selectors.reversed,
+    {
+      marginLeft: '4px',
+    },
+  ],
+  [
+    selectors => selectors.checked && !selectors.indeterminate && !selectors.disabled,
+    tokens => ({
+      background: tokens.semanticColors.inputBackgroundChecked,
+      borderColor: tokens.semanticColors.inputBackgroundChecked,
+      [HighContrastSelector]: {
+        background: 'Highlight',
+        borderColor: 'Highlight',
       },
-    ],
-    checkbox: [
-      classNames.checkbox,
-      {
-        position: 'relative',
-        display: 'flex',
-        flexShrink: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: MS_CHECKBOX_LABEL_SIZE,
-        width: MS_CHECKBOX_LABEL_SIZE,
-        border: `1px solid ${checkboxBorderColor}`,
-        borderRadius: effects.roundedCorner2,
+    }),
+  ],
+  [
+    selectors => selectors.indeterminate,
+    tokens => ({
+      borderColor: tokens.semanticColors.inputBackgroundChecked,
+      '::after': {
+        // TODO: fix makeStyles
+        content: '""',
+        borderRadius: tokens.effects.roundedCorner2,
+        position: 'absolute',
+        width: 10,
+        height: 10,
+        top: 4,
+        left: 4,
         boxSizing: 'border-box',
-        transitionProperty: 'background, border, border-color',
+        borderWidth: 5,
+        borderStyle: 'solid',
+        borderColor: tokens.semanticColors.inputBackgroundChecked,
+        transitionProperty: 'border-width, border, border-color',
         transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
         transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+        // [HighContrastSelector]: {
+        //   borderColor: 'WindowText',
+        // },
+      },
+    }),
+  ],
+  [
+    selectors => selectors.disabled,
+    tokens => ({
+      borderColor: tokens.semanticColors.disabledBodySubtext,
+      [HighContrastSelector]: {
+        borderColor: 'GrayText',
+      },
+    }),
+  ],
+  [
+    selectors => selectors.disabled && selectors.checked,
+    tokens => ({
+      background: tokens.semanticColors.disabledBodySubtext,
+      borderColor: tokens.semanticColors.disabledBodySubtext,
+      [HighContrastSelector]: {
+        background: 'Window',
+      },
+    }),
+  ],
+]);
 
-        /* in case the icon is bigger than the box */
-        overflow: 'hidden',
-        ':after': indeterminate ? indeterminateDotStyles : null,
-        [HighContrastSelector]: {
-          borderColor: 'WindowText',
-        },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
-      },
-      indeterminate && {
-        borderColor: checkboxBorderIndeterminateColor,
-      },
-      !reversed
-        ? // This margin on the checkbox is for backwards compat. Notably it has the effect where a customRender
-          // is used, there will be only a 4px margin from checkbox to label. The label by default would have
-          // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
-          // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
-          {
-            marginRight: 4,
-          }
-        : {
-            marginLeft: 4,
-          },
-      !disabled &&
-        !indeterminate &&
-        checked && {
-          background: checkboxBackgroundChecked,
-          borderColor: checkboxBorderColorChecked,
-          [HighContrastSelector]: {
-            background: 'Highlight',
-            borderColor: 'Highlight',
-          },
-        },
-      disabled && {
-        borderColor: checkboxBorderColorDisabled,
-        [HighContrastSelector]: {
-          borderColor: 'GrayText',
-        },
-      },
-      checked &&
-        disabled && {
-          background: checkboxBackgroundDisabledChecked,
-          borderColor: checkboxBorderColorDisabled,
-          [HighContrastSelector]: {
-            background: 'Window',
-          },
-        },
-    ],
-    checkmark: [
-      classNames.checkmark,
-      {
-        opacity: checked ? '1' : '0',
-        color: checkmarkFontColor,
-        [HighContrastSelector]: {
-          color: disabled ? 'GrayText' : 'Window',
-          MsHighContrastAdjust: 'none',
-        },
-      },
-    ],
-    text: [
-      classNames.text,
-      {
-        color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
-        fontSize: fonts.medium.fontSize,
-        lineHeight: '20px',
-        [HighContrastSelector]: {
-          color: disabled ? 'GrayText' : 'WindowText',
-        },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
-      },
-      !reversed
-        ? {
-            marginLeft: 4,
-          }
-        : {
-            marginRight: 4,
-          },
-    ],
+const renderer = createDOMRenderer();
+
+export const useStyles = (props: ICheckboxStyleProps) => {
+  const tokens = useTheme();
+
+  return {
+    root: useRootStylesImpl(props, { renderer, tokens }, GlobalClassNames.root),
+    checkmark: useCheckmarkStylesImpl(props, { renderer, tokens }, GlobalClassNames.checkmark),
+    input: useInputStylesImpl(props, { renderer, tokens }),
+    text: useTextStylesImpl(props, { renderer, tokens }, GlobalClassNames.text),
+    checkbox: useCheckboxStylesImp(props, { renderer, tokens }, GlobalClassNames.checkbox),
+    label: useLabelStylesImpl(props, { renderer, tokens }, GlobalClassNames.label),
   };
 };
