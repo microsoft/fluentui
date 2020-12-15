@@ -48,6 +48,31 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('hyphenates camelcased CSS properties', () => {
+      expect(
+        resolveStyleRules({
+          '--foo': 'var(--bar)',
+          '--fooBar': 'var(--barBaz)',
+
+          backgroundColor: 'red',
+          MozAnimation: 'initial',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1qux40 {
+          --foo: var(--bar);
+        }
+        .f14u957 {
+          --fooBar: var(--barBaz);
+        }
+        .f3xbvq9 {
+          background-color: red;
+        }
+        .fr90kjk {
+          -moz-animation: initial;
+        }
+      `);
+    });
+
     it('performs expansion of shorthands', () => {
       expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
         .fpvhumw {

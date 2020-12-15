@@ -11,8 +11,9 @@ export function hyphenateProperty(name: string): string {
     return cache[name];
   }
 
-  // TODO: ensure how it works
-  // if property is CSS variables, do not hyphenate it
+  if (name.substr(0, 2) === '--') {
+    return name;
+  }
 
   const hName = name.replace(uppercasePattern, toHyphenLower);
   return (cache[name] = msPattern.test(hName) ? '-' + hName : hName);
