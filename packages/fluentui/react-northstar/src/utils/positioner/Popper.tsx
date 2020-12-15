@@ -318,6 +318,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     positionFixed,
     proposedPlacement,
     targetRef,
+    unstable_disableTether,
     unstable_pinned,
     popperInitialPositionFix,
   ]);
