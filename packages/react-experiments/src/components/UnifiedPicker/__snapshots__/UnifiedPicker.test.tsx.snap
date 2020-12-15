@@ -80,10 +80,15 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
                 ms-BasePicker-input
                 ms-UnifiedPicker-input
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border: none;
                   display: flex;
                   flex-grow: 1;
                   flex: 1 1 auto;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 34px;
                   margin-bottom: 1px;
                   margin-left: 1px;
@@ -219,10 +224,15 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
                 ms-BasePicker-input
                 ms-UnifiedPicker-input
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border: none;
                   display: flex;
                   flex-grow: 1;
                   flex: 1 1 auto;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 34px;
                   margin-bottom: 1px;
                   margin-left: 1px;
