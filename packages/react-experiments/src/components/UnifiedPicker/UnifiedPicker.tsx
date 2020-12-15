@@ -180,6 +180,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       insertIndex = selectedItems.indexOf(item);
     }
 
+    // If the drop is in the right half of the item, we want to drop at index+1
+    if (event && event.currentTarget) {
+      const targetElement = event.currentTarget as HTMLElement;
+      // how does this math work for RTL?
+      if (event.pageX > targetElement.offsetLeft + targetElement.offsetWidth / 2) {
+        insertIndex++;
+      }
+    }
+
     event?.preventDefault();
     _onDropInner(event?.dataTransfer !== null ? event?.dataTransfer : undefined);
   };
