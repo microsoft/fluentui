@@ -44,6 +44,7 @@ const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
 export function resolveDefinitions<Selectors, Tokens>(
   definitions: MakeStylesResolvedDefinition<Selectors, Tokens>[],
   tokens: Tokens | null,
+  unstable_cssPriority: number,
 ): MakeStylesResolvedDefinition<Selectors, Tokens>[] {
   return definitions.map((definition, i) => {
     const matcher = definition[0];
@@ -61,7 +62,7 @@ export function resolveDefinitions<Selectors, Tokens>(
       const styles: MakeStyles =
         typeof styleRule === 'function' ? (styleRule as MakeStylesStyleFunctionRule<Tokens>)(tokens!!) : styleRule!!;
 
-      definitions[i][2] = resolveStyleRules(styles);
+      definitions[i][2] = resolveStyleRules(styles, unstable_cssPriority);
 
       return [matcher, undefined, definition[2]];
     }
@@ -77,7 +78,10 @@ export function resolveDefinitions<Selectors, Tokens>(
         return [matcher, undefined, resolvedStyles];
       }
 
-      const resolveStyles1 = resolveStyleRules((styleRule as MakeStylesStyleFunctionRule<Tokens>)(tokens!!));
+      const resolveStyles1 = resolveStyleRules(
+        (styleRule as MakeStylesStyleFunctionRule<Tokens>)(tokens!!),
+        unstable_cssPriority,
+      );
       graphSet(graph, path, resolveStyles1);
 
       return [matcher, undefined, resolveStyles1];
@@ -87,7 +91,7 @@ export function resolveDefinitions<Selectors, Tokens>(
       return [matcher, undefined, resolvedRule];
     }
 
-    definitions[i][2] = resolveStyleRules(styleRule!!);
+    definitions[i][2] = resolveStyleRules(styleRule!!, unstable_cssPriority);
 
     return [matcher, undefined, definition[2]];
   });
