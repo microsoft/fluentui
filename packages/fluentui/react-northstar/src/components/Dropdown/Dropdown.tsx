@@ -401,6 +401,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
+    unstable_disableTether,
     unstable_pinned,
     variables,
   } = props;
@@ -636,6 +637,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
           {...positioningProps}
@@ -1665,6 +1667,7 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
 };

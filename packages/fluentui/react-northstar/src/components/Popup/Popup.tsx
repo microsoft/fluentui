@@ -146,6 +146,7 @@ export const Popup: React.FC<PopupProps> &
     target,
     trapFocus,
     trigger,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -523,6 +524,7 @@ export const Popup: React.FC<PopupProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           rtl={context.rtl}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
@@ -589,6 +591,7 @@ Popup.propTypes = {
   target: PropTypes.any,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
   tabbableTrigger: PropTypes.bool,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
