@@ -86,6 +86,7 @@ type DesignerAction =
   | { type: 'SELECT_PARENT' }
   | { type: 'DELETE_SELECTED_COMPONENT' }
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
+  | { type: 'PROP_DELETE'; component: JSONTreeElement; propName: string }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
@@ -193,6 +194,20 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
+        treeChanged = true;
+      }
+      break;
+
+    case 'PROP_DELETE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
+      const component = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
+      if (component) {
+        if (!component.props) {
+          component.props = {};
+        }
+        delete component.props[action.propName];
         treeChanged = true;
       }
       break;
@@ -481,6 +496,17 @@ export const Designer: React.FunctionComponent = () => {
         component: jsonTreeElement,
         propName: name,
         propValue: value,
+      });
+    },
+    [dispatch],
+  );
+
+  const handlePropDelete = React.useCallback(
+    ({ jsonTreeElement, name, value }) => {
+      dispatch({
+        type: 'PROP_DELETE',
+        component: jsonTreeElement,
+        propName: name,
       });
     },
     [dispatch],
@@ -878,6 +904,7 @@ export const Designer: React.FunctionComponent = () => {
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
+                onPropDelete={handlePropDelete}
                 info={selectedComponentInfo}
                 jsonTreeElement={selectedJSONTreeElement}
               />

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
-
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
@@ -779,19 +778,20 @@ export const MultiTypeKnob: React.FunctionComponent<{
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
   onChange: (value: any) => void;
+  onRemoveProp: () => void;
   options: string[];
-}> = ({ label, types, value, onChange, options }) => {
-  // const valueType = typeof value;
+  required: boolean;
+}> = ({ label, types, value, onChange, onRemoveProp, options, required }) => {
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
-  // console.log(type, types, label, value);
+
   const knob = knobs[type];
   const handleChangeType = React.useCallback(
     e => setType(e.target.value), // @ts-ignore
     [],
   );
 
-  console.log('MultiTypeKnob', { label, value, type, types });
+  // console.log('MultiTypeKnob', { label, value, type, types });
 
   const propId = `prop-${label}`;
 
@@ -811,6 +811,21 @@ export const MultiTypeKnob: React.FunctionComponent<{
       </div>
       {knob && knob({ options, value, onChange, id: propId })}
       {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
+      {!required && type === 'literal' && value && (
+        <button
+          style={{
+            background: 'none',
+            border: '1px solid black',
+            borderRadius: 4,
+            margin: 8,
+          }}
+          onClick={_ => {
+            onRemoveProp();
+          }}
+        >
+          X
+        </button>
+      )}
     </div>
   );
 };

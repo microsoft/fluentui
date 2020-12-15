@@ -138,6 +138,7 @@ type DesignKnobProps = {
     name: string;
     value: number;
   }) => void;
+  onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
 };
@@ -146,7 +147,12 @@ const isHandledType = (type: string): boolean => {
   return ['boolean', 'string', 'literal', 'React.ElementType', 'number'].includes(type);
 };
 
-export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
+export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
+  onPropChange,
+  onPropDelete,
+  info,
+  jsonTreeElement,
+}) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
     prop => {
@@ -154,7 +160,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
       const tempTypes = _.uniq(_.map(prop.types, 'name'));
       const types = isHandledType(tempTypes[0]) ? tempTypes : _.uniq(_.map(prop.resolvedType, 'name'));
       const isLiteral = _.every(types, name => name === 'literal');
-      console.log(prop.name, types, prop.resolvedType);
+      // console.log(prop.name, types, prop);
       const options = isLiteral
         ? _.map(Array.isArray(prop.resolvedType) ? prop.resolvedType : prop.types, 'value')
         : null;
@@ -167,7 +173,6 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
       };
 
       const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
-      console.log('getValues: ', prop.name, prop.defaultValue, value);
       return { types, options, value };
     },
     [jsonTreeElement],
@@ -200,14 +205,18 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
           .filter(prop => !/default[A-Z]/.test(prop.name))
           .map(prop => {
             const { types, options, value } = getValues(prop);
-
+            console.log(prop.name, prop);
             return (
               <MultiTypeKnob
+                required={prop.required}
                 key={prop.name}
                 label={prop.name}
                 types={types as any}
                 options={options}
                 value={value}
+                onRemoveProp={() => {
+                  onPropDelete({ jsonTreeElement, name: prop.name });
+                }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
                 }}
@@ -221,6 +230,10 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, 
 
           return (
             <MultiTypeKnob
+              onRemoveProp={() => {
+                onPropDelete({ jsonTreeElement, name: prop.name });
+              }}
+              required={prop.required}
               key={prop.name}
               label={prop.name}
               types={types as any}
