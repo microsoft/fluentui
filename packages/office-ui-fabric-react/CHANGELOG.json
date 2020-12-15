@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 15 Dec 2020 12:27:20 GMT",
+      "tag": "office-ui-fabric-react_v7.155.0",
+      "version": "7.155.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Add ability to pass in aria-label",
+            "author": "joschect@microsoft.com",
+            "commit": "9261628f3a501f9ada5f1293614ca46c80a4843c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Dec 2020 12:27:18 GMT",
       "tag": "office-ui-fabric-react_v7.154.0",
       "version": "7.154.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 11 Dec 2020 12:27:18 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Dec 2020 12:27:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.0)
+
+Tue, 15 Dec 2020 12:27:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.10.0..@fluentui/react-examples_v0.11.0)
+
+### Patches
+
+- Pickers: Add ability to pass in aria-label ([PR #16225](https://github.com/microsoft/fluentui/pull/16225) by joschect@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.10.0)
 

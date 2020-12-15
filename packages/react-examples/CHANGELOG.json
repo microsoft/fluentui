@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 15 Dec 2020 12:27:20 GMT",
+      "tag": "@fluentui/react-examples_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Add ability to pass in aria-label",
+            "author": "joschect@microsoft.com",
+            "commit": "9261628f3a501f9ada5f1293614ca46c80a4843c",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Dec 2020 12:27:18 GMT",
       "tag": "@fluentui/react-examples_v0.10.0",
       "version": "0.10.0",
