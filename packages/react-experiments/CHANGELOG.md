@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 14 Dec 2020 12:27:38 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Dec 2020 12:30:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.30)
+
+Tue, 15 Dec 2020 12:30:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.29..@fluentui/react-experiments_v8.0.0-beta.30)
+
+### Changes
+
+- [UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks ([PR #16210](https://github.com/microsoft/fluentui/pull/16210) by chrp@microsoft.com)
 
 ## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.29)
 
