@@ -8,7 +8,7 @@ export interface MakeStyles extends CSSProperties {
   animationName?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export type MakeStylesMatcher<Selectors> = (selectors: Selectors) => boolean;
+export type MakeStylesMatcher<Selectors> = ((selectors: Selectors) => boolean | undefined) | null;
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
