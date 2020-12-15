@@ -19,7 +19,7 @@ export const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesPro
       borderColor: v.menuBorder || colors.border,
       borderWidth: v.menuBorderWidth,
       borderRadius: v.menuBorderRadius,
-      width: v.menuWidth,
+      maxWidth: v.menuMaxWidth,
       zIndex: v.overlayZIndex,
     };
   },
