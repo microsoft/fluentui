@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Tue, 15 Dec 2020 12:30:22 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.30",
+      "version": "8.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks",
+            "author": "chrp@microsoft.com",
+            "commit": "da03725bd6d9e8b3e621ee3074c7f386f9d3d9a7",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Dec 2020 12:27:38 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.29",
       "version": "8.0.0-beta.29",
