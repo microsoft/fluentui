@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/make-styles",
   "version": "0.1.0",
-  "description": "---",
+  "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
