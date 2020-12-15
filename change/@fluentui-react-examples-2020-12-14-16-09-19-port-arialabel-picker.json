@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Pickers: Add ability to pass in aria-lable",
+  "comment": "Pickers: Add ability to pass in aria-label",
   "packageName": "@fluentui/react-examples",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
