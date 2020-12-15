@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Pickers: Add ability to pass in aria-label",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "minor",
+  "date": "2020-12-14T19:54:04.050Z"
+}
