@@ -178,6 +178,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     positioningDependencies = [],
     rtl,
     targetRef,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -272,13 +273,11 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
         /**
          * This modifier is necessary to retain behaviour from popper v1 where untethered poppers are allowed by
          * default. i.e. popper is still rendered fully in the viewport even if anchor element is no longer in the
-         * viewport
+         * viewport.
          */
-        {
+        unstable_disableTether && {
           name: 'preventOverflow',
-          options: {
-            tether: false,
-          },
+          options: { altAxis: unstable_disableTether === 'all', tether: false },
         },
 
         flipBoundary && {
