@@ -40,6 +40,14 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('trims values to generate the same classes', () => {
+      expect(resolveStyleRules({ color: 'red ' /* ends with a space */ })).toMatchInlineSnapshot(`
+        .fe3e8s9 {
+          color: red;
+        }
+      `);
+    });
+
     it('performs expansion of shorthands', () => {
       expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
         .fpvhumw {
@@ -105,14 +113,14 @@ describe('resolveStyleRules', () => {
       expect(
         resolveStyleRules({
           color: 'green',
-          '@media screen and (max-width: 992px)': { color: 'red ' },
+          '@media screen and (max-width: 992px)': { color: 'red' },
         }),
       ).toMatchInlineSnapshot(`
         .fka9v86 {
           color: green;
         }
         @media screen and (max-width: 992px) {
-          .ffbutly {
+          .f1p08us1 {
             color: red;
           }
         }

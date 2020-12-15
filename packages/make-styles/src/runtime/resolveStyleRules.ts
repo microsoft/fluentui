@@ -30,7 +30,8 @@ export function resolveStyleRules(
       // uniq key based on property & selector, used for merging later
       const key = selector + propName;
 
-      const className = HASH_PREFIX + hashString(selector + propName + propValue);
+      // trimming of values is required to generate consistent hashes
+      const className = HASH_PREFIX + hashString(selector + propName + propValue.toString().trim());
       const css = compileCSS(className, selector, propName, propValue);
 
       const rtl = convertProperty(propName, propValue);
