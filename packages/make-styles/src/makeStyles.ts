@@ -70,7 +70,6 @@ export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<
     const cxCacheKey = options.renderer.id + matchedIndexes + '' + overridesHash;
 
     if (CAN_USE_CSS_VARIABLES && cxCache[cxCacheKey] !== undefined) {
-      // TODO: OOPS, Does not support MW
       return nonMakeClasses + cxCache[cxCacheKey];
     }
 

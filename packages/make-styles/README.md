@@ -24,7 +24,7 @@ _For Northstar:_ Style files are currently hard to read and manage due to their 
 
 The new iteration of `makeStyles()` splits the expensive part (processing styles, generating classnames) and the cheap part (merging classnames), expensive part can be done build time. Code also intentionally separated to highlight required part of `makeStyles()` and runtime. A production version of `makeStyles()` currently is less than 200 LoC.
 
-It uses the similar side effect approach as in `useCSS` hook and Emotion (#14470) (passing down classnames but referrencing a dictionary when merging).
+It uses the similar side effect approach as in `useCSS` hook and Emotion ([#14470](https://github.com/microsoft/fluentui/pull/14470)) (passing down classnames but referrencing a dictionary when merging).
 
 We use hash based atomic classnames, this makes deterministic (vs Fela is sequential = non-deterministic), it simplifies support server side rendering.
 
