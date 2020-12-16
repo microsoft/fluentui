@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Remove react-theme-provider@v0 dependency from react-focus package",
+  "packageName": "@fluentui/react-focus",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-16T19:36:46.684Z"
+}
