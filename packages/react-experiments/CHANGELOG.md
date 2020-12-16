@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 15 Dec 2020 12:30:22 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.31)
+
+Wed, 16 Dec 2020 12:27:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.30..@fluentui/react-experiments_v8.0.0-beta.31)
+
+### Changes
+
+- [UPP] Use Segoe UI font in picker input ([PR #16235](https://github.com/microsoft/fluentui/pull/16235) by chrp@microsoft.com)
+- UnifiedPicker drop to each side of item ([PR #16236](https://github.com/microsoft/fluentui/pull/16236) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.30)
 

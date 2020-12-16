@@ -2,6 +2,27 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 16 Dec 2020 12:27:05 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.31",
+      "version": "8.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Use Segoe UI font in picker input",
+            "author": "chrp@microsoft.com",
+            "commit": "c0831995fffd5682bd0db76a279624317c41835c",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "UnifiedPicker drop to each side of item",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d512cd6e9f7eee23d330dbb7b7e5e807de1bdf7e",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Dec 2020 12:30:22 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.30",
       "version": "8.0.0-beta.30",

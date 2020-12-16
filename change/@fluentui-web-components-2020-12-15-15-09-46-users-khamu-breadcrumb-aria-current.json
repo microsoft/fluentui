@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update style on aria-current item and adjust margin on last item",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-15T23:09:46.906Z"
-}
