@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ThemeContext, Theme } from '@fluentui/react-theme-provider';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { getTheme } from '@uifabric/styling';
+import { getTheme, ITheme } from '@uifabric/styling';
 import {
   KeyCodes,
   css,
@@ -28,6 +27,7 @@ import {
   getWindow,
   findScrollableParent,
   createMergedRef,
+  useCustomizationSettings,
 } from '@uifabric/utilities';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 
@@ -254,7 +254,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._evaluateFocusBeforeRender();
 
     return (
-      <ThemeContext.Consumer>
+      <ThemeContextConsumer>
         {theme => (
           <Tag
             aria-labelledby={ariaLabelledBy}
@@ -282,7 +282,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             {this.props.children}
           </Tag>
         )}
-      </ThemeContext.Consumer>
+      </ThemeContextConsumer>
     );
   }
 
@@ -574,7 +574,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: Theme): boolean | undefined => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: ITheme): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
@@ -992,7 +992,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(theme: Theme): boolean {
+  private _moveFocusLeft(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
@@ -1034,7 +1034,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(theme: Theme): boolean {
+  private _moveFocusRight(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
@@ -1367,3 +1367,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return getDocument(this._root.current)!;
   }
 }
+
+// TODO: switch to use useTheme from react-theme-provider once it's officially released.
+const ThemeContextConsumer: React.FunctionComponent<{
+  children: (theme: ITheme | undefined) => JSX.Element;
+}> = props => {
+  const theme = useCustomizationSettings(['theme']).theme;
+  return props.children(theme);
+};
