@@ -27,7 +27,6 @@ import {
   getWindow,
   findScrollableParent,
   createMergedRef,
-  useCustomizationSettings,
 } from '@uifabric/utilities';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 
@@ -253,36 +252,35 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // the case the element was removed.
     this._evaluateFocusBeforeRender();
 
+    // Only support RTL defined in global theme, not contextual theme/RTL.
+    const theme: ITheme = getTheme();
+
     return (
-      <ThemeContextConsumer>
-        {theme => (
-          <Tag
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
-            {...divProps}
-            {
-              // root props has been deprecated and should get removed.
-              // it needs to be marked as "any" since root props expects a div element, but really Tag can
-              // be any native element so typescript rightly flags this as a problem.
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              ...(rootProps as any)
-            }
-            // Once the getClassName correctly memoizes inputs this should
-            // be replaced so that className is passed to getRootClass and is included there so
-            // the class names will always be in the same order.
-            className={css(getRootClass(), className)}
-            // eslint-disable-next-line deprecation/deprecation
-            ref={this._mergedRef(this.props.elementRef, this._root)}
-            data-focuszone-id={this._id}
-            // eslint-disable-next-line react/jsx-no-bind
-            onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme || getTheme())}
-            onFocus={this._onFocus}
-            onMouseDownCapture={this._onMouseDown}
-          >
-            {this.props.children}
-          </Tag>
-        )}
-      </ThemeContextConsumer>
+      <Tag
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        {...divProps}
+        {
+          // root props has been deprecated and should get removed.
+          // it needs to be marked as "any" since root props expects a div element, but really Tag can
+          // be any native element so typescript rightly flags this as a problem.
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ...(rootProps as any)
+        }
+        // Once the getClassName correctly memoizes inputs this should
+        // be replaced so that className is passed to getRootClass and is included there so
+        // the class names will always be in the same order.
+        className={css(getRootClass(), className)}
+        // eslint-disable-next-line deprecation/deprecation
+        ref={this._mergedRef(this.props.elementRef, this._root)}
+        data-focuszone-id={this._id}
+        // eslint-disable-next-line react/jsx-no-bind
+        onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme)}
+        onFocus={this._onFocus}
+        onMouseDownCapture={this._onMouseDown}
+      >
+        {this.props.children}
+      </Tag>
     );
   }
 
@@ -1367,11 +1365,3 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return getDocument(this._root.current)!;
   }
 }
-
-// TODO: switch to use useTheme from react-theme-provider once it's officially released.
-const ThemeContextConsumer: React.FunctionComponent<{
-  children: (theme: ITheme | undefined) => JSX.Element;
-}> = props => {
-  const theme = useCustomizationSettings(['theme']).theme;
-  return props.children(theme);
-};
