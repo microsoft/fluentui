@@ -7,7 +7,8 @@ const GENERIC_FILE = 'genericfile';
 const FOLDER = 'folder';
 const SHARED_FOLDER = 'sharedfolder';
 const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'splist';
+const LIST_ITEM = 'listitem';
+const LIST = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
 const STREAM = 'stream';
@@ -15,8 +16,8 @@ const DESKTOP_FOLDER = 'desktopfolder';
 const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
 const LINKED_FOLDER = 'linkedfolder';
-const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
+export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
 
@@ -92,6 +93,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.linkedFolder:
         iconBaseName = LINKED_FOLDER;
+        break;
+      case FileIconType.list:
+        iconBaseName = LIST;
         break;
     }
   }

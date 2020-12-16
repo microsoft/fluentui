@@ -15,6 +15,7 @@ exports[`BasePicker renders correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -76,6 +77,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

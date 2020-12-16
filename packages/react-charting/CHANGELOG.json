@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 03 Dec 2020 12:32:57 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.25",
+      "version": "5.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove focus for horizental bar chart grey area",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "12d144021f2860110529cac6bb677d0159dceadc",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Nov 2020 12:28:32 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.18",
       "version": "5.0.0-beta.18",

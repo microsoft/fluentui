@@ -66,6 +66,11 @@ export const BaseButtonStyles: ElementStyles = css`
         font: inherit;
     }
 
+    .control.icon-only {
+        padding: 0;
+        line-height: 0;
+    }
+
     :host(:hover) {
         background-color: ${neutralFillHoverBehavior.var};
     }

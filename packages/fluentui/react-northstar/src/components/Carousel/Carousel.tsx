@@ -30,6 +30,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useStateManager,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 
@@ -261,7 +262,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
 
     actions.setIndexes(nextActiveIndex, lastActiveIndex);
 
-    _.invoke(props, 'onActiveIndexChange', e, props);
+    _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex: index });
 
     if (focusItem) {
       focusItemAtIndex(nextActiveIndex);
@@ -364,6 +365,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   };
 
   const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {

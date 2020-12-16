@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.31)
+
+Wed, 16 Dec 2020 12:27:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.30..@fluentui/react-experiments_v8.0.0-beta.31)
+
+### Changes
+
+- [UPP] Use Segoe UI font in picker input ([PR #16235](https://github.com/microsoft/fluentui/pull/16235) by chrp@microsoft.com)
+- UnifiedPicker drop to each side of item ([PR #16236](https://github.com/microsoft/fluentui/pull/16236) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.30)
+
+Tue, 15 Dec 2020 12:30:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.29..@fluentui/react-experiments_v8.0.0-beta.30)
+
+### Changes
+
+- [UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks ([PR #16210](https://github.com/microsoft/fluentui/pull/16210) by chrp@microsoft.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.29)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.28..@fluentui/react-experiments_v8.0.0-beta.29)
+
+### Changes
+
+- Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite ([PR #16168](https://github.com/microsoft/fluentui/pull/16168) by elvonspa@microsoft.com)
+- Add a force resolve function to the UnifiedPicker ([PR #16209](https://github.com/microsoft/fluentui/pull/16209) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.28)
+
+Fri, 11 Dec 2020 12:28:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.20..@fluentui/react-experiments_v8.0.0-beta.28)
+
+### Changes
+
+- [UPP] Fix color contrast in UPP suggestion item close button ([PR #16196](https://github.com/microsoft/fluentui/pull/16196) by chrp@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.20)
 

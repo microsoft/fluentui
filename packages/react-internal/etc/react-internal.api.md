@@ -1100,6 +1100,7 @@ export interface IBasePicker<T> {
 
 // @public
 export interface IBasePickerProps<T> extends React.Props<any> {
+    ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
@@ -3860,6 +3861,7 @@ export type IPickerAriaIds = {
     selectedSuggestionAlert: string;
     selectedItems: string;
     suggestionList: string;
+    combobox: string;
 };
 
 // @public
@@ -4594,7 +4596,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -4620,6 +4622,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLInputElement>
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onChange?: (event: React.SyntheticEvent<HTMLElement>, newValue?: string) => void;
     onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
