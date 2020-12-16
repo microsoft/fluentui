@@ -20,6 +20,63 @@ expect.addSnapshotSerializer({
 });
 
 describe('resolveStyleRules', () => {
+  describe('classnames', () => {
+    it('generates unique classnames for preudo selectors', () => {
+      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
+        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
+      }
+
+      const classnamesSet = new Set<string>();
+
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ ':hover': { color: 'red' } })));
+
+      classnamesSet.add(
+        getFirstClassName(resolveStyleRules({ '@media screen and (max-width: 992px)': { color: 'red' } })),
+      );
+      classnamesSet.add(
+        getFirstClassName(
+          resolveStyleRules({
+            '@media screen and (max-width: 992px)': {
+              ':hover': { color: 'red' },
+            },
+          }),
+        ),
+      );
+
+      classnamesSet.add(
+        getFirstClassName(
+          resolveStyleRules({
+            '@supports (display: grid)': { color: 'red' },
+          }),
+        ),
+      );
+      classnamesSet.add(
+        getFirstClassName(
+          resolveStyleRules({
+            '@supports (display: grid)': {
+              ':hover': { color: 'red' },
+            },
+          }),
+        ),
+      );
+
+      classnamesSet.add(
+        getFirstClassName(
+          resolveStyleRules({
+            '@supports (display: grid)': {
+              '@media screen and (max-width: 992px)': {
+                ':hover': { color: 'red' },
+              },
+            },
+          }),
+        ),
+      );
+
+      expect(classnamesSet.size).toBe(7);
+    });
+  });
+
   describe('css', () => {
     it('resolves a single rule', () => {
       expect(resolveStyleRules({ color: 'red' })).toMatchInlineSnapshot(`
@@ -134,6 +191,66 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('handles nested selectors', () => {
+      expect(resolveStyleRules({ ':hover': { color: 'red' } })).toMatchInlineSnapshot(`
+        .faf35ka:hover {
+          color: red;
+        }
+      `);
+      expect(resolveStyleRules({ '::after': { content: '""' } })).toMatchInlineSnapshot(`
+        .f13zj6fq::after {
+          content: "";
+        }
+      `);
+
+      expect(resolveStyleRules({ '[data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
+        .fcopvey[data-fluent="true"] {
+          color: green;
+        }
+      `);
+      expect(resolveStyleRules({ '& [data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
+        .f1k5aqsk [data-fluent="true"] {
+          color: green;
+        }
+      `);
+
+      expect(resolveStyleRules({ '> div': { color: 'green' } })).toMatchInlineSnapshot(`
+        .f18wx08q > div {
+          color: green;
+        }
+      `);
+
+      expect(resolveStyleRules({ '& .foo': { color: 'green' } })).toMatchInlineSnapshot(`
+        .f15f830o .foo {
+          color: green;
+        }
+      `);
+      expect(resolveStyleRules({ '&.foo': { color: 'green' } })).toMatchInlineSnapshot(`
+        .fe1zdmy.foo {
+          color: green;
+        }
+      `);
+
+      expect(resolveStyleRules({ '& #foo': { color: 'green' } })).toMatchInlineSnapshot(`
+        .fie1itf #foo {
+          color: green;
+        }
+      `);
+      expect(resolveStyleRules({ '&#foo': { color: 'green' } })).toMatchInlineSnapshot(`
+        .fwxog6r#foo {
+          color: green;
+        }
+      `);
+    });
+
+    it('handles complex nested selectors', () => {
+      expect(resolveStyleRules({ '& > :first-child': { '& svg': { color: 'red' } } })).toMatchInlineSnapshot(`
+        .fxfx2ih > :first-child svg {
+          color: red;
+        }
+      `);
+    });
+
     it('handles media queries', () => {
       expect(
         resolveStyleRules({
@@ -145,8 +262,70 @@ describe('resolveStyleRules', () => {
           color: green;
         }
         @media screen and (max-width: 992px) {
-          .f1p08us1 {
+          .f1ojdyje {
             color: red;
+          }
+        }
+      `);
+    });
+
+    it('handles media queries with preudo selectors', () => {
+      expect(
+        resolveStyleRules({
+          color: 'green',
+          '@media screen and (max-width: 992px)': {
+            ':hover': {
+              color: 'red ',
+            },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        .fka9v86 {
+          color: green;
+        }
+        @media screen and (max-width: 992px) {
+          .f7wpa5l:hover {
+            color: red;
+          }
+        }
+      `);
+    });
+
+    it('handles nested media queries', () => {
+      expect(
+        resolveStyleRules({
+          color: 'red',
+          '@media screen and (max-width: 992px)': {
+            color: 'red',
+            '@media (min-width: 100px)': { color: 'red' },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        .fe3e8s9 {
+          color: red;
+        }
+        @media screen and (max-width: 992px) {
+          .f1ojdyje {
+            color: red;
+          }
+        }
+        @media screen and (max-width: 992px) and (min-width: 100px) {
+          .f19a6424 {
+            color: red;
+          }
+        }
+      `);
+    });
+
+    it('handles supports queries', () => {
+      expect(
+        resolveStyleRules({
+          '@supports (display:block)': { color: 'green' },
+        }),
+      ).toMatchInlineSnapshot(`
+        @supports (display: block) {
+          .f1yofsfp {
+            color: green;
           }
         }
       `);

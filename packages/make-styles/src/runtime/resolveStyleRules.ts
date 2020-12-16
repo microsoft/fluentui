@@ -6,53 +6,77 @@ import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
 import { compileKeyframeRule } from './compileKeyframeRule';
+import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
 import { isObject } from './utils/isObject';
+import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 
 export function resolveStyleRules(
   styles: MakeStyles,
-  selector = '',
+  pseudo = '',
+  media = '',
+  support = '',
   result: Record<string, MakeStylesResolvedRule> = {},
 ): Record<string, MakeStylesResolvedRule> {
   const expandedStyles = (expand(styles) as unknown) as MakeStyles;
   const properties = Object.keys(expandedStyles);
 
   // TODO: => for-in loop
-  properties.forEach(propName => {
-    const propValue = expandedStyles[propName];
+  properties.forEach(property => {
+    const value = expandedStyles[property];
 
     // eslint-disable-next-line eqeqeq
-    if (propValue == null) {
+    if (value == null) {
       return;
-    } else if (typeof propValue === 'string' || typeof propValue === 'number') {
+    } else if (typeof value === 'string' || typeof value === 'number') {
       // uniq key based on property & selector, used for merging later
-      const key = selector + propName;
+      const key = pseudo + media + support + property;
 
       // trimming of values is required to generate consistent hashes
-      const className = HASH_PREFIX + hashString(selector + propName + propValue.toString().trim());
-      const css = compileCSS(className, selector, propName, propValue);
+      const className = HASH_PREFIX + hashString(pseudo + media + support + property + value.toString().trim());
+      const css = compileCSS({
+        className,
+        media,
+        pseudo,
+        property,
+        support,
+        value,
+      });
 
-      const rtl = convertProperty(propName, propValue);
-      const flippedInRtl = rtl.key !== propName || rtl.value !== propValue;
+      const rtl = convertProperty(property, value);
+      const flippedInRtl = rtl.key !== property || rtl.value !== value;
 
       if (flippedInRtl) {
-        const rtlCSS = compileCSS(RTL_PREFIX + className, selector, rtl.key, rtl.value);
+        const rtlCSS = compileCSS({
+          className: RTL_PREFIX + className,
+          media,
+          pseudo,
+          property: rtl.key,
+          support,
+          value: rtl.value,
+        });
 
         // There is no sense to store RTL className as it's "r" + regular className
         result[key] = [className, css, rtlCSS];
       } else {
         result[key] = [className, css];
       }
-    } else if (isObject(propValue)) {
-      if (isNestedSelector(propName)) {
-        resolveStyleRules(propValue, selector + normalizeNestedProperty(propName), result);
-      } else if (isMediaQuerySelector(propName)) {
-        resolveStyleRules(propValue, selector + propName, result);
-      } else if (propName === 'animationName') {
+    } else if (isObject(value)) {
+      if (isNestedSelector(property)) {
+        resolveStyleRules(value, pseudo + normalizeNestedProperty(property), media, support, result);
+      } else if (isMediaQuerySelector(property)) {
+        const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
+
+        resolveStyleRules(value, pseudo, combinedMediaQuery, support, result);
+      } else if (isSupportQuerySelector(property)) {
+        const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
+
+        resolveStyleRules(value, pseudo, media, combinedSupportQuery, result);
+      } else if (property === 'animationName') {
         // TODO: support RTL!
-        const keyframe = compileKeyframeRule(propValue);
+        const keyframe = compileKeyframeRule(value);
         const animationName = HASH_PREFIX + hashString(keyframe);
 
         // TODO call Stylis for prefixing
@@ -60,9 +84,8 @@ export function resolveStyleRules(
 
         result[animationName] = [animationName, keyframeCSS /* rtlCSS */];
 
-        resolveStyleRules({ animationName }, selector, result);
+        resolveStyleRules({ animationName }, pseudo, media, support, result);
       }
-      // TODO: support support queries
     }
   });
 

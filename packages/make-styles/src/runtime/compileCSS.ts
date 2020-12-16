@@ -1,16 +1,29 @@
 import { compile, middleware, serialize, stringify } from 'stylis';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
-export function compileCSS(className: string, selector: string, property: string, value: number | string): string {
+interface CompileCSSOptions {
+  className: string;
+
+  pseudo: string;
+  media: string;
+  support: string;
+
+  property: string;
+  value: number | string;
+}
+
+export function compileCSS(options: CompileCSSOptions): string {
+  const { className, media, pseudo, support, property, value } = options;
+
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
 
   // Should be handled by namespace plugin of Stylis, is buggy now
   // Issues are reported:
   // https://github.com/thysultan/stylis.js/issues/253
   // https://github.com/thysultan/stylis.js/issues/252
-  if (selector.indexOf(':global(') === 0) {
-    const globalSelector = /global\((.+)\)/.exec(selector)?.[1];
-    const shouldIncludeClassName = selector.indexOf('&') === selector.length - 1;
+  if (pseudo.indexOf(':global(') === 0) {
+    const globalSelector = /global\((.+)\)/.exec(pseudo)?.[1];
+    const shouldIncludeClassName = pseudo.indexOf('&') === pseudo.length - 1;
 
     const cssRule = shouldIncludeClassName
       ? `${globalSelector} { .${className} ${cssDeclaration} }`
@@ -18,7 +31,15 @@ export function compileCSS(className: string, selector: string, property: string
 
     return serialize(compile(cssRule), middleware([stringify]));
   } else {
-    const cssRule = `.${className} { ${selector || '&'} ${cssDeclaration} }`;
+    let cssRule = `.${className}${pseudo} ${cssDeclaration}`;
+
+    if (media) {
+      cssRule = `@media ${media} { ${cssRule} }`;
+    }
+
+    if (support) {
+      cssRule = `@supports ${support} { ${cssRule} }`;
+    }
 
     return serialize(compile(cssRule), middleware([stringify]));
   }
