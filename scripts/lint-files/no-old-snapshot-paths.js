@@ -9,7 +9,7 @@ const { findGitRoot } = require('../monorepo/index');
 function lintFiles() {
   const gitRoot = findGitRoot();
 
-  const exampleFiles = glob.sync('packages/{react,react-cards,react-focus,react-next}/src/components/__snapshots__/*', {
+  const exampleFiles = glob.sync('packages/{react,react-cards,react-focus}/src/components/__snapshots__/*', {
     cwd: gitRoot,
   });
   if (exampleFiles.length) {
