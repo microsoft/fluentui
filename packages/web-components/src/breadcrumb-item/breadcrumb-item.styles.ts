@@ -74,13 +74,17 @@ export const BreadcrumbItemStyles = css`
         height: calc(var(--focus-outline-width) * 1px);
     }
 
-    :host(:not([href])) {
+    :host(:not([href])),
+    :host([aria-current]) .control  {
         font-weight: 600;
         color: ${neutralForegroundRestBehavior.var};
         fill: currentcolor;
-        margin-inline-start: 11px;
         cursor: default;
     }
+
+    :host([aria-current]) .control:hover .content::before {
+      background: ${neutralForegroundRestBehavior.var};
+  }
 
     .start {
         display: flex;
