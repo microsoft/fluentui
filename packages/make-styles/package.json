@@ -25,6 +25,12 @@
     "test:watch": "just-scripts jest-watch",
     "update-api": "just-scripts update-api"
   },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@fluentui/scripts": "^1.0.0",
