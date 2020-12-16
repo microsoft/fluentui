@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 23 Nov 2020 12:25:00 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Dec 2020 21:12:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.17.0)
+
+Wed, 16 Dec 2020 21:12:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.19..@fluentui/react-focus_v7.17.0)
+
+### Minor changes
+
+- Remove react-theme-provider@v0 dependency from react-focus package ([PR #16243](https://github.com/microsoft/fluentui/pull/16243) by xgao@microsoft.com)
 
 ## [7.16.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.19)
 

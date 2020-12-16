@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 16 Dec 2020 21:12:59 GMT",
+      "tag": "@fluentui/react-focus_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove react-theme-provider@v0 dependency from react-focus package",
+            "author": "xgao@microsoft.com",
+            "commit": "1ca83696f4b71a0d91055aeae14828c5957c29af",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Nov 2020 12:25:00 GMT",
       "tag": "@fluentui/react-focus_v7.16.19",
       "version": "7.16.19",
