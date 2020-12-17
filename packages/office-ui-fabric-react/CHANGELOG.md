@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Dec 2020 12:27:20 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Dec 2020 12:27:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.155.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.155.2)
+
+Thu, 17 Dec 2020 12:27:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.155.0..office-ui-fabric-react_v7.155.2)
+
+### Patches
+
+- Cherrypick PR #16177 - Fix navigating across suggestion items in narrator scan mode ([PR #16241](https://github.com/microsoft/fluentui/pull/16241) by kuanubha@microsoft.com)
 
 ## [7.155.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.155.0)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherrypick PR #16177 - Fix navigating across suggestion items in narrator scan mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "kuanubha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-16T11:37:49.437Z"
-}

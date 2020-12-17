@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 17 Dec 2020 12:27:50 GMT",
+      "tag": "office-ui-fabric-react_v7.155.2",
+      "version": "7.155.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypick PR #16177 - Fix navigating across suggestion items in narrator scan mode",
+            "author": "kuanubha@microsoft.com",
+            "commit": "3c07a997eb843bfd713d591b3dc1c6be4983f467",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Dec 2020 12:27:20 GMT",
       "tag": "office-ui-fabric-react_v7.155.0",
       "version": "7.155.0",
