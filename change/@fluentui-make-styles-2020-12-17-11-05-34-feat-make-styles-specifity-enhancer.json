@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "feat(makeStyles): add an ability to increase specificity",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-17T10:05:34.220Z"
+}
