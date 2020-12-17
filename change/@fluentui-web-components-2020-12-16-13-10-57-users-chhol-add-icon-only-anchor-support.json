@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add icon only anchor support, update fast packages",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-16T21:10:57.554Z"
+}

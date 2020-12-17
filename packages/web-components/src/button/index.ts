@@ -59,16 +59,15 @@ export class FluentButton extends Button {
   /**
    * Applies 'icon-only' class when there is only an SVG in the default slot
    *
-   * @public
-   * @remarks
+   * @internal
    */
   public defaultSlottedContentChanged(): void {
     const slottedElements = this.defaultSlottedContent.filter(x => x.nodeType === Node.ELEMENT_NODE);
 
     if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
-      this.root.classList.add('icon-only');
+      this.control.classList.add('icon-only');
     } else {
-      this.root.classList.remove('icon-only');
+      this.control.classList.remove('icon-only');
     }
   }
 }
