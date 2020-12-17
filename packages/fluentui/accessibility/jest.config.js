@@ -1,3 +1,5 @@
+const commonConfig = require('@uifabric/build/jest');
+
 const config = commonConfig({
   name: 'accessibility',
   moduleNameMapper: require('lerna-alias').jest({

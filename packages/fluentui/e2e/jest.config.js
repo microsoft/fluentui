@@ -1,3 +1,5 @@
+const commonConfig = require('@uifabric/build/jest');
+
 const config = commonConfig({
   moduleNameMapper: require('lerna-alias').jest({
     directory: require('@uifabric/build/monorepo/findGitRoot')(),
