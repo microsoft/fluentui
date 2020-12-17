@@ -51,21 +51,22 @@ export function makeStyles<Selectors, Tokens>(
       }
     });
 
-    let matchedIndexes = '';
+    let cxCacheKey = options.renderer.id;
+
+    if (overridesCx) {
+      cxCacheKey += overridesCx;
+    }
 
     const matchedDefinitions = resolvedDefinitions.reduce<MakeStylesMatchedDefinitions[]>((acc, definition, i) => {
       const matcherFn = definition[0];
 
       if (matcherFn === null || matcherFn(selectors)) {
         acc.push(definition[2]);
-        matchedIndexes += i;
+        cxCacheKey += i;
       }
 
       return acc;
     }, []);
-
-    const overridesHash = overridesCx === '' ? '' : overridesCx;
-    const cxCacheKey = options.renderer.id + matchedIndexes + '' + overridesHash;
 
     if (CAN_USE_CSS_VARIABLES && cxCache[cxCacheKey] !== undefined) {
       return nonMakeClasses + cxCache[cxCacheKey];
