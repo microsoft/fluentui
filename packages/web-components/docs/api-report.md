@@ -182,6 +182,8 @@ export class FluentAnchor extends Anchor {
     appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+    // @internal
+    defaultSlottedContentChanged(): void;
 }
 
 // @public
@@ -205,6 +207,7 @@ export class FluentButton extends Button {
     appearanceChanged(oldValue: ButtonAppearance, newValue: ButtonAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+    // @internal
     defaultSlottedContentChanged(): void;
 }
 

@@ -2414,18 +2414,18 @@
     "@microsoft/fast-jss-utilities" "^4.8.0"
     "@microsoft/fast-web-utilities" "^4.6.0"
 
-"@microsoft/fast-element@^0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.21.0.tgz#40689eec6e77f3cdc664a18501ea72febc735ed4"
-  integrity sha512-SzqDjcVTXqOjEaZwcDZR1/3KD99/54pXq5ho53x/7BPSzT7o8tQoUqRZiJ5WqduAtX7/rtB52etffumHkbyLUw==
+"@microsoft/fast-element@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.21.1.tgz#366fb006608819edf8053e0fbdb31618957b86a4"
+  integrity sha512-DZVu9KGtwP+vg9z6fAHpiPntPPFNj4ex6qBSsRLP5RP8akqD54OiUokRTJ9/JodIF7R9w34XLG3EJRD75LQwDQ==
 
-"@microsoft/fast-foundation@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.10.0.tgz#43569725a2f5cd4a78edc20206c7d445e797cbab"
-  integrity sha512-8FUeHDn8blZRTmt3cVPvf6JXu3z0Jdhak5yx9yVTZttv9ACEQ1TXQfD4F0/BwYgA3ni7ORWHSXu68iJdGofRsQ==
+"@microsoft/fast-foundation@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.11.0.tgz#c609fea459bebf41d49e715649c33334fe04af1b"
+  integrity sha512-ZbRrHKuN4xfnoxFHb8bmWPQHzOxC39KucL4CQ0hE8GRfNI38QbIAUNhVwgohsQWaKgiWv9soQr8kf94jdmaQow==
   dependencies:
-    "@microsoft/fast-element" "^0.21.0"
-    "@microsoft/fast-web-utilities" "^4.6.1"
+    "@microsoft/fast-element" "^0.21.1"
+    "@microsoft/fast-web-utilities" "^4.7.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
     tslib "^1.13.0"
@@ -2456,10 +2456,10 @@
   dependencies:
     exenv-es6 "^1.0.0"
 
-"@microsoft/fast-web-utilities@^4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.6.1.tgz#91c39bbd8499009c9e569d1aa309da17efcf9297"
-  integrity sha512-EL1v1xmQlQs5qwPM6gzwQXUgIHtRgKXmHajQJmsUvS0rm8rCu3kvp1eEq3okXuKjPjzToFusOgVapzi5ibjpbA==
+"@microsoft/fast-web-utilities@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.7.0.tgz#8ba4b3b790447fca715fd5d7c3f3779c035a7982"
+  integrity sha512-GnK0ofXnFg/n6DpRtzH2gDLxVRqVhgIyxUBKUOu/hBtnQyQ/0HHc5XxMgJxZXdWvCLluQVEFt93Wp+Hvolq40Q==
   dependencies:
     exenv-es6 "^1.0.0"
 
