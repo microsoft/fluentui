@@ -10,10 +10,16 @@ interface CompileCSSOptions {
 
   property: string;
   value: number | string;
+
+  unstable_cssPriority: number;
+}
+
+function repeatSelector(selector: string, times: number) {
+  return new Array(times + 2).join(selector);
 }
 
 export function compileCSS(options: CompileCSSOptions): string {
-  const { className, media, pseudo, support, property, value } = options;
+  const { className, media, pseudo, support, property, value, unstable_cssPriority } = options;
 
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
 
@@ -31,7 +37,8 @@ export function compileCSS(options: CompileCSSOptions): string {
 
     return serialize(compile(cssRule), middleware([stringify]));
   } else {
-    let cssRule = `.${className}${pseudo} ${cssDeclaration}`;
+    const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
+    let cssRule = `${classNameSelector}${pseudo} ${cssDeclaration}`;
 
     if (media) {
       cssRule = `@media ${media} { ${cssRule} }`;
