@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Mon, 16 Nov 2020 12:31:52 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Dec 2020 12:38:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.22)
+
+Tue, 01 Dec 2020 12:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.17..@fluentui/react-cards_v1.0.0-beta.22)
+
+### Changes
+
+- Card: Fixing styling after round of changes in theme. ([PR #16035](https://github.com/microsoft/fluentui/pull/16035) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.17)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.14..@fluentui/react-cards_v1.0.0-beta.17)
+
+### Changes
+
+- Adding borderStyle token to Card styles. ([PR #15981](https://github.com/microsoft/fluentui/pull/15981) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.14)
 

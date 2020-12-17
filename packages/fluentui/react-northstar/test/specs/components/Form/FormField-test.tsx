@@ -84,4 +84,25 @@ describe('FormField', () => {
     expect(formField.find('PresenceAvailableIcon').length).toBe(1);
     expect(formField.find('PresenceAvailableIcon').getDOMNode()).toBeVisible();
   });
+
+  it('should pass id to control', () => {
+    const id = 'first-name-shorthand';
+    const formField = mountWithProvider(
+      <FormField
+        {...{
+          label: 'First name',
+          name: 'firstName',
+          id,
+          key: 'first-name',
+          required: true,
+          control: {
+            as: Input,
+            successIndicator: <PresenceAvailableIcon />,
+          },
+        }}
+      />,
+    );
+
+    expect(formField.find('input').prop('id')).toBe(id);
+  });
 });

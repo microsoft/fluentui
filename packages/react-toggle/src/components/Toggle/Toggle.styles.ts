@@ -17,8 +17,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
-  const pillCheckedHoveredBackground = palette.themeDark;
+  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
   const thumbUncheckedHoveredBackground = palette.neutralDark;
   const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbBackground = semanticColors.smallInputBorder;

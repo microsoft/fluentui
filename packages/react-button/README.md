@@ -2,7 +2,7 @@
 
 **Button components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-**WARNING!** These components are still in active development, and the APIs may change before final release. The package will be released with a stable API as part of [Fluent UI React version 8](https://github.com/microsoft/fluentui/issues/12770) in late 2020.
+**WARNING!** These components are still in active development, and the APIs may change before final release.
 
 To use the Button components:
 
