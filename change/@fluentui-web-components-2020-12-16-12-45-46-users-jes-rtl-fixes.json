@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: broken rtl scenerios",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-16T20:45:46.346Z"
-}
