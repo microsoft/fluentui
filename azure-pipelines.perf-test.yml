@@ -32,18 +32,18 @@ steps:
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test Baseline
-  - script: |
-      yarn perf:test:base
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    workingDirectory: packages/fluentui/perf-test
-    displayName: Perf Test Base (Fluent)
+  # - script: |
+  #     yarn perf:test:base
+  #   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  #   workingDirectory: packages/fluentui/perf-test
+  #   displayName: Perf Test Base (Fluent)
 
   # @fluentui/perf-test PR
-  - script: |
-      yarn perf:test
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
-    workingDirectory: packages/fluentui/perf-test
-    displayName: Perf Test (Fluent)
+  # - script: |
+  #     yarn perf:test
+  #   condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+  #   workingDirectory: packages/fluentui/perf-test
+  #   displayName: Perf Test (Fluent)
 
   # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
@@ -51,14 +51,14 @@ steps:
     workingDirectory: apps/perf-test
     displayName: Perf Test
 
-  - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site (Fluent)
-    inputs:
-      SourcePath: 'packages/fluentui/perf-test/dist'
-      azureSubscription: $(azureSubscription)
-      storage: fabricweb
-      ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
+  # - task: AzureUpload@2
+  #   displayName: Upload Perf Test Result to PR deploy site (Fluent)
+  #   inputs:
+  #     SourcePath: 'packages/fluentui/perf-test/dist'
+  #     azureSubscription: $(azureSubscription)
+  #     storage: fabricweb
+  #     ContainerName: '$web'
+  #     BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
@@ -89,11 +89,11 @@ steps:
     displayName: Performance Tests (master only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
-  - script: |
-      yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    displayName: Save Statistics to DB (master only)
-    env:
-      STATS_URI: $(STATS_URI)
+  # - script: |
+  #     yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
+  #   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  #   displayName: Save Statistics to DB (master only)
+  #   env:
+  #     STATS_URI: $(STATS_URI)
 
   - template: .devops/templates/cleanup.yml

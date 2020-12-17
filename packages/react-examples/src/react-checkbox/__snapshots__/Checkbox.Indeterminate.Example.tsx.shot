@@ -40,7 +40,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       htmlFor="checkbox-0"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f1k06lo fwqlqu8 f1h1bq60 f1k3t012 f1gw3sf2 f13s5s9x fst1v14 fesvzjr f18hki2s fptsa1h f1tyml4d fen7a3w f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f110ol8y f189zdjq f66rdcp f11bso9k f1gw3sf2 f13s5s9x fst1v14 fesvzjr fim0ype f1k140uh f1axjucw fadfg83 f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
         data-ktp-target={true}
       >
         <i
@@ -49,8 +49,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -67,14 +67,14 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0"
       >
         Indeterminate checkbox (uncontrolled)
       </span>
     </label>
   </div>
   <div
-    className="ms-Checkbox  f10pi13n f22iagw f1seipye fxlhcqc fx1htvd fux2odn fkzl2jk fc4ytyk f6uzuy6 fld1x19 fshsenq fwq9vnh f1uufrj1 f1uewc9w f1e2akbx f13ojd72 f97stsn f1g325zu frwqzd8 fib75z9 f1yxpukj f1ugl31n f1sq1mnv f1y0okku f1qiccui f115ngac fg3pmph f7j1a6a fquneci"
+    className="ms-Checkbox  f10pi13n f22iagw f1seipye fxlhcqc fx1htvd fux2odn fkzl2jk fc4ytyk f6uzuy6 fld1x19 fkzbwyg fwq9vnh f1uufrj1 f1uewc9w f1e2akbx f13ojd72 f1umhbjv f17ucqa9 f13ggucu f157pm0u f1atlbf7 fqzyrfk fxjtbs5 f155r319 fici54 f115ngac fg3pmph f7j1a6a fquneci"
   >
     <input
       aria-checked="mixed"
@@ -91,7 +91,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       htmlFor="checkbox-1"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f1k06lo fwqlqu8 f1h1bq60 f1k3t012 f1gw3sf2 f13s5s9x fst1v14 fesvzjr f18hki2s fptsa1h f1tyml4d fen7a3w f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f110ol8y f189zdjq f66rdcp f11bso9k f1gw3sf2 f13s5s9x fst1v14 fesvzjr fim0ype f1k140uh f1axjucw fadfg83 f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
         data-ktp-target={true}
       >
         <i
@@ -100,8 +100,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               ms-Checkbox-checkmark
               f5p0z4x
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -118,14 +118,14 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0"
       >
         Indeterminate checkbox which defaults to true when clicked (uncontrolled)
       </span>
     </label>
   </div>
   <div
-    className="ms-Checkbox  f10pi13n f22iagw f1seipye fxlhcqc fx1htvd fux2odn fkzl2jk fc4ytyk f6uzuy6 fld1x19 fshsenq fwq9vnh f1uufrj1 f1uewc9w f115ngac fg3pmph f7j1a6a fquneci"
+    className="ms-Checkbox "
   >
     <input
       aria-checked="mixed"
@@ -144,7 +144,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       htmlFor="checkbox-2"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1qveez1 fs0mvne f1wouunb funk29o fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fze50hw f1iuuov4 f1xjygh8 fiynczt f13zj6fq f1qe401s f1mdlcz9 f1k06lo fwqlqu8 f1h1bq60 f1k3t012 f1gw3sf2 f13s5s9x fst1v14 fesvzjr f18hki2s fptsa1h f1tyml4d fen7a3w f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp fi528fx fpbj6g5 f5x94h f12aqz73 f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fze50hw f1iuuov4 f1xjygh8 fiynczt f13zj6fq f1qe401s f1mdlcz9 f110ol8y f189zdjq f66rdcp f11bso9k f1gw3sf2 f13s5s9x fst1v14 fesvzjr fim0ype f1k140uh f1axjucw fadfg83 f8rth92 flthirb f1lh990p ftkbnf5 fbpgi4u f1kx37bg f3dbbz7 f1tfn3bn"
         data-ktp-target={true}
       >
         <i
@@ -153,8 +153,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f1gh8po8
-              f1x1182d
+              feijl9a
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -171,7 +171,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fa76jmf fses1vf f1n95isl fjf1xye f1gh8po8 fqej9xu"
+        className="ms-Checkbox-text  fa76jmf fses1vf f1n95isl fjf1xye feijl9a f1huwda0"
       >
         Disabled indeterminate checkbox
       </span>
@@ -195,7 +195,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       htmlFor="checkbox-3"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f1k06lo fwqlqu8 f1h1bq60 f1k3t012 f1gw3sf2 f13s5s9x fst1v14 fesvzjr f18hki2s fptsa1h f1tyml4d fen7a3w f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f13zj6fq f1qe401s f1mdlcz9 f110ol8y f189zdjq f66rdcp f11bso9k f1gw3sf2 f13s5s9x fst1v14 fesvzjr fim0ype f1k140uh f1axjucw fadfg83 f8rth92 flthirb f1lh990p ftkbnf5 f1t9xcg9 f1gt0kgy f1vj0474 frmyy8z"
         data-ktp-target={true}
       >
         <i
@@ -204,8 +204,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -222,7 +222,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0"
       >
         Indeterminate checkbox (controlled)
       </span>

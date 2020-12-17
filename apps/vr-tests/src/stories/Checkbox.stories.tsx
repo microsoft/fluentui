@@ -3,12 +3,24 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
-import { withThemeProvider } from '@fluentui/storybook/lib/decorators';
+import { withThemeProvider } from '@fluentui/storybook/lib/decorators/withThemeProvider';
 import { FluentTheme } from '@fluentui/storybook/lib/themes/v8/FluentTheme';
+
+export const makeStylesTheme = {
+  ...FluentTheme,
+  tokens: {
+    theme: {
+      palette: FluentTheme.palette,
+      semanticColors: FluentTheme.semanticColors,
+      fonts: FluentTheme.fonts,
+      effects: FluentTheme.effects,
+    },
+  } as any,
+};
 
 storiesOf('Checkbox', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: FluentTheme }))
+  .addDecorator(withThemeProvider({ theme: makeStylesTheme }))
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -56,6 +68,7 @@ storiesOf('Checkbox', module)
 
 storiesOf('Checkbox Indeterminate', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider({ theme: makeStylesTheme }))
   .addDecorator(story =>
     // prettier-ignore
     <Screener

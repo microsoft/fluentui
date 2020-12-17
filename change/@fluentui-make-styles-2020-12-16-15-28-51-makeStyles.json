@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "try markStyles on v7",
+  "packageName": "@fluentui/make-styles",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-12-16T23:28:43.736Z"
+}

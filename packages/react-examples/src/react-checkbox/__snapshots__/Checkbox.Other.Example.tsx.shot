@@ -23,7 +23,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       }
 >
   <div
-    className="ms-Checkbox  f10pi13n f22iagw f1seipye fxlhcqc fx1htvd fux2odn fkzl2jk fc4ytyk f6uzuy6 fld1x19 fshsenq f124jh0d f1uufrj1 f1uewc9w f1e2akbx f13ojd72 f97stsn f1g325zu frwqzd8 fib75z9 f1yxpukj f1ugl31n f1sq1mnv f1y0okku f1qiccui"
+    className="ms-Checkbox  f10pi13n f22iagw f1seipye fxlhcqc fx1htvd fux2odn fkzl2jk fc4ytyk f6uzuy6 fld1x19 fkzbwyg f124jh0d f1uufrj1 f1uewc9w f1e2akbx f13ojd72 f1umhbjv f17ucqa9 f13ggucu f157pm0u f1atlbf7 fqzyrfk fxjtbs5 f155r319 fici54"
   >
     <input
       aria-checked="true"
@@ -40,7 +40,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       htmlFor="checkbox-0"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1ums9kx fzljm06 f10l578q f7noaie fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f60tk6 f86w5mv"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp fannevw f1cfseva f189a112 f1s3vs8u f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z f1q1itr3 fpibhc0 fk1vwrk fd9r535 f60tk6 f8lhhxs"
         data-ktp-target={true}
       >
         <i
@@ -49,8 +49,8 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
               ms-Checkbox-checkmark
               f5p0z4x
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -67,7 +67,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0"
       >
         Controlled checkbox
       </span>
@@ -91,7 +91,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       htmlFor="checkbox-1"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7 fjf1xye"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7 fjf1xye"
         data-ktp-target={true}
       >
         <i
@@ -100,8 +100,8 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -118,7 +118,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu f8zmjen"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0 f8zmjen"
       >
         Checkbox rendered with boxSide "end"
       </span>
@@ -144,7 +144,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       htmlFor="checkbox-2"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7"
         data-ktp-target={true}
       >
         <i
@@ -153,8 +153,8 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -171,7 +171,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       </div>
       <span
         aria-hidden="true"
-        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye f1j6xh9c fqej9xu"
+        className="ms-Checkbox-text  fuhszl1 fses1vf f1n95isl fjf1xye fj4apmc f1huwda0"
       >
         Checkbox with extra props for the input
       </span>
@@ -195,7 +195,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
       htmlFor="checkbox-3"
     >
       <div
-        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f1a1n40n f1d8djpg f1hc9bp0 fjultym fqej9xu f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7"
+        className="ms-Checkbox-checkbox  f10pi13n f22iagw fi64zpg f122n59 f4d9j23 fjamq6b f64fuq3 fl4tsp0 f1ewtqcl f7szspx f1bnoopa f16yyygq f1a3p1vp f11iv7kt f5jg8ba f1lynpf7 f17nx3vg f1huwda0 f8zmjen f5ogflp f1hqa2wf f1f09k3d finvdd3 fzkkow9 fcdblym fg706s2 fjik90z fe6axk5 f12i52co f1onpyji f15ecqf7"
         data-ktp-target={true}
       >
         <i
@@ -204,8 +204,8 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
               ms-Checkbox-checkmark
               fk73vx1
               f1mbgum2
-              f114mgiq
-              f1x1182d
+              fzdfxf7
+              fm7olqj
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
