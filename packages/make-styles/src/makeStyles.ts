@@ -7,31 +7,29 @@ import {
   MakeStylesResolvedDefinition,
 } from './types';
 
-export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]) {
+export function makeStyles<Selectors, Tokens>(
+  definitions: MakeStylesDefinition<Selectors, Tokens>[],
+  options: MakeStylesOptions<Tokens>,
+) {
   const cxCache: Record<string, string> = {};
+  let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
 
-  return function computeClasses(
-    selectors: Selectors,
-    options: MakeStylesOptions<Tokens>,
-    ...classNames: (string | undefined)[]
-  ): string {
-    let tokens: Tokens | null;
-    let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
+  let tokens: Tokens | null;
+  // TODO: describe me
+  if (process.env.NODE_ENV === 'production') {
+    tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
+    resolvedDefinitions = CAN_USE_CSS_VARIABLES
+      ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
+      : resolveDefinitions((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[], tokens);
+  } else {
+    tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
+    resolvedDefinitions = resolveDefinitions(
+      (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+      tokens,
+    );
+  }
 
-    // TODO: describe me
-    if (process.env.NODE_ENV === 'production') {
-      tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
-      resolvedDefinitions = CAN_USE_CSS_VARIABLES
-        ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-        : resolveDefinitions((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[], tokens);
-    } else {
-      tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-      resolvedDefinitions = resolveDefinitions(
-        (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-        tokens,
-      );
-    }
-
+  return function computeClasses(selectors: Selectors, ...classNames: (string | undefined)[]): string {
     let nonMakeClasses: string = '';
     const overrides: MakeStylesMatchedDefinitions = {};
     let overridesCx: string = '';
