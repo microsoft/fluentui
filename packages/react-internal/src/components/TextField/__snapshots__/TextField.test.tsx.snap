@@ -1491,6 +1491,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
               outline: 0px;
             }
         onClick={[Function]}
+        type="button"
       >
         <span
           className=
