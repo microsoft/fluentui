@@ -11,6 +11,9 @@ export const toolbarMenuItemIconStyles: ComponentSlotStylesPrepared<
   root: ({ props: p }) => ({
     ...(p.hasContent && {
       marginRight: pxToRem(10),
+      marginTop: pxToRem(3),
+      display: 'flex',
+      alignSelf: 'start',
     }),
   }),
 };

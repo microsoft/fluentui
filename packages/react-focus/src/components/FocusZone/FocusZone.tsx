@@ -255,7 +255,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     return (
       <ThemeContext.Consumer>
-        {(theme) => (
+        {theme => (
           <Tag
             aria-labelledby={ariaLabelledBy}
             aria-describedby={ariaDescribedBy}

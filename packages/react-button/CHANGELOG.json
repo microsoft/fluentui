@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 11 Dec 2020 12:28:01 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.17",
+      "version": "1.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update react-button readme to not say it's officially releasing with v8",
+            "author": "elcraig@microsoft.com",
+            "commit": "45719f18d7088d02eecf4a17c61718b15cf60ee0",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Dec 2020 12:38:05 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.14",
       "version": "1.0.0-beta.14",

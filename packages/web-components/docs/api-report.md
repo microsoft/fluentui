@@ -9,6 +9,8 @@ import { AccordionItem } from '@microsoft/fast-foundation';
 import { Anchor } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
+import { Breadcrumb } from '@microsoft/fast-foundation';
+import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
@@ -131,6 +133,12 @@ export const BadgeStyles: import("@microsoft/fast-element").ElementStyles;
 export const BaseButtonStyles: ElementStyles;
 
 // @public
+export const BreadcrumbItemStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const BreadcrumbStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' | 'stealth';
 
 // @public
@@ -181,6 +189,14 @@ export class FluentBadge extends Badge {
     // (undocumented)
     appearance: BadgeAppearance;
     }
+
+// @public
+export class FluentBreadcrumb extends Breadcrumb {
+}
+
+// @public
+export class FluentBreadcrumbItem extends BreadcrumbItem {
+}
 
 // @public
 export class FluentButton extends Button {

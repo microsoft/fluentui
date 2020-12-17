@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 02 Dec 2020 12:37:40 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.2)
+
+Wed, 16 Dec 2020 12:27:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.1..@fluentui/web-components_v0.9.2)
+
+### Patches
+
+- update style on aria-current item and adjust margin on last item ([PR #16238](https://github.com/microsoft/fluentui/pull/16238) by khamu@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.1)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.0..@fluentui/web-components_v0.9.1)
+
+### Patches
+
+- set FieldText color on label and status-message ([PR #16106](https://github.com/microsoft/fluentui/pull/16106) by khamu@microsoft.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.0)
 
