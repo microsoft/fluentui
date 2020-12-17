@@ -100,6 +100,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
           aria-valuemax={ariaValueMax}
           aria-valuenow={ariaValueNow}
           aria-valuetext={ariaValueText}
+          title={ariaValueText}
         />
       </div>
     );
