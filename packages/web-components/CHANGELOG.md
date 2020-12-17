@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Dec 2020 12:30:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
+
+Thu, 17 Dec 2020 12:30:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.2..@fluentui/web-components_v0.10.0)
+
+### Minor changes
+
+- add icon only anchor support, update fast packages ([PR #16248](https://github.com/microsoft/fluentui/pull/16248) by chhol@microsoft.com)
+
+### Patches
+
+- fix: broken rtl scenerios ([PR #16247](https://github.com/microsoft/fluentui/pull/16247) by jes@microsoft.com)
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.2)
 

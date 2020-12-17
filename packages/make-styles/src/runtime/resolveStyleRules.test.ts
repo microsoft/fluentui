@@ -383,5 +383,62 @@ describe('resolveStyleRules', () => {
         }
       `);
     });
+
+    it('allows to increase specificity', () => {
+      expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
+        .fe3e8s91.fe3e8s91 {
+          color: red;
+        }
+      `);
+      expect(resolveStyleRules({ color: 'red' }, 2)).toMatchInlineSnapshot(`
+        .fe3e8s92.fe3e8s92.fe3e8s92 {
+          color: red;
+        }
+      `);
+    });
+
+    it('allows to increase for media queries', () => {
+      expect(
+        resolveStyleRules(
+          {
+            '@media screen and (max-width: 992px)': {
+              color: 'red',
+            },
+          },
+          1,
+        ),
+      ).toMatchInlineSnapshot(`
+        @media screen and (max-width: 992px) {
+          .f1ojdyje1.f1ojdyje1 {
+            color: red;
+          }
+        }
+      `);
+    });
+
+    it('allows to increase for RTL', () => {
+      expect(resolveStyleRules({ left: '5px' }, 1)).toMatchInlineSnapshot(`
+        .f5b3q4t1.f5b3q4t1 {
+          left: 5px;
+        }
+        .rf5b3q4t1.rf5b3q4t1 {
+          right: 5px;
+        }
+      `);
+    });
+
+    it('generates unique classnames with different specificity', () => {
+      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
+        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
+      }
+
+      const classnamesSet = new Set<string>();
+
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 1)));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 2)));
+
+      expect(classnamesSet.size).toBe(3);
+    });
   });
 });

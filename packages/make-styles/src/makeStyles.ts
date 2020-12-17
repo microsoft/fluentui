@@ -7,7 +7,10 @@ import {
   MakeStylesResolvedDefinition,
 } from './types';
 
-export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]) {
+export function makeStyles<Selectors, Tokens>(
+  definitions: MakeStylesDefinition<Selectors, Tokens>[],
+  unstable_cssPriority: number = 0,
+) {
   const cxCache: Record<string, string> = {};
 
   return function computeClasses(
@@ -23,12 +26,17 @@ export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<
       tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
       resolvedDefinitions = CAN_USE_CSS_VARIABLES
         ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-        : resolveDefinitions((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[], tokens);
+        : resolveDefinitions(
+            (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+            tokens,
+            unstable_cssPriority,
+          );
     } else {
       tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
       resolvedDefinitions = resolveDefinitions(
         (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
         tokens,
+        unstable_cssPriority,
       );
     }
 
