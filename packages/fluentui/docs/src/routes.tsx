@@ -37,6 +37,7 @@ import AutoFocusZone from './views/AutoFocusZoneDoc';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
+  SkeletonsPrototype,
   ChatPanePrototype,
   ChatMessagesPrototype,
   CustomScrollbarPrototype,
@@ -105,6 +106,7 @@ const Routes = () => (
                 </Route>
                 <Route exact path="/quick-start" component={QuickStart} />
 
+                <Route exact path="/prototype-skeletons" component={SkeletonsPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />

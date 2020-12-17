@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+export const SkeletonsPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/skeletons'),
+);
 export const CustomToolbarPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
 );
