@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 17 Dec 2020 12:30:15 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Dec 2020 12:27:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.1)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.0..@fluentui/web-components_v0.10.1)
+
+### Patches
+
+- fix: focus styling inconsistencies ([PR #16265](https://github.com/microsoft/fluentui/pull/16265) by jes@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
 

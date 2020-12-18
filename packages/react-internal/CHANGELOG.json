@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Fri, 18 Dec 2020 12:27:55 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.26",
+      "version": "8.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix #15729: add type button to textfield of type password",
+            "author": "mirco.zeiss@gmail.com",
+            "commit": "7450653d3eaf15a5d6280c0871b415e5c5c03203",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Dec 2020 12:27:38 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.25",
       "version": "8.0.0-beta.25",
