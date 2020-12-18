@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 17 Dec 2020 12:30:15 GMT",
+      "tag": "@fluentui/web-components_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: broken rtl scenerios",
+            "author": "jes@microsoft.com",
+            "commit": "81651e8f3c1ea57df77214a50eb47fe5a816a236",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add icon only anchor support, update fast packages",
+            "author": "chhol@microsoft.com",
+            "commit": "cb8c48d775b497c7383d73d78617910bb2d5212c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Dec 2020 12:27:05 GMT",
       "tag": "@fluentui/web-components_v0.9.2",
       "version": "0.9.2",

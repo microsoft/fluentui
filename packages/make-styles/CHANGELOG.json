@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/make-styles",
+  "entries": [
+    {
+      "date": "Thu, 17 Dec 2020 12:30:15 GMT",
+      "tag": "@fluentui/make-styles_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add initial implementation of makeStyles",
+            "author": "olfedias@microsoft.com",
+            "commit": "e17a341e6e53d2cfdfdd949972051500f988b993",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "feat(makeStyles): add an ability to increase specificity",
+            "author": "olfedias@microsoft.com",
+            "commit": "30587bf4e223d26dcfdfe05e61a0d5051b0ff5aa",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    }
+  ]
+}
