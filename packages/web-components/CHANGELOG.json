@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 18 Dec 2020 12:27:55 GMT",
+      "tag": "@fluentui/web-components_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: focus styling inconsistencies",
+            "author": "jes@microsoft.com",
+            "commit": "ac24a6a79a7f09559bb35ffbc5b28f53ecd9e95f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Dec 2020 12:30:15 GMT",
       "tag": "@fluentui/web-components_v0.10.0",
       "version": "0.10.0",
