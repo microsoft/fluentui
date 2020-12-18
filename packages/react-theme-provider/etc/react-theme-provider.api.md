@@ -12,6 +12,8 @@ import { IRawFontStyle } from '@fluentui/merge-styles';
 import { IRawStyle } from '@fluentui/merge-styles';
 import { IStyle } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import { MakeStylesDefinition } from '@fluentui/make-styles';
+import { MakeStylesOptions as MakeStylesOptions_2 } from '@fluentui/make-styles';
 import { PartialTheme } from '@fluentui/theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/theme';
@@ -45,18 +47,18 @@ export type KeyFrames = IKeyframes;
 export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: any) => void;
 
 // @public
-export function makeNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
+export function makePrevNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
 
 // @public (undocumented)
-export function makeStyles(styles: any): (selectors?: any, styleOptions?: MakeStylesOptions) => string;
+export function makePrevStyles(styles: any): (selectors?: any, styleOptions?: PrevMakeStylesOptions) => string;
 
 // @public (undocumented)
-export interface MakeStylesOptions {
-    // (undocumented)
-    classNames?: (string | undefined)[];
-    // (undocumented)
+export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]): (selectors: Selectors, options: MakeStylesOptions<Tokens>, ...classNames: (string | undefined)[]) => string;
+
+// @public (undocumented)
+export type MakeStylesOptions<Tokens> = MakeStylesOptions_2<Tokens> & {
     componentName?: string;
-}
+};
 
 // @public
 export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: any) => void;
@@ -78,6 +80,14 @@ export const MergeStylesProvider: ({ children }: {
 export const mergeStylesRenderer: StyleRenderer;
 
 export { PartialTheme }
+
+// @public (undocumented)
+export interface PrevMakeStylesOptions {
+    // (undocumented)
+    classNames?: (string | undefined)[];
+    // (undocumented)
+    componentName?: string;
+}
 
 // @public (undocumented)
 export type Renderer = {

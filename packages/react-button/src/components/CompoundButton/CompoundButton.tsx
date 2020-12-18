@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { CompoundButtonProps } from './CompoundButton.types';
+import { renderCompoundButton } from './renderCompoundButton';
 import { useCompoundButton } from './useCompoundButton';
 import {
   useCompoundButtonStyles,
@@ -10,7 +10,7 @@ import {
   useCompoundButtonSecondaryContentStyles,
   CompoundButtonClassNames,
 } from './useCompoundButtonClasses';
-import { renderCompoundButton } from './renderCompoundButton';
+import { CompoundButtonProps } from './CompoundButton.types';
 
 /**
  * Define a styled CompoundButton, using the `useCompoundButton` hook.
@@ -19,23 +19,48 @@ import { renderCompoundButton } from './renderCompoundButton';
 export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
   const state = useCompoundButton(props, ref);
 
-  state.className = useCompoundButtonStyles(state, {
-    componentName: 'Button',
-    classNames: [CompoundButtonClassNames.root, state.className],
-  });
+  state.className = useCompoundButtonStyles(
+    state,
+    {
+      componentName: 'Button',
+      tokens: state.tokens,
+    },
+    CompoundButtonClassNames.root,
+    state.className,
+  );
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = useCompoundButtonContentStyles(state, {
-    classNames: [CompoundButtonClassNames.content, (state.content as any).className],
-  });
-  (state.contentContainer as any).className = useCompoundButtonContentContainerStyles(state, {
-    classNames: [CompoundButtonClassNames.contentContainer, (state.contentContainer as any).className],
-  });
-  (state.icon as any).className = useCompoundButtonIconStyles(state, {
-    classNames: [CompoundButtonClassNames.icon, (state.icon as any).className],
-  });
-  (state.secondaryContent as any).className = useCompoundButtonSecondaryContentStyles(state, {
-    classNames: [CompoundButtonClassNames.secondaryContent, (state.secondaryContent as any).className],
-  });
+  (state.content as any).className = useCompoundButtonContentStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    CompoundButtonClassNames.content,
+    (state.content as any).className,
+  );
+  (state.contentContainer as any).className = useCompoundButtonContentContainerStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    CompoundButtonClassNames.contentContainer,
+    (state.contentContainer as any).className,
+  );
+  (state.icon as any).className = useCompoundButtonIconStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    CompoundButtonClassNames.icon,
+    (state.icon as any).className,
+  );
+  (state.secondaryContent as any).className = useCompoundButtonSecondaryContentStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    CompoundButtonClassNames.secondaryContent,
+    (state.secondaryContent as any).className,
+  );
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   useInlineTokens(state, '--button');

@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { makeStyles } from '@fluentui/react-theme-provider';
+import { ButtonState } from './Button.types';
 // import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 
 /* eslint-disable @fluentui/max-len */
@@ -58,14 +60,14 @@ export const useButtonStyles = makeStyles([
       // fonts
       fontFamily: 'var(--button-font-family)',
       fontSize: 'var(--button-font-size)',
-      fontWeight: 'var(--button-font-weight)',
+      fontWeight: 'var(--button-font-weight)' as React.CSSProperties['fontWeight'],
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
 
       // other
       opacity: 'var(--button-opacity)',
       transition: 'var(--button-transition)',
-      whiteSpace: 'var(--button-white-space)',
+      whiteSpace: 'var(--button-white-space)' as React.CSSProperties['whiteSpace'],
 
       // content spacing
       ['& > *:not(:first-child)']: {
@@ -261,7 +263,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Circular state --- */
   [
-    { circular: true },
+    (selectors: ButtonState) => selectors.circular,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-border-radius': tokens.buttonCircularBorderRadius || '50000px',
@@ -269,7 +271,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Block state --- */
   [
-    { block: true },
+    (selectors: ButtonState) => selectors.block,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-max-width': tokens.buttonBlockMaxWidth || 'none',
@@ -278,7 +280,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Icon-only state --- */
   [
-    { iconOnly: true },
+    (selectors: ButtonState) => selectors.iconOnly,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-min-width': tokens.buttonIconOnlyMinWidth || 'var(--button-height)',
@@ -291,7 +293,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Primary state --- */
   [
-    { primary: true },
+    (selectors: ButtonState) => selectors.primary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonPrimaryBackground || tokens.color?.brand?.background,
@@ -319,7 +321,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Ghost state --- */
   [
-    { ghost: true },
+    (selectors: ButtonState) => selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonGhostBackground || 'transparent',
@@ -343,7 +345,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Transparent state --- */
   [
-    { transparent: true },
+    (selectors: ButtonState) => selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonTransparentBackground || 'transparent',
@@ -367,7 +369,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    { disabled: true },
+    (selectors: ButtonState) => selectors.disabled,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       pointerEvents: 'none',
@@ -381,7 +383,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Ghost and disabled states --- */
   [
-    { disabled: true, ghost: true },
+    (selectors: ButtonState) => selectors.disabled && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonGhostDisabledBackground || tokens.semanticColors?.disabledBackground,
@@ -390,7 +392,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Transparent and disabled states --- */
   [
-    { disabled: true, transparent: true },
+    (selectors: ButtonState) => selectors.disabled && selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonTransparentDisabledBackground || 'transparent',
@@ -400,7 +402,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Smallest --- */
   [
-    { size: 'smallest' },
+    (selectors: ButtonState) => selectors.size === 'smallest',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeSmallestHeight || 'var(--button-size-smallest)',
@@ -409,7 +411,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Smaller --- */
   [
-    { size: 'smaller' },
+    (selectors: ButtonState) => selectors.size === 'smaller',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeSmallerHeight || 'var(--button-size-smaller)',
@@ -418,7 +420,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Small --- */
   [
-    { size: 'small' },
+    (selectors: ButtonState) => selectors.size === 'small',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeSmallHeight || 'var(--button-size-small)',
@@ -427,7 +429,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Large --- */
   [
-    { size: 'large' },
+    (selectors: ButtonState) => selectors.size === 'large',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeLargeHeight || 'var(--button-size-large)',
@@ -436,7 +438,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Larger --- */
   [
-    { size: 'larger' },
+    (selectors: ButtonState) => selectors.size === 'larger',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeLargerHeight || 'var(--button-size-larger)',
@@ -445,7 +447,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Size - Largest --- */
   [
-    { size: 'largest' },
+    (selectors: ButtonState) => selectors.size === 'largest',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-height': tokens.buttonSizeLargestHeight || 'var(--button-size-largest)',

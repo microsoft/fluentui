@@ -1,12 +1,13 @@
+import * as React from 'react';
 import { makeStyles, MakeStylesOptions } from '@fluentui/react-theme-provider';
 import { css } from '@fluentui/utilities';
-import { CompoundButtonState } from './CompoundButton.types';
 import {
   useButtonStyles,
   useButtonContentStyles,
   useButtonIconStyles,
   ButtonClassNames,
 } from '../Button/useButtonClasses';
+import { CompoundButtonState } from './CompoundButton.types';
 
 export const CompoundButtonClassNames = {
   root: css(ButtonClassNames.root, 'ms-CompoundButton'),
@@ -73,7 +74,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Icon-only state --- */
   [
-    { iconOnly: true },
+    (selectors: CompoundButtonState) => selectors.iconOnly,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-min-height': tokens.buttonMinHeight || 'var(--button-size-regular)',
@@ -87,7 +88,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Primary state --- */
   [
-    { primary: true },
+    (selectors: CompoundButtonState) => selectors.primary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -101,7 +102,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Ghost state --- */
   [
-    { ghost: true },
+    (selectors: CompoundButtonState) => selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -114,7 +115,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Transparent state --- */
   [
-    { transparent: true },
+    (selectors: CompoundButtonState) => selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -124,7 +125,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    { disabled: true },
+    (selectors: CompoundButtonState) => selectors.disabled,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -134,7 +135,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Ghost and disabled states --- */
   [
-    { disabled: true, ghost: true },
+    (selectors: CompoundButtonState) => selectors.disabled && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -143,8 +144,15 @@ const useCompoundButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useCompoundButtonStyles = (state: CompoundButtonState, styleOptions: MakeStylesOptions) => {
-  return css(useButtonStyles(state, styleOptions), useCompoundButtonBaseStyles(state, styleOptions));
+export const useCompoundButtonStyles = <Selectors, Tokens>(
+  selectors: Selectors,
+  options: MakeStylesOptions<Tokens>,
+  ...classNames: (string | undefined)[]
+) => {
+  return css(
+    useButtonStyles(selectors, options, ...classNames),
+    useCompoundButtonBaseStyles(selectors, options, ...classNames),
+  );
 };
 
 export const useCompoundButtonContentStyles = useButtonContentStyles;
@@ -170,7 +178,7 @@ export const useCompoundButtonSecondaryContentStyles = makeStyles([
       lineHeight: '100%',
 
       fontSize: 'var(--button-secondary-content-font-size)',
-      fontWeight: 'var(--button-secondary-content-font-weight)',
+      fontWeight: 'var(--button-secondary-content-font-weight)' as React.CSSProperties['fontWeight'],
       marginTop: 'var(--button-secondary-content-gap)',
     },
   ],

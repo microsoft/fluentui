@@ -58,7 +58,7 @@ const useMenuButtonBaseStyles = makeStyles([
   ],
   /* --- Icon-only state --- */
   [
-    { iconOnly: true },
+    (selectors: MenuButtonState) => selectors.iconOnly,
     {
       // menu icon
       [`& > .${MenuButtonClassNames.icon} + *`]: {
@@ -68,7 +68,7 @@ const useMenuButtonBaseStyles = makeStyles([
   ],
   /* --- Ghost state --- */
   [
-    { ghost: true },
+    (selectors: MenuButtonState) => selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // menu icon styling
@@ -79,7 +79,7 @@ const useMenuButtonBaseStyles = makeStyles([
   ],
   /* --- Transparent state --- */
   [
-    { transparent: true },
+    (selectors: MenuButtonState) => selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // menu icon styling
@@ -88,7 +88,7 @@ const useMenuButtonBaseStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    { disabled: true },
+    (selectors: MenuButtonState) => selectors.disabled,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // menu icon styling
@@ -96,8 +96,15 @@ const useMenuButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useMenuButtonStyles = (state: MenuButtonState, styleOptions: MakeStylesOptions) => {
-  return css(useButtonStyles(state, styleOptions), useMenuButtonBaseStyles(state, styleOptions));
+export const useMenuButtonStyles = <Selectors, Tokens>(
+  selectors: Selectors,
+  options: MakeStylesOptions<Tokens>,
+  ...classNames: (string | undefined)[]
+) => {
+  return css(
+    useButtonStyles(selectors, options, ...classNames),
+    useMenuButtonBaseStyles(selectors, options, ...classNames),
+  );
 };
 
 export const useMenuButtonContentStyles = useButtonContentStyles;

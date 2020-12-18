@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { MakeStylesRenderer } from '@fluentui/make-styles';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
 import { useButton } from './useButton';
 import {
@@ -12,6 +12,7 @@ import {
   // useStaticButtonIconStyles,
   ButtonClassNames,
 } from './useButtonClasses';
+import { ButtonProps } from './Button.types';
 
 /**
  * Define a styled Button, using the `useButton` hook.
@@ -20,17 +21,32 @@ import {
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const state = useButton(props, ref);
 
-  state.className = useButtonStyles(state, {
-    componentName: 'Button',
-    classNames: [ButtonClassNames.root, state.className],
-  });
+  state.className = useButtonStyles(
+    state,
+    {
+      componentName: 'Button',
+      tokens: state.tokens,
+    },
+    ButtonClassNames.root,
+    state.className,
+  );
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = useButtonContentStyles(state, {
-    classNames: [ButtonClassNames.content, (state.content as any).className],
-  });
-  (state.icon as any).className = useButtonIconStyles(state, {
-    classNames: [ButtonClassNames.icon, (state.icon as any).className],
-  });
+  (state.content as any).className = useButtonContentStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    ButtonClassNames.content,
+    (state.content as any).className,
+  );
+  (state.icon as any).className = useButtonIconStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    ButtonClassNames.icon,
+    (state.icon as any).className,
+  );
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   useInlineTokens(state, '--button');

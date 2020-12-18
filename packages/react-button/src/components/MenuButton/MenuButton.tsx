@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useMenuButton } from './useMenuButton';
-import { MenuButtonProps } from './MenuButton.types';
+import { renderMenuButton } from './renderMenuButton';
 import {
   useMenuButtonStyles,
   useMenuButtonContentStyles,
@@ -10,7 +9,8 @@ import {
   useMenuButtonMenuIconStyles,
   MenuButtonClassNames,
 } from './useMenuButtonClasses';
-import { renderMenuButton } from './renderMenuButton';
+import { useMenuButton } from './useMenuButton';
+import { MenuButtonProps } from './MenuButton.types';
 
 /**
  * Define a styled MenuButton, using the `useMenuButton` hook.
@@ -21,20 +21,40 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
     menuIcon: { as: ChevronDownIcon },
   });
 
-  state.className = useMenuButtonStyles(state, {
-    componentName: 'Button',
-    classNames: [MenuButtonClassNames.root, state.className],
-  });
+  state.className = useMenuButtonStyles(
+    state,
+    {
+      componentName: 'Button',
+      tokens: state.tokens,
+    },
+    MenuButtonClassNames.root,
+    state.className,
+  );
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  (state.content as any).className = useMenuButtonContentStyles(state, {
-    classNames: [MenuButtonClassNames.content, (state.content as any).className],
-  });
-  (state.icon as any).className = useMenuButtonIconStyles(state, {
-    classNames: [MenuButtonClassNames.icon, (state.icon as any).className],
-  });
-  (state.menuIcon as any).className = useMenuButtonMenuIconStyles(state, {
-    classNames: [MenuButtonClassNames.menuIcon, (state.menuIcon as any).className],
-  });
+  (state.content as any).className = useMenuButtonContentStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    MenuButtonClassNames.content,
+    (state.content as any).className,
+  );
+  (state.icon as any).className = useMenuButtonIconStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    MenuButtonClassNames.icon,
+    (state.icon as any).className,
+  );
+  (state.menuIcon as any).className = useMenuButtonMenuIconStyles(
+    state,
+    {
+      tokens: state.tokens,
+    },
+    MenuButtonClassNames.menuIcon,
+    (state.menuIcon as any).className,
+  );
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
   // TODO remove any

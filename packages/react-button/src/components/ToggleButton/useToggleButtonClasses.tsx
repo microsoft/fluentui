@@ -13,7 +13,7 @@ export const ToggleButtonClassNames = ButtonClassNames;
 const useToggleButtonBaseStyles = makeStyles([
   /* Checked state */
   [
-    { checked: true },
+    (selectors: ToggleButtonState) => selectors.checked,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonCheckedBackground || tokens.semanticColors?.buttonBackgroundPressed,
@@ -29,7 +29,7 @@ const useToggleButtonBaseStyles = makeStyles([
   ],
   /* Checked and primary states */
   [
-    { checked: true, primary: true },
+    (selectors: ToggleButtonState) => selectors.checked && selectors.primary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonCheckedPrimaryBackground || tokens.color?.brand?.checked?.background,
@@ -47,7 +47,7 @@ const useToggleButtonBaseStyles = makeStyles([
   ],
   /* Checked and ghost states */
   [
-    { checked: true, ghost: true },
+    (selectors: ToggleButtonState) => selectors.checked && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonCheckedGhostBackground || tokens.palette?.neutralLight,
@@ -59,7 +59,7 @@ const useToggleButtonBaseStyles = makeStyles([
   ],
   /* Checked and transparent states */
   [
-    { checked: true, transparent: true },
+    (selectors: ToggleButtonState) => selectors.checked && selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonCheckedTransparentBackground || 'transparent',
@@ -70,8 +70,15 @@ const useToggleButtonBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonStyles = (state: ToggleButtonState, styleOptions: MakeStylesOptions) => {
-  return css(useButtonStyles(state, styleOptions), useToggleButtonBaseStyles(state, styleOptions));
+export const useToggleButtonStyles = <Selectors, Tokens>(
+  selectors: Selectors,
+  options: MakeStylesOptions<Tokens>,
+  ...classNames: (string | undefined)[]
+) => {
+  return css(
+    useButtonStyles(selectors, options, ...classNames),
+    useToggleButtonBaseStyles(selectors, options, ...classNames),
+  );
 };
 
 export const useToggleButtonContentStyles = useButtonContentStyles;
@@ -79,7 +86,7 @@ export const useToggleButtonContentStyles = useButtonContentStyles;
 const useToggleButtonIconBaseStyles = makeStyles([
   /* Checked state */
   [
-    { checked: true },
+    (selectors: ToggleButtonState) => selectors.checked,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-icon-color': tokens.buttonCheckedIconColor,
@@ -89,7 +96,7 @@ const useToggleButtonIconBaseStyles = makeStyles([
   ],
   /* Checked and ghost states */
   [
-    { checked: true, ghost: true },
+    (selectors: ToggleButtonState) => selectors.checked && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-icon-color': tokens.buttonCheckedGhostIconColor || tokens.palette?.themeDark,
@@ -98,7 +105,7 @@ const useToggleButtonIconBaseStyles = makeStyles([
   ],
   /* Checked and transparent states */
   [
-    { checked: true, transparent: true },
+    (selectors: ToggleButtonState) => selectors.checked && selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-icon-color': tokens.buttonCheckedTransparentIconColor || tokens.palette?.themePrimary,
@@ -106,6 +113,13 @@ const useToggleButtonIconBaseStyles = makeStyles([
     }),
   ],
 ]);
-export const useToggleButtonIconStyles = (state: ToggleButtonState, styleOptions: MakeStylesOptions) => {
-  return css(useButtonIconStyles(state, styleOptions), useToggleButtonIconBaseStyles(state, styleOptions));
+export const useToggleButtonIconStyles = <Selectors, Tokens>(
+  selectors: Selectors,
+  options: MakeStylesOptions<Tokens>,
+  ...classNames: (string | undefined)[]
+) => {
+  return css(
+    useButtonIconStyles(selectors, options, ...classNames),
+    useToggleButtonIconBaseStyles(selectors, options, ...classNames),
+  );
 };

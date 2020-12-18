@@ -8,8 +8,17 @@ import { convertProperty } from 'rtl-css-js/core';
 import { css, getDocument, getWindow } from '@fluentui/utilities';
 import { compileCSS } from './runtime/compileCSS';
 import { insertStyles } from './insertStyles';
-import { useTheme } from './useTheme';
 import { tokensToStyleObject } from './tokensToStyleObject';
+
+import {
+  makeStyles as makeNonReactStyles,
+  MakeStylesDefinition,
+  MakeStylesOptions as MakeNonReactStylesOptions,
+  MakeStylesRenderer,
+  MakeStylesStyleRule,
+} from '@fluentui/make-styles';
+import { Theme } from './types';
+import { useTheme } from './useTheme';
 
 //
 //
@@ -310,7 +319,7 @@ function resolveStylesToClasses(definitions: any[], tokens: any) {
  * CAN WORK WITHOUT REACT!
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function makeNonReactStyles(styles: any) {
+export function makePrevNonReactStyles(styles: any) {
   const cxCache: Record<string, string> = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
@@ -396,7 +405,7 @@ if (document) {
   defaultTarget = createTarget(document);
 }
 
-export interface MakeStylesOptions {
+export interface PrevMakeStylesOptions {
   classNames?: (string | undefined)[];
   componentName?: string;
 }
@@ -405,11 +414,11 @@ export interface MakeStylesOptions {
  * A wrapper to connect to a React context. SHOULD USE unified context!!!
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function makeStyles(styles: any) {
-  const resolvedStyles = makeNonReactStyles(styles);
+export function makePrevStyles(styles: any) {
+  const resolvedStyles = makePrevNonReactStyles(styles);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention
-  return function ___(selectors: any = {}, styleOptions: MakeStylesOptions = {}): string {
+  return function ___(selectors: any = {}, styleOptions: PrevMakeStylesOptions = {}): string {
     const { components = {}, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
     const { classNames = [], componentName } = styleOptions;
     let resolvedVariantStyles;
@@ -421,7 +430,6 @@ export function makeStyles(styles: any) {
         const prefix = '--' + componentName.toLowerCase();
         const variantStyles = [];
 
-        // eslint-disable-next-line guard-for-in
         for (const variant in variants) {
           // Account for changing default variant
           if (variant === 'root') {
@@ -431,7 +439,7 @@ export function makeStyles(styles: any) {
           }
         }
 
-        resolvedVariantStyles = makeNonReactStyles(variantStyles);
+        resolvedVariantStyles = makePrevNonReactStyles(variantStyles);
       }
     }
 
@@ -446,6 +454,77 @@ export function makeStyles(styles: any) {
           rtl,
           tokens: { effects, fonts, palette, semanticColors, ...tokens },
           target: defaultTarget,
+        }),
+    );
+
+    return result;
+  };
+}
+
+export type MakeStylesOptions<Tokens> = Omit<MakeNonReactStylesOptions<Tokens>, 'renderer'> & {
+  componentName?: string;
+};
+
+const renderer: MakeStylesRenderer = {
+  id: 'renderer',
+  insertDefinitions: insertStyles,
+};
+
+export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]) {
+  // const computeClasses = makeNonReactStyles(definitions);
+
+  const resolvedStyles = makeNonReactStyles<Selectors, Tokens | Theme>(definitions);
+
+  return function useClasses(
+    selectors: Selectors,
+    options: MakeStylesOptions<Tokens | Theme>,
+    ...classNames: (string | undefined)[]
+  ) {
+    const { components = {}, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
+    const { componentName } = options;
+    let resolvedVariantStyles;
+
+    console.log(useTheme());
+
+    // Evaluate variants if they exist for the current component
+    if (componentName && components[componentName]) {
+      const { variants } = components[componentName];
+      if (variants) {
+        const prefix = '--' + componentName.toLowerCase();
+        const variantStyles: MakeStylesDefinition<Selectors, Tokens | Theme>[] = [];
+
+        for (const variant in variants) {
+          // Account for changing default variant
+          if (variant === 'root') {
+            variantStyles.push([null, tokensToStyleObject(variants[variant], prefix) as MakeStylesStyleRule<Tokens>]);
+          } else {
+            variantStyles.push([
+              (variantSelectors: Selectors & { variant: string }) => variantSelectors.variant === variant,
+              tokensToStyleObject(variants[variant], prefix) as MakeStylesStyleRule<Tokens>,
+            ]);
+          }
+        }
+        console.log(variantStyles);
+
+        resolvedVariantStyles = makeNonReactStyles(variantStyles);
+      }
+    }
+
+    const result = css(
+      resolvedStyles(
+        selectors,
+        {
+          renderer,
+          rtl: options.rtl || rtl,
+          tokens: { effects, fonts, palette, semanticColors, ...tokens, ...options.tokens } as Theme,
+        },
+        ...(classNames || []),
+      ),
+      resolvedVariantStyles &&
+        resolvedVariantStyles(selectors, {
+          renderer,
+          rtl: options.rtl || rtl,
+          tokens: { effects, fonts, palette, semanticColors, ...tokens, ...options.tokens } as Theme,
         }),
     );
 

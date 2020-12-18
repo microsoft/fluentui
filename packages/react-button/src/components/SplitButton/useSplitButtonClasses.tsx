@@ -2,6 +2,7 @@ import { makeStyles } from '@fluentui/react-theme-provider';
 import { css } from '@fluentui/utilities';
 import { ButtonClassNames } from '../Button/useButtonClasses';
 import { MenuButtonClassNames } from '../MenuButton/useMenuButtonClasses';
+import { SplitButtonState } from './SplitButton.types';
 
 export const SplitButtonClassNames = {
   root: css(ButtonClassNames.root, 'ms-SplitButton'),
@@ -34,7 +35,7 @@ export const useSplitButtonStyles = makeStyles([
   ],
   /* --- Block state --- */
   [
-    { block: true },
+    (selectors: SplitButtonState) => selectors.block,
     {
       maxWidth: '100%',
       width: '100%',
@@ -42,7 +43,7 @@ export const useSplitButtonStyles = makeStyles([
   ],
   /* --- Primary state --- */
   [
-    { primary: true },
+    (selectors: SplitButtonState) => selectors.primary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // divider styling
@@ -51,7 +52,7 @@ export const useSplitButtonStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    { disabled: true },
+    (selectors: SplitButtonState) => selectors.disabled,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // divider styling
@@ -72,7 +73,7 @@ export const useSplitButtonButtonStyles = makeStyles([
   ],
   /* --- Block state --- */
   [
-    { block: true },
+    (selectors: SplitButtonState) => selectors.block,
     {
       flexGrow: 1,
       '--button-max-width': '100%',
@@ -111,7 +112,7 @@ export const useSplitButtonMenuButtonStyles = makeStyles([
   ],
   /* --- Transparent state --- */
   [
-    { transparent: true },
+    (selectors: SplitButtonState) => selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-menu-icon-color': tokens.buttonTransparentMenuIconColor || tokens.palette?.neutralSecondary,
@@ -119,7 +120,7 @@ export const useSplitButtonMenuButtonStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    { disabled: true },
+    (selectors: SplitButtonState) => selectors.disabled,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-menu-icon-color': tokens.buttonDisabledMenuIconColor || 'inherit',

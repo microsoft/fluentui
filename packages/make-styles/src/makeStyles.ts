@@ -32,7 +32,7 @@ export function makeStyles<Selectors, Tokens>(
             unstable_cssPriority,
           );
     } else {
-      tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
+      tokens = options.tokens; // CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
       resolvedDefinitions = resolveDefinitions(
         (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
         tokens,
