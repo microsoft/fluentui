@@ -405,7 +405,7 @@ export class Parser {
       return customType;
     }
 
-    if (depth > 5) {
+    if (depth > 1) {
       return {
         type: 'MAX_DEPTH',
         name,
