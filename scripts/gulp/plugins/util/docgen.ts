@@ -376,6 +376,7 @@ export class Parser {
     if (
       name === 'ICSSInJSStyle' || // expanding this leads to a single component.info being MBs big
       name === 'Document' || // OOM :-/
+      name === 'CSSProperties' ||
       name === 'HTMLElement'
     ) {
       return {
