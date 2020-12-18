@@ -155,6 +155,8 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       };
 
       if (isOverlappingWithSticky(id)) {
+        // known issue:
+        // this scroll cannot guarantee non-sticky items' visibility. It would work when sticky titles are relatively small compare to sticky items.
         listRef.current.scrollToItem(visibleItemIds.indexOf(id), 'center'); // scroll to item
       }
     },
