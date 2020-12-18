@@ -185,28 +185,28 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   const createTreeItem = React.useCallback(
     (id, style) => {
       const item = getItemById(id);
-      if (item) {
-        const { expanded, parent, level, index, treeSize, childrenIds } = item;
-        return TreeItem.create(item.item, {
-          defaultProps: () =>
-            getA11yProps('item', {
-              renderItemTitle: props.renderItemTitle,
-            }),
-          overrideProps: {
-            style, // came from react-window
-            expanded,
-            parent,
-            key: id,
-            level,
-            index,
-            treeSize,
-            selectable: false,
-            onFocus: () => makeVisibleOnFocus(id, level),
-            ...(level === 1 && expanded && childrenIds.length && { onKeyDown: handleArrowUpDownOnSticky(id, item) }),
-          },
-        });
+      if (!item) {
+        return null;
       }
-      return null;
+      const { expanded, parent, level, index, treeSize, childrenIds } = item;
+      return TreeItem.create(item.item, {
+        defaultProps: () =>
+          getA11yProps('item', {
+            renderItemTitle: props.renderItemTitle,
+          }),
+        overrideProps: {
+          style, // came from react-window
+          expanded,
+          parent,
+          key: id,
+          level,
+          index,
+          treeSize,
+          selectable: false,
+          onFocus: () => makeVisibleOnFocus(id, level),
+          ...(level === 1 && expanded && childrenIds.length && { onKeyDown: handleArrowUpDownOnSticky(id, item) }),
+        },
+      });
     },
     [getA11yProps, getItemById, handleArrowUpDownOnSticky, makeVisibleOnFocus, props.renderItemTitle],
   );
