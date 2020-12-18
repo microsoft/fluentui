@@ -1,5 +1,5 @@
 import { CAN_USE_CSS_VARIABLES, DEFINITION_LOOKUP_TABLE } from './constants';
-import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
+import { /*createCSSVariablesProxy,*/ resolveDefinitions } from './runtime/index';
 import {
   MakeStylesDefinition,
   MakeStylesMatchedDefinitions,

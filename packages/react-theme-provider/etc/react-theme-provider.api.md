@@ -24,9 +24,6 @@ import { Variants } from '@fluentui/theme';
 export const applyClasses: <TState extends {}>(state: TState, classMap: Record<string, string>) => void;
 
 // @public (undocumented)
-export function createTarget(targetDocument: Document): Renderer;
-
-// @public (undocumented)
 export type FontFace = IFontFace;
 
 // @public (undocumented)
@@ -46,17 +43,11 @@ export type KeyFrames = IKeyframes;
 // @public
 export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: any) => void;
 
-// @public
-export function makePrevNonReactStyles(styles: any): (selectors: any, options: any, ...classNames: (string | undefined)[]) => string;
+// @public (undocumented)
+export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]): (selectors: Selectors, options: MakeStylesOptions<Theme | Tokens>, ...classNames: (string | undefined)[]) => string;
 
 // @public (undocumented)
-export function makePrevStyles(styles: any): (selectors?: any, styleOptions?: PrevMakeStylesOptions) => string;
-
-// @public (undocumented)
-export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]): (selectors: Selectors, options: MakeStylesOptions<Tokens>, ...classNames: (string | undefined)[]) => string;
-
-// @public (undocumented)
-export type MakeStylesOptions<Tokens> = MakeStylesOptions_2<Tokens> & {
+export type MakeStylesOptions<Tokens> = Omit<MakeStylesOptions_2<Tokens>, 'renderer'> & {
     componentName?: string;
 };
 
@@ -80,21 +71,6 @@ export const MergeStylesProvider: ({ children }: {
 export const mergeStylesRenderer: StyleRenderer;
 
 export { PartialTheme }
-
-// @public (undocumented)
-export interface PrevMakeStylesOptions {
-    // (undocumented)
-    classNames?: (string | undefined)[];
-    // (undocumented)
-    componentName?: string;
-}
-
-// @public (undocumented)
-export type Renderer = {
-    cache: Record<string, [string, string]>;
-    node: HTMLStyleElement;
-    index: number;
-};
 
 // @public (undocumented)
 export interface StyleOptions<TProps> {

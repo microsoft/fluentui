@@ -8,7 +8,6 @@ import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { FontTokens } from '@fluentui/theme';
 import { MakeStylesOptions } from '@fluentui/react-theme-provider';
-import { MakeStylesRenderer } from '@fluentui/make-styles';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
@@ -223,9 +222,6 @@ export { renderButton as renderToggleButton }
 
 // @public
 export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
-
-// @public (undocumented)
-export const renderer: MakeStylesRenderer;
 
 // @public
 export const renderMenuButton: (state: MenuButtonState) => JSX.Element;

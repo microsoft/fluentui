@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { renderer } from '../Button/Button';
 import { renderToggleButton } from './renderToggleButton';
 import { useToggleButton } from './useToggleButton';
 import {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { renderer, Button } from '../Button/index';
+import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
 import { renderSplitButton } from './renderSplitButton';
 import { useSplitButton } from './useSplitButton';

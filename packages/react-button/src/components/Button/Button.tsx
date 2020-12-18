@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { MakeStylesRenderer } from '@fluentui/make-styles';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { renderButton } from './renderButton';
 import { useButton } from './useButton';
