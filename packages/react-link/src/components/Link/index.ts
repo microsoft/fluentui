@@ -1,3 +1,3 @@
-export * from './Link';
-export * from './Link.base';
-export * from './Link.types';
+export * from '../components/Link/index';
+export { Link } from './Link';
+export { LinkBase } from './LinkBase';
