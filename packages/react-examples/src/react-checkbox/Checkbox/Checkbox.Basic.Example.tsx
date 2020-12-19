@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox/lib/next';
 import { Stack } from '@fluentui/react/lib/Stack';
 
 // Used to add spacing between example checkboxes
