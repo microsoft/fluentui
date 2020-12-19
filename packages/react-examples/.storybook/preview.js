@@ -15,6 +15,7 @@ addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withKeytipLayer);
 if (
   [
+    'react-avatar',
     'react-button',
     'react-cards',
     'react-checkbox',

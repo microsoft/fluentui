@@ -121,16 +121,11 @@ const includedPackages = [
   'react',
   'react-button',
   'react-cards',
-  'react-checkbox',
   // TODO: Fix these issues then re-enable tests for react-date-time components:
   // 1. Date mocking causes infinite loops for examples that involve generating date ranges
   // 2. Snapshots are sometimes different between local build and CI due to different machine time zones
   // 'react-date-time',
   'react-focus',
-  'react-link',
-  'react-slider',
-  'react-tabs',
-  'react-toggle',
 ];
 
 declare const global: any;
