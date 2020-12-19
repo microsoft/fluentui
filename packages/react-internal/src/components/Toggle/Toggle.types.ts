@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@fluentui/utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 
 /**
  * {@docCategory Toggle}
@@ -19,7 +17,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
   /**
    * Render the root element as another type.
    */
-  as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
@@ -179,20 +177,3 @@ export interface IToggleStyles {
    */
   text: IStyle;
 }
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleSlots {}
-
-/**
- * {@docCategory Toggle}
- */
-export type IToggleSlotProps = {
-  [key in keyof IToggleSlots]: IToggleProps[key];
-};
-
-/**
- * {@docCategory Toggle}
- */
-export interface IToggleOptions {}

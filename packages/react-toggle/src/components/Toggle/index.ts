@@ -1,3 +1,3 @@
 export * from './Toggle';
-export * from './Toggle.base';
+export * from './ToggleBase';
 export * from './Toggle.types';
