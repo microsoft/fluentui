@@ -1,3 +1,2 @@
-export * from './Slider';
-export * from './Slider.base';
-export * from './Slider.types';
+export * from '../index';
+export { Slider } from './Slider';
