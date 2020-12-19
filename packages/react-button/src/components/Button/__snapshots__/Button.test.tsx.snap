@@ -2,10 +2,10 @@
 
 exports[`Button renders a default state 1`] = `
 <button
-  className=" ms-Button a1k6fduh a122n59 atuwxu6 a4d9j23 a10pi13n a1xqy1su a1ewtqcl amrv4ls a1lzbuw2 aim6dvu a1f4c47i a1iedgaj aw1n0wr a70odt1 a1vhwvfz a1cz3ezt a1oddkp7 a13kh4da act4cwl ahp4f9l aeo0lyr a1whg1k0 a7uf1io azb318i a1hju0nx a1k1mxt7 a1egkakw aofteie a16j5cmg a1745qu5 a1q4sedi a1uyijub a1o7jddm a1648qya a1qr8kil adhe3jx a1ow1jxr a15t8rk3 a1qruv96 a33d3hg a19jhgz2 ajd3y3t a24elfs a1uo23zi a13lmprv a123g821 a196fwmc aydxa82 aldjma3 agsy9ym a1gk5ei5 a1qoqgcf a57year a11leut1 a195mrzw adg5kxv a8v4fns a1s6fcnf afwnqy8 avpzubt a16c20uz avjb07u azkkow9 acdblym ag706s2 ajik90z a1cz6fjg a1c5wrov akjzyke a1tdbhw7 a1w5j6e3 a1ehx0w9 asy0rpt a14qiakg a1ik6wn0 a8tzcgd a1velgez a135zgpe a18swz6d axvxnzq a1g55moa axdv31r a1nh3o6k agacytd abwah6s auv3803 arfyqzs a1bi4j9d a1hwvjsp anqe8ok a1qcrciv a1w5wezo aeujwd0 a3615mr anmlcw7 ailih6g aqcp0tr a7i9xs0 a1mdaal6 a1i4tqxa a2hmzya a4va83 a15jls3h a1aehjj5 a18cyma4"
+  className="ms-Button  f1k6fduh f122n59 ftuwxu6 f4d9j23 f10pi13n f1xqy1su f1ewtqcl fmrv4ls f1lzbuw2 fim6dvu f1f4c47i f1iedgaj fw1n0wr f70odt1 f1vhwvfz f1cz3ezt f1oddkp7 f13kh4da fct4cwl fhp4f9l feo0lyr f1whg1k0 f7uf1io fzb318i f1hju0nx f1k1mxt7 f1egkakw fofteie f16j5cmg f1745qu5 f1q4sedi f1uyijub f1o7jddm f1648qya f1qr8kil fdhe3jx f1ow1jxr f15t8rk3 f1qruv96 f33d3hg f19jhgz2 fjd3y3t f24elfs f1uo23zi f13lmprv f123g821 f196fwmc fydxa82 fldjma3 fgsy9ym f1gk5ei5 f1qoqgcf f57year f11leut1 f195mrzw fdg5kxv f8v4fns f1s6fcnf ffwnqy8 fvpzubt f16c20uz fvjb07u fzkkow9 fcdblym fg706s2 fjik90z f1cz6fjg f1c5wrov fkjzyke f1tdbhw7 f1w5j6e3 f1ehx0w9 fsy0rpt fceram3 f1z0nw44 f8tzcgd f1velgez f1skbnxh f10mxtua fxvxnzq f1g55moa f73moe9 fgbiby7 fbc200g foplg7s fzrdz31 f11ryrmu f1bi4j9d f1hwvjsp fnqe8ok f1qcrciv f3djwgc feujwd0 f1iz7v4o f1g3gtvs f1parrb9 f1cef4xo f7i9xs0 f1mdaal6"
 >
   <span
-    className=" ms-Button-content ap6vxd"
+    className="ms-Button-content  fp6vxd"
   >
     Default button
   </span>
@@ -14,12 +14,12 @@ exports[`Button renders a default state 1`] = `
 
 exports[`Button renders anchor when href prop is provided 1`] = `
 <a
-  className=" ms-Button a1k6fduh a122n59 atuwxu6 a4d9j23 a10pi13n a1xqy1su a1ewtqcl amrv4ls a1lzbuw2 aim6dvu a1f4c47i a1iedgaj aw1n0wr a70odt1 a1vhwvfz a1cz3ezt a1oddkp7 a13kh4da act4cwl ahp4f9l aeo0lyr a1whg1k0 a7uf1io azb318i a1hju0nx a1k1mxt7 a1egkakw aofteie a16j5cmg a1745qu5 a1q4sedi a1uyijub a1o7jddm a1648qya a1qr8kil adhe3jx a1ow1jxr a15t8rk3 a1qruv96 a33d3hg a19jhgz2 ajd3y3t a24elfs a1uo23zi a13lmprv a123g821 a196fwmc aydxa82 aldjma3 agsy9ym a1gk5ei5 a1qoqgcf a57year a11leut1 a195mrzw adg5kxv a8v4fns a1s6fcnf afwnqy8 avpzubt a16c20uz avjb07u azkkow9 acdblym ag706s2 ajik90z a1cz6fjg a1c5wrov akjzyke a1tdbhw7 a1w5j6e3 a1ehx0w9 asy0rpt a14qiakg a1ik6wn0 a8tzcgd a1velgez a135zgpe a18swz6d axvxnzq a1g55moa axdv31r a1nh3o6k agacytd abwah6s auv3803 arfyqzs a1bi4j9d a1hwvjsp anqe8ok a1qcrciv a1w5wezo aeujwd0 a3615mr anmlcw7 ailih6g aqcp0tr a7i9xs0 a1mdaal6 a1i4tqxa a2hmzya a4va83 a15jls3h a1aehjj5 a18cyma4"
+  className="ms-Button  f1k6fduh f122n59 ftuwxu6 f4d9j23 f10pi13n f1xqy1su f1ewtqcl fmrv4ls f1lzbuw2 fim6dvu f1f4c47i f1iedgaj fw1n0wr f70odt1 f1vhwvfz f1cz3ezt f1oddkp7 f13kh4da fct4cwl fhp4f9l feo0lyr f1whg1k0 f7uf1io fzb318i f1hju0nx f1k1mxt7 f1egkakw fofteie f16j5cmg f1745qu5 f1q4sedi f1uyijub f1o7jddm f1648qya f1qr8kil fdhe3jx f1ow1jxr f15t8rk3 f1qruv96 f33d3hg f19jhgz2 fjd3y3t f24elfs f1uo23zi f13lmprv f123g821 f196fwmc fydxa82 fldjma3 fgsy9ym f1gk5ei5 f1qoqgcf f57year f11leut1 f195mrzw fdg5kxv f8v4fns f1s6fcnf ffwnqy8 fvpzubt f16c20uz fvjb07u fzkkow9 fcdblym fg706s2 fjik90z f1cz6fjg f1c5wrov fkjzyke f1tdbhw7 f1w5j6e3 f1ehx0w9 fsy0rpt fceram3 f1z0nw44 f8tzcgd f1velgez f1skbnxh f10mxtua fxvxnzq f1g55moa f73moe9 fgbiby7 fbc200g foplg7s fzrdz31 f11ryrmu f1bi4j9d f1hwvjsp fnqe8ok f1qcrciv f3djwgc feujwd0 f1iz7v4o f1g3gtvs f1parrb9 f1cef4xo f7i9xs0 f1mdaal6"
   href="https://www.bing.com"
   role="button"
 >
   <span
-    className=" ms-Button-content ap6vxd"
+    className="ms-Button-content  fp6vxd"
   >
     Default button
   </span>
