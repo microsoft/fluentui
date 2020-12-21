@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 14 Dec 2020 12:27:38 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Dec 2020 12:28:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.27)
+
+Mon, 21 Dec 2020 12:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.26..@fluentui/react-internal_v8.0.0-beta.27)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.26)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.25..@fluentui/react-internal_v8.0.0-beta.26)
+
+### Changes
+
+- fix #15729: add type button to textfield of type password ([PR #15949](https://github.com/microsoft/fluentui/pull/15949) by mirco.zeiss@gmail.com)
 
 ## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.25)
 

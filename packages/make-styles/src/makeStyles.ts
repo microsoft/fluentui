@@ -13,11 +13,12 @@ export function makeStyles<Selectors, Tokens>(
 ) {
   const cxCache: Record<string, string> = {};
 
-  return function computeClasses(
+  function computeClasses(
     selectors: Selectors,
     options: MakeStylesOptions<Tokens>,
     ...classNames: (string | undefined)[]
-  ): string {
+  ): string;
+  function computeClasses(selectors: Selectors, options: MakeStylesOptions<Tokens>): string {
     let tokens: Tokens | null;
     let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
 
@@ -44,41 +45,55 @@ export function makeStyles<Selectors, Tokens>(
     const overrides: MakeStylesMatchedDefinitions = {};
     let overridesCx: string = '';
 
-    classNames.forEach(className => {
-      if (typeof className === 'string') {
-        if (className === '') {
-          return;
-        }
+    // arguments are parsed intentionally manually to avoid double loops as TS transforms rest via an additional loop
+    for (let i = 2; i < arguments.length; i++) {
+      // eslint-disable-next-line prefer-rest-params
+      const classNames = arguments[i];
 
-        className.split(' ').forEach(cName => {
-          if (DEFINITION_LOOKUP_TABLE[cName] !== undefined) {
-            overrides[DEFINITION_LOOKUP_TABLE[cName][0]] = DEFINITION_LOOKUP_TABLE[cName][1];
-            overridesCx += cName;
+      if (typeof classNames === 'string' && classNames !== '') {
+        // .split() is an expensive call, it's faster to ensure that string contains any spaces before splitting
+        if (classNames.indexOf(' ') === -1) {
+          const definition = DEFINITION_LOOKUP_TABLE[classNames];
+
+          if (definition !== undefined) {
+            overrides[definition[0]] = DEFINITION_LOOKUP_TABLE[classNames][1];
+            overridesCx += classNames;
           } else {
-            nonMakeClasses += cName + ' ';
+            nonMakeClasses += classNames + ' ';
           }
-        });
+        } else {
+          classNames.split(' ').forEach(className => {
+            const definition = DEFINITION_LOOKUP_TABLE[className];
+
+            if (definition !== undefined) {
+              overrides[definition[0]] = definition[1];
+              overridesCx += className;
+            } else {
+              nonMakeClasses += className + ' ';
+            }
+          });
+        }
       }
-    });
+    }
 
     let matchedIndexes = '';
+    const matchedDefinitions: MakeStylesMatchedDefinitions[] = [];
 
-    const matchedDefinitions = resolvedDefinitions.reduce<MakeStylesMatchedDefinitions[]>((acc, definition, i) => {
-      const matcherFn = definition[0];
+    for (let i = 0, l = resolvedDefinitions.length; i < l; i++) {
+      const matcherFn = resolvedDefinitions[i][0];
 
       if (matcherFn === null || matcherFn(selectors)) {
-        acc.push(definition[2]);
+        matchedDefinitions.push(resolvedDefinitions[i][2]);
         matchedIndexes += i;
       }
-
-      return acc;
-    }, []);
+    }
 
     const overridesHash = overridesCx === '' ? '' : overridesCx;
     const cxCacheKey = options.renderer.id + matchedIndexes + '' + overridesHash;
+    const cxCacheElement = cxCache[cxCacheKey];
 
-    if (CAN_USE_CSS_VARIABLES && cxCache[cxCacheKey] !== undefined) {
-      return nonMakeClasses + cxCache[cxCacheKey];
+    if (CAN_USE_CSS_VARIABLES && cxCacheElement !== undefined) {
+      return nonMakeClasses + cxCacheElement;
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -89,5 +104,7 @@ export function makeStyles<Selectors, Tokens>(
     cxCache[cxCacheKey] = resultClasses;
 
     return nonMakeClasses + resultClasses;
-  };
+  }
+
+  return computeClasses;
 }
