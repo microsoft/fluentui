@@ -69,6 +69,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `inline-block` from `Menu` root slot @assuncaocharles ([#16222](https://github.com/microsoft/fluentui/pull/16222))
 - Add `unstable_disableTether` prop to configure `Popper`'s behavior for elements outside of a viewport @ling1726 @layershifter ([#16214](https://github.com/microsoft/fluentui/pull/16214))
 - Fix Menu styles for `Toolbar` @TanelVari ([#16141](https://github.com/microsoft/fluentui/pull/16141))
+- Fix missing export for `AttachmentBodyStylesProps` @ling1726 ([#16260](https://github.com/microsoft/fluentui/pull/16260))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
