@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add new property onRenderStar for Rating",
-  "packageName": "@fluentui/react-internal",
-  "email": "qiuya@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-19T08:26:06.150Z"
-}
