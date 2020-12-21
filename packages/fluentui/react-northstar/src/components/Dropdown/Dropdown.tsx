@@ -211,7 +211,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * Called when the focus moves out from dropdown.
    * @param event - React's original SyntheticEvent.
    */
-  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+  onBlur?: (event: React.FocusEvent | null) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
