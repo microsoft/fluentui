@@ -100,6 +100,7 @@ import { CarouselNavigationStylesProps } from '../../components/Carousel/Carouse
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 import { CarouselStylesProps } from '../../components/Carousel/Carousel';
 import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
+import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -109,6 +110,7 @@ export type TeamsThemeStylesProps = {
   Animation: AnimationProps;
   Attachment: AttachmentProps;
   AttachmentAction: AttachmentActionStylesProps;
+  AttachmentBody: AttachmentBodyStylesProps;
   AttachmentDescription: AttachmentDescriptionStylesProps;
   AttachmentHeader: AttachmentHeaderStylesProps;
   AttachmentIcon: AttachmentIconStylesProps;
