@@ -205,7 +205,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
           .filter(prop => !/default[A-Z]/.test(prop.name))
           .map(prop => {
             const { types, options, value } = getValues(prop);
-            console.log(prop.name, prop);
+
             return (
               <MultiTypeKnob
                 required={prop.required}
