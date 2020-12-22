@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import ts from 'typescript';
+import ts, { TypeFlags } from 'typescript';
 
 /**
  * THIS MODULE is largely based on the parser's logic
@@ -42,6 +42,7 @@ export interface PropItem {
   description: string;
   defaultValue: any;
   parent?: ParentType;
+  resolvedType?: any;
 }
 
 export interface Component {
@@ -57,6 +58,40 @@ export interface ParentType {
   name: string;
   fileName: string;
 }
+export type ResolvedType = {
+  type: string;
+  name: string;
+};
+
+export type RTLiteral = ResolvedType & {
+  type: 'StringLiteral' | 'NumberLiteral' | 'BooleanLiteral';
+  value: string | number | boolean;
+};
+
+export type RTUnion = ResolvedType & {
+  type: 'union';
+  types: ResolvedType[];
+};
+
+export type RTEnum = ResolvedType & {
+  type: 'enum';
+  values: RTLiteral[]; // these should be just
+};
+
+export type RTIntersection = ResolvedType & {
+  type: 'intersection';
+  types: ResolvedType[];
+};
+
+export type RTArray = ResolvedType & {
+  type: 'array';
+  indexedType: ResolvedType;
+};
+
+export type RTObject = ResolvedType & {
+  type: 'object';
+  props: Record<string, ResolvedType>;
+};
 
 export type PropFilter = (props: PropItem, component: Component) => boolean;
 
@@ -318,6 +353,145 @@ export class Parser {
     return null;
   }
 
+  private static isLiteral(type: ResolvedType): boolean {
+    return type.type === 'StringLiteral' || type.type === 'NumberLiteral' || type.type === 'BooleanLiteral';
+  }
+
+  private customResolveTypeOverride(typeNode, name): ResolvedType | undefined {
+    if (typeNode?.symbol?.parent?.getEscapedName?.() === 'React') {
+      const symbolName = typeNode.symbol.getEscapedName?.();
+      if (symbolName === 'ReactElement') {
+        return {
+          type: 'ReactElement',
+          name,
+        };
+      } else if (symbolName === 'ReactPortal') {
+        return {
+          type: 'ReactPortal',
+          name,
+        };
+      }
+    }
+
+    if (
+      name === 'ICSSInJSStyle' || // expanding this leads to a single component.info being MBs big
+      name === 'Document' || // OOM :-/
+      name === 'CSSProperties' ||
+      name === 'HTMLElement'
+    ) {
+      return {
+        type: 'object',
+        props: {},
+        name,
+      } as RTObject;
+    }
+
+    if (name === 'Document') {
+      return {
+        type: 'object',
+        props: {},
+        name,
+      } as RTObject;
+    }
+
+    return undefined;
+  }
+
+  private resolveType(typeNode, depth = 0): ResolvedType {
+    const name = this.checker.typeToString(typeNode);
+
+    const customType = this.customResolveTypeOverride(typeNode, name);
+    if (customType) {
+      return customType;
+    }
+
+    if (depth > 1) {
+      return {
+        type: 'MAX_DEPTH',
+        name,
+      };
+    }
+
+    const typeMap = {
+      [TypeFlags.Object]: () => {
+        // Function
+        if (typeNode.getCallSignatures().length > 0) {
+          return { type: 'function', name };
+        }
+
+        // Array
+        const numberIndexedType = typeNode.getNumberIndexType();
+        if (numberIndexedType) {
+          return {
+            type: 'array',
+            indexedType: this.resolveType(numberIndexedType, depth + 1),
+            name,
+          } as RTArray;
+        }
+
+        // Object
+        const props: RTObject['props'] = {};
+        typeNode.getProperties().forEach(prop => {
+          const childType = this.checker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
+
+          props[prop.getName()] = this.resolveType(childType, depth + 1);
+        });
+        return {
+          type: 'object',
+          props,
+          name,
+        } as RTObject;
+      },
+      [TypeFlags.Any]: () => ({ type: 'any', name }),
+      [TypeFlags.String]: () => ({ type: 'string', name }),
+      [TypeFlags.Number]: () => ({ type: 'number', name }),
+      [TypeFlags.Boolean]: () => ({ type: 'boolean', name }),
+      [TypeFlags.Enum]: () => ({ type: 'enum', name }), // FIXME
+      [TypeFlags.StringLiteral]: () => ({ type: 'StringLiteral', name, value: typeNode.value }),
+      [TypeFlags.NumberLiteral]: () => ({ type: 'NumberLiteral', name, value: typeNode.value }),
+      [TypeFlags.BooleanLiteral]: () => ({ type: 'BooleanLiteral', name, value: name === 'true' }),
+    };
+
+    if (typeMap[typeNode.flags]) {
+      return typeMap[typeNode.flags]();
+    } else if (typeNode.isIntersection()) {
+      return {
+        type: 'intersection',
+        types: typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1)),
+        name,
+      } as RTIntersection;
+    } else if (typeNode.isUnion()) {
+      const subTypes: any[] = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
+      const allSubTypesAreLiterals = subTypes.filter(Parser.isLiteral).length === subTypes.length;
+
+      // Convert union to enum
+      if (allSubTypesAreLiterals) {
+        return subTypes.map(st => ({ name: 'literal', value: st.value, label: st.name })) as any;
+      }
+
+      // Merge boolean literals to boolean type
+      const trueBooleanLiteralIndex = subTypes.findIndex(
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === true,
+      );
+      const falseBooleanLiteralIndex = subTypes.findIndex(
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === false,
+      );
+      if (trueBooleanLiteralIndex >= 0 && falseBooleanLiteralIndex >= 0) {
+        // to keep the order, replace `true` and delete `false` instead of appending
+        subTypes[trueBooleanLiteralIndex] = { type: 'boolean', name: 'boolean' };
+        subTypes.splice(falseBooleanLiteralIndex, 1);
+      }
+
+      return {
+        type: 'union',
+        types: subTypes,
+        name,
+      } as RTUnion;
+    }
+
+    return { type: 'unknown', name };
+  }
+
   public getPropsInfo(propsObj: ts.Symbol, defaultProps: StringIndexedObject<string> = {}): Props {
     if (!propsObj.valueDeclaration) {
       return {};
@@ -348,6 +522,8 @@ export class Parser {
         defaultValue = { value: jsDocComment.tags.default };
       }
 
+      const resolvedType = this.resolveType(propType);
+
       const parent = getParentType(prop);
 
       result[propName] = {
@@ -357,6 +533,7 @@ export class Parser {
         parent,
         required: !isOptional,
         type: { name: propTypeString },
+        resolvedType,
       };
     });
 
