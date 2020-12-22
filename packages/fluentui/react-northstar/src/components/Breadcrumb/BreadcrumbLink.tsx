@@ -28,7 +28,6 @@ export const breadcrumbLinkClassName = 'ui-breadcrumb__link';
 
 /**
  * An BreadcrumbLink represents a anchor to be used inside the Breadcrumb
- * This component is currently UNSTABLE!
  */
 export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
