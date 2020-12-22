@@ -15,7 +15,7 @@ export interface SkeletonOwnProps {
    */
   animation?: 'pulse' | 'wave';
 }
-export interface SkeletonProps extends SkeletonOwnProps {}
+export interface SkeletonProps extends SkeletonOwnProps, BoxProps {}
 
 export type SkeletonStylesProps = Required<Pick<SkeletonProps, 'animation'>>;
 export const skeletonClassName = 'ui-skeleton';
@@ -49,6 +49,8 @@ Skeleton.Text = SkeletonText;
 Skeleton.Input = SkeletonInput;
 Skeleton.Avatar = SkeletonAvatar;
 Skeleton.propTypes = {
-  ...commonPropTypes.createCommon(),
+  ...commonPropTypes.createCommon({
+    accessibility: false,
+  }),
   animation: PropTypes.oneOf(['wave', 'pulse']),
 };
