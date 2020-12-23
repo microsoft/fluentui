@@ -533,6 +533,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
+      'aria-invalid': unhandledProps['aria-invalid'],
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });

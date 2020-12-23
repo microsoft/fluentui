@@ -350,6 +350,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               readOnly: !allowManualInput,
               required: props.required,
               'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
+              ...unhandledProps,
             }),
           overrideProps: overrideInputProps,
         })}
