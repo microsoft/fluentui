@@ -15,9 +15,7 @@
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!--------------------------------[ v0.51.5 ]------------------------------- -->
-## [v0.51.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.5) (2020-12-31)
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.4..@fluentui/react-northstar_v0.51.5)
+## [Unreleased]
 
 ### Fixes
 - Do not trigger `Popup` on `click` when `hover` is used with `context` @jurokapsiar ([#16286](https://github.com/microsoft/fluentui/pull/16286))
