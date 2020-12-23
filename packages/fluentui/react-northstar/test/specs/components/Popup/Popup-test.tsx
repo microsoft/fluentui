@@ -116,6 +116,16 @@ describe('Popup', () => {
       expect(spy.mock.calls[0][1]).toMatchObject({ open: true });
     });
 
+    test('is not called on click when on is contextmenu and hover', () => {
+      const spy = jest.fn();
+
+      mountWithProvider(<Popup trigger={<button />} content="Hi" onOpenChange={spy} on={['context', 'hover']} />)
+        .find('button')
+        .simulate('click');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
     // https://github.com/microsoft/fluent-ui-react/pull/619
     test('is called on contextmenu when controlled', () => {
       const spy = jest.fn();
