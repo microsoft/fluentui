@@ -6,7 +6,7 @@ import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 interface FormDatepickerOwnProps extends DatepickerProps {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
-  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'
 >;
 export interface FormDatepickerProps extends SelectedFormFieldCustomProps, FormDatepickerOwnProps {}
 export type FormDatepickerStylesProps = never;
@@ -25,13 +25,17 @@ export const FormDatepicker = compose<
 >(_FormFieldBase, {
   className: formDatepickerClassName,
   displayName: 'FormDatepicker',
+  handledProps: ['label', 'labelPosition', 'required'],
   overrideStyles: true,
   slots: {
     control: Datepicker,
+    label: () => null,
   },
-  slotProps: ({ errorMessage, required }) => ({
+  slotProps: ({ errorMessage, label, labelPosition, required }) => ({
     control: {
       required,
+      label,
+      labelPosition,
     },
     message: {
       error: !!errorMessage,
