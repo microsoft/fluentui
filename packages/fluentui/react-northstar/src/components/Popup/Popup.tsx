@@ -318,10 +318,12 @@ export const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
-      triggerProps.onClick = (e, ...args) => {
-        setPopupOpen(true, e);
-        _.invoke(triggerElement, 'props.onClick', e, ...args);
-      };
+      if (!_.includes(normalizedOn, 'context')) {
+        triggerProps.onClick = (e, ...args) => {
+          setPopupOpen(true, e);
+          _.invoke(triggerElement, 'props.onClick', e, ...args);
+        };
+      }
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
