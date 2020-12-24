@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 Dec 2020 12:27:50 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Dec 2020 12:25:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.155.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.155.3)
+
+Thu, 24 Dec 2020 12:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.155.2..office-ui-fabric-react_v7.155.3)
+
+### Patches
+
+- TextField: set type="button" on reveal password button ([PR #16294](https://github.com/microsoft/fluentui/pull/16294) by elcraig@microsoft.com)
 
 ## [7.155.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.155.2)
 

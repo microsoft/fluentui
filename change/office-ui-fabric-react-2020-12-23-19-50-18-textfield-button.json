@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TextField: set type=\"button\" on reveal password button",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-24T01:50:13.658Z"
-}

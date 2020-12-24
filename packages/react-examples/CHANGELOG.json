@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 24 Dec 2020 12:25:12 GMT",
+      "tag": "@fluentui/react-examples_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "TextField: set type=\"button\" on reveal password button",
+            "author": "elcraig@microsoft.com",
+            "commit": "10811a8ead8af55ac0443b299bcd1e80578db6f5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Dec 2020 12:27:20 GMT",
       "tag": "@fluentui/react-examples_v0.11.0",
       "version": "0.11.0",
