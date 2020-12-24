@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "TextField: set type=\"button\" on reveal password button",
+  "packageName": "@fluentui/react-examples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-12-24T01:50:18.290Z"
+}
