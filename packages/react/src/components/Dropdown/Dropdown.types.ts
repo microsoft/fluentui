@@ -85,6 +85,12 @@ export interface IDropdownProps
   dropdownWidth?: number;
 
   /**
+   * Adjust the width to fit the content. Cannot be used together with `dropdownWidth`.
+   * @defaultvalue false
+   */
+  isDropdownWidthFitContent?: boolean;
+
+  /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
    * ResponsiveMode.large would, for instance, disable the behavior where Dropdown options
    * get rendered into a Panel while ResponsiveMode.small would result in the Dropdown

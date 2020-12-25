@@ -588,13 +588,17 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { calloutProps, panelProps } = props;
-    const { responsiveMode, dropdownWidth } = this.props;
+    const { responsiveMode, dropdownWidth, isDropdownWidthFitContent } = this.props;
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
     const panelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
+
+    const defaultCalloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
+    const calloutWidth = isDropdownWidthFitContent ? undefined : defaultCalloutWidth;
+    const calloutMinWidth = isDropdownWidthFitContent ? defaultCalloutWidth : undefined;
 
     return isSmall ? (
       <Panel
@@ -614,7 +618,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         doNotLayer={false}
         directionalHintFixed={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
-        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
+        calloutWidth={calloutWidth}
+        calloutMinWidth={calloutMinWidth}
         {...calloutProps}
         className={this._classNames.callout}
         target={this._dropDown.current}
