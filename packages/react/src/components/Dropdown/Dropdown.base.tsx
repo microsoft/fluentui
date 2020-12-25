@@ -222,10 +222,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       });
 
       warnMutuallyExclusive(COMPONENT_NAME, props, {
+        dropdownWidth: 'isDropdownWidthFitContent',
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
-        dropdownWidth: 'isDropdownWidthFitContent',
       });
 
       if (multiSelect) {
