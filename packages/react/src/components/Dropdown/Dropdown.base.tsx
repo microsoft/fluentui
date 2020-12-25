@@ -614,13 +614,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         doNotLayer={false}
         directionalHintFixed={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
+        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
         {...calloutProps}
         className={this._classNames.callout}
         target={this._dropDown.current}
         onDismiss={this._onDismiss}
         onScroll={this._onScroll}
         onPositioned={this._onPositioned}
-        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
       >
         {this._renderFocusableList(props)}
       </Callout>
