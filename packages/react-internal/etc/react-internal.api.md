@@ -1286,6 +1286,7 @@ export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     overflowYHidden?: boolean;
@@ -1325,6 +1326,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
