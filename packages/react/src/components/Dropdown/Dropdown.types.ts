@@ -85,7 +85,8 @@ export interface IDropdownProps
   dropdownWidth?: number;
 
   /**
-   * Adjust the width to fit the content. Cannot be used together with `dropdownWidth`.
+   * Adjust the width to fit the content.
+   * Mutually exclusive with `dropdownWidth`.
    * @defaultvalue false
    */
   isDropdownWidthFitContent?: boolean;

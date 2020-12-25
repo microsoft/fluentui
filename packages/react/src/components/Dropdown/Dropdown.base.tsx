@@ -51,6 +51,7 @@ import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
+const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
@@ -213,17 +214,18 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
 
     if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Dropdown', props, {
+      warnDeprecations(COMPONENT_NAME, props, {
         isDisabled: 'disabled',
         onChanged: 'onChange',
         placeHolder: 'placeholder',
         onRenderPlaceHolder: 'onRenderPlaceholder',
       });
 
-      warnMutuallyExclusive('Dropdown', props, {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
+        dropdownWidth: 'isDropdownWidthFitContent',
       });
 
       if (multiSelect) {
