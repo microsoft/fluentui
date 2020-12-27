@@ -38,6 +38,7 @@ export interface InnerElementContextType {
   stickyItemIds: string[];
   stickyItemPusherHeights: number[];
   stickyItemSize: number;
+  createTreeItem: (id: string, style: React.CSSProperties) => React.ReactElement<TreeItemProps> | null;
 }
 
 export interface VirtualItemData {
@@ -217,8 +218,9 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       stickyItemIds,
       stickyItemPusherHeights,
       stickyItemSize,
+      createTreeItem,
     }),
-    [getItemById, stickyItemIds, stickyItemPusherHeights, stickyItemSize],
+    [getItemById, stickyItemIds, stickyItemPusherHeights, stickyItemSize, createTreeItem],
   );
 
   const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
@@ -272,7 +274,11 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   return element;
 };
 
-const getStickyItemStyle = (indexAmoungStickyItems: number, stickyItemNums: number, stickyItemSize: number) => ({
+const getStickyItemStyle = (
+  indexAmoungStickyItems: number,
+  stickyItemNums: number,
+  stickyItemSize: number,
+): React.CSSProperties => ({
   height: stickyItemSize,
   zIndex: teamsTheme.siteVariables.zIndexes.overlay,
   position: 'sticky',
@@ -283,15 +289,10 @@ const getStickyItemStyle = (indexAmoungStickyItems: number, stickyItemNums: numb
 
 const InnerElementType = ({ children, style }, ref) => {
   const context = React.useContext(InnerElementContext);
-  const { stickyItemIds, stickyItemPusherHeights, stickyItemSize, getItemById } = context;
+  const { stickyItemIds, stickyItemPusherHeights, stickyItemSize, getItemById, createTreeItem } = context;
 
   const renderContent = React.useCallback(
     (virtualItems: React.ReactElement<ListChildComponentProps>[]) => {
-      const createTreeItem = virtualItems[0]?.props.data?.createTreeItem;
-      if (!createTreeItem) {
-        return null;
-      }
-
       const result: Record<
         string,
         {
@@ -341,7 +342,7 @@ const InnerElementType = ({ children, style }, ref) => {
 
       return flattenedResult;
     },
-    [getItemById, stickyItemIds, stickyItemPusherHeights, stickyItemSize],
+    [createTreeItem, getItemById, stickyItemIds, stickyItemPusherHeights, stickyItemSize],
   );
 
   return (
