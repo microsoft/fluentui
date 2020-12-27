@@ -81,12 +81,53 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     getItemById,
     registerItemRef,
     activeItemIds,
+    focusItemById: baseFocusItemById,
     toggleItemActive: baseToggleItemActive,
-    focusItemById,
     expandSiblings,
     listRef,
     getItemRef,
   } = useVirtualTree({ ...props, defaultActiveItemIds: stickyItemIds });
+
+  const getItemSize = React.useCallback(
+    (index: number) => {
+      const id = visibleItemIds[index];
+
+      const item = getItemById(id);
+      if (item?.level === 1) {
+        return stickyItemSize;
+      }
+      return itemSize;
+    },
+    [getItemById, itemSize, stickyItemSize, visibleItemIds],
+  );
+
+  const scrollToMakeItemVisible = React.useCallback(
+    itemOffset => {
+      const scrollOffset = Math.max(0, itemOffset - (height as number) / 2); // try to position item in the middle of container
+      listRef.current.scrollTo(scrollOffset);
+    },
+    [height, listRef],
+  );
+
+  const focusItemById = React.useCallback(
+    (id: string) => {
+      baseFocusItemById(id);
+
+      // item is not mounted yet, scroll to make item visible
+      if (getItemRef(id) == null) {
+        const getItemOffset = index => {
+          let result = 0;
+          for (let i = 0; i < index; ++i) {
+            result += getItemSize(i);
+          }
+          return result;
+        };
+        const focusIndex = visibleItemIds.indexOf(id);
+        scrollToMakeItemVisible(getItemOffset(focusIndex));
+      }
+    },
+    [baseFocusItemById, getItemRef, getItemSize, scrollToMakeItemVisible, visibleItemIds],
+  );
 
   // get height of the pusher for each sticky item, based on number of their visible descendants
   const stickyItemPusherHeights: number[] = React.useMemo(() => {
@@ -136,7 +177,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   // When using keyboard, and navigate to non-sticky items, they could be hidden behind sticky headers.
   // Scroll to make the focused non-sticky items always visible
   const makeVisibleOnFocus = React.useCallback(
-    (id: string, level: number) => {
+    (id: string, level: number, style: React.CSSProperties) => {
       if (level === 1) {
         return; // focused sticky items are always visible, so no need to deal with them
       }
@@ -156,12 +197,10 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       };
 
       if (isOverlappingWithSticky(id)) {
-        // known issue:
-        // this scroll cannot guarantee non-sticky items' visibility. It would work when sticky titles are relatively small compare to non-sticky items.
-        listRef.current.scrollToItem(visibleItemIds.indexOf(id), 'center'); // scroll to item
+        scrollToMakeItemVisible(style.top as number);
       }
     },
-    [getItemRef, listRef, stickyItemIds, visibleItemIds],
+    [getItemRef, scrollToMakeItemVisible, stickyItemIds],
   );
 
   // When using keyboard, and navigate to stickyItems, arrow up/down should navigate to previous item's last child/current Item's first child.
@@ -204,7 +243,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
           index,
           treeSize,
           selectable: false,
-          onFocus: () => makeVisibleOnFocus(id, level),
+          onFocus: () => makeVisibleOnFocus(id, level, style),
           ...(level === 1 && expanded && childrenIds.length && { onKeyDown: handleArrowUpDownOnSticky(id, item) }),
         },
       });
@@ -224,19 +263,6 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   );
 
   const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
-
-  const getItemSize = React.useCallback(
-    (index: number) => {
-      const id = visibleItemIds[index];
-
-      const item = getItemById(id);
-      if (item?.level === 1) {
-        return stickyItemSize;
-      }
-      return itemSize;
-    },
-    [getItemById, itemSize, stickyItemSize, visibleItemIds],
-  );
 
   React.useLayoutEffect(() => {
     listRef.current.resetAfterIndex(0);
