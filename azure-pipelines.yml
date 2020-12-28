@@ -91,7 +91,7 @@ jobs:
           BlobPrefix: $(deployBasePath)
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
-          storage: fabricweb
+          storage: $(azureStorage)
 
       - task: GithubPRStatus@0
         displayName: 'Update PR deploy site github status'
@@ -100,7 +100,7 @@ jobs:
           githubRepo: fluentui
           githubContext: 'Pull request demo site'
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
-          githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+          githubTargetLink: $(deployUrl)
 
       - template: .devops/templates/cleanup.yml
 
@@ -115,18 +115,19 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn workspace @fluentui/docs vr:build
+      - script: |
+          yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
 
       - task: AzureUpload@2
         displayName: Upload N* doc site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)/react-northstar'
+          BlobPrefix: $(deployBasePath)/react-northstar
           CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
           SourcePath: 'packages/fluentui/docs/dist'
-          storage: fabricweb
+          storage: $(azureStorage)
 
       - script: yarn workspace @fluentui/docs vr:test
         displayName: start FUI N* VR Test

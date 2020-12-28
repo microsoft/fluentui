@@ -1,11 +1,13 @@
 parameters:
+  # For customizing the deployment path in non-PR builds
   - name: deployBasePath
     type: string
     default: ''
 
   - name: azureSubscription
     type: string
-    default: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+    # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+    default: Azure PR deploy
 
   # Skip the component governance detection step (injected by a pipeline decorator from an
   # internal extension) by default because we run it separately. Since all our pipelines
@@ -16,11 +18,23 @@ parameters:
     default: true
 
 variables:
-  deployBasePath: ${{ coalesce(parameters.deployBasePath, 'pr-deploy-site/$(Build.SourceBranch)') }}
+  # Set final deployBasePath (also accessed as process.env.DEPLOYBASEPATH)
+  ${{ if eq(variables['System.PullRequest.PullRequestId'], '') }}:
+    # CI builds will have PullRequestId unset, and Build.SourceBranch as "refs/heads/branchname".
+    # Deploy under "heads/branchname" unless otherwise requested.
+    deployBasePath: $[coalesce(parameters.deployBasePath, replace(variables['Build.SourceBranch'], 'refs/', ''))]
+  ${{ if ne(variables['System.PullRequest.PullRequestId'], '') }}:
+    # Deploy PRs under "pull/####"
+    deployBasePath: 'pull/$(System.PullRequest.PullRequestId)'
 
-  deployHost: 'fabricweb.z5.web.core.windows.net'
+  # Also accessed as process.env.DEPLOYHOST
+  deployHost: 'fluentuipr.z22.web.core.windows.net'
+
+  # Also accessed as process.env.DEPLOYURL
+  deployUrl: 'https://$(deployHost)/$(deployBasePath)'
 
   azureSubscription: ${{ parameters.azureSubscription }}
+  azureStorage: fluentuipr
 
   ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     isPR: true

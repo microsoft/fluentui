@@ -27,14 +27,7 @@ type ExtendedCookResults = Record<string, ExtendedCookResult>;
 
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
 // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
-// const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-//   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
-//   : `file://${path.resolve(__dirname, '../dist/')}`;
 const urlForDeployPath = `file://${path.resolve(__dirname, '../dist/')}`;
-
-// const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-//   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-//   : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
 const urlForDeploy = `${urlForDeployPath}/index.html`;
 const defaultIterations = 1;
@@ -45,12 +38,11 @@ const tempDir = path.join(__dirname, '../logfiles');
 console.log(`__dirname: ${__dirname}`);
 
 export default async function getPerfRegressions(baselineOnly: boolean = false) {
-  let urlForMaster;
+  let urlForMaster: string | undefined;
 
   if (!baselineOnly) {
-    urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test-northstar/index.html`
-      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test-northstar/index.html';
+    const targetPath = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH?.replace('refs/', '') || 'heads/master';
+    urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test-northstar/index.html`;
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
