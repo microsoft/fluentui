@@ -188,7 +188,7 @@ const iterationsDefault = 5000;
 //        await page.tracing.stop();
 
 const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-  ? `http://fluentuipr.z22.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
+  ? `https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
 
 // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
@@ -198,8 +198,8 @@ const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? `http://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-  : 'http://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/7.0/perf-test/index.html';
+  ? `https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
+  : 'https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/7.0/perf-test/index.html';
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');

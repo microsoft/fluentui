@@ -100,7 +100,7 @@ jobs:
           githubRepo: fluentui
           githubContext: 'Pull request demo site'
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
-          githubTargetLink: 'http://fluentuipr.z22.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+          githubTargetLink: 'https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
       - template: .devops/templates/cleanup.yml
 
