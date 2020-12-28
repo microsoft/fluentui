@@ -166,6 +166,7 @@ export const SelectStyles = css`
     .start,
     .end,
     .indicator,
+    .select-indicator,
     ::slotted(svg) {
         ${`` /* Glyph size is temporary - replace when glyph-size var is added */}
         fill: currentcolor;
