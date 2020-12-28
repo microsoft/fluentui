@@ -1,6 +1,8 @@
 // If you are adding a new tile into this site, place make sure it is also being copied from `just.config.ts`
 
-const siteInfo = [
+// Syntax here MUST BE IE11-COMPATIBLE because this file is run without transpiling, and needs to
+// work in all browsers including IE 11 as long as we still support it.
+var siteInfo = [
   {
     package: '@fluentui/public-docsite-resources',
     link: './public-docsite-resources/demo/index.html',
@@ -64,9 +66,16 @@ window.renderSiteLinks = function(packages) {
     if (packages.indexOf(info.package) > -1) {
       var li = document.createElement('LI');
       li.className = 'Tile';
-      li.innerHTML = `<a href="${info.link}" class="Tile-link">
-        <i class="ms-Icon ms-Icon--${info.icon}"></i>${info.title}
-      </a>`;
+      // Syntax here MUST BE IE11-COMPATIBLE (no backticks)
+      li.innerHTML =
+        '<a href="' +
+        info.link +
+        '" class="Tile-link">' +
+        '<i class="ms-Icon ms-Icon--' +
+        info.icon +
+        '"></i>' +
+        info.title +
+        '</a>';
 
       siteLink.appendChild(li);
     }

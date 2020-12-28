@@ -20,3 +20,15 @@ steps:
   - script: |
       echo "##vso[task.setvariable variable=shellopts]braceexpand:hashall:interactive-comments:errexit:errtrace"
     displayName: Force exit on error (bash)
+
+  # Log all the environment variables since it can be useful for debugging.
+  # (This happens automatically for the built-in agents, but not for custom agents.)
+  - script: |
+      printenv | sort
+      echo "SHELLOPTS $SHELLOPTS"
+      echo 'deployBasePath "$(deployBasePath)"'
+      echo 'deployUrl "$(deployUrl)"'
+      echo 'isPR "$(isPR)"'
+      echo 'targetBranch "$(targetBranch)"'
+    displayName: Log environment variables (Linux)
+    condition: eq(variables['Agent.OS'], 'Linux')
