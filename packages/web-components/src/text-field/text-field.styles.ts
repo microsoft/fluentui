@@ -55,11 +55,6 @@ export const TextFieldStyles = css`
         outline: none;
     }
 
-    .label__hidden {
-        display: none;
-        visibility: hidden;
-    }
-
     .label {
         display: block;
         color: ${neutralForegroundRestBehavior.var};
@@ -67,6 +62,11 @@ export const TextFieldStyles = css`
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
         margin-bottom: 4px;
+    }
+   
+    .label__hidden {
+      display: none;
+      visibility: hidden;
     }
 
     .start,
