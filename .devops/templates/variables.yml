@@ -1,10 +1,13 @@
 variables:
+  # Also accessed as process.env.DEPLOYBASEPATH
   deployBasePath: 'pr-deploy-site/$(Build.SourceBranch)'
 
-  deployHost: 'fabricweb.z5.web.core.windows.net'
+  # Also accessed as process.env.DEPLOYHOST
+  deployHost: 'fluentuipr.z22.web.core.windows.net'
 
   # Note that this subscription only has access to the fluentuipr storage account
   azureSubscription: 'Azure PR deploy'
+  azureStorage: 'fluentuipr'
 
   ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/7.0') }}:
     targetBranch: 'origin/$(System.PullRequest.TargetBranch)'

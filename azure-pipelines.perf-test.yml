@@ -38,9 +38,9 @@ steps:
     inputs:
       SourcePath: 'apps/perf-test/dist'
       azureSubscription: $(azureSubscription)
-      storage: fluentuipr
+      storage: $(azureStorage)
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+      BlobPrefix: '$(deployBasePath)/perf-test'
 
   - task: GithubPRComment@0
     displayName: 'Post Perf Results to Github Pull Request'

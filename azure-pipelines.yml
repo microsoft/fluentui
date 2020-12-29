@@ -88,10 +88,10 @@ jobs:
         displayName: Upload PR deploy site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+          BlobPrefix: '$(deployBasePath)'
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
-          storage: fluentuipr
+          storage: $(azureStorage)
 
       - task: GithubPRStatus@0
         displayName: 'Update PR deploy site github status'
@@ -100,7 +100,7 @@ jobs:
           githubRepo: fluentui
           githubContext: 'Pull request demo site'
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
-          githubTargetLink: 'https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+          githubTargetLink: 'https://$(deployHost)/$(deployBasePath)/'
 
       - template: .devops/templates/cleanup.yml
 
