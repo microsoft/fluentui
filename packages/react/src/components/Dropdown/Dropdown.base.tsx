@@ -222,7 +222,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       });
 
       warnMutuallyExclusive(COMPONENT_NAME, props, {
-        dropdownWidth: 'isDropdownWidthFitContent',
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
@@ -590,7 +589,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { calloutProps, panelProps } = props;
-    const { responsiveMode, dropdownWidth, isDropdownWidthFitContent } = this.props;
+    const { responsiveMode, dropdownWidth } = this.props;
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
@@ -598,9 +597,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
 
+    const isGrow = dropdownWidth === 'grow';
     const defaultCalloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
-    const calloutWidth = isDropdownWidthFitContent ? undefined : defaultCalloutWidth;
-    const calloutMinWidth = isDropdownWidthFitContent ? defaultCalloutWidth : undefined;
+    const calloutWidth = isGrow ? undefined : defaultCalloutWidth;
+    const calloutMinWidth = isGrow ? defaultCalloutWidth : undefined;
 
     return isSmall ? (
       <Panel

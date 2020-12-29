@@ -1495,10 +1495,9 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'grow';
     // @deprecated
     isDisabled?: boolean;
-    isDropdownWidthFitContent?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
