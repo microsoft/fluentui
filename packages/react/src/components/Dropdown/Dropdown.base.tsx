@@ -597,10 +597,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
 
-    const isGrow = dropdownWidth === 'grow';
-    const defaultCalloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
-    const calloutWidth = isGrow ? undefined : defaultCalloutWidth;
-    const calloutMinWidth = isGrow ? defaultCalloutWidth : undefined;
+    let calloutWidth = undefined;
+    let calloutMinWidth = undefined;
+    if (dropdownWidth === 'grow') {
+      calloutMinWidth = this._dropDown.current ? this._dropDown.current.clientWidth : 0;
+    } else {
+      calloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
+    }
 
     return isSmall ? (
       <Panel
