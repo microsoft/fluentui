@@ -8,7 +8,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  */
 export const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   attributes: {
-    input: {
+    root: {
       'aria-disabled': props.disabled,
       ...(props.required && { 'aria-required': true }),
       ...(props.error && { 'aria-invalid': true }),
