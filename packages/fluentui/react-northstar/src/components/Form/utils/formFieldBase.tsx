@@ -94,13 +94,6 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       [labelId.current],
     );
 
-    const debugPurposes = getA11yProps('control', {
-      error: !!errorMessage || null,
-      ref,
-      ...unhandledProps,
-      ...slotProps.control,
-    });
-    console.log(debugPurposes);
     const element = (
       <ElementType
         {...getA11yProps('root', {
