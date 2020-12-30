@@ -395,7 +395,6 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
-  header: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };
