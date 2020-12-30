@@ -156,10 +156,13 @@ export const htmlInputEvents: HtmlInputEvents[] = [
 ];
 
 export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents];
+export interface htmlCustomProps {
+  [index: number]: string;
+}
 
 export interface PartitionHTMLPropsOptions {
   /** An array of html input props */
-  htmlProps?: HtmlInputProps[];
+  htmlProps?: HtmlInputProps[] | htmlCustomProps[];
   /** Includes all input props that starts with "aria-" */
   includeAria?: boolean;
 }

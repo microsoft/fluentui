@@ -28,7 +28,13 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
+import {
+  commonPropTypes,
+  createShorthand,
+  createShorthandFactory,
+  UIComponentProps,
+  partitionHTMLProps,
+} from '../../utils';
 import { Button } from '../Button/Button';
 import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
@@ -106,6 +112,13 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
+
+export type accProps = {
+  props: {
+    'aria-invalid': string;
+    'aria-labelledby': string;
+  };
+};
 
 const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
   let formattedString = '';
@@ -229,6 +242,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
+  const [accProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
+    htmlProps: ['aria-labelledby', 'aria-invalid'],
+  });
+
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
     actionHandlers: {
@@ -243,6 +260,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         e.preventDefault();
       },
     },
+    mapPropsToBehavior: () => ({
+      'aria-invalid': accProps['aria-invalid'],
+      'aria-labelledby': accProps['aria-labelledby'],
+    }),
     rtl: context.rtl,
   });
 
@@ -336,7 +357,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...unhandledProps,
+        ...restUnhandledProps,
       })}
     >
       {!props.buttonOnly &&

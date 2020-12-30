@@ -33,6 +33,7 @@ import {
   UIComponentProps,
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
+  partitionHTMLProps,
 } from '../../utils';
 import { List, ListProps } from '../List/List';
 import { DropdownItem, DropdownItemProps } from './DropdownItem';
@@ -50,6 +51,13 @@ import {
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
+
+export type unhandledAccProps = {
+  props: {
+    'aria-invalid': string;
+    'aria-labelledby': string;
+  };
+};
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -422,6 +430,9 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
+  const [unhandledAccProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
+    htmlProps: ['aria-labelledby', 'aria-invalid'],
+  });
 
   const [activeSelectedIndex, setActiveSelectedIndex] = useAutoControlled<number | null | undefined>({
     defaultValue: props.defaultActiveSelectedIndex,
@@ -533,6 +544,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
+      'aria-invalid': unhandledAccProps['aria-invalid'],
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
@@ -1484,7 +1496,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       className={classes.root}
       onBlur={handleOnBlur}
       onChange={handleChange}
-      {...unhandledProps}
+      {...restUnhandledProps}
       {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
     >
       <Downshift
