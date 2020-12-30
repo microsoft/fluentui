@@ -342,7 +342,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
 
-  const headerElement = createShorthand(ChatMessageHeader, header, {
+  const headerElement = createShorthand(ChatMessageHeader, header || {}, {
     overrideProps: () => ({
       content: (
         <>
