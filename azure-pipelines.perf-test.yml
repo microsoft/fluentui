@@ -5,6 +5,7 @@ trigger: none
 
 variables:
   - group: fabric-variables
+  - template: .devops/templates/variables.yml
 
 pool: 'Self Host Ubuntu'
 
@@ -36,10 +37,10 @@ steps:
     displayName: Upload Perf Test Result to PR deploy site
     inputs:
       SourcePath: 'apps/perf-test/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-      storage: fabricweb
+      azureSubscription: $(azureSubscription)
+      storage: $(azureStorage)
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+      BlobPrefix: '$(deployBasePath)/perf-test'
 
   - task: GithubPRComment@0
     displayName: 'Post Perf Results to Github Pull Request'
