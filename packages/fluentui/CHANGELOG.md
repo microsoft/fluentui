@@ -72,6 +72,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix Menu styles for `Toolbar` @TanelVari ([#16141](https://github.com/microsoft/fluentui/pull/16141))
 - Fix the type for `onBlur`callback in the `Dropdown` component @ling1726 ([#16257](https://github.com/microsoft/fluentui/pull/16257))
 - Fix missing export for `AttachmentBodyStylesProps` @ling1726 ([#16260](https://github.com/microsoft/fluentui/pull/16260))
+- Fix type for `Accessibility` to allow function without props @ling1726 ([#16322](https://github.com/microsoft/fluentui/pull/16322))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
