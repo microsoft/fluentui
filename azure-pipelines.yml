@@ -38,8 +38,8 @@ steps:
     displayName: AzureUpload
     inputs:
       SourcePath: 'apps/pr-deploy-site/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-      storage: fabricweb
+      azureSubscription: 'Azure PR deploy'
+      storage: fluentuipr
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
@@ -64,7 +64,7 @@ steps:
       githubRepo: 'fluentui'
       githubContext: 'Pull Request Deployed Site'
       githubDescription: 'Click "Details" to go to the Deployed Site'
-      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+      githubTargetLink: 'https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
   - script: |
       npm run a11ytest
