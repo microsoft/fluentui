@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.16.3",
+  "version": "7.16.4",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -46,7 +46,7 @@
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/react-hooks": "^7.13.9",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/tsx-editor": "^0.14.3",
+    "@uifabric/tsx-editor": "^0.14.4",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",

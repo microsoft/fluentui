@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Dec 2020 12:25:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.4](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.14.4)
+
+Wed, 30 Dec 2020 12:25:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.13.17..@uifabric/tsx-editor_v0.14.4)
+
+### Patches
+
+- Rename Fabric component in export to codepen ([PR #16319](https://github.com/microsoft/fluentui/pull/16319) by elcraig@microsoft.com)
 
 ## [0.11.131](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.131)
 
