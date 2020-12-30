@@ -28,5 +28,5 @@ export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props 
 
 export type DatepickerBehaviorProps = {
   'aria-labelledby'?: string;
-  'aria-invalid'?: boolean | 'true' | 'false';
+  'aria-invalid'?: boolean;
 };
