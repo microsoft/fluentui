@@ -113,7 +113,7 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
-export type accProps = {
+export type a11yProps = {
   props: {
     'aria-invalid': string;
     'aria-labelledby': string;
@@ -242,7 +242,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
-  const [accProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
+  const [a11yProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
     htmlProps: ['aria-labelledby', 'aria-invalid'],
   });
 
@@ -261,8 +261,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      'aria-invalid': accProps['aria-invalid'],
-      'aria-labelledby': accProps['aria-labelledby'],
+      'aria-invalid': a11yProps['aria-invalid'],
+      'aria-labelledby': a11yProps['aria-labelledby'],
     }),
     rtl: context.rtl,
   });

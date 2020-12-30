@@ -52,7 +52,7 @@ import {
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
-export type unhandledAccProps = {
+export type unhandledA11yProps = {
   props: {
     'aria-invalid': string;
     'aria-labelledby': string;
@@ -430,7 +430,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
-  const [unhandledAccProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
+  const [unhandledA11yProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
     htmlProps: ['aria-labelledby', 'aria-invalid'],
   });
 
@@ -544,7 +544,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
-      'aria-invalid': unhandledAccProps['aria-invalid'],
+      'aria-invalid': unhandledA11yProps['aria-invalid'],
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
