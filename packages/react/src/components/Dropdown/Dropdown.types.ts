@@ -80,10 +80,10 @@ export interface IDropdownProps
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
-   * If value is 'grow', width of the input field is used by default, and it can grow wider to fit the content.
+   * If value is 'auto', width of the input field is used by default, and it can grow wider to fit the content.
    * @defaultvalue 0
    */
-  dropdownWidth?: number | 'grow';
+  dropdownWidth?: number | 'auto';
 
   /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.

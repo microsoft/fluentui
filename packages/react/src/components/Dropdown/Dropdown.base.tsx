@@ -599,7 +599,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     let calloutWidth = undefined;
     let calloutMinWidth = undefined;
-    if (dropdownWidth === 'grow') {
+    if (dropdownWidth === 'auto') {
       calloutMinWidth = this._dropDown.current ? this._dropDown.current.clientWidth : 0;
     } else {
       calloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
