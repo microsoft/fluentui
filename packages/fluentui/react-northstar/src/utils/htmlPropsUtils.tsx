@@ -158,7 +158,7 @@ export const htmlInputEvents: HtmlInputEvents[] = [
 
 export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents];
 export interface PartitionHTMLPropsOptions {
-  /** An array of html input props or aria attributes*/
+  /** An array of html input props or aria attributes */
   htmlProps?: HtmlInputProps[] | Array<keyof AriaAttributes>;
   /** Includes all input props that starts with "aria-" */
   includeAria?: boolean;
