@@ -8,7 +8,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * Triggers 'open' action with 'Enter' on 'input'.
  */
 
-export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props => ({
+export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = () => ({
   keyActions: {
     input: {
       open: {
