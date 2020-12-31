@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-examples",
-  "version": "0.11.4",
+  "version": "0.11.5",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -54,7 +54,7 @@
     "@uifabric/api-docs": "^7.6.4",
     "@uifabric/azure-themes": "^7.6.3",
     "@uifabric/charting": "^4.12.4",
-    "@uifabric/date-time": "^7.19.4",
+    "@uifabric/date-time": "^7.19.5",
     "@uifabric/example-app-base": "^7.16.4",
     "@uifabric/example-data": "^7.1.5",
     "@uifabric/experiments": "^7.37.4",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "swapping arrows for decade picker, which were backwards",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-30T23:48:21.758Z"
-}

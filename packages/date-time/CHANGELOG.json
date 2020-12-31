@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 31 Dec 2020 12:29:36 GMT",
+      "tag": "@uifabric/date-time_v7.19.5",
+      "version": "7.19.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "swapping arrows for decade picker, which were backwards",
+            "author": "lorejoh12@gmail.com",
+            "commit": "c42dbb95aaf469e1d065a5d455bc0abdcae032d3",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:26:56 GMT",
       "tag": "@uifabric/date-time_v7.18.0",
       "version": "7.18.0",

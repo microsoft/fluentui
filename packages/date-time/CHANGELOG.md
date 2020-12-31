@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Dec 2020 12:29:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.5](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.5)
+
+Thu, 31 Dec 2020 12:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.18.0..@uifabric/date-time_v7.19.5)
+
+### Patches
+
+- swapping arrows for decade picker, which were backwards ([PR #16330](https://github.com/microsoft/fluentui/pull/16330) by lorejoh12@gmail.com)
 
 ## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.18.0)
 
