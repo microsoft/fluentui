@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add a props for Dropdown component to enable adjust width to fit content",
-  "packageName": "@fluentui/react",
-  "email": "qizheqi@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-25T07:17:03.663Z"
-}
