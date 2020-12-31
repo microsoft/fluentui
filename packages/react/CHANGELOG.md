@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 09 Dec 2020 12:27:00 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Dec 2020 12:35:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.31)
+
+Thu, 24 Dec 2020 12:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.31)
+
+### Changes
+
+- DetailsList: Fix group chevron alignment in single select mode ([PR #16289](https://github.com/microsoft/fluentui/pull/16289) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.27)
 
