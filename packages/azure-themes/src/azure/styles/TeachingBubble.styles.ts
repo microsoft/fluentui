@@ -12,7 +12,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     bodyContent: {
       color: extendedSemanticColors.teachingBubbleText,
-      border: `1px solid ${extendedSemanticColors.teachingBubbleBackground}`,
+      border: `1px solid ${extendedSemanticColors.teachingBubbleBorder}`,
       selectors: {
         '.ms-TeachingBubble-subText': {
           fontSize: FontSizes.size14,
@@ -51,9 +51,10 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     subComponentStyles: {
       callout: {
         root: {
-          borderColor: semanticColors.inputBorder,
+          borderColor: semanticColors.teachingBubbleBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
+          borderRadius: '4px',
           boxShadow: Depths.depth8,
           selectors: {
             '.ms-Callout-beak': {
