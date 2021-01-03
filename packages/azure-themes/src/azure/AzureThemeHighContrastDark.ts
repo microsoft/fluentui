@@ -88,6 +88,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   controlAccent: HighContrastDarkSemanticColors.controlOutlines.accent,
+  controlBackground: HighContrastDarkSemanticColors.controlOutlines.background,
   controlOutline: HighContrastDarkSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastDarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastDarkSemanticColors.controlOutlines.hover,
@@ -120,6 +121,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'solid',
   listUnderline: 'underline',
   linkBorderStyle: 'dashed',

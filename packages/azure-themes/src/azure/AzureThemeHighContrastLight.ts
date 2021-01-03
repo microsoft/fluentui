@@ -89,6 +89,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,
+  controlBackground: HighContrastLightSemanticColors.controlOutlines.background,
   controlOutline: HighContrastLightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastLightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastLightSemanticColors.controlOutlines.hover,
@@ -121,6 +122,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'dashed',
   listUnderline: 'underline',
   linkBorderStyle: 'dashed',

@@ -252,6 +252,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.GRAY_808080,
+    background: BaseColors.GRAY_252423,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.WHITE,
     accent: BaseColors.BLUE_106EBE,
@@ -431,6 +432,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.WHITE,
+    background: BaseColors.GRAY_111111,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.WHITE,
     accent: BaseColors.BLUE_00FFFF,
@@ -610,6 +612,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.GRAY_323130,
+    background: BaseColors.WHITE,
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
@@ -789,6 +792,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.BLACK,
+    background: BaseColors.WHITE,
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.PURPLE_800080,

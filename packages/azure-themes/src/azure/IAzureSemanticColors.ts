@@ -109,6 +109,7 @@ export interface IAzureSemanticColors {
   };
   controlOutlines: {
     rest: string;
+    background: string;
     disabled: string;
     hover: string;
     accent: string; // button in radio, check, et. al.
