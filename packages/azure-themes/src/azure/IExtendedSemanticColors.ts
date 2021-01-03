@@ -30,11 +30,13 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxDisabled: string;
   checkBoxIndeterminateBackground: string;
   checkBoxIndeterminateDefaultChecked: string;
+  callOutBorderStyle: string;
   choiceGroupContainerBorder: string;
   choiceGroupContainerBorderStyle: string;
   choiceGroupUncheckedDotHover: string;
   commandBarBorder: string;
   controlAccent: string;
+  controlBackground: string;
   controlOutline: string;
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
