@@ -41,6 +41,20 @@ const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Ad
 ReactDOM.render(<MyIconButton />, document.body.firstChild);
 ```
 
+### New SVG Based Fluent UI Icons
+
+There is a new Fluent UI Icon set that is an svg based icon solution. This is an iteration on the font based Fluent UI Icon set in which you need to call `initializeIcons` to have access to the icons you want to use in your program.
+
+The idea of the new icon library is that they are svg icons wrapped within a react element, so you can import the exact icons you need, and not have to rely on calling `initializeIcons`, which will decrease overall bundle size
+
+```ts
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { ChevronIcon } from '@fluentui/react-icons-mdl2';
+
+ReactDOM.render(<ChevronIcon />, document.body.firstChild);
+```
+
 ### Fabric Core
 
 First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
