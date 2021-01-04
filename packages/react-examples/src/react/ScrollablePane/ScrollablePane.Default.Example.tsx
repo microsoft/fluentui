@@ -46,7 +46,7 @@ const createContentArea = (item: IScrollablePaneExampleItem) => (
     }}
   >
     <Sticky stickyPosition={StickyPositionType.Both}>
-      <div role="heading" aria-level="1" className={classNames.sticky}>
+      <div role="heading" aria-level={1} className={classNames.sticky}>
         Sticky Component #{item.index + 1}
       </div>
     </Sticky>
