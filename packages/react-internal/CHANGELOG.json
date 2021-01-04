@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Thu, 31 Dec 2020 12:30:02 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.28",
+      "version": "8.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add calloutMinWidth props for Callout component",
+            "author": "qizheqi@microsoft.com",
+            "commit": "916d41f79900ceff3a11445f5cff74f8f6dceb3b",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Dec 2020 12:28:34 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.27",
       "version": "8.0.0-beta.27",
