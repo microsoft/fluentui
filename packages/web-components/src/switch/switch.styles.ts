@@ -105,6 +105,8 @@ export const SwitchStyles = css`
         color: ${neutralForegroundRestBehavior.var};
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
+        margin-inline-end: calc(var(--design-unit) * 2px + 2px);
+        cursor: pointer;
     }
 
     ::slotted(*) {
