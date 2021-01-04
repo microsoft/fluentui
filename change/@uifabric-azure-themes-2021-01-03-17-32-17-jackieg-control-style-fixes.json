@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "callout, messagebar and teachingbubble style updates ",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-04T01:31:54.840Z"
+}

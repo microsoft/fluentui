@@ -89,6 +89,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,
+  controlBackground: HighContrastLightSemanticColors.controlOutlines.background,
   controlOutline: HighContrastLightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastLightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastLightSemanticColors.controlOutlines.hover,
@@ -114,6 +115,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   statusWarningText: HighContrastLightSemanticColors.text.body,
   statusWarningIcon: HighContrastLightSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: HighContrastLightSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: HighContrastLightSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: HighContrastLightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: HighContrastLightSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: HighContrastLightSemanticColors.teachingBubble.rest.text,
@@ -121,6 +123,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'dashed',
   listUnderline: 'underline',
   linkBorderStyle: 'dashed',
