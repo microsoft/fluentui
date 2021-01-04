@@ -71,13 +71,15 @@ export const TextFieldStyles = css`
 
     .start,
     .end {
-        ${
-          /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-        } width: 16px;
-        height: 16px;
         margin: auto;
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
+    }
+    
+    ::slotted(svg) {      ${
+      /* Glyph size and margin-left is temporary -
+            replace when adaptive typography is figured out */ ''
+    } width: 16px;
+        height: 16px;
     }
 
     .start {
