@@ -25,8 +25,10 @@ export const SelectStyles = css`
         background: ${neutralFillInputRestBehavior.var};
         border-radius: calc(var(--corner-radius) * 1px);
         border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        box-sizing: border-box;
         color: ${neutralForegroundRestBehavior.var};
         contain: contents;
+        height: calc(${heightNumber} * 1px);
         position: relative;
         user-select: none;
         min-width: 250px;
