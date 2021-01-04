@@ -51,6 +51,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
             borderRadius: 4,
             margin: 8,
           }}
+          aria-label="Remove"
           onClick={_ => {
             onRemoveProp();
           }}
