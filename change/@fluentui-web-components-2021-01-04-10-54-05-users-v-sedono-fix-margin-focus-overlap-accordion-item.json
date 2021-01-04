@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "add margin for focus overlap of state in accordion item",
+  "comment": "add padding for focus overlap of state in accordion item",
   "packageName": "@fluentui/web-components",
   "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
   "dependentChangeType": "patch",
