@@ -197,7 +197,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       };
 
       if (isOverlappingWithSticky(id)) {
-        scrollToMakeItemVisible(style.top as number);
+        scrollToMakeItemVisible(style.top || 0); // react-window provides style.top, fall back to 0 just in case
       }
     },
     [getItemRef, scrollToMakeItemVisible, stickyItemIds],
