@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Nov 2020 12:28:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.9)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.7..@fluentui/react-focus_v8.0.0-beta.9)
+
+### Changes
+
+- Removing dist/storybook from the npm output. ([PR #16062](https://github.com/microsoft/fluentui/pull/16062) by dzearing@hotmail.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.7)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.0..@fluentui/react-focus_v8.0.0-beta.7)
+
+### Changes
+
+- FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL. ([PR #16007](https://github.com/microsoft/fluentui/pull/16007) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.0)
 

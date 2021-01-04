@@ -115,6 +115,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
       textAlign: 'left',
+
+      '.ms-Button-flexContainer': {
+        width: '100%',
+      },
     },
   ];
 

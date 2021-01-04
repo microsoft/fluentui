@@ -1,0 +1,37 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist/dts"
+  },
+  "paths": {
+    "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"]
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../accessibility"
+    },
+    {
+      "path": "../code-sandbox"
+    },
+    {
+      "path": "../docs-components"
+    },
+    {
+      "path": "../react-bindings"
+    },
+    {
+      "path": "../react-component-event-listener"
+    },
+    {
+      "path": "../react-component-ref"
+    },
+    {
+      "path": "../react-icons-northstar"
+    },
+    {
+      "path": "../react-northstar"
+    }
+  ]
+}

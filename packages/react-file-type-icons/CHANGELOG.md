@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 12 Nov 2020 12:28:12 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Dec 2020 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.0.0-beta.12)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.0.0-beta.7..@fluentui/react-file-type-icons_v8.0.0-beta.12)
+
+### Changes
+
+- Porting filetype icon changes to v8 from PR #15974 ([PR #16123](https://github.com/microsoft/fluentui/pull/16123) by caperez@microsoft.com)
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.0.0-beta.7)
 

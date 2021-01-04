@@ -66,6 +66,11 @@ export const BaseButtonStyles: ElementStyles = css`
         font: inherit;
     }
 
+    .control.icon-only {
+        padding: 0;
+        line-height: 0;
+    }
+
     :host(:hover) {
         background-color: ${neutralFillHoverBehavior.var};
     }
@@ -418,8 +423,8 @@ export const OutlineButtonStyles = css`
     }
 
     :host(.outline) .control:${focusVisible} {
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var});
         box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
+        border-color: ${neutralFocusBehavior.var};
     }
 
     :host(.outline.disabled) {

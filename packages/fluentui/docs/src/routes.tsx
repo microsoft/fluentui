@@ -36,8 +36,32 @@ import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
-import MenuList from './prototypes/menuList/';
-import TextAreaAutoSize from './prototypes/TextAreaAutoSize';
+import {
+  ChatPanePrototype,
+  ChatMessagesPrototype,
+  CustomScrollbarPrototype,
+  CustomToolbarPrototype,
+  AsyncShorthandPrototype,
+  EmployeeCardPrototype,
+  MeetingOptionsPrototype,
+  ParticipantsListPrototype,
+  SearchPagePrototype,
+  MentionsPrototype,
+  DropdownsPrototype,
+  PopupsPrototype,
+  AlertsPrototype,
+  EditorToolbarPrototype,
+  HexagonalAvatarPrototype,
+  TablePrototype,
+  NestedPopupsAndDialogsPrototype,
+  FormValidationPrototype,
+  VirtualizedTreePrototype,
+  VirtualizedTablePrototype,
+  CopyToClipboardPrototype,
+  TextAreaAutoSize,
+  MenuList,
+  VirtualizedStickyTreePrototype,
+} from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(() =>
   import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
@@ -55,56 +79,6 @@ const Builder: React.FunctionComponent = () => (
 const FullScreenPreview = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).FullScreenPreview,
 }));
-
-const CustomToolbarPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
-);
-const ChatPanePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/chatPane'));
-const ChatMessagesPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/chatMessages'),
-);
-const AsyncShorthandPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/AsyncShorthand'),
-);
-const EmployeeCardPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/employeeCard'),
-);
-const MeetingOptionsPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/meetingOptions'),
-);
-const SearchPagePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/SearchPage'));
-const MentionsPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/mentions'));
-const DropdownsPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/dropdowns'));
-const PopupsPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/popups'));
-const AlertsPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/alerts'));
-const NestedPopupsAndDialogsPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/NestedPopupsAndDialogs'),
-);
-const VirtualizedTreePrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTree'),
-);
-const CopyToClipboardPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/CopyToClipboard'),
-);
-const ParticipantsListPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/ParticipantsList'),
-);
-const CustomScrollbarPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/customScrollbar'),
-);
-const EditorToolbarPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/EditorToolbar'),
-);
-const HexagonalAvatarPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/hexagonalAvatar'),
-);
-const TablePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/table'));
-const VirtualizedTablePrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTable'),
-);
-const FormValidationPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidation'),
-);
 
 const Routes = () => (
   <React.Suspense fallback="Loading...">
@@ -152,6 +126,7 @@ const Routes = () => (
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+                <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />

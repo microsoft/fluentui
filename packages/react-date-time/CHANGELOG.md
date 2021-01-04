@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Dec 2020 12:30:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.26)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.2..@fluentui/react-date-time_v8.0.0-beta.26)
+
+### Changes
+
+- swapping arrows for decade picker, which were backwards ([PR #16227](https://github.com/microsoft/fluentui/pull/16227) by lorejoh12@gmail.com)
+- @fluentui/react-date-time Calendar: fix use of gridcell role ([PR #16317](https://github.com/microsoft/fluentui/pull/16317) by peterelliott@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.0)
 

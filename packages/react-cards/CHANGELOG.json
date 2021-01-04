@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Tue, 01 Dec 2020 12:38:05 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Card: Fixing styling after round of changes in theme.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "73da5f7dff44cd57a23c12f91c5210399a9f054e",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Nov 2020 12:28:32 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.17",
       "version": "1.0.0-beta.17",

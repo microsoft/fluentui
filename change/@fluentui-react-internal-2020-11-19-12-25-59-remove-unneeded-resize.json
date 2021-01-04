@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "ContextualMenu: remove unnecessary resize check",
-  "packageName": "@fluentui/react-internal",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-19T20:25:59.777Z"
-}

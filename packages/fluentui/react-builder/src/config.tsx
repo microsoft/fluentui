@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
-
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
@@ -37,6 +36,7 @@ export const COMPONENT_GROUP = {
     'Status',
     'Tooltip',
     'Video',
+    'Skeleton',
   ],
   Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
@@ -768,82 +768,4 @@ export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONT
     result.uuid = getUUID();
   }
   return result;
-};
-
-/**
- * Displays a knob with the ability to switch between data `types`.
- */
-export const MultiTypeKnob: React.FunctionComponent<{
-  label: string;
-  types: ('boolean' | 'number' | 'string' | 'literal')[];
-  value: any;
-  onChange: (value: any) => void;
-  literalOptions: string[];
-}> = ({ label, types, value, onChange, literalOptions }) => {
-  const valueType = typeof value;
-  const defaultType = valueType !== 'undefined' ? valueType : types[0];
-  const [type, setType] = React.useState(defaultType);
-  const knob = knobs[type];
-  const handleChangeType = React.useCallback(
-    e => setType(e.target.value), // @ts-ignore
-    [],
-  );
-
-  // console.log('MultiTypeKnob', { label, value, type, types });
-
-  const propId = `prop-${label}`;
-
-  return (
-    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
-      <div>
-        {type !== 'boolean' && <label htmlFor={propId}>{label} </label>}
-        {types.length === 1 ? (
-          <code style={{ float: 'right' }}>{type}</code>
-        ) : (
-          types.map(t => (
-            <button key={t} onClick={() => handleChangeType(t)}>
-              {t}
-            </button>
-          ))
-        )}
-      </div>
-      {knob && knob({ options: literalOptions, value, onChange, id: propId })}
-      {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
-    </div>
-  );
-};
-
-export const knobs = {
-  boolean: ({ value, onChange, id }) => (
-    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
-  ),
-
-  number: ({ value, onChange, id }) => (
-    <input
-      id={id}
-      style={{ width: '100%' }}
-      type="number"
-      value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-    />
-  ),
-
-  string: ({ value, onChange, id }) => (
-    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
-  ),
-
-  literal: ({ options, value, onChange, id }) => (
-    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
-      {options?.map((
-        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
-      ) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  ),
-
-  ReactText: (value, onChange, id) => knobs.string({ value, onChange, id }),
-  'React.ElementType': (value, onChange, id) => knobs.string({ value, onChange, id }),
 };

@@ -26,6 +26,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       RenderSuggestion,
       onClick,
       className,
+      id,
       onRemoveItem,
       isSelectedOverride,
       removeButtonAriaLabel,
@@ -66,7 +67,14 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
 
     return (
       <div className={classNames.root}>
-        <CommandButton onClick={onClick} className={classNames.itemButton}>
+        <CommandButton
+          onClick={onClick}
+          className={classNames.itemButton}
+          id={id}
+          aria-selected={suggestionModel.selected}
+          role="option"
+          aria-label={suggestionModel.ariaLabel}
+        >
           {RenderSuggestion(suggestionModel.item, this.props)}
         </CommandButton>
         {this.props.showRemoveButton ? (
