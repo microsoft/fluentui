@@ -169,6 +169,7 @@ export interface IAzureSemanticColors {
   teachingBubble: {
     rest: {
       background: string;
+      border: string;
       text: string;
       secondaryBackround: string;
     };

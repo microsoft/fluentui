@@ -312,6 +312,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_2899F5,
+      border: BaseColors.BLUE_2899F5,
       text: BaseColors.BLACK,
       secondaryBackround: BaseColors.BLACK,
     },
@@ -492,6 +493,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_00FFFF,
+      border: BaseColors.BLUE_00FFFF,
       text: BaseColors.BLACK,
       secondaryBackround: BaseColors.BLACK,
     },
@@ -672,6 +674,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_0078D4,
+      border: BaseColors.BLUE_0078D4,
       text: BaseColors.WHITE,
       secondaryBackround: BaseColors.WHITE,
     },
@@ -852,6 +855,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.PURPLE_800080,
+      border: BaseColors.PURPLE_800080,
       text: BaseColors.WHITE,
       secondaryBackround: BaseColors.WHITE,
     },

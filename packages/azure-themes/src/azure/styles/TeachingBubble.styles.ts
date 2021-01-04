@@ -12,7 +12,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     bodyContent: {
       color: extendedSemanticColors.teachingBubbleText,
-      border: `1px solid ${extendedSemanticColors.teachingBubbleBackground}`,
+      border: `1px solid ${extendedSemanticColors.teachingBubbleBorder}`,
       selectors: {
         '.ms-TeachingBubble-subText': {
           fontSize: FontSizes.size14,
@@ -51,9 +51,10 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     subComponentStyles: {
       callout: {
         root: {
-          borderColor: semanticColors.inputBorder,
+          borderColor: extendedSemanticColors.teachingBubbleBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
+          borderRadius: '4px',
           boxShadow: Depths.depth8,
           selectors: {
             '.ms-Callout-beak': {
@@ -76,7 +77,9 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       },
     },
     primaryButton: {
-      backgroundColor: extendedSemanticColors.teachingBubbleSecondaryBackground,
+      // backgroundColor and border color requires !important to override primary color
+      backgroundColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
+      borderColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
       selectors: {
         '&:focus': {
           backgroundColor: extendedSemanticColors.teachingBubblePrimaryButtonHover,
@@ -101,10 +104,10 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
           fontSize: theme.fonts.medium.fontSize,
         },
         '&:hover': {
-          backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+          backgroundColor: extendedSemanticColors.primaryButtonBackgroundHovered,
         },
         '&:focus': {
-          backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+          backgroundColor: extendedSemanticColors.teachingBubbleBackground,
         },
       },
     },

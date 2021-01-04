@@ -114,6 +114,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   statusWarningText: HighContrastDarkSemanticColors.text.body,
   statusWarningIcon: HighContrastDarkSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: HighContrastDarkSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: HighContrastDarkSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: HighContrastDarkSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: HighContrastDarkSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: HighContrastDarkSemanticColors.teachingBubble.rest.text,
