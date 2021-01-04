@@ -12,7 +12,6 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     bodyContent: {
       color: extendedSemanticColors.teachingBubbleText,
-      border: `1px solid ${extendedSemanticColors.teachingBubbleBorder}`,
       selectors: {
         '.ms-TeachingBubble-subText': {
           fontSize: FontSizes.size14,
@@ -51,14 +50,14 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     subComponentStyles: {
       callout: {
         root: {
-          borderColor: extendedSemanticColors.teachingBubbleBorder,
-          borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
-          borderRadius: '4px',
           boxShadow: Depths.depth8,
           selectors: {
+            '.ms-Callout-main': {
+              border: 0,
+            },
             '.ms-Callout-beak': {
               backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+              border: 0,
             },
           },
         },
@@ -77,7 +76,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       },
     },
     primaryButton: {
-      // backgroundColor and border color requires !important to override primary color
+      // backgroundColor and border color requires !important to override primary btn color
       backgroundColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
       borderColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
       selectors: {
