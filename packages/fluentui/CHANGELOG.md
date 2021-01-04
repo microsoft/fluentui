@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Do not trigger `Popup` on `click` when `hover` is used with `context` @jurokapsiar ([#16286](https://github.com/microsoft/fluentui/pull/16286))
+- Fix throwing error when using `ChatMessage` with children without declaring the `header` prop @ling1726 ([#16321](https://github.com/microsoft/fluentui/pull/16321))
 
 <!--------------------------------[ v0.51.4 ]------------------------------- -->
 ## [v0.51.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.4) (2020-11-24)
