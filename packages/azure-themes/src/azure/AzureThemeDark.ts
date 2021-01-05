@@ -148,6 +148,7 @@ export const AzureThemeDark: Theme = createTheme({
     white: DarkSemanticColors.background, // shimmer elements
   },
   semanticColors: darkExtendedSemanticColors,
+  isInverted: true,
 });
 
 AzureThemeDark.components = AzureStyleSettings(AzureThemeDark);
