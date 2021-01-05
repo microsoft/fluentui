@@ -228,21 +228,21 @@ describe('mergeComponentStyles', () => {
 
       test('are flat for recursive merge', () => {
         const target = withDebugId({ root: { a: 'tA' } }, 'target');
-        const source2 = withDebugId({ root: { a: 'tB' } }, 'source');
+        const source = withDebugId({ root: { a: 'tB' } }, 'source');
 
-        const merged1 = mergeComponentStyles__DEV(target, source2);
+        const merged1 = mergeComponentStyles__DEV(target, source);
         const resolvedRoot1 = merged1.root(styleParam);
         expect(resolvedRoot1).toMatchObject({
           _debug: [{ debugId: 'target' }, { debugId: 'source' }],
         });
 
-        const merged2 = mergeComponentStyles__DEV(mergeComponentStyles__DEV(target, source2), source2);
+        const merged2 = mergeComponentStyles__DEV(mergeComponentStyles__DEV(target, source), source);
         const resolvedRoot2 = merged2.root(styleParam);
         expect(resolvedRoot2).toMatchObject({
           _debug: [{ debugId: 'target' }, { debugId: 'source' }, { debugId: 'source' }],
         });
 
-        const merged3 = mergeComponentStyles__DEV(target, mergeComponentStyles__DEV(source2, source2));
+        const merged3 = mergeComponentStyles__DEV(target, mergeComponentStyles__DEV(source, source));
         const resolvedRoot3 = merged3.root(styleParam);
         expect(resolvedRoot3).toMatchObject({
           _debug: [{ debugId: 'target' }, { debugId: 'source' }, { debugId: 'source' }],
