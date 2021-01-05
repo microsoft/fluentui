@@ -2,6 +2,8 @@ You can use Fluent UI's icons in a few ways, depending on if you're using Fluent
 
 ### Fluent UI React
 
+#### Font Based Icons
+
 If you're using Fluent UI React, note that icons are not included in your bundle by default. To make the icons available, you'll need to initialize them by calling `initializeIcons` from the `@fluentui/font-icons-mdl2` package. This is usually done at the root of your app:
 
 ```ts
@@ -41,11 +43,11 @@ const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Ad
 ReactDOM.render(<MyIconButton />, document.body.firstChild);
 ```
 
-### New SVG Based Fluent UI Icons
+#### SVG Based Icons
 
-There is a new Fluent UI Icon set that is an svg based icon solution. This is an iteration on the font based Fluent UI Icon set in which you need to call `initializeIcons` to have access to the icons you want to use in your program.
+Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which bundles all icons by default.
 
-The idea of the new icon library is that they are svg icons wrapped within a react element, so you can import the exact icons you need, and not have to rely on calling `initializeIcons`, which will decrease overall bundle size
+Each SVG icon is wrapped with a React Element and can be imported and used as follows:
 
 ```ts
 import * as React from 'react';
