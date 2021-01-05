@@ -63,7 +63,7 @@ export const TextFieldStyles = css`
         line-height: var(--type-ramp-base-line-height);
         margin-bottom: 4px;
     }
-   
+
     .label__hidden {
       display: none;
       visibility: hidden;
@@ -74,7 +74,7 @@ export const TextFieldStyles = css`
         margin: auto;
         fill: currentcolor;
     }
-    
+
     ::slotted(svg) {      ${
       /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
