@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { name, internet } from 'faker';
+import * as faker from 'faker';
 
 export interface AtMentionItem {
   header: string;
@@ -8,7 +8,15 @@ export interface AtMentionItem {
 }
 
 export const atMentionItems: AtMentionItem[] = _.times(10, () => ({
-  header: `${name.firstName()} ${name.lastName()}`,
-  image: internet.avatar(),
-  content: name.title(),
+  header: `${faker.name.firstName()} ${faker.name.lastName()}`,
+  image: faker.random.arrayElement([
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/chris.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/christian.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/daniel.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/elliot.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/helen.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/jenny.jpg',
+  ]),
+  content: faker.name.title(),
 }));

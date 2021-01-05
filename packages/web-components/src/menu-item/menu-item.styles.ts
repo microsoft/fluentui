@@ -15,7 +15,7 @@ export const MenuItemStyles = css`
         outline: none;
         box-sizing: border-box;
         height: calc(${heightNumber} * 1px);
-        grid-template-columns: 42px auto 42px;
+        grid-template-columns: minmax(42px, auto) 1fr minmax(42px, auto);
         grid-template-rows: auto;
         justify-items: center;
         align-items: center;
@@ -72,6 +72,7 @@ export const MenuItemStyles = css`
             replace when adaptive typography is figured out */ ''
         } width: 16px;
         height: 16px;
+        display: flex;
     }
 
     :host(:hover) .start,
