@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update start and end to remove fixed width and height",
+  "packageName": "@fluentui/web-components",
+  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-04T19:34:11.159Z"
+}
