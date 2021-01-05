@@ -1,15 +1,29 @@
 // @ts-check
+
+/**
+ * @typedef {import("webpack").Configuration} WebpackConfig
+ * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
+ * @typedef {import("webpack").Entry} WebpackEntry
+ * @typedef {import("webpack").Module} WebpackModule
+ * @typedef {import("webpack").Output} WebpackOutput
+ */
+/** */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 const resolve = require('resolve');
+/** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const getResolveAlias = require('./getResolveAlias');
+const { findGitRoot } = require('../monorepo/index');
 
 // @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
+
+const gitRoot = findGitRoot();
 
 const cssRule = {
   test: /\.css$/,
@@ -72,15 +86,19 @@ module.exports = {
   webpack,
 
   /**
-   * @param {string} packageName - name of the package.
+   * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
+   * the scoped name with a - instead of / between the parts.
    * @param {boolean} isProduction - whether it's a production build.
-   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {Partial<WebpackConfig>} customConfig - partial custom webpack config, merged into each full config object.
    * @param {boolean} [onlyProduction] - whether to only generate the production config.
    * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
    * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
-   * @returns {webpack.Configuration[]} array of configs.
+   * @returns {WebpackConfig[]} array of configs.
    */
-  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
+  createConfig(bundleName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
+    const packageName = path.basename(process.cwd());
+
+    /** @type {WebpackModule} */
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -147,19 +165,83 @@ module.exports = {
   },
 
   /**
-   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
-   * @returns {webpack.Configuration}
+   * Creates a standard bundle config for a package.
+   * @param {object} options
+   * @param {string|WebpackOutput} options.output - If a string, name for the output varible.
+   * If an object, full custom `output` config.
+   * @param {string} [options.bundleName] - Name for the bundle file. Defaults to the package folder name
+   * (unscoped package name).
+   * @param {string} [options.entry] - custom entry if not `./lib/index.js`
+   * @param {boolean} [options.isProduction] - whether it's a production build.
+   * @param {boolean} [options.onlyProduction] - whether to generate the production config.
+   * @param {Partial<WebpackConfig>} [options.customConfig] - partial custom webpack config, merged into each full config object
+   * @returns {WebpackConfig[]}
    */
-  createServeConfig(customConfig) {
+  createBundleConfig(options) {
+    const {
+      output,
+      bundleName = path.basename(process.cwd()),
+      entry = './lib/index.js',
+      isProduction = process.argv.indexOf('--production') > -1,
+      onlyProduction = false,
+      customConfig = {},
+    } = options;
+
+    return module.exports.createConfig(
+      bundleName,
+      isProduction,
+      merge(
+        {
+          entry: {
+            [bundleName]: entry,
+          },
+
+          output:
+            typeof output === 'string'
+              ? {
+                  libraryTarget: 'var',
+                  library: output,
+                }
+              : output,
+
+          externals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          },
+
+          resolve: {
+            alias: getResolveAlias(true /*useLib*/),
+          },
+        },
+        customConfig,
+      ),
+      onlyProduction,
+    );
+  },
+
+  /**
+   * Create a standard serve config for a legacy demo app.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * @param {Partial<WebpackServeConfig>} customConfig - partial custom webpack config, merged into the full config
+   * @param {string} [outputFolder] - output folder (package-relative) if not `dist/demo`
+   * @returns {WebpackServeConfig}
+   */
+  createServeConfig(customConfig, outputFolder = 'dist/demo') {
+    const outputPath = path.join(process.cwd(), outputFolder);
     const config = merge(
       {
         devServer: {
           inline: true,
           port: 4322,
-          contentBase: path.resolve(process.cwd(), 'dist'),
+          contentBase: outputPath,
         },
 
         mode: 'development',
+
+        output: {
+          filename: `[name].js`,
+          path: outputPath,
+        },
 
         resolve: {
           extensions: ['.ts', '.tsx', '.js'],
@@ -221,32 +303,55 @@ module.exports = {
         },
 
         plugins: [
-          // TODO: will investigate why this doesn't work on mac
-          // new WebpackNotifierPlugin(),
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
           ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
         ],
       },
       customConfig,
     );
 
-    if (!config.entry) {
-      // Handle packages which have a legacy demo app in the examples package
-      const packageName = path.basename(process.cwd());
-      const demoEntryInExamples = path.resolve(
-        __dirname,
-        '../../packages/react-examples/src',
-        packageName,
-        'demo/index.tsx',
-      );
-      if (fs.existsSync(demoEntryInExamples)) {
-        config.entry = demoEntryInExamples;
-      }
-    }
-
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
+  },
+
+  /**
+   * Create a serve config for a package with a legacy demo app in the examples package at
+   * `packages/react-examples/src/some-package/demo/index.tsx`.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * @returns {WebpackServeConfig}
+   */
+  createLegacyDemoAppConfig() {
+    const packageName = path.basename(process.cwd());
+
+    const reactExamples = path.join(gitRoot, 'packages/react-examples');
+    const demoEntryInExamples = path.join(reactExamples, 'src', packageName, 'demo/index.tsx');
+
+    if (!fs.existsSync(demoEntryInExamples)) {
+      throw new Error(`${packageName} does not have a legacy demo app (expected location: ${demoEntryInExamples})`);
+    }
+
+    return module.exports.createServeConfig({
+      entry: {
+        'demo-app': demoEntryInExamples,
+      },
+
+      output: {
+        path: path.join(process.cwd(), 'dist/demo'),
+        filename: 'demo-app.js',
+      },
+
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+
+      resolve: {
+        // Use the aliases for react-examples since the examples and demo may depend on some things
+        // that the package itself doesn't (and it will include the aliases for all the package's deps)
+        alias: getResolveAlias(false /*useLib*/, reactExamples),
+      },
+    });
   },
 };
 

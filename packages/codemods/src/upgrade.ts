@@ -4,11 +4,18 @@ import { Logger } from './modRunner/logger';
 import { Project } from 'ts-morph';
 // Injection point for logger so that it can easily be replaced.
 const logger: Logger = console;
-export function upgrade(options: CommandParserResult) {
+
+interface UpgradeFunctions {
+  getTsConfigs: () => string[];
+  saveSync: (file: { saveSync: () => void }) => void;
+  saveAsync: (project: { save: () => void }) => void;
+}
+
+export function _upgradeInternal(options: CommandParserResult, fns: UpgradeFunctions) {
   const mods = getEnabledMods(logger).filter(options.modsFilter);
 
   logger.log('getting configs');
-  const configs = getTsConfigs();
+  const configs = fns.getTsConfigs();
 
   if (options.saveSync) {
     logger.log('Saving files synchronously');
@@ -20,24 +27,39 @@ export function upgrade(options: CommandParserResult) {
     try {
       const files = project.getSourceFiles();
       runMods(mods, files, result => {
-        if (!result.resultList.some(v => v.status === 'error')) {
-          if (options.saveSync) {
-            result.file.saveSync();
-          }
-        } else {
+        const [okays, errors] = result.resultList;
+
+        if (errors.length > 0) {
           error = true;
+          logger.error(`File ${result.file.getBaseName()} has had the following mods error: `);
+          errors.forEach(v => {
+            logger.error('name: ', v.modName, 'errorData: ', v);
+          });
         }
+
         logger.log(`File ${result.file.getBaseName()} has had the following mods run: `);
-        result.resultList.forEach(v => {
-          logger.log('name: ', v.modName, 'result: ', v.status, 'logdata: ', v.logs);
+        okays.forEach(v => {
+          logger.log('name: ', v.modName, 'logdata: ', v.logs);
         });
+        if (!error && options.saveSync) {
+          logger.log(`Saving file: ${result.file.getBaseName()}`);
+          fns.saveSync(result.file);
+        }
       });
     } catch (e) {
       logger.error(e);
       error = true;
     }
     if (!error && !options.saveSync) {
-      project.save();
+      fns.saveAsync(project);
     }
+  });
+}
+
+export function upgrade(options: CommandParserResult) {
+  _upgradeInternal(options, {
+    saveAsync: pr => pr.save(),
+    saveSync: file => file.saveSync(),
+    getTsConfigs: getTsConfigs,
   });
 }

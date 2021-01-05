@@ -1,9 +1,7 @@
 export * from './ActivityItem';
 export * from './Autofill';
 export * from './Announced';
-export * from './Button';
 export * from './ButtonGrid';
-export * from './Calendar';
 export * from './Callout';
 export * from './Check';
 export * from './ChoiceGroup';
@@ -13,7 +11,6 @@ export * from './Color';
 export * from './ColorPicker';
 export * from './CommandBar';
 export * from './ContextualMenu';
-export * from './DatePicker';
 export * from './Dialog';
 export * from './Divider';
 export * from './DragDrop';
@@ -68,8 +65,10 @@ export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './Text';
 export * from './TextField';
+export * from './Theme';
 export * from './ThemeGenerator';
 export * from './Tooltip';
 export * from './Utilities';
+export * from './WindowProvider';
 
 import './version';

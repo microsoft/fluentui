@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { FloatingPeoplePickerTypesExample } from './FloatingPeoplePicker.Basic.Example';
+import { FloatingPeoplePickerTypesSelectableFooterExample } from './FloatingPeoplePicker.SelectableFooter.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
 const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/FloatingPeoplePicker/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerSelectableFooterExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/FloatingPeoplePicker/FloatingPeoplePicker.SelectableFooter.Example.tsx') as string;
 
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
   componentName: 'FloatingPeoplePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/FloatingPeoplePicker',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/FloatingPeoplePicker',
   examples: [
     {
       title: 'Floating People Picker',
       code: FloatingPeoplePickerBasicExampleCode,
       view: <FloatingPeoplePickerTypesExample />,
+    },
+    {
+      title: 'Floating People Picker',
+      code: FloatingPeoplePickerSelectableFooterExampleCode,
+      view: <FloatingPeoplePickerTypesSelectableFooterExample />,
     },
   ],
   propertiesTablesSources: [

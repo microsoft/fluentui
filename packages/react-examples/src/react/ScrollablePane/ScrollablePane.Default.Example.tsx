@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { lorem } from '@uifabric/example-data';
+import { lorem } from '@fluentui/example-data';
 import { ScrollablePane, IScrollablePaneStyles } from '@fluentui/react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
 

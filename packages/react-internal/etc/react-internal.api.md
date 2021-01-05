@@ -4,51 +4,44 @@
 
 ```ts
 
-import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { EventGroup } from '@uifabric/utilities';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-import { IBaseProps } from '@uifabric/utilities';
-import { IComponent } from '@uifabric/foundation';
-import { IComponentAs } from '@uifabric/utilities';
-import { IComponentStyles } from '@uifabric/foundation';
-import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { EventGroup } from '@fluentui/utilities';
+import { IBaseProps } from '@fluentui/utilities';
+import { IComponent } from '@fluentui/foundation-legacy';
+import { IComponentAs } from '@fluentui/utilities';
+import { IComponentStyles } from '@fluentui/foundation-legacy';
+import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IFontStyles } from '@uifabric/styling';
-import { IHTMLSlot } from '@uifabric/foundation';
-import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
-import { IRawStyle } from '@uifabric/styling';
-import { IRectangle } from '@uifabric/utilities';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderComponent } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
-import { ISelection } from '@uifabric/utilities';
-import { ISelectionOptions } from '@uifabric/utilities';
-import { ISlotProp } from '@uifabric/foundation';
-import { ISlottableProps } from '@uifabric/foundation';
-import { IStyle } from '@uifabric/styling';
-import { IStyleableComponentProps } from '@uifabric/foundation';
-import { IStyleFunction } from '@uifabric/utilities';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
-import { KeyCodes } from '@uifabric/utilities';
-import { Point } from '@uifabric/utilities';
+import { IFontStyles } from '@fluentui/style-utilities';
+import { IHTMLSlot } from '@fluentui/foundation-legacy';
+import { IObjectWithKey } from '@fluentui/utilities';
+import { IPoint } from '@fluentui/utilities';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
+import { IRawStyle } from '@fluentui/style-utilities';
+import { IRectangle } from '@fluentui/utilities';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderComponent } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
+import { ISelection } from '@fluentui/utilities';
+import { ISelectionOptions } from '@fluentui/utilities';
+import { ISlotProp } from '@fluentui/foundation-legacy';
+import { ISlottableProps } from '@fluentui/foundation-legacy';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import { IStyleFunction } from '@fluentui/utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ITheme } from '@fluentui/style-utilities';
+import { KeyCodes } from '@fluentui/utilities';
+import { Point } from '@fluentui/utilities';
 import * as React from 'react';
-import { Rectangle } from '@uifabric/utilities';
-import { Selection } from '@uifabric/utilities';
-import { SELECTION_CHANGE } from '@uifabric/utilities';
-import { SelectionDirection } from '@uifabric/utilities';
-import { SelectionMode } from '@uifabric/utilities';
-import { Target } from '@uifabric/react-hooks';
-
-// @public (undocumented)
-export class ActionButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+import { ReactNode } from 'react';
+import { Rectangle } from '@fluentui/utilities';
+import { Selection } from '@fluentui/utilities';
+import { SELECTION_CHANGE } from '@fluentui/utilities';
+import { SelectionDirection } from '@fluentui/utilities';
+import { SelectionMode } from '@fluentui/utilities';
+import { Target } from '@fluentui/react-hooks';
 
 // @public (undocumented)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
@@ -81,7 +74,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    readonly cursorLocation: number | null;
+    get cursorLocation(): number | null;
     // (undocumented)
     static defaultProps: {
         enableAutofillOnKeyPress: number[];
@@ -89,45 +82,20 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // (undocumented)
     focus(): void;
     // (undocumented)
-    readonly inputElement: HTMLInputElement | null;
+    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
     // (undocumented)
-    readonly isValueSelected: boolean;
+    get inputElement(): HTMLInputElement | null;
+    // (undocumented)
+    get isValueSelected(): boolean;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    readonly selectionEnd: number | null;
+    get selectionEnd(): number | null;
     // (undocumented)
-    readonly selectionStart: number | null;
+    get selectionStart(): number | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
-    // (undocumented)
-    readonly value: string;
-    }
-
-// @public @deprecated (undocumented)
-export class BaseAutoFill extends Autofill {
+    get value(): string;
 }
-
-// @public (undocumented)
-export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
-    constructor(props: IBaseButtonProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Partial<IBaseButtonProps>;
-    // (undocumented)
-    dismissMenu(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    openMenu(shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -145,17 +113,17 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
     // (undocumented)
-    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    protected get floatingPickerProps(): IBaseFloatingPickerProps<T>;
     // (undocumented)
     focus(): void;
     // (undocumented)
-    readonly highlightedItems: T[];
+    get highlightedItems(): T[];
     // (undocumented)
     protected input: React.RefObject<Autofill>;
     // (undocumented)
-    readonly inputElement: HTMLInputElement | null;
+    get inputElement(): HTMLInputElement | null;
     // (undocumented)
-    readonly items: any;
+    get items(): any;
     // (undocumented)
     protected onBackspace: (ev: React.KeyboardEvent<HTMLElement>) => void;
     // (undocumented)
@@ -185,11 +153,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
     // (undocumented)
-    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    protected get selectedItemsListProps(): IBaseSelectedItemsListProps<T>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
 }
 
 // @public (undocumented)
@@ -210,17 +176,17 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected currentPromise: PromiseLike<T[]>;
     // (undocumented)
-    readonly currentSelectedSuggestionIndex: number;
+    get currentSelectedSuggestionIndex(): number;
     // (undocumented)
     forceResolveSuggestion(): void;
     // (undocumented)
     hidePicker: () => void;
     // (undocumented)
-    readonly inputText: string;
+    get inputText(): string;
     // (undocumented)
     protected isComponentMounted: boolean;
     // (undocumented)
-    readonly isSuggestionsShown: boolean;
+    get isSuggestionsShown(): boolean;
     // (undocumented)
     protected onChange(item: T): void;
     // (undocumented)
@@ -244,15 +210,13 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     showPicker: (updateValue?: boolean) => void;
     // (undocumented)
-    readonly suggestions: any[];
+    get suggestions(): any[];
     // (undocumented)
     protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
     // (undocumented)
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsStore<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     updateSuggestions(suggestions: T[], forceUpdate?: boolean): void;
     // (undocumented)
@@ -313,7 +277,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    readonly items: T[];
+    get items(): T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
     // (undocumented)
@@ -394,13 +358,19 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
     protected copyItems(items: T[]): void;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
     highlightedItems(): T[];
     // (undocumented)
-    readonly items: T[];
+    get items(): T[];
     // (undocumented)
     protected onChange(items?: T[]): void;
     // (undocumented)
@@ -426,11 +396,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void;
+    protected get selection(): Selection;
     // (undocumented)
     unselectAll(): void;
     updateItems(items: T[], focusIndex?: number): void;
@@ -449,66 +415,20 @@ export enum BaseSlots {
 // @public
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
 
-// @public @deprecated
-export class Button extends React.Component<IButtonProps, {}> {
-    constructor(props: IButtonProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 // @public (undocumented)
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
-export class ButtonGridCell<T, P extends IButtonGridCellProps<T>> extends React.Component<P, {}> {
-    // (undocumented)
-    static defaultProps: {
-        disabled: boolean;
-    };
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
 
 // @public (undocumented)
-export enum ButtonType {
-    // (undocumented)
-    command = 4,
-    // (undocumented)
-    compound = 3,
-    // (undocumented)
-    default = 6,
-    // (undocumented)
-    hero = 2,
-    // (undocumented)
-    icon = 5,
-    // (undocumented)
-    normal = 0,
-    // (undocumented)
-    primary = 1
-}
+export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
-export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
-    constructor(props: ICalendarProps);
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: ICalendarProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
-}
+export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -523,16 +443,7 @@ export const CheckBase: React.FunctionComponent<ICheckProps>;
 export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
-export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
-    constructor(props: IChoiceGroupProps);
-    readonly checkedOption: IChoiceGroupOption | undefined;
-    // (undocumented)
-    componentDidUpdate(prevProps: IChoiceGroupProps, prevState: IChoiceGroupState): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
 export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps>;
@@ -547,25 +458,7 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
-    constructor(props: ICoachmarkProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Partial<ICoachmarkProps>;
-    // (undocumented)
-    dismiss: (ev?: Event | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void;
-}
+export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps>;
 
 // @public (undocumented)
 export const ColorPicker: React.FunctionComponent<IColorPickerProps>;
@@ -574,7 +467,7 @@ export const ColorPicker: React.FunctionComponent<IColorPickerProps>;
 export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
-    readonly color: IColor;
+    get color(): IColor;
     // (undocumented)
     componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void;
     // (undocumented)
@@ -587,12 +480,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-    // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
 export const CommandBar: React.FunctionComponent<ICommandBarProps>;
@@ -611,15 +499,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     }
 
 // @public (undocumented)
-export class CommandBarButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export const CommandButton: typeof ActionButton;
-
-// @public (undocumented)
 export const CompactPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
 // @public
@@ -631,12 +510,6 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
     };
 }
 
-// @public (undocumented)
-export class CompoundButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 // @public
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void;
 
@@ -644,25 +517,7 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: str
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-    constructor(props: IContextualMenuProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IContextualMenuProps;
-    // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
-    }
+export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps>;
 
 // @public
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
@@ -721,41 +576,8 @@ export const DATAKTP_EXECUTE_TARGET = "data-ktp-execute-target";
 // @public (undocumented)
 export const DATAKTP_TARGET = "data-ktp-target";
 
-// @public
-export const DatePicker: React.FunctionComponent<IDatePickerProps>;
-
-// @public (undocumented)
-export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
-    constructor(props: IDatePickerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
-    // (undocumented)
-    static defaultProps: IDatePickerProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    reset(): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
-    }
-
-export { DateRangeType }
-
-export { DayOfWeek }
-
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
-
-// @public (undocumented)
-export class DefaultButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public (undocumented)
 export const Dialog: React.FunctionComponent<IDialogProps>;
@@ -834,12 +656,6 @@ export class DragDropHelper implements IDragDropHelper {
 }
 
 // @public (undocumented)
-export enum ElementType {
-    anchor = 1,
-    button = 0
-}
-
-// @public (undocumented)
 export const ExpandingCard: React.FunctionComponent<IExpandingCardProps>;
 
 // @public (undocumented)
@@ -878,18 +694,11 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     render(): JSX.Element;
 }
 
-// @public (undocumented)
-export const Fabric: import("react").ForwardRefExoticComponent<IFabricProps & import("react").RefAttributes<FabricBase>>;
+// @public @deprecated (undocumented)
+export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
-export class FabricBase extends React.Component<IFabricProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const FabricBase: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export enum FabricSlots {
@@ -953,8 +762,6 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     render(): JSX.Element;
     }
 
-export { FirstWeekOfYear }
-
 // @public (undocumented)
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
     // (undocumented)
@@ -965,21 +772,9 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
-    constructor(props: IFocusTrapZoneProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
-    }
+export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
+    focusStack: string[];
+};
 
 // @public
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
@@ -1049,16 +844,7 @@ export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText'
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
-
-// @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
-// @public @deprecated (undocumented)
-export const Grid: React.FunctionComponent<IButtonGridProps>;
-
-// @public @deprecated (undocumented)
-export const GridCell: typeof ButtonGridCell;
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -1198,40 +984,19 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string, composing: boolean) => string;
+    onInputChange?: (value: string, composing: boolean) => string | void;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
+    // @deprecated
     updateValueInWillReceiveProps?: () => string | null;
 }
 
 // @public (undocumented)
 export interface IAutofillState {
     // (undocumented)
-    displayValue?: string;
-}
-
-// @public @deprecated
-export interface IBaseAutoFill extends IAutofill {
-}
-
-// @public @deprecated
-export interface IBaseAutoFillProps extends IAutofillProps {
-}
-
-// @public (undocumented)
-export interface IBaseButtonProps extends IButtonProps {
-    // (undocumented)
-    baseClassName?: string;
-    // (undocumented)
-    variantClassName?: string;
-}
-
-// @public (undocumented)
-export interface IBaseButtonState {
-    // (undocumented)
-    menuHidden: boolean;
+    inputValue: string;
 }
 
 // @public (undocumented)
@@ -1271,10 +1036,6 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
-    // (undocumented)
-    selectedItems: T[] | null;
-    // (undocumented)
-    suggestionItems: T[] | null;
 }
 
 // @public (undocumented)
@@ -1340,6 +1101,7 @@ export interface IBasePicker<T> {
 
 // @public
 export interface IBasePickerProps<T> extends React.Props<any> {
+    ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
@@ -1439,7 +1201,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
     // @deprecated
     onItemDeleted?: (deletedItem: T) => void;
     onItemsDeleted?: (deletedItems: T[]) => void;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
     onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
     removeButtonAriaLabel?: string;
     selectedItems?: T[];
@@ -1447,16 +1209,9 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 }
 
 // @public (undocumented)
-export interface IBaseSelectedItemsListState<T = any> {
+export interface IBaseSelectedItemsListState<T> {
     // (undocumented)
     items: T[];
-}
-
-// @public (undocumented)
-export interface IButton {
-    dismissMenu: () => void;
-    focus: () => void;
-    openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
 // @public (undocumented)
@@ -1489,7 +1244,7 @@ export interface IButtonGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement>, React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     columnCount: number;
@@ -1522,205 +1277,6 @@ export interface IButtonGridStyles {
 }
 
 // @public (undocumented)
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
-    allowDisabledFocus?: boolean;
-    ariaDescription?: string;
-    ariaHidden?: boolean;
-    ariaLabel?: string;
-    // @deprecated
-    buttonType?: ButtonType;
-    checked?: boolean;
-    className?: string;
-    componentRef?: IRefObject<IButton>;
-    data?: any;
-    defaultRender?: any;
-    // @deprecated
-    description?: IStyle;
-    disabled?: boolean;
-    // @deprecated
-    elementRef?: React.Ref<HTMLElement>;
-    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
-    getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
-    href?: string;
-    iconProps?: IIconProps;
-    keytipProps?: IKeytipProps;
-    menuAs?: IComponentAs<IContextualMenuProps>;
-    menuIconProps?: IIconProps;
-    menuProps?: IContextualMenuProps;
-    menuTriggerKeyCode?: KeyCodes | null;
-    onAfterMenuDismiss?: () => void;
-    onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
-    onRenderAriaDescription?: IRenderFunction<IButtonProps>;
-    onRenderChildren?: IRenderFunction<IButtonProps>;
-    onRenderDescription?: IRenderFunction<IButtonProps>;
-    onRenderIcon?: IRenderFunction<IButtonProps>;
-    // @deprecated
-    onRenderMenu?: IRenderFunction<IContextualMenuProps>;
-    onRenderMenuIcon?: IRenderFunction<IButtonProps>;
-    onRenderText?: IRenderFunction<IButtonProps>;
-    persistMenu?: boolean;
-    primary?: boolean;
-    primaryActionButtonProps?: IButtonProps;
-    primaryDisabled?: boolean;
-    // @deprecated
-    renderPersistedMenuHiddenOnMount?: boolean;
-    // @deprecated
-    rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
-    secondaryText?: string;
-    split?: boolean;
-    splitButtonAriaLabel?: string;
-    splitButtonMenuProps?: IButtonProps;
-    styles?: IButtonStyles;
-    text?: string;
-    theme?: ITheme;
-    toggle?: boolean;
-    // @deprecated
-    toggled?: boolean;
-    uniqueId?: string | number;
-}
-
-// @public (undocumented)
-export interface IButtonStyles {
-    description?: IStyle;
-    descriptionChecked?: IStyle;
-    descriptionDisabled?: IStyle;
-    descriptionHovered?: IStyle;
-    descriptionPressed?: IStyle;
-    flexContainer?: IStyle;
-    icon?: IStyle;
-    iconChecked?: IStyle;
-    iconDisabled?: IStyle;
-    iconExpanded?: IStyle;
-    iconExpandedHovered?: IStyle;
-    iconHovered?: IStyle;
-    iconPressed?: IStyle;
-    label?: IStyle;
-    labelChecked?: IStyle;
-    labelDisabled?: IStyle;
-    labelHovered?: IStyle;
-    menuIcon?: IStyle;
-    menuIconChecked?: IStyle;
-    menuIconDisabled?: IStyle;
-    menuIconExpanded?: IStyle;
-    menuIconExpandedHovered?: IStyle;
-    menuIconHovered?: IStyle;
-    menuIconPressed?: IStyle;
-    root?: IStyle;
-    rootChecked?: IStyle;
-    rootCheckedDisabled?: IStyle;
-    rootCheckedHovered?: IStyle;
-    rootCheckedPressed?: IStyle;
-    rootDisabled?: IStyle;
-    rootExpanded?: IStyle;
-    rootExpandedHovered?: IStyle;
-    rootFocused?: IStyle;
-    rootHasMenu?: IStyle;
-    rootHovered?: IStyle;
-    rootPressed?: IStyle;
-    screenReaderText?: IStyle;
-    secondaryText?: IStyle;
-    splitButtonContainer?: IStyle;
-    splitButtonContainerChecked?: IStyle;
-    splitButtonContainerCheckedHovered?: IStyle;
-    splitButtonContainerDisabled?: IStyle;
-    splitButtonContainerFocused?: IStyle;
-    splitButtonContainerHovered?: IStyle;
-    splitButtonDivider?: IStyle;
-    splitButtonDividerDisabled?: IStyle;
-    splitButtonFlexContainer?: IStyle;
-    splitButtonMenuButton?: IStyle;
-    splitButtonMenuButtonChecked?: IStyle;
-    splitButtonMenuButtonDisabled?: IStyle;
-    splitButtonMenuButtonExpanded?: IStyle;
-    splitButtonMenuIcon?: IStyle;
-    splitButtonMenuIconDisabled?: IStyle;
-    textContainer?: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalendar {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface ICalendarFormatDateCallbacks {
-    formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatYear: (date: Date) => string;
-}
-
-// @public (undocumented)
-export interface ICalendarIconStrings {
-    closeIcon?: string;
-    leftNavigation?: string;
-    rightNavigation?: string;
-}
-
-// @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    autoNavigateOnSelection?: boolean;
-    className?: string;
-    componentRef?: IRefObject<ICalendar>;
-    dateRangeType?: DateRangeType;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
-    navigationIcons?: ICalendarIconStrings;
-    onDismiss?: () => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
-    restrictedDates?: Date[];
-    selectDateOnClick?: boolean;
-    // @deprecated
-    shouldFocusOnMount?: boolean;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showSixWeeksByDefault?: boolean;
-    showWeekNumbers?: boolean;
-    strings: ICalendarStrings | null;
-    today?: Date;
-    value?: Date;
-    workWeekDays?: DayOfWeek[];
-    yearPickerHidden?: boolean;
-}
-
-// @public (undocumented)
-export interface ICalendarState {
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    navigatedDayDate?: Date;
-    navigatedMonthDate?: Date;
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface ICalendarStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
-    monthPickerHeaderAriaLabel?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    nextYearRangeAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    prevYearRangeAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
-    weekNumberFormatString?: string;
-    yearPickerHeaderAriaLabel?: string;
-}
-
-// @public (undocumented)
 export interface ICalloutBeakPositionedInfo extends IPositionedData {
     // (undocumented)
     closestEdge: RectangleEdge;
@@ -1731,6 +1287,7 @@ export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     overflowYHidden?: boolean;
@@ -1760,7 +1317,7 @@ export interface ICalloutPositionProps extends IPositionProps {
 }
 
 // @public (undocumented)
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -1770,13 +1327,13 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
-    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -1785,14 +1342,10 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     isBeakVisible?: boolean;
     layerProps?: ILayerProps;
     minPagePadding?: number;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     preventDismissOnEvent?: (ev: Event | React.FocusEvent | React.KeyboardEvent | React.MouseEvent) => boolean;
     // @deprecated
@@ -1814,7 +1367,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface ICheckProps {
+export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
@@ -1847,10 +1400,8 @@ export interface IChoiceGroup {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
     ariaLabel?: string;
-    // @deprecated
-    checked?: boolean;
     disabled?: boolean;
     iconProps?: IIconProps;
     id?: string;
@@ -1862,21 +1413,24 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     imageSrc?: string;
     key: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+    onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+    checked?: boolean;
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
+    itemKey: string;
+    key?: string;
     name?: string;
-    onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
-    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
-    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+    onBlur?: (ev?: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -1919,24 +1473,16 @@ export interface IChoiceGroupOptionStyles {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IChoiceGroup>;
     defaultSelectedKey?: string | number;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
-    // @deprecated
-    onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
     options?: IChoiceGroupOption[];
     selectedKey?: string | number;
     styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IChoiceGroupState {
-    keyChecked?: string | number;
-    keyFocused?: string | number;
 }
 
 // @public (undocumented)
@@ -1951,12 +1497,11 @@ export interface IChoiceGroupStyleProps {
 
 // @public (undocumented)
 export interface IChoiceGroupStyles {
-    // @deprecated
-    applicationRole?: IStyle;
     // (undocumented)
     flexContainer?: IStyle;
     // (undocumented)
     label?: IStyle;
+    // (undocumented)
     root?: IStyle;
 }
 
@@ -1967,11 +1512,11 @@ export interface ICircle extends IShimmerElement {
 
 // @public (undocumented)
 export interface ICoachmark {
-    dismiss?: (ev?: any) => void;
+    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 }
 
 // @public
-export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
+export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     ariaAlertText?: string;
     ariaDescribedBy?: string;
     ariaDescribedByText?: string;
@@ -1983,6 +1528,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     beakHeight?: number;
     // @deprecated
     beakWidth?: number;
+    children?: React.ReactNode;
     className?: string;
     // @deprecated
     collapsed?: boolean;
@@ -1997,7 +1543,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     mouseProximityOffset?: number;
     onAnimationOpenEnd?: () => void;
     onAnimationOpenStart?: () => void;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onMouseMove?: (e: MouseEvent) => void;
     persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
@@ -2012,24 +1558,6 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     width?: number;
 }
 
-// @public (undocumented)
-export interface ICoachmarkState {
-    alertText?: string;
-    beakBottom?: string;
-    beakLeft?: string;
-    beakRight?: string;
-    beakTop?: string;
-    entityInnerHostRect: IEntityRect;
-    isBeaconAnimating: boolean;
-    isCollapsed: boolean;
-    isMeasured: boolean;
-    isMeasuring: boolean;
-    isMouseInProximity: boolean;
-    targetAlignment?: RectangleEdge;
-    targetPosition?: RectangleEdge;
-    transformOrigin?: string;
-}
-
 // @public
 export interface ICoachmarkStyleProps {
     beaconColorOne?: string;
@@ -2042,11 +1570,7 @@ export interface ICoachmarkStyleProps {
     entityHostHeight?: string;
     entityHostWidth?: string;
     height?: string;
-    // @deprecated
-    isBeaconAnimating: boolean;
     isCollapsed: boolean;
-    // @deprecated
-    isMeasured: boolean;
     isMeasuring: boolean;
     theme?: ITheme;
     transformOrigin?: string;
@@ -2079,7 +1603,7 @@ export interface IColor extends IRGB, IHSV {
 
 // @public (undocumented)
 export interface IColorCellProps {
-    color?: string;
+    color: string;
     id: string;
     index?: number;
     label?: string;
@@ -2094,7 +1618,7 @@ export interface IColorPicker {
 export interface IColorPickerGridCellProps {
     borderWidth?: number;
     circle?: boolean;
-    color?: string;
+    color: string;
     disabled?: boolean;
     height?: number;
     // @deprecated
@@ -2304,6 +1828,7 @@ export interface ICommandBarData {
 
 // @public
 export interface ICommandBarItemProps extends IContextualMenuItem {
+    // Warning: (ae-forgotten-export) The symbol "IButtonStyles" needs to be exported by the entry point index.d.ts
     buttonStyles?: IButtonStyles;
     cacheKey?: string;
     commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
@@ -2326,6 +1851,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     onGrowData?: (data: ICommandBarData) => ICommandBarData | undefined;
     onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
+    // Warning: (ae-forgotten-export) The symbol "IButtonProps" needs to be exported by the entry point index.d.ts
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
     shiftOnReduce?: boolean;
@@ -2362,18 +1888,30 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 }
 
 // @public (undocumented)
-export class IconButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
+export interface IContextualMenu {
 }
 
-// @public (undocumented)
-export interface IContextualMenu {
+// @public @deprecated (undocumented)
+export interface IContextualMenuClassNames {
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    list: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    subComponentStyles?: IContextualMenuSubComponentStyles;
+    // (undocumented)
+    title: string;
 }
 
 // @public (undocumented)
 export interface IContextualMenuItem {
     [propertyName: string]: any;
+    ariaDescribedBy?: string;
+    ariaDescription?: string;
     ariaLabel?: string;
     canCheck?: boolean;
     checked?: boolean;
@@ -2382,8 +1920,6 @@ export interface IContextualMenuItem {
     customOnRenderListLength?: number;
     data?: any;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2488,6 +2024,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
     linkContent: IStyle;
     linkContentMenu: IStyle;
     root: IStyle;
+    screenReaderText: IStyle;
     secondaryText: IStyle;
     splitContainer: IStyle;
     splitMenu: IStyle;
@@ -2514,7 +2051,7 @@ export interface IContextualMenuListProps {
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
@@ -2531,8 +2068,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
-    // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -2541,17 +2076,13 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -2586,11 +2117,6 @@ export interface IContextualMenuState {
     // (undocumented)
     contextualMenuTarget?: Element;
     // (undocumented)
-    dismissedMenuItemKey?: string;
-    expandedByMouseClick?: boolean;
-    // (undocumented)
-    expandedMenuItemKey?: string;
-    // (undocumented)
     positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
@@ -2598,8 +2124,6 @@ export interface IContextualMenuState {
     submenuDirection?: DirectionalHint;
     // (undocumented)
     subMenuId?: string;
-    // (undocumented)
-    submenuTarget?: Element;
 }
 
 // @public (undocumented)
@@ -2636,100 +2160,6 @@ export enum IconType {
     Image = 100001,
     // @deprecated
     image = 1
-}
-
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-}
-
-// @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    allowTextInput?: boolean;
-    ariaLabel?: string;
-    borderless?: boolean;
-    calendarAs?: IComponentAs<ICalendarProps>;
-    calendarProps?: ICalendarProps;
-    calloutProps?: ICalloutProps;
-    className?: string;
-    componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    disableAutoFocus?: boolean;
-    disabled?: boolean;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    formatDate?: (date?: Date) => string;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    initialPickerDate?: Date;
-    isMonthPickerVisible?: boolean;
-    isRequired?: boolean;
-    label?: string;
-    maxDate?: Date;
-    minDate?: Date;
-    onAfterMenuDismiss?: () => void;
-    onSelectDate?: (date: Date | null | undefined) => void;
-    parseDateFromString?: (dateStr: string) => Date | null;
-    pickerAriaLabel?: string;
-    placeholder?: string;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showWeekNumbers?: boolean;
-    strings?: IDatePickerStrings;
-    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
-    tabIndex?: number;
-    textField?: ITextFieldProps;
-    theme?: ITheme;
-    today?: Date;
-    underlined?: boolean;
-    value?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerState {
-    // (undocumented)
-    errorMessage?: string;
-    // (undocumented)
-    formattedDate?: string;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerStrings extends ICalendarStrings {
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-}
-
-// @public (undocumented)
-export interface IDatePickerStyleProps {
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    label?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IDatePickerStyles {
-    // (undocumented)
-    callout: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    root: IStyle;
-    // (undocumented)
-    textField: IStyle;
-    // (undocumented)
-    wrapper?: IStyle;
 }
 
 // @public (undocumented)
@@ -2864,30 +2294,6 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     topButtonsProps?: IButtonProps[];
     // @deprecated
     type?: DialogType;
-}
-
-// @public (undocumented)
-export interface IDialogState {
-    // (undocumented)
-    hasBeenOpened?: boolean;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isInKeyboardMoveMode?: boolean;
-    // (undocumented)
-    isModalMenuOpen?: boolean;
-    // (undocumented)
-    isOpen?: boolean;
-    // (undocumented)
-    isVisible?: boolean;
-    // (undocumented)
-    isVisibleClose?: boolean;
-    // (undocumented)
-    modalRectangleTop?: number;
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
 }
 
 // @public (undocumented)
@@ -3034,9 +2440,9 @@ export interface IElementPositionInfo extends IElementPosition {
 // @public
 export interface IEntityRect {
     // (undocumented)
-    height: number;
+    height?: number;
     // (undocumented)
-    width: number;
+    width?: number;
 }
 
 // @public (undocumented)
@@ -3102,7 +2508,7 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 }
 
 // @public (undocumented)
-export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     applyTheme?: boolean;
     applyThemeToBody?: boolean;
     as?: React.ElementType;
@@ -3209,7 +2615,7 @@ export interface IFocusTrapZone {
 }
 
 // @public (undocumented)
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
@@ -3243,26 +2649,6 @@ export interface IGenericItem {
     primaryText: string;
     // (undocumented)
     ValidationState: ValidationState;
-}
-
-// @public @deprecated (undocumented)
-export interface IGrid extends IButtonGrid {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridCellProps<T> extends IButtonGridCellProps<T> {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridProps extends IButtonGridProps {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridStyleProps extends IButtonGridStyleProps {
-}
-
-// @public @deprecated (undocumented)
-export interface IGridStyles extends IButtonGridStyles {
 }
 
 // @public (undocumented)
@@ -3396,7 +2782,7 @@ export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
     // @deprecated
@@ -3592,13 +2978,17 @@ export interface ILayer {
 }
 
 // @public (undocumented)
-export type ILayerBaseState = {
-    hostId?: string;
-    layerElement?: HTMLElement;
-};
+export interface ILayerHost {
+}
 
 // @public (undocumented)
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
@@ -3698,19 +3088,7 @@ export interface IListState<T = any> {
 export const Image: React.FunctionComponent<IImageProps>;
 
 // @public (undocumented)
-export class ImageBase extends React.Component<IImageProps, IImageState> {
-    constructor(props: IImageProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void;
-    // (undocumented)
-    static defaultProps: {
-        shouldFadeIn: boolean;
-    };
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void;
-}
+export const ImageBase: React.FunctionComponent<IImageProps>;
 
 // @public
 export enum ImageCoverStyle {
@@ -3777,8 +3155,14 @@ export interface IMarqueeSelectionStyles {
     root?: IStyle;
 }
 
+// @public (undocumented)
+export interface IMaskedTextField extends ITextField {
+    value: string | undefined;
+}
+
 // @public
-export interface IMaskedTextFieldProps extends ITextFieldProps {
+export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttributes<HTMLDivElement> {
+    componentRef?: IRefObject<IMaskedTextField>;
     mask?: string;
     maskChar?: string;
     maskFormat?: {
@@ -3786,10 +3170,36 @@ export interface IMaskedTextFieldProps extends ITextFieldProps {
     };
 }
 
-// @public
-export interface IMaskedTextFieldState {
-    displayValue: string;
-    maskCursorPosition?: number;
+// @public @deprecated (undocumented)
+export interface IMenuItemClassNames {
+    // (undocumented)
+    checkmarkIcon: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    item: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    linkContent: string;
+    // (undocumented)
+    linkContentMenu: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+    // (undocumented)
+    secondaryText: string;
+    // (undocumented)
+    splitContainer: string;
+    // (undocumented)
+    splitMenu: string;
+    // (undocumented)
+    splitPrimary: string;
+    // (undocumented)
+    subMenuIcon: string;
 }
 
 // @public (undocumented)
@@ -3808,7 +3218,7 @@ export interface IMessageBar {
 }
 
 // @public (undocumented)
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     actions?: JSX.Element;
     // @deprecated
     ariaLabel?: string;
@@ -3819,21 +3229,13 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
+    // Warning: (ae-forgotten-export) The symbol "BaseButton" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "Button" needs to be exported by the entry point index.d.ts
     onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
-}
-
-// @public (undocumented)
-export interface IMessageBarState {
-    // (undocumented)
-    expandSingleLine?: boolean;
-    // (undocumented)
-    labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)
@@ -3869,8 +3271,10 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
+    // (undocumented)
+    children?: React.ReactNode;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -3886,6 +3290,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     // @deprecated
     onLayerDidMount?: () => void;
     overlay?: IOverlayProps;
+    responsiveMode?: ResponsiveMode;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
@@ -3902,6 +3307,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     modalRectangleTop?: number;
     layerClassName?: string;
     isDefaultDragHandle?: boolean;
+    windowInnerHeight?: number;
 };
 
 // @public (undocumented)
@@ -4050,13 +3456,9 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
-    // @deprecated
-    doNotContainWithinFocusZone?: boolean;
-    // @deprecated
-    focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -4148,7 +3550,7 @@ export interface IPageSpecification {
 
 // @public (undocumented)
 export interface IPanel {
-    dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+    dismiss: (ev?: React.KeyboardEvent<HTMLElement> | KeyboardEvent) => void;
     open: () => void;
 }
 
@@ -4158,8 +3560,6 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
@@ -4187,7 +3587,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     isLightDismiss?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
     onOpen?: () => void;
@@ -4383,7 +3783,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
@@ -4426,14 +3826,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 }
 
 // @public (undocumented)
-export interface IPersonaState {
-    // (undocumented)
-    isImageError?: boolean;
-    // (undocumented)
-    isImageLoaded?: boolean;
-}
-
-// @public (undocumented)
 export interface IPersonaStyleProps {
     className?: string;
     coinSize?: number;
@@ -4472,6 +3864,7 @@ export type IPickerAriaIds = {
     selectedSuggestionAlert: string;
     selectedItems: string;
     suggestionList: string;
+    combobox: string;
 };
 
 // @public
@@ -4510,26 +3903,23 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 export { IPoint }
 
 // @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<Popup> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
-    onRestoreFocus?: (options: {
-        originalElement?: HTMLElement | Window;
-        containsFocus: boolean;
-        documentContainsFocus: boolean;
-    }) => void;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
+    onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
 }
 
-// @public (undocumented)
-export interface IPopupState {
-    // (undocumented)
-    needsVerticalScrollBar?: boolean;
+// @public
+export interface IPopupRestoreFocusParams {
+    containsFocus: boolean;
+    documentContainsFocus: boolean;
+    originalElement?: HTMLElement | Window;
 }
 
 // @public
@@ -4570,12 +3960,13 @@ export interface IPositioningContainer {
 }
 
 // @public (undocumented)
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     backgroundColor?: string;
     bounds?: IRectangle;
+    children?: ReactNode;
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;
@@ -4599,12 +3990,6 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
-}
-
-// @public (undocumented)
-export interface IPositioningContainerState {
-    heightOffset?: number;
-    positions?: IPositionedData;
 }
 
 // @public @deprecated (undocumented)
@@ -4666,24 +4051,24 @@ export interface IProgressIndicatorStyles {
 
 // @public (undocumented)
 export interface IRating {
+    rating: number;
 }
 
 // @public
-export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabelFormat?: string;
-    // @deprecated
-    ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    defaultRating?: number;
+    disabled?: boolean;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
     // @deprecated
     min?: number;
-    onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
-    // @deprecated (undocumented)
-    onChanged?: (rating: number) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
+    onRenderStar?: IRenderFunction<IRatingStarProps>;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
@@ -4693,9 +4078,17 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IRatingState {
+export interface IRatingStarProps {
     // (undocumented)
-    rating: number | null | undefined;
+    classNames: IProcessedStyleSet<IRatingStyles>;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    fillPercentage: number;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    starNum?: number;
 }
 
 // @public (undocumented)
@@ -4760,7 +4153,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -4872,12 +4265,11 @@ export interface ISearchBox {
 }
 
 // @public (undocumented)
-export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     clearButtonProps?: IButtonProps;
-    componentRef?: IRefObject<ISearchBox>;
-    // @deprecated
+    componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
@@ -4890,17 +4282,10 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     onEscape?: (ev?: any) => void;
     onSearch?: (newValue: any) => void;
     placeholder?: string;
+    role?: string;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
-    value?: string;
-}
-
-// @public (undocumented)
-export interface ISearchBoxState {
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
     value?: string;
 }
 
@@ -5021,6 +4406,7 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+    className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
     enableTouchInvocationTarget?: boolean;
@@ -5046,7 +4432,7 @@ export interface ISeparator {
 }
 
 // @public (undocumented)
-export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     alignContent?: 'start' | 'center' | 'end';
     styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
     theme?: ITheme;
@@ -5060,10 +4446,6 @@ export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pi
 export interface ISeparatorStyles {
     content: IStyle;
     root: IStyle;
-}
-
-// @public (undocumented)
-export interface IShimmer {
 }
 
 // @public (undocumented)
@@ -5194,11 +4576,9 @@ export interface IShimmerLineStyles {
 }
 
 // @public
-export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
-    // @deprecated (undocumented)
-    componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
@@ -5206,11 +4586,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
     theme?: ITheme;
     width?: number | string;
-}
-
-// @public (undocumented)
-export interface IShimmerState {
-    contentLoaded?: boolean;
 }
 
 // @public
@@ -5239,25 +4614,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonClassNames {
-    // (undocumented)
-    arrowBox: string;
-    // (undocumented)
-    icon: string;
-    // (undocumented)
-    input: string;
-    // (undocumented)
-    label: string;
-    // (undocumented)
-    labelWrapper: string;
-    // (undocumented)
-    root: string;
-    // (undocumented)
-    spinButtonWrapper: string;
-}
-
-// @public (undocumented)
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -5272,7 +4629,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     defaultValue?: string;
     disabled?: boolean;
     downArrowButtonStyles?: Partial<IButtonStyles>;
-    getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
     iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
@@ -5284,13 +4640,14 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onChange?: (event: React.SyntheticEvent<HTMLElement>, newValue?: string) => void;
     onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
-    styles?: Partial<ISpinButtonStyles>;
+    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
     upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -5298,35 +4655,30 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface ISpinButtonState {
+export interface ISpinButtonStyleProps {
+    // (undocumented)
+    className: string | undefined;
+    // (undocumented)
+    disabled: boolean;
+    // (undocumented)
     isFocused: boolean;
+    // (undocumented)
     keyboardSpinDirection: KeyboardSpinDirection;
-    value: string;
+    // (undocumented)
+    labelPosition: Position;
+    // (undocumented)
+    theme: ITheme;
 }
 
 // @public (undocumented)
 export interface ISpinButtonStyles {
     arrowButtonsContainer: IStyle;
-    arrowButtonsContainerDisabled: IStyle;
     icon: IStyle;
-    iconDisabled: IStyle;
     input: IStyle;
-    inputDisabled: IStyle;
-    inputTextSelected: IStyle;
     label: IStyle;
-    // @deprecated
-    labelDisabled: IStyle;
     labelWrapper: IStyle;
-    labelWrapperBottom: IStyle;
-    labelWrapperEnd: IStyle;
-    labelWrapperStart: IStyle;
-    labelWrapperTop: IStyle;
     root: IStyle;
     spinButtonWrapper: IStyle;
-    spinButtonWrapperDisabled: IStyle;
-    spinButtonWrapperFocused: IStyle;
-    spinButtonWrapperHovered: IStyle;
-    spinButtonWrapperTopBottom: IStyle;
 }
 
 // @public (undocumented)
@@ -5362,20 +4714,6 @@ export interface ISpinnerStyles {
     label?: IStyle;
     root?: IStyle;
     screenReaderText?: IStyle;
-}
-
-// @public (undocumented)
-export interface ISplitButtonClassNames {
-    // (undocumented)
-    divider?: string;
-    // (undocumented)
-    flexContainer?: string;
-    // (undocumented)
-    icon?: string;
-    // (undocumented)
-    root?: string;
-    // (undocumented)
-    splitButtonContainer?: string;
 }
 
 // @public (undocumented)
@@ -5678,7 +5016,7 @@ export interface ISuggestionsSubComponentStyles {
 export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
-export interface ISwatchColorPickerProps {
+export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     cellBorderWidth?: number;
@@ -5689,31 +5027,25 @@ export interface ISwatchColorPickerProps {
     className?: string;
     colorCells: IColorCellProps[];
     columnCount: number;
+    defaultSelectedId?: string | undefined;
     disabled?: boolean;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
+    // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
     onRenderColorCell?: IRenderFunction<IColorCellProps>;
-    // @deprecated (undocumented)
-    positionInSet?: number;
     selectedId?: string;
-    // @deprecated (undocumented)
-    setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ISwatchColorPickerState {
-    // (undocumented)
-    selectedIndex?: number;
 }
 
 // @public
@@ -5780,7 +5112,7 @@ export interface ITeachingBubble {
 }
 
 // @public
-export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
@@ -5803,12 +5135,6 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ITeachingBubbleState {
-    // (undocumented)
-    isTeachingBubbleVisible?: boolean;
 }
 
 // @public (undocumented)
@@ -5877,24 +5203,19 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     autoAdjustHeight?: boolean;
     autoComplete?: string;
     borderless?: boolean;
+    canRevealPassword?: boolean;
     className?: string;
     componentRef?: IRefObject<ITextField>;
     defaultValue?: string;
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLDivElement>;
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
-    // @deprecated (undocumented)
-    mask?: string;
-    // @deprecated (undocumented)
-    maskChar?: string;
-    // @deprecated (undocumented)
-    maskFormat?: {
-        [key: string]: RegExp;
-    };
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
@@ -5929,6 +5250,7 @@ export interface ITextFieldSnapshot {
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused?: boolean;
+    isRevealingPassword?: boolean;
     uncontrolledValue: string | undefined;
 }
 
@@ -5938,6 +5260,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
     hasIcon?: boolean;
     hasLabel?: boolean;
     focused?: boolean;
+    hasRevealButton?: boolean;
 };
 
 // @public (undocumented)
@@ -5948,6 +5271,9 @@ export interface ITextFieldStyles {
     fieldGroup: IStyle;
     icon: IStyle;
     prefix: IStyle;
+    revealButton: IStyle;
+    revealIcon: IStyle;
+    revealSpan: IStyle;
     root: IStyle;
     subComponentStyles: ITextFieldSubComponentStyles;
     suffix: IStyle;
@@ -6108,7 +5434,7 @@ export interface IVerticalDividerClassNames {
 }
 
 // @public
-export interface IVerticalDividerProps {
+export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
     // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -6267,33 +5593,10 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
 export const Layer: React.FunctionComponent<ILayerProps>;
 
 // @public (undocumented)
-export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
-    constructor(props: ILayerProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ILayerProps;
-    // (undocumented)
-    render(): React.ReactNode;
-    }
+export const LayerBase: React.FunctionComponent<ILayerProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class LayerHost extends React.Component<ILayerHostProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(): boolean;
-}
+export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
@@ -6319,7 +5622,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    readonly pageRefs: Readonly<Record<string, unknown>>;
+    get pageRefs(): Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -6343,37 +5646,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
 // @public (undocumented)
-export class MaskedTextField extends React.Component<IMaskedTextFieldProps, IMaskedTextFieldState> implements ITextField {
-    constructor(props: IMaskedTextFieldProps);
-    // (undocumented)
-    blur(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: IMaskedTextFieldProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    select(): void;
-    // (undocumented)
-    readonly selectionEnd: number | null;
-    // (undocumented)
-    readonly selectionStart: number | null;
-    // (undocumented)
-    setSelectionEnd(value: number): void;
-    // (undocumented)
-    setSelectionRange(start: number, end: number): void;
-    // (undocumented)
-    setSelectionStart(value: number): void;
-    // (undocumented)
-    setValue(newValue: string): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IMaskedTextFieldProps): void;
-    // (undocumented)
-    readonly value: string | undefined;
-}
+export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps>;
 
 // @public (undocumented)
 export const MAX_COLOR_ALPHA = 100;
@@ -6415,19 +5688,7 @@ export function mergeOverflows(keySequences: string[], overflowKeySequences: str
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
-    constructor(props: IMessageBarProps);
-    // (undocumented)
-    static defaultProps: IMessageBarProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
-
-// @public (undocumented)
-export class MessageBarButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const MessageBarBase: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
 export enum MessageBarType {
@@ -6449,23 +5710,7 @@ export const MIN_RGBA_LENGTH = 1;
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
-export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
-    constructor(props: IModalProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IModalProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
-}
+export const ModalBase: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
 export const Nav: React.FunctionComponent<INavProps>;
@@ -6479,7 +5724,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
-    readonly selectedKey: string | undefined;
+    get selectedKey(): string | undefined;
     }
 
 // @public (undocumented)
@@ -6493,12 +5738,6 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
-
-// @public @deprecated (undocumented)
-export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
-
-// @public @deprecated (undocumented)
-export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export enum OpenCardMode {
@@ -6518,21 +5757,7 @@ export enum OverflowButtonType {
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
-    constructor(props: IOverflowSetProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
 export const Overlay: React.FunctionComponent<IOverlayProps>;
@@ -6550,6 +5775,32 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
 
 // @public
 export const Panel: React.FunctionComponent<IPanelProps>;
+
+// Warning: (ae-forgotten-export) The symbol "IPanelState" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class PanelBase extends React.Component<IPanelProps, IPanelState> implements IPanel {
+    constructor(props: IPanelProps);
+    // (undocumented)
+    close(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPanelProps;
+    // (undocumented)
+    dismiss: (ev?: KeyboardEvent | React.SyntheticEvent<HTMLElement, Event> | undefined) => void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null;
+    get isActive(): boolean;
+    // (undocumented)
+    open(): void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export enum PanelType {
@@ -6580,27 +5831,13 @@ export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestion
 export const Persona: React.FunctionComponent<IPersonaProps>;
 
 // @public
-export class PersonaBase extends React.Component<IPersonaProps, {}> {
-    constructor(props: IPersonaProps);
-    // (undocumented)
-    static defaultProps: IPersonaProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const PersonaBase: React.FunctionComponent<IPersonaProps>;
 
 // @public
 export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public
-export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
-    constructor(props: IPersonaCoinProps);
-    // (undocumented)
-    static defaultProps: IPersonaCoinProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
-}
+export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
@@ -6766,23 +6003,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
 export { Point }
 
 // @public
-export class Popup extends React.Component<IPopupProps, IPopupState> {
-    constructor(props: IPopupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IPopupProps;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    _root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    }
+export const Popup: React.FunctionComponent<IPopupProps>;
 
 // @public (undocumented)
 export enum Position {
@@ -6806,35 +6027,7 @@ export function positionCard(props: IPositionProps, hostElement: HTMLElement, el
 export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData): IPositionedData;
 
 // @public (undocumented)
-export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
-    constructor(props: IPositioningContainerProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IPositioningContainerProps;
-    // @deprecated
-    dismiss: (ev?: Event | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => void;
-    // (undocumented)
-    protected _dismissOnLostFocus(ev: Event): void;
-    // (undocumented)
-    protected _dismissOnScroll(ev: Event): void;
-    // (undocumented)
-    protected _onComponentDidMount: () => void;
-    // (undocumented)
-    onResize: (ev?: Event | React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    protected _setInitialFocus: () => void;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void;
-    }
+export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps>;
 
 // @public (undocumented)
 export const presenceBoolean: (presence: PersonaPresence) => {
@@ -6845,12 +6038,6 @@ export const presenceBoolean: (presence: PersonaPresence) => {
     isDoNotDisturb: boolean;
     isOffline: boolean;
 };
-
-// @public (undocumented)
-export class PrimaryButton extends React.Component<IButtonProps, {}> {
-    // (undocumented)
-    render(): JSX.Element;
-}
 
 // @public
 export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>;
@@ -6871,13 +6058,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 export const Rating: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends React.Component<IRatingProps, IRatingState> {
-    constructor(props: IRatingProps);
-    // (undocumented)
-    static defaultProps: IRatingProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const RatingBase: React.FunctionComponent<IRatingProps>;
 
 // @public (undocumented)
 export enum RatingSize {
@@ -6900,24 +6081,10 @@ export enum RectangleEdge {
 }
 
 // @public (undocumented)
-export const ResizeGroup: typeof ResizeGroupBase;
+export const ResizeGroup: React.FunctionComponent<IResizeGroupProps>;
 
 // @public (undocumented)
-export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
-    constructor(props: IResizeGroupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IResizeGroupProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    remeasure(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
-    }
+export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {
@@ -6969,7 +6136,7 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    readonly contentContainer: HTMLDivElement | null;
+    get contentContainer(): HTMLDivElement | null;
     // (undocumented)
     forceLayoutUpdate(): void;
     // (undocumented)
@@ -6981,7 +6148,7 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    readonly root: HTMLDivElement | null;
+    get root(): HTMLDivElement | null;
     // (undocumented)
     setStickiesDistanceFromTop(): void;
     // (undocumented)
@@ -6989,9 +6156,9 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
     // (undocumented)
     sortSticky: (sticky: Sticky, sortAgain?: boolean | undefined) => void;
     // (undocumented)
-    readonly stickyAbove: HTMLDivElement | null;
+    get stickyAbove(): HTMLDivElement | null;
     // (undocumented)
-    readonly stickyBelow: HTMLDivElement | null;
+    get stickyBelow(): HTMLDivElement | null;
     // (undocumented)
     subscribe: (handler: Function) => void;
     // (undocumented)
@@ -7029,17 +6196,7 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
-    constructor(props: ISearchBoxProps);
-    // (undocumented)
-    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
-    focus(): void;
-    hasFocus(): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
-}
+export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
 export enum SelectableOptionMenuItemType {
@@ -7135,17 +6292,7 @@ export enum Shade {
 export const Shimmer: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
-    constructor(props: IShimmerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IShimmerProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IShimmerProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerBase: React.FunctionComponent<IShimmerProps>;
 
 // @public (undocumented)
 export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps>;
@@ -7206,20 +6353,8 @@ export const sizeToPixels: {
     [key: number]: number;
 };
 
-// @public (undocumented)
-export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-    constructor(props: ISpinButtonProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: DefaultProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
-    readonly value: string | undefined;
-    }
+// @public
+export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
 // @public (undocumented)
 export const Spinner: React.FunctionComponent<ISpinnerProps>;
@@ -7265,9 +6400,9 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
     // (undocumented)
     addSticky(stickyContent: HTMLDivElement): void;
     // (undocumented)
-    readonly canStickyBottom: boolean;
+    get canStickyBottom(): boolean;
     // (undocumented)
-    readonly canStickyTop: boolean;
+    get canStickyTop(): boolean;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -7279,23 +6414,23 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
     // (undocumented)
     static defaultProps: IStickyProps;
     // (undocumented)
-    readonly nonStickyContent: HTMLDivElement | null;
+    get nonStickyContent(): HTMLDivElement | null;
     // (undocumented)
-    readonly placeholder: HTMLDivElement | null;
+    get placeholder(): HTMLDivElement | null;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
     resetSticky(): void;
     // (undocumented)
-    readonly root: HTMLDivElement | null;
+    get root(): HTMLDivElement | null;
     // (undocumented)
     setDistanceFromTop(container: HTMLDivElement): void;
     // (undocumented)
     shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean;
     // (undocumented)
-    readonly stickyContentBottom: HTMLDivElement | null;
+    get stickyContentBottom(): HTMLDivElement | null;
     // (undocumented)
-    readonly stickyContentTop: HTMLDivElement | null;
+    get stickyContentTop(): HTMLDivElement | null;
     // (undocumented)
     syncScroll: (container: HTMLElement) => void;
 }
@@ -7342,6 +6477,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     focusBelowSuggestions(): void;
     // (undocumented)
     focusSearchForMoreButton(): void;
+    // Warning: (ae-forgotten-export) The symbol "IButton" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     protected _forceResolveButton: React.RefObject<IButton>;
     // (undocumented)
@@ -7365,13 +6502,13 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(oldProps: ISuggestionsControlProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    readonly currentSuggestion: ISuggestionModel<T> | undefined;
+    get currentSuggestion(): ISuggestionModel<T> | undefined;
     // (undocumented)
-    readonly currentSuggestionIndex: number;
+    get currentSuggestionIndex(): number;
     // (undocumented)
     executeSelectedAction(): void;
     // (undocumented)
@@ -7397,7 +6534,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // (undocumented)
     protected _searchForMoreButton: IButton;
     // (undocumented)
-    readonly selectedElement: HTMLDivElement | undefined;
+    get selectedElement(): HTMLDivElement | undefined;
     // (undocumented)
     protected _selectedElement: React.RefObject<HTMLDivElement>;
     protected selectFirstItem(): void;
@@ -7406,9 +6543,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React.RefObject<SuggestionsCore<T>>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
-}
+    }
 
 // @public (undocumented)
 export class SuggestionsController<T> {
@@ -7469,7 +6604,7 @@ export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>
     // (undocumented)
     scrollSelected(): void;
     // (undocumented)
-    readonly selectedElement: HTMLDivElement | undefined;
+    get selectedElement(): HTMLDivElement | undefined;
     // (undocumented)
     protected _selectedElement: React.RefObject<HTMLDivElement>;
     // (undocumented)
@@ -7516,17 +6651,7 @@ export type SuggestionsStoreOptions<T> = {
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
-    constructor(props: ISwatchColorPickerProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISwatchColorPickerProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
 export const TagItem: React.FunctionComponent<ITagItemProps>;
@@ -7559,43 +6684,13 @@ export { Target }
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    static defaultProps: {
-        calloutProps: {
-            beakWidth: number;
-            gapSpace: number;
-            setInitialFocus: boolean;
-            doNotLayer: boolean;
-            directionalHint: 12;
-        };
-    };
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
-    constructor(props: ITeachingBubbleProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    rootElement: React.RefObject<HTMLDivElement>;
-}
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export const Text: React.FunctionComponent<ITextProps>;
@@ -7624,12 +6719,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     // (undocumented)
     render(): JSX.Element;
     select(): void;
-    readonly selectionEnd: number | null;
-    readonly selectionStart: number | null;
+    get selectionEnd(): number | null;
+    get selectionStart(): number | null;
     setSelectionEnd(value: number): void;
     setSelectionRange(start: number, end: number): void;
     setSelectionStart(value: number): void;
-    readonly value: string | undefined;
+    get value(): string | undefined;
     }
 
 // @public (undocumented)
@@ -7718,6 +6813,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 // @public
 export function updateT(color: IColor, t: number): IColor;
 
+// @public (undocumented)
+export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
+
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
@@ -7732,10 +6830,13 @@ export enum ValidationState {
 export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 
+export * from "@fluentui/font-icons-mdl2";
 export * from "@fluentui/react-focus";
-export * from "@uifabric/icons";
-export * from "@uifabric/styling";
-export * from "@uifabric/utilities";
+export * from "@fluentui/react-theme-provider";
+export * from "@fluentui/react-window-provider";
+export * from "@fluentui/style-utilities";
+export * from "@fluentui/theme";
+export * from "@fluentui/utilities";
 
 // Warnings were encountered during analysis:
 //

@@ -1,8 +1,75 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.9..@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+### Changes
+
+- Move getTokens logic out from ThemeProvider to mergeTheme/createTheme. ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.8..@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+### Changes
+
+- Moving the auto-distribution logic out of makeClasses and into an applyClasses helper. ([PR #15959](https://github.com/microsoft/fluentui/pull/15959) by dzearing@hotmail.com)
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.8)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.4..@fluentui/react-theme-provider_v1.0.0-beta.8)
+
+### Changes
+
+- Updating makeStyles hook to take in options bag, rather than specific arguments. ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
+- Changing useStyleRenderer to default to merge-styles so that things actually happen. ([PR #15955](https://github.com/microsoft/fluentui/pull/15955) by xgao@microsoft.com)
+
+## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.1..@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+### Changes
+
+- Expanding type of MakeVariantClassesOptions to take into account user provided Variants. ([PR #15518](https://github.com/microsoft/fluentui/pull/15518) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.1)
+
+Fri, 23 Oct 2020 23:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.0..@fluentui/react-theme-provider_v1.0.0-beta.1)
+
+### Changes
+
+- Major bump react-compose package since it dependes on packages with new major. ([PR #15679](https://github.com/microsoft/fluentui/pull/15679) by xgao@microsoft.com)
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.14.2..@fluentui/react-theme-provider_v1.0.0-beta.0)
+
+### Changes
+
+- ThemeProvider: RecursivePartial now correctly works. ([PR #14562](https://github.com/microsoft/fluentui/pull/14562) by dzearing@hotmail.com)
+- Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider. ([PR #15229](https://github.com/microsoft/fluentui/pull/15229) by xgao@microsoft.com)
+- Fix getTokens to only override with user provided tokens. ([PR #15326](https://github.com/microsoft/fluentui/pull/15326) by xgao@microsoft.com)
+- Adding checked iconColor tokens. ([PR #15328](https://github.com/microsoft/fluentui/pull/15328) by humbertomakotomorimoto@gmail.com)
+- add tokens for `react-text` ([PR #15304](https://github.com/microsoft/fluentui/pull/15304) by olfedias@microsoft.com)
+- Set correct dir on root element based on rtl value in theme. ([PR #15347](https://github.com/microsoft/fluentui/pull/15347) by xgao@microsoft.com)
+- Fix ThemeProvider props and state typings. ([PR #15485](https://github.com/microsoft/fluentui/pull/15485) by xgao@microsoft.com)
+- do not use css vars for default styles applied by ThemeProvider. ([PR #15585](https://github.com/microsoft/fluentui/pull/15585) by xgao@microsoft.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.14.2)
 

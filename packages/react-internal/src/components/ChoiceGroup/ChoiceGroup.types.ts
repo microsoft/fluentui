@@ -3,7 +3,11 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
+import {
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+  IChoiceGroupOptionProps,
+} from './ChoiceGroupOption/ChoiceGroupOption.types';
 
 /**
  * {@docCategory ChoiceGroup}
@@ -23,7 +27,9 @@ export interface IChoiceGroup {
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps
+  extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -59,12 +65,6 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   label?: string;
 
   /**
-   * Deprecated and will be removed by 07/17/2017. Use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
-
-  /**
    * Theme (provided through customization).
    */
   theme?: ITheme;
@@ -83,7 +83,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLElement | HTMLInputElement>, 'checked'> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -97,12 +97,12 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   /**
    * Used to customize option rendering.
    */
-  onRenderField?: IRenderFunction<IChoiceGroupOption>;
+  onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
 
   /**
    * Used to customize label rendering.
    */
-  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
 
   /**
    * Props for an icon to display with this option.
@@ -135,17 +135,6 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
-
-  /**
-   * Whether or not the option is checked.
-   * @deprecated Do not track checked state in the options themselves. Instead, either pass
-   * `defaultSelectedKey` to the `ChoiceGroup` and allow it to track selection state internally
-   * (uncontrolled), or pass `selectedKey` and `onChange` to the `ChoiceGroup` to track/update
-   * the selection state manually (controlled).
-   */
-  // This should move from IChoiceGroupOption to IChoiceGroupOptionProps, so that the ChoiceGroup
-  // can still set the option as checked for rendering purposes
-  checked?: boolean;
 
   /**
    * ID used on the option's input element.
@@ -181,15 +170,6 @@ export interface IChoiceGroupStyleProps {
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupStyles {
-  /**
-   * The actual root of the component.
-   * @deprecated Styles will be merged with `root` in a future release.
-   */
-  applicationRole?: IStyle;
-  /**
-   * Not currently the actual root of the component (will be fixed in a future release).
-   * For now, to style the actual root, use `applicationRole`.
-   */
   root?: IStyle;
   label?: IStyle;
   flexContainer?: IStyle;

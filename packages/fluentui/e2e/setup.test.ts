@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-import { safeLaunchOptions } from '@uifabric/build/puppeteer/puppeteer.config';
+import { safeLaunchOptions } from '@fluentui/scripts/puppeteer/puppeteer.config';
 import { E2EApi } from './e2eApi';
 
 jest.setTimeout(30000);
@@ -41,5 +41,8 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
-  await browser.close();
+  // Sometimes in CI this is undefined, not sure how
+  if (browser) {
+    await browser.close();
+  }
 });

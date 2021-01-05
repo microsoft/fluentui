@@ -2,7 +2,7 @@
 
 **Button components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-**WARNING!** These components are still in active development, and the APIs may change before final release. The package will be released with a stable API as part of [Fluent UI React version 8](https://github.com/microsoft/fluentui/issues/12770) in late 2020.
+**WARNING!** These components are still in active development, and the APIs may change before final release.
 
 To use the Button components:
 
@@ -111,8 +111,8 @@ This ensures that `Button` components work not just with Fluent UI icons, but wi
 These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
 | Modifier | Description |
 | ---------- | --------------------------------------------------------------------------------------- |
+| `block` | Stretches the button to the container width. |
 | `circular` | Make the button rounded on the edges (pill button.) |
-| `fluid` | Stretches the button to the container width. |
 | `iconOnly` | Makes the width match the height. Can be combined with circular to make circle buttons. |
 | `ghost` | Makes the button inherit the background color. |
 | `primary` | Uses the brand color to indicate the button is a primary action. |

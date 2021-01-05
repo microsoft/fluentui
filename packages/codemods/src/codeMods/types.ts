@@ -6,13 +6,16 @@ export interface ModResult {
 }
 
 export type NoOp = {
-  reason: string;
-  log?: string;
+  logs: string[];
 };
 
-export type ModFunctionResult<T> = Result<T, NoOp>;
+export type ModError = {
+  error: Error | string;
+};
 
-export type CodeModResult = Result<ModResult, NoOp>;
+export type ModFunctionResult<T> = Result<T, NoOp | ModError>;
+
+export type CodeModResult = Result<ModResult, NoOp | ModError>;
 export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
@@ -79,7 +82,7 @@ export enum SpreadPropInStatement {
    in configMod.ts. */
 export type CodeModMapType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (mod: any) => (file: SourceFile) => Result<ModResult, NoOp>;
+  [key: string]: (mod: any) => (file: SourceFile) => CodeModResult;
 };
 
 /* Type definition for a CodeMod object representing a renameProp mod. */

@@ -7,7 +7,7 @@ import {
   IDocumentCardPreviewProps,
 } from '@fluentui/react/lib/DocumentCard';
 import { ImageFit } from '@fluentui/react/lib/Image';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const previewProps: IDocumentCardPreviewProps = {
   previewImages: [

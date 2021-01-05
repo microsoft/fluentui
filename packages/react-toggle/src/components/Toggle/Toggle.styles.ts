@@ -3,7 +3,7 @@ import {
   getFocusStyle,
   FontWeights,
   getEdgeChromiumNoHighContrastAdjustSelector,
-} from '@uifabric/styling';
+} from '@fluentui/style-utilities';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
@@ -17,8 +17,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
-  const pillCheckedHoveredBackground = palette.themeDark;
+  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
   const thumbUncheckedHoveredBackground = palette.neutralDark;
   const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbBackground = semanticColors.smallInputBorder;

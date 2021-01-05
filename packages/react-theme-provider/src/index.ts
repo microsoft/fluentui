@@ -6,7 +6,7 @@ export * from './useThemeProviderClasses';
 export * from './useThemeProvider';
 export * from './useThemeProviderState';
 export * from './withThemeProvider';
-
+export * from './applyClasses';
 export { useTheme } from './useTheme';
 export { ThemeContext } from './ThemeContext';
 export * from './types';
@@ -16,7 +16,7 @@ export * from './useInlineTokens';
 export * from './makeVariantClasses';
 export * from './makeStyles';
 export * from './makeClasses';
-export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@uifabric/merge-styles';
+export { IStyle, IRawStyle, IRawFontStyle, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
 export * from './styleRenderers/mergeStylesRenderer';
 export * from './styleRenderers/types';

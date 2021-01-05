@@ -1,1 +1,1 @@
-export { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionDirection, SelectionMode } from '@uifabric/utilities';
+export { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionDirection, SelectionMode } from '@fluentui/utilities';

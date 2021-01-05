@@ -9,7 +9,7 @@ import {
   styled,
 } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../Button';
+import { CommandButton, IButton } from '../../../compat/Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { Announced } from '../../../Announced';
 import {
@@ -390,10 +390,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
             key={(suggestion.item as any).key ? (suggestion.item as any).key : index}
-            id={'sug-' + index}
-            aria-selected={suggestion.selected}
-            role="option"
-            aria-label={suggestion.ariaLabel}
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
@@ -403,6 +399,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               showRemoveButton={showRemoveButtons}
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
+              id={'sug-' + index}
             />
           </div>
         ))}

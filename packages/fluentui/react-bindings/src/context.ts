@@ -41,7 +41,7 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
   enableBooleanVariablesCaching: false,
 };
 
-const defaultContext: ProviderContextPrepared = {
+export const defaultContextValue: ProviderContextPrepared = {
   // A default value for `rtl` is undefined to let compute `Provider` a proper one
   rtl: undefined as any,
   disableAnimations: false,
@@ -52,7 +52,7 @@ const defaultContext: ProviderContextPrepared = {
   target: undefined,
 };
 
-const FluentContext = React.createContext<ProviderContextPrepared>(defaultContext);
+const FluentContext = React.createContext<ProviderContextPrepared>(defaultContextValue);
 
 export function useFluentContext(): ProviderContextPrepared {
   return React.useContext(FluentContext);

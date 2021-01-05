@@ -1,15 +1,17 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import * as path from 'path';
 import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
 import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
+import { isConformant } from '../../common/isConformant';
 
 /**
  * The currently rendered ITextField.
@@ -36,7 +38,7 @@ function sharedAfterEach() {
   }
   textField = undefined;
 
-  // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
+  // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
@@ -49,33 +51,31 @@ describe('TextField snapshots', () => {
   it('renders correctly', () => {
     const className = 'testClassName';
     const inputClassName = 'testInputClassName';
-    const component = renderer.create(
-      <TextField label="Label" className={className} inputClassName={inputClassName} />,
-    );
+    const component = create(<TextField label="Label" className={className} inputClassName={inputClassName} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders multiline unresizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={false} />);
+  it('renders multiline non resizable correctly', () => {
+    const component = create(<TextField label="Label" multiline={true} resizable={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline resizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={true} />);
+    const component = create(<TextField label="Label" multiline={true} resizable={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline with placeholder correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
+    const component = create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline correctly with props affecting styling', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -89,7 +89,7 @@ describe('TextField snapshots', () => {
   });
 
   it('renders multiline correctly with errorMessage', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -102,7 +102,7 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should resepect user component and subcomponent styling', () => {
+  it('should respect user component and subcomponent styling', () => {
     const styles: Partial<ITextFieldStyles> = {
       root: 'root-testClassName',
       subComponentStyles: {
@@ -111,7 +111,7 @@ describe('TextField snapshots', () => {
         },
       },
     };
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -124,7 +124,24 @@ describe('TextField snapshots', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders with reveal password button', () => {
+    const component = create(<TextField type="password" canRevealPassword />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 }); // end snapshots
+
+describe('TextField', () => {
+  beforeEach(sharedBeforeEach);
+
+  isConformant({
+    Component: TextField,
+    displayName: 'TextField',
+    componentPath: path.join(__dirname, 'TextField.ts'),
+    elementRefName: 'elementRef',
+  });
+});
 
 describe('TextField rendering values from props', () => {
   beforeEach(sharedBeforeEach);
@@ -195,7 +212,7 @@ describe('TextField basic props', () => {
     const labelDOM = wrapper.getDOMNode().querySelector('label');
 
     // Assert the input ID and label FOR attribute are the same.
-    expect(inputDOM!.id).toBeDefined();
+    expect(inputDOM!.id).toBeTruthy();
     expect(inputDOM!.id).toEqual(labelDOM!.htmlFor);
   });
 
@@ -228,6 +245,39 @@ describe('TextField basic props', () => {
     const suffixDOM: Element = wrapper.getDOMNode().getElementsByClassName('ms-TextField-suffix')[0];
     expect(prefixDOM.textContent).toEqual(examplePrefix);
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
+  });
+
+  it('should not render reveal password button by default', () => {
+    wrapper = mount(<TextField type="password" />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('should render reveal password button if canRevealPassword=true', () => {
+    wrapper = mount(<TextField type="password" canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(1);
+  });
+
+  it('ignores canRevealPassword if type is unspecified', () => {
+    wrapper = mount(<TextField canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('ignores canRevealPassword if type is not password', () => {
+    wrapper = mount(<TextField type="text" canRevealPassword />);
+    expect(wrapper.find('.ms-TextField-reveal')).toHaveLength(0);
+  });
+
+  it('should toggle reveal password on reveal button click', () => {
+    wrapper = mount(<TextField type="password" canRevealPassword={true} />);
+    const input = wrapper.find('input');
+    const reveal = wrapper.find('.ms-TextField-reveal');
+
+    input.simulate('input', mockEvent('Password123$'));
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('text');
+    reveal.simulate('click');
+    expect((input.getDOMNode() as HTMLInputElement).type).toEqual('password');
   });
 
   it('should not give an aria-labelledby if no label is provided', () => {
@@ -728,14 +778,18 @@ describe('TextField onChange', () => {
   });
 
   it('respects prop updates in response to onChange', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);
   });
 
   it('should apply edits after clearing field', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);
@@ -758,7 +812,7 @@ describe('TextField', () => {
 
     const onSelect = () => {
       const selectedText = window.getSelection();
-      expect(selectedText).toBeDefined();
+      expect(selectedText).toBeTruthy();
       expect(selectedText!.toString()).toEqual(initialValue);
     };
 

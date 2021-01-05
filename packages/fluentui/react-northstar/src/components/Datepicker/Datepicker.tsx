@@ -8,7 +8,8 @@ import {
   ICalendarStrings,
   IDatepickerOptions,
   IRestrictedDatesOptions,
-} from '@fluentui/date-time-utilities';
+} from '../../utils/date-time-utilities';
+
 import {
   ComponentWithAs,
   getElementType,
@@ -19,6 +20,7 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
+
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { handleRef } from '@fluentui/react-component-ref';

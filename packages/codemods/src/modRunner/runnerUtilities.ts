@@ -1,32 +1,42 @@
 import { CodeMod, CodeModResult } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
-import { Err } from '../helpers/result';
+import { Err, Result, Ok, partitionResults } from '../helpers/result';
 import { Logger } from './logger';
 
-interface Results {
+interface RunResult {
   modName: string;
   logs: (string | undefined)[];
-  status: string;
+}
+interface ErrorResult {
+  modName: string;
+  error: Error | string;
 }
 
 export function runMods<T>(
   codeMods: CodeMod<T>[],
   sources: T[],
-  onFileComplete: (result: { file: T; resultList: Results[] }) => void,
+  onFileComplete: (result: { file: T; resultList: [RunResult[], ErrorResult[]] }) => void,
   loggingCallback?: (result: { mod: CodeMod<T>; file: T; result: CodeModResult }) => void,
 ) {
   for (const file of sources) {
-    const results: Results[] = [];
+    const results: Result<RunResult, ErrorResult>[] = [];
     for (let i = 0; i < codeMods.length; i++) {
       const mod = codeMods[i];
-      const result = runMod(mod, file, loggingCallback).resolve<Results>(
-        ok => ({ modName: mod.name, status: 'success', logs: ok.logs }),
-        err => ({ modName: mod.name, status: err.reason, logs: [err.log] }),
+      const result = runMod(mod, file, loggingCallback).bothChain<RunResult, ErrorResult>(
+        v => Ok({ logs: v.logs, modName: mod.name }),
+        err => {
+          if ('error' in err) {
+            return Err({ modName: mod.name, error: err.error });
+          }
+
+          return Ok({ logs: ['Mod was a NoOp on this file'], modName: mod.name });
+        },
       );
       results.push(result);
     }
-    onFileComplete({ file, resultList: results });
+
+    onFileComplete({ file, resultList: partitionResults(results) });
   }
 }
 
@@ -39,7 +49,7 @@ function runMod<T>(
   try {
     result = codeMod.run(file);
   } catch (e) {
-    result = Err({ reason: 'error', log: e });
+    result = Err({ error: e });
   }
 
   if (loggingCallback) {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const stackTokens: IStackTokens = {
   childrenGap: 20,

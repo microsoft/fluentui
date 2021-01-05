@@ -52,6 +52,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentRef?: IRefObject<ITextField>;
 
   /**
+   * Optional callback to access the root DOM element.
+   * @deprecated Temporary solution which will be replaced with ref once TextField is converted to a function component.
+   */
+  elementRef?: React.Ref<HTMLDivElement>;
+
+  /**
    * Whether or not the text field is a multiline text field.
    * @defaultvalue false
    */
@@ -252,19 +258,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: string;
 
   /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
+   * Whether to show the reveal password button for input type `'password'` (will be ignored unless
+   * the `type` prop is set to `'password'`).
    */
-  mask?: string;
-
-  /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
-   */
-  maskChar?: string;
-
-  /**
-   * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
-   */
-  maskFormat?: { [key: string]: RegExp };
+  canRevealPassword?: boolean;
 }
 
 /**
@@ -291,6 +288,8 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     hasLabel?: boolean;
     /** Element has focus. */
     focused?: boolean;
+    /** Element has a peek button for passwords */
+    hasRevealButton?: boolean;
   };
 
 /**
@@ -358,13 +357,44 @@ export interface ITextFieldStyles {
    * Styling for subcomponents.
    */
   subComponentStyles: ITextFieldSubComponentStyles;
+
+  /**
+   * Styling for reveal password button
+   */
+  revealButton: IStyle;
+
+  /**
+   * Styling for reveal password span
+   */
+  revealSpan: IStyle;
+
+  /**
+   * Styling for reveal password icon
+   */
+  revealIcon: IStyle;
+}
+
+/**
+ * {@docCategory TextField}
+ */
+export interface IMaskedTextField extends ITextField {
+  /**
+   * The value of all filled format characters, or undefined if not all format characters are filled.
+   */
+  value: string | undefined;
 }
 
 /**
  * MaskedTextField component props.
  * {@docCategory TextField}
  */
-export interface IMaskedTextFieldProps extends ITextFieldProps {
+export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttributes<HTMLDivElement> {
+  /**
+   * Optional callback to access the IMaskedTextField interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IMaskedTextField>;
+
   /**
    * The masking string that defines the mask's behavior.
    * A backslash will escape any character.

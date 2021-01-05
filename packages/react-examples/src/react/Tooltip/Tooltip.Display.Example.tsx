@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { getTheme } from '@fluentui/react/lib/Styling';
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const theme = getTheme();
 const buttonStyle = { fontSize: theme.fonts.medium.fontSize, padding: 10 };

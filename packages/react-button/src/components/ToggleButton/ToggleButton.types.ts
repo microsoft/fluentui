@@ -1,5 +1,8 @@
-import { ButtonProps } from '../Button/Button.types';
+import { ButtonProps, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
+/**
+ * {@docCategory Button}
+ */
 export interface ToggleButtonProps extends ButtonProps {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
@@ -16,4 +19,11 @@ export interface ToggleButtonProps extends ButtonProps {
   defaultChecked?: boolean;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ToggleButtonState extends ToggleButtonProps {}
+
+export type ToggleButtonTokens = ButtonTokens;
+
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;

@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { TagPicker } from './TagPicker';
 import { ITag } from './TagPicker.types';
 import { IBasePicker } from '../BasePicker.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../../common/isConformant';
 
 function onResolveSuggestions(text: string): ITag[] {
@@ -30,6 +30,11 @@ function onResolveSuggestions(text: string): ITag[] {
     .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map(item => ({ key: item, name: item }));
 }
+
+const runAllTimers = () =>
+  ReactTestUtils.act(() => {
+    jest.runAllTimers();
+  });
 
 describe('TagPicker', () => {
   beforeEach(() => {
@@ -55,7 +60,9 @@ describe('TagPicker', () => {
   isConformant({
     Component: TagPicker,
     displayName: 'TagPicker',
-    disabledTests: ['has-top-level-file'],
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['has-top-level-file', 'component-has-root-ref', 'component-handles-ref'],
   });
 
   it('can search for and select tags', () => {
@@ -72,11 +79,11 @@ describe('TagPicker', () => {
     input.value = 'bl';
 
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
-    expect(suggestions).toBeDefined();
+    expect(suggestions).toBeTruthy();
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
     expect(suggestionOptions.length).toEqual(2);
@@ -106,7 +113,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
@@ -150,7 +157,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
+    runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 

@@ -3,7 +3,7 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '../../compat/Button';
 
 /**
  * {@docCategory ContextualMenu}
@@ -243,6 +243,11 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
    * Styles for a menu item that is a link.
    */
   linkContentMenu: IStyle;
+
+  /**
+   * Styles for hidden screen reader text.
+   */
+  screenReaderText: IStyle;
 }
 
 export interface IContextualMenuItemRenderFunctions {

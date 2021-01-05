@@ -1,18 +1,17 @@
-import { mergeThemes, Theme } from '@fluentui/theme';
+import { mergeThemes, PartialTheme, Theme } from '@fluentui/theme';
 import * as React from 'react';
-import { getTokens } from './getTokens';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
-import { getId, ICustomizerContext } from '@uifabric/utilities';
+import { getId, ICustomizerContext } from '@fluentui/utilities';
 
 const themeToIdMap = new Map<Object, string>();
 
-const getThemeId = (...themes: Theme[]) => {
+const getThemeId = (...themes: (Theme | PartialTheme | undefined)[]) => {
   const ids: string[] = [];
 
   for (const theme of themes) {
     if (theme) {
-      let id = theme.id || themeToIdMap.get(theme);
+      let id = (theme as Theme).id || themeToIdMap.get(theme);
 
       if (!id) {
         id = getId('');
@@ -26,16 +25,14 @@ const getThemeId = (...themes: Theme[]) => {
 };
 
 export const useThemeProviderState = (draftState: ThemeProviderState) => {
-  const userTheme = draftState.theme;
+  const userTheme: PartialTheme = draftState.theme;
 
   // Pull contextual theme.
   const parentTheme = useTheme();
 
   // Update the incoming theme with a memoized version of the merged theme.
   const theme = (draftState.theme = React.useMemo<Theme>(() => {
-    const mergedTheme = mergeThemes<Theme>(parentTheme, userTheme);
-
-    mergedTheme.tokens = getTokens(mergedTheme);
+    const mergedTheme: Theme = mergeThemes(parentTheme, userTheme);
 
     mergedTheme.id = getThemeId(parentTheme, userTheme);
 

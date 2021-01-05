@@ -14,7 +14,7 @@ const ResizeGroupFlexBoxExampleCode = require('!raw-loader!@fluentui/react-examp
 export const ResizeGroupPageProps: IDocPageProps = {
   title: 'ResizeGroup',
   componentName: 'ResizeGroup',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ResizeGroup',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ResizeGroup',
   examples: [
     {
       title: 'Use ResizeGroup to move commands into an overflow menu',

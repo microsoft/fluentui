@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities';
-import { Button, IButtonStyles, IButtonTokens } from '@uifabric/experiments';
+import { FabricDecoratorFullWidth } from '../utilities/index';
+import { Button, IButtonStyles, IButtonTokens } from '@fluentui/react-experiments';
 import {
   Card,
   ICardStyles,
@@ -12,9 +11,8 @@ import {
   ICardItemTokens,
   ICardSectionStyles,
   ICardSectionTokens,
-} from '@uifabric/react-cards';
+} from '@fluentui/react-cards';
 import {
-  ActionButton,
   Fabric,
   FontWeights,
   Icon,
@@ -25,6 +23,7 @@ import {
   Text,
   ITextStyles,
 } from '@fluentui/react';
+import { ActionButton } from '@fluentui/react/lib/compat/Button';
 
 const cardClicked = (): void => {
   /** no-impl **/

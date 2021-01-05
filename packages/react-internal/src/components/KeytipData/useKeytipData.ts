@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConst, usePrevious } from '@uifabric/react-hooks';
+import { useConst, usePrevious } from '@fluentui/react-hooks';
 import { mergeAriaAttributeValues } from '../../Utilities';
 import { KeytipDataOptions } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';

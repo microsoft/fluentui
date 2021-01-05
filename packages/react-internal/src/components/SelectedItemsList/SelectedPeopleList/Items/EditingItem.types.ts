@@ -3,7 +3,7 @@ import { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPersonaProps } from '../../../../Persona';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '../../../../Styling';
 
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   onEditingComplete: (oldItem: any, newItem: any) => void;

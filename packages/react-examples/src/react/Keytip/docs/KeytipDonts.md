@@ -1,2 +1,2 @@
 - Don't create more than 1 KeytipLayer per app. This will cause issues with the key listeners
-- Don't attach keytips to components that will make your page scroll. Keytip mode automically exits on scroll
+- Don't attach keytips to components that will make your page scroll. Keytip mode automatically exits on scroll

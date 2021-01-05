@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from '../Icon/Icon.types';
+import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+// Might need to be changed to compat button
+import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import {
   IContextualMenuItemProps,
@@ -17,7 +17,10 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
+import { IPopupRestoreFocusParams } from '../../Popup';
+
+export { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
  * {@docCategory ContextualMenu}
@@ -37,7 +40,10 @@ export interface IContextualMenu {}
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps
+  extends IBaseProps<IContextualMenu>,
+    React.RefAttributes<HTMLDivElement>,
+    IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -150,7 +156,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Callback when the ContextualMenu tries to close. If `dismissAll` is true then all
    * submenus will be dismissed.
    */
-  onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
 
   /**
    * Click handler which is invoked if `onClick` is not passed for individual contextual
@@ -270,17 +276,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   delayUpdateFocusOnHover?: boolean;
 
   /**
-   * Called when the component is unmounting, and focus needs to be restored.
-   * Argument passed down contains two variables, the element that the underlying
-   * popup believes focus should go to and whether or not the popup currently
-   * contains focus. If this prop is provided, focus will not be restored automatically,
-   * you'll need to call originalElement.focus()
+   * Called when the component is unmounting, and focus needs to be restored. If this is provided,
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
-  onRestoreFocus?: (options: {
-    originalElement?: HTMLElement | Window;
-    containsFocus: boolean;
-    documentContainsFocus: boolean;
-  }) => void;
+  onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }
 
 /**
@@ -329,7 +328,7 @@ export interface IContextualMenuItem {
   text?: string;
 
   /**
-   * Seconday description for the menu item to display
+   * Secondary description for the menu item to display
    */
   secondaryText?: string;
 
@@ -540,6 +539,16 @@ export interface IContextualMenuItem {
   [propertyName: string]: any;
 
   /**
+   * Detailed description of the menu item for the benefit of screen readers.
+   */
+  ariaDescription?: string;
+
+  /**
+   * ID of the element that contains additional detailed descriptive information for screen readers
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * This prop is no longer used. All contextual menu items are now focusable when disabled.
    * @deprecated in 6.38.2 will be removed in 7.0.0
    */
@@ -612,7 +621,7 @@ export interface IMenuItemStyles extends IButtonStyles {
   subMenuIcon: IStyle;
 
   /**
-   * Styles for a divider item of a ConextualMenu.
+   * Styles for a divider item of a ContextualMenu.
    */
   divider: IStyle;
 }

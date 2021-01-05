@@ -13,7 +13,7 @@ const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/react-ex
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Nav',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Nav',
   examples: [
     {
       title: 'Basic nav with sample links',
@@ -38,8 +38,6 @@ export const NavPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavOverview.md'),
   bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

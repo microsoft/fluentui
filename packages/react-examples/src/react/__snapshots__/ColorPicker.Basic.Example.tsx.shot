@@ -1377,20 +1377,19 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
       </div>
     </div>
     <div
-      className=""
+      className=
+          ms-ChoiceFieldGroup
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+          }
     >
       <div
-        aria-labelledby="ChoiceGroup17-label"
-        className=
-            ms-ChoiceFieldGroup
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-            }
+        aria-labelledby="ChoiceGroupLabel18"
         role="radiogroup"
       >
         <label
@@ -1417,7 +1416,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          id="ChoiceGroup17-label"
+          id="ChoiceGroupLabel18"
         >
           Alpha slider type
         </label>

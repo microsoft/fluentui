@@ -17,7 +17,7 @@ import {
   getMonthEnd,
   getStartDateOfWeek,
   getEndDateOfWeek,
-} from '@fluentui/date-time-utilities';
+} from '../../utils/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { ExtendedPeoplePicker } from '@fluentui/react/lib/ExtendedPicker';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import {
   SuggestionsStore,
   FloatingPeoplePicker,
@@ -12,7 +12,7 @@ import {
 import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '@fluentui/react/lib/SelectedItemsList';
 import { IFocusZoneProps, FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
+import { people, mru, groupOne, groupTwo } from '@fluentui/example-data';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -121,10 +121,10 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
       showForceResolve: this._shouldShowForceResolve,
       onInputChanged: this._onInputChanged,
       onSuggestionsHidden: () => {
-        console.log('FLOATINGPICKER: hidden');
+        console.log('FloatingPicker: hidden');
       },
       onSuggestionsShown: () => {
-        console.log('FLOATINGPICKER: shown');
+        console.log('FloatingPicker: shown');
       },
     };
 

@@ -147,6 +147,7 @@ export const Popup: React.FC<PopupProps> &
     target,
     trapFocus,
     trigger,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -317,10 +318,12 @@ export const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
-      triggerProps.onClick = (e, ...args) => {
-        setPopupOpen(true, e);
-        _.invoke(triggerElement, 'props.onClick', e, ...args);
-      };
+      if (!_.includes(normalizedOn, 'context')) {
+        triggerProps.onClick = (e, ...args) => {
+          setPopupOpen(true, e);
+          _.invoke(triggerElement, 'props.onClick', e, ...args);
+        };
+      }
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
@@ -408,14 +411,28 @@ export const Popup: React.FC<PopupProps> &
               {popupContent}
             </Ref>
 
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="contextmenu" capture />
-            <EventListener listener={handleDocumentKeyDown(getRefs)} target={context.target} type="keydown" capture />
-
-            {isOpenedByRightClick && (
+            {context.target && (
               <>
-                <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="contextmenu"
+                  capture
+                />
+                <EventListener
+                  listener={handleDocumentKeyDown(getRefs)}
+                  target={context.target}
+                  type="keydown"
+                  capture
+                />
+
+                {isOpenedByRightClick && (
+                  <>
+                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                  </>
+                )}
               </>
             )}
           </>
@@ -470,13 +487,13 @@ export const Popup: React.FC<PopupProps> &
    * Can be either trigger DOM element itself or the element inside it.
    */
   const updateTriggerFocusableRef = () => {
-    const activeDocument: HTMLDocument = context.target;
-    const activeElement = activeDocument.activeElement;
-
-    triggerFocusableRef.current =
-      triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
-        ? (activeElement as HTMLElement)
-        : triggerRef.current;
+    const activeElement = context.target?.activeElement;
+    if (activeElement) {
+      triggerFocusableRef.current =
+        triggerRef.current && elementContains(triggerRef.current, activeElement as HTMLElement)
+          ? (activeElement as HTMLElement)
+          : triggerRef.current;
+    }
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
@@ -536,6 +553,7 @@ export const Popup: React.FC<PopupProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           rtl={context.rtl}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
@@ -602,6 +620,7 @@ Popup.propTypes = {
   target: PropTypes.any,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
   tabbableTrigger: PropTypes.bool,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,

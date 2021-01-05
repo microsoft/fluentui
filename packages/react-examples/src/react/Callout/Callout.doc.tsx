@@ -17,18 +17,12 @@ const CalloutCoverExampleCode = require('!raw-loader!@fluentui/react-examples/sr
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Callout',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Callout',
   examples: [
     {
       title: 'Default Callout',
       code: CalloutBasicExampleCode,
       view: <CalloutBasicExample />,
-    },
-
-    {
-      title: 'FocusTrapCallout Variant',
-      code: CalloutFocusTrapExampleCode,
-      view: <CalloutFocusTrapExample />,
     },
     {
       title: 'Non-focusable Callout with accessible text',
@@ -44,6 +38,11 @@ export const CalloutPageProps: IDocPageProps = {
       title: 'Callout that covers the target element',
       code: CalloutCoverExampleCode,
       view: <CalloutCoverExample />,
+    },
+    {
+      title: 'FocusTrapCallout variant',
+      code: CalloutFocusTrapExampleCode,
+      view: <CalloutFocusTrapExample />,
     },
   ],
   overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),

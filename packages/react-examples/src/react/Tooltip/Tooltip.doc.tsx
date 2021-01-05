@@ -18,7 +18,7 @@ const TooltipAbsolutePositionExampleCode = require('!raw-loader!@fluentui/react-
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
   componentName: 'Tooltip',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Tooltip',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Tooltip',
   examples: [
     {
       title: 'Default Tooltip',

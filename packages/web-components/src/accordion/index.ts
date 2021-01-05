@@ -17,6 +17,9 @@ export * from './accordion-item/index';
   name: 'fluent-accordion',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentAccordion extends Accordion {}
 

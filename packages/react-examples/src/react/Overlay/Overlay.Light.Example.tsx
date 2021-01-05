@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { classNamesFunction, DefaultButton, IStyle, Overlay } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { classNamesFunction, IStyle, Overlay } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { useBoolean } from '@fluentui/react-hooks';
 
 interface IOverlayExampleStyles {
   root: IStyle;

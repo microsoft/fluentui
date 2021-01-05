@@ -3,7 +3,6 @@ import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from '../../Positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { ILabelStyleProps, ILabelStyles } from '../../Label';
@@ -28,9 +27,11 @@ export interface IDropdown {
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
+export interface IDropdownProps
+  extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>,
+    React.RefAttributes<HTMLDivElement> {
   /**
-   * Input placeholder text. Displayed until an option is selected.
+   * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`
    */
   placeHolder?: string;
@@ -42,7 +43,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   options: IDropdownOption[];
 
   /**
-   * Callback for when the selected option changes.
+   * Callback issued when the selected option changes.
    */
   onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
 
@@ -52,67 +53,71 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Custom renderer for the label.
+   * Custom render function for the label.
    */
   onRenderLabel?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Custom renderer for placeholder text
+   * Optional custom renderer for placeholder text
    */
   onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Custom renderer for placeholder text
+   * Optional custom renderer for placeholder text
    * @deprecated Use `onRenderPlaceholder`
    */
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Custom renderer for selected option displayed in input
+   * Optional custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption[]>;
 
   /**
-   * Custom renderer for chevron icon
+   * Optional custom renderer for chevron icon
    */
   onRenderCaretDown?: IRenderFunction<IDropdownProps>;
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
+   * If value is 'auto', width of the input field is used by default, and it can grow wider to fit the content.
    * @defaultvalue 0
    */
-  dropdownWidth?: number;
+  dropdownWidth?: number | 'auto';
 
   /**
-   * By default, the dropdown will render the standard way for screen sizes `large` and above, or
-   * in a panel on `small` and `medium` screens. Manually set this prop to override this behavior.
+   * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
+   * ResponsiveMode.large would, for instance, disable the behavior where Dropdown options
+   * get rendered into a Panel while ResponsiveMode.small would result in the Dropdown
+   * options always getting rendered in a Panel.
    */
   responsiveMode?: ResponsiveMode;
 
   /**
-   * Keys that will be initially used to set selected items. This prop is only used when `multiSelect`
-   * is true (use `defaultSelectedKey` for single select). Mutually exclusive with `selectedKeys`.
+   * Keys that will be initially used to set selected items. This prop is used for `multiSelect`
+   * scenarios. In other cases, `defaultSelectedKey` should be used.
    */
   defaultSelectedKeys?: string[] | number[];
 
   /**
-   * Keys of the selected items, only used when `multiSelect` is true (use `selectedKey` for single
-   * select). If you provide this, you must maintain selection state by observing onChange events
-   * and passing a new prop value in when changed. Passing null will clear the selection.
+   * Keys of the selected items. If you provide this, you must maintain selection
+   * state by observing onChange events and passing a new value in when changed.
+   * Passing null in will clear the selection.
    * Mutually exclusive with `defaultSelectedKeys`.
    */
   selectedKeys?: string[] | number[] | null;
 
   /**
-   * When multiple items are selected, this will be used to separate values in the dropdown input.
+   * When multiple items are selected, this still will be used to separate values in
+   * the dropdown title.
    *
    * @defaultvalue ", "
    */
   multiSelectDelimiter?: string;
 
   /**
-   * If true, `onChange` will still be called when an already-selected item is clicked again in
-   * single select mode. (Normally it would not be called in this case.)
+   * Optional preference to have onChanged still be called when an already selected item is
+   * clicked in single select mode.  Default to false
    */
   notifyOnReselect?: boolean;
 
@@ -121,11 +126,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * @deprecated Use `disabled` instead.
    */
   isDisabled?: boolean;
-
-  /**
-   * Optional keytip for this dropdown
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Theme provided by higher order component.
@@ -171,24 +171,24 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
   isOpen: boolean;
 
   /**
-   * Whether the dropdown is currently rendering placeholder text instead of a selected option.
+   * Whether the dropdown is presently rendering a placeholder.
    */
   isRenderingPlaceholder: boolean;
 
   /**
-   * Custom className for the panel that displays in small viewports, hosting the Dropdown options.
+   * Optional custom className for the panel that displays in small viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   panelClassName?: string;
 
   /**
-   * Custom className for the callout that displays in larger viewports, hosting the Dropdown options.
+   * Optional custom className for the callout that displays in larger viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
 
   /**
-   * Which edge the dropdown callout was positioned on relative to the title.
+   * Prop to notify on what edge the dropdown callout was positioned respective to the title.
    */
   calloutRenderEdge?: RectangleEdge;
 };

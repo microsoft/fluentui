@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Position } from '../../utilities/positioning';
+import { Position } from '../../Positioning';
+import { IButtonStyles } from '../../compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
-import { KeyboardSpinDirection } from './SpinButton';
-import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
-import { IRefObject } from '../../Utilities';
-import { IButtonProps } from '../Button/Button.types';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../compat/Button';
 
 /**
  * {@docCategory SpinButton}
  */
 export interface ISpinButton {
   /**
-   * Current value of the control.
+   * Current committed/validated value of the control. Note that this does *not* update on every
+   * keystroke while the user is editing text in the input field.
+   * "committed" the edit yet by focusing away (blurring) or pressing enter,
    */
   value?: string;
 
@@ -26,38 +27,46 @@ export interface ISpinButton {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export enum KeyboardSpinDirection {
+  down = -1,
+  notSpinning = 0,
+  up = 1,
+}
+
+/**
+ * {@docCategory SpinButton}
+ */
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
   componentRef?: IRefObject<ISpinButton>;
 
   /**
-   * Initial value of the control. Updates to this prop will not be respected.
+   * Initial value of the control (assumed to be valid). Updates to this prop will not be respected.
    *
-   * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its own value.
-   * Mutually exclusive with `value`.
+   * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its
+   * own value. For a controlled component, use `value` instead. (Mutually exclusive with `value`.)
    * @defaultvalue 0
    */
   defaultValue?: string;
 
   /**
-   * Current value of the control.
+   * Current value of the control (assumed to be valid).
    *
-   * Use this if you intend to pass in a new value as a result of change events.
-   * Mutually exclusive with `defaultValue`.
+   * Only provide this if the SpinButton is a controlled component where you are maintaining its
+   * current state and passing updates based on change events; otherwise, use the `defaultValue`
+   * property. (Mutually exclusive with `defaultValue`.)
    */
   value?: string;
 
   /**
-   * Min value of the control.
-   * @defaultvalue 0
+   * Min value of the control. If not provided, the control has no minimum value.
    */
   min?: number;
 
   /**
-   * Max value of the control.
-   * @defaultvalue 100
+   * Max value of the control. If not provided, the control has no maximum value.
    */
   max?: number;
 
@@ -109,6 +118,16 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
    * Props for an icon to display alongside the control's label.
    */
   iconProps?: IIconProps;
+
+  /**
+   * Callback for when the committed/validated value changes. This is called *after* `onIncrement`,
+   * `onDecrement`, or `onValidate`, on the following events:
+   * - User presses the up/down buttons (on single press or every spin)
+   * - User presses the up/down arrow keys (on single press or every spin)
+   * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
+   *   Note that this is NOT called for every key press while the user is editing.
+   */
+  onChange?: (event: React.SyntheticEvent<HTMLElement>, newValue?: string) => void;
 
   /**
    * Callback for when the entered value should be validated.
@@ -163,25 +182,12 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styling for individual elements within the control.
    */
-  styles?: Partial<ISpinButtonStyles>;
-
-  /**
-   * Custom function for providing the classNames for the control. Can be used to provide
-   * all styles for the component instead of applying them on top of the default styles.
-   */
-  getClassNames?: (
-    theme: ITheme,
-    disabled: boolean,
-    isFocused: boolean,
-    keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition?: Position,
-    className?: string,
-  ) => ISpinButtonClassNames;
+  styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
 
   /**
    * Custom styles for the up arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   upArrowButtonStyles?: Partial<IButtonStyles>;
@@ -189,7 +195,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles for the down arrow button.
    *
-   * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
+   * Note: The buttons are in a checked state when arrow keys are used to increment/decrement
    * the SpinButton. Use `rootChecked` instead of `rootPressed` for styling when that is the case.
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;
@@ -270,34 +276,9 @@ export interface ISpinButtonStyles {
   labelWrapper: IStyle;
 
   /**
-   * Style override when the label is positioned at the start.
-   */
-  labelWrapperStart: IStyle;
-
-  /**
-   * Style override when the label is positioned at the end.
-   */
-  labelWrapperEnd: IStyle;
-
-  /**
-   * Style override when the label is positioned at the top.
-   */
-  labelWrapperTop: IStyle;
-
-  /**
-   * Style override when the label is positioned at the bottom.
-   */
-  labelWrapperBottom: IStyle;
-
-  /**
    * Style for the icon.
    */
   icon: IStyle;
-
-  /**
-   * Style for the icon when the control is disabled.
-   */
-  iconDisabled: IStyle;
 
   /**
    * Style for the label text.
@@ -305,35 +286,9 @@ export interface ISpinButtonStyles {
   label: IStyle;
 
   /**
-   * Style for the label text when the control is disabled.
-   * @deprecated Disabled styles taken care by `Label` component.
-   */
-  labelDisabled: IStyle;
-
-  /**
    * Style for the wrapper element of the input field and arrow buttons.
    */
   spinButtonWrapper: IStyle;
-
-  /**
-   * Style override when label is positioned at the top/bottom.
-   */
-  spinButtonWrapperTopBottom: IStyle;
-
-  /**
-   * Style override when control is enabled/hovered.
-   */
-  spinButtonWrapperHovered: IStyle;
-
-  /**
-   * Style override when SpinButton is enabled/focused.
-   */
-  spinButtonWrapperFocused: IStyle;
-
-  /**
-   * Style override when control is disabled.
-   */
-  spinButtonWrapperDisabled: IStyle;
 
   /**
    * Styles for the input.
@@ -341,35 +296,19 @@ export interface ISpinButtonStyles {
   input: IStyle;
 
   /**
-   * Style override for ::selection
-   */
-  inputTextSelected: IStyle;
-
-  /**
-   * Style override when control is disabled.
-   */
-  inputDisabled: IStyle;
-
-  /**
    * Styles for the arrowButtonsContainer
    */
   arrowButtonsContainer: IStyle;
-
-  /**
-   * Style override for the arrowButtonsContainer when control is disabled.
-   */
-  arrowButtonsContainerDisabled: IStyle;
 }
 
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonClassNames {
-  root: string;
-  labelWrapper: string;
-  icon: string;
-  label: string;
-  spinButtonWrapper: string;
-  input: string;
-  arrowBox: string;
+export interface ISpinButtonStyleProps {
+  theme: ITheme;
+  className: string | undefined;
+  disabled: boolean;
+  isFocused: boolean;
+  keyboardSpinDirection: KeyboardSpinDirection;
+  labelPosition: Position;
 }

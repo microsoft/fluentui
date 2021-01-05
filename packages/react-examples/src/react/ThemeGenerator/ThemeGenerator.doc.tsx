@@ -19,7 +19,7 @@ import { TeachingBubbleBasicExample } from '../TeachingBubble/TeachingBubble.Bas
 import { TextFieldBasicExample } from '../TextField/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../react-toggle/Toggle/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/ProgressIndicator.Basic.Example';
-import { Async } from '@uifabric/utilities';
+import { Async } from '@fluentui/utilities';
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -95,15 +95,16 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/style-utilities';
 
     return (
       <div className="ms-themer">
         <div className="overview">
           <h2 id="Overview">Overview</h2>
           <p>
-            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by
-            Fabric React's styling package, see the{' '}
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by the{' '}
+            <code>@fluentui/style-utilities</code> package; see the{' '}
             <a className={'themeGeneratorPageLink'} href={stylingUrl}>
               documentation
             </a>
@@ -169,36 +170,22 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
           <div className="ms-themer-example">
             <ToggleBasicExample />
             <ChoiceGroup
+              defaultSelectedKey="B"
               options={[
-                {
-                  key: 'A',
-                  text: 'Option A',
-                },
-                {
-                  key: 'B',
-                  text: 'Option B',
-                  checked: true,
-                },
+                { key: 'A', text: 'Option A' },
+                { key: 'B', text: 'Option B' },
               ]}
               label="Pick one"
-              required={true}
+              required
             />
             <ChoiceGroup
               options={[
-                {
-                  key: 'C',
-                  text: 'Option C',
-                  disabled: true,
-                },
-                {
-                  key: 'D',
-                  text: 'Option D',
-                  checked: true,
-                  disabled: true,
-                },
+                { key: 'C', text: 'Option C', disabled: true },
+                { key: 'D', text: 'Option D', disabled: true },
               ]}
+              defaultSelectedKey="D"
               label="Pick one"
-              required={true}
+              required
             />
           </div>
           <div className="ms-themer-example">
@@ -243,7 +230,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
-    // but high enough that quick changes don't get bogged down by a million changes inbetween
+    // but high enough that quick changes don't get bogged down by a million changes in-between
   };
 
   private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
@@ -429,7 +416,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
-      // but high enough that quick changes don't get bogged down by a million changes inbetween
+      // but high enough that quick changes don't get bogged down by a million changes in-between
     };
 
     return (

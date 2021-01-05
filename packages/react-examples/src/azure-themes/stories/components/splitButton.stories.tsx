@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, IContextualMenuProps, Stack } from '@fluentui/react'; // IStackTokens
+import { IContextualMenuProps, Stack } from '@fluentui/react'; // IStackTokens
+import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -28,7 +29,7 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
   const { disabled, checked } = props;
 
   return (
-    <Stack gap={8} horizontalAlign="center">
+    <Stack tokens={{ childrenGap: 8 }} horizontalAlign="center">
       <DefaultButton
         text="Standard split"
         split

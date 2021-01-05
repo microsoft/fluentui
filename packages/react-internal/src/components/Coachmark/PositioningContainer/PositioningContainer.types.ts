@@ -1,6 +1,8 @@
+import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from '../../../utilities/positioning';
+import { IPositionedData } from '../../../Positioning';
+import { ReactNode } from 'react';
 
 /**
  * {@docCategory Coachmark}
@@ -10,11 +12,14 @@ export interface IPositioningContainer {}
 /**
  * {@docCategory Coachmark}
  */
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+export interface IPositioningContainerProps
+  extends IBaseProps<IPositioningContainer>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * All props for your component are to be defined here.
    */
   componentRef?: IRefObject<IPositioningContainer>;
+
   /**
    * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
@@ -165,6 +170,11 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
    * When not set the positioningContainer will expand with contents up to the bottom of the screen
    */
   positioningContainerMaxHeight?: number;
+
+  /**
+   * Child nodes to render
+   */
+  children?: ReactNode;
 }
 
 /**

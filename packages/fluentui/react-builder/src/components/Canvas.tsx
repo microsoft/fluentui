@@ -7,7 +7,11 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
-import { ReaderText } from './ReaderText';
+import { ReaderNarration } from './ReaderNarration';
+
+const pkg = require('../../package.json');
+
+const axeVersion = pkg.dependencies['axe-core'];
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -224,7 +228,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: 'calc(100vh - 1.5rem)';
+            min-height: calc(100vh - 1.5rem);
           }
           `,
         isExpanding &&
@@ -257,7 +261,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       frameBorder="0"
       width="100%"
       height="100%"
-      initialContent='<!DOCTYPE html><html><head><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>'
+      initialContent={`<!DOCTYPE html><html><head><script async src="https://cdnjs.cloudflare.com/ajax/libs/axe-core/${axeVersion}/axe.min.js"></script><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>`}
       style={style}
       id={iframeId}
     >
@@ -332,7 +336,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               )}
               {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
+              <div style={{ bottom: '0', position: 'absolute' }}>
+                <ReaderNarration
+                  selector={selectedComponent ? `[data-builder-id="${selectedComponent.uuid}"]` : null}
+                  inUseMode={inUseMode}
+                />
+              </div>
             </Provider>
           </>
         )}

@@ -87,6 +87,9 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
 
+  /** Optional properties to pass through to the root list component being rendered. */
+  rootListProps?: IListProps;
+
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
@@ -313,6 +316,9 @@ export interface IGroupDividerProps {
 
   /** Callback for when the group header is clicked. */
   onGroupHeaderClick?: (group: IGroup) => void;
+
+  /** Callback for when the "keyup" event is fired on the group header. */
+  onGroupHeaderKeyUp?: (ev: React.KeyboardEvent<HTMLElement>, group?: IGroup) => void;
 
   /** Callback for when the group is expanded or collapsed. */
   onToggleCollapse?: (group: IGroup) => void;

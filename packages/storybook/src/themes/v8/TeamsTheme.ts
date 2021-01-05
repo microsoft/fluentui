@@ -63,5 +63,14 @@ export const TeamsTheme: PartialTheme = {
         },
       },
     },
+    CompoundButton: {
+      variants: {
+        root: {
+          disabled: {
+            secondaryContentColor: 'var(--button-idsabled-contentColor)',
+          },
+        },
+      },
+    },
   },
 };

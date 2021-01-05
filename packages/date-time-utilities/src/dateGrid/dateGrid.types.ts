@@ -28,6 +28,9 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
   direction: number;
 }
 
+/**
+ * {@docCategory DateTimeUtilities}
+ */
 export interface IRestrictedDatesOptions {
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -45,7 +48,10 @@ export interface IRestrictedDatesOptions {
   restrictedDates?: Date[];
 }
 
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
+/**
+ * {@docCategory DateTimeUtilities}
+ */
+export interface IDayGridOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
@@ -70,7 +76,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   daysToSelectInDayView?: number;
 
   /**
-   * Value of today. If null, current time in client machine will be used.
+   * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
 
@@ -89,9 +95,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
    * Which days in the generated grid should be marked.
    */
   markedDays?: Date[];
-}
 
-export interface IDayGridOptions extends IDatepickerOptions {
   /**
    * The currently selected date
    */

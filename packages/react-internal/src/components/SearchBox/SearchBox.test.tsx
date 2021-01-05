@@ -1,14 +1,19 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
-import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
+import { isConformant } from '../../common/isConformant';
 
 describe('SearchBox', () => {
-  let component: renderer.ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
+  let component: ReactTestRenderer | undefined;
+  let wrapper: ReactWrapper<ISearchBoxProps> | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
@@ -21,10 +26,21 @@ describe('SearchBox', () => {
     }
   });
 
+  isConformant({
+    Component: SearchBox,
+    displayName: 'SearchBox',
+  });
+
   it('renders SearchBox correctly', () => {
-    component = renderer.create(<SearchBox />);
+    component = create(<SearchBox />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders SearchBox role on the container div', () => {
+    wrapper = mount(<SearchBox role="search" />);
+
+    expect(wrapper.getDOMNode().getAttribute('role')).toEqual('search');
   });
 
   it('can execute an onClick on clear button', () => {
@@ -51,7 +67,7 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox without animation correctly', () => {
-    component = renderer.create(<SearchBox disableAnimation={true} />);
+    component = create(<SearchBox disableAnimation={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -115,7 +131,7 @@ describe('SearchBox', () => {
     wrapper = mount(<SearchBox onFocus={onFocus} />);
     wrapper.simulate('focus');
 
-    expect(onFocus.mock.calls.length).toBe(1);
+    expect(onFocus).toHaveBeenCalledTimes(1);
   });
 
   it('can be disabled via props', () => {
@@ -139,22 +155,100 @@ describe('SearchBox', () => {
     expect(wrapper.find('input').prop('value')).toBe('test');
   });
 
-  it('handles setting null value', () => {
-    // this is not allowed per typings, but users might do it anyway
-    wrapper = mount(<SearchBox value={null as any} />);
-    expect(wrapper.find('input').prop('value')).toBe('');
-  });
-
   it('handles updating value to empty string', () => {
     wrapper = mount(<SearchBox value="test" />);
     wrapper.setProps({ value: '' });
     expect(wrapper.find('input').prop('value')).toBe('');
   });
 
-  it('handles updating value to null', () => {
-    wrapper = mount(<SearchBox value="test" />);
+  it('handles setting null value', () => {
     // this is not allowed per typings, but users might do it anyway
-    wrapper.setProps({ value: null as any });
+    wrapper = mount(<SearchBox value={null as any} />);
+    expect(wrapper.find('input').prop('value')).toBe(`null`);
+  });
+
+  it('handles rendering 0', () => {
+    wrapper = mount(<SearchBox value={0 as any} />);
+    // this is not allowed per typings, but users might do it anyway
+    expect(
+      wrapper
+        .find('input')
+        .getDOMNode()
+        .getAttribute('value'),
+    ).toBe('0');
+  });
+
+  it('invokes onEscape callback on escape keydown', () => {
+    const onEscape = jest.fn();
+
+    wrapper = mount(<SearchBox onEscape={onEscape} />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+
+    expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes onClear callback on escape keydown and clears the value, if it has a value', () => {
+    const onClear = jest.fn();
+
+    wrapper = mount(<SearchBox onClear={onClear} defaultValue="test" />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+
+    expect(onClear).toHaveBeenCalledTimes(1);
     expect(wrapper.find('input').prop('value')).toBe('');
+  });
+
+  it('does not invoke onClear callback on escape keydown, if it does not have a value', () => {
+    const onClear = jest.fn();
+
+    wrapper = mount(<SearchBox onClear={onClear} />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+
+    expect(onClear).not.toHaveBeenCalled();
+  });
+
+  it('does not clear the value on escape keydown, if onClear calls preventDefault', () => {
+    const onClear = jest.fn(ev => ev.preventDefault());
+
+    wrapper = mount(<SearchBox onClear={onClear} defaultValue="test" />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+
+    expect(onClear).toHaveBeenCalledTimes(1);
+    expect(wrapper.find('input').prop('value')).toBe('test');
+  });
+
+  it('prevents escape keypress from bubbling, if and only if it has a value', () => {
+    const onParentKeyDown = jest.fn();
+
+    wrapper = mount(
+      <div onKeyDown={onParentKeyDown}>
+        <SearchBox defaultValue="test" />
+      </div>,
+    );
+
+    // First escape clears the value and should not bubble
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    expect(onParentKeyDown).not.toHaveBeenCalled();
+
+    // Second escape should bubble
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    expect(onParentKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes onSearch callback on enter keydown', () => {
+    const onSearch = jest.fn();
+
+    wrapper = mount(<SearchBox onSearch={onSearch} />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+
+    expect(onSearch).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes onKeyDown callback on keydown', () => {
+    const onKeyDown = jest.fn();
+
+    wrapper = mount(<SearchBox onKeyDown={onKeyDown} />);
+    wrapper.find('input').simulate('keydown');
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
   });
 });

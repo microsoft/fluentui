@@ -35,7 +35,6 @@ export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 
 /**
  * BreadcrumbItem an actionable item within a Breadcrumb
- * This component is currently UNSTABLE!
  */
 export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {

@@ -1,47 +1,49 @@
-import { IImageProps, Image, ImageFit } from '@fluentui/react/lib/Image';
-import { Label } from '@fluentui/react/lib/Label';
 import * as React from 'react';
+import { IImageProps, Image, ImageFit } from '@fluentui/react/lib/Image';
+
+// These props are defined up here so they can easily be applied to multiple Images.
+// Normally specifying them inline would be fine.
+const imageProps: Partial<IImageProps> = {
+  imageFit: ImageFit.centerContain,
+  width: 200,
+  height: 200,
+  // Show a border around the image (just for demonstration purposes)
+  styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
+};
 
 export const ImageCenterContainExample = () => {
-  const imageProps: Partial<IImageProps> = {
-    imageFit: ImageFit.centerContain,
-    width: 200,
-    height: 200,
-  };
   return (
     <div>
       <p>
-        Setting the imageFit property to "centerContain" will cause the image to scale up or down proportionally. Images
-        smaller than their frame will be rendered as "ImageFit.center", while images larger than both either frame's
-        height or width will render as "ImageFit.contain".
+        Setting the <code>imageFit</code> property to <code>ImageFit.centerContain</code> will cause the image to scale
+        up or down proportionally. Images smaller than their frame will be rendered as <code>ImageFit.center</code>,
+        while images larger than either frame's height or width will render as <code>ImageFit.contain</code>.
       </p>
-      <Label>The image is smaller than the frame, so it's centered and rendered at its natural size.</Label>
+      <p>This image is smaller than the frame, so it's centered and rendered at its natural size.</p>
       <Image
         {...imageProps}
         src="http://placehold.it/100x150"
         alt='Example of the image fit value "centerContain" on an image smaller than the frame.'
       />
-      <br />
-      <Label>The image has a wider width than the frame so it's contained.</Label>
+      <p>This image is wider than the frame, so it's contained.</p>
       <Image
         {...imageProps}
         src="http://placehold.it/300x100"
         alt='Example of the image fit value "centerContain" on an image wider than the frame.'
       />
-      <br />
-      <Label>The image is taller than the frame so it's contained.</Label>
+      <p>This image is taller than the frame, so it's contained.</p>
       <Image
         {...imageProps}
         src="http://placehold.it/100x300"
         alt='Example of the image fit value "centerContain" on an image taller than the frame.'
       />
-      <br />
-      <Label>These images are taller and wider than the frame and so they are contained.</Label>
+      <p>These images are taller and wider than the frame, so they are contained.</p>
       <Image
         {...imageProps}
         src="http://placehold.it/400x500"
         alt='Example of the image fit value "centerContain" on an image taller and wider than the frame.'
       />
+      <br />
       <br />
       <Image
         {...imageProps}

@@ -4,7 +4,7 @@ import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } fro
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ITooltipHostProps } from '../../Tooltip';
-import { IButtonProps } from '../../Button';
+import { IButtonProps } from '../../compat/Button';
 
 /**
  * {@docCategory Breadcrumb}
@@ -54,6 +54,12 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Render a custom overflow icon in place of the default icon `...`
    */
   onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom component for the overflow button.
+   */
+  overflowButtonAs?: IComponentAs<IButtonProps>;
+
   /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.

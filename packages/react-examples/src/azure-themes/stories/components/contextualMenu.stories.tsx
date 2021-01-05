@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu, DefaultButton, IContextualMenuProps, IIconProps, PrimaryButton } from '@fluentui/react';
+import { ContextualMenu, IContextualMenuProps, IIconProps } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -10,7 +11,7 @@ export interface IButtonExampleProps {
 const menuProps: IContextualMenuProps = {
   // For example: disable dismiss if shift key is held down while dismissing
   onDismiss: ev => {
-    if (ev && ev.shiftKey) {
+    if (ev && 'shiftKey' in ev) {
       ev.preventDefault();
     }
   },

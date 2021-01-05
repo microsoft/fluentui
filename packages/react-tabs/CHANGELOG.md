@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Nov 2020 12:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.6..@fluentui/react-tabs_v1.0.0-beta.7)
+
+### Changes
+
+- Remove abandoned scss-based Pivot from react-tabs/next folder ([PR #15807](https://github.com/microsoft/fluentui/pull/15807) by behowell@microsoft.com)
+
+## [1.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.6)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.0..@fluentui/react-tabs_v1.0.0-beta.6)
+
+### Changes
+
+- Create the Tabs component as a renamed clone of the Pivot component ([PR #15782](https://github.com/microsoft/fluentui/pull/15782) by behowell@microsoft.com)
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v0.6.8..@fluentui/react-tabs_v1.0.0-beta.0)
+
+### Changes
+
+- Pivot overflow: fix scrollbars appearing when the window is just barely wide enough to show all tabs ([PR #15293](https://github.com/microsoft/fluentui/pull/15293) by behowell@microsoft.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Removing findDOMNode usage from Pivot within react-tabs. ([PR #15558](https://github.com/microsoft/fluentui/pull/15558) by czearing@outlook.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Fix check for ResizeObserver, which was causing errors in the testing framework @testing-library/react ([PR #15572](https://github.com/microsoft/fluentui/pull/15572) by behowell@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Rename @uifabric/icons to @fluentui/font-icons-mdl2 ([PR #15603](https://github.com/microsoft/fluentui/pull/15603) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
 
 ## [0.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v0.6.8)
 
