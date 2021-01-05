@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types';
+import { Accessibility, AccessibilityAttributes } from '../../types';
 import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
@@ -27,6 +27,6 @@ export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props 
 });
 
 export type DatepickerBehaviorProps = {
-  'aria-labelledby'?: string;
-  'aria-invalid'?: boolean;
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 };

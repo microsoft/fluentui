@@ -1,4 +1,9 @@
-import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  datepickerBehavior,
+  DatepickerBehaviorProps,
+  AccessibilityAttributes,
+} from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -28,13 +33,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import {
-  commonPropTypes,
-  createShorthand,
-  createShorthandFactory,
-  UIComponentProps,
-  partitionHTMLProps,
-} from '../../utils';
+import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
 import { Button } from '../Button/Button';
 import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
@@ -52,6 +51,12 @@ import { format } from '@uifabric/utilities';
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `input` with usage accessbibility behavior. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `input` with usage accessbibility behavior. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -192,7 +197,19 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
+  const {
+    calendar,
+    popup,
+    input,
+    className,
+    design,
+    styles,
+    variables,
+    formatMonthDayYear,
+    allowManualInput,
+    'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
+  } = props;
   const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
@@ -235,9 +252,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
-  const [a11yProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
-    htmlProps: ['aria-labelledby', 'aria-invalid'],
-  });
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
@@ -254,8 +268,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       },
     },
     mapPropsToBehavior: () => ({
-      'aria-invalid': a11yProps['aria-invalid'],
-      'aria-labelledby': a11yProps['aria-labelledby'],
+      'aria-invalid': ariaInvalid,
+      'aria-labelledby': ariaLabelledby,
     }),
     rtl: context.rtl,
   });
@@ -350,7 +364,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...restUnhandledProps,
+        ...unhandledProps,
       })}
     >
       {!props.buttonOnly &&
@@ -465,6 +479,9 @@ Datepicker.propTypes = {
   inputBoundedFormatString: PropTypes.string,
   inputMinBoundedFormatString: PropTypes.string,
   inputMaxBoundedFormatString: PropTypes.string,
+
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
 };
 
 Datepicker.defaultProps = {
