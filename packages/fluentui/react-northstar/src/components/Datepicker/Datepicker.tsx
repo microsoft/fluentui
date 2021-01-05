@@ -52,10 +52,10 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
-  /** Identifies the element (or elements) that labels the current element. Will be passed to `input` with usage accessbibility behavior. */
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `input` with usage accessibibility behavior. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
 
-  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `input` with usage accessbibility behavior. */
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `input` with usage accessibibility behavior. */
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** Shorthand for the datepicker calendar. */
