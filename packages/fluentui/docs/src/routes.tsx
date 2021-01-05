@@ -11,7 +11,6 @@ import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import * as Composition from './pages/Composition.mdx';
 import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
-import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
 import * as StylesOverrides from './pages/StylesOverrides.mdx';
 import Accessibility from './views/Accessibility';
 import Colors from './views/Colors';
@@ -147,9 +146,6 @@ const Routes = () => (
                   <MarkdownPage page={ShorthandProps} />
                 </Route>
                 <Route exact path="/icon-viewer" component={IconViewer} />
-                <Route exact path="/component-architecture">
-                  <MarkdownPage page={ComponentArchitecture} />
-                </Route>
                 <Route exact path="/theming-specification">
                   <MarkdownPage page={ThemingSpecification} />
                 </Route>

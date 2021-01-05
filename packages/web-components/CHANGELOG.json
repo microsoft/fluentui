@@ -2,6 +2,65 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 05 Jan 2021 12:29:33 GMT",
+      "tag": "@fluentui/web-components_v0.10.2",
+      "version": "0.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add height clamp and box sizing for select",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "981bbd219d6c6e26a5c13b971bb39ae593843064",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add select indicator css selector to fix indicator sizing",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "57787b1888216856fc7b5a479ccb380012b1bfb8",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add padding for focus overlap of state in accordion item",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "6b777ecca00a9087d93843aa6ecd91682e0365cc",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add switch label margin and cursor pointer",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "16797f484b2af348f136ba306e1f392721c45e1c",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "move text-field label__hidden styles below main label styles for proper order",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "887a5e93a677527091c83ff62ac20ac335fa9f2f",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add inline start margin for rtl to slider",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "46055c7b84750bda3d609ab8bf58bb53e4e952cd",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update start and end to remove fixed width and height",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "da37d8ef759dd81c8e83d3c7ba589ccadadd479a",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "add menu disabled example",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "cb6aeecba5503afa7b196f20c50f2bb3e213b357",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Dec 2020 12:27:55 GMT",
       "tag": "@fluentui/web-components_v0.10.1",
       "version": "0.10.1",

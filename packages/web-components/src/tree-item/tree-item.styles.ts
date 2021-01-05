@@ -147,10 +147,14 @@ export const TreeItemStyles = css`
     }
     .start,
     .end {
+        display: flex;
+        fill: currentcolor;
+    }
+
+     ::slotted(svg) {
         ${/* Glyph size is temporary -
             replace when glyph-size var is added */ ''} width: 16px;
         height: 16px;
-        fill: ${neutralForegroundRestBehavior.var};
     }
 
     .start {
