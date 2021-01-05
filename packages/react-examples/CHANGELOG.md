@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 15 Dec 2020 12:27:20 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jan 2021 12:25:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.6)
+
+Tue, 05 Jan 2021 12:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.3..@fluentui/react-examples_v0.11.6)
+
+### Patches
+
+- callout, messagebar and teachingbubble style updatets ([PR #16337](https://github.com/microsoft/fluentui/pull/16337) by jagaheri@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.0)
 

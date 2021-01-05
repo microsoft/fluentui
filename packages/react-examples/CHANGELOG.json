@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 05 Jan 2021 12:25:12 GMT",
+      "tag": "@fluentui/react-examples_v0.11.6",
+      "version": "0.11.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "callout, messagebar and teachingbubble style updatets",
+            "author": "jagaheri@microsoft.com",
+            "commit": "14e88fe398334244482da659bf1eb9882dabb276",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Dec 2020 12:25:12 GMT",
       "tag": "@fluentui/react-examples_v0.11.3",
       "version": "0.11.3",

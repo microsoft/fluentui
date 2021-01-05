@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 06 Nov 2020 12:22:44 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jan 2021 12:25:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.4](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.6.4)
+
+Tue, 05 Jan 2021 12:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.40..@uifabric/azure-themes_v7.6.4)
+
+### Patches
+
+- callout, messagebar and teachingbubble style updates  ([PR #16337](https://github.com/microsoft/fluentui/pull/16337) by jagaheri@microsoft.com)
 
 ## [7.5.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.40)
 
