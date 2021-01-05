@@ -113,13 +113,6 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
-export type a11yProps = {
-  props: {
-    'aria-invalid': string;
-    'aria-labelledby': string;
-  };
-};
-
 const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, localizationStrings: ICalendarStrings) => {
   let formattedString = '';
   if (!!restrictedOptions.minDate && !!restrictedOptions.maxDate) {

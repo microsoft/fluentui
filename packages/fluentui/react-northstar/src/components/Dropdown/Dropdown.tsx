@@ -52,13 +52,6 @@ import {
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
-export type unhandledA11yProps = {
-  props: {
-    'aria-invalid': string;
-    'aria-labelledby': string;
-  };
-};
-
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
 export interface DropdownSlotClassNames {
@@ -430,8 +423,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
-  const [unhandledA11yProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
-    htmlProps: ['aria-labelledby', 'aria-invalid'],
+  const [a11yProps, restUnhandledProps] = partitionHTMLProps(unhandledProps, {
+    htmlProps: ['aria-invalid'],
   });
 
   const [activeSelectedIndex, setActiveSelectedIndex] = useAutoControlled<number | null | undefined>({
@@ -544,7 +537,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
-      'aria-invalid': unhandledA11yProps['aria-invalid'],
+      'aria-invalid': a11yProps['aria-invalid'],
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
