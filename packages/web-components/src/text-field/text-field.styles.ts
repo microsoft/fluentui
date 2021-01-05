@@ -55,11 +55,6 @@ export const TextFieldStyles = css`
         outline: none;
     }
 
-    .label__hidden {
-        display: none;
-        visibility: hidden;
-    }
-
     .label {
         display: block;
         color: ${neutralForegroundRestBehavior.var};
@@ -68,16 +63,23 @@ export const TextFieldStyles = css`
         line-height: var(--type-ramp-base-line-height);
         margin-bottom: 4px;
     }
+   
+    .label__hidden {
+      display: none;
+      visibility: hidden;
+    }
 
     .start,
     .end {
-        ${
-          /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-        } width: 16px;
-        height: 16px;
         margin: auto;
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
+    }
+    
+    ::slotted(svg) {      ${
+      /* Glyph size and margin-left is temporary -
+            replace when adaptive typography is figured out */ ''
+    } width: 16px;
+        height: 16px;
     }
 
     .start {

@@ -11,7 +11,6 @@ import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import * as Composition from './pages/Composition.mdx';
 import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
-import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
 import * as StylesOverrides from './pages/StylesOverrides.mdx';
 import Accessibility from './views/Accessibility';
 import Colors from './views/Colors';
@@ -60,6 +59,7 @@ import {
   CopyToClipboardPrototype,
   TextAreaAutoSize,
   MenuList,
+  VirtualizedStickyTreePrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(() =>
@@ -125,6 +125,7 @@ const Routes = () => (
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+                <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
                 <Route exact path="/prototype-menu-list" component={MenuList} />
@@ -145,9 +146,6 @@ const Routes = () => (
                   <MarkdownPage page={ShorthandProps} />
                 </Route>
                 <Route exact path="/icon-viewer" component={IconViewer} />
-                <Route exact path="/component-architecture">
-                  <MarkdownPage page={ComponentArchitecture} />
-                </Route>
                 <Route exact path="/theming-specification">
                   <MarkdownPage page={ThemingSpecification} />
                 </Route>

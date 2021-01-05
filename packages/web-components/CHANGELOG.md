@@ -1,8 +1,32 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 17 Dec 2020 12:30:15 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jan 2021 12:29:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.2)
+
+Tue, 05 Jan 2021 12:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.1..@fluentui/web-components_v0.10.2)
+
+### Patches
+
+- add height clamp and box sizing for select ([PR #16347](https://github.com/microsoft/fluentui/pull/16347) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add select indicator css selector to fix indicator sizing ([PR #16349](https://github.com/microsoft/fluentui/pull/16349) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add padding for focus overlap of state in accordion item ([PR #16350](https://github.com/microsoft/fluentui/pull/16350) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add switch label margin and cursor pointer ([PR #16351](https://github.com/microsoft/fluentui/pull/16351) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- move text-field label__hidden styles below main label styles for proper order ([PR #16355](https://github.com/microsoft/fluentui/pull/16355) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add inline start margin for rtl to slider ([PR #16356](https://github.com/microsoft/fluentui/pull/16356) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- update start and end to remove fixed width and height ([PR #16359](https://github.com/microsoft/fluentui/pull/16359) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.1)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.0..@fluentui/web-components_v0.10.1)
+
+### Patches
+
+- fix: focus styling inconsistencies ([PR #16265](https://github.com/microsoft/fluentui/pull/16265) by jes@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
 

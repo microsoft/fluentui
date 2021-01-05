@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme, IProcessedStyleSet } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Rating}
@@ -8,6 +8,14 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 export interface IRating {
   /** Current displayed rating value. Will be `min` if the user has not yet set a rating. */
   rating: number;
+}
+
+export interface IRatingStarProps {
+  fillPercentage: number;
+  disabled?: boolean;
+  classNames: IProcessedStyleSet<IRatingStyles>;
+  icon: string;
+  starNum?: number;
 }
 
 /**
@@ -69,6 +77,11 @@ export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, Reac
    * @defaultvalue FavoriteStar
    */
   unselectedIcon?: string;
+
+  /**
+   * Optional custom renderer for the star component.
+   */
+  onRenderStar?: IRenderFunction<IRatingStarProps>;
 
   /**
    * Size of rating

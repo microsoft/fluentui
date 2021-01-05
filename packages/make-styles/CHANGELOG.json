@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Mon, 21 Dec 2020 12:28:34 GMT",
+      "tag": "@fluentui/make-styles_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "perf: makeStyles improve classnames side-effect",
+            "author": "olfedias@microsoft.com",
+            "commit": "67141a6ffc27b3e0d9f3ff346841076573a52784",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Dec 2020 12:30:15 GMT",
       "tag": "@fluentui/make-styles_v0.2.0",
       "version": "0.2.0",
