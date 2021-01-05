@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add inline start margin for rtl to slider",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-04T19:29:21.433Z"
-}
