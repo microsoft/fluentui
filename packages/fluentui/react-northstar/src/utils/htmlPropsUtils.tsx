@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { AriaAttributes } from 'react';
 
 export const htmlImageProps = ['alt', 'height', 'src', 'srcSet', 'width'];
 
@@ -157,9 +156,10 @@ export const htmlInputEvents: HtmlInputEvents[] = [
 ];
 
 export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents];
+
 export interface PartitionHTMLPropsOptions {
-  /** An array of html input props or aria attributes */
-  htmlProps?: HtmlInputProps[] | Array<keyof AriaAttributes>;
+  /** An array of html input props */
+  htmlProps?: HtmlInputProps[];
   /** Includes all input props that starts with "aria-" */
   includeAria?: boolean;
 }
