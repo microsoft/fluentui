@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add switch label margin and cursor pointer",
+  "packageName": "@fluentui/web-components",
+  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-04T18:57:05.315Z"
+}

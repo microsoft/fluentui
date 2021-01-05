@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add calloutMinWidth props for Callout component",
-  "packageName": "@fluentui/react-internal",
-  "email": "qizheqi@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-25T07:16:55.108Z"
-}

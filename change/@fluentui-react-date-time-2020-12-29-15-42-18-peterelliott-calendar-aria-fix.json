@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "@fluentui/react-date-time Calendar: fix use of gridcell role",
-  "packageName": "@fluentui/react-date-time",
-  "email": "peterelliott@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-29T23:42:18.215Z"
-}

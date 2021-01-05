@@ -95,7 +95,10 @@ export const BaseButtonStyles: ElementStyles = css`
     }
 
     .start,
-    .end,
+    .end {
+        display: flex;
+    }
+
     ::slotted(svg) {
         ${
           /* Glyph size and margin-left is temporary -
@@ -260,6 +263,7 @@ export const HypertextStyles = css`
         font-size: inherit;
         line-height: inherit;
         background: transparent;
+        min-width: 0;
     }
 
     :host(.hypertext) .control {

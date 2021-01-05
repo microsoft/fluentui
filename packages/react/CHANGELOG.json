@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 31 Dec 2020 12:30:02 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.32",
+      "version": "8.0.0-beta.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add a props for Dropdown component to enable adjust width to fit content",
+            "author": "qizheqi@microsoft.com",
+            "commit": "916d41f79900ceff3a11445f5cff74f8f6dceb3b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Dec 2020 12:35:10 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.31",
       "version": "8.0.0-beta.31",
