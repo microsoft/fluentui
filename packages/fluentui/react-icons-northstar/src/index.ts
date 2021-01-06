@@ -126,6 +126,7 @@ export { HandIcon } from './components/HandIcon';
 export { HeadsetIcon } from './components/HeadsetIcon';
 export { HighlightIcon } from './components/HighlightIcon';
 export { HorizontalRuleIcon } from './components/HorizontalRuleIcon';
+export { ImageLibraryIcon } from './components/ImageLibraryIcon';
 export { ImageUnavailableIcon } from './components/ImageUnavailableIcon';
 export { IndentIcon } from './components/IndentIcon';
 export { InfoIcon } from './components/InfoIcon';
