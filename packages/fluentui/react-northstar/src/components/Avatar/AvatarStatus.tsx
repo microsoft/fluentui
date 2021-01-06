@@ -14,6 +14,7 @@ import * as PropTypes from 'prop-types';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
 import { AvatarStatusIcon, AvatarStatusIconProps } from './AvatarStatusIcon';
+import { statusClassName } from '../Status/Status';
 
 export interface AvatarStatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -33,7 +34,7 @@ export interface AvatarStatusProps extends UIComponentProps {
 }
 
 export type AvatarStatusStylesProps = Required<Pick<AvatarStatusProps, 'color' | 'size' | 'state'>>;
-export const avatarStatusClassName = 'ui-avatar__status';
+export const avatarStatusClassName = statusClassName;
 
 /**
  * A AvatarStatus provides a status for the Avatar.
