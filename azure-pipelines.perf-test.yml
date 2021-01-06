@@ -19,7 +19,8 @@ steps:
   - template: .devops/templates/tools.yml
 
   - task: Bash@3
-    filePath: yarn-ci.sh
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   # @fluentui/perf-test needs build and bundle steps

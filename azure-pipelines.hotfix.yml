@@ -22,7 +22,8 @@ steps:
     displayName: 'Check targetNpmVersion is valid semver'
 
   - task: Bash@3
-    filePath: yarn-ci.sh
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |
