@@ -4,22 +4,6 @@ import { AvatarStatusStylesProps } from '../../../../components/Avatar/AvatarSta
 import { AvatarVariables } from './avatarVariables';
 import { pxToRem, SizeValue } from '../../../../utils';
 
-const getBackgroundColor = (state: string, variables: AvatarVariables) => {
-  switch (state) {
-    case 'success':
-      return variables.statusSuccessBackgroundColor;
-    case 'info':
-      return variables.statusInfoBackgroundColor;
-    case 'warning':
-      return variables.statusWarningBackgroundColor;
-    case 'error':
-      return variables.statusErrorBackgroundColor;
-    case 'unknown':
-    default:
-      return variables.statusDefaultBackgroundColor;
-  }
-};
-
 const sizeToPxValue: Record<SizeValue, number> = {
   smallest: 6,
   smaller: 10,
@@ -30,7 +14,7 @@ const sizeToPxValue: Record<SizeValue, number> = {
   largest: 0,
 };
 
-export const getSizeStyles = (sizeInPx: number, variables: AvatarVariables) => {
+export const getSizeStyles = (sizeInPx: number) => {
   const sizeInRem = pxToRem(sizeInPx);
 
   return {
@@ -44,13 +28,28 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    ...getSizeStyles(sizeToPxValue[size], v),
+    ...getSizeStyles(sizeToPxValue[size]),
     verticalAlign: 'middle',
     borderRadius: '9999px',
-    backgroundColor: color || getBackgroundColor(state, v),
+    backgroundColor: color,
     position: 'absolute',
     bottom: 0,
     right: 0,
     boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
+    ...(state === 'success' && {
+      backgroundColor: v.statusSuccessBackgroundColor,
+    }),
+    ...(state === 'info' && {
+      backgroundColor: v.statusInfoBackgroundColor,
+    }),
+    ...(state === 'warning' && {
+      backgroundColor: v.statusWarningBackgroundColor,
+    }),
+    ...(state === 'error' && {
+      backgroundColor: v.statusErrorBackgroundColor,
+    }),
+    ...(state === 'unknown' && {
+      backgroundColor: v.statusDefaultBackgroundColor,
+    }),
   }),
 };
