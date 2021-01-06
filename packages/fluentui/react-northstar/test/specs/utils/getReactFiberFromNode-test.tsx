@@ -23,6 +23,12 @@ describe('getReactFiberFromNode', () => {
     document.body.removeChild(rootEl);
   });
 
+  it('throws on non-React node', () => {
+    expect(() => getReactFiberFromNode(document.createElement('div'))).toThrow(
+      /Failed to find a React Fiber on a node/,
+    );
+  });
+
   it('returns null if nothing was passed', () => {
     expect(getReactFiberFromNode(undefined)).toBe(null);
   });
