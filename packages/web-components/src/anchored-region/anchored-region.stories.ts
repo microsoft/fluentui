@@ -2,11 +2,11 @@ import { STORY_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
 import { Direction, RtlScrollConverter } from '@microsoft/fast-web-utilities';
 import { FluentDesignSystemProvider } from '../design-system-provider';
-import { FASTAnchoredRegion } from '../anchored-region';
+import { FluentAnchoredRegion } from '../anchored-region';
 import AnchoreRegionTemplate from './fixtures/base.html';
 
 // Prevent tree-shaking
-FASTAnchoredRegion;
+FluentAnchoredRegion;
 FluentDesignSystemProvider;
 
 let scalingViewportPreviousXValue: number = 250;
@@ -45,7 +45,7 @@ function scrollViewports(): void {
 function handleScrollViaUpdate(ev: Event): void {
   if (ev.target instanceof HTMLElement) {
     const scalingRegionUpdate: HTMLElement | null = document.getElementById('region-scaling-update');
-    if (scalingRegionUpdate instanceof FASTAnchoredRegion) {
+    if (scalingRegionUpdate instanceof FluentAnchoredRegion) {
       (scalingRegionUpdate as any).update();
     }
   }
@@ -56,7 +56,7 @@ function handleScrollViaOffset(ev: Event): void {
     const scroller: HTMLElement = ev.target as HTMLElement;
 
     const scalingRegionOffset: HTMLElement | null = document.getElementById('region-scaling-offset');
-    if (scalingRegionOffset instanceof FASTAnchoredRegion) {
+    if (scalingRegionOffset instanceof FluentAnchoredRegion) {
       (scalingRegionOffset as any).updateAnchorOffset(
         scalingViewportPreviousXValue - scroller.scrollLeft,
         scalingViewportPreviousYValue - scroller.scrollTop,

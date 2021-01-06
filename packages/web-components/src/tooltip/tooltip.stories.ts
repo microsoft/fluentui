@@ -23,7 +23,7 @@ function onAnchorMouseEnter(e: MouseEvent): void {
 }
 
 function connectAnchors(): void {
-  document.querySelectorAll('fast-button').forEach(el => {
+  document.querySelectorAll('fluent-button').forEach(el => {
     if (el !== null && el.id.startsWith('anchor-anchor-switch')) {
       (el as HTMLElement).onmouseenter = onAnchorMouseEnter;
     }

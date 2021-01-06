@@ -1,5 +1,5 @@
 import { customElement } from '@microsoft/fast-element';
-import { TooltipTemplate as template, Tooltip } from '@microsoft/fast-foundation';
+import { createTooltipTemplate, createTooltipTemplate as template, Tooltip } from '@microsoft/fast-foundation';
 import { TooltipStyles as styles } from './tooltip.styles';
 
 /**
@@ -13,7 +13,7 @@ import { TooltipStyles as styles } from './tooltip.styles';
  */
 @customElement({
   name: 'fluent-tooltip',
-  template,
+  template: createTooltipTemplate('fluent'),
   styles,
   shadowOptions: {
     mode: 'closed',

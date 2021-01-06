@@ -16,88 +16,106 @@ import {
 
 export const TooltipStyles = css`
   :host {
+    position: relative;
     contain: layout;
     overflow: visible;
     height: 0;
     width: 0;
-    margin-top: 10px;
   }
 
   .tooltip {
-    position: relative;
     box-sizing: border-box;
     border-radius: calc(var(--corner-radius) * 1px);
     border: calc(var(--outline-width) * 1px) solid transparent;
-    background: #424242;
-    color: #ffffff;
-    padding: 4px;
+    background: ${neutralForegroundRestBehavior.var};
+    color: ${neutralFillRestBehavior.var};
+    padding: 4px 12px;
     height: fit-content;
     width: fit-content;
     font-family: var(--body-font);
-    font-size: var(--type-ramp-minus-1-font-size);
-    line-height: var(--type-ramp-minus-1-line-height);
+    font-size: var(--type-ramp-base-font-size);
+    line-height: var(--type-ramp-base-line-height);
     white-space: nowrap;
     // TODO: a mechanism to manage z-index across components
     // https://github.com/microsoft/fast/issues/3813
     z-index: 10000;
-    margin-top: 10px;
   }
 
-  fast-anchored-region {
+  fluent-anchored-region {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: visible;
-  }
-
-  :host([position='top']) fast-anchored-region,
-  :host([position='bottom']) fast-anchored-region {
     flex-direction: row;
   }
 
-  :host([position='right']) fast-anchored-region,
-  :host([position='left']) fast-anchored-region {
+  fluent-anchored-region.right,
+  fluent-anchored-region.left {
     flex-direction: column;
   }
 
-  :host([position='top']) .tooltip {
-    margin-bottom: 10px;
-  }
-
-  :host([position='top']) .tooltip::after {
+  fluent-anchored-region.top .tooltip::after {
     content: '';
     width: 12px;
     height: 12px;
-    background: #424242;
+    background: ${neutralForegroundRestBehavior.var};
     border-radius: calc(var(--corner-radius) * 1px);
     position: absolute;
-    transform: rotate(45deg);
-    bottom: -6px;
+    transform: rotate(45deg) translateX(-50%);
+    bottom: 4px;
     left: 50%;
   }
 
-  :host([position='bottom']) .tooltip {
-    margin-top: 10px;
+  fluent-anchored-region.top .tooltip {
+    margin-bottom: 12px;
   }
 
-  :host([position='bottom']) .tooltip::after {
+  fluent-anchored-region.bottom .tooltip::after {
     content: '';
     width: 12px;
     height: 12px;
-    background: #424242;
+    background: ${neutralForegroundRestBehavior.var};
     border-radius: calc(var(--corner-radius) * 1px);
     position: absolute;
-    transform: rotate(45deg) translate(50%, 50%);
-    top: -14px;
+    transform: rotate(45deg) translateX(-50%);
+    top: 12px;
     left: 50%;
   }
 
-  :host([position='left']) .tooltip {
-    margin-right: 4px;
+  fluent-anchored-region.bottom .tooltip {
+    margin-top: 12px;
   }
 
-  :host([position='right']) .tooltip {
-    margin-left: 4px;
+  fluent-anchored-region.left .tooltip::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: ${neutralForegroundRestBehavior.var};
+    border-radius: calc(var(--corner-radius) * 1px);
+    position: absolute;
+    transform: rotate(45deg) translateY(-50%);
+    top: 50%;
+    right: 12px;
+  }
+
+  fluent-anchored-region.left .tooltip {
+    margin-right: 12px;
+  }
+
+  fluent-anchored-region.right .tooltip::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: ${neutralForegroundRestBehavior.var};
+    border-radius: calc(var(--corner-radius) * 1px);
+    position: absolute;
+    transform: rotate(45deg) translateY(-50%);
+    top: 50%;
+    left: 4px;
+  }
+
+  fluent-anchored-region.right .tooltip {
+    margin-left: 12px;
   }
 `.withBehaviors(
   accentFillActiveBehavior,
@@ -115,6 +133,14 @@ export const TooltipStyles = css`
     css`
       :host([disabled]) {
         opacity: 1;
+      }
+      fluent-anchored-region.top .tooltip::after,
+      fluent-anchored-region.bottom .tooltip::after,
+      fluent-anchored-region.left .tooltip::after,
+      fluent-anchored-region.right .tooltip::after {
+        content: '';
+        width: unset;
+        height: unset;
       }
     `,
   ),

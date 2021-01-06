@@ -41,6 +41,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea } from '@microsoft/fast-foundation';
 import { TextField } from '@microsoft/fast-foundation';
+import { Tooltip } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 
@@ -756,6 +757,10 @@ export class FluentTextField extends TextField {
 }
 
 // @public
+export class FluentTooltip extends Tooltip {
+}
+
+// @public
 export class FluentTreeItem extends TreeItem {
 }
 
@@ -1289,6 +1294,9 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TooltipStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;
