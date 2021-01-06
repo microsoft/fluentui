@@ -21,8 +21,8 @@ steps:
       node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
     displayName: 'Check targetNpmVersion is valid semver'
 
-  - bash: yarn-ci.sh
-    targetType: filePath
+  - task: Bash@3
+    filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |
