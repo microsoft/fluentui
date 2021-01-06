@@ -20,6 +20,7 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: yarn-ci.sh
+        targetType: filePath
         displayName: yarn
 
       - script: |
@@ -71,6 +72,7 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: yarn-ci.sh
+        targetType: filePath
         displayName: yarn
 
       ## only do scoped bundle with PRs
@@ -137,6 +139,7 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: yarn-ci.sh
+        targetType: filePath
         displayName: yarn
 
       - script: yarn workspace @fluentui/docs vr:build
@@ -166,6 +169,7 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: yarn-ci.sh
+        targetType: filePath
         displayName: yarn
 
       - script: |
