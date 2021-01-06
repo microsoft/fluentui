@@ -134,6 +134,9 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 
 /**
  * A Datepicker is a control which is used to display dates grid and allow user to select them.
+ *
+ * @accessibilityIssues
+ * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
