@@ -7,9 +7,9 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVa
     background: 'rgba(45, 44, 44, 1)',
 
     blackForeground: siteVars.colorScheme.black.foreground1,
-    blackBackground: siteVars.colorScheme.black.background,
+    blackBackground: siteVars.colorScheme.black.background1,
 
-    whiteForeground: siteVars.colorScheme.white.foreground,
+    whiteForeground: siteVars.colorScheme.white.foreground1,
     whiteBackground: siteVars.colorScheme.white.background1,
 
     brandForeground: siteVars.colorScheme.brand.foreground5,
@@ -19,13 +19,13 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVa
     greyBackground: siteVars.colorScheme.grey.background6,
 
     orangeForeground: siteVars.colorScheme.orange.foreground2,
-    orangeBackground: siteVars.colorScheme.orange.background,
+    orangeBackground: siteVars.colorScheme.orange.background1,
 
     redForeground: siteVars.colorScheme.red.foreground1,
     redBackground: siteVars.colorScheme.red.background,
 
     greenForeground: siteVars.colorScheme.green.foreground3,
-    greenBackground: siteVars.colorScheme.green.background,
+    greenBackground: siteVars.colorScheme.green.background1,
 
     yellowForeground: siteVars.colorScheme.yellow.foreground3,
     yellowBackground: siteVars.colorScheme.yellow.background,

@@ -47,20 +47,20 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): LabelVariables 
     whiteForeground: siteVars.colorScheme.white.foreground1,
     whiteBackground: siteVars.colorScheme.white.background1,
 
-    brandForeground: siteVars.colorScheme.brand.foreground4,
-    brandBackground: siteVars.colorScheme.brand.background,
+    brandForeground: siteVars.colorScheme.brand.foreground5,
+    brandBackground: siteVars.colorScheme.brand.background5,
 
     greyForeground: siteVars.colorScheme.grey.foreground2,
     greyBackground: siteVars.colorScheme.grey.background3,
 
     orangeForeground: siteVars.colorScheme.orange.foreground2,
-    orangeBackground: siteVars.colorScheme.orange.background,
+    orangeBackground: siteVars.colorScheme.orange.background1,
 
     redForeground: siteVars.colorScheme.red.foreground1,
     redBackground: siteVars.colorScheme.red.background,
 
-    greenForeground: siteVars.colorScheme.green.foreground1,
-    greenBackground: siteVars.colorScheme.green.background,
+    greenForeground: siteVars.colorScheme.green.foreground3,
+    greenBackground: siteVars.colorScheme.green.background1,
 
     yellowForeground: siteVars.colorScheme.yellow.foreground3,
     yellowBackground: siteVars.colorScheme.yellow.background,
