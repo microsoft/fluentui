@@ -13,7 +13,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
-import { BoxProps } from '../Box/Box';
 import { AvatarStatusIcon } from './AvatarStatusIcon';
 
 export interface AvatarStatusProps extends UIComponentProps {
@@ -24,7 +23,7 @@ export interface AvatarStatusProps extends UIComponentProps {
   color?: string;
 
   /** Shorthand for the icon, to provide customizing status */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<AvatarStatusIconProps>;
 
   /** Size multiplier */
   size?: SizeValue;
