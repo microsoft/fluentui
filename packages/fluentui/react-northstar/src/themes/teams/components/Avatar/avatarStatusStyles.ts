@@ -36,20 +36,25 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
     bottom: 0,
     right: 0,
     boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
-    ...(state === 'success' && {
-      backgroundColor: v.statusSuccessBackgroundColor,
-    }),
-    ...(state === 'info' && {
-      backgroundColor: v.statusInfoBackgroundColor,
-    }),
-    ...(state === 'warning' && {
-      backgroundColor: v.statusWarningBackgroundColor,
-    }),
-    ...(state === 'error' && {
-      backgroundColor: v.statusErrorBackgroundColor,
-    }),
-    ...(state === 'unknown' && {
-      backgroundColor: v.statusDefaultBackgroundColor,
-    }),
+    ...(!color &&
+      state === 'success' && {
+        backgroundColor: v.statusSuccessBackgroundColor,
+      }),
+    ...(!color &&
+      state === 'info' && {
+        backgroundColor: v.statusInfoBackgroundColor,
+      }),
+    ...(!color &&
+      state === 'warning' && {
+        backgroundColor: v.statusWarningBackgroundColor,
+      }),
+    ...(!color &&
+      state === 'error' && {
+        backgroundColor: v.statusErrorBackgroundColor,
+      }),
+    ...(!color &&
+      state === 'unknown' && {
+        backgroundColor: v.statusDefaultBackgroundColor,
+      }),
   }),
 };
