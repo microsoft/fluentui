@@ -219,6 +219,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground4: colors.white,
     foreground5: colors.grey[100],
     foreground6: colors.grey[200],
+    foreground7: colors.grey[750],
 
     background: colors.white,
     background1: colors.grey[50],
@@ -226,6 +227,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background3: colors.grey[150],
     background4: colors.grey[100],
     background5: colors.grey[350],
+    background6: colors.brand[100],
 
     border: colors.grey[200], // buttons
     border1: colors.grey[150],
