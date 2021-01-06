@@ -14,7 +14,7 @@ The following table will help you navigate the 3 projects and understand their d
 | **Overview**    | Mature, refreshing with new concepts from react-northstar. | Newer, has concepts we're iterating on. | Web Component implementation of Fluent UI. |
 | **Used By**     | Office| Teams | Edge |
 | **Read Me**     | [README.md](/packages/react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
-| **Repo**        | [./packages/react](/packages/react) [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
+| **Repo**        | [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
 | **Quick Start** | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [Quick Start](https://fluentsite.z22.web.core.windows.net/quick-start) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
 | **Docs**        | [aka.ms/fluentui-react](https://aka.ms/fluentui-react) | [aka.ms/fluentui-react-northstar](https://aka.ms/fluentui-react-northstar) | [aka.ms/fluentui-web-components](https://aka.ms/fluentui-web-components) |
 | **NPM**         | `@fluentui/react` | `@fluentui/react-northstar` | `@fluentui/web-components` |
