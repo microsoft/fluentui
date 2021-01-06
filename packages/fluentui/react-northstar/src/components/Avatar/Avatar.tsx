@@ -7,6 +7,7 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -136,6 +137,9 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
           getA11Props('status', {
             size,
           }),
+        overrideProps: predefinedProps => ({
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        }),
       })}
     </ElementType>
   );

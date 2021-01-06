@@ -1,18 +1,20 @@
 import * as React from 'react';
 import {
-  compose,
   useFluentContext,
   useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
   useUnhandledProps,
+  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import { commonPropTypes, SizeValue, UIComponentProps, createShorthand } from '../../utils';
-
-import { ShorthandValue } from '../../types';
-import { Accessibility, StatusBehaviorProps } from '../../index';
-import { BoxProps, Box } from '../Box/Box';
+import { commonPropTypes, SizeValue, UIComponentProps, createShorthandFactory, createShorthand } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
+import { BoxProps } from '../Box/Box';
+import { AvatarStatusIcon } from './AvatarStatusIcon';
 
 export interface AvatarStatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -37,82 +39,65 @@ export const avatarStatusClassName = 'ui-avatar__status';
 /**
  * A AvatarStatus provides a status for the Avatar.
  */
-export const AvatarStatus = compose<'span', AvatarStatusProps, AvatarStatusStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+export const AvatarStatus: ComponentWithAs<'span', AvatarStatusProps> & FluentComponentStaticProps = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
+  setStart();
 
-    const { color, icon, size, state, design, styles, variables, className } = props;
-
-    const { classes, styles: resolvedStyles } = useStyles<AvatarStatusStylesProps>(composeOptions.displayName, {
-      className: avatarStatusClassName,
-      composeOptions,
-      mapPropsToStyles: () => ({
-        color,
-        size,
-        state,
-      }),
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables,
-      }),
-      rtl: context.rtl,
-    });
-
-    const getA11Props = useAccessibility(props.accessibility, {
-      debugName: composeOptions.displayName,
-      rtl: context.rtl,
-    });
-
-    const ElementType = getElementType(props);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-
-    const iconElement = createShorthand(composeOptions.slots.icon, icon, {
-      defaultProps: () =>
-        getA11Props('icon', {
-          styles: resolvedStyles.icon,
-          as: 'span',
-        }),
-    });
-
-    const element = (
-      <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
-        {iconElement}
-      </ElementType>
-    );
-    setEnd();
-
-    return element;
-  },
-  {
+  const { className, color, icon, size, state, design, styles, variables } = props;
+  const { classes } = useStyles<AvatarStatusStylesProps>(AvatarStatus.displayName, {
     className: avatarStatusClassName,
-    displayName: 'AvatarStatus',
-    shorthandConfig: { mappedProp: 'state' },
-    overrideStyles: true,
-    mapPropsToStylesProps: ({ color, state, size }) => ({
+    mapPropsToStyles: () => ({
       color,
       size,
       state,
     }),
-    slots: {
-      icon: Box,
-    },
-    handledProps: [
-      'as',
-      'accessibility',
-      'className',
-      'variables',
-      'design',
-      'styles',
-      'color',
-      'size',
-      'state',
-      'icon',
-    ],
-  },
-);
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+  const getA11Props = useAccessibility(props.accessibility, {
+    debugName: AvatarStatus.displayName,
+    rtl: context.rtl,
+  });
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(AvatarStatus.handledProps, props);
 
-AvatarStatus.propTypes = commonPropTypes.createCommon();
+  const iconElement = createShorthand(AvatarStatusIcon, icon, {
+    defaultProps: () => ({
+      state,
+    }),
+  });
+
+  const element = (
+    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{iconElement}</ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+AvatarStatus.displayName = 'AvatarStatus';
+AvatarStatus.propTypes = {
+  ...commonPropTypes.createCommon({
+    children: false,
+    content: false,
+  }),
+  color: PropTypes.string,
+  icon: customPropTypes.shorthandAllowingChildren,
+  size: customPropTypes.size,
+  state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
+};
+AvatarStatus.handledProps = Object.keys(AvatarStatus.propTypes) as any;
+AvatarStatus.defaultProps = {
+  accessibility: avatarStatusBehavior,
+  as: 'span',
+  size: 'medium',
+  state: 'unknown',
+};
+
+AvatarStatus.create = createShorthandFactory({ Component: AvatarStatus, mappedProp: 'state' });
