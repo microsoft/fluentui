@@ -12,6 +12,7 @@ export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
+export { avatarStatusVariables as AvatarStatus } from './components/Avatar/avatarStatusVariables';
 
 export { buttonVariables as Button } from './components/Button/buttonVariables';
 export { buttonGroupVariables as ButtonGroup } from './components/Button/buttonGroupVariables';
