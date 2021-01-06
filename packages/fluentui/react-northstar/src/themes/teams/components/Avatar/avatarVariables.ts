@@ -5,7 +5,7 @@ export interface AvatarVariables {
   avatarBorderWidth: string;
   squareAvatarBorderRadius: string;
   statusBorderColor: string;
-  statusBorderWidth: number;
+  statusBorderWidth: string;
   iconColor: string;
   iconBackgroundColor: string;
   statusIconSize: string;
@@ -27,7 +27,7 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   squareAvatarBorderRadius: pxToRem(3),
   iconColor: siteVariables.colors.white,
   iconBackgroundColor: siteVariables.colors.brand[600],
-  statusBorderWidth: 2,
+  statusBorderWidth: '2px',
   statusIconSize: pxToRem(7),
   statusBorderColor: siteVariables.bodyBackground,
   statusSuccessBackgroundColor: siteVariables.colorScheme.green.background,

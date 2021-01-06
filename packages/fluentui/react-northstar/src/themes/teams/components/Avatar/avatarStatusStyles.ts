@@ -67,7 +67,7 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
     position: 'absolute',
     bottom: 0,
     right: 0,
-    boxShadow: `0 0 0 ${v.statusBorderWidth}px ${v.statusBorderColor}`,
+    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
   }),
 
   icon: ({ props: { state }, variables: v }): ICSSInJSStyle => ({
