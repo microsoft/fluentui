@@ -137,7 +137,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
           getA11Props('status', {
             size,
           }),
-        overrideProps: predefinedProps => ({
+        overrideProps: (predefinedProps: AvatarProps) => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),
       })}

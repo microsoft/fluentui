@@ -24,7 +24,7 @@ export type AvatarStatusIconStylesProps = Required<Pick<AvatarStatusIconProps, '
 export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 
 /**
- * A AvatarStatusIcon provides a status for the Avatar.
+ * A AvatarStatusIcon provides a status icon for the Avatar.
  */
 export const AvatarStatusIcon: ComponentWithAs<'span', AvatarStatusIconProps> & FluentComponentStaticProps = props => {
   const context = useFluentContext();
