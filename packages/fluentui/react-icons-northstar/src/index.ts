@@ -30,6 +30,7 @@ export { BroadcastViewFullscreenIcon } from './components/BroadcastViewFullscree
 export { BroadcastViewLeftIcon } from './components/BroadcastViewLeftIcon';
 export { BulletsIcon } from './components/BulletsIcon';
 export { CalendarIcon } from './components/CalendarIcon';
+export { CalendarAgendaIcon } from './components/CalendarAgendaIcon';
 export { CallBlockedIcon } from './components/CallBlockedIcon';
 export { CallControlCloseTrayIcon } from './components/CallControlCloseTrayIcon';
 export { CallControlReleaseIcon } from './components/CallControlReleaseIcon';
@@ -125,6 +126,7 @@ export { HandIcon } from './components/HandIcon';
 export { HeadsetIcon } from './components/HeadsetIcon';
 export { HighlightIcon } from './components/HighlightIcon';
 export { HorizontalRuleIcon } from './components/HorizontalRuleIcon';
+export { ImageLibraryIcon } from './components/ImageLibraryIcon';
 export { ImageUnavailableIcon } from './components/ImageUnavailableIcon';
 export { IndentIcon } from './components/IndentIcon';
 export { InfoIcon } from './components/InfoIcon';
