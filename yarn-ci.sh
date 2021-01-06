@@ -11,7 +11,7 @@ while timeout -k "$((MAX_TIME+1)m" "$MAX_TIMEm" -- npx midgard-yarn install; [ $
   if [ $attempt -lt $MAX_RETRIES ]; then
     printf "\nyarn took more than $MAX_TIME minutes. Retrying (attempt $((++attempt)))...\n"
   else
-    printf "\n##vso[task.logissue type=error]yarn failed to complete in $MAX_TIME minutes after $MAX_RETRIES attempts\n"
+    printf "\n\#\#vso[task.logissue type=error]yarn failed to complete in $MAX_TIME minutes after $MAX_RETRIES attempts\n"
     exit 1
   fi
 done
