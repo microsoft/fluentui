@@ -32,7 +32,7 @@ const getTextColor = (state: string, variables: AvatarVariables) => {
       return variables.statusErrorTextColor;
     case 'unknown':
     default:
-      return variables.statusDefaultTextColor;
+      return variables.statusColor;
   }
 };
 
