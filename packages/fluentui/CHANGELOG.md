@@ -76,6 +76,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix missing export for `AttachmentBodyStylesProps` @ling1726 ([#16260](https://github.com/microsoft/fluentui/pull/16260))
 - Fix throwing error when using `ChatMessage` with children without declaring the `header` prop @ling1726 ([#16321](https://github.com/microsoft/fluentui/pull/16321))
 - Fix throwing error in `fontSizeUtility` on CodeSandbox @layershifter ([#16368](https://github.com/microsoft/fluentui/pull/16368))
+- Fix - Apply aria attributes on proper element for `Datepicker`, `Dropdown`, `Input` @kolaps33 ([#16324](https://github.com/microsoft/fluentui/pull/16324))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
