@@ -238,15 +238,6 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/icon-viewer',
         },
       },
-      {
-        id: 'component-architecture',
-        title: {
-          as: NavLink,
-          content: 'Component Architecture',
-          activeClassName: 'active',
-          to: '/component-architecture',
-        },
-      },
       ...(process.env.NODE_ENV !== 'production'
         ? [
             {
