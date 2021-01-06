@@ -19,7 +19,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - bash: yarn-ci.sh
         displayName: yarn
 
       - script: |
@@ -70,7 +70,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - bash: yarn-ci.sh
         displayName: yarn
 
       ## only do scoped bundle with PRs
@@ -136,7 +136,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - bash: yarn-ci.sh
         displayName: yarn
 
       - script: yarn workspace @fluentui/docs vr:build
@@ -165,7 +165,7 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - bash: yarn-ci.sh
         displayName: yarn
 
       - script: |

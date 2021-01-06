@@ -18,8 +18,7 @@ workspace:
 steps:
   - template: .devops/templates/tools.yml
 
-  - script: |
-      npx midgard-yarn install
+  - bash: yarn-ci.sh
     displayName: yarn
 
   # @fluentui/perf-test needs build and bundle steps
