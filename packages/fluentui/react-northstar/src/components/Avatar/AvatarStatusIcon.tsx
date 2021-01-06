@@ -21,7 +21,7 @@ export interface AvatarStatusIconProps extends UIComponentProps {
 }
 
 export type AvatarStatusIconStylesProps = Required<Pick<AvatarStatusIconProps, 'state'>>;
-export const avatarStatusIconClassName = 'ui-avatar__status';
+export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 
 /**
  * A AvatarStatusIcon provides a status for the Avatar.
