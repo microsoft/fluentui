@@ -13,7 +13,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
-import { AvatarStatusIcon } from './AvatarStatusIcon';
+import { AvatarStatusIcon, AvatarStatusIconProps } from './AvatarStatusIcon';
 
 export interface AvatarStatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
