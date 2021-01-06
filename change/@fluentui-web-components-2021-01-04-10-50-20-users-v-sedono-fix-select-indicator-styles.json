@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add select indicator css selector to fix indicator sizing",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-04T18:50:20.271Z"
-}
