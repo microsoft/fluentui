@@ -7,7 +7,7 @@ MAX_TIME=5
 MAX_RETRIES=3
 # `timeout` is in GNU coreutils. These are installed by default on Linux but not on Mac.
 # https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html#index-timeout
-while timeout -k "$((MAX_TIME+1))m" "$MAX_TIMEm" npx midgard-yarn install; [ $? = 124 ]; do
+while timeout -k "$((MAX_TIME+1))m" "${MAX_TIME}m" npx midgard-yarn install; [ $? = 124 ]; do
   if [ $attempt -lt $MAX_RETRIES ]; then
     printf "\nyarn took more than $MAX_TIME minutes. Retrying (attempt $((++attempt)))...\n"
   else
