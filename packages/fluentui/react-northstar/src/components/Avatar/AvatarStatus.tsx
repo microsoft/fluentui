@@ -24,7 +24,7 @@ export interface AvatarStatusProps extends UIComponentProps {
   color?: string;
 
   /** Shorthand for the icon, to provide customizing status */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<AvatarStatusIconProps>;
 
   /** Size multiplier */
   size?: SizeValue;
