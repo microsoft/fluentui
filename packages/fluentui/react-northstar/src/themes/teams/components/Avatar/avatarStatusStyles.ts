@@ -20,22 +20,6 @@ const getBackgroundColor = (state: string, variables: AvatarVariables) => {
   }
 };
 
-const getTextColor = (state: string, variables: AvatarVariables) => {
-  switch (state) {
-    case 'success':
-      return variables.statusSuccessTextColor;
-    case 'info':
-      return variables.statusInfoTextColor;
-    case 'warning':
-      return variables.statusWarningTextColor;
-    case 'error':
-      return variables.statusErrorTextColor;
-    case 'unknown':
-    default:
-      return variables.statusColor;
-  }
-};
-
 const sizeToPxValue: Record<SizeValue, number> = {
   smallest: 6,
   smaller: 10,
@@ -68,22 +52,5 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
     bottom: 0,
     right: 0,
     boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
-  }),
-
-  icon: ({ props: { state }, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: v.statusIconSize,
-    height: v.statusIconSize,
-    color: getTextColor(state, v),
-    '& > :first-child': {
-      height: '100%',
-      width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
-    },
   }),
 };
