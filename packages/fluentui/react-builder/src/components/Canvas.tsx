@@ -113,24 +113,25 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       ) {
         case 'Period': // Moves to the next element
         case 'Comma': // Moves to the previous element
-          // if (event.ctrlKey) { // Begin if 1
-          virtualCursorElements[vcIndex].classList.remove('virtual-focused');
-          setVcIndex(index => {
-            const tempIndex = index + (event.code === 'Period' ? 1 : -1);
+          if (event.ctrlKey) {
+            // Begin if 1
+            virtualCursorElements[vcIndex].classList.remove('virtual-focused');
+            setVcIndex(index => {
+              const tempIndex = index + (event.code === 'Period' ? 1 : -1);
 
-            // Ensure looping, i.e., that the next element of the last element is the first element, and that the previous element of the first element is the last element
-            const newIndex =
-              tempIndex >= virtualCursorElements.length
-                ? 0
-                : tempIndex < 0
-                ? virtualCursorElements.length - 1
-                : tempIndex;
+              // Ensure looping, i.e., that the next element of the last element is the first element, and that the previous element of the first element is the last element
+              const newIndex =
+                tempIndex >= virtualCursorElements.length
+                  ? 0
+                  : tempIndex < 0
+                  ? virtualCursorElements.length - 1
+                  : tempIndex;
 
-            virtualCursorElements[newIndex].classList.add('virtual-focused');
-            setFocusedVcElement(virtualCursorElements[newIndex]);
-            return newIndex;
-          }); // End setVcIndex
-          // } // End if 1
+              virtualCursorElements[newIndex].classList.add('virtual-focused');
+              setFocusedVcElement(virtualCursorElements[newIndex]);
+              return newIndex;
+            }); // End setVcIndex
+          } // End if 1
           return;
         case 'Enter': // Clicks the current element
           virtualCursorElements[vcIndex].click();
