@@ -7,7 +7,7 @@ import {
   warnConditionallyRequiredProps,
   warnDeprecations,
   warnMutuallyExclusive,
-} from '@uifabric/utilities/lib/warn';
+} from '@fluentui/utilities/lib/warn';
 import { usePrevious } from './usePrevious';
 import { useConst } from './useConst';
 

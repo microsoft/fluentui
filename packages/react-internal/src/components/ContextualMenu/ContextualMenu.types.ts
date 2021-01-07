@@ -5,7 +5,7 @@ import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 // Might need to be changed to compat button
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '../../compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
@@ -17,7 +17,8 @@ import {
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -39,7 +40,10 @@ export interface IContextualMenu {}
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps
+  extends IBaseProps<IContextualMenu>,
+    React.RefAttributes<HTMLDivElement>,
+    IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -272,17 +276,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   delayUpdateFocusOnHover?: boolean;
 
   /**
-   * Called when the component is unmounting, and focus needs to be restored.
-   * Argument passed down contains two variables, the element that the underlying
-   * popup believes focus should go to and whether or not the popup currently
-   * contains focus. If this prop is provided, focus will not be restored automatically,
-   * you'll need to call originalElement.focus()
+   * Called when the component is unmounting, and focus needs to be restored. If this is provided,
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
-  onRestoreFocus?: (options: {
-    originalElement?: HTMLElement | Window;
-    containsFocus: boolean;
-    documentContainsFocus: boolean;
-  }) => void;
+  onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }
 
 /**
@@ -331,7 +328,7 @@ export interface IContextualMenuItem {
   text?: string;
 
   /**
-   * Seconday description for the menu item to display
+   * Secondary description for the menu item to display
    */
   secondaryText?: string;
 
@@ -390,7 +387,6 @@ export interface IContextualMenuItem {
   /**
    * Any custom data the developer wishes to associate with the menu item.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
 
   /**
@@ -500,7 +496,6 @@ export interface IContextualMenuItem {
    * @param dismissMenu - Function to dismiss the menu. Can be used to ensure that a custom menu
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
@@ -541,8 +536,17 @@ export interface IContextualMenuItem {
   /**
    * Any additional properties to use when custom rendering menu items.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propertyName: string]: any;
+
+  /**
+   * Detailed description of the menu item for the benefit of screen readers.
+   */
+  ariaDescription?: string;
+
+  /**
+   * ID of the element that contains additional detailed descriptive information for screen readers
+   */
+  ariaDescribedBy?: string;
 
   /**
    * This prop is no longer used. All contextual menu items are now focusable when disabled.
@@ -560,7 +564,6 @@ export interface IContextualMenuItem {
 /**
  * {@docCategory ContextualMenu}
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The items to include inside the section.
@@ -618,7 +621,7 @@ export interface IMenuItemStyles extends IButtonStyles {
   subMenuIcon: IStyle;
 
   /**
-   * Styles for a divider item of a ConextualMenu.
+   * Styles for a divider item of a ContextualMenu.
    */
   divider: IStyle;
 }
@@ -674,10 +677,8 @@ export interface IContextualMenuStyles {
  */
 export interface IContextualMenuSubComponentStyles {
   /** Styles for the callout that hosts the ContextualMenu options. */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 
   /** Styles for each menu item. */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }

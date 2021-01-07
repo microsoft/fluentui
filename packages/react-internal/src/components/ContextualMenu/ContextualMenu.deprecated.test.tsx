@@ -32,6 +32,7 @@ describe('ContextualMenu', () => {
         splitPrimary: 'splitPrimaryFoo',
         splitMenu: 'splitMenuFoo',
         linkContentMenu: 'linkContentMenuFoo',
+        screenReaderText: 'screenReaderText',
       };
     };
   });
@@ -50,7 +51,10 @@ describe('ContextualMenu', () => {
   });
 
   it('includes the classNames on ContextualMenuItem(s)', () => {
-    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
+    const items: IContextualMenuItem[] = [
+      { text: 'Header', key: 'Header', itemType: ContextualMenuItemType.Header },
+      { name: 'Test 1', key: 'Test1' },
+    ];
 
     const getClassNames = () => {
       return {
@@ -64,7 +68,7 @@ describe('ContextualMenu', () => {
     };
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} getMenuClassNames={getClassNames} />,
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} title="Menu!" />,
     );
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
@@ -73,11 +77,11 @@ describe('ContextualMenu', () => {
     const header = document.querySelector('.headerFoo') as HTMLElement;
     const title = document.querySelector('.titleFoo') as HTMLElement;
 
-    expect(container).toBeDefined();
-    expect(rootEl).toBeDefined();
-    expect(list).toBeDefined();
-    expect(header).toBeDefined();
-    expect(title).toBeDefined();
+    expect(container).toBeTruthy();
+    expect(rootEl).toBeTruthy();
+    expect(list).toBeTruthy();
+    expect(header).toBeTruthy();
+    expect(title).toBeTruthy();
   });
 
   it('applies in-line style property if present on ContextualMenuItem', () => {
@@ -260,7 +264,7 @@ describe('ContextualMenu', () => {
       ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
     });
 
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
+    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 });
 
@@ -291,7 +295,7 @@ describe('getItemClassNames', () => {
       iconClassName,
     );
 
-    expect(itemClassNames).toBeDefined();
+    expect(itemClassNames).toBeTruthy();
   });
 
   it('applies custom classNames to style slots', () => {

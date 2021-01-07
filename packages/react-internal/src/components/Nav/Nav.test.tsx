@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
 import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
-import { IRenderFunction, IComponentAsProps } from '@uifabric/utilities';
+import { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 
 const linkOne: INavLink = {
@@ -44,6 +44,9 @@ describe('Nav', () => {
   isConformant({
     Component: Nav,
     displayName: 'Nav',
+    // Problem: Ref is not supported
+    // Solution: Convert to FunctionComponent and support using forwardRef
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   it('render Nav with overrides correctly', () => {

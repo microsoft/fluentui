@@ -2,6 +2,35 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "removing overrides from eslintrc.json file",
+            "author": "email not defined",
+            "commit": "7fc8435387fa90c21cdc396b41ed43f6f9e7979b",
+            "package": "@fluentui/eslint-plugin"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/eslint-plugin_v0.54.1",
       "version": "0.54.1",

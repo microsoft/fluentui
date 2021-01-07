@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Stack } from '@fluentui/react/lib/Stack';
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const customCoinClass = mergeStyles({

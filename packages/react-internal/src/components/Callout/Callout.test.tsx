@@ -6,8 +6,9 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as Utilities from '../../Utilities';
 import * as positioning from '../../Positioning';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 describe('Callout', () => {
   let realDom: HTMLDivElement;
@@ -50,6 +51,8 @@ describe('Callout', () => {
   isConformant({
     Component: Callout,
     displayName: 'Callout',
+    targetComponent: CalloutContent,
+    disabledTests: ['component-handles-ref'],
   });
 
   it('target id strings does not throw exception', () => {
@@ -189,11 +192,7 @@ describe('Callout', () => {
     let previousFocusElement;
     let isFocused;
     let restoreCalled = false;
-    const onRestoreFocus = (options: {
-      originalElement: HTMLElement | Window | undefined;
-      containsFocus: boolean;
-      documentContainsFocus: boolean;
-    }) => {
+    const onRestoreFocus = (options: IPopupRestoreFocusParams) => {
       previousFocusElement = options.originalElement;
       isFocused = options.containsFocus;
       restoreCalled = true;

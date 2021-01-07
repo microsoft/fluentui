@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
-import { IStyleFunctionOrObject, Omit } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface

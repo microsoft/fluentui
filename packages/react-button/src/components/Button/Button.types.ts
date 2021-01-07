@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -42,7 +45,7 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /** A button can fill the width of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -95,13 +98,18 @@ export type ButtonProps = ComponentProps &
     tokens?: RecursivePartial<ButtonTokens>;
   };
 
+/**
+ * {@docCategory Button}
+ */
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
-    /* sizing */
     paddingLeft?: string;
     paddingRight?: string;
     paddingTop?: string;
@@ -122,9 +130,12 @@ export type ButtonTokens = ColorTokens &
     boxShadow?: string;
     width?: string;
 
+    forcedColorAdjust?: string;
+
     transform?: string;
     transition?: string;
 
+    /* sizing */
     size?: {
       smallest?: string;
       smaller?: string;
@@ -141,10 +152,15 @@ export type ButtonTokens = ColorTokens &
     };
   };
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariants<TTokens = ButtonTokens> = {
-  base?: TTokens;
-  primary?: TTokens;
-  iconOnly?: TTokens;
+  root?: TTokens;
+  block?: TTokens;
   circular?: TTokens;
-  fluid?: TTokens;
+  iconOnly?: TTokens;
+  ghost?: TTokens;
+  primary?: TTokens;
+  transparent?: TTokens;
 };

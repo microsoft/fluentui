@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
-import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
-import { IconButton, IButtonProps, IButtonStyles } from '../../Button';
+import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
+import { IconButton, IButtonProps, IButtonStyles } from '../../compat/Button';
 import { Icon, IIconProps } from '../../Icon';
 
 const COMPONENT_NAME = 'SearchBox';
@@ -54,10 +54,14 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disableAnimation = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
-    onEscape,
-    onSearch,
+    onEscape: customOnEscape,
+    onSearch: customOnSearch,
+    onKeyDown: customOnKeyDown,
     iconProps,
+    role,
   } = props;
+
+  const { onClick: customOnClearClick } = clearButtonProps;
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
@@ -75,6 +79,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     'onFocus',
     'onBlur',
     'value',
+    'role',
   ]);
 
   const onClear = React.useCallback(
@@ -92,12 +97,12 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
 
   const onClearClick = React.useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-      clearButtonProps?.onClick?.(ev);
+      customOnClearClick?.(ev);
       if (!ev.defaultPrevented) {
         onClear(ev);
       }
     },
-    [clearButtonProps, onClear],
+    [customOnClearClick, onClear],
   );
 
   const onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
@@ -127,35 +132,39 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
       case KeyCodes.escape:
-        onEscape?.(ev);
-        if (!ev.defaultPrevented) {
+        customOnEscape?.(ev);
+        // Only call onClear if the search box has a value to clear. Otherwise, allow the Esc key
+        // to propagate from the empty search box to a parent element such as a dialog, etc.
+        if (value && !ev.defaultPrevented) {
           onClear(ev);
         }
         break;
+
       case KeyCodes.enter:
-        if (onSearch) {
-          onSearch(value);
-          break;
+        if (customOnSearch) {
+          customOnSearch(value);
+          ev.preventDefault();
+          ev.stopPropagation();
         }
-        // if we don't handle the enter press then we shouldn't prevent default
-        return;
+        break;
+
       default:
-        onKeyDown?.(ev);
-        if (!ev.defaultPrevented) {
-          return;
+        // REVIEW: Why aren't we calling customOnKeyDown for Escape or Enter?
+        customOnKeyDown?.(ev);
+        // REVIEW: Why are we calling stopPropagation if customOnKeyDown called preventDefault?
+        // customOnKeyDown should call stopPropagation if it needs it.
+        if (ev.defaultPrevented) {
+          ev.stopPropagation();
         }
+        break;
     }
-    // We only get here if the keypress has been handled,
-    // or preventDefault was called in case of default keyDown handler
-    ev.preventDefault();
-    ev.stopPropagation();
   };
 
   useDebugWarning(props);
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
+    <div role={role} ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
       <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
+import { anchorProperties, getNativeProps, memoizeFunction, getId, mergeAriaAttributeValues } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
@@ -9,6 +9,7 @@ import { IKeytipProps } from '../../../Keytip';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
+  private _ariaDescriptionId: string;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
@@ -43,22 +44,34 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLAnchorElement>>(item, anchorProperties);
     const disabled = isItemDisabled(item);
-    const { itemProps } = item;
+    const { itemProps, ariaDescription } = item;
 
     let { keytipProps } = item;
     if (keytipProps && itemHasSubmenu) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
+    // Check for ariaDescription to set the _ariaDescriptionId and render a hidden span with
+    // the description in it to be added to ariaDescribedBy
+    if (ariaDescription) {
+      this._ariaDescriptionId = getId();
+    }
+    const ariaDescribedByIds = mergeAriaAttributeValues(
+      item.ariaDescribedBy,
+      ariaDescription ? this._ariaDescriptionId : undefined,
+      nativeProps['aria-describedby'],
+    );
+
+    const additionalItemProperties = {
+      'aria-describedby': ariaDescribedByIds,
+    };
+
     return (
       <div>
-        <KeytipData
-          keytipProps={item.keytipProps}
-          ariaDescribedBy={nativeProps['aria-describedby']}
-          disabled={disabled}
-        >
+        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={ariaDescribedByIds} disabled={disabled}>
           {(keytipAttributes: IKeytipDataProps): JSX.Element => (
             <a
+              {...additionalItemProperties}
               {...nativeProps}
               {...keytipAttributes}
               ref={this._anchor}
@@ -94,6 +107,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
                 getSubmenuTarget={this._getSubmenuTarget}
                 {...itemProps}
               />
+              {this._renderAriaDescription(ariaDescription, classNames.screenReaderText)}
             </a>
           )}
         </KeytipData>
@@ -110,5 +124,14 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     if (onItemClick) {
       onItemClick(item, ev);
     }
+  };
+
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
+    return ariaDescription ? (
+      <span id={this._ariaDescriptionId} className={className}>
+        {ariaDescription}
+      </span>
+    ) : null;
   };
 }

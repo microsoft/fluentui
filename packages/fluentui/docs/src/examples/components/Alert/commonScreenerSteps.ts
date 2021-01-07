@@ -1,4 +1,4 @@
-import { ScreenerStep, ScreenerSteps } from '@uifabric/build/screener';
+import { ScreenerStep, ScreenerSteps } from '@fluentui/scripts/screener';
 import { alertDismissActionClassName } from '@fluentui/react-northstar';
 
 const selectors = {

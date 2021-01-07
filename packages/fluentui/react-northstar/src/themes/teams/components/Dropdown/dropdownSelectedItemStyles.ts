@@ -16,6 +16,7 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {
+      maxWidth: v.selectedItemsMaxWidth,
       display: 'inline-flex',
       alignItems: 'center',
       // overflow: 'hidden',
@@ -60,6 +61,9 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     return {
       ...(p.hasImage && { marginLeft: pxToRem(3) }),
       marginRight: pxToRem(3),
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     };
   },
   icon: ({ variables: v }) => ({

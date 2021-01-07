@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
-import { useFocusRects, classNamesFunction } from '@uifabric/utilities';
+import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
+import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '@fluentui/react-internal/lib/Icon';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();

@@ -10,9 +10,9 @@ import {
   useFocusRects,
 } from '../../Utilities';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
-import { IProcessedStyleSet } from '@uifabric/merge-styles';
+import { IProcessedStyleSet } from '@fluentui/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));

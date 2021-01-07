@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleRenderer } from './styleRenderers/types';
 import { Theme, PartialTheme } from './types';
-import { ICustomizerContext } from '@uifabric/utilities';
+import { ICustomizerContext } from '@fluentui/utilities';
 
 /**
  * {@docCategory ThemeProvider}

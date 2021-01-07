@@ -4,7 +4,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../Positioning';
 import { ILayerProps } from '../../Layer';
-import { Target } from '@uifabric/react-hooks';
+import { Target } from '@fluentui/react-hooks';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 export { Target };
 
@@ -52,10 +53,16 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   calloutWidth?: number;
 
   /**
-   * Custom width for callout including borders. If value is 0, no width is applied.
+   * Maximum width for callout including borders. If value is 0, no width is applied.
    * @defaultvalue 0
    */
   calloutMaxWidth?: number;
+
+  /**
+   * Minimum width for callout including borders. If value is 0, no width is applied.
+   * @defaultvalue 0
+   */
+  calloutMinWidth?: number;
 
   /**
    * The background color of the Callout in hex format ie. #ffffff.
@@ -211,16 +218,13 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
 
   /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
-   * If it doesn't find an element, no focus will be set and the method will return false.
-   * This means that it's the contents responsibility to either set focus or have
-   * focusable items.
-   * @returns True if focus was set, false if it was not.
+   * If it doesn't find a focusable element, no focus will be set.
    */
   setInitialFocus?: boolean;
 
   /**
-   * Set max height of callout
-   * When not set the callout will expand with contents up to the bottom of the screen
+   * Set max height of callout.
+   * When not set, the callout will expand with contents up to the bottom of the screen.
    */
   calloutMaxHeight?: number;
 
@@ -249,9 +253,8 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   hidden?: boolean;
 
   /**
-   * If true, the component will be updated even when hidden=true.
-   * Note that this would consume resources to update even though
-   * nothing is being shown to the user.
+   * If true, the component will be updated even when `hidden` is true.
+   * Note that this would consume resources to update even though nothing is being shown to the user.
    * This might be helpful though if your updates are small and you want the
    * callout to be revealed fast to the user when hidden is set to false.
    */
@@ -261,22 +264,15 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
    * first mounted.
    * @defaultvalue true
-   * @deprecated use onRestoreFocus callback instead
+   * @deprecated use `onRestoreFocus` instead
    */
   shouldRestoreFocus?: boolean;
 
   /**
-   * Called when the component is unmounting, and focus needs to be restored.
-   * Argument passed down contains two variables, the element that the underlying
-   * popup believes focus should go to * and whether or not the popup currently
-   * contains focus. If this is provided, focus will not be restored automatically,
-   * you'll need to call originalElement.focus()
+   * Called when the component is unmounting, and focus needs to be restored. If this is provided,
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
-  onRestoreFocus?: (options: {
-    originalElement?: HTMLElement | Window;
-    containsFocus: boolean;
-    documentContainsFocus: boolean;
-  }) => void;
+  onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }
 
 /**
@@ -323,6 +319,11 @@ export interface ICalloutContentStyleProps {
    * Max width for callout including borders.
    */
   calloutMaxWidth?: number;
+
+  /**
+   * Min width for callout including borders.
+   */
+  calloutMinWidth?: number;
 }
 
 /**

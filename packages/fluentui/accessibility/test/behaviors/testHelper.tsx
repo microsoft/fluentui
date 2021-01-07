@@ -18,6 +18,7 @@ export interface TestDefinition {
 }
 
 const skipSpecChecksForFiles = [
+  'menuButtonBehavior.ts', // tests are written new way in menuButtonBehaviorDefinition.ts
   'popupBehavior.ts', // tests are written new way in popupBehaviorDefinition.ts
   'buttonBehavior.ts', // tests are written new way in buttonBehaviorDefinition.ts
   'buttonGroupBehavior.ts', // tests are written new way in buttonGroupBehaviorDefinition.ts
@@ -79,7 +80,11 @@ export class TestHelper {
         if (!variant.specification && !variant.description) {
           this.failDescriptionPresenceTest(variant.name);
         }
-        if (!variant.specification && !skipSpecChecksForFiles.find(item => item === variant.name)) {
+        // should not continue when behavior is skipped/exluded
+        if (skipSpecChecksForFiles.find(item => item === variant.name)) {
+          return;
+        }
+        if (!variant.specification) {
           this.failSpecificationPresenceTest(variant.name);
         } else {
           variant.specification.split('\n').forEach(specLine => {

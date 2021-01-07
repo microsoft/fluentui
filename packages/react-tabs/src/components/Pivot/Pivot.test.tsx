@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
+import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
 import { isConformant } from '../../common/isConformant';
 
@@ -123,6 +123,16 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem headerText="test" />
         <PivotItem headerText="Test Link" itemCount="20+" />
+      </Pivot>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('renders Pivot with overflow', () => {
+    const component = create(
+      <Pivot overflowBehavior="menu">
+        <PivotItem headerText="Test 1" />
+        <PivotItem headerText="Test 2" />
       </Pivot>,
     );
     const tree = component.toJSON();

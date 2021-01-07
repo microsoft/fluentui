@@ -4,7 +4,7 @@ import { TextField } from '@fluentui/react/lib/TextField';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 import { Callout } from '@fluentui/react/lib/Callout';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { IColor, getColorFromString } from '@fluentui/react/lib/Color';
 
 const colorLabelClassName = mergeStyles({

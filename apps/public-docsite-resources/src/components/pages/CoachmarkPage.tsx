@@ -5,7 +5,7 @@ import { CoachmarkPageProps } from '@fluentui/react-examples/lib/react/Coachmark
 
 export const CoachmarkPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@uifabric/api-docs/lib/pages/react/Coachmark.page.json')}
+    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Coachmark.page.json')}
     {...{ ...CoachmarkPageProps, ...props }}
   />
 );

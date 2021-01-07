@@ -92,10 +92,4 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       }),
     };
   },
-  status: ({ variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
-  }),
 };

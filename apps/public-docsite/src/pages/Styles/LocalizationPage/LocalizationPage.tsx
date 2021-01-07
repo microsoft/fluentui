@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, MarkdownHeader, IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { Table, ITableContent } from '../../../components/Table/Table';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { LocalizationPageProps } from './LocalizationPage.doc';
@@ -68,7 +68,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
+                {require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/LocalizationPage/docs/web/LocalizationFonts.md')}
               </Markdown>
               <MarkdownHeader as="h3">Supported languages</MarkdownHeader>
               <p>Fluent UI supports a variety of language codes, which map to the following font stacks:</p>

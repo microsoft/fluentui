@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPageSectionProps, Markdown } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps, Markdown } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { BottomNavigationPageProps } from './BottomNavigationPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';

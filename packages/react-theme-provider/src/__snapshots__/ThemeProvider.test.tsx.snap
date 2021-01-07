@@ -22,26 +22,26 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -73,13 +73,13 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: black;
+        color: white;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 />
 `;
@@ -106,26 +106,26 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -183,26 +183,26 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -260,26 +260,26 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --foo-background: red;
@@ -312,13 +312,13 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   Hello
@@ -347,26 +347,26 @@ exports[`ThemeProvider renders a div 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -398,13 +398,13 @@ exports[`ThemeProvider renders a div 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   Hello
@@ -433,26 +433,26 @@ exports[`ThemeProvider renders a div with styling 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -484,13 +484,13 @@ exports[`ThemeProvider renders a div with styling 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: white;
+        color: black;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   Hello
@@ -519,26 +519,26 @@ exports[`ThemeProvider renders nested themes 1`] = `
         --color-brand-checkedHovered-iconColor: #ffffff;
         --color-brand-contentColor: #ffffff;
         --color-brand-disabled-background: #f3f2f1;
-        --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+        --color-brand-disabled-borderColor: #f3f2f1;
         --color-brand-disabled-contentColor: #a19f9d;
         --color-brand-disabled-dividerColor: #c8c6c4;
-        --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-        --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+        --color-brand-disabled-iconColor: #a19f9d;
+        --color-brand-disabled-secondaryContentColor: #a19f9d;
         --color-brand-dividerColor: #ffffff;
-        --color-brand-focused-background: var(--color-brand-background);
-        --color-brand-focused-borderColor: var(--color-brand-borderColor);
-        --color-brand-focused-contentColor: var(--color-brand-contentColor);
-        --color-brand-focused-iconColor: var(--color-brand-iconColor);
-        --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-borderColor: transparent;
+        --color-brand-focused-contentColor: #ffffff;
+        --color-brand-focused-iconColor: #ffffff;
+        --color-brand-focused-secondaryContentColor: #ffffff;
         --color-brand-hovered-background: #106ebe;
-        --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+        --color-brand-hovered-borderColor: transparent;
         --color-brand-hovered-contentColor: #ffffff;
         --color-brand-hovered-secondaryContentColor: #ffffff;
         --color-brand-iconColor: #ffffff;
         --color-brand-pressed-background: #005a9e;
-        --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+        --color-brand-pressed-borderColor: transparent;
         --color-brand-pressed-contentColor: #ffffff;
-        --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+        --color-brand-pressed-iconColor: #ffffff;
         --color-brand-pressed-secondaryContentColor: #ffffff;
         --color-brand-secondaryContentColor: #ffffff;
         --text-variant-body-fontSize: 14px;
@@ -570,13 +570,13 @@ exports[`ThemeProvider renders nested themes 1`] = `
         --text-variant-title3-lineHeight: 32px;
       }
       {
-        -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-        -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-        background: var(--color-body-background);
-        color: var(--color-body-contentColor);
-        font-family: var(--body-fontFamily);
-        font-size: var(--body-fontSize);
-        font-weight: var(--body-fontWeight);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: white;
+        color: black;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
       }
 >
   <div>
@@ -603,26 +603,26 @@ exports[`ThemeProvider renders nested themes 1`] = `
           --color-brand-checkedHovered-iconColor: #ffffff;
           --color-brand-contentColor: #ffffff;
           --color-brand-disabled-background: #f3f2f1;
-          --color-brand-disabled-borderColor: var(--color-brand-disabled-background);
+          --color-brand-disabled-borderColor: #f3f2f1;
           --color-brand-disabled-contentColor: #a19f9d;
           --color-brand-disabled-dividerColor: #c8c6c4;
-          --color-brand-disabled-iconColor: var(--color-brand-disabled-contentColor);
-          --color-brand-disabled-secondaryContentColor: var(--color-brand-disabled-contentColor);
+          --color-brand-disabled-iconColor: #a19f9d;
+          --color-brand-disabled-secondaryContentColor: #a19f9d;
           --color-brand-dividerColor: #ffffff;
-          --color-brand-focused-background: var(--color-brand-background);
-          --color-brand-focused-borderColor: var(--color-brand-borderColor);
-          --color-brand-focused-contentColor: var(--color-brand-contentColor);
-          --color-brand-focused-iconColor: var(--color-brand-iconColor);
-          --color-brand-focused-secondaryContentColor: var(--color-brand-focused-contentColor);
+          --color-brand-focused-background: #0078d4;
+          --color-brand-focused-borderColor: transparent;
+          --color-brand-focused-contentColor: #ffffff;
+          --color-brand-focused-iconColor: #ffffff;
+          --color-brand-focused-secondaryContentColor: #ffffff;
           --color-brand-hovered-background: #106ebe;
-          --color-brand-hovered-borderColor: var(--color-brand-borderColor);
+          --color-brand-hovered-borderColor: transparent;
           --color-brand-hovered-contentColor: #ffffff;
           --color-brand-hovered-secondaryContentColor: #ffffff;
           --color-brand-iconColor: #ffffff;
           --color-brand-pressed-background: #005a9e;
-          --color-brand-pressed-borderColor: var(--color-brand-borderColor);
+          --color-brand-pressed-borderColor: transparent;
           --color-brand-pressed-contentColor: #ffffff;
-          --color-brand-pressed-iconColor: var(--color-brand-iconColor);
+          --color-brand-pressed-iconColor: #ffffff;
           --color-brand-pressed-secondaryContentColor: #ffffff;
           --color-brand-secondaryContentColor: #ffffff;
           --text-variant-body-fontSize: 14px;
@@ -654,13 +654,13 @@ exports[`ThemeProvider renders nested themes 1`] = `
           --text-variant-title3-lineHeight: 32px;
         }
         {
-          -moz-osx-font-smoothing: var(--body-mozOsxFontSmoothing);
-          -webkit-font-smoothing: var(--body-webkitFontSmoothing);
-          background: var(--color-body-background);
-          color: var(--color-body-contentColor);
-          font-family: var(--body-fontFamily);
-          font-size: var(--body-fontSize);
-          font-weight: var(--body-fontWeight);
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: black;
+          color: white;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
         }
   >
     <div>

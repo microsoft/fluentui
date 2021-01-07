@@ -1,11 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinButton renders correctly 1`] = `
+exports[`SpinButton snapshots renders correctly 1`] = `
 <div
   className=
 
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
+        font-weight: 400;
         min-width: 86px;
         outline: none;
         width: 100%;
@@ -83,6 +87,7 @@ exports[`SpinButton renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
   >
     <input
       aria-disabled={false}
@@ -130,6 +135,7 @@ exports[`SpinButton renders correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
       id="input0"
@@ -437,12 +443,16 @@ exports[`SpinButton renders correctly 1`] = `
 </div>
 `;
 
-exports[`SpinButton renders correctly with user-provided values 1`] = `
+exports[`SpinButton snapshots renders correctly with user-provided values 1`] = `
 <div
   className=
 
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
+        font-weight: 400;
         min-width: 86px;
         outline: none;
         width: 100%;
@@ -520,6 +530,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
+    data-ktp-target={true}
     data-test="test"
   >
     <input
@@ -569,6 +580,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={true}
       data-lpignore={true}
       disabled={false}
       id="input0"

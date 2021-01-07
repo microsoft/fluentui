@@ -3,7 +3,6 @@ import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from '../../Positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { ILabelStyleProps, ILabelStyles } from '../../Label';
@@ -81,9 +80,10 @@ export interface IDropdownProps
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
+   * If value is 'auto', width of the input field is used by default, and it can grow wider to fit the content.
    * @defaultvalue 0
    */
-  dropdownWidth?: number;
+  dropdownWidth?: number | 'auto';
 
   /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
@@ -126,11 +126,6 @@ export interface IDropdownProps
    * @deprecated Use `disabled` instead.
    */
   isDisabled?: boolean;
-
-  /**
-   * Optional keytip for this dropdown
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * Theme provided by higher order component.

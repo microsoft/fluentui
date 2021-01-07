@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { create } from '@uifabric/utilities/lib/test';
-import { TestImages } from '@uifabric/example-data';
+import { create } from '@fluentui/utilities/lib/test';
+import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
@@ -162,6 +162,16 @@ describe('Persona', () => {
       wrapper.unmount();
 
       wrapper = mount(<Persona text="David (The man) Goff" />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DG');
+
+      wrapper = mount(<Persona text="David [The man] Goff" />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DG');
+
+      wrapper = mount(<Persona text="David Goff {The man}" />);
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('DG');

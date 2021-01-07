@@ -15,6 +15,9 @@ import { ProgressRingStyles as styles } from './progress-ring.styles';
   name: 'fluent-progress-ring',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentProgressRing extends BaseProgress {}
 

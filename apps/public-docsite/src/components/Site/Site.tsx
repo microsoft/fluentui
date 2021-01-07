@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Customizer, Async } from '@fluentui/react';
+import { css, ThemeProvider, Async } from '@fluentui/react';
 import {
   baseDefinition,
   EventNames,
@@ -21,10 +21,11 @@ import {
   removeAnchorLink,
   SiteMessageBar,
   getQueryParam,
-} from '@uifabric/example-app-base/lib/index2';
+} from '@fluentui/react-docsite-components/lib/index2';
 import { Nav } from '../Nav/index';
-import { AppCustomizations } from './customizations';
-import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
+import { AppThemes } from './AppThemes';
+import { AppThemesContext, extractAnchorLink } from '@fluentui/react-docsite-components/lib/index';
+import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 
@@ -73,12 +74,11 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       // Get top level pages with platforms.
       const topLevelPages = siteDefinition.pages.filter(page => !!page.platforms).map(page => page.title);
 
-      // Get local storage platforms for top level pages.
+      // Get session storage platforms for top level pages.
       try {
-        // Accessing localStorage can throw for various reasons
-        activePlatforms = JSON.parse(localStorage.getItem('activePlatforms') || '') || {};
-      } catch (ex) {
-        // ignore
+        activePlatforms = JSON.parse(getItem('activePlatforms') || '') || {};
+      } catch (err) {
+        // ignore parsing error
       }
 
       // Set active platform for each top level page to local storage platform or the first platform defined for
@@ -148,7 +148,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   public render() {
     const { platform, isContentFullBleed } = this.state;
     const { children, siteDefinition } = this.props;
-    const { customizations } = siteDefinition;
+    const { theme } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
       React.cloneElement(child, { platform }),
     );
@@ -176,15 +176,15 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
     const app = (
       <PlatformContext.Provider value={platform}>
-        <AppCustomizationsContext.Provider value={AppCustomizations}>
-          {customizations ? (
-            <Customizer {...customizations}>
+        <AppThemesContext.Provider value={AppThemes}>
+          {theme ? (
+            <ThemeProvider theme={theme}>
               <SiteContent />
-            </Customizer>
+            </ThemeProvider>
           ) : (
             <SiteContent />
           )}
-        </AppCustomizationsContext.Provider>
+        </AppThemesContext.Provider>
       </PlatformContext.Provider>
     );
 
@@ -448,11 +448,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   };
 
   private _setActivePlatforms = () => {
-    try {
-      localStorage.setItem('activePlatforms', JSON.stringify(this.state.activePlatforms));
-    } catch (ex) {
-      // ignore
-    }
+    setItem('activePlatforms', JSON.stringify(this.state.activePlatforms));
   };
 
   /**

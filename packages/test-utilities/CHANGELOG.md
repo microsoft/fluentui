@@ -1,8 +1,18 @@
-# Change Log - @uifabric/test-utilities
+# Change Log - @fluentui/test-utilities
 
-This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.3.0..@fluentui/test-utilities_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.0)
 

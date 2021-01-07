@@ -4,9 +4,9 @@
 
 ```ts
 
-import { IFontWeight } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IFontWeight } from '@fluentui/merge-styles';
+import { IRawStyle } from '@fluentui/merge-styles';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -16,12 +16,15 @@ export const AnimationVariables: IAnimationVariables;
 
 // @public
 export type ColorTokens = ColorTokenSet & {
-    hovered?: ColorTokenSet;
-    pressed?: ColorTokenSet;
-    disabled?: ColorTokenSet;
     checked?: ColorTokenSet;
     checkedHovered?: ColorTokenSet;
     checkedPressed?: ColorTokenSet;
+    disabled?: ColorTokenSet;
+    expanded?: ColorTokenSet;
+    focused?: ColorTokenSet;
+    hovered?: ColorTokenSet;
+    pressed?: ColorTokenSet;
+    selected?: ColorTokenSet;
 };
 
 // @public
@@ -31,11 +34,13 @@ export type ColorTokenSet = {
     secondaryContentColor?: string;
     linkColor?: string;
     iconColor?: string;
+    menuIconColor?: string;
     borderColor?: string;
     dividerColor?: string;
     focusColor?: string;
     focusInnerColor?: string;
     opacity?: string;
+    highContrast?: ColorTokens;
 };
 
 // @public (undocumented)
@@ -180,6 +185,9 @@ export namespace FontWeights {
     const // (undocumented)
     bold: IFontWeight;
 }
+
+// @public
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
 
 // @public
 export interface IAnimationStyles {
@@ -385,7 +393,8 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = PartialTheme;
+export interface IPartialTheme extends PartialTheme {
+}
 
 // @public (undocumented)
 export interface IScheme {
@@ -545,7 +554,8 @@ export interface ISpacing {
 }
 
 // @public (undocumented)
-export type ITheme = Theme;
+export interface ITheme extends Theme {
+}
 
 // @public (undocumented)
 export namespace LocalizedFontFamilies {
@@ -743,7 +753,7 @@ export interface PartialTheme {
     //
     // (undocumented)
     spacing?: Partial<ISpacing>;
-    // (undocumented)
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -841,6 +851,7 @@ export interface Theme extends IScheme {
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
+    // @internal
     stylesheets?: string[];
     // @internal
     tokens?: RecursivePartial<Tokens>;
@@ -852,8 +863,8 @@ export interface Tokens {
     [key: string]: TokenSetType;
     // (undocumented)
     color: {
-        body: ColorTokenSet & TokenSetType;
-        brand: ColorTokenSet & TokenSetType;
+        body: ColorTokens & TokenSetType;
+        brand: ColorTokens & TokenSetType;
         [key: string]: TokenSetType;
     };
 }

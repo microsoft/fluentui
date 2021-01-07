@@ -7,8 +7,9 @@ import {
   getNativeProps,
   getWindow,
 } from '../../Utilities';
-import { IPopupProps } from './Popup.types';
-import { useMergedRefs, useAsync, useOnEvent } from '@uifabric/react-hooks';
+import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
+import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
+import { useWindow } from '@fluentui/react-window-provider';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();
@@ -48,11 +49,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
   return needsVerticalScrollBarState;
 }
 
-function defaultFocusRestorer(options: {
-  originalElement?: HTMLElement | Window;
-  containsFocus: boolean;
-  documentContainsFocus: boolean;
-}) {
+function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   const { originalElement, containsFocus } = options;
 
   if (originalElement && containsFocus && originalElement !== getWindow()) {
@@ -156,7 +153,8 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
       [onDismiss],
     );
 
-    useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);
+    const win = useWindow();
+    useOnEvent(win, 'keydown', onKeyDown as (ev: Event) => void);
 
     return (
       <div
