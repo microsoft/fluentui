@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Thu, 07 Jan 2021 12:35:30 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.29",
+      "version": "8.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(Popup): use proper window from useWindow() hook",
+            "author": "olfedias@microsoft.com",
+            "commit": "aa34c48589728cf0ed77b856ddaee16e8ca5bfbe",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 31 Dec 2020 12:30:02 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.28",
       "version": "8.0.0-beta.28",

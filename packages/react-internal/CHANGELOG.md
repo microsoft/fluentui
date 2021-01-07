@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 31 Dec 2020 12:30:02 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jan 2021 12:35:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.29)
+
+Thu, 07 Jan 2021 12:35:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.28..@fluentui/react-internal_v8.0.0-beta.29)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
 
 ## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.28)
 
