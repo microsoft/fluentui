@@ -4,7 +4,7 @@ import * as path from 'path';
 const commonArgs = () => {
   return {
     ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && { runInBand: true }),
-    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+    ...(argv().u || argv().updateSnapshot ? { passWithNoTests: true, updateSnapshot: true } : undefined),
   };
 };
 
