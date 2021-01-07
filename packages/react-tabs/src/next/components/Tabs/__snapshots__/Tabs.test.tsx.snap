@@ -103,7 +103,6 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -272,7 +271,6 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -499,7 +497,6 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -668,7 +665,6 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -884,7 +880,6 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1053,7 +1048,6 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1224,7 +1218,6 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1459,7 +1452,6 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1628,7 +1620,6 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1793,7 +1784,6 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2024,7 +2014,6 @@ exports[`Tabs renders large tab format correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2227,7 +2216,6 @@ exports[`Tabs renders large tab format correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2475,7 +2463,6 @@ exports[`Tabs renders large tabs correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2644,7 +2631,6 @@ exports[`Tabs renders large tabs correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2860,7 +2846,6 @@ exports[`Tabs renders tab format correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3063,7 +3048,6 @@ exports[`Tabs renders tab format correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3310,7 +3294,6 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3479,7 +3462,6 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3692,7 +3674,6 @@ exports[`Tabs supports JSX expressions 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3852,7 +3833,6 @@ exports[`Tabs supports JSX expressions 1`] = `
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {

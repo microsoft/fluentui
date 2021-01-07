@@ -162,7 +162,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={0}
@@ -331,7 +330,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={1}
@@ -500,7 +498,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={2}
@@ -669,7 +666,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={3}
@@ -838,7 +834,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={4}
@@ -1045,7 +1040,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={0}
@@ -1203,7 +1197,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={1}
@@ -1361,7 +1354,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={2}
@@ -1519,7 +1511,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={3}
@@ -1677,7 +1668,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={4}
@@ -1882,7 +1872,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={0}
@@ -2040,7 +2029,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={1}
@@ -2198,7 +2186,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={2}
@@ -2356,7 +2343,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={3}
@@ -2514,7 +2500,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={4}
@@ -2738,7 +2723,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={0}
@@ -2907,7 +2891,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={1}
@@ -3076,7 +3059,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={2}
@@ -3245,7 +3227,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={3}
@@ -3418,7 +3399,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={4}
@@ -3587,7 +3567,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={5}
@@ -3756,7 +3735,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={6}
@@ -3925,7 +3903,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={7}
@@ -4098,7 +4075,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={8}
@@ -4267,7 +4243,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={9}
@@ -4436,7 +4411,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={10}
@@ -4605,7 +4579,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
                     color: Highlight;
                   }
               data-index={11}
@@ -4827,7 +4800,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    border-color: GrayText;
                     color: GrayText;
                   }
               data-index={0}
@@ -5003,7 +4975,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    border-color: GrayText;
                     color: GrayText;
                   }
               data-index={1}
@@ -5179,7 +5150,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    border-color: GrayText;
                     color: GrayText;
                   }
               data-index={2}
@@ -5355,7 +5325,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    border-color: GrayText;
                     color: GrayText;
                   }
               data-index={3}
@@ -5531,7 +5500,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 2px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    border-color: GrayText;
                     color: GrayText;
                   }
               data-index={4}

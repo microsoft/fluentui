@@ -15,14 +15,13 @@ export const getStyles = memoizeFunction(
         height: DEFAULT_BUTTON_HEIGHT,
         color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
-        border: '1px solid transparent',
+        border: 'none',
       },
 
       rootHovered: {
         color: theme.palette.themePrimary,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Highlight',
             color: 'Highlight',
           },
         },
@@ -50,7 +49,6 @@ export const getStyles = memoizeFunction(
         borderColor: 'transparent',
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'GrayText',
             color: 'GrayText',
           },
         },

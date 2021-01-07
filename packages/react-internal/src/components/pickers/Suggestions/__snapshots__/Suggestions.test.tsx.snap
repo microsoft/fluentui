@@ -110,7 +110,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -243,7 +242,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -374,7 +372,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -505,7 +502,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -636,7 +632,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -767,7 +762,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -898,7 +892,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1029,7 +1022,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1160,7 +1152,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1291,7 +1282,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1422,7 +1412,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1553,7 +1542,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1684,7 +1672,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1815,7 +1802,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1946,7 +1932,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2118,7 +2103,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2251,7 +2235,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2382,7 +2365,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2513,7 +2495,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2644,7 +2625,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2775,7 +2755,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2906,7 +2885,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3037,7 +3015,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3168,7 +3145,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3299,7 +3275,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3430,7 +3405,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3561,7 +3535,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3692,7 +3665,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3823,7 +3795,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3954,7 +3925,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4102,7 +4072,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4233,7 +4202,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4364,7 +4332,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4495,7 +4462,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4626,7 +4592,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4757,7 +4722,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4888,7 +4852,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5019,7 +4982,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5163,7 +5125,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5296,7 +5257,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5427,7 +5387,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5558,7 +5517,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5689,7 +5647,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5820,7 +5777,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5951,7 +5907,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {

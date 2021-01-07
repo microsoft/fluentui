@@ -11,7 +11,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 2px;
-        border: 1px solid transparent;
+        border: none;
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
@@ -60,7 +60,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         color: #0078d4;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Button-icon {

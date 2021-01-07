@@ -657,7 +657,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -826,7 +825,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1006,7 +1004,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1186,7 +1183,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1378,7 +1374,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1567,7 +1562,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1726,7 +1720,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1885,7 +1878,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -2050,7 +2042,6 @@ Array [
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
