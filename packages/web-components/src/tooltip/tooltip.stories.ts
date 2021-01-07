@@ -1,8 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
+import addons from '@storybook/addons';
 import { STORY_RENDERED } from '@storybook/core-events';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import TooltipTemplate from './fixtures/tooltip.html';
 import { FluentTooltip } from '.';
-import addons from '@storybook/addons';
 
 // Prevent tree-shaking
 FluentTooltip;
