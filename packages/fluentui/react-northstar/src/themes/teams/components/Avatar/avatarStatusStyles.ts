@@ -48,9 +48,9 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
       backgroundColor: v.statusErrorBackgroundColor,
     }),
     ...(state === 'unknown' && {
-      backgroundColor: v.statusDefaultBackgroundColor,
+      backgroundColor: v.statusBackgroundColor,
     }),
-    ...(color && {
+    ...(!!color && {
       backgroundColor: color,
     }),
   }),

@@ -17,7 +17,7 @@ export interface AvatarVariables {
   statusWarningColor: string;
   statusErrorBackgroundColor: string;
   statusErrorColor: string;
-  statusDefaultBackgroundColor: string;
+  statusBackgroundColor: string;
   statusColor: string;
 }
 
@@ -38,6 +38,6 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   statusWarningColor: siteVariables.colorScheme.yellow.foreground2,
   statusErrorBackgroundColor: siteVariables.colorScheme.red.background,
   statusErrorColor: siteVariables.colorScheme.red.foreground2,
-  statusDefaultBackgroundColor: siteVariables.colorScheme.default.background5,
+  statusBackgroundColor: siteVariables.colorScheme.default.background5,
   statusColor: siteVariables.colorScheme.default.foreground4,
 });
