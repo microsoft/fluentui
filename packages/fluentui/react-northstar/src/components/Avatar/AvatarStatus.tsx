@@ -34,7 +34,7 @@ export interface AvatarStatusProps extends UIComponentProps {
 }
 
 export type AvatarStatusStylesProps = Required<Pick<AvatarStatusProps, 'color' | 'size' | 'state'>>;
-// remove in upcoming breaking change
+// update in upcoming breaking change and enable a unit test
 export const avatarStatusClassName = statusClassName;
 
 /**
