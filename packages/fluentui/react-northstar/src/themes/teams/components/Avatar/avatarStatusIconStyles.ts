@@ -12,16 +12,16 @@ export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesP
     height: v.statusIconSize,
     color: v.statusColor,
     ...(state === 'success' && {
-      color: v.statusSuccessTextColor,
+      color: v.statusSuccessColor,
     }),
     ...(state === 'info' && {
-      color: v.statusInfoTextColor,
+      color: v.statusInfoColor,
     }),
     ...(state === 'error' && {
-      color: v.statusErrorTextColor,
+      color: v.statusErrorColor,
     }),
     ...(state === 'warning' && {
-      color: v.statusWarningTextColor,
+      color: v.statusWarningColor,
     }),
 
     '& > :first-child': {

@@ -10,13 +10,13 @@ export interface AvatarVariables {
   iconBackgroundColor: string;
   statusIconSize: string;
   statusSuccessBackgroundColor: string;
-  statusSuccessTextColor: string;
+  statusSuccessColor: string;
   statusInfoBackgroundColor: string;
-  statusInfoTextColor: string;
+  statusInfoColor: string;
   statusWarningBackgroundColor: string;
-  statusWarningTextColor: string;
+  statusWarningColor: string;
   statusErrorBackgroundColor: string;
-  statusErrorTextColor: string;
+  statusErrorColor: string;
   statusDefaultBackgroundColor: string;
   statusColor: string;
 }
@@ -31,13 +31,13 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   statusIconSize: pxToRem(7),
   statusBorderColor: siteVariables.bodyBackground,
   statusSuccessBackgroundColor: siteVariables.colorScheme.green.background,
-  statusSuccessTextColor: siteVariables.colorScheme.green.foreground1,
+  statusSuccessColor: siteVariables.colorScheme.green.foreground1,
   statusInfoBackgroundColor: siteVariables.colorScheme.brand.background,
-  statusInfoTextColor: siteVariables.colorScheme.default.foreground2,
+  statusInfoColor: siteVariables.colorScheme.default.foreground2,
   statusWarningBackgroundColor: siteVariables.colorScheme.yellow.background,
-  statusWarningTextColor: siteVariables.colorScheme.yellow.foreground2,
+  statusWarningColor: siteVariables.colorScheme.yellow.foreground2,
   statusErrorBackgroundColor: siteVariables.colorScheme.red.background,
-  statusErrorTextColor: siteVariables.colorScheme.red.foreground2,
+  statusErrorColor: siteVariables.colorScheme.red.foreground2,
   statusDefaultBackgroundColor: siteVariables.colorScheme.default.background5,
   statusColor: siteVariables.colorScheme.default.foreground4,
 });
