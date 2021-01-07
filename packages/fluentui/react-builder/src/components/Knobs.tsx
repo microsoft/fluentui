@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Menu, tabListBehavior } from '@fluentui/react-northstar';
 import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
-import { MultiTypeKnob } from '../config';
+import { MultiTypeKnob } from './MultiTypeKnob';
 
 // const designUnit = 4;
 // const sizeRamp = [

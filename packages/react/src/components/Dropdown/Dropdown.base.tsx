@@ -51,6 +51,7 @@ import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
+const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
@@ -213,14 +214,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
 
     if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Dropdown', props, {
+      warnDeprecations(COMPONENT_NAME, props, {
         isDisabled: 'disabled',
         onChanged: 'onChange',
         placeHolder: 'placeholder',
         onRenderPlaceHolder: 'onRenderPlaceholder',
       });
 
-      warnMutuallyExclusive('Dropdown', props, {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
@@ -596,6 +597,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
 
+    let calloutWidth = undefined;
+    let calloutMinWidth = undefined;
+    if (dropdownWidth === 'auto') {
+      calloutMinWidth = this._dropDown.current ? this._dropDown.current.clientWidth : 0;
+    } else {
+      calloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
+    }
+
     return isSmall ? (
       <Panel
         isOpen={true}
@@ -614,13 +623,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         doNotLayer={false}
         directionalHintFixed={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
+        calloutWidth={calloutWidth}
+        calloutMinWidth={calloutMinWidth}
         {...calloutProps}
         className={this._classNames.callout}
         target={this._dropDown.current}
         onDismiss={this._onDismiss}
         onScroll={this._onScroll}
         onPositioned={this._onPositioned}
-        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
       >
         {this._renderFocusableList(props)}
       </Callout>
