@@ -174,9 +174,8 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     [onFocus, internalState],
   );
 
-  const onRootBlur = React.useCallback(
+  const onRootBlurCapture = React.useCallback(
     (ev: React.FocusEvent<HTMLDivElement>) => {
-      onBlur?.(ev);
       let relatedTarget = ev.relatedTarget;
       if (ev.relatedTarget === null) {
         // In IE11, due to lack of support, event.relatedTarget is always
@@ -361,7 +360,8 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       aria-labelledby={ariaLabelledBy}
       onFocusCapture={onRootFocusCapture}
       onFocus={onRootFocus}
-      onBlur={onRootBlur}
+      onBlur={onBlur}
+      onBlurCapture={onRootBlurCapture}
     >
       <div {...bumperProps} ref={firstBumper} onFocus={() => onBumperFocus(true)} />
       {children}
