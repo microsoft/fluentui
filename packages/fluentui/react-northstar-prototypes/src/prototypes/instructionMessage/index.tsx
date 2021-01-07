@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Box, Button, Divider, Header } from '@fluentui/react-northstar';
 // import FocusedComponent from './FocusedComponent';
 // import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
