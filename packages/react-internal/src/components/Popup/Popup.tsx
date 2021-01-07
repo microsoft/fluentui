@@ -9,6 +9,7 @@ import {
 } from '../../Utilities';
 import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
+import { useWindow } from '@fluentui/react-window-provider';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();
@@ -152,7 +153,8 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
       [onDismiss],
     );
 
-    useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);
+    const win = useWindow();
+    useOnEvent(win, 'keydown', onKeyDown as (ev: Event) => void);
 
     return (
       <div
