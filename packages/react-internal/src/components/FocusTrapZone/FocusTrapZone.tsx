@@ -189,7 +189,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
         internalState.hasFocus = false;
       }
     },
-    [onBlur, doc, internalState],
+    [doc, internalState],
   );
 
   const onRootFocusCapture = React.useCallback(

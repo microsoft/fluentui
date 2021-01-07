@@ -858,7 +858,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
-                                onBlur={[Function]}
+                                onBlurCapture={[Function]}
                                 onFocus={[Function]}
                                 onFocusCapture={[Function]}
                               >
@@ -912,7 +912,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       tabIndex={-1}
                                     >
                                       <div
-                                        onBlur={[Function]}
+                                        onBlurCapture={[Function]}
                                         onFocus={[Function]}
                                         onFocusCapture={[Function]}
                                       >

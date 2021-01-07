@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Set focus state in FocusTrapZone even if onFocus and onBlur do not bubble",
+  "packageName": "@fluentui/react-internal",
+  "email": "nsavas@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-07T19:56:59.859Z"
+}
