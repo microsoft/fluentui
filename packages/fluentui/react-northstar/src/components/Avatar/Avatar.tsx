@@ -7,6 +7,7 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -15,9 +16,10 @@ import * as React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 import { Image, ImageProps } from '../Image/Image';
 import { Label, LabelProps } from '../Label/Label';
-import { Status, StatusProps } from '../Status/Status';
+
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
+import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -44,7 +46,7 @@ export interface AvatarProps extends UIComponentProps {
   size?: SizeValue;
 
   /** Shorthand for the status of the user. */
-  status?: ShorthandValue<StatusProps>;
+  status?: ShorthandValue<AvatarStatusProps>;
 
   /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
   getInitials?: (name: string) => string;
@@ -56,7 +58,8 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
+export const Avatar: ComponentWithAs<'div', AvatarProps> &
+  FluentComponentStaticProps<AvatarProps> & { Status: typeof AvatarStatus } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -129,12 +132,16 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
       {hasGlyph && (imageElement || iconElement)}
       {!hasGlyph && labelElement}
-      {Status.create(status, {
+      {createShorthand(AvatarStatus, status, {
         defaultProps: () =>
           getA11Props('status', {
             size,
+            // remove in upcoming breaking change
             styles: resolvedStyles.status,
           }),
+        overrideProps: (predefinedProps: AvatarStatusProps) => ({
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        }),
       })}
     </ElementType>
   );
@@ -186,6 +193,9 @@ Avatar.propTypes = {
   status: customPropTypes.itemShorthand,
   getInitials: PropTypes.func,
 };
+
+Avatar.Status = AvatarStatus;
+
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 
 Avatar.create = createShorthandFactory({ Component: Avatar, mappedProp: 'name' });
