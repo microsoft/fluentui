@@ -14,79 +14,77 @@ import {
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
 
-export interface IPeopleSelectedItemsListExampleState {
-  currentSelectedItems: IPersonaProps[];
-}
-
-export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export const SelectedPeopleListWithEditExample = (): JSX.Element => {
+  const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
   // Used to resolve suggestions on the editableItem
-  private model = new ExampleSuggestionsModel<IPersonaProps>(people);
-  private suggestionsStore = new SuggestionsStore<IPersonaProps>();
+  const model = new ExampleSuggestionsModel<IPersonaProps>(people);
+  const suggestionsStore = new SuggestionsStore<IPersonaProps>();
 
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
    */
-  private SelectedItem = EditableItem({
+  const SelectedItem = EditableItem({
     itemComponent: TriggerOnContextMenu(SelectedPersona),
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: persona => persona.text || '',
       onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
         <FloatingPeopleSuggestions
           {...props}
-          suggestionsStore={this.suggestionsStore}
-          onResolveSuggestions={this.model.resolveSuggestions}
+          suggestionsStore={suggestionsStore}
+          onResolveSuggestions={model.resolveSuggestions}
         />
       ),
     }),
   });
 
-  constructor(props: {}) {
-    super(props);
+  const _onAddItemButtonClicked = React.useCallback(() => {
+    const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
+    setCurrentSelectedItems([...currentSelectedItems, randomPerson]);
+  }, [currentSelectedItems]);
 
-    this.state = {
-      currentSelectedItems: [people[40]],
-    };
-  }
+  const _onItemsRemoved = React.useCallback(
+    (items: IPersona[]): void => {
+      const currentSelectedItemsCopy = [...currentSelectedItems];
+      items.forEach(item => {
+        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        currentSelectedItemsCopy.splice(indexToRemove, 1);
+        setCurrentSelectedItems([...currentSelectedItemsCopy]);
+      });
+    },
+    [currentSelectedItems],
+  );
 
-  public render(): JSX.Element {
-    return (
-      <div className={'ms-BasePicker-text'}>
-        Right click any persona to edit it
-        <br />
-        <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
-        {this._renderExtendedPicker()}
-      </div>
-    );
-  }
+  const _replaceItem = React.useCallback(
+    (newItem: IPersonaProps | IPersona[], index: number): void => {
+      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
-  private _renderExtendedPicker(): JSX.Element {
-    return (
+      if (index >= 0) {
+        const newItems: IPersonaProps[] = [...currentSelectedItems];
+        newItems.splice(index, 1, ...newItemsArray);
+        setCurrentSelectedItems(newItems);
+      }
+    },
+    [currentSelectedItems],
+  );
+
+  return (
+    <div className={'ms-BasePicker-text'}>
+      Right click any persona to edit it
+      <br />
+      <PrimaryButton text="Add another item" onClick={_onAddItemButtonClicked} />
       <div>
         <SelectedPeopleList
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
-          selectedItems={[...this.state.currentSelectedItems]}
-          onRenderItem={this.SelectedItem}
-          onItemsRemoved={this._onItemsRemoved}
+          selectedItems={currentSelectedItems}
+          onRenderItem={SelectedItem}
+          onItemsRemoved={_onItemsRemoved}
+          replaceItem={_replaceItem}
         />
       </div>
-    );
-  }
-
-  private _onAddItemButtonClicked = (): void => {
-    const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
-    this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, randomPerson] });
-  };
-
-  private _onItemsRemoved = (items: IPersona[]): void => {
-    const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
-    items.forEach(item => {
-      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
-      currentSelectedItemsCopy.splice(indexToRemove, 1);
-      this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
-    });
-  };
-}
+    </div>
+  );
+};
 
 type IBaseExampleType = {
   text?: string;
