@@ -11,7 +11,7 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes } from '../../utils';
+import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { imageClassName } from '../Image/Image';
 
@@ -118,3 +118,4 @@ AvatarImage.shorthandConfig = {
 };
 
 AvatarImage.handledProps = Object.keys(AvatarImage.propTypes) as any;
+AvatarImage.create = createShorthandFactory({ Component: AvatarImage, mappedProp: 'src', allowsJSX: false });
