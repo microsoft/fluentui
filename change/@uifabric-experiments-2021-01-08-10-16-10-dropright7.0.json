@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "UnifiedPicker drop to each side of item",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-08T18:16:10.340Z"
+}
