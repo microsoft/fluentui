@@ -4,7 +4,12 @@
  * {@docCategory ISemanticTextColors}
  */
 export interface ISemanticTextColors {
-  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
+  /*
+   * !!!!!!!!
+   * FOR ANY ADDITIONS/REMOVALS HERE YOU MUST ALSO RUN `yarn update-sass-theme-files` in packages/common-styles
+   * to ensure that semantic slots scss variables are updated
+   * !!!!!!!!
+   */
 
   //// Base slots
 

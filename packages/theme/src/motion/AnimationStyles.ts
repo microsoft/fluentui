@@ -1,5 +1,5 @@
 import { IAnimationStyles, IAnimationVariables } from '../types/IAnimationStyles';
-import { IRawStyle, keyframes } from '@uifabric/merge-styles';
+import { IRawStyle, keyframes } from '@fluentui/merge-styles';
 
 /* Register the keyframes */
 
@@ -155,15 +155,15 @@ function _createAnimation(
 
 function _createSlideInX(fromX: number): string {
   return keyframes({
-    from: { transform: `translate3d(${fromX}px,0,0)` },
-    to: { transform: `translate3d(0,0,0)` },
+    from: { transform: `translate3d(${fromX}px,0,0)`, pointerEvents: 'none' },
+    to: { transform: `translate3d(0,0,0)`, pointerEvents: 'auto' },
   });
 }
 
 function _createSlideInY(fromY: number): string {
   return keyframes({
-    from: { transform: `translate3d(0,${fromY}px,0)` },
-    to: { transform: `translate3d(0,0,0)` },
+    from: { transform: `translate3d(0,${fromY}px,0)`, pointerEvents: 'none' },
+    to: { transform: `translate3d(0,0,0)`, pointerEvents: 'auto' },
   });
 }
 

@@ -1,4 +1,4 @@
-import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
+import { ITextFieldStyleProps, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

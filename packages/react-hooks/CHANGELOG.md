@@ -1,8 +1,21 @@
-# Change Log - @uifabric/react-hooks
+# Change Log - @fluentui/react-hooks
 
-This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.13.5..@fluentui/react-hooks_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Implementing useUnmount, useMount, and useMountSync hooks within react-hooks package. ([PR #15516](https://github.com/microsoft/fluentui/pull/15516) by czearing@outlook.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+- Improvement for `useBoolean` hook ([PR #15607](https://github.com/microsoft/fluentui/pull/15607) by fu.juntao358@gmail.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.13.0)
 

@@ -12,6 +12,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground4: colors.white,
     foreground5: colors.grey[450],
     foreground6: colors.grey[550],
+    foreground7: colors.white,
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -91,6 +92,7 @@ export const colorScheme: ColorSchemeMapping = {
     background2: colors.brand[900],
     background3: colors.brand[1000],
     background4: colors.grey[650],
+    background5: colors.brand[900],
 
     border: colors.grey[450],
     border1: colors.brand[800],
@@ -294,6 +296,7 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground: categoryColors[color][250],
     foreground1: categoryColors[color][550],
     background: categoryColors[color][800],
+    borderActive: categoryColors[color][350],
     ...customValues,
   };
 };

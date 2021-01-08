@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet, RecursivePartial, SizeValue } from '@fluentui/theme';
+import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -43,7 +45,7 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /** A button can fill the width of its container. */
-    fluid?: boolean;
+    block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -53,6 +55,9 @@ export type ButtonProps = ComponentProps &
 
     /** A button that inherits its background and has a subtle appearance. */
     inverted?: boolean;
+
+    /** Opt in to a named variant which can be supplied by a theme. */
+    variant?: string;
 
     /** A button can show a loading indicator. */
     loading?: boolean;
@@ -80,6 +85,9 @@ export type ButtonProps = ComponentProps &
     /** A button can blend into its background to become less emphasized. */
     ghost?: boolean;
 
+    /** A button can have no background styling and just be emphasized through its content styling. */
+    transparent?: boolean;
+
     /** A button can be sized. */
     size?: SizeValue;
 
@@ -87,61 +95,72 @@ export type ButtonProps = ComponentProps &
     /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
     // text?: boolean;
 
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: RecursivePartial<ButtonTokens>;
   };
 
+/**
+ * {@docCategory Button}
+ */
 export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export interface ButtonSlots extends BaseSlots {
-  icon: React.ElementType;
-  loader: React.ElementType;
-}
+/**
+ * {@docCategory Button}
+ */
+export type ButtonTokens = ColorTokens &
+  FontTokens & {
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    margin?: string;
+    height?: string;
+    minWidth?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    contentGap?: string;
+    iconSize?: string;
+    borderRadius?: string;
+    borderTopLeftRadius?: string;
+    borderTopRightRadius?: string;
+    borderBottomLeftRadius?: string;
+    borderBottomRightRadius?: string;
+    borderWidth?: string;
+    boxShadow?: string;
+    width?: string;
 
-export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+    forcedColorAdjust?: string;
 
-export type ButtonTokenSet = ColorTokenSet & {
-  /* sizing */
-  paddingLeft: string;
-  paddingRight: string;
-  paddingTop: string;
-  paddingBottom: string;
-  margin: string;
-  height: string;
-  minWidth: string;
-  maxWidth: string;
-  minHeight: string;
-  contentGap: string;
-  iconSize: string;
-  borderRadius: string;
-  borderTopLeftRadius: string;
-  borderTopRightRadius: string;
-  borderBottomLeftRadius: string;
-  borderBottomRightRadius: string;
-  borderWidth: string;
-  boxShadow: string;
-  width: string;
+    transform?: string;
+    transition?: string;
 
-  size: {
-    smallest: string;
-    smaller: string;
-    small: string;
-    regular: string;
-    large: string;
-    larger: string;
-    largest: string;
+    /* sizing */
+    size?: {
+      smallest?: string;
+      smaller?: string;
+      small?: string;
+      regular?: string;
+      large?: string;
+      larger?: string;
+      largest?: string;
+    };
+
+    pressed?: {
+      transform?: string;
+      transition?: string;
+    };
   };
 
-  transform: string;
-  transition: string;
-
-  fontFamily: string;
-  fontSize: string;
-  fontWeight: string;
-
-  pressed: {
-    transform: string;
-    transition: string;
-  };
+/**
+ * {@docCategory Button}
+ */
+export type ButtonVariants<TTokens = ButtonTokens> = {
+  root?: TTokens;
+  block?: TTokens;
+  circular?: TTokens;
+  iconOnly?: TTokens;
+  ghost?: TTokens;
+  primary?: TTokens;
+  transparent?: TTokens;
 };

@@ -1,4 +1,4 @@
-import config from '@uifabric/build/config';
+import config from '@fluentui/scripts/config';
 import { Page, Viewport } from 'puppeteer';
 import * as path from 'path';
 import * as _ from 'lodash';
@@ -27,7 +27,8 @@ type E2EKeys =
   | 'PageUp'
   | 'Tab'
   | 'F'
-  | 'O';
+  | 'O'
+  | '*';
 
 const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 

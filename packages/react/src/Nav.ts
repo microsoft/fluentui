@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Nav';
+export * from '@fluentui/react-internal/lib/Nav';

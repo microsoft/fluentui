@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Ref } from '@fluentui/react-component-ref';
+import { handleRef, Ref } from '@fluentui/react-component-ref';
 import {
   childrenExist,
   createShorthandFactory,
@@ -32,7 +32,7 @@ import {
 } from '../../types';
 import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
-import { hasSubtree, TreeContext } from './utils';
+import { TreeContext } from './context';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -62,6 +62,14 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Called when a tree title is clicked. */
   onTitleClick?: ComponentEventHandler<TreeItemProps>;
 
+  /**
+   * Called on click.
+   *
+   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+   * @param {object} data - All props.
+   */
+  onClick?: ComponentEventHandler<TreeItemProps>;
+
   /** Called when the item's siblings are about to be expanded. */
   onSiblingsExpand?: ComponentEventHandler<TreeItemProps>;
 
@@ -90,19 +98,13 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Whether or not the item can be selectable. */
   selectable?: boolean;
 
-  /** A state of selection indicator. */
-  selected?: boolean;
-
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
-
-  /** Whether or not tree item is part of the selectable parent. */
-  selectableParent?: boolean;
-
-  indeterminate?: boolean;
 }
 
-export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
+export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
+  selectable?: boolean;
+};
 export const treeItemClassName = 'ui-tree__item';
 
 /**
@@ -131,16 +133,21 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     variables,
     treeSize,
     selectionIndicator,
-    selectableParent,
-    selected,
     selectable,
-    indeterminate,
     id,
+    parent,
   } = props;
 
-  const hasSubtreeItem = hasSubtree(props);
+  const {
+    getItemById,
+    registerItemRef,
+    toggleItemActive,
+    focusItemById,
+    expandSiblings,
+    toggleItemSelect,
+  } = React.useContext(TreeContext);
 
-  const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
+  const { selected, hasSubtree, childrenIds } = getItemById(id);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -149,7 +156,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
           e.preventDefault();
         }
         e.stopPropagation();
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusParent: e => {
         e.preventDefault();
@@ -160,14 +167,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       collapse: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       expand: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusFirstChild: e => {
         e.preventDefault();
@@ -192,50 +197,72 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       expanded,
       level,
       index,
-      hasSubtree: hasSubtreeItem,
+      hasSubtree,
       treeSize,
-      selected,
+      selected: selected === true,
       selectable,
-      selectableParent,
+      indeterminate: selected === 'indeterminate',
     }),
     rtl: context.rtl,
   });
+
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
     className: treeItemClassName,
     mapPropsToStyles: () => ({
       level,
+      selectable,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
 
   const handleSelection = e => {
-    onTitleClick(e, props, true);
+    if (selectable) {
+      toggleItemSelect(e, id);
+    }
     _.invoke(props, 'onTitleClick', e, props);
   };
 
-  const handleTitleClick = e => {
-    onTitleClick(e, props);
-    _.invoke(props, 'onTitleClick', e, props);
-  };
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
-    onFocusFirstChild(props.id);
+    focusItemById(childrenIds?.[0]);
   };
+
   const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
-    onFocusParent(props.parent);
+    focusItemById(parent);
   };
+
   const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
-    onSiblingsExpand(e, props);
+    expandSiblings(e, props.id);
   };
+
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
+    id,
     onClick: (e, titleProps) => {
-      handleTitleClick(e);
+      _.invoke(props, 'onTitleClick', e, props);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
   });
+
+  const handleClick = (e: React.SyntheticEvent) => {
+    if (e.target === e.currentTarget) {
+      // onClick listener for mouse click on treeItem DOM only,
+      // which could be triggered by VO+space on selectable tree parent node
+      handleSelection(e);
+    }
+
+    _.invoke(props, 'onClick', e, props);
+  };
+
+  const ref = React.useCallback(
+    node => {
+      registerItemRef(id, node);
+      handleRef(contentRef, node);
+    },
+    [id, contentRef, registerItemRef],
+  );
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
@@ -244,7 +271,8 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       {...getA11Props('root', {
         className: classes.root,
         id,
-        selected,
+        selected: selected === true,
+        onClick: handleClick,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -254,17 +282,18 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         : TreeTitle.create(title, {
             defaultProps: () =>
               getA11Props('title', {
-                hasSubtree: hasSubtreeItem,
-                as: hasSubtreeItem ? 'span' : 'a',
+                hasSubtree,
+                as: hasSubtree ? 'span' : 'a',
                 level,
                 treeSize,
                 expanded,
                 index,
-                selected,
+                selected: selected === true,
                 selectable,
-                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
-                ...(selectableParent && { indeterminate }),
-                selectableParent,
+                parent,
+                ...(hasSubtree && {
+                  indeterminate: selected === 'indeterminate',
+                }),
                 selectionIndicator,
               }),
             render: renderItemTitle,
@@ -273,7 +302,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     </ElementType>
   );
 
-  const elementWithRef = contentRef ? <Ref innerRef={contentRef}>{element}</Ref> : element;
+  const elementWithRef = <Ref innerRef={ref}>{element}</Ref>;
   setEnd();
 
   return elementWithRef;
@@ -300,14 +329,14 @@ TreeItem.propTypes = {
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
-  selected: PropTypes.bool,
   selectable: PropTypes.bool,
-  selectableParent: PropTypes.bool,
-  indeterminate: PropTypes.bool,
 };
+
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
+  selectable: true,
 };
+
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
 
 TreeItem.create = createShorthandFactory({

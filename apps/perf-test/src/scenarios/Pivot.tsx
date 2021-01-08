@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 
 const Scenario = () => (
   <Pivot aria-label="Basic Pivot Example">

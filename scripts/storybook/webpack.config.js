@@ -1,6 +1,7 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
 
@@ -74,7 +75,11 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.resolve.extensions.push('.ts', '.tsx');
 
-  config.resolve.alias = getResolveAlias();
+  config.resolve.alias = {
+    // Use the aliases for react-examples since the examples and demo may depend on some things
+    // that the package itself doesn't (and it will include the aliases for all the package's deps)
+    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
+  };
 
   config.plugins.push(
     new HardSourceWebpackPlugin(),
@@ -93,7 +98,7 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
   );
 
   // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
-  if (process.env.TF_BUILD) {
+  if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
     config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
   }
 

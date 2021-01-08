@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refactor for testability, and fix minor styling bug with customSize",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-22T01:32:31.579Z"
-}

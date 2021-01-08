@@ -58,6 +58,10 @@ export const FlipperStyles = css`
         cursor: ${disabledCursor};
     }
 
+    :host(:hover) {
+        cursor: pointer;
+    }
+
     :host(:hover)::before {
         background: ${neutralFillStealthHoverBehavior.var};
         border-color: ${neutralOutlineHoverBehavior.var};

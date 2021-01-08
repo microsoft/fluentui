@@ -15,6 +15,9 @@ import { SliderStyles as styles } from './slider.styles';
   name: 'fluent-slider',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentSlider extends Slider {}
 

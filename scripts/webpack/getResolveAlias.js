@@ -10,9 +10,10 @@ function getOutputPath(entryPoint) {
 
 /**
  * @param {boolean} [useLib] whether to use `lib` instead of `src` for other packages
+ * @param {string} [cwd] optional different cwd
  */
-function getResolveAlias(useLib) {
-  const cwd = process.cwd();
+function getResolveAlias(useLib, cwd) {
+  cwd = cwd || process.cwd();
   const gitRoot = findGitRoot();
   const deps = findRepoDeps(cwd);
 
@@ -20,11 +21,10 @@ function getResolveAlias(useLib) {
   const alias = {};
   const excludedPackages = [
     '@fluentui/eslint-plugin',
-    '@fluentui/storybook',
-    '@uifabric/api-docs',
-    '@uifabric/build',
-    '@uifabric/webpack-utils',
-    '@uifabric/jest-serializer-merge-styles',
+    '@fluentui/api-docs',
+    '@fluentui/scripts',
+    '@fluentui/webpack-utilities',
+    '@fluentui/jest-serializer-merge-styles',
   ];
 
   const packageJson = readConfig(path.join(cwd, 'package.json'));
@@ -74,8 +74,6 @@ function getResolveAlias(useLib) {
   alias[`${packageJson.name}/README.md`] = path.join(cwd, 'README.md');
 
   alias[`${packageJson.name}`] = path.join(cwd, useLib ? outputPath : 'src');
-
-  console.dir(alias);
 
   return alias;
 }

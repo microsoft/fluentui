@@ -6,7 +6,7 @@ describe('FormInput', () => {
   isConformant(FormInput, {
     testPath: __filename,
     constructorName: 'FormInput',
-    passesUnhandledPropsTo: Input,
+    targetComponent: Input,
     forwardsRefTo: `Box[className~="${inputSlotClassNames.input}"]`,
     eventTargets: {
       onKeyDown: 'input',

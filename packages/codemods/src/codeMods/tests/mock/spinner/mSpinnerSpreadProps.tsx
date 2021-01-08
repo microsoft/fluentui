@@ -1,7 +1,5 @@
-/* eslint-disable prefer-const */
-/* eslint-disable deprecation/deprecation */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+// @ts-ignore
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
 export const RenderSpinner = (props: any) => {
@@ -18,7 +16,7 @@ export const RenderSpinner = (props: any) => {
 };
 /* Render an component awkwardly. */
 export const RenderLetSpinner = (props: any) => {
-  let propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
+  const propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
   const someThing = true;
   return <div>{someThing ? <Spinner {...propsTest} /> : <div />}</div>;
 };

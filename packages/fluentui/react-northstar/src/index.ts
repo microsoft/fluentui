@@ -3,7 +3,6 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
-export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -11,6 +10,8 @@ export * from '@fluentui/date-time-utilities';
 export { teamsTheme } from './themes/teams';
 export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
+export { teamsV2Theme } from './themes/teams-v2';
+export { teamsDarkV2Theme } from './themes/teams-dark-v2';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
@@ -38,6 +39,8 @@ export * from './components/Attachment/AttachmentHeader';
 export * from './components/Attachment/AttachmentIcon';
 
 export * from './components/Avatar/Avatar';
+export * from './components/Avatar/AvatarStatus';
+export * from './components/Avatar/AvatarStatusIcon';
 
 export * from './components/Box/Box';
 
@@ -48,6 +51,7 @@ export * from './components/Button/ButtonContent';
 export * from './components/Breadcrumb/Breadcrumb';
 export * from './components/Breadcrumb/BreadcrumbItem';
 export * from './components/Breadcrumb/BreadcrumbDivider';
+export * from './components/Breadcrumb/BreadcrumbLink';
 
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
@@ -190,6 +194,8 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/hooks/useTree';
+export * from './components/Tree/hooks/useVirtualTree';
 
 export * from './components/Reaction/Reaction';
 export * from './components/Reaction/ReactionGroup';
@@ -235,6 +241,7 @@ export * from './components/Datepicker/DatepickerCalendarGridRow';
 // Utilities
 //
 export * from './utils/createComponent';
+export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';
 export { Popper as UNSTABLE_Popper } from './utils/positioner';

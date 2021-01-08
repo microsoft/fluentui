@@ -6,11 +6,10 @@ import {
   CodeModMapType,
   ModOptions,
   RenameImportType,
-  NoOp,
-  ModResult,
+  CodeModResult,
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
-import { Ok, Err, Result } from '../../../helpers/result';
+import { Ok, Err } from '../../../helpers/result';
 import { MaybeDictionary, isSomething } from '../../../helpers/maybe';
 
 import jsonObj from '../upgrades.json';
@@ -48,14 +47,14 @@ export function getCodeModsFromJson(): CodeMod[] {
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
-export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>): CodeMod {
+export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => CodeModResult): CodeMod {
   return {
     run: (file: SourceFile) => {
       try {
         /* Codemod body. */
         return mod(file);
       } catch (e) {
-        return Err({ reason: `Catching unhandled error: ${e}` });
+        return Err({ error: e });
       }
     },
     version: options.version,
@@ -76,13 +75,13 @@ const _codeModMap: CodeModMapType = {
         return Ok({ logs: [res.value] });
       } else {
         return Err({
-          reason: `unable to rename the prop ${mod.options.from.toRename} in all files.`,
+          logs: [`unable to rename the prop ${mod.options.from.toRename} in all files.`],
         });
       }
     };
   },
   repathImport: (mod: RepathImportModType) => {
-    return (file: SourceFile) => {
+    return (file: SourceFile): CodeModResult => {
       /* If the json indicates our search string is a regex, convert it. */
       const searchString = mod.options.from.isRegex
         ? new RegExp(
@@ -91,14 +90,9 @@ const _codeModMap: CodeModMapType = {
               .substring(0, (mod.options.from.searchString as string).length - 2),
           )
         : mod.options.from.searchString;
-      const res = getImportsByPath(file, searchString).then(v =>
-        v.map(imp => repathImport(imp, mod.options.to.replacementValue)),
-      );
-      if (res.ok) {
-        return Ok({ logs: ['Successfully repathed imports'] });
-      } else {
-        return Err({ reason: `Unable to repath imports to ${mod.options.to.replacementValue} in all files.` });
-      }
+      return getImportsByPath(file, searchString)
+        .then(v => v.map(imp => repathImport(imp, mod.options.to.replacementValue)))
+        .chain(v => Ok({ logs: ['Successfully repathed imports'] }));
     };
   },
   renameImport: (mod: RenameImportType) => {
@@ -106,6 +100,22 @@ const _codeModMap: CodeModMapType = {
       return renameImport(file, mod.options.from.originalImport, mod.options.to.renamedImport);
     };
   },
+};
+
+const combineResults = (result: CodeModResult, result2: CodeModResult) => {
+  return result.chain(v =>
+    result2.bothChain(
+      r => {
+        return Ok({ logs: v.logs.concat(...r.logs) });
+      },
+      e => {
+        if ('error' in e) {
+          return Err(e);
+        }
+        return Ok({ logs: v.logs.concat(...e.logs) });
+      },
+    ),
+  );
 };
 
 const codeModMap = MaybeDictionary(_codeModMap);
@@ -119,16 +129,22 @@ const configMod: CodeMod = {
     if (!__configs) {
       __configs = getCodeModsFromJson();
       if (__configs === undefined || __configs.length === 0) {
-        return Err({ reason: `failed to get any mods from json. Perhaps the file is missing or malformed?` });
+        return Err({
+          logs: ['failed to get any mods from json. Perhaps the file is missing or malformed?'],
+        });
       }
     }
-    __configs.forEach(mod => {
-      const res = mod.run(file);
-      if (!res.ok) {
-        return Err({ reason: `code mod ${mod.name} failed to run on ${file.getBaseName()}` });
-      }
-    });
-    return Ok({ logs: [`ran modConfig successfully on ${file.getBaseName()}`] });
+
+    const results: CodeModResult[] = [];
+    for (let i = 0; i < __configs.length; i++) {
+      const mod = __configs[i];
+      results.push(mod.run(file));
+    }
+    if (results.length === 0) {
+      return Err({ logs: ['No runabble mods were found in the config'] });
+    }
+
+    return results.reduce(combineResults);
   },
   name: 'configMod',
   version: '1.0.0',

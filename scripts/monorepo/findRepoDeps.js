@@ -30,7 +30,7 @@ function findRepoDeps(cwd) {
   }
 
   const packageInfo = getAllPackageInfo();
-  const packageJson = readConfig('package.json');
+  const packageJson = readConfig('package.json', cwd);
   const packageDeps = getDeps(packageJson);
   /** @type {Set<string>} */
   const result = new Set();

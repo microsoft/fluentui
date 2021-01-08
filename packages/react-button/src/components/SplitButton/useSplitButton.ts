@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
-import { renderSplitButton } from './renderSplitButton';
-import { useMergedRefs } from '@uifabric/react-hooks';
-import { useExpanded } from '../MenuButton/useExpanded';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
 
@@ -26,9 +24,10 @@ export const useSplitButton = (
     disabled,
     loading,
     circular,
-    fluid,
+    block,
     menu,
     size,
+    transparent,
     ...userProps
   } = resolveShorthandProps(props, splitButtonShorthandProps);
 
@@ -42,8 +41,12 @@ export const useSplitButton = (
       as: 'span',
       className,
       style,
-      fluid,
+      disabled,
+      block,
+      primary,
       size,
+      transparent,
+      'aria-disabled': disabledOrLoading,
 
       button: {
         as: 'span',
@@ -54,10 +57,12 @@ export const useSplitButton = (
         disabled: disabledOrLoading,
         loading,
         size,
+        transparent,
         ...userProps,
       },
 
       divider: { as: 'span', children: null },
+
       menuButton: {
         as: 'span',
         primary,
@@ -66,21 +71,13 @@ export const useSplitButton = (
         size,
         disabled: disabledOrLoading,
         loading,
-        menu: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...(menu as any),
-          target: ref,
-        },
+        transparent,
+        menu,
         children: null,
       },
     },
     defaultProps,
   ) as SplitButtonState;
 
-  useExpanded(state);
-
-  return {
-    state,
-    render: renderSplitButton,
-  };
+  return state as SplitButtonState;
 };

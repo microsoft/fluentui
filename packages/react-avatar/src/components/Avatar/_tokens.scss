@@ -139,12 +139,12 @@ $color-default-brand: #0078D4;
 $color-default-neutralBackgroundSextenary: $color-grey90;
 $color-default-neutralForegroundTertiary: $color-grey38;
 $color-default-neutralForegroundInverted: $color-white;
-$color-default-shadowAmbient: rgba(0, 0, 0, 0.12);
-$color-default-shadowKey: rgba(0, 0, 0, 0.14);
-$color-default-shadowAmbientLighter: rgba(0, 0, 0, 0.06);
-$color-default-shadowKeyLighter: rgba(0, 0, 0, 0.07);
-$color-default-shadowAmbientDarker: rgba(0, 0, 0, 0.20);
-$color-default-shadowKeyDarker: rgba(0, 0, 0, 0.24);
+$color-default-shadowAmbient: rgba(0,0,0,0.12);
+$color-default-shadowKey: rgba(0,0,0,0.14);
+$color-default-shadowAmbientLighter: rgba(0,0,0,0.06);
+$color-default-shadowKeyLighter: rgba(0,0,0,0.07);
+$color-default-shadowAmbientDarker: rgba(0,0,0,0.20);
+$color-default-shadowKeyDarker: rgba(0,0,0,0.24);
 
 $shadow-2: 0px 0px 2px $color-default-shadowAmbient, 0px 1px 2px $color-default-shadowKey;
 $shadow-4: 0px 0px 2px $color-default-shadowAmbient, 0px 2px 4px $color-default-shadowKey;
@@ -158,3 +158,41 @@ $shadow-16-darker: 0px 0px 4px $color-default-shadowAmbientDarker, 0px 6px 16px 
 $shadow-16-lighter: 0px 0px 4px $color-default-shadowAmbientLighter, 0px 6px 16px $color-default-shadowKeyLighter;
 $shadow-28: 0px 0px 8px $color-default-shadowAmbientDarker, 0px 14px 28px $color-default-shadowKeyDarker;
 $shadow-64: 0px 0px 8px $color-default-shadowAmbientDarker, 0px 32x 64px $color-default-shadowKeyDarker;
+
+// Animation timing
+$anim-duration50: 50ms;
+$anim-duration100: 100ms;
+$anim-duration150: 150ms;
+$anim-duration200: 200ms;
+$anim-duration300: 300ms;
+$anim-duration400: 400ms;
+$anim-duration500: 500ms;
+
+$anim-ultraFast: $anim-duration50;
+$anim-faster: $anim-duration100;
+$anim-fast: $anim-duration150;
+$anim-normal: $anim-duration200;
+$anim-slow: $anim-duration300;
+$anim-slower: $anim-duration400;
+$anim-ultraSlow: $anim-duration500;
+
+// Animation curves
+$anim-decelerateMax: cubic-bezier(0.00,0.00,0.00,1.00);
+$anim-decelerateMid: cubic-bezier(0.10,0.90,0.20,1.00);
+$anim-decelerateMin: cubic-bezier(0.33,0.00,0.10,1.00);
+$anim-accelerateMax: cubic-bezier(1.00,0.00,1.00,1.00);
+$anim-accelerateMid: cubic-bezier(0.90,0.10,1.00,0.20);
+$anim-accelerateMin: cubic-bezier(0.80,0.00,0.78,1.00);
+$anim-maxEasyEase: cubic-bezier(0.80,0.00,0.20,1.00);
+$anim-easyEase: cubic-bezier(0.33,0.00,0.67,1.00);
+$anim-linear: linear;
+
+$anim-fastOutSlowInMax: $anim-decelerateMax;
+$anim-fastOutSlowInMid: $anim-decelerateMid;
+$anim-fastOutSlowInMin: $anim-decelerateMin;
+$anim-slowOutFastInMax: $anim-accelerateMax;
+$anim-slowOutFastInMid: $anim-accelerateMid;
+$anim-slowOutFastInMin: $anim-accelerateMin;
+$anim-fastEase: $anim-maxEasyEase;
+$anim-normalEase: $anim-easyEase;
+$anim-nullEasing: $anim-linear;

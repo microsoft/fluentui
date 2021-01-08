@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Slider';
+export * from '@fluentui/react-slider/lib/Slider';

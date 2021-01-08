@@ -1,8 +1,8 @@
 import * as React from 'react';
 
+// @ts-ignore
 import { Persona } from 'office-ui-fabric-react/lib/Persona';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderPersona = (props: any) => {
   return (
     <div>

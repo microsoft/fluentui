@@ -45,7 +45,9 @@ export * from './Toolbar/menuItemAsToolbarButtonBehavior';
 export * from './Toolbar/toolbarBehavior';
 export * from './Toolbar/toolbarItemBehavior';
 export * from './Toolbar/toolbarMenuItemCheckboxBehavior';
+export * from './Toolbar/toolbarMenuDividerBehavior';
 export * from './Toolbar/toolbarMenuRadioGroupBehavior';
+export * from './Toolbar/toolbarMenuRadioGroupWrapperBehavior';
 export * from './Toolbar/toolbarRadioGroupBehavior';
 export * from './Toolbar/toolbarRadioGroupItemBehavior';
 
@@ -83,14 +85,15 @@ export * from './MenuButton/menuButtonBehavior';
 
 export * from './SplitButton/splitButtonBehavior';
 
-export * from './Skeleton/skeletonBehavior';
-
 export * from './Tree/treeBehavior';
 export * from './Tree/treeItemBehavior';
 export * from './Tree/treeTitleBehavior';
 export { treeAsListBehavior } from './Tree/treeAsListBehavior';
 export { treeItemAsListItemBehavior } from './Tree/treeItemAsListItemBehavior';
 export { treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsListItemTitleBehavior';
+export { treeAsListboxBehavior } from './Tree/treeAsListboxBehavior';
+export { treeItemAsOptionBehavior } from './Tree/treeItemAsOptionBehavior';
+export { treeTitleAsOptionBehavior } from './Tree/treeTitleAsOptionBehavior';
 
 export * from './TextArea/textAreaBehavior';
 

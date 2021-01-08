@@ -1,11 +1,10 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { DevOnlyStoryHeader } from '../utilities';
-import { Suggestions, ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { FabricDecorator } from '../utilities/index';
+import { DevOnlyStoryHeader } from '../utilities/index';
+import { Suggestions, ISuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { Fabric } from '@fluentui/react/lib/Fabric';
 
 type Province = {
   name: string;
@@ -105,7 +104,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
               makeProvinceIntoSuggestion(this.state.Provinces[key]),
             )}
             onSuggestionClick={(_: any, province: Province) => {
-              alert(`clicked ${province.name} `);
+              console.log(`clicked ${province.name} `);
             }}
             onRenderNoResultFound={NoResultFound}
             onRenderSuggestion={ProvinceSuggestionItem}
@@ -136,7 +135,7 @@ storiesOf('(Dev-Only) Suggestions', module)
         .snapshot('default', { cropTo: '.testRoot' })
         .hover('#province-fake-long-province')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
-        .hover('#sug-0 .ms-Suggestions-closeButton')
+        .hover('#sug-0+.ms-Suggestions-closeButton')
         .snapshot('Hovering over the X button on a wide suggestion element', {
           cropTo: '.testRoot',
         })

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Delete unneeded compat exports and move button migration guide",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-09-18T18:35:14.291Z"
-}

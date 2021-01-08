@@ -1,7 +1,8 @@
-import * as React from 'react';
-import { SlotProps } from '@fluentui/react-compose';
-import { ButtonProps, ButtonSlots } from '../Button/Button.types';
+import { ButtonProps, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
+/**
+ * {@docCategory Button}
+ */
 export interface ToggleButtonProps extends ButtonProps {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
@@ -18,12 +19,11 @@ export interface ToggleButtonProps extends ButtonProps {
   defaultChecked?: boolean;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ToggleButtonState extends ToggleButtonProps {}
 
-export interface ToggleButtonSlots extends ButtonSlots {}
+export type ToggleButtonTokens = ButtonTokens;
 
-export type ToggleButtonSlotProps = SlotProps<
-  ToggleButtonSlots,
-  ToggleButtonProps,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->;
+export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;

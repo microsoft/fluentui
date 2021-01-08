@@ -7,6 +7,6 @@ describe('FormDropdown', () => {
     testPath: __filename,
     constructorName: 'FormDropdown',
     forwardsRefTo: false,
-    passesUnhandledPropsTo: Dropdown,
+    targetComponent: Dropdown,
   });
 });

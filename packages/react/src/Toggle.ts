@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Toggle';
+export * from '@fluentui/react-toggle/lib/Toggle';

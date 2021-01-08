@@ -26,6 +26,7 @@
     "**/lib-amd": true,
     "**/temp": true,
     "**/dist": true,
+    "**/dist-storybook": true,
     "**/*.scss.ts": true,
     "**/coverage": true
   },
@@ -37,7 +38,9 @@
     "**/lib-amd": true,
     "**/lib-commonjs": true,
     "**/dist": true,
-    "**/*.scss.ts": true
+    "**/dist-storybook": true,
+    "**/*.scss.ts": true,
+    "**/temp": true
   },
   "editor.rulers": [120],
   "eslint.enable": true,

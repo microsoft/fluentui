@@ -13,6 +13,8 @@ export { attachmentHeaderStyles as AttachmentHeader } from './components/Attachm
 export { attachmentIconStyles as AttachmentIcon } from './components/Attachment/attachmentIconStyles';
 
 export { avatarStyles as Avatar } from './components/Avatar/avatarStyles';
+export { avatarStatusStyles as AvatarStatus } from './components/Avatar/avatarStatusStyles';
+export { avatarStatusStyles as AvatarStatusIcon } from './components/Avatar/avatarStatusIconStyles';
 
 export { buttonStyles as Button } from './components/Button/buttonStyles';
 export { buttonGroupStyles as ButtonGroup } from './components/Button/buttonGroupStyles';
@@ -20,6 +22,8 @@ export { buttonContentStyles as ButtonContent } from './components/Button/button
 
 export { breadcrumbItemStyles as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemStyles';
 export { breadcrumbDividerStyles as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerStyles';
+export { breadcrumbLinkStyles as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkStyles';
+export { breadcrumbStyles as Breadcrumb } from './components/Breadcrumb/breadcrumbStyles';
 
 export { chatStyles as Chat } from './components/Chat/chatStyles';
 export { chatItemStyles as ChatItem } from './components/Chat/chatItemStyles';

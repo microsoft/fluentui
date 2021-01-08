@@ -1,8 +1,84 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 23 Sep 2020 12:27:48 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Dec 2020 12:38:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.8)
+
+Tue, 01 Dec 2020 12:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.7..@fluentui/theme_v2.0.0-beta.8)
+
+### Changes
+
+- Added selected as a possible key in ColorTokens. ([PR #16035](https://github.com/microsoft/fluentui/pull/16035) by humbertomakotomorimoto@gmail.com)
+
+## [2.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.7)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.5..@fluentui/theme_v2.0.0-beta.7)
+
+### Changes
+
+- Move getTokens logic out from ThemeProvider to mergeTheme/createTheme. ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
+
+## [2.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.5)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.3..@fluentui/theme_v2.0.0-beta.5)
+
+### Changes
+
+- Mark stylesheets in theme as internal. ([PR #15806](https://github.com/microsoft/fluentui/pull/15806) by xgao@microsoft.com)
+
+## [2.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.3)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.0..@fluentui/theme_v2.0.0-beta.3)
+
+### Changes
+
+- Fixing and expanding token typings. ([PR #15518](https://github.com/microsoft/fluentui/pull/15518) by humbertomakotomorimoto@gmail.com)
+
+## [2.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.1..@fluentui/theme_v2.0.0-beta.0)
+
+### Changes
+
+- Updating typings to add `Variants`. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Update createTheme interface to use Theme and PartialTheme; mark tokens typing in Theme as internal; update mergeThemes. ([PR #15326](https://github.com/microsoft/fluentui/pull/15326) by xgao@microsoft.com)
+- Fix ParitalTheme typing. ([PR #15372](https://github.com/microsoft/fluentui/pull/15372) by xgao@microsoft.com)
+- Add missing version.ts. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Fixing ColorTokens typings. ([PR #15463](https://github.com/microsoft/fluentui/pull/15463) by Humberto.Morimoto@microsoft.com)
+- Make ITheme/IPartialTheme to be identical with Theme/PartialTheme typings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- Fix inferred type error related to ITheme. ([PR #15573](https://github.com/microsoft/fluentui/pull/15573) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.1)
+
+Sun, 27 Sep 2020 04:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.2.0..@fluentui/theme_v1.2.1)
+
+### Patches
+
+- Disable pointer-events during slide animations ([PR #15219](https://github.com/microsoft/fluentui/pull/15219) by behowell@microsoft.com)
+- Add FluentTheme and Depths exports. ([PR #15248](https://github.com/microsoft/fluentui/pull/15248) by xgao@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.2.0)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v1.1.0..@fluentui/theme_v1.2.0)
+
+### Minor changes
+
+- Move AnimationStyles code from styling package to theme package. ([PR #15162](https://github.com/microsoft/fluentui/pull/15162) by xgao@microsoft.com)
+- Move createTheme from styling to theme package. ([PR #15163](https://github.com/microsoft/fluentui/pull/15163) by xgao@microsoft.com)
 
 ## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v1.1.0)
 
