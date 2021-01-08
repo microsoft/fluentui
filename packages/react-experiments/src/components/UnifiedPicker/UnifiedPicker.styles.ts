@@ -23,7 +23,7 @@ export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles
     throw new Error('theme is undefined or null in Editing item getStyles function.');
   }
 
-  // const { semanticColors } = theme;
+  const { fonts } = theme;
   const { neutralTertiary, themeLight } = theme.palette;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -49,6 +49,7 @@ export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles
     ],
     pickerInput: [
       classNames.pickerInput,
+      fonts.medium,
       {
         display: 'flex',
         flex: '1 1 auto',

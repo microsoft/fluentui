@@ -156,7 +156,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
           e.preventDefault();
         }
         e.stopPropagation();
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusParent: e => {
         e.preventDefault();
@@ -167,14 +167,12 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       collapse: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       expand: e => {
         e.preventDefault();
         e.stopPropagation();
-
-        handleTitleClick(e);
+        toggleItemActive(e, id);
       },
       focusFirstChild: e => {
         e.preventDefault();
@@ -225,14 +223,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onTitleClick', e, props);
   };
 
-  const handleTitleClick = e => {
-    if (hasSubtree && e.target === e.currentTarget) {
-      toggleItemActive(e, id);
-    } else if (selectable) {
-      toggleItemSelect(e, id);
-    }
-    _.invoke(props, 'onTitleClick', e, props);
-  };
   const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
     focusItemById(childrenIds?.[0]);
@@ -249,11 +239,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
+    id,
     onClick: (e, titleProps) => {
-      handleTitleClick(e);
+      _.invoke(props, 'onTitleClick', e, props);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
     },
   });
+
   const handleClick = (e: React.SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       // onClick listener for mouse click on treeItem DOM only,

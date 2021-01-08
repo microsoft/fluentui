@@ -15,7 +15,7 @@ import * as _ from 'lodash';
 
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { FluentComponentStaticProps, ShorthandCollection, ComponentEventHandler } from '../../types';
+import { FluentComponentStaticProps, ShorthandCollection } from '../../types';
 import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import { TableCell, TableCellProps } from './TableCell';
 
@@ -44,14 +44,6 @@ export interface TableRowProps extends UIComponentProps {
    * Whether a row is currently selected or not.
    */
   selected?: boolean;
-
-  /**
-   * Called on click.
-   *
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props.
-   */
-  onClick?: ComponentEventHandler<TableRowProps>;
 }
 
 export const tableRowClassName = 'ui-table__row';
@@ -79,7 +71,10 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
         rowRef.current.setAttribute('tabindex', '-1');
       },
       performClick: e => {
-        handleClick(e);
+        if (e.currentTarget === e.target) {
+          _.invoke(props, 'onClick', e, props);
+          e.preventDefault();
+        }
       },
     },
     mapPropsToBehavior: () => ({
@@ -104,13 +99,6 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
     rtl: context.rtl,
   });
 
-  const handleClick = (e: React.SyntheticEvent) => {
-    if (e.currentTarget === e.target) {
-      _.invoke(props, 'onClick', e, props);
-      e.preventDefault();
-    }
-  };
-
   const renderCells = () => {
     return _.map(items, (item: TableCellProps) => {
       return TableCell.create(item, {
@@ -128,7 +116,6 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
-            onClick: handleClick,
             ...unhandledProps,
           })}
         >
@@ -152,7 +139,6 @@ TableRow.propTypes = {
   header: PropTypes.bool,
   compact: PropTypes.bool,
   selected: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 TableRow.handledProps = Object.keys(TableRow.propTypes) as any;

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button.",
-  "packageName": "@fluentui/react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-05T02:50:19.308Z"
-}

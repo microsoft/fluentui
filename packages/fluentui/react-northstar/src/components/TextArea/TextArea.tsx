@@ -137,6 +137,8 @@ TextArea.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
+  fluid: PropTypes.bool,
+  resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
 };
 
 TextArea.defaultProps = {

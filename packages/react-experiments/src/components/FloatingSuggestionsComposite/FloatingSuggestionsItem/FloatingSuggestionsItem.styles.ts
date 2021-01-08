@@ -18,7 +18,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
 
   const { isSelected } = props;
   const { palette, semanticColors, fonts } = theme;
-  const { neutralDark, neutralTertiaryAlt, neutralSecondary } = palette;
+  const { neutralDark, neutralLight, neutralSecondary } = palette;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -84,8 +84,13 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         width: 32,
         selectors: {
           ':hover, :active': {
-            background: neutralTertiaryAlt,
+            background: neutralLight,
             color: neutralDark,
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'HighlightText',
+              MsHighContrastAdjust: 'none',
+            },
           },
           [HighContrastSelector]: {
             color: 'WindowText',

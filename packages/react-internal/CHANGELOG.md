@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 07 Dec 2020 12:29:34 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jan 2021 12:35:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.29)
+
+Thu, 07 Jan 2021 12:35:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.28..@fluentui/react-internal_v8.0.0-beta.29)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.28)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.27..@fluentui/react-internal_v8.0.0-beta.28)
+
+### Changes
+
+- Add calloutMinWidth props for Callout component ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.27)
+
+Mon, 21 Dec 2020 12:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.26..@fluentui/react-internal_v8.0.0-beta.27)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.26)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.25..@fluentui/react-internal_v8.0.0-beta.26)
+
+### Changes
+
+- fix #15729: add type button to textfield of type password ([PR #15949](https://github.com/microsoft/fluentui/pull/15949) by mirco.zeiss@gmail.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.25)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.24..@fluentui/react-internal_v8.0.0-beta.25)
+
+### Changes
+
+- Pickers: add aria-label as an option to apply to the root combobox ([PR #16187](https://github.com/microsoft/fluentui/pull/16187) by joschect@microsoft.com)
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.24)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.23..@fluentui/react-internal_v8.0.0-beta.24)
+
+### Changes
+
+- fix narrator scan mode navigation for picker ([PR #16177](https://github.com/microsoft/fluentui/pull/16177) by kuanubha@microsoft.com)
 
 ## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.23)
 
