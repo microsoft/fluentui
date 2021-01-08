@@ -48,8 +48,8 @@
     "file-loader": "^0.11.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",
-    "screener-runner": "^0.10.43",
-    "screener-storybook": "^0.18.6",
+    "screener-runner": "^0.11.0",
+    "screener-storybook": "^0.20.5",
     "storybook-readme": "^3.3.0",
     "style-loader": "^1.2.1"
   }
