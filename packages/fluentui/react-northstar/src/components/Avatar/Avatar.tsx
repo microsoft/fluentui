@@ -109,6 +109,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
         fluid: true,
         avatar: !square,
         title: name,
+        // remove in upcoming breaking change
         styles: resolvedStyles.image,
       }),
   });
