@@ -34,13 +34,13 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.33",
+    "@fluentui/react": "^8.0.0-beta.34",
     "@fluentui/react-examples": "^1.0.0",
-    "@fluentui/react-internal": "^8.0.0-beta.29",
+    "@fluentui/react-internal": "^8.0.0-beta.30",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^1.0.0",
     "@fluentui/azure-themes": "^8.0.0-beta.33",
-    "@fluentui/react-docsite-components": "^8.0.0-beta.33",
+    "@fluentui/react-docsite-components": "^8.0.0-beta.34",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.10",
     "@fluentui/set-version": "^8.0.0-beta.0",
     "@fluentui/theme-samples": "^8.0.0-beta.33",

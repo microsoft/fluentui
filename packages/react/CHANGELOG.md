@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 31 Dec 2020 12:30:02 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+
+### Changes
+
+- Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
 
 ## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
 
