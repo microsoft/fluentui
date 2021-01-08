@@ -19,6 +19,7 @@ import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -178,6 +179,21 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       );
     } else {
       insertIndex = selectedItems.indexOf(item);
+    }
+
+    // If the drop is in the right half of the item, we want to drop at index+1
+    if (event && event.currentTarget) {
+      const targetElement = event.currentTarget as HTMLElement;
+      const halfwayPoint = targetElement.offsetLeft + targetElement.offsetWidth / 2;
+      if (getRTL()) {
+        if (event.pageX < halfwayPoint) {
+          insertIndex++;
+        }
+      } else {
+        if (event.pageX > halfwayPoint) {
+          insertIndex++;
+        }
+      }
     }
 
     event?.preventDefault();
