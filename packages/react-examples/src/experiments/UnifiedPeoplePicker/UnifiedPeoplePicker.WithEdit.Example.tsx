@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConst } from '@fluentui/react-hooks';
+import { useConst } from '@uifabric/react-hooks';
 import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
