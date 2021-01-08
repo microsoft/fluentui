@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixes linux firefox persona/image rendering only the top left quarter of images (#16361)",
-  "packageName": "@fluentui/react-internal",
-  "email": "mhuan13@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-05T15:02:34.678Z"
-}

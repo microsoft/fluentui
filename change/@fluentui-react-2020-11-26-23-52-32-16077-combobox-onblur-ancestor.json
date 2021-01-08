@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu",
-  "packageName": "@fluentui/react",
-  "email": "marwankhalili@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-11-26T22:52:32.342Z"
-}
