@@ -20,7 +20,7 @@ import {
 import { IInputProps } from 'office-ui-fabric-react';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
-import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
+import { KeyCodes } from '@uifabric/experiments/lib/Utilities';
 
 const _suggestions = [
   {
@@ -228,6 +228,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       newItems.splice(index, 1, ...newItemsArray);
       setPeopleSelectedItems(newItems);
     }
+  };
+
+  const _createGenericItem = (input: string): IPersona => {
+    return { text: input };
   };
 
   const _addGenericItem = (text: string) => {
