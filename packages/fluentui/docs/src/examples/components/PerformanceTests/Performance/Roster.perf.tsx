@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RosterPrototype from '../../../../prototypes/Roster';
+import { RosterPrototype } from '@fluentui/react-northstar-prototypes';
 
 const RosterPerf = () => <RosterPrototype />;
 
