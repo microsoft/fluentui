@@ -41,7 +41,7 @@ export type AvatarImageStylesProps = Pick<AvatarImageProps, 'avatar' | 'circular
 export const avatarImageClassName = imageClassName;
 
 /**
- * An AvatarImage is a graphic representation of something.
+ * An AvatarImage is a graphic representation used by Avatar.
  */
 export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
   FluentComponentStaticProps<AvatarImageProps> = props => {

@@ -20,6 +20,7 @@ import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 import { AvatarImage, AvatarImageProps } from './AvatarImage';
+import { AvatarStatusIcon } from './AvatarStatusIcon';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -59,7 +60,11 @@ export const avatarClassName = 'ui-avatar';
  * An Avatar is a graphical representation of a user.
  */
 export const Avatar: ComponentWithAs<'div', AvatarProps> &
-  FluentComponentStaticProps<AvatarProps> & { Status: typeof AvatarStatus } = props => {
+  FluentComponentStaticProps<AvatarProps> & {
+    Status: typeof AvatarStatus;
+    StatusIcon: typeof AvatarStatusIcon;
+    Image: typeof AvatarImage;
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -195,6 +200,8 @@ Avatar.propTypes = {
 };
 
 Avatar.Status = AvatarStatus;
+Avatar.StatusIcon = AvatarStatusIcon;
+Avatar.Image = AvatarImage;
 
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 
