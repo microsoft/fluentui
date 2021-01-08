@@ -24,7 +24,7 @@ export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ImageBehaviorProps>;
 
-  /** @deprecated An Avatarimage may be formatted to appear inline with text as an avatar. */
+  /** @deprecated An avatar image may be formatted to appear inline with text as an avatar. */
   avatar?: boolean;
 
   /** An Avatarimage can appear circular. */
