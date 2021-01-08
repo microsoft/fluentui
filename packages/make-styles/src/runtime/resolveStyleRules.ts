@@ -46,7 +46,7 @@ export function resolveStyleRules(
         property,
         support,
         value,
-        unstable_cssPriority
+        unstable_cssPriority,
       });
 
       const rtl = convertProperty(property, value);
@@ -60,7 +60,7 @@ export function resolveStyleRules(
           property: rtl.key,
           support,
           value: rtl.value,
-          unstable_cssPriority
+          unstable_cssPriority,
         });
 
         // There is no sense to store RTL className as it's "r" + regular className

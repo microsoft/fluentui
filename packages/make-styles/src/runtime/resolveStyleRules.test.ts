@@ -19,13 +19,13 @@ expect.addSnapshotSerializer({
   },
 });
 
+function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
+}
+
 describe('resolveStyleRules', () => {
   describe('classnames', () => {
-    it('generates unique classnames for preudo selectors', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
+    it('generates unique classnames for pseudo selectors', () => {
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
@@ -189,6 +189,25 @@ describe('resolveStyleRules', () => {
           right: 5px;
         }
       `);
+    });
+
+    it('handles RTL @noflip', () => {
+      expect(resolveStyleRules({ left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
+        .fm76jd0 {
+          left: 5px;
+        }
+      `);
+    });
+
+    it('RTL @noflip will generate a different className', () => {
+      const classnamesSet = new Set<string>();
+
+      // Definitions with @noflip cannot be reused to usual ones as expected RTL styles will be different
+
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px /* @noflip */' })));
+
+      expect(classnamesSet.size).toBe(2);
     });
 
     it('handles nested selectors', () => {
@@ -428,10 +447,6 @@ describe('resolveStyleRules', () => {
     });
 
     it('generates unique classnames with different specificity', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
