@@ -14,12 +14,12 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Box, BoxProps } from '../Box/Box';
-import { Image, ImageProps } from '../Image/Image';
 import { Label, LabelProps } from '../Label/Label';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
+import { AvatarImage, AvatarImageProps } from './AvatarImage';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -31,7 +31,7 @@ export interface AvatarProps extends UIComponentProps {
   icon?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the image. */
-  image?: ShorthandValue<ImageProps>;
+  image?: ShorthandValue<AvatarImageProps>;
 
   /** Shorthand for the label. */
   label?: ShorthandValue<LabelProps>;
@@ -98,7 +98,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
-  const imageElement = Image.create(image, {
+  const imageElement = createShorthand(AvatarImage, image, {
     defaultProps: () =>
       getA11Props('image', {
         fluid: true,

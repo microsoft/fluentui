@@ -41,6 +41,7 @@ export * from './components/Attachment/AttachmentIcon';
 export * from './components/Avatar/Avatar';
 export * from './components/Avatar/AvatarStatus';
 export * from './components/Avatar/AvatarStatusIcon';
+export * from './components/Avatar/AvatarImage';
 
 export * from './components/Box/Box';
 
