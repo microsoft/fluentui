@@ -4,10 +4,11 @@ export interface AvatarVariables {
   avatarBorderColor: string;
   avatarBorderWidth: string;
   squareAvatarBorderRadius: string;
-  statusBorderColor: string;
-  statusBorderWidth: string;
   iconColor: string;
   iconBackgroundColor: string;
+  // Status
+  statusBorderColor: string;
+  statusBorderWidth: string;
   statusIconSize: string;
   statusSuccessBackgroundColor: string;
   statusSuccessColor: string;
@@ -19,6 +20,12 @@ export interface AvatarVariables {
   statusErrorColor: string;
   statusBackgroundColor: string;
   statusColor: string;
+  // Image
+  imageWidth: string;
+  imageHeight: string;
+  imageAvatarRadius: string;
+  imageAvatarSize: string;
+  imageCircularRadius: string;
 }
 
 export const avatarVariables = (siteVariables): AvatarVariables => ({
@@ -40,4 +47,9 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   statusErrorColor: siteVariables.colorScheme.red.foreground2,
   statusBackgroundColor: siteVariables.colorScheme.default.background5,
   statusColor: siteVariables.colorScheme.default.foreground4,
+  imageWidth: undefined,
+  imageHeight: undefined,
+  imageAvatarRadius: pxToRem(9999),
+  imageAvatarSize: pxToRem(32),
+  imageCircularRadius: pxToRem(9999),
 });

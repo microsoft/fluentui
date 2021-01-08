@@ -14,12 +14,13 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Box, BoxProps } from '../Box/Box';
-import { Image, ImageProps } from '../Image/Image';
 import { Label, LabelProps } from '../Label/Label';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
+import { AvatarImage, AvatarImageProps } from './AvatarImage';
+import { AvatarStatusIcon } from './AvatarStatusIcon';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -31,7 +32,7 @@ export interface AvatarProps extends UIComponentProps {
   icon?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the image. */
-  image?: ShorthandValue<ImageProps>;
+  image?: ShorthandValue<AvatarImageProps>;
 
   /** Shorthand for the label. */
   label?: ShorthandValue<LabelProps>;
@@ -59,7 +60,11 @@ export const avatarClassName = 'ui-avatar';
  * An Avatar is a graphical representation of a user.
  */
 export const Avatar: ComponentWithAs<'div', AvatarProps> &
-  FluentComponentStaticProps<AvatarProps> & { Status: typeof AvatarStatus } = props => {
+  FluentComponentStaticProps<AvatarProps> & {
+    Status: typeof AvatarStatus;
+    StatusIcon: typeof AvatarStatusIcon;
+    Image: typeof AvatarImage;
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -98,12 +103,13 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
-  const imageElement = Image.create(image, {
+  const imageElement = createShorthand(AvatarImage, image, {
     defaultProps: () =>
       getA11Props('image', {
         fluid: true,
         avatar: !square,
         title: name,
+        // remove in upcoming breaking change
         styles: resolvedStyles.image,
       }),
   });
@@ -195,6 +201,8 @@ Avatar.propTypes = {
 };
 
 Avatar.Status = AvatarStatus;
+Avatar.StatusIcon = AvatarStatusIcon;
+Avatar.Image = AvatarImage;
 
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 
