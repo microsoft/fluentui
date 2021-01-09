@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.21)
+
+Thu, 03 Dec 2020 12:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.1..@fluentui/react-toggle_v1.0.0-beta.21)
+
+### Changes
+
+- Update toggle pill background color on hover to use semanticColors from theme. ([PR #16108](https://github.com/microsoft/fluentui/pull/16108) by xgao@microsoft.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.1)
 

@@ -155,6 +155,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             outline: none;
           }
       data-focuszone-id="FocusZone2"
+      id="combobox-id__1"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -255,6 +256,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             outline: none;
           }
       data-focuszone-id="FocusZone4"
+      id="combobox-id__3"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}

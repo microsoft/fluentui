@@ -24,6 +24,7 @@ export type ColorTokens = ColorTokenSet & {
     focused?: ColorTokenSet;
     hovered?: ColorTokenSet;
     pressed?: ColorTokenSet;
+    selected?: ColorTokenSet;
 };
 
 // @public
@@ -184,6 +185,9 @@ export namespace FontWeights {
     const // (undocumented)
     bold: IFontWeight;
 }
+
+// @public
+export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
 
 // @public
 export interface IAnimationStyles {
@@ -859,8 +863,8 @@ export interface Tokens {
     [key: string]: TokenSetType;
     // (undocumented)
     color: {
-        body: ColorTokenSet & TokenSetType;
-        brand: ColorTokenSet & TokenSetType;
+        body: ColorTokens & TokenSetType;
+        brand: ColorTokens & TokenSetType;
         [key: string]: TokenSetType;
     };
 }

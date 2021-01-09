@@ -51,6 +51,7 @@ import { getPropsWithDefaults } from '@fluentui/utilities';
 import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
+const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
@@ -213,14 +214,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
 
     if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Dropdown', props, {
+      warnDeprecations(COMPONENT_NAME, props, {
         isDisabled: 'disabled',
         onChanged: 'onChange',
         placeHolder: 'placeholder',
         onRenderPlaceHolder: 'onRenderPlaceholder',
       });
 
-      warnMutuallyExclusive('Dropdown', props, {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
@@ -304,7 +305,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       panelProps,
       calloutProps,
       multiSelect,
-      onRenderTitle = this._onRenderTitle,
+      onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
@@ -312,7 +313,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     } = props;
     const { isOpen, calloutRenderEdge } = this.state;
     // eslint-disable-next-line deprecation/deprecation
-    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
+    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
     // If our cached options are out of date update our cache
     if (options !== this._sizePosCache.cachedOptions) {
@@ -494,10 +495,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
-  private get _placeholder(): string | undefined {
+  private _getPlaceholder = (): string | undefined => {
     // eslint-disable-next-line deprecation/deprecation
     return this.props.placeholder || this.props.placeHolder;
-  }
+  };
 
   private _copyArray(array: any[]): any[] {
     const newArray = [];
@@ -566,20 +567,23 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return index;
   }
 
+  /** Get text in dropdown input as a string */
+  private _getTitle = (items: IDropdownOption[], _unused?: unknown): string => {
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return items.map(i => i.text).join(multiSelectDelimiter);
+  };
+
   /** Render text in dropdown input */
   private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
-    const { multiSelectDelimiter = ', ' } = this.props;
-
-    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <>{displayTxt}</>;
+    return <>{this._getTitle(items)}</>;
   };
 
   /** Render placeholder text in dropdown input */
   private _onRenderPlaceholder = (props: IDropdownProps): JSX.Element | null => {
-    if (!this._placeholder) {
+    if (!this._getPlaceholder()) {
       return null;
     }
-    return <>{this._placeholder}</>;
+    return <>{this._getPlaceholder()}</>;
   };
 
   /** Render Callout or Panel container and pass in list */
@@ -592,6 +596,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const panelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
       : undefined;
+
+    let calloutWidth = undefined;
+    let calloutMinWidth = undefined;
+    if (dropdownWidth === 'auto') {
+      calloutMinWidth = this._dropDown.current ? this._dropDown.current.clientWidth : 0;
+    } else {
+      calloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
+    }
 
     return isSmall ? (
       <Panel
@@ -611,13 +623,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         doNotLayer={false}
         directionalHintFixed={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
+        calloutWidth={calloutWidth}
+        calloutMinWidth={calloutMinWidth}
         {...calloutProps}
         className={this._classNames.callout}
         target={this._dropDown.current}
         onDismiss={this._onDismiss}
         onScroll={this._onScroll}
         onPositioned={this._onPositioned}
-        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
       >
         {this._renderFocusableList(props)}
       </Callout>

@@ -1,4 +1,9 @@
-import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  datepickerBehavior,
+  DatepickerBehaviorProps,
+  AccessibilityAttributes,
+} from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -8,7 +13,8 @@ import {
   ICalendarStrings,
   IDatepickerOptions,
   IRestrictedDatesOptions,
-} from '@fluentui/date-time-utilities';
+} from '../../utils/date-time-utilities';
+
 import {
   ComponentWithAs,
   getElementType,
@@ -19,6 +25,7 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
+
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { handleRef } from '@fluentui/react-component-ref';
@@ -44,6 +51,12 @@ import { format } from '@uifabric/utilities';
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `input` with usage accessibibility behavior. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `input` with usage accessibibility behavior. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -132,6 +145,9 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 
 /**
  * A Datepicker is a control which is used to display dates grid and allow user to select them.
+ *
+ * @accessibilityIssues
+ * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
@@ -184,7 +200,19 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
+  const {
+    calendar,
+    popup,
+    input,
+    className,
+    design,
+    styles,
+    variables,
+    formatMonthDayYear,
+    allowManualInput,
+    'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
+  } = props;
   const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
@@ -227,6 +255,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
+
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
     actionHandlers: {
@@ -241,6 +270,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         e.preventDefault();
       },
     },
+    mapPropsToBehavior: () => ({
+      'aria-invalid': ariaInvalid,
+      'aria-labelledby': ariaLabelledby,
+    }),
     rtl: context.rtl,
   });
 
@@ -449,6 +482,9 @@ Datepicker.propTypes = {
   inputBoundedFormatString: PropTypes.string,
   inputMinBoundedFormatString: PropTypes.string,
   inputMaxBoundedFormatString: PropTypes.string,
+
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
 };
 
 Datepicker.defaultProps = {

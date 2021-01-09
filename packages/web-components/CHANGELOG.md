@@ -1,8 +1,102 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 05 Nov 2020 12:29:43 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jan 2021 12:29:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.2)
+
+Tue, 05 Jan 2021 12:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.1..@fluentui/web-components_v0.10.2)
+
+### Patches
+
+- add height clamp and box sizing for select ([PR #16347](https://github.com/microsoft/fluentui/pull/16347) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add select indicator css selector to fix indicator sizing ([PR #16349](https://github.com/microsoft/fluentui/pull/16349) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add padding for focus overlap of state in accordion item ([PR #16350](https://github.com/microsoft/fluentui/pull/16350) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add switch label margin and cursor pointer ([PR #16351](https://github.com/microsoft/fluentui/pull/16351) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- move text-field label__hidden styles below main label styles for proper order ([PR #16355](https://github.com/microsoft/fluentui/pull/16355) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add inline start margin for rtl to slider ([PR #16356](https://github.com/microsoft/fluentui/pull/16356) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- update start and end to remove fixed width and height ([PR #16359](https://github.com/microsoft/fluentui/pull/16359) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.1)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.0..@fluentui/web-components_v0.10.1)
+
+### Patches
+
+- fix: focus styling inconsistencies ([PR #16265](https://github.com/microsoft/fluentui/pull/16265) by jes@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
+
+Thu, 17 Dec 2020 12:30:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.2..@fluentui/web-components_v0.10.0)
+
+### Minor changes
+
+- add icon only anchor support, update fast packages ([PR #16248](https://github.com/microsoft/fluentui/pull/16248) by chhol@microsoft.com)
+
+### Patches
+
+- fix: broken rtl scenerios ([PR #16247](https://github.com/microsoft/fluentui/pull/16247) by jes@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.2)
+
+Wed, 16 Dec 2020 12:27:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.1..@fluentui/web-components_v0.9.2)
+
+### Patches
+
+- update style on aria-current item and adjust margin on last item ([PR #16238](https://github.com/microsoft/fluentui/pull/16238) by khamu@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.1)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.0..@fluentui/web-components_v0.9.1)
+
+### Patches
+
+- set FieldText color on label and status-message ([PR #16106](https://github.com/microsoft/fluentui/pull/16106) by khamu@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.0)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.1..@fluentui/web-components_v0.9.0)
+
+### Minor changes
+
+- add a class to button in shadow DOM when default slotted content is only an svg icon ([PR #16112](https://github.com/microsoft/fluentui/pull/16112) by chhol@microsoft.com)
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.1)
+
+Sat, 21 Nov 2020 02:00:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.0..@fluentui/web-components_v0.8.1)
+
+### Patches
+
+- add forced color adjust to host selector ([PR #16009](https://github.com/microsoft/fluentui/pull/16009) by khamu@microsoft.com)
+- update fast packages to latest minor versions ([PR #16012](https://github.com/microsoft/fluentui/pull/16012) by chhol@microsoft.com)
+- ensure all web components leverage the body font design token ([PR #16013](https://github.com/microsoft/fluentui/pull/16013) by chhol@microsoft.com)
+- feat: add select and related styles ([PR #16021](https://github.com/microsoft/fluentui/pull/16021) by jes@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.0)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.2..@fluentui/web-components_v0.8.0)
+
+### Minor changes
+
+- fix: radio group orientation vertical broken ([PR #15953](https://github.com/microsoft/fluentui/pull/15953) by jes@microsoft.com)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.2)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.1..@fluentui/web-components_v0.7.2)
+
+### Patches
+
+- moved high contrast work into common button styles file ([PR #15916](https://github.com/microsoft/fluentui/pull/15916) by khamu@microsoft.com)
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
 

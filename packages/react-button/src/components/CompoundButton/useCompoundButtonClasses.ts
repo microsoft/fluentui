@@ -80,7 +80,8 @@ const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState, Com
   },
 
   variants: (theme: Theme): CompoundButtonVariants => {
-    const { fonts, palette, semanticColors } = theme;
+    const { fonts, palette, semanticColors, tokens } = theme;
+    const brand = tokens?.color?.brand;
 
     return {
       root: {
@@ -138,18 +139,18 @@ const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState, Com
       },
 
       primary: {
-        secondaryContentColor: 'var(--color-brand-secondaryContentColor)',
+        secondaryContentColor: brand?.secondaryContentColor,
 
         focused: {
-          secondaryContentColor: 'var(--color-brand-focused-secondaryContentColor)',
+          secondaryContentColor: brand?.focused?.secondaryContentColor,
         },
 
         hovered: {
-          secondaryContentColor: 'var(--color-brand-hovered-secondaryContentColor)',
+          secondaryContentColor: brand?.hovered?.secondaryContentColor,
         },
 
         pressed: {
-          secondaryContentColor: 'var(--color-brand-pressed-secondaryContentColor)',
+          secondaryContentColor: brand?.pressed?.secondaryContentColor,
         },
 
         highContrast: {

@@ -520,6 +520,7 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaChart(
@@ -527,29 +528,31 @@ export function domainRangeOfDateForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  tickValues: Date[] = [],
 ): IDomainNRange {
-  let sDate = new Date();
-  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-  let lDate = new Date(-8640000000000000);
-  const xAxisData: Date[] = [];
-  points.forEach((singleLineChartData: ILineChartPoints) => {
-    singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-      xAxisData.push(point.x as Date);
-      if (point.x < sDate) {
-        sDate = point.x as Date;
-      }
-      if (point.x > lDate) {
-        lDate = point.x as Date;
-      }
+  const sDate = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
     });
-  });
+  })!;
+  const lDate = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+
+  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  const smallestDate = d3Min([...tickValues, sDate])!;
+  const largestDate = d3Max([...tickValues, lDate])!;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
-    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
+    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
 }
 
 /**
@@ -604,30 +607,6 @@ export function domainRangeOfXStringAxis(margins: IMargins, width: number, isRTL
     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
     : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
 }
-// export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
-//   const rMin = margins.left!;
-//   const rMax = width - margins.right!;
-
-//   return isRTL
-//     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
-//     : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
-// }
-
-// /**
-//  * it calculates the range and domain values for the HeatMap
-//  * @param margins
-//  * @param width
-//  * @param isRTL
-//  * @returns {IDomainNRange}
-//  */
-
-// export function getDomainAndRangeForStringAxisForHeatMap(margins: IMargins, width: number, isRTL: boolean) {
-//   const rMin = margins.left!;
-//   const rMax = width - margins.right!;
-//   return isRTL
-//     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
-//     : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
-// }
 
 /**
  * Calculate domain and range values to the Vertical stacked bar chart - For Numeric axis
@@ -683,25 +662,6 @@ export function domainRageOfVerticalNumeric(
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
-// /**
-//  * Calculates Range values to the Vertical bar chart for string axis
-//  * For String axis, we need to give domain values (Not start and end array values)
-//  * So sending 0 as domain values. Domain will be handled at creation of string axis
-//  * @export
-//  * @param {IMargins} margins
-//  * @param {number} containerWidth
-//  * @param {boolean} isRTL
-//  * @returns {IDomainNRange}
-//  */
-// export function domainRangeOfStrVertical(margins: IMargins, containerWidth: number, isRTL: boolean): IDomainNRange {
-//   const rMin = margins.left!;
-//   const rMax = containerWidth - margins.right!;
-
-//   return isRTL
-//     ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
-//     : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
-// }
-
 /**
  * For creating X axis, need to calculate x axis domain and range values from given points.
  * This may vary based on chart type and type of x axis
@@ -724,7 +684,8 @@ export function getDomainNRangeValues(
   chartType: ChartTypes,
   isRTL: boolean,
   xAxisType: XAxisTypes,
-  barWidth?: number,
+  barWidth: number,
+  tickValues: Date[] | number[] | undefined,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -746,7 +707,7 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL, tickValues! as Date[]);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };

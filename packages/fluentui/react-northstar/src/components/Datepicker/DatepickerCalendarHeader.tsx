@@ -6,7 +6,7 @@ import {
   datepickerCalendarHeaderBehavior,
   DatepickerCalendarHeaderBehaviorProps,
 } from '@fluentui/accessibility';
-import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
+import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,

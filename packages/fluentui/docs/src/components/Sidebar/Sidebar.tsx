@@ -144,6 +144,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'virtualized-sticky-tree',
+    title: { content: 'Virtualized StickyTree', as: NavLink, to: '/virtualized-sticky-tree' },
+    public: true,
+  },
+  {
     id: 'copy-to-clipboard',
     title: { content: 'Copy to Clipboard', as: NavLink, to: '/prototype-copy-to-clipboard' },
     public: true,
@@ -231,15 +236,6 @@ const baseTreeItems: TreeProps['items'] = [
           content: 'Icons',
           activeClassName: 'active',
           to: '/icon-viewer',
-        },
-      },
-      {
-        id: 'component-architecture',
-        title: {
-          as: NavLink,
-          content: 'Component Architecture',
-          activeClassName: 'active',
-          to: '/component-architecture',
         },
       },
       ...(process.env.NODE_ENV !== 'production'
