@@ -44,6 +44,13 @@ export type ButtonProps = ComponentProps &
     /** A button can show that it cannot be interacted with. */
     disabled?: boolean;
 
+    /**
+     * A button can be focusable even when it has disabled styling. This is used in scenarios where it is important to
+     * keep a consistent workflow forscreen reader and keyboard users to always know where certain controls are.
+     * @defaultvalue false
+     */
+    disabledFocusable?: boolean;
+
     /** A button can fill the width of its container. */
     block?: boolean;
 
