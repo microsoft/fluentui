@@ -22,7 +22,10 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
         screenerStep(stepsBuilder, keys);
 
         // We need to reload page to reset mouse position between tests
-        stepsBuilder.url(pageUrl).switchTheme(themeName);
+        stepsBuilder
+          .url(pageUrl)
+          .waitForSelector('ui-provider')
+          .switchTheme(themeName);
       });
     });
   } else {
