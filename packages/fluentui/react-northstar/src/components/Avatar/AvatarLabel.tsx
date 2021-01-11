@@ -14,7 +14,6 @@ import * as React from 'react';
 
 import {
   childrenExist,
-  createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
