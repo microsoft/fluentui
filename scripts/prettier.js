@@ -1,25 +1,33 @@
 // @ts-check
 const { execSync } = require('child_process');
-const path = require('path');
 const os = require('os');
-const { runPrettier, runPrettierForFolder, prettierExtensions } = require('./prettier/prettier-helpers');
 const { default: PQueue } = require('p-queue');
-const findGitRoot = require('./monorepo/findGitRoot');
+const { runPrettier, runPrettierForFolder, prettierExtensions } = require('./prettier/prettier-helpers');
+const { findGitRoot } = require('./monorepo');
 
 const parsedArgs = parseArgs();
 const numberOfCpus = os.cpus().length / 2;
+
+/**
+ * @typedef {{root:string}} Paths
+ */
 
 async function main() {
   const runOnAllFiles = parsedArgs.all;
 
   console.log(`Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes):`);
 
+  /**
+   * @type {Paths}
+   */
+  const paths = { root: findGitRoot() };
+
   const queue = new PQueue({ concurrency: numberOfCpus });
 
   if (runOnAllFiles) {
-    runOnAll(queue);
+    runOnAll({ queue, paths });
   } else {
-    runOnChanged(queue);
+    runOnChanged({ queue, paths });
   }
 
   await queue.onEmpty().catch(error => {
@@ -31,11 +39,11 @@ async function main() {
 function parseArgs() {
   return require('yargs')
     .usage('Usage: prettier [commitHash] [options]')
-    .example('prettier', 'run prettier only on changed files')
-    .example('prettier HEAD~3', 'run prettier only on changed files since HEAD~3')
+    .example('prettier', 'Run prettier only on changed files')
+    .example('prettier HEAD~3', 'Run prettier only on changed files since HEAD~3')
     .options({
       all: {
-        description: 'Run prettier on all projects',
+        description: 'Run prettier on all files',
         boolean: true,
       },
     })
@@ -44,16 +52,16 @@ function parseArgs() {
 
 /**
  *
- * @param {PQueue} queue
+ * @param {{queue:PQueue;paths:Paths}} options
  */
-async function runOnChanged(queue) {
+async function runOnChanged(options) {
+  const { paths, queue } = options;
   const prettierIntroductionCommit = 'HEAD~1';
   const passedDiffTarget = parsedArgs._.length ? parsedArgs._[0] : prettierIntroductionCommit;
 
-  const projectRootPath = path.resolve(__dirname, '..');
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
-  const gitDiffOutput = execSync(cmd, { cwd: projectRootPath });
+  const gitDiffOutput = execSync(cmd, { cwd: paths.root });
   const prettierExtRegex = new RegExp(`\\.(${prettierExtensions.join('|')})$`);
   const files = gitDiffOutput
     .toString('utf8')
@@ -78,12 +86,13 @@ async function runOnChanged(queue) {
 
 /**
  *
- * @param {PQueue} queue
+ * @param {{queue:PQueue;paths:Paths}} options
  */
-async function runOnAll(queue) {
+async function runOnAll(options) {
+  const { queue, paths } = options;
+
   // Run on groups of files so that the operations can run in parallel
-  const root = findGitRoot();
-  await queue.add(() => runPrettierForFolder(root, true, true));
+  await queue.add(() => runPrettierForFolder(paths.root, true, true));
   await queue.addAll(
     ['apps', 'packages/!(fluentui)', 'packages/fluentui', '{.*,scripts,typings}'].map(name => () =>
       runPrettierForFolder(name),
@@ -91,4 +100,7 @@ async function runOnAll(queue) {
   );
 }
 
-main();
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
