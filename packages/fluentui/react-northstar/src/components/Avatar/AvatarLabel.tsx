@@ -94,7 +94,7 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
 AvatarLabel.displayName = 'AvatarLabel';
 
 AvatarLabel.propTypes = {
-  ...commonPropTypes.createCommon({ content: 'shorthand' }),
+  ...commonPropTypes.createCommon(),
   square: PropTypes.bool,
   size: customPropTypes.size,
   circular: PropTypes.bool,
