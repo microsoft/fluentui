@@ -40,7 +40,7 @@ export function ax(): string {
       const atomicClassName = classNames[x];
       const cssProperty = DEFINITION_LOOKUP_TABLE[atomicClassName];
 
-      atomicProperties[cssProperty] = cssProperty || atomicClassName;
+      atomicProperties[cssProperty || atomicClassName] = atomicClassName;
     }
   }
 
