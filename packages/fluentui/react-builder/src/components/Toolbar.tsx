@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Image, MenuButton, Toolbar as FUIToolbar } from '@fluentui/react-northstar';
+import { Box, Button, Image, MenuButton, Toolbar as FUIToolbar } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
 import { CodeSnippetIcon, OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
@@ -36,15 +36,15 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   showJSONTree,
   style,
 }) => (
-  <div
-    style={{
+  <Box
+    styles={({ theme }) => ({
       display: 'flex',
       padding: '0 1rem',
       alignItems: 'center',
-      borderBottom: '1px solid #E1DFDD', //TODO: replace with `Default Border 2` color scheme token
-      background: '#FAF9F8', //TODO: replace with `Default Background 1` color scheme token
+      borderBottom: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+      background: theme.siteVariables.colorScheme.default.background1,
       ...style,
-    }}
+    })}
   >
     <Image
       styles={{ height: '1.5rem' }}
@@ -174,5 +174,5 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         }}
       />
     </div>
-  </div>
+  </Box>
 );
