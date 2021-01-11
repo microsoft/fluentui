@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
-import { classNamesFunction, getId, find } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, find, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CartesianChart,
   IBasestate,
@@ -373,6 +373,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 lineColor,
               )}
+              onKeyDown={this._onKeyDown.bind(this, circleId, lineColor)}
               opacity={1}
               fill={lineColor}
               stroke={lineColor}
@@ -400,6 +401,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   lastCircleId,
                   lineColor,
                 )}
+                onKeyDown={this._onKeyDown.bind(this, circleId, lineColor)}
                 opacity={1}
                 fill={lineColor}
                 stroke={lineColor}
@@ -602,6 +604,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _onKeyDown = (circleId: string, lineColor: string, event: React.KeyboardEvent<SVGElement>) => {
+    if (event.keyCode === KeyCodes.escape) {
+      d3Select('#' + circleId)
+        .attr('fill', lineColor)
+        .attr('r', 0.2);
+      d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
+      this.setState({
+        isCalloutVisible: false,
+      });
+    }
   };
 
   private _handleLegendClick = (
