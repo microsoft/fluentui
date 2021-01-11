@@ -42,11 +42,14 @@ export interface AvatarLabelProps
   /** The AvatarLabel can have a square shape. */
   square?: boolean;
 
+  /** The AvatarLabel can be circular. */
+  circular?: boolean;
+
   /** Size multiplier. */
   size?: SizeValue;
 }
 
-export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'color' | 'size' | 'square'>;
+export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'color' | 'size' | 'square' | 'circular'>;
 export const avatarlabelClassName = labelClassName;
 
 /**
@@ -57,7 +60,19 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComp
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, color, content, design, styles, variables, square, size } = props;
+  const {
+    accessibility,
+    children,
+    className,
+    color,
+    content,
+    design,
+    styles,
+    variables,
+    square,
+    size,
+    circular,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarLabel.displayName,
@@ -70,6 +85,7 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComp
       color,
       square,
       size,
+      circular,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -101,11 +117,16 @@ AvatarLabel.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   square: PropTypes.bool,
   size: customPropTypes.size,
+  circular: PropTypes.bool,
 };
 AvatarLabel.handledProps = Object.keys(AvatarLabel.propTypes) as any;
 
 AvatarLabel.defaultProps = {
   as: 'span',
+};
+
+AvatarLabel.shorthandConfig = {
+  mappedProp: 'content',
 };
 
 AvatarLabel.create = createShorthandFactory({ Component: AvatarLabel, mappedProp: 'content' });

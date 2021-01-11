@@ -36,6 +36,9 @@ export const avatarLabelStyles: ComponentSlotStylesPrepared<AvatarLabelStylesPro
       ...(p.square && {
         borderRadius: v.squareAvatarBorderRadius,
       }),
+      ...(p.circular && {
+        borderRadius: v.labelCircularRadius,
+      }),
     };
   },
 };
