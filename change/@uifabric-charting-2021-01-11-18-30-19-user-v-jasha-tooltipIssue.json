@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "tooltip disappear on escape",
+  "comment": "line chart - tooltip disappear on escape issue resolved",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2021-01-11T13:00:19.936Z"
 }
