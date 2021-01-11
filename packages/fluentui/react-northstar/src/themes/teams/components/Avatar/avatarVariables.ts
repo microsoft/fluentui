@@ -34,12 +34,6 @@ export interface AvatarVariables {
   imageCircularRadius: string;
   // Label
   labelColorScheme: LabelColorSchemeMapping;
-  labelCircularRadius: string;
-  labelIconSize: string;
-  labelPadding: string;
-  labelStartPaddingLeft: string;
-  labelEndPaddingRight: string;
-  labelHeight: string;
 }
 
 export const avatarVariables = (siteVariables): AvatarVariables => {
@@ -81,11 +75,5 @@ export const avatarVariables = (siteVariables): AvatarVariables => {
     imageAvatarSize: pxToRem(32),
     imageCircularRadius: pxToRem(9999),
     labelColorScheme: pickValuesFromColorScheme(colorScheme, labelColorAreas),
-    labelCircularRadius: pxToRem(9999),
-    labelIconSize: pxToRem(16),
-    labelPadding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
-    labelStartPaddingLeft: '0px',
-    labelEndPaddingRight: '0px',
-    labelHeight: pxToRem(20),
   };
 };

@@ -1,71 +1,41 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { AvatarVariables } from './avatarVariables';
-import { pxToRem } from '../../../../utils';
+import { pxToRem, SizeValue } from '../../../../utils';
 import { getColorScheme } from '../../colors';
 import { AvatarLabelStylesProps } from '../../../../components/Avatar/AvatarLabel';
+
+const sizeToPxValue: Record<SizeValue, number> = {
+  smallest: 20,
+  smaller: 24,
+  small: 28,
+  medium: 32,
+  large: 44,
+  larger: 64,
+  largest: 96,
+};
 
 export const avatarLabelStyles: ComponentSlotStylesPrepared<AvatarLabelStylesProps, AvatarVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.labelColorScheme, p.color);
-
+    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
     return {
-      display: 'inline-flex',
       alignItems: 'center',
       overflow: 'hidden',
-      height: v.labelHeight,
-      lineHeight: v.labelHeight,
       color: colors.background,
       backgroundColor: colors.foreground,
-      fontSize: pxToRem(14),
-      borderRadius: pxToRem(3),
-      padding: v.labelPadding,
-      ...(p.hasImage &&
-        (p.imagePosition === 'start'
-          ? { paddingLeft: v.labelStartPaddingLeft }
-          : { paddingRight: v.labelEndPaddingRight })),
-      ...(p.circular && {
-        borderRadius: v.labelCircularRadius,
+      borderRadius: '50%',
+      display: 'inline-block',
+      width: sizeInRem,
+      height: sizeInRem,
+      lineHeight: sizeInRem,
+      fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
+      verticalAlign: 'top',
+      textAlign: 'center',
+      padding: '0',
+      ...(p.square && {
+        borderRadius: v.squareAvatarBorderRadius,
       }),
     };
   },
-
-  content: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const hasStartElement = (p.hasImage && p.imagePosition === 'start') || (p.hasIcon && p.iconPosition === 'start');
-    const hasEndElement = (p.hasImage && p.imagePosition === 'end') || (p.hasIcon && p.iconPosition === 'end');
-
-    return {
-      ...(hasStartElement && {
-        marginLeft: pxToRem(3),
-      }),
-      ...(hasEndElement && {
-        marginRight: pxToRem(3),
-      }),
-    };
-  },
-
-  image: ({ variables: v }): ICSSInJSStyle => ({
-    height: v.labelHeight,
-    width: v.labelHeight,
-  }),
-
-  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: v.labelIconSize,
-    height: v.labelIconSize,
-
-    '& > :first-child': {
-      height: '100%',
-      width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
-    },
-    ...(p.hasActionableIcon && {
-      cursor: 'pointer',
-    }),
-  }),
 };

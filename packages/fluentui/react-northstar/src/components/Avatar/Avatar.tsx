@@ -129,6 +129,8 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
         content: getInitials(name),
         circular: !square,
         title: name,
+        size,
+        square,
         styles: resolvedStyles.label,
       }),
   });

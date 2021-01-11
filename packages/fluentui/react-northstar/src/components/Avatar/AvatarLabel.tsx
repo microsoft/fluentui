@@ -9,7 +9,6 @@ import {
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -22,10 +21,10 @@ import {
   commonPropTypes,
   ColorComponentProps,
   rtlTextContainer,
+  SizeValue,
 } from '../../utils';
 
-import { Image, ImageProps } from '../Image/Image';
-import { Box, BoxProps } from '../Box/Box';
+import { BoxProps } from '../Box/Box';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { labelClassName } from '../Label/Label';
@@ -40,30 +39,14 @@ export interface AvatarLabelProps
    */
   accessibility?: Accessibility<never>;
 
-  /** A AvatarLabel can be circular. */
-  circular?: boolean;
+  /** The AvatarLabel can have a square shape. */
+  square?: boolean;
 
-  /** A AvatarLabel can take up the width of its container. */
-  fluid?: boolean;
-
-  /** A AvatarLabel can have an icon. */
-  icon?: ShorthandValue<BoxProps>;
-
-  /** A AvatarLabel can position its Icon at the start or end of the layout. */
-  iconPosition?: 'start' | 'end';
-
-  /** A AvatarLabel can contain an image. */
-  image?: ShorthandValue<ImageProps>;
-
-  /** A AvatarLabel can position its image at the start or end of the layout. */
-  imagePosition?: 'start' | 'end';
+  /** Size multiplier. */
+  size?: SizeValue;
 }
 
-export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'circular' | 'color' | 'imagePosition' | 'iconPosition'> & {
-  hasImage: boolean;
-  hasIcon: boolean;
-  hasActionableIcon: boolean;
-};
+export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'color' | 'size' | 'square'>;
 export const avatarlabelClassName = labelClassName;
 
 /**
@@ -74,36 +57,19 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComp
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
 
-  const {
-    accessibility,
-    children,
-    className,
-    circular,
-    color,
-    content,
-    icon,
-    iconPosition,
-    design,
-    styles,
-    variables,
-    image,
-    imagePosition,
-  } = props;
+  const { accessibility, children, className, color, content, design, styles, variables, square, size } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarLabel.displayName,
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles<AvatarLabelStylesProps>(AvatarLabel.displayName, {
+
+  const { classes } = useStyles<AvatarLabelStylesProps>(AvatarLabel.displayName, {
     className: avatarlabelClassName,
     mapPropsToStyles: () => ({
-      hasActionableIcon: _.has(icon, 'onClick'),
-      hasImage: !!image,
-      hasIcon: !!icon,
-      circular,
       color,
-      imagePosition,
-      iconPosition,
+      square,
+      size,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -112,58 +78,18 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComp
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarLabel.handledProps, props);
 
-  if (childrenExist(children)) {
-    const element = (
-      <ElementType
-        {...getA11Props('root', {
-          className: classes.root,
-          ...rtlTextContainer.getAttributes({ forElements: [children] }),
-          ...unhandledProps,
-        })}
-      >
-        {children}
-      </ElementType>
-    );
-    setEnd();
-
-    return element;
-  }
-
-  const imageElement = Image.create(image, {
-    defaultProps: () => ({
-      styles: resolvedStyles.image,
-    }),
-  });
-  const iconElement = Box.create(icon, {
-    defaultProps: () => ({
-      styles: resolvedStyles.icon,
-    }),
-  });
-  const contentElement = Box.create(content, {
-    defaultProps: () => ({
-      styles: resolvedStyles.content,
-    }),
-  });
-
-  const startImage = imagePosition === 'start' && imageElement;
-  const startIcon = iconPosition === 'start' && iconElement;
-  const endIcon = iconPosition === 'end' && iconElement;
-  const endImage = imagePosition === 'end' && imageElement;
-
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
-      {startImage}
-      {startIcon}
-      {contentElement}
-      {endIcon}
-      {endImage}
+      {childrenExist(children) ? children : content}
     </ElementType>
   );
+
   setEnd();
 
   return element;
@@ -173,19 +99,13 @@ AvatarLabel.displayName = 'AvatarLabel';
 
 AvatarLabel.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
-  circular: PropTypes.bool,
-  icon: customPropTypes.shorthandAllowingChildren,
-  iconPosition: PropTypes.oneOf(['start', 'end']),
-  image: customPropTypes.itemShorthandWithoutJSX,
-  imagePosition: PropTypes.oneOf(['start', 'end']),
-  fluid: PropTypes.bool,
+  square: PropTypes.bool,
+  size: customPropTypes.size,
 };
 AvatarLabel.handledProps = Object.keys(AvatarLabel.propTypes) as any;
 
 AvatarLabel.defaultProps = {
   as: 'span',
-  imagePosition: 'start',
-  iconPosition: 'end',
 };
 
 AvatarLabel.create = createShorthandFactory({ Component: AvatarLabel, mappedProp: 'content' });
