@@ -34,8 +34,8 @@ export interface AvatarVariables {
   // Label
 
   labelCircularRadius: string;
+  labelColor: string;
   labelBackground: string;
-  labelForeground: string;
 }
 
 export const avatarVariables = (siteVariables): AvatarVariables => {
@@ -65,7 +65,7 @@ export const avatarVariables = (siteVariables): AvatarVariables => {
     imageCircularRadius: pxToRem(9999),
 
     labelCircularRadius: pxToRem(9999),
-    labelBackground: 'rgba(0, 0, 0, 0.6)',
-    labelForeground: 'rgb(232, 232, 232)',
+    labelColor: 'rgba(0, 0, 0, 0.6)',
+    labelBackground: 'rgb(232, 232, 232)',
   };
 };

@@ -20,8 +20,8 @@ export const avatarLabelStyles: ComponentSlotStylesPrepared<AvatarLabelStylesPro
     return {
       alignItems: 'center',
       overflow: 'hidden',
-      color: v.labelBackground,
-      backgroundColor: v.labelForeground,
+      color: v.labelColor,
+      backgroundColor: v.labelBackground,
       borderRadius: '50%',
       display: 'inline-block',
       width: sizeInRem,
