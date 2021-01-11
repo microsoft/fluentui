@@ -629,6 +629,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -740,6 +741,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -851,6 +853,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -962,6 +965,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1073,6 +1077,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1184,6 +1189,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1295,6 +1301,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1428,6 +1435,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1555,6 +1563,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1682,6 +1691,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1809,6 +1819,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -1963,6 +1974,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-current="date"
@@ -2101,6 +2113,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2224,6 +2237,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2346,6 +2360,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2453,6 +2468,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2560,6 +2576,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2667,6 +2684,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2774,6 +2792,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2881,6 +2900,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -2988,6 +3008,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -3765,6 +3786,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -3876,6 +3898,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -3987,6 +4010,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4098,6 +4122,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4209,6 +4234,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4320,6 +4346,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4431,6 +4458,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4564,6 +4592,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4691,6 +4720,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -4845,6 +4875,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-current="date"
@@ -4983,6 +5014,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5106,6 +5138,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5229,6 +5262,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5352,6 +5386,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5474,6 +5509,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5581,6 +5617,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5688,6 +5725,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5795,6 +5833,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -5902,6 +5941,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -6009,6 +6049,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}
@@ -6116,6 +6157,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
+            role="presentation"
           >
             <button
               aria-disabled={false}

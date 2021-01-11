@@ -471,12 +471,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
               {
                 display: block;
                 height: 100%;
-                left: 50% /* @noflip */;
                 object-fit: cover;
                 opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
                 width: 100%;
               }
           onError={[Function]}
@@ -1523,12 +1519,8 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               {
                 display: block;
                 height: 100%;
-                left: 50% /* @noflip */;
                 object-fit: cover;
                 opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
                 width: 100%;
               }
           onError={[Function]}
@@ -1816,12 +1808,8 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
             {
               display: block;
               height: 100%;
-              left: 50% /* @noflip */;
               object-fit: cover;
               opacity: 0;
-              position: absolute;
-              top: 50%;
-              transform: translate(-50%,-50%);
               width: 100%;
             }
         onError={[Function]}
@@ -1970,12 +1958,8 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             {
               display: block;
               height: 100%;
-              left: 50% /* @noflip */;
               object-fit: cover;
               opacity: 0;
-              position: absolute;
-              top: 50%;
-              transform: translate(-50%,-50%);
               width: 100%;
             }
         onError={[Function]}
@@ -2254,12 +2238,8 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             {
               display: block;
               height: 100%;
-              left: 50% /* @noflip */;
               object-fit: cover;
               opacity: 0;
-              position: absolute;
-              top: 50%;
-              transform: translate(-50%,-50%);
               width: 100%;
             }
         onError={[Function]}

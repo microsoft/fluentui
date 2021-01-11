@@ -1495,7 +1495,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'auto';
     // @deprecated
     isDisabled?: boolean;
     multiSelectDelimiter?: string;

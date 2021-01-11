@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "perf: makeStyles improve classnames side-effect",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-16T16:27:48.871Z"
-}

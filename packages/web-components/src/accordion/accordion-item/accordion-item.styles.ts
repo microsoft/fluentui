@@ -106,6 +106,7 @@ export const AccordionItemStyles = css`
     .start {
         display: flex;
         align-items: center;
+        padding-inline-start: calc(var(--design-unit) * 1px);
         justify-content: center;
         grid-column: 1;
         z-index: 2;

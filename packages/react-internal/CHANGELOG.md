@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 18 Dec 2020 12:27:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.30)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.29..@fluentui/react-internal_v8.0.0-beta.30)
+
+### Changes
+
+- Fixes linux firefox persona/image rendering only the top left quarter of images (#16361) ([PR #16370](https://github.com/microsoft/fluentui/pull/16370) by mhuan13@gmail.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.29)
+
+Thu, 07 Jan 2021 12:35:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.28..@fluentui/react-internal_v8.0.0-beta.29)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.28)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.27..@fluentui/react-internal_v8.0.0-beta.28)
+
+### Changes
+
+- Add calloutMinWidth props for Callout component ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.27)
+
+Mon, 21 Dec 2020 12:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.26..@fluentui/react-internal_v8.0.0-beta.27)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
 
 ## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.26)
 

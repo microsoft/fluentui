@@ -62,40 +62,4 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       },
     };
   },
-  image: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    borderColor: v.avatarBorderColor,
-    borderStyle: 'solid',
-    borderWidth: v.avatarBorderWidth,
-
-    height: '100%',
-    objectFit: 'cover',
-    verticalAlign: 'top',
-    width: '100%',
-
-    ...(p.square && {
-      borderRadius: v.squareAvatarBorderRadius,
-    }),
-  }),
-  label: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
-    return {
-      display: 'inline-block',
-      width: sizeInRem,
-      height: sizeInRem,
-      lineHeight: sizeInRem,
-      fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
-      verticalAlign: 'top',
-      textAlign: 'center',
-      padding: '0',
-      ...(p.square && {
-        borderRadius: v.squareAvatarBorderRadius,
-      }),
-    };
-  },
-  status: ({ variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
-  }),
 };

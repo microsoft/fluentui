@@ -25,8 +25,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Rename `indicatorBorderColorDefault` variable to `indicatorColorDefault` @assuncaocharles ([#14895](https://github.com/microsoft/fluentui/pull/14895))
 - Remove the `disabled` property from `Dialog` and `Popup` behaviors @rymeskar ([#14885](https://github.com/microsoft/fluentui/pull/14885))
 - Remove `selectableParent` prop in favor of `selectable` in `TreeItem` and make `selectionIndicator` visible only on focus or hover @assuncaocharles ([#15133](https://github.com/microsoft/fluentui/pull/15133))
+- Styles from `Avatar` slots were moved to exact components (`AvatarStatus`, `AvatarStatusIcon`) @assuncaocharles ([#16382](https://github.com/microsoft/fluentui/pull/16382))
+- Styles from `Avatar` image slot were moved to exact component `AvatarImage` @assuncaocharles ([#16409](https://github.com/microsoft/fluentui/pull/16409))
+- Styles from `Avatar` image slot were moved to exact component `AvatarLabel` @assuncaocharles ([#16417](https://github.com/microsoft/fluentui/pull/16417))
+
 
 ### Fixes
+- Do not trigger `Popup` on `click` when `hover` is used with `context` @jurokapsiar ([#16286](https://github.com/microsoft/fluentui/pull/16286))
 - Fix selectable `Tree` where node with unselectable children displaying wrong selection state @yuanboxue-amber ([#16158](https://github.com/microsoft/fluentui/pull/16158))
 - Fix `Tree` cannot expand/collapse when treeTitle has children @yuanboxue-amber ([#16199](https://github.com/microsoft/fluentui/pull/16199))
 - Fix `Attachment` to pass `actionable` to accessibility behaviors @layershifter ([#16023](https://github.com/microsoft/fluentui/pull/16023))
@@ -35,6 +40,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
 - Fix `Tree` to have prop `onFocusParent` triggered on `ArrowLeft` for leaf node @yuanboxue-amber ([#15442](https://github.com/microsoft/fluentui/pull/15442))
 - Use `aria-checked` for multi-select tree instead of `aria-selected` @yuanboxue-amber ([#15142](https://github.com/microsoft/fluentui/pull/15142))
+- Rework `mergeComponentStyles()` to avoid additional merging @layershifter ([#15381](https://github.com/microsoft/fluentui/pull/15381))
 - Fix `Breadcrumb` to have the `div` wrapping all items obtain a11y attributes from `container` slot @yuanboxue-amber ([#15303](https://github.com/microsoft/fluentui/pull/15303))
 - Fix scrollbar color to have higher contrast ratio @yuanboxue-amber ([#15209](https://github.com/microsoft/fluentui/pull/15209))
 - Fix `Tree` to have un-selectable `treeItem` with `selectable` prop false @yuanboxue-amber ([#15170](https://github.com/microsoft/fluentui/pull/15170))
@@ -55,6 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Memoize context value in `Provider` to avoid rerenders @layershifter ([#15358](https://github.com/microsoft/fluentui/pull/15380))
 - Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
 - Fix `SplitButton` focus outline @assuncaocharles ([#15873](https://github.com/microsoft/fluentui/pull/15873))
+- Update icons to Fluent Design style @notandrew ([#15966](https://github.com/microsoft/fluentui/pull/15966))
 - Add `selectedItemMaxWidth` to fix item not getting truncated @assuncaocharles ([#15891](https://github.com/microsoft/fluentui/pull/15891))
 - Fix shorthand `id` prop not being passed to control in `FormField` component @assuncaocharles ([#16003](https://github.com/microsoft/fluentui/pull/16003))
 - Fix outdated `onChange` call in `RadioGroupItem` @assuncaocharles ([#15997](https://github.com/microsoft/fluentui/pull/15997))
@@ -63,11 +70,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `variables` not being propagated in `Carousel` @assuncaocharles ([#16084](https://github.com/microsoft/fluentui/pull/16084))
 - Fix `Carousel` `onActiveIndexChange` to contain `activeIndex` @assuncaocharles ([#16118](https://github.com/microsoft/fluentui/pull/16118))
 - Fix `Tree` behavior adding `shouldFocusInnerElementWhenReceivedFocus` to avoid root element to be focused @assuncaocharles ([#16145](https://github.com/microsoft/fluentui/pull/16145))
+- Fix `Toolbar` throws error cancelAnimationFrame of null @petr-duda ([#16163](https://github.com/microsoft/fluentui/pull/16163))
 - Fix wrong grid template in `Checkbox` for `label` end @jurokapsiar ([#16208](https://github.com/microsoft/fluentui/pull/16208))
 - Export missing type `SplitButtonToggleStyleProps` @ling1726 ([#16215](https://github.com/microsoft/fluentui/pull/16215))
 - Remove `inline-block` from `Menu` root slot @assuncaocharles ([#16222](https://github.com/microsoft/fluentui/pull/16222))
 - Add `unstable_disableTether` prop to configure `Popper`'s behavior for elements outside of a viewport @ling1726 @layershifter ([#16214](https://github.com/microsoft/fluentui/pull/16214))
 - Fix Menu styles for `Toolbar` @TanelVari ([#16141](https://github.com/microsoft/fluentui/pull/16141))
+- Fix the type for `onBlur`callback in the `Dropdown` component @ling1726 ([#16257](https://github.com/microsoft/fluentui/pull/16257))
+- Fix missing export for `AttachmentBodyStylesProps` @ling1726 ([#16260](https://github.com/microsoft/fluentui/pull/16260))
+- Fix throwing error when using `ChatMessage` with children without declaring the `header` prop @ling1726 ([#16321](https://github.com/microsoft/fluentui/pull/16321))
+- Fix throwing error in `fontSizeUtility` on CodeSandbox @layershifter ([#16368](https://github.com/microsoft/fluentui/pull/16368))
+- Fix - Apply aria attributes on proper element for `Datepicker`, `Dropdown`, `Input` @kolaps33 ([#16324](https://github.com/microsoft/fluentui/pull/16324))
+- Fix a warning when the `fluid` or `resize` prop was used in `TextArea` @assuncaocharles ([#16393](https://github.com/microsoft/fluentui/pull/16393))
+- Fix implementation of getReactFiberFromNode to be compatible with React 17 @layershifter ([#16392](https://github.com/microsoft/fluentui/pull/16392))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
@@ -102,8 +117,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `VideoProhibitedIcon`. @TanelVari ([#16025](https://github.com/microsoft/fluentui/pull/16025))
 - Added `WhiteboardIcon`. @TanelVari ([#16164](https://github.com/microsoft/fluentui/pull/16164))
 - Added `TvIcon`. @TanelVari ([#16207](https://github.com/microsoft/fluentui/pull/16207))
+- Added `CalendarAgendaIcon`, `ImageLibraryIcon`. @TanelVari ([#16293](https://github.com/microsoft/fluentui/pull/16293))
+- Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
 
 ### Documentation
+- Fix sticky tree's hidden item + focus loss when last sticky header collapsed @yuanboxue-amber ([#16341](https://github.com/microsoft/fluentui/pull/16341))
+- Add `VirtualizedStickyTreePrototype` @yuanboxue-amber ([#16221](https://github.com/microsoft/fluentui/pull/16221))
 - split prototypes into its own package `@fluentui/react-northstar-prototypes` @yuanboxue-amber ([#16183](https://github.com/microsoft/fluentui/pull/16183))
 - `VirtualizdedTreePrototype`: change to use `useVirtualTree` hook and `react-window` @yuanboxue-amber ([#16080](https://github.com/microsoft/fluentui/pull/16080))
 - AXE core integration - UI builder @vyhnalekl ([#14934](https://github.com/microsoft/fluentui/pull/14934))

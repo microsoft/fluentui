@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 08 Jan 2021 12:32:12 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.37",
+      "version": "8.0.0-beta.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "976f4540a49e6d5a7346187551346c9f3d079dbb",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Dec 2020 12:27:05 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.31",
       "version": "8.0.0-beta.31",

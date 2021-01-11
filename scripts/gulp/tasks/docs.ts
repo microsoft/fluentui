@@ -19,7 +19,7 @@ import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
 import gulpExampleSource from '../plugins/gulp-example-source';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
-import { getRelativePathToSourceFile } from '../plugins/util';
+import { getRelativePathToSourceFile, getComponentInfo } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Server } from 'http';
 import { findGitRoot, getAllPackageInfo } from '../../monorepo';
@@ -151,6 +151,18 @@ task('build:docs:assets:component:info', cb => {
   cb();
 });
 
+task('component-info:debug', done => {
+  const componentInfo = getComponentInfo({
+    tsconfigPath: paths.docs('tsconfig.json'),
+    filePath: paths.packageSrc('react-northstar', 'components/Skeleton/SkeletonAvatar.tsx'),
+    ignoredParentInterfaces: [], // can be omitted?
+  });
+
+  // console.log(JSON.stringify(componentInfo, null, 2));
+  fs.writeFileSync('SkeletonAvatar.info.json', JSON.stringify(componentInfo, null, 2));
+  done();
+});
+
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
 
 // ----------------------------------------
@@ -221,7 +233,7 @@ task('watch:docs:component-info', () => {
                 ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
                 tsconfigPath: paths.docs('tsconfig.json'),
               }),
-              { name: 'componentInfo-3' },
+              { name: 'componentInfo-4' },
             ),
           )
           .pipe(dest('componentInfo', { cwd: pkg.packagePath }));

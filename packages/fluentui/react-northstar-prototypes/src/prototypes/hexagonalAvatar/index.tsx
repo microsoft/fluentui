@@ -29,12 +29,19 @@ const HexagonalAvatarPrototype = () => {
         <div>
           <Text content="Hexagonal Avatar" />
           &emsp;
-          <CustomAvatar hexagonal image="public/images/avatar/small/matt.jpg" status={statusProps} />
+          <CustomAvatar
+            hexagonal
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            status={statusProps}
+          />
         </div>
         <div>
           <Text content="Regular Avatar" />
           &emsp;
-          <CustomAvatar image="public/images/avatar/small/matt.jpg" status={statusProps} />
+          <CustomAvatar
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            status={statusProps}
+          />
         </div>
       </Flex>
     </div>
