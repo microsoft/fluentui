@@ -16,6 +16,8 @@ import {
   SizeValue,
   ContentComponentProps,
   ChildrenComponentProps,
+  createShorthandFactory,
+  childrenExist,
 } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
@@ -43,7 +45,7 @@ export const AvatarIcon: ComponentWithAs<'span', AvatarIconProps> &
   const { setStart, setEnd } = useTelemetry(AvatarIcon.displayName, context.telemetry);
   setStart();
 
-  const { className, children, design, styles, variables, size, square } = props;
+  const { className, children, design, styles, variables, size, square, content } = props;
 
   const { classes } = useStyles<AvatarIconStylesProps>(AvatarIcon.displayName, {
     className: avatarIconClassName,
@@ -69,7 +71,9 @@ export const AvatarIcon: ComponentWithAs<'span', AvatarIconProps> &
   const unhandledProps = useUnhandledProps(AvatarIcon.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{children}</ElementType>
+    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+      {childrenExist(children) ? children : content}
+    </ElementType>
   );
   setEnd();
 
@@ -90,3 +94,5 @@ AvatarIcon.defaultProps = {
 AvatarIcon.shorthandConfig = {
   mappedProp: 'content',
 };
+
+AvatarIcon.create = createShorthandFactory({ Component: AvatarIcon });
