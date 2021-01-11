@@ -56,7 +56,9 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
       <div>
         <MenuButton
-          trigger={<Button text iconOnly content={mode} aria-label="Select mode" />}
+          trigger={
+            <Button text iconOnly content={mode.replace(/^\w/, c => c.toUpperCase())} aria-label="Select mode" />
+          }
           menu={[
             {
               key: 'build',
