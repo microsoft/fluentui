@@ -14,13 +14,13 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Box, BoxProps } from '../Box/Box';
-import { Label, LabelProps } from '../Label/Label';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 import { AvatarImage, AvatarImageProps } from './AvatarImage';
 import { AvatarStatusIcon } from './AvatarStatusIcon';
+import { AvatarLabel, AvatarLabelProps } from './AvatarLabel';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -35,7 +35,7 @@ export interface AvatarProps extends UIComponentProps {
   image?: ShorthandValue<AvatarImageProps>;
 
   /** Shorthand for the label. */
-  label?: ShorthandValue<LabelProps>;
+  label?: ShorthandValue<AvatarLabelProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
@@ -64,6 +64,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
     Status: typeof AvatarStatus;
     StatusIcon: typeof AvatarStatusIcon;
     Image: typeof AvatarImage;
+    Label: typeof AvatarLabel;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
@@ -122,12 +123,14 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
       }),
   });
 
-  const labelElement = Label.create(label || {}, {
+  const labelElement = createShorthand(AvatarLabel, label || {}, {
     defaultProps: () =>
       getA11Props('label', {
         content: getInitials(name),
         circular: !square,
         title: name,
+        size,
+        square,
         styles: resolvedStyles.label,
       }),
   });
@@ -203,6 +206,7 @@ Avatar.propTypes = {
 Avatar.Status = AvatarStatus;
 Avatar.StatusIcon = AvatarStatusIcon;
 Avatar.Image = AvatarImage;
+Avatar.Label = AvatarLabel;
 
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 

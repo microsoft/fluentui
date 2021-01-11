@@ -62,20 +62,4 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       },
     };
   },
-  label: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
-    return {
-      display: 'inline-block',
-      width: sizeInRem,
-      height: sizeInRem,
-      lineHeight: sizeInRem,
-      fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
-      verticalAlign: 'top',
-      textAlign: 'center',
-      padding: '0',
-      ...(p.square && {
-        borderRadius: v.squareAvatarBorderRadius,
-      }),
-    };
-  },
 };
