@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { ButtonState } from './Button.types';
 
 /**
@@ -34,4 +35,15 @@ export const useButtonState = (draftState: ButtonState) => {
 
   draftState['aria-disabled'] = draftState.disabled;
   draftState.disabled = draftState['aria-disabled'] && !draftState.disabledFocusable;
+
+  // Disallow keyboard events when component is disabled and eat events when disabledFocusable is set to true.
+  draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const keyCode = getCode(ev);
+    if (draftState['aria-disabled'] && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      draftState.onKeyDown?.(ev);
+    }
+  };
 };
