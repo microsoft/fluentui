@@ -1,7 +1,6 @@
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
 import { TeamsSchemeMappingWithAreas } from '../../types';
 import { ItemType } from '../../../types';
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export const labelColorAreas = stringLiteralsArray('foreground', 'background');
 export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>;
@@ -33,24 +32,13 @@ export interface AvatarVariables {
   imageAvatarSize: string;
   imageCircularRadius: string;
   // Label
-  labelColorScheme: LabelColorSchemeMapping;
+
   labelCircularRadius: string;
+  labelBackground: string;
+  labelForeground: string;
 }
 
 export const avatarVariables = (siteVariables): AvatarVariables => {
-  const colorScheme = extendColorScheme(siteVariables.colorScheme, {
-    default: {
-      background: 'rgba(0, 0, 0, 0.6)',
-      foreground: 'rgb(232, 232, 232)',
-    },
-    brand: {
-      background: siteVariables.colorScheme.brand.foreground4,
-    },
-    red: {
-      background: siteVariables.colorScheme.red.foreground1,
-    },
-  });
-
   return {
     avatarBorderColor: '',
     avatarBorderWidth: '0',
@@ -75,7 +63,9 @@ export const avatarVariables = (siteVariables): AvatarVariables => {
     imageAvatarRadius: pxToRem(9999),
     imageAvatarSize: pxToRem(32),
     imageCircularRadius: pxToRem(9999),
-    labelColorScheme: pickValuesFromColorScheme(colorScheme, labelColorAreas),
+
     labelCircularRadius: pxToRem(9999),
+    labelBackground: 'rgba(0, 0, 0, 0.6)',
+    labelForeground: 'rgb(232, 232, 232)',
   };
 };

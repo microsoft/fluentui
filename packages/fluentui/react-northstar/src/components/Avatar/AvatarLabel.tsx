@@ -19,7 +19,6 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  ColorComponentProps,
   rtlTextContainer,
   SizeValue,
 } from '../../utils';
@@ -27,11 +26,7 @@ import {
 import { FluentComponentStaticProps } from '../../types';
 import { labelClassName } from '../Label/Label';
 
-export interface AvatarLabelProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps,
-    ColorComponentProps {
+export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -47,7 +42,7 @@ export interface AvatarLabelProps
   size?: SizeValue;
 }
 
-export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'color' | 'size' | 'square' | 'circular'>;
+export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'size' | 'square' | 'circular'>;
 export const avatarlabelClassName = labelClassName;
 
 /**
@@ -59,19 +54,7 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
 
-  const {
-    accessibility,
-    children,
-    className,
-    color,
-    content,
-    design,
-    styles,
-    variables,
-    square,
-    size,
-    circular,
-  } = props;
+  const { accessibility, children, className, content, design, styles, variables, square, size, circular } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarLabel.displayName,
@@ -81,7 +64,6 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
   const { classes } = useStyles<AvatarLabelStylesProps>(AvatarLabel.displayName, {
     className: avatarlabelClassName,
     mapPropsToStyles: () => ({
-      color,
       square,
       size,
       circular,
@@ -113,7 +95,7 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
 AvatarLabel.displayName = 'AvatarLabel';
 
 AvatarLabel.propTypes = {
-  ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
+  ...commonPropTypes.createCommon({ content: 'shorthand' }),
   square: PropTypes.bool,
   size: customPropTypes.size,
   circular: PropTypes.bool,

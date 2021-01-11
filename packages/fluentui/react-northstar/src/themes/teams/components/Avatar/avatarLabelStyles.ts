@@ -2,7 +2,6 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { AvatarVariables } from './avatarVariables';
 import { pxToRem, SizeValue } from '../../../../utils';
-import { getColorScheme } from '../../colors';
 import { AvatarLabelStylesProps } from '../../../../components/Avatar/AvatarLabel';
 
 const sizeToPxValue: Record<SizeValue, number> = {
@@ -17,13 +16,12 @@ const sizeToPxValue: Record<SizeValue, number> = {
 
 export const avatarLabelStyles: ComponentSlotStylesPrepared<AvatarLabelStylesProps, AvatarVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.labelColorScheme, p.color);
     const sizeInRem = pxToRem(sizeToPxValue[p.size]);
     return {
       alignItems: 'center',
       overflow: 'hidden',
-      color: colors.background,
-      backgroundColor: colors.foreground,
+      color: v.labelBackground,
+      backgroundColor: v.labelForeground,
       borderRadius: '50%',
       display: 'inline-block',
       width: sizeInRem,
