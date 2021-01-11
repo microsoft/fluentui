@@ -11,6 +11,7 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
 
   if (fs.existsSync(`${stepsModulePath}.ts`)) {
     const { steps: screenerSteps, themes = DEFAULT_THEMES }: ScreenerTestsConfig = require(stepsModulePath).default;
+    stepsBuilder.waitForSelector('ui-provider');
 
     _.forEach(themes, themeName => {
       stepsBuilder.switchTheme(themeName).snapshot(`Theme: ${themeName}`);
