@@ -127,5 +127,3 @@ AvatarLabel.defaultProps = {
 AvatarLabel.shorthandConfig = {
   mappedProp: 'content',
 };
-
-AvatarLabel.create = createShorthandFactory({ Component: AvatarLabel, mappedProp: 'content' });
