@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "tooltip disappear on escape",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-01-11T13:00:19.936Z"
+}
