@@ -16,6 +16,7 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 
 ### Fixes
 - Do not trigger `Popup` on `click` when `hover` is used with `context` @jurokapsiar ([#16286](https://github.com/microsoft/fluentui/pull/16286))

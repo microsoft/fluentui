@@ -292,6 +292,7 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground: categoryColors[color][250],
     foreground1: categoryColors[color][550],
     background: categoryColors[color][800],
+    borderActive: categoryColors[color][350],
     ...customValues,
   };
 };
