@@ -24,15 +24,13 @@ import {
   SizeValue,
 } from '../../utils';
 
-import { BoxProps } from '../Box/Box';
-
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import { labelClassName } from '../Label/Label';
 
 export interface AvatarLabelProps
   extends UIComponentProps,
     ChildrenComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>>,
+    ContentComponentProps,
     ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
@@ -55,7 +53,8 @@ export const avatarlabelClassName = labelClassName;
 /**
  * A AvatarLabel allows user to classify content.
  */
-export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComponentStaticProps = props => {
+export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
+  FluentComponentStaticProps<AvatarLabelProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
