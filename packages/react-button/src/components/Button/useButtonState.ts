@@ -32,6 +32,6 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  draftState['aria-disabled'] = draftState.disabled;
   draftState.disabled = draftState['aria-disabled'] && !draftState.disabledFocusable;
 };
