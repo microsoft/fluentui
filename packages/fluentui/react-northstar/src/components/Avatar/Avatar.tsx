@@ -120,6 +120,8 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
       getA11Props('icon', {
         title: name,
         styles: resolvedStyles.icon,
+        size,
+        square,
       }),
   });
 
