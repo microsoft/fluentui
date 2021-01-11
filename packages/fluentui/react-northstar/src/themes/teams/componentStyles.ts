@@ -17,6 +17,7 @@ export { avatarStatusStyles as AvatarStatus } from './components/Avatar/avatarSt
 export { avatarStatusIconStyles as AvatarStatusIcon } from './components/Avatar/avatarStatusIconStyles';
 export { avatarImageStyles as AvatarImage } from './components/Avatar/avatarImageStyles';
 export { avatarIconStyles as AvatarIcon } from './components/Avatar/avatarIconStyles';
+export { avatarLabelStyles as AvatarLabel } from './components/Avatar/avatarLabelStyles';
 
 export { buttonStyles as Button } from './components/Button/buttonStyles';
 export { buttonGroupStyles as ButtonGroup } from './components/Button/buttonGroupStyles';

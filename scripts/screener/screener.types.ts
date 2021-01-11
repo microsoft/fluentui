@@ -68,6 +68,7 @@ export interface ScreenerStepBuilder {
   setValue(selector: string, value: string, options?: any): ScreenerStepBuilder;
   keys(selector: string, key: string): ScreenerStepBuilder;
   wait(ms: number): ScreenerStepBuilder;
+  waitForSelector(selector: string): ScreenerStepBuilder;
   cssAnimations(isEnabled: boolean): ScreenerStepBuilder;
   rtl(): ScreenerStepBuilder;
   ltr(): ScreenerStepBuilder;

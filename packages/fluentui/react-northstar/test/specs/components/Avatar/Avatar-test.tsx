@@ -2,7 +2,7 @@ import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 
 import { Avatar } from 'src/components/Avatar/Avatar';
 import { AvatarImage } from 'src/components/Avatar/AvatarImage';
-import { Label } from 'src/components/Label/Label';
+import { AvatarLabel } from 'src/components/Avatar/AvatarLabel';
 
 const avatarImplementsShorthandProp = implementsShorthandProp(Avatar);
 const { getInitials } = (Avatar as any).defaultProps;
@@ -12,7 +12,7 @@ describe('Avatar', () => {
     testPath: __filename,
     constructorName: 'Avatar',
   });
-  avatarImplementsShorthandProp('label', Label);
+  avatarImplementsShorthandProp('label', AvatarLabel);
   avatarImplementsShorthandProp('image', AvatarImage, { mapsValueToProp: 'src' });
 
   describe('generateInitials', () => {
