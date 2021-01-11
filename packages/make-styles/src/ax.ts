@@ -25,27 +25,26 @@ export function ax(): string {
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
 
   const atomicProperties: Record<string, string> = {};
-  let resultClassName = '';
 
   for (let i = 0; i < arguments.length; i++) {
     // eslint-disable-next-line prefer-rest-params
     const argument = arguments[i];
 
-    if (typeof argument === 'string') {
-      const classNames = argument.split(' ');
+    if (!argument) {
+      continue;
+    }
 
-      for (let x = 0; x < classNames.length; x++) {
-        const atomicClassName = classNames[x];
-        const cssProperty = DEFINITION_LOOKUP_TABLE[atomicClassName];
+    const classNames = argument.split(' ');
 
-        if (cssProperty) {
-          atomicProperties[cssProperty] = atomicClassName;
-        } else {
-          resultClassName += atomicClassName + ' ';
-        }
-      }
+    for (let x = 0; x < classNames.length; x++) {
+      const atomicClassName = classNames[x];
+      const cssProperty = DEFINITION_LOOKUP_TABLE[atomicClassName];
+
+      atomicProperties[cssProperty] = cssProperty || atomicClassName;
     }
   }
+
+  let resultClassName = '';
 
   // eslint-disable-next-line guard-for-in
   for (const property in atomicProperties) {
