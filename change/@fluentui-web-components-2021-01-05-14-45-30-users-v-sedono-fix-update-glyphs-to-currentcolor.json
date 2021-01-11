@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update svg fill to use currentcolor so svg defaults to text color, change some currentColor to currentcolor",
+  "packageName": "@fluentui/web-components",
+  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-05T22:45:30.193Z"
+}
