@@ -14,7 +14,7 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
 
     _.forEach(themes, themeName => {
       stepsBuilder
-        .waitForSelector('ui-provider')
+        .waitForSelector('.ui-provider')
         .switchTheme(themeName)
         .snapshot(`Theme: ${themeName}`);
 
@@ -24,7 +24,7 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
         // We need to reload page to reset mouse position between tests
         stepsBuilder
           .url(pageUrl)
-          .waitForSelector('ui-provider')
+          .waitForSelector('.ui-provider')
           .switchTheme(themeName);
       });
     });
