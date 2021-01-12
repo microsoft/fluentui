@@ -13,7 +13,7 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVa
     whiteBackground: siteVars.colorScheme.white.background1,
 
     brandForeground: siteVars.colorScheme.brand.foreground5,
-    brandBackground: siteVars.colorScheme.brand.background5,
+    brandBackground: siteVars.colorScheme.brand.background6,
 
     greyForeground: siteVars.colorScheme.grey.foreground1,
     greyBackground: siteVars.colorScheme.grey.background1,

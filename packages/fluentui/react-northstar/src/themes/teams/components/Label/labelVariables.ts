@@ -48,7 +48,7 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): LabelVariables 
     whiteBackground: siteVars.colorScheme.white.background1,
 
     brandForeground: siteVars.colorScheme.brand.foreground5,
-    brandBackground: siteVars.colorScheme.brand.background5,
+    brandBackground: siteVars.colorScheme.brand.background6,
 
     greyForeground: siteVars.colorScheme.grey.foreground2,
     greyBackground: siteVars.colorScheme.grey.background3,
