@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 12 Jan 2021 12:24:00 GMT",
+      "tag": "@uifabric/experiments_v7.38.0",
+      "version": "7.38.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker drop to each side of item",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1b94a3e4bb32c029429eb087d341e3ed33494405",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add a force resolve function to the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "94effb912cf2217790dc84a0217fc7596aea11c7",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c097452a72f35cba2ba2678d8463dc5cbf661f79",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:26:56 GMT",
       "tag": "@uifabric/experiments_v7.36.16",
       "version": "7.36.16",

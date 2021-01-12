@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 12 Jan 2021 12:24:00 GMT",
+      "tag": "@fluentui/react-examples_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update UnifiedPeoplePicker edit example with force resolve example",
+            "author": "elvonspa@microsoft.com",
+            "commit": "94effb912cf2217790dc84a0217fc7596aea11c7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Update SelectedItemsList and UnifiedPicker edit examples with the new picker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c097452a72f35cba2ba2678d8463dc5cbf661f79",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Jan 2021 12:25:12 GMT",
       "tag": "@fluentui/react-examples_v0.11.6",
       "version": "0.11.6",

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add a force resolve function to the UnifiedPicker",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-08T18:41:07.509Z"
-}
