@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "add override logic using ThemeProvider to createSvgIcon factory",
+  "packageName": "@fluentui/theme",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-12T17:27:33.227Z"
+}
