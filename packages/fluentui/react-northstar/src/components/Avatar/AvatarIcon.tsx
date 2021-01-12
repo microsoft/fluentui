@@ -94,5 +94,3 @@ AvatarIcon.defaultProps = {
 AvatarIcon.shorthandConfig = {
   mappedProp: 'content',
 };
-
-AvatarIcon.create = createShorthandFactory({ Component: AvatarIcon });
