@@ -155,6 +155,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             content: 'Show code',
             onClick: () => {
               onShowCodeChange(!showCode);
+              if (showJSONTree) onShowJSONTreeChange(!showJSONTree);
             },
           },
           {
@@ -162,6 +163,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             content: 'Show JSON',
             onClick: () => {
               onShowJSONTreeChange(!showJSONTree);
+              if (showCode) onShowCodeChange(!showCode);
             },
           },
         ]}
