@@ -6,6 +6,7 @@ import { ICalloutPositionedInfo } from '../../Positioning';
 import { ILayerProps } from '../../Layer';
 import { Target } from '@fluentui/react-hooks';
 import { IPopupRestoreFocusParams } from '../../Popup';
+import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
 export { Target };
 
@@ -273,6 +274,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * Optional props to be passed on to FocusTrapZone
+   */
+  focusTrapProps?: IFocusTrapZoneProps;
 }
 
 /**

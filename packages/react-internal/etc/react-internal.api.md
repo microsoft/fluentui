@@ -768,7 +768,7 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
     static defaultProps: any;
 }
 
-// @public
+// @public @deprecated
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
@@ -1336,6 +1336,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
+    focusTrapProps?: IFocusTrapZoneProps;
     gapSpace?: number;
     hidden?: boolean;
     hideOverflow?: boolean;

@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Callout): merge Callout with FocusTrapCallout",
+  "packageName": "@fluentui/react-internal",
+  "email": "jakubkonka@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-12T15:59:42.291Z"
+}

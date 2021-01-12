@@ -27,6 +27,7 @@ import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
 import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
+import { FocusTrapZone } from '../FocusTrapZone/index';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -438,6 +439,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      focusTrapProps,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
@@ -497,7 +499,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
-    const visibilityStyle: React.CSSProperties | undefined = props.hidden ? { visibility: 'hidden' } : undefined;
+    const visibilityStyle: React.CSSProperties | undefined = hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
@@ -526,7 +528,15 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onMouseDown={mouseDownOnPopup}
             onMouseUp={mouseUpOnPopup}
           >
-            {children}
+            <FocusTrapZone disabled={hidden} {...focusTrapProps}>
+              <div
+                // Set tabindex to 0 to keep focus within the Popup's content.
+                // TODO This <div> element should probably have more props, styling, etc.
+                tabIndex={0}
+              >
+                {children}
+              </div>
+            </FocusTrapZone>
           </Popup>
         </div>
       </div>
