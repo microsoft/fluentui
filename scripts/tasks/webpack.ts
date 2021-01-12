@@ -18,8 +18,8 @@ export async function webpackDevServer() {
   const port = await fp(4322, 4400);
 
   if (fs.existsSync(configPath)) {
-    const webpackDevServerPath = require.resolve('webpack-dev-server/bin/webpack-dev-server.js');
-    const cmd = `node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`;
+    const webpackDevServerPath = require.resolve('webpack/bin/webpack.js');
+    const cmd = `node ${webpackDevServerPath} serve --config ${configPath} --port ${port} --open`;
 
     logger.info(`Caching enabled: ${argv().cached}`);
     logger.info('Running: ', cmd);
