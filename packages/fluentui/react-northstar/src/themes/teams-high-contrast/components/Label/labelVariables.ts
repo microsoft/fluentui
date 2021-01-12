@@ -3,8 +3,8 @@ import { SiteVariablesPrepared } from '@fluentui/styles';
 
 export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
   return {
-    foreground: 'rgb(255, 255, 255)',
-    background: 'rgb(0, 0, 0)',
+    foreground: 'rgb(0, 0, 0)',
+    background: 'rgb(255, 255, 255)',
 
     blackForeground: siteVars.colorScheme.black.foreground1,
     blackBackground: siteVars.colorScheme.black.background1,

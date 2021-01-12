@@ -38,8 +38,8 @@ export const labelVariables = (siteVars: SiteVariablesPrepared): LabelVariables 
     endPaddingRight: '0px',
     height: pxToRem(20),
 
-    foreground: 'rgb(232, 232, 232)',
-    background: 'rgba(0, 0, 0, 0.6)',
+    foreground: 'rgba(0, 0, 0, 0.6)',
+    background: 'rgb(232, 232, 232)',
 
     blackForeground: siteVars.colorScheme.black.foreground1,
     blackBackground: siteVars.colorScheme.black.background1,
