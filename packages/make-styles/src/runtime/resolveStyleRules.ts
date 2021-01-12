@@ -1,4 +1,3 @@
-import hashString from '@emotion/hash';
 import { convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
@@ -6,6 +5,7 @@ import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
 import { compileKeyframeRule } from './compileKeyframeRule';
+import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';

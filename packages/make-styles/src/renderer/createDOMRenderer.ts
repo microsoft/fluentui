@@ -1,5 +1,5 @@
 import { MakeStylesRenderer } from '../types';
-import { DEFINITION_LOOKUP_TABLE, RTL_PREFIX } from '../constants';
+import { RTL_PREFIX } from '../constants';
 
 interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
@@ -54,7 +54,6 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const ruleCSS = rtl ? rtlCSS || css : css;
 
         renderer.insertionCache[ruleClassName] = true;
-        DEFINITION_LOOKUP_TABLE[ruleClassName] = propName;
 
         (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
         renderer.index++;

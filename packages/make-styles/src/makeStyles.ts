@@ -1,5 +1,6 @@
-import { CAN_USE_CSS_VARIABLES } from './constants';
+import { CAN_USE_CSS_VARIABLES, DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
 import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
+import { hashString } from './runtime/utils/hashString';
 import {
   MakeStylesDefinition,
   MakeStylesMatchedDefinitions,
@@ -58,11 +59,16 @@ export function makeStyles<Selectors, Tokens>(
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign({}, ...matchedDefinitions);
+
     const resultClasses = options.renderer.insertDefinitions(resultDefinitions, !!options.rtl);
+    const sequenceHash = SEQUENCE_PREFIX + hashString(resultClasses);
 
-    cxCache[cxCacheKey] = resultClasses;
+    const resultClassesWithHash = sequenceHash + ' ' + resultClasses;
 
-    return resultClasses;
+    DEFINITION_LOOKUP_TABLE[sequenceHash] = resultDefinitions;
+    cxCache[cxCacheKey] = resultClassesWithHash;
+
+    return resultClassesWithHash;
   }
 
   return computeClasses;
