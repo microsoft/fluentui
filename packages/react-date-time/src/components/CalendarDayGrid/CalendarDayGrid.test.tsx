@@ -6,6 +6,7 @@ import { isConformant } from '../../common/isConformant';
 describe('CalendarDayGrid', () => {
   const timeFormatter = {
     formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => 'm/d/y',
+    formatDayMonthYear: (date: Date, strings?: ICalendarStrings) => 'd/m/y',
     formatMonthYear: (date: Date, strings?: ICalendarStrings) => 'm/y',
     formatDay: (date: Date) => 'd',
     formatYear: (date: Date) => 'y',

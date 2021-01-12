@@ -15,6 +15,14 @@ export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
   strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
 
 /**
+ * Format date to a day-month-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatDayMonthYear = (date: Date, strings: IDateGridStrings) =>
+  date.getDate() + ' ' + strings.months[date.getMonth()] + ' ' + date.getFullYear();
+
+/**
  * Format date to a month-year string
  * @param date - input date to format
  * @param strings - localized strings
@@ -52,6 +60,7 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
   formatDay,
   formatYear,
   formatMonthDayYear,
+  formatDayMonthYear,
   formatMonthYear,
 };
 

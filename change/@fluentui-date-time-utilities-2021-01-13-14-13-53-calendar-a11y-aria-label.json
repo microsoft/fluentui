@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Calendar: improve a11y of aria-label (#16072)",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "jbright@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-13T19:13:45.401Z"
+}

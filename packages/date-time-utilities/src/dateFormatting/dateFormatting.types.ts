@@ -47,6 +47,11 @@ export interface IDateFormatting {
   formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
   /**
+   * Get a localized string for a day, month, and year.
+   */
+  formatDayMonthYear: (date: Date, strings: IDateGridStrings) => string;
+
+  /**
    * Get a localized string for a month and year.
    */
   formatMonthYear: (date: Date, strings: IDateGridStrings) => string;

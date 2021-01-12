@@ -336,6 +336,7 @@ describe('DatePicker', () => {
 
     const dateTimeFormatter: IDatePickerProps['dateTimeFormatter'] = {
       formatMonthDayYear: () => 'm/d/y',
+      formatDayMonthYear: () => 'd/m/y',
       formatMonthYear: () => 'm/y',
       formatDay: () => 'd',
       formatYear: () => 'y',

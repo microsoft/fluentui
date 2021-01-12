@@ -634,7 +634,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 21, 2018"
+              aria-label="21 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -746,7 +746,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 22, 2018"
+              aria-label="22 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -858,7 +858,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 23, 2018"
+              aria-label="23 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -970,7 +970,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 24, 2018"
+              aria-label="24 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1082,7 +1082,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 25, 2018"
+              aria-label="25 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1194,7 +1194,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 26, 2018"
+              aria-label="26 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1306,7 +1306,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 27, 2018"
+              aria-label="27 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1439,7 +1439,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="December 28, 2018"
+              aria-label="28 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1567,7 +1567,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="December 29, 2018"
+              aria-label="29 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1695,7 +1695,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="December 30, 2018"
+              aria-label="30 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1823,7 +1823,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="December 31, 2018"
+              aria-label="31 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -1979,7 +1979,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-current="date"
               aria-disabled={false}
-              aria-label="January 1, 2019"
+              aria-label="1 January 2019"
               aria-readonly={true}
               aria-selected={true}
               className=
@@ -2117,7 +2117,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="January 2, 2019"
+              aria-label="2 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2241,7 +2241,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           >
             <button
               aria-disabled={false}
-              aria-label="January 3, 2019"
+              aria-label="3 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2365,7 +2365,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 4, 2019"
+              aria-label="4 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2473,7 +2473,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 5, 2019"
+              aria-label="5 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2581,7 +2581,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 6, 2019"
+              aria-label="6 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2689,7 +2689,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 7, 2019"
+              aria-label="7 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2797,7 +2797,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 8, 2019"
+              aria-label="8 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -2905,7 +2905,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 9, 2019"
+              aria-label="9 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -3013,7 +3013,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 10, 2019"
+              aria-label="10 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -3791,7 +3791,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 23, 2018"
+              aria-label="23 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -3903,7 +3903,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 24, 2018"
+              aria-label="24 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4015,7 +4015,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 25, 2018"
+              aria-label="25 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4127,7 +4127,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 26, 2018"
+              aria-label="26 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4239,7 +4239,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 27, 2018"
+              aria-label="27 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4351,7 +4351,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 28, 2018"
+              aria-label="28 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4463,7 +4463,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 29, 2018"
+              aria-label="29 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4596,7 +4596,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="December 30, 2018"
+              aria-label="30 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4724,7 +4724,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="December 31, 2018"
+              aria-label="31 December 2018"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -4880,7 +4880,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-current="date"
               aria-disabled={false}
-              aria-label="January 1, 2019"
+              aria-label="1 January 2019"
               aria-readonly={true}
               aria-selected={true}
               className=
@@ -5018,7 +5018,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="January 2, 2019"
+              aria-label="2 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5142,7 +5142,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="January 3, 2019"
+              aria-label="3 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5266,7 +5266,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="January 4, 2019"
+              aria-label="4 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5390,7 +5390,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           >
             <button
               aria-disabled={false}
-              aria-label="January 5, 2019"
+              aria-label="5 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5514,7 +5514,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 6, 2019"
+              aria-label="6 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5622,7 +5622,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 7, 2019"
+              aria-label="7 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5730,7 +5730,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 8, 2019"
+              aria-label="8 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5838,7 +5838,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 9, 2019"
+              aria-label="9 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -5946,7 +5946,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 10, 2019"
+              aria-label="10 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -6054,7 +6054,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 11, 2019"
+              aria-label="11 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=
@@ -6162,7 +6162,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             <button
               aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 12, 2019"
+              aria-label="12 January 2019"
               aria-readonly={true}
               aria-selected={false}
               className=

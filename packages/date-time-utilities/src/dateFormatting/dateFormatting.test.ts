@@ -1,6 +1,7 @@
 import {
   formatDay,
   formatMonthDayYear,
+  formatDayMonthYear,
   formatMonthYear,
   formatYear,
   DEFAULT_DATE_GRID_STRINGS,
@@ -20,6 +21,13 @@ describe('formatMonthDayYear', () => {
   it('returns default format', () => {
     const result = formatMonthDayYear(date, DEFAULT_DATE_GRID_STRINGS);
     expect(result).toBe('April 1, 2016');
+  });
+});
+
+describe('formatDayMonthYear', () => {
+  it('returns default format', () => {
+    const result = formatDayMonthYear(date, DEFAULT_DATE_GRID_STRINGS);
+    expect(result).toBe('1 April 2016');
   });
 });
 
