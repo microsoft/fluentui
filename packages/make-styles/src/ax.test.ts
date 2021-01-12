@@ -46,8 +46,8 @@ describe('ax', () => {
     const sequence3 = ax(sequence1, sequence2, className5);
 
     expect(sequence1).toBe(`ui-button ${className2}`);
-    expect(sequence2).toBe('ui-flex __9pqz3z0 f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4');
-    expect(sequence3).toBe('ui-button ui-flex __1dxdpxy f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4 f1rqyxcv');
+    expect(sequence2).toBe('ui-flex __9a122w0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4');
+    expect(sequence3).toBe('ui-button ui-flex __xzc3aa0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4 f1rqyxcv');
   });
 
   // xdescribe('unstable functionality', () => {
