@@ -39,17 +39,16 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
         {
           loader: 'css-loader', // translates CSS into CommonJS
           options: {
-            modules: {
-              localIdentName: '[name]_[local]_[hash:base64:5]',
-            },
+            esModule: false,
+            modules: true,
             importLoaders: 2,
           },
         },
         {
           loader: 'postcss-loader',
           options: {
-            plugins: function() {
-              return [require('autoprefixer')];
+            postcssOptions: {
+              plugins: ['autoprefixer'],
             },
           },
         },
