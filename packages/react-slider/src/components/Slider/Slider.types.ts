@@ -41,6 +41,11 @@ export interface ISliderProps
   label?: string;
 
   /**
+   * Whether the slider is a range Slider
+   */
+  ranged?: boolean;
+
+  /**
    * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
    */
