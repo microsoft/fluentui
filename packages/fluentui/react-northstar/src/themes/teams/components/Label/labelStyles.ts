@@ -66,9 +66,17 @@ export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVar
       ...(hasStartElement && {
         marginLeft: pxToRem(3),
       }),
+      ...(!hasStartElement &&
+        p.circular && {
+          marginLeft: pxToRem(4),
+        }),
       ...(hasEndElement && {
         marginRight: pxToRem(3),
       }),
+      ...(!hasEndElement &&
+        p.circular && {
+          marginRight: pxToRem(4),
+        }),
     };
   },
 
