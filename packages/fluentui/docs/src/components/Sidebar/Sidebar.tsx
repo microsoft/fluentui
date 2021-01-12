@@ -120,6 +120,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'roster',
+    title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
+    public: false,
+  },
+  {
     id: 'searchpage',
     title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
     public: false,
@@ -559,6 +564,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           setActiveItemIds(activeItemIds);
         }}
       />
+      {/* TODO enable after we have data
+      <Flex column>
+        <NavLink to="/perf-tests" exact style={topItemTheme}>
+          <Box>Performance Tests</Box>
+        </NavLink>
+      </Flex> */}
     </Segment>
   );
 };
