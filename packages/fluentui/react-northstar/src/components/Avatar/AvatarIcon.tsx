@@ -16,7 +16,6 @@ import {
   SizeValue,
   ContentComponentProps,
   ChildrenComponentProps,
-  createShorthandFactory,
   childrenExist,
 } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
