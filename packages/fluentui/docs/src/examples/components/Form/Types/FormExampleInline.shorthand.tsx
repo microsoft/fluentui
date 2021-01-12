@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Button, Checkbox, Input } from '@fluentui/react-northstar';
 
 const fields = [
   {
@@ -27,9 +27,7 @@ const fields = [
     inline: true,
   },
   {
-    label: 'I agree to the Terms and Conditions',
-    control: { as: 'input' },
-    type: 'checkbox',
+    control: { as: Checkbox, label: 'I agree to the Terms and Conditions' },
     id: 'conditions-inline-shorthand',
     key: 'conditions',
   },

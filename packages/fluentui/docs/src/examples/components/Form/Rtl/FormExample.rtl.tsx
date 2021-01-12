@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Button, Checkbox, Input } from '@fluentui/react-northstar';
 
 const FormExampleRtl = () => (
   <Form>
@@ -23,7 +23,7 @@ const FormExampleRtl = () => (
         showSuccessIndicator: false,
       }}
     />
-    <Form.Field label="أوافق على الشروط" control={{ as: 'input' }} type="checkbox" id="conditions" />
+    <Form.Field control={{ as: Checkbox, label: 'أوافق على الشروط' }} id="conditions" />
     <Form.Field control={{ as: Button, content: 'خضع' }} />
   </Form>
 );
