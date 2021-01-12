@@ -1,4 +1,5 @@
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
+export { avatarVariables as AvatarImage } from './components/Avatar/avatarVariables';
 export { buttonVariables as Button } from './components/Button/buttonVariables';
 export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';

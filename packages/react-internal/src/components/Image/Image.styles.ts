@@ -95,7 +95,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           objectFit: 'contain',
         },
         !supportsObjectFit && fallbackObjectFitStyles,
-        ImageFitStyles,
+        !supportsObjectFit && ImageFitStyles,
       ],
       isCover && [
         classNames.imageCover,
@@ -105,7 +105,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           objectFit: 'cover',
         },
         !supportsObjectFit && fallbackObjectFitStyles,
-        ImageFitStyles,
+        !supportsObjectFit && ImageFitStyles,
       ],
       isCenterContain && [
         classNames.imageCenterContain,

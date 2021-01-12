@@ -1,13 +1,19 @@
-import { pxToRem } from '../../../../utils';
+import { pxToRem, stringLiteralsArray } from '../../../../utils';
+import { TeamsSchemeMappingWithAreas } from '../../types';
+import { ItemType } from '../../../types';
+
+export const labelColorAreas = stringLiteralsArray('foreground', 'background');
+export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>;
 
 export interface AvatarVariables {
   avatarBorderColor: string;
   avatarBorderWidth: string;
   squareAvatarBorderRadius: string;
-  statusBorderColor: string;
-  statusBorderWidth: string;
   iconColor: string;
   iconBackgroundColor: string;
+  // Status
+  statusBorderColor: string;
+  statusBorderWidth: string;
   statusIconSize: string;
   statusSuccessBackgroundColor: string;
   statusSuccessColor: string;
@@ -19,6 +25,17 @@ export interface AvatarVariables {
   statusErrorColor: string;
   statusBackgroundColor: string;
   statusColor: string;
+  // Image
+  imageWidth: string;
+  imageHeight: string;
+  imageAvatarRadius: string;
+  imageAvatarSize: string;
+  imageCircularRadius: string;
+  // Label
+
+  labelCircularRadius: string;
+  labelColor: string;
+  labelBackground: string;
 }
 
 export const avatarVariables = (siteVariables): AvatarVariables => ({
@@ -40,4 +57,13 @@ export const avatarVariables = (siteVariables): AvatarVariables => ({
   statusErrorColor: siteVariables.colorScheme.red.foreground2,
   statusBackgroundColor: siteVariables.colorScheme.default.background5,
   statusColor: siteVariables.colorScheme.default.foreground4,
+  imageWidth: undefined,
+  imageHeight: undefined,
+  imageAvatarRadius: pxToRem(9999),
+  imageAvatarSize: pxToRem(32),
+  imageCircularRadius: pxToRem(9999),
+
+  labelCircularRadius: pxToRem(9999),
+  labelColor: 'rgba(0, 0, 0, 0.6)',
+  labelBackground: 'rgb(232, 232, 232)',
 });
