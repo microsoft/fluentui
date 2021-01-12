@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-08T19:32:59.037Z"
+}
