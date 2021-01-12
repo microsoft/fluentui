@@ -26,7 +26,7 @@ const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
   const { title, description, examplePath } = props;
 
   const Prototype = React.lazy(async () => ({
-    default: (await import(/* webpackChunkName: "prototype-example" */ `../../../examples/${examplePath}`)).default,
+    default: (await import(/* webpackChunkName: "prototype-example" */ `../../../examples/components/PerformanceTests/${examplePath}`)).default,
   }));
 
   const [renderPrototype, setRenderPrototype] = React.useState(false);
