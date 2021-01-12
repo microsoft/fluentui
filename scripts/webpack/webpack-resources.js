@@ -281,6 +281,7 @@ module.exports = {
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
+                    esModule: false,
                     modules: true,
                     importLoaders: 2,
                   },
@@ -288,8 +289,8 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
-                      return [require('autoprefixer')];
+                    postcssOptions: {
+                      plugins: ['autoprefixer'],
                     },
                   },
                 },
