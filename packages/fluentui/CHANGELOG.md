@@ -12,10 +12,14 @@
   - <A helpful short description> @<github username> (<PR number>)
 
 ------------------------------------------------------------------------------->
+
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+<!--------------------------------[ v0.51.4 ]------------------------------- -->
+### Features
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 
 ### Fixes
