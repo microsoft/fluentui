@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jan 2021 12:36:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.14)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.10..@fluentui/react-theme-provider_v1.0.0-beta.14)
+
+### Changes
+
+- add webpack bundles to react-icons-mdl2 and react-theme-provider ([PR #16429](https://github.com/microsoft/fluentui/pull/16429) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.10)
 

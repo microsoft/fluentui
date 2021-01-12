@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 12 Jan 2021 12:36:40 GMT",
+      "tag": "@fluentui/web-components_v0.10.3",
+      "version": "0.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update svg fill to use currentcolor so svg defaults to text color, change some currentColor to currentcolor",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "4e7e48536556661783dcb0f42314eb8734a8f836",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Jan 2021 12:29:33 GMT",
       "tag": "@fluentui/web-components_v0.10.2",
       "version": "0.10.2",

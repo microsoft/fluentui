@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Tue, 12 Jan 2021 12:36:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add webpack bundles to react-icons-mdl2 and react-theme-provider",
+            "author": "ololubek@microsoft.com",
+            "commit": "be4ad025c27e09a43ee9dacb74d6a3e465d0a93a",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:29:52 GMT",
       "tag": "@fluentui/react-theme-provider_v1.0.0-beta.10",
       "version": "1.0.0-beta.10",

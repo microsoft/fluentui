@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Styles from `Avatar` slots were moved to exact components (`AvatarStatus`, `AvatarStatusIcon`) @assuncaocharles ([#16382](https://github.com/microsoft/fluentui/pull/16382))
 - Styles from `Avatar` image slot were moved to exact component `AvatarImage` @assuncaocharles ([#16409](https://github.com/microsoft/fluentui/pull/16409))
 - Styles from `Avatar` image slot were moved to exact component `AvatarLabel` @assuncaocharles ([#16417](https://github.com/microsoft/fluentui/pull/16417))
+- Styles from `Avatar` icon slot were moved to exact component `AvatarIcon` @assuncaocharles ([#16428](https://github.com/microsoft/fluentui/pull/16428))
 
 
 ### Fixes
@@ -121,6 +122,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
 
 ### Documentation
+- Performance Tests with Roster prototype @vyhnalekl + @yuanboXue-amber ([#16412](https://github.com/microsoft/fluentui/pull/16412))
 - Fix sticky tree's hidden item + focus loss when last sticky header collapsed @yuanboxue-amber ([#16341](https://github.com/microsoft/fluentui/pull/16341))
 - Add `VirtualizedStickyTreePrototype` @yuanboxue-amber ([#16221](https://github.com/microsoft/fluentui/pull/16221))
 - split prototypes into its own package `@fluentui/react-northstar-prototypes` @yuanboxue-amber ([#16183](https://github.com/microsoft/fluentui/pull/16183))
