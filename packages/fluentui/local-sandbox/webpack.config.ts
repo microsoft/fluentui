@@ -56,9 +56,7 @@ const webpackConfig: webpack.Configuration = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        // cache: true,
         parallel: true,
-        // sourceMap: true,
         terserOptions: {
           // https://github.com/terser/terser
           mangle: false,
