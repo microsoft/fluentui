@@ -8,7 +8,6 @@ export interface LabelVariables {
   startPaddingLeft: string;
   endPaddingRight: string;
   height: string;
-
   foreground: string;
   background: string;
   blackForeground: string;
