@@ -149,6 +149,19 @@ export class Steps implements ScreenerStepBuilder {
     return this;
   };
 
+  /** The will pause execution until the css selector can be found on the page */
+  waitForSelector = (selector: string) => {
+    this.steps.push({
+      type: 'waitForElementPresent',
+      locator: {
+        type: 'css selector',
+        value: selector,
+      },
+    });
+
+    return this;
+  };
+
   /** This will set the current UI state to right-to-left direction. */
   rtl = () => {
     this.steps.push({

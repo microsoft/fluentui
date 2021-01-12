@@ -1,5 +1,4 @@
 import './version';
-export * from '@fluentui/react-button';
 export * from '@fluentui/react-checkbox';
 export * from '@fluentui/react-internal';
 export * from '@fluentui/react-link';
@@ -8,6 +7,7 @@ export * from '@fluentui/react-tabs';
 export * from '@fluentui/react-toggle';
 export * from '@fluentui/react-date-time';
 export * from './Breadcrumb';
+export * from './Button';
 export * from './ComboBox';
 export * from './DetailsList';
 export * from './DocumentCard';

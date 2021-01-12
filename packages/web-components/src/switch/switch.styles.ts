@@ -1,6 +1,12 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import {
+  DirectionalStyleSheetBehavior,
+  disabledCursor,
+  display,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+} from '@microsoft/fast-foundation';
 import {
   accentFillActiveBehavior,
   accentFillHoverBehavior,
@@ -78,7 +84,6 @@ export const SwitchStyles = css`
         height: calc((${heightNumber} - (var(--design-unit) * 5.5)) * 1px);
         width: calc((${heightNumber} - (var(--design-unit) * 5.5)) * 1px);
         top: calc(var(--design-unit) * 1px);
-        left: calc(var(--design-unit) * 1px);
         background: ${neutralForegroundRestBehavior.var};
         border-radius: 50%;
         transition: all 0.2s ease-in-out;
@@ -100,6 +105,8 @@ export const SwitchStyles = css`
         color: ${neutralForegroundRestBehavior.var};
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
+        margin-inline-end: calc(var(--design-unit) * 2px + 2px);
+        cursor: pointer;
     }
 
     ::slotted(*) {
@@ -108,24 +115,23 @@ export const SwitchStyles = css`
         } margin-inline-start: calc(var(--design-unit) * 2px + 2px);
     }
 
-    :host(.checked) .checked-indicator {
-        left: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+    :host([aria-checked="true"]) .checked-indicator {
         background: ${accentForegroundCutRestBehavior.var};
     }
 
-    :host(.checked) .switch {
+    :host([aria-checked="true"]) .switch {
         background: ${accentFillRestBehavior.var};
     }
 
-    :host(.checked:enabled) .switch:hover {
+    :host([aria-checked="true"]:enabled) .switch:hover {
         background: ${accentFillHoverBehavior.var};
     }
 
-    :host(.checked:enabled) .switch:active {
+    :host([aria-checked="true"]:enabled) .switch:active {
         background: ${accentFillActiveBehavior.var};
     }
 
-    :host(.checked:${focusVisible}:enabled) .switch {
+    :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
         box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
         border-color: transparent;
     }
@@ -138,11 +144,11 @@ export const SwitchStyles = css`
         display: none;
     }
 
-    :host(.checked) .unchecked-message {
+    :host([aria-checked="true"]) .unchecked-message {
         display: none;
     }
 
-    :host(.checked) .checked-message {
+    :host([aria-checked="true"]) .checked-message {
         display: block;
     }
 `.withBehaviors(
@@ -158,6 +164,26 @@ export const SwitchStyles = css`
   neutralOutlineActiveBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
+  new DirectionalStyleSheetBehavior(
+    css`
+      .checked-indicator {
+        left: calc(var(--design-unit) * 1px);
+      }
+
+      :host([aria-checked='true']) .checked-indicator {
+        left: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+      }
+    `,
+    css`
+      .checked-indicator {
+        right: calc(var(--design-unit) * 1px);
+      }
+
+      :host([aria-checked='true']) .checked-indicator {
+        right: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+      }
+    `,
+  ),
   forcedColorsStylesheetBehavior(
     css`
             .checked-indicator,
@@ -206,6 +232,10 @@ export const SwitchStyles = css`
                 background: ${SystemColors.Field};
                 border-color: ${SystemColors.GrayText};
             }
+            .status-message,
+            .label {
+              color: ${SystemColors.FieldText};
+          }
         `,
   ),
 );

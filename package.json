@@ -153,6 +153,7 @@
           "@fluentui/react-bindings",
           "@fluentui/react-builder",
           "@fluentui/react-northstar",
+          "@fluentui/react-northstar-prototypes",
           "@fluentui/state",
           "@fluentui/styles"
         ],
@@ -161,7 +162,8 @@
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose"
+          "@fluentui/react-compose",
+          "stylis"
         ]
       }
     ]

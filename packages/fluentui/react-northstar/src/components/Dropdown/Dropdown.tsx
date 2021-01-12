@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -68,6 +68,12 @@ export interface DropdownSlotClassNames {
 export interface DropdownProps extends UIComponentProps<DropdownProps>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** A dropdown item can show a check indicator if it is selected. */
   checkable?: boolean;
@@ -211,7 +217,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * Called when the focus moves out from dropdown.
    * @param event - React's original SyntheticEvent.
    */
-  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+  onBlur?: (event: React.FocusEvent | null) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
@@ -372,6 +378,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const {
     align,
     'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
     checkable,
@@ -406,6 +413,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
+    unstable_disableTether,
     unstable_pinned,
     variables,
   } = props;
@@ -532,6 +540,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
+      'aria-invalid': ariaInvalid,
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
@@ -642,6 +651,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
           {...positioningProps}
@@ -1679,8 +1689,11 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 

@@ -12,6 +12,7 @@ import {
   IGroupHeaderProps,
   IGroupHeaderCheckboxProps,
 } from './GroupHeader.types';
+import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
@@ -137,7 +138,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
               </button>
             </div>
           ) : (
-            selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={indentWidth} count={1} />
+            // To make the group header align properly with the column headers, this spacer
+            // needs to be the same width as the check cell in the column header.
+            selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={CHECK_CELL_WIDTH} count={1} />
           )}
 
           <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />

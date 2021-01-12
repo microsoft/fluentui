@@ -12,6 +12,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground4: colors.white,
     foreground5: colors.grey[450],
     foreground6: colors.grey[550],
+    foreground7: colors.white,
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -91,6 +92,7 @@ export const colorScheme: ColorSchemeMapping = {
     background2: colors.brand[900],
     background3: colors.brand[1000],
     background4: colors.grey[650],
+    background5: colors.brand[900],
 
     border: colors.grey[450],
     border1: colors.brand[800],

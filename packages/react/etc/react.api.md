@@ -514,9 +514,45 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
+export interface IComboBoxClassNames {
+    // (undocumented)
+    callout: string;
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    errorMessage: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    optionsContainer: string;
+    // (undocumented)
+    optionsContainerWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+}
+
+// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionClassNames {
+    // (undocumented)
+    optionText: string;
+    // (undocumented)
+    optionTextWrapper: string;
+    // (undocumented)
+    root: string;
 }
 
 // @public (undocumented)
@@ -537,7 +573,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
@@ -1460,7 +1495,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'auto';
     // @deprecated
     isDisabled?: boolean;
     multiSelectDelimiter?: string;
@@ -1886,11 +1921,11 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-button";
 export * from "@fluentui/react-checkbox";
 export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
+export * from "@fluentui/react-internal/lib/compat/Button";
 export * from "@fluentui/react-link";
 export * from "@fluentui/react-slider";
 export * from "@fluentui/react-tabs";
