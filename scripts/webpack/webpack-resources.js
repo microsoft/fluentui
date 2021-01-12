@@ -15,7 +15,6 @@ const resolve = require('resolve');
 /** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const getResolveAlias = require('./getResolveAlias');
 const { findGitRoot } = require('../monorepo/index');
 
@@ -305,7 +304,7 @@ module.exports = {
         plugins: [
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
           ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
+          // ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
         ],
       },
       customConfig,

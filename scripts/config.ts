@@ -102,7 +102,7 @@ const config = {
   // ----------------------------------
   // Compiler Configuration
   // ----------------------------------
-  compiler_devtool: __DEV__ && ('eval-source-map' as webpack.Options.Devtool),
+  compiler_devtool: __DEV__ && 'eval-source-map',
   compiler_mode: (__DEV__ ? 'development' : 'production') as webpack.Configuration['mode'],
   compiler_globals: {
     __DEV__,

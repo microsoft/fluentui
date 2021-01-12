@@ -10,9 +10,9 @@ module.exports = resources.createConfig('ssr-tests', false, {
 
   target: 'node',
 
-  node: {
-    fs: 'empty',
-  },
+  // node: {
+  //   fs: 'empty',
+  // },
 
   resolve: {
     alias: getResolveAlias(true /*useLib*/),

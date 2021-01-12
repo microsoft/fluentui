@@ -20,7 +20,7 @@
   "dependencies": {
     "just-scripts": "0.44.5",
     "querystring": "^0.2.0",
-    "webpack": "4.43.0"
+    "webpack": "^5.12.3"
   },
   "devDependencies": {
     "@types/node": "^10.3.2",
