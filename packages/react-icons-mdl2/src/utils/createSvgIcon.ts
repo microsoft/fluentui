@@ -3,10 +3,12 @@ import { css, getNativeProps, htmlElementProperties } from '@fluentui/utilities'
 import * as classes from './SvgIcon.scss';
 import { ISvgIconProps } from './SvgIcon.types';
 import { SvgIconCreateFnParams } from './types';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & ISvgIconProps> = props => {
     const { className, style = {} } = props;
+    const theme = useTheme();
 
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
     const containerProps = props['aria-label']
@@ -15,7 +17,18 @@ const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<
           role: 'presentation',
           ['aria-hidden']: true,
         };
-
+    if (theme.icons?.icons[displayName]) {
+      return React.createElement(
+        'span',
+        {
+          ...containerProps,
+          ...nativeProps,
+          className: css(classes.root, className),
+          style,
+        },
+        theme.icons?.icons[displayName],
+      );
+    }
     return React.createElement(
       'span',
       {

@@ -6,6 +6,7 @@ import { ISemanticColors } from './ISemanticColors';
 import { ISpacing } from './ISpacing';
 import { IEffects } from './IEffects';
 import { IScheme, ISchemeNames } from './IScheme';
+import { IIconSubset } from '@fluentui/style-utilities';
 
 /**
  * A ramp of size values.
@@ -133,6 +134,8 @@ export interface Theme extends IScheme {
    */
   components?: ComponentsStyles;
 
+  icons?: IIconSubset;
+
   /**
    * @internal
    * CSS stylesheets to be registered.
@@ -172,6 +175,7 @@ export interface PartialTheme {
   fonts?: Partial<IFontStyles>;
   semanticColors?: Partial<ISemanticColors>;
   isInverted?: boolean;
+  icons?: Partial<IIconSubset>;
   disableGlobalClassNames?: boolean;
   rtl?: boolean;
   spacing?: Partial<ISpacing>;

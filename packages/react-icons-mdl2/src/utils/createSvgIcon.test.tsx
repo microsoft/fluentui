@@ -1,8 +1,20 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import createSvgIcon from './createSvgIcon';
+import { createTheme } from '@fluentui/theme';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 const testSvg = () => <svg />;
+const testOverridenSvg = () => <svg id="test-overriden-id" />;
+const TestOverridenIcon = createSvgIcon({ svg: testOverridenSvg, displayName: 'TestIcon' });
+
+const theme = createTheme({
+  icons: {
+    icons: {
+      TestIcon: <TestOverridenIcon />,
+    },
+  },
+});
 
 describe('createSvgIcon', () => {
   it('returns a valid React component', () => {
@@ -55,4 +67,6 @@ describe('createSvgIcon', () => {
 
     expect(wrapper.find('svg').prop('data-foo')).toEqual('true');
   });
+
+  it('overrides the default svg icon using the ThemeProvider', () => {});
 });
