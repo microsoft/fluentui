@@ -152,7 +152,7 @@ export const useButtonStyles = makeStyles([
 
       // focused state
       ':focus::after': {
-        content: '""',
+        content: 'var(--focus-visible)',
         position: 'absolute',
         left: '-1px',
         right: '-1px',
@@ -173,6 +173,10 @@ export const useButtonStyles = makeStyles([
         //     boxShadow: '0 0 0 var(--button-focusInnerWidth, 1px) var(--button-highContrast-focusInnerColor) inset',
         //   },
         // },
+      },
+
+      ':global(.ms-Fabric--isFocusVisible)': {
+        '--focus-visible': '""',
       },
     },
   ],
