@@ -1,4 +1,4 @@
-import { webpackCliTask, argv, logger, option } from 'just-scripts';
+import { webpackCliTask, argv, logger } from 'just-scripts';
 import * as path from 'path';
 import * as fs from 'fs';
 import execSync from '../exec-sync';
