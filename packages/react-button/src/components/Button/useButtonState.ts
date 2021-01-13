@@ -12,7 +12,7 @@ export const useButtonState = (draftState: ButtonState) => {
     draftState.role = 'button';
 
     if (draftState.as !== 'a') {
-      const { onKeyDown: onKeyDownCallback, onClick } = draftState;
+      const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
       draftState['data-isFocusable'] = true;
       draftState.tabIndex = 0;
@@ -23,7 +23,7 @@ export const useButtonState = (draftState: ButtonState) => {
         }
 
         const keyCode = getCode(ev);
-        if (!ev.defaultPrevented && onClick && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+        if (!ev.defaultPrevented && onClickCallback && (keyCode === EnterKey || keyCode === SpacebarKey)) {
           // Translate the keydown enter/space to a click.
           ev.preventDefault();
           ev.stopPropagation();
@@ -34,8 +34,11 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  // Disallow keyboard events when component is disabled and eat events when disabledFocusable is set to true.
+  // Disallow click and keyboard events when component is disabled and eat events when disabledFocusable is set to true.
   const { disabled, onKeyDown } = draftState;
+  if (disabled) {
+    draftState.onClick = undefined;
+  }
   draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(ev);
     if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
