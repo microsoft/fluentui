@@ -35,6 +35,7 @@ exports[`Callout renders Callout correctly 1`] = `
       Object {
         "filter": "opacity(0)",
         "opacity": 0,
+        "pointerEvents": "none",
       }
     }
     tabIndex={-1}
