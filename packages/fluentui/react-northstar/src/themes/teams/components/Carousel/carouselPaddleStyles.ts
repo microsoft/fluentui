@@ -98,9 +98,6 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
         ':hover': {
           borderColor: v.paddleBorderColorHover,
         },
-        ':focus': {
-          borderColor: v.paddleBorderColorHover,
-        },
       },
 
       // Overrides for "disabled" buttons
