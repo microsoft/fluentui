@@ -45,8 +45,8 @@ export type ButtonProps = ComponentProps &
     disabled?: boolean;
 
     /**
-     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is important to
-     * keep a consistent tab order for screen reader and keyboard users.
+     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
+     * important to keep a consistent tab order for screen reader and keyboard users.
      * @defaultvalue false
      */
     disabledFocusable?: boolean;
