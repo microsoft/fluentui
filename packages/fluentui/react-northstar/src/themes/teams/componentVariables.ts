@@ -15,6 +15,7 @@ export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
 export { avatarStatusVariables as AvatarStatus } from './components/Avatar/avatarStatusVariables';
 export { avatarStatusIconVariables as AvatarStatusIcon } from './components/Avatar/avatarStatusIconVariables';
 export { avatarImageVariables as AvatarImage } from './components/Avatar/avatarImageVariables';
+export { avatarIconVariables as AvatarIcon } from './components/Avatar/avatarIconVariables';
 export { avatarLabelVariables as AvatarLabel } from './components/Avatar/avatarLabelVariables';
 
 export { buttonVariables as Button } from './components/Button/buttonVariables';
