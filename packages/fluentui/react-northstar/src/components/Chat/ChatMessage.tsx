@@ -404,10 +404,10 @@ ChatMessage.propTypes = {
   actionMenu: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.shorthandAllowingChildren,
-  badge: customPropTypes.itemShorthand,
-  details: customPropTypes.itemShorthand,
+  badge: customPropTypes.shorthandAllowingChildren,
+  details: customPropTypes.shorthandAllowingChildren,
   badgePosition: PropTypes.oneOf(['start', 'end']),
-  header: customPropTypes.itemShorthand,
+  header: customPropTypes.shorthandAllowingChildren,
   mine: PropTypes.bool,
   timestamp: customPropTypes.shorthandAllowingChildren,
   onBlur: PropTypes.func,
@@ -417,7 +417,7 @@ ChatMessage.propTypes = {
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
-  readStatus: customPropTypes.itemShorthand,
+  readStatus: customPropTypes.shorthandAllowingChildren,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
