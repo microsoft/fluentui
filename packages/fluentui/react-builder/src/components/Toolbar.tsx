@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
+import { Box, Button, Image, MenuButton, Toolbar as FUIToolbar } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
+import { CodeSnippetIcon, OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
@@ -36,73 +36,147 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   showJSONTree,
   style,
 }) => (
-  <div
-    style={{
+  <Box
+    styles={({ theme }) => ({
       display: 'flex',
       padding: '0 1rem',
       alignItems: 'center',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
+      borderBottom: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+      background: theme.siteVariables.colorScheme.default.background1,
       ...style,
-    }}
+    })}
   >
     <Image
-      styles={{ height: '1.5rem', marginRight: '0.25rem' }}
+      styles={{ height: '1.5rem' }}
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png"
     />
-    <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
-      FluentUI
-      <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
+    <div style={{ position: 'relative', padding: '0 .8rem', fontSize: '14px', lineHeight: 1, fontWeight: 'bold' }}>
+      FluentUI <span style={{ fontWeight: 'normal' }}>Builder</span>
     </div>
-    <div>
-      <strong>Mode:</strong>
-      &emsp;
-      <RadioGroup
-        style={{ display: 'inline-block' }}
-        checkedValue={mode}
-        onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
-          onModeChange(data.value);
-        }}
+    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      <div>
+        <MenuButton
+          trigger={
+            <Button text iconOnly content={mode.replace(/^\w/, c => c.toUpperCase())} aria-label="Select mode" />
+          }
+          menu={[
+            {
+              key: 'build',
+              content: 'Build',
+              onClick: () => {
+                onModeChange('build');
+              },
+            },
+            {
+              key: 'design',
+              content: 'Design',
+              onClick: () => {
+                onModeChange('design');
+              },
+            },
+            {
+              key: 'use',
+              content: 'Use',
+              onClick: () => {
+                onModeChange('use');
+              },
+            },
+          ]}
+          on="click"
+        />
+      </div>
+      <FUIToolbar
+        aria-label="Builder toolbar"
         items={[
           {
-            key: 'build',
-            label: 'Build',
-            value: 'build',
+            key: 'divider-1',
+            kind: 'divider',
           },
           {
-            key: 'design',
-            label: 'Design',
-            value: 'design',
+            icon: (
+              <UndoIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'undo',
+            // kind: 'toggle',
+            disabled: !canUndo,
+            title: 'Undo',
+            onClick: () => {
+              onUndo;
+            },
           },
           {
-            key: 'use',
-            label: 'Use',
-            value: 'use',
+            icon: (
+              <RedoIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'redo',
+            // kind: 'toggle',
+            disabled: !canRedo,
+            title: 'Redo',
+            onClick: () => {
+              onRedo;
+            },
+          },
+          {
+            key: 'divider-2',
+            kind: 'divider',
+          },
+          {
+            icon: (
+              <TrashCanIcon
+                {...{
+                  outline: true,
+                }}
+              />
+            ),
+            key: 'delete',
+            // kind: 'toggle',
+            title: 'Start over',
+            onClick: () => {
+              onReset;
+            },
           },
         ]}
       />
     </div>
-    &nbsp; &nbsp;
-    <Button
-      text
-      icon={<OpenOutsideIcon />}
-      content="Popout"
-      onClick={() => {
-        window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
-      }}
-    />
-    <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
-    <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-      <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
-      &emsp;
-      <Checkbox
-        label="Show JSON"
-        toggle
-        checked={!!showJSONTree}
-        onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+      <MenuButton
+        trigger={<Button iconOnly icon={<CodeSnippetIcon outline />} aria-label="Show code" />}
+        menu={[
+          {
+            key: 'code',
+            content: 'Show code',
+            onClick: () => {
+              onShowCodeChange(!showCode);
+              if (showJSONTree) onShowJSONTreeChange(!showJSONTree);
+            },
+          },
+          {
+            key: 'json',
+            content: 'Show JSON',
+            onClick: () => {
+              onShowJSONTreeChange(!showJSONTree);
+              if (showCode) onShowCodeChange(!showCode);
+            },
+          },
+        ]}
       />
-      &emsp;
-      <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
+      <Button
+        style={{ marginLeft: '.8rem' }}
+        iconOnly
+        icon={<OpenOutsideIcon outline />}
+        aria-label="Popout"
+        onClick={() => {
+          window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
+        }}
+      />
     </div>
-  </div>
+  </Box>
 );
