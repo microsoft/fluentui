@@ -40,7 +40,7 @@ export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultPro
 };
 
 // @public (undocumented)
-export const useTextClasses: (state: {}, options?: any) => void;
+export const useTextClasses: (state: {}, options?: import("@fluentui/react-theme-provider/lib/makeStyles.compat").UseStylesOptions | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)
