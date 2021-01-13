@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Announced } from '@fluentui/react';
 import { DatePicker } from '@fluentui/react-date-time';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
@@ -14,9 +15,11 @@ const onFormatDate = (date?: Date): string => {
 
 export const DatePickerFormatExample: React.FunctionComponent = () => {
   const [value, setValue] = React.useState<Date | undefined>();
+  const [clearedAnnounced, setClearedAnnounced] = React.useState<JSX.Element | undefined>();
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);
+    setClearedAnnounced(<Announced message="Input field cleared" aria-live="assertive" />);
   }, []);
 
   const onParseDateFromString = React.useCallback(
@@ -55,6 +58,7 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         parseDateFromString={onParseDateFromString}
         className={styles.control}
       />
+      {clearedAnnounced}
       <DefaultButton onClick={onClick} text="Clear" />
       <div>Selected date: {(value || '').toString()}</div>
     </div>
