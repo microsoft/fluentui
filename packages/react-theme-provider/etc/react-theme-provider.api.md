@@ -40,8 +40,10 @@ export { IStyleFunctionOrObject }
 // @public (undocumented)
 export type KeyFrames = IKeyframes;
 
+// Warning: (ae-forgotten-export) The symbol "UseStylesOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: any) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
 export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]): (selectors: Selectors, options: MakeStylesOptions<Theme | Tokens>, ...classNames: (string | undefined)[]) => string;
@@ -52,7 +54,7 @@ export type MakeStylesOptions<Tokens> = Omit<MakeStylesOptions_2<Tokens>, 'rende
 };
 
 // @public
-export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: any) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: import("./makeStyles.compat").UseStylesOptions | undefined) => void;
 
 // @public
 export type MakeVariantClassesOptions<TVariants = Variants> = {
