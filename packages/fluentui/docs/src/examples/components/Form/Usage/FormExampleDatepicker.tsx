@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button } from '@fluentui/react-northstar';
+import { Form } from '@fluentui/react-northstar';
 
 const FormExampleDatepicker = () => {
   const [errorMessage, setErrorMessage] = React.useState(null);
@@ -21,9 +21,7 @@ const FormExampleDatepicker = () => {
         onDateChangeError={errorMessageHandler}
         onDateChange={successMessageHandler}
       />
-      <Form.Field>
-        <Button>Submit</Button>
-      </Form.Field>
+      <Form.Button content="Submit" />
     </Form>
   );
 };

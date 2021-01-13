@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form } from '@fluentui/react-northstar';
 
 const FormExample = () => (
   <Form
@@ -7,35 +7,17 @@ const FormExample = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Field
+    <Form.Input
       label="First name"
       name="firstName"
       id="first-name-inline"
       inline
       required
-      control={{
-        as: Input,
-        showSuccessIndicator: false,
-      }}
+      showSuccessIndicator={false}
     />
-    <Form.Field
-      label="Last name"
-      name="lastName"
-      id="last-name-inline"
-      inline
-      required
-      control={{
-        as: Input,
-        showSuccessIndicator: false,
-      }}
-    />
-    <Form.Field
-      label="I agree to the Terms and Conditions"
-      control={{ as: 'input' }}
-      type="checkbox"
-      id="conditions-inline"
-    />
-    <Form.Field control={{ as: Button, content: 'Submit' }} />
+    <Form.Input label="Last name" name="lastName" id="last-name-inline" inline required showSuccessIndicator={false} />
+    <Form.Checkbox label="I agree to the Terms and Conditions" id="conditions-inline" />
+    <Form.Button content="Submit" />
   </Form>
 );
 
