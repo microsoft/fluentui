@@ -90,7 +90,7 @@ export function preset() {
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
-  task('webpack-dev-server', webpackDevServer());
+  task('webpack-dev-server', webpackDevServer(getJustArgv()));
   task('api-extractor:verify', verifyApiExtractor());
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
@@ -128,7 +128,7 @@ export function preset() {
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
   task('dev:storybook', series('storybook:start'));
-  task('dev', series('copy', 'sass', webpackDevServer(getJustArgv())));
+  task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
