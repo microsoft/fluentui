@@ -3,7 +3,7 @@ import { IStyle } from '@fluentui/merge-styles';
 import { Theme } from '@fluentui/theme';
 import { applyClasses } from './applyClasses';
 // @ts-ignore
-import { makePrevStyles, UseStylesOptions } from './makeStyles';
+import { makeStyles, UseStylesOptions } from './makeStyles.compat';
 
 /**
  * The `makeClasses` helper encapsulates `makeStyles`, and given a style map which follows
@@ -38,7 +38,7 @@ import { makePrevStyles, UseStylesOptions } from './makeStyles';
 export const makeClasses = <TState extends {}>(
   styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>),
 ) => {
-  const useStyles = makePrevStyles(styleOrFunction);
+  const useStyles = makeStyles(styleOrFunction);
 
   return (state: TState, options?: UseStylesOptions) => {
     const classes = useStyles(options);
