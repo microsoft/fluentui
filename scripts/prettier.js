@@ -73,9 +73,6 @@ async function runOnChanged(options) {
     fileGroups.push(files.slice(chunkStart, chunkStart + numberOfCpus));
   }
 
-  console.log(files);
-  process.exit(1);
-
   await queue.addAll(
     fileGroups.map(group => () => {
       console.log(`Running for ${group.length} files!`);
