@@ -2,6 +2,7 @@ import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as Bindings from '@fluentui/react-bindings';
 import * as DocsComponent from '@fluentui/docs-components';
+import * as ReactButton from '@fluentui/react-button';
 import * as FluentUI from '@fluentui/react-northstar';
 import * as FluentUIIcons from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
@@ -11,6 +12,7 @@ import * as Classnames from 'classnames';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
+const reactButtonPackageJson = require('@fluentui/react-button/package.json');
 const projectPackageJson = require('@fluentui/react-northstar/package.json');
 const sandboxPackageJson = require('@fluentui/code-sandbox/package.json');
 
@@ -45,6 +47,11 @@ export const imports: Record<string, CodeSandboxImport> = {
     version: docsComponentsPackageJson.version,
     module: DocsComponent,
     required: true,
+  },
+  '@fluentui/react-button': {
+    version: reactButtonPackageJson.version,
+    module: ReactButton,
+    required: false,
   },
   '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,
