@@ -25,12 +25,12 @@ import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
   production: boolean;
-  webpackConfig: 'string';
+  webpackConfig: string;
   commonjs: boolean;
   cached: boolean;
   registry: string;
   push: boolean;
-  package: 'string';
+  package: string;
   min: boolean;
 }
 
