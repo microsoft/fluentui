@@ -7,6 +7,7 @@
   ### Features
   ### Performance
   ### Documentation
+  ### Deprecations
 
   Add a line under the appropriate header using this format:
   - <A helpful short description> @<github username> (<PR number>)
