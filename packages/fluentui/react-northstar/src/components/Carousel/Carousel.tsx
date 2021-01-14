@@ -417,9 +417,15 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     </>
   );
   const renderPaddles = () => {
-    return createShorthand(CarouselPaddlesContainer, paddles, {
-      defaultProps: () => getA11yProps('paddleContainer', {}),
-    });
+    return createShorthand(
+      CarouselPaddlesContainer,
+      {},
+      {
+        overrideProps: () => ({
+          children: paddles,
+        }),
+      },
+    );
   };
 
   const renderNavigation = () => {
