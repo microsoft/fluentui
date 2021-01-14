@@ -3,8 +3,6 @@ import { makeStyles } from '@fluentui/react-theme-provider';
 // import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonState } from './Button.types';
 
-/* eslint-disable @fluentui/max-len */
-
 export const ButtonClassNames = {
   root: 'ms-Button',
   content: 'ms-Button-content',

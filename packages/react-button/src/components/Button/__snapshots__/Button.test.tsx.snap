@@ -3,6 +3,7 @@
 exports[`Button renders a default state 1`] = `
 <button
   className="ms-Button  f1k6fduh f122n59 ftuwxu6 f4d9j23 f10pi13n f1xqy1su f1ewtqcl fmrv4ls f1lzbuw2 fim6dvu f1f4c47i f1iedgaj fw1n0wr f70odt1 f1vhwvfz f1cz3ezt f1oddkp7 f13kh4da fct4cwl fhp4f9l feo0lyr f1whg1k0 f7uf1io fzb318i f1hju0nx f1k1mxt7 f1egkakw fofteie f16j5cmg f1745qu5 f1q4sedi f1uyijub f1o7jddm f1648qya f1qr8kil fdhe3jx f1ow1jxr f15t8rk3 f1qruv96 f33d3hg f19jhgz2 fjd3y3t f24elfs f1uo23zi f13lmprv f123g821 f196fwmc fydxa82 fldjma3 fgsy9ym f1gk5ei5 f1qoqgcf f57year f11leut1 f195mrzw fdg5kxv f8v4fns f1gdcuv2 f1g5znyk f1kl38ls fwe7sjs f1g8odzs f67slxs frujupm f1j2y8rs f1ucnkn2 f1u0q55u fvzkdls ffh96ur f1s0nyy2 fxd0wal f188bp1z f1nzwrsi fsxrzjo f1gd2g5g f1bujhc2 f1v3rxqc fou4jri f10qohd4 f1qu8pkf f1hdyxa1 ffvxqff f1s6fcnf ffwnqy8 fvpzubt f16c20uz fvjb07u fzkkow9 fcdblym fg706s2 fjik90z f1cz6fjg f1c5wrov fkjzyke f1tdbhw7 f1w5j6e3 f1ehx0w9 fsy0rpt fceram3 f1z0nw44 f8tzcgd f1velgez f1skbnxh f10mxtua fxvxnzq f1g55moa f73moe9 fgbiby7 fbc200g foplg7s fzrdz31 f11ryrmu f1bi4j9d f1hwvjsp fnqe8ok f1qcrciv f3djwgc feujwd0 f1iz7v4o f1g3gtvs f1parrb9 f1cef4xo f7i9xs0 f1mdaal6"
+  onKeyDown={[Function]}
 >
   <span
     className="ms-Button-content  fp6vxd"
@@ -16,6 +17,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
 <a
   className="ms-Button  f1k6fduh f122n59 ftuwxu6 f4d9j23 f10pi13n f1xqy1su f1ewtqcl fmrv4ls f1lzbuw2 fim6dvu f1f4c47i f1iedgaj fw1n0wr f70odt1 f1vhwvfz f1cz3ezt f1oddkp7 f13kh4da fct4cwl fhp4f9l feo0lyr f1whg1k0 f7uf1io fzb318i f1hju0nx f1k1mxt7 f1egkakw fofteie f16j5cmg f1745qu5 f1q4sedi f1uyijub f1o7jddm f1648qya f1qr8kil fdhe3jx f1ow1jxr f15t8rk3 f1qruv96 f33d3hg f19jhgz2 fjd3y3t f24elfs f1uo23zi f13lmprv f123g821 f196fwmc fydxa82 fldjma3 fgsy9ym f1gk5ei5 f1qoqgcf f57year f11leut1 f195mrzw fdg5kxv f8v4fns f1gdcuv2 f1g5znyk f1kl38ls fwe7sjs f1g8odzs f67slxs frujupm f1j2y8rs f1ucnkn2 f1u0q55u fvzkdls ffh96ur f1s0nyy2 fxd0wal f188bp1z f1nzwrsi fsxrzjo f1gd2g5g f1bujhc2 f1v3rxqc fou4jri f10qohd4 f1qu8pkf f1hdyxa1 ffvxqff f1s6fcnf ffwnqy8 fvpzubt f16c20uz fvjb07u fzkkow9 fcdblym fg706s2 fjik90z f1cz6fjg f1c5wrov fkjzyke f1tdbhw7 f1w5j6e3 f1ehx0w9 fsy0rpt fceram3 f1z0nw44 f8tzcgd f1velgez f1skbnxh f10mxtua fxvxnzq f1g55moa f73moe9 fgbiby7 fbc200g foplg7s fzrdz31 f11ryrmu f1bi4j9d f1hwvjsp fnqe8ok f1qcrciv f3djwgc feujwd0 f1iz7v4o f1g3gtvs f1parrb9 f1cef4xo f7i9xs0 f1mdaal6"
   href="https://www.bing.com"
+  onKeyDown={[Function]}
   role="button"
 >
   <span
