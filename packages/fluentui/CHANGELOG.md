@@ -70,6 +70,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix a warning when the `fluid` or `resize` prop was used in `TextArea` @assuncaocharles ([#16393](https://github.com/microsoft/fluentui/pull/16393))
 - Fix implementation of getReactFiberFromNode to be compatible with React 17 @layershifter ([#16392](https://github.com/microsoft/fluentui/pull/16392))
 - Fix missing focus styles for carousel paddle @assuncaocharles ([#16460](https://github.com/microsoft/fluentui/pull/16460))
+- Do not add `aria-expanded="true"` for `trigger` slot when `MenuButton` has `contextMenu` @pompomon ([#16442](https://github.com/microsoft/fluentui/pull/16442))
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
 
 ### Features
@@ -146,6 +147,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Alert` - labelling dismiss action, to prevent narrate "unlabeled" button @kolaps33 ([#16092](https://github.com/microsoft/fluentui/pull/16092))
 - Update `Popup` best practices to describe how to pass `aria-labelledby` when `trapFocus` is `true` @assuncaocharles ([#16119](https://github.com/microsoft/fluentui/pull/16119))
 - Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
+- Update `Form` examples to remove `control` prop and delete shorthand examples @assuncaocharles ([#16467](https://github.com/microsoft/fluentui/pull/16467))
 
 <!--------------------------------[ v0.51.5 ]------------------------------- -->
 ## [v0.51.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.5) (2021-01-12)

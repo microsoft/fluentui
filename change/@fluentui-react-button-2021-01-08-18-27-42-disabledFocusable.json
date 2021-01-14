@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Adding disabledFocusable prop to allow for scenarios where Button has disabled styling but is focusable.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-09T02:27:42.816Z"
-}
