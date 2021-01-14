@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change Checkbox \"Custom-rendered label with a link\" example's link to be more descriptive ",
-  "packageName": "@fluentui/react-examples",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-12T18:30:49.520Z"
-}

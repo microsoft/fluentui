@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.16.7",
+  "version": "7.16.8",
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -40,13 +40,13 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@fluentui/react-examples": "^0.11.7",
+    "@fluentui/react-examples": "^0.11.8",
     "@fluentui/theme": "^1.7.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.6.5",
     "@uifabric/example-app-base": "^7.16.4",
     "@uifabric/experiments": "^7.38.0",
-    "@uifabric/fabric-website-resources": "^7.9.7",
+    "@uifabric/fabric-website-resources": "^7.9.8",
     "@uifabric/file-type-icons": "^7.6.23",
     "@uifabric/icons": "^7.5.17",
     "@uifabric/set-version": "^7.0.23",

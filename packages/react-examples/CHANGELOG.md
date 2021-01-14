@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 05 Jan 2021 12:25:12 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jan 2021 12:22:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.8)
+
+Thu, 14 Jan 2021 12:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.7..@fluentui/react-examples_v0.11.8)
+
+### Patches
+
+- Change Checkbox "Custom-rendered label with a link" example's link to be more descriptive  ([PR #16448](https://github.com/microsoft/fluentui/pull/16448) by andredias@microsoft.com)
 
 ## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.6)
 
