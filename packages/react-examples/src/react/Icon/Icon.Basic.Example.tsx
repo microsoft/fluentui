@@ -14,9 +14,9 @@ export const IconBasicExample: React.FunctionComponent = () => {
   // You could also use the standard Icon here.
   return (
     <div>
-      <FontIcon iconName="CompassNW" className={iconClass} />
-      <FontIcon iconName="Dictionary" className={iconClass} />
-      <FontIcon iconName="TrainSolid" className={iconClass} />
+      <FontIcon aria-label="Compass icon" role="img" iconName="CompassNW" className={iconClass} />
+      <FontIcon aria-label="Dictionary icon" role="img" iconName="Dictionary" className={iconClass} />
+      <FontIcon aria-label="Train icon" role="img" iconName="TrainSolid" className={iconClass} />
     </div>
   );
 };

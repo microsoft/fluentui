@@ -44,6 +44,8 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
   return (
     <div>
       <ImageIcon
+        aria-label="OneNote file icon"
+        role="img"
         className={classNames.one}
         imageProps={{
           src: TestImages.iconOne,
@@ -51,6 +53,8 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         }}
       />
       <ImageIcon
+        aria-label="Check icon"
+        role="img"
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
@@ -58,6 +62,8 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         }}
       />
       <ImageIcon
+        aria-label="OneNote file icon"
+        role="img"
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,

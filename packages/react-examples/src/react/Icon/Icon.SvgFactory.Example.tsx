@@ -69,7 +69,7 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
           .slice((page - 1) * 100, (page - 1) * 100 + 100)
           .map((Icon: React.FunctionComponent<ReactIcons.ISvgIconProps>) => (
             <div key={Icon.displayName} className={classes.cell}>
-              <Icon className={classes.icon} />
+              <Icon aria-label={Icon.displayName} role="img" className={classes.icon} />
               <br />
               <code className={classes.code}>{Icon.displayName}</code>
             </div>
