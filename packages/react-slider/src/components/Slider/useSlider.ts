@@ -154,9 +154,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
     if (ranged) {
       // decided which thumb value to change
-      if (shouldChangeLowerValueRef.current && roundedValue <= value) {
+      if (shouldChangeLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
         setLowerValue(roundedValue);
-      } else if (!shouldChangeLowerValueRef.current && roundedValue >= lowerValue) {
+      } else if (
+        !shouldChangeLowerValueRef.current &&
+        (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
+      ) {
         setValue(roundedValue);
       }
     } else {
