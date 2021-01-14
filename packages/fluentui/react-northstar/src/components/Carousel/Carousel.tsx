@@ -138,6 +138,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     Navigation: typeof CarouselNavigation;
     NavigationItem: typeof CarouselNavigationItem;
     Paddle: typeof CarouselPaddle;
+    PaddlesContainer: typeof CarouselPaddlesContainer;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
@@ -510,6 +511,7 @@ Carousel.Item = CarouselItem;
 Carousel.Navigation = CarouselNavigation;
 Carousel.NavigationItem = CarouselNavigationItem;
 Carousel.Paddle = CarouselPaddle;
+Carousel.PaddlesContainer = CarouselPaddlesContainer;
 
 Carousel.handledProps = Object.keys(Carousel.propTypes) as any;
 
