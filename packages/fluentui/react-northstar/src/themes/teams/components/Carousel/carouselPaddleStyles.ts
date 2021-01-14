@@ -9,6 +9,7 @@ import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { paddleIndicatorUrl } from './paddleIndicatorUrl';
 
 import { faster, ultraFast } from '../../animations/durations';
+import { pxToRem } from '../../../../utils/index';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -47,7 +48,7 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       position: 'relative',
       verticalAlign: 'middle',
       cursor: 'pointer',
-
+      marginBottom: pxToRem(40),
       outline: 0,
       padding: 0,
       borderWidth,
