@@ -73,7 +73,7 @@ export const DefaultMenuButtons = () => {
       <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
       <MenuButtonExamples iconOnly menu={<ContextualMenu {...menuProps} />} />
 
-      <Text>A button can be both `circular` and `iconOnly`.</Text>
+      <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
       <MenuButtonExamples circular iconOnly menu={<ContextualMenu {...menuProps} />} />
 
       <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
@@ -111,7 +111,7 @@ export const MenuButtonsWithMenuAsJsx = () => {
       <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
       <MenuButtonExamples iconOnly menu={<JSXMenu />} />
 
-      <Text>A button can be both `circular` and `iconOnly`.</Text>
+      <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
       <MenuButtonExamples circular iconOnly menu={<JSXMenu />} />
 
       <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
@@ -151,7 +151,7 @@ export const MenuButtonsWithMenuAsFunction = () => (
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <MenuButtonExamples iconOnly menu={FunctionMenu} />
 
-    <Text>A button can be both `circular` and `iconOnly`.</Text>
+    <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
     <MenuButtonExamples circular iconOnly menu={FunctionMenu} />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
@@ -190,7 +190,7 @@ export const MenuButtonsWithCustomMenus = () => (
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <MenuButtonExamples iconOnly menu={CustomMenu} />
 
-    <Text>A button can be both `circular` and `iconOnly`.</Text>
+    <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
     <MenuButtonExamples circular iconOnly menu={CustomMenu} />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>

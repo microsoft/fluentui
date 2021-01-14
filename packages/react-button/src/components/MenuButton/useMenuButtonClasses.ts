@@ -88,7 +88,7 @@ const useMenuButtonBaseStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    (selectors: MenuButtonState) => selectors.disabled,
+    (selectors: MenuButtonState) => selectors.disabled || selectors['aria-disabled'],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // menu icon styling

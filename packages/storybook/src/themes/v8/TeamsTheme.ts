@@ -4,6 +4,8 @@ const tokens = {
   color: {
     brand: {
       background: '#6264a7',
+      borderColor: 'rgba(0, 0, 0, 0)',
+      contentColor: 'white',
 
       pressed: {
         background: '#464775',
@@ -51,18 +53,21 @@ export const TeamsTheme: PartialTheme = {
             boxShadow: 'none',
           },
         },
+        iconOnly: {
+          paddingLeft: '0px',
+          paddingRight: '0px',
+        },
         primary: {
           background: tokens.color.brand.background,
-          contentColor: 'white',
+          borderColor: tokens.color.brand.borderColor,
+          contentColor: tokens.color.brand.contentColor,
 
           hovered: {
             background: tokens.color.brand.hovered.background,
-            contentColor: 'white',
           },
 
           pressed: {
             background: tokens.color.brand.pressed.background,
-            contentColor: 'white',
           },
         },
         disabled: {

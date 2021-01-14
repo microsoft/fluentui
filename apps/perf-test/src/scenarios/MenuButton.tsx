@@ -17,6 +17,6 @@ const menuProps = {
   ],
 };
 
-const Scenario = () => <MenuButton text="I am a button" menu={<ContextualMenu {...menuProps} />} />;
+const Scenario = () => <MenuButton menu={<ContextualMenu {...menuProps} />}>I am a button</MenuButton>;
 
 export default Scenario;

@@ -370,7 +370,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    (selectors: ButtonState) => selectors.disabled,
+    (selectors: ButtonState) => selectors.disabled || (selectors['aria-disabled'] as boolean),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       pointerEvents: 'none',
@@ -384,7 +384,7 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Ghost and disabled states --- */
   [
-    (selectors: ButtonState) => selectors.disabled && selectors.ghost,
+    (selectors: ButtonState) => (selectors.disabled || (selectors['aria-disabled'] as boolean)) && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonGhostDisabledBackground || tokens.semanticColors?.disabledBackground,
@@ -393,7 +393,8 @@ export const useButtonStyles = makeStyles([
   ],
   /* --- Transparent and disabled states --- */
   [
-    (selectors: ButtonState) => selectors.disabled && selectors.transparent,
+    (selectors: ButtonState) =>
+      (selectors.disabled || (selectors['aria-disabled'] as boolean)) && selectors.transparent,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-background': tokens.buttonTransparentDisabledBackground || 'transparent',

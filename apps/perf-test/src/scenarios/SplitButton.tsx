@@ -22,7 +22,9 @@ const menuProps = {
 };
 
 const Scenario = () => (
-  <SplitButton text="I am a button" onClick={alertClicked} menu={<ContextualMenu {...menuProps} />} />
+  <SplitButton onClick={alertClicked} menu={<ContextualMenu {...menuProps} />}>
+    I am a button
+  </SplitButton>
 );
 
 export default Scenario;

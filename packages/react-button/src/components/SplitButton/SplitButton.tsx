@@ -27,7 +27,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   state.className = useSplitButtonStyles(
     state,
     {
-      componentNames: ['Button', 'SplitButton'],
+      componentNames: 'SplitButton',
       prefix: 'button',
       tokens: state.tokens,
     },
@@ -38,6 +38,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   (state.button as any).className = useSplitButtonButtonStyles(
     state,
     {
+      componentNames: 'Button',
       tokens: state.tokens,
     },
     SplitButtonClassNames.button,
@@ -54,6 +55,8 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   (state.menuButton as any).className = useSplitButtonMenuButtonStyles(
     state,
     {
+      componentNames: ['Button', 'MenuButton'],
+      prefix: 'button',
       tokens: state.tokens,
     },
     SplitButtonClassNames.menuButton,

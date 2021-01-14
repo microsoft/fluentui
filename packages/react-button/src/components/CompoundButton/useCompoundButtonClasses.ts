@@ -125,7 +125,7 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    (selectors: CompoundButtonState) => selectors.disabled,
+    (selectors: CompoundButtonState) => selectors.disabled || (selectors['aria-disabled'] as boolean),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling
@@ -135,7 +135,8 @@ const useCompoundButtonBaseStyles = makeStyles([
   ],
   /* --- Ghost and disabled states --- */
   [
-    (selectors: CompoundButtonState) => selectors.disabled && selectors.ghost,
+    (selectors: CompoundButtonState) =>
+      (selectors.disabled || (selectors['aria-disabled'] as boolean)) && selectors.ghost,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       // secondary content styling

@@ -120,7 +120,7 @@ export const useSplitButtonMenuButtonStyles = makeStyles([
   ],
   /* --- Disabled state --- */
   [
-    (selectors: SplitButtonState) => selectors.disabled,
+    (selectors: SplitButtonState) => selectors.disabled || selectors['aria-disabled'],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
       '--button-menu-icon-color': tokens.buttonDisabledMenuIconColor || 'inherit',
