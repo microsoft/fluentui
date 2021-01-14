@@ -166,9 +166,8 @@ export const defaultTests: TestObject = {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
         try {
-          const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
-          const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-          const indexFile = require(path.join(rootPath, 'src', exportSubdir, 'index'));
+          const { displayName, packagePath, exportSubdir = '', Component } = testInfo;
+          const indexFile = require(path.join(packagePath, 'src', exportSubdir, 'index'));
 
           expect(indexFile[displayName]).toBe(Component);
         } catch (e) {
@@ -183,14 +182,15 @@ export const defaultTests: TestObject = {
   'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level file 'package/src/Component'`, () => {
-        try {
-          const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
-          const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-          const topLevelFile = require(path.join(rootPath, 'src', exportSubdir, displayName));
+        const { displayName, packagePath, exportSubdir = '', Component } = testInfo;
+        const pathToCheck = path.join(packagePath, 'src', exportSubdir, displayName);
 
+        try {
+          // TODO: require parses and executes top level code, use fs module to verify file instead
+          const topLevelFile = require(pathToCheck);
           expect(topLevelFile[displayName]).toBe(Component);
         } catch (e) {
-          defaultErrorMessages['has-top-level-file'](componentInfo, testInfo, e);
+          defaultErrorMessages['has-top-level-file'](pathToCheck, componentInfo, testInfo, e);
           throw new Error('has-top-level-file');
         }
       });

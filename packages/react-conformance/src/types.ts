@@ -20,6 +20,10 @@ export interface IsConformantOptions<TProps = {}> {
    */
   componentPath: string;
   /**
+   * Path to root of package.
+   */
+  packagePath: string;
+  /**
    * Component object to test.
    */
   Component: React.ComponentType<TProps>;

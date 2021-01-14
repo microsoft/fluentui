@@ -373,11 +373,14 @@ export const defaultErrorMessages = {
     failedTests.push('exported-top-level');
   },
 
-  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
-    const { displayName, componentPath } = testInfo;
+  'has-top-level-file': (
+    pathToCheck: string,
+    componentInfo: ComponentDoc,
+    testInfo: IsConformantOptions,
+    error: string,
+  ) => {
+    const { displayName } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const topLevelFile = path.join(rootPath, 'src', displayName);
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
@@ -389,7 +392,7 @@ export const defaultErrorMessages = {
       defaultErrorMessage(
         `has-top-level-file`,
         displayName,
-        'top level file in:' + paragraph() + testErrorPath(topLevelFile),
+        'top level file in:' + paragraph() + testErrorPath(pathToCheck),
       ) +
         resolveErrorMessages([
           `Make sure that your component's folder and name match it's displayName: ${resolveInfo(displayName)}`,
