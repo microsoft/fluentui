@@ -13,7 +13,8 @@ import { Theme } from './types';
 import { useTheme } from './useTheme';
 
 export type MakeStylesOptions<Tokens> = Omit<MakeNonReactStylesOptions<Tokens>, 'renderer'> & {
-  componentName?: string;
+  componentNames?: string | string[];
+  prefix?: string;
 };
 
 const renderer: MakeStylesRenderer = {
@@ -32,28 +33,45 @@ export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<
     ...classNames: (string | undefined)[]
   ) {
     const { components = {}, effects, fonts, palette, rtl, semanticColors, tokens } = useTheme();
-    const { componentName } = options;
+    const { prefix } = options;
+    let { componentNames = [] } = options;
+
+    const variantStyles: MakeStylesDefinition<Selectors, Tokens | Theme>[] = [];
     let resolvedVariantStyles;
 
     // Evaluate variants if they exist for the current component
-    if (componentName && components[componentName]) {
-      const { variants } = components[componentName];
-      if (variants) {
-        const prefix = '--' + componentName.toLowerCase();
-        const variantStyles: MakeStylesDefinition<Selectors, Tokens | Theme>[] = [];
+    if (!Array.isArray(componentNames)) {
+      componentNames = [componentNames];
+    }
+    for (const componentName of componentNames) {
+      if (components[componentName]) {
+        const { variants } = components[componentName];
+        if (variants) {
+          const resolvedPrefix = '--' + (prefix || componentName.toLowerCase());
 
-        for (const variant in variants) {
-          // Account for changing default variant
-          if (variant === 'root') {
-            variantStyles.push([null, tokensToStyleObject(variants[variant], prefix) as MakeStylesStyleRule<Tokens>]);
-          } else {
-            variantStyles.push([
-              (variantSelectors: Selectors & { variant: string }) => variantSelectors.variant === variant,
-              tokensToStyleObject(variants[variant], prefix) as MakeStylesStyleRule<Tokens>,
-            ]);
+          for (const variant in variants) {
+            // Account for changing default variant
+            if (variant === 'root') {
+              variantStyles.push([
+                null,
+                tokensToStyleObject(variants[variant], resolvedPrefix) as MakeStylesStyleRule<Tokens>,
+              ]);
+            } else {
+              variantStyles.push([
+                (variantSelectors: Selectors & { variant: string }) => variantSelectors.variant === variant,
+                tokensToStyleObject(variants[variant], resolvedPrefix) as MakeStylesStyleRule<Tokens>,
+              ]);
+              variantStyles.push([
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (variantSelectors: Selectors) => (variantSelectors as any)[variant],
+                tokensToStyleObject(variants[variant], resolvedPrefix) as MakeStylesStyleRule<Tokens>,
+              ]);
+            }
           }
         }
+      }
 
+      if (variantStyles.length > 0) {
         resolvedVariantStyles = makeNonReactStyles(variantStyles);
       }
     }

@@ -20,7 +20,8 @@ export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((pr
   state.className = useToggleButtonStyles(
     state,
     {
-      componentName: 'Button',
+      componentNames: ['Button', 'ToggleButton'],
+      prefix: 'button',
       tokens: state.tokens,
     },
     ToggleButtonClassNames.root,

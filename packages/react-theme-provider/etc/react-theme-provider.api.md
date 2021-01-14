@@ -50,7 +50,8 @@ export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<
 
 // @public (undocumented)
 export type MakeStylesOptions<Tokens> = Omit<MakeStylesOptions_2<Tokens>, 'renderer'> & {
-    componentName?: string;
+    componentNames?: string | string[];
+    prefix?: string;
 };
 
 // @public

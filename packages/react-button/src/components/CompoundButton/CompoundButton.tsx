@@ -22,7 +22,8 @@ export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>
   state.className = useCompoundButtonStyles(
     state,
     {
-      componentName: 'Button',
+      componentNames: ['Button', 'CompoundButton'],
+      prefix: 'button',
       tokens: state.tokens,
     },
     CompoundButtonClassNames.root,

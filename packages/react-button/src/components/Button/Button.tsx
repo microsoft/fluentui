@@ -23,7 +23,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   state.className = useButtonStyles(
     state,
     {
-      componentName: 'Button',
+      componentNames: 'Button',
       tokens: state.tokens,
     },
     ButtonClassNames.root,

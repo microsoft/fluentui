@@ -27,7 +27,8 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
   state.className = useSplitButtonStyles(
     state,
     {
-      componentName: 'Button',
+      componentNames: ['Button', 'SplitButton'],
+      prefix: 'button',
       tokens: state.tokens,
     },
     SplitButtonClassNames.root,

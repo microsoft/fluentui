@@ -24,7 +24,8 @@ export const MenuButton = React.forwardRef<HTMLElement, MenuButtonProps>((props,
   state.className = useMenuButtonStyles(
     state,
     {
-      componentName: 'Button',
+      componentNames: ['Button', 'MenuButton'],
+      prefix: 'button',
       tokens: state.tokens,
     },
     MenuButtonClassNames.root,

@@ -1,31 +1,27 @@
 import { PartialTheme } from '@fluentui/theme';
 
-export const TeamsTheme: PartialTheme = {
-  tokens: {
-    color: {
-      brand: {
-        background: '#6264a7',
+const tokens = {
+  color: {
+    brand: {
+      background: '#6264a7',
 
-        disabled: {
-          background: '#edebe9',
-          contentColor: '#c8c6c4',
-          borderColor: 'var(--color-brand-disabled-background)',
-        },
+      pressed: {
+        background: '#464775',
+      },
 
-        pressed: {
-          background: '#464775',
-        },
+      focused: {
+        background: '#585a96',
+      },
 
-        focused: {
-          background: '#585a96',
-        },
-
-        hovered: {
-          background: '#585a96',
-        },
+      hovered: {
+        background: '#585a96',
       },
     },
   },
+};
+
+export const TeamsTheme: PartialTheme = {
+  tokens,
   components: {
     Button: {
       variants: {
@@ -42,12 +38,6 @@ export const TeamsTheme: PartialTheme = {
           contentColor: '#252423',
           focusColor: '#000',
 
-          disabled: {
-            background: '#edebe9',
-            contentColor: '#c8c6c4',
-            borderColor: 'var(--button-disabled-background)',
-            boxShadow: 'none',
-          },
           hovered: {
             background: '#edebe9',
             contentColor: 'var(--button-contentColor)',
@@ -61,14 +51,32 @@ export const TeamsTheme: PartialTheme = {
             boxShadow: 'none',
           },
         },
+        primary: {
+          background: tokens.color.brand.background,
+          contentColor: 'white',
+
+          hovered: {
+            background: tokens.color.brand.hovered.background,
+            contentColor: 'white',
+          },
+
+          pressed: {
+            background: tokens.color.brand.pressed.background,
+            contentColor: 'white',
+          },
+        },
+        disabled: {
+          background: '#edebe9',
+          contentColor: '#c8c6c4',
+          borderColor: '#edebe9',
+          boxShadow: 'none',
+        },
       },
     },
     CompoundButton: {
       variants: {
-        root: {
-          disabled: {
-            secondaryContentColor: 'var(--button-idsabled-contentColor)',
-          },
+        disabled: {
+          secondaryContentColor: '#c8c6c4',
         },
       },
     },
