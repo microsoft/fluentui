@@ -365,6 +365,16 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     };
   }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused, inUseMode]);
 
+  React.useEffect(() => {
+    if (enabledVirtualCursor) {
+      const iframe = document.getElementById(iframeId) as HTMLIFrameElement;
+      iframe.contentWindow.focus();
+    } else {
+      virtualCursorElements.map(e => e.classList.remove('virtual-focused'));
+      setFocusedVcElement(null);
+    }
+  }, [enabledVirtualCursor, iframeId, virtualCursorElements]);
+
   return (
     <Frame
       title="Designer Canvas"
