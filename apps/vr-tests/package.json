@@ -19,7 +19,7 @@
     "@fluentui/example-data": "^8.0.0-beta.0",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.10",
     "@fluentui/react": "^8.0.0-beta.35",
-    "@fluentui/react-button": "^1.0.0-beta.18",
+    "@fluentui/react-button": "^1.0.0-beta.19",
     "@fluentui/react-cards": "^1.0.0-beta.34",
     "@fluentui/react-experiments": "^8.0.0-beta.38",
     "@fluentui/react-hooks": "^8.0.0-beta.8",

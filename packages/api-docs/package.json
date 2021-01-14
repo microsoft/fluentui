@@ -28,7 +28,7 @@
     "@fluentui/date-time-utilities": "^8.0.0-beta.1",
     "@fluentui/merge-styles": "^8.0.0-beta.3",
     "@fluentui/react": "^8.0.0-beta.35",
-    "@fluentui/react-button": "^1.0.0-beta.18",
+    "@fluentui/react-button": "^1.0.0-beta.19",
     "@fluentui/react-cards": "^1.0.0-beta.34",
     "@fluentui/react-checkbox": "^1.0.0-beta.29",
     "@fluentui/react-date-time": "^8.0.0-beta.29",
