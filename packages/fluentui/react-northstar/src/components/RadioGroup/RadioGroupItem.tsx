@@ -23,7 +23,7 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import { CircleIcon } from '@fluentui/react-icons-northstar';
+import { RadioButtonIcon } from '@fluentui/react-icons-northstar';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
@@ -229,8 +229,8 @@ RadioGroupItem.propTypes = {
 
 RadioGroupItem.defaultProps = {
   accessibility: radioGroupItemBehavior,
-  indicator: <CircleIcon outline size="small" />,
-  checkedIndicator: <CircleIcon size="small" />,
+  indicator: <RadioButtonIcon outline />,
+  checkedIndicator: <RadioButtonIcon />,
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;
