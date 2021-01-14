@@ -15,7 +15,8 @@
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+<!--------------------------------[ v0.52.0-beta ]------------------------------- -->
+## [v0.52.0-beta](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0-beta) (2021-01-14)
 
 ## BREAKING CHANGES
 - `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
