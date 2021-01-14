@@ -4,223 +4,92 @@ export const SRNC: Record<string, any> = {
   STATES_SEPARATOR: ' ',
   DESCBY_AND_LABBY_SEPARATOR: ' ',
 
-  // Landmarks and groups (definitions (definitions are stored in a separate file per each platform)
+  // Platforms inheritance definitions
+  inheritance: {
+    'Win/JAWS/VPC': 'Win/JAWS',
+  }, // End inheritance
+
+  // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
+  narrateLabelIfNoRole: ['Win/JAWS'],
+
+  // Platforms on which "the "<header>" and "<footer>" elements create a landmark even if they are a descendant of a sectioning role, e.g., role="article"
+  hfLandmarkInSectionRole: ['Win/JAWS'],
+
+  // Platforms on which "the description part of the narration is not narrated
+  ignoreDescription: ['Win/JAWS/VPC'],
+
+  // Platforms on which "the usage part of the narration is not narrated
+  ignoreUsage: ['Win/JAWS/VPC'],
+
+  // Platforms on which "the position and level parts of the narration are not narrated
+  ignorePositionAndLevel: ['Win/JAWS/VPC'],
+
+  // Platforms on which the "contains text" string in case of <textarea> element overrides the description when the <textarea> contains text
+  stringOverridesDescription: ['Win/JAWS'],
+
+  // [contains text" string definitions for each platform
+  containsText: {
+    'Win/JAWS': 'Contains text',
+  }, // End containsText
+
+  // Positions string definitions for each platform
+  positions: {
+    'Win/JAWS': '[X] of [Y]',
+  }, // End position
+
+  // Levels string definitions for each platform
+  levels: {
+    'Win/JAWS': '[level]',
+  }, // End level
+
+  // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
+  narrateOnlyWhenLabelled: {
+    'Win/JAWS': ['role=radiogroup', 'role=tablist'],
+  }, // End narrateOnlyWhenLabelled
+
+  // Landmark, group, composite and other element names and roles which are ignored together with their label
+  ignoredLandmarksAndGroups: {
+    'Win/JAWS/VPC': [
+      'aside',
+      'footer',
+      'header',
+      'role=banner',
+      'role=complementary',
+      'role=contentinfo',
+      'role=form',
+      'role=region',
+      'role=search',
+      'role=grid',
+      'role=menu',
+      'role=menubar',
+      'role=treegrid',
+    ],
+  }, // End narrateOnlyWhenLabelled
+
+  // Element names and roles which ignore the "aria-label" and "aria-labelledby" attributes
+  ignoreLabel: {
+    'Win/JAWS/VPC': ['role=listbox', 'role=toolbar'],
+  }, // End narrateOnlyWhenLabelled
+
+  // Landmarks and groups (the definitions are stored in a separate file per each platform)
   landmarksAndGroups: {
     'Win/JAWS': {},
   }, // End landmarksAndGroups
 
-  // Element names and roles which are narrated when entered only if they also have the "aria-label" or "aria-labelledby" attribute
-  narrateOnlyWhenLabelled: {
-    'Win/JAWS': ['role=radiogroup'],
-  },
-
-  // Platforms on which "aria-label" or "aria-labelledby" is narrated even when not present together with a landmark or group element or role
-  narrateLabelIfNoRole: ['Win/JAWS'],
-  // Element type strings for each platform
-  typeStrings: {
-    'Win/JAWS': {
-      toggleButton: 'Toggle button',
-      textInput: 'Edit',
-      button: 'Button',
-      checkboxInput: 'check box',
-      radioInput: 'radio button',
-      combobox: 'edit combo',
-      textarea: 'Edit',
-      link: 'Link',
-      menuitem: '',
-      menuitemcheckbox: '',
-      menuitemradio: '',
-      select: 'Combo box',
-      switch: 'Switch',
-      tab: 'Tab',
-      option: '',
-    }, // End Win/JAWS
-  }, // End typeStrings
-
-  // Element state strings for each platform and definition name
-  stateStrings: {
-    'Win/JAWS': {
-      button: {
-        'aria-expanded=true': 'expanded',
-        'aria-expanded=false': 'collapsed',
-        'aria-haspopup=true': 'menu',
-        'aria-haspopup=menu': 'menu',
-        'aria-haspopup=listbox': 'menu',
-        'aria-haspopup=tree': 'menu',
-        'aria-haspopup=grid': 'menu',
-        'aria-haspopup=dialog': 'menu',
-        'aria-haspopup=': '',
-        'aria-pressed=true': 'Pressed',
-        'aria-pressed=false': '',
-      }, // End button
-      'input:text': {
-        'aria-invalid=true': 'invalid entry',
-        'aria-required=true': 'Required',
-      }, // End input:text
-      'input:checkbox': {
-        'checked=true': 'checked',
-        'checked=false': 'not checked',
-        'aria-required=true': 'Required',
-      }, // End input:checkbox
-      'role=checkbox': {
-        'aria-checked=true': 'checked',
-        'aria-checked=false': 'not checked',
-        'aria-checked=mixed': 'partially checked',
-        'aria-required=true': 'Required',
-      }, // End role=checkbox
-      'input:radio': {
-        'checked=true': 'checked',
-        'checked=false': 'not checked',
-        'aria-required=true': 'Required',
-      }, // End input:radio
-      'role=radio': {
-        'aria-checked=true': 'checked',
-        'aria-checked=false': 'not checked',
-        'aria-required=true': 'Required',
-      }, // End role=radio
-      'role=combobox': {
-        'aria-invalid=true': 'invalid entry',
-        'aria-required=true': 'Required',
-      }, // End role=combobox
-      textarea: {
-        'aria-invalid=true': 'invalid entry',
-        'aria-required=true': 'Required',
-        '[containsText]': 'Contains text',
-      }, // End textarea
-      a: {
-        'aria-expanded=true': 'expanded',
-        'aria-expanded=false': 'collapsed',
-        'aria-haspopup=true': 'Has Popup menu',
-        'aria-haspopup=menu': 'Has Popup menu',
-        'aria-haspopup=listbox': 'Has Popup listbox',
-        'aria-haspopup=tree': 'Has Popup tree',
-        'aria-haspopup=grid': 'Has Popup grid',
-        'aria-haspopup=dialog': 'Has Popup dialog',
-        'aria-haspopup=': '',
-      }, // End a
-      'role=menuitem': {
-        'aria-haspopup=true': 'submenu',
-        'aria-haspopup=menu': 'submenu',
-        'aria-haspopup=listbox': 'submenu',
-        'aria-haspopup=tree': 'submenu',
-        'aria-haspopup=grid': 'submenu',
-        'aria-haspopup=dialog': 'submenu',
-        'aria-haspopup=': '',
-      }, // End role=menuitem
-      'role=menuitemcheckbox': {
-        'aria-checked=true': 'checked',
-        'aria-checked=false': 'not checked',
-      }, // End role=menuitemcheckbox
-      'role=menuitemradio': {
-        'aria-checked=true': 'checked',
-        'aria-checked=false': 'not checked',
-      }, // End role=menuitemradio
-      select: {
-        'aria-invalid=true': 'invalid entry',
-        'aria-required=true': 'Required',
-      }, // End select
-      'role=switch': {
-        'aria-checked=true': 'Pressed On',
-        'aria-checked=false': 'Off',
-      }, // End role=switch
-      'role=tab': {
-        'aria-selected=true': 'Selected',
-        'aria-selected=false': '',
-      }, // End role=tab
-      'role=option': {}, // End role=option
-    }, // End Win/JAWS
-  }, // End stateStrings
-
-  // Element usage strings for each platform and definition name
-  usageStrings: {
-    'Win/JAWS': {
-      button: {
-        '[default]': 'To activate press Enter.',
-        'aria-pressed=true': 'To toggle the state press spacebar.',
-        'aria-pressed=false': 'To toggle the state press spacebar.',
-      }, // End button
-      'input:text': {
-        '[default]': 'Type in text.',
-      }, // End input:text
-      'input:checkbox': {
-        '[default]': 'To check press Spacebar.',
-        'checked=true': 'To clear checkmark press Spacebar.',
-      }, // End input:checkbox
-      'role=checkbox': {
-        '[default]': 'To check press Spacebar.',
-        'aria-checked=true': 'To clear checkmark press Spacebar.',
-      }, // End role=checkbox
-      'input:radio': {
-        '[default]': 'To change the selection press Up or Down Arrow.',
-      }, // End input:radio
-      'role=radio': {
-        '[default]': 'To change the selection press Up or Down Arrow.',
-      }, // End role=radio
-      'role=combobox': {
-        '[default]': 'To set the value use the Arrow keys or type the value.',
-      }, // End role=combobox
-      textarea: {
-        '[default]': 'Type in text.',
-      }, // End textarea
-      'role=menuitem': {
-        '[default]': 'To move through items press up or down arrow.',
-      }, // End role=menuitem
-      'role=menuitemcheckbox': {
-        '[default]': 'To move through items press up or down arrow.',
-      }, // End role=menuitemcheckbox
-      'role=menuitemradio': {
-        '[default]': 'To move through items press up or down arrow.',
-      }, // End role=menuitemradio
-      select: {
-        '[default]': 'To change the selection use the Arrow keys.',
-      }, // End select
-      'role=switch': {
-        '[default]': '',
-      }, // End role=switch
-      'role=tab': {
-        '[default]': 'To activate tab page press Spacebar.',
-        'aria-selected=true': '',
-      }, // End role=switch
-      'role=option': {
-        '[default]': 'To move to an item press the Arrow keys.',
-      }, // End role=option
-    }, // End Win/JAWS
-  }, // End usageStrings
-
-  // State attributes of which "false" value means the attribute is omitted
-  falseMeansOmitted: ['aria-haspopup', 'aria-invalid', 'aria-required'], // End falseMeansOmitted
-
-  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions are stored in a separate file per each platform)
-  stateRules: {
+  // Element types (the definitions are stored in a separate file per each platform)
+  elementTypes: {
     'Win/JAWS': {},
-  }, // End stateRules
-
-  // Computed narration parts reading order for each platform and definition name
-  readingOrder: {
-    'Win/JAWS': {
-      '[default]': ['landmarksAndGroups', 'name', 'type', 'state', 'description', 'usage'],
-      'input:text': ['landmarksAndGroups', 'name', 'type', 'state', 'value', 'description', 'usage'],
-      'role=combobox': 'input:text',
-      'input:radio': ['landmarksAndGroups', 'name', 'type', 'state', 'position', 'description', 'usage'],
-      'role=radio': 'input:radio',
-      a: ['landmarksAndGroups', 'name', 'state', 'type', 'description', 'usage'],
-      'role=menuitem': 'input:radio',
-      'role=menuitemcheckbox': 'input:radio',
-      'role=menuitemradio': 'input:radio',
-      select: 'input:text',
-      'role=tab': 'input:radio',
-      'role=option': 'input:radio',
-    }, // End Win/JAWS
-  }, // End readingOrder
+  }, // End elementTypes
 
   // Possible state attributes for each definition name
   possibleStates: {
     button: ['aria-expanded', 'aria-haspopup', 'aria-pressed'],
     'input:text': ['aria-invalid', 'aria-required'],
-    'input:checkbox': ['checked', 'aria-required'],
-    'role=checkbox': ['aria-checked', 'aria-required'],
-    'input:radio': ['checked', 'aria-required'],
-    'role=radio': ['aria-checked', 'aria-required'],
+    'role=searchbox': ['aria-invalid', 'aria-required'],
+    'input:checkbox': ['checked', 'aria-required', 'aria-invalid'],
+    'role=checkbox': ['aria-checked', 'aria-required', 'aria-invalid'],
+    'input:radio': ['checked', 'aria-required', 'aria-invalid'],
+    'role=radio': ['aria-checked', 'aria-required', 'aria-invalid'],
     'role=combobox': ['aria-invalid', 'aria-required'],
     textarea: ['aria-invalid', 'aria-required'],
     a: ['aria-expanded', 'aria-haspopup', 'aria-pressed'],
@@ -229,7 +98,32 @@ export const SRNC: Record<string, any> = {
     'role=menuitemradio': ['aria-checked'],
     select: ['aria-invalid', 'aria-required'],
     'role=switch': ['aria-checked'],
-    'role=option': [],
+    'role=treeitem': ['aria-expanded'],
     'role=tab': ['aria-selected'],
+    'role=gridcell': ['aria-selected', 'aria-haspopup'],
   }, // End possibleStates
+
+  // State attributes of which "false" value means the attribute is not present
+  falseMeansNotPresent: ['aria-haspopup', 'aria-invalid', 'aria-required'],
+
+  // Rules for the type and state narration parts computation based on the element state attributes combination (the definitions are stored in a separate file per each platform)
+  stateRules: {
+    'Win/JAWS': {},
+  }, // End stateRules
+
+  // Element states (the definitions for each definition name are stored in a separate file per each platform)
+  elementStates: {
+    'Win/JAWS': {},
+  }, // End elementStates
+
+  // Usages (the definitions for each definition name are stored in a separate file per each platform)
+  // If there are more matching states per definition name, the last usage definition will be used
+  usages: {
+    'Win/JAWS': {},
+  }, // End usages
+
+  // Reading order of the narration parts (the definitions for each definition name are stored in a separate file per each platform)
+  readingOrder: {
+    'Win/JAWS': {},
+  }, // End readingOrder
 };
