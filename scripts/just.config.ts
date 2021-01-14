@@ -86,6 +86,7 @@ export function preset() {
 
   task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
   task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('fluentui:publish:preminor', fluentuiLernaPublish('preminor'));
 
   task('ts:compile', () => {
     return argv().commonjs
