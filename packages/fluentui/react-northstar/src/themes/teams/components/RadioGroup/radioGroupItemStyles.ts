@@ -67,7 +67,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
   }),
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    margin: `${pxToRem(2)}`,
+    margin: `${pxToRem(2)} 0 ${pxToRem(2)} ${pxToRem(2)}`,
     outline: 0,
     display: 'flex',
     alignItems: 'center',
@@ -87,6 +87,6 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
   }),
 
   label: (): ICSSInJSStyle => ({
-    margin: `0 0 0 ${pxToRem(10)}`,
+    margin: `0 0 0 ${pxToRem(12)}`,
   }),
 };
