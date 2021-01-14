@@ -58,6 +58,11 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
       ...restHoverFocusTextColor(v.colorDisabled),
     }),
 
+    ...(p.vertical && {
+      marginTop: `${pxToRem(5)}`,
+      marginBottom: `${pxToRem(5)}`,
+    }),
+
     ...getBorderFocusStyles({ variables: siteVariables }),
   }),
 
