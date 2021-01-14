@@ -90,11 +90,11 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
+        ...borderFocusStyles[':focus-visible'],
         backgroundColor: v.paddleBackgroundColorFocus,
         borderColor: v.paddleBorderColorFocus,
         color: v.paddleColorFocus,
         borderWidth,
-
         ':hover': {
           borderColor: v.paddleBorderColorHover,
         },
