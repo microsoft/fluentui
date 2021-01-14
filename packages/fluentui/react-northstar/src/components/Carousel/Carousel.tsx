@@ -212,7 +212,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     }),
   });
 
-  const { classes, styles: resolvedStyles } = useStyles<CarouselStylesProps>(Carousel.displayName, {
+  const { classes } = useStyles<CarouselStylesProps>(Carousel.displayName, {
     className: carouselClassName,
     mapPropsToStyles: () => ({
       shouldFocusContainer,
@@ -418,10 +418,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   );
   const renderPaddles = () => {
     return createShorthand(CarouselPaddlesContainer, paddles, {
-      defaultProps: () =>
-        getA11yProps('paddleContainer', {
-          styles: resolvedStyles.paddlesContainer,
-        }),
+      defaultProps: () => getA11yProps('paddleContainer', {}),
     });
   };
 
