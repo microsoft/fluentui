@@ -33,4 +33,5 @@ export interface Slot {
   checkSpaceKeyPressed: boolean;
   checkEnterKeyPressed: boolean;
   checkOnClickWasExecuted: boolean;
+  overrideId: boolean;
 }

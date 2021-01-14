@@ -162,6 +162,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       overflowAriaLabel,
       overflowIndex,
       onRenderOverflowIcon,
+      overflowButtonAs,
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
@@ -169,6 +170,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       (item): IContextualMenuItem => {
         const isActionable = !!(item.onClick || item.href);
         return {
+          text: item.text,
           name: item.text,
           key: item.key,
           onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
@@ -200,12 +202,13 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     if (hasOverflowItems) {
       const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
       const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
+      const OverflowButton = overflowButtonAs ? overflowButtonAs : IconButton;
 
       itemElements.splice(
         overflowIndex!,
         0,
         <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
-          <IconButton
+          <OverflowButton
             className={this._classNames.overflowButton}
             iconProps={iconProps}
             role="button"

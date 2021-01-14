@@ -1,3 +1,9 @@
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import { max as d3Max, min as d3Min } from 'd3-array';
+import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
+import { select as d3Select, event as d3Event } from 'd3-selection';
+import { format as d3Format } from 'd3-format';
+import * as d3TimeFormat from 'd3-time-format';
 import {
   IEventsAnnotationProps,
   ILineChartPoints,
@@ -5,12 +11,6 @@ import {
   IDataPoint,
   IVerticalBarChartDataPoint,
 } from '../index';
-import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
-import { select as d3Select, event as d3Event } from 'd3-selection';
-import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -37,7 +37,7 @@ export enum YAxisType {
 }
 
 export interface IWrapLabelProps {
-  node: SVGGElement | null;
+  node: SVGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
@@ -108,34 +108,18 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
-export interface IContainerValues {
-  width: number;
-  height: number;
-  shouldResize: boolean;
-  reqID: number;
-}
-
-export interface IFitContainerParams {
-  containerWidth: number;
-  containerHeight: number;
-  hideLegend: boolean;
-  legendContainer: HTMLDivElement;
-  container: HTMLDivElement | null | HTMLElement;
-}
-
 /**
  * Create Numeric X axis
  * @export
  * @param {IXAxisParams} xAxisParams
- * @param {boolean} isRtl
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
+export function createNumericXAxis(xAxisParams: IXAxisParams) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
-    xAxistickSize = 10,
+    xAxistickSize = 6,
     tickPadding = 10,
-    xAxisCount = 10,
+    xAxisCount = 6,
     xAxisElement,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
@@ -161,16 +145,16 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, isRtl: boolean) {
  * @export
  * @param {IXAxisParams} xAxisParams
  * @param {ITickParams} tickParams
- * @param {boolean} isRtl
  */
-export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, isRtl: boolean) {
-  const { domainNRangeValues, xAxisElement } = xAxisParams;
+export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
+  const { domainNRangeValues, xAxisElement, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(10)
-    .tickPadding(10);
+    .tickSize(xAxistickSize)
+    .tickPadding(10)
+    .ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
@@ -184,7 +168,6 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
 /**
  * Create String X axis
  * Currently using for only Vetical stacked bar chart and grouped vertical bar chart
- *
  * @export
  * @param {IXAxisParams} xAxisParams
  * @param {ITickParams} tickParams
@@ -192,7 +175,7 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @returns
  */
 export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
-  const { domainNRangeValues, xAxisCount = 10, xAxistickSize = 10, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
+  const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
@@ -212,7 +195,7 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
 }
 
 /**
- * This method uses for creating data points for the y axis.
+ * This method used for creating data points for the y axis.
  * @export
  * @param {number} maxVal
  * @param {number} minVal
@@ -229,7 +212,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
 }
 
 /**
- * Creating Y axis of the chart
+ * Creating Numeric Y axis of the chart
  * @export
  * @param {IYAxisParams} yAxisParams
  * @param {boolean} isRtl
@@ -251,7 +234,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     eventLabelHeight,
   } = yAxisParams;
 
-  // maxOFYVal coming from only area chart (If shoule calculate from processed data)
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
@@ -273,6 +256,12 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   return yAxisScale;
 }
 
+/**
+ * Creating String Y axis of the chart
+ * @param yAxisParams
+ * @param dataPoints
+ * @param isRtl
+ */
 export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
   const yAxisScale = d3ScaleBand()
@@ -295,6 +284,11 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
   return yAxisScale;
 };
 
+/**
+ * For area chart and line chart, while displaying stackCallout, Need to form a callout data object.
+ * This methos creates an object for those 2 charts.
+ * @param values
+ */
 export function calloutData(values: ILineChartPoints[]) {
   let combinedResult: {
     legend: string;
@@ -376,6 +370,15 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
   }
 }
 
+/**
+ * This method used for wrapping of x axis lables (tick values).
+ * It breaks down given text value by space separated and calculates the total height needed to display all the words.
+ * That value = removal value. This value needs to be remove from total svg height, svg will shrink and
+ * total text will be displayed.
+ * @export
+ * @param {IWrapLabelProps} wrapLabelProps
+ * @returns
+ */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
   if (node === null) {
@@ -459,6 +462,11 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   return removeVal > 0 ? removeVal : 0;
 }
 
+/**
+ * This method displays a tooltip to the x axis lables(tick values)
+ * when prop 'showXAxisLablesTooltip' enables to the respected chart.
+ * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
@@ -468,7 +476,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
     .attr('class', tooltipCls)
     .style('opacity', 0);
   const tickObject = xAxis!.selectAll('.tick')._groups[0];
-  const tickObjectLength = Object.keys(tickObject).length;
+  const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -487,6 +495,10 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   }
 }
 
+/**
+ * Find the axis type of line chart and area chart from given data
+ * @param points
+ */
 export function getXAxisType(points: ILineChartPoints[]): boolean {
   let isXAxisDateType: boolean = false;
   if (points && points.length > 0) {
@@ -508,6 +520,7 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaChart(
@@ -515,29 +528,31 @@ export function domainRangeOfDateForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  tickValues: Date[] = [],
 ): IDomainNRange {
-  let sDate = new Date();
-  // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-  let lDate = new Date(-8640000000000000);
-  const xAxisData: Date[] = [];
-  points.forEach((singleLineChartData: ILineChartPoints) => {
-    singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
-      xAxisData.push(point.x as Date);
-      if (point.x < sDate) {
-        sDate = point.x as Date;
-      }
-      if (point.x > lDate) {
-        lDate = point.x as Date;
-      }
+  const sDate = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
     });
-  });
+  })!;
+  const lDate = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+
+  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  const smallestDate = d3Min([...tickValues, sDate])!;
+  const largestDate = d3Max([...tickValues, lDate])!;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
-    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
+    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
 }
 
 /**
@@ -575,34 +590,17 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
- * Calculates Range values to the Vertical stacked bar chart for string axis
+ * Calculates Range values of x Axis string axis
  * For String axis, we need to give domain values (Not start and end array values)
  * So sending 0 as domain values. Domain will be handled at creation of string axis
- *
+ * For charts stacked bar chart, grouped vertical bar chart, HeatMapChart and Vertical bar chart
  * @export
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
  * @returns {IDomainNRange}
  */
-export function domainRangeOfStrForVSBC(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
-  const rMin = margins.left!;
-  const rMax = width - margins.right!;
-
-  return isRTL
-    ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
-    : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
-}
-
-/**
- * it calculates the range and domain values for the HeatMap
- * @param margins
- * @param width
- * @param isRTL
- * @returns {IDomainNRange}
- */
-
-export function getDomainAndRangeForStringAxisForHeatMap(margins: IMargins, width: number, isRTL: boolean) {
+export function domainRangeOfXStringAxis(margins: IMargins, width: number, isRTL: boolean): IDomainNRange {
   const rMin = margins.left!;
   const rMax = width - margins.right!;
   return isRTL
@@ -665,25 +663,6 @@ export function domainRageOfVerticalNumeric(
 }
 
 /**
- * Calculates Range values to the Vertical bar chart for string axis
- * For String axis, we need to give domain values (Not start and end array values)
- * So sending 0 as domain values. Domain will be handled at creation of string axis
- * @export
- * @param {IMargins} margins
- * @param {number} containerWidth
- * @param {boolean} isRTL
- * @returns {IDomainNRange}
- */
-export function domainRangeOfStrVertical(margins: IMargins, containerWidth: number, isRTL: boolean): IDomainNRange {
-  const rMin = margins.left!;
-  const rMax = containerWidth - margins.right!;
-
-  return isRTL
-    ? { dStartValue: 0, dEndValue: 0, rStartValue: rMax, rEndValue: rMin }
-    : { dStartValue: 0, dEndValue: 0, rStartValue: rMin, rEndValue: rMax };
-}
-
-/**
  * For creating X axis, need to calculate x axis domain and range values from given points.
  * This may vary based on chart type and type of x axis
  * So, this method will define which method need to call based on chart type and axis type.
@@ -705,7 +684,8 @@ export function getDomainNRangeValues(
   chartType: ChartTypes,
   isRTL: boolean,
   xAxisType: XAxisTypes,
-  barWidth?: number,
+  barWidth: number,
+  tickValues: Date[] | number[] | undefined,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -727,21 +707,19 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL, tickValues! as Date[]);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
   } else {
+    // String Axis type
     switch (chartType) {
       case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfStrForVSBC(margins, width, isRTL);
-        break;
+      case ChartTypes.GroupedVerticalBarChart:
       case ChartTypes.VerticalBarChart:
-        domainNRangeValue = domainRangeOfStrVertical(margins, width, isRTL);
-        break;
       case ChartTypes.HeatMapChart:
-        domainNRangeValue = getDomainAndRangeForStringAxisForHeatMap(margins, width, isRTL);
+        domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
@@ -752,7 +730,6 @@ export function getDomainNRangeValues(
 
 /**
  * Calculating start and ending values of the Area chart and LineChart
- *
  * @export
  * @param {ILineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
@@ -784,6 +761,12 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
   return { startValue: yMin, endValue: yMax };
 }
 
+/**
+ * Fins the min and max values of the vertical bar chart y axis data point.
+ * @export
+ * @param {IVerticalBarChartDataPoint[]} points
+ * @returns {{ startValue: number; endValue: number }}
+ */
 export function findVerticalNumericMinMaxOfY(
   points: IVerticalBarChartDataPoint[],
 ): { startValue: number; endValue: number } {
@@ -796,6 +779,7 @@ export function findVerticalNumericMinMaxOfY(
 /**
  * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
  * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
+ * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
  * @export
  * @param {*} points
  * @param {ChartTypes} chartType

@@ -8,6 +8,7 @@ import * as Utilities from '../../Utilities';
 import * as positioning from '../../Positioning';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 describe('Callout', () => {
   let realDom: HTMLDivElement;
@@ -191,11 +192,7 @@ describe('Callout', () => {
     let previousFocusElement;
     let isFocused;
     let restoreCalled = false;
-    const onRestoreFocus = (options: {
-      originalElement: HTMLElement | Window | undefined;
-      containsFocus: boolean;
-      documentContainsFocus: boolean;
-    }) => {
+    const onRestoreFocus = (options: IPopupRestoreFocusParams) => {
       previousFocusElement = options.originalElement;
       isFocused = options.containsFocus;
       restoreCalled = true;

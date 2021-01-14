@@ -1,8 +1,9 @@
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
-import { ToggleButtonState } from './ToggleButton.types';
+import { ToggleButtonState, ToggleButtonVariants } from './ToggleButton.types';
+import { useButtonClasses } from '../Button/useButtonClasses';
 
-export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
+const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleButtonVariants>({
   name: 'ToggleButton',
   prefix: '--button',
 
@@ -68,8 +69,9 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     },
   },
 
-  variants: (theme: Theme) => {
-    const { palette, semanticColors } = theme;
+  variants: (theme: Theme): ToggleButtonVariants => {
+    const { palette, semanticColors, tokens } = theme;
+    const brand = tokens?.color?.brand;
 
     return {
       root: {
@@ -94,18 +96,18 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
 
       primary: {
         checked: {
-          background: 'var(--color-brand-checked-background)',
-          contentColor: 'var(--color-brand-checked-contentColor)',
+          background: brand?.checked?.background,
+          contentColor: brand?.checked?.contentColor,
         },
 
         checkedHovered: {
-          background: 'var(--color-brand-checkedHovered-background)',
-          contentColor: 'var(--color-brand-checkedHovered-contentColor)',
+          background: brand?.checkedHovered?.background,
+          contentColor: brand?.checkedHovered?.contentColor,
         },
 
         checkedPressed: {
-          background: 'var(--color-brand-checkedPressed-background)',
-          contentColor: 'var(--color-brand-checkedPressed-contentColor)',
+          background: brand?.checkedPressed?.background,
+          contentColor: brand?.checkedPressed?.contentColor,
         },
 
         highContrast: {
@@ -147,3 +149,8 @@ export const useToggleButtonClasses = makeVariantClasses<ToggleButtonState>({
     };
   },
 });
+
+export const useToggleButtonClasses = (state: ToggleButtonState) => {
+  useButtonClasses(state);
+  useToggleButtonBaseClasses(state);
+};

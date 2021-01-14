@@ -13,7 +13,7 @@
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
     "build:prod": "yarn build --production",
-    "buildci": "yarn prelint && lage build test lint --verbose --grouped",
+    "buildci": "yarn prelint && lage build test lint --verbose",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
@@ -153,6 +153,7 @@
           "@fluentui/react-bindings",
           "@fluentui/react-builder",
           "@fluentui/react-northstar",
+          "@fluentui/react-northstar-prototypes",
           "@fluentui/state",
           "@fluentui/styles"
         ],
@@ -161,7 +162,8 @@
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose"
+          "@fluentui/react-compose",
+          "stylis"
         ]
       }
     ]

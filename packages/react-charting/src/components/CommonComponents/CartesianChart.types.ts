@@ -6,8 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IMargins } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
-import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/index';
+import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
   /**
@@ -224,7 +223,7 @@ export interface ICartesianChartProps {
 
   /**
    * defines the number of ticks on the x-axis
-   * @default 10
+   * @default 6
    */
   xAxisTickCount?: number;
 
@@ -309,6 +308,7 @@ export interface IYValueHover {
   y?: number;
   color?: string;
   data?: string | number;
+  yAxisCalloutData?: string | { [id: string]: number };
 }
 
 export interface IChildProps {
@@ -369,6 +369,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   getmargins?: (margins: IMargins) => void;
 
+  /**
+   * This is a call back method to the chart from cartesian chart.
+   * params are xScale, yScale, containerHeight, containerWidth. These values were used to draw the graph.
+   * It also contians an optional param xAxisElement - defines as x axis scale element.
+   * This param used to enable feature word wrap of Xaxis.
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getGraphData?: any;
 
@@ -411,7 +417,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   datasetForXAxisDomain?: string[];
 
   /** Own callout design */
-  // need to add type here
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customizedCallout?: any;
 

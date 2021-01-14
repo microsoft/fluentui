@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-shared-contexts",
+  "entries": [
+    {
+      "date": "Fri, 06 Nov 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-shared-contexts_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Creating @fluentui/react-shared-contexts package and moving MenuContext from @fluentui/react-button into it.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb55393551e4e06a3864a6e2351c7cad7777dd6",
+            "package": "@fluentui/react-shared-contexts"
+          }
+        ]
+      }
+    }
+  ]
+}

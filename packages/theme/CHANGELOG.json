@@ -2,6 +2,66 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 01 Dec 2020 12:38:05 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.8",
+      "version": "2.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Added selected as a possible key in ColorTokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "73da5f7dff44cd57a23c12f91c5210399a9f054e",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Nov 2020 12:31:40 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.7",
+      "version": "2.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move getTokens logic out from ThemeProvider to mergeTheme/createTheme.",
+            "author": "xgao@microsoft.com",
+            "commit": "8f026356eb3228e0a156aa7a54aa35f06f55b7f2",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.5",
+      "version": "2.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Mark stylesheets in theme as internal.",
+            "author": "xgao@microsoft.com",
+            "commit": "ef540915afb6698d8a43bb1252488deef1f0e66e",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Oct 2020 12:32:24 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.3",
+      "version": "2.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing and expanding token typings.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca3b8690a04e641ee494c7fecb62615f1c468af",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/theme_v2.0.0-beta.0",
       "version": "2.0.0-beta.0",

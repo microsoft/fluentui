@@ -1,33 +1,36 @@
 import * as React from 'react';
 import { Image, IImageProps, ImageFit } from '@fluentui/react/lib/Image';
-import { Label } from '@fluentui/react/lib/Label';
+
+// These props are defined up here so they can easily be applied to multiple Images.
+// Normally specifying them inline would be fine.
+const imageProps: IImageProps = {
+  imageFit: ImageFit.cover,
+  src: 'http://placehold.it/500x500',
+  // Show a border around the image (just for demonstration purposes)
+  styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
+};
 
 export const ImageCoverExample = () => {
-  const imageProps: IImageProps = {
-    src: 'http://placehold.it/500x500',
-    imageFit: ImageFit.cover,
-  };
   return (
     <div>
       <p>
-        Setting the imageFit property to "cover" will cause the image to scale up or down proportionally, while cropping
-        from either the top and bottom or sides to completely fill the frame.
+        Setting the <code>imageFit</code> property to <code>ImageFit.cover</code> will cause the image to scale up or
+        down proportionally, while cropping from either the top and bottom or sides to completely fill the frame.
       </p>
-      <Label>
-        The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the height and
-        the sides are cropped evenly.
-      </Label>
+      <p>
+        This image has a wider aspect ratio (more landscape) than the frame, so it's scaled to fit the height and the
+        sides are cropped evenly.
+      </p>
       <Image
         {...imageProps}
         alt='Example of the image fit value "cover" on an image wider than the frame.'
         width={150}
         height={250}
       />
-      <br />
-      <Label>
-        The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the width and
-        the top and bottom are cropped evenly.
-      </Label>
+      <p>
+        This image has a taller aspect ratio (more portrait) than the frame, so it's scaled to fit the width and the top
+        and bottom are cropped evenly.
+      </p>
       <Image
         {...imageProps}
         alt='Example of the image fit value "cover" on an image taller than the frame.'

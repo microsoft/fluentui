@@ -143,9 +143,10 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
         description,
         defaultValue: defaultProps[propName],
         tags,
-        types,
+        types: types,
         name: propName,
         required: propDef.required,
+        resolvedType: propDef.resolvedType,
       });
     }
   });
