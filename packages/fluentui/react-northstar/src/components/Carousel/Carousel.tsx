@@ -14,6 +14,7 @@ import {
   childrenExist,
   ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
+  createShorthand,
 } from '../../utils';
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { CarouselItem, CarouselItemProps } from './CarouselItem';
@@ -33,6 +34,7 @@ import {
   mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
+import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -209,7 +211,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     }),
   });
 
-  const { classes } = useStyles<CarouselStylesProps>(Carousel.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<CarouselStylesProps>(Carousel.displayName, {
     className: carouselClassName,
     mapPropsToStyles: () => ({
       shouldFocusContainer,
@@ -386,36 +388,40 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
       actions.setAriaLiveOn(true);
     },
   });
-
+  const paddles = (
+    <>
+      <Ref innerRef={paddlePreviousRef}>
+        {CarouselPaddle.create(paddlePrevious, {
+          defaultProps: () =>
+            getA11yProps('paddlePrevious', {
+              className: carouselSlotClassNames.paddlePrevious,
+              previous: true,
+              hidden: items !== undefined && !circular && activeIndex === 0,
+            }),
+          overrideProps: (predefinedProps: CarouselPaddleProps) =>
+            handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
+        })}
+      </Ref>
+      <Ref innerRef={paddleNextRef}>
+        {CarouselPaddle.create(paddleNext, {
+          defaultProps: () =>
+            getA11yProps('paddleNext', {
+              className: carouselSlotClassNames.paddleNext,
+              next: true,
+              hidden: items !== undefined && !circular && activeIndex === items.length - 1,
+            }),
+          overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
+        })}
+      </Ref>
+    </>
+  );
   const renderPaddles = () => {
-    return (
-      <>
-        <Ref innerRef={paddlePreviousRef}>
-          {CarouselPaddle.create(paddlePrevious, {
-            defaultProps: () =>
-              getA11yProps('paddlePrevious', {
-                className: carouselSlotClassNames.paddlePrevious,
-                previous: true,
-                hidden: items !== undefined && !circular && activeIndex === 0,
-              }),
-            overrideProps: (predefinedProps: CarouselPaddleProps) =>
-              handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
-          })}
-        </Ref>
-        <Ref innerRef={paddleNextRef}>
-          {CarouselPaddle.create(paddleNext, {
-            defaultProps: () =>
-              getA11yProps('paddleNext', {
-                className: carouselSlotClassNames.paddleNext,
-                next: true,
-                hidden: items !== undefined && !circular && activeIndex === items.length - 1,
-              }),
-            overrideProps: (predefinedProps: CarouselPaddleProps) =>
-              handlePaddleOverrides(predefinedProps, 'paddleNext'),
-          })}
-        </Ref>
-      </>
-    );
+    return createShorthand(CarouselPaddlesContainer, paddles, {
+      defaultProps: () =>
+        getA11yProps('paddleContainer', {
+          styles: resolvedStyles.paddlesContainer,
+        }),
+    });
   };
 
   const renderNavigation = () => {

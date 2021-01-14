@@ -6,6 +6,7 @@ import { CarouselVariables } from './carouselVariables';
 export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'inline-block',
+    position: 'relative',
   }),
   itemsContainerWrapper: ({ variables: v, props: p }): ICSSInJSStyle => ({
     display: 'flex',
@@ -24,5 +25,14 @@ export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, Ca
     display: 'flex',
     listStyle: 'none',
     willChange: 'transform',
+  }),
+  paddlesContainer: (): ICSSInJSStyle => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }),
 };
