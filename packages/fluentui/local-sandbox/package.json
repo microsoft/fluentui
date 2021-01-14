@@ -18,7 +18,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^7.0.0",
     "express": "^4.15.4",
-    "fork-ts-checker-webpack-plugin": "6.1.0",
+    "fork-ts-checker-webpack-plugin": "^6.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "source-map-loader": "^2.0.0",
