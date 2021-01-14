@@ -33,7 +33,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   /**
    * @deprecated
    * A control for the form field.
-   * */
+   */
   control?: ShorthandValue<BoxProps>;
 
   /** The HTML input id. This will be set on the control element and will be use for linking it with the label for correct accessibility. */
