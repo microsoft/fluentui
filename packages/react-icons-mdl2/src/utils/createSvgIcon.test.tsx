@@ -5,7 +5,7 @@ import { createTheme } from '@fluentui/theme';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 const testSvg = () => <svg />;
-const testOverridenSvg = () => <svg id="test-overriden-id" />;
+const testOverridenSvg = () => <svg data-id="test-overridden-id" />;
 const TestOverridenIcon = createSvgIcon({ svg: testOverridenSvg, displayName: 'TestIcon' });
 
 const theme = createTheme({
@@ -68,5 +68,15 @@ describe('createSvgIcon', () => {
     expect(wrapper.find('svg').prop('data-foo')).toEqual('true');
   });
 
-  it('overrides the default svg icon using the ThemeProvider', () => {});
+  it('overrides the default svg icon using the ThemeProvider', () => {
+    const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
+
+    const wrapper = mount(
+      <ThemeProvider theme={theme}>
+        <TestIcon />
+      </ThemeProvider>,
+    );
+
+    expect(wrapper.find('svg').prop('data-id')).toEqual('test-overridden-id');
+  });
 });
