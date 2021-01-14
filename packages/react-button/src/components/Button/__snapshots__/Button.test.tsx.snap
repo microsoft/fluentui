@@ -183,6 +183,7 @@ exports[`Button renders a default state 1`] = `
       @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
       }
+  onKeyDown={[Function]}
 >
   <span
     className=
@@ -380,6 +381,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
       }
   href="https://www.bing.com"
+  onKeyDown={[Function]}
   role="button"
 >
   <span
