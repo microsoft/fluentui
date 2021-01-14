@@ -33,7 +33,7 @@ const classNames = mergeStyleSets({
     marginLeft: 65,
   },
   lockImage: {
-    width: -109,
+    left: -109,
     top: -5,
   },
 });
@@ -62,7 +62,7 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         }}
       />
       <ImageIcon
-        aria-label="OneNote file icon"
+        aria-label="Lock icon"
         role="img"
         className={classNames.lock}
         imageProps={{
