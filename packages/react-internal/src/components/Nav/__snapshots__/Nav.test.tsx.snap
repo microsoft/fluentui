@@ -176,7 +176,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
                         border-radius: 2px;
-                        border: none;
+                        border: 1px solid transparent;
                         box-sizing: border-box;
                         color: #323130;
                         cursor: pointer;
@@ -226,6 +226,9 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -240,9 +243,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       }
                       &:active .ms-Button-icon {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){& {
-                        border: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus {
                         border: 1px solid WindowText;
@@ -332,7 +332,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
                         border-radius: 2px;
-                        border: none;
+                        border: 1px solid transparent;
                         box-sizing: border-box;
                         color: #323130;
                         cursor: pointer;
@@ -382,6 +382,9 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -396,9 +399,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       }
                       &:active .ms-Button-icon {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){& {
-                        border: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus {
                         border: 1px solid WindowText;
@@ -550,7 +550,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 2px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -600,6 +600,9 @@ exports[`Nav renders Nav correctly 1`] = `
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -614,9 +617,6 @@ exports[`Nav renders Nav correctly 1`] = `
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;

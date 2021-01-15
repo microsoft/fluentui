@@ -1004,6 +1004,9 @@ exports[`Component Examples renders Card.Vertical.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               color: #0078d4;
             }
@@ -1125,6 +1128,9 @@ exports[`Component Examples renders Card.Vertical.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               color: #0078d4;
             }
@@ -1245,6 +1251,9 @@ exports[`Component Examples renders Card.Vertical.Example.tsx correctly 1`] = `
               left: 0px;
               position: relative;
               top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
             }
             &:hover {
               color: #0078d4;

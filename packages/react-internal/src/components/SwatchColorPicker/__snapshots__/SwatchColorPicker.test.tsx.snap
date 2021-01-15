@@ -111,6 +111,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -278,6 +281,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -447,6 +453,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -614,6 +623,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -787,6 +799,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -954,6 +969,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -1123,6 +1141,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -1290,6 +1311,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -1463,6 +1487,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -1630,6 +1657,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -1799,6 +1829,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
+                }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
                   border-radius: 50%;
@@ -1966,6 +1999,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;

@@ -97,6 +97,10 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
@@ -150,9 +154,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -264,6 +265,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             left: 0px;
             position: relative;
             top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
           }
           &:hover {
             background-color: #f3f2f1;

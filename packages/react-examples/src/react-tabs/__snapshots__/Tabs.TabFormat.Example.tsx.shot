@@ -101,6 +101,10 @@ exports[`Component Examples renders Tabs.TabFormat.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+              color: Highlight;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
@@ -187,9 +191,6 @@ exports[`Component Examples renders Tabs.TabFormat.Example.tsx correctly 1`] = `
             &:hover::before {
               left: 0px;
               right: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: Highlight;
             }
         data-content="Foo"
         data-is-focusable={true}
@@ -302,6 +303,9 @@ exports[`Component Examples renders Tabs.TabFormat.Example.tsx correctly 1`] = `
               left: 0px;
               position: relative;
               top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
             }
             &:hover {
               background-color: #0078d4;
@@ -495,6 +499,9 @@ exports[`Component Examples renders Tabs.TabFormat.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
@@ -686,6 +693,9 @@ exports[`Component Examples renders Tabs.TabFormat.Example.tsx correctly 1`] = `
               left: 0px;
               position: relative;
               top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
             }
             &:hover {
               background-color: #0078d4;
