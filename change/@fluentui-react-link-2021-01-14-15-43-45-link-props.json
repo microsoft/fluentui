@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Improve handling of built-in Link props",
+  "packageName": "@fluentui/react-link",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-14T21:43:45.111Z"
+}

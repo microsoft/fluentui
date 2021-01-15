@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 14 Jan 2021 12:31:15 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding disabledFocusable prop to allow for scenarios where Button has disabled styling but is focusable.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "48d30d84067583480c05c690d842c79a4ee9f87d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Dec 2020 12:28:01 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.17",
       "version": "1.0.0-beta.17",

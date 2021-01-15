@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Input } from '@fluentui/react-northstar';
 
 const FormExample = () => (
   <Form
@@ -7,6 +7,7 @@ const FormExample = () => (
       alert('Form submitted');
     }}
   >
+    {/* TODO: Remove these Form.Field as soon inline is fixed in Form.Input */}
     <Form.Field
       label="First name"
       name="firstName"
@@ -29,13 +30,8 @@ const FormExample = () => (
         showSuccessIndicator: false,
       }}
     />
-    <Form.Field
-      label="I agree to the Terms and Conditions"
-      control={{ as: 'input' }}
-      type="checkbox"
-      id="conditions-inline"
-    />
-    <Form.Field control={{ as: Button, content: 'Submit' }} />
+    <Form.Checkbox label="I agree to the Terms and Conditions" id="conditions-inline" />
+    <Form.Button content="Submit" />
   </Form>
 );
 

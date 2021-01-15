@@ -7,7 +7,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
  * Adds role='columnheader'.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
-export const gridHeaderCellBehavior: Accessibility = props => ({
+export const gridHeaderCellBehavior: Accessibility<GridHeaderCellBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'columnheader',
@@ -22,3 +22,5 @@ export const gridHeaderCellBehavior: Accessibility = props => ({
     },
   },
 });
+
+type GridHeaderCellBehaviorProps = never;

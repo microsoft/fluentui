@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 05 Jan 2021 12:29:33 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jan 2021 12:36:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.3)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.2..@fluentui/web-components_v0.10.3)
+
+### Patches
+
+- update svg fill to use currentcolor so svg defaults to text color, change some currentColor to currentcolor ([PR #16379](https://github.com/microsoft/fluentui/pull/16379) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
 ## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.2)
 
