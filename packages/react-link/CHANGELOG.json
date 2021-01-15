@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Fri, 15 Jan 2021 12:30:40 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.30",
+      "version": "1.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Improve handling of built-in Link props",
+            "author": "elcraig@microsoft.com",
+            "commit": "15d89b107a00796bcbfcbe27fb7a3d86d8aee309",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

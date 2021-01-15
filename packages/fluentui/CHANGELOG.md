@@ -30,7 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Styles from `Avatar` image slot were moved to exact component `AvatarImage` @assuncaocharles ([#16409](https://github.com/microsoft/fluentui/pull/16409))
 - Styles from `Avatar` image slot were moved to exact component `AvatarLabel` @assuncaocharles ([#16417](https://github.com/microsoft/fluentui/pull/16417))
 - Styles from `Avatar` icon slot were moved to exact component `AvatarIcon` @assuncaocharles ([#16428](https://github.com/microsoft/fluentui/pull/16428))
-
+- Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
 
 ### Fixes
 - Fix selectable `Tree` where node with unselectable children displaying wrong selection state @yuanboxue-amber ([#16158](https://github.com/microsoft/fluentui/pull/16158))
@@ -73,6 +73,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix missing focus styles for carousel paddle @assuncaocharles ([#16460](https://github.com/microsoft/fluentui/pull/16460))
 - Do not add `aria-expanded="true"` for `trigger` slot when `MenuButton` has `contextMenu` @pompomon ([#16442](https://github.com/microsoft/fluentui/pull/16442))
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
+- Fix RadioGroup visual issues. Add `RadioButtonIcon`. Fix vertical RadioGroup alignment issue with custom content. Fix focus frame alignment for bare indicator. @TanelVari ([#16478](https://github.com/microsoft/fluentui/pull/16478))
 - Fix type for `Accessibility` to allow function without props @ling1726 ([#16322](https://github.com/microsoft/fluentui/pull/16322))
 
 ### Features
