@@ -18,7 +18,7 @@ export function fluentuiLernaPublish(bumpType) {
       bumpType,
     ];
     if (bumpType === 'preminor') {
-      lernaPublishArgs.push('--preid', 'beta');
+      lernaPublishArgs.push('--preid', 'beta', '--dist-tag', 'beta');
     }
 
     logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
