@@ -45,7 +45,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Available icons',
           content: (
             <Pivot>
-              <PivotItem headerText="Fluent UI React" className={styles.iconGrid}>
+              <PivotItem headerText="Fluent UI React(font)" className={styles.iconGrid}>
                 <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
