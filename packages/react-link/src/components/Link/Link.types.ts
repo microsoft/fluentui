@@ -67,7 +67,7 @@ export interface ILinkProps
   href?: string;
 
   /**
-   * Where to display the linked URL. Common values are `_blank` (a new tab or window),
+   * Where to open the linked URL. Common values are `_blank` (a new tab or window),
    * `_self` (the current window/context), `_parent`, and `_top`.
    */
   target?: string;
