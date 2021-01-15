@@ -4,15 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "types": ["node"],
-    "skipLibCheck": true,
-    "outDir": "dist/dts",
-    "noEmit": true,
-    "composite": true
+    "skipLibCheck": true
   },
-  "include": ["src"],
-  "references": [
-    {
-      "path": "../react-northstar"
-    }
-  ]
+  "include": ["src"]
 }
