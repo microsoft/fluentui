@@ -55,7 +55,7 @@
     "@types/chai": "^4.2.11",
     "@types/karma": "^5.0.0",
     "@types/mocha": "^7.0.2",
-    "@types/webpack-env": "1.16.0",
+    "@types/webpack-env": "1.15.1",
     "chai": "^4.2.0",
     "circular-dependency-plugin": "^5.0.2",
     "esm": "^3.2.25",
@@ -84,12 +84,12 @@
     "rollup-plugin-transform-tagged-template": "^0.0.3",
     "rollup-plugin-typescript2": "^0.27.0",
     "source-map": "^0.7.3",
-    "source-map-loader": "^2.0.0",
-    "ts-loader": "^8.0.14",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^7.0.2",
     "ts-node": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.0",
-    "webpack": "^5.12.3"
+    "webpack": "^4.43.0"
   },
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",

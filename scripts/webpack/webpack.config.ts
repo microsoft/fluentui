@@ -67,7 +67,6 @@ const webpackConfig: webpack.Configuration = {
       typescript: {
         configFile: paths.docs('tsconfig.json'),
       },
-      // watch: [paths.docsSrc(), paths.packages()],
     }),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),

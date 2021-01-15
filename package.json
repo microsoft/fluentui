@@ -131,7 +131,8 @@
           "ts-loader",
           "ts-node",
           "tslib",
-          "typescript"
+          "typescript",
+          "webpack"
         ]
       },
       {
