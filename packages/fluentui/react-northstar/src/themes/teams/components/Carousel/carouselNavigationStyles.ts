@@ -16,7 +16,6 @@ export const carouselNavigationStyles: ComponentSlotStylesPrepared<
       display: 'flex',
       minHeight: pxToRem(24),
       margin: 0,
-
       padding: 0,
       color: v.color,
       backgroundColor: v.backgroundColor || 'inherit',
