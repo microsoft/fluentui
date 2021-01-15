@@ -455,7 +455,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-live="polite"
           aria-atomic="true"
           id={errorMessageId}
-          className={hasErrorMessage ? this._classNames.errorMessage : ''}
+          {...(hasErrorMessage ? { className: this._classNames.errorMessage } : { 'aria-hidden': true })}
         >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
@@ -534,7 +534,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ariaDescribedBy,
       required,
       errorMessage,
-      allowFreeform,
       buttonIconProps,
       isButtonAriaHidden = true,
       title,
@@ -580,7 +579,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-expanded={isOpen}
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
-          readOnly={disabled || !allowFreeform}
+          readOnly={disabled}
           aria-labelledby={label && this._id + '-label'}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
@@ -1126,21 +1125,28 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // on the event
       relatedTarget = document.activeElement as Element;
     }
-    if (
-      relatedTarget &&
-      // when event coming from withing the comboBox title
-      ((this.props.hoisted.rootRef.current &&
-        this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement)) ||
-        // when event coming from within the comboBox list menu
-        (this._comboBoxMenu.current &&
-          (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
-            // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the
-            // Callout is clicked) checks if the relatedTarget is a parent of _comboBoxMenu
-            findElementRecursive(this._comboBoxMenu.current, element => element === relatedTarget))))
-    ) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
+
+    if (relatedTarget) {
+      const isBlurFromComboBoxTitle =
+        this.props.hoisted.rootRef.current && this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement);
+      const isBlurFromComboBoxMenu =
+        this._comboBoxMenu.current && this._comboBoxMenu.current.contains(relatedTarget as HTMLElement);
+      const isBlurFromComboBoxMenuAncestor =
+        this._comboBoxMenu.current &&
+        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget);
+
+      if (isBlurFromComboBoxTitle || isBlurFromComboBoxMenu || isBlurFromComboBoxMenuAncestor) {
+        if (
+          isBlurFromComboBoxMenuAncestor &&
+          this._hasFocus() &&
+          (!this.props.multiSelect || this.props.allowFreeform)
+        ) {
+          this._submitPendingValue(event);
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
     }
 
     if (this._hasFocus()) {
@@ -1616,9 +1622,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { onItemClick } = this.props;
     const { index } = item;
     return (ev: React.MouseEvent<any>): void => {
-      onItemClick && onItemClick(ev, item, index);
-      this._setSelectedIndex(index as number, ev);
-
       // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
         // ensure that focus returns to the input, not the button
@@ -1627,6 +1630,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           isOpen: false,
         });
       }
+
+      // Continue processing the click only after
+      // performing menu close / control focus(inner working)
+      onItemClick && onItemClick(ev, item, index);
+      this._setSelectedIndex(index as number, ev);
     };
   }
 

@@ -11,7 +11,7 @@ import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';
 import { useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
-import { useDocument } from '@fluentui/react-window-provider';
+import { useDocument } from '../../WindowProvider';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 

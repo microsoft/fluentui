@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Dec 2020 12:29:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.0.0-beta.1)
+
+Mon, 07 Dec 2020 12:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.0.0-beta.0..@fluentui/date-time-utilities_v8.0.0-beta.1)
+
+### Changes
+
+- Remove northstar-specific types and utilities ([PR #16138](https://github.com/microsoft/fluentui/pull/16138) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.0.0-beta.0)
 

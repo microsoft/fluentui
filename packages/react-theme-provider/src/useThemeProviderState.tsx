@@ -3,7 +3,6 @@ import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
 import { getId, ICustomizerContext } from '@fluentui/utilities';
-import { getTokens } from './getTokens';
 
 const themeToIdMap = new Map<Object, string>();
 
@@ -35,7 +34,6 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
   const theme = (draftState.theme = React.useMemo<Theme>(() => {
     const mergedTheme: Theme = mergeThemes(parentTheme, userTheme);
 
-    mergedTheme.tokens = getTokens(mergedTheme, userTheme?.tokens);
     mergedTheme.id = getThemeId(parentTheme, userTheme);
 
     return mergedTheme;

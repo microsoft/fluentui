@@ -9,8 +9,14 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-// This needs a trailing slash or images won't work
-const __BASENAME__ = process.env.DEPLOYBASEPATH ? `/${process.env.DEPLOYBASEPATH}/react-northstar/` : '/';
+let __BASENAME__ = process.env.DEPLOYBASEPATH
+  ? // This needs a trailing slash or images won't work
+    `/${process.env.DEPLOYBASEPATH}/react-northstar/`
+  : '/';
+
+if (process.env.OFFICIALRELEASE) {
+  __BASENAME__ = `/${process.env.DEPLOYBASEPATH}/`;
+}
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 

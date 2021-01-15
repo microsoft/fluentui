@@ -6,7 +6,6 @@ const items = [
     id: 'tree-as-list-item-1',
     title: 'House Lannister',
     'aria-label': 'House Lannister, expandable',
-    selectableParent: true,
     items: [
       {
         id: 'tree-as-list-item-11',
@@ -22,13 +21,11 @@ const items = [
     id: 'tree-as-list-item-2',
     title: 'House Targaryen',
     'aria-label': 'House Targaryen, expandable',
-    selectableParent: true,
     items: [
       {
         id: 'tree-as-list-item-21',
         title: 'Aerys',
         'aria-label': 'Aerys, expandable',
-        selectableParent: true,
         items: [
           {
             id: 'tree-as-list-item-211',

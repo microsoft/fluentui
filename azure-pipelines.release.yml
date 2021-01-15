@@ -31,8 +31,9 @@ steps:
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
-  - script: |
-      npx midgard-yarn install
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |
@@ -134,17 +135,17 @@ steps:
     displayName: 'Publish Artifact: Fabric Website Resources'
 
   - script: |
-      yarn workspace @fluentui/scripts just generate-package-manifest
+      node ./scripts/generate-package-manifest
     displayName: 'Generates a package manifest'
 
   - task: AzureUpload@2
     displayName: Upload Package Manifest
     inputs:
-      SourcePath: 'package-manifest.json'
+      SourcePath: 'package-manifest'
       azureSubscription: 'UI Fabric (private)'
       storage: fabricweb
       ContainerName: 'fabric'
-      BlobPrefix: 'package-manifest/latest'
+      BlobPrefix: 'package-manifest'
       Gzip: false
 
   - template: .devops/templates/cleanup.yml

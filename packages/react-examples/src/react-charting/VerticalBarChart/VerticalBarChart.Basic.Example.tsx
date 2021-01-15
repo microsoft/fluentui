@@ -1,17 +1,30 @@
 import * as React from 'react';
-import { ChartHoverCard, VerticalBarChart, IVerticalBarChartProps } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IVerticalChartState {
   width: number;
   height: number;
+  isCalloutselected: boolean;
+  useSingleColor: boolean;
 }
+
+const options: IChoiceGroupOption[] = [
+  { key: 'basicExample', text: 'Basic Example' },
+  { key: 'calloutExample', text: 'Custom Callout Example' },
+];
+
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, IVerticalChartState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
     this.state = {
       width: 650,
       height: 350,
+      isCalloutselected: false,
+      useSingleColor: false,
     };
   }
 
@@ -26,8 +39,19 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
+    if (this.state.isCalloutselected) {
+      this.setState({ isCalloutselected: false });
+    } else {
+      this.setState({ isCalloutselected: true });
+    }
+  };
+  private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ useSingleColor: checked });
+  };
+
   private _basicExample(): JSX.Element {
-    const points = [
+    const points: IVerticalBarChartDataPoint[] = [
       {
         x: 0,
         y: 10000,
@@ -35,6 +59,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '10%',
+        lineData: {
+          y: 7000,
+          yAxisCalloutData: '34%',
+        },
       },
       {
         x: 10000,
@@ -43,6 +71,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '20%',
+        lineData: {
+          y: 30000,
+        },
       },
       {
         x: 25000,
@@ -51,6 +82,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '37%',
+        lineData: {
+          y: 3000,
+          yAxisCalloutData: '43%',
+        },
       },
 
       {
@@ -68,6 +103,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '71%',
+        lineData: {
+          y: 30000,
+        },
       },
       {
         x: 68000,
@@ -76,6 +114,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
+        lineData: {
+          y: 5000,
+        },
       },
       {
         x: 80000,
@@ -84,6 +125,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '87%',
+        lineData: {
+          y: 16000,
+        },
       },
       {
         x: 92000,
@@ -92,6 +136,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
+        lineData: {
+          y: 40000,
+          yAxisCalloutData: '45%',
+        },
       },
     ];
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
@@ -102,23 +150,28 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={this.state.useSingleColor}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
             data={points}
             width={this.state.width}
+            useSingleColor={this.state.useSingleColor}
             height={this.state.height}
             chartLabel={'Basic Chart with Numeric Axes'}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
-              props ? (
-                <ChartHoverCard
-                  XValue={props.xAxisCalloutData}
-                  Legend={props.legend}
-                  YValue={props.yAxisCalloutData || props.x}
-                  color={props.color}
-                />
-              ) : null
-            }
+            lineLegendText={'just line'}
+            lineLegendColor={'brown'}
+            {...(this.state.isCalloutselected && {
+              onRenderCalloutPerDataPoint: (
+                props: IVerticalBarChartDataPoint,
+                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+              ) => (props ? defaultRender(props) : null),
+            })}
           />
         </div>
       </>

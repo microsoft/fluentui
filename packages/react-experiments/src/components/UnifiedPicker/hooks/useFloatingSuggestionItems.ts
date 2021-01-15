@@ -25,11 +25,11 @@ export interface IUseFloatingSuggestionItems<T> {
 
 export const useFloatingSuggestionItems = <T extends {}>(
   floatingSuggestionItems: T[],
+  footerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
+  headerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   focusSuggestionIndex?: number,
   focusFooterIndex?: number,
-  footerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   focusHeaderIndex?: number,
-  headerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   isSuggestionsVisible?: boolean,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);

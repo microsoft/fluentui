@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jan 2021 12:36:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.14)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.10..@fluentui/react-theme-provider_v1.0.0-beta.14)
+
+### Changes
+
+- add webpack bundles to react-icons-mdl2 and react-theme-provider ([PR #16429](https://github.com/microsoft/fluentui/pull/16429) by ololubek@microsoft.com)
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.9..@fluentui/react-theme-provider_v1.0.0-beta.10)
+
+### Changes
+
+- Move getTokens logic out from ThemeProvider to mergeTheme/createTheme. ([PR #15976](https://github.com/microsoft/fluentui/pull/15976) by xgao@microsoft.com)
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+Wed, 18 Nov 2020 12:30:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.8..@fluentui/react-theme-provider_v1.0.0-beta.9)
+
+### Changes
+
+- Moving the auto-distribution logic out of makeClasses and into an applyClasses helper. ([PR #15959](https://github.com/microsoft/fluentui/pull/15959) by dzearing@hotmail.com)
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.8)
+
+Tue, 17 Nov 2020 12:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.4..@fluentui/react-theme-provider_v1.0.0-beta.8)
+
+### Changes
+
+- Updating makeStyles hook to take in options bag, rather than specific arguments. ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
+- Changing useStyleRenderer to default to merge-styles so that things actually happen. ([PR #15955](https://github.com/microsoft/fluentui/pull/15955) by xgao@microsoft.com)
+
+## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.1..@fluentui/react-theme-provider_v1.0.0-beta.4)
+
+### Changes
+
+- Expanding type of MakeVariantClassesOptions to take into account user provided Variants. ([PR #15518](https://github.com/microsoft/fluentui/pull/15518) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.1)
 

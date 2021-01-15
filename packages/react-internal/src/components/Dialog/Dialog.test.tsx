@@ -123,7 +123,6 @@ describe('Dialog', () => {
     act(() => {
       wrapper.unmount();
     });
-
     setWarningCallback();
   });
 

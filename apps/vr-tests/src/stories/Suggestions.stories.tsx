@@ -135,7 +135,7 @@ storiesOf('(Dev-Only) Suggestions', module)
         .snapshot('default', { cropTo: '.testRoot' })
         .hover('#province-fake-long-province')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
-        .hover('#sug-0 .ms-Suggestions-closeButton')
+        .hover('#sug-0+.ms-Suggestions-closeButton')
         .snapshot('Hovering over the X button on a wide suggestion element', {
           cropTo: '.testRoot',
         })

@@ -18,6 +18,9 @@ import { Theme } from '@fluentui/theme';
 import { TokenSetType } from '@fluentui/theme';
 import { Variants } from '@fluentui/theme';
 
+// @public
+export const applyClasses: <TState extends {}>(state: TState, classMap: Record<string, string>) => void;
+
 // @public (undocumented)
 export type FontFace = IFontFace;
 
@@ -36,24 +39,24 @@ export { IStyleFunctionOrObject }
 export type KeyFrames = IKeyframes;
 
 // @public
-export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, theme?: Theme | undefined, renderer?: StyleRenderer | undefined) => void;
+export const makeClasses: <TState extends {}>(styleOrFunction: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>)) => (state: TState, options?: UseStylesOptions | undefined) => void;
 
 // @public
 export function makeStyles<TStyleSet extends {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (theme?: Theme, renderer?: StyleRenderer) => {
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
 };
 
 // @public
-export const makeVariantClasses: <TState = {}>(options: MakeVariantClassesOptions) => (state: TState, theme?: Theme | undefined, renderer?: import(".").StyleRenderer | undefined) => void;
+export const makeVariantClasses: <TState = {}, TVariants = Record<string, any>>(options: MakeVariantClassesOptions<TVariants>) => (state: TState, options?: import("./makeStyles").UseStylesOptions | undefined) => void;
 
 // @public
-export type MakeVariantClassesOptions = {
+export type MakeVariantClassesOptions<TVariants = Variants> = {
     name?: string;
     prefix?: string;
     styles?: Record<string, IStyle> | ((theme: Theme) => Record<string, IStyle>);
-    variants?: Variants | ((theme: Theme) => Variants);
+    variants?: TVariants | ((theme: Theme) => TVariants);
 };
 
 // @public (undocumented)
@@ -135,6 +138,12 @@ export const useInlineTokens: (draftState: {
 
 // @public (undocumented)
 export const useStyleRenderer: () => StyleRenderer;
+
+// @public
+export type UseStylesOptions = {
+    theme?: Theme;
+    renderer?: StyleRenderer;
+};
 
 // @public
 export const useTheme: () => Theme;

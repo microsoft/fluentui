@@ -174,6 +174,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   removeButtonAriaLabel?: string;
 
   /**
+   * Optional aria-label that will be placed on the element that has the role "combobox"
+   * attached. Additionally aria-labelled by will get added to the supporting input element contained
+   * with in the combobox container
+   */
+  ['aria-label']?: string;
+
+  /**
    * A callback to process a selection after the user selects something from the picker. If the callback returns null,
    * the item will not be added to the picker.
    */

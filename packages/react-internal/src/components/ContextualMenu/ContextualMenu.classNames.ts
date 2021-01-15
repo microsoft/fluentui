@@ -1,6 +1,13 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
-import { ITheme, mergeStyleSets, getGlobalClassNames, getScreenSelector, ScreenWidthMaxMedium } from '../../Styling';
+import {
+  ITheme,
+  mergeStyleSets,
+  getGlobalClassNames,
+  getScreenSelector,
+  ScreenWidthMaxMedium,
+  hiddenContentStyle,
+} from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
@@ -35,6 +42,7 @@ export interface IMenuItemClassNames {
   splitPrimary: string;
   splitMenu: string;
   linkContentMenu: string;
+  screenReaderText: string;
 }
 
 const CONTEXTUAL_SPLIT_MENU_MINWIDTH = '28px';
@@ -79,6 +87,7 @@ const GlobalClassNames = {
   label: 'ms-ContextualMenu-itemText',
   secondaryText: 'ms-ContextualMenu-secondaryText',
   splitMenu: 'ms-ContextualMenu-splitMenu',
+  screenReaderText: 'ms-ContextualMenu-screenReaderText',
 };
 
 /**
@@ -212,6 +221,12 @@ export const getItemClassNames = memoizeFunction(
               },
             },
           ],
+      ],
+      screenReaderText: [
+        classNames.screenReaderText,
+        styles.screenReaderText,
+        hiddenContentStyle,
+        { visibility: 'hidden' },
       ],
     });
   },
