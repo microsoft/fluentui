@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@fluentui/react-hooks';
-import { Icon } from '@fluentui/react/lib/Icon';
+import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 import { Text } from '@fluentui/react/lib/Text';
 
 const stackTokens: IStackTokens = {
   childrenGap: 20,
   maxWidth: 350,
 };
+
+const richErrorIconStyles: Partial<IIconStyles> = { root: { color: 'red' } };
+const richErrorStackStyles: Partial<IStackStyles> = { root: { height: 24 } };
+const richErrorStackTokens: IStackTokens = { childrenGap: 8 };
 
 const getErrorMessage = (value: string): string => {
   return value.length < 3 ? '' : `Input value length must be less than 3. Actual length is ${value.length}.`;
@@ -25,8 +29,8 @@ const getRichErrorMessage = (value: string) => {
   return value.length < 3 ? (
     ''
   ) : (
-    <Stack styles={{ root: { height: 24 } }} verticalAlign="center" horizontal tokens={{ childrenGap: 8 }}>
-      <Icon iconName="Error" styles={{ root: { color: 'red' } }} />
+    <Stack styles={richErrorStackStyles} verticalAlign="center" horizontal tokens={richErrorStackTokens}>
+      <Icon iconName="Error" styles={richErrorIconStyles} />
       <Text variant="smallPlus">Input value length must be less than 3. Actual length is {value.length}.</Text>
     </Stack>
   );
