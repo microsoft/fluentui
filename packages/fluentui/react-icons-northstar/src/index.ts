@@ -185,6 +185,7 @@ export { PresenterIcon } from './components/PresenterIcon';
 export { QnaIcon } from './components/QnaIcon';
 export { QuestionCircleIcon } from './components/QuestionCircleIcon';
 export { QuoteIcon } from './components/QuoteIcon';
+export { RadioButtonIcon } from './components/RadioButtonIcon';
 export { ReadAloudIcon } from './components/ReadAloudIcon';
 export { RaiseHandColoredIcon } from './components/RaiseHandColoredIcon';
 export { RaiseHandDisabledIcon } from './components/RaiseHandDisabledIcon';

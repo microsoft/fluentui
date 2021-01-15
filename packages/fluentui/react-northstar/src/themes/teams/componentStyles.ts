@@ -101,6 +101,7 @@ export { popupContentStyles as PopupContent } from './components/Popup/popupCont
 
 export { providerStyles as Provider } from './components/Provider/providerStyles';
 
+export { radioGroupStyles as RadioGroup } from './components/RadioGroup/radioGroupStyles';
 export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/radioGroupItemStyles';
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
