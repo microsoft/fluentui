@@ -19,5 +19,8 @@
     "@fluentui/scripts": "^1.0.0",
     "parallel-webpack": "^2.4.0",
     "webpack-bundle-analyzer": "^4.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0"
   }
 }

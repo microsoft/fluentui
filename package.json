@@ -116,6 +116,14 @@
     "versionGroups": [
       {
         "packages": [
+          "test-bundles"
+        ],
+        "dependencies": [
+          "webpack"
+        ]
+      },
+      {
+        "packages": [
           "@fluentui/web-components"
         ],
         "dependencies": [
