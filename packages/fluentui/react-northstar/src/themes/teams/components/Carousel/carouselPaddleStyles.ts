@@ -9,7 +9,7 @@ import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { paddleIndicatorUrl } from './paddleIndicatorUrl';
 
 import { faster, ultraFast } from '../../animations/durations';
-import { pxToRem } from '../../../../utils/index';
+import { pxToRem } from '../../../../utils';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
