@@ -128,6 +128,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
+      hidden: !(!this.props.hideTooltip && this.state.isCalloutVisible),
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -297,6 +300,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
     return legends;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 
   private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines = [];
