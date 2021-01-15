@@ -454,6 +454,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     ) : getItemPositionText ? (
       <Text
         aria-hidden="true"
+        align="center"
+        as="div"
         className={carouselSlotClassNames.pagination}
         content={getItemPositionText(+activeIndex, items.length)}
       />
