@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add height clamp and box sizing for select",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-04T18:10:23.659Z"
-}

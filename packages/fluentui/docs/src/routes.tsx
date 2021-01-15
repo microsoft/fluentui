@@ -11,7 +11,6 @@ import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import * as Composition from './pages/Composition.mdx';
 import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
-import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
 import * as StylesOverrides from './pages/StylesOverrides.mdx';
 import Accessibility from './views/Accessibility';
 import Colors from './views/Colors';
@@ -34,6 +33,7 @@ import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
+import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
@@ -61,6 +61,7 @@ import {
   TextAreaAutoSize,
   MenuList,
   VirtualizedStickyTreePrototype,
+  RosterPrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(() =>
@@ -105,7 +106,8 @@ const Routes = () => (
                   <MarkdownPage page={Debugging} />
                 </Route>
                 <Route exact path="/quick-start" component={QuickStart} />
-
+                <Route exact path="/perf-tests" component={PerformanceTests} />
+                <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
@@ -147,9 +149,6 @@ const Routes = () => (
                   <MarkdownPage page={ShorthandProps} />
                 </Route>
                 <Route exact path="/icon-viewer" component={IconViewer} />
-                <Route exact path="/component-architecture">
-                  <MarkdownPage page={ComponentArchitecture} />
-                </Route>
                 <Route exact path="/theming-specification">
                   <MarkdownPage page={ThemingSpecification} />
                 </Route>

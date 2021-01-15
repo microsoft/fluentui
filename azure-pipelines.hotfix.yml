@@ -21,8 +21,9 @@ steps:
       node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
     displayName: 'Check targetNpmVersion is valid semver'
 
-  - script: |
-      npx midgard-yarn install
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |

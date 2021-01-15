@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 01 Dec 2020 12:38:05 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jan 2021 12:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.11)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.8..@fluentui/theme_v2.0.0-beta.11)
+
+### Changes
+
+- createTheme: fix bug when theme is inverted. ([PR #16484](https://github.com/microsoft/fluentui/pull/16484) by xgao@microsoft.com)
 
 ## [2.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.8)
 

@@ -37,6 +37,16 @@ export const ToggleButtons = () => (
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <ToggleButtonExamples />
 
+    <Text variant="xLarge">A button can be focusable when disabled</Text>
+    <div className={classes.hStack}>
+      <ToggleButton disabled icon="X">
+        Disabled, non-focusable button
+      </ToggleButton>
+      <ToggleButton disabled disabledFocusable icon="X">
+        Disabled, focusable button
+      </ToggleButton>
+    </div>
+
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
     <ToggleButtonExamples circular />
 
