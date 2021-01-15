@@ -43,7 +43,7 @@ ReactDOM.render(<MyIconButton />, document.body.firstChild);
 
 #### Fluent UI React: SVG-based Icons
 
-Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which bundles all icons by default.
+Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
 
 Each SVG icon is wrapped with a React Element and can be imported and used as follows:
 
