@@ -76,8 +76,6 @@
     "lage": "0.24.0",
     "lerna": "^3.15.0",
     "lint-staged": "^10.2.9",
-    "sass": "^1.32.4",
-    "sass-loader": "^10.1.0",
     "satisfied": "^1.1.1",
     "syncpack": "^5.6.10"
   },
