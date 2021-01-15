@@ -1,6 +1,5 @@
-import { ComponentSlotClasses, useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
-import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
-import cx from 'classnames';
+import { useStyles, useTelemetry, useFluentContext, getElementType } from '@fluentui/react-bindings';
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -43,28 +42,6 @@ export interface FlexItemProps extends UIComponentProps, ChildrenComponentProps<
 
 export type FlexItemStylesProps = Pick<FlexItemProps, 'align' | 'grow' | 'flexDirection' | 'push' | 'shrink' | 'size'>;
 
-const applyStyles = (
-  element: React.ReactElement,
-  styles: ComponentSlotStylesResolved,
-  classes: ComponentSlotClasses,
-): React.ReactElement => {
-  if (!styles) {
-    return element;
-  }
-
-  // if element is DOM element
-  if (typeof element.type === 'string') {
-    return React.cloneElement(element, {
-      className: cx(element.props.className, classes.root),
-    });
-  }
-
-  // assuming element is Fluent UI element
-  return React.cloneElement(element, {
-    styles: mergeStyles(styles.root || {}, element.props.styles),
-  });
-};
-
 export const flexItemClassName = 'ui-flex__item';
 
 /**
@@ -76,7 +53,7 @@ export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = pro
   setStart();
 
   const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
-
+  const ElementType = getElementType(props);
   const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
     className: flexItemClassName,
     mapPropsToStyles: () => ({
@@ -107,7 +84,7 @@ export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = pro
   } else if (_.isNil(children)) {
     element = null;
   } else {
-    element = applyStyles(React.Children.only(children) as React.ReactElement, resolvedStyles, classes);
+    element = <ElementType className={classes.root}>{children}</ElementType>;
   }
 
   setEnd();
