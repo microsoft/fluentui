@@ -1,6 +1,6 @@
 {
-  "type": "prerelease",
-  "comment": "Fix rich error message html DOM",
+  "type": "patch",
+  "comment": "Fixes TextField custom error message rendering",
   "packageName": "@fluentui/react-internal",
   "email": "sorgh@microsoft.com",
   "dependentChangeType": "patch",
