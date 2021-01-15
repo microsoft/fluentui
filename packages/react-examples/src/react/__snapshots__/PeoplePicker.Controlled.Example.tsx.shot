@@ -289,12 +289,8 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -676,12 +672,8 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -1057,12 +1049,8 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -1444,12 +1432,8 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -1844,12 +1828,8 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}

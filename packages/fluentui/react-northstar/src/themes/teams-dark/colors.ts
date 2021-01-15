@@ -13,6 +13,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground5: colors.grey[450],
     foreground6: colors.grey[550],
     foreground7: colors.white,
+    foreground8: colors.grey[200],
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -20,6 +21,7 @@ export const colorScheme: ColorSchemeMapping = {
     background3: colors.grey[550],
     background4: colors.grey[600],
     background5: colors.grey[250],
+    background6: colors.grey[900],
 
     border: colors.grey[450], // buttons
     border1: colors.grey[850],
@@ -86,6 +88,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: colors.brand[400],
     foreground3: colors.brand[200],
     foreground4: colors.white,
+    foreground5: colors.grey[750],
 
     background: colors.brand[600],
     background1: colors.brand[900],
@@ -93,6 +96,7 @@ export const colorScheme: ColorSchemeMapping = {
     background3: colors.brand[1000],
     background4: colors.grey[650],
     background5: colors.brand[900],
+    background6: colors.brand[450],
 
     border: colors.grey[450],
     border1: colors.brand[800],
@@ -154,7 +158,9 @@ export const colorScheme: ColorSchemeMapping = {
   }),
   black: {
     foreground: colors.black,
+    foreground1: colors.grey[750],
     background: colors.white,
+    background1: colors.white,
     border: colors.black,
     shadow: colors.black,
 
@@ -185,7 +191,9 @@ export const colorScheme: ColorSchemeMapping = {
   },
   white: {
     foreground: colors.white,
+    foreground1: colors.white,
     background: colors.black,
+    background1: colors.grey[700],
     border: colors.white,
     shadow: colors.white,
 
@@ -218,12 +226,16 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.green[200],
     foreground1: colors.grey[800],
     foreground2: colors.green[200],
+    foreground3: colors.green[750],
     background: colors.green[200],
+    background1: colors.green[200],
   }),
   orange: createColorScheme({
     foreground: colors.orange[300],
     foreground1: colors.orange[300],
+    foreground2: colors.grey[750],
     background: colors.orange[300],
+    background1: colors.orange[300],
     border: colors.grey[400],
   }),
   pink: createColorScheme({
@@ -255,6 +267,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.yellow[300],
     foreground1: colors.grey[800],
     foreground2: colors.grey[800],
+    foreground3: colors.grey[750],
     background: colors.yellow[400],
     background1: colors.grey[450],
     background2: colors.yellow[500],

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix: add hover state for expand collapse button in tree-item",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-05T20:23:56.895Z"
+}
