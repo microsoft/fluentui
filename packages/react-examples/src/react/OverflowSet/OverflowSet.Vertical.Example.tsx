@@ -16,6 +16,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
     <CommandBarButton
       role="menuitem"
+      title={item.title}
       aria-label={item.name}
       styles={onRenderItemStyles}
       iconProps={{ iconName: item.icon }}
@@ -46,6 +47,7 @@ export const OverflowSetVerticalExample: React.FunctionComponent = () => (
         key: 'item1',
         icon: 'Add',
         name: 'Add',
+        title: 'Add',
         ariaLabel: 'New. Use left and right arrow keys to navigate',
         onClick: noOp,
       },
@@ -53,12 +55,14 @@ export const OverflowSetVerticalExample: React.FunctionComponent = () => (
         key: 'item2',
         icon: 'Upload',
         name: 'Upload',
+        title: 'Upload',
         onClick: noOp,
       },
       {
         key: 'item3',
         icon: 'Share',
         name: 'Share',
+        title: 'Share',
         onClick: noOp,
       },
     ]}
