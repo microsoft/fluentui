@@ -1,10 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThemeProvider can apply body theme to body 1`] = `<body />`;
+exports[`ThemeProvider can apply body theme to body 1`] = `
+<body
+  class=
+
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: black;
+        --color-body-content-color: white;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: black;
+        color: white;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+/>
+`;
 
 exports[`ThemeProvider can apply body theme to body 2`] = `
 <div
-  className="foo"
+  className=
+      foo
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: black;
+        --color-body-content-color: white;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
 >
   app
 </div>
@@ -12,7 +163,76 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
 
 exports[`ThemeProvider can apply body theme to none 1`] = `
 <div
-  className="foo"
+  className=
+      foo
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: black;
+        --color-body-content-color: white;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
 >
   app
 </div>
@@ -20,7 +240,86 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
 
 exports[`ThemeProvider can handle a partial theme 1`] = `
 <div
-  className=""
+  className=
+
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: #ffffff;
+        --color-body-content-color: #323130;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --foo-background: red;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   Hello
 </div>
@@ -28,7 +327,85 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
 
 exports[`ThemeProvider renders a div 1`] = `
 <div
-  className=""
+  className=
+
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: #ffffff;
+        --color-body-content-color: #323130;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   Hello
 </div>
@@ -36,7 +413,85 @@ exports[`ThemeProvider renders a div 1`] = `
 
 exports[`ThemeProvider renders a div with styling 1`] = `
 <div
-  className=""
+  className=
+
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: white;
+        --color-body-content-color: black;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: white;
+        color: black;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   Hello
 </div>
@@ -44,13 +499,169 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 
 exports[`ThemeProvider renders nested themes 1`] = `
 <div
-  className=""
+  className=
+
+      {
+        --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        --body-font-size: 14px;
+        --body-font-weight: 400;
+        --body-moz-osx-font-smoothing: grayscale;
+        --body-webkit-font-smoothing: antialiased;
+        --color-body-background: white;
+        --color-body-content-color: black;
+        --color-brand-background: #0078d4;
+        --color-brand-border-color: transparent;
+        --color-brand-checked-background: #005a9e;
+        --color-brand-checked-content-color: #ffffff;
+        --color-brand-checked-hovered-background: #005a9e;
+        --color-brand-checked-hovered-content-color: #ffffff;
+        --color-brand-checked-hovered-icon-color: #ffffff;
+        --color-brand-checked-icon-color: #ffffff;
+        --color-brand-content-color: #ffffff;
+        --color-brand-disabled-background: #f3f2f1;
+        --color-brand-disabled-border-color: #f3f2f1;
+        --color-brand-disabled-content-color: #a19f9d;
+        --color-brand-disabled-divider-color: #c8c6c4;
+        --color-brand-disabled-icon-color: #a19f9d;
+        --color-brand-disabled-secondary-content-color: #a19f9d;
+        --color-brand-divider-color: #ffffff;
+        --color-brand-focused-background: #0078d4;
+        --color-brand-focused-border-color: transparent;
+        --color-brand-focused-content-color: #ffffff;
+        --color-brand-focused-icon-color: #ffffff;
+        --color-brand-focused-secondary-content-color: #ffffff;
+        --color-brand-hovered-background: #106ebe;
+        --color-brand-hovered-border-color: transparent;
+        --color-brand-hovered-content-color: #ffffff;
+        --color-brand-hovered-secondary-content-color: #ffffff;
+        --color-brand-icon-color: #ffffff;
+        --color-brand-pressed-background: #005a9e;
+        --color-brand-pressed-border-color: transparent;
+        --color-brand-pressed-content-color: #ffffff;
+        --color-brand-pressed-icon-color: #ffffff;
+        --color-brand-pressed-secondary-content-color: #ffffff;
+        --color-brand-secondary-content-color: #ffffff;
+        --text-variant-body-font-size: 14px;
+        --text-variant-body-font-weight: 400;
+        --text-variant-body-line-height: 20px;
+        --text-variant-caption-font-size: 12px;
+        --text-variant-caption-font-weight: 400;
+        --text-variant-caption-line-height: 14px;
+        --text-variant-display-font-size: 68px;
+        --text-variant-display-font-weight: 600;
+        --text-variant-display-line-height: 92px;
+        --text-variant-headline-font-size: 20px;
+        --text-variant-headline-font-weight: 600;
+        --text-variant-headline-line-height: 28px;
+        --text-variant-large-title-font-size: 40px;
+        --text-variant-large-title-font-weight: 600;
+        --text-variant-large-title-line-height: 52px;
+        --text-variant-sub-headline-font-size: 16px;
+        --text-variant-sub-headline-font-weight: 600;
+        --text-variant-sub-headline-line-height: 22px;
+        --text-variant-title1-font-size: 32px;
+        --text-variant-title1-font-weight: 600;
+        --text-variant-title1-line-height: 40px;
+        --text-variant-title2-font-size: 28px;
+        --text-variant-title2-font-weight: 600;
+        --text-variant-title2-line-height: 36px;
+        --text-variant-title3-font-size: 24px;
+        --text-variant-title3-font-weight: 600;
+        --text-variant-title3-line-height: 32px;
+      }
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: white;
+        color: black;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
 >
   <div>
     Light theme
   </div>
   <div
-    className=""
+    className=
+
+        {
+          --body-font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          --body-font-size: 14px;
+          --body-font-weight: 400;
+          --body-moz-osx-font-smoothing: grayscale;
+          --body-webkit-font-smoothing: antialiased;
+          --color-body-background: black;
+          --color-body-content-color: white;
+          --color-brand-background: #0078d4;
+          --color-brand-border-color: transparent;
+          --color-brand-checked-background: #005a9e;
+          --color-brand-checked-content-color: #ffffff;
+          --color-brand-checked-hovered-background: #005a9e;
+          --color-brand-checked-hovered-content-color: #ffffff;
+          --color-brand-checked-hovered-icon-color: #ffffff;
+          --color-brand-checked-icon-color: #ffffff;
+          --color-brand-content-color: #ffffff;
+          --color-brand-disabled-background: #f3f2f1;
+          --color-brand-disabled-border-color: #f3f2f1;
+          --color-brand-disabled-content-color: #a19f9d;
+          --color-brand-disabled-divider-color: #c8c6c4;
+          --color-brand-disabled-icon-color: #a19f9d;
+          --color-brand-disabled-secondary-content-color: #a19f9d;
+          --color-brand-divider-color: #ffffff;
+          --color-brand-focused-background: #0078d4;
+          --color-brand-focused-border-color: transparent;
+          --color-brand-focused-content-color: #ffffff;
+          --color-brand-focused-icon-color: #ffffff;
+          --color-brand-focused-secondary-content-color: #ffffff;
+          --color-brand-hovered-background: #106ebe;
+          --color-brand-hovered-border-color: transparent;
+          --color-brand-hovered-content-color: #ffffff;
+          --color-brand-hovered-secondary-content-color: #ffffff;
+          --color-brand-icon-color: #ffffff;
+          --color-brand-pressed-background: #005a9e;
+          --color-brand-pressed-border-color: transparent;
+          --color-brand-pressed-content-color: #ffffff;
+          --color-brand-pressed-icon-color: #ffffff;
+          --color-brand-pressed-secondary-content-color: #ffffff;
+          --color-brand-secondary-content-color: #ffffff;
+          --text-variant-body-font-size: 14px;
+          --text-variant-body-font-weight: 400;
+          --text-variant-body-line-height: 20px;
+          --text-variant-caption-font-size: 12px;
+          --text-variant-caption-font-weight: 400;
+          --text-variant-caption-line-height: 14px;
+          --text-variant-display-font-size: 68px;
+          --text-variant-display-font-weight: 600;
+          --text-variant-display-line-height: 92px;
+          --text-variant-headline-font-size: 20px;
+          --text-variant-headline-font-weight: 600;
+          --text-variant-headline-line-height: 28px;
+          --text-variant-large-title-font-size: 40px;
+          --text-variant-large-title-font-weight: 600;
+          --text-variant-large-title-line-height: 52px;
+          --text-variant-sub-headline-font-size: 16px;
+          --text-variant-sub-headline-font-weight: 600;
+          --text-variant-sub-headline-line-height: 22px;
+          --text-variant-title1-font-size: 32px;
+          --text-variant-title1-font-weight: 600;
+          --text-variant-title1-line-height: 40px;
+          --text-variant-title2-font-size: 28px;
+          --text-variant-title2-font-weight: 600;
+          --text-variant-title2-line-height: 36px;
+          --text-variant-title3-font-size: 24px;
+          --text-variant-title3-font-weight: 600;
+          --text-variant-title3-line-height: 32px;
+        }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: black;
+          color: white;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
   >
     <div>
       Dark theme

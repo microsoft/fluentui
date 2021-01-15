@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-compose/lib/next/index';
-import { useMenuContext } from '@fluentui/react-shared-contexts';
 import { MenuButtonState } from './MenuButton.types';
 import { menuButtonShorthandProps } from './useMenuButton';
 
@@ -10,9 +9,8 @@ import { menuButtonShorthandProps } from './useMenuButton';
  */
 export const renderMenuButton = (state: MenuButtonState) => {
   const { slots, slotProps } = getSlots(state, menuButtonShorthandProps);
-  const { iconOnly, children } = state;
+  const { iconOnly, children, expanded } = state;
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { hidden } = useMenuContext();
 
   const contentVisible = !iconOnly && (children || slotProps.content?.children);
 
@@ -21,7 +19,7 @@ export const renderMenuButton = (state: MenuButtonState) => {
       <slots.icon {...slotProps.icon} />
       {contentVisible && <slots.content {...slotProps.content} />}
       {!iconOnly && <slots.menuIcon {...slotProps.menuIcon} />}
-      {!hidden && <slots.menu {...slotProps.menu} />}
+      {expanded && <slots.menu {...slotProps.menu} />}
     </slots.root>
   );
 };

@@ -50,12 +50,15 @@ export function resolveDefinitions<Selectors, Tokens>(
     const matcher = definition[0];
     const styleRule = definition[1];
     const resolvedRule = definition[2];
+    const cachedTokens = definition[3];
+
+    const tokensAsJson = JSON.stringify(tokens);
 
     if (CAN_USE_CSS_VARIABLES) {
       // we can always use prebuilt styles in this case and static cache in runtime
 
-      if (resolvedRule) {
-        return [matcher, undefined, resolvedRule];
+      if (resolvedRule && tokensAsJson === cachedTokens) {
+        return [matcher, undefined, resolvedRule, cachedTokens];
       }
 
       // if static cache is not present, eval it and mutate original object
@@ -63,8 +66,9 @@ export function resolveDefinitions<Selectors, Tokens>(
         typeof styleRule === 'function' ? (styleRule as MakeStylesStyleFunctionRule<Tokens>)(tokens!!) : styleRule!!;
 
       definitions[i][2] = resolveStyleRules(styles, unstable_cssPriority);
+      definitions[i][3] = tokensAsJson;
 
-      return [matcher, undefined, definition[2]];
+      return [matcher, undefined, definition[2], definitions[i][3]];
     }
 
     // if CSS variables are not supported we have to re-eval only functions, otherwise static cache can be reused
@@ -74,8 +78,8 @@ export function resolveDefinitions<Selectors, Tokens>(
       const path = [tokens, styleRule];
       const resolvedStyles = graphGet(graph, path);
 
-      if (resolvedStyles) {
-        return [matcher, undefined, resolvedStyles];
+      if (resolvedStyles && tokensAsJson === cachedTokens) {
+        return [matcher, undefined, resolvedStyles, cachedTokens];
       }
 
       const resolveStyles1 = resolveStyleRules(
@@ -84,15 +88,16 @@ export function resolveDefinitions<Selectors, Tokens>(
       );
       graphSet(graph, path, resolveStyles1);
 
-      return [matcher, undefined, resolveStyles1];
+      return [matcher, undefined, resolveStyles1, tokensAsJson];
     }
 
     if (resolvedRule) {
-      return [matcher, undefined, resolvedRule];
+      return [matcher, undefined, resolvedRule, cachedTokens];
     }
 
     definitions[i][2] = resolveStyleRules(styleRule!!, unstable_cssPriority);
+    definitions[i][3] = tokensAsJson;
 
-    return [matcher, undefined, definition[2]];
+    return [matcher, undefined, definition[2], definitions[i][3]];
   });
 }

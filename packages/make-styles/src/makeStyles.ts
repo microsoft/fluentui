@@ -89,7 +89,8 @@ export function makeStyles<Selectors, Tokens>(
     }
 
     const overridesHash = overridesCx === '' ? '' : overridesCx;
-    const cxCacheKey = options.renderer.id + matchedIndexes + '' + overridesHash;
+    const matchedDefinitionsHash = JSON.stringify(matchedDefinitions);
+    const cxCacheKey = options.renderer.id + matchedIndexes + '' + overridesHash + matchedDefinitionsHash;
     const cxCacheElement = cxCache[cxCacheKey];
 
     if (CAN_USE_CSS_VARIABLES && cxCacheElement !== undefined) {

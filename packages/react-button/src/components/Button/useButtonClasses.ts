@@ -297,7 +297,10 @@ export const useButtonStyles = makeStyles([
     (selectors: ButtonState) => selectors.primary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokens: any) => ({
-      '--button-background': tokens.buttonPrimaryBackground || tokens.color?.brand?.background,
+      '--button-background':
+        tokens.buttonPrimaryBackground ||
+        tokens.color?.brand?.background ||
+        tokens.semanticColors?.primaryButtonBackground,
       '--button-border-color': tokens.buttonPrimaryBorderColor || tokens.color?.brand?.borderColor,
       '--button-content-color': tokens.buttonPrimaryContentColor || tokens.color?.brand?.contentColor,
       // forcedColorAdjust: 'none',

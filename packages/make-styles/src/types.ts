@@ -28,6 +28,7 @@ export type MakeStylesResolvedDefinition<Selectors, Tokens> = [
   MakeStylesMatcher<Selectors>,
   MakeStylesStyleRule<Tokens> | undefined,
   Record<string, MakeStylesResolvedRule>,
+  string,
 ];
 
 // Renderer types

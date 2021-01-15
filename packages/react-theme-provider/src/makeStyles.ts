@@ -23,8 +23,6 @@ const renderer: MakeStylesRenderer = {
 };
 
 export function makeStyles<Selectors, Tokens>(definitions: MakeStylesDefinition<Selectors, Tokens>[]) {
-  // const computeClasses = makeNonReactStyles(definitions);
-
   const resolvedStyles = makeNonReactStyles<Selectors, Tokens | Theme>(definitions);
 
   return function useClasses(
