@@ -140,7 +140,7 @@ export const DRAGGING_ELEMENTS = {
         {
           gutter: (
             <FUI.Avatar
-              image="public/images/avatar/small/ade.jpg"
+              image="public/images/avatar/RobinCounts.jpg"
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
@@ -266,21 +266,21 @@ export const DRAGGING_ELEMENTS = {
       items: [
         {
           key: 'irving',
-          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
+          media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
           header: 'Irving Kuhic',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
           key: 'skyler',
-          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
+          media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
           header: 'Skyler Parks',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
           key: 'dante',
-          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
+          media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
           header: 'Dante Schneider',
           headerMedia: '5:22:40 PM',
           content: 'The GB pixel is down, navigate the virtual interface!',

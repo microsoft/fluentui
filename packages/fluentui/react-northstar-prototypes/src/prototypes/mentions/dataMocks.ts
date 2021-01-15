@@ -10,13 +10,13 @@ export interface AtMentionItem {
 export const atMentionItems: AtMentionItem[] = _.times(10, () => ({
   header: `${faker.name.firstName()} ${faker.name.lastName()}`,
   image: faker.random.arrayElement([
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/chris.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/christian.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/daniel.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/elliot.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/helen.jpg',
-    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/jenny.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CharlotteWaltson.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ColinBallinger.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg',
+    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/WandaHoward.jpg',
   ]),
   content: faker.name.title(),
 }));

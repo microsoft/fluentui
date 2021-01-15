@@ -29,7 +29,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
 ];
 
 const janeAvatar = {
-  image: 'public/images/avatar/small/ade.jpg',
+  image: 'public/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 

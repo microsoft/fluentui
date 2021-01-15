@@ -5,7 +5,7 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 const defaultAvatar = (
   <Avatar
     image={{
-      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
       alt: 'Profile picture of Matt',
     }}
     status={{
@@ -25,7 +25,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
         alt: 'Profile picture of Matt',
       }}
       status={{
@@ -39,7 +39,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
         alt: 'Profile picture of Matt',
       }}
       size="larger"
@@ -53,7 +53,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
         alt: 'Profile picture of Matt',
       }}
       status={{
@@ -67,7 +67,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
         alt: 'Profile picture of Matt',
       }}
       size="larger"

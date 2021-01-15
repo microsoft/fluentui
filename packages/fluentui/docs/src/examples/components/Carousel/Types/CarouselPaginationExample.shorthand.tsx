@@ -6,7 +6,7 @@ const carouselItems = [
     key: 'ade',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
         alt={'Portrait of Ade'}
       />
@@ -16,7 +16,7 @@ const carouselItems = [
     key: 'elliot',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
         alt={'Portrait of Elliot'}
       />
@@ -26,7 +26,7 @@ const carouselItems = [
     key: 'kristy',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/kristy.png"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
         fluid
         alt={'Portrait of Kristy'}
       />
@@ -36,7 +36,7 @@ const carouselItems = [
     key: 'nan',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/nan.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
         alt={'Portrait of Nan'}
       />

@@ -3,8 +3,8 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const [janeAvatar, johnAvatar] = [
-  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
-  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/joe.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
 ].map(src => ({
   image: src,
   status: { color: 'green', icon: <AcceptIcon /> },

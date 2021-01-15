@@ -62,7 +62,7 @@ const carouselItems = [
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
             fluid
             alt={imageAltTags.ade}
           />
@@ -81,7 +81,7 @@ const carouselItems = [
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
             fluid
             alt={imageAltTags.elliot}
           />
@@ -100,7 +100,7 @@ const carouselItems = [
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/kristy.png"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
             fluid
             alt={imageAltTags.kristy}
           />

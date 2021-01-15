@@ -13,7 +13,7 @@ const items: ShorthandCollection<ChatItemProps> = [
   {
     gutter: (
       <Avatar
-        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg"
+        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg"
         status={{ color: 'green', icon: <AcceptIcon /> }}
       />
     ),

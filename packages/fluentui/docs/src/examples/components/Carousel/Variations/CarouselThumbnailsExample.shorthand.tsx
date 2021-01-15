@@ -13,14 +13,14 @@ const carouselItems = [
     id: 'ade',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
         alt={imageAltTags.ade}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
         alt={imageAltTags.ade}
       />
@@ -32,14 +32,14 @@ const carouselItems = [
     id: 'elliot',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
         alt={imageAltTags.elliot}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
         alt={imageAltTags.elliot}
       />
@@ -51,14 +51,14 @@ const carouselItems = [
     id: 'molly',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/molly.png"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
         fluid
         alt={imageAltTags.molly}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/molly.png"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
         fluid
         alt={imageAltTags.molly}
       />
@@ -70,14 +70,14 @@ const carouselItems = [
     id: 'nan',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/nan.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
         alt={imageAltTags.nan}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/nan.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
         alt={imageAltTags.nan}
       />
@@ -89,14 +89,14 @@ const carouselItems = [
     id: 'elliot1',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
         alt={imageAltTags.elliot}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
         alt={imageAltTags.elliot}
       />
@@ -108,14 +108,14 @@ const carouselItems = [
     id: 'ade1',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
         alt={imageAltTags.ade}
       />
     ),
     thumbnail: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
         alt={imageAltTags.ade}
       />

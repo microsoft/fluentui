@@ -9,7 +9,7 @@ const ListExampleSelectable = () => {
     <List debug={debug}>
       <List.Item
         media={
-          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg" avatar />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />
         }
         header="Irving Kuhic"
         headerMedia="7:26:56 AM"
@@ -18,7 +18,7 @@ const ListExampleSelectable = () => {
       />
       <List.Item
         media={
-          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/steve.jpg" avatar />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />
         }
         header="Skyler Parks"
         headerMedia="11:30:17 PM"
@@ -26,7 +26,7 @@ const ListExampleSelectable = () => {
         index={1}
       />
       <List.Item
-        media={<Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/nom.jpg" avatar />}
+        media={<Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />}
         header="Dante Schneider"
         headerMedia="5:22:40 PM"
         content="The GB pixel is down, navigate the virtual interface!"

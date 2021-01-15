@@ -4,47 +4,47 @@ import { Dropdown } from '@fluentui/react-northstar';
 const inputItems = [
   {
     header: 'Bruce Wayne',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
     content: 'Software Engineer',
   },
   {
     header: 'Natasha Romanoff',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/jenny.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/WandaHoward.jpg',
     content: 'UX Designer 2',
   },
   {
     header: 'Steven Strange',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/joe.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
     content: 'Principal Software Engineering Manager',
   },
   {
     header: 'Alfred Pennyworth',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/justen.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg',
     content: 'Technology Consultant',
   },
   {
     header: `Scarlett O'Hara`,
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/laura.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AshleyMcCarthy.jpg',
     content: 'Software Engineer 2',
   },
   {
     header: 'Imperator Furiosa',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/veronika.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg',
     content: 'Boss',
   },
   {
     header: 'Bruce Banner',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/chris.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg',
     content: 'Senior Computer Scientist',
   },
   {
     header: 'Peter Parker',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/daniel.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg',
     content: 'Partner Software Engineer',
   },
   {
     header: 'Selina Kyle',
-    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
     content: 'Graphic Designer',
   },
 ];

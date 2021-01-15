@@ -35,7 +35,7 @@ const renderImages = () => {
     <Image
       key={imageName}
       fluid
-      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`}
+      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`}
       data-is-focusable="true"
     />
   ));
@@ -44,7 +44,7 @@ const renderImages = () => {
 const renderImageButtons = () => {
   return _.map(imageNames, imageName => (
     <Button key={imageName} styles={imageButtonStyles} title={imageName}>
-      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`} />
+      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`} />
     </Button>
   ));
 };

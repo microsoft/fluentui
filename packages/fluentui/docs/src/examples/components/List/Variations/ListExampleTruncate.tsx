@@ -13,7 +13,7 @@ const ListExample = () => {
       <List debug={debug} truncateHeader={truncateHeader} truncateContent={truncateContent}>
         <List.Item
           media={
-            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg" avatar />
+            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />
           }
           header="Irving Kuhic - Super long title here"
           headerMedia="7:26:56 AM"
@@ -23,7 +23,7 @@ const ListExample = () => {
         />
         <List.Item
           media={
-            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/steve.jpg" avatar />
+            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />
           }
           header="Skyler Parks - Super long title here"
           headerMedia="11:30:17 PM"
@@ -33,7 +33,7 @@ const ListExample = () => {
         />
         <List.Item
           media={
-            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/nom.jpg" avatar />
+            <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />
           }
           header="Dante Schneider - Super long title here"
           headerMedia="5:22:40 PM"

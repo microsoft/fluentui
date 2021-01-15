@@ -115,7 +115,7 @@ class CustomChatMessage extends React.Component {
 
 const gutterContent = (
   <AsyncData
-    data="public/images/avatar/small/ade.jpg"
+    data="public/images/avatar/RobinCounts.jpg"
     render={data => (
       <Avatar
         image={data}

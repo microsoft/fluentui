@@ -3,7 +3,7 @@ import { ItemLayout, Image } from '@fluentui/react-northstar';
 
 const ItemLayoutExampleMediaShorthand = () => (
   <ItemLayout
-    media={<Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/nom.jpg" avatar />}
+    media={<Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />}
     header="Dante Schneider"
     headerMedia="5:22:40 PM"
     content="The GB pixel is down, navigate the virtual interface!"

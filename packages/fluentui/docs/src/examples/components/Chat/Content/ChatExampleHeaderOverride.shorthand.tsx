@@ -44,7 +44,7 @@ const items: ChatProps['items'] = [
     ),
   },
   {
-    gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg" />,
+    gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
     message: (
       <Chat.Message
         reactionGroup={reactions}

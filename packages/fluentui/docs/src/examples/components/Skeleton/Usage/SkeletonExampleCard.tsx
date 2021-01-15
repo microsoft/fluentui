@@ -25,7 +25,7 @@ const SkeletonExampleCard = () => {
         ) : (
           <Flex gap="gap.small">
             <Avatar
-              image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+              image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
               label="Copy bandwidth"
               name="Evie yundt"
               status="unknown"

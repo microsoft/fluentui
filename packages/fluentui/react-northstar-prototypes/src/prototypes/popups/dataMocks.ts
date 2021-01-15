@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 export const getItemsData = (images: string[], ariaLabelPart: string) => {
   return _.map(images, image => ({
-    imageSrc: `public/images/avatar/large/${image}.jpg`,
+    imageSrc: `public/images/avatar/${image}.jpg`,
     title: `${ariaLabelPart} ${image}`,
     onClick: (e: any, props: any) => {
       const { title } = props;
