@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 15 Jan 2021 12:30:40 GMT",
+      "tag": "@fluentui/web-components_v0.10.4",
+      "version": "0.10.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "add storybook manager for theme",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "7f97bbcf2e7650b8a92ecf386ef15421b3270536",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix: add hover state for expand collapse button in tree-item",
+            "author": "jes@microsoft.com",
+            "commit": "c641f0323e0171c1156d115ec5ad87cfd46b6d17",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fix slider disabled and readonly cursor",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "8883c0cbefd3e9ccd236f025fcb228b1fe0f16ac",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jan 2021 12:36:40 GMT",
       "tag": "@fluentui/web-components_v0.10.3",
       "version": "0.10.3",
