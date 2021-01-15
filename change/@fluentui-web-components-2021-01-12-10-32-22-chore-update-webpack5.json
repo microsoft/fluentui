@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
   "packageName": "@fluentui/web-components",
   "email": "dzearing@microsoft.com",
