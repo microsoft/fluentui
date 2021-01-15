@@ -1125,21 +1125,28 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // on the event
       relatedTarget = document.activeElement as Element;
     }
-    if (
-      relatedTarget &&
-      // when event coming from withing the comboBox title
-      ((this.props.hoisted.rootRef.current &&
-        this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement)) ||
-        // when event coming from within the comboBox list menu
-        (this._comboBoxMenu.current &&
-          (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
-            // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the
-            // Callout is clicked) checks if the relatedTarget is a parent of _comboBoxMenu
-            findElementRecursive(this._comboBoxMenu.current, element => element === relatedTarget))))
-    ) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
+
+    if (relatedTarget) {
+      const isBlurFromComboBoxTitle =
+        this.props.hoisted.rootRef.current && this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement);
+      const isBlurFromComboBoxMenu =
+        this._comboBoxMenu.current && this._comboBoxMenu.current.contains(relatedTarget as HTMLElement);
+      const isBlurFromComboBoxMenuAncestor =
+        this._comboBoxMenu.current &&
+        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget);
+
+      if (isBlurFromComboBoxTitle || isBlurFromComboBoxMenu || isBlurFromComboBoxMenuAncestor) {
+        if (
+          isBlurFromComboBoxMenuAncestor &&
+          this._hasFocus() &&
+          (!this.props.multiSelect || this.props.allowFreeform)
+        ) {
+          this._submitPendingValue(event);
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
     }
 
     if (this._hasFocus()) {

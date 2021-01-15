@@ -15,10 +15,9 @@ export interface ILink {
     focus(): void;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-    // (undocumented)
-    [index: string]: any;
+    [key: string]: any;
     // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
@@ -55,13 +54,19 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     value?: string | string[] | number;
 }
 
-// @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
+// @public
+export interface ILinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, React.RefAttributes<HTMLElement> {
+    [key: string]: any;
     as?: React.ElementType;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
+    href?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    rel?: string;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
+    target?: string;
     theme?: ITheme;
+    type?: string;
 }
 
 // @public (undocumented)

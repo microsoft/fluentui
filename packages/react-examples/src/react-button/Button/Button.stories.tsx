@@ -49,8 +49,18 @@ const ButtonExamples = (props: ButtonProps) => (
 
 export const Buttons = () => (
   <Stack>
-    <Text>A button comes in default and `primary` flavors.</Text>
+    <Text>A button comes in default, `primary`, `ghost` and `transparent` flavors.</Text>
     <ButtonExamples />
+
+    <Text>A button can be focusable when disabled</Text>
+    <Stack horizontal>
+      <Button disabled icon="X">
+        Disabled, non-focusable button
+      </Button>
+      <Button disabled disabledFocusable icon="X">
+        Disabled, focusable button
+      </Button>
+    </Stack>
 
     <Text>A button can appear round using the `circular` prop.</Text>
     <ButtonExamples circular />
