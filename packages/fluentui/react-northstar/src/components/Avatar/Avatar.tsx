@@ -13,14 +13,13 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Box, BoxProps } from '../Box/Box';
-import { Label, LabelProps } from '../Label/Label';
-
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 import { AvatarImage, AvatarImageProps } from './AvatarImage';
 import { AvatarStatusIcon } from './AvatarStatusIcon';
+import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
+import { AvatarLabel, AvatarLabelProps } from './AvatarLabel';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -29,13 +28,13 @@ export interface AvatarProps extends UIComponentProps {
   accessibility?: Accessibility<never>;
 
   /** Avatar can contain icon. It will be rendered only if the image is not present. */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<AvatarIconProps>;
 
   /** Shorthand for the image. */
   image?: ShorthandValue<AvatarImageProps>;
 
   /** Shorthand for the label. */
-  label?: ShorthandValue<LabelProps>;
+  label?: ShorthandValue<AvatarLabelProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
@@ -64,6 +63,8 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
     Status: typeof AvatarStatus;
     StatusIcon: typeof AvatarStatusIcon;
     Image: typeof AvatarImage;
+    Label: typeof AvatarLabel;
+    Icon: typeof AvatarIcon;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
@@ -114,20 +115,24 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> &
       }),
   });
 
-  const iconElement = Box.create(icon, {
+  const iconElement = createShorthand(AvatarIcon, icon, {
     defaultProps: () =>
       getA11Props('icon', {
         title: name,
         styles: resolvedStyles.icon,
+        size,
+        square,
       }),
   });
 
-  const labelElement = Label.create(label || {}, {
+  const labelElement = createShorthand(AvatarLabel, label || {}, {
     defaultProps: () =>
       getA11Props('label', {
         content: getInitials(name),
         circular: !square,
         title: name,
+        size,
+        square,
         styles: resolvedStyles.label,
       }),
   });
@@ -203,6 +208,8 @@ Avatar.propTypes = {
 Avatar.Status = AvatarStatus;
 Avatar.StatusIcon = AvatarStatusIcon;
 Avatar.Image = AvatarImage;
+Avatar.Label = AvatarLabel;
+Avatar.Icon = AvatarIcon;
 
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 

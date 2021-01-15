@@ -21,7 +21,7 @@ export const FlipperStyles = css`
         align-items: center;
         margin: 0;
         position: relative;
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
         color: ${neutralForegroundRestBehavior.var};
         background: transparent;
         border: none;
@@ -47,7 +47,7 @@ export const FlipperStyles = css`
     .previous {
         position: relative;
         ${
-          /* Glyph size and margin-left is temporary - 
+          /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
         } width: 16px;
         height: 16px;
@@ -101,7 +101,7 @@ export const FlipperStyles = css`
             :host .next,
             :host .previous {
                 color: ${SystemColors.ButtonText};
-                fill: ${SystemColors.ButtonText};
+                fill: currentcolor;
             }
             :host::before {
                 background: ${SystemColors.Canvas};
@@ -117,7 +117,7 @@ export const FlipperStyles = css`
             :host(:hover) .previous {
                 forced-color-adjust: none;
                 color: ${SystemColors.HighlightText};
-                fill: ${SystemColors.HighlightText};
+                fill: currentcolor;
             }
             :host(.disabled) {
                 opacity: 1;

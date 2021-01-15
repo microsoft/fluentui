@@ -40,7 +40,9 @@ const webpackConfig: webpack.Configuration = {
     'react-dom': 'ReactDOM',
     'react-dom/server': 'ReactDOMServer',
   },
-  node: false,
+  node: {
+    global: true,
+  },
   module: {
     noParse: [/anchor-js/],
     rules: [

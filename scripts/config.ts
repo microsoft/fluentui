@@ -110,6 +110,7 @@ const config = {
     __PROD__,
     __BASENAME__: JSON.stringify(__BASENAME__),
     __SKIP_ERRORS__,
+    global: {},
     'process.env': {
       NODE_ENV: JSON.stringify(env),
       SCREENER: !!process.env.SCREENER_API_KEY,
