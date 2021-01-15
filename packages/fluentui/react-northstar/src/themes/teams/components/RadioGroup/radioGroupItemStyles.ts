@@ -32,6 +32,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     display: p.vertical ? 'flex' : 'inline-flex',
     fontSize: v.textFontSize,
     padding: v.padding,
+    margin: v.margin,
 
     ':hover': {
       color: v.textColorDefaultHoverFocus,
@@ -58,16 +59,11 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
       ...restHoverFocusTextColor(v.colorDisabled),
     }),
 
-    ...(p.vertical && {
-      marginTop: `${pxToRem(5)}`,
-      marginBottom: `${pxToRem(5)}`,
-    }),
-
     ...getBorderFocusStyles({ variables: siteVariables }),
   }),
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    margin: `${pxToRem(2)} 0 ${pxToRem(2)} ${pxToRem(2)}`,
+    margin: `${pxToRem(2)} 0`,
     outline: 0,
     display: 'flex',
     alignItems: 'center',
