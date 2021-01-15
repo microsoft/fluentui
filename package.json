@@ -73,9 +73,10 @@
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
-    "lerna": "^3.15.0",
     "lage": "0.24.0",
+    "lerna": "^3.15.0",
     "lint-staged": "^10.2.9",
+    "sass": "^1.32.4",
     "sass-loader": "^10.1.0",
     "satisfied": "^1.1.1",
     "syncpack": "^5.6.10"
@@ -96,14 +97,11 @@
       "packages/web-components/ts-node",
       "packages/web-components/ts-node/**",
       "packages/web-components/mocha",
-      "packages/web-components/mocha/**",
-      "packages/web-components/webpack",
-      "packages/web-components/webpack/**"
+      "packages/web-components/mocha/**"
     ]
   },
   "resolutions": {
     "eslint": "^7.1.0",
-    "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
   },
   "syncpack": {
@@ -127,8 +125,7 @@
           "ts-loader",
           "ts-node",
           "tslib",
-          "typescript",
-          "webpack"
+          "typescript"
         ]
       },
       {

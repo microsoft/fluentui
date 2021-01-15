@@ -109,7 +109,7 @@
     "markdown-table": "^2.0.0",
     "node-fetch": "^2.6.1",
     "node-plop": "^0.25.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^5.0.0",
     "path-browserify": "^1.0.1",
     "node-polyfill-webpack-plugin": "^1.0.2",
     "p-queue": "^6.0.2",
