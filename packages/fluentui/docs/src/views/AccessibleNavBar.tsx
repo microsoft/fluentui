@@ -21,6 +21,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
   const [focusedItemIndex, setFocusedItemIndex] = React.useState(0);
   
           const handleDocumentFocus = React.useCallback(event => {
+          // Reset the NavBar items if an element other than the current NavBar items is focused
                         if (navBarItems && !Array.from(navBarItems).includes(event.target) && !event.target.dontResetNavBarItems) { // Begin if 1
                         setNavBarItems(null);
                         } // End if 1
@@ -64,11 +65,12 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         }, [navBarItems, focusedItemIndex]); // End handleKeyDown
         
         const handleFocus = React.useCallback(event => {
-        event.target.dontResetNavBarItems = true;
-        if ((navBarItems === null) || !Array.from(navBarItems).includes(event.target)) { // Begin if 1
+        // If the NavBar items have been reset or the focus has moved from one NavBar items to another, narrate the usage hint
+        if (!navBarItems || !Array.from(navBarItems).includes(event.target)) { // Begin if 1
         narrate('To navigate use the arrow keys');
         } // End if 1
-        
+        event.target.dontResetNavBarItems = true;
+
         // Determine and save the focused navBar items
     const items = event.currentTarget.querySelectorAll('.item');
     setNavBarItems(items);
@@ -81,10 +83,6 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
     } // End if 1
     }); // End forEach 1
     }, [navBarItems]); // End handleFocus
-    
-          const handleBlur = React.useCallback(event => {
-          //setNavBarItems(null);
-    }, []); // End handleBlur
     
   return (
     <>
@@ -99,7 +97,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
 <h2>Tablist</h2>
 <button>Focus catch</button>
-<div role="tablist" onFocus={handleFocus} onBlur={handleBlur}>
+<div role="tablist" onFocus={handleFocus}>
 <button role="tab" className="item" tabIndex={0}>Activities</button>
 <button role="tab" className="item" tabIndex={-1}>Chats</button>
 <button role="tab" className="item" tabIndex={-1}>Teams</button>
@@ -107,7 +105,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 </div>
 
 <h3>Menu</h3>
-<div role="menu" onFocus={handleFocus} onBlur={handleBlur}>
+<div role="menu" onFocus={handleFocus}>
 <button role="menuitem" className="item" tabIndex={0}>Activities</button>
 <button role="menuitem" className="item" tabIndex={-1}>Chats</button>
 <button role="menuitem" className="item" tabIndex={-1}>Teams</button>
