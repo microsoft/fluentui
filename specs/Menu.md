@@ -146,6 +146,18 @@ const menu = (
 
 ## Behaviours
 
+### Menu trigger
+
+### Submenu trigger/navigation
+
+### Menu navigation
+
+### Split button MenuItem
+
+### Checkbox MenuItem
+
+### Radio MenuItem
+
 ## References
 
 [CodeSandbox of implemented versions](https://codesandbox.io/s/menuexamples-uybsr)
