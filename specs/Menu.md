@@ -1,26 +1,150 @@
 # Menu
 
-## TODOS
+## Background
 
-- Get reviews
-- Write summary at end
-- Checkin to github
-- Write prototype
-- Finalize structure
-- Finalize API
-- Final review
+### Definition
 
-## Menu Basics
+This spec defines the default function of a `Menu` as an interactive component that displays a list of options that can be represented by a range possible states. Possible variants are defined in [the relevant section](##variants)
 
-A menu is a way of displaying items that a user may be able to interact with. Menus vary quite a bit based on implementation and usage. Some are horizontal, some have collapsable sections, and others are just a list. Likewise menu items are equally varied. Some may just convey information but cannot be interacted with like headers or dividers while others are either buttons, links, or expand into a submenu.
+The `Menu` should be displayed on a temporary surface that interrupts the normal flow of content. The temporary surface should be triggered by an external user action such as (but not limited to) a click on a button or other UI control.
 
-The w3 specifications for a menu suggest that it is only for user actions, not user input. Most varieties of menus interpret this as being for navigation.
+The interactions that result in the dismiss/removal of the `Menu` component should be configurable.
 
-Menus are often combined with a popover or similar floating component so the menu appears over other items and is subsequently dismissed.
+## Prior art
+
+As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([LINK to research proposal](https://github.com/WICG/open-ui/pull/249))
+
+### Comparison of `@fluentui/react` and `@fluentui/react-northstar`
+
+## Variants
+
+### Nested nenus
+
+A `Menu` should be able to trigger an additional instance of itself as a part of one or more of its options. The nested `Menu` component should have the same functional capabilities as the root `Menu` component.
+
+The actions that trigger the the nested `Menu` should be be consistent with the actions that can trigger any root `Menu` from a similar UI control.
+
+We advise that no more than two nested `Menu` components be used, but this spec does not functionally apply that constrain to the implementation of the `Menu` component.
+
+### Selection state
+
+A `Menu` should be able to track and represent the selection state of all or some of its options if required.
+
+When an options is associated with a selection state. The `Menu`, either root or nested, should control its dismiss behaviour accordingly based on configuration.
+
+### Sections
+
+A `Menu` can be partitioned into sections using visible dividers in its list of options. Each section can contain a heading title that announces or briefly describes the options in the particular section
+
+### Secondary text
+
+An option of a `Menu` component should be able to declare additional secondary text that can provide additional context describing the option or its usage.
+
+For example a secondary text can be a label that shows a keyboard shortcut that will perform an equivalent action of the option of the `Menu` component.
+
+### Split option with nesting
+
+An option of a `Menu` component can trigger a nested `Menu` component and also perform its default action by splitting the option into two interactable areas that handle each action separately.
+
+### Disabled option(s)
+
+All options in a `Menu` component can be disabled and should provide a visible indication for this purpose. User interaction should be defined for disabled options
+
+### Scrollable
+
+A `Menu` should display a vertical scrollbar when the number of options exceeds the height of the component
+
+### Standalone/No surface
+
+A `Menu` can be used without the temporary popup surface and its trigger. This will allow `Menu` components to be permanent page content or used in custom surfaces with a wider range of UI components.
+
+### Custom content
+
+```
+This variant is still a work in progress and needs additional thought
+```
+
+## API
+
+The `Menu` should implement a `children` based API as is the standard across all the surveyed alternatives as a part of Open UI research in [Prior Art](#prior-art). The component will leverage the use of `context` in the interaction and data flows of child components.
+
+Sample usages will be give in the following section of this document [Sample code](#sample-code)
+
+### Menu
+
+The root level component serves as a simplified interface (sugar) for popup positioning and triggering.
+
+### MenuList
+
+This component is used internally by `Menu` and manages the context and layout its items.
+
+`MenuList` can also be used separately as the standalone variant of the `Menu`, since it should not control popup positioning or triggers. It is the only component in the API that can be used standalone. Envisioned to be used with more complex popup or trigger scenarios where the `Menu` component does not provide enough control for these situations.
+
+### MenuSection
+
+Creates a section inside a `MenuList`, setting up header layout and dividers between `MenuItems`
 
 ### MenuItem
 
-Most menus have a concept of a specific menuitem. It is an integral part of the menu and will have some of its own sections throughout.
+As the name infers
+
+### SubMenu
+
+Creates a `Menu` component with `MenuItem` trigger and handles the positioning of the nested menu.
+
+## Sample code
+
+### Default Menu
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <Menu trigger={trigger}>
+    <MenuItem title="Option 1" />
+    <MenuItem title="Option 2" />
+    <MenuItem title="Option 3" />
+  <Menu>
+)
+```
+
+### Sections and submenus
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <Menu trigger={trigger}>
+    <MenuItem title="Option 1" />
+    <MenuSection title="Section">
+      <MenuItem title="Section Option 1">
+      <MenuItem title="Section Option 2">
+      <MenuItem title="Section Option 3">
+    <MenuSection />
+    <SubMenu title="Open submenu">
+      <MenuItem title="Submenu Option 1">
+      <MenuItem title="Submenu Option 2">
+      <MenuItem title="Submenu Option 3">
+    <SubMenu>
+  <Menu>
+)
+```
+
+### Standlone
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <MenuList trigger={trigger}>
+    <MenuItem title="Option 1" />
+    <MenuItem title="Option 2" />
+    <MenuItem title="Option 3" />
+  <MenuList>
+)
+```
+
+## Behaviours
 
 ## References
 
