@@ -35,8 +35,23 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
   React.useEffect(() => {
     const element: Target | null | undefined = typeof targetRef === 'undefined' ? target : targetRef.current;
 
+    // Store the current event to avoid triggering handlers immediately
+    // Note this depends on a deprecated but extremely well supported quirk of the web platform
+    // https://github.com/facebook/react/issues/20074
+    let currentEvent = window.event;
+
+    const conditionalHandler = (event: DocumentEventMap[T]) => {
+      // Skip if this event is the same as the one running when we added the handlers
+      if (event === currentEvent) {
+        currentEvent = undefined;
+        return;
+      }
+
+      eventHandler(event);
+    };
+
     if (isActionSupported(element, 'addEventListener')) {
-      element.addEventListener(type, eventHandler, capture);
+      element.addEventListener(type, conditionalHandler, capture);
     } else if (process.env.NODE_ENV !== 'production') {
       throw new Error(
         '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `addEventListener()` method.',
@@ -45,7 +60,7 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
 
     return () => {
       if (isActionSupported(element, 'removeEventListener')) {
-        element.removeEventListener(type, eventHandler, capture);
+        element.removeEventListener(type, conditionalHandler, capture);
       } else if (process.env.NODE_ENV !== 'production') {
         throw new Error(
           '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `removeEventListener()` method.',
