@@ -42,6 +42,8 @@ export * from './components/Avatar/Avatar';
 export * from './components/Avatar/AvatarStatus';
 export * from './components/Avatar/AvatarStatusIcon';
 export * from './components/Avatar/AvatarImage';
+export * from './components/Avatar/AvatarIcon';
+export * from './components/Avatar/AvatarLabel';
 
 export * from './components/Box/Box';
 
@@ -214,6 +216,7 @@ export * from './components/Carousel/CarouselItem';
 export * from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export * from './components/Carousel/CarouselPaddle';
+export * from './components/Carousel/CarouselPaddlesContainer';
 
 export * from './components/Table/Table';
 export * from './components/Table/TableRow';

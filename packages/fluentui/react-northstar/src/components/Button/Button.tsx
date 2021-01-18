@@ -22,7 +22,6 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  SizeValue,
   ShorthandFactory,
   createShorthand,
 } from '../../utils';
@@ -93,7 +92,7 @@ export interface ButtonProps
   secondary?: boolean;
 
   /** A button can be sized. */
-  size?: SizeValue;
+  size?: 'small' | 'medium';
 }
 
 export type ButtonStylesProps = Pick<
@@ -351,7 +350,7 @@ Button.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   text: PropTypes.bool,
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-  size: customPropTypes.size,
+  size: PropTypes.oneOf(['medium', 'small']),
 };
 
 Button.Group = ButtonGroup;

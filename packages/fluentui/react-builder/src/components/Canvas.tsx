@@ -29,6 +29,7 @@ export type CanvasProps = {
   onDeleteSelectedComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
+  enabledVirtualCursor?: boolean;
   style?: React.CSSProperties;
   role?: string;
   inUseMode?: boolean;
@@ -51,6 +52,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDeleteSelectedComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
+  enabledVirtualCursor,
   style,
   role,
   inUseMode,
@@ -65,6 +67,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         .slice(2)}`,
     [],
   );
+
+  const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
+  const [vcIndex, setVcIndex] = React.useState(0);
+  const [focusedVcElement, setFocusedVcElement] = React.useState<HTMLElement>(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -99,6 +105,43 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     },
     [onMouseUp, hideDropSelector],
   );
+
+  const handleKeyDown = React.useCallback(
+    event => {
+      switch (
+        event.code // Begin switch 1
+      ) {
+        case 'Period': // Moves to the next element
+        case 'Comma': // Moves to the previous element
+          if (event.ctrlKey) {
+            // Begin if 1
+            virtualCursorElements[vcIndex].classList.remove('virtual-focused');
+            setVcIndex(index => {
+              const tempIndex = index + (event.code === 'Period' ? 1 : -1);
+
+              // Ensure looping, i.e., that the next element of the last element is the first element, and that the previous element of the first element is the last element
+              const newIndex =
+                tempIndex >= virtualCursorElements.length
+                  ? 0
+                  : tempIndex < 0
+                  ? virtualCursorElements.length - 1
+                  : tempIndex;
+
+              virtualCursorElements[newIndex].classList.add('virtual-focused');
+              setFocusedVcElement(virtualCursorElements[newIndex]);
+              return newIndex;
+            }); // End setVcIndex
+          } // End if 1
+          return;
+        case 'Enter': // Clicks the current element
+          virtualCursorElements[vcIndex].click();
+          return;
+        default:
+          return;
+      } // End switch 1
+    },
+    [vcIndex, virtualCursorElements],
+  ); // End handleKeyDown
 
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
@@ -152,6 +195,67 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
+
+      // The comments before some selectors below are intentionally there so that the matched elements are not focusable by the virtual cursor. These elements are instead narrated as the landmarks or groups narration part of a focusable element when entering the element. But let's keep them here in case it will change in the future, and so that it's clear that they are not missed out but that they are not focusable intentionally
+      setVirtualCursorElements(
+        Array.from(
+          iframeDocument.querySelectorAll(
+            [
+              'a',
+              'button',
+              'h1',
+              'h2',
+              'h3',
+              'h4',
+              'h5',
+              'h6',
+              'input',
+              // 'li',
+              'marquee',
+              // 'ol',
+              // 'option',
+              // 'p',
+              'select',
+              'textarea',
+              // 'ul',
+              '[role="button"]',
+              '[role="checkbox"]',
+              // '[role="dialog"]',
+              '[role="gridcell"]',
+              '[role="link"]',
+              // '[role="list"]',
+              '[role="listbox"]',
+              '[role="listitem"]',
+              '[role="log"]',
+              // '[role="menu"]',
+              // '[role="menubar"]',
+              '[role="menuitem"]',
+              '[role="menuitemcheckbox"]',
+              '[role="menuitemradio"]',
+              // '[role="option"]',
+              '[role="progressbar"]',
+              '[role="radio"]',
+              '[role="scrollbar"]',
+              '[role="searchbox"]',
+              '[role="separator"]',
+              '[role="slider"]',
+              '[role="spinbutton"]',
+              '[role="status"]',
+              '[role="switch"]',
+              '[role="tab"]',
+              '[role="tabpanel"]',
+              '[role="textbox"]',
+              '[role="timer"]',
+              '[role="tooltip"]',
+              '[role="tree"]',
+              // '[role="treeitem"]',
+              '.ui-text:not(.ui-checkbox__label)',
+            ]
+              .map(selector => `*:not([aria-hidden]) >  ${selector}`)
+              .join(','),
+          ),
+        ),
+      );
 
       let style = iframeDocument.getElementById('builder-style');
 
@@ -238,6 +342,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             outline-offset: -1px;
           }
           `,
+        inUseMode &&
+          `
+            .virtual-focused {
+              border: 2px dashed black;
+            }
+          `,
         elementStyles,
       ]
         .filter(Boolean)
@@ -254,6 +364,16 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       iframe.contentWindow.clearTimeout(animationFrame);
     };
   }, [iframeId, isExpanding, isSelecting, jsonTree, role, bodyFocused, inUseMode]);
+
+  React.useEffect(() => {
+    if (enabledVirtualCursor) {
+      const iframe = document.getElementById(iframeId) as HTMLIFrameElement;
+      iframe.contentWindow.focus();
+    } else {
+      virtualCursorElements.map(e => e.classList.remove('virtual-focused'));
+      setFocusedVcElement(null);
+    }
+  }, [enabledVirtualCursor, iframeId, virtualCursorElements]);
 
   return (
     <Frame
@@ -336,8 +456,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               )}
               {inUseMode && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {inUseMode && enabledVirtualCursor && (
+                <EventListener type="keydown" listener={handleKeyDown} target={document} />
+              )}
               <div style={{ bottom: '0', position: 'absolute' }}>
                 <ReaderNarration
+                  vcElement={focusedVcElement}
                   selector={selectedComponent ? `[data-builder-id="${selectedComponent.uuid}"]` : null}
                   inUseMode={inUseMode}
                 />

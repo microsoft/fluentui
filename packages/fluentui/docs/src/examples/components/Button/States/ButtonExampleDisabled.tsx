@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Flex, Header } from '@fluentui/react-northstar';
-import { EmojiIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
+import { MicIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleDisabled = () => (
   <>
@@ -15,7 +15,7 @@ const ButtonExampleDisabled = () => (
           <Button.Content content="Inverted Button" />
         </Button>
         <Button disabled icon iconPosition="before" primary>
-          <EmojiIcon xSpacing="after" />
+          <MicIcon xSpacing="after" />
           <Button.Content content="Click me" />
         </Button>
         <Button disabled circular title="Translation">
@@ -41,7 +41,7 @@ const ButtonExampleDisabled = () => (
           <Button.Content content="Inverted Button" />
         </Button>
         <Button disabledFocusable icon iconPosition="before" primary>
-          <EmojiIcon xSpacing="after" />
+          <MicIcon xSpacing="after" />
           <Button.Content content="Click me" />
         </Button>
         <Button disabledFocusable circular title="Translation">
