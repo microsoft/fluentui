@@ -89,7 +89,7 @@
     "ts-node": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.0",
-    "webpack": "^4.43.0"
+    "webpack": "^4.44.0"
   },
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",

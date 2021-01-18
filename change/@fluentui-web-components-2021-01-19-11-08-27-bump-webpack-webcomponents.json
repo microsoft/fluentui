@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "fix(libuv): fix sporadic `libuv` assertion fails",
+  "packageName": "@fluentui/web-components",
+  "email": "jakubkonka@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-19T10:08:27.749Z"
+}
