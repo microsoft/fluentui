@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": ["es2017"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "node", "babel-helper-plugin-utils"]
+  },
+  "include": ["__fixtures__/**/code.ts", "src"]
+}

@@ -177,6 +177,15 @@
       },
       {
         "packages": [
+          "@fluentui/babel-make-styles"
+        ],
+        "dependencies": [
+          "tslib",
+          "typescript"
+        ]
+      },
+      {
+        "packages": [
           "@fluentui/web-components"
         ],
         "dependencies": [

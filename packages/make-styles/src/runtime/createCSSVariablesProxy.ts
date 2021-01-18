@@ -2,6 +2,9 @@ import { isObject } from './utils/isObject';
 
 /* eslint-disable */
 
+/**
+ * @internal
+ */
 export function createCSSVariablesProxy<Tokens>(tokens: Tokens): Tokens {
   const g = {
     // @ts-ignore

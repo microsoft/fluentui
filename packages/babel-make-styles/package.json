@@ -1,0 +1,46 @@
+{
+  "name": "@fluentui/babel-make-styles",
+  "version": "9.0.0-alpha.0",
+  "description": "A Babel plugin that performs build time transforms for @fluentui/make-styles",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/scripts": "^1.0.0",
+    "babel-plugin-tester": "^10.0.0",
+    "typescript": "4.2.4"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/generator": "^7.12.5",
+    "@babel/helper-plugin-utils": "^7.12.13",
+    "@babel/template": "^7.12.7",
+    "@babel/traverse": "^7.12.9",
+    "@fluentui/make-styles": "^9.0.0-alpha.10",
+    "@fluentui/react-theme": "^9.0.0-alpha.8",
+    "@linaria/babel": "^3.0.0-beta.0",
+    "tslib": "^2.2.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}
