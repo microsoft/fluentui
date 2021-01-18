@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Button, Flex, Text } from '@fluentui/react-northstar';
+import { Button, Flex, Header } from '@fluentui/react-northstar';
 import { EmojiIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleDisabled = () => (
   <>
+    <Header as="h4" content="Disabled" />
     <Flex column gap="gap.smaller">
       <Flex gap="gap.smaller">
         <Button disabled>Default</Button>
@@ -29,7 +30,7 @@ const ButtonExampleDisabled = () => (
         <Button.Content>Fluid</Button.Content>
       </Button>
     </Flex>
-    <Text content="Focusable varianrs" />
+    <Header as="h4" content="Focusable variants" />
     <Flex column gap="gap.smaller">
       <Flex gap="gap.smaller">
         <Button disabledFocusable>Default</Button>

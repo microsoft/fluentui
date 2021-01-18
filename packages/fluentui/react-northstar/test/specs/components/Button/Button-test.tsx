@@ -38,9 +38,10 @@ describe('Button', () => {
     });
 
     describe('aria-disabled', () => {
-      test('is set to true, if disabled attribute is provided', () => {
+      test('is not set, if disabled attribute is provided', () => {
         const renderedComponent = mountWithProviderAndGetComponent(Button, <Button disabled />);
-        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
+        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
+        expect(getRenderedAttribute(renderedComponent, 'disabled', '')).toBe(true);
       });
 
       test('is set to undefined, if disabled attribute is not provided', () => {
@@ -113,12 +114,13 @@ describe('Button', () => {
       });
 
       describe('aria-disabled', () => {
-        test('is set to true, if disabled attribute is provided', () => {
+        test('is not set, if disabled attribute is provided', () => {
           const renderedComponent = mountWithProviderAndGetComponent(
             Button,
             <Button disabled accessibility={toggleButtonBehavior} />,
           );
-          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
+          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
+          expect(getRenderedAttribute(renderedComponent, 'disabled', '')).toBe(true);
         });
 
         test('is set to undefined, if disabled attribute is not provided', () => {

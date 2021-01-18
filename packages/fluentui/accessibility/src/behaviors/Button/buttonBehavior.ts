@@ -6,7 +6,7 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
     attributes: {
       root: {
         role: props.as === 'button' ? undefined : 'button',
-        tabIndex: props.as === 'button' ? undefined : 0,
+        tabIndex: props.as === 'button' || props.disabled ? undefined : 0,
         disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
         'aria-disabled': props.disabledFocusable || props.loading,
       },

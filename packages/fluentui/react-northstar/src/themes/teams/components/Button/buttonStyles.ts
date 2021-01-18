@@ -183,15 +183,12 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         },
       }),
 
-      // Overrides for "disabled" buttons
-      ...(p.disabled && {
-        pointerEvents: 'none',
-      }),
-      // Overrides for "disabled" and "disabledFocusable" buttons
+      // Overrides for "disabled" or "disabledFocusable" buttons
       ...((p.disabled || p.disabledFocusable) && {
         cursor: 'default',
         color: v.colorDisabled,
         boxShadow: 'none',
+        pointerEvents: 'none',
         ':hover': {
           color: v.colorDisabled,
         },
