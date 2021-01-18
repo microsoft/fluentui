@@ -356,6 +356,8 @@ Creates a `Menu` component with `MenuItem` trigger and handles the positioning o
 
 ## Sample code
 
+The below samples do not represent the definitive props of the final implemented component, but represent the ideal final implementations. Can be subject to change during the implementation phase.
+
 ### Default Menu
 
 ```typescript
@@ -395,14 +397,56 @@ const menu = (
 ### Standlone
 
 ```typescript
-const trigger = <button> Open menu </button>
+const [open] = React.useState(false);
 
 const menu = (
-  <MenuList trigger={trigger}>
-    <MenuItem title="Option 1" />
-    <MenuItem title="Option 2" />
-    <MenuItem title="Option 3" />
-  <MenuList>
+  <CustomSurface open={open}>
+    <MenuList>
+      <MenuItem title="Option 1" />
+      <MenuItem title="Option 2" />
+      <MenuItem title="Option 3" />
+    <MenuList>
+  <CustomSurface>
+)
+```
+
+### Selection
+
+```typescript
+const trigger = <button> Open menu </button>
+const [selectedItems, setSelectedItems] = React.useState([]);
+
+// basic checkbox example
+const menuCheckbox = (
+  <Menu
+    selectedItems={selectedItems}
+    onSelectionChange={setSeelctedItems}
+    trigger={trigger}
+  >
+    <MenuItem kind="checkbox" key={1} title="Option 1">
+    <MenuItem kind="checkbox" key={2} title="Option 2">
+    <MenuItem kind="checkbox" key={3} title="Option 3">
+  <Menu>
+)
+
+// leverage MenuSection for different selection groups
+const menuSelectableSections = (
+  <Menu
+    selectedItems={selectedItems}
+    onSelectionChange={setSeelctedItems}
+    trigger={trigger}
+  >
+    <MenuSection kind="checkbox">
+      <MenuItem key={1} title="Option 1">
+      <MenuItem key={2} title="Option 2">
+      <MenuItem key={3} title="Option 3">
+    </MenuSection>
+    <MenuSection kind="radio">
+      <MenuItem key={4} title="Option 1">
+      <MenuItem key={5} title="Option 2">
+      <MenuItem key={6} title="Option 3">
+    </MenuSection>
+  <Menu>
 )
 ```
 
