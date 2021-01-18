@@ -583,6 +583,15 @@ describe('resolveStyleRules', () => {
     });
   });
 
+  describe('output', () => {
+    it('output for properties that do not depend on text direction contains less members', () => {
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
+        color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
+        paddingLeft: ['', 'frdkuqy0', '.frdkuqy0{padding-left:10px;}', '.rfrdkuqy0{padding-right:10px;}'],
+      });
+    });
+  });
+
   describe('experimental', () => {
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
