@@ -373,6 +373,23 @@ export interface IColumn {
   * If set, will add additional LTR padding-right to column and cells.
   */
   isPadded?: boolean;
+
+  /**
+   * ARIA label for the sort order of this column when sorted ascending.
+   */
+  sortAscendingAriaLabel?: string;
+  /**
+   * ARIA label for the sort order of this column when sorted descending.
+   */
+  sortDescendingAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when grouped.
+   */
+  groupAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when filtered.
+   */
+  filterAriaLabel?: string;
 }
 
 /**

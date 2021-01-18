@@ -41,7 +41,7 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={0}
+            aria-colindex={1}
             aria-labelledby="header0-check"
             className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
             onClick={[Function]}
@@ -144,7 +144,7 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={1}
+            aria-colindex={2}
             aria-disabled={false}
             aria-sort="none"
             className="ms-DetailsHeader-cell is-actionable undefined"
@@ -206,7 +206,6 @@ exports[`DetailsList renders List correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

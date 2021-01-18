@@ -87,6 +87,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -106,9 +107,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -318,6 +319,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -337,9 +339,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -374,6 +376,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -393,9 +396,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -443,6 +446,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -462,9 +466,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -576,6 +580,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -595,9 +600,9 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -820,6 +825,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -839,9 +845,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -869,6 +875,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -888,9 +895,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -931,6 +938,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -950,9 +958,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -980,6 +988,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-image
                 {
                   overflow: hidden;
+                  position: relative;
                 }
             style={
               Object {
@@ -999,9 +1008,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;

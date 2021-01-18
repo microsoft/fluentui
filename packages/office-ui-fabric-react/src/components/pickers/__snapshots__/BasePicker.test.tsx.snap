@@ -13,7 +13,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       aria-live="assertive"
@@ -80,7 +79,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       aria-live="assertive"

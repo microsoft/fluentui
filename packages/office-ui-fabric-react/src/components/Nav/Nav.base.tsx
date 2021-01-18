@@ -2,11 +2,12 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
+  createRef,
   customizable,
   divProperties,
   getNativeProps
 } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { buttonStyles } from './Nav.styles';
@@ -48,6 +49,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     groups: null
   };
 
+  private _focusZone = createRef<IFocusZone>();
   constructor(props: INavProps) {
     super(props);
 
@@ -100,7 +102,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(getStyles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
+      <FocusZone direction={ FocusZoneDirection.vertical } ref={ this._focusZone }>
         <nav
           role='navigation'
           className={ classNames.root }
@@ -114,6 +116,20 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
   public get selectedKey(): string | undefined {
     return this.state.selectedKey;
+  }
+
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
+   * if focus is already in the focus zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    if (this._focusZone && this._focusZone.value) {
+      return this._focusZone.value.focus(forceIntoFirstElement);
+    }
+
+    return false;
   }
 
   private _onRenderLink = (link: INavLink): JSX.Element => {
@@ -147,7 +163,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ link.iconProps || { iconName: link.icon || '' } }
-        ariaDescription={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }

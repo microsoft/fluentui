@@ -25,8 +25,8 @@ export const getStyles = (
   } = props;
 
   const ImageFitStyles: IStyle = {
-    position: 'relative',
-    left: '50%',
+    position: 'absolute',
+    left: '50% /* @noflip */',
     top: '50%',
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
@@ -44,6 +44,9 @@ export const getStyles = (
           width: '100%'
         }
       ],
+      (isCenter || isContain || isCover) && {
+        position: 'relative',
+      },
       className
     ],
     image: [
