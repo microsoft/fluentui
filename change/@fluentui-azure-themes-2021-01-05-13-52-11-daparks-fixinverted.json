@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix(azure-themes): dark mode themes are now correctly set as inverted",
+  "packageName": "@fluentui/azure-themes",
+  "email": "daparks@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-05T21:52:11.737Z"
+}
