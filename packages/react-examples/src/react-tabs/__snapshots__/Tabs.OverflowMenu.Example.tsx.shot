@@ -1704,7 +1704,7 @@ Array [
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              display: block;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 600;
@@ -1728,7 +1728,7 @@ Array [
         className=
             ms-Toggle-innerContainer
             {
-              display: inline-flex;
+              display: flex;
               position: relative;
             }
       >
@@ -1883,7 +1883,7 @@ Array [
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              display: block;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 600;
@@ -1907,7 +1907,7 @@ Array [
         className=
             ms-Toggle-innerContainer
             {
-              display: inline-flex;
+              display: flex;
               position: relative;
             }
       >
@@ -2054,7 +2054,7 @@ Array [
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              display: block;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 600;
@@ -2078,7 +2078,7 @@ Array [
         className=
             ms-Toggle-innerContainer
             {
-              display: inline-flex;
+              display: flex;
               position: relative;
             }
       >

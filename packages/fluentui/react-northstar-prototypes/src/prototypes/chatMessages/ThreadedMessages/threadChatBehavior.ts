@@ -1,8 +1,8 @@
 import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
-const threadChatBehavior: Accessibility<ChatBehaviorProps> = props => {
-  const behaviorData = chatBehavior(props);
+const threadChatBehavior: Accessibility<ChatBehaviorProps> = () => {
+  const behaviorData = chatBehavior();
 
   behaviorData.focusZone.props = {
     ...behaviorData.focusZone.props,
