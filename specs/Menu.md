@@ -14,7 +14,267 @@ The interactions that result in the dismiss/removal of the `Menu` component shou
 
 As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([LINK to research proposal](https://github.com/WICG/open-ui/pull/249))
 
-### Comparison of `@fluentui/react` and `@fluentui/react-northstar`
+## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
+
+All mentions of v7 or v8 == `@fluentui/react`
+All mentions of v0 == `@fluentui/react-northstar`
+
+The most relevant comparison that can be achieved between the two libraries is between `ContextualMenu` in v7 and a combination of `Menu`, `Popup` and `ToolbarItem` in v0.
+
+v0 suffers from a consistency issue that the control used in `Menu` and the menu variant of `ToolbarItem` are not actually the same component and have different behaviour. However, semantically for the purposes of this spec, they represet the same control that will be implemented.
+
+Note that the below code samples are not meant to be complete, but to highlight differences between the two libraries. Please refer to official docsites for actual API references.
+
+### Positioning
+
+`ContextualMenu` in v7 is a component that also exposes the API to control the positioning of the temporary popup surface that the Menu is rendered on. This aspect of the v7 component should be compared with the `Popup` component in v0 since the v0 `Menu` is created as a standalone component with no positioning properties.
+
+v0 uses the [OSS Popper.js library](https://popper.js.org/) while v7 uses a component based implementation `CalloutContent`. Below we provide the results of testing common positioning boundary/edge cases between the two.
+
+// TODO compare boudary/edge cases in positioning
+
+- flip
+- prevent overflow
+- offset from reference
+- tethering
+
+### Trigger vs target
+
+The v7 `ContextualMenu` has a prop `target` which is intended to be a ref to the DOM element that the positioning logic anchors to. The usage of this prop requires the visibility state of the component to be controlled using React state by the consumer. The same prop exists on the v0 `Popup` component that is intended to perform the same function.
+
+```typescript
+const buttonRef = React.useRef(<button />)
+// V7/8
+<ContextualMenu
+  ...
+  target={buttonRef}
+/>
+
+// v0 - shorthand
+<Popup
+  target={buttonRef}
+  content={...}
+/>
+```
+
+The v0 `Popup` component has an alternative prop, `trigger`, which accepts a React component. This prop simplifies the creation of temporary content by autocontrolling the open/dismiss functionality.
+
+```typescript
+// v0 - shorthand trigger
+<Popup
+  trigger={<Button />}
+  content={...}
+/>
+// v0 - children trigger
+<Popup content={...}>
+  <Button icon={<MoreIcon />} title="Show popup" />
+</Popup>
+```
+
+### Layout variations
+
+The v7 `ContextualMenu` only has one primary layout which is a vertical list of menu items.
+
+The v0 `Menu` component differs clearly in this that the default layout is a horizontal menu. To achieve the same layout as `ContextualMenu` (and the layout defined in this spec) it's necessary to use the `vertical` prop which is `false` by default.
+
+```typescript
+<Menu items={items} vertical />
+```
+
+### Open/Dismiss events
+
+The v7 `ContextualMenu` is intended to be used as a controlled component. The visibiltiy of the menu is controlled using the `hidden` prop whose value should be React state of the cosumer. A separate `onDismiss` prop can also be used that will be invoked during events where the callout tries to close, i.e. click outside the content.
+
+The v0 `Popup` should be compared here, since the v0 `Menu` does not handle open/dismiss events. `Popup` visibility can be controlled using the `open` prop. `Popup` provides a callback prop `onOpenChange` which can be used both to open and dismiss.
+
+However as mentioned above, the general usage of `Popup` is with an autocontrolled trigger. If a trigger is used with the `open` prop, this disables autocontrolling
+
+```typescript
+// v0 controlled ContextualMenu
+const [showContextualMenu, setShowContextualMenu] = React.useState(false);
+const onShowContextualMenu = () => setShowContextualMenu(true);
+const onHideContextualMenu = () => setShowContextualMenu(false);
+
+<ContextualMenu
+  hidden={!showContextualMenu}
+  onItemClick={onHideContextualMenu}
+  onDismiss={onHideContextualMenu
+/>;
+
+// v7 controlled Popup
+const [open, setOpen] = React.useState(false);
+
+<Popup
+  open={open}
+  onOpenChange={(e, { open }) => setOpen(open)}
+  trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
+/>;
+
+// v7 controlled Popup - used with trigger disables autocontrol
+const [open, setOpen] = React.useState(false);
+
+<Popup
+  open={open}
+  onOpenChange={(e, { open }) => setOpen(open)}
+  trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
+/>;
+```
+
+### Keyboard navigation
+
+Both v7 and v0 support arrow navigation in the menu, and home/end keys to jump to first and last items respectively.
+
+One interesting difference is that the v7 `ContextualMenu` will also tab through items. The v0 `Menu` on the other hand uses tab to focus in/out of the entire component.
+
+`ContextualMenu` will also allow disabled items to be focusable while navigating the list, while the v0 `Menu` does not permit this.
+
+### Selection state
+
+The v0 `Menu` component supports and `active` state and has a number of props to manage this state. However, this state only affects items visually and does not perform the same function as menu item checkboxes or radio items. The `active` state of menu items can both be controlled and autocontrolled
+
+```typescript
+// v0 autocontrolled active index with default
+<Menu defaultActiveIndex={0}>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+</Menu>
+
+// v0 autocontrolled active index controlled
+<Menu activeIndex={0}>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+</Menu>
+
+// shorthand variation
+const items = [
+  {
+    key: 'editorials',
+    content: 'Editorials',
+  },
+]
+<Menu defaultActiveIndex={0} items={items} />
+```
+
+In order to obtain semantically meaningful selection state in v0, the only possible way is to use a `Toolbar` component. The menu that is rendered in this component is completely different but supports both checkbox and radio selection states through the use of an `active` prop and must be controlled.
+
+```typescript
+// Toolbar with one item that opens a selectable menu
+const toolbarItems = [
+  {
+    icon: <MoreIcon />,
+    title: 'More',
+    menu: [
+      {
+        active: true,
+        content: 'Bold',
+        kind: 'toggle',
+        // kind: 'radio', // for radio
+        index: 0,
+        onClick: handleToggleClick,
+      },
+      {
+        active: false,
+        content: 'Italic',
+        kind: 'toggle',
+        // kind: 'radio', // for radio
+        index: 1,
+      },
+    ],
+    menuOpen,
+    onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen),
+  },
+]
+
+<Toolbar items={toolbarItems}>
+```
+
+The v7 `ContextualMenu` on the other hand, only supports the checkbox selection state implicitly. This behaviour must be controlled by consumers and uses `canCheck` and `isChecked` props:
+
+```typescript
+const menuProps = {
+  shouldFocusOnMount: true,
+  items: [
+    {
+      text: 'New',
+      canCheck: true,
+      isChecked: true,
+      onClick: onToggleSelect,
+    },
+    {
+      text: 'Share',
+      canCheck: true,
+      isChecked: false,
+      onClick: onToggleSelect,
+    },
+  ],
+};
+
+// shorthand usage in a menu button
+<DefaultButton menuProps={menuProps} />;
+```
+
+### Custom rendering and data
+
+v7 provides render callbacks that can be used to render either the entire menu list or specific slots of menut items. Each call back provides the props avaialble to that slot and a `defaultRender` which allows to easily extend the original render, if required.
+
+```typescript
+// v7 custom rendering
+const menuProps = {
+  onRenderMenuList: (props: IContextualMenuListProps, defaultRenderer) => {},
+  onRenderSubMenu: (props: IContextualMenuProps, defaultRenderer) => {},
+  items: [
+    {
+      onRender: (
+        item: any,
+        dismissMenu: (ev?: any, dismissAll?: boolean) => void
+      ) => React.ReactNode
+    }
+    {onRenderContent: (props: IContextualMenuItemProps, defaultRenderer) => {}},
+    {onRenderIcon: (props: IContextualMenuItemProps, defaultRenderer) => {}},
+  ]
+}
+
+<ContextualMenu menuProps={menuProps}>
+```
+
+Custom data can also be associated with menu items
+
+```typescript
+const menuProps = {
+  items: [{
+    ...
+    data: { foo: "bar" }
+  }]
+}
+```
+
+v0 custom rendering through shorthand components is a consistent experience through all shorthand components, but provide a smaller API surface (whether this is simpler or less powerful can be subjective). Custom rendering in the case of the `Menu` component would be done through the use of `chilren` prop either through the standard React child component API or through shorthand as a callback function.
+
+```typescript
+// v0 shorthand children render callback
+const items = [
+  {
+    key: 'editorials',
+    children: (El, props) => <El>{props.key}</El>
+  },
+]
+
+<Menu defaultActiveIndex={0} items={items} />
+
+// v0 children API custom render
+<Menu>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+  <Menu.Item index={1}>
+    CustomContent
+  </Menu.Item>
+  {/*Not recommended but definitely possible*/}
+  <div>custom item</div>
+</Menu>
+```
 
 ## Variants
 
@@ -63,6 +323,8 @@ A `Menu` can be used without the temporary popup surface and its trigger. This w
 ```
 This variant is still a work in progress and needs additional thought
 ```
+
+Any custom content can be used in the rendering of the Menu, all interactions and accessibility is left to the discretion of the consumer.
 
 ## API
 
