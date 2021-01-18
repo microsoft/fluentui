@@ -2,18 +2,6 @@ import * as React from 'react';
 
 import { EventHandler, EventListenerOptions, EventTypes, Target } from './types';
 
-const getWindowEvent = (target: Target): Event | undefined => {
-  if (target) {
-    if (typeof (target as Window).window === 'object' && (target as Window).window === target) {
-      return target.event;
-    }
-
-    return (target as Node).ownerDocument?.defaultView?.event ?? undefined;
-  }
-
-  return undefined;
-};
-
 const isActionSupported = (
   element: Target | null | undefined,
   method: 'addEventListener' | 'removeEventListener',
@@ -52,7 +40,7 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
     // Store the current event to avoid triggering handlers immediately
     // Note this depends on a deprecated but extremely well supported quirk of the web platform
     // https://github.com/facebook/react/issues/20074
-    let currentEvent = getWindowEvent(window);
+    let currentEvent = window.event;
 
     const conditionalHandler = (event: DocumentEventMap[T]) => {
       // Skip if this event is the same as the one running when we added the handlers
