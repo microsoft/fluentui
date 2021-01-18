@@ -44,7 +44,10 @@ export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /** The HTML form action. */
   action?: string;
 
-  /** Shorthand array of props for the Form.Fields inside the Form. */
+  /**
+   * @deprecated
+   * Shorthand array of props for the Form.Fields inside the Form.
+   */
   fields?: ShorthandCollection<FormFieldProps>;
 
   /**

@@ -174,4 +174,6 @@ export interface KeyCombinations {
   metaKey?: boolean;
 }
 
-export type Accessibility<P = any> = (props: P) => AccessibilityDefinition;
+export type Accessibility<P = any> = [P] extends [never]
+  ? () => AccessibilityDefinition
+  : (props: P) => AccessibilityDefinition;
