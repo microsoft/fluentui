@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.51.5",
+  "version": "0.51.6",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/accessibility": "^0.51.5",
+    "@fluentui/accessibility": "^0.51.6",
     "@fluentui/eslint-plugin": "^0.53.1",
-    "@fluentui/react-icons-northstar": "^0.51.5",
-    "@fluentui/react-northstar": "^0.51.5",
+    "@fluentui/react-icons-northstar": "^0.51.6",
+    "@fluentui/react-northstar": "^0.51.6",
     "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.8.25",
