@@ -469,7 +469,10 @@ As a general rule, once the menu is closed the focus should return to the trigge
 | Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                         |
 | Mouse    | Click      | Dismiss | Click anywhere outside the component                                   |
 | Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                            |
+| Mouse    | Click      | Dismiss | Click on a menu item                                                   |
 | Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                               |
+| Keyboard | Enter      | Dismiss | Invoked on a menu item                                                 |
+| Keyboard | Space      | Dismiss | Invoked on a menu item                                                 |
 | Keyboard | Esc        | Dismiss | Closes the menu and focuses on the triggering element                  |
 | Keyboard | Tab        | Dismiss | Closes the menu and all submenus, focus moves to next element in order |
 
