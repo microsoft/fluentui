@@ -54,10 +54,10 @@ export const Buttons = () => (
 
     <Text>A button can be focusable when disabled</Text>
     <Stack horizontal>
-      <Button disabled icon="X">
+      <Button disabled icon="X" onClick={() => alert('You cannot see me')}>
         Disabled, non-focusable button
       </Button>
-      <Button disabled disabledFocusable icon="X">
+      <Button disabled disabledFocusable icon="X" onClick={() => alert('You cannot see me')}>
         Disabled, focusable button
       </Button>
     </Stack>

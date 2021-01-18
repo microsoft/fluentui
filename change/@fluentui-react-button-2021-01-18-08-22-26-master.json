@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Enable pointer-events so that tooltip can be attached to disabledFocusable Button.",
+  "packageName": "@fluentui/react-button",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-18T07:22:26.919Z"
+}
