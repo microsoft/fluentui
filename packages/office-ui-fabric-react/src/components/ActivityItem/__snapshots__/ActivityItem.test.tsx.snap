@@ -73,7 +73,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #0078D4;
                 }
             style={undefined}
           >
@@ -304,7 +304,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #0078D4;
                 }
             style={undefined}
           >
@@ -429,7 +429,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #038387;
                 }
             style={undefined}
           >
@@ -562,7 +562,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #0078D4;
                 }
             style={undefined}
           >
@@ -806,7 +806,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #0078D4;
                 }
             style={undefined}
           >
@@ -917,7 +917,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #038387;
                 }
             style={undefined}
           >
