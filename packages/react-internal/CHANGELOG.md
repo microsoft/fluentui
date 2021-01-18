@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Jan 2021 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.33)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.30..@fluentui/react-internal_v8.0.0-beta.33)
+
+### Changes
+
+- Fixes TextField custom error message rendering ([PR #16487](https://github.com/microsoft/fluentui/pull/16487) by sorgh@microsoft.com)
 
 ## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.30)
 
