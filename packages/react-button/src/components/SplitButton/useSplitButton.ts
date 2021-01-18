@@ -22,6 +22,7 @@ export const useSplitButton = (
     primary,
     ghost,
     disabled,
+    disabledFocusable,
     loading,
     circular,
     block,
@@ -33,9 +34,6 @@ export const useSplitButton = (
 
   ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
 
-  // A split button should be disabled when disabled or loading.
-  const disabledOrLoading = disabled || loading;
-
   const state = mergeProps(
     {
       as: 'span',
@@ -46,7 +44,7 @@ export const useSplitButton = (
       primary,
       size,
       transparent,
-      'aria-disabled': disabledOrLoading,
+      'aria-disabled': disabled,
 
       button: {
         as: 'span',
@@ -54,7 +52,8 @@ export const useSplitButton = (
         primary,
         ghost,
         circular,
-        disabled: disabledOrLoading,
+        disabled,
+        disabledFocusable,
         loading,
         size,
         transparent,
@@ -69,7 +68,8 @@ export const useSplitButton = (
         ghost,
         circular,
         size,
-        disabled: disabledOrLoading,
+        disabled,
+        disabledFocusable,
         loading,
         transparent,
         menu,
