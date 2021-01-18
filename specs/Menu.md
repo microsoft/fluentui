@@ -344,7 +344,9 @@ This component is used internally by `Menu` and manages the context and layout i
 
 ### MenuSection
 
-Creates a section inside a `MenuList`, setting up header layout and dividers between `MenuItems`
+Creates a section inside a `MenuList`, setting up header layout and dividers between `MenuItems`.
+
+The MenuSection is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
 
 ### MenuItem
 
@@ -449,6 +451,8 @@ const menuSelectableSections = (
   <Menu>
 )
 ```
+
+// TODO positioning examples ?
 
 ## Behaviours
 
