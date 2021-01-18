@@ -129,7 +129,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       isBeakVisible: false,
       gapSpace: 15,
       onDismiss: this._closeCallout,
-      preventDismissOnLostFocus: true,
+      preventDismissOnEvent: () => true,
       hidden: !(!this.props.hideTooltip && this.state.isCalloutVisible),
       ...this.props.calloutProps,
     };
