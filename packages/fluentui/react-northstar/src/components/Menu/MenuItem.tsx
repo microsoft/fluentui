@@ -453,6 +453,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             disabled,
             onBlur: handleBlur,
             onFocus: handleFocus,
+            onClick: handleClick,
             ...unhandledProps,
           })}
           {...rootHandlers}
@@ -482,10 +483,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         handleWrapperBlur(e);
         _.invoke(predefinedProps, 'onBlur', e, props);
       },
-      onClick: (e: React.MouseEvent) => {
-        handleClick(e);
-        _.invoke(predefinedProps, 'onClick', e, props);
-      },
+      // onClick: (e: React.MouseEvent) => {
+      //   handleClick(e);
+      //   _.invoke(predefinedProps, 'onClick', e, props);
+      // },
       ...(on === 'hover' && {
         onMouseEnter: e => {
           setWhatInputSource(context.target, 'mouse');
