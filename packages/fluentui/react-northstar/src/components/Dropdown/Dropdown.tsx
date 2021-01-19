@@ -1591,7 +1591,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         },
                       }),
                     })
-                  : Box.create(<ChevronDownIcon ouline />, {
+                  : Box.create(<ChevronDownIcon outline />, {
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.toggleIndicator,
                         styles: resolvedStyles.toggleIndicator,
