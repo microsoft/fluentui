@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
+import { TooltipHost } from '@fluentui/react';
 
 const noOp = () => undefined;
 
@@ -14,26 +15,28 @@ const onRenderOverflowButtonStyles = {
 
 const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
-    <CommandBarButton
-      role="menuitem"
-      title={item.title}
-      aria-label={item.name}
-      styles={onRenderItemStyles}
-      iconProps={{ iconName: item.icon }}
-      onClick={item.onClick}
-    />
+    <TooltipHost content={item.title} id={`menuitem-${item.key}-tooltip`}>
+      <CommandBarButton
+        role="menuitem"
+        aria-label={item.name}
+        styles={onRenderItemStyles}
+        iconProps={{ iconName: item.icon }}
+        onClick={item.onClick}
+      />
+    </TooltipHost>
   );
 };
 
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   return (
-    <CommandBarButton
-      role="menuitem"
-      title="More items"
-      styles={onRenderOverflowButtonStyles}
-      menuIconProps={{ iconName: 'More' }}
-      menuProps={{ items: overflowItems! }}
-    />
+    <TooltipHost content="More items" id="menuitem-more-tooltip">
+      <CommandBarButton
+        role="menuitem"
+        styles={onRenderOverflowButtonStyles}
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
+      />
+    </TooltipHost>
   );
 };
 
