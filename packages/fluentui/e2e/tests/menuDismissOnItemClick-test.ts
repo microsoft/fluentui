@@ -47,9 +47,11 @@ describe('Dismiss Menu on Item Click', () => {
   describe('Keyboard interactions', () => {
     it('Should close on click', async () => {
       await e2e.expectHidden(firstSubmenu);
+
       await e2e.focusOn(menuItem);
       await e2e.waitForSelectorAndPressKey(menuItem, 'Enter');
       await e2e.exists(firstSubmenu);
+
       await e2e.waitForSelectorAndPressKey(firstSubmenuItem, 'Enter');
       await e2e.expectHidden(firstSubmenu);
     });
