@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Tooltip: Fix positioning issues that can cause tooltip to flash/not render",
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-13T01:49:23.643Z"
+}
