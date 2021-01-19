@@ -153,6 +153,11 @@ export interface IBreadcrumbItem {
    * Optional role for the breadcrumb item (which renders as a button by default)
    */
   role?: string;
+
+  /**
+   * Any additional properties to apply to the breadcrumb item.
+   */
+  [propertyName: string]: any;
 }
 
 /**
