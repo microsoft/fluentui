@@ -50,6 +50,7 @@ import {
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -1576,7 +1577,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                     )}
                 </div>
                 {showClearIndicator
-                  ? Box.create(clearIndicator, {
+                  ? Box.create(isEmpty(clearIndicator) ? <CloseIcon outline /> : clearIndicator, {
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.clearIndicator,
                         styles: resolvedStyles.clearIndicator,

@@ -3,7 +3,6 @@ import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../compone
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { clearIndicatorUrl } from './clearIndicatorUrl';
 import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const transparentColorStyle: ICSSInJSStyle = {
@@ -39,21 +38,19 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     ...(p.inline && { display: 'inline-flex' }),
   }),
 
-  clearIndicator: ({ variables: v, props: p }) => ({
+  clearIndicator: ({ theme: { siteVariables } }) => ({
     alignItems: 'center',
     alignSelf: 'center',
     display: 'flex',
     justifyContent: 'center',
-    ...(p.isEmptyClearIndicator && { backgroundImage: clearIndicatorUrl(v.color) }),
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     userSelect: 'none',
     margin: 0,
     position: 'absolute',
     right: pxToRem(6),
-    height: pxToRem(16),
-    width: pxToRem(16),
+    padding: pxToRem(2),
+
+    ...getBorderFocusStyles({ variables: siteVariables }),
   }),
 
   container: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
