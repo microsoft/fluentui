@@ -30,4 +30,4 @@ const MenuDismissOnItemClick = () => {
   );
 };
 
-export default MenuDismissScroll;
+export default MenuDismissOnItemClick;
