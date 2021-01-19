@@ -19,6 +19,7 @@ describe('Dismiss Menu on Item Click', () => {
 
       await e2e.clickOn(menuItem);
       await e2e.exists(firstSubmenu);
+
       await e2e.clickOn(firstSubmenuItem);
       await e2e.expectHidden(firstSubmenu);
     });
