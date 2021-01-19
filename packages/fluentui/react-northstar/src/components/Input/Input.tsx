@@ -431,7 +431,7 @@ Input.defaultProps = {
   wrapper: {},
   iconPosition: 'end',
   errorIndicator: <ExclamationCircleIcon />,
-  successIndicator: <CheckmarkCircleIcon />,
+  successIndicator: <CheckmarkCircleIcon outline />,
 };
 
 Input.Label = InputLabel;
