@@ -1495,7 +1495,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'auto';
     // @deprecated
     isDisabled?: boolean;
     multiSelectDelimiter?: string;
@@ -1921,11 +1921,11 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-button";
 export * from "@fluentui/react-checkbox";
 export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
+export * from "@fluentui/react-internal/lib/compat/Button";
 export * from "@fluentui/react-link";
 export * from "@fluentui/react-slider";
 export * from "@fluentui/react-tabs";

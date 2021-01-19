@@ -252,6 +252,11 @@ const CalendarYearNavArrow = React.forwardRef(
       }
     };
 
+    // can be condensed, but leaving verbose for clarity due to regressions
+    const isLeftNavigation = getRTL()
+      ? direction === CalendarYearNavDirection.Next
+      : direction === CalendarYearNavDirection.Previous;
+
     return (
       <button
         className={css(classNames.navigationButton, {
@@ -264,13 +269,7 @@ const CalendarYearNavArrow = React.forwardRef(
         disabled={disabled}
         ref={forwardedRef}
       >
-        <Icon
-          iconName={
-            (direction === CalendarYearNavDirection.Previous) !== getRTL()
-              ? navigationIcons.rightNavigation
-              : navigationIcons.leftNavigation
-          }
-        />
+        <Icon iconName={isLeftNavigation ? navigationIcons.leftNavigation : navigationIcons.rightNavigation} />
       </button>
     );
   },

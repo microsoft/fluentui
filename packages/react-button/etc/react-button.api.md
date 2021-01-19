@@ -25,6 +25,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     target?: string;
     circular?: boolean;
     disabled?: boolean;
+    disabledFocusable?: boolean;
     block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';

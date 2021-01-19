@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Dec 2020 12:30:32 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+
+### Changes
+
+- Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
+
+## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.31..@fluentui/react_v8.0.0-beta.32)
+
+### Changes
+
+- Add a props for Dropdown component to enable adjust width to fit content ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.31)
+
+Thu, 24 Dec 2020 12:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.31)
+
+### Changes
+
+- DetailsList: Fix group chevron alignment in single select mode ([PR #16289](https://github.com/microsoft/fluentui/pull/16289) by elcraig@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.27)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.25..@fluentui/react_v8.0.0-beta.27)
+
+### Changes
+
+- Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button. ([PR #16150](https://github.com/microsoft/fluentui/pull/16150) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.25)
 

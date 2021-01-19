@@ -1,19 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, css, format, divProperties, getNativeProps } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRating } from './Rating.types';
+import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRating, IRatingStarProps } from './Rating.types';
 import { useId, useWarnings, useControllableValue } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
-
-interface IRatingStarProps {
-  fillPercentage: number;
-  disabled?: boolean;
-  classNames: IProcessedStyleSet<IRatingStyles>;
-  icon: string;
-}
 
 const RatingStar = (props: IRatingStarProps) => {
   return (
@@ -95,6 +87,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       theme,
       icon = 'FavoriteStarFill',
       unselectedIcon = 'FavoriteStar',
+      onRenderStar,
     } = props;
 
     // Ensure min is >= 0 to avoid issues elsewhere
@@ -119,6 +112,9 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     const ariaLabel = getAriaLabel?.(displayRating, max);
 
     const stars: JSX.Element[] = [];
+
+    const renderStar = (starProps: IRatingStarProps, renderer?: IRatingProps['onRenderStar']) =>
+      renderer ? renderer(starProps) : <RatingStar {...starProps} />;
 
     for (let starNum = 1; starNum <= max; starNum++) {
       const fillPercentage = getFillingPercentage(starNum, displayRating);
@@ -149,12 +145,16 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
             {format(ariaLabelFormat || '', starNum, max)}
           </span>
-          <RatingStar
-            fillPercentage={fillPercentage}
-            disabled={disabled}
-            classNames={classNames}
-            icon={fillPercentage > 0 ? icon : unselectedIcon}
-          />
+          {renderStar(
+            {
+              fillPercentage,
+              disabled,
+              classNames,
+              icon: fillPercentage > 0 ? icon : unselectedIcon,
+              starNum,
+            },
+            onRenderStar,
+          )}
         </button>,
       );
     }

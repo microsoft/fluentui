@@ -3,16 +3,22 @@ const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
 const yargs = require('yargs');
+const execSync = require('./exec-sync');
+const { findGitRoot } = require('./monorepo/index');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
 const webpackConfigFilePath = options.webpackConfig || 'webpack.codepen.config.js';
 
 const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
+const gitRoot = findGitRoot();
 
 if (fs.existsSync(configPath)) {
   let ngrok;
   try {
+    console.log("Attempting to npm link globally installed ngrok so it can be require'd");
+    // This will probably install ngrok globally if it's not already present
+    execSync('npm link ngrok@3', undefined, gitRoot);
     ngrok = require('ngrok');
   } catch (err) {
     // ngrok has a postbuild step which was slowing down yarn install, so it's been removed

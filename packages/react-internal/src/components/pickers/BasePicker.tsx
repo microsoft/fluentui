@@ -65,6 +65,10 @@ export type IPickerAriaIds = {
    * Aria id for suggestions list component
    */
   suggestionList: string;
+  /**
+   * Aria id for element with role=combobox
+   */
+  combobox: string;
 };
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
@@ -127,6 +131,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       selectedItems: `selected-items-${this._id}`,
       selectedSuggestionAlert: `selected-suggestion-alert-${this._id}`,
       suggestionList: `suggestion-list-${this._id}`,
+      combobox: `combobox-${this._id}`,
     };
     this.suggestionStore = new SuggestionsController<T>();
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
@@ -277,6 +282,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           direction={FocusZoneDirection.bidirectional}
           shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
           role={'combobox'}
+          id={this._ariaMap.combobox}
+          aria-label={this.props['aria-label']}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
           // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
@@ -306,6 +313,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-activedescendant={this.getActiveDescendant()}
+                  aria-labelledby={this.props['aria-label'] ? this._ariaMap.combobox : undefined}
                   role={'textbox'}
                   disabled={disabled}
                   onInputChange={this.props.onInputChange}

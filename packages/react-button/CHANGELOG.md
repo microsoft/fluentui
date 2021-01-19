@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 01 Dec 2020 12:38:05 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jan 2021 12:31:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.19)
+
+Thu, 14 Jan 2021 12:31:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.17..@fluentui/react-button_v1.0.0-beta.19)
+
+### Changes
+
+- Button: Adding disabledFocusable prop to allow for scenarios where Button has disabled styling but is focusable. ([PR #16418](https://github.com/microsoft/fluentui/pull/16418) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.17)
+
+Fri, 11 Dec 2020 12:28:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.14..@fluentui/react-button_v1.0.0-beta.17)
+
+### Changes
+
+- Update react-button readme to not say it's officially releasing with v8 ([PR #16198](https://github.com/microsoft/fluentui/pull/16198) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.14)
 

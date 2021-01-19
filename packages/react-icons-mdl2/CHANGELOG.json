@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 12 Jan 2021 12:36:40 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.9",
+      "version": "1.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add webpack bundles to react-icons-mdl2 and react-theme-provider",
+            "author": "ololubek@microsoft.com",
+            "commit": "be4ad025c27e09a43ee9dacb74d6a3e465d0a93a",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.0",
       "version": "1.0.0-beta.0",

@@ -29,6 +29,8 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
       maxWidth: '100%',
       padding: v.menuItemPadding,
       cursor: 'pointer',
+      minHeight: v.itemHeight,
+      lineHeight: v.lineHeightBase,
 
       ':focus': {
         outline: 0,

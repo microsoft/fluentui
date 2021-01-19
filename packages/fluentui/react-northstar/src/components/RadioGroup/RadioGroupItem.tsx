@@ -23,10 +23,11 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import { CircleIcon } from '@fluentui/react-icons-northstar';
+import { RadioButtonIcon } from '@fluentui/react-icons-northstar';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
+  label: string;
 }
 
 export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponentProps {
@@ -81,6 +82,7 @@ export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponent
 export const radioGroupItemClassName = 'ui-radiogroup__item';
 export const radioGroupItemSlotClassNames: RadioGroupItemSlotClassNames = {
   indicator: `${radioGroupItemClassName}__indicator`,
+  label: `${radioGroupItemClassName}__label`,
 };
 
 export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disabled' | 'vertical' | 'checked'>>;
@@ -198,6 +200,8 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
         {Box.create(label, {
           defaultProps: () => ({
             as: 'span',
+            className: radioGroupItemSlotClassNames.label,
+            styles: resolvedStyles.label,
           }),
         })}
       </ElementType>
@@ -229,8 +233,8 @@ RadioGroupItem.propTypes = {
 
 RadioGroupItem.defaultProps = {
   accessibility: radioGroupItemBehavior,
-  indicator: <CircleIcon outline size="small" />,
-  checkedIndicator: <CircleIcon size="small" />,
+  indicator: <RadioButtonIcon outline />,
+  checkedIndicator: <RadioButtonIcon />,
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;

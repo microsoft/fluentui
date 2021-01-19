@@ -36,6 +36,9 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<TreeTitleBehaviorProps>;
 
+  /** Internal usage only -  Id needed to identify this item inside the Tree, passed down from TreeItem */
+  id?: string;
+
   /** Whether or not the title has a subtree. */
   hasSubtree?: boolean;
 
@@ -98,9 +101,10 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
-  const { focusItemById } = React.useContext(TreeContext);
+  const { focusItemById, toggleItemActive, toggleItemSelect } = React.useContext(TreeContext);
   const {
     accessibility,
+    id,
     children,
     className,
     content,
@@ -132,11 +136,6 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
       focusParent: e => {
         // allow bubbling up to parent treeItem
         focusItemById(props.parent);
-      },
-      performSelection: e => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleClick(e);
       },
     },
     mapPropsToBehavior: () => ({
@@ -171,9 +170,26 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
+
   const handleClick = e => {
+    if (hasSubtree) {
+      toggleItemActive(e, id);
+    } else {
+      toggleItemSelect(e, id);
+    }
     _.invoke(props, 'onClick', e, props);
   };
+
+  const selectionIndicatorOverrideProps = (predefinedProps: BoxProps) => ({
+    onClick: (e: React.SyntheticEvent) => {
+      e.stopPropagation(); // otherwise onClick on title will also be executed
+      if (selectable) {
+        toggleItemSelect(e, id);
+      }
+
+      _.invoke(predefinedProps, 'onClick', e);
+    },
+  });
 
   const selectIndicator = Box.create(selectionIndicator, {
     defaultProps: () => ({
@@ -184,6 +200,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         styles: resolvedStyles.selectionIndicator,
       }),
     }),
+    overrideProps: selectionIndicatorOverrideProps,
   });
 
   const element = (
@@ -209,6 +226,7 @@ TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.propTypes = {
   ...commonPropTypes.createCommon(),
+  id: PropTypes.string,
   hasSubtree: PropTypes.bool,
   index: PropTypes.number,
   level: PropTypes.number,

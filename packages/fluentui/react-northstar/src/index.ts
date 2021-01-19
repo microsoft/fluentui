@@ -10,6 +10,8 @@ export * from '@fluentui/styles';
 export { teamsTheme } from './themes/teams';
 export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
+export { teamsV2Theme } from './themes/teams-v2';
+export { teamsDarkV2Theme } from './themes/teams-dark-v2';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
@@ -37,6 +39,11 @@ export * from './components/Attachment/AttachmentHeader';
 export * from './components/Attachment/AttachmentIcon';
 
 export * from './components/Avatar/Avatar';
+export * from './components/Avatar/AvatarStatus';
+export * from './components/Avatar/AvatarStatusIcon';
+export * from './components/Avatar/AvatarImage';
+export * from './components/Avatar/AvatarIcon';
+export * from './components/Avatar/AvatarLabel';
 
 export * from './components/Box/Box';
 
@@ -191,6 +198,7 @@ export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
 export * from './components/Tree/hooks/useTree';
+export * from './components/Tree/hooks/useVirtualTree';
 
 export * from './components/Reaction/Reaction';
 export * from './components/Reaction/ReactionGroup';
@@ -208,6 +216,7 @@ export * from './components/Carousel/CarouselItem';
 export * from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export * from './components/Carousel/CarouselPaddle';
+export * from './components/Carousel/CarouselPaddlesContainer';
 
 export * from './components/Table/Table';
 export * from './components/Table/TableRow';
