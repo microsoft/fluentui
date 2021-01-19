@@ -3,50 +3,13 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
-import {
-  GroupIcon,
-  CatIcon,
-  IDBadgeIcon,
-  CalendarIcon,
-  TelemarketerIcon,
-  RoomIcon,
-  ChatBotIcon,
-  SkypeClockIcon,
-  SkypeCheckIcon,
-  SkypeMinusIcon,
-  SkypeArrowIcon,
-} from '@fluentui/react-icons-mdl2';
-import { AvatarExamples } from '@fluentui/example-data';
-
-const examples = {
-  ...AvatarExamples,
-  size: avatarSizeValues,
-  icon: [
-    /* eslint-disable react/jsx-key */
-    <GroupIcon />,
-    <CatIcon />,
-    <CalendarIcon />,
-    <RoomIcon />,
-    <IDBadgeIcon />,
-    <TelemarketerIcon />,
-    /* eslint-enable react/jsx-key */
-  ],
-  badge: [
-    'success',
-    'warning',
-    'error',
-    'info',
-    { state: 'success', icon: { as: SkypeCheckIcon } },
-    { state: 'warning', icon: { as: SkypeClockIcon } },
-    { state: 'error', icon: { as: SkypeMinusIcon } },
-    { state: 'info', icon: { as: SkypeArrowIcon } },
-  ],
-} as const;
+import { GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
+import { AvatarExamples as examples } from '@fluentui/example-data';
 
 /** Renders an Avatar at every standard size */
 const AvatarList: React.FC<AvatarProps> = props => (
   <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
-    {examples.size.map((size, i) => (
+    {avatarSizeValues.map((size, i) => (
       <Avatar
         key={size}
         size={size}
