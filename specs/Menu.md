@@ -453,6 +453,14 @@ const menuSelectableSections = (
 
 ## Behaviors
 
+### Useful references
+
+The below references were used to decide n appropriate keyboard interactions from an a11y perspective.
+
+- https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html#
+- https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
+- https://www.w3.org/WAI/tutorials/menus/application-menus/
+
 ### Menu open/dismiss
 
 A menu can be triggered by the following user interactions on the triggering/anchor element. Not all interactions should be supported at the same time, but the component must be able to support combinations of the below interactions.
