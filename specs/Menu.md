@@ -21,7 +21,7 @@ As a part of the spec definitions in Fluent UI, a research effort has been made 
 
 The most relevant comparison that can be achieved between the two libraries is between `ContextualMenu` in v7 and a combination of `Menu`, `Popup` and `ToolbarItem` in v0.
 
-v0 suffers from a consistency issue that the control used in `Menu` and the menu variant of `ToolbarItem` are not actually the same component and have different behaviour. However, semantically for the purposes of this spec, they represet the same control that will be implemented.
+v0 suffers from a consistency issue that the control used in `Menu` and the menu variant of `ToolbarItem` are not actually the same component and have different behavior. However, semantically for the purposes of this spec, they representthe same control that will be implemented.
 
 Note that the below code samples are not meant to be complete, but to highlight differences between the two libraries. Please refer to official docsites for actual API references.
 
@@ -188,7 +188,7 @@ const toolbarItems = [
 <Toolbar items={toolbarItems}>
 ```
 
-The v7 `ContextualMenu` on the other hand, only supports the checkbox selection state implicitly. This behaviour must be controlled by consumers and uses `canCheck` and `isChecked` props:
+The v7 `ContextualMenu` on the other hand, only supports the checkbox selection state implicitly. This behavior must be controlled by consumers and uses `canCheck` and `isChecked` props:
 
 ```typescript
 const menuProps = {
@@ -288,7 +288,7 @@ We advise that no more than two nested `Menu` components be used, but this spec 
 
 A `Menu` should be able to track and represent the selection state of all or some of its options if required.
 
-When an options is associated with a selection state. The `Menu`, either root or nested, should control its dismiss behaviour accordingly based on configuration.
+When an options is associated with a selection state. The `Menu`, either root or nested, should control its dismiss behavior accordingly based on configuration.
 
 ### Sections
 
@@ -452,7 +452,7 @@ const menuSelectableSections = (
 
 // TODO positioning examples ?
 
-## Behaviours
+## Behaviors
 
 ### Menu open/dismiss
 
@@ -506,7 +506,7 @@ All of the above Mouse events in the [previous section](#submenu-trigger/navigat
 Keyboard interaction for the split button menu item WIP and requires input from a11y champs
 ```
 
-Once the the submenu is open, the same behaviour as in the [previous section](#submenu-trigger/navigation) apply
+Once the the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) apply
 
 ### Menu keyboard navigation
 
