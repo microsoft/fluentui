@@ -43,10 +43,8 @@ const resolvedStyles = {
         paddingLeft: ['f1dtg1fn', '.f1dtg1fn{padding-left:9px;}', '.rf1dtg1fn{padding-right:9px;}'],
       },
     ],
-  ],
-  rootDisabledStyles: [
     [
-      null,
+      (s: any) => s.disabled,
       null,
       {
         backgroundColor: ['f3rmtva', '.f3rmtva{background-color:transparent;}'],
@@ -75,21 +73,21 @@ const resolvedStyles = {
         ],
       },
     ],
-  ],
-  rootCheckedStyles: [
     [
-      null,
+      (s: any) => s.checked,
       null,
       {
         backgroundColor: ['f1vwzk28', '.f1vwzk28{background-color:#E1DFDD;}'],
         color: ['f1vxdh6', '.f1vxdh6{color:#252423;}'],
       },
     ],
-  ],
-  rootCheckedHoveredStyles: [[null, null, { backgroundColor: ['f1r0nsgw', '.f1r0nsgw{background-color:#EDEBE9;}'] }]],
-  rootCheckedDisabledStyles: [
     [
+      (s: any) => s.checked && s.hovered,
       null,
+      { backgroundColor: ['f1r0nsgw', '.f1r0nsgw{background-color:#EDEBE9;}'] },
+    ],
+    [
+      (s: any) => s.checked && s.disabled,
       null,
       {
         backgroundColor: ['f1vwzk28', '.f1vwzk28{background-color:#E1DFDD;}'],
@@ -171,10 +169,8 @@ const resolvedStyles = {
         ],
       },
     ],
-  ],
-  rootExpandedStyles: [
     [
-      null,
+      (s: any) => s.expanded,
       null,
       {
         backgroundColor: ['f1vwzk28', '.f1vwzk28{background-color:#E1DFDD;}'],
@@ -199,11 +195,6 @@ const resolvedStyles = {
 };
 
 const useRootStyles = makeStyles(resolvedStyles.rootStyles as any);
-const useRootDisabledStyles = makeStyles(resolvedStyles.rootDisabledStyles as any);
-const useRootCheckedStyles = makeStyles(resolvedStyles.rootCheckedStyles as any);
-const useRootCheckedHoveredStyles = makeStyles(resolvedStyles.rootCheckedHoveredStyles as any);
-const useRootCheckedDisabledStyles = makeStyles(resolvedStyles.rootCheckedDisabledStyles as any);
-const useRootExpandedStyles = makeStyles(resolvedStyles.rootExpandedStyles as any);
 const useLabelStyles = makeStyles(resolvedStyles.labelStyles as any);
 const useMenuIconStyles = makeStyles(resolvedStyles.menuIconStyles as any);
 
@@ -211,13 +202,9 @@ const makeStylesOptions = { renderer: createDOMRenderer(), tokens: {}, rtl: fals
 
 const Scenario = () => {
   const rootClasses = useRootStyles({}, makeStylesOptions);
-  useRootDisabledStyles({}, makeStylesOptions);
-  useRootCheckedStyles({}, makeStylesOptions);
-  useRootCheckedDisabledStyles({}, makeStylesOptions);
-  useRootCheckedHoveredStyles({}, makeStylesOptions);
-  useRootExpandedStyles({}, makeStylesOptions);
   useLabelStyles({}, makeStylesOptions);
   useMenuIconStyles({}, makeStylesOptions);
+
   return <button className={rootClasses}>HTML button</button>;
 };
 
