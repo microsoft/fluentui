@@ -31,7 +31,6 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-icons-mdl2": "^1.0.0-beta.9",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
