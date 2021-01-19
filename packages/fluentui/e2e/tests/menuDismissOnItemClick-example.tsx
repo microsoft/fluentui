@@ -10,9 +10,18 @@ const MenuDismissScroll = () => {
           content: 'News',
           id: 'news',
           menu: {
+            id: 'firstSubmenu',
             items: [
               { content: '1', id: 'first', key: '1' },
-              { content: '2', id: 'second', key: '2', menu: [{ content: '3', id: 'third', key: '3' }] },
+              {
+                content: '2',
+                id: 'second',
+                key: '2',
+                menu: {
+                  id: 'secondSubmenu',
+                  items: [{ content: '3', id: 'third', key: '3' }],
+                },
+              },
             ],
           },
         },
