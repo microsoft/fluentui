@@ -38,7 +38,7 @@
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta.0",
     "@fluentui/style-utilities": "^8.0.0-beta.11",
-    "enzyme": "~3.11.0",
+    "enzyme": "~3.10.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
