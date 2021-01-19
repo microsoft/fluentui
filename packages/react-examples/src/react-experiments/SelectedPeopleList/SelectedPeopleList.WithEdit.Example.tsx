@@ -36,7 +36,7 @@ export const SelectedPeopleListWithEditExample = (): JSX.Element => {
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
    */
-  const SelectedItem = EditableItem({
+  const SelectedItem = EditableItem<IPersonaProps>({
     itemComponent: TriggerOnContextMenu(SelectedPersona),
     editingItemComponent: DefaultEditingItem({
       getEditingItemText: persona => persona.text || '',

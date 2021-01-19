@@ -12,7 +12,7 @@ export type EditingItemComponentProps<T> = {
 /**
  * Parameters to the EditingItem higher-order component
  */
-export type EditableItemProps<T> = Readonly<{
+export type EditableItemProps<T> = {
   /**
    * Component to render when item is in normal state
    */
@@ -49,7 +49,7 @@ export type EditableItemProps<T> = Readonly<{
    * Callback for a click on the normal state item component
    */
   onClick?: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
-}>;
+};
 
 // `extends unknown` to trick the parser into parsing as a type decl instead of a jsx tag
 export const EditableItem = <T extends unknown>(editableItemProps: EditableItemProps<T>): Item<T> => {
