@@ -212,6 +212,46 @@ const menuProps = {
 <DefaultButton menuProps={menuProps} />;
 ```
 
+### DOM output
+
+Below are some sample DOM outputs to compare for certain scenarios. Not all DOM attributes are reflected here, a subset have been chosen to provide easier reading and comparison.
+
+### Basic menu
+
+```html
+<!-- v7 basic menu  -->
+<ul role="menu">
+  <li role="presentation">
+    <button role="menuitem" tabindex="0">
+      <div class="linkContent">
+        <span class="itemText">Editorials</span>
+      </div>
+    </button>
+  </li>
+  <li role="presentation">
+    <button role="menuitem" tabindex="-1">
+      <div class="linkContent">
+        <span class="itemText">Reviews</span>
+      </div>
+    </button>
+  </li>
+</ul>
+
+<!-- v0 basic menu  -->
+<ul role="menu">
+  <li role="presentation">
+    <a role="menuitem" tabindex="0">
+      <span class="menu__itemcontent">Editorials</span>
+    </a>
+  </li>
+  <li role="presentation">
+    <a role="menuitem" tabindex="-1">
+      <span class="menu__itemcontent">Reviews</span>
+    </a>
+  </li>
+</ul>
+```
+
 ### Custom rendering and data
 
 v7 provides render callbacks that can be used to render either the entire menu list or specific slots of menut items. Each call back provides the props avaialble to that slot and a `defaultRender` which allows to easily extend the original render, if required.
