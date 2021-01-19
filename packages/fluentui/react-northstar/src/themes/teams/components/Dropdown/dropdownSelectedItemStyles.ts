@@ -20,7 +20,7 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
       display: 'inline-flex',
       alignItems: 'center',
       // overflow: 'hidden',
-      padding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
+      padding: `0 ${pxToRem(8)}`,
       startPaddingLeft: '0px',
       lineHeight: pxToRem(20),
       borderRadius: pxToRem(9999),
