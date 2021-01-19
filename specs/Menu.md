@@ -16,8 +16,8 @@ As a part of the spec definitions in Fluent UI, a research effort has been made 
 
 ## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
 
-- All mentions of v7 or v8 == `@fluentui/react`
-- All mentions of v0 == `@fluentui/react-northstar`
+- All mentions of v7 or v8 == `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
+- All mentions of v0 == `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
 The most relevant comparison that can be achieved between the two libraries is between `ContextualMenu` in v7 and a combination of `Menu`, `Popup` and `ToolbarItem` in v0.
 
