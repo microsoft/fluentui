@@ -511,6 +511,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
                 defaultProps: () => ({
                   ...slotProps.menu,
                   styles: resolvedStyles.menu,
+                  onClick: handleClick,
                 }),
               })}
             </Popper>
