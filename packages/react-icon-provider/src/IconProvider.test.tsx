@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { createIconOverride } from './createOverride';
-import { createSvgIcon } from '@fluentui/react-icons-mdl2';
 import { IconProvider, useIcon } from './IconProvider';
 import { IIconSubset } from '@fluentui/style-utilities';
 
-const testOverridenSvg = () => <svg id="test-overriden-id" />;
-const TestOverriddenIcon = createSvgIcon({ svg: testOverridenSvg, displayName: 'TestIcon' });
+const TestOverriddenIcon = () => {
+  return null;
+};
 const testOverride = createIconOverride({
-  TestIcon: <TestOverriddenIcon id="test-overridden-icon-id" />,
+  TestIcon: <TestOverriddenIcon />,
 });
-
 describe('IconProvider', () => {
   it('returns a valid React component', () => {
     const iconOverride = createIconOverride({
@@ -31,7 +30,7 @@ describe('IconProvider', () => {
       </IconProvider>,
     );
     const expectedIcon = createIconOverride({
-      TestIcon: <TestOverriddenIcon id="test-overridden-icon-id" />,
+      TestIcon: <TestOverriddenIcon />,
     });
     expect(resolvedIcon).toEqual(expectedIcon);
   });
