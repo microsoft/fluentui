@@ -224,7 +224,6 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
 
   noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.noResultsMessageBackgroundColor,
-    fontWeight: 'bold',
   }),
 
   headerMessage: ({ variables: v }): ICSSInJSStyle => ({
