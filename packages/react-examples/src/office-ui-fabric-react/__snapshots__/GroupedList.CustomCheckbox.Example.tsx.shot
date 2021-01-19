@@ -213,7 +213,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
@@ -2199,7 +2199,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
@@ -4185,7 +4185,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
