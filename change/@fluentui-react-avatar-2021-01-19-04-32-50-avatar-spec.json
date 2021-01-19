@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Avatar SPEC.md, and initial MIGRATION.md and README.md",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-19T11:32:50.678Z"
+}
