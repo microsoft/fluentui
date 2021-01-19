@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add additional prop support to IBreadcrumbItems",
+  "packageName": "office-ui-fabric-react",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-19T15:02:36.326Z"
+}
