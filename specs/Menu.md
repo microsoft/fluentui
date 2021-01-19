@@ -536,3 +536,11 @@ In the event that the selection method is a radio, the previous selected item mu
 ## Accessibiltiy
 
 WIP 🚧
+
+### Focus management
+
+### Specific keyboard behaviors
+
+Address any specific a11y/narration keyboard behaviours that should be considered which might not fit under official specced behaviour
+
+### Narration
