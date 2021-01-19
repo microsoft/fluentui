@@ -395,6 +395,10 @@ Creates a section inside a `MenuList`, setting up header layout and dividers bet
 
 The MenuSection is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
 
+### MenuDivider
+
+Creates a divider element in the `MenuList` with correct HTML and aria semantics for divider. Intention is to use this internally within `MenuList` and `MenuSection` and avoid explicit uses of dividers to ensure correct HTML and aria semantics.
+
 ### MenuItem
 
 As the name infers
