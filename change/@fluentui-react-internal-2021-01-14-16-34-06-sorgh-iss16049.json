@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixes TextField custom error message rendering",
-  "packageName": "@fluentui/react-internal",
-  "email": "sorgh@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-15T00:34:06.681Z"
-}
