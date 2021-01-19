@@ -120,7 +120,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fixed paddings for the `Input` with icons left/right. Using `CloseIcon` for clear indicator. Using CheckmarkCircleIcon for successIndicator. @TanelVari ([#16527](https://github.com/microsoft/fluentui/pull/16527))
 - Updated root padding for Dialog. @TanelVari ([#16528](https://github.com/microsoft/fluentui/pull/16528))
 - Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
-- Fixes for `Dropdown`. Fix clear indicator visual styles (focus border, correct icon). Fix empty search result text style. Fix left/right padding for multiple selection labels. @TanelVari ([#](https://github.com/microsoft/fluentui/pull/))
+- Fixes for `Dropdown`. Fix clear indicator visual styles (focus border, correct icon). Fix empty search result text style. Fix left/right padding for multiple selection labels. @TanelVari ([#16522](https://github.com/microsoft/fluentui/pull/16522))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
