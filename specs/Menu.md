@@ -425,6 +425,16 @@ const menu = (
 )
 ```
 
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<div role="menu">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
+```
+
 ### Sections and submenus
 
 ```typescript
@@ -447,6 +457,20 @@ const menu = (
 )
 ```
 
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<div role="menu">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="separator"></div>
+  <div role="menuitem" tabindex="-1">Section Option 1</div>
+  <div role="menuitem" tabindex="-1">Section Option 2</div>
+  <div role="menuitem" tabindex="-1">Section Option 3</div>
+  <div role="separator"></div>
+  <!-- TODO submenu -->
+</div>
+```
+
 ### Standlone
 
 ```typescript
@@ -461,6 +485,15 @@ const menu = (
     <MenuList>
   <CustomSurface>
 )
+```
+
+```html
+<!-- expected DOM output  -->
+<div role="menu">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
 ```
 
 ### Selection
@@ -501,6 +534,28 @@ const menuSelectableSections = (
     </MenuSection>
   <Menu>
 )
+```
+
+```html
+<!-- expected DOM output for basic checkbox  -->
+<div role="menu">
+  <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+</div>
+
+<!-- expected DOM output for different selection groups  -->
+<div role="menu">
+  <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+  <div role="separator"></div>
+  <div role="group">
+    <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
+    <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 2</div>
+    <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 3</div>
+  </div>
+</div>
 ```
 
 // TODO positioning examples ?
