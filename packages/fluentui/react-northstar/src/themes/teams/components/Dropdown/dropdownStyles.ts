@@ -41,6 +41,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
 
   clearIndicator: ({ variables: v, props: p }) => ({
     alignItems: 'center',
+    alignSelf: 'center',
     display: 'flex',
     justifyContent: 'center',
     ...(p.isEmptyClearIndicator && { backgroundImage: clearIndicatorUrl(v.color) }),
@@ -51,7 +52,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(6),
-    height: '100%',
+    height: pxToRem(16),
     width: pxToRem(16),
   }),
 
@@ -163,7 +164,14 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
       ...(p.multiple && {
         minWidth: 0,
         flex: 1,
-        ...(p.hasItemsSelected && { position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, height: '100%' }),
+        ...(p.hasItemsSelected && {
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          height: '100%',
+        }),
       }),
       ...transparentColorStyleObj,
       ':focus': {
