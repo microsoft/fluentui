@@ -8,7 +8,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * @specification
  * Applies 'datepickerCalendarGridBehavior' for 'calendarGrid' child component.
  */
-export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
+export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = () => ({
   childBehaviors: {
     calendarGrid: datepickerCalendarGridBehavior,
     calendarGridRow: datepickerCalendarGridRowBehavior,

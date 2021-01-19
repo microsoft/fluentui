@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jan 2021 12:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.30)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.1..@fluentui/react-link_v1.0.0-beta.30)
+
+### Changes
+
+- Improve handling of built-in Link props ([PR #16483](https://github.com/microsoft/fluentui/pull/16483) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.1)
 

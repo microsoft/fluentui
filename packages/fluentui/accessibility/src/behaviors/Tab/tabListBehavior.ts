@@ -11,7 +11,7 @@ import { tabBehavior } from './tabBehavior';
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  * When component's container element receives focus, focus will be set to the default focusable child element of the component.
  */
-export const tabListBehavior: Accessibility = () => ({
+export const tabListBehavior: Accessibility<TabListBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'tablist',
@@ -27,3 +27,5 @@ export const tabListBehavior: Accessibility = () => ({
     item: tabBehavior,
   },
 });
+
+export type TabListBehaviorProps = never;

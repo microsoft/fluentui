@@ -10,7 +10,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * Provides arrow key navigation in bidirectional direction.
  * Triggers 'focusCell' action with 'Escape' on 'root'.
  */
-export const gridCellMultipleFocusableBehavior: Accessibility = props => ({
+export const gridCellMultipleFocusableBehavior: Accessibility<GridCellMultipleFocusableBehavior> = () => ({
   attributes: {
     root: {
       role: 'gridcell',
@@ -30,3 +30,5 @@ export const gridCellMultipleFocusableBehavior: Accessibility = props => ({
     },
   },
 });
+
+type GridCellMultipleFocusableBehavior = never;
