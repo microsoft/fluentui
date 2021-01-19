@@ -4,7 +4,7 @@
 
 ### Definition
 
-This spec defines the default function of a `Menu` as an interactive component that displays a list of options that can be represented by a range possible states. Possible variants are defined in [the relevant section](##variants)
+This spec defines the default function of a `Menu` as an interactive component that displays a list of options that can be represented by a range possible states. Possible variants are defined in [the relevant section](#variants)
 
 The `Menu` should be displayed on a temporary surface that interrupts the normal flow of content. The temporary surface should be triggered by an external user action such as (but not limited to) a click on a button or other UI control.
 
@@ -12,12 +12,12 @@ The interactions that result in the dismiss/removal of the `Menu` component shou
 
 ## Prior art
 
-As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([LINK to research proposal](https://github.com/WICG/open-ui/pull/249))
+As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([research proposal](https://github.com/WICG/open-ui/pull/249))
 
 ## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
 
-All mentions of v7 or v8 == `@fluentui/react`
-All mentions of v0 == `@fluentui/react-northstar`
+- All mentions of v7 or v8 == `@fluentui/react`
+- All mentions of v0 == `@fluentui/react-northstar`
 
 The most relevant comparison that can be achieved between the two libraries is between `ContextualMenu` in v7 and a combination of `Menu`, `Popup` and `ToolbarItem` in v0.
 
