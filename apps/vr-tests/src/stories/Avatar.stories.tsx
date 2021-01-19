@@ -2,49 +2,71 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
-import { ChatBotIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
 import { Stack } from '@fluentui/react';
+import {
+  GroupIcon,
+  CatIcon,
+  IDBadgeIcon,
+  CalendarIcon,
+  TelemarketerIcon,
+  RoomIcon,
+  ChatBotIcon,
+  SkypeClockIcon,
+  SkypeCheckIcon,
+  SkypeMinusIcon,
+  SkypeArrowIcon,
+} from '@fluentui/react-icons-mdl2';
+import { AvatarExamples } from '@fluentui/example-data';
 
-const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large';
-const people = [
-  { name: 'Ade Q', image: imageRoot + '/ade.jpg' },
-  { name: 'Christain W', image: imageRoot + '/christian.jpg' },
-  { name: 'Daniel E', image: imageRoot + '/daniel.jpg' },
-  { name: 'Elliot R', image: imageRoot + '/elliot.jpg' },
-  { name: 'Elyse T', image: imageRoot + '/elyse.png' },
-  { name: 'Helen Y', image: imageRoot + '/helen.jpg' },
-  { name: 'Jenny U', image: imageRoot + '/jenny.jpg' },
-  { name: 'Joe I', image: imageRoot + '/joe.jpg' },
-  { name: 'Justen O', image: imageRoot + '/justen.jpg' },
-  { name: 'Kristy P', image: imageRoot + '/kristy.png' },
-  { name: 'Laura A', image: imageRoot + '/laura.jpg' },
-  { name: 'Matt S', image: imageRoot + '/matt.jpg' },
-  { name: 'Matthew D', image: imageRoot + '/matthew.png' },
-  { name: 'Molly F', image: imageRoot + '/molly.png' },
-  { name: 'Nan G', image: imageRoot + '/nan.jpg' },
-  { name: 'Patrick H', image: imageRoot + '/patrick.png' },
-  { name: 'Rachel J', image: imageRoot + '/rachel.png' },
-  { name: 'Steve K', image: imageRoot + '/steve.jpg' },
-  { name: 'Stevie L', image: imageRoot + '/stevie.jpg' },
-  { name: 'Tom Z', image: imageRoot + '/tom.jpg' },
-  { name: 'Veronika X', image: imageRoot + '/veronika.jpg' },
-  { name: 'Zoe C', image: imageRoot + '/zoe.jpg' },
-] as const;
+const examples = {
+  ...AvatarExamples,
+  size: avatarSizeValues,
+  icon: [
+    /* eslint-disable react/jsx-key */
+    <GroupIcon />,
+    <CatIcon />,
+    <CalendarIcon />,
+    <RoomIcon />,
+    <IDBadgeIcon />,
+    <TelemarketerIcon />,
+    /* eslint-enable react/jsx-key */
+  ],
+  badge: [
+    'success',
+    'warning',
+    'error',
+    'info',
+    { state: 'success', icon: { as: SkypeCheckIcon } },
+    { state: 'warning', icon: { as: SkypeClockIcon } },
+    { state: 'error', icon: { as: SkypeMinusIcon } },
+    { state: 'info', icon: { as: SkypeArrowIcon } },
+  ],
+} as const;
 
 /** Renders an Avatar at every standard size */
 const AvatarList: React.FC<AvatarProps> = props => (
-  <Stack wrap horizontal tokens={{ childrenGap: '48px' }}>
-    {avatarSizeValues.map((size, i) => (
-      <Avatar key={size} size={size} {...people[i % people.length]} {...props} />
+  <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
+    {examples.size.map((size, i) => (
+      <Avatar
+        key={size}
+        size={size}
+        {...examples.nameAndImage[i % examples.nameAndImage.length]}
+        {...props}
+      />
     ))}
   </Stack>
 );
 
 /** Renders an Avatar at a few custom sizes */
 const AvatarCustomSizeList: React.FC<AvatarProps> = props => (
-  <Stack wrap horizontal tokens={{ childrenGap: '48px' }}>
-    {[13, 21, 34, 55, 89, 144].map((size, i) => (
-      <Avatar key={size} customSize={size} {...people[people.length - 1 - i]} {...props} />
+  <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
+    {examples.customSize.map((size, i) => (
+      <Avatar
+        key={size}
+        customSize={size}
+        {...examples.nameAndImage[examples.nameAndImage.length - 1 - i]}
+        {...props}
+      />
     ))}
   </Stack>
 );
@@ -75,8 +97,8 @@ storiesOf('Avatar', module)
       <Avatar name="(111)-555-1234" icon={<TelemarketerIcon />} />
       <Avatar icon={<GroupIcon />} square />
       <Avatar name="Group" icon={<GroupIcon />} square />
-      <Avatar image={people[14].image} badge="warning" />
-      <Avatar name={people[7].name} image={people[7].image} badge="success" />
+      <Avatar image={examples.image[14]} badge="warning" />
+      <Avatar name={examples.name[7]} image={examples.image[7]} badge="success" />
     </>
   ))
   .addStory('size+name', () => <AvatarList display="label" />)
