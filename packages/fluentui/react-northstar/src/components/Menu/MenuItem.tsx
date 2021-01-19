@@ -511,7 +511,12 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
                 defaultProps: () => ({
                   ...slotProps.menu,
                   styles: resolvedStyles.menu,
-                  onClick: handleClick,
+                }),
+                overrideProps: predefinedProps => ({
+                  onClick: (e: React.MouseEvent) => {
+                    handleClick(e);
+                    _.invoke(predefinedProps, 'onClick', e, props);
+                  },
                 }),
               })}
             </Popper>
