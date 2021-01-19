@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from '@fluentui/react-northstar';
 
-const MenuDismissScroll = () => {
+const MenuDismissOnItemClick = () => {
   return (
     <Menu
       items={[
