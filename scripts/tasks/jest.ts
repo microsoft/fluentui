@@ -6,31 +6,39 @@ import * as path from 'path';
  * > Why partial support only? just jestTask limits support to only those specified as return value of this function
  */
 const commonArgs = (): JestTaskOptions => {
+  const args: JestTaskOptions = argv();
+
   return {
-    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME || argv().runInBand) && { runInBand: true }),
-    ...((argv().u || argv().updateSnapshot) && { updateSnapshot: true }),
-    clearCache: argv().clearCache,
-    config: argv().config,
-    watch: argv().watch,
-    coverage: argv().coverage,
-    passWithNoTests: argv().coverage,
-    testNamePattern: argv().testNamePattern,
-    testPathPattern: argv().testPathPattern,
+    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME || args.runInBand) && { runInBand: true }),
+    ...((args.u || args.updateSnapshot) && { updateSnapshot: true }),
+    clearCache: args.clearCache,
+    config: args.config,
+    watch: args.watch,
+    coverage: args.coverage,
+    passWithNoTests: args.coverage,
+    testNamePattern: args.testNamePattern,
+    testPathPattern: args.testPathPattern,
 
     // Just specific config
-    nodeArgs: argv().nodeArgs,
+    nodeArgs: args.nodeArgs,
   };
 };
 
-export const jest = () =>
-  jestTask({
+const commonJestTask = (options: JestTaskOptions = {}) => {
+  return jestTask({
     ...commonArgs(),
     env: {
       ...process.env,
       NODE_ENV: 'test',
       PACKAGE_NAME: argv().package,
     },
+    ...options,
   });
+};
+
+export const jest = () => {
+  return commonJestTask();
+};
 
 export const jestDom = () =>
   jestTask({
@@ -39,13 +47,5 @@ export const jestDom = () =>
   });
 
 export const jestWatch = () => {
-  return jestTask({
-    ...commonArgs(),
-    watch: true,
-    _: [...(argv()._ || []).filter(arg => arg !== 'jest-watch')],
-    env: {
-      ...process.env,
-      PACKAGE_NAME: argv().package,
-    },
-  });
+  return commonJestTask({ watch: true });
 };
