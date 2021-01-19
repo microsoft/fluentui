@@ -364,9 +364,9 @@ const trigger = <button> Open menu </button>
 
 const menu = (
   <Menu trigger={trigger}>
-    <MenuItem title="Option 1" />
-    <MenuItem title="Option 2" />
-    <MenuItem title="Option 3" />
+    <MenuItem>Option 1</MenuItem>
+    <MenuItem>Option 2</MenuItem>
+    <MenuItem>Option 3</MenuItem>
   <Menu>
 )
 ```
@@ -378,16 +378,16 @@ const trigger = <button> Open menu </button>
 
 const menu = (
   <Menu trigger={trigger}>
-    <MenuItem title="Option 1" />
+    <MenuItem>Option 1</MenuItem>
     <MenuSection title="Section">
-      <MenuItem title="Section Option 1">
-      <MenuItem title="Section Option 2">
-      <MenuItem title="Section Option 3">
+      <MenuItem>Section Option 1</MenuItem>
+      <MenuItem>Section Option 2</MenuItem>
+      <MenuItem>Section Option 3</MenuItem>
     <MenuSection />
     <SubMenu title="Open submenu">
-      <MenuItem title="Submenu Option 1">
-      <MenuItem title="Submenu Option 2">
-      <MenuItem title="Submenu Option 3">
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
     <SubMenu>
   <Menu>
 )
@@ -401,9 +401,9 @@ const [open] = React.useState(false);
 const menu = (
   <CustomSurface open={open}>
     <MenuList>
-      <MenuItem title="Option 1" />
-      <MenuItem title="Option 2" />
-      <MenuItem title="Option 3" />
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
     <MenuList>
   <CustomSurface>
 )
@@ -422,9 +422,9 @@ const menuCheckbox = (
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
   >
-    <MenuItem kind="checkbox" index={1} title="Option 1">
-    <MenuItem kind="checkbox" index={2} title="Option 2">
-    <MenuItem kind="checkbox" index={3} title="Option 3">
+    <MenuItem index={1}>Option 1</MenuItem>
+    <MenuItem index={2}>Option 2</MenuItem>
+    <MenuItem index={3}>Option 3</MenuItem>
   <Menu>
 )
 
@@ -436,14 +436,14 @@ const menuSelectableSections = (
     trigger={trigger}
   >
     <MenuSection kind="checkbox">
-      <MenuItem index={1} title="Option 1">
-      <MenuItem index={2} title="Option 2">
-      <MenuItem index={3} title="Option 3">
+      <MenuItem index={1}>Option 1</MenuItem>
+      <MenuItem index={2}>Option 2</MenuItem>
+      <MenuItem index={3}>Option 3</MenuItem>
     </MenuSection>
     <MenuSection kind="radio">
-      <MenuItem index={4} title="Option 1">
-      <MenuItem index={5} title="Option 2">
-      <MenuItem index={6} title="Option 3">
+      <MenuItem index={4}>Option 1</MenuItem>
+      <MenuItem index={5}>Option 2</MenuItem>
+      <MenuItem index={6}>Option 3</MenuItem>
     </MenuSection>
   <Menu>
 )
