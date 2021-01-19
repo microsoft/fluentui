@@ -57,9 +57,11 @@ describe('Dismiss Menu on Item Click', () => {
     it('Should keep open on click of item with submenu', async () => {
       await e2e.expectHidden(secondSubmenu);
       await e2e.expectHidden(firstSubmenu);
+
       await e2e.focusOn(menuItem);
       await e2e.waitForSelectorAndPressKey(menuItem, 'Enter');
       await e2e.exists(firstSubmenu);
+
       await e2e.focusOn(secondSubmenuItem);
       await e2e.waitForSelectorAndPressKey(secondSubmenuItem, 'Enter');
       await e2e.exists(secondSubmenu);
