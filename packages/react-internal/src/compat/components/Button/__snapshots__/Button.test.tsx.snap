@@ -57,7 +57,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         top: 0px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: Window;
+        border-color: Window;
       }
       &:hover {
         color: #0078d4;

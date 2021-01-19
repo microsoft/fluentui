@@ -227,6 +227,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         top: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        border-color: Window;
                         border: 0px;
                       }
                       &:hover {
@@ -383,6 +384,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         top: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        border-color: Window;
                         border: 0px;
                       }
                       &:hover {
@@ -601,6 +603,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
                       border: 0px;
                     }
                     &:hover {

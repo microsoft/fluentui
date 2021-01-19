@@ -106,7 +106,7 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border: Window;
+                border-color: Window;
                 color: HighlightText;
               }
               &:hover {
@@ -238,7 +238,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -369,7 +369,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -500,7 +500,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -631,7 +631,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -762,7 +762,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -893,7 +893,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1024,7 +1024,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1155,7 +1155,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1286,7 +1286,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1417,7 +1417,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1548,7 +1548,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1679,7 +1679,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1810,7 +1810,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -1941,7 +1941,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2114,7 +2114,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border: Window;
+                border-color: Window;
                 color: HighlightText;
               }
               &:hover {
@@ -2246,7 +2246,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2377,7 +2377,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2508,7 +2508,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2639,7 +2639,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2770,7 +2770,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -2901,7 +2901,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3032,7 +3032,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3163,7 +3163,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3294,7 +3294,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3425,7 +3425,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3556,7 +3556,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3687,7 +3687,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3818,7 +3818,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -3949,7 +3949,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4097,7 +4097,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4228,7 +4228,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4359,7 +4359,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4490,7 +4490,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4621,7 +4621,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4752,7 +4752,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -4883,7 +4883,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5014,7 +5014,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5159,7 +5159,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border: Window;
+                border-color: Window;
                 color: HighlightText;
               }
               &:hover {
@@ -5291,7 +5291,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5422,7 +5422,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5553,7 +5553,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5684,7 +5684,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5815,7 +5815,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
@@ -5946,7 +5946,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                border: Window;
+                border-color: Window;
                 color: WindowText;
               }
               &:hover {
