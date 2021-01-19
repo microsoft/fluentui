@@ -87,10 +87,10 @@ The v7 `ContextualMenu` is intended to be used as a controlled component. The vi
 
 The v0 `Popup` should be compared here, since the v0 `Menu` does not handle open/dismiss events. `Popup` visibility can be controlled using the `open` prop. `Popup` provides a callback prop `onOpenChange` which can be used both to open and dismiss.
 
-However as mentioned above, the general usage of `Popup` is with an autocontrolled trigger. If a trigger is used with the `open` prop, this disables autocontrolling
+As mentioned above, `Popup` implements an autocontrolled pattern which allows both controlled an uncontrolled variants to be used in its API.
 
 ```typescript
-// v0 controlled ContextualMenu
+// v7 controlled ContextualMenu
 const [showContextualMenu, setShowContextualMenu] = React.useState(false);
 const onShowContextualMenu = () => setShowContextualMenu(true);
 const onHideContextualMenu = () => setShowContextualMenu(false);
@@ -101,21 +101,20 @@ const onHideContextualMenu = () => setShowContextualMenu(false);
   onDismiss={onHideContextualMenu
 />;
 
-// v7 controlled Popup
+// v0 uncontrolled Popup
 const [open, setOpen] = React.useState(false);
 
 <Popup
-  open={open}
-  onOpenChange={(e, { open }) => setOpen(open)}
+  onOpenChange={(e, props: PopupProps) => {/*react on changes*/}}
   trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
 />;
 
-// v7 controlled Popup - used with trigger disables autocontrol
+// v0 controlled Popup - used with trigger disables autocontrol
 const [open, setOpen] = React.useState(false);
 
 <Popup
   open={open}
-  onOpenChange={(e, { open }) => setOpen(open)}
+  onOpenChange={(e, props: PopupProps) => setOpen(!props.open)}
   trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
 />;
 ```
