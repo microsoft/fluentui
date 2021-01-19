@@ -15,7 +15,7 @@ describe('Dismiss Menu on Item Click', () => {
 
   describe('Mouse interactions', () => {
     it('Should close on click', async () => {
-      await e2e.expectCount(menuItem, 1);
+      await e2e.expectHidden(firstSubmenu);
       await e2e.clickOn(menuItem);
       await e2e.exists(firstSubmenu);
       await e2e.clickOn(firstSubmenuItem);
