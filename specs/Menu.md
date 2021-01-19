@@ -218,6 +218,12 @@ Below are some sample DOM outputs to compare for certain scenarios. Not all DOM 
 
 ### Basic menu
 
+Both the current v7 and v0 versions of this control use the `ul` and `li` combination along with content wrapper elements. This makes style overrides kind of complicated to target and also makes custom rendering difficult since there is the added complexity of targeting stricter DOM structures.
+
+`ul`/`li` combinations are also very strict in markdown and might not play well with newer concepts like virtualization and custom scrollbars where arbitrary `div` elements can be inserted into the DOM.
+
+In terms off A11y and narration there is effectively no difference in having a wrapping element or not. Would useful in the proposed new API to use a simpler DOM structure that provides more flexibility.
+
 ```html
 <!-- v7 basic menu  -->
 <ul role="menu">
