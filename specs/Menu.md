@@ -252,6 +252,16 @@ Below are some sample DOM outputs to compare for certain scenarios. Not all DOM 
 </ul>
 ```
 
+### Menu divider
+
+```html
+<!-- v7 divider item  -->
+<li role="separator" aria-hidden="true"></li>
+
+<!-- v0 divider item  -->
+<li role="presentation" class="menu__divider"></li>
+```
+
 ### Custom rendering and data
 
 v7 provides render callbacks that can be used to render either the entire menu list or specific slots of menut items. Each call back provides the props avaialble to that slot and a `defaultRender` which allows to easily extend the original render, if required.
