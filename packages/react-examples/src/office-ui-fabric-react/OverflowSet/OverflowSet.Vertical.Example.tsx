@@ -45,33 +45,31 @@ export const OverflowSetVerticalExample: React.FunctionComponent = () => (
       {
         key: 'item1',
         icon: 'Add',
-        name: 'Link 1',
+        name: 'Add',
         ariaLabel: 'New. Use left and right arrow keys to navigate',
         onClick: noOp,
       },
       {
         key: 'item2',
         icon: 'Upload',
-        name: 'Link 2',
+        name: 'Upload',
         onClick: noOp,
       },
       {
         key: 'item3',
         icon: 'Share',
-        name: 'Link 3',
+        name: 'Share',
         onClick: noOp,
       },
     ]}
     overflowItems={[
       {
         key: 'item4',
-        icon: 'Mail',
         name: 'Overflow Link 1',
         onClick: noOp,
       },
       {
         key: 'item5',
-        icon: 'Calendar',
         name: 'Overflow Link 2',
         onClick: noOp,
       },
