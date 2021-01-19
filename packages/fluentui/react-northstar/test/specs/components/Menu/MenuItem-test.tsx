@@ -8,7 +8,7 @@ import {
   implementsShorthandProp,
 } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
-import { MenuItem, menuItemClassName } from 'src/components/Menu/MenuItem';
+import { MenuItem } from 'src/components/Menu/MenuItem';
 import { Menu } from 'src/components/Menu/Menu';
 import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
@@ -16,9 +16,6 @@ describe('MenuItem', () => {
   isConformant(MenuItem, {
     testPath: __filename,
     constructorName: 'MenuItem',
-    eventTargets: {
-      onClick: `.${menuItemClassName}`,
-    },
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
