@@ -247,7 +247,7 @@ const menuProps = {
 }
 ```
 
-v0 custom rendering through shorthand components is a consistent experience through all shorthand components, but provide a smaller API surface (whether this is simpler or less powerful can be subjective). Custom rendering in the case of the `Menu` component would be done through the use of `chilren` prop either through the standard React child component API or through shorthand as a callback function.
+v0 custom rendering through shorthand components is a consistent experience through all shorthand components, but provide a smaller API surface (whether this is simpler or less powerful can be subjective). Custom rendering in the case of the `Menu` component would be done through the use of `children` prop either through the standard React child component API or through shorthand as a callback function.
 
 ```typescript
 // v0 shorthand children render callback
