@@ -99,24 +99,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                         this._refCallback(e, points!.chartData![0].legend);
                       }}
                       className={this._classNames.barWrapper}
-                      onMouseOver={this._hoverOn.bind(
-                        this,
-                        points!
-                          .chartData![0].horizontalBarChartdata!.x.toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                        points!.chartData![0],
-                      )}
-                      onFocus={this._hoverOn.bind(
-                        this,
-                        points!
-                          .chartData![0].horizontalBarChartdata!.x.toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                        points!.chartData![0],
-                      )}
-                      aria-labelledby={this._calloutId}
-                      data-is-focusable={true}
-                      onBlur={this._hoverOff}
-                      onMouseLeave={this._hoverOff}
                     >
                       {bars}
                     </g>
@@ -259,9 +241,31 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           key={index}
           x={startingPoint[index] + '%'}
           y={0}
+          data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
           height={this._barHeight}
           fill={color}
+          onMouseOver={
+            point.legend !== ''
+              ? this._hoverOn.bind(
+                  this,
+                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+                  point,
+                )
+              : undefined
+          }
+          onFocus={
+            point.legend !== ''
+              ? this._hoverOn.bind(
+                  this,
+                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+                  point,
+                )
+              : undefined
+          }
+          aria-labelledby={this._calloutId}
+          onBlur={this._hoverOff}
+          onMouseLeave={this._hoverOff}
         />
       );
     });

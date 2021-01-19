@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jan 2021 12:36:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.9)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.0..@fluentui/react-icons-mdl2_v1.0.0-beta.9)
+
+### Changes
+
+- add webpack bundles to react-icons-mdl2 and react-theme-provider ([PR #16429](https://github.com/microsoft/fluentui/pull/16429) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.0)
 

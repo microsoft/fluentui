@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-internal';
 import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
-import { useOverflow } from './useOverflow';
+import { useOverflow } from '../../utilities/useOverflow';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 

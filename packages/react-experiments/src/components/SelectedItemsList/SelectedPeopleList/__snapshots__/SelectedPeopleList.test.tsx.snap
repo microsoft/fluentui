@@ -4,23 +4,8 @@ exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 <div
-  onFocus={[Function]}
   role="list"
 >
-  <input
-    aria-hidden={true}
-    className=
-        ms-SelectedItemsList-copyInput
-        {
-          border: none;
-          height: 0px;
-          outline: none;
-          width: 0px;
-        }
-    data-is-focusable={false}
-    hidden={true}
-    tabIndex={-1}
-  />
   <div
     aria-labelledby="selectedItemPersona-id__0"
     className=
@@ -43,12 +28,24 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           background: #deecf9;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
+          background: Highlight;
+          border: 1px solid ButtonText;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
-          background: Highlight;
-          border-color: Highlight;
+          background: ButtonFace;
+          border: 1px solid ButtonText;
+          color: ButtonText;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+          color: ButtonText;
         }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
@@ -70,13 +67,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -115,17 +112,26 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -165,7 +171,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -175,9 +180,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Add"
             role="presentation"
@@ -221,7 +223,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                 align-items: center;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: inherit;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -325,10 +327,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #201f1e;
+                    color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: inherit;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    color: HighlightText;
+                    color: inherit;
                   }
               dir="auto"
             >
@@ -404,14 +409,14 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: inline-block;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -421,7 +426,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              width: 33px;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -449,17 +454,26 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -499,7 +513,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -509,9 +522,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"
@@ -550,12 +560,24 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
           background: #deecf9;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
+          background: Highlight;
+          border: 1px solid ButtonText;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
-          background: Highlight;
-          border-color: Highlight;
+          background: ButtonFace;
+          border: 1px solid ButtonText;
+          color: ButtonText;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+          color: ButtonText;
         }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
@@ -577,13 +599,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -622,17 +644,26 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -672,7 +703,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -682,9 +712,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Add"
             role="presentation"
@@ -728,7 +755,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                 align-items: center;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: inherit;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -832,10 +859,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #201f1e;
+                    color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: inherit;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    color: HighlightText;
+                    color: inherit;
                   }
               dir="auto"
             >
@@ -911,14 +941,14 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: inline-block;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -928,7 +958,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              width: 33px;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -956,17 +986,26 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1006,7 +1045,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -1016,9 +1054,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"
@@ -1040,23 +1075,8 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
 <div
-  onFocus={[Function]}
   role="list"
 >
-  <input
-    aria-hidden={true}
-    className=
-        ms-SelectedItemsList-copyInput
-        {
-          border: none;
-          height: 0px;
-          outline: none;
-          width: 0px;
-        }
-    data-is-focusable={false}
-    hidden={true}
-    tabIndex={-1}
-  />
   <div
     aria-labelledby="selectedItemPersona-id__16"
     className=
@@ -1079,12 +1099,24 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           background: #deecf9;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
+          background: Highlight;
+          border: 1px solid ButtonText;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
-          background: Highlight;
-          border-color: Highlight;
+          background: ButtonFace;
+          border: 1px solid ButtonText;
+          color: ButtonText;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+          color: ButtonText;
         }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
@@ -1106,13 +1138,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -1151,17 +1183,26 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1201,7 +1242,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -1211,9 +1251,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Add"
             role="presentation"
@@ -1257,7 +1294,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                 align-items: center;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: inherit;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1361,10 +1398,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #201f1e;
+                    color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: inherit;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    color: HighlightText;
+                    color: inherit;
                   }
               dir="auto"
             >
@@ -1440,14 +1480,14 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: inline-block;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1457,7 +1497,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               text-align: center;
               text-decoration: none;
               user-select: none;
-              width: 33px;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1485,17 +1525,26 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1535,7 +1584,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -1545,9 +1593,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"
@@ -1586,12 +1631,24 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           background: #deecf9;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
+          background: Highlight;
+          border: 1px solid ButtonText;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
-          background: Highlight;
-          border-color: Highlight;
+          background: ButtonFace;
+          border: 1px solid ButtonText;
+          color: ButtonText;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+          color: ButtonText;
         }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
@@ -1613,13 +1670,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -1658,17 +1715,26 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1708,7 +1774,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -1718,9 +1783,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Add"
             role="presentation"
@@ -1764,7 +1826,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                 align-items: center;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: inherit;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1868,10 +1930,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                     white-space: nowrap;
                   }
                   &:hover {
-                    color: #201f1e;
+                    color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: inherit;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    color: HighlightText;
+                    color: inherit;
                   }
               dir="auto"
             >
@@ -1947,14 +2012,14 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #005a9e;
               cursor: pointer;
               display: inline-block;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 33px;
+              height: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1964,7 +2029,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               text-align: center;
               text-decoration: none;
               user-select: none;
-              width: 33px;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1992,17 +2057,26 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: inherit;
+              color: inherit;
+            }
             &:hover {
               background-color: #c7e0f4;
-              color: #106ebe;
+              color: #005a9e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              background: inherit;
               border-color: Highlight;
-              color: Highlight;
+              color: inherit;
             }
             &:active {
-              background-color: #edebe9;
-              color: #005a9e;
+              background-color: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              background: inherit;
+              color: inherit;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -2042,7 +2116,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   speak: none;
                 }
                 {
-                  color: #005a9e;
                   flex-shrink: 0;
                   font-size: 16px;
                   height: 16px;
@@ -2052,9 +2125,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"

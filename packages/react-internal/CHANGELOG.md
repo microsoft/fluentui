@@ -1,8 +1,220 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Jan 2021 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.33)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.30..@fluentui/react-internal_v8.0.0-beta.33)
+
+### Changes
+
+- Fixes TextField custom error message rendering ([PR #16487](https://github.com/microsoft/fluentui/pull/16487) by sorgh@microsoft.com)
+
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.30)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.29..@fluentui/react-internal_v8.0.0-beta.30)
+
+### Changes
+
+- Fixes linux firefox persona/image rendering only the top left quarter of images (#16361) ([PR #16370](https://github.com/microsoft/fluentui/pull/16370) by mhuan13@gmail.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.29)
+
+Thu, 07 Jan 2021 12:35:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.28..@fluentui/react-internal_v8.0.0-beta.29)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.28)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.27..@fluentui/react-internal_v8.0.0-beta.28)
+
+### Changes
+
+- Add calloutMinWidth props for Callout component ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.27)
+
+Mon, 21 Dec 2020 12:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.26..@fluentui/react-internal_v8.0.0-beta.27)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.26)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.25..@fluentui/react-internal_v8.0.0-beta.26)
+
+### Changes
+
+- fix #15729: add type button to textfield of type password ([PR #15949](https://github.com/microsoft/fluentui/pull/15949) by mirco.zeiss@gmail.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.25)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.24..@fluentui/react-internal_v8.0.0-beta.25)
+
+### Changes
+
+- Pickers: add aria-label as an option to apply to the root combobox ([PR #16187](https://github.com/microsoft/fluentui/pull/16187) by joschect@microsoft.com)
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.24)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.23..@fluentui/react-internal_v8.0.0-beta.24)
+
+### Changes
+
+- fix narrator scan mode navigation for picker ([PR #16177](https://github.com/microsoft/fluentui/pull/16177) by kuanubha@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.23)
+
+Mon, 07 Dec 2020 12:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.21..@fluentui/react-internal_v8.0.0-beta.23)
+
+### Changes
+
+- SpinButton: Add onChange ([PR #16137](https://github.com/microsoft/fluentui/pull/16137) by elcraig@microsoft.com)
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.21)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.20..@fluentui/react-internal_v8.0.0-beta.21)
+
+### Changes
+
+- SpinButton: remove defaults for min and max ([PR #16109](https://github.com/microsoft/fluentui/pull/16109) by elcraig@microsoft.com)
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.20)
+
+Tue, 01 Dec 2020 12:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.19..@fluentui/react-internal_v8.0.0-beta.20)
+
+### Changes
+
+- SpinButton: Fix function component conversion issues revealed by eslint-plugin-react-hooks ([PR #15431](https://github.com/microsoft/fluentui/pull/15431) by czearing@outlook.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.19)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.18..@fluentui/react-internal_v8.0.0-beta.19)
+
+### Changes
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #16011](https://github.com/microsoft/fluentui/pull/16011) by stefhan@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.18)
+
+Tue, 24 Nov 2020 12:29:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.17..@fluentui/react-internal_v8.0.0-beta.18)
+
+### Changes
+
+- Add interface for onRestoreFocus params ([PR #15941](https://github.com/microsoft/fluentui/pull/15941) by elcraig@microsoft.com)
+- SearchBox: Don't prevent Esc from propagating if the box is empty. Also fix infinite recursion in onKeyDown. ([PR #16018](https://github.com/microsoft/fluentui/pull/16018) by behowell@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.17)
+
+Mon, 23 Nov 2020 12:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.16..@fluentui/react-internal_v8.0.0-beta.17)
+
+### Changes
+
+- Fixed SearchBox maximum call stack size on keydown ([PR #16028](https://github.com/microsoft/fluentui/pull/16028) by richardkooiman@hotmail.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.16)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.15..@fluentui/react-internal_v8.0.0-beta.16)
+
+### Changes
+
+- Keyboard focus should be visible in selected footers in pickers in high contrast ([PR #15985](https://github.com/microsoft/fluentui/pull/15985) by elvonspa@microsoft.com)
+- ContextualMenu: remove unnecessary resize check ([PR #15584](https://github.com/microsoft/fluentui/pull/15584) by joschect@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.15)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.12..@fluentui/react-internal_v8.0.0-beta.15)
+
+### Changes
+
+- improve Text variant style inheritance ([PR #15942](https://github.com/microsoft/fluentui/pull/15942) by blaymist@gmail.com)
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.12)
+
+Mon, 16 Nov 2020 12:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.11..@fluentui/react-internal_v8.0.0-beta.12)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.11)
+
+Fri, 13 Nov 2020 12:33:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.10..@fluentui/react-internal_v8.0.0-beta.11)
+
+### Changes
+
+- Add support for ariaDescription in contextual menu items ([PR #15770](https://github.com/microsoft/fluentui/pull/15770) by sareiff@microsoft.com)
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.10)
+
+Wed, 11 Nov 2020 12:30:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.9..@fluentui/react-internal_v8.0.0-beta.10)
+
+### Changes
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #15880](https://github.com/microsoft/fluentui/pull/15880) by elvonspa@microsoft.com)
+- Add missing exports to API ([PR #15882](https://github.com/microsoft/fluentui/pull/15882) by dahajek@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.9)
+
+Tue, 10 Nov 2020 12:30:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.8..@fluentui/react-internal_v8.0.0-beta.9)
+
+### Changes
+
+- Updating Modal to a function component within react-internal. ([PR #15569](https://github.com/microsoft/fluentui/pull/15569) by czearing@outlook.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.8)
+
+Fri, 06 Nov 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.7..@fluentui/react-internal_v8.0.0-beta.8)
+
+### Changes
+
+- ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.7)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.6..@fluentui/react-internal_v8.0.0-beta.7)
+
+### Changes
+
+- Layer: fix not rendering into targeted host element defined by hostId prop. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.6)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.5..@fluentui/react-internal_v8.0.0-beta.6)
+
+### Changes
+
+- Update SpinButton to inherit Fabric font styles. ([PR #15724](https://github.com/microsoft/fluentui/pull/15724) by lesliewilliams234@gmail.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+- SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers. ([PR #15797](https://github.com/microsoft/fluentui/pull/15797) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.5)
 

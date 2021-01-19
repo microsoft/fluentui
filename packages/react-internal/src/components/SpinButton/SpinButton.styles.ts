@@ -143,9 +143,9 @@ export const getStyles = (props: ISpinButtonStyleProps): ISpinButtonStyles => {
 
   return {
     root: [
+      fonts.medium,
       {
         outline: 'none',
-        fontSize: fonts.medium.fontSize,
         width: '100%',
         minWidth: DEFAULT_MIN_WIDTH,
       },

@@ -243,7 +243,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {multiline ? this._renderTextArea() : this._renderInput()}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
-              <button className={classNames.revealButton} onClick={this._onRevealButtonClick}>
+              // Explicitly set type="button" since the default button type within a form is "submit"
+              <button className={classNames.revealButton} onClick={this._onRevealButtonClick} type="button">
                 <span className={classNames.revealSpan}>
                   <Icon
                     className={classNames.revealIcon}
@@ -262,11 +263,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {onRenderDescription(this.props, this._onRenderDescription)}
             {errorMessage && (
               <div role="alert">
-                <DelayedRender>
-                  <p className={classNames.errorMessage}>
-                    <span data-automation-id="error-message">{errorMessage}</span>
-                  </p>
-                </DelayedRender>
+                <DelayedRender>{this._renderErrorMessage()}</DelayedRender>
               </div>
             )}
           </span>
@@ -443,6 +440,28 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private get _errorMessage(): string | JSX.Element {
     const { errorMessage = this.state.errorMessage } = this.props;
     return errorMessage || '';
+  }
+
+  /**
+   * Renders error message based on the type of the message.
+   *
+   * - If error message is string, it will render using the built in styles.
+   * - If error message is an element, user has full control over how it's rendered.
+   */
+  private _renderErrorMessage(): JSX.Element | null {
+    const errorMessage = this._errorMessage;
+
+    return errorMessage ? (
+      typeof errorMessage === 'string' ? (
+        <p className={this._classNames.errorMessage}>
+          <span data-automation-id="error-message">{errorMessage}</span>
+        </p>
+      ) : (
+        <div className={this._classNames.errorMessage} data-automation-id="error-message">
+          {errorMessage}
+        </div>
+      )
+    ) : null;
   }
 
   /**

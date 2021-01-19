@@ -1,5 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible } from '@microsoft/fast-foundation';
+import { SystemColors } from '@microsoft/fast-web-utilities';
+import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../size';
 import {
   accentFillActiveBehavior,
@@ -37,7 +38,7 @@ export const BaseButtonStyles: ElementStyles = css`
         background-color: ${neutralFillRestBehavior.var};
         color: ${neutralForegroundRestBehavior.var};
         border-radius: calc(var(--corner-radius) * 1px);
-        fill: currentColor;
+        fill: currentcolor;
         cursor: pointer;
     }
 
@@ -65,6 +66,11 @@ export const BaseButtonStyles: ElementStyles = css`
         font: inherit;
     }
 
+    .control.icon-only {
+        padding: 0;
+        line-height: 0;
+    }
+
     :host(:hover) {
         background-color: ${neutralFillHoverBehavior.var};
     }
@@ -89,7 +95,10 @@ export const BaseButtonStyles: ElementStyles = css`
     }
 
     .start,
-    .end,
+    .end {
+        display: flex;
+    }
+
     ::slotted(svg) {
         ${
           /* Glyph size and margin-left is temporary -
@@ -110,6 +119,62 @@ export const BaseButtonStyles: ElementStyles = css`
   neutralForegroundRestBehavior,
   neutralFillHoverBehavior,
   neutralFillActiveBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+        :host {
+          background-color: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonText};
+          color: ${SystemColors.ButtonText};
+          fill: currentcolor;
+        }
+
+        :host(:hover) {
+          forced-color-adjust: none;
+          background-color: ${SystemColors.Highlight};
+          color: ${SystemColors.HighlightText};
+        }
+
+        .control:${focusVisible},
+        :host(.outline) .control:${focusVisible} {
+          forced-color-adjust: none;
+          background-color: ${SystemColors.Highlight};
+          border-color: ${SystemColors.ButtonText};
+          box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${SystemColors.ButtonText};
+          color: ${SystemColors.HighlightText};
+        }
+
+        .control:hover,
+        :host(.outline) .control:hover {
+          border-color: ${SystemColors.ButtonText};
+        }
+
+        :host(.disabled),
+        :host(.disabled) .control {
+            forced-color-adjust: none;
+            background-color: ${SystemColors.ButtonFace};
+            border-color: ${SystemColors.GrayText};
+            color: ${SystemColors.GrayText};
+            cursor: ${disabledCursor};
+            opacity: 1;
+        }
+
+        :host([href]) {
+          color: ${SystemColors.LinkText};
+        }
+
+        :host([href]) .control:hover,
+        :host(.outline[href]) .control:hover
+        :host(:hover[href]),
+        :host([href]) .control:${focusVisible}{
+          forced-color-adjust: none;
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.LinkText};
+          box-shadow: 0 0 0 1px ${SystemColors.LinkText} inset;
+          color: ${SystemColors.LinkText};
+          fill: currentcolor;
+        }
+    `,
+  ),
 );
 
 /**
@@ -142,6 +207,51 @@ export const AccentButtonStyles = css`
   accentFillHoverBehavior,
   accentFillActiveBehavior,
   neutralFocusInnerAccentBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+        :host(.accent) .control {
+            forced-color-adjust: none;
+            background: ${SystemColors.Highlight};
+            color: ${SystemColors.HighlightText};
+        }
+
+        :host(.accent) .control:hover {
+            background: ${SystemColors.HighlightText};
+            border-color: ${SystemColors.Highlight};
+            color: ${SystemColors.Highlight};
+        }
+
+        :host(.accent) .control:${focusVisible} {
+            border-color: ${SystemColors.ButtonText};
+            box-shadow: 0 0 0 2px ${SystemColors.HighlightText} inset;
+        }
+
+        :host(.accent.disabled) .control,
+        :host(.accent.disabled) .control:hover {
+            background: ${SystemColors.ButtonFace};
+            border-color: ${SystemColors.GrayText};
+            color: ${SystemColors.GrayText};
+        }
+
+        :host(.accent[href]) .control{
+            background: ${SystemColors.LinkText};
+            color: ${SystemColors.HighlightText};
+        }
+
+        :host(.accent[href]) .control:hover {
+            background: ${SystemColors.ButtonFace};
+            border-color: ${SystemColors.LinkText};
+            box-shadow: none;
+            color: ${SystemColors.LinkText};
+            fill: currentcolor;
+        }
+
+        :host(.accent[href]) .control:${focusVisible} {
+          border-color: ${SystemColors.LinkText};
+          box-shadow: 0 0 0 2px ${SystemColors.HighlightText} inset;
+      }
+    `,
+  ),
 );
 
 /**
@@ -153,6 +263,7 @@ export const HypertextStyles = css`
         font-size: inherit;
         line-height: inherit;
         background: transparent;
+        min-width: 0;
     }
 
     :host(.hypertext) .control {
@@ -181,12 +292,21 @@ export const HypertextStyles = css`
     }
     :host(.hypertext) .control:${focusVisible} {
         border-bottom: calc(var(--focus-outline-width) * 1px) solid ${neutralFocusBehavior.var};
+        margin-bottom: calc(calc(var(--outline-width) - var(--focus-outline-width)) * 1px);
     }
 `.withBehaviors(
   accentForegroundRestBehavior,
   accentForegroundHoverBehavior,
   accentForegroundActiveBehavior,
   neutralFocusBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host(.hypertext) .control:${focusVisible} {
+        color: ${SystemColors.LinkText};
+        border-bottom-color: ${SystemColors.LinkText};
+      }
+    `,
+  ),
 );
 
 /**
@@ -249,6 +369,41 @@ export const LightweightButtonStyles = css`
   accentForegroundActiveBehavior,
   accentForegroundHoverBehavior,
   neutralForegroundRestBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+        :host(.lightweight) .control:hover,
+        :host(.lightweight) .control:${focusVisible} {
+            forced-color-adjust: none;
+            background: ${SystemColors.ButtonFace};
+            color: ${SystemColors.Highlight};
+        }
+        :host(.lightweight) .control:hover .content::before,
+        :host(.lightweight) .control:${focusVisible} .content::before {
+            background: ${SystemColors.Highlight};
+        }
+
+        :host(.lightweight.disabled) .control {
+            forced-color-adjust: none;
+            color: ${SystemColors.GrayText};
+        }
+
+        :host(.lightweight.disabled) .control:hover .content::before {
+            background: none;
+        }
+
+        :host(.lightweight[href]) .control:hover,
+        :host(.lightweight[href]) .control:${focusVisible} {
+            background: ${SystemColors.ButtonFace};
+            box-shadow: none;
+            color: ${SystemColors.LinkText};
+        }
+
+        :host(.lightweight[href]) .control:hover .content::before,
+        :host(.lightweight[href]) .control:${focusVisible} .content::before {
+            background: ${SystemColors.LinkText};
+        }
+    `,
+  ),
 );
 
 /**
@@ -273,8 +428,8 @@ export const OutlineButtonStyles = css`
     }
 
     :host(.outline) .control:${focusVisible} {
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var});
         box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
+        border-color: ${neutralFocusBehavior.var};
     }
 
     :host(.outline.disabled) {
@@ -285,6 +440,13 @@ export const OutlineButtonStyles = css`
   neutralOutlineHoverBehavior,
   neutralOutlineActiveBehavior,
   neutralFocusBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host(.outline.disabled) .control {
+        border-color: ${SystemColors.GrayText};
+      }
+    `,
+  ),
 );
 
 /**
@@ -306,4 +468,59 @@ export const StealthButtonStyles = css`
   :host(.stealth.disabled) {
     background: ${neutralFillStealthRestBehavior.var};
   }
-`.withBehaviors(neutralFillStealthRestBehavior, neutralFillStealthHoverBehavior, neutralFillStealthActiveBehavior);
+`.withBehaviors(
+  neutralFillStealthRestBehavior,
+  neutralFillStealthHoverBehavior,
+  neutralFillStealthActiveBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+        :host(.stealth) .control {
+            forced-color-adjust: none;
+            background-color: none;
+            border-color: transparent;
+            color: ${SystemColors.ButtonText};
+            fill: currentcolor;
+        }
+
+        :host(.stealth:hover) .control {
+            background-color: ${SystemColors.Highlight};
+            border-color: ${SystemColors.Highlight};
+            color: ${SystemColors.HighlightText};
+            fill: currentcolor;
+        }
+
+        :host(.stealth:${focusVisible}) .control {
+            box-shadow: 0 0 0 1px ${SystemColors.Highlight};
+            color: ${SystemColors.HighlightText};
+            fill: currentcolor;
+        }
+
+        :host(.stealth.disabled) {
+          background-color: ${SystemColors.ButtonFace};
+        }
+
+        :host(.stealth.disabled) .control {
+            background-color: ${SystemColors.ButtonFace};
+            border-color: transparent;
+            color: ${SystemColors.GrayText};
+        }
+
+        :host(.stealth[href]) .control {
+            color: ${SystemColors.LinkText};
+        }
+
+        :host(.stealth:hover[href]) .control {
+            background-color: ${SystemColors.LinkText};
+            border-color: ${SystemColors.LinkText};
+            color: ${SystemColors.HighlightText};
+            fill: currentcolor;
+        }
+
+      :host(.stealth:${focusVisible}[href]) .control {
+          box-shadow: 0 0 0 1px ${SystemColors.LinkText};
+          color: ${SystemColors.LinkText};
+          fill: currentcolor;
+      }
+    `,
+  ),
+);

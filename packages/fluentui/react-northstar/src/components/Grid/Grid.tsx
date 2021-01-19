@@ -30,10 +30,10 @@ export interface GridProps extends UIComponentProps, ChildrenComponentProps, Con
   accessibility?: Accessibility<GridBehaviorProps>;
 
   /** The columns of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line. */
-  columns?: number;
+  columns?: string | number;
 
   /** The rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line. */
-  rows?: number;
+  rows?: string | number;
 }
 
 export const gridClassName = 'ui-grid';
@@ -92,11 +92,11 @@ Grid.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  columns: PropTypes.number,
+  columns: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   content: customPropTypes.every([
     customPropTypes.disallow(['children']),
     PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
   ]),
-  rows: PropTypes.number,
+  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 Grid.handledProps = Object.keys(Grid.propTypes) as any;

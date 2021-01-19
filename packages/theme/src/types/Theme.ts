@@ -60,6 +60,7 @@ export type ColorTokens = ColorTokenSet & {
   focused?: ColorTokenSet;
   hovered?: ColorTokenSet;
   pressed?: ColorTokenSet;
+  selected?: ColorTokenSet;
 };
 
 export type FontTokens = Partial<{
@@ -82,8 +83,8 @@ export type RecursivePartial<T> = {
 
 export interface Tokens {
   color: {
-    body: ColorTokenSet & TokenSetType;
-    brand: ColorTokenSet & TokenSetType;
+    body: ColorTokens & TokenSetType;
+    brand: ColorTokens & TokenSetType;
     [key: string]: TokenSetType;
   };
 
@@ -133,6 +134,7 @@ export interface Theme extends IScheme {
   components?: ComponentsStyles;
 
   /**
+   * @internal
    * CSS stylesheets to be registered.
    * This is still in an experimental phase and is only applied by `ThemeProvider`.
    */
@@ -165,7 +167,6 @@ export interface Theme extends IScheme {
  */
 export interface PartialTheme {
   components?: ComponentsStyles;
-  stylesheets?: string[];
 
   palette?: Partial<IPalette>;
   fonts?: Partial<IFontStyles>;
@@ -180,6 +181,13 @@ export interface PartialTheme {
    * Use this property to specify font property defaults.
    */
   defaultFontStyle?: IRawStyle;
+
+  /**
+   * @internal
+   * CSS stylesheets to be registered.
+   * This is still in an experimental phase and is only applied by `ThemeProvider`.
+   */
+  stylesheets?: string[];
 
   /**
    * @internal

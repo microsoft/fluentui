@@ -61,18 +61,21 @@ export default () => {
       }
 
       // generate behavior description from 'behavior definition' file if no was found in behavior file
-      if (!variation.description && !variation.specification) {
+      if (!variation.specification) {
         const variationName = variation.name.replace('.ts', '');
         const definitionName = `${variationName}Definition`;
-
         const definition = behaviorDefinitions[definitionName];
-        const descriptionFromDefinition = definition
-          .map(definition => {
-            return definition.getData().hidden ? undefined : definition.stringify();
-          })
-          .filter(Boolean);
 
-        variation.description = descriptionFromDefinition.join('\r\n');
+        // in some cases specification doesn't exists as well not definition for the behavior (alertBaseBehavior.ts)
+        if (definition) {
+          const specificationFromDefinition = definition
+            .map(definition => {
+              return definition.getData().hidden ? undefined : definition.stringify();
+            })
+            .filter(Boolean);
+
+          variation.specification = specificationFromDefinition.join('\r\n');
+        }
         result.push({
           displayName: behaviorName,
           type: componentType,

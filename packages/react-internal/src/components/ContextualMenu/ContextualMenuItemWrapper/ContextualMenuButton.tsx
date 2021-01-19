@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
+import { buttonProperties, getNativeProps, memoizeFunction, getId, mergeAriaAttributeValues } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
@@ -9,6 +9,7 @@ import { IKeytipProps } from '../../../Keytip';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
+  private _ariaDescriptionId: string;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
@@ -41,7 +42,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     const canCheck: boolean = isChecked !== null;
     const defaultRole = getMenuItemAriaRole(item);
     const itemHasSubmenu = hasSubmenu(item);
-    const { itemProps, ariaLabel } = item;
+    const { itemProps, ariaLabel, ariaDescription } = item;
 
     const buttonNativeProperties = getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(
       item,
@@ -51,6 +52,17 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     delete buttonNativeProperties.disabled;
 
     const itemRole = item.role || defaultRole;
+
+    // Check for ariaDescription to set the _ariaDescriptionId and render a hidden span with
+    // the description in it to be added to ariaDescribedBy
+    if (ariaDescription) {
+      this._ariaDescriptionId = getId();
+    }
+    const ariaDescribedByIds = mergeAriaAttributeValues(
+      item.ariaDescribedBy,
+      ariaDescription ? this._ariaDescriptionId : undefined,
+      buttonNativeProperties['aria-describedby'],
+    );
 
     const itemButtonProperties = {
       className: classNames.root,
@@ -64,6 +76,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
+      'aria-describedby': ariaDescribedByIds,
       'aria-haspopup': itemHasSubmenu || undefined,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
@@ -84,11 +97,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     }
 
     return (
-      <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={buttonNativeProperties['aria-describedby']}
-        disabled={isItemDisabled(item)}
-      >
+      <KeytipData keytipProps={keytipProps} ariaDescribedBy={ariaDescribedByIds} disabled={isItemDisabled(item)}>
         {(keytipAttributes: IKeytipDataProps): JSX.Element => (
           <button ref={this._btn} {...buttonNativeProperties} {...itemButtonProperties} {...keytipAttributes}>
             <ChildrenRenderer
@@ -104,11 +113,21 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
               getSubmenuTarget={this._getSubmenuTarget}
               {...itemProps}
             />
+            {this._renderAriaDescription(ariaDescription, classNames.screenReaderText)}
           </button>
         )}
       </KeytipData>
     );
   }
+
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
+    return ariaDescription ? (
+      <span id={this._ariaDescriptionId} className={className}>
+        {ariaDescription}
+      </span>
+    ) : null;
+  };
 
   protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._btn.current ? this._btn.current : undefined;

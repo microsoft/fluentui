@@ -727,8 +727,8 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
     </div>
     <div
       aria-atomic="true"
+      aria-hidden={true}
       aria-live="polite"
-      className=""
       id="ComboBox4-error"
       role="region"
     >

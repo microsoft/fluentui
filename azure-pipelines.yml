@@ -19,10 +19,11 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           yarn checkchange
@@ -31,6 +32,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
+          yarn prettier $(targetBranch) --check
         displayName: do syncpack and lint-files checks
 
       ## Danger.js checks for Fluent UI N*
@@ -46,7 +48,7 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
-          yarn buildci --no-cache --since $(target_branch)
+          yarn buildci --no-cache --since $(targetBranch)
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -72,14 +74,14 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
 
       ## only do scoped bundle with PRs
       - script: |
-          yarn bundle --no-cache --grouped --since $(target_branch)
+          yarn bundle --no-cache --since $(targetBranch)
         displayName: bundle (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -88,7 +90,7 @@ jobs:
 
       ## duplicated for master CI builds
       - script: |
-          yarn bundle --no-cache --grouped
+          yarn bundle --no-cache
         displayName: bundle (master)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
@@ -140,7 +142,9 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
       - script: yarn workspace @fluentui/docs vr:build
@@ -169,13 +173,13 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
-      - template: .devops/templates/pr-target-branch.yml
-
       - script: |
-          yarn lage screener --to vr-tests --debug --verbose --no-cache --grouped
+          yarn lage screener --to vr-tests --debug --verbose --no-cache
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

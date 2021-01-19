@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { Button as BaseButton } from './Button';
-import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
-import { withThemeProvider } from '@fluentui/react-theme-provider';
-
-/** Use a ThemeProvider wrapper around the component to ensure styles show up in snapshots. */
-const Button = withThemeProvider(BaseButton);
+import { Button } from './Button';
+import { GlobalClassNames } from './useButtonClasses';
 
 describe('Button (isConformant)', () =>
   isConformant({
-    Component: BaseButton,
+    Component: Button,
     displayName: 'Button',
   }));
 
@@ -50,5 +47,41 @@ describe('Button', () => {
     rootRef.current?.focus();
 
     expect(document.activeElement).toEqual(rootRef.current);
+  });
+
+  it('can trigger a function by being clicked', () => {
+    const onClick = jest.fn();
+    wrapper = mount(<Button onClick={onClick}>Focus me</Button>);
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('does not trigger a function by being clicked when button is disabled', () => {
+    const onClick = jest.fn();
+    wrapper = mount(
+      <Button disabled onClick={onClick}>
+        I am a button
+      </Button>,
+    );
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it(`does not trigger a function by being clicked when button is disabled, even when disabledFocusable has been
+      provided`, () => {
+    const onClick = jest.fn();
+    wrapper = mount(
+      <Button disabled disabledFocusable onClick={onClick}>
+        I am a button
+      </Button>,
+    );
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

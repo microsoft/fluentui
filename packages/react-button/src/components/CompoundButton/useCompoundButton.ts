@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { CompoundButtonProps } from './CompoundButton.types';
+import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 import { useButtonState } from '../Button/useButtonState';
-import { renderCompoundButton } from './renderCompoundButton';
 
 /**
  * Consts listing which props are shorthand props.
@@ -41,5 +40,5 @@ export const useCompoundButton = (
 
   useButtonState(state);
 
-  return { state, render: renderCompoundButton };
+  return state as CompoundButtonState;
 };

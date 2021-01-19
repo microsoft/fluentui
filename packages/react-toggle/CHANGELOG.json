@@ -2,6 +2,36 @@
   "name": "@fluentui/react-toggle",
   "entries": [
     {
+      "date": "Mon, 18 Jan 2021 12:35:34 GMT",
+      "tag": "@fluentui/react-toggle_v1.0.0-beta.31",
+      "version": "1.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: fix label click target being too wide.",
+            "author": "xgao@microsoft.com",
+            "commit": "f55b5ce50951f599976ee6ef26b4a2df4dae735a",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Dec 2020 12:32:57 GMT",
+      "tag": "@fluentui/react-toggle_v1.0.0-beta.21",
+      "version": "1.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update toggle pill background color on hover to use semanticColors from theme.",
+            "author": "xgao@microsoft.com",
+            "commit": "9766a7d19f73f60cc5f1062bed502d2cfff8ecfe",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-toggle_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

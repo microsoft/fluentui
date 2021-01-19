@@ -1,5 +1,5 @@
 import { registerIcons, on, KeyCodes, setRTL } from '@fluentui/react';
-import { initializeFileTypeIcons } from '@fluentui/file-type-icons';
+import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
 import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@fluentui/react-docsite-components/lib/components/PlatformPicker/PlatformPicker.module.scss';
 import { SiteDefinition } from './SiteDefinition/index';

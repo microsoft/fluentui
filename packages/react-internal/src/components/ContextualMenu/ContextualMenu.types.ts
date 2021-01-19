@@ -18,6 +18,7 @@ import {
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 import { Target } from '@fluentui/react-hooks';
+import { IPopupRestoreFocusParams } from '../../Popup';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -275,17 +276,10 @@ export interface IContextualMenuProps
   delayUpdateFocusOnHover?: boolean;
 
   /**
-   * Called when the component is unmounting, and focus needs to be restored.
-   * Argument passed down contains two variables, the element that the underlying
-   * popup believes focus should go to and whether or not the popup currently
-   * contains focus. If this prop is provided, focus will not be restored automatically,
-   * you'll need to call originalElement.focus()
+   * Called when the component is unmounting, and focus needs to be restored. If this is provided,
+   * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
-  onRestoreFocus?: (options: {
-    originalElement?: HTMLElement | Window;
-    containsFocus: boolean;
-    documentContainsFocus: boolean;
-  }) => void;
+  onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
 }
 
 /**
@@ -543,6 +537,16 @@ export interface IContextualMenuItem {
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
+
+  /**
+   * Detailed description of the menu item for the benefit of screen readers.
+   */
+  ariaDescription?: string;
+
+  /**
+   * ID of the element that contains additional detailed descriptive information for screen readers
+   */
+  ariaDescribedBy?: string;
 
   /**
    * This prop is no longer used. All contextual menu items are now focusable when disabled.

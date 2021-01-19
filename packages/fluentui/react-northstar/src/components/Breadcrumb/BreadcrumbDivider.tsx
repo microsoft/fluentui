@@ -26,7 +26,6 @@ export const breadcrumbDividerClassName = 'ui-breadcrumb__divider';
 
 /**
  * BreadcrumbDivider divides BreadcrumbItem components within Breadcrumb
- * This component is currently UNSTABLE!
  */
 export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, BreadcrumbDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {

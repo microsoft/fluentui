@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/codemods_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Codemods: fix an issue where they would not save synchronously",
+            "author": "joschect@microsoft.com",
+            "commit": "470ae0b1875db31e84267ae7f7eb75ca60079376",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/codemods_v1.0.0-beta.0",
       "version": "1.0.0-beta.0",

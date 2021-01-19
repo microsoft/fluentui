@@ -2,6 +2,200 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 08 Jan 2021 12:32:12 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.34",
+      "version": "8.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu",
+            "author": "marwankhalili@hotmail.com",
+            "commit": "c1cea5a7a686591ebaf20fda7efe579e58e61d9d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "976f4540a49e6d5a7346187551346c9f3d079dbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Dec 2020 12:30:02 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.32",
+      "version": "8.0.0-beta.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add a props for Dropdown component to enable adjust width to fit content",
+            "author": "qizheqi@microsoft.com",
+            "commit": "916d41f79900ceff3a11445f5cff74f8f6dceb3b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Dec 2020 12:35:10 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.31",
+      "version": "8.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "DetailsList: Fix group chevron alignment in single select mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "97df647581b82e0f91fc01871cbb7bc56df8eacf",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.27",
+      "version": "8.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b674aaef71260e834910e4c547e7a5c6024894ff",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Dec 2020 12:30:32 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.25",
+      "version": "8.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add combo box exports",
+            "author": "dahajek@microsoft.com",
+            "commit": "3ddffa4fb783da403f11ad1fc1496bb727dd0585",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Dec 2020 12:37:40 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.23",
+      "version": "8.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Dropdown: fix option text truncation for single-select.",
+            "author": "xgao@microsoft.com",
+            "commit": "5e967ca6a52b0510f3e1c7e76fc0943e469d4f9b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2020 12:29:52 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.20",
+      "version": "8.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "GroupedList: Allow passing of rootListProps to allow passing attributes to parent list (#15772)",
+            "author": "noloyola@microsoft.com",
+            "commit": "470e0623d187439ee9728e386ceaa5ebddf7520e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Nov 2020 12:32:25 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix display issue with Dropdown when using Chrome Translate",
+            "author": "behowell@microsoft.com",
+            "commit": "29c26bf4eb2d736cd0891c332d534c8c105f768d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.17",
+      "version": "8.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add text to breacrumb overflow items",
+            "author": "pbelsal@gmail.com",
+            "commit": "b4f2f92f94b2ba78af154a77011ac3c14e8bb312",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add aria-hidden to error section",
+            "author": "dahajek@microsoft.com",
+            "commit": "588ce795462bbc96d1df7407ad50daace76e7f7e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem",
+            "author": "jspurlin@microsoft.com",
+            "commit": "98517e3ed70affa08a8c46ddca6f3529885bb155",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove references to custom Omit helper",
+            "author": "elcraig@microsoft.com",
+            "commit": "2858fcaf942682621467b87aaef5d1be47f8ce47",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Oct 2020 12:33:11 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove check for allowFreeForm to enable readOnly prop",
+            "author": "ololubek@microsoft.com",
+            "commit": "f9e1769acd1fd0239afffd4971b7ea2817335591",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2020 12:34:59 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.5",
       "version": "8.0.0-beta.5",

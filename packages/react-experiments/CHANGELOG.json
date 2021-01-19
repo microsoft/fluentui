@@ -2,6 +2,189 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 08 Jan 2021 12:32:12 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.37",
+      "version": "8.0.0-beta.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "976f4540a49e6d5a7346187551346c9f3d079dbb",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Dec 2020 12:27:05 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.31",
+      "version": "8.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Use Segoe UI font in picker input",
+            "author": "chrp@microsoft.com",
+            "commit": "c0831995fffd5682bd0db76a279624317c41835c",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "UnifiedPicker drop to each side of item",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d512cd6e9f7eee23d330dbb7b7e5e807de1bdf7e",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Dec 2020 12:30:22 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.30",
+      "version": "8.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks",
+            "author": "chrp@microsoft.com",
+            "commit": "da03725bd6d9e8b3e621ee3074c7f386f9d3d9a7",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Dec 2020 12:27:38 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.29",
+      "version": "8.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a99935ffd158562c35e7cfa813719e6ae4ad90d1",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Add a force resolve function to the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "140dfd219611f990d56da15af4a73eeeb12c706e",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Dec 2020 12:28:01 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.28",
+      "version": "8.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[UPP] Fix color contrast in UPP suggestion item close button",
+            "author": "chrp@microsoft.com",
+            "commit": "cbdb48456d9b71f0f4d7859705756e62ac17c93d",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2020 12:29:52 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.20",
+      "version": "8.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add function to UnifiedPicker so consumers can access which items are selected",
+            "author": "elvonspa@microsoft.com",
+            "commit": "20b98240204580f3fbe59266467fcd5d5354a84b",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Nov 2020 12:30:44 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.13",
+      "version": "8.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix UPP ctrl+c copy",
+            "author": "elvonspa@microsoft.com",
+            "commit": "7f3b023ac4531a408eba6c35ab3188fec490fba3",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "SelectedPersona: Fix hover/active states in normal and high contrast modes",
+            "author": "chrp@microsoft.com",
+            "commit": "f1fb3f8e0f9bf70e99ada1ec5c5377fc003970b1",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2020 12:30:36 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix keyboard selection in UPP on initial load with recipients, group expansion",
+            "author": "elvonspa@microsoft.com",
+            "commit": "43c308c4b4a4b4f8f675527e46b16c912bc772e2",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix snapshots",
+            "author": "dahajek@microsoft.com",
+            "commit": "588ce795462bbc96d1df7407ad50daace76e7f7e",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove references to custom Omit helper",
+            "author": "elcraig@microsoft.com",
+            "commit": "2858fcaf942682621467b87aaef5d1be47f8ce47",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Oct 2020 12:33:11 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "f9e1769acd1fd0239afffd4971b7ea2817335591",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2020 12:39:59 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.2",
       "version": "8.0.0-beta.2",

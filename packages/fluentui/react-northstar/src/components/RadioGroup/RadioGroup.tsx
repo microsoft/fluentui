@@ -52,13 +52,15 @@ export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProp
 
 export const radioGroupClassName = 'ui-radiogroup';
 
-export type RadioGrouptStylesProps = never;
+export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
 
 /**
  * A RadioGroup allows user to select a value from a small set of mutually exclusive options.
  *
  * @accessibility
  * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
+ * @accessibilityIssues
+ * [JAWS narrates instruction message on each radio in radiogroup](https://github.com/FreedomScientific/VFO-standards-support/issues/473)
  */
 export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
@@ -81,8 +83,11 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<RadioGrouptStylesProps>(RadioGroup.displayName, {
+  const { classes } = useStyles<RadioGroupStylesProps>(RadioGroup.displayName, {
     className: radioGroupClassName,
+    mapPropsToStyles: () => ({
+      vertical,
+    }),
     mapPropsToInlineStyles: () => ({
       className,
       design,

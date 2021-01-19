@@ -43,7 +43,7 @@ export interface ToolbarVariables {
   borderRadius: string;
   dividerMargin: string;
 
-  menuWidth: string;
+  menuMaxWidth: string;
   menuPadding: string;
   menuBackground: string;
   menuBorder: string; // border color
@@ -65,6 +65,8 @@ export interface ToolbarVariables {
   customItemVerticalPadding: string;
 
   overlayZIndex: number;
+
+  lineHeightBase: string;
 }
 
 export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
@@ -100,7 +102,7 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   borderRadius: '50%',
   dividerMargin: `${pxToRem(10)} ${pxToRem(4)}`,
 
-  menuWidth: pxToRem(200),
+  menuMaxWidth: pxToRem(312),
   menuPadding: `${pxToRem(8)} 0`,
   menuBackground: undefined,
   menuBorder: undefined,
@@ -113,7 +115,7 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   menuItemBackgroundHover: undefined,
   menuItemForegroundDisabled: undefined,
   menuItemBackgroundDisabled: 'transparent',
-  menuItemPadding: `${pxToRem(9)} ${pxToRem(16)}`,
+  menuItemPadding: `${pxToRem(5)} ${pxToRem(15)}`,
 
   menuDividerBorder: undefined,
   menuDividerMargin: `${pxToRem(8)} 0`,
@@ -122,4 +124,6 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   customItemVerticalPadding: pxToRem(4),
 
   overlayZIndex: siteVars.zIndexes.overlay,
+
+  lineHeightBase: siteVars.lineHeightMedium,
 });

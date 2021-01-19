@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2020 12:36:24 GMT",
+      "tag": "@fluentui/react-text_v0.1.3-6",
+      "version": "0.1.3-6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating api to match output of makeStyles.",
+            "author": "dzearing@hotmail.com",
+            "commit": "c170c8c0891fd77ea5572f5e922a15efcfeeccab",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-text_v0.1.2",
       "version": "0.1.2",

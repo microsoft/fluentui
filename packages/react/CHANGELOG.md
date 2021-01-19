@@ -1,8 +1,117 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 Oct 2020 12:34:59 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+
+### Changes
+
+- Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
+
+## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.31..@fluentui/react_v8.0.0-beta.32)
+
+### Changes
+
+- Add a props for Dropdown component to enable adjust width to fit content ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.31)
+
+Thu, 24 Dec 2020 12:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.31)
+
+### Changes
+
+- DetailsList: Fix group chevron alignment in single select mode ([PR #16289](https://github.com/microsoft/fluentui/pull/16289) by elcraig@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.27)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.25..@fluentui/react_v8.0.0-beta.27)
+
+### Changes
+
+- Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button. ([PR #16150](https://github.com/microsoft/fluentui/pull/16150) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.25)
+
+Fri, 04 Dec 2020 12:30:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.23..@fluentui/react_v8.0.0-beta.25)
+
+### Changes
+
+- Add combo box exports ([PR #16133](https://github.com/microsoft/fluentui/pull/16133) by dahajek@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.23)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.20..@fluentui/react_v8.0.0-beta.23)
+
+### Changes
+
+- Dropdown: fix option text truncation for single-select. ([PR #16096](https://github.com/microsoft/fluentui/pull/16096) by xgao@microsoft.com)
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.20)
+
+Tue, 24 Nov 2020 12:29:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.18..@fluentui/react_v8.0.0-beta.20)
+
+### Changes
+
+- GroupedList: Allow passing of rootListProps to allow passing attributes to parent list (#15772) ([PR #16034](https://github.com/microsoft/fluentui/pull/16034) by noloyola@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.18)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.17..@fluentui/react_v8.0.0-beta.18)
+
+### Changes
+
+- Fix display issue with Dropdown when using Chrome Translate ([PR #15984](https://github.com/microsoft/fluentui/pull/15984) by behowell@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.17)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.8..@fluentui/react_v8.0.0-beta.17)
+
+### Changes
+
+- Add text to breacrumb overflow items ([PR #15977](https://github.com/microsoft/fluentui/pull/15977) by pbelsal@gmail.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.7..@fluentui/react_v8.0.0-beta.8)
+
+### Changes
+
+- Add aria-hidden to error section ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.7)
+
+Mon, 02 Nov 2020 12:32:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.6..@fluentui/react_v8.0.0-beta.7)
+
+### Changes
+
+- Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem ([PR #15791](https://github.com/microsoft/fluentui/pull/15791) by jspurlin@microsoft.com)
+- Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.6)
+
+Fri, 30 Oct 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.5..@fluentui/react_v8.0.0-beta.6)
+
+### Changes
+
+- remove check for allowFreeForm to enable readOnly prop ([PR #15737](https://github.com/microsoft/fluentui/pull/15737) by ololubek@microsoft.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.5)
 

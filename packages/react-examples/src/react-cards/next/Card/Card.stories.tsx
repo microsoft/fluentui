@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card } from '@fluentui/react-cards/lib/next/index';
+import { Card, CardProps } from '@fluentui/react-cards/lib/next/index';
 import * as classes from './Card.stories.scss';
 
 function onClick() {
@@ -15,53 +15,27 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
   return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
 };
 
-export const DefaultCard = () => (
-  <Card>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
+const ExampleCard = (props: CardProps) => (
+  <Stack>
+    <Card {...props}>
+      <span>This is a card</span>
+      <span>This is a card</span>
+      <span>This is a card</span>
+    </Card>
+  </Stack>
 );
 
-export const ClickableCard = () => (
-  <Card onClick={onClick}>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
-);
+export const DefaultCard = () => <ExampleCard />;
 
-export const CompactCard = () => (
-  <Card compact onClick={onClick}>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
-);
+export const ClickableCard = () => <ExampleCard onClick={onClick} />;
 
-export const DisabledCard = () => (
-  <Card disabled onClick={onClick}>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
-);
+export const CompactCard = () => <ExampleCard compact onClick={onClick} />;
 
-export const SelectedCard = () => (
-  <Card selected onClick={onClick}>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
-);
+export const DisabledCard = () => <ExampleCard disabled onClick={onClick} />;
 
-export const FluidCard = () => (
-  <Card fluid onClick={onClick}>
-    <span>This is a card</span>
-    <span>This is a card</span>
-    <span>This is a card</span>
-  </Card>
-);
+export const SelectedCard = () => <ExampleCard selected onClick={onClick} />;
+
+export const BlockCard = () => <ExampleCard block onClick={onClick} />;
 
 export const CardSizes = () => (
   <Stack>

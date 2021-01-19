@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 27 Oct 2020 12:35:09 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Dec 2020 12:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.25)
+
+Thu, 03 Dec 2020 12:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.18..@fluentui/react-charting_v5.0.0-beta.25)
+
+### Changes
+
+- Remove focus for horizental bar chart grey area ([PR #15948](https://github.com/microsoft/fluentui/pull/15948) by v-gorraj@microsoft.com)
+
+## [5.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.18)
+
+Thu, 19 Nov 2020 12:28:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.14..@fluentui/react-charting_v5.0.0-beta.18)
+
+### Changes
+
+- Date x axis tick values customizations ([PR #15910](https://github.com/microsoft/fluentui/pull/15910) by v-jasha@microsoft.com)
+
+## [5.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.7)
+
+Fri, 30 Oct 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.4..@fluentui/react-charting_v5.0.0-beta.7)
+
+### Changes
+
+- Charting: Make x axis tick count default  value to 6 for Cartesian chart and use the xAxisTickCount prop ([PR #15774](https://github.com/microsoft/fluentui/pull/15774) by v-gorraj@microsoft.com)
 
 ## [5.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.4)
 
