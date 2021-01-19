@@ -512,8 +512,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
                   ...slotProps.menu,
                   styles: resolvedStyles.menu,
                 }),
-                overrideProps: predefinedProps => ({
-                  onClick: (e: React.MouseEvent) => {
+                overrideProps: (predefinedProps: MenuProps) => ({
+                  onClick: e => {
                     handleClick(e);
                     _.invoke(predefinedProps, 'onClick', e, props);
                   },
