@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "[UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks (#16210)",
-  "packageName": "@uifabric/experiments",
-  "email": "chrp@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-19T22:08:55.177Z"
-}

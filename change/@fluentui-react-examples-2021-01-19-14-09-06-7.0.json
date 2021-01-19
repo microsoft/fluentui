@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "[UPP] Add controlled callbacks to EditableItem (#16535)",
-  "packageName": "@fluentui/react-examples",
-  "email": "chrp@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-19T22:09:06.781Z"
-}
