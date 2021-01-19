@@ -171,7 +171,6 @@ const toolbarItems = [
         content: 'Bold',
         kind: 'toggle',
         // kind: 'radio', // for radio
-        index: 0,
         onClick: handleToggleClick,
       },
       {
@@ -179,7 +178,6 @@ const toolbarItems = [
         content: 'Italic',
         kind: 'toggle',
         // kind: 'radio', // for radio
-        index: 1,
       },
     ],
     menuOpen,
@@ -278,7 +276,7 @@ const items = [
 
 ## Variants
 
-### Nested nenus
+### Nested menus
 
 A `Menu` should be able to trigger an additional instance of itself as a part of one or more of its options. The nested `Menu` component should have the same functional capabilities as the root `Menu` component.
 
@@ -425,9 +423,9 @@ const menuCheckbox = (
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
   >
-    <MenuItem kind="checkbox" key={1} title="Option 1">
-    <MenuItem kind="checkbox" key={2} title="Option 2">
-    <MenuItem kind="checkbox" key={3} title="Option 3">
+    <MenuItem kind="checkbox" index={1} title="Option 1">
+    <MenuItem kind="checkbox" index={2} title="Option 2">
+    <MenuItem kind="checkbox" index={3} title="Option 3">
   <Menu>
 )
 
@@ -439,14 +437,14 @@ const menuSelectableSections = (
     trigger={trigger}
   >
     <MenuSection kind="checkbox">
-      <MenuItem key={1} title="Option 1">
-      <MenuItem key={2} title="Option 2">
-      <MenuItem key={3} title="Option 3">
+      <MenuItem index={1} title="Option 1">
+      <MenuItem index={2} title="Option 2">
+      <MenuItem index={3} title="Option 3">
     </MenuSection>
     <MenuSection kind="radio">
-      <MenuItem key={4} title="Option 1">
-      <MenuItem key={5} title="Option 2">
-      <MenuItem key={6} title="Option 3">
+      <MenuItem index={4} title="Option 1">
+      <MenuItem index={5} title="Option 2">
+      <MenuItem index={6} title="Option 3">
     </MenuSection>
   <Menu>
 )
