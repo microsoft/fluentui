@@ -128,7 +128,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -155,7 +154,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -311,7 +309,6 @@ exports[`Modal renders Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -338,7 +335,6 @@ exports[`Modal renders Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -472,7 +468,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -499,7 +494,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",

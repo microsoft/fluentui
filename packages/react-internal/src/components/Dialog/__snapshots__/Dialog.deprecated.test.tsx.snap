@@ -140,7 +140,6 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -297,7 +296,6 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -453,7 +451,6 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -610,7 +607,6 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -766,7 +762,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -1055,7 +1050,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -1211,7 +1205,6 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
@@ -1368,7 +1361,6 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
           <div
             aria-hidden={true}
             data-is-visible={true}
-            onFocus={[Function]}
             style={
               Object {
                 "pointerEvents": "none",
