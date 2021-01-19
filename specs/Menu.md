@@ -471,7 +471,8 @@ As a general rule, once the menu is closed the focus should return to the trigge
 | -------- | ---------- | ------- | ---------------------------------------------------------------------- |
 | Mouse    | Click      | Open    | Click on the trigger element                                           |
 | Mouse    | Hover      | Open    | Hover over the trigger element with delay                              |
-| Mouse    | LongPress  | Open    | MouseDown with delay                                                   |
+| Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices      |
+| Mouse    | Click      | Open    | Right click for contextual menus                                       |
 | Keyboard | Enter      | Open    | Focus on trigger element and press Enter                               |
 | Keyboard | Space      | Open    | Focus on trigger element and press Space                               |
 | Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)       |
