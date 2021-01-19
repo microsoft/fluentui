@@ -50,7 +50,7 @@ import {
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
-import { CloseIcon } from '@fluentui/react-icons-northstar';
+import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -1591,7 +1591,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         },
                       }),
                     })
-                  : Box.create(toggleIndicator, {
+                  : Box.create(<ChevronDownIcon ouline />, {
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.toggleIndicator,
                         styles: resolvedStyles.toggleIndicator,

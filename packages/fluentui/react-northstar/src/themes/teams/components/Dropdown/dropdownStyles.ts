@@ -3,7 +3,6 @@ import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../compone
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
@@ -38,7 +37,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     ...(p.inline && { display: 'inline-flex' }),
   }),
 
-  clearIndicator: ({ theme: { siteVariables } }) => ({
+  clearIndicator: ({ variables: v, theme: { siteVariables } }) => ({
     alignItems: 'center',
     alignSelf: 'center',
     display: 'flex',
@@ -49,6 +48,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     position: 'absolute',
     right: pxToRem(6),
     padding: pxToRem(2),
+    color: v.color,
 
     ...getBorderFocusStyles({ variables: siteVariables }),
   }),
@@ -239,10 +239,8 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
+    alignSelf: 'center',
 
-    backgroundImage: toggleIndicatorUrl(p.disabled ? v.disabledColor : v.color),
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     ...(p.disabled && {
       cursor: 'default',
@@ -252,7 +250,6 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(8),
-    height: '100%',
-    width: pxToRem(12),
+    color: p.disabled ? v.disabledColor : v.color,
   }),
 };
