@@ -409,9 +409,11 @@ Creates a divider element in the `MenuList` with correct HTML and aria semantics
 
 As the name infers
 
-### MenuItemSplit
+### SubMenuSplit
 
 A layout component that renders two `MeuItem`s in the same design as a split button. We consider both parts of the split button to be separate menu items to get the most straightforward keyboard and narration experience.
+
+Only the indicator part of the split button will control the submenu.
 
 ### SubMenu
 
@@ -617,21 +619,37 @@ const trigger = <button> Open menu </button>
 const menuSplitbutton= (
   <Menu trigger={trigger}>
     <MenuItem>Option 1</MenuItem>
-    <MenuItemSplit splitContent={/*shorthand slot*/}>
-      Main content
-    </MenuItemSplit>
+    <SubmenuSplit content={/*ReactNode that would be inside MenuItem*/}>
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
+    </SubmenuSplit>
   <Menu>
 )
 ```
 
 ```html
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+</div>
+
 <!-- expected DOM output  -->
 <div role="menu">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="presentation">
-    <div role="menuitem">children content</div>
-    <div role="menuitem">splitContent slot</div>
+    <div role="menuitem" tabindex="-1">content slot</div>
+    <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trgger">
+      <svg>indicator icon</svg>
+    </div>
   </div>
+</div>
+
+<!-- TODO submenu positioning -->
+<div role="menu" aria-labelledby="submenu-trigger">
+  <div role="menuitem" tabindex="-1">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
 </div>
 ```
 
