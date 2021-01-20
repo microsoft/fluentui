@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use GrayText for disabled Action Button in high contrast.",
-  "packageName": "@fluentui/react-internal",
-  "email": "mathew.olinger@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-09T01:01:28.934Z"
-}

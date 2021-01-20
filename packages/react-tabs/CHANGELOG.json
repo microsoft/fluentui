@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:22:46 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.32",
+      "version": "1.0.0-beta.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update test snapshots due to change in react-internal",
+            "author": "mathew.olinger@outlook.com",
+            "commit": "4ad32be65728af8b75daa8386112349a636d1b14",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Nov 2020 12:32:23 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.7",
       "version": "1.0.0-beta.7",

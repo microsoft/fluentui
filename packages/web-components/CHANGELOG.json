@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:22:46 GMT",
+      "tag": "@fluentui/web-components_v0.10.5",
+      "version": "0.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes content shifting when anchor has focus due to 2px bottom border",
+            "author": "robarb@microsoft.com",
+            "commit": "809c403aded0b6fd5cd895dd519cf69120964e47",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jan 2021 12:30:40 GMT",
       "tag": "@fluentui/web-components_v0.10.4",
       "version": "0.10.4",

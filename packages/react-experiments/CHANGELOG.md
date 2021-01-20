@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:22:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.41)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.37..@fluentui/react-experiments_v8.0.0-beta.41)
+
+### Changes
+
+- [UPP] Add controlled callbacks to EditableItem ([PR #16535](https://github.com/microsoft/fluentui/pull/16535) by chrp@microsoft.com)
 
 ## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.31)
 

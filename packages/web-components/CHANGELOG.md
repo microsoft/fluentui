@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 15 Jan 2021 12:30:40 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:22:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.5)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.4..@fluentui/web-components_v0.10.5)
+
+### Patches
+
+- Fixes content shifting when anchor has focus due to 2px bottom border ([PR #16538](https://github.com/microsoft/fluentui/pull/16538) by robarb@microsoft.com)
 
 ## [0.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.4)
 

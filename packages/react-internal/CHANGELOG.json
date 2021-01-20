@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:22:46 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.34",
+      "version": "8.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use GrayText for disabled Action Button in high contrast.",
+            "author": "mathew.olinger@outlook.com",
+            "commit": "4ad32be65728af8b75daa8386112349a636d1b14",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Jan 2021 12:35:34 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.33",
       "version": "8.0.0-beta.33",

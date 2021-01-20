@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update test snapshots due to change in react-internal",
-  "packageName": "@fluentui/react-tabs",
-  "email": "mathew.olinger@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2021-01-08T01:40:17.660Z"
-}

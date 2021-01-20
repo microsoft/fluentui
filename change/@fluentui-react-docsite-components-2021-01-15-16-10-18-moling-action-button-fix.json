@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Ensure ExampleCard still has border in high contrast mode for buttons",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "mathew.olinger@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-16T00:10:18.616Z"
-}
