@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix a typo in CalloutContent.base.tsx",
+  "packageName": "@fluentui/react-internal",
+  "email": "lin.zh.ming.27@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-20T15:10:28.906Z"
+}
