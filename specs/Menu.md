@@ -216,7 +216,7 @@ const menuProps = {
 
 Below are some sample DOM outputs to compare for certain scenarios. Not all DOM attributes are reflected here, a subset have been chosen to provide easier reading and comparison.
 
-### Basic menu
+#### Basic menu
 
 Both the current v7 and v0 versions of this control use the `ul` and `li` combination along with content wrapper elements. This makes style overrides kind of complicated to target and also makes custom rendering difficult since there is the added complexity of targeting stricter DOM structures.
 
@@ -434,7 +434,8 @@ const menu = (
 ```html
 <!-- expected DOM output  -->
 <!-- TODO positioning -->
-<div role="menu">
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
   <div role="menuitem" tabindex="-1">Option 3</div>
@@ -454,7 +455,7 @@ const menu = (
       <MenuItem>Section Option 2</MenuItem>
       <MenuItem>Section Option 3</MenuItem>
     <MenuSection />
-    <SubMenu title="Open submenu">
+    <SubMenu content="Open submenu">
       <MenuItem>Option 1</MenuItem>
       <MenuItem>Option 2</MenuItem>
       <MenuItem>Option 3</MenuItem>
@@ -466,14 +467,22 @@ const menu = (
 ```html
 <!-- expected DOM output  -->
 <!-- TODO positioning -->
-<div role="menu">
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="separator"></div>
   <div role="menuitem" tabindex="-1">Section Option 1</div>
   <div role="menuitem" tabindex="-1">Section Option 2</div>
   <div role="menuitem" tabindex="-1">Section Option 3</div>
   <div role="separator"></div>
-  <!-- TODO submenu -->
+  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+</div>
+
+<!-- TODO submenu positioning -->
+<div role="menu" aria-labelledby="submenu-trigger">
+  <div role="menuitem" tabindex="-1">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
 </div>
 ```
 
@@ -543,15 +552,17 @@ const menuSelectableSections = (
 ```
 
 ```html
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+
 <!-- expected DOM output for basic checkbox  -->
-<div role="menu">
+<div role="menu" aria-labelledby="trigger">
   <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
   <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
   <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
 </div>
 
 <!-- expected DOM output for different selection groups  -->
-<div role="menu">
+<div role="menu" aria-labelledby="trigger">
   <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
   <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
   <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
@@ -563,8 +574,6 @@ const menuSelectableSections = (
   </div>
 </div>
 ```
-
-// TODO positioning examples ?
 
 ## Behaviors
 
@@ -661,12 +670,10 @@ In the event that the selection method is a radio, the previous selected item mu
 
 ## Accessibiltiy
 
-WIP 🚧
+Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
 
 ### Focus management
 
-### Specific keyboard behaviors
+### Disabled menu items
 
-Address any specific a11y/narration keyboard behaviours that should be considered which might not fit under official specced behaviour
-
-### Narration
+Disabled menu items should be focusable
