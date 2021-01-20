@@ -20,9 +20,9 @@ export const getIntentColorsFromProps = (
 
   if (p.info) {
     return {
-      color: v.infoColor,
-      backgroundColor: v.infoBackgroundColor,
-      borderColor: v.infoBorderColor,
+      color: v.color,
+      backgroundColor: v.backgroundColor,
+      borderColor: v.borderColor,
     };
   }
 
@@ -44,9 +44,9 @@ export const getIntentColorsFromProps = (
 
   if (p.success) {
     return {
-      color: colors.green[600], // $app-green-04
-      backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.green[200], // $app-green
+      color: v.successColor,
+      backgroundColor: v.successBackgroundColor,
+      borderColor: v.successBorderColor,
     };
   }
 
