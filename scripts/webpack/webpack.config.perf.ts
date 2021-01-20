@@ -54,6 +54,9 @@ const webpackConfig: webpack.Configuration = {
     }),
   ],
   resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
