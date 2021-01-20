@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import { Form, FormInput, FormDropdown, FormButton } from '@fluentui/react-northstar';
 import { Formik } from 'formik';
 
 const FormValidateFormik = () => (
@@ -31,7 +31,7 @@ const FormValidateFormik = () => (
     }}
     render={({ handleSubmit, handleChange, errors, handleBlur, setTouched, touched, values, setFieldValue }) => (
       <Form onSubmit={handleSubmit}>
-        <Form.Input
+        <FormInput
           errorMessage={touched.firstName && errors.firstName}
           onBlur={handleBlur}
           onChange={handleChange}
@@ -40,7 +40,7 @@ const FormValidateFormik = () => (
           name="firstName"
           id="first-name-inline"
         />
-        <Form.Dropdown
+        <FormDropdown
           onBlur={e => {
             setTouched({ ...touched, city: true });
           }}
@@ -52,7 +52,7 @@ const FormValidateFormik = () => (
           errorMessage={touched.city && errors.city}
           items={['prague', 'new york']}
         />
-        <Form.Button content="Submit" />
+        <FormButton content="Submit" />
       </Form>
     )}
   />
