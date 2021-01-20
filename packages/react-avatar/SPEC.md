@@ -25,7 +25,9 @@ The existing components are:
 
 Both the v8 and v0 components support displaying an image, initials, and an icon.
 
-The v8 `Persona` also supports the full name and extra detail text to the right of the image. But v8 appears to not support a custom icon, and can only show the default person icon, or a "?" icon
+The v8 `Persona` also supports the full name and extra detail text to the right of the image. The extra details is specifically out of scope for the `Avatar` control, and may be added to a future component that makes use of Avatar.
+
+The v8 `Persona` appears to not support a custom icon, and can only show the default person icon, or a "?" icon
 
 #### Status/Presence Badge
 
@@ -41,7 +43,7 @@ Basic examples:
 <Avatar square icon={<IDBadgeIcon />} />
 ```
 
-Displaying a badge:
+Displaying a badge (\*\*subject to change pending final spec for the `Badge` component):
 
 ```jsx
 <Avatar name="Allan Munger" badge={<PresenceBadge status="busy">} />
@@ -56,7 +58,34 @@ With active state indication:
 
 ## Variants
 
-N/A
+### Shape
+
+The Avatar natively supports a circular and square shape. However, some use cases require a hexagon shape (e.g. to represent a bot). The hexagon will not be supported directly, but it is possible to style the Avatar with a hexagon background by using `tokens`:
+
+```jsx
+<Avatar
+  icon={<ChatBotIcon />}
+  display="icon"
+  tokens={{
+    width: 'calc(var(--avatar-height) * 1.125)',
+    background: `url('${hexagonSvg}') 0px/contain no-repeat`,
+    borderRadius: '0',
+  }}
+/>
+```
+
+Where hexagonSvg is defined as:
+
+```js
+hexagonSvg =
+  'data:image/svg+xml;utf8,' +
+  '<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+  '<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472' +
+  'L7.91541 1.46793C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793' +
+  'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321' +
+  'C27.5592 31.4421 26.6056 32 25.5755 32H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/>' +
+  '</svg>';
+```
 
 ## API
 

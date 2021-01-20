@@ -12,9 +12,8 @@ In cases where migration is possible, the following props will need to be rename
 
 - `text` => `name`
 - `size` converted from an enum to a number, and not all previous sizes are supported:
-  - `PersonaSize.size8` => Not Supported
-  - `PersonaSize.size10` => Not Supported
-  - `PersonaSize.size16` => Not Supported
+  - `PersonaSize.size8` => Not Supported, use the `Badge` component since this size of Persona only displays the badge.
+  - `PersonaSize.size16` => Not Supported, use either `size={20}` or `customSize={16}`
   - `PersonaSize.size24` => `size={24}`
   - `PersonaSize.size28` => `size={28}`
   - `PersonaSize.size32` => `size={32}`
@@ -43,17 +42,19 @@ In cases where migration is possible, the following props will need to be rename
 
 ## Migration from v0
 
-The v0 Avatar maps more closely to the converged Avatar. The primary concerns are the v0-specific `variables`, `design`, and `accessibility` props, will need to be modified to fit with their converged equivalents.
+The v0 Avatar maps more closely to the converged Avatar.
 
-Additionally, the `size` will need to be mapped from a `SizeValue` to a number:
-
-- `smallest` => ???
-- `smaller` => ???
-- `small` => ???
-- `medium` => ???
-- `large` => ???
-- `larger` => ???
-- `largest` => ???
+- `variables` => Replaced by `tokens`
+- `design` => Replaced by `tokens`
+- `accessibility` => _TODO (Should no longer be necessary)_
+- `size` is converted from `SizeValue` to a number:
+  - `size="smallest"` => `size={20}`
+  - `size="smaller"` => `size={24}`
+  - `size="small"` => `size={28}`
+  - `size="medium"` => `size={32}`
+  - `size="large"` => `size={44}`
+  - `size="larger"` => `size={64}`
+  - `size="largest"` => `size={96}`
 
 ## Property mapping
 
@@ -73,14 +74,13 @@ Additionally, the `size` will need to be mapped from a `SizeValue` to a number:
 | -                          | -                | display            |
 | showUnknownPersonaCoin     | -                | -                  |
 | className                  | className        | className          |
-| -                          | -                | tokens             |
 | -                          | square           | square             |
 | -                          | -                | active             |
 | -                          | -                | activeDisplay      |
-| -                          | styles           | -                  |
+| -                          | styles           | tokens             |
 | -                          | as               | -                  |
-| -                          | variables        | -                  |
-| -                          | design           | -                  |
+| -                          | variables        | (tokens)           |
+| -                          | design           | (tokens)           |
 | -                          | accessibility    | -                  |
 | secondaryText              | -                | -                  |
 | showSecondaryText          | -                | -                  |
