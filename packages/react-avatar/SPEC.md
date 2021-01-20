@@ -46,7 +46,7 @@ Basic examples:
 Displaying a badge (\*\*subject to change pending final spec for the `Badge` component):
 
 ```jsx
-<Avatar name="Allan Munger" badge={<PresenceBadge status="busy">} />
+<Avatar name="Allan Munger" badge={<PresenceBadge status="busy" />} />
 ```
 
 With active state indication:
