@@ -134,7 +134,6 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
               }
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div
@@ -445,7 +444,6 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
               }
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div
@@ -756,7 +754,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
               }
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div
@@ -1199,7 +1196,6 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
               }
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div

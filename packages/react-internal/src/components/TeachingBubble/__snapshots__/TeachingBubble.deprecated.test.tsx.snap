@@ -21,7 +21,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
 >
   <div
     onBlurCapture={[Function]}
-    onFocus={[Function]}
     onFocusCapture={[Function]}
   >
     <div
