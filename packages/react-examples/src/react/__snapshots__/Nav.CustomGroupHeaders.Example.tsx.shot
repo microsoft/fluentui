@@ -144,11 +144,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -159,9 +162,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;
@@ -295,11 +295,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -310,9 +313,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;
@@ -483,11 +483,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -498,9 +501,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;
@@ -634,11 +634,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -649,9 +652,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;

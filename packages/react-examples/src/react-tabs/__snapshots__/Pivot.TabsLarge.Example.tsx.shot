@@ -102,13 +102,16 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+              color: Highlight;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -189,9 +192,6 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
             &:hover::before {
               left: 0px;
               right: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: Highlight;
             }
         data-content="Foo"
         data-is-focusable={true}
@@ -305,13 +305,15 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -498,13 +500,15 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -691,13 +695,15 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
               color: Highlight;
             }
             &:hover .ms-Button-icon {
