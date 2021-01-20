@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 18 Jan 2021 12:35:34 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:22:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.34)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.33..@fluentui/react-internal_v8.0.0-beta.34)
+
+### Changes
+
+- Use GrayText for disabled Action Button in high contrast. ([PR #16188](https://github.com/microsoft/fluentui/pull/16188) by mathew.olinger@outlook.com)
 
 ## [8.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.33)
 
