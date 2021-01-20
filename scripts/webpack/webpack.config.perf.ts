@@ -44,12 +44,14 @@ const webpackConfig: webpack.Configuration = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
-    new (CopyWebpackPlugin as any)([
-      {
-        from: paths.perfSrc('index.html'),
-        to: paths.perfDist(),
-      },
-    ]),
+    new (CopyWebpackPlugin as any)({
+      patterns: [
+        {
+          from: paths.perfSrc('index.html'),
+          to: paths.perfDist(),
+        },
+      ],
+    }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
