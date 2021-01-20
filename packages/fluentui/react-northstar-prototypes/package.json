@@ -41,8 +41,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
-    "gulp": "^4.0.2",
-    "typescript": "3.7.2"
+    "gulp": "^4.0.2"
   },
   "files": [
     "dist"

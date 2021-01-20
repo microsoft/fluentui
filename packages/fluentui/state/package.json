@@ -10,8 +10,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
     "@fluentui/scripts": "^1.0.0",
-    "lerna-alias": "^3.0.3-0",
-    "typescript": "3.7.2"
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"
