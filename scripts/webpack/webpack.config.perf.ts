@@ -44,14 +44,19 @@ const webpackConfig: webpack.Configuration = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
-    new (CopyWebpackPlugin as any)([
-      {
-        from: paths.perfSrc('index.html'),
-        to: paths.perfDist(),
-      },
-    ]),
+    new (CopyWebpackPlugin as any)({
+      patterns: [
+        {
+          from: paths.perfSrc('index.html'),
+          to: paths.perfDist(),
+        },
+      ],
+    }),
   ],
   resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),

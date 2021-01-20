@@ -15,7 +15,6 @@ const resolve = require('resolve');
 /** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const getResolveAlias = require('./getResolveAlias');
 const { findGitRoot } = require('../monorepo/index');
 
@@ -290,6 +289,7 @@ module.exports = {
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
+                    esModule: false,
                     modules: true,
                     importLoaders: 2,
                   },
@@ -297,8 +297,8 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
-                      return [require('autoprefixer')];
+                    postcssOptions: {
+                      plugins: ['autoprefixer'],
                     },
                   },
                 },
@@ -313,7 +313,6 @@ module.exports = {
         plugins: [
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
           ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
         ],
       },
       customConfig,
@@ -358,6 +357,9 @@ module.exports = {
         // Use the aliases for react-examples since the examples and demo may depend on some things
         // that the package itself doesn't (and it will include the aliases for all the package's deps)
         alias: getResolveAlias(false /*useLib*/, reactExamples),
+        fallback: {
+          path: require.resolve('path-browserify'),
+        },
       },
     });
   },

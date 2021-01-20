@@ -8,7 +8,7 @@ import { MarkdownOptions } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   className?: string;
-  children?: React.ReactNode;
+  children?: React.ReactNode | { default: React.ReactNode };
 
   /**
    * If true, using a code block with language name `renderhtml` will render the contents as HTML.

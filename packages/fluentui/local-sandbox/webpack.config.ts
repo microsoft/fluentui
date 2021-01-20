@@ -35,11 +35,13 @@ const webpackConfig: webpack.Configuration = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: 'public/index.html',
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public/index.html',
+        },
+      ],
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
@@ -54,9 +56,7 @@ const webpackConfig: webpack.Configuration = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
         parallel: true,
-        sourceMap: true,
         terserOptions: {
           // https://github.com/terser/terser
           mangle: false,

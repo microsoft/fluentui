@@ -199,12 +199,20 @@ task('serve:docs:hot', async () => {
     app.use(
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
-        contentBase: paths.docsSrc(),
-        hot: process.env.NODE_ENV !== 'production',
-        quiet: false,
-        noInfo: true, // must be quite for hot middleware to show overlay
-        lazy: false,
-        stats: config.compiler_stats,
+
+        // contentBase: paths.docsSrc(),
+
+        // hot: process.env.NODE_ENV !== 'production',
+
+        // quiet: false,
+
+        // noInfo: true, // must be quite for hot middleware to show overlay
+
+        // the lazy option was removed without replacement
+        // lazy: false,
+
+        // the stats option was removed, the default value of the stats option is taken from the value of the stats option from the configuration (webpack.config.js)
+        // stats: config.compiler_stats,
       } as WebpackDevMiddleware.Options),
     );
 

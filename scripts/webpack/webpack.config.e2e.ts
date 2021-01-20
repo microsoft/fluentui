@@ -21,11 +21,7 @@ const webpackConfig: webpack.Configuration = {
   },
   devtool: config.compiler_devtool as webpack.Options.Devtool,
   node: {
-    fs: 'empty',
-    module: 'empty',
-    child_process: 'empty',
-    net: 'empty',
-    readline: 'empty',
+    global: true,
   },
   module: {
     noParse: [
@@ -44,15 +40,24 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ tsconfig: paths.e2e('tsconfig.json') }),
-    new CopyWebpackPlugin([
-      {
-        from: paths.e2eSrc('index.html'),
-        to: paths.e2eDist(),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: paths.e2e('tsconfig.json'),
       },
-    ]),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: paths.e2eSrc('index.html'),
+          to: paths.e2eDist(),
+        },
+      ],
+    }),
   ],
   resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: lernaAliases(),
   },

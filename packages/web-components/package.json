@@ -92,6 +92,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
+    "lodash-es": "^4.17.20",
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-components-styles-msft": "^4.29.0",
     "@microsoft/fast-element": "^0.21.1",

@@ -35,7 +35,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
                 }
               </Markdown>
 
@@ -95,7 +95,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
+                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -129,7 +129,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
               }
             </Markdown>
           ),
