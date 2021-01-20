@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "chore: switch to single version policy with typescript",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-20T12:51:22.239Z"
+}
