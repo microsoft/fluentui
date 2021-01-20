@@ -401,6 +401,11 @@ Creates a section inside a `MenuList`, setting up header layout and dividers bet
 
 The MenuSection is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
 
+| Prop name    | Type    | Details                                             |
+| ------------ | ------- | --------------------------------------------------- |
+| title        | text    | The title of of the section                         |
+| displayTitle | boolean | Whether to visually render the title in the section |
+
 ### MenuDivider
 
 Creates a divider element in the `MenuList` with correct HTML and aria semantics for divider. Intention is to use this internally within `MenuList` and `MenuSection` and avoid explicit uses of dividers to ensure correct HTML and aria semantics.
@@ -409,15 +414,30 @@ Creates a divider element in the `MenuList` with correct HTML and aria semantics
 
 As the name infers
 
+| Prop name | Type      | Details                                  |
+| --------- | --------- | ---------------------------------------- |
+| icon      | ReactNode | Icon that is rendered with the menu item |
+
 ### SubMenuSplit
 
 A layout component that renders two `MeuItem`s in the same design as a split button. We consider both parts of the split button to be separate menu items to get the most straightforward keyboard and narration experience.
 
 Only the indicator part of the split button will control the submenu.
 
+| Prop name     | Type      | Details                                                  |
+| ------------- | --------- | -------------------------------------------------------- |
+| content       | ReactNode | The children that would normally be rendered in MenuItem |
+| icon          | ReactNode | Icon that is rendered with the menu item                 |
+| indicatorIcon | ReactNode | Icon that is rendered for the split button indicator     |
+
 ### SubMenu
 
 Creates a `Menu` component with `MenuItem` trigger and handles the positioning of the nested menu.
+
+| Prop name | Type      | Details                                                  |
+| --------- | --------- | -------------------------------------------------------- |
+| content   | ReactNode | The children that would normally be rendered in MenuItem |
+| icon      | ReactNode | Icon that is rendered with the menu item                 |
 
 ## Sample code
 
