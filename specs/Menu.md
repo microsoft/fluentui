@@ -568,9 +568,11 @@ const menuSelectableSections = (
 
 <!-- expected DOM output for different selection groups  -->
 <div role="menu" aria-labelledby="trigger">
-  <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
-  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
-  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+  <div role="group">
+    <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
+    <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
+    <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+  </div>
   <div role="separator"></div>
   <div role="group">
     <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
