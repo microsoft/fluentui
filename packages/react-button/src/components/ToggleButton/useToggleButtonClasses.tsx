@@ -11,6 +11,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
     // When checked is applied, apply the right tokens to the right css properties.
     _checked: {
       background: 'var(--button-checked-background)',
+      borderColor: 'var(--button-checked-borderColor)',
       color: 'var(--button-checked-contentColor)',
       '.ms-Button-icon': {
         color: 'var(--button-checked-iconColor)',
@@ -18,6 +19,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
 
       [EdgeChromiumHighContrastSelector]: {
         background: 'var(--button-highContrast-checked-background)',
+        borderColor: 'var(--button-highContrast-checked-borderColor)',
         color: 'var(--button-highContrast-checked-contentColor)',
         '.ms-Button-icon': {
           color: 'var(--button-highContrast-checked-iconColor)',
@@ -26,6 +28,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
 
       ':hover': {
         background: 'var(--button-checkedHovered-background)',
+        borderColor: 'var(--button-checkedHovered-borderColor)',
         color: 'var(--button-checkedHovered-contentColor)',
         '.ms-Button-icon': {
           color: 'var(--button-checkedHovered-iconColor)',
@@ -34,6 +37,8 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
         [EdgeChromiumHighContrastSelector]: {
           background:
             'var(--button-highContrast-checkedHovered-background, var(--button-highContrast-checked-background))',
+          borderColor:
+            'var(--button-highContrast-checkedHovered-borderColor, var(--button-highContrast-checked-borderColor))',
           color:
             'var(--button-highContrast-checkedHovered-contentColor, var(--button-highContrast-checked-contentColor))',
           '.ms-Button-icon': {
@@ -44,6 +49,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
 
       ':active': {
         background: 'var(--button-checkedPressed-background, var(--button-checkedHovered-background))',
+        borderColor: 'var(--button-checkedPressed-borderColor, var(--button-checkedHovered-borderColor))',
         color: 'var(--button-checkedPressed-contentColor, var(--button-checkedHovered-contentColor))',
         '.ms-Button-icon': {
           color: 'var(--button-checkedPressed-iconColor, var(--button-checkedHovered-iconColor))',
@@ -54,6 +60,10 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
             'var(--button-highContrast-checkedPressed-background, ' +
             'var(--button-highContrast-checkedHovered-background, ' +
             'var(--button-highContrast-checked-background)))',
+          borderColor:
+            'var(--button-highContrast-checkedPressed-borderColor, ' +
+            'var(--button-highContrast-checkedHovered-borderColor, ' +
+            'var(--button-highContrast-checked-borderColor)))',
           color:
             'var(--button-highContrast-checked--pressed-contentColor, ' +
             'var(--button-highContrast-checked--hovered-contentColor, ' +
