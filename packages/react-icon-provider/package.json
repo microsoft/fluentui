@@ -29,14 +29,14 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.11",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/style-utilities": "^8.0.0-beta.11",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
