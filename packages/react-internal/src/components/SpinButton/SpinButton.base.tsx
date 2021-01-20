@@ -341,6 +341,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   const handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.enter) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -352,6 +353,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
 
     let spinDirection = KeyboardSpinDirection.notSpinning;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
@@ -380,6 +382,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
   /** Stop spinning on keyUp if the up or down arrow key fired this event */
   const handleKeyUp = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       if (disabled || ev.which === KeyCodes.up || ev.which === KeyCodes.down) {
         stop();
         return;

@@ -205,6 +205,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
 
     if (!(ev.nativeEvent as any).isComposing) {
+      // eslint-disable-next-line deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.backspace:
           this._autoFillEnabled = false;
@@ -218,6 +219,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           break;
         default:
           if (!this._autoFillEnabled) {
+            // eslint-disable-next-line deprecation/deprecation
             if (this.props.enableAutofillOnKeyPress!.indexOf(ev.which) !== -1) {
               this._autoFillEnabled = true;
             }
