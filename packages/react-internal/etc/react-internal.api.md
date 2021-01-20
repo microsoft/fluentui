@@ -804,7 +804,7 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public
-export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | null;
+export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, any> | null;
 
 // @public
 export function getFullColorString(color: IColor): string;
