@@ -6899,12 +6899,29 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (rating: number) => void;
+    onRenderStar?: IRenderFunction<IRatingStarProps>;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
+}
+
+// @public (undocumented)
+export interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
+    // (undocumented)
+    classNames: IProcessedStyleSet<IRatingStyles>;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    fillPercentage: number;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    readOnly?: boolean;
+    // (undocumented)
+    starNum?: number;
 }
 
 // @public (undocumented)
