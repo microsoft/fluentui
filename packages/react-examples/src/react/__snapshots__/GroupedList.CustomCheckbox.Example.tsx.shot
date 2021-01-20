@@ -80,7 +80,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 0"
+                    aria-label="group 0 (3)"
                     aria-level={1}
                     aria-posinset={1}
                     aria-setsize={3}
@@ -2066,7 +2066,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 1"
+                    aria-label="group 1 (3)"
                     aria-level={1}
                     aria-posinset={2}
                     aria-setsize={3}
@@ -4052,7 +4052,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 2"
+                    aria-label="group 2 (3)"
                     aria-level={1}
                     aria-posinset={3}
                     aria-setsize={3}

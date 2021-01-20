@@ -897,7 +897,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="0"
+                        aria-label="0 (100)"
                         aria-level={1}
                         aria-posinset={1}
                         aria-setsize={10}
