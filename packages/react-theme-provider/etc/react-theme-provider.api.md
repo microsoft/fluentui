@@ -60,9 +60,7 @@ export type MakeVariantClassesOptions<TVariants = Variants> = {
 };
 
 // @public (undocumented)
-export const MergeStylesProvider: ({ children }: {
-    children?: React.ReactNode;
-}) => JSX.Element;
+export const MergeStylesProvider: ({ children }: React.PropsWithChildren<{}>) => JSX.Element;
 
 // @public (undocumented)
 export const mergeStylesRenderer: StyleRenderer;

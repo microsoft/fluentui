@@ -21,7 +21,7 @@ export interface StylesheetProviderProps {
 }
 
 // @public
-export const useStylesheet: (sheets: string | string[] | undefined) => void;
+export const useStylesheet: (sheets: undefined | string | string[]) => void;
 
 
 // (No @packageDocumentation comment for this package)

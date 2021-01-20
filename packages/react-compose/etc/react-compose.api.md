@@ -90,7 +90,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 }) => React.ReactElement | null;
 
 // @public
-export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
+export const createClassResolver: (classes: ClassDictionary) => (state: GenericDictionary) => ClassDictionary;
 
 // @public
 export type GenericDictionary = Record<string, any>;
