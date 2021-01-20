@@ -349,11 +349,11 @@ When an options is associated with a selection state. The `Menu`, either root or
 
 A `Menu` can be partitioned into sections using visible dividers in its list of options. Each section can contain a heading title that announces or briefly describes the options in the particular section
 
-### Secondary text
+### Secondary label
 
-An option of a `Menu` component should be able to declare additional secondary text that can provide additional context describing the option or its usage.
+An option of a `Menu` component should be able to declare additional secondary label that can provide additional context describing the option or its usage.
 
-For example a secondary text can be a label that shows a keyboard shortcut that will perform an equivalent action of the option of the `Menu` component.
+For example a secondary label can be a label that shows a keyboard shortcut that will perform an equivalent action of the option of the `Menu` component.
 
 ### Split option with nesting
 
@@ -414,9 +414,10 @@ Creates a divider element in the `MenuList` with correct HTML and aria semantics
 
 As the name infers
 
-| Prop name | Type      | Details                                  |
-| --------- | --------- | ---------------------------------------- |
-| icon      | ReactNode | Icon that is rendered with the menu item |
+| Prop name      | Type      | Details                                   |
+| -------------- | --------- | ----------------------------------------- |
+| icon           | ReactNode | Icon that is rendered with the menu item  |
+| secondaryLabel | text      | A secondary label i.e. keyboard shortcuts |
 
 ### SubMenuSplit
 
@@ -434,10 +435,11 @@ Only the indicator part of the split button will control the submenu.
 
 Creates a `Menu` component with `MenuItem` trigger and handles the positioning of the nested menu.
 
-| Prop name | Type      | Details                                                  |
-| --------- | --------- | -------------------------------------------------------- |
-| content   | ReactNode | The children that would normally be rendered in MenuItem |
-| icon      | ReactNode | Icon that is rendered with the menu item                 |
+| Prop name      | Type      | Details                                                  |
+| -------------- | --------- | -------------------------------------------------------- |
+| content        | ReactNode | The children that would normally be rendered in MenuItem |
+| icon           | ReactNode | Icon that is rendered with the menu item                 |
+| secondaryLabel | text      | A secondary label i.e. keyboard shortcuts                |
 
 ## Sample code
 
