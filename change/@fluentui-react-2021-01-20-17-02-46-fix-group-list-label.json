@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix aria-label in GroupHeader to match heading",
+  "packageName": "@fluentui/react",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-20T16:02:46.642Z"
+}
