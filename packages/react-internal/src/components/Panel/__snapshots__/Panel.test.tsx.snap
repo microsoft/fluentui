@@ -149,7 +149,6 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                 width: 340px;
               }
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
           style={Object {}}
         >
@@ -546,7 +545,6 @@ exports[`Panel renders Panel correctly 1`] = `
                 width: 340px;
               }
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
           style={Object {}}
         >

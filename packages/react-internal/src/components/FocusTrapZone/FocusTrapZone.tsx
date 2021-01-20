@@ -164,13 +164,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     [disabled, focus, internalState],
   );
 
-  const onRootFocus = React.useCallback(
-    (ev: React.FocusEvent<HTMLDivElement>) => {
-      onFocus?.(ev);
-    },
-    [onFocus],
-  );
-
   const onRootBlurCapture = React.useCallback(
     (ev: React.FocusEvent<HTMLDivElement>) => {
       onBlurCapture?.(ev);
@@ -365,7 +358,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       ref={mergedRootRef}
       aria-labelledby={ariaLabelledBy}
       onFocusCapture={onRootFocusCapture}
-      onFocus={onRootFocus}
+      onFocus={onFocus}
       onBlur={onBlur}
       onBlurCapture={onRootBlurCapture}
     >

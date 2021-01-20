@@ -118,7 +118,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
         >
           <div
             onBlurCapture={[Function]}
-            onFocus={[Function]}
             onFocusCapture={[Function]}
           >
             <div
@@ -285,7 +284,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
         >
           <div
             onBlurCapture={[Function]}
-            onFocus={[Function]}
             onFocusCapture={[Function]}
           >
             <div

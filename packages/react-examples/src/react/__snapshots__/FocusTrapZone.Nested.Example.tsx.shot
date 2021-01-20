@@ -10,7 +10,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -340,7 +339,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         <div
           aria-hidden={true}
           data-is-visible={true}
-          onFocus={[Function]}
           style={
             Object {
               "pointerEvents": "none",
@@ -671,7 +669,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -998,7 +995,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -1016,7 +1012,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -1343,7 +1338,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -1357,7 +1351,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         <div
           aria-hidden={true}
           data-is-visible={true}
-          onFocus={[Function]}
           style={
             Object {
               "pointerEvents": "none",
@@ -1375,7 +1368,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         <div
           aria-hidden={true}
           data-is-visible={true}
-          onFocus={[Function]}
           style={
             Object {
               "pointerEvents": "none",
@@ -1701,7 +1693,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         <div
           aria-hidden={true}
           data-is-visible={true}
-          onFocus={[Function]}
           style={
             Object {
               "pointerEvents": "none",
@@ -1715,7 +1706,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",

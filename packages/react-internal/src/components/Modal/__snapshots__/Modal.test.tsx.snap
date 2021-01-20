@@ -113,7 +113,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
               }
           id="ModalFocusTrapZone0"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
@@ -303,7 +302,6 @@ exports[`Modal renders Modal correctly 1`] = `
               }
           id="ModalFocusTrapZone0"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div
@@ -462,7 +460,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
               }
           id="ModalFocusTrapZone0"
           onBlurCapture={[Function]}
-          onFocus={[Function]}
           onFocusCapture={[Function]}
         >
           <div

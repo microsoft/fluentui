@@ -9,7 +9,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
   <div
     aria-hidden={true}
     data-is-visible={true}
-    onFocus={[Function]}
     style={
       Object {
         "pointerEvents": "none",
@@ -460,7 +459,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
   <div
     aria-hidden={true}
     data-is-visible={true}
-    onFocus={[Function]}
     style={
       Object {
         "pointerEvents": "none",
