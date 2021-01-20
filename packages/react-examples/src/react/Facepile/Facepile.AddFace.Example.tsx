@@ -10,7 +10,6 @@ const overflowButtonProps = {
 
 export const FacepileAddFaceExample: React.FunctionComponent = () => {
   const [numberOfFaces, setNumberOfFaces] = React.useState(0);
-  const [addFaceAnnounced, setAddFaceAnnounced] = React.useState<JSX.Element | undefined>();
 
   const personas = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);
 
@@ -18,11 +17,7 @@ export const FacepileAddFaceExample: React.FunctionComponent = () => {
     () => ({
       ariaLabel: 'Add a new person to the Facepile',
       onClick: (ev: React.MouseEvent<HTMLButtonElement>) => {
-        const currentFaces = numberOfFaces + 1;
-        setNumberOfFaces(currentFaces);
-        setAddFaceAnnounced(
-          <Announced message={`New person added, currently ${currentFaces} in the Facepile.`} aria-live="assertive" />,
-        );
+        setNumberOfFaces(numberOfFaces + 1);
       },
     }),
     [numberOfFaces],
@@ -30,7 +25,9 @@ export const FacepileAddFaceExample: React.FunctionComponent = () => {
 
   return (
     <>
-      {addFaceAnnounced}
+      {numberOfFaces > 0 ? (
+        <Announced message={`New person added, currently ${numberOfFaces} in the Facepile.`} aria-live="assertive" />
+      ) : null}
       <Facepile
         personas={personas}
         maxDisplayablePersonas={5}
