@@ -5,6 +5,7 @@ import * as React from 'react';
 import * as consoleUtil from '../consoleUtil';
 
 const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = props => {
+  // @ts-expect-error - FIXME (TS 3.9 migration)
   return useTriggerElement(props);
 };
 

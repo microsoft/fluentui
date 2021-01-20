@@ -3,17 +3,23 @@
  *
  * @public
  */
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean {
   for (let propName in a) {
+    // @ts-expect-error - FIXME (TS 3.9 migration) - FIX generic constraints https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#type-parameters-that-extend-any-no-longer-act-as-any
     if (a.hasOwnProperty(propName)) {
+      // @ts-expect-error - FIXME (TS 3.9 migration)
       if (!b.hasOwnProperty(propName) || b[propName] !== a[propName]) {
         return false;
       }
     }
   }
   for (let propName in b) {
+    // @ts-expect-error - FIXME (TS 3.9 migration)
     if (b.hasOwnProperty(propName)) {
+      // @ts-expect-error - FIXME (TS 3.9 migration)
       if (!a.hasOwnProperty(propName)) {
         return false;
       }
@@ -21,6 +27,7 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
   }
   return true;
 }
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 /**
  * Makes a resulting merge of a bunch of objects. Pass in the target object followed by 1 or more

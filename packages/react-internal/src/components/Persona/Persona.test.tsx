@@ -201,6 +201,8 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error - FIXME (TS 3.9 migration)
       const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('');
@@ -208,6 +210,8 @@ describe('Persona', () => {
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error - FIXME (TS 3.9 migration)
       const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('ALT TEXT');

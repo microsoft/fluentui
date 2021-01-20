@@ -448,6 +448,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               options: currentOptions.map((item, index) => ({ ...item, index: index })),
               onDismiss: this._onDismiss,
             },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error - FIXME (TS 3.9 migration)
             this._onRenderContainer,
           )}
         <div

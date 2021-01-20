@@ -78,6 +78,8 @@ export function createComponent<
       componentProps.styles,
     );
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error - FIXME (TS 3.9 migration)
     const viewProps = {
       ...componentProps,
       styles,

@@ -126,6 +126,8 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
           {options.map((option: IChoiceGroupOption) => {
             return (
               <ChoiceGroupOption
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error - FIXME (TS 3.9 migration)
                 key={option.key}
                 itemKey={option.key}
                 {...option}

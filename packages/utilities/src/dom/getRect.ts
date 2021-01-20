@@ -16,6 +16,8 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
         right: window.innerWidth,
         bottom: window.innerHeight,
       };
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error - FIXME (TS 3.9 migration)
     } else if ((element as HTMLElement).getBoundingClientRect) {
       rect = (element as HTMLElement).getBoundingClientRect();
     }
