@@ -1,0 +1,25 @@
+{
+  "name": "react-docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/react-northstar": "^0.51.6",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.14",
+    "@storybook/cli": "^6.1.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/addons": "^6.1.14",
+    "@storybook/react": "^6.1.14",
+    "babel-loader": "^8.2.2",
+    "chromatic": "^5.6.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "chromatic": "chromatic",
+    "build-storybook": "build-storybook"
+  }
+}
