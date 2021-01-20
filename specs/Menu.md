@@ -423,7 +423,7 @@ Creates a `Menu` component with `MenuItem` trigger and handles the positioning o
 
 The below samples do not represent the definitive props of the final implemented component, but represent the ideal final implementations. Can be subject to change during the implementation phase.
 
-### Default Menu
+### Basic Menu
 
 ```typescript
 const trigger = <button> Open menu </button>
@@ -445,6 +445,40 @@ const menu = (
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
   <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
+```
+
+### Menu items with icons
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <Menu trigger={trigger}>
+    <MenuItem icon={<FileIcon />}>Option 1</MenuItem>
+    <MenuItem icon={<BellIcon />}>Option 2</MenuItem>
+    <MenuItem icon={<LinkIcon />}>Option 3</MenuItem>
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>FileIcon</svg></span>
+    Option 1
+  </div>
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>BellIcon</svg></span>
+    Option 2
+  </div>
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>LinkIcon</svg></span>
+    Option 3
+  </div>
 </div>
 ```
 
