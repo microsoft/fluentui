@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "@fluentui/react-examples_v0.11.10",
+      "version": "0.11.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots for toggle",
+            "author": "xgao@microsoft.com",
+            "commit": "eb084935f3de59b5f63c83a030e682ff5d0712ff",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "[UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks (#16210)",
+            "author": "chrp@microsoft.com",
+            "commit": "8b706813fe018da6110f4c4929372df0f8a2034b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jan 2021 12:22:30 GMT",
       "tag": "@fluentui/react-examples_v0.11.8",
       "version": "0.11.8",

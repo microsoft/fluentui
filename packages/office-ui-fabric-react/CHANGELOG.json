@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "office-ui-fabric-react_v7.156.0",
+      "version": "7.156.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: Fix positioning issues that can cause tooltip to flash/not render",
+            "author": "jspurlin@microsoft.com",
+            "commit": "ce566670302c1a7f6422ba2fdfdc7be3e87aca38",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Toggle: fix label click target being too wide.",
+            "author": "xgao@microsoft.com",
+            "commit": "eb084935f3de59b5f63c83a030e682ff5d0712ff",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "(7.0)feat: add new property onRenderStar for Rating",
+            "author": "qiuya@microsoft.com",
+            "commit": "9a5fb7c04ccaa5e42113995a38caa8e8eda7c13a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Dec 2020 12:25:12 GMT",
       "tag": "office-ui-fabric-react_v7.155.3",
       "version": "7.155.3",

@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "@uifabric/experiments_v7.38.2",
+      "version": "7.38.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[UPP] Add controlled callbacks to EditableItem (#16535)",
+            "author": "chrp@microsoft.com",
+            "commit": "8b706813fe018da6110f4c4929372df0f8a2034b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jan 2021 12:24:00 GMT",
       "tag": "@uifabric/experiments_v7.38.0",
       "version": "7.38.0",

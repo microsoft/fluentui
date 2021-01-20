@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 14 Jan 2021 12:22:30 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.10)
+
+Wed, 20 Jan 2021 12:31:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.8..@fluentui/react-examples_v0.11.10)
+
+### Patches
+
+- Update snapshots for toggle ([PR #16500](https://github.com/microsoft/fluentui/pull/16500) by xgao@microsoft.com)
+- [UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks (#16210) ([PR #16540](https://github.com/microsoft/fluentui/pull/16540) by chrp@microsoft.com)
 
 ## [0.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.8)
 

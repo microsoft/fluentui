@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 12 Jan 2021 12:24:00 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.2)
+
+Wed, 20 Jan 2021 12:31:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.0..@uifabric/experiments_v7.38.2)
+
+### Patches
+
+- [UPP] Add controlled callbacks to EditableItem (#16535) ([PR #16540](https://github.com/microsoft/fluentui/pull/16540) by chrp@microsoft.com)
 
 ## [7.38.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.0)
 

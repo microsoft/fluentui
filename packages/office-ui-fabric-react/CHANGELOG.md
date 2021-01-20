@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Dec 2020 12:25:12 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.156.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.156.0)
+
+Wed, 20 Jan 2021 12:31:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.155.3..office-ui-fabric-react_v7.156.0)
+
+### Minor changes
+
+- (7.0)feat: add new property onRenderStar for Rating ([PR #16469](https://github.com/microsoft/fluentui/pull/16469) by qiuya@microsoft.com)
+
+### Patches
+
+- Tooltip: Fix positioning issues that can cause tooltip to flash/not render ([PR #16454](https://github.com/microsoft/fluentui/pull/16454) by jspurlin@microsoft.com)
+- Toggle: fix label click target being too wide. ([PR #16500](https://github.com/microsoft/fluentui/pull/16500) by xgao@microsoft.com)
 
 ## [7.155.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.155.3)
 
