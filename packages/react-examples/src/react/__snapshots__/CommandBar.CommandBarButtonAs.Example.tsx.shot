@@ -859,7 +859,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                               />
                               <div
                                 onBlurCapture={[Function]}
-                                onFocus={[Function]}
                                 onFocusCapture={[Function]}
                               >
                                 <div
@@ -912,7 +911,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     >
                                       <div
                                         onBlurCapture={[Function]}
-                                        onFocus={[Function]}
                                         onFocusCapture={[Function]}
                                       >
                                         <div

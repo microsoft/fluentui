@@ -185,7 +185,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
   </div>
   <div
     onBlurCapture={[Function]}
-    onFocus={[Function]}
     onFocusCapture={[Function]}
   >
     <div

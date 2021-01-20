@@ -3,7 +3,6 @@
 exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctly 1`] = `
 <div
   onBlurCapture={[Function]}
-  onFocus={[Function]}
   onFocusCapture={[Function]}
 >
   <div
