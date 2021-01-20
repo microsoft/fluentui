@@ -50,7 +50,6 @@
     "screener-runner": "^0.10.43",
     "screener-storybook": "^0.18.6",
     "style-loader": "^2.0.0",
-    "tslib": "^1.10.0",
-    "typescript": "3.7.2"
+    "tslib": "^1.10.0"
   }
 }
