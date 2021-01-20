@@ -582,24 +582,26 @@ A menu can be triggered by the following user interactions on the triggering/anc
 
 As a general rule, once the menu is closed the focus should return to the triggering element once the menu is closed unless the interaction would involve another focusable element.
 
-| Type     | Action     | Result  | Details                                                                |
-| -------- | ---------- | ------- | ---------------------------------------------------------------------- |
-| Mouse    | Click      | Open    | Click on the trigger element                                           |
-| Mouse    | Hover      | Open    | Hover over the trigger element with delay                              |
-| Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices      |
-| Mouse    | Click      | Open    | Right click for contextual menus                                       |
-| Keyboard | Enter      | Open    | Focus on trigger element and press Enter                               |
-| Keyboard | Space      | Open    | Focus on trigger element and press Space                               |
-| Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)       |
-| Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                         |
-| Mouse    | Click      | Dismiss | Click anywhere outside the component                                   |
-| Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                            |
-| Mouse    | Click      | Dismiss | Click on a menu item                                                   |
-| Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                               |
-| Keyboard | Enter      | Dismiss | Invoked on a menu item                                                 |
-| Keyboard | Space      | Dismiss | Invoked on a menu item                                                 |
-| Keyboard | Esc        | Dismiss | Closes the menu and focuses on the triggering element                  |
-| Keyboard | Tab        | Dismiss | Closes the menu and all submenus, focus moves to next element in order |
+| Type     | Action     | Result  | Details                                                           | Focus after                                   |
+| -------- | ---------- | ------- | ----------------------------------------------------------------- | --------------------------------------------- |
+| Mouse    | Click      | Open    | Click on the trigger element                                      | First menuitem                                |
+| Mouse    | Hover      | Open    | Hover over the trigger element with delay                         | First menuitem                                |
+| Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices | First menuitem                                |
+| Mouse    | Click      | Open    | Right click for contextual menus                                  | First menuitem                                |
+| Keyboard | Enter      | Open    | Focus on trigger element and press Enter                          | First menuitem                                |
+| Keyboard | Space      | Open    | Focus on trigger element and press Space                          | First menuitem                                |
+| Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)  | First menuitem                                |
+| Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                    | First menuitem                                |
+| Keyboard | ArrowUp    | Open    | Focus on trigger element. Used in menu buttons                    | Last menuitem                                 |
+| Mouse    | Click      | Dismiss | Click anywhere outside the component                              | menu trigger                                  |
+| Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                       | menu trigger                                  |
+| Mouse    | Click      | Dismiss | Click on a menu item                                              | User defined - default menu trigger           |
+| Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                          | menu trigger                                  |
+| Keyboard | Enter      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
+| Keyboard | Space      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
+| Keyboard | Esc        | Dismiss | Closes the menu                                                   | menu trigger                                  |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus                                  | next tabbable element after menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                                  | previous tabbable element before menu trigger |
 
 ### Submenu trigger/navigation
 
@@ -607,19 +609,22 @@ A submenu can be triggered by the following user interactions on the triggering 
 
 As a general rule, once a submenu is dismissed without dismissing the menu, the focus should revert to the triggering menu item unless the interaction involves another focusable UI component.
 
-| Type     | Action     | Result  | Details                                                                |
-| -------- | ---------- | ------- | ---------------------------------------------------------------------- |
-| Mouse    | Click      | Open    | Click the menu item that contains a submenu                            |
-| Mouse    | Hover      | Open    | Hover over the menu item that contains a submenu with delay            |
-| Keyboard | Enter      | Open    | Focus on triggering menu item                                          |
-| Keyboard | Space      | Open    | Focus on triggering menu item                                          |
-| Keyboard | ArrowRight | Open    | Focus on triggering menu item                                          |
-| Mouse    | Click      | Dismiss | Click on an item in the submenu                                        |
-| Mouse    | Click      | Dismiss | Click on a UI element that is not the submenu                          |
-| Mouse    | MouseLeave | Dismiss | Mouse leaves the submenu or its triggering menu item after delay       |
-| Keyboard | ArrowLeft  | Dismiss | Closes the submenu and focuses on the triggering menu item             |
-| Keyboard | Esc        | Dismiss | Closes the submenu and focuses on the triggering menu item             |
-| Keyboard | Tab        | Dismiss | Closes the menu and all submenus, focus moves to next element in order |
+| Type     | Action     | Result  | Details                                                          | Focus after                                        |
+| -------- | ---------- | ------- | ---------------------------------------------------------------- | -------------------------------------------------- |
+| Mouse    | Click      | Open    | Click the menu item that contains a submenu                      | First menuitem in submenu                          |
+| Mouse    | Hover      | Open    | Hover over the menu item that contains a submenu with delay      | First menuitem in submenu                          |
+| Keyboard | Enter      | Open    | Focus on triggering menu item                                    | First menuitem in submenu                          |
+| Keyboard | Space      | Open    | Focus on triggering menu item                                    | Frist menuitem in submenu                          |
+| Keyboard | ArrowRight | Open    | Focus on triggering menu item                                    | First menuitem in submenu                          |
+| Mouse    | Click      | Dismiss | Click on an item in the submenu                                  |                                                    |
+| Keyboard | Space      | Dismiss | Invoked on a submenu item                                        |                                                    |
+| Keyboard | Space      | Dismiss | Invoked on a submenu item                                        |                                                    |
+| Mouse    | Click      | Dismiss | Click on a UI element that is not the submenu                    | Root menu trigger                                  |
+| Mouse    | MouseLeave | Dismiss | Mouse leaves the submenu or its triggering menu item after delay | Root menu trigger                                  |
+| Keyboard | ArrowLeft  | Dismiss | Closes the submenu                                               | menu item that contained submenu                   |
+| Keyboard | Esc        | Dismiss | Closes the submenu                                               | menu item that contained submenu                   |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus                                 | Next tabbable element after root menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                                 | Previous tabbable element before root menu trigger |
 
 ### Split button MenuItem submenu
 
@@ -635,16 +640,14 @@ Once the the submenu is open, the same behavior as in the [previous section](#su
 
 Keyboard interactions required to navigate the menu. The alphanumeric match interaction does not need to be supported in all cases, but should be supported as much as possible.
 
-| Type     | Action    | Result            | Details                                                               |
-| -------- | --------- | ----------------- | --------------------------------------------------------------------- |
-| Keyboard | ArrowDown | Next Item         | Roving, if on the last item got to the first                          |
-| Keyboard | ArrowUp   | Previous Item     | Roving, if on the first item go to the last                           |
-| Keyboard | Home      | First item        |                                                                       |
-| Keyboard | End       | Last item         |                                                                       |
-| Keyboard | A-Z, 0-9  | Matched item      | Matches the first item that corresponds alphabetically or numerically |
-| Mouse    | Hover     | Reveals scrollbar | If required, reveals scrollbar after delay                            |
-
-### MenuItem selection
+| Type     | Action    | Result            | Details                                                               | Focus after                                |
+| -------- | --------- | ----------------- | --------------------------------------------------------------------- | ------------------------------------------ |
+| Keyboard | ArrowDown | Next Item         | Roving                                                                | Next item, if on last item then first      |
+| Keyboard | ArrowUp   | Previous Item     | Roving                                                                | Previous item, if on first item go to last |
+| Keyboard | Home      | First item        |                                                                       | First item                                 |
+| Keyboard | End       | Last item         |                                                                       | Last item                                  |
+| Keyboard | A-Z, 0-9  | Matched item      | Matches the first item that corresponds alphabetically or numerically | Matched item                               |
+| Mouse    | Hover     | Reveals scrollbar | If required, reveals scrollbar after delay                            | Keeps focus on existing item               | ### MenuItem selection |
 
 Below are the interactions that should be supported for all menu items that are required to handle a selection state.
 
