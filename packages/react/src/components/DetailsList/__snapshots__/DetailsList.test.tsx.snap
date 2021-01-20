@@ -6886,7 +6886,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 0"
+                        aria-label="Group 0 (2)"
                         aria-level={1}
                         aria-posinset={1}
                         aria-setsize={2}
@@ -7512,7 +7512,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 1"
+                        aria-label="Group 1 (3)"
                         aria-level={1}
                         aria-posinset={2}
                         aria-setsize={2}
