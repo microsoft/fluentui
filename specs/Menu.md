@@ -409,6 +409,10 @@ Creates a divider element in the `MenuList` with correct HTML and aria semantics
 
 As the name infers
 
+### MenuItemSplit
+
+A layout component that renders two `MeuItem`s in the same design as a split button. We consider both parts of the split button to be separate menu items to get the most straightforward keyboard and narration experience.
+
 ### SubMenu
 
 Creates a `Menu` component with `MenuItem` trigger and handles the positioning of the nested menu.
@@ -520,6 +524,7 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 // basic checkbox example
 const menuCheckbox = (
   <Menu
+    kind="checkbox"
     selectedItems={selectedItems}
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
@@ -571,6 +576,33 @@ const menuSelectableSections = (
     <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 2</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 3</div>
+  </div>
+</div>
+```
+
+### Split button
+
+```typescript
+const trigger = <button> Open menu </button>
+
+// basic checkbox example
+const menuSplitbutton= (
+  <Menu trigger={trigger}>
+    <MenuItem>Option 1</MenuItem>
+    <MenuItemSplit splitContent={/*shorthand slot*/}>
+      Main content
+    </MenuItemSplit>
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<div role="menu">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="presentation">
+    <div role="menuitem">children content</div>
+    <div role="menuitem">splitContent slot</div>
   </div>
 </div>
 ```
