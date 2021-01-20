@@ -11,8 +11,8 @@ export interface AlertVariables {
   borderColor: string;
   color: string;
   fontWeight: FontWeightProperty;
-  minHeight: string;
   padding: string;
+  heightValue: string;
 
   hoverBorderColor: string;
   hoverBackgroundColor: string;
@@ -33,6 +33,10 @@ export interface AlertVariables {
   dangerColor: string;
   dangerBackgroundColor: string;
   dangerBorderColor: string;
+
+  warningColor: string;
+  warningBackgroundColor: string;
+  warningBorderColor: string;
 
   oof: boolean;
   oofColor: string;
@@ -82,7 +86,7 @@ export interface AlertVariables {
 }
 
 export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
-  const minHeight = pxToRem(28);
+  const heightValue = pxToRem(28);
 
   return {
     borderStyle: 'solid',
@@ -92,7 +96,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     borderColor: siteVars.colors.grey[250],
     color: siteVars.colors.grey[500],
     fontWeight: siteVars.fontWeightRegular,
-    minHeight,
+    heightValue,
     padding: `0 ${pxToRem(16)}`,
 
     actionsMargin: pxToRem(5),
@@ -107,13 +111,17 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     dismissActionHoverOuterBorderColor: undefined,
     dismissActionHoverZIndex: undefined,
 
-    dismissActionSize: minHeight,
+    dismissActionSize: heightValue,
     dismissActionColor: undefined,
     dismissiblePadding: `0 0 0 ${pxToRem(16)}`,
 
-    dangerColor: siteVars.colors.red[400],
-    dangerBackgroundColor: siteVars.colors.red[50],
-    dangerBorderColor: siteVars.colors.red[100],
+    dangerColor: siteVars.colorScheme.red.foreground,
+    dangerBackgroundColor: siteVars.colorScheme.red.background1,
+    dangerBorderColor: siteVars.colorScheme.red.border,
+
+    warningColor: siteVars.colorScheme.red.foreground,
+    warningBackgroundColor: siteVars.colorScheme.red.background1,
+    warningBorderColor: siteVars.colorScheme.red.border,
 
     oof: false,
     oofColor: siteVars.colors.pink[600],

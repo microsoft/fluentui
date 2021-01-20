@@ -52,9 +52,9 @@ export const getIntentColorsFromProps = (
 
   if (p.warning) {
     return {
-      color: siteVars.colors.grey[450],
-      backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.yellow[400], // $app-yellow
+      color: v.warningColor,
+      backgroundColor: v.warningBackgroundColor,
+      borderColor: v.warningBorderColor,
     };
   }
 
@@ -73,10 +73,11 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     borderStyle: v.borderStyle,
     borderWidth: v.borderWidth,
     borderRadius: v.borderRadius,
-    minHeight: v.minHeight,
+    height: v.heightValue,
     padding: v.padding,
     fontWeight: v.fontWeight,
     visibility: 'visible',
+    boxSizing: 'border-box',
 
     ...getIntentColorsFromProps(p, v, siteVariables),
 
