@@ -446,7 +446,7 @@ const menu = (
 </div>
 ```
 
-### Sections and submenus
+### Sections
 
 ```typescript
 const trigger = <button> Open menu </button>
@@ -454,11 +454,40 @@ const trigger = <button> Open menu </button>
 const menu = (
   <Menu trigger={trigger}>
     <MenuItem>Option 1</MenuItem>
-    <MenuSection title="Section">
+    <MenuSection title="Section title">
       <MenuItem>Section Option 1</MenuItem>
       <MenuItem>Section Option 2</MenuItem>
       <MenuItem>Section Option 3</MenuItem>
     <MenuSection />
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="separator"></div>
+  <div role="presentation" aria-hidden="true" id="sectionid">Section title</div>
+  <div role="group" aria-labelledby="sectionid">
+    <div role="menuitem" tabindex="-1">Section Option 1</div>
+    <div role="menuitem" tabindex="-1">Section Option 2</div>
+    <div role="menuitem" tabindex="-1">Section Option 3</div>
+  </div>
+  <div role="separator"></div>
+</div>
+```
+
+### Submenus
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <Menu trigger={trigger}>
+    <MenuItem>Option 1</MenuItem>
     <SubMenu content="Open submenu">
       <MenuItem>Option 1</MenuItem>
       <MenuItem>Option 2</MenuItem>
@@ -474,11 +503,6 @@ const menu = (
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="separator"></div>
-  <div role="menuitem" tabindex="-1">Section Option 1</div>
-  <div role="menuitem" tabindex="-1">Section Option 2</div>
-  <div role="menuitem" tabindex="-1">Section Option 3</div>
-  <div role="separator"></div>
   <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
@@ -542,12 +566,12 @@ const menuSelectableSections = (
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
   >
-    <MenuSection kind="checkbox">
+    <MenuSection kind="checkbox" title="Checkbox section">
       <MenuItem index={1}>Option 1</MenuItem>
       <MenuItem index={2}>Option 2</MenuItem>
       <MenuItem index={3}>Option 3</MenuItem>
     </MenuSection>
-    <MenuSection kind="radio">
+    <MenuSection kind="radio" title="Radio section">
       <MenuItem index={4}>Option 1</MenuItem>
       <MenuItem index={5}>Option 2</MenuItem>
       <MenuItem index={6}>Option 3</MenuItem>
@@ -568,13 +592,15 @@ const menuSelectableSections = (
 
 <!-- expected DOM output for different selection groups  -->
 <div role="menu" aria-labelledby="trigger">
-  <div role="group">
+  <div role="presentation" aria-hidden="true">Checkbox section</div>
+  <div role="group" aria-label="Checkbox section">
     <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
     <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
     <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
   </div>
   <div role="separator"></div>
-  <div role="group">
+  <div role="presentation" aria-hidden="true">Radio section</div>
+  <div role="group" aria-label="Radio section">
     <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 2</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 3</div>
