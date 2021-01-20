@@ -13,16 +13,14 @@ export function createIconOverride(iconSet: {
 }): IIconSubset;
 
 // @public
-export const IconContext: React.Context<IconProviderProps>;
+export const IconContext: React.Context<IIconSubset | undefined>;
 
 // @public
 export const IconProvider: React.FunctionComponent<IconProviderProps>;
 
 // @public
 export interface IconProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-    as?: React.ElementType;
     icons: IIconSubset;
-    ref?: React.Ref<HTMLElement>;
 }
 
 // @public
