@@ -15244,10 +15244,10 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.24.0.tgz#3c7667fcde30418e64a3b8477673a588a93ae463"
-  integrity sha512-wxh1RRt3RfA5uL6dSJfkg2dKGLuY9D9/xeLR7vj7/G5PWteo2QbDI+KlnPrfHsE1YXvriIElbD4w4jkxratozA==
+lage@0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.27.0.tgz#e050c5cbb3d7e67707bbc4c7512954b9673f0d3d"
+  integrity sha512-B7m0JszOGy5uZ4EzW3ykavSWGRP+iX8vGjjSBNK9duQF+LlH9EjAENcqAc4bBw8elzBWXpIR0FnQmGXIs3Om+g==
   dependencies:
     "@microsoft/task-scheduler" "^2.7.0"
     abort-controller "^3.0.0"
@@ -15261,7 +15261,7 @@ lage@0.24.0:
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
     p-profiler "^0.2.1"
-    workspace-tools "^0.10.1"
+    workspace-tools "^0.10.2"
     yargs-parser "^18.1.3"
 
 last-run@^1.1.0:
@@ -24782,10 +24782,10 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.10.1.tgz#326e92a4247d9f909e8a4017d56dbe4bb4361497"
-  integrity sha512-4qLbcBJuULUBkRK5aS4O4q3DEMmtKMyGGVftCMGUvS0TGeb9ni1HnuxUzGGaQyhds4RFr83aX3foJA3+RB2Uag==
+workspace-tools@^0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.10.2.tgz#e5d04c8aa67ed534c364a94baef3039367a2a8a8"
+  integrity sha512-g4WkDpGF1OunuiL/eQ93rOqKYI9l0SPrYEKV/58flToD5K1uBy4uCqM5wMUR+1WkOI7AzLoo6By+x/Qn3y9qrw==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"
