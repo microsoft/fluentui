@@ -19,7 +19,6 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
       maxWidth: v.selectedItemsMaxWidth,
       display: 'inline-flex',
       alignItems: 'center',
-      // overflow: 'hidden',
       padding: `0 ${pxToRem(8)}`,
       startPaddingLeft: '0px',
       lineHeight: pxToRem(20),

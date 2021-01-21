@@ -1577,7 +1577,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                     )}
                 </div>
                 {showClearIndicator
-                  ? Box.create(isEmpty(clearIndicator) ? <CloseIcon outline /> : clearIndicator, {
+                  ? Box.create(clearIndicator, {
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.clearIndicator,
                         styles: resolvedStyles.clearIndicator,
@@ -1591,7 +1591,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         },
                       }),
                     })
-                  : Box.create(<ChevronDownIcon outline />, {
+                  : Box.create(toggleIndicator, {
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.toggleIndicator,
                         styles: resolvedStyles.toggleIndicator,
@@ -1700,7 +1700,7 @@ Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
 Dropdown.defaultProps = {
   align: 'start',
-  clearIndicator: {},
+  clearIndicator: <CloseIcon outline />,
   itemToString: item => {
     if (!item || React.isValidElement(item)) {
       return '';
@@ -1719,7 +1719,7 @@ Dropdown.defaultProps = {
   },
   list: {},
   position: 'below',
-  toggleIndicator: {},
+  toggleIndicator: <ChevronDownIcon outline />,
   triggerButton: {},
 };
 
