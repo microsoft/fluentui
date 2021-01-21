@@ -11,7 +11,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
     // When checked is applied, apply the right tokens to the right css properties.
     _checked: {
       background: 'var(--button-checked-background)',
-      borderColor: 'var(--button-checked-borderColor)',
+      borderColor: 'var(--button-checked-borderColor, var(--button-borderColor))',
       color: 'var(--button-checked-contentColor)',
       '.ms-Button-icon': {
         color: 'var(--button-checked-iconColor)',
@@ -28,7 +28,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
 
       ':hover': {
         background: 'var(--button-checkedHovered-background)',
-        borderColor: 'var(--button-checkedHovered-borderColor)',
+        borderColor: 'var(--button-checkedHovered-borderColor, var(--button-hovered-borderColor))',
         color: 'var(--button-checkedHovered-contentColor)',
         '.ms-Button-icon': {
           color: 'var(--button-checkedHovered-iconColor)',
