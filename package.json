@@ -102,6 +102,8 @@
     ]
   },
   "resolutions": {
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
