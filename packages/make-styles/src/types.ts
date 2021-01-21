@@ -27,14 +27,16 @@ export type MakeStylesResolvedRule = [/* className */ string, /* css */ string, 
 export type MakeStylesResolvedDefinition<Selectors, Tokens> = [
   MakeStylesMatcher<Selectors>,
   MakeStylesStyleRule<Tokens> | undefined,
-  Record<string, MakeStylesResolvedRule>,
+  MakeStylesResolvedStyles,
 ];
+
+export type MakeStylesResolvedStyles = Record<string, MakeStylesResolvedRule>;
 
 // Renderer types
 
 export type MakeStylesLookupEntry = [string, MakeStylesResolvedRule];
 
-export type MakeStylesMatchedDefinitions = Record<string, MakeStylesResolvedRule>;
+export type MakeStylesMatchedDefinitions = MakeStylesResolvedStyles;
 
 export interface MakeStylesRenderer {
   id: string;
