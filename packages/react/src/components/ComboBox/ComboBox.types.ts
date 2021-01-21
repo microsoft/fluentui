@@ -17,14 +17,14 @@ export interface IComboBox {
   readonly selectedOptions: IComboBoxOption[];
 
   /**
-   * If there is a menu open this will dismiss the menu.
+   * If there is a menu open, this will dismiss it.
    */
   dismissMenu: () => void;
 
   /**
-   * Sets focus to the input in the ComboBox
-   * @param shouldOpenOnFocus - Determines if we should open the ComboBox menu when the input gets focus.
-   * @param useFocusAsync - Determines if we should focus the input asynchronously.
+   * Sets focus to the input in the ComboBox.
+   * @param shouldOpenOnFocus - Whether to open the menu when the input gets focus
+   * @param useFocusAsync - Whether to focus the input asynchronously
    * @returns True if focus could be set, false if no operation was taken.
    */
   focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
@@ -35,15 +35,14 @@ export interface IComboBox {
  */
 export interface IComboBoxOption extends ISelectableOption {
   /**
-   * Specific styles for each ComboBox option. If you intend to give
-   * common styles to all ComboBox option please use
-   * the prop comboBoxOptionStyles.
+   * Specific styles for each ComboBox option.
+   * For styles shared between all options, use the prop `comboBoxOptionStyles`.
    */
   styles?: Partial<IComboBoxOptionStyles>;
 
   /**
-   * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
-   * to set the aria-label and preview text. Default to false.
+   * In scenarios where embedded data is used as the `text` prop, whether to use the `ariaLabel` prop
+   * to set the `aria-label` and preview text.
    * @defaultvalue false;
    */
   useAriaLabelAsText?: boolean;
@@ -56,7 +55,7 @@ export interface IComboBoxProps
   extends ISelectableDroppableTextProps<IComboBox, IComboBox>,
     React.RefAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
+   * Optional ref to access the `IComboBox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IComboBox>;
@@ -67,15 +66,15 @@ export interface IComboBoxProps
   options: IComboBoxOption[];
 
   /**
-   * Callback issued when a ComboBox item is clicked.
+   * Called when a ComboBox item is clicked.
    */
   onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
 
   /**
-   * Callback issued when either:
-   * 1) The selected option changes.
-   * 2) A manually edited value is submitted. In this case there may not be a matched option if allowFreeform
-   *    is also true (and hence only value would be true, the other parameter would be null in this case)
+   * Called when either:
+   * 1) the selected option changes
+   * 2) a manually edited value is submitted. In this case, if `allowFreeform` is true,
+   *   it's possible that only `value` will be provided (`option` will be unset).
    */
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
@@ -115,7 +114,7 @@ export interface IComboBoxProps
 
   /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided options.
-   * Defaults to false.
+   * @default false
    */
   allowFreeform?: boolean;
 
@@ -129,7 +128,7 @@ export interface IComboBoxProps
   autoComplete?: 'on' | 'off';
 
   /**
-   * Value to show in the input, does not have to map to a ComboBox option.
+   * Value to show in the input. Does not have to map to an option.
    */
   text?: string;
 
@@ -146,7 +145,7 @@ export interface IComboBoxProps
   buttonIconProps?: IIconProps;
 
   /**
-   * The AutofillProps to be passed into the Autofill component inside ComboBox.
+   * Props for the Autofill component (text input) inside the ComboBox.
    */
   autofill?: IAutofillProps;
 
@@ -176,20 +175,19 @@ export interface IComboBoxProps
   ) => IComboBoxClassNames;
 
   /**
-   * Styles for the caret down button.
+   * Styles for the caret down (expand) button.
    */
   caretDownButtonStyles?: Partial<IButtonStyles>;
 
   /**
-   * Default styles that should be applied to ComboBox options,
-   * in case an option does not come with user-defined custom styles
+   * Default styles that should be applied to ComboBox options.
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
 
   /**
-   * When options are scrollable the selected option is positioned at the top of the callout when it is opened
-   * (unless it has reached the end of the scrollbar).
-   * @defaultvalue false;
+   * If true, when options are scrollable, the selected option is positioned at the top of the callout
+   * when it is opened (unless it has reached the end of the scrollbar).
+   * @defaultvalue false
    */
   scrollSelectedToTop?: boolean;
 
@@ -204,12 +202,13 @@ export interface IComboBoxProps
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-   * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
+   * Custom width for ComboBox menu. Mutually exclusive with `useComboBoxAsMenuWidth`.
    */
   dropdownWidth?: number;
 
   /**
-   * Whether to use the ComboBox width as the menu's width.
+   * Whether to use the ComboBox's width as the menu's width.
+   * Mutually exclusive with `dropdownWidth`.
    */
   useComboBoxAsMenuWidth?: boolean;
 
@@ -219,23 +218,23 @@ export interface IComboBoxProps
   dropdownMaxWidth?: number;
 
   /**
-   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle
-   * the element. This element is hidden by default because all functionality is handled by the input element and
-   * the arrow button is only meant to be decorative.
+   * Whether to hide the ComboBox's button element from screen readers. This is true by default because
+   * all functionality is handled by the input element, and the arrow button is only meant to be decorative.
    * @defaultvalue true
    */
   isButtonAriaHidden?: boolean;
 
   /**
-   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute.
+   * ID of an element containing a description of the ComboBox for screen reader users.
    */
   ariaDescribedBy?: string;
 
   /**
-   * Menu will not be created or destroyed when opened or closed, instead it
-   * will be hidden. This will improve perf of the menu opening but could potentially
-   * impact overall perf by having more elements in the dom. Should only be used
-   * when perf is important.
+   * If true, the menu will be created the first time the ComboBox is rendered, and shown
+   * or hidden as appropriate (rather than being created on open and destroyed on close).
+   * This will improve perf of the menu opening but could potentially impact overall perf
+   * by having more elements in the DOM. Should only be used when perf is important.
+   *
    * Note: This may increase the amount of time it takes for the ComboBox itself to mount.
    */
   persistMenu?: boolean;
@@ -244,12 +243,12 @@ export interface IComboBoxProps
    * When specified, determines whether the callout (the menu which drops down) should
    * restore the focus after being dismissed or not. If false, then the menu will not try
    * to set focus to whichever element had focus before the menu was opened.
-   * @defaultvalue true;
+   * @defaultvalue true
    */
   shouldRestoreFocus?: boolean;
 
   /**
-   * Optional iconButton props on ComboBox.
+   * Optional props for the caret down (expand) button.
    */
   iconButtonProps?: IButtonProps;
 
@@ -294,46 +293,43 @@ export interface IComboBoxStyles {
   labelDisabled: IStyle;
 
   /**
-   * Base styles for the root element of all ComboBoxes.
+   * Base styles for the root element of the ComboBox in all states.
    */
   root: IStyle;
 
   /**
-   * Styles for the root element for variant of ComboBox with an errorMessage in the props.
+   * Styles for the root element for variant of ComboBox with an `errorMessage` in the props.
    */
   rootError: IStyle;
 
   /**
-   * Styles for variant of ComboBox where allowFreeForm is false in the props.
+   * Styles for variant of ComboBox where `allowFreeform` is false in the props.
    */
   rootDisallowFreeForm: IStyle;
 
   /**
-   * Styles for when the ComboBox is hovered. These styles are applied for all ComboBoxes except when
-   * the ComboBox is disabled.
+   * Styles for when the ComboBox is hovered. These styles are always applied unless the ComboBox is disabled.
    */
   rootHovered: IStyle;
 
   /**
-   * Styles for when the ComboBox is active. These styles are applied for all ComboBoxes except when
-   * the ComboBox is disabled.
+   * Styles for when the ComboBox is active. These styles are always applied unless the ComboBox is disabled.
    */
   rootPressed: IStyle;
 
   /**
-   * Styles for when the ComboBox is focused. These styles are applied for all ComboBoxes except when
-   * the ComboBox is disabled.
+   * Styles for when the ComboBox is focused. These styles are always applied unless the ComboBox is disabled.
    */
   rootFocused: IStyle;
 
   /**
    * Styles for when the ComboBox is disabled. These styles override all the other styles.
-   * NOTE : Hover (or) Focused (or) active styles are not applied for disabled ComboBoxes.
+   * NOTE: Hover, focused, and active styles are not applied for disabled ComboBoxes.
    */
   rootDisabled: IStyle;
 
   /**
-   * Base styles for the input element - which contains the currently selected option.
+   * Base styles for the input element, which contains the currently selected option.
    */
   input: IStyle;
 
@@ -343,7 +339,7 @@ export interface IComboBoxStyles {
   inputDisabled: IStyle;
 
   /**
-   * Styles for the error Message text of the ComboBox.
+   * Styles for the error message text of the ComboBox.
    */
   errorMessage: IStyle;
 
@@ -353,13 +349,12 @@ export interface IComboBoxStyles {
   callout: IStyle;
 
   /**
-   * Styles for the optionsContainerWrapper.
+   * Styles for the options container wrapper.
    */
   optionsContainerWrapper: IStyle;
 
   /**
-   * Styles for the container of all the ComboBox options.
-   * Includes the headers and dividers.
+   * Styles for the container of all the ComboBox options, including the headers and dividers.
    */
   optionsContainer: IStyle;
 
@@ -386,8 +381,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
   /**
    * Styles for the text inside the ComboBox option.
    * This should be used instead of the description
-   * inside IButtonStyles because we custom render the text
-   * in the ComboBox options.
+   * inside IButtonStyles because we custom render the option's text.
    */
   optionText: IStyle;
 

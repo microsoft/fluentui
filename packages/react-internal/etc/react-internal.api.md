@@ -914,7 +914,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
     // @deprecated
     activityDescriptionText?: string;
     activityIcon?: React.ReactNode;
-    activityPersonas?: Array<IPersonaSharedProps>;
+    activityPersonas?: IPersonaSharedProps[];
     animateBeaconSignal?: boolean;
     beaconColorOne?: string;
     beaconColorTwo?: string;
@@ -1524,9 +1524,9 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     ariaLabelledByText?: string;
     beaconColorOne?: string;
     beaconColorTwo?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     beakHeight?: number;
-    // @deprecated
+    // @deprecated (undocumented)
     beakWidth?: number;
     children?: React.ReactNode;
     className?: string;
@@ -1536,7 +1536,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     componentRef?: IRefObject<ICoachmark>;
     delayBeforeCoachmarkAnimation?: number;
     delayBeforeMouseOpen?: number;
-    // @deprecated
+    // @deprecated (undocumented)
     height?: number;
     isCollapsed?: boolean;
     isPositionForced?: boolean;
@@ -1551,10 +1551,10 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     preventFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
     target: HTMLElement | string | null;
-    // @deprecated
+    // @deprecated (undocumented)
     teachingBubbleRef?: ITeachingBubble;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     width?: number;
 }
 
@@ -1925,7 +1925,7 @@ export interface IContextualMenuItem {
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     href?: string;
     iconProps?: IIconProps;
-    // @deprecated
+    // @deprecated (undocumented)
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
     // (undocumented)
@@ -2260,7 +2260,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -2765,7 +2765,7 @@ export interface IIconStyleProps {
 
 // @public (undocumented)
 export interface IIconStyles {
-    // @deprecated
+    // @deprecated (undocumented)
     imageContainer?: IStyle;
     // (undocumented)
     root?: IStyle;
@@ -2785,7 +2785,7 @@ export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
-    // @deprecated
+    // @deprecated (undocumented)
     errorSrc?: string;
     imageFit?: ImageFit;
     maximizeFrame?: boolean;
@@ -3112,7 +3112,7 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps>;
 // @public (undocumented)
 export enum ImageLoadState {
     error = 2,
-    // @deprecated
+    // @deprecated (undocumented)
     errorLoaded = 3,
     loaded = 1,
     notLoaded = 0
@@ -3348,7 +3348,7 @@ export interface INavLink {
     expandAriaLabel?: string;
     forceAnchor?: boolean;
     icon?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     iconClassName?: string;
     iconProps?: IIconProps;
     isExpanded?: boolean;
@@ -3565,7 +3565,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
     className?: string;
     closeButtonAriaLabel?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     componentId?: string;
     componentRef?: IRefObject<IPanel>;
     customWidth?: string;
@@ -4020,7 +4020,7 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
     progressHidden?: boolean;
     styles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     title?: string;
 }
 
@@ -4273,10 +4273,10 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
-    // @deprecated
+    // @deprecated (undocumented)
     labelText?: string;
     onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
-    // @deprecated
+    // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
     onClear?: (ev?: any) => void;
     onEscape?: (ev?: any) => void;
@@ -4696,7 +4696,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
     size?: SpinnerSize;
     styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     type?: SpinnerType;
 }
 
@@ -5132,7 +5132,7 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
     secondaryButtonProps?: IButtonProps;
     styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
     target?: Target;
-    // @deprecated (undocumented)
+    // @deprecated
     targetElement?: HTMLElement;
     theme?: ITheme;
 }
@@ -5427,7 +5427,7 @@ export interface IUniqueKeytip {
     uniqueID: string;
 }
 
-// @public @deprecated (undocumented)
+// @public @deprecated
 export interface IVerticalDividerClassNames {
     divider: string;
     wrapper: string;
@@ -5436,7 +5436,7 @@ export interface IVerticalDividerClassNames {
 // @public
 export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
-    // @deprecated (undocumented)
+    // @deprecated
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
     theme?: ITheme;
@@ -5841,7 +5841,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
-    // @deprecated
+    // @deprecated (undocumented)
     black = 11,
     // (undocumented)
     blue = 1,
@@ -5878,7 +5878,7 @@ export enum PersonaInitialsColor {
     pink = 8,
     // (undocumented)
     purple = 10,
-    // @deprecated
+    // @deprecated (undocumented)
     red = 13,
     // (undocumented)
     rust = 24,
@@ -6378,11 +6378,11 @@ export enum SpinnerSize {
     xSmall = 0
 }
 
-// @public @deprecated
+// @public @deprecated (undocumented)
 export enum SpinnerType {
-    // @deprecated
+    // @deprecated (undocumented)
     large = 1,
-    // @deprecated
+    // @deprecated (undocumented)
     normal = 0
 }
 

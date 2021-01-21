@@ -8,14 +8,13 @@ import { IPersonaSharedProps } from '../../Persona';
  */
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or
-   * onRenderActivityDescription are included, no description of the activity is shown.
+   * An element describing the activity that took place. If no `activityDescription`, `activityDescriptionText`, or
+   * `onRenderActivityDescription` are included, no description of the activity is shown.
    */
   activityDescription?: React.ReactNode[] | React.ReactNode;
 
   /**
    * Text describing the activity that occurred and naming the people involved in it.
-   * Deprecated, use `activityDescription` instead.
    * @deprecated Use `activityDescription` instead.
    */
   activityDescriptionText?: string;
@@ -26,19 +25,18 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   activityIcon?: React.ReactNode;
 
   /**
-   * If activityIcon is not set, then the persona props in this array will be used as the icon for this activity item.
+   * If `activityIcon` is not set, the personas in this array will be used as the icon for the this activity item.
    */
-  activityPersonas?: Array<IPersonaSharedProps>;
+  activityPersonas?: IPersonaSharedProps[];
 
   /**
    * An element containing the text of comments or \@mention messages.
-   * If no comments, commentText, or onRenderComments are included, no comments are shown.
+   * If no `comments`, `commentText`, or `onRenderComments` are included, no comments are shown.
    */
   comments?: React.ReactNode[] | React.ReactNode;
 
   /**
    * Text of comments or \@mention messages.
-   * Deprecated, use `comments` instead.
    * @deprecated Use `comments` instead.
    */
   commentText?: string;
@@ -64,12 +62,12 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   onRenderIcon?: IRenderFunction<IActivityItemProps>;
 
   /**
-   * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.
+   * Custom renderer for a time stamp. If not included, `timeStamp` is shown as plain text below the activity.
    */
   onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
 
   /**
-   * Optional styling for the elements within the Activity Item.
+   * Optional styling for the elements within the activity item.
    */
   styles?: IActivityItemStyles;
 
@@ -89,8 +87,8 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   beaconColorTwo?: string;
 
   /**
-   * Enables/Disables the beacon that radiates
-   * from the center of the center of the activity icon. Signals an activity has started.
+   * Enables/disables the beacon that radiates from the center of the center of the activity icon.
+   * Signals an activity has started.
    * @defaultvalue false
    */
   animateBeaconSignal?: boolean;
