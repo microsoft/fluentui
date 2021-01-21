@@ -15,12 +15,14 @@ const commonArgs = (): JestTaskOptions => {
     config: args.config,
     watch: args.watch,
     coverage: args.coverage,
-    passWithNoTests: args.coverage,
+    passWithNoTests: args.passWithNoTests,
     testNamePattern: args.testNamePattern,
     testPathPattern: args.testPathPattern,
 
     // Just specific config
     nodeArgs: args.nodeArgs,
+    // pass forward positional args (to narrow down tests to be run)
+    _: args._,
   };
 };
 
