@@ -106,7 +106,10 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
       p.hasValue && {
         height: '100%',
         width: pxToRem(16),
-        color: p.disabled ? v.colorDisabled : v.iconColor,
+        color: v.iconColor,
+        ...(p.disabled && {
+          color: v.colorDisabled,
+        }),
       }),
   }),
 
