@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": " Updating dev dependencies.",
-  "packageName": "@fluentui/web-components",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-01-20T21:19:09.644Z"
-}
