@@ -13,6 +13,10 @@ module.exports = {
       title: 'Miroslav Stastny',
       url: 'https://60088dd0e49a64002183357c-ncilogmlgq.chromatic.com',
     },
+    justin: {
+      title: 'Justin Slone',
+      url: 'https://6008f800bdb9db002140ac05-vaxwghzuqf.chromatic.com',
+    },
     // Example for local only storybooks
     ...(process.env.NODE_ENV !== 'production' && {
       react: {
