@@ -4,7 +4,7 @@
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
-This component is used for providing overrides to the icons in @fluentui/react-icons-mdl2 and @fluentui/react-icons
+This component is used for providing overrides to the icons in `@fluentui/react-icons-mdl2` and `@fluentui/react-icons`.
 To import React Icon Provider components:
 
 ```js
