@@ -8,8 +8,7 @@ import { IChoiceGroupOption } from '../ChoiceGroup.types';
  */
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
   /**
-   * Optional ref to access the `IChoiceGroup` interface. Use this instead of `ref` for accessing
-   * the public methods and properties of the component.
+   * @deprecated Not used.
    */
   componentRef?: IRefObject<IChoiceGroupOption>;
 

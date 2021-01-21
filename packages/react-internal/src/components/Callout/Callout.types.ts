@@ -82,7 +82,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   minPagePadding?: number;
 
   /**
-   * Whether the beak is visisble.
+   * Whether the beak is visible.
    * @defaultvalue true
    */
   isBeakVisible?: boolean;

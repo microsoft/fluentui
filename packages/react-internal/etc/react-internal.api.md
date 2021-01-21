@@ -1423,6 +1423,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
 // @public (undocumented)
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
     checked?: boolean;
+    // @deprecated (undocumented)
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
     itemKey: string;
