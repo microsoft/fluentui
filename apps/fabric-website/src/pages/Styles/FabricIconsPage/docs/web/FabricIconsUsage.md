@@ -41,6 +41,20 @@ const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Ad
 ReactDOM.render(<MyIconButton />, document.body.firstChild);
 ```
 
+#### Fluent UI React: SVG-based icons
+
+Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
+
+Each SVG icon is wrapped with a React element and can be imported and used as follows:
+
+```ts
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { ChevronIcon } from '@fluentui/react-icons';
+
+ReactDOM.render(<ChevronIcon />, document.body.firstChild);
+```
+
 ### Fabric Core
 
 First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
