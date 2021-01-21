@@ -1,5 +1,6 @@
 export * from './accordion/';
 export * from './anchor/';
+export * from './anchored-region';
 export * from './badge/';
 export * from './breadcrumb';
 export * from './breadcrumb-item';
