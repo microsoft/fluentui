@@ -2,9 +2,10 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import { argv } from 'yargs';
-import webpack from 'webpack';
+import webpack, { DefinePlugin } from 'webpack';
 
 import config from '../config';
+import { getProcessEnv } from '../getProcessEnv';
 
 const { paths } = config;
 
@@ -21,13 +22,9 @@ const webpackConfig: webpack.Configuration = {
     pathinfo: true,
     publicPath: config.compiler_public_path,
   },
-  devtool: config.compiler_devtool as webpack.Options.Devtool,
+  devtool: config.compiler_devtool,
   node: {
-    fs: 'empty',
-    module: 'empty',
-    child_process: 'empty',
-    net: 'empty',
-    readline: 'empty',
+    global: true,
   },
   module: {
     noParse: [/anchor-js/],
@@ -43,7 +40,12 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
+    new DefinePlugin(getProcessEnv()),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: paths.e2e('tsconfig.json'),
+      },
+    }),
     new (CopyWebpackPlugin as any)({
       patterns: [
         {
