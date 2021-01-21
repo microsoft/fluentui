@@ -375,6 +375,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           );
           if (j + 1 === this._points[i].data.length) {
             const lastCircleId = `${circleId}${j}L`;
+            const lastCirlceXCallout = this._points[i].data[j].xAxisCalloutData;
             lines.push(
               <circle
                 id={lastCircleId}
@@ -383,10 +384,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 cx={this._xAxisScale(x2)}
                 cy={this._yAxisScale(y2)}
                 data-is-focusable={i === 0 ? true : false}
-                onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
-                onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
+                onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
+                onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onMouseOut={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
-                onFocus={this._handleFocus.bind(this, lineId, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
+                onFocus={this._handleFocus.bind(this, lineId, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onBlur={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
                 onClick={this._onDataPointClick.bind(
                   this,
