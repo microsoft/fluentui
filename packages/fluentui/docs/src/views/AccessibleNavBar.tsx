@@ -91,7 +91,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 <ul>
 <li>The number of new items is not present on the buttons. It should be a part of the window title instead.</li>
 <li>The usage hint is narrated using aN aria-live element. The drawback of this solution is that the narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken repeatedly several times as well.</li>
-<li>ARIA landmarks are not used. Instead, the F6 key should work for navigating to the navigation bar.</li>
+<li>ARIA landmarks, including the &lt;nav&gt; and role="navigation", are not used, because it only adds unnecessary narration. The goal is to be the least verbose as possible. Instead, the F6 key should work for navigating to the navigation bar and other parts of the app.</li>
 </ul>
 
                     <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -130,9 +130,9 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 <h3>Notes</h3>
 <ul>
 <li>Neither the "menu", nor the "menubar" role is appropriate because VoiceOver reads "To close the menu, press Escape" as the usage hint.</li>
-<li>When entering the menu content, JAWS reads "menu" as the firs narration.</li>
-<li>When leaving the menu content, JAWS reads "leaving menus".</li>
-<li>When entering the menu content, JAWS reads "To move through items press up or down arrow" as the last narration.</li>
+<li>When entering the navigation bar content, JAWS reads "menu" as the firs narration.</li>
+<li>When leaving the navigation bar  content, JAWS reads "leaving menus".</li>
+<li>When entering the navigation bar  content, JAWS reads "To move through items press up or down arrow" as the last narration.</li>
 </ul>
 
 <h2>aria-label only</h2>
@@ -145,10 +145,12 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
 <h3>Notes</h3>
 <ul>
-<li>NVDA does not narrate the aria-label.</li>
+<li>NVDA sometimes (could not reproduce when) does not narrate the aria-label.</li>
+<li>This variant is preferred, because it is the least verbose.</li>
 </ul>
+
 <h2>role="group" and aria-label</h2>
-<div aria-label="Navigation bar" onFocus={handleFocus}>
+<div role="group" aria-label="Navigation bar" onFocus={handleFocus}>
 <button className="item" tabIndex={0}>Activities</button>
 <button className="item" tabIndex={-1}>Chats</button>
 <button className="item" tabIndex={-1}>Teams</button>
@@ -157,7 +159,21 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
 <h3>Notes</h3>
 <ul>
-<li>NVDA does not narrate the aria-label.</li>
+<li>NVDA sometimes (could not reproduce when) does not narrate the aria-label.</li>
+<li>When entering the navigation bar content, JAWS announces "group" after narrating the label but before narrating the navigation bar item.</li>
+</ul>
+
+<h2>&lt;li&gt; items</h2>
+<ul onFocus={handleFocus}>
+<li><button className="item" tabIndex={0}>Activities</button></li>
+<li><button className="item" tabIndex={-1}>Chats</button></li>
+<li><button className="item" tabIndex={-1}>Teams</button></li>
+<li><button className="item" tabIndex={-1}>Calendar</button></li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+<li>When entering the navagation bar content, the position and size is announced, which is not desired, especially because with JAWS and NVDA it's narrated before the navigation bar item. So to make the narration less verbose, this variant is rejected.</li>
 </ul>
 
     </>
