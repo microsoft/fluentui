@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMenuListContext } from './menuListContext';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 
-export function MenuItem({ children, index, submenu = null }) {
+export function MenuItem({ children, index, submenu = null, onClick = null }) {
   const itemRef = React.useRef<HTMLDivElement>();
   const { currentIndex, setIndex, setOpen, triggerRef } = useMenuListContext();
 
@@ -41,6 +41,7 @@ export function MenuItem({ children, index, submenu = null }) {
 
   return (
     <div
+      onClick={onClick}
       ref={itemRef}
       role="menuitem"
       data-is-focusable="true"

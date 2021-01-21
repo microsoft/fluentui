@@ -5,6 +5,9 @@ const MenuListContext = React.createContext<MenuListContext>({
   setIndex: null,
   setOpen: null,
   triggerRef: null,
+  checkedItems: [],
+  onItemChecked: () => null,
+  onItemUnChecked: () => null,
 });
 
 export interface MenuListContext {
@@ -12,6 +15,9 @@ export interface MenuListContext {
   setIndex: (index: number) => void;
   setOpen: (open: boolean) => void;
   triggerRef: React.RefObject<HTMLDivElement>;
+  checkedItems: number[];
+  onItemChecked: (item: number) => void;
+  onItemUnChecked: (item: number) => void;
 }
 
 export const MenuListProvider = MenuListContext.Provider;

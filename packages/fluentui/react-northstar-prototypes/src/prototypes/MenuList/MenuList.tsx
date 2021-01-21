@@ -4,11 +4,24 @@ import { useMenuContext } from './menuContext';
 import { MenuListProvider } from './menuListContext';
 
 export function MenuList({ children }) {
-  const { triggerRef, open, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
+  const { triggerRef, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
+  const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
+
+  const onItemChecked = (item: number) => setCheckedItems(s => [...s, item]);
+  const onItemUnChecked = (item: number) =>
+    setCheckedItems(s => {
+      const newArray = [...s];
+      const index = newArray.indexOf(item);
+      if (index > -1) {
+        newArray.splice(index, 1);
+      }
+
+      return newArray;
+    });
 
   return (
     <Popup
-      open={open}
+      open={true}
       target={triggerRef}
       position="below"
       trapFocus
@@ -25,6 +38,9 @@ export function MenuList({ children }) {
               setIndex,
               setOpen,
               triggerRef,
+              checkedItems,
+              onItemChecked,
+              onItemUnChecked,
             }}
           >
             <div ref={menuRef}>{children}</div>
