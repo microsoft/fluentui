@@ -79,6 +79,7 @@ const CalendarYearGridCell = React.forwardRef(
     };
 
     const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         onSelectYear?.(year);
       }
@@ -247,6 +248,7 @@ const CalendarYearNavArrow = React.forwardRef(
     };
 
     const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         onNavigate();
       }
@@ -311,6 +313,7 @@ const CalendarYearTitle = React.forwardRef(
     };
 
     const onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
         onHeaderSelect();
       }
