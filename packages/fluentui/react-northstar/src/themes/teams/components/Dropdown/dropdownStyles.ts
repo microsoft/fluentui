@@ -250,6 +250,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(8),
-    color: p.disabled ? v.disabledColor : v.color,
+    color: v.color,
+    ...(p.disabled && { color: v.disabledColor }),
   }),
 };
