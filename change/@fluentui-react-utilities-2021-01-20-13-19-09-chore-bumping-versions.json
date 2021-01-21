@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": " Updating dependencies (react typings and formik.)",
+  "comment": " Updating dev dependencies.",
   "packageName": "@fluentui/react-utilities",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",

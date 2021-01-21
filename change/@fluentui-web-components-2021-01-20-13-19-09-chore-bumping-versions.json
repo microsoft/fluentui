@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": " Updating dependencies (react typings and formik.)",
+  "comment": " Updating dev dependencies.",
   "packageName": "@fluentui/web-components",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "none",
