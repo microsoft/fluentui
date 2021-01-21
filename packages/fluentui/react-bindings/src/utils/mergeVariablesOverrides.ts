@@ -9,5 +9,13 @@ export function mergeVariablesOverrides(
   variables: ComponentVariablesInput,
   overrides: ComponentVariablesInput,
 ): ComponentVariablesPrepared {
-  return (variables || overrides) && mergeComponentVariables(variables, overrides);
+  if (variables && overrides) {
+    return mergeComponentVariables(variables, overrides);
+  }
+
+  if (variables) {
+    return variables;
+  }
+
+  return overrides;
 }
