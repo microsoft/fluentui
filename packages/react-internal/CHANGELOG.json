@@ -2,6 +2,33 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.35",
+      "version": "8.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Set focus state in FocusTrapZone even if onFocus and onBlur do not bubble",
+            "author": "nsavas@microsoft.com",
+            "commit": "3edcbb8c0a92d19c48092e45ed96edd4d717be70",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "fix a typo in CalloutContent.base.tsx",
+            "author": "lin.zh.ming.27@gmail.com",
+            "commit": "dac7f1d8897162563d4985909299e64861932a22",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Jan 2021 12:22:46 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.34",
       "version": "8.0.0-beta.34",
