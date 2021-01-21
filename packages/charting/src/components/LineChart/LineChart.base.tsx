@@ -95,8 +95,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
     /** note that height and width are not used to resize or set as dimesions of the chart,
-     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
-     */
+     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart */
     if (
       prevProps.height !== this.props.height ||
       prevProps.width !== this.props.width ||
@@ -128,6 +127,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      onDismiss: this._closeCallout,
+      preventDismissOnEvent: () => true,
+      hidden: !(!this.props.hideTooltip && this.state.isCalloutVisible),
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -297,6 +299,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
     return legends;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 
   private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines = [];

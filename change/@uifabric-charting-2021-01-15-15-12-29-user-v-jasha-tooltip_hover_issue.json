@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Tooltip disappear after click on escape issue fixed",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-15T09:42:29.530Z"
+}
