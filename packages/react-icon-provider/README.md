@@ -1,8 +1,6 @@
 # @fluentui/react-icon-provider
 
-**React Icon Provider components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**Icon override provider for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 This component is used for providing overrides to the icons in `@fluentui/react-icons-mdl2` and `@fluentui/react-icons`.
 To import React Icon Provider components:

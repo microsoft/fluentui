@@ -8,9 +8,10 @@ import { IconProviderProps } from './IconProvider.types';
 export const IconContext = React.createContext<IIconSubset | undefined>(undefined);
 
 /**
- * Hook to access the Icon subset. This can be overridden contextually using the `IconProvider`.
+ * Hook to access the Icon subset. Returns the icons that will override the default.
+ * This can be overridden contextually using the `IconProvider`.
  */
-export const useIcon = (): IIconSubset | undefined => React.useContext(IconContext);
+export const useIconSubset = (): IIconSubset | undefined => React.useContext(IconContext);
 
 /**
  * Component to contextually override one or more of the default SVG icons
