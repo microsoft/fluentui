@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "LineChart: xAxisCalloutData updated for last circle ID of the graph",
+  "packageName": "@fluentui/react-charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T07:34:57.446Z"
+}
