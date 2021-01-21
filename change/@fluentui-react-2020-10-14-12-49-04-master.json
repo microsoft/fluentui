@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added generic type for IDropdownOption",
+  "packageName": "@fluentui/react",
+  "email": "ashwin.gokhale98@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-10-14T19:49:04.717Z"
+}
