@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update icon documentation in public docsite",
+  "packageName": "@uifabric/fabric-website",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T23:08:26.123Z"
+}
