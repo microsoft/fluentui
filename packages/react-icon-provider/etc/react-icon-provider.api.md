@@ -8,11 +8,6 @@ import { IIconSubset } from '@fluentui/style-utilities';
 import * as React from 'react';
 
 // @public
-export function createIconOverride(iconSet: {
-    [key: string]: string | JSX.Element;
-}): IIconSubset;
-
-// @public
 export const IconContext: React.Context<IIconSubset | undefined>;
 
 // @public
@@ -24,7 +19,7 @@ export interface IconProviderProps extends React.HTMLAttributes<HTMLDivElement> 
 }
 
 // @public
-export const useIcon: () => IIconSubset | undefined;
+export const useIconSubset: () => IIconSubset | undefined;
 
 
 // (No @packageDocumentation comment for this package)
