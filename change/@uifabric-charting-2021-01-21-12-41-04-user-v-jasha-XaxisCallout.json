@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Line Chart: X axis callout for last circle issue resolved. Updated xAxisCalloutData for last circle",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T07:11:04.416Z"
+}
