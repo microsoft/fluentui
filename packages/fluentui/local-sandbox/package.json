@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^7.0.0",
     "express": "^4.15.4",
     "fork-ts-checker-webpack-plugin": "^6.1.0",

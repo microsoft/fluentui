@@ -42,7 +42,7 @@
     "@fluentui/example-data": "^8.0.0-beta.0",
     "@fluentui/monaco-editor": "^1.0.0-beta.1",
     "@fluentui/react-hooks": "^8.0.0-beta.9",
-    "raw-loader": "^0.5.1",
+    "raw-loader": "^4.0.2",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0",
     "typescript": "3.7.2"
