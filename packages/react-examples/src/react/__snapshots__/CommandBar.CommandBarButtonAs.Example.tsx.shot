@@ -858,14 +858,12 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
-                                onBlur={[Function]}
-                                onFocus={[Function]}
+                                onBlurCapture={[Function]}
                                 onFocusCapture={[Function]}
                               >
                                 <div
                                   aria-hidden={true}
                                   data-is-visible={true}
-                                  onFocus={[Function]}
                                   style={
                                     Object {
                                       "pointerEvents": "none",
@@ -912,14 +910,12 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       tabIndex={-1}
                                     >
                                       <div
-                                        onBlur={[Function]}
-                                        onFocus={[Function]}
+                                        onBlurCapture={[Function]}
                                         onFocusCapture={[Function]}
                                       >
                                         <div
                                           aria-hidden={true}
                                           data-is-visible={true}
-                                          onFocus={[Function]}
                                           style={
                                             Object {
                                               "pointerEvents": "none",
@@ -1136,7 +1132,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         <div
                                           aria-hidden={true}
                                           data-is-visible={true}
-                                          onFocus={[Function]}
                                           style={
                                             Object {
                                               "pointerEvents": "none",
@@ -1152,7 +1147,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 <div
                                   aria-hidden={true}
                                   data-is-visible={true}
-                                  onFocus={[Function]}
                                   style={
                                     Object {
                                       "pointerEvents": "none",
