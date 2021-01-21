@@ -24786,23 +24786,6 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.10.1.tgz#326e92a4247d9f909e8a4017d56dbe4bb4361497"
-  integrity sha512-4qLbcBJuULUBkRK5aS4O4q3DEMmtKMyGGVftCMGUvS0TGeb9ni1HnuxUzGGaQyhds4RFr83aX3foJA3+RB2Uag==
-  dependencies:
-    "@pnpm/lockfile-file" "^3.0.7"
-    "@pnpm/logger" "^3.2.2"
-    "@yarnpkg/lockfile" "^1.1.0"
-    find-up "^4.1.0"
-    find-yarn-workspace-root "^1.2.1"
-    fs-extra "^9.0.0"
-    git-url-parse "^11.1.2"
-    globby "^11.0.0"
-    jju "^1.4.0"
-    multimatch "^4.0.0"
-    read-yaml-file "^2.0.0"
-
 workspace-tools@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.10.2.tgz#e5d04c8aa67ed534c364a94baef3039367a2a8a8"
