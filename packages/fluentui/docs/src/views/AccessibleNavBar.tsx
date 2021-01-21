@@ -90,31 +90,74 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 <h3>General notes</h3>
 <ul>
 <li>The number of new items is not present on the buttons. It should be a part of the window title instead.</li>
-<li>The usage hint is narrated using aN aria-live element. The drawback of this solution is that the narration is queued, so if user tabs out and in to the navigation bar several times, the hint is spoken repeatedly several times as well.</li>
+<li>The usage hint is narrated using aN aria-live element. The drawback of this solution is that the narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken repeatedly several times as well.</li>
+<li>ARIA landmarks are not used. Instead, the F6 key should work for navigating to the navigation bar.</li>
 </ul>
 
                     <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
-<h2>Tablist</h2>
-<button>Focus catch</button>
+<h2>role="toolbar"</h2>
+<div role="toolbar" aria-label="Navigation bar" onFocus={handleFocus}>
+<button className="item" tabIndex={0}>Activities</button>
+<button className="item" tabIndex={-1}>Chats</button>
+<button className="item" tabIndex={-1}>Teams</button>
+<button className="item" tabIndex={-1}>Calendar</button>
+</div>
+<h3>Notes</h3>
+<ul>
+<li>When entering the toolbar content, JAWS, NVDA and VoiceOver all  read "toolbar" as the firs narration.</li>
+</ul>
+
+<h2>role="tablist"</h2>
 <div role="tablist" onFocus={handleFocus}>
 <button role="tab" className="item" tabIndex={0}>Activities</button>
 <button role="tab" className="item" tabIndex={-1}>Chats</button>
 <button role="tab" className="item" tabIndex={-1}>Teams</button>
 <button role="tab" className="item" tabIndex={-1}>Calendar</button>
 </div>
+<h3>Notes</h3>
+<ul>
+<li>The tablist role is not appropriate because, when VPC cursor is disabled, JAWS reads "To switch pages press Control+PageDown" as the usage when a tab is selected.</li>
+</ul>
 
-<h3>Menu</h3>
+<h2>role="menu"</h2>
 <div role="menu" onFocus={handleFocus}>
 <button role="menuitem" className="item" tabIndex={0}>Activities</button>
 <button role="menuitem" className="item" tabIndex={-1}>Chats</button>
 <button role="menuitem" className="item" tabIndex={-1}>Teams</button>
 <button role="menuitem" className="item" tabIndex={-1}>Calendar</button>
 </div>
+<h3>Notes</h3>
+<ul>
+<li>Neither the "menu", nor the "menubar" role is appropriate because VoiceOver reads "To close the menu, press Escape" as the usage hint.</li>
+<li>When entering the menu content, JAWS reads "menu" as the firs narration.</li>
+<li>When leaving the menu content, JAWS reads "leaving menus".</li>
+<li>When entering the menu content, JAWS reads "To move through items press up or down arrow" as the last narration.</li>
+</ul>
+
+<h2>aria-label only</h2>
+<div aria-label="Navigation bar" onFocus={handleFocus}>
+<button className="item" tabIndex={0}>Activities</button>
+<button className="item" tabIndex={-1}>Chats</button>
+<button className="item" tabIndex={-1}>Teams</button>
+<button className="item" tabIndex={-1}>Calendar</button>
+</div>
 
 <h3>Notes</h3>
 <ul>
-<li>Neither the "menu", nor the "menubar" role is appropriate because VoiceOver reads "To close the menu, press Escape" as the hint.</li>
+<li>NVDA does not narrate the aria-label.</li>
+</ul>
+<h2>role="group" and aria-label</h2>
+<div aria-label="Navigation bar" onFocus={handleFocus}>
+<button className="item" tabIndex={0}>Activities</button>
+<button className="item" tabIndex={-1}>Chats</button>
+<button className="item" tabIndex={-1}>Teams</button>
+<button className="item" tabIndex={-1}>Calendar</button>
+</div>
+
+<h3>Notes</h3>
+<ul>
+<li>NVDA does not narrate the aria-label.</li>
 </ul>
 
     </>
