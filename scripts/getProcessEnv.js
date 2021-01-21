@@ -14,14 +14,17 @@ const getProcessValues = envNames => {
  * Gets approved environment variable values to polyfill using the DefinePlugin
  * in webpack bundles.
  */
-export const getProcessEnv = () =>
-  getProcessValues([
-    'NODE_ENV',
-    'PERF',
-    'OFFICIALRELEASE',
-    'DEPLOYBASEPATH',
-    'PORT',
-    'PERFPORT',
-    'SCREENER_API_KEY',
-    'SKIP_ERRORS',
-  ]);
+module.exports = {
+  getProcessEnv: function getProcessEnv() {
+    return getProcessValues([
+      'NODE_ENV',
+      'PERF',
+      'OFFICIALRELEASE',
+      'DEPLOYBASEPATH',
+      'PORT',
+      'PERFPORT',
+      'SCREENER_API_KEY',
+      'SKIP_ERRORS',
+    ]);
+  },
+};
