@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "set margin on separator slot",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T19:16:11.984Z"
+}
