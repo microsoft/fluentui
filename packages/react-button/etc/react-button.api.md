@@ -7,11 +7,13 @@
 import { ColorTokens } from '@fluentui/theme';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import { FontTokens } from '@fluentui/theme';
+import { MenuContext } from '@fluentui/react-shared-contexts';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SizeValue } from '@fluentui/theme';
+import { useMenuContext } from '@fluentui/react-shared-contexts';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -213,6 +215,10 @@ export type MenuButtonTokens = ButtonTokens & {
 // @public (undocumented)
 export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
 
+export { MenuContext }
+
+export { MinimalMenuProps }
+
 // @public
 const renderButton: (state: ButtonState) => JSX.Element;
 
@@ -305,6 +311,8 @@ export const useMenuButtonClasses: (state: MenuButtonState) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
+
+export { useMenuContext }
 
 // @public
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
