@@ -1,4 +1,5 @@
 import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
+import { Arguments } from 'yargs-parser';
 
 import path from 'path';
 import fs from 'fs';
@@ -21,6 +22,21 @@ import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { fluentuiLernaPublish } from './tasks/fluentui-publish';
 import { findGitRoot } from './monorepo/index';
+
+interface BasicPresetArgs extends Arguments {
+  production: boolean;
+  webpackConfig: string;
+  commonjs: boolean;
+  cached: boolean;
+  registry: string;
+  push: boolean;
+  package: string;
+  min: boolean;
+}
+
+function getJustArgv() {
+  return argv() as Partial<BasicPresetArgs>;
+}
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -74,7 +90,7 @@ export function preset() {
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
-  task('webpack-dev-server', webpackDevServer);
+  task('webpack-dev-server', webpackDevServer(getJustArgv()));
   task('api-extractor:verify', verifyApiExtractor());
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
@@ -88,12 +104,14 @@ export function preset() {
   task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
 
   task('ts:compile', () => {
-    return argv().commonjs
+    const args = getJustArgv();
+
+    return args.commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          condition('ts:commonjs', () => !argv().min),
+          condition('ts:commonjs', () => !args.min),
           'ts:esm',
-          condition('ts:amd', () => !!argv().production),
+          condition('ts:amd', () => !!args.production),
         );
   });
 
@@ -121,7 +139,7 @@ export function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => !argv().min),
+      condition('api-extractor:verify', () => !getJustArgv().min),
     ),
   ).cached();
 

@@ -3,7 +3,7 @@ import { Input, InputProps } from '../Input/Input';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 import { commonPropTypes } from '../../utils';
 
-interface FormInputOwnProps extends InputProps {}
+interface FormInputOwnProps extends Omit<InputProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'

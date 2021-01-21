@@ -11,6 +11,10 @@ describe('createTheme', () => {
     expect(createTheme({ palette: { themePrimary: 'red' } })).toMatchSnapshot();
   });
 
+  it('inverted theme', () => {
+    expect(createTheme({ isInverted: true })).toMatchSnapshot();
+  });
+
   it('applies defaultFontStyle to fonts and retains all other default values', () => {
     const defaultFontStyle: IRawStyle = { fontFamily: 'Segoe UI' };
     const userTheme = { defaultFontStyle: defaultFontStyle };

@@ -631,7 +631,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
+      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props, deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {

@@ -54,6 +54,7 @@ export const colorScheme = {
     foreground2: colors.grey['450'],
     foreground3: colors.white,
     foreground4: colors.white,
+    foreground7: colors.grey['750'], // 5 and 6 are missing to keep foreground7 name consistent with teams-theme-v1
 
     background: colors.white,
     background1: colors.grey['25'],
@@ -110,6 +111,7 @@ export const colorScheme = {
     background2: colors.brand['900'],
     background3: colors.brand['1000'],
     background4: colors.brand['800'],
+    background5: colors.brand['100'],
 
     foreground: colors.brand['600'],
     foreground1: colors.brand['600'],

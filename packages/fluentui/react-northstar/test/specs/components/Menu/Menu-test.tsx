@@ -63,6 +63,7 @@ describe('Menu', () => {
 
       menu
         .find('MenuItem')
+        .find('a')
         .at(1)
         .simulate('click');
 
@@ -70,6 +71,7 @@ describe('Menu', () => {
 
       menu
         .find('MenuItem')
+        .find('a')
         .at(1)
         .simulate('mouseenter')
         .simulate('click');
@@ -298,6 +300,7 @@ describe('Menu', () => {
         wrapper
           .find('MenuItem')
           .at(1)
+          .find('a')
           .simulate('click');
 
         expect(onActiveIndexChange).toHaveBeenCalledWith(

@@ -22,7 +22,7 @@ export const TextFieldBasicExample: React.FunctionComponent = () => {
         <TextField label="With error message" errorMessage="Error message" />
       </Stack>
       <Stack {...columnProps}>
-        <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
+        <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" title="A 10 digit number" />
         <TextField label="With an icon" iconProps={iconProps} />
         <TextField label="With placeholder" placeholder="Please enter text here" />
         <TextField label="Disabled with placeholder" disabled placeholder="I am disabled" />

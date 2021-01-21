@@ -347,12 +347,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -483,12 +479,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -644,12 +636,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -1044,12 +1032,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -1198,12 +1182,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -1378,12 +1358,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -1801,12 +1777,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -1937,12 +1909,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -2100,12 +2068,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -2502,12 +2466,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -2656,12 +2616,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -2837,12 +2793,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -3261,12 +3213,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -3397,12 +3345,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -3552,12 +3496,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -3946,12 +3886,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -4100,12 +4036,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -4274,12 +4206,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -4691,12 +4619,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -4827,12 +4751,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -4988,12 +4908,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -5388,12 +5304,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -5542,12 +5454,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -5722,12 +5630,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -6126,12 +6030,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   {
                     display: block;
                     height: 100%;
-                    left: 50% /* @noflip */;
                     object-fit: cover;
                     opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
                     width: 100%;
                   }
               onError={[Function]}
@@ -6285,12 +6185,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   {
                     display: block;
                     height: 100%;
-                    left: 50% /* @noflip */;
                     object-fit: cover;
                     opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
                     width: 100%;
                   }
               onError={[Function]}
@@ -6473,12 +6369,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   {
                     display: block;
                     height: 100%;
-                    left: 50% /* @noflip */;
                     object-fit: cover;
                     opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
                     width: 100%;
                   }
               onError={[Function]}
@@ -6920,12 +6812,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -7074,12 +6962,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -7248,12 +7132,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -7661,12 +7541,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -7815,12 +7691,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}
@@ -7995,12 +7867,8 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       {
                         display: block;
                         height: 100%;
-                        left: 50% /* @noflip */;
                         object-fit: cover;
                         opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         width: 100%;
                       }
                   onError={[Function]}

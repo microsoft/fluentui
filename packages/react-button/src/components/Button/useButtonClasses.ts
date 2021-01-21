@@ -3,7 +3,7 @@ import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonState, ButtonVariants } from './Button.types';
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-Button',
   icon: 'ms-Button-icon',
 };
@@ -189,7 +189,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         },
 
         '&[aria-disabled=true]': {
-          pointerEvents: 'none',
           opacity: 'var(--button-disabled-opacity)',
           backgroundColor: 'var(--button-disabled-background)',
           color: 'var(--button-disabled-contentColor)',

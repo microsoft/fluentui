@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-northstar';
-import { EmojiIcon, TranslationIcon, PlayIcon } from '@fluentui/react-icons-northstar';
+import { MicIcon, CallVideoIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonGroupCircularExampleShorthand = () => (
   <Button.Group
     circular
     buttons={[
       {
-        icon: <EmojiIcon />,
-        key: 'emoji',
+        icon: <MicIcon />,
+        key: 'mic',
         primary: true,
-        title: 'Emoji',
+        title: 'Microphone',
       },
       {
-        icon: <TranslationIcon />,
-        key: 'translation',
-        title: 'Translation',
+        icon: <CallVideoIcon />,
+        key: 'video',
+        title: 'Video Call',
       },
       {
         icon: <PlayIcon />,
