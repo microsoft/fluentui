@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.21",
+      "version": "1.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Enable pointer-events so that tooltip can be attached to disabledFocusable Button.",
+            "author": "jukapsia@microsoft.com",
+            "commit": "08271834459c58e5beafc5e7b005591ee901aeb9",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jan 2021 12:31:15 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.19",
       "version": "1.0.0-beta.19",
