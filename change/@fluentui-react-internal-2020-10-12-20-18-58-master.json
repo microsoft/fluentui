@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Added generic type for ISelectableOption interface",
   "packageName": "@fluentui/react-internal",
   "email": "ashwin.gokhale98@gmail.com",
