@@ -395,20 +395,25 @@ This component is used internally by `Menu` and manages the context and layout i
 
 `MenuList` can also be used separately as the standalone variant of the `Menu`, since it should not control popup positioning or triggers. It is the only component in the API that can be used standalone. Envisioned to be used with more complex popup or trigger scenarios where the `Menu` component does not provide enough control for these situations.
 
-### MenuSection
+### MenuGroup
 
-Creates a section inside a `MenuList`, setting up header layout and dividers between `MenuItems`.
+Creates a group inside a `MenuList`, setting up header layout and dividers between `MenuItems`.
 
-The MenuSection is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
+The MenuGroup is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
 
-| Prop name    | Type    | Details                                             |
-| ------------ | ------- | --------------------------------------------------- |
-| title        | text    | The title of of the section                         |
-| displayTitle | boolean | Whether to visually render the title in the section |
+| Prop name | Type | Details                                                                     |
+| --------- | ---- | --------------------------------------------------------------------------- |
+| title     | text | The title of of the section renders a [MenuGroupHeader](#menusectionheader) |
+
+### MenuGroupHeader
+
+Creates a section header element with appropriate styling. Will set correct `aria-labelledby` relationship if it is instantiated within a [MenuGroup](#menugroup)
 
 ### MenuDivider
 
-Creates a divider element in the `MenuList` with correct HTML and aria semantics for divider. Intention is to use this internally within `MenuList` and `MenuSection` and avoid explicit uses of dividers to ensure correct HTML and aria semantics.
+Creates a divider element in the `MenuList` with correct HTML and aria semantics for divider.
+
+This divider is purely a visual cue. To ensure consistent narration experience across all screenreaders [MenuGroup](#menugroup) should be used
 
 ### MenuItem
 
@@ -512,11 +517,12 @@ const trigger = <button> Open menu </button>
 const menu = (
   <Menu trigger={trigger}>
     <MenuItem>Option 1</MenuItem>
-    <MenuSection title="Section title">
+    <MenuDivider />
+    <MenuGroup title="Section title">
       <MenuItem>Section Option 1</MenuItem>
       <MenuItem>Section Option 2</MenuItem>
       <MenuItem>Section Option 3</MenuItem>
-    <MenuSection />
+    <MenuGroup />
   <Menu>
 )
 ```
@@ -527,9 +533,45 @@ const menu = (
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="separator"></div>
-  <div role="presentation" aria-hidden="true" id="sectionid">Section title</div>
+  <div role="separator" aria-hidden="true"></div>
   <div role="group" aria-labelledby="sectionid">
+    <div role="presentation" aria-hidden="true" id="sectionid">Section title</div>
+    <div role="menuitem" tabindex="-1">Section Option 1</div>
+    <div role="menuitem" tabindex="-1">Section Option 2</div>
+    <div role="menuitem" tabindex="-1">Section Option 3</div>
+  </div>
+  <div role="separator"></div>
+</div>
+```
+
+Custom section headings can also be used, but must be used within a [MenuGroup](#menugroup) to ensure correct narration experience
+
+```typescript
+const trigger = <button> Open menu </button>
+
+const menu = (
+  <Menu trigger={trigger}>
+    <MenuItem>Option 1</MenuItem>
+    <MenuDivider />
+    <MenuGroup>
+      <MenuGroupHeader>{children}</MenuGroupHeader>
+      <MenuItem>Section Option 1</MenuItem>
+      <MenuItem>Section Option 2</MenuItem>
+      <MenuItem>Section Option 3</MenuItem>
+    <MenuGroup />
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="separator" aria-hidden="true"></div>
+  <div role="group" aria-labelledby="sectionid">
+    <div role="presentation" aria-hidden="true" id="sectionid">children</div>
     <div role="menuitem" tabindex="-1">Section Option 1</div>
     <div role="menuitem" tabindex="-1">Section Option 2</div>
     <div role="menuitem" tabindex="-1">Section Option 3</div>
@@ -617,23 +659,23 @@ const menuCheckbox = (
   <Menu>
 )
 
-// leverage MenuSection for different selection groups
+// leverage MenuGroup for different selection groups
 const menuSelectableSections = (
   <Menu
     selectedItems={selectedItems}
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
   >
-    <MenuSection kind="checkbox" title="Checkbox section">
+    <MenuGroup title="Checkbox section">
       <MenuItem index={1}>Option 1</MenuItem>
       <MenuItem index={2}>Option 2</MenuItem>
       <MenuItem index={3}>Option 3</MenuItem>
-    </MenuSection>
-    <MenuSection kind="radio" title="Radio section">
+    </MenuGroup>
+    <MenuGroup title="Radio section">
       <MenuItem index={4}>Option 1</MenuItem>
       <MenuItem index={5}>Option 2</MenuItem>
       <MenuItem index={6}>Option 3</MenuItem>
-    </MenuSection>
+    </MenuGroup>
   <Menu>
 )
 ```
@@ -650,15 +692,15 @@ const menuSelectableSections = (
 
 <!-- expected DOM output for different selection groups  -->
 <div role="menu" aria-labelledby="trigger">
-  <div role="presentation" aria-hidden="true">Checkbox section</div>
   <div role="group" aria-label="Checkbox section">
+    <div role="presentation" aria-hidden="true">Checkbox section</div>
     <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
     <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
     <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
   </div>
   <div role="separator"></div>
-  <div role="presentation" aria-hidden="true">Radio section</div>
   <div role="group" aria-label="Radio section">
+    <div role="presentation" aria-hidden="true">Radio section</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 2</div>
     <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 3</div>
