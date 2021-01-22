@@ -71,14 +71,7 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     justifyContent: 'center',
     width: pxToRem(16),
     height: pxToRem(16),
-    '& > :first-child': {
-      height: '100%',
-      width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
-    },
+
     cursor: 'pointer',
     color: v.selectedItemIconColor,
     ...getIconFillOrOutlineStyles({ outline: true }),
