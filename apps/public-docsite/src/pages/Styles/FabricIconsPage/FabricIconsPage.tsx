@@ -14,14 +14,16 @@ const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@fluentui/font-icons-mdl2/lib/data/AllIconNames.json');
 const fabricSVGIcons = [];
 for (const iconName in MDL2Icons) {
-  const component = MDL2Icons[iconName];
-  if (
-    typeof component === 'function' &&
-    iconName !== 'createSvgIcon' &&
-    String(component).indexOf('return React.createElement') !== -1
-  ) {
-    component.key = 'iconName';
-    fabricSVGIcons.push({ name: iconName, value: component({}) });
+  if (MDL2Icons.hasOwnProperty(iconName)) {
+    const component = MDL2Icons[iconName];
+    if (
+      typeof component === 'function' &&
+      iconName !== 'createSvgIcon' &&
+      String(component).indexOf('return React.createElement') !== -1
+    ) {
+      component.key = 'iconName';
+      fabricSVGIcons.push({ name: iconName, value: component({}) });
+    }
   }
 }
 // en dashes look like regular dashes in a monospace font
